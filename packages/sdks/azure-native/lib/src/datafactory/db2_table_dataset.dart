@@ -83,4 +83,3 @@ class Db2TableDataset {
     );
   }
 }
-

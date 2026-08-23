@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapapplicationserverinstance" "sapApplicationServerInstance" {
+///   application_instance_name = "app01"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapApplicationServerInstance;
 /// import com.pulumi.azurenative.workloads.SapApplicationServerInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,6 +205,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapapplicationserverinstance" "sapApplicationServerInstance" {
+///   application_instance_name = "app01"
+///   location                  = "westcentralus"
+///   resource_group_name       = "test-rg"
+///   sap_virtual_instance_name = "X00"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -194,8 +232,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapApplicationServerInstance;
 /// import com.pulumi.azurenative.workloads.SapApplicationServerInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

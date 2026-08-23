@@ -7,6 +7,8 @@ import 'wave_properties_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
 ///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -75,6 +77,32 @@ import 'wave_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_wave" "wave" {
+///   project_name = "myProjectName"
+///   properties = {
+///     arg = {
+///       query = "shcijfglntriaccyqiwjipqneiqlm"
+///     }
+///     description             = "ukktsjlknnsvbrt"
+///     display_name            = "bhypoxylsythumuxqozo"
+///     planned_completion_date = "2025-07-07T05:56:49.292Z"
+///     planned_start_date      = "2025-07-07T05:56:49.292Z"
+///   }
+///   resource_group_name = "rgwaves"
+///   wave_name           = "myWaveName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +113,8 @@ import 'wave_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.WaveArgs;
 /// import com.pulumi.azurenative.migrate.inputs.WavePropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ArgArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

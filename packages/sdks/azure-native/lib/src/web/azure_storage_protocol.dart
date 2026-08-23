@@ -1,8 +1,8 @@
 /// Mounting protocol to use for the storage account.
 enum AzureStorageProtocol {
-  valueSmb("Smb"),
-  valueHttp("Http"),
-  valueNfs("Nfs");
+  smb("Smb"),
+  http("Http"),
+  nfs("Nfs");
 
   const AzureStorageProtocol(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum AzureStorageProtocol {
     throw ArgumentError('Unknown AzureStorageProtocol value: $value');
   }
 }
-

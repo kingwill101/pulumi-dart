@@ -4,8 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure OpenAI Content Filter.
 class RaiPolicyContentFilterResponse {
-  /// The action types to apply to the content filters
-  final pulumi.Input<String>? action;
   /// If blocking would occur.
   final pulumi.Input<bool>? blocking;
   /// If the ContentFilter is enabled.
@@ -18,14 +16,12 @@ class RaiPolicyContentFilterResponse {
   final pulumi.Input<String>? source;
 
   /// Creates a new [RaiPolicyContentFilterResponse].
-  /// [action] The action types to apply to the content filters
   /// [blocking] If blocking would occur.
   /// [enabled] If the ContentFilter is enabled.
   /// [name] Name of ContentFilter.
   /// [severityThreshold] Level at which content is filtered.
   /// [source] Content source to apply the Content Filters.
   const RaiPolicyContentFilterResponse({
-    this.action,
     this.blocking,
     this.enabled,
     this.name,
@@ -35,7 +31,6 @@ class RaiPolicyContentFilterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action,
       'blocking': ?blocking,
       'enabled': ?enabled,
       'name': ?name,
@@ -46,7 +41,6 @@ class RaiPolicyContentFilterResponse {
 
   factory RaiPolicyContentFilterResponse.fromMap(Map<String, dynamic> map) {
     return RaiPolicyContentFilterResponse(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       blocking: (() { final guardedValue = map['blocking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -55,4 +49,3 @@ class RaiPolicyContentFilterResponse {
     );
   }
 }
-

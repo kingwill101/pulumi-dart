@@ -11,7 +11,7 @@ class AlertProcessingRuleProperties {
   final pulumi.Input<List<AddActionGroups>> actions;
   /// Conditions on which alerts will be filtered.
   final pulumi.Input<List<Condition>>? conditions;
-  /// Description of alert processing rule.
+  /// Actions to be applied.Description of alert processing rule.
   final pulumi.Input<String>? description;
   /// Indicates if the given alert processing rule is enabled or disabled.
   final pulumi.Input<bool>? enabled;
@@ -23,7 +23,7 @@ class AlertProcessingRuleProperties {
   /// Creates a new [AlertProcessingRuleProperties].
   /// [actions] Actions to be applied.
   /// [conditions] Conditions on which alerts will be filtered.
-  /// [description] Description of alert processing rule.
+  /// [description] Actions to be applied.Description of alert processing rule.
   /// [enabled] Indicates if the given alert processing rule is enabled or disabled.
   /// [schedule] Scheduling for alert processing rule.
   /// [scopes] Scopes on which alert processing rule will apply.
@@ -58,4 +58,3 @@ class AlertProcessingRuleProperties {
     );
   }
 }
-

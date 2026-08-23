@@ -15,4 +15,3 @@ enum PrincipalPermissionsAction {
     throw ArgumentError('Unknown PrincipalPermissionsAction value: $value');
   }
 }
-

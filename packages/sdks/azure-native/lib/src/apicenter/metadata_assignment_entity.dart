@@ -16,4 +16,3 @@ enum MetadataAssignmentEntity {
     throw ArgumentError('Unknown MetadataAssignmentEntity value: $value');
   }
 }
-

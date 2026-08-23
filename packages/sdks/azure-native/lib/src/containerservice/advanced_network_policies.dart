@@ -16,4 +16,3 @@ enum AdvancedNetworkPolicies {
     throw ArgumentError('Unknown AdvancedNetworkPolicies value: $value');
   }
 }
-

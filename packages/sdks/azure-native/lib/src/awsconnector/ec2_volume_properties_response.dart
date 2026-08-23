@@ -74,4 +74,3 @@ class Ec2VolumePropertiesResponse {
     );
   }
 }
-

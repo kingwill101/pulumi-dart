@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-04-01-preview.
 ///
-/// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -118,6 +118,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_raipolicy" "raiPolicy" {
+///   endpoint_name = "Azure.OpenAI"
+///   properties = {
+///     base_policy_name = "112"
+///     completion_blocklists = [{
+///       "blocking"      = false
+///       "blocklistName" = "blocklistName"
+///     }]
+///     content_filters = [{
+///       "allowedContentLevel" = "Low"
+///       "blocking"            = false
+///       "enabled"             = false
+///       "name"                = "policyName"
+///       "source"              = "Prompt"
+///     }]
+///     mode = "Blocking"
+///     prompt_blocklists = [{
+///       "blocking"      = false
+///       "blocklistName" = "blocklistName"
+///     }]
+///     type = "SystemManaged"
+///   }
+///   rai_policy_name     = "raiPolicyName"
+///   resource_group_name = "test-rg"
+///   workspace_name      = "aml-workspace-name"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +165,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.RaiPolicy;
 /// import com.pulumi.azurenative.machinelearningservices.RaiPolicyArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.RaiPolicyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

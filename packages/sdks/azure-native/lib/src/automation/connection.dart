@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_args.dart';
 import 'connection_type_association_property_response.dart';
+import 'system_data_response.dart';
 
 /// Definition of the connection.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -32,7 +33,7 @@ import 'connection_type_association_property_response.dart';
 ///         FieldDefinitionValues =
 ///         {
 ///             { "AutomationCertificateName", "mysCertificateName" },
-///             { "SubscriptionID", "subid" },
+///             { "SubscriptionID", "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" },
 ///         },
 ///         Name = "mysConnection",
 ///         ResourceGroupName = "rg",
@@ -62,7 +63,7 @@ import 'connection_type_association_property_response.dart';
 /// 			Description: pulumi.String("my description goes here"),
 /// 			FieldDefinitionValues: pulumi.StringMap{
 /// 				"AutomationCertificateName": pulumi.String("mysCertificateName"),
-/// 				"SubscriptionID":            pulumi.String("subid"),
+/// 				"SubscriptionID":            pulumi.String("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
 /// 			},
 /// 			Name:              pulumi.String("mysConnection"),
 /// 			ResourceGroupName: pulumi.String("rg"),
@@ -76,6 +77,32 @@ import 'connection_type_association_property_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_connection" "connection" {
+///   automation_account_name = "myAutomationAccount28"
+///   connection_name         = "mysConnection"
+///   connection_type = {
+///     name = "Azure"
+///   }
+///   description = "my description goes here"
+///   field_definition_values = {
+///     "AutomationCertificateName" = "mysCertificateName"
+///     "SubscriptionID"            = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+///   }
+///   name                = "mysConnection"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +112,8 @@ import 'connection_type_association_property_response.dart';
 /// import com.pulumi.azurenative.automation.Connection;
 /// import com.pulumi.azurenative.automation.ConnectionArgs;
 /// import com.pulumi.azurenative.automation.inputs.ConnectionTypeAssociationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -107,7 +134,7 @@ import 'connection_type_association_property_response.dart';
 ///             .description("my description goes here")
 ///             .fieldDefinitionValues(Map.ofEntries(
 ///                 Map.entry("AutomationCertificateName", "mysCertificateName"),
-///                 Map.entry("SubscriptionID", "subid")
+///                 Map.entry("SubscriptionID", "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
 ///             ))
 ///             .name("mysConnection")
 ///             .resourceGroupName("rg")
@@ -131,7 +158,7 @@ import 'connection_type_association_property_response.dart';
 ///     description: "my description goes here",
 ///     fieldDefinitionValues: {
 ///         AutomationCertificateName: "mysCertificateName",
-///         SubscriptionID: "subid",
+///         SubscriptionID: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
 ///     },
 ///     name: "mysConnection",
 ///     resourceGroupName: "rg",
@@ -152,7 +179,7 @@ import 'connection_type_association_property_response.dart';
 ///     description="my description goes here",
 ///     field_definition_values={
 ///         "AutomationCertificateName": "mysCertificateName",
-///         "SubscriptionID": "subid",
+///         "SubscriptionID": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
 ///     },
 ///     name="mysConnection",
 ///     resource_group_name="rg")
@@ -171,7 +198,7 @@ import 'connection_type_association_property_response.dart';
 ///       description: my description goes here
 ///       fieldDefinitionValues:
 ///         AutomationCertificateName: mysCertificateName
-///         SubscriptionID: subid
+///         SubscriptionID: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
 ///       name: mysConnection
 ///       resourceGroupName: rg
 ///
@@ -202,7 +229,9 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> lastModifiedTime;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// The type of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Connection].
@@ -226,6 +255,7 @@ class Connection extends pulumi.CustomResource {
     fieldDefinitionValues = registerOutput<Map<String, String>>('fieldDefinitionValues');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

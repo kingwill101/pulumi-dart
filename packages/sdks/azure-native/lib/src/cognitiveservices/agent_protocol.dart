@@ -1,8 +1,8 @@
 /// The protocol used by the agent/exposed by a deployment.
 enum AgentProtocol {
-  valueAgent("Agent"),
-  valueA2A("A2A"),
-  valueResponses("Responses");
+  agent("Agent"),
+  a2A("A2A"),
+  responses("Responses");
 
   const AgentProtocol(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum AgentProtocol {
     throw ArgumentError('Unknown AgentProtocol value: $value');
   }
 }
-

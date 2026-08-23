@@ -14,4 +14,3 @@ enum ResourceTypeExtendedLocationPolicy {
     throw ArgumentError('Unknown ResourceTypeExtendedLocationPolicy value: $value');
   }
 }
-

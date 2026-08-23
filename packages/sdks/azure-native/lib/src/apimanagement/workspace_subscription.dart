@@ -3,9 +3,9 @@ import 'workspace_subscription_args.dart';
 
 /// Subscription details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -22,9 +22,9 @@ import 'workspace_subscription_args.dart';
 ///     var workspaceSubscription = new AzureNative.ApiManagement.WorkspaceSubscription("workspaceSubscription", new()
 ///     {
 ///         DisplayName = "testsub",
-///         OwnerId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7",
+///         OwnerId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7",
 ///         ResourceGroupName = "rg1",
-///         Scope = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002",
+///         Scope = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002",
 ///         ServiceName = "apimService1",
 ///         Sid = "testsub",
 ///         WorkspaceId = "wks1",
@@ -47,9 +47,9 @@ import 'workspace_subscription_args.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apimanagement.NewWorkspaceSubscription(ctx, "workspaceSubscription", &apimanagement.WorkspaceSubscriptionArgs{
 /// 			DisplayName:       pulumi.String("testsub"),
-/// 			OwnerId:           pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7"),
+/// 			OwnerId:           pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7"),
 /// 			ResourceGroupName: pulumi.String("rg1"),
-/// 			Scope:             pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002"),
+/// 			Scope:             pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002"),
 /// 			ServiceName:       pulumi.String("apimService1"),
 /// 			Sid:               pulumi.String("testsub"),
 /// 			WorkspaceId:       pulumi.String("wks1"),
@@ -63,6 +63,27 @@ import 'workspace_subscription_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_workspacesubscription" "workspaceSubscription" {
+///   display_name        = "testsub"
+///   owner_id            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7"
+///   resource_group_name = "rg1"
+///   scope               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002"
+///   service_name        = "apimService1"
+///   sid                 = "testsub"
+///   workspace_id        = "wks1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +92,8 @@ import 'workspace_subscription_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.WorkspaceSubscription;
 /// import com.pulumi.azurenative.apimanagement.WorkspaceSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -86,9 +107,9 @@ import 'workspace_subscription_args.dart';
 ///     public static void stack(Context ctx) {
 ///         var workspaceSubscription = new WorkspaceSubscription("workspaceSubscription", WorkspaceSubscriptionArgs.builder()
 ///             .displayName("testsub")
-///             .ownerId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7")
+///             .ownerId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7")
 ///             .resourceGroupName("rg1")
-///             .scope("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002")
+///             .scope("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002")
 ///             .serviceName("apimService1")
 ///             .sid("testsub")
 ///             .workspaceId("wks1")
@@ -105,9 +126,9 @@ import 'workspace_subscription_args.dart';
 ///
 /// const workspaceSubscription = new azure_native.apimanagement.WorkspaceSubscription("workspaceSubscription", {
 ///     displayName: "testsub",
-///     ownerId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7",
+///     ownerId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7",
 ///     resourceGroupName: "rg1",
-///     scope: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002",
+///     scope: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002",
 ///     serviceName: "apimService1",
 ///     sid: "testsub",
 ///     workspaceId: "wks1",
@@ -121,9 +142,9 @@ import 'workspace_subscription_args.dart';
 ///
 /// workspace_subscription = azure_native.apimanagement.WorkspaceSubscription("workspaceSubscription",
 ///     display_name="testsub",
-///     owner_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7",
+///     owner_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7",
 ///     resource_group_name="rg1",
-///     scope="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002",
+///     scope="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002",
 ///     service_name="apimService1",
 ///     sid="testsub",
 ///     workspace_id="wks1")
@@ -136,9 +157,9 @@ import 'workspace_subscription_args.dart';
 ///     type: azure-native:apimanagement:WorkspaceSubscription
 ///     properties:
 ///       displayName: testsub
-///       ownerId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7
+///       ownerId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7
 ///       resourceGroupName: rg1
-///       scope: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002
+///       scope: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002
 ///       serviceName: apimService1
 ///       sid: testsub
 ///       workspaceId: wks1

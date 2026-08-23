@@ -8,9 +8,9 @@ import 'workspace_api_args.dart';
 
 /// API details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -102,6 +102,39 @@ import 'workspace_api_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_workspaceapi" "workspaceApi" {
+///   api_id = "tempgroup"
+///   authentication_settings = {
+///     o_auth2 = {
+///       authorization_server_id = "authorizationServerId2283"
+///       scope                   = "oauth2scope2580"
+///     }
+///   }
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   path                = "newapiPath"
+///   protocols           = ["https", "http"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "http://newechoapi.cloudapp.net/api"
+///   subscription_key_parameter_names = {
+///     header = "header4520"
+///     query  = "query3037"
+///   }
+///   workspace_id = "wks1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +146,8 @@ import 'workspace_api_args.dart';
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.OAuth2AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SubscriptionKeyParameterNamesContractArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,6 +322,8 @@ class WorkspaceApi extends pulumi.CustomResource {
   late final pulumi.Output<String> path;
   /// Describes on which protocols the operations in this API can be invoked.
   late final pulumi.Output<List<String>?> protocols;
+  /// The provisioning state
+  late final pulumi.Output<String> provisioningState;
   /// Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
   late final pulumi.Output<String?> serviceUrl;
   /// API identifier of the source API.
@@ -334,6 +369,7 @@ class WorkspaceApi extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
     protocols = registerOutput<List<String>?>('protocols');
+    provisioningState = registerOutput<String>('provisioningState');
     serviceUrl = registerOutput<String?>('serviceUrl');
     sourceApiId = registerOutput<String?>('sourceApiId');
     subscriptionKeyParameterNames = registerOutput<SubscriptionKeyParameterNamesContractResponse?>('subscriptionKeyParameterNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionKeyParameterNamesContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -15,4 +15,3 @@ enum SyncConflictResolutionPolicy {
     throw ArgumentError('Unknown SyncConflictResolutionPolicy value: $value');
   }
 }
-

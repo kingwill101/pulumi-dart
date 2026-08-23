@@ -5,31 +5,30 @@ import 'service_group_response.dart';
 
 /// Result data returned by listServiceGroupAncestors.
 class ListServiceGroupAncestorsResult {
-  /// URL to query the next page of results for this request
+  /// The link to the next page of items
   final String? nextLink;
-  /// Array of service groups based on the request criteria
-  final List<ServiceGroupResponse>? value;
+  /// The ServiceGroup items on this page
+  final List<ServiceGroupResponse> value;
 
   /// Creates a new [ListServiceGroupAncestorsResult].
-  /// [nextLink] URL to query the next page of results for this request
-  /// [value] Array of service groups based on the request criteria
+  /// [nextLink] The link to the next page of items
+  /// [value] The ServiceGroup items on this page
   const ListServiceGroupAncestorsResult({
     this.nextLink,
-    this.value,
+    required this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ServiceGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'value': pulumi.Input.encodeList<ServiceGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ListServiceGroupAncestorsResult.fromMap(Map<String, dynamic> map) {
     return ListServiceGroupAncestorsResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceGroupResponse>(guardedValue, (value) => ServiceGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      value: pulumi.Input.decodeList<ServiceGroupResponse>(map['value']!, (value) => ServiceGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

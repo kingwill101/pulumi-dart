@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -172,6 +172,61 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_externalnetwork" "externalNetwork" {
+///   annotation = "annotation"
+///   export_route_policy = {
+///     export_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///     export_ipv6_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   }
+///   export_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   external_network_name  = "example-externalnetwork"
+///   import_route_policy = {
+///     import_ipv4_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///     import_ipv6_route_policy_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   }
+///   import_route_policy_id             = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName"
+///   l3_isolation_domain_name           = "example-l3domain"
+///   network_to_network_interconnect_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni"
+///   option_a_properties = {
+///     bfd_configuration = {
+///       interval_in_milli_seconds = 300
+///       multiplier                = 15
+///     }
+///     egress_acl_id         = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"
+///     ingress_acl_id        = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl"
+///     mtu                   = 1500
+///     peer_asn              = 65047
+///     primary_ipv4_prefix   = "10.1.1.0/30"
+///     primary_ipv6_prefix   = "3FFE:FFFF:0:CD30::a0/126"
+///     secondary_ipv4_prefix = "10.1.1.4/30"
+///     secondary_ipv6_prefix = "3FFE:FFFF:0:CD30::a4/126"
+///     vlan_id               = 1001
+///   }
+///   option_b_properties = {
+///     export_route_targets = ["65046:10039"]
+///     import_route_targets = ["65046:10039"]
+///     route_targets = {
+///       export_ipv4_route_targets = ["65046:10039"]
+///       export_ipv6_route_targets = ["65046:10039"]
+///       import_ipv4_route_targets = ["65046:10039"]
+///       import_ipv6_route_targets = ["65046:10039"]
+///     }
+///   }
+///   peering_option      = "OptionA"
+///   resource_group_name = "example-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +241,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.BfdConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.L3OptionBPropertiesArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.RouteTargetInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,7 +380,7 @@ import 'system_data_response.dart';
 ///         "egress_acl_id": "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl",
 ///         "ingress_acl_id": "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl",
 ///         "mtu": 1500,
-///         "peer_asn": 65047,
+///         "peer_asn": float(65047),
 ///         "primary_ipv4_prefix": "10.1.1.0/30",
 ///         "primary_ipv6_prefix": "3FFE:FFFF:0:CD30::a0/126",
 ///         "secondary_ipv4_prefix": "10.1.1.4/30",

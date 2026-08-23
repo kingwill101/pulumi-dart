@@ -15,4 +15,3 @@ enum DataAccessAuthMode {
     throw ArgumentError('Unknown DataAccessAuthMode value: $value');
   }
 }
-

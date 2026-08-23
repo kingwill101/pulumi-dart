@@ -1,7 +1,7 @@
-/// Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
+/// Type of the image. Possible values are: docker - For docker images. azureml - For AzureML Environment images (custom and curated)
 enum ImageType {
-  valueDocker("docker"),
-  valueAzureml("azureml");
+  docker("docker"),
+  azureml("azureml");
 
   const ImageType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ImageType {
     throw ArgumentError('Unknown ImageType value: $value');
   }
 }
-

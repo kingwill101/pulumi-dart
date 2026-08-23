@@ -57,6 +57,25 @@ import 'secret_value_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabricmesh_secretvalue" "secretValue" {
+///   location                   = "West US"
+///   resource_group_name        = "sbz_demo"
+///   secret_resource_name       = "dbConnectionString"
+///   secret_value_resource_name = "v1"
+///   value                      = "mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +84,8 @@ import 'secret_value_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabricmesh.SecretValue;
 /// import com.pulumi.azurenative.servicefabricmesh.SecretValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

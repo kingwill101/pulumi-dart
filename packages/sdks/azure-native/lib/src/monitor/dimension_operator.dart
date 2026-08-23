@@ -1,7 +1,7 @@
 /// Operator for dimension values
 enum DimensionOperator {
-  valueInclude("Include"),
-  valueExclude("Exclude");
+  include("Include"),
+  exclude("Exclude");
 
   const DimensionOperator(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum DimensionOperator {
     throw ArgumentError('Unknown DimensionOperator value: $value');
   }
 }
-

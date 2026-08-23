@@ -85,4 +85,3 @@ class Ec2InstanceAttributes {
     );
   }
 }
-

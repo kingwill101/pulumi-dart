@@ -15,4 +15,3 @@ enum SslEnum {
     throw ArgumentError('Unknown SslEnum value: $value');
   }
 }
-

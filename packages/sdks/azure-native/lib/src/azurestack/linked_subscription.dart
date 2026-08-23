@@ -58,6 +58,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestack_linkedsubscription" "linkedSubscription" {
+///   linked_subscription_id   = "104fbb77-2b0e-476a-83de-65ad8acd1f0b"
+///   linked_subscription_name = "testLinkedSubscription"
+///   location                 = "eastus"
+///   registration_resource_id = "/subscriptions/dd8597b4-8739-4467-8b10-f8679f62bfbf/resourceGroups/azurestack/providers/Microsoft.AzureStack/registrations/testRegistration"
+///   resource_group           = "azurestack"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +85,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.azurestack.LinkedSubscription;
 /// import com.pulumi.azurenative.azurestack.LinkedSubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

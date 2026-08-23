@@ -17,4 +17,3 @@ enum IntervalInMins {
     throw ArgumentError('Unknown IntervalInMins value: $value');
   }
 }
-

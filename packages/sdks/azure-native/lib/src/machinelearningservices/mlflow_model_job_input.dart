@@ -8,7 +8,7 @@ class MLFlowModelJobInput {
   /// Enum to determine the Job Input Type.
   /// Expected value is 'mlflow_model'.
   final pulumi.Input<String> jobInputType;
-  /// Input Asset Delivery Mode.
+  /// Enum to determine the input data delivery mode.
   final pulumi.Input<String>? mode;
   /// [Required] Input Asset URI.
   final pulumi.Input<String> uri;
@@ -16,7 +16,7 @@ class MLFlowModelJobInput {
   /// Creates a new [MLFlowModelJobInput].
   /// [description] Description for the input.
   /// [jobInputType] Enum to determine the Job Input Type.
-  /// [mode] Input Asset Delivery Mode.
+  /// [mode] Enum to determine the input data delivery mode.
   /// [uri] [Required] Input Asset URI.
   const MLFlowModelJobInput({
     this.description,
@@ -43,4 +43,3 @@ class MLFlowModelJobInput {
     );
   }
 }
-

@@ -4,9 +4,9 @@ import 'experiment_args.dart';
 
 /// Defines the properties of an Experiment
 ///
-/// Uses Azure REST API version 2019-11-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-11-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -78,6 +78,33 @@ import 'experiment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_frontdoor_experiment" "experiment" {
+///   description   = "this is my first experiment!"
+///   enabled_state = "Enabled"
+///   endpoint_a = {
+///     endpoint = "endpointA.net"
+///     name     = "endpoint A"
+///   }
+///   endpoint_b = {
+///     endpoint = "endpointB.net"
+///     name     = "endpoint B"
+///   }
+///   experiment_name     = "MyExperiment"
+///   profile_name        = "MyProfile"
+///   resource_group_name = "MyResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +114,8 @@ import 'experiment_args.dart';
 /// import com.pulumi.azurenative.frontdoor.Experiment;
 /// import com.pulumi.azurenative.frontdoor.ExperimentArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

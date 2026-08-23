@@ -1,9 +1,9 @@
 /// Enum indicating the type of the Analytics item.
 enum ItemType {
-  valueNone("none"),
-  valueQuery("query"),
-  valueRecent("recent"),
-  valueFunction("function");
+  none("none"),
+  query("query"),
+  recent("recent"),
+  function("function");
 
   const ItemType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ItemType {
     throw ArgumentError('Unknown ItemType value: $value');
   }
 }
-

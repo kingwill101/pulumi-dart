@@ -17,4 +17,3 @@ enum TargetServiceType {
     throw ArgumentError('Unknown TargetServiceType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum AutomationArtifactStatus {
     throw ArgumentError('Unknown AutomationArtifactStatus value: $value');
   }
 }
-

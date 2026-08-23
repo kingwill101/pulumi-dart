@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 import 'tenant_action_group_args.dart';
 
 /// A tenant action group resource.
@@ -21,7 +22,7 @@ import 'tenant_action_group_args.dart';
 ///     {
 ///         AzureAppPushReceivers = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.AzureAppPushReceiverArgs
+///             new AzureNative.Monitor.Inputs.MicrosoftCommonAzureAppPushReceiverArgs
 ///             {
 ///                 EmailAddress = "johndoe@email.com",
 ///                 Name = "Sample azureAppPush",
@@ -29,13 +30,13 @@ import 'tenant_action_group_args.dart';
 ///         },
 ///         EmailReceivers = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.EmailReceiverArgs
+///             new AzureNative.Monitor.Inputs.MicrosoftCommonEmailReceiverArgs
 ///             {
 ///                 EmailAddress = "johndoe@email.com",
 ///                 Name = "John Doe's email",
 ///                 UseCommonAlertSchema = false,
 ///             },
-///             new AzureNative.Monitor.Inputs.EmailReceiverArgs
+///             new AzureNative.Monitor.Inputs.MicrosoftCommonEmailReceiverArgs
 ///             {
 ///                 EmailAddress = "janesmith@email.com",
 ///                 Name = "Jane Smith's email",
@@ -48,13 +49,13 @@ import 'tenant_action_group_args.dart';
 ///         ManagementGroupId = "72f988bf-86f1-41af-91ab-2d7cd011db47",
 ///         SmsReceivers = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.SmsReceiverArgs
+///             new AzureNative.Monitor.Inputs.MicrosoftCommonSmsReceiverArgs
 ///             {
 ///                 CountryCode = "1",
 ///                 Name = "John Doe's mobile",
 ///                 PhoneNumber = "2062022299",
 ///             },
-///             new AzureNative.Monitor.Inputs.SmsReceiverArgs
+///             new AzureNative.Monitor.Inputs.MicrosoftCommonSmsReceiverArgs
 ///             {
 ///                 CountryCode = "1",
 ///                 Name = "Jane Smith's mobile",
@@ -65,7 +66,7 @@ import 'tenant_action_group_args.dart';
 ///         TenantActionGroupName = "testTenantActionGroup",
 ///         VoiceReceivers = new[]
 ///         {
-///             new AzureNative.Monitor.Inputs.VoiceReceiverArgs
+///             new AzureNative.Monitor.Inputs.MicrosoftCommonVoiceReceiverArgs
 ///             {
 ///                 CountryCode = "1",
 ///                 Name = "Sample voice",
@@ -109,19 +110,19 @@ import 'tenant_action_group_args.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := monitor.NewTenantActionGroup(ctx, "tenantActionGroup", &monitor.TenantActionGroupArgs{
-/// 			AzureAppPushReceivers: monitor.AzureAppPushReceiverArray{
-/// 				&monitor.AzureAppPushReceiverArgs{
+/// 			AzureAppPushReceivers: monitor.MicrosoftCommonAzureAppPushReceiverArray{
+/// 				&monitor.MicrosoftCommonAzureAppPushReceiverArgs{
 /// 					EmailAddress: pulumi.String("johndoe@email.com"),
 /// 					Name:         pulumi.String("Sample azureAppPush"),
 /// 				},
 /// 			},
-/// 			EmailReceivers: monitor.EmailReceiverArray{
-/// 				&monitor.EmailReceiverArgs{
+/// 			EmailReceivers: monitor.MicrosoftCommonEmailReceiverArray{
+/// 				&monitor.MicrosoftCommonEmailReceiverArgs{
 /// 					EmailAddress:         pulumi.String("johndoe@email.com"),
 /// 					Name:                 pulumi.String("John Doe's email"),
 /// 					UseCommonAlertSchema: pulumi.Bool(false),
 /// 				},
-/// 				&monitor.EmailReceiverArgs{
+/// 				&monitor.MicrosoftCommonEmailReceiverArgs{
 /// 					EmailAddress:         pulumi.String("janesmith@email.com"),
 /// 					Name:                 pulumi.String("Jane Smith's email"),
 /// 					UseCommonAlertSchema: pulumi.Bool(true),
@@ -131,13 +132,13 @@ import 'tenant_action_group_args.dart';
 /// 			GroupShortName:    pulumi.String("sample"),
 /// 			Location:          pulumi.String("Global"),
 /// 			ManagementGroupId: pulumi.String("72f988bf-86f1-41af-91ab-2d7cd011db47"),
-/// 			SmsReceivers: monitor.SmsReceiverArray{
-/// 				&monitor.SmsReceiverArgs{
+/// 			SmsReceivers: monitor.MicrosoftCommonSmsReceiverArray{
+/// 				&monitor.MicrosoftCommonSmsReceiverArgs{
 /// 					CountryCode: pulumi.String("1"),
 /// 					Name:        pulumi.String("John Doe's mobile"),
 /// 					PhoneNumber: pulumi.String("2062022299"),
 /// 				},
-/// 				&monitor.SmsReceiverArgs{
+/// 				&monitor.MicrosoftCommonSmsReceiverArgs{
 /// 					CountryCode: pulumi.String("1"),
 /// 					Name:        pulumi.String("Jane Smith's mobile"),
 /// 					PhoneNumber: pulumi.String("0987654321"),
@@ -145,8 +146,8 @@ import 'tenant_action_group_args.dart';
 /// 			},
 /// 			Tags:                  pulumi.StringMap{},
 /// 			TenantActionGroupName: pulumi.String("testTenantActionGroup"),
-/// 			VoiceReceivers: monitor.VoiceReceiverArray{
-/// 				&monitor.VoiceReceiverArgs{
+/// 			VoiceReceivers: monitor.MicrosoftCommonVoiceReceiverArray{
+/// 				&monitor.MicrosoftCommonVoiceReceiverArgs{
 /// 					CountryCode: pulumi.String("1"),
 /// 					Name:        pulumi.String("Sample voice"),
 /// 					PhoneNumber: pulumi.String("2062022299"),
@@ -178,6 +179,69 @@ import 'tenant_action_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_tenantactiongroup" "tenantActionGroup" {
+///   azure_app_push_receivers {
+///     email_address = "johndoe@email.com"
+///     name          = "Sample azureAppPush"
+///   }
+///   email_receivers {
+///     email_address           = "johndoe@email.com"
+///     name                    = "John Doe's email"
+///     use_common_alert_schema = false
+///   }
+///   email_receivers {
+///     email_address           = "janesmith@email.com"
+///     name                    = "Jane Smith's email"
+///     use_common_alert_schema = true
+///   }
+///   enabled             = true
+///   group_short_name    = "sample"
+///   location            = "Global"
+///   management_group_id = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///   sms_receivers {
+///     country_code = "1"
+///     name         = "John Doe's mobile"
+///     phone_number = "2062022299"
+///   }
+///   sms_receivers {
+///     country_code = "1"
+///     name         = "Jane Smith's mobile"
+///     phone_number = "0987654321"
+///   }
+///   tags                     = {}
+///   tenant_action_group_name = "testTenantActionGroup"
+///   voice_receivers {
+///     country_code = "1"
+///     name         = "Sample voice"
+///     phone_number = "2062022299"
+///   }
+///   webhook_receivers {
+///     name                    = "Sample webhook 1"
+///     service_uri             = "http://www.example.com/webhook1"
+///     use_common_alert_schema = true
+///   }
+///   webhook_receivers {
+///     identifier_uri          = "http://someidentifier/d7811ba3-7996-4a93-99b6-6b2f3f355f8a"
+///     name                    = "Sample webhook 2"
+///     object_id               = "d3bb868c-fe44-452c-aa26-769a6538c808"
+///     service_uri             = "http://www.example.com/webhook2"
+///     tenant_id               = "68a4459a-ccb8-493c-b9da-dd30457d1b84"
+///     use_aad_auth            = true
+///     use_common_alert_schema = true
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -186,13 +250,13 @@ import 'tenant_action_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.TenantActionGroup;
 /// import com.pulumi.azurenative.monitor.TenantActionGroupArgs;
-/// import com.pulumi.azurenative.monitor.inputs.AzureAppPushReceiverArgs;
-/// import com.pulumi.azurenative.monitor.inputs.EmailReceiverArgs;
-/// import com.pulumi.azurenative.monitor.inputs.SmsReceiverArgs;
-/// import com.pulumi.azurenative.monitor.inputs.VoiceReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MicrosoftCommonAzureAppPushReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MicrosoftCommonEmailReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MicrosoftCommonSmsReceiverArgs;
+/// import com.pulumi.azurenative.monitor.inputs.MicrosoftCommonVoiceReceiverArgs;
 /// import com.pulumi.azurenative.monitor.inputs.WebhookReceiverArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,17 +269,17 @@ import 'tenant_action_group_args.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var tenantActionGroup = new TenantActionGroup("tenantActionGroup", TenantActionGroupArgs.builder()
-///             .azureAppPushReceivers(AzureAppPushReceiverArgs.builder()
+///             .azureAppPushReceivers(MicrosoftCommonAzureAppPushReceiverArgs.builder()
 ///                 .emailAddress("johndoe@email.com")
 ///                 .name("Sample azureAppPush")
 ///                 .build())
 ///             .emailReceivers(
-///                 EmailReceiverArgs.builder()
+///                 MicrosoftCommonEmailReceiverArgs.builder()
 ///                     .emailAddress("johndoe@email.com")
 ///                     .name("John Doe's email")
 ///                     .useCommonAlertSchema(false)
 ///                     .build(),
-///                 EmailReceiverArgs.builder()
+///                 MicrosoftCommonEmailReceiverArgs.builder()
 ///                     .emailAddress("janesmith@email.com")
 ///                     .name("Jane Smith's email")
 ///                     .useCommonAlertSchema(true)
@@ -225,12 +289,12 @@ import 'tenant_action_group_args.dart';
 ///             .location("Global")
 ///             .managementGroupId("72f988bf-86f1-41af-91ab-2d7cd011db47")
 ///             .smsReceivers(
-///                 SmsReceiverArgs.builder()
+///                 MicrosoftCommonSmsReceiverArgs.builder()
 ///                     .countryCode("1")
 ///                     .name("John Doe's mobile")
 ///                     .phoneNumber("2062022299")
 ///                     .build(),
-///                 SmsReceiverArgs.builder()
+///                 MicrosoftCommonSmsReceiverArgs.builder()
 ///                     .countryCode("1")
 ///                     .name("Jane Smith's mobile")
 ///                     .phoneNumber("0987654321")
@@ -238,7 +302,7 @@ import 'tenant_action_group_args.dart';
 ///             .tags(Map.ofEntries(
 ///             ))
 ///             .tenantActionGroupName("testTenantActionGroup")
-///             .voiceReceivers(VoiceReceiverArgs.builder()
+///             .voiceReceivers(MicrosoftCommonVoiceReceiverArgs.builder()
 ///                 .countryCode("1")
 ///                 .name("Sample voice")
 ///                 .phoneNumber("2062022299")
@@ -459,15 +523,17 @@ class TenantActionGroup extends pulumi.CustomResource {
   late final pulumi.Output<bool> enabled;
   /// The short name of the action group. This will be used in SMS messages.
   late final pulumi.Output<String> groupShortName;
-  /// Resource location
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Azure resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of SMS receivers that are part of this tenant action group.
   late final pulumi.Output<List<Map<String, dynamic>>?> smsReceivers;
-  /// Resource tags
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The list of voice receivers that are part of this tenant action group.
   late final pulumi.Output<List<Map<String, dynamic>>?> voiceReceivers;
@@ -496,6 +562,7 @@ class TenantActionGroup extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     smsReceivers = registerOutput<List<Map<String, dynamic>>?>('smsReceivers');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     voiceReceivers = registerOutput<List<Map<String, dynamic>>?>('voiceReceivers');

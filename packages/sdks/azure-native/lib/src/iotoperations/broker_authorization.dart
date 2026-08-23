@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -169,6 +169,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerauthorization" "brokerAuthorization" {
+///   authorization_name = "resource-name123"
+///   broker_name        = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     authorization_policies = {
+///       cache = "Enabled"
+///       rules = [{
+///         "brokerResources" = [{
+///           "clientIds" = ["nlc"]
+///           "method"    = "Connect"
+///           "topics"    = ["wvuca"]
+///         }]
+///         "principals" = {
+///           "attributes" = [{
+///             "key5526" = "nydhzdhbldygqcn"
+///           }]
+///           "clientIds" = ["smopeaeddsygz"]
+///           "usernames" = ["iozngyqndrteikszkbasinzdjtm"]
+///         }
+///         "stateStoreResources" = [{
+///           "keyType" = "Pattern"
+///           "keys"    = ["tkounsqtwvzyaklxjqoerpu"]
+///           "method"  = "Read"
+///         }]
+///       }]
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +226,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthorizationPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -547,6 +593,61 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerauthorization" "brokerAuthorization" {
+///   authorization_name = "resource-name123"
+///   broker_name        = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     authorization_policies = {
+///       cache = "Enabled"
+///       rules = [{
+///         "brokerResources" = [{
+///           "clientIds" = ["{principal.attributes.building}*"]
+///           "method"    = "Connect"
+///           }, {
+///           "method" = "Publish"
+///           "topics" = ["sensors/{principal.attributes.building}/{principal.clientId}/telemetry/*"]
+///           }, {
+///           "method" = "Subscribe"
+///           "topics" = ["commands/{principal.attributes.organization}"]
+///         }]
+///         "principals" = {
+///           "attributes" = [{
+///             "building"     = "17"
+///             "organization" = "contoso"
+///           }]
+///           "usernames" = ["temperature-sensor", "humidity-sensor"]
+///         }
+///         "stateStoreResources" = [{
+///           "keyType" = "Pattern"
+///           "keys"    = ["myreadkey", "myotherkey?", "mynumerickeysuffix[0-9]", "clients:{principal.clientId}:*"]
+///           "method"  = "Read"
+///           }, {
+///           "keyType" = "Binary"
+///           "keys"    = ["MTE2IDEwMSAxMTUgMTE2"]
+///           "method"  = "ReadWrite"
+///         }]
+///       }]
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -558,8 +659,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthorizationPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -963,6 +1064,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerauthorization" "brokerAuthorization" {
+///   authorization_name = "resource-name123"
+///   broker_name        = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     authorization_policies = {
+///       cache = "Enabled"
+///       rules = [{
+///         "brokerResources" = [{
+///           "method" = "Connect"
+///           }, {
+///           "method" = "Subscribe"
+///           "topics" = ["topic", "topic/with/wildcard/#"]
+///         }]
+///         "principals" = {
+///           "attributes" = [{
+///             "floor" = "floor1"
+///             "site"  = "site1"
+///           }]
+///           "clientIds" = ["my-client-id"]
+///         }
+///         "stateStoreResources" = [{
+///           "keyType" = "Pattern"
+///           "keys"    = ["*"]
+///           "method"  = "ReadWrite"
+///         }]
+///       }]
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -974,8 +1122,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthorizationPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AuthorizationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

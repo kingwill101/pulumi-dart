@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-09-01.
 ///
+/// Other available API versions: 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -78,6 +80,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datareplication_privateendpointconnection" "privateEndpointConnection" {
+///   private_endpoint_connection_name = "jitf"
+///   properties = {
+///     private_endpoint = {
+///       id = "cwcdqoynostmqwdwy"
+///     }
+///     private_link_service_connection_state = {
+///       actions_required = "afwbq"
+///       description      = "y"
+///       status           = "Approved"
+///     }
+///   }
+///   resource_group_name = "rgswagger_2024-09-01"
+///   vault_name          = "4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +118,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datareplication.inputs.PrivateEndpointConnectionResponsePropertiesArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.PrivateEndpointArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

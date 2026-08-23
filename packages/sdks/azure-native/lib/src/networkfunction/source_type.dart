@@ -1,6 +1,6 @@
 /// Ingestion source type.
 enum SourceType {
-  valueResource("Resource");
+  resource("Resource");
 
   const SourceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum SourceType {
     throw ArgumentError('Unknown SourceType value: $value');
   }
 }
-

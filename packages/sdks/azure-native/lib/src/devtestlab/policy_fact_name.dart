@@ -23,4 +23,3 @@ enum PolicyFactName {
     throw ArgumentError('Unknown PolicyFactName value: $value');
   }
 }
-

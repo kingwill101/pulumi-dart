@@ -13,9 +13,9 @@ class WebAppSitePushSettingsArgs {
   final pulumi.Input<bool> isPushEnabled;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Name of web app.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
   final pulumi.Input<String>? tagWhitelistJson;
@@ -29,8 +29,8 @@ class WebAppSitePushSettingsArgs {
   /// [dynamicTagsJson] Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   /// [isPushEnabled] Gets or sets a flag indicating whether the Push endpoint is enabled.
   /// [kind] Kind of resource.
-  /// [name] Name of web app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tagWhitelistJson] Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
   /// [tagsRequiringAuth] Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
   const WebAppSitePushSettingsArgs({
@@ -67,4 +67,3 @@ class WebAppSitePushSettingsArgs {
     );
   }
 }
-

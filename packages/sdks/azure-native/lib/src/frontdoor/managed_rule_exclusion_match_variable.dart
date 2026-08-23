@@ -1,10 +1,10 @@
 /// The variable type to be excluded.
 enum ManagedRuleExclusionMatchVariable {
-  valueRequestHeaderNames("RequestHeaderNames"),
-  valueRequestCookieNames("RequestCookieNames"),
-  valueQueryStringArgNames("QueryStringArgNames"),
-  valueRequestBodyPostArgNames("RequestBodyPostArgNames"),
-  valueRequestBodyJsonArgNames("RequestBodyJsonArgNames");
+  requestHeaderNames("RequestHeaderNames"),
+  requestCookieNames("RequestCookieNames"),
+  queryStringArgNames("QueryStringArgNames"),
+  requestBodyPostArgNames("RequestBodyPostArgNames"),
+  requestBodyJsonArgNames("RequestBodyJsonArgNames");
 
   const ManagedRuleExclusionMatchVariable(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum ManagedRuleExclusionMatchVariable {
     throw ArgumentError('Unknown ManagedRuleExclusionMatchVariable value: $value');
   }
 }
-

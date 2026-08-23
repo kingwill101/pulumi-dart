@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppHostNameBindingSlot.
 class GetWebAppHostNameBindingSlotResult {
@@ -15,19 +16,21 @@ class GetWebAppHostNameBindingSlotResult {
   final String? domainId;
   /// Hostname type.
   final String? hostNameType;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// App Service app name.
   final String? siteName;
   /// SSL type
   final String? sslState;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// SSL certificate thumbprint
   final String? thumbprint;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Virtual IP address assigned to the hostname if IP based SSL is enabled.
   final String virtualIP;
@@ -39,13 +42,14 @@ class GetWebAppHostNameBindingSlotResult {
   /// [customHostNameDnsRecordType] Custom DNS record type.
   /// [domainId] Fully qualified ARM domain resource URI.
   /// [hostNameType] Hostname type.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [siteName] App Service app name.
   /// [sslState] SSL type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [thumbprint] SSL certificate thumbprint
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualIP] Virtual IP address assigned to the hostname if IP based SSL is enabled.
   const GetWebAppHostNameBindingSlotResult({
     required this.azureApiVersion,
@@ -59,6 +63,7 @@ class GetWebAppHostNameBindingSlotResult {
     required this.name,
     this.siteName,
     this.sslState,
+    required this.systemData,
     this.thumbprint,
     required this.type,
     required this.virtualIP,
@@ -77,6 +82,7 @@ class GetWebAppHostNameBindingSlotResult {
       'name': name,
       'siteName': ?siteName,
       'sslState': ?sslState,
+      'systemData': systemData.toMap(),
       'thumbprint': ?thumbprint,
       'type': type,
       'virtualIP': virtualIP,
@@ -96,10 +102,10 @@ class GetWebAppHostNameBindingSlotResult {
       name: map['name'] as String,
       siteName: (() { final guardedValue = map['siteName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sslState: (() { final guardedValue = map['sslState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
       virtualIP: map['virtualIP'] as String,
     );
   }
 }
-

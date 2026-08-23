@@ -15,4 +15,3 @@ enum ApplicationType {
     throw ArgumentError('Unknown ApplicationType value: $value');
   }
 }
-

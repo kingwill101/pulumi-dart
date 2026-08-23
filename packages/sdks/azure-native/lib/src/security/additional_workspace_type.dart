@@ -1,6 +1,6 @@
 /// Workspace type.
 enum AdditionalWorkspaceType {
-  valueSentinel("Sentinel");
+  sentinel("Sentinel");
 
   const AdditionalWorkspaceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum AdditionalWorkspaceType {
     throw ArgumentError('Unknown AdditionalWorkspaceType value: $value');
   }
 }
-

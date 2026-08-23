@@ -89,6 +89,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appcomplianceautomation_scopingconfiguration" "scopingConfiguration" {
+///   answers {
+///     answers     = ["Azure"]
+///     question_id = "GEN20_hostingEnvironment"
+///   }
+///   answers {
+///     answers     = []
+///     question_id = "DHP_G07_customerDataProcess"
+///   }
+///   answers {
+///     answers     = []
+///     question_id = "Tier2InitSub_serviceCommunicate"
+///   }
+///   report_name                = "testReportName"
+///   scoping_configuration_name = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +126,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appcomplianceautomation.ScopingConfiguration;
 /// import com.pulumi.azurenative.appcomplianceautomation.ScopingConfigurationArgs;
 /// import com.pulumi.azurenative.appcomplianceautomation.inputs.ScopingAnswerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

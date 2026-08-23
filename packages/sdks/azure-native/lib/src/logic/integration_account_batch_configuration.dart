@@ -87,6 +87,37 @@ import 'integration_account_batch_configuration_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationaccountbatchconfiguration" "integrationAccountBatchConfiguration" {
+///   batch_configuration_name = "testBatchConfiguration"
+///   integration_account_name = "testIntegrationAccount"
+///   location                 = "westus"
+///   properties = {
+///     batch_group_name = "DEFAULT"
+///     release_criteria = {
+///       batch_size    = 234567
+///       message_count = 10
+///       recurrence = {
+///         frequency  = "Minute"
+///         interval   = 1
+///         start_time = "2017-03-24T11:43:00"
+///         time_zone  = "India Standard Time"
+///       }
+///     }
+///   }
+///   resource_group_name = "testResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +129,8 @@ import 'integration_account_batch_configuration_args.dart';
 /// import com.pulumi.azurenative.logic.inputs.BatchConfigurationPropertiesArgs;
 /// import com.pulumi.azurenative.logic.inputs.BatchReleaseCriteriaArgs;
 /// import com.pulumi.azurenative.logic.inputs.WorkflowTriggerRecurrenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

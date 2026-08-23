@@ -65,4 +65,3 @@ class VirtualHubRouteTableV2Args {
     );
   }
 }
-

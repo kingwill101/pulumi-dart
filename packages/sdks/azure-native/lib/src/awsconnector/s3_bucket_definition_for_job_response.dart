@@ -31,4 +31,3 @@ class S3BucketDefinitionForJobResponse {
     );
   }
 }
-

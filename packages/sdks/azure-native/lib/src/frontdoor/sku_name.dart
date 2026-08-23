@@ -1,8 +1,8 @@
 /// Name of the pricing tier.
 enum SkuName {
-  valueClassicAzureFrontDoor("Classic_AzureFrontDoor"),
-  valueStandardAzureFrontDoor("Standard_AzureFrontDoor"),
-  valuePremiumAzureFrontDoor("Premium_AzureFrontDoor");
+  classicAzureFrontDoor("Classic_AzureFrontDoor"),
+  standardAzureFrontDoor("Standard_AzureFrontDoor"),
+  premiumAzureFrontDoor("Premium_AzureFrontDoor");
 
   const SkuName(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SkuName {
     throw ArgumentError('Unknown SkuName value: $value');
   }
 }
-

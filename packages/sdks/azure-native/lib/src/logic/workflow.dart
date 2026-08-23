@@ -185,6 +185,73 @@ import 'workflow_parameter_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_workflow" "workflow" {
+///   definition = {
+///     "$schema" = "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#"
+///     "actions" = {
+///       "Find_pet_by_ID" = {
+///         "inputs" = {
+///           "host" = {
+///             "connection" = {
+///               "name" = "@parameters('$connections')['test-custom-connector']['connectionId']"
+///             }
+///           }
+///           "method" = "get"
+///           "path"   = "/pet/@{encodeURIComponent('1')}"
+///         }
+///         "runAfter" = {}
+///         "type"     = "ApiConnection"
+///       }
+///     }
+///     "contentVersion" = "1.0.0.0"
+///     "outputs"        = {}
+///     "parameters" = {
+///       "$connections" = {
+///         "defaultValue" = {}
+///         "type"         = "Object"
+///       }
+///     }
+///     "triggers" = {
+///       "manual" = {
+///         "inputs" = {
+///           "schema" = {}
+///         }
+///         "kind" = "Http"
+///         "type" = "Request"
+///       }
+///     }
+///   }
+///   integration_account = {
+///     id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-resource-group/providers/Microsoft.Logic/integrationAccounts/test-integration-account"
+///   }
+///   location = "brazilsouth"
+///   parameters = {
+///     "$connections" = {
+///       value = {
+///         "test-custom-connector" = {
+///           "connectionId"   = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-resource-group/providers/Microsoft.Web/connections/test-custom-connector"
+///           "connectionName" = "test-custom-connector"
+///           "id"             = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/providers/Microsoft.Web/locations/brazilsouth/managedApis/test-custom-connector"
+///         }
+///       }
+///     }
+///   }
+///   resource_group_name = "test-resource-group"
+///   tags                = {}
+///   workflow_name       = "test-workflow"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -194,8 +261,8 @@ import 'workflow_parameter_response.dart';
 /// import com.pulumi.azurenative.logic.Workflow;
 /// import com.pulumi.azurenative.logic.WorkflowArgs;
 /// import com.pulumi.azurenative.logic.inputs.ResourceReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

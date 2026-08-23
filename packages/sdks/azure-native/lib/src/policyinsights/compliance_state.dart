@@ -1,8 +1,8 @@
 /// The compliance state that should be set on the resource.
 enum ComplianceState {
-  valueCompliant("Compliant"),
-  valueNonCompliant("NonCompliant"),
-  valueUnknown("Unknown");
+  compliant("Compliant"),
+  nonCompliant("NonCompliant"),
+  unknown("Unknown");
 
   const ComplianceState(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ComplianceState {
     throw ArgumentError('Unknown ComplianceState value: $value');
   }
 }
-

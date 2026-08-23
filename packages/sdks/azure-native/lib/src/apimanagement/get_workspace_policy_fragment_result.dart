@@ -13,6 +13,8 @@ class GetWorkspacePolicyFragmentResult {
   final String id;
   /// The name of the resource
   final String name;
+  /// The provisioning state
+  final String provisioningState;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Contents of the policy fragment.
@@ -24,6 +26,7 @@ class GetWorkspacePolicyFragmentResult {
   /// [format] Format of the policy fragment content.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
+  /// [provisioningState] The provisioning state
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Contents of the policy fragment.
   const GetWorkspacePolicyFragmentResult({
@@ -32,6 +35,7 @@ class GetWorkspacePolicyFragmentResult {
     this.format,
     required this.id,
     required this.name,
+    required this.provisioningState,
     required this.type,
     required this.value,
   });
@@ -43,6 +47,7 @@ class GetWorkspacePolicyFragmentResult {
       'format': ?format,
       'id': id,
       'name': name,
+      'provisioningState': provisioningState,
       'type': type,
       'value': value,
     };
@@ -55,9 +60,9 @@ class GetWorkspacePolicyFragmentResult {
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
+      provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
       value: map['value'] as String,
     );
   }
 }
-

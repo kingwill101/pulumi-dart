@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_settings_response.dart';
 import 'performance_data_response.dart';
 import 'savings_settings_response.dart';
-import 'vm_uptime_response.dart';
+import 'vm_uptime_machine_assessments_v2_operation_response.dart';
 
 /// Properties of an assessment.
 class MachineAssessmentSettingsResponse {
@@ -47,7 +47,7 @@ class MachineAssessmentSettingsResponse {
   final pulumi.Input<String>? sizingCriterion;
   /// Gets or sets the duration for which the VMs are up in the on-premises
   /// environment.
-  final pulumi.Input<VmUptimeResponse>? vmUptime;
+  final pulumi.Input<VmUptimeMachineAssessmentsV2OperationResponse>? vmUptime;
 
   /// Creates a new [MachineAssessmentSettingsResponse].
   /// [azureDiskTypes] The disk type for the assessment.
@@ -108,7 +108,7 @@ class MachineAssessmentSettingsResponse {
       'savingsSettings': ?pulumi.Input.mapOptionalInputValue<SavingsSettingsResponse, Map<String, dynamic>>(savingsSettings, (value) => value.toMap()),
       'scalingFactor': ?scalingFactor,
       'sizingCriterion': ?sizingCriterion,
-      'vmUptime': ?pulumi.Input.mapOptionalInputValue<VmUptimeResponse, Map<String, dynamic>>(vmUptime, (value) => value.toMap()),
+      'vmUptime': ?pulumi.Input.mapOptionalInputValue<VmUptimeMachineAssessmentsV2OperationResponse, Map<String, dynamic>>(vmUptime, (value) => value.toMap()),
     };
   }
 
@@ -131,8 +131,7 @@ class MachineAssessmentSettingsResponse {
       savingsSettings: (() { final guardedValue = map['savingsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SavingsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vmUptime: (() { final guardedValue = map['vmUptime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmUptimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vmUptime: (() { final guardedValue = map['vmUptime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmUptimeMachineAssessmentsV2OperationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

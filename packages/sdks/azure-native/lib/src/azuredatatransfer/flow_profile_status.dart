@@ -15,4 +15,3 @@ enum FlowProfileStatus {
     throw ArgumentError('Unknown FlowProfileStatus value: $value');
   }
 }
-

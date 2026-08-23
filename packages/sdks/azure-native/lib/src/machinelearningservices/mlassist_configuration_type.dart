@@ -15,4 +15,3 @@ enum MLAssistConfigurationType {
     throw ArgumentError('Unknown MLAssistConfigurationType value: $value');
   }
 }
-

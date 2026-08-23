@@ -70,6 +70,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dependencymap_discoverysource" "discoverySource" {
+///   location = "y"
+///   map_name = "mapsTest1"
+///   properties = {
+///     source_id   = "wzlrkzumplzjmixbqv"
+///     source_type = "OffAzure"
+///   }
+///   resource_group_name = "rgdependencyMap"
+///   source_name         = "sourceTest1"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +102,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dependencymap.DiscoverySource;
 /// import com.pulumi.azurenative.dependencymap.DiscoverySourceArgs;
 /// import com.pulumi.azurenative.dependencymap.inputs.OffAzureDiscoverySourceResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

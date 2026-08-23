@@ -18,4 +18,3 @@ enum RoutingRuleNextHopType {
     throw ArgumentError('Unknown RoutingRuleNextHopType value: $value');
   }
 }
-

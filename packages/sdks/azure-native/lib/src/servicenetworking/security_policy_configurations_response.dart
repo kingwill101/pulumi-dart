@@ -26,4 +26,3 @@ class SecurityPolicyConfigurationsResponse {
     );
   }
 }
-

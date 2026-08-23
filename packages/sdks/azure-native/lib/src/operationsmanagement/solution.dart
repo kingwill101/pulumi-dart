@@ -93,6 +93,34 @@ import 'solution_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationsmanagement_solution" "solution" {
+///   location = "East US"
+///   plan = {
+///     name           = "name1"
+///     product        = "product1"
+///     promotion_code = "promocode1"
+///     publisher      = "publisher1"
+///   }
+///   properties = {
+///     contained_resources   = ["/subscriptions/sub2/resourceGroups/rg2/providers/provider1/resources/resource1", "/subscriptions/sub2/resourceGroups/rg2/providers/provider2/resources/resource2"]
+///     referenced_resources  = ["/subscriptions/sub2/resourceGroups/rg2/providers/provider1/resources/resource2", "/subscriptions/sub2/resourceGroups/rg2/providers/provider2/resources/resource3"]
+///     workspace_resource_id = "/subscriptions/sub2/resourceGroups/rg2/providers/Microsoft.OperationalInsights/workspaces/ws1"
+///   }
+///   resource_group_name = "rg1"
+///   solution_name       = "solution1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +131,8 @@ import 'solution_properties_response.dart';
 /// import com.pulumi.azurenative.operationsmanagement.SolutionArgs;
 /// import com.pulumi.azurenative.operationsmanagement.inputs.SolutionPlanArgs;
 /// import com.pulumi.azurenative.operationsmanagement.inputs.SolutionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

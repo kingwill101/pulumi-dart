@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'site_address_properties_response.dart';
 
 /// Site properties
 class SitePropertiesResponse {
@@ -11,27 +10,19 @@ class SitePropertiesResponse {
   final pulumi.Input<String>? description;
   /// displayName of Site resource
   final pulumi.Input<String>? displayName;
-  /// Key-value pairs for labeling the site resource.
-  final pulumi.Input<Map<String, String>>? labels;
   /// Provisioning state of last operation
   final pulumi.Input<String> provisioningState;
-  /// Physical address of the site
-  final pulumi.Input<SiteAddressPropertiesResponse>? siteAddress;
 
   /// Creates a new [SitePropertiesResponse].
   /// [addressResourceId] AddressResource ArmId of Site resource
   /// [description] Description of Site resource
   /// [displayName] displayName of Site resource
-  /// [labels] Key-value pairs for labeling the site resource.
   /// [provisioningState] Provisioning state of last operation
-  /// [siteAddress] Physical address of the site
   const SitePropertiesResponse({
     this.addressResourceId,
     this.description,
     this.displayName,
-    this.labels,
     required this.provisioningState,
-    this.siteAddress,
   });
 
   Map<String, dynamic> toMap() {
@@ -39,9 +30,7 @@ class SitePropertiesResponse {
       'addressResourceId': ?addressResourceId,
       'description': ?description,
       'displayName': ?displayName,
-      'labels': ?labels,
       'provisioningState': provisioningState,
-      'siteAddress': ?pulumi.Input.mapOptionalInputValue<SiteAddressPropertiesResponse, Map<String, dynamic>>(siteAddress, (value) => value.toMap()),
     };
   }
 
@@ -50,10 +39,7 @@ class SitePropertiesResponse {
       addressResourceId: (() { final guardedValue = map['addressResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      siteAddress: (() { final guardedValue = map['siteAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SiteAddressPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

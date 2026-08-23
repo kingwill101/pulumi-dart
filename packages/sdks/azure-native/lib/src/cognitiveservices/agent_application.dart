@@ -1,11 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_application_args.dart';
-import 'agentic_application_response.dart';
+import 'agentic_application_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Agent Application resource
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
+///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -24,7 +26,7 @@ import 'system_data_response.dart';
 ///         AccountName = "my-cognitive-services-account",
 ///         Name = "agent-app-1",
 ///         ProjectName = "my-project",
-///         Properties = new AzureNative.CognitiveServices.Inputs.AgenticApplicationArgs
+///         Properties = new AzureNative.CognitiveServices.Inputs.AgenticApplicationPropertiesArgs
 ///         {
 ///             Description = "Sample agent application for customer support",
 ///             DisplayName = "Customer Support Agent",
@@ -56,7 +58,7 @@ import 'system_data_response.dart';
 /// 			AccountName: pulumi.String("my-cognitive-services-account"),
 /// 			Name:        pulumi.String("agent-app-1"),
 /// 			ProjectName: pulumi.String("my-project"),
-/// 			Properties: &cognitiveservices.AgenticApplicationArgs{
+/// 			Properties: &cognitiveservices.AgenticApplicationPropertiesArgs{
 /// 				Description: pulumi.String("Sample agent application for customer support"),
 /// 				DisplayName: pulumi.String("Customer Support Agent"),
 /// 				Tags: pulumi.StringMap{
@@ -75,6 +77,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_agentapplication" "agentApplication" {
+///   account_name = "my-cognitive-services-account"
+///   name         = "agent-app-1"
+///   project_name = "my-project"
+///   properties = {
+///     description  = "Sample agent application for customer support"
+///     display_name = "Customer Support Agent"
+///     tags = {
+///       "environment" = "production"
+///       "team"        = "ai-platform"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,9 +111,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cognitiveservices.AgentApplication;
 /// import com.pulumi.azurenative.cognitiveservices.AgentApplicationArgs;
-/// import com.pulumi.azurenative.cognitiveservices.inputs.AgenticApplicationArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.cognitiveservices.inputs.AgenticApplicationPropertiesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,7 +129,7 @@ import 'system_data_response.dart';
 ///             .accountName("my-cognitive-services-account")
 ///             .name("agent-app-1")
 ///             .projectName("my-project")
-///             .properties(AgenticApplicationArgs.builder()
+///             .properties(AgenticApplicationPropertiesArgs.builder()
 ///                 .description("Sample agent application for customer support")
 ///                 .displayName("Customer Support Agent")
 ///                 .tags(Map.ofEntries(
@@ -192,7 +220,7 @@ class AgentApplication extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<AgenticApplicationResponse> properties;
+  late final pulumi.Output<AgenticApplicationPropertiesResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -214,7 +242,7 @@ class AgentApplication extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AgenticApplicationResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgenticApplicationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<AgenticApplicationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgenticApplicationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

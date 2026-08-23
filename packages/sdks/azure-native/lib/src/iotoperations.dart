@@ -80,6 +80,10 @@ export 'iotoperations/akri_connectors_service_account_token_settings_response.da
 export 'iotoperations/akri_connectors_tag.dart';
 export 'iotoperations/akri_connectors_tag_digest_type.dart';
 export 'iotoperations/akri_connectors_tag_response.dart';
+export 'iotoperations/akri_service.dart';
+export 'iotoperations/akri_service_args.dart';
+export 'iotoperations/akri_service_properties_response.dart';
+export 'iotoperations/akri_service_status_response.dart';
 export 'iotoperations/authorization_config.dart';
 export 'iotoperations/authorization_config_response.dart';
 export 'iotoperations/authorization_rule.dart';
@@ -258,6 +262,8 @@ export 'iotoperations/get_akri_connector_args.dart';
 export 'iotoperations/get_akri_connector_result.dart';
 export 'iotoperations/get_akri_connector_template_args.dart';
 export 'iotoperations/get_akri_connector_template_result.dart';
+export 'iotoperations/get_akri_service_args.dart';
+export 'iotoperations/get_akri_service_result.dart';
 export 'iotoperations/get_broker_args.dart';
 export 'iotoperations/get_broker_authentication_args.dart';
 export 'iotoperations/get_broker_authentication_result.dart';
@@ -331,6 +337,7 @@ export 'iotoperations/registry_endpoint_user_assigned_identity_authentication.da
 export 'iotoperations/registry_endpoint_user_assigned_identity_authentication_response.dart';
 export 'iotoperations/registry_endpoint_user_assigned_managed_identity_settings.dart';
 export 'iotoperations/registry_endpoint_user_assigned_managed_identity_settings_response.dart';
+export 'iotoperations/resource_health_status_response.dart';
 export 'iotoperations/san_for_cert.dart';
 export 'iotoperations/san_for_cert_response.dart';
 export 'iotoperations/schema_registry_ref.dart';

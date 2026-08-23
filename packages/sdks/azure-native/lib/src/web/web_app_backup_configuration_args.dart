@@ -21,7 +21,7 @@ class WebAppBackupConfigurationArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SAS URL to the container.
   final pulumi.Input<String> storageAccountUrl;
@@ -33,7 +33,7 @@ class WebAppBackupConfigurationArgs {
   /// [enabled] True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageAccountUrl] SAS URL to the container.
   const WebAppBackupConfigurationArgs({
     this.backupName,
@@ -72,4 +72,3 @@ class WebAppBackupConfigurationArgs {
     );
   }
 }
-

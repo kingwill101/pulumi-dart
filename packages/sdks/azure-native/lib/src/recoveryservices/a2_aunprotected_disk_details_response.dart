@@ -31,4 +31,3 @@ class A2AUnprotectedDiskDetailsResponse {
     );
   }
 }
-

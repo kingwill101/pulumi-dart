@@ -15,4 +15,3 @@ enum MicrosoftEntraAuth {
     throw ArgumentError('Unknown MicrosoftEntraAuth value: $value');
   }
 }
-

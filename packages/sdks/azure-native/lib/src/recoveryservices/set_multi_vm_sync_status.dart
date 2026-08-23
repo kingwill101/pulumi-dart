@@ -15,4 +15,3 @@ enum SetMultiVmSyncStatus {
     throw ArgumentError('Unknown SetMultiVmSyncStatus value: $value');
   }
 }
-

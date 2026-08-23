@@ -15,4 +15,3 @@ enum PointInTimeRecoveryStatus {
     throw ArgumentError('Unknown PointInTimeRecoveryStatus value: $value');
   }
 }
-

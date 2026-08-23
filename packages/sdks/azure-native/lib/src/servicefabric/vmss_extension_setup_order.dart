@@ -14,4 +14,3 @@ enum VmssExtensionSetupOrder {
     throw ArgumentError('Unknown VmssExtensionSetupOrder value: $value');
   }
 }
-

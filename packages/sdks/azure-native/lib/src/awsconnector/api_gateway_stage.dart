@@ -187,6 +187,79 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_apigatewaystage" "apiGatewayStage" {
+///   location = "ixsfvcwygoceaaydsgkvubn"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "aitrzss"
+///     aws_account_id = "umvnhbnjqbgppgipyiuxvyt"
+///     aws_properties = {
+///       access_log_setting = {
+///         destination_arn = "bjnehkhrjvy"
+///         format          = "jyhhqidjew"
+///       }
+///       cache_cluster_enabled = true
+///       cache_cluster_size    = "tqpsxptkwagykhry"
+///       canary_setting = {
+///         deployment_id   = "jgfflpjviovk"
+///         percent_traffic = 30
+///         stage_variable_overrides = {
+///           "key989" = "zalwrlwgjwqn"
+///         }
+///         use_stage_cache = true
+///       }
+///       client_certificate_id = "lcqbeactfdarpess"
+///       deployment_id         = "muwatddsfb"
+///       description           = "dmxblpsncciutbbmfihkloqaxuab"
+///       documentation_version = "fltvrg"
+///       method_settings = [{
+///         "cacheDataEncrypted"   = true
+///         "cacheTtlInSeconds"    = 15
+///         "cachingEnabled"       = true
+///         "dataTraceEnabled"     = true
+///         "httpMethod"           = "wojjxwrlnmnertmfkstofcoekjxd"
+///         "loggingLevel"         = "cezcwkojlmp"
+///         "metricsEnabled"       = true
+///         "resourcePath"         = "fsaykfuxsfvultpnnpjjbak"
+///         "throttlingBurstLimit" = 3
+///         "throttlingRateLimit"  = 28
+///       }]
+///       rest_api_id = "cycztypxndrdmstjwi"
+///       stage_name  = "iukgreicaikhlooycykkql"
+///       tags = [{
+///         "key"   = "hnoncuskljmyehkhfaytophcz"
+///         "value" = "x"
+///       }]
+///       tracing_enabled = true
+///       variables = {
+///         "key3007" = "vhgivtbzor"
+///       }
+///     }
+///     aws_region        = "qkjxqupbneeuooyrfnblmwlrpmjsiu"
+///     aws_source_schema = "ttwdzidmknfow"
+///     aws_tags = {
+///       "key1607" = "vmmmhuuxrrjul"
+///     }
+///     public_cloud_connectors_resource_id = "mvvltlx"
+///     public_cloud_resource_name          = "hxgdpqw"
+///   }
+///   resource_group_name = "rgapiGatewayStage"
+///   tags = {
+///     "key72" = "pkvum"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +272,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsApiGatewayStagePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AccessLogSettingArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CanarySettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -88,6 +88,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recommendationsservice_account" "account" {
+///   account_name = "sampleAccount"
+///   location     = "West US"
+///   properties = {
+///     configuration = "Capacity"
+///     endpoint_authentications = [{
+///       "aadTenantID"   = "tenant"
+///       "principalID"   = "oid"
+///       "principalType" = "User"
+///     }]
+///   }
+///   resource_group_name = "rg"
+///   tags = {
+///     "Environment" = "Prod"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +125,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.recommendationsservice.Account;
 /// import com.pulumi.azurenative.recommendationsservice.AccountArgs;
 /// import com.pulumi.azurenative.recommendationsservice.inputs.AccountResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

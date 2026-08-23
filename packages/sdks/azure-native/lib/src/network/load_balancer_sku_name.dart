@@ -16,4 +16,3 @@ enum LoadBalancerSkuName {
     throw ArgumentError('Unknown LoadBalancerSkuName value: $value');
   }
 }
-

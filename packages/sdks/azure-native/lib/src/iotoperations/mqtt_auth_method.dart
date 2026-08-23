@@ -18,4 +18,3 @@ enum MqttAuthMethod {
     throw ArgumentError('Unknown MqttAuthMethod value: $value');
   }
 }
-

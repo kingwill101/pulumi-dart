@@ -20,4 +20,3 @@ enum EnvironmentServerType {
     throw ArgumentError('Unknown EnvironmentServerType value: $value');
   }
 }
-

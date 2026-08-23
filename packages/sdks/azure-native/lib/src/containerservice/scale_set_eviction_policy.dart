@@ -15,4 +15,3 @@ enum ScaleSetEvictionPolicy {
     throw ArgumentError('Unknown ScaleSetEvictionPolicy value: $value');
   }
 }
-

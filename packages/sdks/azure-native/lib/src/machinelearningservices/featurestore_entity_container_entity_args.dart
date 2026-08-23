@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'featurestore_entity_container.dart';
+import 'featurestore_entity_container_properties.dart';
 
 /// {@template pulumi_machinelearningservices_featurestore_entity_container_entity_args_doc}
 /// The set of arguments for FeaturestoreEntityContainerEntity.
 /// {@endtemplate}
 /// {@macro pulumi_machinelearningservices_featurestore_entity_container_entity_args_doc}
 class FeaturestoreEntityContainerEntityArgs {
-  /// [Required] Additional attributes of the entity.
-  final pulumi.Input<FeaturestoreEntityContainer> featurestoreEntityContainerProperties;
   /// Container name. This is case-sensitive.
   final pulumi.Input<String>? name;
+  /// [Required] Additional attributes of the entity.
+  final pulumi.Input<FeaturestoreEntityContainerProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [FeaturestoreEntityContainerEntityArgs].
-  /// [featurestoreEntityContainerProperties] [Required] Additional attributes of the entity.
   /// [name] Container name. This is case-sensitive.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const FeaturestoreEntityContainerEntityArgs({
-    required this.featurestoreEntityContainerProperties,
     this.name,
+    required this.properties,
     required this.resourceGroupName,
     required this.workspaceName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'featurestoreEntityContainerProperties': pulumi.Input.mapInputValue<FeaturestoreEntityContainer, Map<String, dynamic>>(featurestoreEntityContainerProperties, (value) => value.toMap()),
       'name': ?name,
+      'properties': pulumi.Input.mapInputValue<FeaturestoreEntityContainerProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -40,11 +40,10 @@ class FeaturestoreEntityContainerEntityArgs {
 
   factory FeaturestoreEntityContainerEntityArgs.fromMap(Map<String, dynamic> map) {
     return FeaturestoreEntityContainerEntityArgs(
-      featurestoreEntityContainerProperties: pulumi.Input.fromValue(FeaturestoreEntityContainer.fromMap((map['featurestoreEntityContainerProperties']! as Map).cast<String, dynamic>())),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(FeaturestoreEntityContainerProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

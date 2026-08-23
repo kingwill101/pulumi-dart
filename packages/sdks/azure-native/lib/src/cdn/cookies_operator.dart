@@ -23,4 +23,3 @@ enum CookiesOperator {
     throw ArgumentError('Unknown CookiesOperator value: $value');
   }
 }
-

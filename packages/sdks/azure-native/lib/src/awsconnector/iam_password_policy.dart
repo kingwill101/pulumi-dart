@@ -111,6 +111,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iampasswordpolicy" "iamPasswordPolicy" {
+///   location = "zirvnbwoooczkma"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "irgrdslydjpuoyb"
+///     aws_account_id = "iiripspbzbqibqazbnef"
+///     aws_properties = {
+///       allow_users_to_change_password = true
+///       expire_passwords               = true
+///       hard_expiry                    = true
+///       max_password_age               = 1
+///       minimum_password_length        = 17
+///       password_reuse_prevention      = 30
+///       require_lowercase_characters   = true
+///       require_numbers                = true
+///       require_symbols                = true
+///       require_uppercase_characters   = true
+///     }
+///     aws_region        = "mqpdjjdzdwew"
+///     aws_source_schema = "gud"
+///     aws_tags = {
+///       "key6748" = "bdnkhafiylgulql"
+///     }
+///     public_cloud_connectors_resource_id = "zsyi"
+///     public_cloud_resource_name          = "zuwprynvflpuik"
+///   }
+///   resource_group_name = "rgiamPasswordPolicy"
+///   tags = {
+///     "key5111" = "zzliqszhvi"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +164,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamPasswordPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamPasswordPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamPasswordPolicyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

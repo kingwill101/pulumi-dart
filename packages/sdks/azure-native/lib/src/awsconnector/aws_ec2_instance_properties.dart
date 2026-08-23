@@ -390,4 +390,3 @@ class AwsEc2InstanceProperties {
     );
   }
 }
-

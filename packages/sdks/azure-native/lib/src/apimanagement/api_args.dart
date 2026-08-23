@@ -37,7 +37,7 @@ class ApiArgs {
   final pulumi.Input<String>? description;
   /// API name. Must be 1 to 300 characters long.
   final pulumi.Input<String>? displayName;
-  /// Format of the Content in which the API is getting imported.
+  /// Format of the Content in which the API is getting imported. New formats can be added in the future
   final pulumi.Input<String>? format;
   /// Indicates if API revision is current api revision.
   final pulumi.Input<bool>? isCurrent;
@@ -58,6 +58,7 @@ class ApiArgs {
   /// * `soap` creates a SOAP pass-through API
   /// * `websocket` creates websocket API
   /// * `graphql` creates GraphQL API.
+  /// New types can be added in the future.
   final pulumi.Input<String>? soapApiType;
   /// API identifier of the source API.
   final pulumi.Input<String>? sourceApiId;
@@ -87,7 +88,7 @@ class ApiArgs {
   /// [contact] Contact information for the API.
   /// [description] Description of the API. May include HTML formatting tags.
   /// [displayName] API name. Must be 1 to 300 characters long.
-  /// [format] Format of the Content in which the API is getting imported.
+  /// [format] Format of the Content in which the API is getting imported. New formats can be added in the future
   /// [isCurrent] Indicates if API revision is current api revision.
   /// [license] License information for the API.
   /// [path] Relative URL uniquely identifying this API and all of its resource paths within the API Management service instance. It is appended to the API endpoint base URL specified during the service instance creation to form a public URL for this API.
@@ -200,4 +201,3 @@ class ApiArgs {
     );
   }
 }
-

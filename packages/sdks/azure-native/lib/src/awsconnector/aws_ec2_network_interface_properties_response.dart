@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_tracking_specification_response.dart';
-import 'instance_ipv6_address_response.dart';
+import 'instance_ipv6_address_ec2_network_interface_response.dart';
 import 'ipv4_prefix_specification_response.dart';
 import 'ipv6_prefix_specification_response.dart';
 import 'private_ip_address_specification_response.dart';
@@ -29,7 +29,7 @@ class AwsEc2NetworkInterfacePropertiesResponse {
   /// The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6 addresses from the subnet range. To specify specific IPv6 addresses, use the Ipv6Addresses property and don't specify this property.
   final pulumi.Input<int>? ipv6AddressCount;
   /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to associate with the network interface. If you're specifying a number of IPv6 addresses, use the Ipv6AddressCount property and don't specify this property.
-  final pulumi.Input<List<InstanceIpv6AddressResponse>>? ipv6Addresses;
+  final pulumi.Input<List<InstanceIpv6AddressEc2NetworkInterfaceResponse>>? ipv6Addresses;
   /// The number of IPv6 prefixes to assign to a network interface. When you specify a number of IPv6 prefixes, Amazon EC2 selects these prefixes from your existing subnet CIDR reservations, if available, or from free spaces in the subnet. By default, these will be /80 prefixes. You can't specify a count of IPv6 prefixes if you've specified one of the following: specific IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
   final pulumi.Input<int>? ipv6PrefixCount;
   /// Assigns a list of IPv6 prefixes to the network interface. If you want EC2 to automatically assign IPv6 prefixes, use the Ipv6PrefixCount property and do not specify this property. Presently, only /80 prefixes are supported. You can't specify IPv6 prefixes if you've specified one of the following: a count of IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
@@ -114,7 +114,7 @@ class AwsEc2NetworkInterfacePropertiesResponse {
       'ipv4PrefixCount': ?ipv4PrefixCount,
       'ipv4Prefixes': ?pulumi.Input.mapOptionalInputValue<List<Ipv4PrefixSpecificationResponse>, List<Map<String, dynamic>>>(ipv4Prefixes, (value) => pulumi.Input.encodeList<Ipv4PrefixSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipv6AddressCount': ?ipv6AddressCount,
-      'ipv6Addresses': ?pulumi.Input.mapOptionalInputValue<List<InstanceIpv6AddressResponse>, List<Map<String, dynamic>>>(ipv6Addresses, (value) => pulumi.Input.encodeList<InstanceIpv6AddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipv6Addresses': ?pulumi.Input.mapOptionalInputValue<List<InstanceIpv6AddressEc2NetworkInterfaceResponse>, List<Map<String, dynamic>>>(ipv6Addresses, (value) => pulumi.Input.encodeList<InstanceIpv6AddressEc2NetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipv6PrefixCount': ?ipv6PrefixCount,
       'ipv6Prefixes': ?pulumi.Input.mapOptionalInputValue<List<Ipv6PrefixSpecificationResponse>, List<Map<String, dynamic>>>(ipv6Prefixes, (value) => pulumi.Input.encodeList<Ipv6PrefixSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'primaryIpv6Address': ?primaryIpv6Address,
@@ -141,7 +141,7 @@ class AwsEc2NetworkInterfacePropertiesResponse {
       ipv4PrefixCount: (() { final guardedValue = map['ipv4PrefixCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       ipv4Prefixes: (() { final guardedValue = map['ipv4Prefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Ipv4PrefixSpecificationResponse>(guardedValue, (value) => Ipv4PrefixSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6AddressCount: (() { final guardedValue = map['ipv6AddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ipv6Addresses: (() { final guardedValue = map['ipv6Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceIpv6AddressResponse>(guardedValue, (value) => InstanceIpv6AddressResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ipv6Addresses: (() { final guardedValue = map['ipv6Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceIpv6AddressEc2NetworkInterfaceResponse>(guardedValue, (value) => InstanceIpv6AddressEc2NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6PrefixCount: (() { final guardedValue = map['ipv6PrefixCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       ipv6Prefixes: (() { final guardedValue = map['ipv6Prefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Ipv6PrefixSpecificationResponse>(guardedValue, (value) => Ipv6PrefixSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       primaryIpv6Address: (() { final guardedValue = map['primaryIpv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -157,4 +157,3 @@ class AwsEc2NetworkInterfacePropertiesResponse {
     );
   }
 }
-

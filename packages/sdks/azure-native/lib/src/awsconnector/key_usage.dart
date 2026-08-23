@@ -16,4 +16,3 @@ enum KeyUsage {
     throw ArgumentError('Unknown KeyUsage value: $value');
   }
 }
-

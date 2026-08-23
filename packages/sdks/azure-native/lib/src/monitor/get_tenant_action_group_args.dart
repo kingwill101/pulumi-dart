@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_monitor_get_tenant_action_group_args_doc}
 class GetTenantActionGroupArgs {
-  /// The management group id.
+  /// The management group ID.
   final pulumi.Input<String> managementGroupId;
   /// The name of the action group.
   final pulumi.Input<String> tenantActionGroupName;
 
   /// Creates a new [GetTenantActionGroupArgs].
-  /// [managementGroupId] The management group id.
+  /// [managementGroupId] The management group ID.
   /// [tenantActionGroupName] The name of the action group.
   const GetTenantActionGroupArgs({
     required this.managementGroupId,
@@ -34,4 +34,3 @@ class GetTenantActionGroupArgs {
     );
   }
 }
-

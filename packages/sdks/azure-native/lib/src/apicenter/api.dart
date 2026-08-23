@@ -101,6 +101,40 @@ import 'terms_of_service_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apicenter_api" "api" {
+///   api_name = "echo-api"
+///   custom_properties = {
+///     "author" = "John Doe"
+///   }
+///   description = "A simple HTTP request/response service."
+///   external_documentation {
+///     title = "Onboarding docs"
+///     url   = "https://docs.contoso.com"
+///   }
+///   kind = "rest"
+///   license = {
+///     url = "https://contoso.com/license"
+///   }
+///   resource_group_name = "contoso-resources"
+///   service_name        = "contoso"
+///   terms_of_service = {
+///     url = "https://contoso.com/terms-of-service"
+///   }
+///   title          = "Echo API"
+///   workspace_name = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +146,8 @@ import 'terms_of_service_response.dart';
 /// import com.pulumi.azurenative.apicenter.inputs.ExternalDocumentationArgs;
 /// import com.pulumi.azurenative.apicenter.inputs.LicenseArgs;
 /// import com.pulumi.azurenative.apicenter.inputs.TermsOfServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

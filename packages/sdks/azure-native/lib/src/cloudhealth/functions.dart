@@ -4,7 +4,11 @@ import 'get_authentication_setting_result.dart';
 import 'get_discovery_rule_args.dart';
 import 'get_discovery_rule_result.dart';
 import 'get_entity_args.dart';
+import 'get_entity_history_args.dart';
+import 'get_entity_history_result.dart';
 import 'get_entity_result.dart';
+import 'get_entity_signal_history_args.dart';
+import 'get_entity_signal_history_result.dart';
 import 'get_health_model_args.dart';
 import 'get_health_model_result.dart';
 import 'get_relationship_args.dart';
@@ -16,7 +20,7 @@ import 'get_signal_definition_result.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_authentication_setting_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAuthenticationSettingResult> getAuthenticationSetting(
@@ -36,7 +40,7 @@ Future<GetAuthenticationSettingResult> getAuthenticationSetting(
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_discovery_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDiscoveryRuleResult> getDiscoveryRule(
@@ -56,7 +60,7 @@ Future<GetDiscoveryRuleResult> getDiscoveryRule(
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_entity_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEntityResult> getEntity(
@@ -72,11 +76,51 @@ Future<GetEntityResult> getEntity(
   return GetEntityResult.fromMap(result);
 }
 
+/// Retrieve the health state transition history for an entity
+///
+/// Uses Azure REST API version 2026-01-01-preview.
+///
+/// Other available API versions: 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_entity_history_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEntityHistoryResult> getEntityHistory(
+  GetEntityHistoryArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getEntityHistory',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEntityHistoryResult.fromMap(result);
+}
+
+/// Retrieve the time series history for a signal on an entity
+///
+/// Uses Azure REST API version 2026-01-01-preview.
+///
+/// Other available API versions: 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_entity_signal_history_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEntitySignalHistoryResult> getEntitySignalHistory(
+  GetEntitySignalHistoryArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getEntitySignalHistory',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEntitySignalHistoryResult.fromMap(result);
+}
+
 /// Get a HealthModel
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_health_model_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHealthModelResult> getHealthModel(
@@ -96,7 +140,7 @@ Future<GetHealthModelResult> getHealthModel(
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_relationship_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRelationshipResult> getRelationship(
@@ -116,7 +160,7 @@ Future<GetRelationshipResult> getRelationship(
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudhealth_get_signal_definition_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSignalDefinitionResult> getSignalDefinition(

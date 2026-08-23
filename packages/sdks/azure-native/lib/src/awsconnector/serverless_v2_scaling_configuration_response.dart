@@ -31,4 +31,3 @@ class ServerlessV2ScalingConfigurationResponse {
     );
   }
 }
-

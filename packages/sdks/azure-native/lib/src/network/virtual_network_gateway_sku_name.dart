@@ -31,4 +31,3 @@ enum VirtualNetworkGatewaySkuName {
     throw ArgumentError('Unknown VirtualNetworkGatewaySkuName value: $value');
   }
 }
-

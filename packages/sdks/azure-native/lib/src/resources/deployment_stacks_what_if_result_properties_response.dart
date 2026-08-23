@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'action_on_unmanage_response.dart';
+import 'action_on_unmanage_deployment_stacks_what_if_results_at_management_group_response.dart';
 import 'deny_settings_response.dart';
 import 'deployment_parameter_response.dart';
 import 'deployment_stacks_debug_setting_response.dart';
@@ -13,7 +13,7 @@ import 'error_detail_response.dart';
 /// DeploymentStack WhatIfResult Properties
 class DeploymentStacksWhatIfResultPropertiesResponse {
   /// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
-  final pulumi.Input<ActionOnUnmanageResponse> actionOnUnmanage;
+  final pulumi.Input<ActionOnUnmanageDeploymentStacksWhatIfResultsAtManagementGroupResponse> actionOnUnmanage;
   /// All of the changes predicted by the deployment stack what-if operation.
   final pulumi.Input<DeploymentStacksWhatIfChangeResponse> changes;
   /// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
@@ -33,7 +33,7 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
   /// List of resource diagnostics detected by What-If operation.
   final pulumi.Input<List<DeploymentStacksDiagnosticResponse>> diagnostics;
   /// The error detail.
-  final pulumi.Input<ErrorDetailResponse>? error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
   final pulumi.Input<Map<String, DeploymentParameterResponse>>? parameters;
   /// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
@@ -73,7 +73,7 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
     required this.deploymentStackResourceId,
     this.description,
     required this.diagnostics,
-    this.error,
+    required this.error,
     this.parameters,
     this.parametersLink,
     required this.provisioningState,
@@ -83,7 +83,7 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionOnUnmanage': pulumi.Input.mapInputValue<ActionOnUnmanageResponse, Map<String, dynamic>>(actionOnUnmanage, (value) => value.toMap()),
+      'actionOnUnmanage': pulumi.Input.mapInputValue<ActionOnUnmanageDeploymentStacksWhatIfResultsAtManagementGroupResponse, Map<String, dynamic>>(actionOnUnmanage, (value) => value.toMap()),
       'changes': pulumi.Input.mapInputValue<DeploymentStacksWhatIfChangeResponse, Map<String, dynamic>>(changes, (value) => value.toMap()),
       'correlationId': correlationId,
       'debugSetting': ?pulumi.Input.mapOptionalInputValue<DeploymentStacksDebugSettingResponse, Map<String, dynamic>>(debugSetting, (value) => value.toMap()),
@@ -93,7 +93,7 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
       'deploymentStackResourceId': deploymentStackResourceId,
       'description': ?description,
       'diagnostics': pulumi.Input.mapInputValue<List<DeploymentStacksDiagnosticResponse>, List<Map<String, dynamic>>>(diagnostics, (value) => pulumi.Input.encodeList<DeploymentStacksDiagnosticResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'error': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, DeploymentParameterResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<DeploymentParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'parametersLink': ?pulumi.Input.mapOptionalInputValue<DeploymentStacksParametersLinkResponse, Map<String, dynamic>>(parametersLink, (value) => value.toMap()),
       'provisioningState': provisioningState,
@@ -104,7 +104,7 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
 
   factory DeploymentStacksWhatIfResultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResultPropertiesResponse(
-      actionOnUnmanage: pulumi.Input.fromValue(ActionOnUnmanageResponse.fromMap((map['actionOnUnmanage']! as Map).cast<String, dynamic>())),
+      actionOnUnmanage: pulumi.Input.fromValue(ActionOnUnmanageDeploymentStacksWhatIfResultsAtManagementGroupResponse.fromMap((map['actionOnUnmanage']! as Map).cast<String, dynamic>())),
       changes: pulumi.Input.fromValue(DeploymentStacksWhatIfChangeResponse.fromMap((map['changes']! as Map).cast<String, dynamic>())),
       correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
       debugSetting: (() { final guardedValue = map['debugSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentStacksDebugSettingResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -114,7 +114,7 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
       deploymentStackResourceId: pulumi.Input.fromValue(map['deploymentStackResourceId'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diagnostics: pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentStacksDiagnosticResponse>(map['diagnostics']!, (value) => DeploymentStacksDiagnosticResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      error: pulumi.Input.fromValue(ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<DeploymentParameterResponse>(guardedValue, (value) => DeploymentParameterResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       parametersLink: (() { final guardedValue = map['parametersLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentStacksParametersLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
@@ -123,4 +123,3 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
     );
   }
 }
-

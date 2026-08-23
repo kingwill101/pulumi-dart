@@ -56,6 +56,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_sqldbtabledatasetmapping" "sqlDBTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -64,8 +82,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,6 +205,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_sqldbtabledatasetmapping" "sqlDBTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_id             = "a08f184b-0567-4b11-ba22-a1199336d226"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   database_name           = "Database1"
+///   kind                    = "SqlDBTable"
+///   resource_group_name     = "SampleResourceGroup"
+///   schema_name             = "dbo"
+///   share_subscription_name = "ShareSubscription1"
+///   sql_server_resource_id  = "/subscriptions/433a8dfd-e5d5-4e77-ad86-90acdc75eb1a/resourceGroups/SampleResourceGroup/providers/Microsoft.Sql/servers/Server1"
+///   table_name              = "Table1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +237,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,6 +372,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_sqldbtabledatasetmapping" "sqlDBTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -338,8 +398,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -449,6 +509,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_sqldbtabledatasetmapping" "sqlDBTableDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +535,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -568,6 +646,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_sqldbtabledatasetmapping" "sqlDBTableDataSetMapping" {
+///   account_name            = "consumerAccount"
+///   data_set_mapping_name   = "datasetMappingName1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -576,8 +672,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMapping;
 /// import com.pulumi.azurenative.datashare.SqlDBTableDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

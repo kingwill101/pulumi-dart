@@ -16,4 +16,3 @@ enum RosettaNetActionType {
     throw ArgumentError('Unknown RosettaNetActionType value: $value');
   }
 }
-

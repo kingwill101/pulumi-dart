@@ -40,4 +40,3 @@ class GetSqlAssessmentV3OperationArgs {
     );
   }
 }
-

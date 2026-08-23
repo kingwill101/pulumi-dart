@@ -11,22 +11,22 @@ class StaticSiteLinkedBackendArgs {
   final pulumi.Input<String>? backendResourceId;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Name of the backend to link to the static site
+  /// Name of the linked backend that should be retrieved
   final pulumi.Input<String>? linkedBackendName;
   /// Name of the static site
   final pulumi.Input<String> name;
   /// The region of the backend linked to the static site
   final pulumi.Input<String> region;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [StaticSiteLinkedBackendArgs].
   /// [backendResourceId] The resource id of the backend linked to the static site
   /// [kind] Kind of resource.
-  /// [linkedBackendName] Name of the backend to link to the static site
+  /// [linkedBackendName] Name of the linked backend that should be retrieved
   /// [name] Name of the static site
   /// [region] The region of the backend linked to the static site
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const StaticSiteLinkedBackendArgs({
     this.backendResourceId,
     this.kind,
@@ -58,4 +58,3 @@ class StaticSiteLinkedBackendArgs {
     );
   }
 }
-

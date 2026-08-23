@@ -57,6 +57,23 @@ import 'data_collection_rule_association_response_metadata.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_datacollectionruleassociation" "dataCollectionRuleAssociation" {
+///   association_name        = "myAssociation"
+///   data_collection_rule_id = "/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule"
+///   resource_uri            = "subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +82,8 @@ import 'data_collection_rule_association_response_metadata.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.DataCollectionRuleAssociation;
 /// import com.pulumi.azurenative.monitor.DataCollectionRuleAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -126,6 +126,52 @@ import 'workflow_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devhub_workflow" "workflow" {
+///   github_workflow_profile = {
+///     acr = {
+///       acr_registry_name   = "registry1"
+///       acr_repository_name = "repo1"
+///       acr_resource_group  = "resourceGroup1"
+///       acr_subscription_id = "subscriptionId1"
+///     }
+///     aks_resource_id = "/subscriptions/subscriptionId1/resourcegroups/resourceGroup1/providers/Microsoft.ContainerService/managedClusters/cluster1"
+///     branch_name     = "branch1"
+///     deployment_properties = {
+///       kube_manifest_locations = ["/src/manifests/"]
+///       manifest_type           = "kube"
+///       overrides = {
+///         "key1" = "value1"
+///       }
+///     }
+///     docker_build_context = "repo1/src/"
+///     dockerfile           = "repo1/images/Dockerfile"
+///     namespace            = "namespace1"
+///     oidc_credentials = {
+///       azure_client_id = "12345678-3456-7890-5678-012345678901"
+///       azure_tenant_id = "66666666-3456-7890-5678-012345678901"
+///     }
+///     repository_name  = "repo1"
+///     repository_owner = "owner1"
+///   }
+///   location            = "location1"
+///   resource_group_name = "resourceGroup1"
+///   tags = {
+///     "appname" = "testApp"
+///   }
+///   workflow_name = "workflow1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +184,8 @@ import 'workflow_args.dart';
 /// import com.pulumi.azurenative.devhub.inputs.ACRArgs;
 /// import com.pulumi.azurenative.devhub.inputs.DeploymentPropertiesArgs;
 /// import com.pulumi.azurenative.devhub.inputs.GitHubWorkflowProfileOidcCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,6 +487,63 @@ import 'workflow_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devhub_workflow" "workflow" {
+///   app_name                    = "my-app"
+///   dockerfile_generation_mode  = "enabled"
+///   dockerfile_output_directory = "./"
+///   generation_language         = "javascript"
+///   github_workflow_profile = {
+///     acr = {
+///       acr_registry_name   = "registry1"
+///       acr_repository_name = "repo1"
+///       acr_resource_group  = "resourceGroup1"
+///       acr_subscription_id = "subscriptionId1"
+///     }
+///     aks_resource_id = "/subscriptions/subscriptionId1/resourcegroups/resourceGroup1/providers/Microsoft.ContainerService/managedClusters/cluster1"
+///     branch_name     = "branch1"
+///     deployment_properties = {
+///       kube_manifest_locations = ["/src/manifests/"]
+///       manifest_type           = "kube"
+///       overrides = {
+///         "key1" = "value1"
+///       }
+///     }
+///     docker_build_context = "repo1/src/"
+///     dockerfile           = "repo1/images/Dockerfile"
+///     oidc_credentials = {
+///       azure_client_id = "12345678-3456-7890-5678-012345678901"
+///       azure_tenant_id = "66666666-3456-7890-5678-012345678901"
+///     }
+///     repository_name  = "repo1"
+///     repository_owner = "owner1"
+///   }
+///   image_name                = "myimage"
+///   image_tag                 = "latest"
+///   language_version          = "14"
+///   location                  = "location1"
+///   manifest_generation_mode  = "enabled"
+///   manifest_output_directory = "./"
+///   manifest_type             = "kube"
+///   namespace                 = "my-namespace"
+///   port                      = "80"
+///   resource_group_name       = "resourceGroup1"
+///   tags = {
+///     "appname" = "testApp"
+///   }
+///   workflow_name = "workflow1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -453,8 +556,8 @@ import 'workflow_args.dart';
 /// import com.pulumi.azurenative.devhub.inputs.ACRArgs;
 /// import com.pulumi.azurenative.devhub.inputs.DeploymentPropertiesArgs;
 /// import com.pulumi.azurenative.devhub.inputs.GitHubWorkflowProfileOidcCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

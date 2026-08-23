@@ -30,9 +30,9 @@ import 'system_data_response.dart';
 ///     {
 ///         ActionOnUnmanage = new AzureNative.Resources.Inputs.ActionOnUnmanageArgs
 ///         {
-///             ManagementGroups = AzureNative.Resources.DeploymentStacksDeleteDetachEnum.Detach,
-///             ResourceGroups = AzureNative.Resources.DeploymentStacksDeleteDetachEnum.Delete,
-///             Resources = AzureNative.Resources.DeploymentStacksDeleteDetachEnum.Delete,
+///             ManagementGroups = AzureNative.Resources.UnmanageActionManagementGroupMode.Detach,
+///             ResourceGroups = AzureNative.Resources.UnmanageActionResourceGroupMode.Delete,
+///             Resources = AzureNative.Resources.UnmanageActionResourceMode.Delete,
 ///         },
 ///         DenySettings = new AzureNative.Resources.Inputs.DenySettingsArgs
 ///         {
@@ -79,9 +79,9 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resources.NewDeploymentStackAtSubscription(ctx, "deploymentStackAtSubscription", &resources.DeploymentStackAtSubscriptionArgs{
 /// 			ActionOnUnmanage: &resources.ActionOnUnmanageArgs{
-/// 				ManagementGroups: pulumi.String(resources.DeploymentStacksDeleteDetachEnumDetach),
-/// 				ResourceGroups:   pulumi.String(resources.DeploymentStacksDeleteDetachEnumDelete),
-/// 				Resources:        pulumi.String(resources.DeploymentStacksDeleteDetachEnumDelete),
+/// 				ManagementGroups: pulumi.String(resources.UnmanageActionManagementGroupModeDetach),
+/// 				ResourceGroups:   pulumi.String(resources.UnmanageActionResourceGroupModeDelete),
+/// 				Resources:        pulumi.String(resources.UnmanageActionResourceModeDelete),
 /// 			},
 /// 			DenySettings: &resources.DenySettingsArgs{
 /// 				ApplyToChildScopes: pulumi.Bool(false),
@@ -113,6 +113,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_deploymentstackatsubscription" "deploymentStackAtSubscription" {
+///   action_on_unmanage = {
+///     management_groups = "detach"
+///     resource_groups   = "delete"
+///     resources         = "delete"
+///   }
+///   deny_settings = {
+///     apply_to_child_scopes = false
+///     excluded_actions      = ["action"]
+///     excluded_principals   = ["principal"]
+///     mode                  = "denyDelete"
+///   }
+///   deployment_stack_name = "simpleDeploymentStack"
+///   location              = "eastus"
+///   parameters = {
+///     "parameter1" = {
+///       value = "a string"
+///     }
+///   }
+///   tags = {
+///     "tagkey" = "tagVal"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +158,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.resources.DeploymentStackAtSubscriptionArgs;
 /// import com.pulumi.azurenative.resources.inputs.ActionOnUnmanageArgs;
 /// import com.pulumi.azurenative.resources.inputs.DenySettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,9 +202,9 @@ import 'system_data_response.dart';
 ///
 /// const deploymentStackAtSubscription = new azure_native.resources.DeploymentStackAtSubscription("deploymentStackAtSubscription", {
 ///     actionOnUnmanage: {
-///         managementGroups: azure_native.resources.DeploymentStacksDeleteDetachEnum.Detach,
-///         resourceGroups: azure_native.resources.DeploymentStacksDeleteDetachEnum.Delete,
-///         resources: azure_native.resources.DeploymentStacksDeleteDetachEnum.Delete,
+///         managementGroups: azure_native.resources.UnmanageActionManagementGroupMode.Detach,
+///         resourceGroups: azure_native.resources.UnmanageActionResourceGroupMode.Delete,
+///         resources: azure_native.resources.UnmanageActionResourceMode.Delete,
 ///     },
 ///     denySettings: {
 ///         applyToChildScopes: false,
@@ -197,9 +232,9 @@ import 'system_data_response.dart';
 ///
 /// deployment_stack_at_subscription = azure_native.resources.DeploymentStackAtSubscription("deploymentStackAtSubscription",
 ///     action_on_unmanage={
-///         "management_groups": azure_native.resources.DeploymentStacksDeleteDetachEnum.DETACH,
-///         "resource_groups": azure_native.resources.DeploymentStacksDeleteDetachEnum.DELETE,
-///         "resources": azure_native.resources.DeploymentStacksDeleteDetachEnum.DELETE,
+///         "management_groups": azure_native.resources.UnmanageActionManagementGroupMode.DETACH,
+///         "resource_groups": azure_native.resources.UnmanageActionResourceGroupMode.DELETE,
+///         "resources": azure_native.resources.UnmanageActionResourceMode.DELETE,
 ///     },
 ///     deny_settings={
 ///         "apply_to_child_scopes": False,
@@ -280,7 +315,7 @@ class DeploymentStackAtSubscription extends pulumi.CustomResource {
   /// The duration of the last successful Deployment stack update.
   late final pulumi.Output<String> duration;
   /// The error detail.
-  late final pulumi.Output<ErrorDetailResponse?> error;
+  late final pulumi.Output<ErrorDetailResponse> error;
   /// An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
   late final pulumi.Output<List<Map<String, dynamic>>> failedResources;
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
@@ -329,7 +364,7 @@ class DeploymentStackAtSubscription extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     detachedResources = registerOutput<List<Map<String, dynamic>>>('detachedResources');
     duration = registerOutput<String>('duration');
-    error = registerOutput<ErrorDetailResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    error = registerOutput<ErrorDetailResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     failedResources = registerOutput<List<Map<String, dynamic>>>('failedResources');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

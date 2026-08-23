@@ -8,6 +8,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -276,6 +278,106 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_loadbalancer" "loadBalancer" {
+///   extended_location = {
+///     name = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/dogfoodarc/providers/Microsoft.ExtendedLocation/customLocations/dogfood-location"
+///     type = "CustomLocation"
+///   }
+///   load_balancer_name = "test-lb"
+///   location           = "West US2"
+///   properties = {
+///     backend_address_pools = [{
+///       "name" = "web-backend"
+///       "properties" = {
+///         "loadBalancerBackendAddresses" = [{
+///           "name" = "web-server-1"
+///           "properties" = {
+///             "adminState" = "Up"
+///             "networkInterfaceIPConfiguration" = {
+///               "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/web-server-1-nic/ipConfigurations/primary"
+///             }
+///           }
+///           }, {
+///           "name" = "web-server-2"
+///           "properties" = {
+///             "adminState" = "Up"
+///             "networkInterfaceIPConfiguration" = {
+///               "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/web-server-2-nic/ipConfigurations/primary"
+///             }
+///           }
+///         }]
+///         "virtualNetwork" = {
+///           "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/webVNet"
+///         }
+///       }
+///     }]
+///     frontend_ip_configurations = [{
+///       "name" = "web-frontend"
+///       "properties" = {
+///         "publicIPAddress" = {
+///           "resourceId" = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/azure-local-rg/providers/Microsoft.AzureStackHCI/publicIPs/webPublicIP"
+///         }
+///       }
+///     }]
+///     load_balancing_rules = [{
+///       "name" = "http-rule"
+///       "properties" = {
+///         "backendAddressPool" = {
+///           "name" = "web-backend"
+///         }
+///         "backendPort" = 80
+///         "frontendIPConfiguration" = {
+///           "name" = "web-frontend"
+///         }
+///         "frontendPort"         = 80
+///         "idleTimeoutInMinutes" = 4
+///         "loadDistribution"     = "Default"
+///         "probe" = {
+///           "name" = "http-probe"
+///         }
+///         "protocol" = "Tcp"
+///       }
+///       }, {
+///       "name" = "https-rule"
+///       "properties" = {
+///         "backendAddressPool" = {
+///           "name" = "web-backend"
+///         }
+///         "backendPort" = 443
+///         "frontendIPConfiguration" = {
+///           "name" = "web-frontend"
+///         }
+///         "frontendPort"         = 443
+///         "idleTimeoutInMinutes" = 4
+///         "loadDistribution"     = "Default"
+///         "protocol"             = "Tcp"
+///       }
+///     }]
+///     probes = [{
+///       "name" = "http-probe"
+///       "properties" = {
+///         "intervalInSeconds" = 15
+///         "numberOfProbes"    = 2
+///         "port"              = 80
+///         "protocol"          = "Http"
+///         "requestPath"       = "/health"
+///       }
+///     }]
+///   }
+///   resource_group_name = "test-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +388,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.LoadBalancerArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.LoadBalancerPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

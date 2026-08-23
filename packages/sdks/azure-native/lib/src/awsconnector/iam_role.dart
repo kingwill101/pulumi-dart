@@ -142,6 +142,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iamrole" "iamRole" {
+///   location = "vkzeblhpdgxwu"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "cllfeatxzjqiqr"
+///     aws_account_id = "qlndbvxbvf"
+///     aws_properties = {
+///       arn                         = "iqe"
+///       assume_role_policy_document = {}
+///       description                 = "spayefp"
+///       managed_policy_arns         = ["twfombcdqlzq"]
+///       max_session_duration        = 16
+///       path                        = "qxfdn"
+///       permissions_boundary        = "wofktscexalvotvxaxsq"
+///       policies = [{
+///         "policyDocument" = {}
+///         "policyName"     = "bpqsmdhzxaruuvctyddrcedbf"
+///       }]
+///       role_id   = "l"
+///       role_name = "vpczljoyhnvybvtyagxaxaraogzdyx"
+///       tags = [{
+///         "key"   = "fppaonhdrxztfctritlgmqm"
+///         "value" = "jcpberdkjmspmjbzyewyhyd"
+///       }]
+///     }
+///     aws_region        = "yqtvmgzsvcgtehapncinnqvsql"
+///     aws_source_schema = "onnjxuscupomucwhpltcnogwhxllm"
+///     aws_tags = {
+///       "key9018" = "byqrewkofnjfomn"
+///     }
+///     public_cloud_connectors_resource_id = "cchmzoxsgytenwavdwoarear"
+///     public_cloud_resource_name          = "qn"
+///   }
+///   resource_group_name = "rgiamRole"
+///   tags = {
+///     "key3308" = "xn"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +202,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamRoleArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamRolePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamRolePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

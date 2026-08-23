@@ -70,6 +70,29 @@ import 'vminstance_guest_agent_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scvmm_vminstanceguestagent" "vmInstanceGuestAgent" {
+///   credentials = {
+///     password = "<password>"
+///     username = "tempuser"
+///   }
+///   http_proxy_config = {
+///     https_proxy = "http://192.1.2.3:8080"
+///   }
+///   provisioning_action = "install"
+///   resource_uri        = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'vminstance_guest_agent_args.dart';
 /// import com.pulumi.azurenative.scvmm.VMInstanceGuestAgentArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.GuestCredentialArgs;
 /// import com.pulumi.azurenative.scvmm.inputs.HttpProxyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

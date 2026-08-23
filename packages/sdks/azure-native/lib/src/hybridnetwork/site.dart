@@ -110,6 +110,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_site" "site" {
+///   location = "westUs2"
+///   properties = {
+///     nfvis = [{
+///       "location" = "westUs2"
+///       "name"     = "nfvi1"
+///       "nfviType" = "AzureCore"
+///       }, {
+///       "customLocationReference" = {
+///         "id" = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation1"
+///       }
+///       "name"     = "nfvi2"
+///       "nfviType" = "AzureArcKubernetes"
+///       }, {
+///       "customLocationReference" = {
+///         "id" = "/subscriptions/subid/resourceGroups/testResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/testCustomLocation2"
+///       }
+///       "name"     = "nfvi3"
+///       "nfviType" = "AzureOperatorNexus"
+///     }]
+///   }
+///   resource_group_name = "rg1"
+///   site_name           = "testSite"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +155,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.Site;
 /// import com.pulumi.azurenative.hybridnetwork.SiteArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SitePropertiesFormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

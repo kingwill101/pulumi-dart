@@ -17,4 +17,3 @@ enum AfdQueryStringCachingBehavior {
     throw ArgumentError('Unknown AfdQueryStringCachingBehavior value: $value');
   }
 }
-

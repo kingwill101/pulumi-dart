@@ -1,7 +1,7 @@
 /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
 enum ScrubbingRuleEntryMatchOperator {
-  valueEqualsAny("EqualsAny"),
-  valueEquals("Equals");
+  equalsAny("EqualsAny"),
+  equals("Equals");
 
   const ScrubbingRuleEntryMatchOperator(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ScrubbingRuleEntryMatchOperator {
     throw ArgumentError('Unknown ScrubbingRuleEntryMatchOperator value: $value');
   }
 }
-

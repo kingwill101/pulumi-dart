@@ -1,7 +1,7 @@
 /// Specify the write behavior when upserting documents into Azure Search Index.
 enum AzureSearchIndexWriteBehaviorType {
-  valueMerge("Merge"),
-  valueUpload("Upload");
+  merge("Merge"),
+  upload("Upload");
 
   const AzureSearchIndexWriteBehaviorType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum AzureSearchIndexWriteBehaviorType {
     throw ArgumentError('Unknown AzureSearchIndexWriteBehaviorType value: $value');
   }
 }
-

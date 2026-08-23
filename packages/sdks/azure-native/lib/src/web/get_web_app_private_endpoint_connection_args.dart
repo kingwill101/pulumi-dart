@@ -11,13 +11,13 @@ class GetWebAppPrivateEndpointConnectionArgs {
   final pulumi.Input<String> name;
   /// Name of the private endpoint connection.
   final pulumi.Input<String> privateEndpointConnectionName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWebAppPrivateEndpointConnectionArgs].
   /// [name] Name of the site.
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetWebAppPrivateEndpointConnectionArgs({
     required this.name,
     required this.privateEndpointConnectionName,
@@ -40,4 +40,3 @@ class GetWebAppPrivateEndpointConnectionArgs {
     );
   }
 }
-

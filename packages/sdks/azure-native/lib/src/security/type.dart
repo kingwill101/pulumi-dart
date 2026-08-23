@@ -1,7 +1,7 @@
 /// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
 enum Type {
-  valueQualys("Qualys"),
-  valueTVM("TVM");
+  qualys("Qualys"),
+  tVM("TVM");
 
   const Type(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum Type {
     throw ArgumentError('Unknown Type value: $value');
   }
 }
-

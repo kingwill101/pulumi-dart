@@ -59,6 +59,26 @@ import 'namespace_ip_filter_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicebus_namespaceipfilterrule" "namespaceIpFilterRule" {
+///   action              = "Accept"
+///   filter_name         = "sdk-IPFilterRules-7337"
+///   ip_filter_rule_name = "sdk-IPFilterRules-7337"
+///   ip_mask             = "13.78.143.246/32"
+///   namespace_name      = "sdk-Namespace-5232"
+///   resource_group_name = "ResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +87,8 @@ import 'namespace_ip_filter_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicebus.NamespaceIpFilterRule;
 /// import com.pulumi.azurenative.servicebus.NamespaceIpFilterRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

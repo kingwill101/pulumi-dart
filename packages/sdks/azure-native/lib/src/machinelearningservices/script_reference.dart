@@ -8,7 +8,7 @@ class ScriptReference {
   final pulumi.Input<String>? scriptArguments;
   /// The location of scripts in the mounted volume.
   final pulumi.Input<String>? scriptData;
-  /// The storage source of the script: workspace.
+  /// The storage source of the script: inline, workspace.
   final pulumi.Input<String>? scriptSource;
   /// Optional time period passed to timeout command.
   final pulumi.Input<String>? timeout;
@@ -16,7 +16,7 @@ class ScriptReference {
   /// Creates a new [ScriptReference].
   /// [scriptArguments] Optional command line arguments passed to the script to run.
   /// [scriptData] The location of scripts in the mounted volume.
-  /// [scriptSource] The storage source of the script: workspace.
+  /// [scriptSource] The storage source of the script: inline, workspace.
   /// [timeout] Optional time period passed to timeout command.
   const ScriptReference({
     this.scriptArguments,
@@ -43,4 +43,3 @@ class ScriptReference {
     );
   }
 }
-

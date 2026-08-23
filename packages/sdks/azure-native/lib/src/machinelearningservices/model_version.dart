@@ -1,83 +1,318 @@
-// ignore_for_file: unused_element, unnecessary_cast
-
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'flavor_data.dart';
+import 'model_version_args.dart';
+import 'model_version_properties_response.dart';
+import 'system_data_response.dart';
 
-/// Model asset version details.
-class ModelVersion {
-  /// The asset description text.
-  final pulumi.Input<String>? description;
-  /// Mapping of model flavors to their properties.
-  final pulumi.Input<Map<String, FlavorData>>? flavors;
-  /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
-  /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
-  /// Name of the training job which produced this model
-  final pulumi.Input<String>? jobName;
-  /// The storage format for this entity. Used for NCD.
-  final pulumi.Input<String>? modelType;
-  /// The URI path to the model contents.
-  final pulumi.Input<String>? modelUri;
-  /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
-  /// Stage in the model lifecycle assigned to this model
-  final pulumi.Input<String>? stage;
-  /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+/// Azure Resource Manager resource envelope.
+///
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+///
+/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### CreateOrUpdate Workspace Model Version.
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var modelVersion = new AzureNative.MachineLearningServices.ModelVersion("modelVersion", new()
+///     {
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.ModelVersionPropertiesArgs
+///         {
+///             Description = "string",
+///             Flavors =
+///             {
+///                 { "string", new AzureNative.MachineLearningServices.Inputs.FlavorDataArgs
+///                 {
+///                     Data =
+///                     {
+///                         { "string", "string" },
+///                     },
+///                 } },
+///             },
+///             IsAnonymous = false,
+///             ModelType = "CustomModel",
+///             ModelUri = "string",
+///             Properties =
+///             {
+///                 { "string", "string" },
+///             },
+///             Tags =
+///             {
+///                 { "string", "string" },
+///             },
+///         },
+///         ResourceGroupName = "test-rg",
+///         Version = "string",
+///         WorkspaceName = "my-aml-workspace",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	machinelearningservices "github.com/pulumi/pulumi-azure-native-sdk/machinelearningservices/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := machinelearningservices.NewModelVersion(ctx, "modelVersion", &machinelearningservices.ModelVersionArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.ModelVersionPropertiesArgs{
+/// 				Description: pulumi.String("string"),
+/// 				Flavors: machinelearningservices.FlavorDataMap{
+/// 					"string": &machinelearningservices.FlavorDataArgs{
+/// 						Data: pulumi.StringMap{
+/// 							"string": pulumi.String("string"),
+/// 						},
+/// 					},
+/// 				},
+/// 				IsAnonymous: pulumi.Bool(false),
+/// 				ModelType:   pulumi.String("CustomModel"),
+/// 				ModelUri:    pulumi.String("string"),
+/// 				Properties: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 				Tags: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 			},
+/// 			ResourceGroupName: pulumi.String("test-rg"),
+/// 			Version:           pulumi.String("string"),
+/// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_modelversion" "modelVersion" {
+///   name = "string"
+///   properties = {
+///     description = "string"
+///     flavors = {
+///       "string" = {
+///         data = {
+///           "string" = "string"
+///         }
+///       }
+///     }
+///     is_anonymous = false
+///     model_type   = "CustomModel"
+///     model_uri    = "string"
+///     properties = {
+///       "string" = "string"
+///     }
+///     tags = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   version             = "string"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.machinelearningservices.ModelVersion;
+/// import com.pulumi.azurenative.machinelearningservices.ModelVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ModelVersionPropertiesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var modelVersion = new ModelVersion("modelVersion", ModelVersionArgs.builder()
+///             .name("string")
+///             .properties(ModelVersionPropertiesArgs.builder()
+///                 .description("string")
+///                 .flavors(Map.of("string", FlavorDataArgs.builder()
+///                     .data(Map.of("string", "string"))
+///                     .build()))
+///                 .isAnonymous(false)
+///                 .modelType("CustomModel")
+///                 .modelUri("string")
+///                 .properties(Map.of("string", "string"))
+///                 .tags(Map.of("string", "string"))
+///                 .build())
+///             .resourceGroupName("test-rg")
+///             .version("string")
+///             .workspaceName("my-aml-workspace")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const modelVersion = new azure_native.machinelearningservices.ModelVersion("modelVersion", {
+///     name: "string",
+///     properties: {
+///         description: "string",
+///         flavors: {
+///             string: {
+///                 data: {
+///                     string: "string",
+///                 },
+///             },
+///         },
+///         isAnonymous: false,
+///         modelType: "CustomModel",
+///         modelUri: "string",
+///         properties: {
+///             string: "string",
+///         },
+///         tags: {
+///             string: "string",
+///         },
+///     },
+///     resourceGroupName: "test-rg",
+///     version: "string",
+///     workspaceName: "my-aml-workspace",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// model_version = azure_native.machinelearningservices.ModelVersion("modelVersion",
+///     name="string",
+///     properties={
+///         "description": "string",
+///         "flavors": {
+///             "string": {
+///                 "data": {
+///                     "string": "string",
+///                 },
+///             },
+///         },
+///         "is_anonymous": False,
+///         "model_type": "CustomModel",
+///         "model_uri": "string",
+///         "properties": {
+///             "string": "string",
+///         },
+///         "tags": {
+///             "string": "string",
+///         },
+///     },
+///     resource_group_name="test-rg",
+///     version="string",
+///     workspace_name="my-aml-workspace")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   modelVersion:
+///     type: azure-native:machinelearningservices:ModelVersion
+///     properties:
+///       name: string
+///       properties:
+///         description: string
+///         flavors:
+///           string:
+///             data:
+///               string: string
+///         isAnonymous: false
+///         modelType: CustomModel
+///         modelUri: string
+///         properties:
+///           string: string
+///         tags:
+///           string: string
+///       resourceGroupName: test-rg
+///       version: string
+///       workspaceName: my-aml-workspace
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:ModelVersion string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}
+/// ```
+class ModelVersion extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<ModelVersionPropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
 
   /// Creates a new [ModelVersion].
-  /// [description] The asset description text.
-  /// [flavors] Mapping of model flavors to their properties.
-  /// [isAnonymous] If the name version are system generated (anonymous registration).
-  /// [isArchived] Is the asset archived?
-  /// [jobName] Name of the training job which produced this model
-  /// [modelType] The storage format for this entity. Used for NCD.
-  /// [modelUri] The URI path to the model contents.
-  /// [properties] The asset property dictionary.
-  /// [stage] Stage in the model lifecycle assigned to this model
-  /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const ModelVersion({
-    this.description,
-    this.flavors,
-    this.isAnonymous,
-    this.isArchived,
-    this.jobName,
-    this.modelType,
-    this.modelUri,
-    this.properties,
-    this.stage,
-    this.tags,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'flavors': ?pulumi.Input.mapOptionalInputValue<Map<String, FlavorData>, Map<String, Map<String, dynamic>>>(flavors, (value) => pulumi.Input.encodeMapValues<FlavorData, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'isAnonymous': ?isAnonymous,
-      'isArchived': ?isArchived,
-      'jobName': ?jobName,
-      'modelType': ?modelType,
-      'modelUri': ?modelUri,
-      'properties': ?properties,
-      'stage': ?stage,
-      'tags': ?tags,
-    };
-  }
-
-  factory ModelVersion.fromMap(Map<String, dynamic> map) {
-    return ModelVersion(
-      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      flavors: (() { final guardedValue = map['flavors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<FlavorData>(guardedValue, (value) => FlavorData.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      isAnonymous: (() { final guardedValue = map['isAnonymous']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      isArchived: (() { final guardedValue = map['isArchived']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      jobName: (() { final guardedValue = map['jobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      modelType: (() { final guardedValue = map['modelType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      modelUri: (() { final guardedValue = map['modelUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-    );
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [ModelVersion]. {@macro pulumi_machinelearningservices_model_version_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  ModelVersion(
+    String name, {
+    ModelVersionArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:ModelVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<ModelVersionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelVersionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
   }
 }
-

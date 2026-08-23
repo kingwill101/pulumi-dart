@@ -5,7 +5,7 @@ import 'distributed_availability_group_args.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -79,6 +79,32 @@ import 'distributed_availability_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_distributedavailabilitygroup" "distributedAvailabilityGroup" {
+///   databases {
+///     database_name = "testdb"
+///   }
+///   distributed_availability_group_name = "dag"
+///   failover_mode                       = "None"
+///   instance_availability_group_name    = "testcl"
+///   instance_link_role                  = "Primary"
+///   managed_instance_name               = "testcl"
+///   partner_availability_group_name     = "BoxLocalAg1"
+///   partner_endpoint                    = "TCP://SERVER:7022"
+///   resource_group_name                 = "testrg"
+///   seeding_mode                        = "Automatic"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +114,8 @@ import 'distributed_availability_group_args.dart';
 /// import com.pulumi.azurenative.sql.DistributedAvailabilityGroup;
 /// import com.pulumi.azurenative.sql.DistributedAvailabilityGroupArgs;
 /// import com.pulumi.azurenative.sql.inputs.DistributedAvailabilityGroupDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -246,6 +272,29 @@ import 'distributed_availability_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_distributedavailabilitygroup" "distributedAvailabilityGroup" {
+///   databases {
+///     database_name = "testdb"
+///   }
+///   distributed_availability_group_name = "dag"
+///   instance_availability_group_name    = "testcl"
+///   managed_instance_name               = "testcl"
+///   partner_availability_group_name     = "BoxLocalAg1"
+///   partner_endpoint                    = "TCP://SERVER:7022"
+///   resource_group_name                 = "testrg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +304,8 @@ import 'distributed_availability_group_args.dart';
 /// import com.pulumi.azurenative.sql.DistributedAvailabilityGroup;
 /// import com.pulumi.azurenative.sql.DistributedAvailabilityGroupArgs;
 /// import com.pulumi.azurenative.sql.inputs.DistributedAvailabilityGroupDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

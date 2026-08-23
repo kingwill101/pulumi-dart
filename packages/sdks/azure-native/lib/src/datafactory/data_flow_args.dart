@@ -14,14 +14,14 @@ class DataFlowArgs {
   final pulumi.Input<String> factoryName;
   /// Data flow properties.
   final pulumi.Input<Flowlet> properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [DataFlowArgs].
   /// [dataFlowName] The data flow name.
   /// [factoryName] The factory name.
   /// [properties] Data flow properties.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const DataFlowArgs({
     this.dataFlowName,
     required this.factoryName,
@@ -47,4 +47,3 @@ class DataFlowArgs {
     );
   }
 }
-

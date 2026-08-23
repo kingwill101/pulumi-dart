@@ -71,4 +71,3 @@ class B2CTenantArgs {
     );
   }
 }
-

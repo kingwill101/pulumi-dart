@@ -15,4 +15,3 @@ enum LogicalReplicationOnSourceServer {
     throw ArgumentError('Unknown LogicalReplicationOnSourceServer value: $value');
   }
 }
-

@@ -65,6 +65,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_powerplatform_privateendpointconnection" "privateEndpointConnection" {
+///   enterprise_policy_name           = "ddb1"
+///   private_endpoint_connection_name = "privateEndpointConnectionName"
+///   private_link_service_connection_state = {
+///     description = "Approved by johndoe@contoso.com"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +95,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.powerplatform.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.powerplatform.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.powerplatform.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,7 +189,7 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
   late final pulumi.Output<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
   /// The provisioning state of the private endpoint connection resource.
   late final pulumi.Output<String> provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;

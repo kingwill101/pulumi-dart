@@ -18,13 +18,13 @@ class GetStandardResult {
   final String? displayName;
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   final String? etag;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of the resource
   final String? kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   final String? location;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// standard type (Custom or BuiltIn only currently)
   final String standardType;
@@ -32,9 +32,9 @@ class GetStandardResult {
   final List<String>? supportedClouds;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetStandardResult].
@@ -44,15 +44,15 @@ class GetStandardResult {
   /// [description] description of the standard
   /// [displayName] display name of the standard, equivalent to the standardId
   /// [etag] Entity tag is used for comparing two or more entities from the same requested resource.
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of the resource
-  /// [location] Location where the resource is stored
-  /// [name] Resource name
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [standardType] standard type (Custom or BuiltIn only currently)
   /// [supportedClouds] List of all standard supported clouds.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  /// [tags] A list of key value pairs that describe the resource.
-  /// [type] Resource type
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetStandardResult({
     required this.azureApiVersion,
     this.category,
@@ -111,4 +111,3 @@ class GetStandardResult {
     );
   }
 }
-

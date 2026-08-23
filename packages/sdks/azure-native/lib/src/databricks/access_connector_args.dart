@@ -10,7 +10,7 @@ import 'managed_service_identity.dart';
 class AccessConnectorArgs {
   /// The name of the Azure Databricks Access Connector.
   final pulumi.Input<String>? connectorName;
-  /// Managed service identity (system assigned and/or user assigned identities)
+  /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentity>? identity;
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
@@ -21,7 +21,7 @@ class AccessConnectorArgs {
 
   /// Creates a new [AccessConnectorArgs].
   /// [connectorName] The name of the Azure Databricks Access Connector.
-  /// [identity] Managed service identity (system assigned and/or user assigned identities)
+  /// [identity] The managed service identities assigned to this resource.
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
@@ -53,4 +53,3 @@ class AccessConnectorArgs {
     );
   }
 }
-

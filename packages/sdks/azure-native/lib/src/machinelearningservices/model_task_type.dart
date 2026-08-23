@@ -1,7 +1,7 @@
 /// [Required] The machine learning task type of the monitored model.
 enum ModelTaskType {
-  valueClassification("Classification"),
-  valueRegression("Regression");
+  classification("Classification"),
+  regression("Regression");
 
   const ModelTaskType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ModelTaskType {
     throw ArgumentError('Unknown ModelTaskType value: $value');
   }
 }
-

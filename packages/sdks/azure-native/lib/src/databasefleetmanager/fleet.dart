@@ -71,6 +71,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasefleetmanager_fleet" "fleet" {
+///   fleet_name = "production-fleet-01"
+///   location   = "East US"
+///   properties = {
+///     description = "Production fleet for high availability and scalability."
+///   }
+///   resource_group_name = "rg-database-fleet-manager"
+///   tags = {
+///     "environment" = "production"
+///     "owner"       = "team-database"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databasefleetmanager.Fleet;
 /// import com.pulumi.azurenative.databasefleetmanager.FleetArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.FleetPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

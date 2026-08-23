@@ -16,4 +16,3 @@ enum HybridAksPluginType {
     throw ArgumentError('Unknown HybridAksPluginType value: $value');
   }
 }
-

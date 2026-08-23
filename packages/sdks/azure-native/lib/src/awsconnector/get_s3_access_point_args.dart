@@ -34,4 +34,3 @@ class GetS3AccessPointArgs {
     );
   }
 }
-

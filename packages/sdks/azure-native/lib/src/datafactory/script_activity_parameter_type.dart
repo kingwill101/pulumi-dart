@@ -1,17 +1,17 @@
 /// The type of the parameter.
 enum ScriptActivityParameterType {
-  valueBoolean("Boolean"),
-  valueDateTime("DateTime"),
-  valueDateTimeOffset("DateTimeOffset"),
-  valueDecimal("Decimal"),
-  valueDouble("Double"),
-  valueGuid("Guid"),
-  valueInt16("Int16"),
-  valueInt32("Int32"),
-  valueInt64("Int64"),
-  valueSingle("Single"),
-  valueString("String"),
-  valueTimespan("Timespan");
+  boolean("Boolean"),
+  dateTime("DateTime"),
+  dateTimeOffset("DateTimeOffset"),
+  decimal("Decimal"),
+  double_("Double"),
+  guid("Guid"),
+  int16("Int16"),
+  int32("Int32"),
+  int64("Int64"),
+  single("Single"),
+  string_("String"),
+  timespan("Timespan");
 
   const ScriptActivityParameterType(this.wireValue);
   final String wireValue;
@@ -25,4 +25,3 @@ enum ScriptActivityParameterType {
     throw ArgumentError('Unknown ScriptActivityParameterType value: $value');
   }
 }
-

@@ -15,11 +15,11 @@ class VariableArgs {
   final pulumi.Input<bool>? isEncrypted;
   /// Gets or sets the name of the variable.
   final pulumi.Input<String> name;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the value of the variable.
   final pulumi.Input<String>? value;
-  /// The variable name.
+  /// The name of variable.
   final pulumi.Input<String>? variableName;
 
   /// Creates a new [VariableArgs].
@@ -27,9 +27,9 @@ class VariableArgs {
   /// [description] Gets or sets the description of the variable.
   /// [isEncrypted] Gets or sets the encrypted flag of the variable.
   /// [name] Gets or sets the name of the variable.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [value] Gets or sets the value of the variable.
-  /// [variableName] The variable name.
+  /// [variableName] The name of variable.
   const VariableArgs({
     required this.automationAccountName,
     this.description,
@@ -64,4 +64,3 @@ class VariableArgs {
     );
   }
 }
-

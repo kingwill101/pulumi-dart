@@ -39,4 +39,3 @@ enum BusinessCaseCurrency {
     throw ArgumentError('Unknown BusinessCaseCurrency value: $value');
   }
 }
-

@@ -13,7 +13,7 @@ import 'vpn_client_configuration_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -256,6 +256,90 @@ import 'vpn_client_configuration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetworkgateway" "virtualNetworkGateway" {
+///   active_active             = false
+///   allow_remote_vnet_traffic = false
+///   allow_virtual_wan_traffic = false
+///   bgp_settings = {
+///     asn                 = 65515
+///     bgp_peering_address = "10.0.1.30"
+///     peer_weight         = 0
+///   }
+///   custom_routes = {
+///     address_prefixes = ["101.168.0.6/32"]
+///   }
+///   disable_ip_sec_replay_protection     = false
+///   enable_bgp                           = false
+///   enable_bgp_route_translation_for_nat = false
+///   enable_dns_forwarding                = true
+///   gateway_type                         = "Vpn"
+///   ip_configurations {
+///     name                         = "gwipconfig1"
+///     private_ip_allocation_method = "Dynamic"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"
+///     }
+///   }
+///   location = "centralus"
+///   nat_rules {
+///     external_mappings {
+///       address_space = "50.0.0.0/24"
+///     }
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule1"
+///     internal_mappings {
+///       address_space = "10.10.0.0/24"
+///     }
+///     ip_configuration_id = ""
+///     mode                = "EgressSnat"
+///     name                = "natRule1"
+///     type                = "Static"
+///   }
+///   nat_rules {
+///     external_mappings {
+///       address_space = "30.0.0.0/24"
+///     }
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule2"
+///     internal_mappings {
+///       address_space = "20.10.0.0/24"
+///     }
+///     ip_configuration_id = ""
+///     mode                = "IngressSnat"
+///     name                = "natRule2"
+///     type                = "Static"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "VpnGw1"
+///     tier = "VpnGw1"
+///   }
+///   virtual_network_gateway_name = "vpngw"
+///   vpn_client_configuration = {
+///     radius_servers = [{
+///       "radiusServerAddress" = "10.2.0.0"
+///       "radiusServerScore"   = 20
+///       "radiusServerSecret"  = "radiusServerSecret"
+///     }]
+///     vpn_client_protocols            = ["OpenVPN"]
+///     vpn_client_revoked_certificates = []
+///     vpn_client_root_certificates    = []
+///   }
+///   vpn_type = "RouteBased"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -271,8 +355,8 @@ import 'vpn_client_configuration_response.dart';
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayNatRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewaySkuArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnClientConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -453,7 +537,7 @@ import 'vpn_client_configuration_response.dart';
 ///     allow_remote_vnet_traffic=False,
 ///     allow_virtual_wan_traffic=False,
 ///     bgp_settings={
-///         "asn": 65515,
+///         "asn": float(65515),
 ///         "bgp_peering_address": "10.0.1.30",
 ///         "peer_weight": 0,
 ///     },
@@ -513,7 +597,7 @@ import 'vpn_client_configuration_response.dart';
 ///     vpn_client_configuration={
 ///         "radius_servers": [{
 ///             "radius_server_address": "10.2.0.0",
-///             "radius_server_score": 20,
+///             "radius_server_score": float(20),
 ///             "radius_server_secret": "radiusServerSecret",
 ///         }],
 ///         "vpn_client_protocols": [azure_native.network.VpnClientProtocol.OPEN_VPN],
@@ -772,6 +856,71 @@ import 'vpn_client_configuration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetworkgateway" "virtualNetworkGateway" {
+///   active_active                        = false
+///   allow_remote_vnet_traffic            = false
+///   allow_virtual_wan_traffic            = false
+///   disable_ip_sec_replay_protection     = false
+///   enable_bgp                           = false
+///   enable_bgp_route_translation_for_nat = false
+///   gateway_type                         = "ExpressRoute"
+///   ip_configurations {
+///     name                         = "gwipconfig1"
+///     private_ip_allocation_method = "Static"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"
+///     }
+///   }
+///   location = "centralus"
+///   nat_rules {
+///     external_mappings {
+///       address_space = "50.0.0.0/24"
+///     }
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/ergw/natRules/natRule1"
+///     internal_mappings {
+///       address_space = "10.10.0.0/24"
+///     }
+///     ip_configuration_id = ""
+///     mode                = "EgressSnat"
+///     name                = "natRule1"
+///     type                = "Static"
+///   }
+///   nat_rules {
+///     external_mappings {
+///       address_space = "30.0.0.0/24"
+///     }
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/ergw/natRules/natRule2"
+///     internal_mappings {
+///       address_space = "20.10.0.0/24"
+///     }
+///     ip_configuration_id = ""
+///     mode                = "IngressSnat"
+///     name                = "natRule2"
+///     type                = "Static"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "ErGwScale"
+///     tier = "ErGwScale"
+///   }
+///   virtual_network_gateway_name = "ergw"
+///   vpn_type                     = "PolicyBased"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -784,8 +933,8 @@ import 'vpn_client_configuration_response.dart';
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewayNatRuleArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkGatewaySkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -31,4 +31,3 @@ class Layer2ConfigurationResponse {
     );
   }
 }
-

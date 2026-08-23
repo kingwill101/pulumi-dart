@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2020-04-01-preview.
 ///
-/// Other available API versions: 2020-04-01-preview, 2021-03-01, 2022-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcegraph [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-03-01, 2022-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcegraph [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resourcegraph_graphquery" "graphQuery" {
+///   description         = "Docker VMs in PROD"
+///   query               = "where isnotnull(tags['Prod']) and properties.extensions[0].Name == 'docker'"
+///   resource_group_name = "my-resource-group"
+///   resource_name       = "MyDockerVMs"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.resourcegraph.GraphQuery;
 /// import com.pulumi.azurenative.resourcegraph.GraphQueryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,19 +173,19 @@ class GraphQuery extends pulumi.CustomResource {
   late final pulumi.Output<String?> etag;
   /// The location of the resource
   late final pulumi.Output<String?> location;
-  /// Azure resource name. This is GUID value. The display name should be assigned within properties field.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// KQL query that will be graph.
   late final pulumi.Output<String> query;
   /// Enum indicating a type of graph query.
   late final pulumi.Output<String> resultKind;
-  /// The system metadata relating to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// Resource tags
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Date and time in UTC of the last modification that was made to this graph query definition.
   late final pulumi.Output<String> timeModified;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [GraphQuery].

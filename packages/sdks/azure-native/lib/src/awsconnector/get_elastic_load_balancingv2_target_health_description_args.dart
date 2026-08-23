@@ -34,4 +34,3 @@ class GetElasticLoadBalancingv2TargetHealthDescriptionArgs {
     );
   }
 }
-

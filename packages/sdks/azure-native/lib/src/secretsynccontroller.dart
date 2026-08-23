@@ -1,7 +1,7 @@
 export 'secretsynccontroller/azure_key_vault_secret_provider_class.dart';
 export 'secretsynccontroller/azure_key_vault_secret_provider_class_args.dart';
 export 'secretsynccontroller/azure_resource_manager_common_types_extended_location.dart';
-export 'secretsynccontroller/azure_resource_manager_common_types_extended_location_response.dart';
+export 'secretsynccontroller/extended_location_response.dart';
 export 'secretsynccontroller/extended_location_type.dart';
 export 'secretsynccontroller/functions.dart';
 export 'secretsynccontroller/get_azure_key_vault_secret_provider_class_args.dart';

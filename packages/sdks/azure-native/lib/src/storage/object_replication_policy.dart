@@ -6,7 +6,7 @@ import 'object_replication_policy_properties_response_metrics.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -95,6 +95,35 @@ import 'object_replication_policy_properties_response_metrics.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+///   account_name        = "dst112"
+///   destination_account = "dst112"
+///   metrics = {
+///     enabled = true
+///   }
+///   object_replication_policy_id = "default"
+///   resource_group_name          = "res7687"
+///   rules {
+///     destination_container = "dcont139"
+///     filters = {
+///       prefix_match = ["blobA", "blobB"]
+///     }
+///     source_container = "scont139"
+///   }
+///   source_account = "src1122"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +135,8 @@ import 'object_replication_policy_properties_response_metrics.dart';
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyPropertiesMetricsArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyRuleArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,6 +338,37 @@ import 'object_replication_policy_properties_response_metrics.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+///   account_name        = "src1122"
+///   destination_account = "dst112"
+///   metrics = {
+///     enabled = true
+///   }
+///   object_replication_policy_id = "2a20bb73-5717-4635-985a-5d4cf777438f"
+///   resource_group_name          = "res7687"
+///   rules {
+///     destination_container = "dcont139"
+///     filters = {
+///       min_creation_time = "2020-02-19T16:05:00Z"
+///       prefix_match      = ["blobA", "blobB"]
+///     }
+///     rule_id          = "d5d18a48-8801-4554-aeaa-74faf65f5ef9"
+///     source_container = "scont139"
+///   }
+///   source_account = "src1122"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -320,8 +380,8 @@ import 'object_replication_policy_properties_response_metrics.dart';
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyPropertiesMetricsArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyRuleArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -538,6 +598,40 @@ import 'object_replication_policy_properties_response_metrics.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+///   account_name        = "dst112"
+///   destination_account = "dst112"
+///   metrics = {
+///     enabled = true
+///   }
+///   object_replication_policy_id = "2a20bb73-5717-4635-985a-5d4cf777438f"
+///   resource_group_name          = "res7687"
+///   rules {
+///     destination_container = "dcont139"
+///     filters = {
+///       prefix_match = ["blobA", "blobB"]
+///     }
+///     rule_id          = "d5d18a48-8801-4554-aeaa-74faf65f5ef9"
+///     source_container = "scont139"
+///   }
+///   rules {
+///     destination_container = "dcont179"
+///     source_container      = "scont179"
+///   }
+///   source_account = "src1122"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -549,8 +643,8 @@ import 'object_replication_policy_properties_response_metrics.dart';
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyPropertiesMetricsArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyRuleArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -784,6 +878,41 @@ import 'object_replication_policy_properties_response_metrics.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_objectreplicationpolicy" "objectReplicationPolicy" {
+///   account_name        = "src1122"
+///   destination_account = "dst112"
+///   metrics = {
+///     enabled = true
+///   }
+///   object_replication_policy_id = "2a20bb73-5717-4635-985a-5d4cf777438f"
+///   resource_group_name          = "res7687"
+///   rules {
+///     destination_container = "dcont139"
+///     filters = {
+///       prefix_match = ["blobA", "blobB"]
+///     }
+///     rule_id          = "d5d18a48-8801-4554-aeaa-74faf65f5ef9"
+///     source_container = "scont139"
+///   }
+///   rules {
+///     destination_container = "dcont179"
+///     rule_id               = "cfbb4bc2-8b60-429f-b05a-d1e0942b33b2"
+///     source_container      = "scont179"
+///   }
+///   source_account = "src1122"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -795,8 +924,8 @@ import 'object_replication_policy_properties_response_metrics.dart';
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyPropertiesMetricsArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyRuleArgs;
 /// import com.pulumi.azurenative.storage.inputs.ObjectReplicationPolicyFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

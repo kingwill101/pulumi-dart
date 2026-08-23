@@ -13,14 +13,14 @@ class GetManagedPrivateEndpointArgs {
   final pulumi.Input<String> managedPrivateEndpointName;
   /// Managed virtual network name
   final pulumi.Input<String> managedVirtualNetworkName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetManagedPrivateEndpointArgs].
   /// [factoryName] The factory name.
   /// [managedPrivateEndpointName] Managed private endpoint name
   /// [managedVirtualNetworkName] Managed virtual network name
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetManagedPrivateEndpointArgs({
     required this.factoryName,
     required this.managedPrivateEndpointName,
@@ -46,4 +46,3 @@ class GetManagedPrivateEndpointArgs {
     );
   }
 }
-

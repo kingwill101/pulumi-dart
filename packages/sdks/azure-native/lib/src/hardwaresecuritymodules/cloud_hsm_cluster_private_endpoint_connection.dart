@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-06-30-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-31-preview.
 ///
-/// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -67,6 +67,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hardwaresecuritymodules_cloudhsmclusterprivateendpointconnection" "cloudHsmClusterPrivateEndpointConnection" {
+///   cloud_hsm_cluster_name = "chsm1"
+///   pe_connection_name     = "sample-pec"
+///   private_link_service_connection_state = {
+///     description = "My name is Joe and I'm approving this."
+///     status      = "Approved"
+///   }
+///   resource_group_name = "rgcloudhsm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hardwaresecuritymodules.CloudHsmClusterPrivateEndpointConnection;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.CloudHsmClusterPrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

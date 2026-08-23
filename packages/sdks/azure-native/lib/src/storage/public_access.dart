@@ -16,4 +16,3 @@ enum PublicAccess {
     throw ArgumentError('Unknown PublicAccess value: $value');
   }
 }
-

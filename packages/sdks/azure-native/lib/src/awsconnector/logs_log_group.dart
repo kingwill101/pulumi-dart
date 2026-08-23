@@ -115,6 +115,48 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_logsloggroup" "logsLogGroup" {
+///   location = "phnyiqu"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "seajw"
+///     aws_account_id = "jgnahcwppywqceisitgmjsw"
+///     aws_properties = {
+///       arn               = "nyrge"
+///       kms_key_id        = "gjzov"
+///       log_group_class   = "INFREQUENT_ACCESS"
+///       log_group_name    = "ekbugjqparpxebzmfaykh"
+///       retention_in_days = 17
+///       tags = [{
+///         "key"   = "nxdfvdzxuh"
+///         "value" = "x"
+///       }]
+///     }
+///     aws_region        = "vejderqihcaeihktrpgsuizcp"
+///     aws_source_schema = "ryhknij"
+///     aws_tags = {
+///       "key2050" = "xjhmqjcueiq"
+///     }
+///     public_cloud_connectors_resource_id = "ascstrkrmxqtxw"
+///     public_cloud_resource_name          = "ldqwutaylcywem"
+///   }
+///   resource_group_name = "rglogsLogGroup"
+///   tags = {
+///     "key9158" = "iflnc"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -125,8 +167,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LogsLogGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsLogGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLogsLogGroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

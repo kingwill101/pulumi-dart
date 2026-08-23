@@ -29,4 +29,3 @@ enum EventHubDataFormat {
     throw ArgumentError('Unknown EventHubDataFormat value: $value');
   }
 }
-

@@ -18,4 +18,3 @@ enum StorageAccountStatus {
     throw ArgumentError('Unknown StorageAccountStatus value: $value');
   }
 }
-

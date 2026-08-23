@@ -15,4 +15,3 @@ enum NetworkRuleBypassOptions {
     throw ArgumentError('Unknown NetworkRuleBypassOptions value: $value');
   }
 }
-

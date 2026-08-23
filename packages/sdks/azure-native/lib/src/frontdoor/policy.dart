@@ -7,9 +7,9 @@ import 'sku_response.dart';
 
 /// Defines web application firewall policy.
 ///
-/// Uses Azure REST API version 2024-02-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-08-01, 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01, 2024-02-01, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -83,11 +83,62 @@ import 'sku_response.dart';
 ///                     Priority = 2,
 ///                     RuleType = AzureNative.FrontDoor.RuleType.MatchRule,
 ///                 },
+///                 new AzureNative.FrontDoor.Inputs.CustomRuleArgs
+///                 {
+///                     Action = AzureNative.FrontDoor.ActionType.CAPTCHA,
+///                     MatchConditions = new[]
+///                     {
+///                         new AzureNative.FrontDoor.Inputs.MatchConditionArgs
+///                         {
+///                             MatchValue = new[]
+///                             {
+///                                 "AzureBackup",
+///                                 "AzureBotService",
+///                             },
+///                             MatchVariable = AzureNative.FrontDoor.MatchVariable.RemoteAddr,
+///                             Operator = AzureNative.FrontDoor.Operator.ServiceTagMatch,
+///                         },
+///                     },
+///                     Name = "Rule3",
+///                     Priority = 1,
+///                     RateLimitThreshold = 1000,
+///                     RuleType = AzureNative.FrontDoor.RuleType.RateLimitRule,
+///                 },
 ///             },
 ///         },
 ///         Location = "WestUs",
 ///         ManagedRules = new AzureNative.FrontDoor.Inputs.ManagedRuleSetListArgs
 ///         {
+///             ExceptionsList = new AzureNative.FrontDoor.Inputs.ManagedRuleSetExceptionListArgs
+///             {
+///                 Exceptions = new[]
+///                 {
+///                     new AzureNative.FrontDoor.Inputs.ManagedRuleSetExceptionArgs
+///                     {
+///                         MatchValues = new[]
+///                         {
+///                             "Mozilla",
+///                         },
+///                         MatchVariable = AzureNative.FrontDoor.ExceptionMatchVariable.RequestHeaderNames,
+///                         Scopes = new[]
+///                         {
+///                             new AzureNative.FrontDoor.Inputs.ManagedRuleSetScopeArgs
+///                             {
+///                                 RuleSetType = "Microsoft_DefaultRuleSet",
+///                                 RuleSetVersion = "2.2",
+///                             },
+///                             new AzureNative.FrontDoor.Inputs.ManagedRuleSetScopeArgs
+///                             {
+///                                 RuleSetType = "Microsoft_HTTPDDoSRuleSet",
+///                                 RuleSetVersion = "1.0",
+///                             },
+///                         },
+///                         Selector = "User-Agent",
+///                         SelectorMatchOperator = AzureNative.FrontDoor.ExceptionSelectorMatchOperator.EqualsValue,
+///                         ValueMatchOperator = AzureNative.FrontDoor.ExceptionValueMatchOperator.Contains,
+///                     },
+///                 },
+///             },
 ///             ManagedRuleSets = new[]
 ///             {
 ///                 new AzureNative.FrontDoor.Inputs.ManagedRuleSetArgs
@@ -141,7 +192,29 @@ import 'sku_response.dart';
 ///                         },
 ///                     },
 ///                     RuleSetAction = AzureNative.FrontDoor.ManagedRuleSetActionType.Block,
-///                     RuleSetType = "DefaultRuleSet",
+///                     RuleSetType = "Microsoft_DefaultRuleSet",
+///                     RuleSetVersion = "2.2",
+///                 },
+///                 new AzureNative.FrontDoor.Inputs.ManagedRuleSetArgs
+///                 {
+///                     RuleGroupOverrides = new[]
+///                     {
+///                         new AzureNative.FrontDoor.Inputs.ManagedRuleGroupOverrideArgs
+///                         {
+///                             RuleGroupName = "ExcessiveRequests",
+///                             Rules = new[]
+///                             {
+///                                 new AzureNative.FrontDoor.Inputs.ManagedRuleOverrideArgs
+///                                 {
+///                                     Action = AzureNative.FrontDoor.ActionType.Block,
+///                                     EnabledState = AzureNative.FrontDoor.ManagedRuleEnabledState.Enabled,
+///                                     RuleId = "500100",
+///                                     Sensitivity = AzureNative.FrontDoor.SensitivityType.High,
+///                                 },
+///                             },
+///                         },
+///                     },
+///                     RuleSetType = "Microsoft_HTTPDDoSRuleSet",
 ///                     RuleSetVersion = "1.0",
 ///                 },
 ///             },
@@ -149,6 +222,7 @@ import 'sku_response.dart';
 ///         PolicyName = "Policy1",
 ///         PolicySettings = new AzureNative.FrontDoor.Inputs.PolicySettingsArgs
 ///         {
+///             CaptchaExpirationInMinutes = 30,
 ///             CustomBlockResponseBody = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==",
 ///             CustomBlockResponseStatusCode = 429,
 ///             EnabledState = AzureNative.FrontDoor.PolicyEnabledState.Enabled,
@@ -235,10 +309,50 @@ import 'sku_response.dart';
 /// 						Priority: pulumi.Int(2),
 /// 						RuleType: pulumi.String(frontdoor.RuleTypeMatchRule),
 /// 					},
+/// 					&frontdoor.CustomRuleArgs{
+/// 						Action: pulumi.String(frontdoor.ActionTypeCAPTCHA),
+/// 						MatchConditions: frontdoor.MatchConditionArray{
+/// 							&frontdoor.MatchConditionArgs{
+/// 								MatchValue: pulumi.StringArray{
+/// 									pulumi.String("AzureBackup"),
+/// 									pulumi.String("AzureBotService"),
+/// 								},
+/// 								MatchVariable: pulumi.String(frontdoor.MatchVariableRemoteAddr),
+/// 								Operator:      pulumi.String(frontdoor.OperatorServiceTagMatch),
+/// 							},
+/// 						},
+/// 						Name:               pulumi.String("Rule3"),
+/// 						Priority:           pulumi.Int(1),
+/// 						RateLimitThreshold: pulumi.Int(1000),
+/// 						RuleType:           pulumi.String(frontdoor.RuleTypeRateLimitRule),
+/// 					},
 /// 				},
 /// 			},
 /// 			Location: pulumi.String("WestUs"),
 /// 			ManagedRules: &frontdoor.ManagedRuleSetListArgs{
+/// 				ExceptionsList: &frontdoor.ManagedRuleSetExceptionListArgs{
+/// 					Exceptions: frontdoor.ManagedRuleSetExceptionArray{
+/// 						&frontdoor.ManagedRuleSetExceptionArgs{
+/// 							MatchValues: pulumi.StringArray{
+/// 								pulumi.String("Mozilla"),
+/// 							},
+/// 							MatchVariable: pulumi.String(frontdoor.ExceptionMatchVariableRequestHeaderNames),
+/// 							Scopes: frontdoor.ManagedRuleSetScopeArray{
+/// 								&frontdoor.ManagedRuleSetScopeArgs{
+/// 									RuleSetType:    pulumi.String("Microsoft_DefaultRuleSet"),
+/// 									RuleSetVersion: pulumi.String("2.2"),
+/// 								},
+/// 								&frontdoor.ManagedRuleSetScopeArgs{
+/// 									RuleSetType:    pulumi.String("Microsoft_HTTPDDoSRuleSet"),
+/// 									RuleSetVersion: pulumi.String("1.0"),
+/// 								},
+/// 							},
+/// 							Selector:              pulumi.String("User-Agent"),
+/// 							SelectorMatchOperator: pulumi.String(frontdoor.ExceptionSelectorMatchOperatorEquals),
+/// 							ValueMatchOperator:    pulumi.String(frontdoor.ExceptionValueMatchOperatorContains),
+/// 						},
+/// 					},
+/// 				},
 /// 				ManagedRuleSets: frontdoor.ManagedRuleSetArray{
 /// 					&frontdoor.ManagedRuleSetArgs{
 /// 						Exclusions: frontdoor.ManagedRuleExclusionArray{
@@ -279,13 +393,31 @@ import 'sku_response.dart';
 /// 							},
 /// 						},
 /// 						RuleSetAction:  pulumi.String(frontdoor.ManagedRuleSetActionTypeBlock),
-/// 						RuleSetType:    pulumi.String("DefaultRuleSet"),
+/// 						RuleSetType:    pulumi.String("Microsoft_DefaultRuleSet"),
+/// 						RuleSetVersion: pulumi.String("2.2"),
+/// 					},
+/// 					&frontdoor.ManagedRuleSetArgs{
+/// 						RuleGroupOverrides: frontdoor.ManagedRuleGroupOverrideArray{
+/// 							&frontdoor.ManagedRuleGroupOverrideArgs{
+/// 								RuleGroupName: pulumi.String("ExcessiveRequests"),
+/// 								Rules: frontdoor.ManagedRuleOverrideArray{
+/// 									&frontdoor.ManagedRuleOverrideArgs{
+/// 										Action:       pulumi.String(frontdoor.ActionTypeBlock),
+/// 										EnabledState: pulumi.String(frontdoor.ManagedRuleEnabledStateEnabled),
+/// 										RuleId:       pulumi.String("500100"),
+/// 										Sensitivity:  pulumi.String(frontdoor.SensitivityTypeHigh),
+/// 									},
+/// 								},
+/// 							},
+/// 						},
+/// 						RuleSetType:    pulumi.String("Microsoft_HTTPDDoSRuleSet"),
 /// 						RuleSetVersion: pulumi.String("1.0"),
 /// 					},
 /// 				},
 /// 			},
 /// 			PolicyName: pulumi.String("Policy1"),
 /// 			PolicySettings: &frontdoor.PolicySettingsArgs{
+/// 				CaptchaExpirationInMinutes:             pulumi.Int(30),
 /// 				CustomBlockResponseBody:                pulumi.String("PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="),
 /// 				CustomBlockResponseStatusCode:          pulumi.Int(429),
 /// 				EnabledState:                           pulumi.String(frontdoor.PolicyEnabledStateEnabled),
@@ -316,6 +448,144 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_frontdoor_policy" "policy" {
+///   custom_rules = {
+///     rules = [{
+///       "action" = "Block"
+///       "matchConditions" = [{
+///         "matchValue"    = ["192.168.1.0/24", "10.0.0.0/24"]
+///         "matchVariable" = "RemoteAddr"
+///         "operator"      = "IPMatch"
+///       }]
+///       "name"               = "Rule1"
+///       "priority"           = 1
+///       "rateLimitThreshold" = 1000
+///       "ruleType"           = "RateLimitRule"
+///       }, {
+///       "action" = "Block"
+///       "matchConditions" = [{
+///         "matchValue"    = ["CH"]
+///         "matchVariable" = "RemoteAddr"
+///         "operator"      = "GeoMatch"
+///         }, {
+///         "matchValue"    = ["windows"]
+///         "matchVariable" = "RequestHeader"
+///         "operator"      = "Contains"
+///         "selector"      = "UserAgent"
+///         "transforms"    = ["Lowercase"]
+///       }]
+///       "name"     = "Rule2"
+///       "priority" = 2
+///       "ruleType" = "MatchRule"
+///       }, {
+///       "action" = "CAPTCHA"
+///       "matchConditions" = [{
+///         "matchValue"    = ["AzureBackup", "AzureBotService"]
+///         "matchVariable" = "RemoteAddr"
+///         "operator"      = "ServiceTagMatch"
+///       }]
+///       "name"               = "Rule3"
+///       "priority"           = 1
+///       "rateLimitThreshold" = 1000
+///       "ruleType"           = "RateLimitRule"
+///     }]
+///   }
+///   location = "WestUs"
+///   managed_rules = {
+///     exceptions_list = {
+///       exceptions = [{
+///         "matchValues"   = ["Mozilla"]
+///         "matchVariable" = "RequestHeaderNames"
+///         "scopes" = [{
+///           "ruleSetType"    = "Microsoft_DefaultRuleSet"
+///           "ruleSetVersion" = "2.2"
+///           }, {
+///           "ruleSetType"    = "Microsoft_HTTPDDoSRuleSet"
+///           "ruleSetVersion" = "1.0"
+///         }]
+///         "selector"              = "User-Agent"
+///         "selectorMatchOperator" = "Equals"
+///         "valueMatchOperator"    = "Contains"
+///       }]
+///     }
+///     managed_rule_sets = [{
+///       "exclusions" = [{
+///         "matchVariable"         = "RequestHeaderNames"
+///         "selector"              = "User-Agent"
+///         "selectorMatchOperator" = "Equals"
+///       }]
+///       "ruleGroupOverrides" = [{
+///         "exclusions" = [{
+///           "matchVariable"         = "RequestCookieNames"
+///           "selector"              = "token"
+///           "selectorMatchOperator" = "StartsWith"
+///         }]
+///         "ruleGroupName" = "SQLI"
+///         "rules" = [{
+///           "action"       = "Redirect"
+///           "enabledState" = "Enabled"
+///           "exclusions" = [{
+///             "matchVariable"         = "QueryStringArgNames"
+///             "selector"              = "query"
+///             "selectorMatchOperator" = "Equals"
+///           }]
+///           "ruleId" = "942100"
+///           }, {
+///           "enabledState" = "Disabled"
+///           "ruleId"       = "942110"
+///         }]
+///       }]
+///       "ruleSetAction"  = "Block"
+///       "ruleSetType"    = "Microsoft_DefaultRuleSet"
+///       "ruleSetVersion" = "2.2"
+///       }, {
+///       "ruleGroupOverrides" = [{
+///         "ruleGroupName" = "ExcessiveRequests"
+///         "rules" = [{
+///           "action"       = "Block"
+///           "enabledState" = "Enabled"
+///           "ruleId"       = "500100"
+///           "sensitivity"  = "High"
+///         }]
+///       }]
+///       "ruleSetType"    = "Microsoft_HTTPDDoSRuleSet"
+///       "ruleSetVersion" = "1.0"
+///     }]
+///   }
+///   policy_name = "Policy1"
+///   policy_settings = {
+///     captcha_expiration_in_minutes              = 30
+///     custom_block_response_body                 = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="
+///     custom_block_response_status_code          = 429
+///     enabled_state                              = "Enabled"
+///     javascript_challenge_expiration_in_minutes = 30
+///     mode                                       = "Prevention"
+///     redirect_url                               = "http://www.bing.com"
+///     request_body_check                         = "Disabled"
+///     scrubbing_rules = [{
+///       "matchVariable"         = "RequestIPAddress"
+///       "selectorMatchOperator" = "EqualsAny"
+///       "state"                 = "Enabled"
+///     }]
+///     state = "Enabled"
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Premium_AzureFrontDoor"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -326,10 +596,11 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.frontdoor.PolicyArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.CustomRuleListArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleSetListArgs;
+/// import com.pulumi.azurenative.frontdoor.inputs.ManagedRuleSetExceptionListArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.PolicySettingsArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -376,46 +647,93 @@ import 'sku_response.dart';
 ///                         .name("Rule2")
 ///                         .priority(2)
 ///                         .ruleType("MatchRule")
+///                         .build(),
+///                     CustomRuleArgs.builder()
+///                         .action("CAPTCHA")
+///                         .matchConditions(MatchConditionArgs.builder()
+///                             .matchValue(
+///                                 "AzureBackup",
+///                                 "AzureBotService")
+///                             .matchVariable("RemoteAddr")
+///                             .operator("ServiceTagMatch")
+///                             .build())
+///                         .name("Rule3")
+///                         .priority(1)
+///                         .rateLimitThreshold(1000)
+///                         .ruleType("RateLimitRule")
 ///                         .build())
 ///                 .build())
 ///             .location("WestUs")
 ///             .managedRules(ManagedRuleSetListArgs.builder()
-///                 .managedRuleSets(ManagedRuleSetArgs.builder()
-///                     .exclusions(ManagedRuleExclusionArgs.builder()
+///                 .exceptionsList(ManagedRuleSetExceptionListArgs.builder()
+///                     .exceptions(ManagedRuleSetExceptionArgs.builder()
+///                         .matchValues("Mozilla")
 ///                         .matchVariable("RequestHeaderNames")
+///                         .scopes(
+///                             ManagedRuleSetScopeArgs.builder()
+///                                 .ruleSetType("Microsoft_DefaultRuleSet")
+///                                 .ruleSetVersion("2.2")
+///                                 .build(),
+///                             ManagedRuleSetScopeArgs.builder()
+///                                 .ruleSetType("Microsoft_HTTPDDoSRuleSet")
+///                                 .ruleSetVersion("1.0")
+///                                 .build())
 ///                         .selector("User-Agent")
 ///                         .selectorMatchOperator("Equals")
+///                         .valueMatchOperator("Contains")
 ///                         .build())
-///                     .ruleGroupOverrides(ManagedRuleGroupOverrideArgs.builder()
-///                         .exclusions(ManagedRuleExclusionArgs.builder()
-///                             .matchVariable("RequestCookieNames")
-///                             .selector("token")
-///                             .selectorMatchOperator("StartsWith")
-///                             .build())
-///                         .ruleGroupName("SQLI")
-///                         .rules(
-///                             ManagedRuleOverrideArgs.builder()
-///                                 .action("Redirect")
-///                                 .enabledState("Enabled")
-///                                 .exclusions(ManagedRuleExclusionArgs.builder()
-///                                     .matchVariable("QueryStringArgNames")
-///                                     .selector("query")
-///                                     .selectorMatchOperator("Equals")
-///                                     .build())
-///                                 .ruleId("942100")
-///                                 .build(),
-///                             ManagedRuleOverrideArgs.builder()
-///                                 .enabledState("Disabled")
-///                                 .ruleId("942110")
-///                                 .build())
-///                         .build())
-///                     .ruleSetAction("Block")
-///                     .ruleSetType("DefaultRuleSet")
-///                     .ruleSetVersion("1.0")
 ///                     .build())
+///                 .managedRuleSets(
+///                     ManagedRuleSetArgs.builder()
+///                         .exclusions(ManagedRuleExclusionArgs.builder()
+///                             .matchVariable("RequestHeaderNames")
+///                             .selector("User-Agent")
+///                             .selectorMatchOperator("Equals")
+///                             .build())
+///                         .ruleGroupOverrides(ManagedRuleGroupOverrideArgs.builder()
+///                             .exclusions(ManagedRuleExclusionArgs.builder()
+///                                 .matchVariable("RequestCookieNames")
+///                                 .selector("token")
+///                                 .selectorMatchOperator("StartsWith")
+///                                 .build())
+///                             .ruleGroupName("SQLI")
+///                             .rules(
+///                                 ManagedRuleOverrideArgs.builder()
+///                                     .action("Redirect")
+///                                     .enabledState("Enabled")
+///                                     .exclusions(ManagedRuleExclusionArgs.builder()
+///                                         .matchVariable("QueryStringArgNames")
+///                                         .selector("query")
+///                                         .selectorMatchOperator("Equals")
+///                                         .build())
+///                                     .ruleId("942100")
+///                                     .build(),
+///                                 ManagedRuleOverrideArgs.builder()
+///                                     .enabledState("Disabled")
+///                                     .ruleId("942110")
+///                                     .build())
+///                             .build())
+///                         .ruleSetAction("Block")
+///                         .ruleSetType("Microsoft_DefaultRuleSet")
+///                         .ruleSetVersion("2.2")
+///                         .build(),
+///                     ManagedRuleSetArgs.builder()
+///                         .ruleGroupOverrides(ManagedRuleGroupOverrideArgs.builder()
+///                             .ruleGroupName("ExcessiveRequests")
+///                             .rules(ManagedRuleOverrideArgs.builder()
+///                                 .action("Block")
+///                                 .enabledState("Enabled")
+///                                 .ruleId("500100")
+///                                 .sensitivity("High")
+///                                 .build())
+///                             .build())
+///                         .ruleSetType("Microsoft_HTTPDDoSRuleSet")
+///                         .ruleSetVersion("1.0")
+///                         .build())
 ///                 .build())
 ///             .policyName("Policy1")
 ///             .policySettings(PolicySettingsArgs.builder()
+///                 .captchaExpirationInMinutes(30)
 ///                 .customBlockResponseBody("PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==")
 ///                 .customBlockResponseStatusCode(429)
 ///                 .enabledState("Enabled")
@@ -483,47 +801,97 @@ import 'sku_response.dart';
 ///                 priority: 2,
 ///                 ruleType: azure_native.frontdoor.RuleType.MatchRule,
 ///             },
+///             {
+///                 action: azure_native.frontdoor.ActionType.CAPTCHA,
+///                 matchConditions: [{
+///                     matchValue: [
+///                         "AzureBackup",
+///                         "AzureBotService",
+///                     ],
+///                     matchVariable: azure_native.frontdoor.MatchVariable.RemoteAddr,
+///                     operator: azure_native.frontdoor.Operator.ServiceTagMatch,
+///                 }],
+///                 name: "Rule3",
+///                 priority: 1,
+///                 rateLimitThreshold: 1000,
+///                 ruleType: azure_native.frontdoor.RuleType.RateLimitRule,
+///             },
 ///         ],
 ///     },
 ///     location: "WestUs",
 ///     managedRules: {
-///         managedRuleSets: [{
-///             exclusions: [{
-///                 matchVariable: azure_native.frontdoor.ManagedRuleExclusionMatchVariable.RequestHeaderNames,
-///                 selector: "User-Agent",
-///                 selectorMatchOperator: azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.Equals,
-///             }],
-///             ruleGroupOverrides: [{
-///                 exclusions: [{
-///                     matchVariable: azure_native.frontdoor.ManagedRuleExclusionMatchVariable.RequestCookieNames,
-///                     selector: "token",
-///                     selectorMatchOperator: azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.StartsWith,
-///                 }],
-///                 ruleGroupName: "SQLI",
-///                 rules: [
+///         exceptionsList: {
+///             exceptions: [{
+///                 matchValues: ["Mozilla"],
+///                 matchVariable: azure_native.frontdoor.ExceptionMatchVariable.RequestHeaderNames,
+///                 scopes: [
 ///                     {
-///                         action: azure_native.frontdoor.ActionType.Redirect,
-///                         enabledState: azure_native.frontdoor.ManagedRuleEnabledState.Enabled,
-///                         exclusions: [{
-///                             matchVariable: azure_native.frontdoor.ManagedRuleExclusionMatchVariable.QueryStringArgNames,
-///                             selector: "query",
-///                             selectorMatchOperator: azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.Equals,
-///                         }],
-///                         ruleId: "942100",
+///                         ruleSetType: "Microsoft_DefaultRuleSet",
+///                         ruleSetVersion: "2.2",
 ///                     },
 ///                     {
-///                         enabledState: azure_native.frontdoor.ManagedRuleEnabledState.Disabled,
-///                         ruleId: "942110",
+///                         ruleSetType: "Microsoft_HTTPDDoSRuleSet",
+///                         ruleSetVersion: "1.0",
 ///                     },
 ///                 ],
+///                 selector: "User-Agent",
+///                 selectorMatchOperator: azure_native.frontdoor.ExceptionSelectorMatchOperator.Equals,
+///                 valueMatchOperator: azure_native.frontdoor.ExceptionValueMatchOperator.Contains,
 ///             }],
-///             ruleSetAction: azure_native.frontdoor.ManagedRuleSetActionType.Block,
-///             ruleSetType: "DefaultRuleSet",
-///             ruleSetVersion: "1.0",
-///         }],
+///         },
+///         managedRuleSets: [
+///             {
+///                 exclusions: [{
+///                     matchVariable: azure_native.frontdoor.ManagedRuleExclusionMatchVariable.RequestHeaderNames,
+///                     selector: "User-Agent",
+///                     selectorMatchOperator: azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.Equals,
+///                 }],
+///                 ruleGroupOverrides: [{
+///                     exclusions: [{
+///                         matchVariable: azure_native.frontdoor.ManagedRuleExclusionMatchVariable.RequestCookieNames,
+///                         selector: "token",
+///                         selectorMatchOperator: azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.StartsWith,
+///                     }],
+///                     ruleGroupName: "SQLI",
+///                     rules: [
+///                         {
+///                             action: azure_native.frontdoor.ActionType.Redirect,
+///                             enabledState: azure_native.frontdoor.ManagedRuleEnabledState.Enabled,
+///                             exclusions: [{
+///                                 matchVariable: azure_native.frontdoor.ManagedRuleExclusionMatchVariable.QueryStringArgNames,
+///                                 selector: "query",
+///                                 selectorMatchOperator: azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.Equals,
+///                             }],
+///                             ruleId: "942100",
+///                         },
+///                         {
+///                             enabledState: azure_native.frontdoor.ManagedRuleEnabledState.Disabled,
+///                             ruleId: "942110",
+///                         },
+///                     ],
+///                 }],
+///                 ruleSetAction: azure_native.frontdoor.ManagedRuleSetActionType.Block,
+///                 ruleSetType: "Microsoft_DefaultRuleSet",
+///                 ruleSetVersion: "2.2",
+///             },
+///             {
+///                 ruleGroupOverrides: [{
+///                     ruleGroupName: "ExcessiveRequests",
+///                     rules: [{
+///                         action: azure_native.frontdoor.ActionType.Block,
+///                         enabledState: azure_native.frontdoor.ManagedRuleEnabledState.Enabled,
+///                         ruleId: "500100",
+///                         sensitivity: azure_native.frontdoor.SensitivityType.High,
+///                     }],
+///                 }],
+///                 ruleSetType: "Microsoft_HTTPDDoSRuleSet",
+///                 ruleSetVersion: "1.0",
+///             },
+///         ],
 ///     },
 ///     policyName: "Policy1",
 ///     policySettings: {
+///         captchaExpirationInMinutes: 30,
 ///         customBlockResponseBody: "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==",
 ///         customBlockResponseStatusCode: 429,
 ///         enabledState: azure_native.frontdoor.PolicyEnabledState.Enabled,
@@ -588,47 +956,97 @@ import 'sku_response.dart';
 ///                 "priority": 2,
 ///                 "rule_type": azure_native.frontdoor.RuleType.MATCH_RULE,
 ///             },
+///             {
+///                 "action": azure_native.frontdoor.ActionType.CAPTCHA,
+///                 "match_conditions": [{
+///                     "match_value": [
+///                         "AzureBackup",
+///                         "AzureBotService",
+///                     ],
+///                     "match_variable": azure_native.frontdoor.MatchVariable.REMOTE_ADDR,
+///                     "operator": azure_native.frontdoor.Operator.SERVICE_TAG_MATCH,
+///                 }],
+///                 "name": "Rule3",
+///                 "priority": 1,
+///                 "rate_limit_threshold": 1000,
+///                 "rule_type": azure_native.frontdoor.RuleType.RATE_LIMIT_RULE,
+///             },
 ///         ],
 ///     },
 ///     location="WestUs",
 ///     managed_rules={
-///         "managed_rule_sets": [{
-///             "exclusions": [{
-///                 "match_variable": azure_native.frontdoor.ManagedRuleExclusionMatchVariable.REQUEST_HEADER_NAMES,
-///                 "selector": "User-Agent",
-///                 "selector_match_operator": azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.EQUALS,
-///             }],
-///             "rule_group_overrides": [{
-///                 "exclusions": [{
-///                     "match_variable": azure_native.frontdoor.ManagedRuleExclusionMatchVariable.REQUEST_COOKIE_NAMES,
-///                     "selector": "token",
-///                     "selector_match_operator": azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.STARTS_WITH,
-///                 }],
-///                 "rule_group_name": "SQLI",
-///                 "rules": [
+///         "exceptions_list": {
+///             "exceptions": [{
+///                 "match_values": ["Mozilla"],
+///                 "match_variable": azure_native.frontdoor.ExceptionMatchVariable.REQUEST_HEADER_NAMES,
+///                 "scopes": [
 ///                     {
-///                         "action": azure_native.frontdoor.ActionType.REDIRECT,
-///                         "enabled_state": azure_native.frontdoor.ManagedRuleEnabledState.ENABLED,
-///                         "exclusions": [{
-///                             "match_variable": azure_native.frontdoor.ManagedRuleExclusionMatchVariable.QUERY_STRING_ARG_NAMES,
-///                             "selector": "query",
-///                             "selector_match_operator": azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.EQUALS,
-///                         }],
-///                         "rule_id": "942100",
+///                         "rule_set_type": "Microsoft_DefaultRuleSet",
+///                         "rule_set_version": "2.2",
 ///                     },
 ///                     {
-///                         "enabled_state": azure_native.frontdoor.ManagedRuleEnabledState.DISABLED,
-///                         "rule_id": "942110",
+///                         "rule_set_type": "Microsoft_HTTPDDoSRuleSet",
+///                         "rule_set_version": "1.0",
 ///                     },
 ///                 ],
+///                 "selector": "User-Agent",
+///                 "selector_match_operator": azure_native.frontdoor.ExceptionSelectorMatchOperator.EQUALS,
+///                 "value_match_operator": azure_native.frontdoor.ExceptionValueMatchOperator.CONTAINS,
 ///             }],
-///             "rule_set_action": azure_native.frontdoor.ManagedRuleSetActionType.BLOCK,
-///             "rule_set_type": "DefaultRuleSet",
-///             "rule_set_version": "1.0",
-///         }],
+///         },
+///         "managed_rule_sets": [
+///             {
+///                 "exclusions": [{
+///                     "match_variable": azure_native.frontdoor.ManagedRuleExclusionMatchVariable.REQUEST_HEADER_NAMES,
+///                     "selector": "User-Agent",
+///                     "selector_match_operator": azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.EQUALS,
+///                 }],
+///                 "rule_group_overrides": [{
+///                     "exclusions": [{
+///                         "match_variable": azure_native.frontdoor.ManagedRuleExclusionMatchVariable.REQUEST_COOKIE_NAMES,
+///                         "selector": "token",
+///                         "selector_match_operator": azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.STARTS_WITH,
+///                     }],
+///                     "rule_group_name": "SQLI",
+///                     "rules": [
+///                         {
+///                             "action": azure_native.frontdoor.ActionType.REDIRECT,
+///                             "enabled_state": azure_native.frontdoor.ManagedRuleEnabledState.ENABLED,
+///                             "exclusions": [{
+///                                 "match_variable": azure_native.frontdoor.ManagedRuleExclusionMatchVariable.QUERY_STRING_ARG_NAMES,
+///                                 "selector": "query",
+///                                 "selector_match_operator": azure_native.frontdoor.ManagedRuleExclusionSelectorMatchOperator.EQUALS,
+///                             }],
+///                             "rule_id": "942100",
+///                         },
+///                         {
+///                             "enabled_state": azure_native.frontdoor.ManagedRuleEnabledState.DISABLED,
+///                             "rule_id": "942110",
+///                         },
+///                     ],
+///                 }],
+///                 "rule_set_action": azure_native.frontdoor.ManagedRuleSetActionType.BLOCK,
+///                 "rule_set_type": "Microsoft_DefaultRuleSet",
+///                 "rule_set_version": "2.2",
+///             },
+///             {
+///                 "rule_group_overrides": [{
+///                     "rule_group_name": "ExcessiveRequests",
+///                     "rules": [{
+///                         "action": azure_native.frontdoor.ActionType.BLOCK,
+///                         "enabled_state": azure_native.frontdoor.ManagedRuleEnabledState.ENABLED,
+///                         "rule_id": "500100",
+///                         "sensitivity": azure_native.frontdoor.SensitivityType.HIGH,
+///                     }],
+///                 }],
+///                 "rule_set_type": "Microsoft_HTTPDDoSRuleSet",
+///                 "rule_set_version": "1.0",
+///             },
+///         ],
 ///     },
 ///     policy_name="Policy1",
 ///     policy_settings={
+///         "captcha_expiration_in_minutes": 30,
 ///         "custom_block_response_body": "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==",
 ///         "custom_block_response_status_code": 429,
 ///         "enabled_state": azure_native.frontdoor.PolicyEnabledState.ENABLED,
@@ -684,8 +1102,32 @@ import 'sku_response.dart';
 ///             name: Rule2
 ///             priority: 2
 ///             ruleType: MatchRule
+///           - action: CAPTCHA
+///             matchConditions:
+///               - matchValue:
+///                   - AzureBackup
+///                   - AzureBotService
+///                 matchVariable: RemoteAddr
+///                 operator: ServiceTagMatch
+///             name: Rule3
+///             priority: 1
+///             rateLimitThreshold: 1000
+///             ruleType: RateLimitRule
 ///       location: WestUs
 ///       managedRules:
+///         exceptionsList:
+///           exceptions:
+///             - matchValues:
+///                 - Mozilla
+///               matchVariable: RequestHeaderNames
+///               scopes:
+///                 - ruleSetType: Microsoft_DefaultRuleSet
+///                   ruleSetVersion: '2.2'
+///                 - ruleSetType: Microsoft_HTTPDDoSRuleSet
+///                   ruleSetVersion: '1.0'
+///               selector: User-Agent
+///               selectorMatchOperator: Equals
+///               valueMatchOperator: Contains
 ///         managedRuleSets:
 ///           - exclusions:
 ///               - matchVariable: RequestHeaderNames
@@ -708,10 +1150,20 @@ import 'sku_response.dart';
 ///                   - enabledState: Disabled
 ///                     ruleId: '942110'
 ///             ruleSetAction: Block
-///             ruleSetType: DefaultRuleSet
+///             ruleSetType: Microsoft_DefaultRuleSet
+///             ruleSetVersion: '2.2'
+///           - ruleGroupOverrides:
+///               - ruleGroupName: ExcessiveRequests
+///                 rules:
+///                   - action: Block
+///                     enabledState: Enabled
+///                     ruleId: '500100'
+///                     sensitivity: High
+///             ruleSetType: Microsoft_HTTPDDoSRuleSet
 ///             ruleSetVersion: '1.0'
 ///       policyName: Policy1
 ///       policySettings:
+///         captchaExpirationInMinutes: 30
 ///         customBlockResponseBody: PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==
 ///         customBlockResponseStatusCode: 429
 ///         enabledState: Enabled
@@ -759,6 +1211,7 @@ class Policy extends pulumi.CustomResource {
   late final pulumi.Output<PolicySettingsResponse?> policySettings;
   /// Provisioning state of the policy.
   late final pulumi.Output<String> provisioningState;
+  /// Resource status of the policy.
   late final pulumi.Output<String> resourceState;
   /// Describes Routing Rules associated with this Web Application Firewall policy.
   late final pulumi.Output<List<Map<String, dynamic>>> routingRuleLinks;

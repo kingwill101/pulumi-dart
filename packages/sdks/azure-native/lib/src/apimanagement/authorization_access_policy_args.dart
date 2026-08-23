@@ -7,6 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_apimanagement_authorization_access_policy_args_doc}
 class AuthorizationAccessPolicyArgs {
+  /// The allowed Azure Active Directory Application IDs
+  final pulumi.Input<List<String>>? appIds;
   /// Identifier of the authorization access policy.
   final pulumi.Input<String>? authorizationAccessPolicyId;
   /// Identifier of the authorization.
@@ -23,6 +25,7 @@ class AuthorizationAccessPolicyArgs {
   final pulumi.Input<String>? tenantId;
 
   /// Creates a new [AuthorizationAccessPolicyArgs].
+  /// [appIds] The allowed Azure Active Directory Application IDs
   /// [authorizationAccessPolicyId] Identifier of the authorization access policy.
   /// [authorizationId] Identifier of the authorization.
   /// [authorizationProviderId] Identifier of the authorization provider.
@@ -31,6 +34,7 @@ class AuthorizationAccessPolicyArgs {
   /// [serviceName] The name of the API Management service.
   /// [tenantId] The Tenant Id
   const AuthorizationAccessPolicyArgs({
+    this.appIds,
     this.authorizationAccessPolicyId,
     required this.authorizationId,
     required this.authorizationProviderId,
@@ -42,6 +46,7 @@ class AuthorizationAccessPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'appIds': ?appIds,
       'authorizationAccessPolicyId': ?authorizationAccessPolicyId,
       'authorizationId': authorizationId,
       'authorizationProviderId': authorizationProviderId,
@@ -54,6 +59,7 @@ class AuthorizationAccessPolicyArgs {
 
   factory AuthorizationAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationAccessPolicyArgs(
+      appIds: (() { final guardedValue = map['appIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       authorizationAccessPolicyId: (() { final guardedValue = map['authorizationAccessPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationId: pulumi.Input.fromValue(map['authorizationId'] as String),
       authorizationProviderId: pulumi.Input.fromValue(map['authorizationProviderId'] as String),
@@ -64,4 +70,3 @@ class AuthorizationAccessPolicyArgs {
     );
   }
 }
-

@@ -53,4 +53,3 @@ class SimpleSchedulePolicyV2Response {
     );
   }
 }
-

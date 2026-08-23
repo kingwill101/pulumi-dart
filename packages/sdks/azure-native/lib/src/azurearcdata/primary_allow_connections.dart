@@ -15,4 +15,3 @@ enum PrimaryAllowConnections {
     throw ArgumentError('Unknown PrimaryAllowConnections value: $value');
   }
 }
-

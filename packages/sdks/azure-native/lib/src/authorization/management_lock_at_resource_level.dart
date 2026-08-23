@@ -62,6 +62,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_managementlockatresourcelevel" "managementLockAtResourceLevel" {
+///   level                       = "ReadOnly"
+///   lock_name                   = "testlock"
+///   parent_resource_path        = "parentResourcePath"
+///   resource_group_name         = "resourcegroupname"
+///   resource_name               = "teststorageaccount"
+///   resource_provider_namespace = "Microsoft.Storage"
+///   resource_type               = "storageAccounts"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.ManagementLockAtResourceLevel;
 /// import com.pulumi.azurenative.authorization.ManagementLockAtResourceLevelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

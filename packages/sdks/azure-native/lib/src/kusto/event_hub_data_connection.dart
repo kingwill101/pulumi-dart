@@ -55,6 +55,24 @@ import 'event_hub_data_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_eventhubdataconnection" "eventHubDataConnection" {
+///   cluster_name         = "kustoCluster"
+///   data_connection_name = "dataConnectionTest"
+///   database_name        = "KustoDatabase1"
+///   resource_group_name  = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'event_hub_data_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.EventHubDataConnection;
 /// import com.pulumi.azurenative.kusto.EventHubDataConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,6 +202,29 @@ import 'event_hub_data_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_eventhubdataconnection" "eventHubDataConnection" {
+///   cluster_name                 = "kustoCluster"
+///   consumer_group               = "testConsumerGroup1"
+///   data_connection_name         = "dataConnectionTest"
+///   database_name                = "KustoDatabase8"
+///   event_hub_resource_id        = "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.EventHub/namespaces/eventhubTestns1/eventhubs/eventhubTest1"
+///   kind                         = "EventHub"
+///   location                     = "westus"
+///   managed_identity_resource_id = "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentityTest1"
+///   resource_group_name          = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +233,8 @@ import 'event_hub_data_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.EventHubDataConnection;
 /// import com.pulumi.azurenative.kusto.EventHubDataConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,6 +364,24 @@ import 'event_hub_data_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_eventhubdataconnection" "eventHubDataConnection" {
+///   cluster_name         = "kustoCluster"
+///   data_connection_name = "dataConnectionTest"
+///   database_name        = "KustoDatabase8"
+///   resource_group_name  = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +390,8 @@ import 'event_hub_data_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.EventHubDataConnection;
 /// import com.pulumi.azurenative.kusto.EventHubDataConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

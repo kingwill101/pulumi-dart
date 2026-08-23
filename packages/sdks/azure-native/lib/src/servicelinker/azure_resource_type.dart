@@ -14,4 +14,3 @@ enum AzureResourceType {
     throw ArgumentError('Unknown AzureResourceType value: $value');
   }
 }
-

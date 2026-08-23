@@ -1,6 +1,6 @@
 /// Big data pool reference type.
 enum BigDataPoolReferenceType {
-  valueBigDataPoolReference("BigDataPoolReference");
+  bigDataPoolReference("BigDataPoolReference");
 
   const BigDataPoolReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum BigDataPoolReferenceType {
     throw ArgumentError('Unknown BigDataPoolReferenceType value: $value');
   }
 }
-

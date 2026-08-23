@@ -14,4 +14,3 @@ enum PipelineRunSourceType {
     throw ArgumentError('Unknown PipelineRunSourceType value: $value');
   }
 }
-

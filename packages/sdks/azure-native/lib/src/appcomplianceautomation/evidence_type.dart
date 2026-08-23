@@ -16,4 +16,3 @@ enum EvidenceType {
     throw ArgumentError('Unknown EvidenceType value: $value');
   }
 }
-

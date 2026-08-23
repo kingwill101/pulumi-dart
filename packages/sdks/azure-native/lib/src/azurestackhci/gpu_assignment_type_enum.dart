@@ -15,4 +15,3 @@ enum GpuAssignmentTypeEnum {
     throw ArgumentError('Unknown GpuAssignmentTypeEnum value: $value');
   }
 }
-

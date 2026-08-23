@@ -16,4 +16,3 @@ enum ConnectionMonitorTestConfigurationProtocol {
     throw ArgumentError('Unknown ConnectionMonitorTestConfigurationProtocol value: $value');
   }
 }
-

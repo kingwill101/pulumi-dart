@@ -495,6 +495,8 @@ Future<GetMigrateProjectsControllerMigrateProjectResult> getMigrateProjectsContr
 /// Get a MigrationEntity
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
+///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_migration_entity_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMigrationEntityResult> getMigrationEntity(
@@ -513,6 +515,8 @@ Future<GetMigrationEntityResult> getMigrationEntity(
 /// Get a MigrationEntityGroup
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
+///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_migration_entity_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMigrationEntityGroupResult> getMigrationEntityGroup(
@@ -797,6 +801,8 @@ Future<GetSqlCollectorOperationResult> getSqlCollectorOperation(
 /// Get a Task
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
+///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_task_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTaskResult> getTask(
@@ -853,6 +859,8 @@ Future<GetVmwareCollectorsOperationResult> getVmwareCollectorsOperation(
 /// Get a Wave
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
+///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrate_get_wave_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWaveResult> getWave(

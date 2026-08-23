@@ -1,6 +1,6 @@
 /// [Required] Specifies the type of signal to monitor.
 enum MonitorComputeType {
-  valueServerlessSpark("ServerlessSpark");
+  serverlessSpark("ServerlessSpark");
 
   const MonitorComputeType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum MonitorComputeType {
     throw ArgumentError('Unknown MonitorComputeType value: $value');
   }
 }
-

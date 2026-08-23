@@ -23,7 +23,7 @@ class RoleAssignmentArgs {
   final pulumi.Input<String>? roleAssignmentName;
   /// The role definition ID.
   final pulumi.Input<String> roleDefinitionId;
-  /// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 
   /// Creates a new [RoleAssignmentArgs].
@@ -35,7 +35,7 @@ class RoleAssignmentArgs {
   /// [principalType] The principal type of the assigned principal ID.
   /// [roleAssignmentName] The name of the role assignment. It can be any valid GUID.
   /// [roleDefinitionId] The role definition ID.
-  /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   const RoleAssignmentArgs({
     this.condition,
     this.conditionVersion,
@@ -76,4 +76,3 @@ class RoleAssignmentArgs {
     );
   }
 }
-

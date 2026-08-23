@@ -20,4 +20,3 @@ enum NsgProtocol {
     throw ArgumentError('Unknown NsgProtocol value: $value');
   }
 }
-

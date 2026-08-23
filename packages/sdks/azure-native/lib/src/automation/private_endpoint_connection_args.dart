@@ -19,7 +19,7 @@ class PrivateEndpointConnectionArgs {
   final pulumi.Input<String>? privateEndpointConnectionName;
   /// Connection State of the Private Endpoint Connection.
   final pulumi.Input<PrivateLinkServiceConnectionStateProperty>? privateLinkServiceConnectionState;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [PrivateEndpointConnectionArgs].
@@ -28,7 +28,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateEndpoint] Private endpoint which the connection belongs to.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] Connection State of the Private Endpoint Connection.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const PrivateEndpointConnectionArgs({
     required this.automationAccountName,
     this.groupIds,
@@ -60,4 +60,3 @@ class PrivateEndpointConnectionArgs {
     );
   }
 }
-

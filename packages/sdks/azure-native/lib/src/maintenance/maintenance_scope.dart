@@ -20,4 +20,3 @@ enum MaintenanceScope {
     throw ArgumentError('Unknown MaintenanceScope value: $value');
   }
 }
-

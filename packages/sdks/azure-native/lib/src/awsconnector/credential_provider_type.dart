@@ -14,4 +14,3 @@ enum CredentialProviderType {
     throw ArgumentError('Unknown CredentialProviderType value: $value');
   }
 }
-

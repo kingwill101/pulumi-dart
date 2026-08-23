@@ -19,4 +19,3 @@ enum FreeLimitExhaustionBehavior {
     throw ArgumentError('Unknown FreeLimitExhaustionBehavior value: $value');
   }
 }
-

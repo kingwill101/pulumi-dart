@@ -15,4 +15,3 @@ enum SessionAffinity {
     throw ArgumentError('Unknown SessionAffinity value: $value');
   }
 }
-

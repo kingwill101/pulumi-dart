@@ -47,4 +47,3 @@ class SqlAssessmentV3OperationArgs {
     );
   }
 }
-

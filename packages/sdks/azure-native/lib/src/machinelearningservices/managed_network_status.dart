@@ -1,7 +1,7 @@
 /// Status for the managed network of a machine learning workspace.
 enum ManagedNetworkStatus {
-  valueInactive("Inactive"),
-  valueActive("Active");
+  inactive("Inactive"),
+  active("Active");
 
   const ManagedNetworkStatus(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ManagedNetworkStatus {
     throw ArgumentError('Unknown ManagedNetworkStatus value: $value');
   }
 }
-

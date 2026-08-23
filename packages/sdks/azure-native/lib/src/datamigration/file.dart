@@ -66,6 +66,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_file" "file" {
+///   file_name    = "x114d023d8"
+///   group_name   = "DmsSdkRg"
+///   project_name = "DmsSdkProject"
+///   properties = {
+///     file_path = "DmsSdkFilePath/DmsSdkFile.sql"
+///   }
+///   service_name = "DmsSdkService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.File;
 /// import com.pulumi.azurenative.datamigration.FileArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.ProjectFilePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

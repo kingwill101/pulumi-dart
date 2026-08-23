@@ -15,4 +15,3 @@ enum AdminState {
     throw ArgumentError('Unknown AdminState value: $value');
   }
 }
-

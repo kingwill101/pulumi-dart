@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'static_site_linked_backend_for_build_args.dart';
+import 'system_data_response.dart';
 
 /// Static Site Linked Backend ARM resource.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -61,6 +62,26 @@ import 'static_site_linked_backend_for_build_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_staticsitelinkedbackendforbuild" "staticSiteLinkedBackendForBuild" {
+///   backend_resource_id = "/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/backendRg/providers/Microsoft.Web/sites/testBackend"
+///   environment_name    = "default"
+///   linked_backend_name = "testBackend"
+///   name                = "testStaticSite0"
+///   region              = "West US 2"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +90,8 @@ import 'static_site_linked_backend_for_build_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.web.StaticSiteLinkedBackendForBuild;
 /// import com.pulumi.azurenative.web.StaticSiteLinkedBackendForBuildArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,13 +179,15 @@ class StaticSiteLinkedBackendForBuild extends pulumi.CustomResource {
   late final pulumi.Output<String> createdOn;
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning state of the linking process.
   late final pulumi.Output<String> provisioningState;
   /// The region of the backend linked to the static site
   late final pulumi.Output<String?> region;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [StaticSiteLinkedBackendForBuild].
@@ -188,6 +211,7 @@ class StaticSiteLinkedBackendForBuild extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     region = registerOutput<String?>('region');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

@@ -15,4 +15,3 @@ enum IstioIngressGatewayMode {
     throw ArgumentError('Unknown IstioIngressGatewayMode value: $value');
   }
 }
-

@@ -131,6 +131,46 @@ import 'assessment_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_assessment" "assessment" {
+///   assessment_name = "assessment_5_14_2019_16_48_47"
+///   e_tag           = "\"1e000c2c-0000-0d00-0000-5cdaa4190000\""
+///   group_name      = "Group2"
+///   project_name    = "abgoyalWEselfhostb72bproject"
+///   properties = {
+///     azure_disk_type          = "StandardOrPremium"
+///     azure_hybrid_use_benefit = "Yes"
+///     azure_location           = "NorthEurope"
+///     azure_offer_code         = "MSAZR0003P"
+///     azure_pricing_tier       = "Standard"
+///     azure_storage_redundancy = "LocallyRedundant"
+///     azure_vm_families        = ["Dv2_series", "F_series", "Dv3_series", "DS_series", "DSv2_series", "Fs_series", "Dsv3_series", "Ev3_series", "Esv3_series", "D_series", "M_series", "Fsv2_series", "H_series"]
+///     currency                 = "USD"
+///     discount_percentage      = 100
+///     percentile               = "Percentile95"
+///     reserved_instance        = "RI3Year"
+///     scaling_factor           = 1
+///     sizing_criterion         = "PerformanceBased"
+///     stage                    = "InProgress"
+///     time_range               = "Day"
+///     vm_uptime = {
+///       days_per_month = 31
+///       hours_per_day  = 24
+///     }
+///   }
+///   resource_group_name = "abgoyal-westEurope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +181,8 @@ import 'assessment_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.AssessmentArgs;
 /// import com.pulumi.azurenative.migrate.inputs.AssessmentPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.VmUptimeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -282,16 +322,16 @@ import 'assessment_properties_response.dart';
 ///             azure_native.migrate.AzureVmFamily.H_SERIES,
 ///         ],
 ///         "currency": azure_native.migrate.Currency.USD,
-///         "discount_percentage": 100,
+///         "discount_percentage": float(100),
 ///         "percentile": azure_native.migrate.Percentile.PERCENTILE95,
 ///         "reserved_instance": azure_native.migrate.ReservedInstance.RI3_YEAR,
-///         "scaling_factor": 1,
+///         "scaling_factor": float(1),
 ///         "sizing_criterion": azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
 ///         "stage": azure_native.migrate.AssessmentStage.IN_PROGRESS,
 ///         "time_range": azure_native.migrate.TimeRange.DAY,
 ///         "vm_uptime": {
-///             "days_per_month": 31,
-///             "hours_per_day": 24,
+///             "days_per_month": float(31),
+///             "hours_per_day": float(24),
 ///         },
 ///     },
 ///     resource_group_name="abgoyal-westEurope")

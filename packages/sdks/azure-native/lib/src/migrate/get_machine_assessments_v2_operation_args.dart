@@ -40,4 +40,3 @@ class GetMachineAssessmentsV2OperationArgs {
     );
   }
 }
-

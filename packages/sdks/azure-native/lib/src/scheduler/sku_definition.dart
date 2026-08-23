@@ -17,4 +17,3 @@ enum SkuDefinition {
     throw ArgumentError('Unknown SkuDefinition value: $value');
   }
 }
-

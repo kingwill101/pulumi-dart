@@ -18,4 +18,3 @@ enum ShareStatus {
     throw ArgumentError('Unknown ShareStatus value: $value');
   }
 }
-

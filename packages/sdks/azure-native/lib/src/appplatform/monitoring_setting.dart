@@ -66,6 +66,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_monitoringsetting" "monitoringSetting" {
+///   properties = {
+///     app_insights_instrumentation_key = "00000000-0000-0000-0000-000000000000"
+///     app_insights_sampling_rate       = 10
+///     trace_enabled                    = true
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.MonitoringSetting;
 /// import com.pulumi.azurenative.appplatform.MonitoringSettingArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.MonitoringSettingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,7 +147,7 @@ import 'system_data_response.dart';
 /// monitoring_setting = azure_native.appplatform.MonitoringSetting("monitoringSetting",
 ///     properties={
 ///         "app_insights_instrumentation_key": "00000000-0000-0000-0000-000000000000",
-///         "app_insights_sampling_rate": 10,
+///         "app_insights_sampling_rate": float(10),
 ///         "trace_enabled": True,
 ///     },
 ///     resource_group_name="myResourceGroup",

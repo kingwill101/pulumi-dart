@@ -68,4 +68,3 @@ class MongoDbV2Sink {
     );
   }
 }
-

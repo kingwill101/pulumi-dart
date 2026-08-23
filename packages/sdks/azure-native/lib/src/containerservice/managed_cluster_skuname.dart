@@ -15,4 +15,3 @@ enum ManagedClusterSKUName {
     throw ArgumentError('Unknown ManagedClusterSKUName value: $value');
   }
 }
-

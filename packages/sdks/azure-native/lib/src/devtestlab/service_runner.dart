@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_properties_response.dart';
 import 'service_runner_args.dart';
+import 'system_data_response.dart';
 
 /// A container for a managed identity to execute DevTest lab services.
 ///
@@ -76,6 +77,33 @@ import 'service_runner_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_servicerunner" "serviceRunner" {
+///   identity = {
+///     client_secret_url = "{identityClientSecretUrl}"
+///     principal_id      = "{identityPrincipalId}"
+///     tenant_id         = "{identityTenantId}"
+///     type              = "{identityType}"
+///   }
+///   lab_name            = "{devtestlabName}"
+///   location            = "{location}"
+///   name                = "{servicerunnerName}"
+///   resource_group_name = "resourceGroupName"
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +113,8 @@ import 'service_runner_args.dart';
 /// import com.pulumi.azurenative.devtestlab.ServiceRunner;
 /// import com.pulumi.azurenative.devtestlab.ServiceRunnerArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.IdentityPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,13 +222,15 @@ class ServiceRunner extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// The identity of the resource.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [ServiceRunner].
@@ -221,6 +251,7 @@ class ServiceRunner extends pulumi.CustomResource {
     identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

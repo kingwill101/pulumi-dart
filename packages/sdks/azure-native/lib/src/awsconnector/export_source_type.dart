@@ -15,4 +15,3 @@ enum ExportSourceType {
     throw ArgumentError('Unknown ExportSourceType value: $value');
   }
 }
-

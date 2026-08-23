@@ -15,4 +15,3 @@ enum ReadWriteEndpointFailoverPolicy {
     throw ArgumentError('Unknown ReadWriteEndpointFailoverPolicy value: $value');
   }
 }
-

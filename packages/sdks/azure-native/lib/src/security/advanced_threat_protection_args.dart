@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdvancedThreatProtectionArgs {
   /// Indicates whether Advanced Threat Protection is enabled.
   final pulumi.Input<bool>? isEnabled;
-  /// The identifier of the resource.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// Advanced Threat Protection setting name.
   final pulumi.Input<String>? settingName;
 
   /// Creates a new [AdvancedThreatProtectionArgs].
   /// [isEnabled] Indicates whether Advanced Threat Protection is enabled.
-  /// [resourceId] The identifier of the resource.
+  /// [resourceId] The fully qualified Azure Resource manager identifier of the resource.
   /// [settingName] Advanced Threat Protection setting name.
   const AdvancedThreatProtectionArgs({
     this.isEnabled,
@@ -40,4 +40,3 @@ class AdvancedThreatProtectionArgs {
     );
   }
 }
-

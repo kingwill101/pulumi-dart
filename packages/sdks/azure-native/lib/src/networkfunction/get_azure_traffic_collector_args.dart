@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureTrafficCollectorArgs {
   /// Azure Traffic Collector name
   final pulumi.Input<String> azureTrafficCollectorName;
-  /// The name of the resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAzureTrafficCollectorArgs].
   /// [azureTrafficCollectorName] Azure Traffic Collector name
-  /// [resourceGroupName] The name of the resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetAzureTrafficCollectorArgs({
     required this.azureTrafficCollectorName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetAzureTrafficCollectorArgs {
     );
   }
 }
-

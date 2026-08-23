@@ -16,4 +16,3 @@ enum NotificationOptions {
     throw ArgumentError('Unknown NotificationOptions value: $value');
   }
 }
-

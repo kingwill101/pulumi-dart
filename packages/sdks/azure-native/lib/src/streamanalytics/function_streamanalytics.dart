@@ -91,6 +91,36 @@ import 'function_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_function" "function" {
+///   function_name = "function8197"
+///   job_name      = "sj8653"
+///   properties = {
+///     "binding" = {
+///       "script" = "function (x, y) { return x + y; }"
+///       "type"   = "Microsoft.StreamAnalytics/JavascriptUdf"
+///     }
+///     "inputs" = [{
+///       "dataType" = "Any"
+///     }]
+///     "output" = {
+///       "dataType" = "Any"
+///     }
+///     "type" = "Scalar"
+///   }
+///   resource_group_name = "sjrg1637"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +129,8 @@ import 'function_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Function;
 /// import com.pulumi.azurenative.streamanalytics.FunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -328,6 +358,50 @@ import 'function_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_function" "function" {
+///   function_name = "function588"
+///   job_name      = "sj9093"
+///   properties = {
+///     "binding" = {
+///       "apiKey"    = "someApiKey=="
+///       "batchSize" = 1000
+///       "endpoint"  = "someAzureMLEndpointURL"
+///       "inputs" = {
+///         "columnNames" = [{
+///           "dataType" = "string"
+///           "mapTo"    = 0
+///           "name"     = "tweet"
+///         }]
+///         "name" = "input1"
+///       }
+///       "outputs" = [{
+///         "dataType" = "string"
+///         "name"     = "Sentiment"
+///       }]
+///       "type" = "Microsoft.MachineLearning/WebService"
+///     }
+///     "inputs" = [{
+///       "dataType" = "nvarchar(max)"
+///     }]
+///     "output" = {
+///       "dataType" = "nvarchar(max)"
+///     }
+///     "type" = "Scalar"
+///   }
+///   resource_group_name = "sjrg7"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -336,8 +410,8 @@ import 'function_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.streamanalytics.Function;
 /// import com.pulumi.azurenative.streamanalytics.FunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

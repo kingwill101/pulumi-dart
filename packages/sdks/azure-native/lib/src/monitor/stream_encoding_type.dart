@@ -19,4 +19,3 @@ enum StreamEncodingType {
     throw ArgumentError('Unknown StreamEncodingType value: $value');
   }
 }
-

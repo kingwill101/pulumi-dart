@@ -26,4 +26,3 @@ class K8sScheduling {
     );
   }
 }
-

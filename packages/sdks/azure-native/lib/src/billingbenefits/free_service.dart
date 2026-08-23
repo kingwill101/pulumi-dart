@@ -5,9 +5,11 @@ import 'plan_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
-/// The Free Services API includes operations for creating and managing free services.
+/// Free Services resource definition
 ///
 /// Uses Azure REST API version 2025-12-01-preview.
+///
+/// Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -70,6 +72,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_freeservice" "freeService" {
+///   end_at              = "2026-10-01T00:00:00Z"
+///   free_service_name   = "freeservice_20251001"
+///   location            = "global"
+///   product_code        = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///   resource_group_name = "resource_group_name_01"
+///   start_at            = "2025-10-01T00:00:00Z"
+///   tags = {
+///     "environment" = "production"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.FreeService;
 /// import com.pulumi.azurenative.billingbenefits.FreeServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

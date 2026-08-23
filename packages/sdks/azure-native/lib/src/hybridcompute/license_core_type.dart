@@ -15,4 +15,3 @@ enum LicenseCoreType {
     throw ArgumentError('Unknown LicenseCoreType value: $value');
   }
 }
-

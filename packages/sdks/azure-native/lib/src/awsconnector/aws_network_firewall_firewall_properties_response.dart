@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'subnet_mapping_response.dart';
+import 'subnet_mapping_network_firewall_firewall_response.dart';
 import 'tag_response.dart';
 
 /// Definition of awsNetworkFirewallFirewall
@@ -25,7 +25,7 @@ class AwsNetworkFirewallFirewallPropertiesResponse {
   /// Property subnetChangeProtection
   final pulumi.Input<bool>? subnetChangeProtection;
   /// Property subnetMappings
-  final pulumi.Input<List<SubnetMappingResponse>>? subnetMappings;
+  final pulumi.Input<List<SubnetMappingNetworkFirewallFirewallResponse>>? subnetMappings;
   /// Property tags
   final pulumi.Input<List<TagResponse>>? tags;
   /// Property vpcId
@@ -70,7 +70,7 @@ class AwsNetworkFirewallFirewallPropertiesResponse {
       'firewallPolicyArn': ?firewallPolicyArn,
       'firewallPolicyChangeProtection': ?firewallPolicyChangeProtection,
       'subnetChangeProtection': ?subnetChangeProtection,
-      'subnetMappings': ?pulumi.Input.mapOptionalInputValue<List<SubnetMappingResponse>, List<Map<String, dynamic>>>(subnetMappings, (value) => pulumi.Input.encodeList<SubnetMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnetMappings': ?pulumi.Input.mapOptionalInputValue<List<SubnetMappingNetworkFirewallFirewallResponse>, List<Map<String, dynamic>>>(subnetMappings, (value) => pulumi.Input.encodeList<SubnetMappingNetworkFirewallFirewallResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': ?vpcId,
     };
@@ -87,10 +87,9 @@ class AwsNetworkFirewallFirewallPropertiesResponse {
       firewallPolicyArn: (() { final guardedValue = map['firewallPolicyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firewallPolicyChangeProtection: (() { final guardedValue = map['firewallPolicyChangeProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       subnetChangeProtection: (() { final guardedValue = map['subnetChangeProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      subnetMappings: (() { final guardedValue = map['subnetMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubnetMappingResponse>(guardedValue, (value) => SubnetMappingResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      subnetMappings: (() { final guardedValue = map['subnetMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubnetMappingNetworkFirewallFirewallResponse>(guardedValue, (value) => SubnetMappingNetworkFirewallFirewallResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

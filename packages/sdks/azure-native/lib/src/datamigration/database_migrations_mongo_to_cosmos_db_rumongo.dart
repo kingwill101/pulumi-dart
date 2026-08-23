@@ -125,6 +125,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_databasemigrationsmongotocosmosdbrumongo" "databaseMigrationsMongoToCosmosDbRUMongo" {
+///   collection_list {
+///     source_collection = "sourceCol1"
+///     source_database   = "sourceDb1"
+///     target_collection = "targetCol1"
+///     target_database   = "targetDb1"
+///   }
+///   collection_list {
+///     source_collection = "sourceCol2"
+///     source_database   = "sourceDb2"
+///     target_collection = "sourceCol2"
+///     target_database   = "sourceDb2"
+///   }
+///   kind                = "MongoToCosmosDbMongo"
+///   migration_name      = "migrationRequest"
+///   migration_service   = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/MigrationServices/testMigrationService"
+///   resource_group_name = "testrg"
+///   scope               = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DocumentDB/mongoClusters/targetCosmosDbClusterName"
+///   source_mongo_connection = {
+///     host      = "abc.mongodb.com"
+///     password  = "placeholder"
+///     port      = 88
+///     use_ssl   = true
+///     user_name = "abc"
+///   }
+///   target_mongo_connection = {
+///     host      = "xyz.mongocluster.cosmos.azure.com"
+///     password  = "placeholder"
+///     port      = 10255
+///     use_ssl   = true
+///     user_name = "def"
+///   }
+///   target_resource_name = "targetCosmosDbClusterName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +181,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.DatabaseMigrationsMongoToCosmosDbRUMongoArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.MongoMigrationCollectionArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.MongoConnectionInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -411,6 +457,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_databasemigrationsmongotocosmosdbrumongo" "databaseMigrationsMongoToCosmosDbRUMongo" {
+///   collection_list {
+///     source_collection = "sourceCol1"
+///     source_database   = "sourceDb1"
+///     target_collection = "targetCol1"
+///     target_database   = "targetDb1"
+///   }
+///   collection_list {
+///     source_collection = "sourceCol2"
+///     source_database   = "sourceDb2"
+///   }
+///   kind                = "MongoToCosmosDbMongo"
+///   migration_name      = "migrationRequest"
+///   migration_service   = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/MigrationServices/testMigrationService"
+///   resource_group_name = "testrg"
+///   scope               = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DocumentDB/mongoClusters/targetCosmosDbClusterName"
+///   source_mongo_connection = {
+///     host      = "abc.mongodb.com"
+///     password  = "placeholder"
+///     port      = 88
+///     use_ssl   = true
+///     user_name = "abc"
+///   }
+///   target_mongo_connection = {
+///     connection_string = "placeholder"
+///   }
+///   target_resource_name = "targetCosmosDbClusterName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -421,8 +507,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datamigration.DatabaseMigrationsMongoToCosmosDbRUMongoArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.MongoMigrationCollectionArgs;
 /// import com.pulumi.azurenative.datamigration.inputs.MongoConnectionInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

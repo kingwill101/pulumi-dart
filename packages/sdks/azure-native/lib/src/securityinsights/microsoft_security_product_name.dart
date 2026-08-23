@@ -18,4 +18,3 @@ enum MicrosoftSecurityProductName {
     throw ArgumentError('Unknown MicrosoftSecurityProductName value: $value');
   }
 }
-

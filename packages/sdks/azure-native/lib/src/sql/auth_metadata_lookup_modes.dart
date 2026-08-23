@@ -16,4 +16,3 @@ enum AuthMetadataLookupModes {
     throw ArgumentError('Unknown AuthMetadataLookupModes value: $value');
   }
 }
-

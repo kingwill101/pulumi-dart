@@ -1,7 +1,7 @@
 /// The type of container to retrieve logs from.
 enum ContainerType {
-  valueStorageInitializer("StorageInitializer"),
-  valueInferenceServer("InferenceServer");
+  storageInitializer("StorageInitializer"),
+  inferenceServer("InferenceServer");
 
   const ContainerType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ContainerType {
     throw ArgumentError('Unknown ContainerType value: $value');
   }
 }
-

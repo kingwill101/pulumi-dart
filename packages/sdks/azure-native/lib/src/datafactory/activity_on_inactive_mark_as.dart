@@ -1,8 +1,8 @@
 /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 enum ActivityOnInactiveMarkAs {
-  valueSucceeded("Succeeded"),
-  valueFailed("Failed"),
-  valueSkipped("Skipped");
+  succeeded("Succeeded"),
+  failed("Failed"),
+  skipped("Skipped");
 
   const ActivityOnInactiveMarkAs(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ActivityOnInactiveMarkAs {
     throw ArgumentError('Unknown ActivityOnInactiveMarkAs value: $value');
   }
 }
-

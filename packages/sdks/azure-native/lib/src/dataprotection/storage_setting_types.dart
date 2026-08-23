@@ -16,4 +16,3 @@ enum StorageSettingTypes {
     throw ArgumentError('Unknown StorageSettingTypes value: $value');
   }
 }
-

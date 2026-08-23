@@ -18,4 +18,3 @@ enum AppType {
     throw ArgumentError('Unknown AppType value: $value');
   }
 }
-

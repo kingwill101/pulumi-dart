@@ -16,4 +16,3 @@ enum AkriConnectorsImagePullPolicy {
     throw ArgumentError('Unknown AkriConnectorsImagePullPolicy value: $value');
   }
 }
-

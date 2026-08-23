@@ -12,7 +12,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
 ///
-/// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -80,6 +80,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   destination = {
+///     "endpointType" = "EventHub"
+///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,6 +278,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   dead_letter_destination = {
+///     blob_container_name = "contosocontainer"
+///     endpoint_type       = "StorageBlob"
+///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///   }
+///   destination = {
+///     "endpointType" = "AzureFunction"
+///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Web/sites/ContosoSite/funtions/ContosoFunc"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -263,8 +318,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,6 +501,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   dead_letter_destination = {
+///     blob_container_name = "contosocontainer"
+///     endpoint_type       = "StorageBlob"
+///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///   }
+///   destination = {
+///     "endpointType" = "EventHub"
+///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -456,8 +541,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -639,6 +724,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   dead_letter_destination = {
+///     blob_container_name = "contosocontainer"
+///     endpoint_type       = "StorageBlob"
+///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///   }
+///   destination = {
+///     "endpointType" = "HybridConnection"
+///     "resourceId"   = "/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Relay/namespaces/ContosoNamespace/hybridConnections/HC1"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -649,8 +764,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -832,6 +947,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   dead_letter_destination = {
+///     blob_container_name = "contosocontainer"
+///     endpoint_type       = "StorageBlob"
+///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///   }
+///   destination = {
+///     "endpointType" = "ServiceBusQueue"
+///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/queues/SBQ"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -842,8 +987,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1025,6 +1170,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   dead_letter_destination = {
+///     blob_container_name = "contosocontainer"
+///     endpoint_type       = "StorageBlob"
+///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///   }
+///   destination = {
+///     "endpointType" = "ServiceBusTopic"
+///     "resourceId"   = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/topics/SBT"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1035,8 +1210,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1220,6 +1395,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   dead_letter_destination = {
+///     blob_container_name = "contosocontainer"
+///     endpoint_type       = "StorageBlob"
+///     resource_id         = "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///   }
+///   destination = {
+///     "endpointType" = "StorageQueue"
+///     "queueName"    = "queue1"
+///     "resourceId"   = "/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1230,8 +1436,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.StorageBlobDeadLetterDestinationArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1406,6 +1612,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   destination = {
+///     "endpointType" = "WebHook"
+///     "endpointUrl"  = "https://azurefunctionexample.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=PASSWORDCODE"
+///   }
+///   event_subscription_name = "examplesubscription1"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1415,8 +1646,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1568,6 +1799,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   destination = {
+///     "endpointType" = "WebHook"
+///     "endpointUrl"  = "https://requestb.in/15ksip71"
+///   }
+///   event_subscription_name = "examplesubscription10"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventHub/namespaces/examplenamespace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1577,8 +1833,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1730,6 +1986,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   destination = {
+///     "endpointType" = "WebHook"
+///     "endpointUrl"  = "https://requestb.in/15ksip71"
+///   }
+///   event_subscription_name = "examplesubscription2"
+///   filter = {
+///     is_subject_case_sensitive = false
+///     subject_begins_with       = "ExamplePrefix"
+///     subject_ends_with         = "ExampleSuffix"
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1739,8 +2020,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1888,6 +2169,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_eventsubscription" "eventSubscription" {
+///   destination = {
+///     "endpointType" = "WebHook"
+///     "endpointUrl"  = "https://requestb.in/15ksip71"
+///   }
+///   event_subscription_name = "examplesubscription3"
+///   filter = {
+///     is_subject_case_sensitive = false
+///   }
+///   scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1897,8 +2201,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.EventSubscription;
 /// import com.pulumi.azurenative.eventgrid.EventSubscriptionArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.EventSubscriptionFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

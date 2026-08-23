@@ -1,6 +1,6 @@
 /// Synapse notebook reference type.
 enum NotebookReferenceType {
-  valueNotebookReference("NotebookReference");
+  notebookReference("NotebookReference");
 
   const NotebookReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum NotebookReferenceType {
     throw ArgumentError('Unknown NotebookReferenceType value: $value');
   }
 }
-

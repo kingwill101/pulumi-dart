@@ -1,7 +1,7 @@
 /// Action that should be applied.
 enum ActionType {
-  valueAddActionGroups("AddActionGroups"),
-  valueRemoveAllActionGroups("RemoveAllActionGroups");
+  addActionGroups("AddActionGroups"),
+  removeAllActionGroups("RemoveAllActionGroups");
 
   const ActionType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ActionType {
     throw ArgumentError('Unknown ActionType value: $value');
   }
 }
-

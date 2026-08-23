@@ -1,7 +1,7 @@
 /// The activation Mode of the service package
 enum ServicePackageActivationMode {
-  sharedProcess("SharedProcess"),
-  exclusiveProcess("ExclusiveProcess");
+  valueSharedProcess("SharedProcess"),
+  valueExclusiveProcess("ExclusiveProcess");
 
   const ServicePackageActivationMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ServicePackageActivationMode {
     throw ArgumentError('Unknown ServicePackageActivationMode value: $value');
   }
 }
-

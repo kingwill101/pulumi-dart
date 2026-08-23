@@ -15,4 +15,3 @@ enum SecurityAlertPolicyUseServerDefault {
     throw ArgumentError('Unknown SecurityAlertPolicyUseServerDefault value: $value');
   }
 }
-

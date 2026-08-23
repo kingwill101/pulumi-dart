@@ -16,4 +16,3 @@ enum LedgerType {
     throw ArgumentError('Unknown LedgerType value: $value');
   }
 }
-

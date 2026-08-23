@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A collection of information about the state of the connection between service consumer and provider.
 class PrivateLinkServiceConnectionState {
-  /// A message indicating if changes on the service provider require any updates on the consumer.
+  /// Some RP chose "None". Other RPs use this for region expansion.
   final pulumi.Input<String>? actionsRequired;
-  /// The reason for approval/rejection of the connection.
+  /// User-defined message that, per NRP doc, may be used for approval-related message.
   final pulumi.Input<String>? description;
-  /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+  /// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -&gt; Approved (Service provider approves the connection request)\r\nPending -&gt; Rejected (Service provider rejects the connection request)\r\nPending -&gt; Disconnected (Service provider deletes the connection)\r\nApproved -&gt; Rejected (Service provider rejects the approved connection)\r\nApproved -&gt; Disconnected (Service provider deletes the connection)\r\nRejected -&gt; Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -&gt; Disconnected (Service provider deletes the connection)
   final pulumi.Input<String>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionState].
-  /// [actionsRequired] A message indicating if changes on the service provider require any updates on the consumer.
-  /// [description] The reason for approval/rejection of the connection.
-  /// [status] Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+  /// [actionsRequired] Some RP chose "None". Other RPs use this for region expansion.
+  /// [description] User-defined message that, per NRP doc, may be used for approval-related message.
+  /// [status] Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -&gt; Approved (Service provider approves the connection request)\r\nPending -&gt; Rejected (Service provider rejects the connection request)\r\nPending -&gt; Disconnected (Service provider deletes the connection)\r\nApproved -&gt; Rejected (Service provider rejects the approved connection)\r\nApproved -&gt; Disconnected (Service provider deletes the connection)\r\nRejected -&gt; Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -&gt; Disconnected (Service provider deletes the connection)
   const PrivateLinkServiceConnectionState({
     this.actionsRequired,
     this.description,
@@ -37,4 +37,3 @@ class PrivateLinkServiceConnectionState {
     );
   }
 }
-

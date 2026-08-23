@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 
 /// Virtual Network route contract used to pass routing information for a Virtual Network.
 class VnetRouteResponse {
   /// The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
   final pulumi.Input<String>? endAddress;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Resource Name.
+  /// The name of the resource
   final pulumi.Input<String> name;
   /// The type of route this is:
   /// DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
@@ -21,17 +22,20 @@ class VnetRouteResponse {
   final pulumi.Input<String>? routeType;
   /// The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
   final pulumi.Input<String>? startAddress;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
   /// Creates a new [VnetRouteResponse].
   /// [endAddress] The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [routeType] The type of route this is:
   /// [startAddress] The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const VnetRouteResponse({
     this.endAddress,
     required this.id,
@@ -39,6 +43,7 @@ class VnetRouteResponse {
     required this.name,
     this.routeType,
     this.startAddress,
+    required this.systemData,
     required this.type,
   });
 
@@ -50,6 +55,7 @@ class VnetRouteResponse {
       'name': name,
       'routeType': ?routeType,
       'startAddress': ?startAddress,
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -62,8 +68,8 @@ class VnetRouteResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       routeType: (() { final guardedValue = map['routeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startAddress: (() { final guardedValue = map['startAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

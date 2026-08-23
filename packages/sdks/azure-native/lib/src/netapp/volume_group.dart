@@ -6,7 +6,7 @@ import 'volume_group_meta_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 ///
-/// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview, 2025-12-01, 2025-12-15-preview, 2026-01-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-04-01, 2026-04-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -47,12 +47,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -89,12 +89,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -131,12 +131,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -173,12 +173,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -215,12 +215,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -257,12 +257,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -299,12 +299,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -341,12 +341,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -383,12 +383,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -425,12 +425,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -467,12 +467,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -509,12 +509,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -576,12 +576,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -612,12 +612,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -648,12 +648,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -684,12 +684,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -720,12 +720,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -756,12 +756,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -792,12 +792,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -828,12 +828,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -864,12 +864,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -900,12 +900,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -936,12 +936,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -972,12 +972,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -1010,6 +1010,389 @@ import 'volume_group_meta_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_volumegroup" "volumeGroup" {
+///   account_name = "account1"
+///   group_meta_data = {
+///     application_identifier = "OR2"
+///     application_type       = "ORACLE"
+///     group_description      = "Volume group"
+///   }
+///   location            = "westus"
+///   resource_group_name = "myRG"
+///   volume_group_name   = "group1"
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data1"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data1"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data1"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data2"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data2"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data2"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data3"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data3"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data3"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data4"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data4"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data4"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data5"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data5"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data5"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data6"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data6"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data6"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data7"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data7"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data7"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-data8"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-data8"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-data8"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-log"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-log"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-log"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-log-mirror"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-log-mirror"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-log-mirror"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-binary"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-binary"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-binary"
+///     zones            = ["1"]
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-ora-backup"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name             = "test-ora-backup"
+///     protocol_types   = ["NFSv4.1"]
+///     service_level    = "Premium"
+///     subnet_id        = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps = 10
+///     usage_threshold  = 107374182400
+///     volume_spec_name = "ora-backup"
+///     zones            = ["1"]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1021,8 +1404,8 @@ import 'volume_group_meta_data_response.dart';
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupMetaDataArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupVolumePropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumePropertiesExportPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1053,12 +1436,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1083,12 +1466,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1113,12 +1496,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1143,12 +1526,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1173,12 +1556,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1203,12 +1586,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1233,12 +1616,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1263,12 +1646,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1293,12 +1676,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1323,12 +1706,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1353,12 +1736,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1383,12 +1766,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -1435,12 +1818,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1465,12 +1848,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1495,12 +1878,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1525,12 +1908,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1555,12 +1938,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1585,12 +1968,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1615,12 +1998,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1645,12 +2028,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1675,12 +2058,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1705,12 +2088,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1735,12 +2118,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1765,12 +2148,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -1815,12 +2198,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -1832,7 +2215,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data1",
 ///             "zones": ["1"],
@@ -1845,12 +2228,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -1862,7 +2245,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data2",
 ///             "zones": ["1"],
@@ -1875,12 +2258,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -1892,7 +2275,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data3",
 ///             "zones": ["1"],
@@ -1905,12 +2288,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -1922,7 +2305,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data4",
 ///             "zones": ["1"],
@@ -1935,12 +2318,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -1952,7 +2335,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data5",
 ///             "zones": ["1"],
@@ -1965,12 +2348,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -1982,7 +2365,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data6",
 ///             "zones": ["1"],
@@ -1995,12 +2378,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -2012,7 +2395,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data7",
 ///             "zones": ["1"],
@@ -2025,12 +2408,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -2042,7 +2425,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-data8",
 ///             "zones": ["1"],
@@ -2055,12 +2438,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -2072,7 +2455,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-log",
 ///             "zones": ["1"],
@@ -2085,12 +2468,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -2102,7 +2485,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-log-mirror",
 ///             "zones": ["1"],
@@ -2115,12 +2498,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -2132,7 +2515,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-binary",
 ///             "zones": ["1"],
@@ -2145,12 +2528,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -2162,7 +2545,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "protocol_types": ["NFSv4.1"],
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "ora-backup",
 ///             "zones": ["1"],
@@ -2192,12 +2575,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2220,12 +2603,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2248,12 +2631,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2276,12 +2659,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2304,12 +2687,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2332,12 +2715,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2360,12 +2743,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2388,12 +2771,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2416,12 +2799,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2444,12 +2827,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2472,12 +2855,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2500,12 +2883,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -2562,12 +2945,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -2601,12 +2984,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -2640,12 +3023,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -2679,12 +3062,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -2718,12 +3101,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             AllowedClients = "0.0.0.0/0",
 ///                             Cifs = false,
 ///                             HasRootAccess = true,
+///                             Kerberos5IReadOnly = false,
+///                             Kerberos5IReadWrite = false,
+///                             Kerberos5PReadOnly = false,
+///                             Kerberos5PReadWrite = false,
 ///                             Kerberos5ReadOnly = false,
 ///                             Kerberos5ReadWrite = false,
-///                             Kerberos5iReadOnly = false,
-///                             Kerberos5iReadWrite = false,
-///                             Kerberos5pReadOnly = false,
-///                             Kerberos5pReadWrite = false,
 ///                             Nfsv3 = false,
 ///                             Nfsv41 = true,
 ///                             RuleIndex = 1,
@@ -2782,12 +3165,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -2816,12 +3199,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -2850,12 +3233,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -2884,12 +3267,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -2918,12 +3301,12 @@ import 'volume_group_meta_data_response.dart';
 /// 								AllowedClients:      pulumi.String("0.0.0.0/0"),
 /// 								Cifs:                pulumi.Bool(false),
 /// 								HasRootAccess:       pulumi.Bool(true),
+/// 								Kerberos5IReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5IReadWrite: pulumi.Bool(false),
+/// 								Kerberos5PReadOnly:  pulumi.Bool(false),
+/// 								Kerberos5PReadWrite: pulumi.Bool(false),
 /// 								Kerberos5ReadOnly:   pulumi.Bool(false),
 /// 								Kerberos5ReadWrite:  pulumi.Bool(false),
-/// 								Kerberos5iReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5iReadWrite: pulumi.Bool(false),
-/// 								Kerberos5pReadOnly:  pulumi.Bool(false),
-/// 								Kerberos5pReadWrite: pulumi.Bool(false),
 /// 								Nfsv3:               pulumi.Bool(false),
 /// 								Nfsv41:              pulumi.Bool(true),
 /// 								RuleIndex:           pulumi.Int(1),
@@ -2954,6 +3337,179 @@ import 'volume_group_meta_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_volumegroup" "volumeGroup" {
+///   account_name = "account1"
+///   group_meta_data = {
+///     application_identifier = "SH9"
+///     application_type       = "SAP-HANA"
+///     group_description      = "Volume group"
+///   }
+///   location            = "westus"
+///   resource_group_name = "myRG"
+///   volume_group_name   = "group1"
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-data-mnt00001"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name                      = "test-data-mnt00001"
+///     protocol_types            = ["NFSv4.1"]
+///     proximity_placement_group = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg"
+///     service_level             = "Premium"
+///     subnet_id                 = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps          = 10
+///     usage_threshold           = 107374182400
+///     volume_spec_name          = "data"
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-log-mnt00001"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name                      = "test-log-mnt00001"
+///     protocol_types            = ["NFSv4.1"]
+///     proximity_placement_group = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg"
+///     service_level             = "Premium"
+///     subnet_id                 = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps          = 10
+///     usage_threshold           = 107374182400
+///     volume_spec_name          = "log"
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-shared"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name                      = "test-shared"
+///     protocol_types            = ["NFSv4.1"]
+///     proximity_placement_group = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg"
+///     service_level             = "Premium"
+///     subnet_id                 = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps          = 10
+///     usage_threshold           = 107374182400
+///     volume_spec_name          = "shared"
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-data-backup"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name                      = "test-data-backup"
+///     protocol_types            = ["NFSv4.1"]
+///     proximity_placement_group = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg"
+///     service_level             = "Premium"
+///     subnet_id                 = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps          = 10
+///     usage_threshold           = 107374182400
+///     volume_spec_name          = "data-backup"
+///   }
+///   volumes {
+///     capacity_pool_resource_id = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1"
+///     creation_token            = "test-log-backup"
+///     export_policy = {
+///       rules = [{
+///         "allowedClients"      = "0.0.0.0/0"
+///         "cifs"                = false
+///         "hasRootAccess"       = true
+///         "kerberos5IReadOnly"  = false
+///         "kerberos5IReadWrite" = false
+///         "kerberos5PReadOnly"  = false
+///         "kerberos5PReadWrite" = false
+///         "kerberos5ReadOnly"   = false
+///         "kerberos5ReadWrite"  = false
+///         "nfsv3"               = false
+///         "nfsv41"              = true
+///         "ruleIndex"           = 1
+///         "unixReadOnly"        = true
+///         "unixReadWrite"       = true
+///       }]
+///     }
+///     name                      = "test-log-backup"
+///     protocol_types            = ["NFSv4.1"]
+///     proximity_placement_group = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg"
+///     service_level             = "Premium"
+///     subnet_id                 = "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"
+///     throughput_mibps          = 10
+///     usage_threshold           = 107374182400
+///     volume_spec_name          = "log-backup"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2965,8 +3521,8 @@ import 'volume_group_meta_data_response.dart';
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupMetaDataArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumeGroupVolumePropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.VolumePropertiesExportPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2997,12 +3553,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -3027,12 +3583,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -3057,12 +3613,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -3087,12 +3643,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -3117,12 +3673,12 @@ import 'volume_group_meta_data_response.dart';
 ///                             .allowedClients("0.0.0.0/0")
 ///                             .cifs(false)
 ///                             .hasRootAccess(true)
+///                             .kerberos5IReadOnly(false)
+///                             .kerberos5IReadWrite(false)
+///                             .kerberos5PReadOnly(false)
+///                             .kerberos5PReadWrite(false)
 ///                             .kerberos5ReadOnly(false)
 ///                             .kerberos5ReadWrite(false)
-///                             .kerberos5iReadOnly(false)
-///                             .kerberos5iReadWrite(false)
-///                             .kerberos5pReadOnly(false)
-///                             .kerberos5pReadWrite(false)
 ///                             .nfsv3(false)
 ///                             .nfsv41(true)
 ///                             .ruleIndex(1)
@@ -3169,12 +3725,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -3199,12 +3755,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -3229,12 +3785,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -3259,12 +3815,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -3289,12 +3845,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     allowedClients: "0.0.0.0/0",
 ///                     cifs: false,
 ///                     hasRootAccess: true,
+///                     kerberos5IReadOnly: false,
+///                     kerberos5IReadWrite: false,
+///                     kerberos5PReadOnly: false,
+///                     kerberos5PReadWrite: false,
 ///                     kerberos5ReadOnly: false,
 ///                     kerberos5ReadWrite: false,
-///                     kerberos5iReadOnly: false,
-///                     kerberos5iReadWrite: false,
-///                     kerberos5pReadOnly: false,
-///                     kerberos5pReadWrite: false,
 ///                     nfsv3: false,
 ///                     nfsv41: true,
 ///                     ruleIndex: 1,
@@ -3339,12 +3895,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -3357,7 +3913,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "proximity_placement_group": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "data",
 ///         },
@@ -3369,12 +3925,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -3387,7 +3943,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "proximity_placement_group": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "log",
 ///         },
@@ -3399,12 +3955,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -3417,7 +3973,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "proximity_placement_group": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "shared",
 ///         },
@@ -3429,12 +3985,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -3447,7 +4003,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "proximity_placement_group": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "data-backup",
 ///         },
@@ -3459,12 +4015,12 @@ import 'volume_group_meta_data_response.dart';
 ///                     "allowed_clients": "0.0.0.0/0",
 ///                     "cifs": False,
 ///                     "has_root_access": True,
+///                     "kerberos5_i_read_only": False,
+///                     "kerberos5_i_read_write": False,
+///                     "kerberos5_p_read_only": False,
+///                     "kerberos5_p_read_write": False,
 ///                     "kerberos5_read_only": False,
 ///                     "kerberos5_read_write": False,
-///                     "kerberos5i_read_only": False,
-///                     "kerberos5i_read_write": False,
-///                     "kerberos5p_read_only": False,
-///                     "kerberos5p_read_write": False,
 ///                     "nfsv3": False,
 ///                     "nfsv41": True,
 ///                     "rule_index": 1,
@@ -3477,7 +4033,7 @@ import 'volume_group_meta_data_response.dart';
 ///             "proximity_placement_group": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/cys_sjain_fcp_rg/providers/Microsoft.Compute/proximityPlacementGroups/svlqa_sjain_multivolume_ppg",
 ///             "service_level": azure_native.netapp.ServiceLevel.PREMIUM,
 ///             "subnet_id": "/subscriptions/d633cc2e-722b-4ae1-b636-bbd9e4c60ed9/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3",
-///             "throughput_mibps": 10,
+///             "throughput_mibps": float(10),
 ///             "usage_threshold": 107374182400,
 ///             "volume_spec_name": "log-backup",
 ///         },
@@ -3506,12 +4062,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -3533,12 +4089,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -3560,12 +4116,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -3587,12 +4143,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1
@@ -3614,12 +4170,12 @@ import 'volume_group_meta_data_response.dart';
 ///               - allowedClients: 0.0.0.0/0
 ///                 cifs: false
 ///                 hasRootAccess: true
+///                 kerberos5IReadOnly: false
+///                 kerberos5IReadWrite: false
+///                 kerberos5PReadOnly: false
+///                 kerberos5PReadWrite: false
 ///                 kerberos5ReadOnly: false
 ///                 kerberos5ReadWrite: false
-///                 kerberos5iReadOnly: false
-///                 kerberos5iReadWrite: false
-///                 kerberos5pReadOnly: false
-///                 kerberos5pReadWrite: false
 ///                 nfsv3: false
 ///                 nfsv41: true
 ///                 ruleIndex: 1

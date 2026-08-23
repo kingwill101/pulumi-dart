@@ -18,4 +18,3 @@ enum Permission {
     throw ArgumentError('Unknown Permission value: $value');
   }
 }
-

@@ -20,4 +20,3 @@ enum JobScheduleDay {
     throw ArgumentError('Unknown JobScheduleDay value: $value');
   }
 }
-

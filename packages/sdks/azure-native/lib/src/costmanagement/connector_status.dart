@@ -16,4 +16,3 @@ enum ConnectorStatus {
     throw ArgumentError('Unknown ConnectorStatus value: $value');
   }
 }
-

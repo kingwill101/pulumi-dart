@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -178,6 +178,69 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_managedclusterservice" "managedClusterService" {
+///   application_name = "myApp"
+///   cluster_name     = "myCluster"
+///   location         = "eastus"
+///   properties = {
+///     "correlationScheme" = [{
+///       "scheme"      = "AlignedAffinity"
+///       "serviceName" = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applications/myApp/services/myService1"
+///     }]
+///     "defaultMoveCost"       = "Medium"
+///     "instanceCount"         = 5
+///     "minInstanceCount"      = 3
+///     "minInstancePercentage" = 30
+///     "partitionDescription" = {
+///       "partitionScheme" = "Singleton"
+///     }
+///     "placementConstraints" = "NodeType==frontend"
+///     "scalingPolicies" = [{
+///       "scalingMechanism" = {
+///         "kind"             = "ScalePartitionInstanceCount"
+///         "maxInstanceCount" = 9
+///         "minInstanceCount" = 3
+///         "scaleIncrement"   = 2
+///       }
+///       "scalingTrigger" = {
+///         "kind"               = "AveragePartitionLoadTrigger"
+///         "lowerLoadThreshold" = 2
+///         "metricName"         = "metricName"
+///         "scaleInterval"      = "00:01:00"
+///         "upperLoadThreshold" = 8
+///       }
+///     }]
+///     "serviceDnsName" = "myservicednsname.myApp"
+///     "serviceKind"    = "Stateless"
+///     "serviceLoadMetrics" = [{
+///       "defaultLoad" = 3
+///       "name"        = "metric1"
+///       "weight"      = "Low"
+///     }]
+///     "servicePackageActivationMode" = "SharedProcess"
+///     "servicePlacementPolicies" = [{
+///       "type" = "NonPartiallyPlaceService"
+///     }]
+///     "serviceTypeName" = "myServiceType"
+///   }
+///   resource_group_name = "resRg"
+///   service_name        = "myService"
+///   tags = {
+///     "a" = "b"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +249,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterService;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,10 +288,10 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .scalingTrigger(AveragePartitionLoadScalingTriggerArgs.builder()
 ///                         .kind("AveragePartitionLoadTrigger")
-///                         .lowerLoadThreshold(2)
+///                         .lowerLoadThreshold(2.0)
 ///                         .metricName("metricName")
 ///                         .scaleInterval("00:01:00")
-///                         .upperLoadThreshold(8)
+///                         .upperLoadThreshold(8.0)
 ///                         .build())
 ///                     .build())
 ///                 .serviceDnsName("myservicednsname.myApp")
@@ -342,10 +405,10 @@ import 'system_data_response.dart';
 ///             },
 ///             "scaling_trigger": {
 ///                 "kind": "AveragePartitionLoadTrigger",
-///                 "lower_load_threshold": 2,
+///                 "lower_load_threshold": float(2),
 ///                 "metric_name": "metricName",
 ///                 "scale_interval": "00:01:00",
-///                 "upper_load_threshold": 8,
+///                 "upper_load_threshold": float(8),
 ///             },
 ///         }],
 ///         "service_dns_name": "myservicednsname.myApp",
@@ -486,6 +549,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_managedclusterservice" "managedClusterService" {
+///   application_name = "myApp"
+///   cluster_name     = "myCluster"
+///   location         = "eastus"
+///   properties = {
+///     "instanceCount" = 1
+///     "partitionDescription" = {
+///       "partitionScheme" = "Singleton"
+///     }
+///     "serviceKind"     = "Stateless"
+///     "serviceTypeName" = "myServiceType"
+///   }
+///   resource_group_name = "resRg"
+///   service_name        = "myService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -494,8 +584,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterService;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

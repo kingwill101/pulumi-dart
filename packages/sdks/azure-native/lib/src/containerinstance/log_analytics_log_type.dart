@@ -15,4 +15,3 @@ enum LogAnalyticsLogType {
     throw ArgumentError('Unknown LogAnalyticsLogType value: $value');
   }
 }
-

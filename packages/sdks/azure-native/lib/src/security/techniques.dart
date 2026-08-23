@@ -117,4 +117,3 @@ enum Techniques {
     throw ArgumentError('Unknown Techniques value: $value');
   }
 }
-

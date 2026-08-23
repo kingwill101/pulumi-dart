@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'site_properties_response.dart';
+import 'site_properties_sites_by_service_group_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getSitesByServiceGroup.
@@ -12,7 +12,7 @@ class GetSitesByServiceGroupResult {
   /// The name of the resource
   final String name;
   /// The resource-specific properties for this resource.
-  final SitePropertiesResponse properties;
+  final SitePropertiesSitesByServiceGroupResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -50,10 +50,9 @@ class GetSitesByServiceGroupResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: SitePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: SitePropertiesSitesByServiceGroupResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

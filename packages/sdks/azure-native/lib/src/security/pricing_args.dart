@@ -16,7 +16,7 @@ class PricingArgs {
   final pulumi.Input<String>? pricingName;
   /// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
   final pulumi.Input<String> pricingTier;
-  /// The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scopeId;
   /// The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
   final pulumi.Input<String>? subPlan;
@@ -26,7 +26,7 @@ class PricingArgs {
   /// [extensions] Optional. List of extensions offered under a plan.
   /// [pricingName] name of the pricing configuration
   /// [pricingTier] Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
-  /// [scopeId] The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+  /// [scopeId] The fully qualified Azure Resource manager identifier of the resource.
   /// [subPlan] The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
   const PricingArgs({
     this.enforce,
@@ -59,4 +59,3 @@ class PricingArgs {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class GetArtifactSourceArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the ArtifactSource
+  /// The name of the artifact source.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -19,7 +19,7 @@ class GetArtifactSourceArgs {
   /// Creates a new [GetArtifactSourceArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=displayName)'
   /// [labName] The name of the lab.
-  /// [name] The name of the ArtifactSource
+  /// [name] The name of the artifact source.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetArtifactSourceArgs({
     this.expand,
@@ -46,4 +46,3 @@ class GetArtifactSourceArgs {
     );
   }
 }
-

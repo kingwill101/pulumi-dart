@@ -17,4 +17,3 @@ enum AzureSqlDataBaseType {
     throw ArgumentError('Unknown AzureSqlDataBaseType value: $value');
   }
 }
-

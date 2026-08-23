@@ -16,4 +16,3 @@ enum ConsistencyModeTypes {
     throw ArgumentError('Unknown ConsistencyModeTypes value: $value');
   }
 }
-

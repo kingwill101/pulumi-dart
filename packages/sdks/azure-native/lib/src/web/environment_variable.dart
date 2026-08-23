@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentVariable {
   /// Environment variable name
   final pulumi.Input<String> name;
-  /// Environment variable value
+  /// The value of this environment variable must be the name of an AppSetting. The actual value of the environment variable in container will be retrieved from the specified AppSetting at runtime. If the AppSetting is not found, the value will be set to an empty string in the container at runtime.
   final pulumi.Input<String> value;
 
   /// Creates a new [EnvironmentVariable].
   /// [name] Environment variable name
-  /// [value] Environment variable value
+  /// [value] The value of this environment variable must be the name of an AppSetting. The actual value of the environment variable in container will be retrieved from the specified AppSetting at runtime. If the AppSetting is not found, the value will be set to an empty string in the container at runtime.
   const EnvironmentVariable({
     required this.name,
     required this.value,
@@ -30,4 +30,3 @@ class EnvironmentVariable {
     );
   }
 }
-

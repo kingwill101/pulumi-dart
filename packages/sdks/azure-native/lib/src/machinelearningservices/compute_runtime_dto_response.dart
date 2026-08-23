@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Compute runtime config for feature store type workspace.
 class ComputeRuntimeDtoResponse {
   final pulumi.Input<String>? sparkRuntimeVersion;
 
@@ -24,4 +23,3 @@ class ComputeRuntimeDtoResponse {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 /// Type of expressions supported by the system. Type: string.
 enum ExpressionV2Type {
-  valueConstant("Constant"),
-  valueField("Field"),
-  valueUnary("Unary"),
-  valueBinary("Binary"),
-  valueNAry("NAry");
+  constant("Constant"),
+  field("Field"),
+  unary("Unary"),
+  binary("Binary"),
+  nAry("NAry");
 
   const ExpressionV2Type(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum ExpressionV2Type {
     throw ArgumentError('Unknown ExpressionV2Type value: $value');
   }
 }
-

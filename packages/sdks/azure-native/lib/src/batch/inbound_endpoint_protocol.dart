@@ -15,4 +15,3 @@ enum InboundEndpointProtocol {
     throw ArgumentError('Unknown InboundEndpointProtocol value: $value');
   }
 }
-

@@ -66,6 +66,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_cluster" "cluster" {
+///   cluster_name        = "cluster1"
+///   cluster_size        = 3
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   sku = {
+///     name = "AV20"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.avs.Cluster;
 /// import com.pulumi.azurenative.avs.ClusterArgs;
 /// import com.pulumi.azurenative.avs.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

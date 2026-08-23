@@ -69,6 +69,30 @@ import 'professional_service_subscription_level_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_professionalservice_professionalservicesubscriptionlevel" "professionalServiceSubscriptionLevel" {
+///   location = "global"
+///   name     = "MyContosoPS"
+///   properties = {
+///     offer_id     = "testprofservice"
+///     publisher_id = "microsoft-contoso"
+///     quote_id     = "quoteabc"
+///     sku_id       = "ff051f4f-a6d9-4cbc-8d9a-2a41bd468abc"
+///   }
+///   resource_group_name = "my-ps-rg"
+///   resource_name       = "MyContosoPS"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +102,8 @@ import 'professional_service_subscription_level_args.dart';
 /// import com.pulumi.azurenative.professionalservice.ProfessionalServiceSubscriptionLevel;
 /// import com.pulumi.azurenative.professionalservice.ProfessionalServiceSubscriptionLevelArgs;
 /// import com.pulumi.azurenative.professionalservice.inputs.ProfessionalServiceCreationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +253,32 @@ import 'professional_service_subscription_level_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_professionalservice_professionalservicesubscriptionlevel" "professionalServiceSubscriptionLevel" {
+///   location = "global"
+///   name     = "MyContosoPS"
+///   properties = {
+///     billing_period = "P1Y"
+///     offer_id       = "testprofservice"
+///     publisher_id   = "microsoft-contoso"
+///     quote_id       = "quoteabc"
+///     sku_id         = "ff051f4f-a6d9-4cbc-8d9a-2a41bd468abc"
+///     term_unit      = "P3Y"
+///   }
+///   resource_group_name = "my-ps-rg"
+///   resource_name       = "MyContosoPS"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +288,8 @@ import 'professional_service_subscription_level_args.dart';
 /// import com.pulumi.azurenative.professionalservice.ProfessionalServiceSubscriptionLevel;
 /// import com.pulumi.azurenative.professionalservice.ProfessionalServiceSubscriptionLevelArgs;
 /// import com.pulumi.azurenative.professionalservice.inputs.ProfessionalServiceCreationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

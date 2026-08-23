@@ -11,13 +11,13 @@ class GetModuleArgs {
   final pulumi.Input<String> automationAccountName;
   /// The module name.
   final pulumi.Input<String> moduleName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetModuleArgs].
   /// [automationAccountName] The name of the automation account.
   /// [moduleName] The module name.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetModuleArgs({
     required this.automationAccountName,
     required this.moduleName,
@@ -40,4 +40,3 @@ class GetModuleArgs {
     );
   }
 }
-

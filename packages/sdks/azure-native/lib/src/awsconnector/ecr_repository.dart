@@ -31,13 +31,21 @@ import 'system_data_response.dart';
 ///             {
 ///                 Arn = "su",
 ///                 EmptyOnDelete = true,
-///                 EncryptionConfiguration = null,
+///                 EncryptionConfiguration = new AzureNative.AwsConnector.Inputs.EncryptionConfigurationArgs
+///                 {
+///                     EncryptionType = AzureNative.AwsConnector.EncryptionConfigurationEncryptionType.AES256,
+///                     KmsKey = "makuyxbheshwvqbxpzdimnbpgvmpj",
+///                 },
 ///                 ImageScanningConfiguration = new AzureNative.AwsConnector.Inputs.ImageScanningConfigurationArgs
 ///                 {
 ///                     ScanOnPush = true,
 ///                 },
 ///                 ImageTagMutability = AzureNative.AwsConnector.ImageTagMutability.IMMUTABLE,
-///                 LifecyclePolicy = null,
+///                 LifecyclePolicy = new AzureNative.AwsConnector.Inputs.LifecyclePolicyArgs
+///                 {
+///                     LifecyclePolicyText = "xvazgvi",
+///                     RegistryId = "oluqsenexubjydpyaw",
+///                 },
 ///                 RepositoryName = "iuhxuyfxygvumphlcwhnsscudjez",
 ///                 RepositoryPolicyText = null,
 ///                 RepositoryUri = "vmljyfyskxbyjczax",
@@ -88,14 +96,20 @@ import 'system_data_response.dart';
 /// 				Arn:          pulumi.String("djb"),
 /// 				AwsAccountId: pulumi.String("iuomdzpobqirucabbxz"),
 /// 				AwsProperties: &awsconnector.AwsEcrRepositoryPropertiesArgs{
-/// 					Arn:                     pulumi.String("su"),
-/// 					EmptyOnDelete:           pulumi.Bool(true),
-/// 					EncryptionConfiguration: &awsconnector.EncryptionConfigurationArgs{},
+/// 					Arn:           pulumi.String("su"),
+/// 					EmptyOnDelete: pulumi.Bool(true),
+/// 					EncryptionConfiguration: &awsconnector.EncryptionConfigurationArgs{
+/// 						EncryptionType: pulumi.String(awsconnector.EncryptionConfigurationEncryptionTypeAES256),
+/// 						KmsKey:         pulumi.String("makuyxbheshwvqbxpzdimnbpgvmpj"),
+/// 					},
 /// 					ImageScanningConfiguration: &awsconnector.ImageScanningConfigurationArgs{
 /// 						ScanOnPush: pulumi.Bool(true),
 /// 					},
-/// 					ImageTagMutability:   pulumi.String(awsconnector.ImageTagMutabilityIMMUTABLE),
-/// 					LifecyclePolicy:      &awsconnector.LifecyclePolicyArgs{},
+/// 					ImageTagMutability: pulumi.String(awsconnector.ImageTagMutabilityIMMUTABLE),
+/// 					LifecyclePolicy: &awsconnector.LifecyclePolicyArgs{
+/// 						LifecyclePolicyText: pulumi.String("xvazgvi"),
+/// 						RegistryId:          pulumi.String("oluqsenexubjydpyaw"),
+/// 					},
 /// 					RepositoryName:       pulumi.String("iuhxuyfxygvumphlcwhnsscudjez"),
 /// 					RepositoryPolicyText: pulumi.Any(map[string]interface{}{}),
 /// 					RepositoryUri:        pulumi.String("vmljyfyskxbyjczax"),
@@ -128,6 +142,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ecrrepository" "ecrRepository" {
+///   location = "uxqfbijfanljas"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "djb"
+///     aws_account_id = "iuomdzpobqirucabbxz"
+///     aws_properties = {
+///       arn             = "su"
+///       empty_on_delete = true
+///       encryption_configuration = {
+///         encryption_type = "AES256"
+///         kms_key         = "makuyxbheshwvqbxpzdimnbpgvmpj"
+///       }
+///       image_scanning_configuration = {
+///         scan_on_push = true
+///       }
+///       image_tag_mutability = "IMMUTABLE"
+///       lifecycle_policy = {
+///         lifecycle_policy_text = "xvazgvi"
+///         registry_id           = "oluqsenexubjydpyaw"
+///       }
+///       repository_name        = "iuhxuyfxygvumphlcwhnsscudjez"
+///       repository_policy_text = {}
+///       repository_uri         = "vmljyfyskxbyjczax"
+///       tags = [{
+///         "key"   = "moogqsaqjqbgghbindkarxdgqqna"
+///         "value" = "qu"
+///       }]
+///     }
+///     aws_region        = "wliyvzjqcxbpwtgjae"
+///     aws_source_schema = "olwqyujnmxxhxwyp"
+///     aws_tags = {
+///       "key7950" = "aybyysonysxvutpeysuxoeinx"
+///     }
+///     public_cloud_connectors_resource_id = "ohtcynikymmfceroreix"
+///     public_cloud_resource_name          = "bymfiroqkcgssnop"
+///   }
+///   resource_group_name = "rgecrRepository"
+///   tags = {
+///     "key2390" = "rgv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +209,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.EncryptionConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ImageScanningConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LifecyclePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,12 +232,16 @@ import 'system_data_response.dart';
 ///                     .arn("su")
 ///                     .emptyOnDelete(true)
 ///                     .encryptionConfiguration(EncryptionConfigurationArgs.builder()
+///                         .encryptionType("AES256")
+///                         .kmsKey("makuyxbheshwvqbxpzdimnbpgvmpj")
 ///                         .build())
 ///                     .imageScanningConfiguration(ImageScanningConfigurationArgs.builder()
 ///                         .scanOnPush(true)
 ///                         .build())
 ///                     .imageTagMutability("IMMUTABLE")
 ///                     .lifecyclePolicy(LifecyclePolicyArgs.builder()
+///                         .lifecyclePolicyText("xvazgvi")
+///                         .registryId("oluqsenexubjydpyaw")
 ///                         .build())
 ///                     .repositoryName("iuhxuyfxygvumphlcwhnsscudjez")
 ///                     .repositoryPolicyText(Map.ofEntries(
@@ -208,12 +280,18 @@ import 'system_data_response.dart';
 ///         awsProperties: {
 ///             arn: "su",
 ///             emptyOnDelete: true,
-///             encryptionConfiguration: {},
+///             encryptionConfiguration: {
+///                 encryptionType: azure_native.awsconnector.EncryptionConfigurationEncryptionType.AES256,
+///                 kmsKey: "makuyxbheshwvqbxpzdimnbpgvmpj",
+///             },
 ///             imageScanningConfiguration: {
 ///                 scanOnPush: true,
 ///             },
 ///             imageTagMutability: azure_native.awsconnector.ImageTagMutability.IMMUTABLE,
-///             lifecyclePolicy: {},
+///             lifecyclePolicy: {
+///                 lifecyclePolicyText: "xvazgvi",
+///                 registryId: "oluqsenexubjydpyaw",
+///             },
 ///             repositoryName: "iuhxuyfxygvumphlcwhnsscudjez",
 ///             repositoryPolicyText: {},
 ///             repositoryUri: "vmljyfyskxbyjczax",
@@ -251,12 +329,18 @@ import 'system_data_response.dart';
 ///         "aws_properties": {
 ///             "arn": "su",
 ///             "empty_on_delete": True,
-///             "encryption_configuration": {},
+///             "encryption_configuration": {
+///                 "encryption_type": azure_native.awsconnector.EncryptionConfigurationEncryptionType.AES256,
+///                 "kms_key": "makuyxbheshwvqbxpzdimnbpgvmpj",
+///             },
 ///             "image_scanning_configuration": {
 ///                 "scan_on_push": True,
 ///             },
 ///             "image_tag_mutability": azure_native.awsconnector.ImageTagMutability.IMMUTABLE,
-///             "lifecycle_policy": {},
+///             "lifecycle_policy": {
+///                 "lifecycle_policy_text": "xvazgvi",
+///                 "registry_id": "oluqsenexubjydpyaw",
+///             },
 ///             "repository_name": "iuhxuyfxygvumphlcwhnsscudjez",
 ///             "repository_policy_text": {},
 ///             "repository_uri": "vmljyfyskxbyjczax",
@@ -293,11 +377,15 @@ import 'system_data_response.dart';
 ///         awsProperties:
 ///           arn: su
 ///           emptyOnDelete: true
-///           encryptionConfiguration: {}
+///           encryptionConfiguration:
+///             encryptionType: AES256
+///             kmsKey: makuyxbheshwvqbxpzdimnbpgvmpj
 ///           imageScanningConfiguration:
 ///             scanOnPush: true
 ///           imageTagMutability: IMMUTABLE
-///           lifecyclePolicy: {}
+///           lifecyclePolicy:
+///             lifecyclePolicyText: xvazgvi
+///             registryId: oluqsenexubjydpyaw
 ///           repositoryName: iuhxuyfxygvumphlcwhnsscudjez
 ///           repositoryPolicyText: {}
 ///           repositoryUri: vmljyfyskxbyjczax

@@ -58,7 +58,7 @@ class ImageModelSettingsObjectDetectionResponse {
   final pulumi.Input<int>? layersToFreeze;
   /// Initial learning rate. Must be a float in the range [0, 1].
   final pulumi.Input<double>? learningRate;
-  /// Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+  /// Learning rate scheduler enum.
   final pulumi.Input<String>? learningRateScheduler;
   /// Maximum size of the image to be rescaled before feeding it to the backbone.
   /// Must be a positive integer. Note: training run may get into CUDA OOM if the size is too big.
@@ -72,9 +72,7 @@ class ImageModelSettingsObjectDetectionResponse {
   /// For more information on the available models please visit the official documentation:
   /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
   final pulumi.Input<String>? modelName;
-  /// Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
-  /// Note: training run may get into CUDA OOM if the model size is too big.
-  /// Note: This settings is only supported for the 'yolov5' algorithm.
+  /// Image model size.
   final pulumi.Input<String>? modelSize;
   /// Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
   final pulumi.Input<double>? momentum;
@@ -90,7 +88,7 @@ class ImageModelSettingsObjectDetectionResponse {
   final pulumi.Input<int>? numberOfEpochs;
   /// Number of data loader workers. Must be a non-negative integer.
   final pulumi.Input<int>? numberOfWorkers;
-  /// Type of optimizer.
+  /// Stochastic optimizer for image models.
   final pulumi.Input<String>? optimizer;
   /// Random seed to be used when using deterministic training.
   final pulumi.Input<int>? randomSeed;
@@ -115,7 +113,7 @@ class ImageModelSettingsObjectDetectionResponse {
   final pulumi.Input<int>? validationBatchSize;
   /// IOU threshold to use when computing validation metric. Must be float in the range [0, 1].
   final pulumi.Input<double>? validationIouThreshold;
-  /// Metric computation method to use for validation metrics.
+  /// Metric computation method to use for validation metrics in image tasks.
   final pulumi.Input<String>? validationMetricType;
   /// Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
   final pulumi.Input<double>? warmupCosineLRCycles;
@@ -145,18 +143,18 @@ class ImageModelSettingsObjectDetectionResponse {
   /// [imageSize] Image size for train and validation. Must be a positive integer.
   /// [layersToFreeze] Number of layers to freeze for the model. Must be a positive integer.
   /// [learningRate] Initial learning rate. Must be a float in the range [0, 1].
-  /// [learningRateScheduler] Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+  /// [learningRateScheduler] Learning rate scheduler enum.
   /// [maxSize] Maximum size of the image to be rescaled before feeding it to the backbone.
   /// [minSize] Minimum size of the image to be rescaled before feeding it to the backbone.
   /// [modelName] Name of the model to use for training.
-  /// [modelSize] Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
+  /// [modelSize] Image model size.
   /// [momentum] Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
   /// [multiScale] Enable multi-scale image by varying image size by +/- 50%.
   /// [nesterov] Enable nesterov when optimizer is 'sgd'.
   /// [nmsIouThreshold] IOU threshold used during inference in NMS post processing. Must be a float in the range [0, 1].
   /// [numberOfEpochs] Number of training epochs. Must be a positive integer.
   /// [numberOfWorkers] Number of data loader workers. Must be a non-negative integer.
-  /// [optimizer] Type of optimizer.
+  /// [optimizer] Stochastic optimizer for image models.
   /// [randomSeed] Random seed to be used when using deterministic training.
   /// [stepLRGamma] Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
   /// [stepLRStepSize] Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
@@ -166,7 +164,7 @@ class ImageModelSettingsObjectDetectionResponse {
   /// [trainingBatchSize] Training batch size. Must be a positive integer.
   /// [validationBatchSize] Validation batch size. Must be a positive integer.
   /// [validationIouThreshold] IOU threshold to use when computing validation metric. Must be float in the range [0, 1].
-  /// [validationMetricType] Metric computation method to use for validation metrics.
+  /// [validationMetricType] Metric computation method to use for validation metrics in image tasks.
   /// [warmupCosineLRCycles] Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
   /// [warmupCosineLRWarmupEpochs] Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
   /// [weightDecay] Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
@@ -318,4 +316,3 @@ class ImageModelSettingsObjectDetectionResponse {
     );
   }
 }
-

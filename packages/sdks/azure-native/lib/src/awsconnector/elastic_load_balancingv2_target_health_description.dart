@@ -144,6 +144,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_elasticloadbalancingv2targethealthdescription" "elasticLoadBalancingv2TargetHealthDescription" {
+///   location = "fjdx"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "hwxzsqacyslkcfypjntjeecsgic"
+///     aws_account_id = "nqhdoshumaulzimktuhfyzbokepnin"
+///     aws_properties = {
+///       anomaly_detection = {
+///         mitigation_in_effect = {
+///           value = "no"
+///         }
+///         result = {
+///           value = "anomalous"
+///         }
+///       }
+///       health_check_port = "wncbdhbdrxjzdwg"
+///       target = {
+///         availability_zone = "lopqxsnyhbsjjqaj"
+///         id                = "wrhggxodbbktxivhn"
+///         port              = 29
+///       }
+///       target_health = {
+///         description = "v"
+///         reason = {
+///           value = "Elb.InitialHealthChecking"
+///         }
+///         state = {
+///           value = "draining"
+///         }
+///       }
+///     }
+///     aws_region        = "jhbryqdcp"
+///     aws_source_schema = "kqowwthevk"
+///     aws_tags = {
+///       "key1547" = "ursadfghvwitmnfl"
+///     }
+///     public_cloud_connectors_resource_id = "zwes"
+///     public_cloud_resource_name          = "dwtgooliytsuedlhhauisu"
+///   }
+///   resource_group_name = "rgelasticLoadBalancingV2TargetHealthDescription"
+///   tags = {
+///     "key7243" = "rnnjfbxaflvpmnutqzvg"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -161,8 +217,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.TargetHealthArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TargetHealthReasonEnumEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TargetHealthStateEnumEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

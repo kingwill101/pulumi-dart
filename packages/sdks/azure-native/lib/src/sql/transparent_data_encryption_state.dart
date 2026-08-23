@@ -15,4 +15,3 @@ enum TransparentDataEncryptionState {
     throw ArgumentError('Unknown TransparentDataEncryptionState value: $value');
   }
 }
-

@@ -20,4 +20,3 @@ enum RestApiPollerRequestPagingKind {
     throw ArgumentError('Unknown RestApiPollerRequestPagingKind value: $value');
   }
 }
-

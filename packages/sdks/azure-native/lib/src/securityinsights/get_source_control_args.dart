@@ -11,13 +11,13 @@ class GetSourceControlArgs {
   final pulumi.Input<String> resourceGroupName;
   /// Source control Id
   final pulumi.Input<String> sourceControlId;
-  /// The name of the workspace.
+  /// The name of the monitor workspace.
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [GetSourceControlArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlId] Source control Id
-  /// [workspaceName] The name of the workspace.
+  /// [workspaceName] The name of the monitor workspace.
   const GetSourceControlArgs({
     required this.resourceGroupName,
     required this.sourceControlId,
@@ -40,4 +40,3 @@ class GetSourceControlArgs {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class L3OptionBProperties {
     );
   }
 }
-

@@ -130,6 +130,56 @@ import 'web_app_assessment_v2_operation_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_webappassessmentv2operation" "webAppAssessmentV2Operation" {
+///   app_svc_container_settings = {
+///     isolation_required = true
+///   }
+///   app_svc_native_settings = {
+///     isolation_required = true
+///   }
+///   assessment_name                 = "anraghun-selfhost-v2"
+///   assessment_type                 = "WebAppAssessment"
+///   azure_location                  = "UkWest"
+///   azure_offer_code                = "MSAZR0003P"
+///   azure_security_offering_type    = "NO"
+///   confidence_rating_in_percentage = 13
+///   currency                        = "USD"
+///   discount_percentage             = 13
+///   discovered_entity_light_summary = {
+///     number_of_machines = 27
+///     number_of_servers  = 5
+///     number_of_web_apps = 23
+///   }
+///   ea_subscription_id = ""
+///   entity_uptime = {
+///     days_per_month = 18
+///     hours_per_day  = 13
+///   }
+///   environment_type     = "Production"
+///   group_name           = "anraghun-selfhost-v2"
+///   group_type           = "Default"
+///   percentile           = "Percentile50"
+///   perf_data_end_time   = "2023-11-03T05:42:45.496Z"
+///   perf_data_start_time = "2023-11-03T05:42:45.496Z"
+///   project_name         = "sumukk-ccy-bcs4557project"
+///   reserved_instance    = "None"
+///   resource_group_name  = "rgopenapi"
+///   scaling_factor       = 17
+///   sizing_criterion     = "PerformanceBased"
+///   time_range           = "Day"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +192,8 @@ import 'web_app_assessment_v2_operation_args.dart';
 /// import com.pulumi.azurenative.migrate.inputs.AppSvcNativeSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.DiscoveredEntityLightSummaryArgs;
 /// import com.pulumi.azurenative.migrate.inputs.EntityUptimeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,9 +310,9 @@ import 'web_app_assessment_v2_operation_args.dart';
 ///     azure_location="UkWest",
 ///     azure_offer_code=azure_native.migrate.AzureOfferCode.MSAZR0003_P,
 ///     azure_security_offering_type=azure_native.migrate.AzureSecurityOfferingType.NO,
-///     confidence_rating_in_percentage=13,
+///     confidence_rating_in_percentage=float(13),
 ///     currency=azure_native.migrate.AzureCurrency.USD,
-///     discount_percentage=13,
+///     discount_percentage=float(13),
 ///     discovered_entity_light_summary={
 ///         "number_of_machines": 27,
 ///         "number_of_servers": 5,
@@ -282,7 +332,7 @@ import 'web_app_assessment_v2_operation_args.dart';
 ///     project_name="sumukk-ccy-bcs4557project",
 ///     reserved_instance=azure_native.migrate.AzureReservedInstance.NONE,
 ///     resource_group_name="rgopenapi",
-///     scaling_factor=17,
+///     scaling_factor=float(17),
 ///     sizing_criterion=azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
 ///     time_range=azure_native.migrate.TimeRange.DAY)
 ///

@@ -5,14 +5,14 @@ import 'repo_response.dart';
 
 /// Result data returned by listSourceControlRepositories.
 class ListSourceControlRepositoriesResult {
-  /// URL to fetch the next set of repositories.
+  /// The link to the next page of items
   final String nextLink;
-  /// Array of repositories.
+  /// The Repo items on this page
   final List<RepoResponse> value;
 
   /// Creates a new [ListSourceControlRepositoriesResult].
-  /// [nextLink] URL to fetch the next set of repositories.
-  /// [value] Array of repositories.
+  /// [nextLink] The link to the next page of items
+  /// [value] The Repo items on this page
   const ListSourceControlRepositoriesResult({
     required this.nextLink,
     required this.value,
@@ -32,4 +32,3 @@ class ListSourceControlRepositoriesResult {
     );
   }
 }
-

@@ -1,0 +1,72 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'endpoint_auth_keys.dart';
+
+/// Online endpoint configuration
+class OnlineEndpointProperties {
+  /// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
+  final pulumi.Input<String> authMode;
+  /// ARM resource ID of the compute if it exists.
+  /// optional
+  final pulumi.Input<String>? compute;
+  /// Description of the inference endpoint.
+  final pulumi.Input<String>? description;
+  /// EndpointAuthKeys to set initially on an Endpoint.
+  /// This property will always be returned as null. AuthKey values must be retrieved using the ListKeys API.
+  final pulumi.Input<EndpointAuthKeys>? keys;
+  /// Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.
+  final pulumi.Input<Map<String, int>>? mirrorTraffic;
+  /// Property dictionary. Properties can be added, but not removed or altered.
+  final pulumi.Input<Map<String, String>>? properties;
+  /// Enum to determine whether PublicNetworkAccess is Enabled or Disabled.
+  final pulumi.Input<String>? publicNetworkAccess;
+  /// Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
+  final pulumi.Input<Map<String, int>>? traffic;
+
+  /// Creates a new [OnlineEndpointProperties].
+  /// [authMode] [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
+  /// [compute] ARM resource ID of the compute if it exists.
+  /// [description] Description of the inference endpoint.
+  /// [keys] EndpointAuthKeys to set initially on an Endpoint.
+  /// [mirrorTraffic] Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.
+  /// [properties] Property dictionary. Properties can be added, but not removed or altered.
+  /// [publicNetworkAccess] Enum to determine whether PublicNetworkAccess is Enabled or Disabled.
+  /// [traffic] Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
+  const OnlineEndpointProperties({
+    required this.authMode,
+    this.compute,
+    this.description,
+    this.keys,
+    this.mirrorTraffic,
+    this.properties,
+    this.publicNetworkAccess,
+    this.traffic,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authMode': authMode,
+      'compute': ?compute,
+      'description': ?description,
+      'keys': ?pulumi.Input.mapOptionalInputValue<EndpointAuthKeys, Map<String, dynamic>>(keys, (value) => value.toMap()),
+      'mirrorTraffic': ?mirrorTraffic,
+      'properties': ?properties,
+      'publicNetworkAccess': ?publicNetworkAccess,
+      'traffic': ?traffic,
+    };
+  }
+
+  factory OnlineEndpointProperties.fromMap(Map<String, dynamic> map) {
+    return OnlineEndpointProperties(
+      authMode: pulumi.Input.fromValue(map['authMode'] as String),
+      compute: (() { final guardedValue = map['compute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointAuthKeys.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mirrorTraffic: (() { final guardedValue = map['mirrorTraffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      traffic: (() { final guardedValue = map['traffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
+    );
+  }
+}

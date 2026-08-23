@@ -16,4 +16,3 @@ enum DestinationProtocol {
     throw ArgumentError('Unknown DestinationProtocol value: $value');
   }
 }
-

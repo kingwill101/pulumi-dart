@@ -73,6 +73,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dnsresolver_outboundendpoint" "outboundEndpoint" {
+///   dns_resolver_name      = "sampleDnsResolver"
+///   location               = "westus2"
+///   outbound_endpoint_name = "sampleOutboundEndpoint"
+///   resource_group_name    = "sampleResourceGroup"
+///   subnet = {
+///     id = "/subscriptions/0403cfa9-9659-4f33-9f30-1f191c51d111/resourceGroups/sampleVnetResourceGroupName/providers/Microsoft.Network/virtualNetworks/sampleVirtualNetwork/subnets/sampleSubnet"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dnsresolver.OutboundEndpoint;
 /// import com.pulumi.azurenative.dnsresolver.OutboundEndpointArgs;
 /// import com.pulumi.azurenative.dnsresolver.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -14,4 +14,3 @@ enum CatalogItemType {
     throw ArgumentError('Unknown CatalogItemType value: $value');
   }
 }
-

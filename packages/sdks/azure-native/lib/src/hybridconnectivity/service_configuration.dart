@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridconnectivity_serviceconfiguration" "serviceConfiguration" {
+///   endpoint_name              = "default"
+///   port                       = 22
+///   resource_uri               = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default"
+///   service_configuration_name = "SSH"
+///   service_name               = "SSH"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridconnectivity.ServiceConfiguration;
 /// import com.pulumi.azurenative.hybridconnectivity.ServiceConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +133,7 @@ import 'system_data_response.dart';
 ///
 /// service_configuration = azure_native.hybridconnectivity.ServiceConfiguration("serviceConfiguration",
 ///     endpoint_name="default",
-///     port=22,
+///     port=float(22),
 ///     resource_uri="subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default",
 ///     service_configuration_name="SSH",
 ///     service_name=azure_native.hybridconnectivity.ServiceName.SSH)
@@ -185,6 +204,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridconnectivity_serviceconfiguration" "serviceConfiguration" {
+///   endpoint_name              = "default"
+///   port                       = 6516
+///   resource_uri               = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default"
+///   service_configuration_name = "WAC"
+///   service_name               = "WAC"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -193,8 +231,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridconnectivity.ServiceConfiguration;
 /// import com.pulumi.azurenative.hybridconnectivity.ServiceConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,7 +277,7 @@ import 'system_data_response.dart';
 ///
 /// service_configuration = azure_native.hybridconnectivity.ServiceConfiguration("serviceConfiguration",
 ///     endpoint_name="default",
-///     port=6516,
+///     port=float(6516),
 ///     resource_uri="subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default",
 ///     service_configuration_name="WAC",
 ///     service_name=azure_native.hybridconnectivity.ServiceName.WAC)

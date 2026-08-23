@@ -22,4 +22,3 @@ enum NetworkTypeEnum {
     throw ArgumentError('Unknown NetworkTypeEnum value: $value');
   }
 }
-

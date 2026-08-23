@@ -1,7 +1,7 @@
 /// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
 enum PricingTier {
-  valueFree("Free"),
-  valueStandard("Standard");
+  free("Free"),
+  standard("Standard");
 
   const PricingTier(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PricingTier {
     throw ArgumentError('Unknown PricingTier value: $value');
   }
 }
-

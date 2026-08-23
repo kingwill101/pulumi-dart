@@ -26,4 +26,3 @@ enum ReplicationProtectedItemOperation {
     throw ArgumentError('Unknown ReplicationProtectedItemOperation value: $value');
   }
 }
-

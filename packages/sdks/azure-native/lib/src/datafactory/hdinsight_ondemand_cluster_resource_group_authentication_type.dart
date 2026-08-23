@@ -1,8 +1,8 @@
 /// HDInsight On-demand cluster resource group authentication type.
 enum HDInsightOndemandClusterResourceGroupAuthenticationType {
-  valueServicePrincipalKey("ServicePrincipalKey"),
-  valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
-  valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
+  servicePrincipalKey("ServicePrincipalKey"),
+  systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
+  userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const HDInsightOndemandClusterResourceGroupAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum HDInsightOndemandClusterResourceGroupAuthenticationType {
     throw ArgumentError('Unknown HDInsightOndemandClusterResourceGroupAuthenticationType value: $value');
   }
 }
-

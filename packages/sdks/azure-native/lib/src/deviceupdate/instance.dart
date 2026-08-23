@@ -82,6 +82,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceupdate_instance" "instance" {
+///   account_name = "contoso"
+///   diagnostic_storage_properties = {
+///     authentication_type = "KeyBased"
+///     connection_string   = "string"
+///     resource_id         = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/adu-resource-group/providers/Microsoft.Storage/storageAccounts/testAccount"
+///   }
+///   enable_diagnostics = false
+///   instance_name      = "blue"
+///   iot_hubs {
+///     resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/blue-contoso-hub"
+///   }
+///   location            = "westus2"
+///   resource_group_name = "test-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +119,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceupdate.InstanceArgs;
 /// import com.pulumi.azurenative.deviceupdate.inputs.DiagnosticStoragePropertiesArgs;
 /// import com.pulumi.azurenative.deviceupdate.inputs.IotHubSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

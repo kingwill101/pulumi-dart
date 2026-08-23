@@ -29,4 +29,3 @@ enum BackupItemType {
     throw ArgumentError('Unknown BackupItemType value: $value');
   }
 }
-

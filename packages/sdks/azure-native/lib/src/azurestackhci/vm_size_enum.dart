@@ -36,4 +36,3 @@ enum VmSizeEnum {
     throw ArgumentError('Unknown VmSizeEnum value: $value');
   }
 }
-

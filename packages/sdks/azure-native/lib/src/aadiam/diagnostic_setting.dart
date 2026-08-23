@@ -80,6 +80,33 @@ import 'diagnostic_setting_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_aadiam_diagnosticsetting" "diagnosticSetting" {
+///   event_hub_authorization_rule_id = "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/eventhubs/myeventhub/authorizationrules/myrule"
+///   event_hub_name                  = "myeventhub"
+///   logs {
+///     category = "AuditLogs"
+///     enabled  = true
+///     retention_policy = {
+///       days    = 0
+///       enabled = false
+///     }
+///   }
+///   name               = "mysetting"
+///   storage_account_id = "/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1"
+///   workspace_id       = ""
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +117,8 @@ import 'diagnostic_setting_args.dart';
 /// import com.pulumi.azurenative.aadiam.DiagnosticSettingArgs;
 /// import com.pulumi.azurenative.aadiam.inputs.LogSettingsArgs;
 /// import com.pulumi.azurenative.aadiam.inputs.RetentionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

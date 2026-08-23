@@ -16,4 +16,3 @@ enum AzureFirewallSkuTier {
     throw ArgumentError('Unknown AzureFirewallSkuTier value: $value');
   }
 }
-

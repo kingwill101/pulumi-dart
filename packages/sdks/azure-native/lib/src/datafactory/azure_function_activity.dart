@@ -17,7 +17,7 @@ class AzureFunctionActivity {
   /// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic> functionName;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-  final pulumi.Input<Map<String, dynamic>>? headers;
+  final pulumi.Input<dynamic>? headers;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Rest API method for target endpoint.
@@ -90,7 +90,7 @@ class AzureFunctionActivity {
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functionName: pulumi.Input.fromValue(map['functionName']),
-      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       method: pulumi.Input.fromValue(map['method'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -102,4 +102,3 @@ class AzureFunctionActivity {
     );
   }
 }
-

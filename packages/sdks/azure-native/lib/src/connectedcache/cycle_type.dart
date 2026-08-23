@@ -16,4 +16,3 @@ enum CycleType {
     throw ArgumentError('Unknown CycleType value: $value');
   }
 }
-

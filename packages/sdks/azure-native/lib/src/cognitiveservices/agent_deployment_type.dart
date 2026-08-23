@@ -1,8 +1,8 @@
 /// Gets or sets the type of deployment for the agent.
 enum AgentDeploymentType {
-  valueManaged("Managed"),
-  valueHosted("Hosted"),
-  valueCustom("Custom");
+  managed("Managed"),
+  hosted("Hosted"),
+  custom("Custom");
 
   const AgentDeploymentType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum AgentDeploymentType {
     throw ArgumentError('Unknown AgentDeploymentType value: $value');
   }
 }
-

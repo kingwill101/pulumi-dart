@@ -27,12 +27,14 @@ class RunbookArgs {
   final pulumi.Input<String>? name;
   /// Gets or sets the published runbook content link.
   final pulumi.Input<ContentLink>? publishContentLink;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The runbook name.
   final pulumi.Input<String>? runbookName;
   /// Gets or sets the type of the runbook.
   final pulumi.Input<String> runbookType;
+  /// Environment of the runbook.
+  final pulumi.Input<String>? runtimeEnvironment;
   /// Gets or sets the tags attached to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -46,9 +48,10 @@ class RunbookArgs {
   /// [logVerbose] Gets or sets verbose log option.
   /// [name] Gets or sets the name of the resource.
   /// [publishContentLink] Gets or sets the published runbook content link.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runbookName] The runbook name.
   /// [runbookType] Gets or sets the type of the runbook.
+  /// [runtimeEnvironment] Environment of the runbook.
   /// [tags] Gets or sets the tags attached to the resource.
   const RunbookArgs({
     required this.automationAccountName,
@@ -63,6 +66,7 @@ class RunbookArgs {
     required this.resourceGroupName,
     this.runbookName,
     required this.runbookType,
+    this.runtimeEnvironment,
     this.tags,
   });
 
@@ -80,6 +84,7 @@ class RunbookArgs {
       'resourceGroupName': resourceGroupName,
       'runbookName': ?runbookName,
       'runbookType': runbookType,
+      'runtimeEnvironment': ?runtimeEnvironment,
       'tags': ?tags,
     };
   }
@@ -98,8 +103,8 @@ class RunbookArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       runbookName: (() { final guardedValue = map['runbookName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runbookType: pulumi.Input.fromValue(map['runbookType'] as String),
+      runtimeEnvironment: (() { final guardedValue = map['runtimeEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }
-

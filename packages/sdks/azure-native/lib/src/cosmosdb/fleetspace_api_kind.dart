@@ -14,4 +14,3 @@ enum FleetspaceApiKind {
     throw ArgumentError('Unknown FleetspaceApiKind value: $value');
   }
 }
-

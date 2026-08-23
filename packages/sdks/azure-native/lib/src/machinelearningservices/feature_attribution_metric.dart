@@ -1,6 +1,6 @@
 /// [Required] The feature attribution metric to calculate.
 enum FeatureAttributionMetric {
-  valueNormalizedDiscountedCumulativeGain("NormalizedDiscountedCumulativeGain");
+  normalizedDiscountedCumulativeGain("NormalizedDiscountedCumulativeGain");
 
   const FeatureAttributionMetric(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum FeatureAttributionMetric {
     throw ArgumentError('Unknown FeatureAttributionMetric value: $value');
   }
 }
-

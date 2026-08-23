@@ -15,7 +15,7 @@ class WorkbookTemplateArgs {
   final pulumi.Input<List<WorkbookTemplateGallery>> galleries;
   /// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
   final pulumi.Input<Map<String, List<WorkbookTemplateLocalizedGallery>>>? localized;
-  /// Resource location
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
   final pulumi.Input<int>? priority;
@@ -23,7 +23,7 @@ class WorkbookTemplateArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.
   final pulumi.Input<String>? resourceName;
-  /// Resource tags
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// Valid JSON object containing workbook template payload.
   final pulumi.Input<dynamic> templateData;
@@ -32,11 +32,11 @@ class WorkbookTemplateArgs {
   /// [author] Information about the author of the workbook template.
   /// [galleries] Workbook galleries supported by the template.
   /// [localized] Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
-  /// [location] Resource location
+  /// [location] The geo-location where the resource lives
   /// [priority] Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  /// [tags] Resource tags
+  /// [tags] Resource tags.
   /// [templateData] Valid JSON object containing workbook template payload.
   const WorkbookTemplateArgs({
     this.author,
@@ -78,4 +78,3 @@ class WorkbookTemplateArgs {
     );
   }
 }
-

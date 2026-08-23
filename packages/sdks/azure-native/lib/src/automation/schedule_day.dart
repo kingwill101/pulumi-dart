@@ -1,12 +1,12 @@
 /// Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
 enum ScheduleDay {
-  valueMonday("Monday"),
-  valueTuesday("Tuesday"),
-  valueWednesday("Wednesday"),
-  valueThursday("Thursday"),
-  valueFriday("Friday"),
-  valueSaturday("Saturday"),
-  valueSunday("Sunday");
+  monday("Monday"),
+  tuesday("Tuesday"),
+  wednesday("Wednesday"),
+  thursday("Thursday"),
+  friday("Friday"),
+  saturday("Saturday"),
+  sunday("Sunday");
 
   const ScheduleDay(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum ScheduleDay {
     throw ArgumentError('Unknown ScheduleDay value: $value');
   }
 }
-

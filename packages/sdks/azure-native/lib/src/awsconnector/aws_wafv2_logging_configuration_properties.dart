@@ -51,4 +51,3 @@ class AwsWafv2LoggingConfigurationProperties {
     );
   }
 }
-

@@ -81,6 +81,35 @@ import 'user_settings_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_portal_usersettings" "userSettings" {
+///   properties = {
+///     preferred_location   = "eastus"
+///     preferred_os_type    = "Linux"
+///     preferred_shell_type = "bash"
+///     storage_profile = {
+///       disk_size_in_gb             = 5
+///       file_share_name             = "string"
+///       storage_account_resource_id = "string"
+///     }
+///     terminal_settings = {
+///       font_size  = "Medium"
+///       font_style = "Monospace"
+///     }
+///   }
+///   user_settings_name = "cloudconsole"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +121,8 @@ import 'user_settings_args.dart';
 /// import com.pulumi.azurenative.portal.inputs.UserPropertiesArgs;
 /// import com.pulumi.azurenative.portal.inputs.StorageProfileArgs;
 /// import com.pulumi.azurenative.portal.inputs.TerminalSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

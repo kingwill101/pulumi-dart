@@ -15,4 +15,3 @@ enum ElevationLevel {
     throw ArgumentError('Unknown ElevationLevel value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum RedirectRuleProtocol {
     throw ArgumentError('Unknown RedirectRuleProtocol value: $value');
   }
 }
-

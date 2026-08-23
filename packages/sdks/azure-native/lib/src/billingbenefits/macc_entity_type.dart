@@ -1,7 +1,7 @@
 /// Represents type of the object being operated on. Possible values are primary or contributor.
 enum MaccEntityType {
-  valuePrimary("Primary"),
-  valueContributor("Contributor");
+  primary("Primary"),
+  contributor("Contributor");
 
   const MaccEntityType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum MaccEntityType {
     throw ArgumentError('Unknown MaccEntityType value: $value');
   }
 }
-

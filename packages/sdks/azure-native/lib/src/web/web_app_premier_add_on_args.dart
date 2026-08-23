@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_web_app_premier_add_on_args_doc}
 class WebAppPremierAddOnArgs {
-  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Premier add on Marketplace offer.
   final pulumi.Input<String>? marketplaceOffer;
@@ -21,7 +21,7 @@ class WebAppPremierAddOnArgs {
   final pulumi.Input<String>? premierAddOnName;
   /// Premier add on Product.
   final pulumi.Input<String>? product;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Premier add on SKU.
   final pulumi.Input<String>? sku;
@@ -31,14 +31,14 @@ class WebAppPremierAddOnArgs {
   final pulumi.Input<String>? vendor;
 
   /// Creates a new [WebAppPremierAddOnArgs].
-  /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
+  /// [kind] Kind of resource.
+  /// [location] The geo-location where the resource lives
   /// [marketplaceOffer] Premier add on Marketplace offer.
   /// [marketplacePublisher] Premier add on Marketplace publisher.
   /// [name] Name of the app.
   /// [premierAddOnName] Add-on name.
   /// [product] Premier add on Product.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] Premier add on SKU.
   /// [tags] Resource tags.
   /// [vendor] Premier add on Vendor.
@@ -88,4 +88,3 @@ class WebAppPremierAddOnArgs {
     );
   }
 }
-

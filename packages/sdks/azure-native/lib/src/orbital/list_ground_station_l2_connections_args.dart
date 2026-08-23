@@ -34,4 +34,3 @@ class ListGroundStationL2ConnectionsArgs {
     );
   }
 }
-

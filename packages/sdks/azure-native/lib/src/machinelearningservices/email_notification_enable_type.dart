@@ -1,8 +1,8 @@
 /// Enum to determine the email notification type.
 enum EmailNotificationEnableType {
-  valueJobCompleted("JobCompleted"),
-  valueJobFailed("JobFailed"),
-  valueJobCancelled("JobCancelled");
+  jobCompleted("JobCompleted"),
+  jobFailed("JobFailed"),
+  jobCancelled("JobCancelled");
 
   const EmailNotificationEnableType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum EmailNotificationEnableType {
     throw ArgumentError('Unknown EmailNotificationEnableType value: $value');
   }
 }
-

@@ -8,7 +8,7 @@ import 'terminal_server_configuration_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -285,6 +285,100 @@ import 'terminal_server_configuration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_networkfabric" "networkFabric" {
+///   annotation     = "annotation"
+///   fabric_asn     = 29249
+///   fabric_version = "1.x.x"
+///   ipv4_prefix    = "10.18.0.0/19"
+///   ipv6_prefix    = "3FFE:FFFF:0:CD40::/59"
+///   location       = "eastuseuap"
+///   management_network_configuration = {
+///     infrastructure_vpn_configuration = {
+///       network_to_network_interconnect_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni"
+///       option_a_properties = {
+///         bfd_configuration = {
+///           interval_in_milli_seconds = 300
+///           multiplier                = 10
+///         }
+///         mtu                   = 1501
+///         peer_asn              = 1235
+///         primary_ipv4_prefix   = "10.0.0.12/30"
+///         primary_ipv6_prefix   = "4FFE:FFFF:0:CD30::a8/127"
+///         secondary_ipv4_prefix = "20.0.0.13/30"
+///         secondary_ipv6_prefix = "6FFE:FFFF:0:CD30::ac/127"
+///         vlan_id               = 3001
+///       }
+///       option_b_properties = {
+///         export_route_targets = ["65046:10050"]
+///         import_route_targets = ["65046:10050"]
+///         route_targets = {
+///           export_ipv4_route_targets = ["65046:10039"]
+///           export_ipv6_route_targets = ["65046:10039"]
+///           import_ipv4_route_targets = ["65046:10039"]
+///           import_ipv6_route_targets = ["65046:10039"]
+///         }
+///       }
+///       peering_option = "OptionA"
+///     }
+///     workload_vpn_configuration = {
+///       network_to_network_interconnect_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-nni"
+///       option_a_properties = {
+///         bfd_configuration = {
+///           interval_in_milli_seconds = 300
+///           multiplier                = 5
+///         }
+///         mtu                   = 1500
+///         peer_asn              = 61234
+///         primary_ipv4_prefix   = "10.0.0.14/30"
+///         primary_ipv6_prefix   = "2FFE:FFFF:0:CD30::a7/126"
+///         secondary_ipv4_prefix = "10.0.0.15/30"
+///         secondary_ipv6_prefix = "2FFE:FFFF:0:CD30::ac/126"
+///         vlan_id               = 3000
+///       }
+///       option_b_properties = {
+///         export_route_targets = ["65046:10050"]
+///         import_route_targets = ["65046:10050"]
+///         route_targets = {
+///           export_ipv4_route_targets = ["65046:10039"]
+///           export_ipv6_route_targets = ["65046:10039"]
+///           import_ipv4_route_targets = ["65046:10039"]
+///           import_ipv6_route_targets = ["65046:10039"]
+///         }
+///       }
+///       peering_option = "OptionA"
+///     }
+///   }
+///   network_fabric_controller_id = "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-fabricController"
+///   network_fabric_name          = "example-fabric"
+///   network_fabric_sku           = "M4-A400-A100-C16-aa"
+///   rack_count                   = 4
+///   resource_group_name          = "example-rg"
+///   server_count_per_rack        = 8
+///   tags = {
+///     "keyID" = "keyValue"
+///   }
+///   terminal_server_configuration = {
+///     password              = "xxxx"
+///     primary_ipv4_prefix   = "10.0.0.12/30"
+///     primary_ipv6_prefix   = "4FFE:FFFF:0:CD30::a8/127"
+///     secondary_ipv4_prefix = "20.0.0.13/30"
+///     secondary_ipv6_prefix = "6FFE:FFFF:0:CD30::ac/127"
+///     serial_number         = "123456"
+///     username              = "username"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -300,8 +394,8 @@ import 'terminal_server_configuration_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.FabricOptionBPropertiesArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.RouteTargetInformationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.TerminalServerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -494,7 +588,7 @@ import 'terminal_server_configuration_response.dart';
 ///
 /// network_fabric = azure_native.managednetworkfabric.NetworkFabric("networkFabric",
 ///     annotation="annotation",
-///     fabric_asn=29249,
+///     fabric_asn=float(29249),
 ///     fabric_version="1.x.x",
 ///     ipv4_prefix="10.18.0.0/19",
 ///     ipv6_prefix="3FFE:FFFF:0:CD40::/59",
@@ -508,7 +602,7 @@ import 'terminal_server_configuration_response.dart';
 ///                     "multiplier": 10,
 ///                 },
 ///                 "mtu": 1501,
-///                 "peer_asn": 1235,
+///                 "peer_asn": float(1235),
 ///                 "primary_ipv4_prefix": "10.0.0.12/30",
 ///                 "primary_ipv6_prefix": "4FFE:FFFF:0:CD30::a8/127",
 ///                 "secondary_ipv4_prefix": "20.0.0.13/30",
@@ -535,7 +629,7 @@ import 'terminal_server_configuration_response.dart';
 ///                     "multiplier": 5,
 ///                 },
 ///                 "mtu": 1500,
-///                 "peer_asn": 61234,
+///                 "peer_asn": float(61234),
 ///                 "primary_ipv4_prefix": "10.0.0.14/30",
 ///                 "primary_ipv6_prefix": "2FFE:FFFF:0:CD30::a7/126",
 ///                 "secondary_ipv4_prefix": "10.0.0.15/30",

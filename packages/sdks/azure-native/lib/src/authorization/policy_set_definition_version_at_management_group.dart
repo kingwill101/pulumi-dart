@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -131,6 +131,50 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policysetdefinitionversionatmanagementgroup" "policySetDefinitionVersionAtManagementGroup" {
+///   description           = "Policies to enforce low cost storage SKUs"
+///   display_name          = "Cost Management"
+///   management_group_name = "MyManagementGroup"
+///   metadata = {
+///     "category" = "Cost Management"
+///   }
+///   policy_definition_version = "1.2.1"
+///   policy_definitions {
+///     parameters = {
+///       "listOfAllowedSKUs" = {
+///         value = ["Standard_GRS", "Standard_LRS"]
+///       }
+///     }
+///     policy_definition_id           = "/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1"
+///     policy_definition_reference_id = "Limit_Skus"
+///   }
+///   policy_definitions {
+///     parameters = {
+///       "prefix" = {
+///         value = "DeptA"
+///       }
+///       "suffix" = {
+///         value = "-LC"
+///       }
+///     }
+///     policy_definition_id           = "/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"
+///     policy_definition_reference_id = "Resource_Naming"
+///   }
+///   policy_set_definition_name = "CostManagement"
+///   version                    = "1.2.1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +184,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionVersionAtManagementGroup;
 /// import com.pulumi.azurenative.authorization.PolicySetDefinitionVersionAtManagementGroupArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyDefinitionReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -24,4 +24,3 @@ enum KeyUsageName {
     throw ArgumentError('Unknown KeyUsageName value: $value');
   }
 }
-

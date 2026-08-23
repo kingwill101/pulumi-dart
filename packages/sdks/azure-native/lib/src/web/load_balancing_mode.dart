@@ -1,9 +1,9 @@
 /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
 enum LoadBalancingMode {
-  valueNone("None"),
-  valueWeb("Web"),
-  valuePublishing("Publishing"),
-  valueWebPublishing("Web, Publishing");
+  none("None"),
+  web("Web"),
+  publishing("Publishing"),
+  webPublishing("Web, Publishing");
 
   const LoadBalancingMode(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum LoadBalancingMode {
     throw ArgumentError('Unknown LoadBalancingMode value: $value');
   }
 }
-

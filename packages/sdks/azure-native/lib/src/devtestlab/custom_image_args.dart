@@ -23,7 +23,7 @@ class CustomImageArgs {
   final pulumi.Input<bool>? isPlanAuthorized;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// The Managed Image Id backing the custom image.
   final pulumi.Input<String>? managedImageId;
@@ -33,7 +33,7 @@ class CustomImageArgs {
   final pulumi.Input<String>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// The VHD from which the image is to be created.
   final pulumi.Input<CustomImagePropertiesCustom>? vhd;
@@ -47,12 +47,12 @@ class CustomImageArgs {
   /// [description] The description of the custom image.
   /// [isPlanAuthorized] Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
   /// [labName] The name of the lab.
-  /// [location] The location of the resource.
+  /// [location] The geo-location where the resource lives
   /// [managedImageId] The Managed Image Id backing the custom image.
   /// [managedSnapshotId] The Managed Snapshot Id backing the custom image.
   /// [name] The name of the CustomImage
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   /// [vhd] The VHD from which the image is to be created.
   /// [vm] The virtual machine from which the image is to be created.
   const CustomImageArgs({
@@ -110,4 +110,3 @@ class CustomImageArgs {
     );
   }
 }
-

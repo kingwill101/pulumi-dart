@@ -271,6 +271,98 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_signalrservice_signalr" "signalR" {
+///   cors = {
+///     allowed_origins = ["https://foo.com", "https://bar.com"]
+///   }
+///   disable_aad_auth   = false
+///   disable_local_auth = false
+///   features {
+///     flag       = "ServiceMode"
+///     properties = {}
+///     value      = "Serverless"
+///   }
+///   features {
+///     flag       = "EnableConnectivityLogs"
+///     properties = {}
+///     value      = "True"
+///   }
+///   features {
+///     flag       = "EnableMessagingLogs"
+///     properties = {}
+///     value      = "False"
+///   }
+///   features {
+///     flag       = "EnableLiveTrace"
+///     properties = {}
+///     value      = "False"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind = "SignalR"
+///   live_trace_configuration = {
+///     categories = [{
+///       "enabled" = "true"
+///       "name"    = "ConnectivityLogs"
+///     }]
+///     enabled = "false"
+///   }
+///   location = "eastus"
+///   network_ac_ls = {
+///     default_action = "Deny"
+///     private_endpoints = [{
+///       "allow" = ["ServerConnection"]
+///       "name"  = "mysignalrservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
+///     }]
+///     public_network = {
+///       allow = ["ClientConnection"]
+///     }
+///   }
+///   public_network_access = "Enabled"
+///   resource_group_name   = "myResourceGroup"
+///   resource_name         = "mySignalRService"
+///   serverless = {
+///     connection_timeout_in_seconds = 5
+///   }
+///   sku = {
+///     capacity = 1
+///     name     = "Premium_P1"
+///     tier     = "Premium"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   tls = {
+///     client_cert_enabled = false
+///   }
+///   upstream = {
+///     templates = [{
+///       "auth" = {
+///         "managedIdentity" = {
+///           "resource" = "api://example"
+///         }
+///         "type" = "ManagedIdentity"
+///       }
+///       "categoryPattern" = "*"
+///       "eventPattern"    = "connect,disconnect"
+///       "hubPattern"      = "*"
+///       "urlTemplate"     = "https://example.com/chat/api/connect"
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +381,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.signalrservice.inputs.ResourceSkuArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.SignalRTlsSettingsArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.ServerlessUpstreamSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

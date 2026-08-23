@@ -15,4 +15,3 @@ enum EncryptionKekType {
     throw ArgumentError('Unknown EncryptionKekType value: $value');
   }
 }
-

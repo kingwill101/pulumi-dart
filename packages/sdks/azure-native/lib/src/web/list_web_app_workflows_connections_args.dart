@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_list_web_app_workflows_connections_args_doc}
 class ListWebAppWorkflowsConnectionsArgs {
-  /// Site name.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListWebAppWorkflowsConnectionsArgs].
-  /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ListWebAppWorkflowsConnectionsArgs({
     required this.name,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class ListWebAppWorkflowsConnectionsArgs {
     );
   }
 }
-

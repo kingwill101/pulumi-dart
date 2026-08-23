@@ -15,4 +15,3 @@ enum Commit {
     throw ArgumentError('Unknown Commit value: $value');
   }
 }
-

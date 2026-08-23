@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -290,6 +290,94 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_policy" "policy" {
+///   custom_rules = {
+///     rules = [{
+///       "action"       = "Block"
+///       "enabledState" = "Enabled"
+///       "matchConditions" = [{
+///         "matchValue"      = ["CH"]
+///         "matchVariable"   = "RemoteAddr"
+///         "negateCondition" = false
+///         "operator"        = "GeoMatch"
+///         "transforms"      = []
+///         }, {
+///         "matchValue"      = ["windows"]
+///         "matchVariable"   = "RequestHeader"
+///         "negateCondition" = false
+///         "operator"        = "Contains"
+///         "selector"        = "UserAgent"
+///         "transforms"      = []
+///         }, {
+///         "matchValue"      = ["<?php", "?>"]
+///         "matchVariable"   = "QueryString"
+///         "negateCondition" = false
+///         "operator"        = "Contains"
+///         "selector"        = "search"
+///         "transforms"      = ["UrlDecode", "Lowercase"]
+///       }]
+///       "name"     = "CustomRule1"
+///       "priority" = 2
+///     }]
+///   }
+///   location = "WestUs"
+///   managed_rules = {
+///     managed_rule_sets = [{
+///       "ruleGroupOverrides" = [{
+///         "ruleGroupName" = "Group1"
+///         "rules" = [{
+///           "action"       = "Redirect"
+///           "enabledState" = "Enabled"
+///           "ruleId"       = "GROUP1-0001"
+///           }, {
+///           "enabledState" = "Disabled"
+///           "ruleId"       = "GROUP1-0002"
+///         }]
+///       }]
+///       "ruleSetType"    = "DefaultRuleSet"
+///       "ruleSetVersion" = "preview-1.0"
+///     }]
+///   }
+///   policy_name = "MicrosoftCdnWafPolicy"
+///   policy_settings = {
+///     default_custom_block_response_body        = "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="
+///     default_custom_block_response_status_code = 200
+///     default_redirect_url                      = "http://www.bing.com"
+///   }
+///   rate_limit_rules = {
+///     rules = [{
+///       "action"       = "Block"
+///       "enabledState" = "Enabled"
+///       "matchConditions" = [{
+///         "matchValue"      = ["192.168.1.0/24", "10.0.0.0/24"]
+///         "matchVariable"   = "RemoteAddr"
+///         "negateCondition" = false
+///         "operator"        = "IPMatch"
+///         "transforms"      = []
+///       }]
+///       "name"                       = "RateLimitRule1"
+///       "priority"                   = 1
+///       "rateLimitDurationInMinutes" = 0
+///       "rateLimitThreshold"         = 1000
+///     }]
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "Standard_Microsoft"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -303,8 +391,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.inputs.PolicySettingsArgs;
 /// import com.pulumi.azurenative.cdn.inputs.RateLimitRuleListArgs;
 /// import com.pulumi.azurenative.cdn.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,7 +664,7 @@ import 'system_data_response.dart';
 ///     policy_name="MicrosoftCdnWafPolicy",
 ///     policy_settings={
 ///         "default_custom_block_response_body": "PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==",
-///         "default_custom_block_response_status_code": 200,
+///         "default_custom_block_response_status_code": float(200),
 ///         "default_redirect_url": "http://www.bing.com",
 ///     },
 ///     rate_limit_rules={

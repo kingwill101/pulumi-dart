@@ -16,4 +16,3 @@ enum DdosSettingsProtectionMode {
     throw ArgumentError('Unknown DdosSettingsProtectionMode value: $value');
   }
 }
-

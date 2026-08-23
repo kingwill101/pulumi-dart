@@ -64,6 +64,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_arcaddon" "arcAddon" {
+///   addon_name          = "arcName"
+///   device_name         = "testedgedevice"
+///   kind                = "ArcForKubernetes"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   resource_location   = "EastUS"
+///   resource_name       = "testedgedevice"
+///   role_name           = "KubernetesRole"
+///   subscription_id     = "4385cf00-2d3a-425a-832f-f4285b1c9dce"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +94,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databoxedge.ArcAddon;
 /// import com.pulumi.azurenative.databoxedge.ArcAddonArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

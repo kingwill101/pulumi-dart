@@ -158,6 +158,66 @@ import 'virtual_machine_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_labservices_lab" "lab" {
+///   auto_shutdown_profile = {
+///     disconnect_delay            = "PT5M"
+///     idle_delay                  = "PT5M"
+///     no_connect_delay            = "PT5M"
+///     shutdown_on_disconnect      = "Enabled"
+///     shutdown_on_idle            = "UserAbsence"
+///     shutdown_when_not_connected = "Enabled"
+///   }
+///   connection_profile = {
+///     client_rdp_access = "Public"
+///     client_ssh_access = "Public"
+///     web_rdp_access    = "None"
+///     web_ssh_access    = "None"
+///   }
+///   description = "This is a test lab."
+///   lab_name    = "testlab"
+///   lab_plan_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.LabServices/labPlans/testlabplan"
+///   location    = "westus"
+///   network_profile = {
+///     subnet_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
+///   }
+///   resource_group_name = "testrg123"
+///   security_profile = {
+///     open_access = "Disabled"
+///   }
+///   title = "Test Lab"
+///   virtual_machine_profile = {
+///     additional_capabilities = {
+///       install_gpu_drivers = "Disabled"
+///     }
+///     admin_user = {
+///       username = "test-user"
+///     }
+///     create_option = "TemplateVM"
+///     image_reference = {
+///       offer     = "WindowsServer"
+///       publisher = "Microsoft"
+///       sku       = "2019-Datacenter"
+///       version   = "2019.0.20190410"
+///     }
+///     sku = {
+///       name = "Medium"
+///     }
+///     usage_quota         = "PT10H"
+///     use_shared_password = "Disabled"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +235,8 @@ import 'virtual_machine_profile_response.dart';
 /// import com.pulumi.azurenative.labservices.inputs.CredentialsArgs;
 /// import com.pulumi.azurenative.labservices.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.labservices.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

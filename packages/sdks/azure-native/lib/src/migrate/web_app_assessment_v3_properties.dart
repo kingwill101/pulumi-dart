@@ -39,4 +39,3 @@ class WebAppAssessmentV3Properties {
     );
   }
 }
-

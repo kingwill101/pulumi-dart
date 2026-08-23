@@ -15,4 +15,3 @@ enum ContainerizedNetworkFunctionNFVIType {
     throw ArgumentError('Unknown ContainerizedNetworkFunctionNFVIType value: $value');
   }
 }
-

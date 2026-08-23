@@ -202,6 +202,81 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_eksnodegroup" "eksNodegroup" {
+///   location = "qfzxiflpnxiua"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "ckgekeh"
+///     aws_account_id = "vfdqtwvbpgxbhqwrbowcnz"
+///     aws_properties = {
+///       ami_type             = "cupzyobvolczhkenpdfcfcqb"
+///       arn                  = "shesuqduavivrddwgrqtaukjv"
+///       capacity_type        = "pkzjnsykbn"
+///       cluster_name         = "qcbbidlhrczzbp"
+///       disk_size            = 14
+///       force_update_enabled = true
+///       id                   = "y"
+///       instance_types       = ["gfy"]
+///       labels = {
+///         "key8269" = "ymdbjmylynhangafbya"
+///       }
+///       launch_template = {
+///         id      = "si"
+///         name    = "gdqcgfql"
+///         version = "lonea"
+///       }
+///       node_role       = "rzscoljnrtiueunqg"
+///       nodegroup_name  = "wipo"
+///       release_version = "wbgbpvjsrkscfxkcbuatuirn"
+///       remote_access = {
+///         ec2_ssh_key            = "trwz"
+///         source_security_groups = ["jv"]
+///       }
+///       scaling_config = {
+///         desired_size = 2
+///         max_size     = 22
+///         min_size     = 18
+///       }
+///       subnets = ["jtzrxn"]
+///       tags = {
+///         "key1070" = "ptrhctidulykbaakuqqqqpwbjf"
+///       }
+///       taints = [{
+///         "effect" = "cqyaskimdnuadazzlnzdgwjbg"
+///         "key"    = "msxlxqepxrvkybvjeshfybwsx"
+///         "value"  = "hfdagmnrdomthxavrf"
+///       }]
+///       update_config = {
+///         max_unavailable            = 24
+///         max_unavailable_percentage = 18
+///       }
+///       version = "pzblimbasgkqgyknilzxktqx"
+///     }
+///     aws_region        = "glvfswwditueizhrpfvhiwm"
+///     aws_source_schema = "cizsekmbzwzgaklajexx"
+///     aws_tags = {
+///       "key7151" = "fcroma"
+///     }
+///     public_cloud_connectors_resource_id = "val"
+///     public_cloud_resource_name          = "aybzphomshbbtslocleyyvgcfu"
+///   }
+///   resource_group_name = "rgeksNodegroup"
+///   tags = {
+///     "key3889" = "eznqfotstpbcylyajq"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +291,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.RemoteAccessArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ScalingConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.UpdateConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

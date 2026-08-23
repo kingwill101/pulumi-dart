@@ -66,6 +66,27 @@ import 'tags_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_tagatscope" "tagAtScope" {
+///   properties = {
+///     tags = {
+///       "tagKey1" = "tag-value-1"
+///       "tagKey2" = "tag-value-2"
+///     }
+///   }
+///   scope = "subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/myPRNameSpace/VM/myVm"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'tags_response.dart';
 /// import com.pulumi.azurenative.resources.TagAtScope;
 /// import com.pulumi.azurenative.resources.TagAtScopeArgs;
 /// import com.pulumi.azurenative.resources.inputs.TagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +225,27 @@ import 'tags_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_tagatscope" "tagAtScope" {
+///   properties = {
+///     tags = {
+///       "tagKey1" = "tag-value-1"
+///       "tagKey2" = "tag-value-2"
+///     }
+///   }
+///   scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -213,8 +255,8 @@ import 'tags_response.dart';
 /// import com.pulumi.azurenative.resources.TagAtScope;
 /// import com.pulumi.azurenative.resources.TagAtScopeArgs;
 /// import com.pulumi.azurenative.resources.inputs.TagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

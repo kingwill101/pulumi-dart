@@ -15,4 +15,3 @@ enum DNSProxy {
     throw ArgumentError('Unknown DNSProxy value: $value');
   }
 }
-

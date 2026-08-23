@@ -84,6 +84,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recommendationsservice_modeling" "modeling" {
+///   account_name  = "sampleAccount"
+///   location      = "West US"
+///   modeling_name = "c1"
+///   properties = {
+///     features  = "Standard"
+///     frequency = "High"
+///     input_data = {
+///       connection_string = "https://storageAccount.blob.core.windows.net/container/root"
+///     }
+///     size = "Medium"
+///   }
+///   resource_group_name = "rg"
+///   tags = {
+///     "Environment" = "Prod"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +123,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.recommendationsservice.ModelingArgs;
 /// import com.pulumi.azurenative.recommendationsservice.inputs.ModelingResourcePropertiesArgs;
 /// import com.pulumi.azurenative.recommendationsservice.inputs.ModelingInputDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

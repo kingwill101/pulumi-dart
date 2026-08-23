@@ -31,4 +31,3 @@ class Ipv6Range {
     );
   }
 }
-

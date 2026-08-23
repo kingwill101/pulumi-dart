@@ -1,6 +1,6 @@
 /// Credential reference type.
 enum CredentialReferenceType {
-  valueCredentialReference("CredentialReference");
+  credentialReference("CredentialReference");
 
   const CredentialReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum CredentialReferenceType {
     throw ArgumentError('Unknown CredentialReferenceType value: $value');
   }
 }
-

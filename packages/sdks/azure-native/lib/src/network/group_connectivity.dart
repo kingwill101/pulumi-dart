@@ -15,4 +15,3 @@ enum GroupConnectivity {
     throw ArgumentError('Unknown GroupConnectivity value: $value');
   }
 }
-

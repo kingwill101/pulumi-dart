@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'pipeline_group_properties_response.dart';
 import 'system_data_response.dart';
 
@@ -9,7 +9,7 @@ class GetPipelineGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// The complex type of the extended location.
-  final AzureResourceManagerCommonTypesExtendedLocationResponse? extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The geo-location where the resource lives
@@ -64,7 +64,7 @@ class GetPipelineGroupResult {
   factory GetPipelineGroupResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -75,4 +75,3 @@ class GetPipelineGroupResult {
     );
   }
 }
-

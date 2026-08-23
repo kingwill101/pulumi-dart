@@ -1,9 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_policy_args.dart';
 import 'enterprise_policy_identity_response.dart';
-import 'properties_response_encryption.dart';
-import 'properties_response_lockbox.dart';
-import 'properties_response_network_injection.dart';
+import 'properties_encryption_response.dart';
+import 'properties_lockbox_response.dart';
+import 'properties_network_injection_response.dart';
 import 'system_data_response.dart';
 
 /// Definition of the EnterprisePolicy.
@@ -74,6 +74,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_powerplatform_enterprisepolicy" "enterprisePolicy" {
+///   enterprise_policy_name = "enterprisePolicy"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind                = "Lockbox"
+///   location            = "East US"
+///   resource_group_name = "resourceGroup"
+///   tags = {
+///     "Organization" = "Administration"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.powerplatform.EnterprisePolicy;
 /// import com.pulumi.azurenative.powerplatform.EnterprisePolicyArgs;
 /// import com.pulumi.azurenative.powerplatform.inputs.EnterprisePolicyIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,7 +203,7 @@ class EnterprisePolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The encryption settings for a configuration store.
-  late final pulumi.Output<PropertiesResponseEncryption?> encryption;
+  late final pulumi.Output<PropertiesEncryptionResponse?> encryption;
   /// The health status of the resource.
   late final pulumi.Output<String?> healthStatus;
   /// The identity of the EnterprisePolicy.
@@ -189,12 +213,12 @@ class EnterprisePolicy extends pulumi.CustomResource {
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// Settings concerning lockbox.
-  late final pulumi.Output<PropertiesResponseLockbox?> lockbox;
+  late final pulumi.Output<PropertiesLockboxResponse?> lockbox;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Settings concerning network injection.
-  late final pulumi.Output<PropertiesResponseNetworkInjection?> networkInjection;
-  /// Metadata pertaining to creation and last modification of the resource.
+  late final pulumi.Output<PropertiesNetworkInjectionResponse?> networkInjection;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The internally assigned unique identifier of the resource.
   late final pulumi.Output<String> systemId;
@@ -218,14 +242,14 @@ class EnterprisePolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    encryption = registerOutput<PropertiesResponseEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesResponseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryption = registerOutput<PropertiesEncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     healthStatus = registerOutput<String?>('healthStatus');
     identity = registerOutput<EnterprisePolicyIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterprisePolicyIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    lockbox = registerOutput<PropertiesResponseLockbox?>('lockbox', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesResponseLockbox.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lockbox = registerOutput<PropertiesLockboxResponse?>('lockbox', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesLockboxResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkInjection = registerOutput<PropertiesResponseNetworkInjection?>('networkInjection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesResponseNetworkInjection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkInjection = registerOutput<PropertiesNetworkInjectionResponse?>('networkInjection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesNetworkInjectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemId = registerOutput<String>('systemId');
     tags = registerOutput<Map<String, String>?>('tags');

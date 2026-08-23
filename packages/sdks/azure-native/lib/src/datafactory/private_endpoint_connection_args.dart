@@ -14,14 +14,14 @@ class PrivateEndpointConnectionArgs {
   final pulumi.Input<String>? privateEndpointConnectionName;
   /// Core resource properties
   final pulumi.Input<PrivateLinkConnectionApprovalRequest>? properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [PrivateEndpointConnectionArgs].
   /// [factoryName] The factory name.
   /// [privateEndpointConnectionName] The private endpoint connection name.
   /// [properties] Core resource properties
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const PrivateEndpointConnectionArgs({
     required this.factoryName,
     this.privateEndpointConnectionName,
@@ -47,4 +47,3 @@ class PrivateEndpointConnectionArgs {
     );
   }
 }
-

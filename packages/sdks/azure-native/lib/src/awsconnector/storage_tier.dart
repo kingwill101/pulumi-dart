@@ -15,4 +15,3 @@ enum StorageTier {
     throw ArgumentError('Unknown StorageTier value: $value');
   }
 }
-

@@ -62,6 +62,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_signalrservice_signalrcustomcertificate" "signalRCustomCertificate" {
+///   certificate_name         = "myCert"
+///   key_vault_base_uri       = "https://myvault.keyvault.azure.net/"
+///   key_vault_secret_name    = "mycert"
+///   key_vault_secret_version = "bb6a44b2743f47f68dad0d6cc9756432"
+///   resource_group_name      = "myResourceGroup"
+///   resource_name            = "mySignalRService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.signalrservice.SignalRCustomCertificate;
 /// import com.pulumi.azurenative.signalrservice.SignalRCustomCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -77,6 +77,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_labservices_schedule" "schedule" {
+///   lab_name = "testlab"
+///   notes    = "Schedule 1 for students"
+///   recurrence_pattern = {
+///     expiration_date = "2020-08-14T23:59:59Z"
+///     frequency       = "Daily"
+///     interval        = 2
+///   }
+///   resource_group_name = "testrg123"
+///   schedule_name       = "schedule1"
+///   start_at            = "2020-05-26T12:00:00Z"
+///   stop_at             = "2020-05-26T18:00:00Z"
+///   time_zone_id        = "America/Los_Angeles"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +112,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.labservices.Schedule;
 /// import com.pulumi.azurenative.labservices.ScheduleArgs;
 /// import com.pulumi.azurenative.labservices.inputs.RecurrencePatternArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

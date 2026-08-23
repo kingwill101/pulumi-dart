@@ -15,4 +15,3 @@ enum OverwriteDatabasesOnTargetServer {
     throw ArgumentError('Unknown OverwriteDatabasesOnTargetServer value: $value');
   }
 }
-

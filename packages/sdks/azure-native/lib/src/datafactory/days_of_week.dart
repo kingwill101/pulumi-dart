@@ -1,11 +1,11 @@
 enum DaysOfWeek {
-  valueSunday("Sunday"),
-  valueMonday("Monday"),
-  valueTuesday("Tuesday"),
-  valueWednesday("Wednesday"),
-  valueThursday("Thursday"),
-  valueFriday("Friday"),
-  valueSaturday("Saturday");
+  sunday("Sunday"),
+  monday("Monday"),
+  tuesday("Tuesday"),
+  wednesday("Wednesday"),
+  thursday("Thursday"),
+  friday("Friday"),
+  saturday("Saturday");
 
   const DaysOfWeek(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum DaysOfWeek {
     throw ArgumentError('Unknown DaysOfWeek value: $value');
   }
 }
-

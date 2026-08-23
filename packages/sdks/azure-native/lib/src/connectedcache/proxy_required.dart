@@ -15,4 +15,3 @@ enum ProxyRequired {
     throw ArgumentError('Unknown ProxyRequired value: $value');
   }
 }
-

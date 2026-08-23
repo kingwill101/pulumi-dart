@@ -15,4 +15,3 @@ enum LicenseType {
     throw ArgumentError('Unknown LicenseType value: $value');
   }
 }
-

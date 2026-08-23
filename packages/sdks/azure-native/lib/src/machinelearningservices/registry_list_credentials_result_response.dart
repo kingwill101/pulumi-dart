@@ -4,14 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'password_response.dart';
 
 class RegistryListCredentialsResultResponse {
+  /// The location of the workspace ACR
   final pulumi.Input<String> location;
   final pulumi.Input<List<PasswordResponse>>? passwords;
+  /// The username of the workspace ACR
   final pulumi.Input<String> username;
 
   /// Creates a new [RegistryListCredentialsResultResponse].
-  /// [location] Required.
+  /// [location] The location of the workspace ACR
   /// [passwords] Optional.
-  /// [username] Required.
+  /// [username] The username of the workspace ACR
   const RegistryListCredentialsResultResponse({
     required this.location,
     this.passwords,
@@ -34,4 +36,3 @@ class RegistryListCredentialsResultResponse {
     );
   }
 }
-

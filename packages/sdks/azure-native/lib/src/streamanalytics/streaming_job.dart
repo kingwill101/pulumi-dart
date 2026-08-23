@@ -185,6 +185,72 @@ import 'transformation_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_streamingjob" "streamingJob" {
+///   compatibility_level                      = "1.0"
+///   data_locale                              = "en-US"
+///   events_late_arrival_max_delay_in_seconds = 5
+///   events_out_of_order_max_delay_in_seconds = 0
+///   events_out_of_order_policy               = "Drop"
+///   inputs {
+///     name = "inputtest"
+///     properties = {
+///       "datasource" = {
+///         "container"   = "containerName"
+///         "pathPattern" = ""
+///         "storageAccounts" = [{
+///           "accountKey"  = "yourAccountKey=="
+///           "accountName" = "yourAccountName"
+///         }]
+///         "type" = "Microsoft.Storage/Blob"
+///       }
+///       "serialization" = {
+///         "encoding" = "UTF8"
+///         "type"     = "Json"
+///       }
+///       "type" = "Stream"
+///     }
+///   }
+///   job_name            = "sj7804"
+///   location            = "West US"
+///   output_error_policy = "Drop"
+///   outputs {
+///     datasource = {
+///       "database" = "databaseName"
+///       "password" = "userPassword"
+///       "server"   = "serverName"
+///       "table"    = "tableName"
+///       "type"     = "Microsoft.Sql/Server/Database"
+///       "user"     = "<user>"
+///     }
+///     name = "outputtest"
+///   }
+///   resource_group_name = "sjrg3276"
+///   sku = {
+///     name = "Standard"
+///   }
+///   tags = {
+///     "key1"      = "value1"
+///     "key3"      = "value3"
+///     "randomKey" = "randomValue"
+///   }
+///   transformation = {
+///     name            = "transformationtest"
+///     query           = "Select Id, Name from inputtest"
+///     streaming_units = 1
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +263,8 @@ import 'transformation_response.dart';
 /// import com.pulumi.azurenative.streamanalytics.inputs.OutputArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.SkuArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.TransformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -528,6 +594,37 @@ import 'transformation_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_streamingjob" "streamingJob" {
+///   compatibility_level                      = "1.0"
+///   data_locale                              = "en-US"
+///   events_late_arrival_max_delay_in_seconds = 16
+///   events_out_of_order_max_delay_in_seconds = 5
+///   events_out_of_order_policy               = "Drop"
+///   job_name                                 = "sj59"
+///   location                                 = "West US"
+///   output_error_policy                      = "Drop"
+///   resource_group_name                      = "sjrg6936"
+///   sku = {
+///     name = "Standard"
+///   }
+///   tags = {
+///     "key1"      = "value1"
+///     "key3"      = "value3"
+///     "randomKey" = "randomValue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -537,8 +634,8 @@ import 'transformation_response.dart';
 /// import com.pulumi.azurenative.streamanalytics.StreamingJob;
 /// import com.pulumi.azurenative.streamanalytics.StreamingJobArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

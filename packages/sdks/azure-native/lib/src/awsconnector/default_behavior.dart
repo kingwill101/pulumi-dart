@@ -15,4 +15,3 @@ enum DefaultBehavior {
     throw ArgumentError('Unknown DefaultBehavior value: $value');
   }
 }
-

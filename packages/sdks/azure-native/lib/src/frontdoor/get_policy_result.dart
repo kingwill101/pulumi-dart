@@ -31,6 +31,7 @@ class GetPolicyResult {
   final PolicySettingsResponse? policySettings;
   /// Provisioning state of the policy.
   final String provisioningState;
+  /// Resource status of the policy.
   final String resourceState;
   /// Describes Routing Rules associated with this Web Application Firewall policy.
   final List<RoutingRuleLinkResponse> routingRuleLinks;
@@ -54,7 +55,7 @@ class GetPolicyResult {
   /// [name] Resource name.
   /// [policySettings] Describes settings for the policy.
   /// [provisioningState] Provisioning state of the policy.
-  /// [resourceState] Required.
+  /// [resourceState] Resource status of the policy.
   /// [routingRuleLinks] Describes Routing Rules associated with this Web Application Firewall policy.
   /// [securityPolicyLinks] Describes Security Policy associated with this Web Application Firewall policy.
   /// [sku] The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
@@ -121,4 +122,3 @@ class GetPolicyResult {
     );
   }
 }
-

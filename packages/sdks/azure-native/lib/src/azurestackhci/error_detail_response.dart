@@ -11,8 +11,6 @@ class ErrorDetailResponse {
   final pulumi.Input<String> code;
   /// The error details.
   final pulumi.Input<List<ErrorDetailResponse>> details;
-  /// Exception details while installing extension.
-  final pulumi.Input<String>? exception;
   /// The error message.
   final pulumi.Input<String> message;
   /// The error target.
@@ -22,14 +20,12 @@ class ErrorDetailResponse {
   /// [additionalInfo] The error additional info.
   /// [code] The error code.
   /// [details] The error details.
-  /// [exception] Exception details while installing extension.
   /// [message] The error message.
   /// [target] The error target.
   const ErrorDetailResponse({
     required this.additionalInfo,
     required this.code,
     required this.details,
-    this.exception,
     required this.message,
     required this.target,
   });
@@ -39,7 +35,6 @@ class ErrorDetailResponse {
       'additionalInfo': pulumi.Input.mapInputValue<List<ErrorAdditionalInfoResponse>, List<Map<String, dynamic>>>(additionalInfo, (value) => pulumi.Input.encodeList<ErrorAdditionalInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'code': code,
       'details': pulumi.Input.mapInputValue<List<ErrorDetailResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'exception': ?exception,
       'message': message,
       'target': target,
     };
@@ -50,10 +45,8 @@ class ErrorDetailResponse {
       additionalInfo: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(map['additionalInfo']!, (value) => ErrorAdditionalInfoResponse.fromMap((value as Map).cast<String, dynamic>()))),
       code: pulumi.Input.fromValue(map['code'] as String),
       details: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorDetailResponse>(map['details']!, (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      exception: (() { final guardedValue = map['exception']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       message: pulumi.Input.fromValue(map['message'] as String),
       target: pulumi.Input.fromValue(map['target'] as String),
     );
   }
 }
-

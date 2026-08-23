@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -101,6 +101,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_neighborgroup" "neighborGroup" {
+///   annotation = "annotation"
+///   destination = {
+///     ipv4_addresses = ["10.10.10.10", "20.10.10.10", "30.10.10.10", "40.10.10.10", "50.10.10.10", "60.10.10.10", "70.10.10.10", "80.10.10.10", "90.10.10.10"]
+///     ipv6_addresses = ["2F::/100"]
+///   }
+///   location            = "eastus"
+///   neighbor_group_name = "example-neighborGroup"
+///   resource_group_name = "example-rg"
+///   tags = {
+///     "key8107" = "1234"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +135,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.NeighborGroup;
 /// import com.pulumi.azurenative.managednetworkfabric.NeighborGroupArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.NeighborGroupDestinationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

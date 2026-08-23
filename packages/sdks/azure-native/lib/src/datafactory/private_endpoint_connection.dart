@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_connection_args.dart';
 import 'remote_private_endpoint_connection_response.dart';
+import 'system_data_response.dart';
 
 /// Private Endpoint Connection ARM resource.
 ///
@@ -26,7 +27,7 @@ import 'remote_private_endpoint_connection_response.dart';
 ///         {
 ///             PrivateEndpoint = new AzureNative.DataFactory.Inputs.PrivateEndpointArgs
 ///             {
-///                 Id = "/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint",
+///                 Id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint",
 ///             },
 ///             PrivateLinkServiceConnectionState = new AzureNative.DataFactory.Inputs.PrivateLinkConnectionStateArgs
 ///             {
@@ -58,7 +59,7 @@ import 'remote_private_endpoint_connection_response.dart';
 /// 			PrivateEndpointConnectionName: pulumi.String("connection"),
 /// 			Properties: &datafactory.PrivateLinkConnectionApprovalRequestArgs{
 /// 				PrivateEndpoint: &datafactory.PrivateEndpointArgs{
-/// 					Id: pulumi.String("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint"),
+/// 					Id: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint"),
 /// 				},
 /// 				PrivateLinkServiceConnectionState: &datafactory.PrivateLinkConnectionStateArgs{
 /// 					ActionsRequired: pulumi.String(""),
@@ -77,6 +78,33 @@ import 'remote_private_endpoint_connection_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_privateendpointconnection" "privateEndpointConnection" {
+///   factory_name                     = "exampleFactoryName"
+///   private_endpoint_connection_name = "connection"
+///   properties = {
+///     private_endpoint = {
+///       id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint"
+///     }
+///     private_link_service_connection_state = {
+///       actions_required = ""
+///       description      = "Approved by admin."
+///       status           = "Approved"
+///     }
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +116,8 @@ import 'remote_private_endpoint_connection_response.dart';
 /// import com.pulumi.azurenative.datafactory.inputs.PrivateLinkConnectionApprovalRequestArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.PrivateEndpointArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.PrivateLinkConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,7 +134,7 @@ import 'remote_private_endpoint_connection_response.dart';
 ///             .privateEndpointConnectionName("connection")
 ///             .properties(PrivateLinkConnectionApprovalRequestArgs.builder()
 ///                 .privateEndpoint(PrivateEndpointArgs.builder()
-///                     .id("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint")
+///                     .id("/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint")
 ///                     .build())
 ///                 .privateLinkServiceConnectionState(PrivateLinkConnectionStateArgs.builder()
 ///                     .actionsRequired("")
@@ -131,7 +159,7 @@ import 'remote_private_endpoint_connection_response.dart';
 ///     privateEndpointConnectionName: "connection",
 ///     properties: {
 ///         privateEndpoint: {
-///             id: "/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint",
+///             id: "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint",
 ///         },
 ///         privateLinkServiceConnectionState: {
 ///             actionsRequired: "",
@@ -153,7 +181,7 @@ import 'remote_private_endpoint_connection_response.dart';
 ///     private_endpoint_connection_name="connection",
 ///     properties={
 ///         "private_endpoint": {
-///             "id": "/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint",
+///             "id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint",
 ///         },
 ///         "private_link_service_connection_state": {
 ///             "actions_required": "",
@@ -174,7 +202,7 @@ import 'remote_private_endpoint_connection_response.dart';
 ///       privateEndpointConnectionName: connection
 ///       properties:
 ///         privateEndpoint:
-///           id: /subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint
+///           id: /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint
 ///         privateLinkServiceConnectionState:
 ///           actionsRequired: ""
 ///           description: Approved by admin.
@@ -196,13 +224,15 @@ import 'remote_private_endpoint_connection_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Core resource properties
   late final pulumi.Output<RemotePrivateEndpointConnectionResponse> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [PrivateEndpointConnection].
@@ -223,6 +253,7 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     properties = registerOutput<RemotePrivateEndpointConnectionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemotePrivateEndpointConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

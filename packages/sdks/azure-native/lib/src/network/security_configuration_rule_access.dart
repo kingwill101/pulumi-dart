@@ -16,4 +16,3 @@ enum SecurityConfigurationRuleAccess {
     throw ArgumentError('Unknown SecurityConfigurationRuleAccess value: $value');
   }
 }
-

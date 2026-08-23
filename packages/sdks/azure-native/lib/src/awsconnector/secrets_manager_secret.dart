@@ -154,6 +154,64 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_secretsmanagersecret" "secretsManagerSecret" {
+///   location = "balqdxuifwdmtcinyxjit"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "qxrdtehsmibehk"
+///     aws_account_id = "wtxdsgybisrqopffdhreyacjrysd"
+///     aws_properties = {
+///       description = "esljjbmcrcqe"
+///       generate_secret_string = {
+///         exclude_characters         = "hsixzpgawn"
+///         exclude_lowercase          = true
+///         exclude_numbers            = true
+///         exclude_punctuation        = true
+///         exclude_uppercase          = true
+///         generate_string_key        = "dxyswggnusnewllmvmoskwswk"
+///         include_space              = true
+///         password_length            = 17
+///         require_each_included_type = true
+///         secret_string_template     = "qgspiepreoyooekaprlglfjbvittue"
+///       }
+///       id         = "vpnzmovjfbrltixnsgeml"
+///       kms_key_id = "vunob"
+///       name       = "jqmtr"
+///       replica_regions = [{
+///         "kmsKeyId" = "bkyubkuxwbasjkguqm"
+///         "region"   = "m"
+///       }]
+///       secret_string = "sbroa"
+///       tags = [{
+///         "key"   = "ybodkythhxmehguhlrmodxhcduf"
+///         "value" = "wrci"
+///       }]
+///     }
+///     aws_region        = "mw"
+///     aws_source_schema = "whhfrjfzgejfasbcycqe"
+///     aws_tags = {
+///       "key4141" = "jdlhnhoxtob"
+///     }
+///     public_cloud_connectors_resource_id = "osnofxgmgmrsc"
+///     public_cloud_resource_name          = "wj"
+///   }
+///   resource_group_name = "rgsecretsManagerSecret"
+///   tags = {
+///     "key1461" = "aqew"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -165,8 +223,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SecretsManagerSecretPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSecretsManagerSecretPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.GenerateSecretStringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-01.
 ///
+/// Other available API versions: 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -79,6 +81,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagecache_autoimportjob" "autoImportJob" {
+///   admin_status             = "Enable"
+///   aml_filesystem_name      = "fs1"
+///   auto_import_job_name     = "autojob1"
+///   auto_import_prefixes     = ["/"]
+///   conflict_resolution_mode = "Skip"
+///   enable_deletions         = false
+///   location                 = "eastus"
+///   maximum_errors           = 0
+///   resource_group_name      = "scgroup"
+///   tags = {
+///     "Dept" = "ContosoAds"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +115,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.storagecache.AutoImportJob;
 /// import com.pulumi.azurenative.storagecache.AutoImportJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,7 +179,7 @@ import 'system_data_response.dart';
 ///     conflict_resolution_mode=azure_native.storagecache.ConflictResolutionMode.SKIP,
 ///     enable_deletions=False,
 ///     location="eastus",
-///     maximum_errors=0,
+///     maximum_errors=float(0),
 ///     resource_group_name="scgroup",
 ///     tags={
 ///         "Dept": "ContosoAds",

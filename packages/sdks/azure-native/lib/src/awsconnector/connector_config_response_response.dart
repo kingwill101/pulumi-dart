@@ -49,4 +49,3 @@ class ConnectorConfigResponseResponse {
     );
   }
 }
-

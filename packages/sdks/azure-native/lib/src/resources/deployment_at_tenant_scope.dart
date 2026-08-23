@@ -79,6 +79,33 @@ import 'deployment_properties_extended_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_deploymentattenantscope" "deploymentAtTenantScope" {
+///   deployment_name = "tenant-dep01"
+///   location        = "eastus"
+///   properties = {
+///     mode       = "Incremental"
+///     parameters = {}
+///     template_link = {
+///       uri = "https://example.com/exampleTemplate.json"
+///     }
+///   }
+///   tags = {
+///     "tagKey1" = "tag-value-1"
+///     "tagKey2" = "tag-value-2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +116,8 @@ import 'deployment_properties_extended_response.dart';
 /// import com.pulumi.azurenative.resources.DeploymentAtTenantScopeArgs;
 /// import com.pulumi.azurenative.resources.inputs.DeploymentPropertiesArgs;
 /// import com.pulumi.azurenative.resources.inputs.TemplateLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

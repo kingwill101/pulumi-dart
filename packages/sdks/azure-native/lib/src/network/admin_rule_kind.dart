@@ -15,4 +15,3 @@ enum AdminRuleKind {
     throw ArgumentError('Unknown AdminRuleKind value: $value');
   }
 }
-

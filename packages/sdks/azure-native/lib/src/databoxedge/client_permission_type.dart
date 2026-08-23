@@ -16,4 +16,3 @@ enum ClientPermissionType {
     throw ArgumentError('Unknown ClientPermissionType value: $value');
   }
 }
-

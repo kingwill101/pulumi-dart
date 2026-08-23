@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of the module error info type.
 class ModuleErrorInfoResponse {
-  /// Gets the error code.
+  /// Gets or sets the error code.
   final pulumi.Input<String>? code;
-  /// Gets the error message.
+  /// Gets or sets the error message.
   final pulumi.Input<String>? message;
 
   /// Creates a new [ModuleErrorInfoResponse].
-  /// [code] Gets the error code.
-  /// [message] Gets the error message.
+  /// [code] Gets or sets the error code.
+  /// [message] Gets or sets the error message.
   const ModuleErrorInfoResponse({
     this.code,
     this.message,
@@ -31,4 +31,3 @@ class ModuleErrorInfoResponse {
     );
   }
 }
-

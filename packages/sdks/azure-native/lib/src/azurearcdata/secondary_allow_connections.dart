@@ -16,4 +16,3 @@ enum SecondaryAllowConnections {
     throw ArgumentError('Unknown SecondaryAllowConnections value: $value');
   }
 }
-

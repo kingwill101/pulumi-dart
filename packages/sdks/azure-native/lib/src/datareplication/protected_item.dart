@@ -7,7 +7,7 @@ import 'protected_item_model_response_system_data.dart';
 ///
 /// Uses Azure REST API version 2021-02-16-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-16-preview.
 ///
-/// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -73,6 +73,30 @@ import 'protected_item_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datareplication_protecteditem" "protectedItem" {
+///   properties = {
+///     custom_properties = {
+///       "instanceType" = "ProtectedItemModelCustomProperties"
+///     }
+///     policy_name                = "tjoeiynplt"
+///     replication_extension_name = "jwxdo"
+///   }
+///   protected_item_name = "d"
+///   resource_group_name = "rgrecoveryservicesdatareplication"
+///   vault_name          = "4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'protected_item_model_response_system_data.dart';
 /// import com.pulumi.azurenative.datareplication.ProtectedItem;
 /// import com.pulumi.azurenative.datareplication.ProtectedItemArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.ProtectedItemModelPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

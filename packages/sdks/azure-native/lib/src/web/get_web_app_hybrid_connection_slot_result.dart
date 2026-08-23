@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppHybridConnectionSlot.
 class GetWebAppHybridConnectionSlotResult {
@@ -7,11 +8,11 @@ class GetWebAppHybridConnectionSlotResult {
   final String azureApiVersion;
   /// The hostname of the endpoint.
   final String? hostname;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// The port of the endpoint.
   final int? port;
@@ -28,15 +29,17 @@ class GetWebAppHybridConnectionSlotResult {
   final String? serviceBusNamespace;
   /// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
   final String? serviceBusSuffix;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppHybridConnectionSlotResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [hostname] The hostname of the endpoint.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [port] The port of the endpoint.
   /// [relayArmUri] The ARM URI to the Service Bus relay.
   /// [relayName] The name of the Service Bus relay.
@@ -44,7 +47,8 @@ class GetWebAppHybridConnectionSlotResult {
   /// [sendKeyValue] The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
   /// [serviceBusNamespace] The name of the Service Bus namespace.
   /// [serviceBusSuffix] The suffix for the service bus endpoint. By default this is .servicebus.windows.net
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppHybridConnectionSlotResult({
     required this.azureApiVersion,
     this.hostname,
@@ -58,6 +62,7 @@ class GetWebAppHybridConnectionSlotResult {
     this.sendKeyValue,
     this.serviceBusNamespace,
     this.serviceBusSuffix,
+    required this.systemData,
     required this.type,
   });
 
@@ -75,6 +80,7 @@ class GetWebAppHybridConnectionSlotResult {
       'sendKeyValue': ?sendKeyValue,
       'serviceBusNamespace': ?serviceBusNamespace,
       'serviceBusSuffix': ?serviceBusSuffix,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -93,8 +99,8 @@ class GetWebAppHybridConnectionSlotResult {
       sendKeyValue: (() { final guardedValue = map['sendKeyValue']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceBusNamespace: (() { final guardedValue = map['serviceBusNamespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceBusSuffix: (() { final guardedValue = map['serviceBusSuffix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

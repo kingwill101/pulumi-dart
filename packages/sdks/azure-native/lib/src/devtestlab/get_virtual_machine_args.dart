@@ -11,7 +11,7 @@ class GetVirtualMachineArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the LabVirtualMachine
+  /// The name of the virtual machine.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -19,7 +19,7 @@ class GetVirtualMachineArgs {
   /// Creates a new [GetVirtualMachineArgs].
   /// [expand] Specify the $expand query. Example: 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)'
   /// [labName] The name of the lab.
-  /// [name] The name of the LabVirtualMachine
+  /// [name] The name of the virtual machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetVirtualMachineArgs({
     this.expand,
@@ -46,4 +46,3 @@ class GetVirtualMachineArgs {
     );
   }
 }
-

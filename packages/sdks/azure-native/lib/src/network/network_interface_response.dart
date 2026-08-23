@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
-import 'interface_endpoint_response.dart';
 import 'network_interface_dns_settings_response.dart';
 import 'network_interface_ipconfiguration_response.dart';
 import 'network_interface_tap_configuration_response.dart';
@@ -37,8 +36,6 @@ class NetworkInterfaceResponse {
   final pulumi.Input<List<String>> hostedWorkloads;
   /// Resource ID.
   final pulumi.Input<String>? id;
-  /// A reference to the interface endpoint to which the network interface is linked.
-  final pulumi.Input<InterfaceEndpointResponse>? interfaceEndpoint;
   /// A list of IPConfigurations of the network interface.
   final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>>? ipConfigurations;
   /// Resource location.
@@ -89,7 +86,6 @@ class NetworkInterfaceResponse {
   /// [extendedLocation] The extended location of the network interface.
   /// [hostedWorkloads] A list of references to linked BareMetal resources.
   /// [id] Resource ID.
-  /// [interfaceEndpoint] A reference to the interface endpoint to which the network interface is linked.
   /// [ipConfigurations] A list of IPConfigurations of the network interface.
   /// [location] Resource location.
   /// [macAddress] The MAC address of the network interface.
@@ -121,7 +117,6 @@ class NetworkInterfaceResponse {
     this.extendedLocation,
     required this.hostedWorkloads,
     this.id,
-    this.interfaceEndpoint,
     this.ipConfigurations,
     this.location,
     required this.macAddress,
@@ -156,7 +151,6 @@ class NetworkInterfaceResponse {
       'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'hostedWorkloads': hostedWorkloads,
       'id': ?id,
-      'interfaceEndpoint': ?pulumi.Input.mapOptionalInputValue<InterfaceEndpointResponse, Map<String, dynamic>>(interfaceEndpoint, (value) => value.toMap()),
       'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceIPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'macAddress': macAddress,
@@ -192,7 +186,6 @@ class NetworkInterfaceResponse {
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hostedWorkloads: pulumi.Input.fromValue((map['hostedWorkloads'] as List).cast<String>()),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interfaceEndpoint: (() { final guardedValue = map['interfaceEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InterfaceEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(guardedValue, (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
@@ -214,4 +207,3 @@ class NetworkInterfaceResponse {
     );
   }
 }
-

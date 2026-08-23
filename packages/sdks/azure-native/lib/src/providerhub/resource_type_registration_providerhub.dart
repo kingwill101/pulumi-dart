@@ -481,6 +481,158 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_resourcetyperegistration" "resourceTypeRegistration" {
+///   properties = {
+///     add_resource_list_target_locations = true
+///     additional_options                 = "ProtectedAsyncOperationPolling"
+///     allow_empty_role_assignments       = false
+///     allowed_resource_names = [{
+///       "getActionVerb" = "list"
+///       "name"          = "name1"
+///       }, {
+///       "name" = "name2"
+///     }]
+///     allowed_template_deployment_reference_actions = ["ListKeys", "ListSAS"]
+///     api_profiles = [{
+///       "apiVersion"     = "2018-02-01"
+///       "profileVersion" = "2018-03-01-hybrid"
+///       }, {
+///       "apiVersion"     = "2016-06-01"
+///       "profileVersion" = "2019-03-01-hybrid"
+///     }]
+///     async_timeout_rules = [{
+///       "actionName" = "Microsoft.ClassicCompute/domainNames/write"
+///       "timeout"    = "PT12H"
+///     }]
+///     availability_zone_rule = {
+///       availability_zone_policy = "MultiZoned"
+///     }
+///     capacity_rule = {
+///       capacity_policy = "Restricted"
+///       sku_alias       = "incorrectAlias"
+///     }
+///     common_api_versions = ["2021-01-01"]
+///     dsts_configuration = {
+///       service_dns_name = "prds.sparta.azure.com"
+///       service_name     = "prds-shim"
+///     }
+///     endpoints = [{
+///       "apiVersions"      = ["2020-06-01-preview"]
+///       "locations"        = ["West US", "East US", "North Europe"]
+///       "requiredFeatures" = ["<feature flag>"]
+///     }]
+///     grouping_tag = "groupingTag"
+///     legacy_name  = "legacyName"
+///     legacy_names = ["legacyName"]
+///     legacy_policy = {
+///       disallowed_conditions = [{
+///         "disallowedLegacyOperations" = ["Create", "Delete"]
+///         "feature"                    = "Microsoft.RP/ArmOnlyJobCollections"
+///       }]
+///       disallowed_legacy_operations = ["Create"]
+///     }
+///     linked_operation_rules = [{
+///       "linkedAction"    = "Blocked"
+///       "linkedOperation" = "CrossSubscriptionResourceMove"
+///       }, {
+///       "linkedAction"    = "Validate"
+///       "linkedOperation" = "CrossResourceGroupResourceMove"
+///     }]
+///     management = {
+///       authorization_owners     = ["RPAAS-PlatformServiceAdministrator"]
+///       incident_contact_email   = "helpme@contoso.com"
+///       incident_routing_service = ""
+///       incident_routing_team    = ""
+///       manifest_owners          = ["SPARTA-PlatformServiceAdministrator"]
+///       resource_access_policy   = "NotSpecified"
+///       service_tree_infos = [{
+///         "componentId" = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         "readiness"   = "InDevelopment"
+///         "serviceId"   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///       }]
+///     }
+///     manifest_link = "https://azure.com"
+///     marketplace_options = {
+///       add_on_plan_conversion_allowed = true
+///     }
+///     metadata = {}
+///     notifications = [{
+///       "notificationType"  = "SubscriptionNotification"
+///       "skipNotifications" = "Disabled"
+///     }]
+///     open_api_configuration = {
+///       validation = {
+///         allow_noncompliant_collection_response = true
+///       }
+///     }
+///     policy_execution_type = "BypassPolicies"
+///     regionality           = "Regional"
+///     request_header_options = {
+///       opt_out_headers = "SystemDataCreatedByLastModifiedBy"
+///     }
+///     resource_cache = {
+///       enable_resource_cache              = true
+///       resource_cache_expiration_timespan = "PT2M"
+///     }
+///     resource_concurrency_control_options = {
+///       "patch" = {
+///         policy = "SynchronizeBeginExtension"
+///       }
+///       "post" = {
+///         policy = "SynchronizeBeginExtension"
+///       }
+///       "put" = {
+///         policy = "SynchronizeBeginExtension"
+///       }
+///     }
+///     resource_graph_configuration = {
+///       api_version = "2019-01-01"
+///       enabled     = true
+///     }
+///     resource_management_options = {
+///       batch_provisioning_support = {
+///         supported_operations = "Get, Delete"
+///       }
+///       delete_dependencies = [{
+///         "linkedProperty" = "properties.edgeProfile.subscription.id"
+///       }]
+///     }
+///     resource_query_management = {
+///       filter_option = "EnableSubscriptionFilterOnTenant"
+///     }
+///     resource_type_common_attribute_management = {
+///       common_api_versions_merge_mode = "Merge"
+///     }
+///     routing_rule = {
+///       host_resource_type = "servers/databases"
+///     }
+///     routing_type  = "Default"
+///     supports_tags = true
+///     swagger_specifications = [{
+///       "apiVersions"          = ["2020-06-01-preview"]
+///       "swaggerSpecFolderUri" = "https://github.com/Azure/azure-rest-api-specs/blob/feature/azure/contoso/specification/contoso/resource-manager/Microsoft.SampleRP/"
+///     }]
+///     template_deployment_policy = {
+///       capabilities            = "Preflight"
+///       preflight_notifications = "None"
+///       preflight_options       = "ValidationRequests, DeploymentRequests"
+///     }
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+///   resource_type      = "employees"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -507,8 +659,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceTypeRegistrationPropertiesRoutingRuleArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1360,6 +1512,77 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_resourcetyperegistration" "resourceTypeRegistration" {
+///   properties = {
+///     cross_tenant_token_validation = "EnsureSecureValidation"
+///     endpoints = [{
+///       "apiVersions"      = ["2020-06-01-preview"]
+///       "locations"        = ["West US", "East US", "North Europe"]
+///       "requiredFeatures" = ["<feature flag>"]
+///     }]
+///     management = {
+///       authorization_owners     = ["RPAAS-PlatformServiceAdministrator"]
+///       incident_contact_email   = "helpme@contoso.com"
+///       incident_routing_service = ""
+///       incident_routing_team    = ""
+///       manifest_owners          = ["SPARTA-PlatformServiceAdministrator"]
+///       resource_access_policy   = "NotSpecified"
+///       service_tree_infos = [{
+///         "componentId" = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///         "readiness"   = "InDevelopment"
+///         "serviceId"   = "d1b7d8ba-05e2-48e6-90d6-d781b99c6e69"
+///       }]
+///     }
+///     metadata = {}
+///     notifications = [{
+///       "notificationType"  = "SubscriptionNotification"
+///       "skipNotifications" = "Disabled"
+///     }]
+///     open_api_configuration = {
+///       validation = {
+///         allow_noncompliant_collection_response = true
+///       }
+///     }
+///     regionality = "Regional"
+///     request_header_options = {
+///       opt_out_headers = "SystemDataCreatedByLastModifiedBy"
+///     }
+///     resource_concurrency_control_options = {
+///       "patch" = {
+///         policy = "SynchronizeBeginExtension"
+///       }
+///       "post" = {
+///         policy = "SynchronizeBeginExtension"
+///       }
+///       "put" = {
+///         policy = "SynchronizeBeginExtension"
+///       }
+///     }
+///     resource_graph_configuration = {
+///       api_version = "2019-01-01"
+///       enabled     = true
+///     }
+///     routing_type = "Default"
+///     swagger_specifications = [{
+///       "apiVersions"          = ["2020-06-01-preview"]
+///       "swaggerSpecFolderUri" = "https://github.com/Azure/azure-rest-api-specs/blob/feature/azure/contoso/specification/contoso/resource-manager/Microsoft.SampleRP/"
+///     }]
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+///   resource_type      = "employees"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1374,8 +1597,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.inputs.OpenApiValidationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceTypeRegistrationPropertiesRequestHeaderOptionsArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,12 +4,13 @@ import 'sku_description_response.dart';
 import 'static_site_args.dart';
 import 'static_site_build_properties_response.dart';
 import 'static_site_template_options_response.dart';
+import 'system_data_response.dart';
 
-/// Static Site ARM resource.
+/// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -85,6 +86,35 @@ import 'static_site_template_options_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_staticsite" "staticSite" {
+///   branch = "master"
+///   build_properties = {
+///     api_location          = "api"
+///     app_artifact_location = "build"
+///     app_location          = "app"
+///   }
+///   location            = "West US 2"
+///   name                = "testStaticSite0"
+///   repository_token    = "repoToken123"
+///   repository_url      = "https://github.com/username/RepoName"
+///   resource_group_name = "rg"
+///   sku = {
+///     name = "Basic"
+///     tier = "Basic"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +125,8 @@ import 'static_site_template_options_response.dart';
 /// import com.pulumi.azurenative.web.StaticSiteArgs;
 /// import com.pulumi.azurenative.web.inputs.StaticSiteBuildPropertiesArgs;
 /// import com.pulumi.azurenative.web.inputs.SkuDescriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,13 +262,13 @@ class StaticSite extends pulumi.CustomResource {
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// Identity to use for Key Vault Reference authentication.
   late final pulumi.Output<String> keyVaultReferenceIdentity;
-  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// Kind of resource.
   late final pulumi.Output<String?> kind;
   /// Backends linked to the static side
   late final pulumi.Output<List<Map<String, dynamic>>> linkedBackends;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Private endpoint connections
   late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
@@ -254,11 +284,13 @@ class StaticSite extends pulumi.CustomResource {
   late final pulumi.Output<SkuDescriptionResponse?> sku;
   /// State indicating whether staging environments are allowed or not allowed for a static web app.
   late final pulumi.Output<String?> stagingEnvironmentPolicy;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Template options for generating a new repository.
   late final pulumi.Output<StaticSiteTemplateOptionsResponse?> templateProperties;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// User provided function apps registered with the static site
   late final pulumi.Output<List<Map<String, dynamic>>> userProvidedFunctionApps;
@@ -299,6 +331,7 @@ class StaticSite extends pulumi.CustomResource {
     repositoryUrl = registerOutput<String?>('repositoryUrl');
     sku = registerOutput<SkuDescriptionResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stagingEnvironmentPolicy = registerOutput<String?>('stagingEnvironmentPolicy');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     templateProperties = registerOutput<StaticSiteTemplateOptionsResponse?>('templateProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticSiteTemplateOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

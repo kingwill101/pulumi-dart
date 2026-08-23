@@ -77,6 +77,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managedops_managedop" "managedOp" {
+///   managed_ops_name = "default"
+///   properties = {
+///     desired_configuration = {
+///       azure_monitor_insights = {
+///         azure_monitor_workspace_id = "/subscriptions/11809CA1-E126-4017-945E-AA795CD5C5A9/resourceGroups/myResourceGroup/providers/Microsoft.Monitor/accounts/example"
+///       }
+///       change_tracking_and_inventory = {
+///         log_analytics_workspace_id = "/subscriptions/11809CA1-E126-4017-945E-AA795CD5C5A9/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/00000000-0000-0000-0000-000000000000-Default"
+///       }
+///       user_assigned_managed_identity_id = "/subscriptions/11809CA1-E126-4017-945E-AA795CD5C5A9/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myManagedIdentity"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +115,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managedops.inputs.DesiredConfigurationArgs;
 /// import com.pulumi.azurenative.managedops.inputs.AzureMonitorConfigurationArgs;
 /// import com.pulumi.azurenative.managedops.inputs.ChangeTrackingConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

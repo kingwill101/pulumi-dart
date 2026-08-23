@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduleArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The schedule name.
   final pulumi.Input<String> scheduleName;
 
   /// Creates a new [GetScheduleArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleName] The schedule name.
   const GetScheduleArgs({
     required this.automationAccountName,
@@ -40,4 +40,3 @@ class GetScheduleArgs {
     );
   }
 }
-

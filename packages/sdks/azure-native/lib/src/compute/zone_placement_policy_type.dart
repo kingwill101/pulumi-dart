@@ -14,4 +14,3 @@ enum ZonePlacementPolicyType {
     throw ArgumentError('Unknown ZonePlacementPolicyType value: $value');
   }
 }
-

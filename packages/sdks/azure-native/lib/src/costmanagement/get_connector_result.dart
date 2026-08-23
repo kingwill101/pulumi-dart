@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'connector_collection_info_response.dart';
+import 'connector_collection_info_connector_response.dart';
 
 /// Result data returned by getConnector.
 class GetConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// Collection information
-  final ConnectorCollectionInfoResponse collection;
+  final ConnectorCollectionInfoConnectorResponse collection;
   /// Connector definition creation datetime
   final String createdOn;
   /// Credentials authentication key (eg AWS ARN)
@@ -92,7 +92,7 @@ class GetConnectorResult {
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      collection: ConnectorCollectionInfoResponse.fromMap((map['collection']! as Map).cast<String, dynamic>()),
+      collection: ConnectorCollectionInfoConnectorResponse.fromMap((map['collection']! as Map).cast<String, dynamic>()),
       createdOn: map['createdOn'] as String,
       credentialsKey: (() { final guardedValue = map['credentialsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -109,4 +109,3 @@ class GetConnectorResult {
     );
   }
 }
-

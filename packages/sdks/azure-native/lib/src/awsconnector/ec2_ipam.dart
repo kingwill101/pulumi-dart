@@ -155,6 +155,64 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2ipam" "ec2Ipam" {
+///   location = "lhjepajysvu"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "gcjcnzkmoauyi"
+///     aws_account_id = "fyceaucatzscmtkaw"
+///     aws_properties = {
+///       default_resource_discovery_association_id = "upvbhujajpxidvdneaxudp"
+///       default_resource_discovery_id             = "vmatfdwggwysxz"
+///       description                               = "suxncf"
+///       ipam_arn                                  = "ounjgxqwlmalbxgwqepaivhpqm"
+///       ipam_id                                   = "baiefjd"
+///       ipam_region                               = "dfdcpbefpcajoep"
+///       operating_regions = [{
+///         "regionName" = "racqmjs"
+///       }]
+///       owner_id                             = "sbcvakmustluzumdv"
+///       private_default_scope_id             = "sgytzjkrmsnzccmbos"
+///       public_default_scope_id              = "uqxvzoqzwfiaerfqkufw"
+///       resource_discovery_association_count = 28
+///       scope_count                          = 8
+///       state = {
+///         value = "create-complete"
+///       }
+///       state_message = "wehaarwg"
+///       tags = [{
+///         "key"   = "lldedstrwaskhlskwkk"
+///         "value" = "jnzubqdwmuxxyakaosx"
+///       }]
+///       tier = {
+///         value = "advanced"
+///       }
+///     }
+///     aws_region        = "rvtevmqvjnnignaaojkgqgzrsi"
+///     aws_source_schema = "ivdglskrjwzg"
+///     aws_tags = {
+///       "key4146" = "ujvngmugdyjjv"
+///     }
+///     public_cloud_connectors_resource_id = "irfihvsxrgyhmubmuieufe"
+///     public_cloud_resource_name          = "y"
+///   }
+///   resource_group_name = "rgec2Ipam"
+///   tags = {
+///     "key6845" = "fmqqsfwgeauorxhhizhrca"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +225,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2IpamPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IpamStateEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IpamTierEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

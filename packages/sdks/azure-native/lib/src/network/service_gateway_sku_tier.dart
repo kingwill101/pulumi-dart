@@ -1,6 +1,6 @@
 /// Tier of a service gateway SKU.
 enum ServiceGatewaySkuTier {
-  valueRegional("Regional");
+  regional("Regional");
 
   const ServiceGatewaySkuTier(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ServiceGatewaySkuTier {
     throw ArgumentError('Unknown ServiceGatewaySkuTier value: $value');
   }
 }
-

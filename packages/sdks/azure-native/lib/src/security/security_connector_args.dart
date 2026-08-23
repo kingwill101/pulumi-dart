@@ -17,15 +17,15 @@ class SecurityConnectorArgs {
   final pulumi.Input<String>? hierarchyIdentifier;
   /// Kind of the resource
   final pulumi.Input<String>? kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// A collection of offerings for the security connector.
   final pulumi.Input<List<CspmMonitorAwsOffering>>? offerings;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The security connector name.
   final pulumi.Input<String>? securityConnectorName;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [SecurityConnectorArgs].
@@ -33,11 +33,11 @@ class SecurityConnectorArgs {
   /// [environmentName] The multi cloud resource's cloud name.
   /// [hierarchyIdentifier] The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
   /// [kind] Kind of the resource
-  /// [location] Location where the resource is stored
+  /// [location] The geo-location where the resource lives
   /// [offerings] A collection of offerings for the security connector.
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  /// [tags] A list of key value pairs that describe the resource.
+  /// [tags] Resource tags.
   const SecurityConnectorArgs({
     this.environmentData,
     this.environmentName,
@@ -78,4 +78,3 @@ class SecurityConnectorArgs {
     );
   }
 }
-

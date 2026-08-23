@@ -11,7 +11,7 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -75,6 +75,27 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   flow_timeout_in_minutes = 10
+///   location                = "eastus"
+///   resource_group_name     = "rg1"
+///   virtual_network_name    = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +105,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetwork;
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,6 +259,33 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   bgp_communities = {
+///     virtual_network_community = "12076:20000"
+///   }
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   subnets {
+///     address_prefix = "10.0.0.0/24"
+///     name           = "test-1"
+///   }
+///   virtual_network_name = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -249,8 +297,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkBgpCommunitiesArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -432,6 +480,34 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   location            = "westcentralus"
+///   resource_group_name = "rg1"
+///   subnets {
+///     address_prefix = "10.0.0.0/24"
+///     delegations {
+///       name         = "myDelegation"
+///       service_name = "Microsoft.Sql/managedInstances"
+///     }
+///     name = "test-1"
+///   }
+///   virtual_network_name = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -442,8 +518,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -624,6 +700,34 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   encryption = {
+///     enabled     = true
+///     enforcement = "AllowUnencrypted"
+///   }
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   subnets {
+///     address_prefix = "10.0.0.0/24"
+///     name           = "test-1"
+///   }
+///   virtual_network_name = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -635,8 +739,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.VirtualNetworkEncryptionArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -827,6 +931,36 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     ipam_pool_prefix_allocations = [{
+///       "id"                  = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/nm1/ipamPools/testIpamPool"
+///       "numberOfIpAddresses" = "65536"
+///     }]
+///   }
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   subnets {
+///     ipam_pool_prefix_allocations {
+///       id                     = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/nm1/ipamPools/testIpamPool"
+///       number_of_ip_addresses = "80"
+///     }
+///     name = "test-1"
+///   }
+///   virtual_network_name = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -837,8 +971,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1028,6 +1162,33 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   location            = "eastus"
+///   resource_group_name = "vnetTest"
+///   subnets {
+///     address_prefix = "10.0.0.0/16"
+///     name           = "test-1"
+///     service_endpoints {
+///       service = "Microsoft.Storage"
+///     }
+///   }
+///   virtual_network_name = "vnet1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1038,8 +1199,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1231,6 +1392,36 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   location            = "eastus2euap"
+///   resource_group_name = "vnetTest"
+///   subnets {
+///     address_prefix = "10.0.0.0/16"
+///     name           = "test-1"
+///     service_endpoint_policies {
+///       id = "/subscriptions/subid/resourceGroups/vnetTest/providers/Microsoft.Network/serviceEndpointPolicies/ServiceEndpointPolicy1"
+///     }
+///     service_endpoints {
+///       service = "Microsoft.Storage"
+///     }
+///   }
+///   virtual_network_name = "vnet1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1241,8 +1432,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1421,6 +1612,30 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   subnets {
+///     address_prefix = "10.0.0.0/24"
+///     name           = "test-1"
+///   }
+///   virtual_network_name = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1431,8 +1646,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1596,6 +1811,30 @@ import 'virtual_network_encryption_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_virtualnetwork" "virtualNetwork" {
+///   address_space = {
+///     address_prefixes = ["10.0.0.0/16"]
+///   }
+///   location            = "eastus"
+///   resource_group_name = "rg1"
+///   subnets {
+///     address_prefixes = ["10.0.0.0/28", "10.0.1.0/28"]
+///     name             = "test-2"
+///   }
+///   virtual_network_name = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1606,8 +1845,8 @@ import 'virtual_network_encryption_response.dart';
 /// import com.pulumi.azurenative.network.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.network.inputs.AddressSpaceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

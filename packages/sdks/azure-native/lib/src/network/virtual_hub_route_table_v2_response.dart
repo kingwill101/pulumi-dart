@@ -56,4 +56,3 @@ class VirtualHubRouteTableV2Response {
     );
   }
 }
-

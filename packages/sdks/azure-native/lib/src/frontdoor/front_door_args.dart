@@ -31,7 +31,7 @@ class FrontDoorArgs {
   final pulumi.Input<List<LoadBalancingSettingsModel>>? loadBalancingSettings;
   /// Resource location.
   final pulumi.Input<String>? location;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Routing rules associated with this Front Door.
   final pulumi.Input<List<RoutingRule>>? routingRules;
@@ -48,7 +48,7 @@ class FrontDoorArgs {
   /// [healthProbeSettings] Health probe settings associated with this Front Door instance.
   /// [loadBalancingSettings] Load balancing settings associated with this Front Door instance.
   /// [location] Resource location.
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [routingRules] Routing rules associated with this Front Door.
   /// [tags] Resource tags.
   const FrontDoorArgs({
@@ -100,4 +100,3 @@ class FrontDoorArgs {
     );
   }
 }
-

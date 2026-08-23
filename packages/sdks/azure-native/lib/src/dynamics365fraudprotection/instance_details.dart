@@ -76,6 +76,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dynamics365fraudprotection_instancedetails" "instanceDetails" {
+///   administration = {
+///     members = ["azsdktest@microsoft.com", "azsdktest2@microsoft.com"]
+///   }
+///   instance_name       = "azsdktest"
+///   location            = "West US"
+///   resource_group_name = "TestRG"
+///   tags = {
+///     "testKey" = "testValue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dynamics365fraudprotection.InstanceDetails;
 /// import com.pulumi.azurenative.dynamics365fraudprotection.InstanceDetailsArgs;
 /// import com.pulumi.azurenative.dynamics365fraudprotection.inputs.DFPInstanceAdministratorsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

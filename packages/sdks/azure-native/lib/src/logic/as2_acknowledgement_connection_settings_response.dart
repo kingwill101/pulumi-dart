@@ -43,4 +43,3 @@ class AS2AcknowledgementConnectionSettingsResponse {
     );
   }
 }
-

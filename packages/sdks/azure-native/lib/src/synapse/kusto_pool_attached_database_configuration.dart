@@ -112,6 +112,36 @@ import 'table_level_sharing_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_kustopoolattacheddatabaseconfiguration" "kustoPoolAttachedDatabaseConfiguration" {
+///   attached_database_configuration_name = "attachedDatabaseConfigurations1"
+///   database_name                        = "kustodatabase"
+///   default_principals_modification_kind = "Union"
+///   kusto_pool_name                      = "kustoclusterrptest4"
+///   kusto_pool_resource_id               = "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Synapse/Workspaces/kustorptest/KustoPools/kustoclusterrptest4"
+///   location                             = "westus"
+///   resource_group_name                  = "kustorptest"
+///   table_level_sharing_properties = {
+///     external_tables_to_exclude    = ["ExternalTable2"]
+///     external_tables_to_include    = ["ExternalTable1"]
+///     materialized_views_to_exclude = ["MaterializedViewTable2"]
+///     materialized_views_to_include = ["MaterializedViewTable1"]
+///     tables_to_exclude             = ["Table2"]
+///     tables_to_include             = ["Table1"]
+///   }
+///   workspace_name = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +151,8 @@ import 'table_level_sharing_properties_response.dart';
 /// import com.pulumi.azurenative.synapse.KustoPoolAttachedDatabaseConfiguration;
 /// import com.pulumi.azurenative.synapse.KustoPoolAttachedDatabaseConfigurationArgs;
 /// import com.pulumi.azurenative.synapse.inputs.TableLevelSharingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -16,4 +16,3 @@ enum ErrorActionMode {
     throw ArgumentError('Unknown ErrorActionMode value: $value');
   }
 }
-

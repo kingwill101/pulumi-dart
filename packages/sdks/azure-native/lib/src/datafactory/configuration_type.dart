@@ -1,8 +1,8 @@
 /// The type of the spark config.
 enum ConfigurationType {
-  valueDefault("Default"),
-  valueCustomized("Customized"),
-  valueArtifact("Artifact");
+  default_("Default"),
+  customized("Customized"),
+  artifact("Artifact");
 
   const ConfigurationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum ConfigurationType {
     throw ArgumentError('Unknown ConfigurationType value: $value');
   }
 }
-

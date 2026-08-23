@@ -62,7 +62,19 @@ import 'system_data_response.dart';
 ///                 },
 ///                 PerformanceMode = "gtcuhloqhqjvztxoqvnzhwejwqg",
 ///                 ProvisionedThroughputInMibps = 6,
-///                 ReplicationConfiguration = null,
+///                 ReplicationConfiguration = new AzureNative.AwsConnector.Inputs.ReplicationConfigurationArgs
+///                 {
+///                     Destinations = new[]
+///                     {
+///                         new AzureNative.AwsConnector.Inputs.ReplicationDestinationArgs
+///                         {
+///                             AvailabilityZoneName = "ymqufkisnklobowewikkugs",
+///                             FileSystemId = "utzycscycyiunvfnsjwz",
+///                             KmsKeyId = "afazkrebv",
+///                             Region = "bakyknetpfqoqpltuuxkauokslotb",
+///                         },
+///                     },
+///                 },
 ///                 ThroughputMode = "qiroscdbdjqkhezgxhfjiqd",
 ///             },
 ///             AwsRegion = "quxdhbvdpdedfzbfp",
@@ -130,8 +142,17 @@ import 'system_data_response.dart';
 /// 					},
 /// 					PerformanceMode:              pulumi.String("gtcuhloqhqjvztxoqvnzhwejwqg"),
 /// 					ProvisionedThroughputInMibps: pulumi.Int(6),
-/// 					ReplicationConfiguration:     &awsconnector.ReplicationConfigurationArgs{},
-/// 					ThroughputMode:               pulumi.String("qiroscdbdjqkhezgxhfjiqd"),
+/// 					ReplicationConfiguration: &awsconnector.ReplicationConfigurationArgs{
+/// 						Destinations: awsconnector.ReplicationDestinationArray{
+/// 							&awsconnector.ReplicationDestinationArgs{
+/// 								AvailabilityZoneName: pulumi.String("ymqufkisnklobowewikkugs"),
+/// 								FileSystemId:         pulumi.String("utzycscycyiunvfnsjwz"),
+/// 								KmsKeyId:             pulumi.String("afazkrebv"),
+/// 								Region:               pulumi.String("bakyknetpfqoqpltuuxkauokslotb"),
+/// 							},
+/// 						},
+/// 					},
+/// 					ThroughputMode: pulumi.String("qiroscdbdjqkhezgxhfjiqd"),
 /// 				},
 /// 				AwsRegion:       pulumi.String("quxdhbvdpdedfzbfp"),
 /// 				AwsSourceSchema: pulumi.String("txcarqgbqzzvg"),
@@ -155,6 +176,71 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_efsfilesystem" "efsFileSystem" {
+///   location = "phxoujlvsqavkckotussgpnjgexvq"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "pewusdrkpcuvxtmjhvzmakefatinq"
+///     aws_account_id = "jkixa"
+///     aws_properties = {
+///       arn                    = "hptcgar"
+///       availability_zone_name = "wnn"
+///       backup_policy = {
+///         status = "DISABLED"
+///       }
+///       bypass_policy_lockout_safety_check = true
+///       encrypted                          = true
+///       file_system_id                     = "kublwmniiobukjozju"
+///       file_system_protection = {
+///         replication_overwrite_protection = "DISABLED"
+///       }
+///       file_system_tags = [{
+///         "key"   = "glyisjhra"
+///         "value" = "gcz"
+///       }]
+///       kms_key_id = "qglx"
+///       lifecycle_policies = [{
+///         "transitionToArchive"             = "xsnpjovpiazmhefijlflijjycbugv"
+///         "transitionToIA"                  = "lslpvdwwgc"
+///         "transitionToPrimaryStorageClass" = "migoeoowupavauvyrljegu"
+///       }]
+///       performance_mode                = "gtcuhloqhqjvztxoqvnzhwejwqg"
+///       provisioned_throughput_in_mibps = 6
+///       replication_configuration = {
+///         destinations = [{
+///           "availabilityZoneName" = "ymqufkisnklobowewikkugs"
+///           "fileSystemId"         = "utzycscycyiunvfnsjwz"
+///           "kmsKeyId"             = "afazkrebv"
+///           "region"               = "bakyknetpfqoqpltuuxkauokslotb"
+///         }]
+///       }
+///       throughput_mode = "qiroscdbdjqkhezgxhfjiqd"
+///     }
+///     aws_region        = "quxdhbvdpdedfzbfp"
+///     aws_source_schema = "txcarqgbqzzvg"
+///     aws_tags = {
+///       "key3062" = "onkfpsohoske"
+///     }
+///     public_cloud_connectors_resource_id = "mhovamuukkqswmro"
+///     public_cloud_resource_name          = "nhvnekfp"
+///   }
+///   resource_group_name = "rgefsFileSystem"
+///   tags = {
+///     "key8058" = "u"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +254,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.BackupPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.FileSystemProtectionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ReplicationConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,6 +298,12 @@ import 'system_data_response.dart';
 ///                     .performanceMode("gtcuhloqhqjvztxoqvnzhwejwqg")
 ///                     .provisionedThroughputInMibps(6)
 ///                     .replicationConfiguration(ReplicationConfigurationArgs.builder()
+///                         .destinations(ReplicationDestinationArgs.builder()
+///                             .availabilityZoneName("ymqufkisnklobowewikkugs")
+///                             .fileSystemId("utzycscycyiunvfnsjwz")
+///                             .kmsKeyId("afazkrebv")
+///                             .region("bakyknetpfqoqpltuuxkauokslotb")
+///                             .build())
 ///                         .build())
 ///                     .throughputMode("qiroscdbdjqkhezgxhfjiqd")
 ///                     .build())
@@ -264,7 +356,14 @@ import 'system_data_response.dart';
 ///             }],
 ///             performanceMode: "gtcuhloqhqjvztxoqvnzhwejwqg",
 ///             provisionedThroughputInMibps: 6,
-///             replicationConfiguration: {},
+///             replicationConfiguration: {
+///                 destinations: [{
+///                     availabilityZoneName: "ymqufkisnklobowewikkugs",
+///                     fileSystemId: "utzycscycyiunvfnsjwz",
+///                     kmsKeyId: "afazkrebv",
+///                     region: "bakyknetpfqoqpltuuxkauokslotb",
+///                 }],
+///             },
 ///             throughputMode: "qiroscdbdjqkhezgxhfjiqd",
 ///         },
 ///         awsRegion: "quxdhbvdpdedfzbfp",
@@ -317,7 +416,14 @@ import 'system_data_response.dart';
 ///             }],
 ///             "performance_mode": "gtcuhloqhqjvztxoqvnzhwejwqg",
 ///             "provisioned_throughput_in_mibps": 6,
-///             "replication_configuration": {},
+///             "replication_configuration": {
+///                 "destinations": [{
+///                     "availability_zone_name": "ymqufkisnklobowewikkugs",
+///                     "file_system_id": "utzycscycyiunvfnsjwz",
+///                     "kms_key_id": "afazkrebv",
+///                     "region": "bakyknetpfqoqpltuuxkauokslotb",
+///                 }],
+///             },
 ///             "throughput_mode": "qiroscdbdjqkhezgxhfjiqd",
 ///         },
 ///         "aws_region": "quxdhbvdpdedfzbfp",
@@ -365,7 +471,12 @@ import 'system_data_response.dart';
 ///               transitionToPrimaryStorageClass: migoeoowupavauvyrljegu
 ///           performanceMode: gtcuhloqhqjvztxoqvnzhwejwqg
 ///           provisionedThroughputInMibps: 6
-///           replicationConfiguration: {}
+///           replicationConfiguration:
+///             destinations:
+///               - availabilityZoneName: ymqufkisnklobowewikkugs
+///                 fileSystemId: utzycscycyiunvfnsjwz
+///                 kmsKeyId: afazkrebv
+///                 region: bakyknetpfqoqpltuuxkauokslotb
 ///           throughputMode: qiroscdbdjqkhezgxhfjiqd
 ///         awsRegion: quxdhbvdpdedfzbfp
 ///         awsSourceSchema: txcarqgbqzzvg

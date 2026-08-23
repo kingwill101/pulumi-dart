@@ -1,7 +1,7 @@
 /// [Required]
 enum TriggerType {
-  valueRecurrence("Recurrence"),
-  valueCron("Cron");
+  recurrence("Recurrence"),
+  cron("Cron");
 
   const TriggerType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum TriggerType {
     throw ArgumentError('Unknown TriggerType value: $value');
   }
 }
-

@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// The name of the account.
   final pulumi.Input<String> accountName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAccountArgs].
   /// [accountName] The name of the account.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetAccountArgs({
     required this.accountName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetAccountArgs {
     );
   }
 }
-

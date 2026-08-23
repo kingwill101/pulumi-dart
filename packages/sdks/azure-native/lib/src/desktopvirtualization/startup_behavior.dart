@@ -16,4 +16,3 @@ enum StartupBehavior {
     throw ArgumentError('Unknown StartupBehavior value: $value');
   }
 }
-

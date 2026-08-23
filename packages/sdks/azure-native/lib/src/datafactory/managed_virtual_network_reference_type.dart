@@ -1,6 +1,6 @@
 /// Managed Virtual Network reference type.
 enum ManagedVirtualNetworkReferenceType {
-  valueManagedVirtualNetworkReference("ManagedVirtualNetworkReference");
+  managedVirtualNetworkReference("ManagedVirtualNetworkReference");
 
   const ManagedVirtualNetworkReferenceType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ManagedVirtualNetworkReferenceType {
     throw ArgumentError('Unknown ManagedVirtualNetworkReferenceType value: $value');
   }
 }
-

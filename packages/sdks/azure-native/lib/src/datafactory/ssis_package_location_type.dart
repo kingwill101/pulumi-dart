@@ -1,9 +1,9 @@
 /// The type of SSIS package location.
 enum SsisPackageLocationType {
-  valueSSISDB("SSISDB"),
-  valueFile("File"),
-  valueInlinePackage("InlinePackage"),
-  valuePackageStore("PackageStore");
+  sSISDB("SSISDB"),
+  file("File"),
+  inlinePackage("InlinePackage"),
+  packageStore("PackageStore");
 
   const SsisPackageLocationType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum SsisPackageLocationType {
     throw ArgumentError('Unknown SsisPackageLocationType value: $value');
   }
 }
-

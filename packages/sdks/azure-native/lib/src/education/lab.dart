@@ -70,6 +70,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_education_lab" "lab" {
+///   billing_account_name = "{billingAccountName}"
+///   billing_profile_name = "{billingProfileName}"
+///   budget_per_student = {
+///     currency = "USD"
+///     value    = 100
+///   }
+///   description          = "example lab description"
+///   display_name         = "example lab"
+///   expiration_date      = "2021-12-09T22:11:29.422Z"
+///   invoice_section_name = "{invoiceSectionName}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.education.Lab;
 /// import com.pulumi.azurenative.education.LabArgs;
 /// import com.pulumi.azurenative.education.inputs.AmountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,7 +162,7 @@ import 'system_data_response.dart';
 ///     billing_profile_name="{billingProfileName}",
 ///     budget_per_student={
 ///         "currency": "USD",
-///         "value": 100,
+///         "value": float(100),
 ///     },
 ///     description="example lab description",
 ///     display_name="example lab",

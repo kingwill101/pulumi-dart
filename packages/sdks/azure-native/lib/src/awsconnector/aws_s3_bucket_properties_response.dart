@@ -14,7 +14,7 @@ import 'notification_configuration_response.dart';
 import 'object_lock_configuration_response.dart';
 import 'ownership_controls_response.dart';
 import 'public_access_block_configuration_response.dart';
-import 'replication_configuration_response.dart';
+import 'replication_configuration_s3_bucket_response.dart';
 import 'tag_response.dart';
 import 'versioning_configuration_response.dart';
 import 'website_configuration_response.dart';
@@ -62,7 +62,7 @@ class AwsS3BucketPropertiesResponse {
   /// Property regionalDomainName
   final pulumi.Input<String>? regionalDomainName;
   /// Configuration for replicating objects in an S3 bucket. To enable replication, you must also enable versioning by using the ``VersioningConfiguration`` property. Amazon S3 can store replicated objects in a single destination bucket or multiple destination buckets. The destination bucket or buckets must already exist. A container for replication rules. You can add up to 1,000 rules. The maximum size of a replication configuration is 2 MB. The latest version of the replication configuration XML is V2. For more information about XML V2 replication configurations, see [Replication configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html) in the *Amazon S3 User Guide*.
-  final pulumi.Input<ReplicationConfigurationResponse>? replicationConfiguration;
+  final pulumi.Input<ReplicationConfigurationS3BucketResponse>? replicationConfiguration;
   /// An arbitrary set of tags (key-value pairs) for this S3 bucket.
   final pulumi.Input<List<TagResponse>>? tags;
   /// Enables multiple versions of all objects in this bucket. You might enable versioning to prevent objects from being deleted or overwritten by mistake or to archive objects so that you can retrieve previous versions of them. Describes the versioning state of an Amazon S3 bucket. For more information, see [PUT Bucket versioning](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTVersioningStatus.html) in the *Amazon S3 API Reference*.
@@ -148,7 +148,7 @@ class AwsS3BucketPropertiesResponse {
       'ownershipControls': ?pulumi.Input.mapOptionalInputValue<OwnershipControlsResponse, Map<String, dynamic>>(ownershipControls, (value) => value.toMap()),
       'publicAccessBlockConfiguration': ?pulumi.Input.mapOptionalInputValue<PublicAccessBlockConfigurationResponse, Map<String, dynamic>>(publicAccessBlockConfiguration, (value) => value.toMap()),
       'regionalDomainName': ?regionalDomainName,
-      'replicationConfiguration': ?pulumi.Input.mapOptionalInputValue<ReplicationConfigurationResponse, Map<String, dynamic>>(replicationConfiguration, (value) => value.toMap()),
+      'replicationConfiguration': ?pulumi.Input.mapOptionalInputValue<ReplicationConfigurationS3BucketResponse, Map<String, dynamic>>(replicationConfiguration, (value) => value.toMap()),
       'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'versioningConfiguration': ?pulumi.Input.mapOptionalInputValue<VersioningConfigurationResponse, Map<String, dynamic>>(versioningConfiguration, (value) => value.toMap()),
       'websiteConfiguration': ?pulumi.Input.mapOptionalInputValue<WebsiteConfigurationResponse, Map<String, dynamic>>(websiteConfiguration, (value) => value.toMap()),
@@ -178,7 +178,7 @@ class AwsS3BucketPropertiesResponse {
       ownershipControls: (() { final guardedValue = map['ownershipControls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OwnershipControlsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publicAccessBlockConfiguration: (() { final guardedValue = map['publicAccessBlockConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicAccessBlockConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       regionalDomainName: (() { final guardedValue = map['regionalDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationConfiguration: (() { final guardedValue = map['replicationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicationConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      replicationConfiguration: (() { final guardedValue = map['replicationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReplicationConfigurationS3BucketResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       versioningConfiguration: (() { final guardedValue = map['versioningConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VersioningConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       websiteConfiguration: (() { final guardedValue = map['websiteConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebsiteConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -186,4 +186,3 @@ class AwsS3BucketPropertiesResponse {
     );
   }
 }
-

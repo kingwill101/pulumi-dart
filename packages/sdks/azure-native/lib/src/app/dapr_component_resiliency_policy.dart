@@ -137,6 +137,58 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprcomponentresiliencypolicy" "daprComponentResiliencyPolicy" {
+///   component_name   = "mydaprcomponent"
+///   environment_name = "myenvironment"
+///   inbound_policy = {
+///     circuit_breaker_policy = {
+///       consecutive_errors  = 5
+///       interval_in_seconds = 4
+///       timeout_in_seconds  = 10
+///     }
+///     http_retry_policy = {
+///       max_retries = 15
+///       retry_back_off = {
+///         initial_delay_in_milliseconds = 2000
+///         max_interval_in_milliseconds  = 5500
+///       }
+///     }
+///     timeout_policy = {
+///       response_timeout_in_seconds = 30
+///     }
+///   }
+///   name = "myresiliencypolicy"
+///   outbound_policy = {
+///     circuit_breaker_policy = {
+///       consecutive_errors  = 3
+///       interval_in_seconds = 60
+///       timeout_in_seconds  = 20
+///     }
+///     http_retry_policy = {
+///       max_retries = 5
+///       retry_back_off = {
+///         initial_delay_in_milliseconds = 100
+///         max_interval_in_milliseconds  = 30000
+///       }
+///     }
+///     timeout_policy = {
+///       response_timeout_in_seconds = 12
+///     }
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +202,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,6 +478,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprcomponentresiliencypolicy" "daprComponentResiliencyPolicy" {
+///   component_name   = "mydaprcomponent"
+///   environment_name = "myenvironment"
+///   name             = "myresiliencypolicy"
+///   outbound_policy = {
+///     circuit_breaker_policy = {
+///       consecutive_errors  = 3
+///       interval_in_seconds = 60
+///       timeout_in_seconds  = 20
+///     }
+///     http_retry_policy = {
+///       max_retries = 5
+///       retry_back_off = {
+///         initial_delay_in_milliseconds = 100
+///         max_interval_in_milliseconds  = 30000
+///       }
+///     }
+///     timeout_policy = {
+///       response_timeout_in_seconds = 12
+///     }
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -439,8 +526,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -655,6 +742,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_daprcomponentresiliencypolicy" "daprComponentResiliencyPolicy" {
+///   component_name   = "mydaprcomponent"
+///   environment_name = "myenvironment"
+///   inbound_policy = {
+///     circuit_breaker_policy = {
+///       consecutive_errors = 3
+///       timeout_in_seconds = 20
+///     }
+///     http_retry_policy = {
+///       max_retries = 5
+///       retry_back_off = {
+///         initial_delay_in_milliseconds = 2000
+///         max_interval_in_milliseconds  = 5500
+///       }
+///     }
+///   }
+///   name = "myresiliencypolicy"
+///   outbound_policy = {
+///     timeout_policy = {
+///       response_timeout_in_seconds = 12
+///     }
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -668,8 +791,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -71,6 +71,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_account" "account" {
+///   account_name = "Account1"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "West US 2"
+///   resource_group_name = "SampleResourceGroup"
+///   tags = {
+///     "tag1" = "Red"
+///     "tag2" = "White"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datashare.Account;
 /// import com.pulumi.azurenative.datashare.AccountArgs;
 /// import com.pulumi.azurenative.datashare.inputs.IdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

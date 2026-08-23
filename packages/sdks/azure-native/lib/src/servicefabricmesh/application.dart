@@ -142,6 +142,51 @@ import 'diagnostics_description_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabricmesh_application" "application" {
+///   application_resource_name = "sampleApplication"
+///   description               = "Service Fabric Mesh sample application."
+///   location                  = "EastUS"
+///   resource_group_name       = "sbz_demo"
+///   services {
+///     code_packages {
+///       endpoints {
+///         name = "helloWorldListener"
+///         port = 80
+///       }
+///       image = "seabreeze/sbz-helloworld:1.0-alpine"
+///       name  = "helloWorldCode"
+///       resources = {
+///         requests = {
+///           cpu          = 1
+///           memory_in_gb = 1
+///         }
+///       }
+///     }
+///     description = "SeaBreeze Hello World Service."
+///     name        = "helloWorldService"
+///     network_refs {
+///       endpoint_refs {
+///         name = "helloWorldListener"
+///       }
+///       name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/sbz_demo/providers/Microsoft.ServiceFabricMesh/networks/sampleNetwork"
+///     }
+///     os_type       = "Linux"
+///     replica_count = 1
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +196,8 @@ import 'diagnostics_description_response.dart';
 /// import com.pulumi.azurenative.servicefabricmesh.Application;
 /// import com.pulumi.azurenative.servicefabricmesh.ApplicationArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.ServiceResourceDescriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,8 +308,8 @@ import 'diagnostics_description_response.dart';
 ///             "name": "helloWorldCode",
 ///             "resources": {
 ///                 "requests": {
-///                     "cpu": 1,
-///                     "memory_in_gb": 1,
+///                     "cpu": float(1),
+///                     "memory_in_gb": float(1),
 ///                 },
 ///             },
 ///         }],

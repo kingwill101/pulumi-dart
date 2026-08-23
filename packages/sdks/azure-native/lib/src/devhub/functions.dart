@@ -8,7 +8,7 @@ import 'get_iac_profile_result.dart';
 import 'get_workflow_args.dart';
 import 'get_workflow_result.dart';
 
-/// Response containing ADO OAuth information
+/// Gets ADOOAuth info used to authenticate users with ADO.
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///

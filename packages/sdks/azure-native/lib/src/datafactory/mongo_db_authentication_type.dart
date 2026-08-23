@@ -1,7 +1,7 @@
 /// The authentication type to be used to connect to the MongoDB database.
 enum MongoDbAuthenticationType {
-  valueBasic("Basic"),
-  valueAnonymous("Anonymous");
+  basic("Basic"),
+  anonymous("Anonymous");
 
   const MongoDbAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum MongoDbAuthenticationType {
     throw ArgumentError('Unknown MongoDbAuthenticationType value: $value');
   }
 }
-

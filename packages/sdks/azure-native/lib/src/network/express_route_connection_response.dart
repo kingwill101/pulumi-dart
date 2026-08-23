@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_circuit_peering_id_response.dart';
-import 'routing_configuration_response.dart';
+import 'routing_configuration_express_route_gateway_response.dart';
 
 /// ExpressRouteConnection resource.
 class ExpressRouteConnectionResponse {
@@ -23,7 +23,7 @@ class ExpressRouteConnectionResponse {
   /// The provisioning state of the express route connection resource.
   final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationResponse>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationExpressRouteGatewayResponse>? routingConfiguration;
   /// The routing weight associated to the connection.
   final pulumi.Input<int>? routingWeight;
 
@@ -61,7 +61,7 @@ class ExpressRouteConnectionResponse {
       'id': ?id,
       'name': name,
       'provisioningState': provisioningState,
-      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationExpressRouteGatewayResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
       'routingWeight': ?routingWeight,
     };
   }
@@ -76,9 +76,8 @@ class ExpressRouteConnectionResponse {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationExpressRouteGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
-

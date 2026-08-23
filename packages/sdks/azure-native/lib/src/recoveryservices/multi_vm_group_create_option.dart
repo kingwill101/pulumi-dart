@@ -15,4 +15,3 @@ enum MultiVmGroupCreateOption {
     throw ArgumentError('Unknown MultiVmGroupCreateOption value: $value');
   }
 }
-

@@ -88,6 +88,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_privatecloud" "privateCloud" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location = "eastus2"
+///   management_cluster = {
+///     cluster_size = 4
+///   }
+///   network_block       = "192.168.48.0/22"
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   sku = {
+///     name = "AV36"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +127,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.avs.inputs.SystemAssignedServiceIdentityArgs;
 /// import com.pulumi.azurenative.avs.inputs.ManagementClusterArgs;
 /// import com.pulumi.azurenative.avs.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,6 +303,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_privatecloud" "privateCloud" {
+///   availability = {
+///     secondary_zone = 2
+///     strategy       = "DualZone"
+///     zone           = 1
+///   }
+///   location = "eastus2"
+///   management_cluster = {
+///     cluster_size = 4
+///   }
+///   network_block       = "192.168.48.0/22"
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   sku = {
+///     name = "AV36"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +344,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.avs.inputs.AvailabilityPropertiesArgs;
 /// import com.pulumi.azurenative.avs.inputs.ManagementClusterArgs;
 /// import com.pulumi.azurenative.avs.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

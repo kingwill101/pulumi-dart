@@ -16,4 +16,3 @@ enum ApplicationEnablement {
     throw ArgumentError('Unknown ApplicationEnablement value: $value');
   }
 }
-

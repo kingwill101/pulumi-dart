@@ -16,4 +16,3 @@ enum DynamicThresholdSensitivity {
     throw ArgumentError('Unknown DynamicThresholdSensitivity value: $value');
   }
 }
-

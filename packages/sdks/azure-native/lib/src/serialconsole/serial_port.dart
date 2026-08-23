@@ -59,6 +59,26 @@ import 'serial_port_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_serialconsole_serialport" "serialPort" {
+///   parent_resource             = "myVM"
+///   parent_resource_type        = "virtualMachines"
+///   resource_group_name         = "myResourceGroup"
+///   resource_provider_namespace = "Microsoft.Compute"
+///   serial_port                 = "0"
+///   state                       = "enabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +87,8 @@ import 'serial_port_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.serialconsole.SerialPort;
 /// import com.pulumi.azurenative.serialconsole.SerialPortArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

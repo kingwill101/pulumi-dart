@@ -15,4 +15,3 @@ enum PacketCaptureTargetType {
     throw ArgumentError('Unknown PacketCaptureTargetType value: $value');
   }
 }
-

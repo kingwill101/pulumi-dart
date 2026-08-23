@@ -1,8 +1,8 @@
 /// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
 enum FrequencyType {
-  valueHour("Hour"),
-  valueMinute("Minute"),
-  valueSecond("Second");
+  hour("Hour"),
+  minute("Minute"),
+  second("Second");
 
   const FrequencyType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum FrequencyType {
     throw ArgumentError('Unknown FrequencyType value: $value');
   }
 }
-

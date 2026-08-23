@@ -412,6 +412,135 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_networkfirewallrulegroup" "networkFirewallRuleGroup" {
+///   location = "npjhzlsmeqnuoj"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "uzwseilcphanlymsepokkjnzich"
+///     aws_account_id = "lbmcidte"
+///     aws_properties = {
+///       capacity    = 13
+///       description = "zlkovsdkoamizsf"
+///       rule_group = {
+///         reference_sets = {
+///           ip_set_references = {
+///             "key2227" = {
+///               reference_arn = "oytryvxnweahmshhucxpblpuc"
+///             }
+///           }
+///         }
+///         rule_variables = {
+///           ip_sets = {
+///             "key2970" = {
+///               definition = ["aizprahgi"]
+///             }
+///           }
+///           port_sets = {
+///             "key1199" = {
+///               definition = ["wwayyzoztulbvq"]
+///             }
+///           }
+///         }
+///         rules_source = {
+///           rules_source_list = {
+///             generated_rules_type = "ALLOWLIST"
+///             target_types         = ["efuuy"]
+///             targets              = ["pnecsfopd"]
+///           }
+///           rules_string = "xujqqtutwcprdqudsnalep"
+///           stateful_rules = [{
+///             "action" = "ALERT"
+///             "header" = {
+///               "destination"     = "monehvupaofeakgppr"
+///               "destinationPort" = "qlhyfsewpdlrpkxbdwfojdz"
+///               "direction"       = "ANY"
+///               "protocol"        = "DCERPC"
+///               "source"          = "bmxmxcbelcmrkaigfwwbtbakerp"
+///               "sourcePort"      = "ieimsyntk"
+///             }
+///             "ruleOptions" = [{
+///               "keyword"  = "obxwkhfbshjufmmrpjtskldelzb"
+///               "settings" = ["xflxrtoyhczflnevdftw"]
+///             }]
+///           }]
+///           stateless_rules_and_custom_actions = {
+///             custom_actions = [{
+///               "actionDefinition" = {
+///                 "publishMetricAction" = {
+///                   "dimensions" = [{
+///                     "value" = "wninrpqzvmeovspprohpjge"
+///                   }]
+///                 }
+///               }
+///               "actionName" = "kcfqhtt"
+///             }]
+///             stateless_rules = [{
+///               "priority" = 11
+///               "ruleDefinition" = {
+///                 "actions" = ["ofwytyaxwaoxjuhfror"]
+///                 "matchAttributes" = {
+///                   "destinationPorts" = [{
+///                     "fromPort" = 15
+///                     "toPort"   = 3
+///                   }]
+///                   "destinations" = [{
+///                     "addressDefinition" = "upxiaznlcwpjgrahrg"
+///                   }]
+///                   "protocols" = [27]
+///                   "sourcePorts" = [{
+///                     "fromPort" = 15
+///                     "toPort"   = 3
+///                   }]
+///                   "sources" = [{
+///                     "addressDefinition" = "upxiaznlcwpjgrahrg"
+///                   }]
+///                   "tcpFlags" = [{
+///                     "flags" = ["hc"]
+///                     "masks" = ["yycdx"]
+///                   }]
+///                 }
+///               }
+///             }]
+///           }
+///         }
+///         stateful_rule_options = {
+///           rule_order = "DEFAULT_ACTION_ORDER"
+///         }
+///       }
+///       rule_group_arn  = "ncyehiokafjeadkrhonngdvqgtmdm"
+///       rule_group_id   = "qfdxbisrqddn"
+///       rule_group_name = "dypivpjvrdiecto"
+///       tags = [{
+///         "key"   = "wuuykkzufgvvtcpdohiydsnqvutq"
+///         "value" = "pbppqwfrbdysivibwbk"
+///       }]
+///       type = "STATEFUL"
+///     }
+///     aws_region        = "vnwwozbuhjsi"
+///     aws_source_schema = "ymsi"
+///     aws_tags = {
+///       "key4273" = "swpshhbiotzowyypprwmbrjpyhyqbf"
+///     }
+///     public_cloud_connectors_resource_id = "zholufsqpqkxgirpxvvr"
+///     public_cloud_resource_name          = "gpndbetnqj"
+///   }
+///   resource_group_name = "rgnetworkFirewallRuleGroup"
+///   tags = {
+///     "key4955" = "zqpelqnmwqzqrenv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -429,8 +558,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.RulesSourceListArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StatelessRulesAndCustomActionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StatefulRuleOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

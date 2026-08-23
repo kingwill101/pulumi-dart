@@ -16,4 +16,3 @@ enum AuthenticationMethod {
     throw ArgumentError('Unknown AuthenticationMethod value: $value');
   }
 }
-

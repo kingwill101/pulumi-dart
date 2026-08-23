@@ -15,4 +15,3 @@ enum LogonType {
     throw ArgumentError('Unknown LogonType value: $value');
   }
 }
-

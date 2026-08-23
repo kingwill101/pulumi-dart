@@ -11,8 +11,6 @@ import 'private_link_service_properties_response_visibility.dart';
 
 /// Private link service resource.
 class PrivateLinkServiceResponse {
-  /// The access mode of the private link service.
-  final pulumi.Input<String>? accessMode;
   /// The alias of the private link service.
   final pulumi.Input<String> alias;
   /// The auto-approval list of the private link service.
@@ -51,7 +49,6 @@ class PrivateLinkServiceResponse {
   final pulumi.Input<PrivateLinkServicePropertiesResponseVisibility>? visibility;
 
   /// Creates a new [PrivateLinkServiceResponse].
-  /// [accessMode] The access mode of the private link service.
   /// [alias] The alias of the private link service.
   /// [autoApproval] The auto-approval list of the private link service.
   /// [destinationIPAddress] The destination IP address of the private link service.
@@ -71,7 +68,6 @@ class PrivateLinkServiceResponse {
   /// [type] Resource type.
   /// [visibility] The visibility list of the private link service.
   const PrivateLinkServiceResponse({
-    this.accessMode,
     required this.alias,
     this.autoApproval,
     this.destinationIPAddress,
@@ -94,7 +90,6 @@ class PrivateLinkServiceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessMode': ?accessMode,
       'alias': alias,
       'autoApproval': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServicePropertiesResponseAutoApproval, Map<String, dynamic>>(autoApproval, (value) => value.toMap()),
       'destinationIPAddress': ?destinationIPAddress,
@@ -118,7 +113,6 @@ class PrivateLinkServiceResponse {
 
   factory PrivateLinkServiceResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceResponse(
-      accessMode: (() { final guardedValue = map['accessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       alias: pulumi.Input.fromValue(map['alias'] as String),
       autoApproval: (() { final guardedValue = map['autoApproval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateLinkServicePropertiesResponseAutoApproval.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destinationIPAddress: (() { final guardedValue = map['destinationIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -140,4 +134,3 @@ class PrivateLinkServiceResponse {
     );
   }
 }
-

@@ -1,8 +1,8 @@
 /// Compute type of the cluster which will execute data flow job.
 enum DataFlowComputeType {
-  valueGeneral("General"),
-  valueMemoryOptimized("MemoryOptimized"),
-  valueComputeOptimized("ComputeOptimized");
+  general("General"),
+  memoryOptimized("MemoryOptimized"),
+  computeOptimized("ComputeOptimized");
 
   const DataFlowComputeType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum DataFlowComputeType {
     throw ArgumentError('Unknown DataFlowComputeType value: $value');
   }
 }
-

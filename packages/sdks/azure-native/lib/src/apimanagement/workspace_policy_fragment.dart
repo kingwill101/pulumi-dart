@@ -3,9 +3,9 @@ import 'workspace_policy_fragment_args.dart';
 
 /// Policy fragment contract details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -63,6 +63,27 @@ import 'workspace_policy_fragment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_workspacepolicyfragment" "workspacePolicyFragment" {
+///   description         = "A policy fragment example"
+///   format              = "xml"
+///   id                  = "policyFragment1"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   value               = "<fragment><json-to-xml apply=\"always\" consider-accept-header=\"false\" /></fragment>"
+///   workspace_id        = "wks1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +92,8 @@ import 'workspace_policy_fragment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.WorkspacePolicyFragment;
 /// import com.pulumi.azurenative.apimanagement.WorkspacePolicyFragmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,6 +185,8 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
   late final pulumi.Output<String?> format;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// The provisioning state
+  late final pulumi.Output<String> provisioningState;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Contents of the policy fragment.
@@ -187,6 +210,7 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     format = registerOutput<String?>('format');
     this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
     value = registerOutput<String>('value');
   }

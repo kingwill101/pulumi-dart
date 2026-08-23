@@ -3,6 +3,8 @@ import 'get_akri_connector_args.dart';
 import 'get_akri_connector_result.dart';
 import 'get_akri_connector_template_args.dart';
 import 'get_akri_connector_template_result.dart';
+import 'get_akri_service_args.dart';
+import 'get_akri_service_result.dart';
 import 'get_broker_args.dart';
 import 'get_broker_authentication_args.dart';
 import 'get_broker_authentication_result.dart';
@@ -28,7 +30,7 @@ import 'get_registry_endpoint_result.dart';
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_akri_connector_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAkriConnectorResult> getAkriConnector(
@@ -48,7 +50,7 @@ Future<GetAkriConnectorResult> getAkriConnector(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_akri_connector_template_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAkriConnectorTemplateResult> getAkriConnectorTemplate(
@@ -64,11 +66,31 @@ Future<GetAkriConnectorTemplateResult> getAkriConnectorTemplate(
   return GetAkriConnectorTemplateResult.fromMap(result);
 }
 
+/// Get a AkriServiceResource
+///
+/// Uses Azure REST API version 2026-03-01.
+///
+/// Other available API versions: 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_akri_service_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAkriServiceResult> getAkriService(
+  GetAkriServiceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:iotoperations:getAkriService',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAkriServiceResult.fromMap(result);
+}
+
 /// Get a BrokerResource
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_broker_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBrokerResult> getBroker(
@@ -88,7 +110,7 @@ Future<GetBrokerResult> getBroker(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_broker_authentication_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBrokerAuthenticationResult> getBrokerAuthentication(
@@ -108,7 +130,7 @@ Future<GetBrokerAuthenticationResult> getBrokerAuthentication(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_broker_authorization_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBrokerAuthorizationResult> getBrokerAuthorization(
@@ -128,7 +150,7 @@ Future<GetBrokerAuthorizationResult> getBrokerAuthorization(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_broker_listener_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBrokerListenerResult> getBrokerListener(
@@ -148,7 +170,7 @@ Future<GetBrokerListenerResult> getBrokerListener(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_dataflow_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDataflowResult> getDataflow(
@@ -168,7 +190,7 @@ Future<GetDataflowResult> getDataflow(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_dataflow_endpoint_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDataflowEndpointResult> getDataflowEndpoint(
@@ -188,7 +210,7 @@ Future<GetDataflowEndpointResult> getDataflowEndpoint(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_dataflow_graph_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDataflowGraphResult> getDataflowGraph(
@@ -208,7 +230,7 @@ Future<GetDataflowGraphResult> getDataflowGraph(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_dataflow_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDataflowProfileResult> getDataflowProfile(
@@ -228,7 +250,7 @@ Future<GetDataflowProfileResult> getDataflowProfile(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_instance_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetInstanceResult> getInstance(
@@ -248,7 +270,7 @@ Future<GetInstanceResult> getInstance(
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iotoperations_get_registry_endpoint_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRegistryEndpointResult> getRegistryEndpoint(

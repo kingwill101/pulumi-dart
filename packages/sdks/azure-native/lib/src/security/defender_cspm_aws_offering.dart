@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'defender_cspm_aws_offering_ciem.dart';
 import 'defender_cspm_aws_offering_data_sensitivity_discovery.dart';
 import 'defender_cspm_aws_offering_databases_dspm.dart';
-import 'defender_cspm_aws_offering_mdc_containers_agentless_discovery_k8s.dart';
+import 'defender_cspm_aws_offering_mdc_containers_agentless_discovery_k8_s.dart';
 import 'defender_cspm_aws_offering_mdc_containers_image_assessment.dart';
 import 'defender_cspm_aws_offering_vm_scanners.dart';
 
@@ -17,7 +17,7 @@ class DefenderCspmAwsOffering {
   /// The databases DSPM configuration
   final pulumi.Input<DefenderCspmAwsOfferingDatabasesDspm>? databasesDspm;
   /// The Microsoft Defender container agentless discovery K8s configuration
-  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s>? mdcContainersAgentlessDiscoveryK8s;
+  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S>? mdcContainersAgentlessDiscoveryK8S;
   /// The Microsoft Defender container image assessment configuration
   final pulumi.Input<DefenderCspmAwsOfferingMdcContainersImageAssessment>? mdcContainersImageAssessment;
   /// The type of the security offering.
@@ -30,7 +30,7 @@ class DefenderCspmAwsOffering {
   /// [ciem] Defenders CSPM Permissions Management offering configurations
   /// [dataSensitivityDiscovery] The Microsoft Defender Data Sensitivity discovery configuration
   /// [databasesDspm] The databases DSPM configuration
-  /// [mdcContainersAgentlessDiscoveryK8s] The Microsoft Defender container agentless discovery K8s configuration
+  /// [mdcContainersAgentlessDiscoveryK8S] The Microsoft Defender container agentless discovery K8s configuration
   /// [mdcContainersImageAssessment] The Microsoft Defender container image assessment configuration
   /// [offeringType] The type of the security offering.
   /// [vmScanners] The Microsoft Defender for CSPM offering VM scanning configuration
@@ -38,7 +38,7 @@ class DefenderCspmAwsOffering {
     this.ciem,
     this.dataSensitivityDiscovery,
     this.databasesDspm,
-    this.mdcContainersAgentlessDiscoveryK8s,
+    this.mdcContainersAgentlessDiscoveryK8S,
     this.mdcContainersImageAssessment,
     required this.offeringType,
     this.vmScanners,
@@ -49,7 +49,7 @@ class DefenderCspmAwsOffering {
       'ciem': ?pulumi.Input.mapOptionalInputValue<DefenderCspmAwsOfferingCiem, Map<String, dynamic>>(ciem, (value) => value.toMap()),
       'dataSensitivityDiscovery': ?pulumi.Input.mapOptionalInputValue<DefenderCspmAwsOfferingDataSensitivityDiscovery, Map<String, dynamic>>(dataSensitivityDiscovery, (value) => value.toMap()),
       'databasesDspm': ?pulumi.Input.mapOptionalInputValue<DefenderCspmAwsOfferingDatabasesDspm, Map<String, dynamic>>(databasesDspm, (value) => value.toMap()),
-      'mdcContainersAgentlessDiscoveryK8s': ?pulumi.Input.mapOptionalInputValue<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s, Map<String, dynamic>>(mdcContainersAgentlessDiscoveryK8s, (value) => value.toMap()),
+      'mdcContainersAgentlessDiscoveryK8S': ?pulumi.Input.mapOptionalInputValue<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S, Map<String, dynamic>>(mdcContainersAgentlessDiscoveryK8S, (value) => value.toMap()),
       'mdcContainersImageAssessment': ?pulumi.Input.mapOptionalInputValue<DefenderCspmAwsOfferingMdcContainersImageAssessment, Map<String, dynamic>>(mdcContainersImageAssessment, (value) => value.toMap()),
       'offeringType': offeringType,
       'vmScanners': ?pulumi.Input.mapOptionalInputValue<DefenderCspmAwsOfferingVmScanners, Map<String, dynamic>>(vmScanners, (value) => value.toMap()),
@@ -61,11 +61,10 @@ class DefenderCspmAwsOffering {
       ciem: (() { final guardedValue = map['ciem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmAwsOfferingCiem.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataSensitivityDiscovery: (() { final guardedValue = map['dataSensitivityDiscovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmAwsOfferingDataSensitivityDiscovery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       databasesDspm: (() { final guardedValue = map['databasesDspm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmAwsOfferingDatabasesDspm.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mdcContainersAgentlessDiscoveryK8s: (() { final guardedValue = map['mdcContainersAgentlessDiscoveryK8s']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mdcContainersAgentlessDiscoveryK8S: (() { final guardedValue = map['mdcContainersAgentlessDiscoveryK8S']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mdcContainersImageAssessment: (() { final guardedValue = map['mdcContainersImageAssessment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmAwsOfferingMdcContainersImageAssessment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
       vmScanners: (() { final guardedValue = map['vmScanners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderCspmAwsOfferingVmScanners.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum NetworkInterfaceAuxiliarySku {
     throw ArgumentError('Unknown NetworkInterfaceAuxiliarySku value: $value');
   }
 }
-

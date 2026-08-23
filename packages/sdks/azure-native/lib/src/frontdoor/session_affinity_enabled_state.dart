@@ -1,7 +1,7 @@
 /// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
 enum SessionAffinityEnabledState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const SessionAffinityEnabledState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SessionAffinityEnabledState {
     throw ArgumentError('Unknown SessionAffinityEnabledState value: $value');
   }
 }
-

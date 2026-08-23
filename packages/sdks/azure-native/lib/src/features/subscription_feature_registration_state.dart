@@ -20,4 +20,3 @@ enum SubscriptionFeatureRegistrationState {
     throw ArgumentError('Unknown SubscriptionFeatureRegistrationState value: $value');
   }
 }
-

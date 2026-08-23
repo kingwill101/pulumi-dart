@@ -1,8 +1,8 @@
 /// Enumeration of identity types, from the perspective of management.
 enum IdentityManagementType {
-  valueSystem("System"),
-  valueUser("User"),
-  valueNone("None");
+  system("System"),
+  user("User"),
+  none("None");
 
   const IdentityManagementType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum IdentityManagementType {
     throw ArgumentError('Unknown IdentityManagementType value: $value');
   }
 }
-

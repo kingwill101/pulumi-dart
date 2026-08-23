@@ -15,4 +15,3 @@ enum RaiPolicyContentSource {
     throw ArgumentError('Unknown RaiPolicyContentSource value: $value');
   }
 }
-

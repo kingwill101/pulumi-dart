@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -465,6 +465,147 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_networkcloud_kubernetescluster" "kubernetesCluster" {
+///   aad_configuration = {
+///     admin_group_object_ids = ["ffffffff-ffff-ffff-ffff-ffffffffffff"]
+///   }
+///   administrator_configuration = {
+///     admin_username = "azure"
+///     ssh_public_keys = [{
+///       "keyData" = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///     }]
+///   }
+///   control_plane_node_configuration = {
+///     administrator_configuration = {
+///       admin_username = "azure"
+///       ssh_public_keys = [{
+///         "keyData" = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///       }]
+///     }
+///     availability_zones = ["1", "2", "3"]
+///     count              = 3
+///     vm_sku_name        = "NC_G6_28_v1"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
+///     type = "CustomLocation"
+///   }
+///   initial_agent_pool_configurations {
+///     administrator_configuration = {
+///       admin_username = "azure"
+///       ssh_public_keys = [{
+///         "keyData" = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///       }]
+///     }
+///     agent_options = {
+///       hugepages_count = 96
+///       hugepages_size  = "1G"
+///     }
+///     attached_network_configuration = {
+///       l2_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l2Networks/l2NetworkName"
+///         "pluginType" = "DPDK"
+///       }]
+///       l3_networks = [{
+///         "ipamEnabled" = "False"
+///         "networkId"   = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
+///         "pluginType"  = "SRIOV"
+///       }]
+///       trunked_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetworkName"
+///         "pluginType" = "MACVLAN"
+///       }]
+///     }
+///     availability_zones = ["1", "2", "3"]
+///     count              = 3
+///     labels {
+///       key   = "kubernetes.label"
+///       value = "true"
+///     }
+///     mode = "System"
+///     name = "SystemPool-1"
+///     taints {
+///       key   = "kubernetes.taint"
+///       value = "true:NoSchedule"
+///     }
+///     upgrade_settings = {
+///       max_surge = "1"
+///     }
+///     vm_sku_name = "NC_P46_224_v1"
+///   }
+///   kubernetes_cluster_name = "kubernetesClusterName"
+///   kubernetes_version      = "1.XX.Y"
+///   location                = "location"
+///   managed_resource_group_configuration = {
+///     location = "East US"
+///     name     = "my-managed-rg"
+///   }
+///   network_configuration = {
+///     attached_network_configuration = {
+///       l2_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l2Networks/l2NetworkName"
+///         "pluginType" = "DPDK"
+///       }]
+///       l3_networks = [{
+///         "ipamEnabled" = "False"
+///         "networkId"   = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
+///         "pluginType"  = "SRIOV"
+///       }]
+///       trunked_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetworkName"
+///         "pluginType" = "MACVLAN"
+///       }]
+///     }
+///     bgp_service_load_balancer_configuration = {
+///       bgp_advertisements = [{
+///         "advertiseToFabric" = "True"
+///         "communities"       = ["64512:100"]
+///         "ipAddressPools"    = ["pool1"]
+///         "peers"             = ["peer1"]
+///       }]
+///       bgp_peers = [{
+///         "bfdEnabled"    = "False"
+///         "bgpMultiHop"   = "False"
+///         "holdTime"      = "P300s"
+///         "keepAliveTime" = "P300s"
+///         "myAsn"         = 64512
+///         "name"          = "peer1"
+///         "peerAddress"   = "203.0.113.254"
+///         "peerAsn"       = 64497
+///         "peerPort"      = 179
+///       }]
+///       fabric_peering_enabled = "True"
+///       ip_address_pools = [{
+///         "addresses"      = ["198.51.102.0/24"]
+///         "autoAssign"     = "True"
+///         "name"           = "pool1"
+///         "onlyUseHostIps" = "True"
+///       }]
+///     }
+///     cloud_services_network_id = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/cloudServicesNetworks/cloudServicesNetworkName"
+///     cni_network_id            = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
+///     dns_service_ip            = "198.51.101.2"
+///     pod_cidrs                 = ["198.51.100.0/24"]
+///     service_cidrs             = ["198.51.101.0/24"]
+///   }
+///   resource_group_name = "resourceGroupName"
+///   tags = {
+///     "key1" = "myvalue1"
+///     "key2" = "myvalue2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -484,8 +625,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkcloud.inputs.ManagedResourceGroupConfigurationArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.BgpServiceLoadBalancerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -808,7 +949,7 @@ import 'system_data_response.dart';
 ///             "2",
 ///             "3",
 ///         ],
-///         "count": 3,
+///         "count": float(3),
 ///         "vm_sku_name": "NC_G6_28_v1",
 ///     },
 ///     extended_location={
@@ -823,7 +964,7 @@ import 'system_data_response.dart';
 ///             }],
 ///         },
 ///         "agent_options": {
-///             "hugepages_count": 96,
+///             "hugepages_count": float(96),
 ///             "hugepages_size": azure_native.networkcloud.HugepagesSize.HUGEPAGES_SIZE_1_G,
 ///         },
 ///         "attached_network_configuration": {
@@ -846,7 +987,7 @@ import 'system_data_response.dart';
 ///             "2",
 ///             "3",
 ///         ],
-///         "count": 3,
+///         "count": float(3),
 ///         "labels": [{
 ///             "key": "kubernetes.label",
 ///             "value": "true",
@@ -897,11 +1038,11 @@ import 'system_data_response.dart';
 ///                 "bgp_multi_hop": azure_native.networkcloud.BgpMultiHop.FALSE,
 ///                 "hold_time": "P300s",
 ///                 "keep_alive_time": "P300s",
-///                 "my_asn": 64512,
+///                 "my_asn": float(64512),
 ///                 "name": "peer1",
 ///                 "peer_address": "203.0.113.254",
-///                 "peer_asn": 64497,
-///                 "peer_port": 179,
+///                 "peer_asn": float(64497),
+///                 "peer_port": float(179),
 ///             }],
 ///             "fabric_peering_enabled": azure_native.networkcloud.FabricPeeringEnabled.TRUE,
 ///             "ip_address_pools": [{
@@ -1431,6 +1572,128 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_networkcloud_kubernetescluster" "kubernetesCluster" {
+///   aad_configuration = {
+///     admin_group_object_ids = ["ffffffff-ffff-ffff-ffff-ffffffffffff"]
+///   }
+///   administrator_configuration = {
+///     admin_username = "azure"
+///     ssh_public_keys = [{
+///       "keyData" = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///     }]
+///   }
+///   control_plane_node_configuration = {
+///     administrator_configuration = {
+///       admin_username = "azure"
+///       ssh_public_keys = [{
+///         "keyData" = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///       }]
+///     }
+///     availability_zones = ["1", "2", "3"]
+///     count              = 3
+///     vm_sku_name        = "NC_G6_28_v1"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName"
+///     type = "CustomLocation"
+///   }
+///   initial_agent_pool_configurations {
+///     administrator_configuration = {
+///       admin_username = "azure"
+///       ssh_public_keys = [{
+///         "keyData" = "ssh-rsa AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1Xo+yYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"
+///       }]
+///     }
+///     agent_options = {
+///       hugepages_count = 96
+///       hugepages_size  = "1G"
+///     }
+///     attached_network_configuration = {
+///       l2_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l2Networks/l2NetworkName"
+///         "pluginType" = "DPDK"
+///       }]
+///       l3_networks = [{
+///         "ipamEnabled" = "False"
+///         "networkId"   = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
+///         "pluginType"  = "SRIOV"
+///       }]
+///       trunked_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetworkName"
+///         "pluginType" = "MACVLAN"
+///       }]
+///     }
+///     availability_zones = ["1", "2", "3"]
+///     count              = 3
+///     labels {
+///       key   = "kubernetes.label"
+///       value = "true"
+///     }
+///     mode = "System"
+///     name = "SystemPool-1"
+///     taints {
+///       key   = "kubernetes.taint"
+///       value = "true:NoSchedule"
+///     }
+///     upgrade_settings = {
+///       max_surge = "1"
+///     }
+///     vm_sku_name = "NC_P46_224_v1"
+///   }
+///   kubernetes_cluster_name = "kubernetesClusterName"
+///   kubernetes_version      = "1.XX.Y"
+///   location                = "location"
+///   managed_resource_group_configuration = {
+///     location = "East US"
+///     name     = "my-managed-rg"
+///   }
+///   network_configuration = {
+///     attached_network_configuration = {
+///       l2_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l2Networks/l2NetworkName"
+///         "pluginType" = "DPDK"
+///       }]
+///       l3_networks = [{
+///         "ipamEnabled" = "False"
+///         "networkId"   = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
+///         "pluginType"  = "SRIOV"
+///       }]
+///       trunked_networks = [{
+///         "networkId"  = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetworkName"
+///         "pluginType" = "MACVLAN"
+///       }]
+///     }
+///     cloud_services_network_id = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/cloudServicesNetworks/cloudServicesNetworkName"
+///     cni_network_id            = "/subscriptions/123e4567-e89b-12d3-a456-426655440000/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName"
+///     dns_service_ip            = "198.51.101.2"
+///     l2_service_load_balancer_configuration = {
+///       ip_address_pools = [{
+///         "addresses"  = ["198.51.102.2-198.51.102.254"]
+///         "autoAssign" = "True"
+///         "name"       = "pool1"
+///       }]
+///     }
+///     pod_cidrs     = ["198.51.100.0/24"]
+///     service_cidrs = ["198.51.101.0/24"]
+///   }
+///   resource_group_name = "resourceGroupName"
+///   tags = {
+///     "key1" = "myvalue1"
+///     "key2" = "myvalue2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1450,8 +1713,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.networkcloud.inputs.ManagedResourceGroupConfigurationArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.networkcloud.inputs.L2ServiceLoadBalancerConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1736,7 +1999,7 @@ import 'system_data_response.dart';
 ///             "2",
 ///             "3",
 ///         ],
-///         "count": 3,
+///         "count": float(3),
 ///         "vm_sku_name": "NC_G6_28_v1",
 ///     },
 ///     extended_location={
@@ -1751,7 +2014,7 @@ import 'system_data_response.dart';
 ///             }],
 ///         },
 ///         "agent_options": {
-///             "hugepages_count": 96,
+///             "hugepages_count": float(96),
 ///             "hugepages_size": azure_native.networkcloud.HugepagesSize.HUGEPAGES_SIZE_1_G,
 ///         },
 ///         "attached_network_configuration": {
@@ -1774,7 +2037,7 @@ import 'system_data_response.dart';
 ///             "2",
 ///             "3",
 ///         ],
-///         "count": 3,
+///         "count": float(3),
 ///         "labels": [{
 ///             "key": "kubernetes.label",
 ///             "value": "true",

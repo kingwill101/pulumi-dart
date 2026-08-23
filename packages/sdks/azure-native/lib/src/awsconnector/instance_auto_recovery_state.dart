@@ -15,4 +15,3 @@ enum InstanceAutoRecoveryState {
     throw ArgumentError('Unknown InstanceAutoRecoveryState value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum GPUDriver {
     throw ArgumentError('Unknown GPUDriver value: $value');
   }
 }
-

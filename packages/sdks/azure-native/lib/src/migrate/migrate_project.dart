@@ -61,6 +61,26 @@ import 'migrate_project_response_tags.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_migrateproject" "migrateProject" {
+///   e_tag                = "\"b701c73a-0000-0000-0000-59c12ff00000\""
+///   location             = "Southeast Asia"
+///   migrate_project_name = "project01"
+///   properties           = {}
+///   resource_group_name  = "myResourceGroup"
+///   tags                 = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +91,8 @@ import 'migrate_project_response_tags.dart';
 /// import com.pulumi.azurenative.migrate.MigrateProjectArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MigrateProjectPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MigrateProjectTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

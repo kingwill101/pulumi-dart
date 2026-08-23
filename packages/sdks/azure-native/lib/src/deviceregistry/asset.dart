@@ -9,7 +9,7 @@ import 'topic_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 ///
-/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-01-preview, 2024-09-01-preview, 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -217,6 +217,86 @@ import 'topic_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_asset" "asset" {
+///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
+///   asset_name                 = "my-asset"
+///   datasets {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt1"
+///       name                     = "dataPoint1"
+///       observability_mode       = "Counter"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":4,\"samplingInterval\":4,\"queueSize\":7}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt2"
+///       name                     = "dataPoint2"
+///       observability_mode       = "None"
+///     }
+///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///     name                  = "dataset1"
+///     topic = {
+///       path   = "/path/dataset1"
+///       retain = "Keep"
+///     }
+///   }
+///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_events_configuration   = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_topic = {
+///     path   = "/path/defaultTopic"
+///     retain = "Keep"
+///   }
+///   description           = "This is a sample Asset"
+///   discovered_asset_refs = ["discoveredAsset1", "discoveredAsset2"]
+///   display_name          = "AssetDisplayName"
+///   documentation_uri     = "https://www.example.com/manual"
+///   enabled               = true
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///     name                = "event1"
+///     observability_mode  = "None"
+///     topic = {
+///       path   = "/path/event1"
+///       retain = "Keep"
+///     }
+///   }
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":8,\"queueSize\":4}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///     name                = "event2"
+///     observability_mode  = "Log"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   external_asset_id   = "8ZBA6LRHU0A458969"
+///   hardware_revision   = "1.0"
+///   location            = "West Europe"
+///   manufacturer        = "Contoso"
+///   manufacturer_uri    = "https://www.contoso.com/manufacturerUri"
+///   model               = "ContosoModel"
+///   product_code        = "SA34VDG"
+///   resource_group_name = "myResourceGroup"
+///   serial_number       = "64-103816-519918-8"
+///   software_revision   = "2.0"
+///   tags = {
+///     "site" = "building-1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -229,8 +309,8 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -741,6 +821,85 @@ import 'topic_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_asset" "asset" {
+///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
+///   asset_name                 = "my-asset"
+///   datasets {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt1"
+///       name                     = "dataPoint1"
+///       observability_mode       = "Counter"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":4,\"samplingInterval\":4,\"queueSize\":7}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt2"
+///       name                     = "dataPoint2"
+///       observability_mode       = "None"
+///     }
+///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///     name                  = "dataset1"
+///     topic = {
+///       path   = "/path/dataset1"
+///       retain = "Keep"
+///     }
+///   }
+///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_events_configuration   = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_topic = {
+///     path   = "/path/defaultTopic"
+///     retain = "Keep"
+///   }
+///   description       = "This is a sample Asset"
+///   display_name      = "AssetDisplayName"
+///   documentation_uri = "https://www.example.com/manual"
+///   enabled           = true
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///     name                = "event1"
+///     observability_mode  = "None"
+///     topic = {
+///       path   = "/path/event1"
+///       retain = "Keep"
+///     }
+///   }
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":8,\"queueSize\":4}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///     name                = "event2"
+///     observability_mode  = "Log"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   external_asset_id   = "8ZBA6LRHU0A458969"
+///   hardware_revision   = "1.0"
+///   location            = "West Europe"
+///   manufacturer        = "Contoso"
+///   manufacturer_uri    = "https://www.contoso.com/manufacturerUri"
+///   model               = "ContosoModel"
+///   product_code        = "SA34VDG"
+///   resource_group_name = "myResourceGroup"
+///   serial_number       = "64-103816-519918-8"
+///   software_revision   = "2.0"
+///   tags = {
+///     "site" = "building-1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -753,8 +912,8 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1249,6 +1408,84 @@ import 'topic_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_asset" "asset" {
+///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
+///   asset_name                 = "my-asset"
+///   datasets {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt1"
+///       name                     = "dataPoint1"
+///       observability_mode       = "Counter"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":4,\"samplingInterval\":4,\"queueSize\":7}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt2"
+///       name                     = "dataPoint2"
+///       observability_mode       = "None"
+///     }
+///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///     name                  = "dataset1"
+///     topic = {
+///       path   = "/path/dataset1"
+///       retain = "Keep"
+///     }
+///   }
+///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_events_configuration   = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_topic = {
+///     path   = "/path/defaultTopic"
+///     retain = "Keep"
+///   }
+///   description       = "This is a sample Asset"
+///   documentation_uri = "https://www.example.com/manual"
+///   enabled           = true
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///     name                = "event1"
+///     observability_mode  = "None"
+///     topic = {
+///       path   = "/path/event1"
+///       retain = "Keep"
+///     }
+///   }
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":8,\"queueSize\":4}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///     name                = "event2"
+///     observability_mode  = "Log"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   external_asset_id   = "8ZBA6LRHU0A458969"
+///   hardware_revision   = "1.0"
+///   location            = "West Europe"
+///   manufacturer        = "Contoso"
+///   manufacturer_uri    = "https://www.contoso.com/manufacturerUri"
+///   model               = "ContosoModel"
+///   product_code        = "SA34VDG"
+///   resource_group_name = "myResourceGroup"
+///   serial_number       = "64-103816-519918-8"
+///   software_revision   = "2.0"
+///   tags = {
+///     "site" = "building-1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1261,8 +1498,8 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1753,6 +1990,84 @@ import 'topic_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_asset" "asset" {
+///   asset_endpoint_profile_ref = "myAssetEndpointProfile"
+///   asset_name                 = "my-asset"
+///   datasets {
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt1"
+///       name                     = "dataPoint1"
+///       observability_mode       = "Counter"
+///     }
+///     data_points {
+///       data_point_configuration = "{\"publishingInterval\":4,\"samplingInterval\":4,\"queueSize\":7}"
+///       data_source              = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt2"
+///       name                     = "dataPoint2"
+///       observability_mode       = "None"
+///     }
+///     dataset_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///     name                  = "dataset1"
+///     topic = {
+///       path   = "/path/dataset1"
+///       retain = "Keep"
+///     }
+///   }
+///   default_datasets_configuration = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_events_configuration   = "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}"
+///   default_topic = {
+///     path   = "/path/defaultTopic"
+///     retain = "Keep"
+///   }
+///   description       = "This is a sample Asset"
+///   display_name      = "AssetDisplayName"
+///   documentation_uri = "https://www.example.com/manual"
+///   enabled           = true
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+///     name                = "event1"
+///     observability_mode  = "None"
+///     topic = {
+///       path   = "/path/event1"
+///       retain = "Keep"
+///     }
+///   }
+///   events {
+///     event_configuration = "{\"publishingInterval\":7,\"samplingInterval\":8,\"queueSize\":4}"
+///     event_notifier      = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+///     name                = "event2"
+///     observability_mode  = "Log"
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   hardware_revision   = "1.0"
+///   location            = "West Europe"
+///   manufacturer        = "Contoso"
+///   manufacturer_uri    = "https://www.contoso.com/manufacturerUri"
+///   model               = "ContosoModel"
+///   product_code        = "SA34VDG"
+///   resource_group_name = "myResourceGroup"
+///   serial_number       = "64-103816-519918-8"
+///   software_revision   = "2.0"
+///   tags = {
+///     "site" = "building-1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1765,8 +2080,8 @@ import 'topic_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.inputs.TopicArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.EventArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'kubernetes_secret_object_mapping_response.dart';
 import 'secret_sync_status_response.dart';
 import 'system_data_response.dart';
@@ -11,7 +11,7 @@ class GetSecretSyncResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// The complex type of the extended location.
-  final AzureResourceManagerCommonTypesExtendedLocationResponse? extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
   final String? forceSynchronization;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -96,7 +96,7 @@ class GetSecretSyncResult {
   factory GetSecretSyncResult.fromMap(Map<String, dynamic> map) {
     return GetSecretSyncResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       forceSynchronization: (() { final guardedValue = map['forceSynchronization']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       kubernetesSecretType: map['kubernetesSecretType'] as String,
@@ -113,4 +113,3 @@ class GetSecretSyncResult {
     );
   }
 }
-

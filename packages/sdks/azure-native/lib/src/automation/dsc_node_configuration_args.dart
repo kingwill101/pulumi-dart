@@ -19,7 +19,7 @@ class DscNodeConfigurationArgs {
   final pulumi.Input<String>? name;
   /// The Dsc node configuration name.
   final pulumi.Input<String>? nodeConfigurationName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the source.
   final pulumi.Input<ContentSource> source;
@@ -32,7 +32,7 @@ class DscNodeConfigurationArgs {
   /// [incrementNodeConfigurationBuild] If a new build version of NodeConfiguration is required.
   /// [name] Name of the node configuration.
   /// [nodeConfigurationName] The Dsc node configuration name.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [source] Gets or sets the source.
   /// [tags] Gets or sets the tags attached to the resource.
   const DscNodeConfigurationArgs({
@@ -72,4 +72,3 @@ class DscNodeConfigurationArgs {
     );
   }
 }
-

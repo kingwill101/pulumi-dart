@@ -11,13 +11,13 @@ class GetPrivateEndpointConnectionArgs {
   final pulumi.Input<String> factoryName;
   /// The private endpoint connection name.
   final pulumi.Input<String> privateEndpointConnectionName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPrivateEndpointConnectionArgs].
   /// [factoryName] The factory name.
   /// [privateEndpointConnectionName] The private endpoint connection name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetPrivateEndpointConnectionArgs({
     required this.factoryName,
     required this.privateEndpointConnectionName,
@@ -40,4 +40,3 @@ class GetPrivateEndpointConnectionArgs {
     );
   }
 }
-

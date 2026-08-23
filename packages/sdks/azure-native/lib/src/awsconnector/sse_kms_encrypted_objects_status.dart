@@ -15,4 +15,3 @@ enum SseKmsEncryptedObjectsStatus {
     throw ArgumentError('Unknown SseKmsEncryptedObjectsStatus value: $value');
   }
 }
-

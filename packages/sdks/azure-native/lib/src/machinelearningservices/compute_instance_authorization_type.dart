@@ -1,6 +1,6 @@
 /// The Compute Instance Authorization type. Available values are personal (default).
 enum ComputeInstanceAuthorizationType {
-  valuePersonal("personal");
+  personal("personal");
 
   const ComputeInstanceAuthorizationType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ComputeInstanceAuthorizationType {
     throw ArgumentError('Unknown ComputeInstanceAuthorizationType value: $value');
   }
 }
-

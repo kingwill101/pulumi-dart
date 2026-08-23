@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_security_group_args.dart';
+import 'system_data_response.dart';
 
 /// The device security group resource
 ///
@@ -60,6 +61,24 @@ import 'device_security_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_devicesecuritygroup" "deviceSecurityGroup" {
+///   device_security_group_name = "samplesecuritygroup"
+///   resource_id                = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub"
+///   time_window_rules {
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +88,8 @@ import 'device_security_group_args.dart';
 /// import com.pulumi.azurenative.security.DeviceSecurityGroup;
 /// import com.pulumi.azurenative.security.DeviceSecurityGroupArgs;
 /// import com.pulumi.azurenative.security.inputs.TimeWindowCustomAlertRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,13 +165,15 @@ class DeviceSecurityGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// The deny-list custom alert rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> denylistRules;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// The list of custom alert threshold rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> thresholdRules;
   /// The list of custom alert time-window rules.
   late final pulumi.Output<List<Map<String, dynamic>>?> timeWindowRules;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [DeviceSecurityGroup].
@@ -173,6 +194,7 @@ class DeviceSecurityGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     denylistRules = registerOutput<List<Map<String, dynamic>>?>('denylistRules');
     this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     thresholdRules = registerOutput<List<Map<String, dynamic>>?>('thresholdRules');
     timeWindowRules = registerOutput<List<Map<String, dynamic>>?>('timeWindowRules');
     type = registerOutput<String>('type');

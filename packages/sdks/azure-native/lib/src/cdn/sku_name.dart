@@ -26,4 +26,3 @@ enum SkuName {
     throw ArgumentError('Unknown SkuName value: $value');
   }
 }
-

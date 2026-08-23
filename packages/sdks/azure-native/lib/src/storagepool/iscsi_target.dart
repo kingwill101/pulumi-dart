@@ -72,6 +72,29 @@ import 'system_metadata_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagepool_iscsitarget" "iscsiTarget" {
+///   acl_mode          = "Dynamic"
+///   disk_pool_name    = "myDiskPool"
+///   iscsi_target_name = "myIscsiTarget"
+///   luns {
+///     managed_disk_azure_resource_id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_1"
+///     name                           = "lun0"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   target_iqn          = "iqn.2005-03.org.iscsi:server1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +104,8 @@ import 'system_metadata_response.dart';
 /// import com.pulumi.azurenative.storagepool.IscsiTarget;
 /// import com.pulumi.azurenative.storagepool.IscsiTargetArgs;
 /// import com.pulumi.azurenative.storagepool.inputs.IscsiLunArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

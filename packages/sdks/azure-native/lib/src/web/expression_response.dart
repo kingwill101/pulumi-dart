@@ -11,13 +11,14 @@ class ExpressionResponse {
   final pulumi.Input<List<ExpressionResponse>>? subexpressions;
   /// The text.
   final pulumi.Input<String>? text;
+  /// Anything
   final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ExpressionResponse].
   /// [error] The azure resource error info.
   /// [subexpressions] The sub expressions.
   /// [text] The text.
-  /// [value] Optional.
+  /// [value] Anything
   const ExpressionResponse({
     this.error,
     this.subexpressions,
@@ -43,4 +44,3 @@ class ExpressionResponse {
     );
   }
 }
-

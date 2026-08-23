@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -82,6 +82,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     os_disk = {
+///       blob_uri = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
+///       disk_encryption_set = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///       }
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +120,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiskEncryptionSetParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -253,6 +280,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     os_disk = {
+///       blob_uri = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///     }
+///     zone_resilient = true
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -263,8 +315,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.ImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,6 +478,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     os_disk = {
+///       disk_encryption_set = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///       }
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///       snapshot = {
+///         id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot"
+///       }
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -438,8 +519,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiskEncryptionSetParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -610,6 +691,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     os_disk = {
+///       managed_disk = {
+///         id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk"
+///       }
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///     }
+///     zone_resilient = true
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +729,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -791,6 +899,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     os_disk = {
+///       disk_encryption_set = {
+///         id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"
+///       }
+///       managed_disk = {
+///         id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk"
+///       }
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -803,8 +940,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiskEncryptionSetParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -975,6 +1112,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     os_disk = {
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///       snapshot = {
+///         id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot"
+///       }
+///     }
+///     zone_resilient = false
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -986,8 +1150,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1135,6 +1299,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   source_virtual_machine = {
+///     id = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1144,8 +1328,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Image;
 /// import com.pulumi.azurenative.compute.ImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1292,6 +1476,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     data_disks = [{
+///       "blobUri" = "https://mystorageaccount.blob.core.windows.net/dataimages/dataimage.vhd"
+///       "lun"     = 1
+///     }]
+///     os_disk = {
+///       blob_uri = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///     }
+///     zone_resilient = false
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1302,8 +1515,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.ImageArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1494,6 +1707,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     data_disks = [{
+///       "lun" = 1
+///       "managedDisk" = {
+///         "id" = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk2"
+///       }
+///     }]
+///     os_disk = {
+///       managed_disk = {
+///         id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk"
+///       }
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///     }
+///     zone_resilient = false
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1505,8 +1751,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1711,6 +1957,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_image" "image" {
+///   image_name          = "myImage"
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   storage_profile = {
+///     data_disks = [{
+///       "lun" = 1
+///       "snapshot" = {
+///         "id" = "subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot2"
+///       }
+///     }]
+///     os_disk = {
+///       os_state = "Generalized"
+///       os_type  = "Linux"
+///       snapshot = {
+///         id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot"
+///       }
+///     }
+///     zone_resilient = true
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1722,8 +2001,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.ImageStorageProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ImageOSDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

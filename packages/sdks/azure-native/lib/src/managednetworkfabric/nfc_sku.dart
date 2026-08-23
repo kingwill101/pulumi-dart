@@ -16,4 +16,3 @@ enum NfcSku {
     throw ArgumentError('Unknown NfcSku value: $value');
   }
 }
-

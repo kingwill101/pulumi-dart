@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'guest_credential_response.dart';
+import 'guest_credential_vminstance_guest_agent_response.dart';
 import 'http_proxy_configuration_response.dart';
 import 'resource_status_response.dart';
 import 'system_data_response.dart';
@@ -11,7 +11,7 @@ class GetVMInstanceGuestAgentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// Username / Password Credentials to provision guest agent.
-  final GuestCredentialResponse? credentials;
+  final GuestCredentialVMInstanceGuestAgentResponse? credentials;
   /// Gets the name of the corresponding resource in Kubernetes.
   final String customResourceName;
   /// HTTP Proxy configuration for the VM.
@@ -91,7 +91,7 @@ class GetVMInstanceGuestAgentResult {
   factory GetVMInstanceGuestAgentResult.fromMap(Map<String, dynamic> map) {
     return GetVMInstanceGuestAgentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return GuestCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return GuestCredentialVMInstanceGuestAgentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       customResourceName: map['customResourceName'] as String,
       httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return HttpProxyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
@@ -107,4 +107,3 @@ class GetVMInstanceGuestAgentResult {
     );
   }
 }
-

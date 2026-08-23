@@ -15,4 +15,3 @@ enum ServerNetworkAccessFlag {
     throw ArgumentError('Unknown ServerNetworkAccessFlag value: $value');
   }
 }
-

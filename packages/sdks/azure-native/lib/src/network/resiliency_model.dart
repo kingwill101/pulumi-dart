@@ -15,4 +15,3 @@ enum ResiliencyModel {
     throw ArgumentError('Unknown ResiliencyModel value: $value');
   }
 }
-

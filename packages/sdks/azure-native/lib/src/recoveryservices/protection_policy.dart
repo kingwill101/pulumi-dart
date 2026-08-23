@@ -6,7 +6,7 @@ import 'protection_policy_args.dart';
 ///
 /// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01, 2025-02-28-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01, 2025-02-28-preview, 2025-08-01, 2026-01-01, 2026-01-31-preview, 2026-02-01, 2026-03-31-preview, 2026-05-01, 2026-05-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -237,6 +237,79 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "newPolicyV2"
+///   properties = {
+///     "backupManagementType" = "AzureStorage"
+///     "schedulePolicy" = {
+///       "schedulePolicyType"   = "SimpleSchedulePolicy"
+///       "scheduleRunFrequency" = "Daily"
+///       "scheduleRunTimes"     = ["2023-07-18T09:30:00.000Z"]
+///     }
+///     "timeZone" = "UTC"
+///     "vaultRetentionPolicy" = {
+///       "snapshotRetentionInDays" = 5
+///       "vaultRetention" = {
+///         "dailySchedule" = {
+///           "retentionDuration" = {
+///             "count"        = 30
+///             "durationType" = "Days"
+///           }
+///           "retentionTimes" = ["2023-07-18T09:30:00.000Z"]
+///         }
+///         "monthlySchedule" = {
+///           "retentionDuration" = {
+///             "count"        = 60
+///             "durationType" = "Months"
+///           }
+///           "retentionScheduleFormatType" = "Weekly"
+///           "retentionScheduleWeekly" = {
+///             "daysOfTheWeek"   = ["Sunday"]
+///             "weeksOfTheMonth" = ["First"]
+///           }
+///           "retentionTimes" = ["2023-07-18T09:30:00.000Z"]
+///         }
+///         "retentionPolicyType" = "LongTermRetentionPolicy"
+///         "weeklySchedule" = {
+///           "daysOfTheWeek" = ["Sunday"]
+///           "retentionDuration" = {
+///             "count"        = 12
+///             "durationType" = "Weeks"
+///           }
+///           "retentionTimes" = ["2023-07-18T09:30:00.000Z"]
+///         }
+///         "yearlySchedule" = {
+///           "monthsOfYear" = ["January"]
+///           "retentionDuration" = {
+///             "count"        = 10
+///             "durationType" = "Years"
+///           }
+///           "retentionScheduleFormatType" = "Weekly"
+///           "retentionScheduleWeekly" = {
+///             "daysOfTheWeek"   = ["Sunday"]
+///             "weeksOfTheMonth" = ["First"]
+///           }
+///           "retentionTimes" = ["2023-07-18T09:30:00.000Z"]
+///         }
+///       }
+///     }
+///     "workLoadType" = "AzureFileShare"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "swaggertestvault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +318,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -745,6 +818,76 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "dailyPolicy2"
+///   properties = {
+///     "backupManagementType" = "AzureStorage"
+///     "retentionPolicy" = {
+///       "dailySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 5
+///           "durationType" = "Days"
+///         }
+///         "retentionTimes" = ["2021-09-29T08:00:00.000Z"]
+///       }
+///       "monthlySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 60
+///           "durationType" = "Months"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///         "retentionTimes" = ["2021-09-29T08:00:00.000Z"]
+///       }
+///       "retentionPolicyType" = "LongTermRetentionPolicy"
+///       "weeklySchedule" = {
+///         "daysOfTheWeek" = ["Sunday"]
+///         "retentionDuration" = {
+///           "count"        = 12
+///           "durationType" = "Weeks"
+///         }
+///         "retentionTimes" = ["2021-09-29T08:00:00.000Z"]
+///       }
+///       "yearlySchedule" = {
+///         "monthsOfYear" = ["January"]
+///         "retentionDuration" = {
+///           "count"        = 10
+///           "durationType" = "Years"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///         "retentionTimes" = ["2021-09-29T08:00:00.000Z"]
+///       }
+///     }
+///     "schedulePolicy" = {
+///       "schedulePolicyType"   = "SimpleSchedulePolicy"
+///       "scheduleRunFrequency" = "Daily"
+///       "scheduleRunTimes"     = ["2021-09-29T08:00:00.000Z"]
+///     }
+///     "timeZone"     = "UTC"
+///     "workLoadType" = "AzureFileShare"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "swaggertestvault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -753,8 +896,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1250,6 +1393,82 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "v2-daily-sample"
+///   properties = {
+///     "backupManagementType"          = "AzureIaasVM"
+///     "instantRpRetentionRangeInDays" = 30
+///     "policyType"                    = "V2"
+///     "retentionPolicy" = {
+///       "dailySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 180
+///           "durationType" = "Days"
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///       "monthlySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 60
+///           "durationType" = "Months"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///       "retentionPolicyType" = "LongTermRetentionPolicy"
+///       "weeklySchedule" = {
+///         "daysOfTheWeek" = ["Sunday"]
+///         "retentionDuration" = {
+///           "count"        = 12
+///           "durationType" = "Weeks"
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///       "yearlySchedule" = {
+///         "monthsOfYear" = ["January"]
+///         "retentionDuration" = {
+///           "count"        = 10
+///           "durationType" = "Years"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///     }
+///     "schedulePolicy" = {
+///       "hourlySchedule" = {
+///         "interval"                = 4
+///         "scheduleWindowDuration"  = 16
+///         "scheduleWindowStartTime" = "2021-12-17T08:00:00Z"
+///       }
+///       "schedulePolicyType"   = "SimpleSchedulePolicyV2"
+///       "scheduleRunFrequency" = "Hourly"
+///     }
+///     "snapshotConsistencyType" = "OnlyCrashConsistent"
+///     "timeZone"                = "India Standard Time"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "NetSDKTestRsVault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1258,8 +1477,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1778,6 +1997,80 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "v2-daily-sample"
+///   properties = {
+///     "backupManagementType"          = "AzureIaasVM"
+///     "instantRpRetentionRangeInDays" = 30
+///     "policyType"                    = "V2"
+///     "retentionPolicy" = {
+///       "dailySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 180
+///           "durationType" = "Days"
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///       "monthlySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 60
+///           "durationType" = "Months"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///       "retentionPolicyType" = "LongTermRetentionPolicy"
+///       "weeklySchedule" = {
+///         "daysOfTheWeek" = ["Sunday"]
+///         "retentionDuration" = {
+///           "count"        = 12
+///           "durationType" = "Weeks"
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///       "yearlySchedule" = {
+///         "monthsOfYear" = ["January"]
+///         "retentionDuration" = {
+///           "count"        = 10
+///           "durationType" = "Years"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///         "retentionTimes" = ["2021-12-17T08:00:00+00:00"]
+///       }
+///     }
+///     "schedulePolicy" = {
+///       "dailySchedule" = {
+///         "scheduleRunTimes" = ["2018-01-24T10:00:00Z"]
+///       }
+///       "schedulePolicyType"   = "SimpleSchedulePolicyV2"
+///       "scheduleRunFrequency" = "Daily"
+///     }
+///     "snapshotConsistencyType" = "OnlyCrashConsistent"
+///     "timeZone"                = "India Standard Time"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "NetSDKTestRsVault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1786,8 +2079,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2290,6 +2583,69 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "testPolicy1"
+///   properties = {
+///     "backupManagementType" = "AzureIaasVM"
+///     "retentionPolicy" = {
+///       "monthlySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 2
+///           "durationType" = "Months"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Wednesday", "Thursday"]
+///           "weeksOfTheMonth" = ["First", "Third"]
+///         }
+///         "retentionTimes" = ["2018-01-24T10:00:00Z"]
+///       }
+///       "retentionPolicyType" = "LongTermRetentionPolicy"
+///       "weeklySchedule" = {
+///         "daysOfTheWeek" = ["Monday", "Wednesday", "Thursday"]
+///         "retentionDuration" = {
+///           "count"        = 1
+///           "durationType" = "Weeks"
+///         }
+///         "retentionTimes" = ["2018-01-24T10:00:00Z"]
+///       }
+///       "yearlySchedule" = {
+///         "monthsOfYear" = ["February", "November"]
+///         "retentionDuration" = {
+///           "count"        = 4
+///           "durationType" = "Years"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Monday", "Thursday"]
+///           "weeksOfTheMonth" = ["Fourth"]
+///         }
+///         "retentionTimes" = ["2018-01-24T10:00:00Z"]
+///       }
+///     }
+///     "schedulePolicy" = {
+///       "schedulePolicyType"   = "SimpleSchedulePolicy"
+///       "scheduleRunDays"      = ["Monday", "Wednesday", "Thursday"]
+///       "scheduleRunFrequency" = "Weekly"
+///       "scheduleRunTimes"     = ["2018-01-24T10:00:00Z"]
+///     }
+///     "timeZone" = "Pacific Standard Time"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "NetSDKTestRsVault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2298,8 +2654,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2914,6 +3270,104 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "testPolicy1"
+///   properties = {
+///     "backupManagementType" = "AzureWorkload"
+///     "settings" = {
+///       "issqlcompression" = false
+///       "timeZone"         = "Pacific Standard Time"
+///     }
+///     "subProtectionPolicy" = [{
+///       "policyType" = "Full"
+///       "retentionPolicy" = {
+///         "monthlySchedule" = {
+///           "retentionDuration" = {
+///             "count"        = 1
+///             "durationType" = "Months"
+///           }
+///           "retentionScheduleFormatType" = "Weekly"
+///           "retentionScheduleWeekly" = {
+///             "daysOfTheWeek"   = ["Sunday"]
+///             "weeksOfTheMonth" = ["Second"]
+///           }
+///           "retentionTimes" = ["2018-01-24T10:00:00Z"]
+///         }
+///         "retentionPolicyType" = "LongTermRetentionPolicy"
+///         "weeklySchedule" = {
+///           "daysOfTheWeek" = ["Sunday", "Tuesday"]
+///           "retentionDuration" = {
+///             "count"        = 2
+///             "durationType" = "Weeks"
+///           }
+///           "retentionTimes" = ["2018-01-24T10:00:00Z"]
+///         }
+///         "yearlySchedule" = {
+///           "monthsOfYear" = ["January", "June", "December"]
+///           "retentionDuration" = {
+///             "count"        = 1
+///             "durationType" = "Years"
+///           }
+///           "retentionScheduleFormatType" = "Weekly"
+///           "retentionScheduleWeekly" = {
+///             "daysOfTheWeek"   = ["Sunday"]
+///             "weeksOfTheMonth" = ["Last"]
+///           }
+///           "retentionTimes" = ["2018-01-24T10:00:00Z"]
+///         }
+///       }
+///       "schedulePolicy" = {
+///         "schedulePolicyType"   = "SimpleSchedulePolicy"
+///         "scheduleRunDays"      = ["Sunday", "Tuesday"]
+///         "scheduleRunFrequency" = "Weekly"
+///         "scheduleRunTimes"     = ["2018-01-24T10:00:00Z"]
+///       }
+///       }, {
+///       "policyType" = "Differential"
+///       "retentionPolicy" = {
+///         "retentionDuration" = {
+///           "count"        = 8
+///           "durationType" = "Days"
+///         }
+///         "retentionPolicyType" = "SimpleRetentionPolicy"
+///       }
+///       "schedulePolicy" = {
+///         "schedulePolicyType"   = "SimpleSchedulePolicy"
+///         "scheduleRunDays"      = ["Friday"]
+///         "scheduleRunFrequency" = "Weekly"
+///         "scheduleRunTimes"     = ["2018-01-24T10:00:00Z"]
+///       }
+///       }, {
+///       "policyType" = "Log"
+///       "retentionPolicy" = {
+///         "retentionDuration" = {
+///           "count"        = 7
+///           "durationType" = "Days"
+///         }
+///         "retentionPolicyType" = "SimpleRetentionPolicy"
+///       }
+///       "schedulePolicy" = {
+///         "scheduleFrequencyInMins" = 60
+///         "schedulePolicyType"      = "LogSchedulePolicy"
+///       }
+///     }]
+///     "workLoadType" = "SQLDataBase"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "NetSDKTestRsVault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2922,8 +3376,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3535,6 +3989,76 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "newPolicy2"
+///   properties = {
+///     "backupManagementType" = "AzureStorage"
+///     "retentionPolicy" = {
+///       "dailySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 5
+///           "durationType" = "Days"
+///         }
+///       }
+///       "monthlySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 60
+///           "durationType" = "Months"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///       }
+///       "retentionPolicyType" = "LongTermRetentionPolicy"
+///       "weeklySchedule" = {
+///         "daysOfTheWeek" = ["Sunday"]
+///         "retentionDuration" = {
+///           "count"        = 12
+///           "durationType" = "Weeks"
+///         }
+///       }
+///       "yearlySchedule" = {
+///         "monthsOfYear" = ["January"]
+///         "retentionDuration" = {
+///           "count"        = 10
+///           "durationType" = "Years"
+///         }
+///         "retentionScheduleFormatType" = "Weekly"
+///         "retentionScheduleWeekly" = {
+///           "daysOfTheWeek"   = ["Sunday"]
+///           "weeksOfTheMonth" = ["First"]
+///         }
+///       }
+///     }
+///     "schedulePolicy" = {
+///       "hourlySchedule" = {
+///         "interval"                = 4
+///         "scheduleWindowDuration"  = 12
+///         "scheduleWindowStartTime" = "2021-09-29T08:00:00.000Z"
+///       }
+///       "schedulePolicyType"   = "SimpleSchedulePolicy"
+///       "scheduleRunFrequency" = "Hourly"
+///     }
+///     "timeZone"     = "UTC"
+///     "workLoadType" = "AzureFileShare"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "swaggertestvault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3543,8 +4067,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3905,6 +4429,42 @@ import 'protection_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_protectionpolicy" "protectionPolicy" {
+///   policy_name = "testPolicy1"
+///   properties = {
+///     "backupManagementType" = "AzureIaasVM"
+///     "retentionPolicy" = {
+///       "dailySchedule" = {
+///         "retentionDuration" = {
+///           "count"        = 1
+///           "durationType" = "Days"
+///         }
+///         "retentionTimes" = ["2018-01-24T02:00:00Z"]
+///       }
+///       "retentionPolicyType" = "LongTermRetentionPolicy"
+///     }
+///     "schedulePolicy" = {
+///       "schedulePolicyType"   = "SimpleSchedulePolicy"
+///       "scheduleRunFrequency" = "Daily"
+///       "scheduleRunTimes"     = ["2018-01-24T02:00:00Z"]
+///     }
+///     "timeZone" = "Pacific Standard Time"
+///   }
+///   resource_group_name = "SwaggerTestRg"
+///   vault_name          = "NetSDKTestRsVault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3913,8 +4473,8 @@ import 'protection_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicy;
 /// import com.pulumi.azurenative.recoveryservices.ProtectionPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

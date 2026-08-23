@@ -76,4 +76,3 @@ class AwsElasticLoadBalancingV2ListenerProperties {
     );
   }
 }
-

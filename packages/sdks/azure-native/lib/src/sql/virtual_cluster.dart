@@ -5,6 +5,8 @@ import 'virtual_cluster_args.dart';
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
 ///
+/// Other available API versions: 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -60,6 +62,26 @@ import 'virtual_cluster_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_virtualcluster" "virtualCluster" {
+///   location            = "japaneast"
+///   resource_group_name = "testrg"
+///   tags = {
+///     "key" = "value"
+///   }
+///   virtual_cluster_name = "vc-subnet1-f769ed71-b3ad-491a-a9d5-26eeceaa6be2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +90,8 @@ import 'virtual_cluster_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.VirtualCluster;
 /// import com.pulumi.azurenative.sql.VirtualClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

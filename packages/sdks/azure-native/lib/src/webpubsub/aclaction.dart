@@ -15,4 +15,3 @@ enum ACLAction {
     throw ArgumentError('Unknown ACLAction value: $value');
   }
 }
-

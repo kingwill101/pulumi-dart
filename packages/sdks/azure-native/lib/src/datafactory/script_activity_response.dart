@@ -5,7 +5,7 @@ import 'activity_dependency_response.dart';
 import 'activity_policy_response.dart';
 import 'linked_service_reference_response.dart';
 import 'script_activity_script_block_response.dart';
-import 'script_activity_type_properties_response_log_settings.dart';
+import 'script_activity_type_properties_log_settings_response.dart';
 import 'user_property_response.dart';
 
 /// Script activity type.
@@ -15,9 +15,9 @@ class ScriptActivityResponse {
   /// Activity description.
   final pulumi.Input<String>? description;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
   /// Log settings of script activity.
-  final pulumi.Input<ScriptActivityTypePropertiesResponseLogSettings>? logSettings;
+  final pulumi.Input<ScriptActivityTypePropertiesLogSettingsResponse>? logSettings;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
@@ -58,7 +58,7 @@ class ScriptActivityResponse {
   const ScriptActivityResponse({
     this.dependsOn,
     this.description,
-    required this.linkedServiceName,
+    this.linkedServiceName,
     this.logSettings,
     required this.name,
     this.onInactiveMarkAs,
@@ -76,8 +76,8 @@ class ScriptActivityResponse {
     return <String, dynamic>{
       'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
-      'logSettings': ?pulumi.Input.mapOptionalInputValue<ScriptActivityTypePropertiesResponseLogSettings, Map<String, dynamic>>(logSettings, (value) => value.toMap()),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'logSettings': ?pulumi.Input.mapOptionalInputValue<ScriptActivityTypePropertiesLogSettingsResponse, Map<String, dynamic>>(logSettings, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
@@ -95,8 +95,8 @@ class ScriptActivityResponse {
     return ScriptActivityResponse(
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependencyResponse>(guardedValue, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
-      logSettings: (() { final guardedValue = map['logSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScriptActivityTypePropertiesResponseLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      logSettings: (() { final guardedValue = map['logSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScriptActivityTypePropertiesLogSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -110,4 +110,3 @@ class ScriptActivityResponse {
     );
   }
 }
-

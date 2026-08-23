@@ -14,4 +14,3 @@ enum RequestMethodOperator {
     throw ArgumentError('Unknown RequestMethodOperator value: $value');
   }
 }
-

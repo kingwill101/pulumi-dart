@@ -15,4 +15,3 @@ enum FilterOption {
     throw ArgumentError('Unknown FilterOption value: $value');
   }
 }
-

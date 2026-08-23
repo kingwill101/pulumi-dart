@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_review_history_instance_response.dart';
 import 'access_review_recurrence_range_response.dart';
 import 'access_review_scope_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getAccessReviewHistoryDefinitionById.
 class GetAccessReviewHistoryDefinitionByIdResult {
@@ -15,13 +16,13 @@ class GetAccessReviewHistoryDefinitionByIdResult {
   final List<String>? decisions;
   /// The display name for the history definition.
   final String? displayName;
-  /// The access review history definition id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Set of access review history instances for this history definition.
   final List<AccessReviewHistoryInstanceResponse>? instances;
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   final int? interval;
-  /// The access review history definition unique id.
+  /// The name of the resource
   final String name;
   /// The identity id
   final String principalId;
@@ -39,7 +40,9 @@ class GetAccessReviewHistoryDefinitionByIdResult {
   final List<AccessReviewScopeResponse>? scopes;
   /// This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
   final String status;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The user principal name(if valid)
   final String userPrincipalName;
@@ -49,10 +52,10 @@ class GetAccessReviewHistoryDefinitionByIdResult {
   /// [createdDateTime] Date time when history definition was created
   /// [decisions] Collection of review decisions which the history data should be filtered on. For example if Approve and Deny are supplied the data will only contain review results in which the decision maker approved or denied a review request.
   /// [displayName] The display name for the history definition.
-  /// [id] The access review history definition id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [instances] Set of access review history instances for this history definition.
   /// [interval] The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
-  /// [name] The access review history definition unique id.
+  /// [name] The name of the resource
   /// [principalId] The identity id
   /// [principalName] The identity display name
   /// [principalType] The identity type : user/servicePrincipal
@@ -61,7 +64,8 @@ class GetAccessReviewHistoryDefinitionByIdResult {
   /// [reviewHistoryPeriodStartDateTime] Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
   /// [scopes] A collection of scopes used when selecting review history data
   /// [status] This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
-  /// [type] The resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userPrincipalName] The user principal name(if valid)
   const GetAccessReviewHistoryDefinitionByIdResult({
     required this.azureApiVersion,
@@ -80,6 +84,7 @@ class GetAccessReviewHistoryDefinitionByIdResult {
     required this.reviewHistoryPeriodStartDateTime,
     this.scopes,
     required this.status,
+    required this.systemData,
     required this.type,
     required this.userPrincipalName,
   });
@@ -102,6 +107,7 @@ class GetAccessReviewHistoryDefinitionByIdResult {
       'reviewHistoryPeriodStartDateTime': reviewHistoryPeriodStartDateTime,
       'scopes': ?(() { final guardedValue = scopes; if (guardedValue == null) return null; return pulumi.Input.encodeList<AccessReviewScopeResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'status': status,
+      'systemData': systemData.toMap(),
       'type': type,
       'userPrincipalName': userPrincipalName,
     };
@@ -125,9 +131,9 @@ class GetAccessReviewHistoryDefinitionByIdResult {
       reviewHistoryPeriodStartDateTime: map['reviewHistoryPeriodStartDateTime'] as String,
       scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewScopeResponse>(guardedValue, (value) => AccessReviewScopeResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       status: map['status'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       userPrincipalName: map['userPrincipalName'] as String,
     );
   }
 }
-

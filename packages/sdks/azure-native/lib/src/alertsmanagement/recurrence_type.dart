@@ -1,8 +1,8 @@
 /// Specifies when the recurrence should be applied.
 enum RecurrenceType {
-  valueDaily("Daily"),
-  valueWeekly("Weekly"),
-  valueMonthly("Monthly");
+  daily("Daily"),
+  weekly("Weekly"),
+  monthly("Monthly");
 
   const RecurrenceType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum RecurrenceType {
     throw ArgumentError('Unknown RecurrenceType value: $value');
   }
 }
-

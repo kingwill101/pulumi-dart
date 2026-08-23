@@ -17,7 +17,7 @@ class ExecutePipelineActivityResponse {
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
   /// Pipeline parameters.
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<dynamic>? parameters;
   /// Pipeline reference.
   final pulumi.Input<PipelineReferenceResponse> pipeline;
   /// Execute pipeline activity policy.
@@ -80,7 +80,7 @@ class ExecutePipelineActivityResponse {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       pipeline: pulumi.Input.fromValue(PipelineReferenceResponse.fromMap((map['pipeline']! as Map).cast<String, dynamic>())),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExecutePipelineActivityPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -90,4 +90,3 @@ class ExecutePipelineActivityResponse {
     );
   }
 }
-

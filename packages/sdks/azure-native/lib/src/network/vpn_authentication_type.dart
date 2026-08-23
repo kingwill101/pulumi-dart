@@ -16,4 +16,3 @@ enum VpnAuthenticationType {
     throw ArgumentError('Unknown VpnAuthenticationType value: $value');
   }
 }
-

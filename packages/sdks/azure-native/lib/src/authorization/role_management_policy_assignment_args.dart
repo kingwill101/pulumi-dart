@@ -11,7 +11,7 @@ class RoleManagementPolicyAssignmentArgs {
   final pulumi.Input<String>? policyId;
   /// The role definition of management policy assignment.
   final pulumi.Input<String>? roleDefinitionId;
-  /// The name of format {guid_guid} the role management policy assignment to upsert.
+  /// The name of format {guid_guid} the role management policy assignment to get.
   final pulumi.Input<String>? roleManagementPolicyAssignmentName;
   /// The role management policy scope.
   final pulumi.Input<String> scope;
@@ -19,7 +19,7 @@ class RoleManagementPolicyAssignmentArgs {
   /// Creates a new [RoleManagementPolicyAssignmentArgs].
   /// [policyId] The policy id role management policy assignment.
   /// [roleDefinitionId] The role definition of management policy assignment.
-  /// [roleManagementPolicyAssignmentName] The name of format {guid_guid} the role management policy assignment to upsert.
+  /// [roleManagementPolicyAssignmentName] The name of format {guid_guid} the role management policy assignment to get.
   /// [scope] The role management policy scope.
   const RoleManagementPolicyAssignmentArgs({
     this.policyId,
@@ -46,4 +46,3 @@ class RoleManagementPolicyAssignmentArgs {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GatewayLoadBalancerTunnelInterfaceType {
     throw ArgumentError('Unknown GatewayLoadBalancerTunnelInterfaceType value: $value');
   }
 }
-

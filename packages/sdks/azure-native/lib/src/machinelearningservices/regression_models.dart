@@ -1,15 +1,15 @@
 /// Enum for all Regression models supported by AutoML.
 enum RegressionModels {
-  valueElasticNet("ElasticNet"),
-  valueGradientBoosting("GradientBoosting"),
-  valueDecisionTree("DecisionTree"),
-  valueKNN("KNN"),
-  valueLassoLars("LassoLars"),
-  valueSGD("SGD"),
-  valueRandomForest("RandomForest"),
-  valueExtremeRandomTrees("ExtremeRandomTrees"),
-  valueLightGBM("LightGBM"),
-  valueXGBoostRegressor("XGBoostRegressor");
+  elasticNet("ElasticNet"),
+  gradientBoosting("GradientBoosting"),
+  decisionTree("DecisionTree"),
+  kNN("KNN"),
+  lassoLars("LassoLars"),
+  sGD("SGD"),
+  randomForest("RandomForest"),
+  extremeRandomTrees("ExtremeRandomTrees"),
+  lightGBM("LightGBM"),
+  xGBoostRegressor("XGBoostRegressor");
 
   const RegressionModels(this.wireValue);
   final String wireValue;
@@ -23,4 +23,3 @@ enum RegressionModels {
     throw ArgumentError('Unknown RegressionModels value: $value');
   }
 }
-

@@ -79,6 +79,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_signalrservice_signalrreplica" "signalRReplica" {
+///   location            = "eastus"
+///   replica_name        = "mySignalRService-eastus"
+///   resource_group_name = "myResourceGroup"
+///   resource_name       = "mySignalRService"
+///   resource_stopped    = "false"
+///   sku = {
+///     capacity = 1
+///     name     = "Premium_P1"
+///     tier     = "Premium"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +115,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.signalrservice.SignalRReplica;
 /// import com.pulumi.azurenative.signalrservice.SignalRReplicaArgs;
 /// import com.pulumi.azurenative.signalrservice.inputs.ResourceSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,6 +3,7 @@ import 'governance_assignment_additional_data_response.dart';
 import 'governance_assignment_args.dart';
 import 'governance_email_notification_response.dart';
 import 'remediation_eta_response.dart';
+import 'system_data_response.dart';
 
 /// Governance assignment over a given scope
 ///
@@ -91,6 +92,39 @@ import 'remediation_eta_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_governanceassignment" "governanceAssignment" {
+///   additional_data = {
+///     ticket_link   = "https://snow.com"
+///     ticket_number = 123123
+///     ticket_status = "Active"
+///   }
+///   assessment_name = "6b9421dd-5555-2251-9b3d-2be58e2f82cd"
+///   assignment_key  = "6634ff9f-127b-4bf2-8e6e-b1737f5e789c"
+///   governance_email_notification = {
+///     disable_manager_email_notification = false
+///     disable_owner_email_notification   = false
+///   }
+///   is_grace_period      = true
+///   owner                = "user@contoso.com"
+///   remediation_due_date = "2022-01-07T13:00:00.0000000Z"
+///   remediation_eta = {
+///     eta           = "2022-01-08T13:00:00.0000000Z"
+///     justification = "Justification of ETA"
+///   }
+///   scope = "subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/resourceGroups/compute_servers/providers/Microsoft.Compute/virtualMachines/win2012"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +136,8 @@ import 'remediation_eta_response.dart';
 /// import com.pulumi.azurenative.security.inputs.GovernanceAssignmentAdditionalDataArgs;
 /// import com.pulumi.azurenative.security.inputs.GovernanceEmailNotificationArgs;
 /// import com.pulumi.azurenative.security.inputs.RemediationEtaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,7 +274,7 @@ class GovernanceAssignment extends pulumi.CustomResource {
   late final pulumi.Output<GovernanceEmailNotificationResponse?> governanceEmailNotification;
   /// Defines whether there is a grace period on the governance assignment
   late final pulumi.Output<bool?> isGracePeriod;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The Owner for the governance assignment - e.g. user@contoso.com - see example
   late final pulumi.Output<String?> owner;
@@ -248,7 +282,9 @@ class GovernanceAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> remediationDueDate;
   /// The ETA (estimated time of arrival) for remediation (optional), see example
   late final pulumi.Output<RemediationEtaResponse?> remediationEta;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [GovernanceAssignment].
@@ -273,6 +309,7 @@ class GovernanceAssignment extends pulumi.CustomResource {
     owner = registerOutput<String?>('owner');
     remediationDueDate = registerOutput<String>('remediationDueDate');
     remediationEta = registerOutput<RemediationEtaResponse?>('remediationEta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationEtaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

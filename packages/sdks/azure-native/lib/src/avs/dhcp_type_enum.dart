@@ -15,4 +15,3 @@ enum DhcpTypeEnum {
     throw ArgumentError('Unknown DhcpTypeEnum value: $value');
   }
 }
-

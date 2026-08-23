@@ -15,4 +15,3 @@ enum ConnectorClass {
     throw ArgumentError('Unknown ConnectorClass value: $value');
   }
 }
-

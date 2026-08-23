@@ -10,7 +10,7 @@ import 'connection_type_association_property.dart';
 class ConnectionArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// The parameters supplied to the create or update connection operation.
+  /// The name of connection.
   final pulumi.Input<String>? connectionName;
   /// Gets or sets the connectionType of the connection.
   final pulumi.Input<ConnectionTypeAssociationProperty> connectionType;
@@ -20,17 +20,17 @@ class ConnectionArgs {
   final pulumi.Input<Map<String, String>>? fieldDefinitionValues;
   /// Gets or sets the name of the connection.
   final pulumi.Input<String> name;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ConnectionArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [connectionName] The parameters supplied to the create or update connection operation.
+  /// [connectionName] The name of connection.
   /// [connectionType] Gets or sets the connectionType of the connection.
   /// [description] Gets or sets the description of the connection.
   /// [fieldDefinitionValues] Gets or sets the field definition properties of the connection.
   /// [name] Gets or sets the name of the connection.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ConnectionArgs({
     required this.automationAccountName,
     this.connectionName,
@@ -65,4 +65,3 @@ class ConnectionArgs {
     );
   }
 }
-

@@ -18,7 +18,7 @@ class CustomActivity {
   /// Activity description.
   final pulumi.Input<String>? description;
   /// User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
-  final pulumi.Input<Map<String, dynamic>>? extendedProperties;
+  final pulumi.Input<dynamic>? extendedProperties;
   /// Folder path for resource files Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? folderPath;
   /// Linked service reference.
@@ -106,7 +106,7 @@ class CustomActivity {
       command: pulumi.Input.fromValue(map['command']),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      extendedProperties: (() { final guardedValue = map['extendedProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      extendedProperties: (() { final guardedValue = map['extendedProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -121,4 +121,3 @@ class CustomActivity {
     );
   }
 }
-

@@ -1,6 +1,6 @@
 /// Authentication type for connecting to the Oracle database. Only used for Version 2.0.
 enum OracleAuthenticationType {
-  valueBasic("Basic");
+  basic("Basic");
 
   const OracleAuthenticationType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum OracleAuthenticationType {
     throw ArgumentError('Unknown OracleAuthenticationType value: $value');
   }
 }
-

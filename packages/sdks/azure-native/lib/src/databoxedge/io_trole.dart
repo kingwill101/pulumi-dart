@@ -125,6 +125,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_iotrole" "ioTRole" {
+///   device_name   = "testedgedevice"
+///   host_platform = "Linux"
+///   io_t_device_details = {
+///     authentication = {
+///       symmetric_key = {
+///         connection_string = {
+///           encryption_algorithm       = "AES256"
+///           encryption_cert_thumbprint = "348586569999244"
+///           value                      = "Encrypted<<HostName=iothub.azure-devices.net;DeviceId=iotDevice;SharedAccessKey=2C750FscEas3JmQ8Bnui5yQWZPyml0/UiRt1bQwd8=>>"
+///         }
+///       }
+///     }
+///     device_id     = "iotdevice"
+///     io_t_host_hub = "iothub.azure-devices.net"
+///   }
+///   io_t_edge_device_details = {
+///     authentication = {
+///       symmetric_key = {
+///         connection_string = {
+///           encryption_algorithm       = "AES256"
+///           encryption_cert_thumbprint = "1245475856069999244"
+///           value                      = "Encrypted<<HostName=iothub.azure-devices.net;DeviceId=iotEdge;SharedAccessKey=2C750FscEas3JmQ8Bnui5yQWZPyml0/UiRt1bQwd8=>>"
+///         }
+///       }
+///     }
+///     device_id     = "iotEdge"
+///     io_t_host_hub = "iothub.azure-devices.net"
+///   }
+///   kind                = "IOT"
+///   name                = "IoTRole1"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   role_status         = "Enabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +183,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.inputs.AuthenticationArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.SymmetricKeyArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.AsymmetricEncryptedSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

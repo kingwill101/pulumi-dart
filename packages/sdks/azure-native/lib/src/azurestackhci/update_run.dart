@@ -6,7 +6,7 @@ import 'update_run_args.dart';
 ///
 /// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -98,6 +98,40 @@ import 'update_run_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_updaterun" "updateRun" {
+///   cluster_name          = "testcluster"
+///   description           = "Update Azure Stack."
+///   end_time_utc          = "2022-04-06T13:58:42.969006+00:00"
+///   error_message         = ""
+///   last_updated_time_utc = "2022-04-06T13:58:42.969006+00:00"
+///   name                  = "Unnamed step"
+///   resource_group_name   = "testrg"
+///   start_time_utc        = "2022-04-06T01:36:33.3876751+00:00"
+///   status                = "Success"
+///   steps {
+///     description           = "Prepare for SSU update"
+///     end_time_utc          = "2022-04-06T01:37:16.8728314+00:00"
+///     error_message         = ""
+///     last_updated_time_utc = "2022-04-06T01:37:16.8728314+00:00"
+///     name                  = "PreUpdate Cloud"
+///     start_time_utc        = "2022-04-06T01:36:33.3876751+00:00"
+///     status                = "Success"
+///   }
+///   update_name     = "Microsoft4.2203.2.32"
+///   update_run_name = "23b779ba-0d52-4a80-8571-45ca74664ec3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +141,8 @@ import 'update_run_args.dart';
 /// import com.pulumi.azurenative.azurestackhci.UpdateRun;
 /// import com.pulumi.azurenative.azurestackhci.UpdateRunArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.StepArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

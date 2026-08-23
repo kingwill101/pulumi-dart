@@ -15,4 +15,3 @@ enum NotifyGlobalAdmins {
     throw ArgumentError('Unknown NotifyGlobalAdmins value: $value');
   }
 }
-

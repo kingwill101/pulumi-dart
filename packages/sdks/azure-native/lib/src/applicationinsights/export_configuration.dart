@@ -71,6 +71,32 @@ import 'export_configuration_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_exportconfiguration" "exportConfiguration" {
+///   destination_account_id              = "/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.ClassicStorage/storageAccounts/mystorageblob"
+///   destination_address                 = "https://mystorageblob.blob.core.windows.net/fchentest?sv=2015-04-05&sr=c&sig=token"
+///   destination_storage_location_id     = "eastus"
+///   destination_storage_subscription_id = "subid"
+///   destination_type                    = "Blob"
+///   export_id                           = "uGOoki0jQsyEs3IdQ83Q4QsNr4="
+///   is_enabled                          = "true"
+///   notification_queue_enabled          = "false"
+///   notification_queue_uri              = ""
+///   record_types                        = "Requests, Event, Exceptions, Metrics, PageViews, PageViewPerformance, Rdd, PerformanceCounters, Availability"
+///   resource_group_name                 = "my-resource-group"
+///   resource_name                       = "my-component"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +105,8 @@ import 'export_configuration_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.applicationinsights.ExportConfiguration;
 /// import com.pulumi.azurenative.applicationinsights.ExportConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

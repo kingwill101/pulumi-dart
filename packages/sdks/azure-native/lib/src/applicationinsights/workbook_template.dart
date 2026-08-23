@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'system_data_response.dart';
 import 'workbook_template_args.dart';
 import 'workbook_template_localized_gallery_response.dart';
 
@@ -148,6 +149,55 @@ import 'workbook_template_localized_gallery_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_workbooktemplate" "workbookTemplate" {
+///   author = "Contoso"
+///   galleries {
+///     category      = "Failures"
+///     name          = "Simple Template"
+///     order         = 100
+///     resource_type = "microsoft.insights/components"
+///     type          = "tsg"
+///   }
+///   location            = "west us"
+///   priority            = 1
+///   resource_group_name = "my-resource-group"
+///   resource_name       = "testtemplate2"
+///   template_data = {
+///     "$schema" = "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+///     "items" = [{
+///       "content" = {
+///         "json" = "## New workbook\n---\n\nWelcome to your new workbook.  This area will display text formatted as markdown.\n\n\nWe've included a basic analytics query to get you started. Use the `Edit` button below each section to configure it or add more sections."
+///       }
+///       "name" = "text - 2"
+///       "type" = 1
+///       }, {
+///       "content" = {
+///         "exportToExcelOptions" = "visible"
+///         "query"                = "union withsource=TableName *\n| summarize Count=count() by TableName\n| render barchart"
+///         "queryType"            = 0
+///         "resourceType"         = "microsoft.operationalinsights/workspaces"
+///         "size"                 = 1
+///         "version"              = "KqlItem/1.0"
+///       }
+///       "name" = "query - 2"
+///       "type" = 3
+///     }]
+///     "styleSettings" = {}
+///     "version"       = "Notebook/1.0"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +207,8 @@ import 'workbook_template_localized_gallery_response.dart';
 /// import com.pulumi.azurenative.applicationinsights.WorkbookTemplate;
 /// import com.pulumi.azurenative.applicationinsights.WorkbookTemplateArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WorkbookTemplateGalleryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,7 +235,7 @@ import 'workbook_template_localized_gallery_response.dart';
 ///             .resourceName("testtemplate2")
 ///             .templateData(Map.ofEntries(
 ///                 Map.entry("$schema", "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"),
-///                 Map.entry("items",
+///                 Map.entry("items", Arrays.asList(
 ///                     Map.ofEntries(
 ///                         Map.entry("content", Map.of("json", """
 /// ## New workbook
@@ -212,7 +262,7 @@ import 'workbook_template_localized_gallery_response.dart';
 ///                         )),
 ///                         Map.entry("name", "query - 2"),
 ///                         Map.entry("type", 3)
-///                     )),
+///                     ))),
 ///                 Map.entry("styleSettings", Map.ofEntries(
 ///                 )),
 ///                 Map.entry("version", "Notebook/1.0")
@@ -399,17 +449,19 @@ class WorkbookTemplate extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> galleries;
   /// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
   late final pulumi.Output<Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?> localized;
-  /// Resource location
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Azure resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
   late final pulumi.Output<int?> priority;
-  /// Resource tags
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Valid JSON object containing workbook template payload.
   late final pulumi.Output<dynamic> templateData;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [WorkbookTemplate].
@@ -433,6 +485,7 @@ class WorkbookTemplate extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     templateData = registerOutput<dynamic>('templateData');
     type = registerOutput<String>('type');

@@ -47,4 +47,3 @@ class WebAppAssessmentV3OperationArgs {
     );
   }
 }
-

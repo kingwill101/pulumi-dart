@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Linked service reference type.
 class LinkedServiceReferenceResponse {
   /// Arguments for LinkedService.
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<dynamic>? parameters;
   /// Reference LinkedService name.
   final pulumi.Input<String> referenceName;
   /// Linked service reference type.
@@ -31,10 +31,9 @@ class LinkedServiceReferenceResponse {
 
   factory LinkedServiceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LinkedServiceReferenceResponse(
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

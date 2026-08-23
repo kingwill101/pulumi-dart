@@ -14,4 +14,3 @@ enum RuleType {
     throw ArgumentError('Unknown RuleType value: $value');
   }
 }
-

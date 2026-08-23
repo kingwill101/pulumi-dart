@@ -17,4 +17,3 @@ enum ExpressRouteCircuitSkuTier {
     throw ArgumentError('Unknown ExpressRouteCircuitSkuTier value: $value');
   }
 }
-

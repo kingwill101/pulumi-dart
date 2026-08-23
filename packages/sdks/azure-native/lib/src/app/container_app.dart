@@ -11,7 +11,7 @@ import 'template_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -126,6 +126,50 @@ import 'template_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerapp" "containerApp" {
+///   configuration = {
+///     active_revisions_mode = "Single"
+///     ingress = {
+///       allow_insecure = true
+///       external       = true
+///       target_port    = 80
+///     }
+///   }
+///   container_app_name     = "testcontainerAppKind"
+///   kind                   = "workflowapp"
+///   location               = "East Us"
+///   managed_by             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Web/sites/testcontainerAppKind"
+///   managed_environment_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/testmanagedenv3"
+///   resource_group_name    = "rg"
+///   template = {
+///     containers = [{
+///       "image" = "default/logicapps-base:latest"
+///       "name"  = "logicapps-container"
+///       "resources" = {
+///         "cpu"    = 1
+///         "memory" = "2.0Gi"
+///       }
+///     }]
+///     scale = {
+///       cooldown_period  = 350
+///       max_replicas     = 30
+///       min_replicas     = 1
+///       polling_interval = 35
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +182,8 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -252,7 +296,7 @@ import 'template_response.dart';
 ///             "image": "default/logicapps-base:latest",
 ///             "name": "logicapps-container",
 ///             "resources": {
-///                 "cpu": 1,
+///                 "cpu": float(1),
 ///                 "memory": "2.0Gi",
 ///             },
 ///         }],
@@ -727,6 +771,151 @@ import 'template_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerapp" "containerApp" {
+///   configuration = {
+///     dapr = {
+///       app_port              = 3000
+///       app_protocol          = "http"
+///       enable_api_logging    = true
+///       enabled               = true
+///       http_max_request_size = 10
+///       http_read_buffer_size = 30
+///       log_level             = "debug"
+///     }
+///     ingress = {
+///       additional_port_mappings = [{
+///         "external"   = true
+///         "targetPort" = 1234
+///         }, {
+///         "exposedPort" = 3456
+///         "external"    = false
+///         "targetPort"  = 2345
+///       }]
+///       client_certificate_mode = "accept"
+///       cors_policy = {
+///         allow_credentials = true
+///         allowed_headers   = ["HEADER1", "HEADER2"]
+///         allowed_methods   = ["GET", "POST"]
+///         allowed_origins   = ["https://a.test.com", "https://b.test.com"]
+///         expose_headers    = ["HEADER3", "HEADER4"]
+///         max_age           = 1234
+///       }
+///       custom_domains = [{
+///         "bindingType"   = "SniEnabled"
+///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube/certificates/my-certificate-for-my-name-dot-com"
+///         "name"          = "www.my-name.com"
+///         }, {
+///         "bindingType"   = "SniEnabled"
+///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com"
+///         "name"          = "www.my-other-name.com"
+///       }]
+///       external = true
+///       ip_security_restrictions = [{
+///         "action"         = "Allow"
+///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
+///         "ipAddressRange" = "192.168.1.1/32"
+///         "name"           = "Allow work IP A subnet"
+///         }, {
+///         "action"         = "Allow"
+///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
+///         "ipAddressRange" = "192.168.1.1/8"
+///         "name"           = "Allow work IP B subnet"
+///       }]
+///       sticky_sessions = {
+///         affinity = "sticky"
+///       }
+///       target_port = 3000
+///       traffic = [{
+///         "label"        = "production"
+///         "revisionName" = "testcontainerApp0-ab1234"
+///         "weight"       = 100
+///       }]
+///     }
+///     max_inactive_revisions        = 10
+///     revision_transition_threshold = 100
+///     runtime = {
+///       dotnet = {
+///         auto_configure_data_protection = true
+///       }
+///       java = {
+///         enable_metrics = true
+///         java_agent = {
+///           enabled = true
+///           logging = {
+///             logger_settings = [{
+///               "level"  = "debug"
+///               "logger" = "org.springframework.boot"
+///             }]
+///           }
+///         }
+///       }
+///     }
+///   }
+///   container_app_name = "testcontainerApp0"
+///   environment_id     = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/connectedEnvironments/demokube"
+///   extended_location = {
+///     name = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.ExtendedLocation/customLocations/testcustomlocation"
+///     type = "CustomLocation"
+///   }
+///   location            = "East US"
+///   resource_group_name = "rg"
+///   template = {
+///     containers = [{
+///       "image" = "repo/testcontainerApp0:v1"
+///       "name"  = "testcontainerApp0"
+///       "probes" = [{
+///         "httpGet" = {
+///           "httpHeaders" = [{
+///             "name"  = "Custom-Header"
+///             "value" = "Awesome"
+///           }]
+///           "path" = "/health"
+///           "port" = 8080
+///         }
+///         "initialDelaySeconds" = 3
+///         "periodSeconds"       = 3
+///         "type"                = "Liveness"
+///       }]
+///     }]
+///     init_containers = [{
+///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       "command" = ["/bin/sh"]
+///       "image"   = "repo/testcontainerApp0:v4"
+///       "name"    = "testinitcontainerApp0"
+///       "resources" = {
+///         "cpu"    = 0.2
+///         "memory" = "100Mi"
+///       }
+///     }]
+///     scale = {
+///       cooldown_period  = 350
+///       max_replicas     = 5
+///       min_replicas     = 1
+///       polling_interval = 35
+///       rules = [{
+///         "custom" = {
+///           "metadata" = {
+///             "concurrentRequests" = "50"
+///           }
+///           "type" = "http"
+///         }
+///         "name" = "httpscalingrule"
+///       }]
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -748,8 +937,8 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1523,6 +1712,65 @@ import 'template_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerapp" "containerApp" {
+///   configuration = {
+///     ingress = {
+///       exposed_port = 4000
+///       external     = true
+///       target_port  = 3000
+///       traffic = [{
+///         "revisionName" = "testcontainerAppManagedBy-ab1234"
+///         "weight"       = 100
+///       }]
+///       transport = "tcp"
+///     }
+///   }
+///   container_app_name  = "testcontainerAppManagedBy"
+///   environment_id      = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube"
+///   location            = "East US"
+///   managed_by          = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.AppPlatform/Spring/springapp"
+///   resource_group_name = "rg"
+///   template = {
+///     containers = [{
+///       "image" = "repo/testcontainerAppManagedBy:v1"
+///       "name"  = "testcontainerAppManagedBy"
+///       "probes" = [{
+///         "initialDelaySeconds" = 3
+///         "periodSeconds"       = 3
+///         "tcpSocket" = {
+///           "port" = 8080
+///         }
+///         "type" = "Liveness"
+///       }]
+///     }]
+///     scale = {
+///       cooldown_period  = 350
+///       max_replicas     = 5
+///       min_replicas     = 1
+///       polling_interval = 35
+///       rules = [{
+///         "name" = "tcpscalingrule"
+///         "tcp" = {
+///           "metadata" = {
+///             "concurrentConnections" = "50"
+///           }
+///         }
+///       }]
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1535,8 +1783,8 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2218,6 +2466,164 @@ import 'template_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerapp" "containerApp" {
+///   configuration = {
+///     dapr = {
+///       app_port              = 3000
+///       app_protocol          = "http"
+///       enable_api_logging    = true
+///       enabled               = true
+///       http_max_request_size = 10
+///       http_read_buffer_size = 30
+///       log_level             = "debug"
+///     }
+///     ingress = {
+///       additional_port_mappings = [{
+///         "external"   = true
+///         "targetPort" = 1234
+///         }, {
+///         "exposedPort" = 3456
+///         "external"    = false
+///         "targetPort"  = 2345
+///       }]
+///       client_certificate_mode = "accept"
+///       cors_policy = {
+///         allow_credentials = true
+///         allowed_headers   = ["HEADER1", "HEADER2"]
+///         allowed_methods   = ["GET", "POST"]
+///         allowed_origins   = ["https://a.test.com", "https://b.test.com"]
+///         expose_headers    = ["HEADER3", "HEADER4"]
+///         max_age           = 1234
+///       }
+///       custom_domains = [{
+///         "bindingType"   = "SniEnabled"
+///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-name-dot-com"
+///         "name"          = "www.my-name.com"
+///         }, {
+///         "bindingType"   = "SniEnabled"
+///         "certificateId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com"
+///         "name"          = "www.my-other-name.com"
+///       }]
+///       external = true
+///       ip_security_restrictions = [{
+///         "action"         = "Allow"
+///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
+///         "ipAddressRange" = "192.168.1.1/32"
+///         "name"           = "Allow work IP A subnet"
+///         }, {
+///         "action"         = "Allow"
+///         "description"    = "Allowing all IP's within the subnet below to access containerapp"
+///         "ipAddressRange" = "192.168.1.1/8"
+///         "name"           = "Allow work IP B subnet"
+///       }]
+///       sticky_sessions = {
+///         affinity = "sticky"
+///       }
+///       target_port = 3000
+///       traffic = [{
+///         "label"        = "production"
+///         "revisionName" = "testcontainerApp0-ab1234"
+///         "weight"       = 100
+///       }]
+///     }
+///     max_inactive_revisions        = 10
+///     revision_transition_threshold = 100
+///     service = {
+///       type = "redis"
+///     }
+///   }
+///   container_app_name = "testcontainerApp0"
+///   environment_id     = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube"
+///   location           = "East US"
+///   patching_configuration = {
+///     patching_mode = "Automatic"
+///   }
+///   resource_group_name = "rg"
+///   template = {
+///     containers = [{
+///       "image"     = ""
+///       "imageType" = "CloudBuild"
+///       "name"      = "testcontainerApp0"
+///       "probes" = [{
+///         "httpGet" = {
+///           "httpHeaders" = [{
+///             "name"  = "Custom-Header"
+///             "value" = "Awesome"
+///           }]
+///           "path" = "/health"
+///           "port" = 8080
+///         }
+///         "initialDelaySeconds" = 3
+///         "periodSeconds"       = 3
+///         "type"                = "Liveness"
+///       }]
+///       "volumeMounts" = [{
+///         "mountPath"  = "/mnt/path1"
+///         "subPath"    = "subPath1"
+///         "volumeName" = "azurefile"
+///         }, {
+///         "mountPath"  = "/mnt/path2"
+///         "subPath"    = "subPath2"
+///         "volumeName" = "nfsazurefile"
+///       }]
+///     }]
+///     init_containers = [{
+///       "args"    = ["-c", "while true; do echo hello; sleep 10;done"]
+///       "command" = ["/bin/sh"]
+///       "image"   = "repo/testcontainerApp0:v4"
+///       "name"    = "testinitcontainerApp0"
+///       "resources" = {
+///         "cpu"    = 0.2
+///         "memory" = "100Mi"
+///       }
+///     }]
+///     scale = {
+///       cooldown_period  = 350
+///       max_replicas     = 5
+///       min_replicas     = 1
+///       polling_interval = 35
+///       rules = [{
+///         "custom" = {
+///           "metadata" = {
+///             "concurrentRequests" = "50"
+///           }
+///           "type" = "http"
+///         }
+///         "name" = "httpscalingrule"
+///       }]
+///     }
+///     service_binds = [{
+///       "clientType" = "dotnet"
+///       "customizedKeys" = {
+///         "DesiredKey" = "defaultKey"
+///       }
+///       "name"      = "redisService"
+///       "serviceId" = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/containerApps/redisService"
+///     }]
+///     volumes = [{
+///       "name"        = "azurefile"
+///       "storageName" = "storage"
+///       "storageType" = "AzureFile"
+///       }, {
+///       "name"        = "nfsazurefile"
+///       "storageName" = "nfsStorage"
+///       "storageType" = "NfsAzureFile"
+///     }]
+///   }
+///   workload_profile_name = "My-GP-01"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2235,8 +2641,8 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.ContainerAppPatchingConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3073,6 +3479,64 @@ import 'template_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerapp" "containerApp" {
+///   configuration = {
+///     ingress = {
+///       exposed_port = 4000
+///       external     = true
+///       target_port  = 3000
+///       traffic = [{
+///         "revisionName" = "testcontainerAppTcp-ab1234"
+///         "weight"       = 100
+///       }]
+///       transport = "tcp"
+///     }
+///   }
+///   container_app_name  = "testcontainerAppTcp"
+///   environment_id      = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube"
+///   location            = "East US"
+///   resource_group_name = "rg"
+///   template = {
+///     containers = [{
+///       "image" = "repo/testcontainerAppTcp:v1"
+///       "name"  = "testcontainerAppTcp"
+///       "probes" = [{
+///         "initialDelaySeconds" = 3
+///         "periodSeconds"       = 3
+///         "tcpSocket" = {
+///           "port" = 8080
+///         }
+///         "type" = "Liveness"
+///       }]
+///     }]
+///     scale = {
+///       cooldown_period  = 350
+///       max_replicas     = 5
+///       min_replicas     = 1
+///       polling_interval = 35
+///       rules = [{
+///         "name" = "tcpscalingrule"
+///         "tcp" = {
+///           "metadata" = {
+///             "concurrentConnections" = "50"
+///           }
+///         }
+///       }]
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3085,8 +3549,8 @@ import 'template_response.dart';
 /// import com.pulumi.azurenative.app.inputs.IngressArgs;
 /// import com.pulumi.azurenative.app.inputs.TemplateArgs;
 /// import com.pulumi.azurenative.app.inputs.ScaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-02-preview.
 ///
-/// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -96,6 +96,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_javacomponent" "javaComponent" {
+///   environment_name = "myenvironment"
+///   name             = "myjavacomponent"
+///   properties = {
+///     "componentType" = "SpringBootAdmin"
+///     "configurations" = [{
+///       "propertyName" = "spring.boot.admin.ui.enable-toasts"
+///       "value"        = "true"
+///       }, {
+///       "propertyName" = "spring.boot.admin.monitor.status-interval"
+///       "value"        = "10000ms"
+///     }]
+///     "scale" = {
+///       "maxReplicas" = 1
+///       "minReplicas" = 1
+///     }
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +135,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.app.JavaComponent;
 /// import com.pulumi.azurenative.app.JavaComponentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -322,6 +353,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_javacomponent" "javaComponent" {
+///   environment_name = "myenvironment"
+///   name             = "myjavacomponent"
+///   properties = {
+///     "componentType" = "SpringBootAdmin"
+///     "configurations" = [{
+///       "propertyName" = "spring.boot.admin.ui.enable-toasts"
+///       "value"        = "true"
+///       }, {
+///       "propertyName" = "spring.boot.admin.monitor.status-interval"
+///       "value"        = "10000ms"
+///     }]
+///     "scale" = {
+///       "maxReplicas" = 1
+///       "minReplicas" = 1
+///     }
+///     "serviceBinds" = [{
+///       "name"      = "yellowcat"
+///       "serviceId" = "/subscriptions/8efdecc5-919e-44eb-b179-915dca89ebf9/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/myenvironment/javaComponents/yellowcat"
+///     }]
+///   }
+///   resource_group_name = "examplerg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -330,8 +396,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.app.JavaComponent;
 /// import com.pulumi.azurenative.app.JavaComponentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

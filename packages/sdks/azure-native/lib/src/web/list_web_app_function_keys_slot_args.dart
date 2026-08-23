@@ -7,20 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_list_web_app_function_keys_slot_args_doc}
 class ListWebAppFunctionKeysSlotArgs {
-  /// Function name.
   final pulumi.Input<String> functionName;
-  /// Site name.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [ListWebAppFunctionKeysSlotArgs].
-  /// [functionName] Function name.
-  /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot.
+  /// [functionName] Required.
+  /// [name] Required.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Required.
   const ListWebAppFunctionKeysSlotArgs({
     required this.functionName,
     required this.name,
@@ -46,4 +43,3 @@ class ListWebAppFunctionKeysSlotArgs {
     );
   }
 }
-

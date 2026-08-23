@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 ///
+/// Other available API versions: 2025-01-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native impact [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -86,6 +88,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_impact_insight" "insight" {
+///   insight_name = "insightId12"
+///   properties = {
+///     category = "repair"
+///     content = {
+///       description = "At 2018-11-08T00:00:00Z UTC, your services dependent on these resources <link href=”…”>VM1</link> may have experienced an issue. <br/><div>We have identified an outage that affected these resources(s). You can look at outage information on <link href=\"https:// portal.azure.com/#view/Microsoft_Azure_Health/AzureHealthBrowseBlade/~/serviceIssues/trackingId/NL2W-VCZ\">NL2W-VCZ</link> link.<div>"
+///       title       = "Impact Has been correlated to an outage"
+///     }
+///     event_time = "2023-06-15T04:00:00.009223Z"
+///     impact = {
+///       impact_id            = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/microsoft.Impact/workloadImpacts/impactid22"
+///       impacted_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-rg/providers/Microsoft.Sql/sqlserver/dbservername"
+///       start_time           = "2023-06-15T01:00:00.009223Z"
+///     }
+///     insight_unique_id = "00000000-0000-0000-0000-000000000000"
+///     status            = "resolved"
+///   }
+///   workload_impact_name = "impactid22"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +130,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.impact.inputs.InsightPropertiesArgs;
 /// import com.pulumi.azurenative.impact.inputs.ContentArgs;
 /// import com.pulumi.azurenative.impact.inputs.ImpactDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

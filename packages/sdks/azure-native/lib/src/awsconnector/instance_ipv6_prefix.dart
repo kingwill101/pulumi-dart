@@ -25,4 +25,3 @@ class InstanceIpv6Prefix {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum X12TimeFormat {
     throw ArgumentError('Unknown X12TimeFormat value: $value');
   }
 }
-

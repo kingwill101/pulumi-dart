@@ -1,8 +1,8 @@
 /// The type used for authentication. Type: string.
 enum SnowflakeAuthenticationType {
-  valueBasic("Basic"),
-  valueKeyPair("KeyPair"),
-  valueAADServicePrincipal("AADServicePrincipal");
+  basic("Basic"),
+  keyPair("KeyPair"),
+  aADServicePrincipal("AADServicePrincipal");
 
   const SnowflakeAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SnowflakeAuthenticationType {
     throw ArgumentError('Unknown SnowflakeAuthenticationType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum KeyEncryptionKeyIdentityType {
     throw ArgumentError('Unknown KeyEncryptionKeyIdentityType value: $value');
   }
 }
-

@@ -13,6 +13,7 @@ class OSDisk {
   final pulumi.Input<int>? diskSizeGB;
   /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
   final pulumi.Input<DiffDiskSettings>? ephemeralOSDiskSettings;
+  /// The managed disk parameters.
   final pulumi.Input<ManagedDisk>? managedDisk;
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
   final pulumi.Input<bool>? writeAcceleratorEnabled;
@@ -21,7 +22,7 @@ class OSDisk {
   /// [caching] The type of caching to enable for the disk.
   /// [diskSizeGB] The initial disk size in GB when creating new OS disk.
   /// [ephemeralOSDiskSettings] Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
-  /// [managedDisk] Optional.
+  /// [managedDisk] The managed disk parameters.
   /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
   const OSDisk({
     this.caching,
@@ -51,4 +52,3 @@ class OSDisk {
     );
   }
 }
-

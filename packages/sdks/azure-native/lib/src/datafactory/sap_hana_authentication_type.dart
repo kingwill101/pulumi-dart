@@ -1,7 +1,7 @@
 /// The authentication type to be used to connect to the SAP HANA server.
 enum SapHanaAuthenticationType {
-  valueBasic("Basic"),
-  valueWindows("Windows");
+  basic("Basic"),
+  windows("Windows");
 
   const SapHanaAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SapHanaAuthenticationType {
     throw ArgumentError('Unknown SapHanaAuthenticationType value: $value');
   }
 }
-

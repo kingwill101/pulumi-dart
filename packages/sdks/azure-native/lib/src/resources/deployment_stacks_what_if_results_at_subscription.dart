@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'deployment_stacks_what_if_result_properties_response.dart';
+import 'deployment_stacks_what_if_result_properties_deployment_stacks_what_if_results_at_subscription_response.dart';
 import 'deployment_stacks_what_if_results_at_subscription_args.dart';
 import 'system_data_response.dart';
 
@@ -27,9 +27,9 @@ import 'system_data_response.dart';
 ///         {
 ///             ActionOnUnmanage = new AzureNative.Resources.Inputs.ActionOnUnmanageArgs
 ///             {
-///                 ManagementGroups = AzureNative.Resources.DeploymentStacksDeleteDetachEnum.Detach,
-///                 ResourceGroups = AzureNative.Resources.DeploymentStacksDeleteDetachEnum.Delete,
-///                 Resources = AzureNative.Resources.DeploymentStacksDeleteDetachEnum.Delete,
+///                 ManagementGroups = AzureNative.Resources.UnmanageActionManagementGroupMode.Detach,
+///                 ResourceGroups = AzureNative.Resources.UnmanageActionResourceGroupMode.Delete,
+///                 Resources = AzureNative.Resources.UnmanageActionResourceMode.Delete,
 ///             },
 ///             DenySettings = new AzureNative.Resources.Inputs.DenySettingsArgs
 ///             {
@@ -39,7 +39,7 @@ import 'system_data_response.dart';
 ///             DeploymentStackResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Resources/deploymentStacks/simpleDeploymentStack",
 ///             ExtensionConfigs =
 ///             {
-///                 { "contoso",
+///                 { "contoso", new InputMap<dynamic>
 ///                 {
 ///                     { "configOne", new AzureNative.Resources.Inputs.DeploymentExtensionConfigItemArgs
 ///                     {
@@ -80,9 +80,9 @@ import 'system_data_response.dart';
 /// 			Location:                         pulumi.String("eastus"),
 /// 			Properties: &resources.DeploymentStacksWhatIfResultPropertiesArgs{
 /// 				ActionOnUnmanage: &resources.ActionOnUnmanageArgs{
-/// 					ManagementGroups: pulumi.String(resources.DeploymentStacksDeleteDetachEnumDetach),
-/// 					ResourceGroups:   pulumi.String(resources.DeploymentStacksDeleteDetachEnumDelete),
-/// 					Resources:        pulumi.String(resources.DeploymentStacksDeleteDetachEnumDelete),
+/// 					ManagementGroups: pulumi.String(resources.UnmanageActionManagementGroupModeDetach),
+/// 					ResourceGroups:   pulumi.String(resources.UnmanageActionResourceGroupModeDelete),
+/// 					Resources:        pulumi.String(resources.UnmanageActionResourceModeDelete),
 /// 				},
 /// 				DenySettings: &resources.DenySettingsArgs{
 /// 					ApplyToChildScopes: pulumi.Bool(false),
@@ -115,6 +115,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_deploymentstackswhatifresultsatsubscription" "deploymentStacksWhatIfResultsAtSubscription" {
+///   deployment_stacks_what_if_result_name = "simpleDeploymentStackWhatIfResult"
+///   location                              = "eastus"
+///   properties = {
+///     action_on_unmanage = {
+///       management_groups = "detach"
+///       resource_groups   = "delete"
+///       resources         = "delete"
+///     }
+///     deny_settings = {
+///       apply_to_child_scopes = false
+///       mode                  = "none"
+///     }
+///     deployment_stack_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Resources/deploymentStacks/simpleDeploymentStack"
+///     extension_configs = {
+///       "contoso" = {
+///         "configOne" = {
+///           value = "config1Value"
+///         }
+///         "configTwo" = {
+///           value = true
+///         }
+///       }
+///     }
+///     parameters         = {}
+///     retention_interval = "P7D"
+///     template_link = {
+///       uri = "https://example.com/exampleTemplate.json"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +170,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.resources.inputs.ActionOnUnmanageArgs;
 /// import com.pulumi.azurenative.resources.inputs.DenySettingsArgs;
 /// import com.pulumi.azurenative.resources.inputs.DeploymentStacksTemplateLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,9 +228,9 @@ import 'system_data_response.dart';
 ///     location: "eastus",
 ///     properties: {
 ///         actionOnUnmanage: {
-///             managementGroups: azure_native.resources.DeploymentStacksDeleteDetachEnum.Detach,
-///             resourceGroups: azure_native.resources.DeploymentStacksDeleteDetachEnum.Delete,
-///             resources: azure_native.resources.DeploymentStacksDeleteDetachEnum.Delete,
+///             managementGroups: azure_native.resources.UnmanageActionManagementGroupMode.Detach,
+///             resourceGroups: azure_native.resources.UnmanageActionResourceGroupMode.Delete,
+///             resources: azure_native.resources.UnmanageActionResourceMode.Delete,
 ///         },
 ///         denySettings: {
 ///             applyToChildScopes: false,
@@ -223,9 +266,9 @@ import 'system_data_response.dart';
 ///     location="eastus",
 ///     properties={
 ///         "action_on_unmanage": {
-///             "management_groups": azure_native.resources.DeploymentStacksDeleteDetachEnum.DETACH,
-///             "resource_groups": azure_native.resources.DeploymentStacksDeleteDetachEnum.DELETE,
-///             "resources": azure_native.resources.DeploymentStacksDeleteDetachEnum.DELETE,
+///             "management_groups": azure_native.resources.UnmanageActionManagementGroupMode.DETACH,
+///             "resource_groups": azure_native.resources.UnmanageActionResourceGroupMode.DELETE,
+///             "resources": azure_native.resources.UnmanageActionResourceMode.DELETE,
 ///         },
 ///         "deny_settings": {
 ///             "apply_to_child_scopes": False,
@@ -298,7 +341,7 @@ class DeploymentStacksWhatIfResultsAtSubscription extends pulumi.CustomResource 
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The resource-specific properties for this resource.
-  late final pulumi.Output<DeploymentStacksWhatIfResultPropertiesResponse> properties;
+  late final pulumi.Output<DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtSubscriptionResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -323,7 +366,7 @@ class DeploymentStacksWhatIfResultsAtSubscription extends pulumi.CustomResource 
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<DeploymentStacksWhatIfResultPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentStacksWhatIfResultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtSubscriptionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtSubscriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

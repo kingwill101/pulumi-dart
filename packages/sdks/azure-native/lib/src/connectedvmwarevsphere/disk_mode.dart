@@ -16,4 +16,3 @@ enum DiskMode {
     throw ArgumentError('Unknown DiskMode value: $value');
   }
 }
-

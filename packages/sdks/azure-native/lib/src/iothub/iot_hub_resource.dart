@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-30.
 ///
-/// Other available API versions: 2016-02-03, 2017-01-19, 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-02-03, 2017-01-19, 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview, 2025-08-01-preview, 2026-03-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -259,6 +259,106 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iothub_iothubresource" "iotHubResource" {
+///   location = "centraluseuap"
+///   properties = {
+///     cloud_to_device = {
+///       default_ttl_as_iso8601 = "PT1H"
+///       feedback = {
+///         lock_duration_as_iso8601 = "PT1M"
+///         max_delivery_count       = 10
+///         ttl_as_iso8601           = "PT1H"
+///       }
+///       max_delivery_count = 10
+///     }
+///     enable_data_residency            = false
+///     enable_file_upload_notifications = false
+///     event_hub_endpoints = {
+///       "events" = {
+///         partition_count        = 2
+///         retention_time_in_days = 1
+///       }
+///     }
+///     features        = "None"
+///     ip_filter_rules = []
+///     messaging_endpoints = {
+///       "fileNotifications" = {
+///         lock_duration_as_iso8601 = "PT1M"
+///         max_delivery_count       = 10
+///         ttl_as_iso8601           = "PT1H"
+///       }
+///     }
+///     min_tls_version = "1.2"
+///     network_rule_sets = {
+///       apply_to_built_in_event_hub_endpoint = true
+///       default_action                       = "Deny"
+///       ip_rules = [{
+///         "action"     = "Allow"
+///         "filterName" = "rule1"
+///         "ipMask"     = "131.117.159.53"
+///         }, {
+///         "action"     = "Allow"
+///         "filterName" = "rule2"
+///         "ipMask"     = "157.55.59.128/25"
+///       }]
+///     }
+///     routing = {
+///       endpoints = {
+///         cosmos_db_sql_containers = [{
+///           "authenticationType"   = "keyBased"
+///           "containerName"        = "test"
+///           "databaseName"         = "systemstore"
+///           "endpointUri"          = "https://test-systemstore-test2.documents.azure.com"
+///           "name"                 = "endpointcosmos"
+///           "partitionKeyName"     = "keystamped"
+///           "partitionKeyTemplate" = "{deviceid}-{YYYY}-{MM}"
+///           "primaryKey"           = "<primary-key>"
+///           "resourceGroup"        = "rg-test"
+///           "secondaryKey"         = "<secondary-key>"
+///           "subscriptionId"       = "<subscription-id>"
+///         }]
+///         event_hubs         = []
+///         service_bus_queues = []
+///         service_bus_topics = []
+///         storage_containers = []
+///       }
+///       fallback_route = {
+///         condition      = "true"
+///         endpoint_names = ["events"]
+///         is_enabled     = true
+///         name           = "$fallback"
+///         source         = "DeviceMessages"
+///       }
+///       routes = []
+///     }
+///     storage_endpoints = {
+///       "$default" = {
+///         connection_string  = ""
+///         container_name     = ""
+///         sas_ttl_as_iso8601 = "PT1H"
+///       }
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   resource_name       = "testHub"
+///   sku = {
+///     capacity = 1
+///     name     = "S1"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +375,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iothub.inputs.RoutingEndpointsArgs;
 /// import com.pulumi.azurenative.iothub.inputs.FallbackRoutePropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.IotHubSkuInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -498,7 +598,7 @@ import 'system_data_response.dart';
 ///         "event_hub_endpoints": {
 ///             "events": {
 ///                 "partition_count": 2,
-///                 "retention_time_in_days": 1,
+///                 "retention_time_in_days": float(1),
 ///             },
 ///         },
 ///         "features": azure_native.iothub.Capabilities.NONE,
@@ -567,7 +667,7 @@ import 'system_data_response.dart';
 ///     resource_group_name="myResourceGroup",
 ///     resource_name_="testHub",
 ///     sku={
-///         "capacity": 1,
+///         "capacity": float(1),
 ///         "name": azure_native.iothub.IotHubSku.S1,
 ///     },
 ///     tags={})
@@ -867,6 +967,93 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iothub_iothubresource" "iotHubResource" {
+///   location = "centraluseuap"
+///   properties = {
+///     cloud_to_device = {
+///       default_ttl_as_iso8601 = "PT1H"
+///       feedback = {
+///         lock_duration_as_iso8601 = "PT1M"
+///         max_delivery_count       = 10
+///         ttl_as_iso8601           = "PT1H"
+///       }
+///       max_delivery_count = 10
+///     }
+///     enable_data_residency            = false
+///     enable_file_upload_notifications = false
+///     event_hub_endpoints = {
+///       "events" = {
+///         partition_count        = 2
+///         retention_time_in_days = 1
+///       }
+///     }
+///     features        = "None"
+///     ip_filter_rules = []
+///     messaging_endpoints = {
+///       "fileNotifications" = {
+///         lock_duration_as_iso8601 = "PT1M"
+///         max_delivery_count       = 10
+///         ttl_as_iso8601           = "PT1H"
+///       }
+///     }
+///     min_tls_version = "1.2"
+///     network_rule_sets = {
+///       apply_to_built_in_event_hub_endpoint = true
+///       default_action                       = "Deny"
+///       ip_rules = [{
+///         "action"     = "Allow"
+///         "filterName" = "rule1"
+///         "ipMask"     = "131.117.159.53"
+///         }, {
+///         "action"     = "Allow"
+///         "filterName" = "rule2"
+///         "ipMask"     = "157.55.59.128/25"
+///       }]
+///     }
+///     routing = {
+///       endpoints = {
+///         event_hubs         = []
+///         service_bus_queues = []
+///         service_bus_topics = []
+///         storage_containers = []
+///       }
+///       fallback_route = {
+///         condition      = "true"
+///         endpoint_names = ["events"]
+///         is_enabled     = true
+///         name           = "$fallback"
+///         source         = "DeviceMessages"
+///       }
+///       routes = []
+///     }
+///     storage_endpoints = {
+///       "$default" = {
+///         connection_string  = ""
+///         container_name     = ""
+///         sas_ttl_as_iso8601 = "PT1H"
+///       }
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   resource_name       = "testHub"
+///   sku = {
+///     capacity = 1
+///     name     = "S1"
+///   }
+///   tags = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -883,8 +1070,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iothub.inputs.RoutingEndpointsArgs;
 /// import com.pulumi.azurenative.iothub.inputs.FallbackRoutePropertiesArgs;
 /// import com.pulumi.azurenative.iothub.inputs.IotHubSkuInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1080,7 +1267,7 @@ import 'system_data_response.dart';
 ///         "event_hub_endpoints": {
 ///             "events": {
 ///                 "partition_count": 2,
-///                 "retention_time_in_days": 1,
+///                 "retention_time_in_days": float(1),
 ///             },
 ///         },
 ///         "features": azure_native.iothub.Capabilities.NONE,
@@ -1136,7 +1323,7 @@ import 'system_data_response.dart';
 ///     resource_group_name="myResourceGroup",
 ///     resource_name_="testHub",
 ///     sku={
-///         "capacity": 1,
+///         "capacity": float(1),
 ///         "name": azure_native.iothub.IotHubSku.S1,
 ///     },
 ///     tags={})

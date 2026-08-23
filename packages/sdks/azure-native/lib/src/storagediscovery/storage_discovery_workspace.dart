@@ -145,6 +145,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagediscovery_storagediscoveryworkspace" "storageDiscoveryWorkspace" {
+///   location = "westeurope"
+///   properties = {
+///     description = "Sample Storage Discovery Workspace"
+///     scopes = [{
+///       "displayName"   = "Sample-Collection"
+///       "resourceTypes" = ["/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount"]
+///       "tagKeysOnly"   = ["filterTag1", "filterTag2"]
+///       "tags" = {
+///         "filterTag3" = "value3"
+///         "filterTag4" = "value4"
+///       }
+///       }, {
+///       "displayName"   = "Sample-Collection-2"
+///       "resourceTypes" = ["/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09/resourceGroups/sample-rg/providers/Microsoft.Storage/storageAccounts/sample-storageAccount"]
+///       "tagKeysOnly"   = ["filterTag5"]
+///       "tags" = {
+///         "filterTag6" = "value6"
+///       }
+///     }]
+///     workspace_roots = ["/subscriptions/b79cb3ba-745e-5d9a-8903-4a02327a7e09"]
+///   }
+///   resource_group_name              = "sample-rg"
+///   storage_discovery_workspace_name = "Sample-Storage-Workspace"
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +195,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storagediscovery.StorageDiscoveryWorkspace;
 /// import com.pulumi.azurenative.storagediscovery.StorageDiscoveryWorkspaceArgs;
 /// import com.pulumi.azurenative.storagediscovery.inputs.StorageDiscoveryWorkspacePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

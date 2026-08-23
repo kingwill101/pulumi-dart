@@ -87,6 +87,37 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+///   location = "brazilsouth"
+///   properties = {
+///     "createMode"         = "PointInTimeRestore"
+///     "restorePointInTime" = "2017-12-14T00:00:37.467Z"
+///     "sourceServerId"     = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver"
+///   }
+///   resource_group_name = "TargetResourceGroup"
+///   server_name         = "targetserver"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen5"
+///     name     = "B_Gen5_2"
+///     tier     = "Basic"
+///   }
+///   tags = {
+///     "ElasticServer" = "1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +127,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,6 +329,44 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+///   location = "westus"
+///   properties = {
+///     "administratorLogin"         = "cloudsa"
+///     "administratorLoginPassword" = "<administratorLoginPassword>"
+///     "createMode"                 = "Default"
+///     "minimalTlsVersion"          = "TLS1_2"
+///     "sslEnforcement"             = "Enabled"
+///     "storageProfile" = {
+///       "backupRetentionDays" = 7
+///       "geoRedundantBackup"  = "Disabled"
+///       "storageMB"           = 128000
+///     }
+///   }
+///   resource_group_name = "TestGroup"
+///   server_name         = "pgtestsvc4"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen5"
+///     name     = "B_Gen5_2"
+///     tier     = "Basic"
+///   }
+///   tags = {
+///     "ElasticServer" = "1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +376,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -512,6 +581,33 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+///   location = "westcentralus"
+///   properties = {
+///     "createMode"     = "Replica"
+///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup_WestCentralUS/providers/Microsoft.DBforPostgreSQL/servers/testserver-master"
+///   }
+///   resource_group_name = "TestGroup_WestCentralUS"
+///   server_name         = "testserver-replica1"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen5"
+///     name     = "GP_Gen5_2"
+///     tier     = "GeneralPurpose"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -521,8 +617,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -693,6 +789,36 @@ import 'storage_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_singleserver" "singleServer" {
+///   location = "westus"
+///   properties = {
+///     "createMode"     = "GeoRestore"
+///     "sourceServerId" = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver"
+///   }
+///   resource_group_name = "TargetResourceGroup"
+///   server_name         = "targetserver"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen5"
+///     name     = "GP_Gen5_2"
+///     tier     = "GeneralPurpose"
+///   }
+///   tags = {
+///     "ElasticServer" = "1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -702,8 +828,8 @@ import 'storage_profile_response.dart';
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServer;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerArgs;
 /// import com.pulumi.azurenative.dbforpostgresql.inputs.SingleServerSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

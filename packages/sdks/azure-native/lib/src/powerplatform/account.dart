@@ -63,6 +63,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_powerplatform_account" "account" {
+///   account_name        = "account"
+///   description         = "Description of the account."
+///   location            = "East US"
+///   resource_group_name = "resourceGroup"
+///   tags = {
+///     "Organization" = "Administration"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +92,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.powerplatform.Account;
 /// import com.pulumi.azurenative.powerplatform.AccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,7 +182,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The internally assigned unique identifier of the resource.
   late final pulumi.Output<String> systemId;

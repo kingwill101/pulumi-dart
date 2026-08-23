@@ -66,6 +66,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_enterpriseknowledgegraph_enterpriseknowledgegraph" "enterpriseKnowledgeGraph" {
+///   location            = "West US"
+///   properties          = {}
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "sampleekgname"
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +97,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.enterpriseknowledgegraph.EnterpriseKnowledgeGraph;
 /// import com.pulumi.azurenative.enterpriseknowledgegraph.EnterpriseKnowledgeGraphArgs;
 /// import com.pulumi.azurenative.enterpriseknowledgegraph.inputs.EnterpriseKnowledgeGraphPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

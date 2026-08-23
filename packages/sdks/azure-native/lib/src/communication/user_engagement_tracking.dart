@@ -15,4 +15,3 @@ enum UserEngagementTracking {
     throw ArgumentError('Unknown UserEngagementTracking value: $value');
   }
 }
-

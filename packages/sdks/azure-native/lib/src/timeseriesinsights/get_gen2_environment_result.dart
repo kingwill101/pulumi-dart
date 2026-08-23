@@ -121,4 +121,3 @@ class GetGen2EnvironmentResult {
     );
   }
 }
-

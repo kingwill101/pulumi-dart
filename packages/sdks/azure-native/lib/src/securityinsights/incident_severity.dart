@@ -17,4 +17,3 @@ enum IncidentSeverity {
     throw ArgumentError('Unknown IncidentSeverity value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class PlacementV1PropertySelectorRequirement {
     );
   }
 }
-

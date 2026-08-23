@@ -10,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2015-08-01, 2016-04-01, 2017-02-01, 2017-10-01, 2018-03-01, 2019-07-01, 2020-06-01, 2020-12-01, 2021-06-01, 2022-05-01, 2022-06-01, 2023-04-01, 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-08-01, 2016-04-01, 2017-02-01, 2017-10-01, 2018-03-01, 2019-07-01, 2020-06-01, 2020-12-01, 2021-06-01, 2022-05-01, 2022-06-01, 2023-04-01, 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -99,6 +99,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redis" "redis" {
+///   enable_non_ssl_port = true
+///   location            = "East US"
+///   minimum_tls_version = "1.2"
+///   name                = "cache1"
+///   redis_configuration = {
+///     maxmemory_policy = "allkeys-lru"
+///   }
+///   redis_version        = "4"
+///   replicas_per_primary = 2
+///   resource_group_name  = "rg1"
+///   shard_count          = 2
+///   sku = {
+///     capacity = 1
+///     family   = "P"
+///     name     = "Premium"
+///   }
+///   static_ip = "192.168.0.5"
+///   subnet_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1"
+///   zones     = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +142,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redis.RedisArgs;
 /// import com.pulumi.azurenative.redis.inputs.RedisCommonPropertiesRedisConfigurationArgs;
 /// import com.pulumi.azurenative.redis.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,6 +342,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redis" "redis" {
+///   enable_non_ssl_port = true
+///   location            = "East US"
+///   minimum_tls_version = "1.2"
+///   name                = "cache1"
+///   redis_configuration = {
+///     maxmemory_policy = "allkeys-lru"
+///   }
+///   replicas_per_primary = 2
+///   resource_group_name  = "rg1"
+///   shard_count          = 2
+///   sku = {
+///     capacity = 1
+///     family   = "P"
+///     name     = "Premium"
+///   }
+///   static_ip               = "192.168.0.5"
+///   subnet_id               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1"
+///   zonal_allocation_policy = "Automatic"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +384,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redis.RedisArgs;
 /// import com.pulumi.azurenative.redis.inputs.RedisCommonPropertiesRedisConfigurationArgs;
 /// import com.pulumi.azurenative.redis.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -519,6 +584,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redis" "redis" {
+///   enable_non_ssl_port = true
+///   location            = "East US"
+///   minimum_tls_version = "1.2"
+///   name                = "cache1"
+///   redis_configuration = {
+///     maxmemory_policy = "allkeys-lru"
+///   }
+///   replicas_per_primary = 2
+///   resource_group_name  = "rg1"
+///   shard_count          = 2
+///   sku = {
+///     capacity = 1
+///     family   = "P"
+///     name     = "Premium"
+///   }
+///   static_ip = "192.168.0.5"
+///   subnet_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1"
+///   zones     = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -529,8 +626,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redis.RedisArgs;
 /// import com.pulumi.azurenative.redis.inputs.RedisCommonPropertiesRedisConfigurationArgs;
 /// import com.pulumi.azurenative.redis.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -732,6 +829,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redis" "redis" {
+///   enable_non_ssl_port = true
+///   location            = "East US"
+///   minimum_tls_version = "1.2"
+///   name                = "cache1"
+///   redis_configuration = {
+///     maxmemory_policy = "allkeys-lru"
+///   }
+///   redis_version        = "Latest"
+///   replicas_per_primary = 2
+///   resource_group_name  = "rg1"
+///   shard_count          = 2
+///   sku = {
+///     capacity = 1
+///     family   = "P"
+///     name     = "Premium"
+///   }
+///   static_ip = "192.168.0.5"
+///   subnet_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1"
+///   zones     = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -742,8 +872,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redis.RedisArgs;
 /// import com.pulumi.azurenative.redis.inputs.RedisCommonPropertiesRedisConfigurationArgs;
 /// import com.pulumi.azurenative.redis.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -942,6 +1072,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redis" "redis" {
+///   enable_non_ssl_port = true
+///   location            = "East US"
+///   minimum_tls_version = "1.2"
+///   name                = "cache1"
+///   redis_configuration = {
+///     maxmemory_policy = "allkeys-lru"
+///   }
+///   replicas_per_primary = 2
+///   resource_group_name  = "rg1"
+///   shard_count          = 2
+///   sku = {
+///     capacity = 1
+///     family   = "P"
+///     name     = "Premium"
+///   }
+///   static_ip               = "192.168.0.5"
+///   subnet_id               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1"
+///   zonal_allocation_policy = "NoZones"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -952,8 +1114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redis.RedisArgs;
 /// import com.pulumi.azurenative.redis.inputs.RedisCommonPropertiesRedisConfigurationArgs;
 /// import com.pulumi.azurenative.redis.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1156,6 +1318,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redis" "redis" {
+///   enable_non_ssl_port = true
+///   location            = "East US"
+///   minimum_tls_version = "1.2"
+///   name                = "cache1"
+///   redis_configuration = {
+///     maxmemory_policy = "allkeys-lru"
+///   }
+///   redis_version        = "Latest"
+///   replicas_per_primary = 2
+///   resource_group_name  = "rg1"
+///   shard_count          = 2
+///   sku = {
+///     capacity = 1
+///     family   = "P"
+///     name     = "Premium"
+///   }
+///   static_ip               = "192.168.0.5"
+///   subnet_id               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1"
+///   zonal_allocation_policy = "UserDefined"
+///   zones                   = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1166,8 +1362,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redis.RedisArgs;
 /// import com.pulumi.azurenative.redis.inputs.RedisCommonPropertiesRedisConfigurationArgs;
 /// import com.pulumi.azurenative.redis.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

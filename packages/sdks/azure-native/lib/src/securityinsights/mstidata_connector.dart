@@ -73,6 +73,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_mstidataconnector" "mstiDataConnector" {
+///   data_connector_id = "c345bf40-8509-4ed2-b947-50cb773aaf04"
+///   data_types = {
+///     microsoft_emerging_threat_feed = {
+///       lookback_period = "2024-11-01T00:00:00Z"
+///       state           = "Enabled"
+///     }
+///   }
+///   kind                = "MicrosoftThreatIntelligence"
+///   resource_group_name = "myRg"
+///   tenant_id           = "06b3ccb8-1384-4bcc-aec7-852f6d57161b"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.MSTIDataConnectorArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.MSTIDataConnectorDataTypesArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,6 +243,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_mstidataconnector" "mstiDataConnector" {
+///   data_connector_id   = "8c569548-a86c-4fb4-8ae4-d1e35a6146f8"
+///   resource_group_name = "myRg"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -226,8 +268,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.MSTIDataConnector;
 /// import com.pulumi.azurenative.securityinsights.MSTIDataConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,6 +373,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_mstidataconnector" "mstiDataConnector" {
+///   data_connector_id   = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
+///   resource_group_name = "myRg"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -339,8 +398,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.MSTIDataConnector;
 /// import com.pulumi.azurenative.securityinsights.MSTIDataConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,6 +503,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_mstidataconnector" "mstiDataConnector" {
+///   data_connector_id   = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
+///   resource_group_name = "myRg"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -452,8 +528,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.MSTIDataConnector;
 /// import com.pulumi.azurenative.securityinsights.MSTIDataConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

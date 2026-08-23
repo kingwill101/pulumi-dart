@@ -7,9 +7,9 @@ import 'system_data_response.dart';
 
 /// Cognitive Services account is an Azure resource representing the provisioned account, it's type, location and SKU.
 ///
-/// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+/// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -48,7 +48,7 @@ import 'system_data_response.dart';
 ///             {
 ///                 new AzureNative.CognitiveServices.Inputs.UserOwnedStorageArgs
 ///                 {
-///                     ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
+///                     ResourceId = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
 ///                 },
 ///             },
 ///         },
@@ -92,7 +92,7 @@ import 'system_data_response.dart';
 /// 				},
 /// 				UserOwnedStorage: cognitiveservices.UserOwnedStorageArray{
 /// 					&cognitiveservices.UserOwnedStorageArgs{
-/// 						ResourceId: pulumi.String("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"),
+/// 						ResourceId: pulumi.String("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"),
 /// 					},
 /// 				},
 /// 			},
@@ -110,6 +110,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_account" "account" {
+///   account_name = "testCreate1"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind     = "Emotion"
+///   location = "West US"
+///   properties = {
+///     encryption = {
+///       key_source = "Microsoft.KeyVault"
+///       key_vault_properties = {
+///         key_name      = "KeyName"
+///         key_vault_uri = "https://pltfrmscrts-use-pc-dev.vault.azure.net/"
+///         key_version   = "891CF236-D241-4738-9462-D506AF493DFA"
+///       }
+///     }
+///     user_owned_storage = [{
+///       "resourceId" = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "S0"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +160,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.inputs.EncryptionArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.KeyVaultPropertiesArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,7 +190,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .build())
 ///                 .userOwnedStorage(UserOwnedStorageArgs.builder()
-///                     .resourceId("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount")
+///                     .resourceId("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount")
 ///                     .build())
 ///                 .build())
 ///             .resourceGroupName("myResourceGroup")
@@ -188,7 +225,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         userOwnedStorage: [{
-///             resourceId: "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
+///             resourceId: "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
 ///         }],
 ///     },
 ///     resourceGroupName: "myResourceGroup",
@@ -220,7 +257,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         "user_owned_storage": [{
-///             "resource_id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
+///             "resource_id": "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
 ///         }],
 ///     },
 ///     resource_group_name="myResourceGroup",
@@ -248,7 +285,7 @@ import 'system_data_response.dart';
 ///             keyVaultUri: https://pltfrmscrts-use-pc-dev.vault.azure.net/
 ///             keyVersion: 891CF236-D241-4738-9462-D506AF493DFA
 ///         userOwnedStorage:
-///           - resourceId: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount
+///           - resourceId: /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount
 ///       resourceGroupName: myResourceGroup
 ///       sku:
 ///         name: S0
@@ -320,6 +357,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_account" "account" {
+///   account_name = "testCreate1"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind                = "CognitiveServices"
+///   location            = "West US"
+///   properties          = {}
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "S0"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +393,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.inputs.IdentityArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.AccountPropertiesArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

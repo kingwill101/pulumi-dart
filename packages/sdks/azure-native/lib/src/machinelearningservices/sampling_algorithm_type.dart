@@ -1,8 +1,8 @@
 /// [Required] The algorithm used for generating hyperparameter values, along with configuration properties
 enum SamplingAlgorithmType {
-  valueGrid("Grid"),
-  valueRandom("Random"),
-  valueBayesian("Bayesian");
+  grid("Grid"),
+  random("Random"),
+  bayesian("Bayesian");
 
   const SamplingAlgorithmType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SamplingAlgorithmType {
     throw ArgumentError('Unknown SamplingAlgorithmType value: $value');
   }
 }
-

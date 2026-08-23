@@ -15,4 +15,3 @@ enum DockerfileGenerationMode {
     throw ArgumentError('Unknown DockerfileGenerationMode value: $value');
   }
 }
-

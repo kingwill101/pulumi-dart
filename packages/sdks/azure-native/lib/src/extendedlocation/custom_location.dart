@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_location_args.dart';
-import 'custom_location_properties_response_authentication.dart';
+import 'custom_location_properties_authentication_response.dart';
 import 'identity_response.dart';
 import 'system_data_response.dart';
 
@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2021-08-31-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-15.
 ///
-/// Other available API versions: 2021-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native extendedlocation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-08-15, 2024-09-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native extendedlocation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -87,6 +87,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_extendedlocation_customlocation" "customLocation" {
+///   authentication = {
+///     type  = "KubeConfig"
+///     value = "<base64 KubeConfig>"
+///   }
+///   cluster_extension_ids = ["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedCluster/someCluster/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension"]
+///   display_name          = "customLocationLocation01"
+///   host_resource_id      = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01"
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "West US"
+///   namespace           = "namespace01"
+///   resource_group_name = "testresourcegroup"
+///   resource_name       = "customLocation01"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +125,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.extendedlocation.CustomLocationArgs;
 /// import com.pulumi.azurenative.extendedlocation.inputs.CustomLocationPropertiesAuthenticationArgs;
 /// import com.pulumi.azurenative.extendedlocation.inputs.IdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,7 +238,7 @@ import 'system_data_response.dart';
 /// ```
 class CustomLocation extends pulumi.CustomResource {
   /// This is optional input that contains the authentication that should be used to generate the namespace.
-  late final pulumi.Output<CustomLocationPropertiesResponseAuthentication?> authentication;
+  late final pulumi.Output<CustomLocationPropertiesAuthenticationResponse?> authentication;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
@@ -231,7 +259,7 @@ class CustomLocation extends pulumi.CustomResource {
   late final pulumi.Output<String?> namespace;
   /// Provisioning State for the Custom Location.
   late final pulumi.Output<String?> provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -252,7 +280,7 @@ class CustomLocation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authentication = registerOutput<CustomLocationPropertiesResponseAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationPropertiesResponseAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authentication = registerOutput<CustomLocationPropertiesAuthenticationResponse?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationPropertiesAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterExtensionIds = registerOutput<List<String>?>('clusterExtensionIds');
     displayName = registerOutput<String?>('displayName');

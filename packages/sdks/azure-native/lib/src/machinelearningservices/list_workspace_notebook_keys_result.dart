@@ -3,12 +3,14 @@
 
 /// Result data returned by listWorkspaceNotebookKeys.
 class ListWorkspaceNotebookKeysResult {
+  /// The primary access key of the Notebook
   final String primaryAccessKey;
+  /// The secondary access key of the Notebook
   final String secondaryAccessKey;
 
   /// Creates a new [ListWorkspaceNotebookKeysResult].
-  /// [primaryAccessKey] Required.
-  /// [secondaryAccessKey] Required.
+  /// [primaryAccessKey] The primary access key of the Notebook
+  /// [secondaryAccessKey] The secondary access key of the Notebook
   const ListWorkspaceNotebookKeysResult({
     required this.primaryAccessKey,
     required this.secondaryAccessKey,
@@ -28,4 +30,3 @@ class ListWorkspaceNotebookKeysResult {
     );
   }
 }
-

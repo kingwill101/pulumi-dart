@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The value which should be used for this field.
 class WorkspaceNoPublicIPBooleanParameterResponse {
   /// The type of variable that this is
-  final pulumi.Input<String> type;
+  final pulumi.Input<String>? type;
   /// The value which should be used for this field.
   final pulumi.Input<bool> value;
 
@@ -13,22 +13,21 @@ class WorkspaceNoPublicIPBooleanParameterResponse {
   /// [type] The type of variable that this is
   /// [value] The value which should be used for this field.
   const WorkspaceNoPublicIPBooleanParameterResponse({
-    required this.type,
+    this.type,
     required this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': type,
+      'type': ?type,
       'value': value,
     };
   }
 
   factory WorkspaceNoPublicIPBooleanParameterResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceNoPublicIPBooleanParameterResponse(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as bool),
     );
   }
 }
-

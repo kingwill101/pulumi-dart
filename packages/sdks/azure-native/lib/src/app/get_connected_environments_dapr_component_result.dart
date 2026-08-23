@@ -119,4 +119,3 @@ class GetConnectedEnvironmentsDaprComponentResult {
     );
   }
 }
-

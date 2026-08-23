@@ -39,4 +39,3 @@ enum KnownSyslogDataSourceFacilityNames {
     throw ArgumentError('Unknown KnownSyslogDataSourceFacilityNames value: $value');
   }
 }
-

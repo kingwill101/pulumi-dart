@@ -58,6 +58,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridcloud_cloudconnector" "cloudConnector" {
+///   account_id           = "123456789012"
+///   cloud_connector_name = "123456789012"
+///   cloud_type           = "AWS"
+///   location             = "West US"
+///   resource_group_name  = "demo-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +85,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.hybridcloud.CloudConnector;
 /// import com.pulumi.azurenative.hybridcloud.CloudConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

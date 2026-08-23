@@ -56,4 +56,3 @@ class InMageAzureV2PolicyInput {
     );
   }
 }
-

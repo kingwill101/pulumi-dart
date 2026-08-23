@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontDoorArgs {
   /// Name of the Front Door which is globally unique.
   final pulumi.Input<String> frontDoorName;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFrontDoorArgs].
   /// [frontDoorName] Name of the Front Door which is globally unique.
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetFrontDoorArgs({
     required this.frontDoorName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetFrontDoorArgs {
     );
   }
 }
-

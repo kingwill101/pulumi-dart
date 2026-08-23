@@ -75,6 +75,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_syntex_documentprocessor" "documentProcessor" {
+///   location       = "westus"
+///   processor_name = "myprocessor"
+///   properties = {
+///     spo_tenant_id  = "e9bb744b-9558-4dc6-9e50-a3297e3332fa"
+///     spo_tenant_url = "https://test123.sharepoint.com"
+///   }
+///   resource_group_name = "mygroup"
+///   tags = {
+///     "additionalProp1" = "string1"
+///     "additionalProp2" = "string2"
+///     "additionalProp3" = "string3"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.syntex.DocumentProcessor;
 /// import com.pulumi.azurenative.syntex.DocumentProcessorArgs;
 /// import com.pulumi.azurenative.syntex.inputs.DocumentProcessorPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

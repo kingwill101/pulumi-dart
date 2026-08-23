@@ -17,4 +17,3 @@ enum SSEStatus {
     throw ArgumentError('Unknown SSEStatus value: $value');
   }
 }
-

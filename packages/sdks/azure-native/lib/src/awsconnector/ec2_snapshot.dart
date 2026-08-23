@@ -154,6 +154,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2snapshot" "ec2Snapshot" {
+///   location = "kqbtvnmdasfajwylafmkah"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "z"
+///     aws_account_id = "iizqmtavivxapbfqrqqrauezng"
+///     aws_properties = {
+///       data_encryption_key_id = "mhxbzyyikypulohbdxtpoldzxm"
+///       description            = "tsduasxksmdr"
+///       encrypted              = true
+///       kms_key_id             = "djnzahvxonsnocqhz"
+///       outpost_arn            = "vpqkamzadulbg"
+///       owner_alias            = "bmfwdqpzxg"
+///       owner_id               = "xudlgprkedlmxatpupwvaknlkxfs"
+///       progress               = "ecdblvtjkixoklgjh"
+///       restore_expiry_time    = "2024-10-08T03:53:51.251Z"
+///       snapshot_id            = "lpcr"
+///       sse_type = {
+///         value = "none"
+///       }
+///       start_time = "2024-10-08T03:53:51.251Z"
+///       state = {
+///         value = "completed"
+///       }
+///       state_message = "nogwovxkgpjylsijzipkpqzxpvjh"
+///       storage_tier = {
+///         value = "archive"
+///       }
+///       tags = [{
+///         "key"   = "xjeeorwcwraovqjs"
+///         "value" = "vjhh"
+///       }]
+///       volume_id   = "rzepawgzsvqncqbpjxnijhwofbgc"
+///       volume_size = 3
+///     }
+///     aws_region        = "yylufbdgujuqmqwhscnglwsa"
+///     aws_source_schema = "gmzpssyyjoqqnqjxwcluwnyrswywcv"
+///     aws_tags = {
+///       "key9124" = "okxaaygyj"
+///     }
+///     public_cloud_connectors_resource_id = "bfcselosmakgrkibu"
+///     public_cloud_resource_name          = "eyltdaumfqmdgmnlwpgjhjlavikc"
+///   }
+///   resource_group_name = "rgec2Snapshot"
+///   tags = {
+///     "key9392" = "chbsxcwosjxo"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -167,8 +227,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SSETypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SnapshotStateEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StorageTierEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,15 +1,15 @@
 /// [Required] Task type for AutoMLJob.
 enum TaskType {
-  valueClassification("Classification"),
-  valueRegression("Regression"),
-  valueForecasting("Forecasting"),
-  valueImageClassification("ImageClassification"),
-  valueImageClassificationMultilabel("ImageClassificationMultilabel"),
-  valueImageObjectDetection("ImageObjectDetection"),
-  valueImageInstanceSegmentation("ImageInstanceSegmentation"),
-  valueTextClassification("TextClassification"),
-  valueTextClassificationMultilabel("TextClassificationMultilabel"),
-  valueTextNER("TextNER");
+  classification("Classification"),
+  regression("Regression"),
+  forecasting("Forecasting"),
+  imageClassification("ImageClassification"),
+  imageClassificationMultilabel("ImageClassificationMultilabel"),
+  imageObjectDetection("ImageObjectDetection"),
+  imageInstanceSegmentation("ImageInstanceSegmentation"),
+  textClassification("TextClassification"),
+  textClassificationMultilabel("TextClassificationMultilabel"),
+  textNER("TextNER");
 
   const TaskType(this.wireValue);
   final String wireValue;
@@ -23,4 +23,3 @@ enum TaskType {
     throw ArgumentError('Unknown TaskType value: $value');
   }
 }
-

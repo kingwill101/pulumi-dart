@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'defender_for_servers_gcp_offering_response_arc_auto_provisioning.dart';
-import 'defender_for_servers_gcp_offering_response_defender_for_servers.dart';
-import 'defender_for_servers_gcp_offering_response_mde_auto_provisioning.dart';
-import 'defender_for_servers_gcp_offering_response_sub_plan.dart';
-import 'defender_for_servers_gcp_offering_response_va_auto_provisioning.dart';
-import 'defender_for_servers_gcp_offering_response_vm_scanners.dart';
+import 'defender_for_servers_gcp_offering_arc_auto_provisioning_response.dart';
+import 'defender_for_servers_gcp_offering_defender_for_servers_response.dart';
+import 'defender_for_servers_gcp_offering_mde_auto_provisioning_response.dart';
+import 'defender_for_servers_gcp_offering_sub_plan_response.dart';
+import 'defender_for_servers_gcp_offering_va_auto_provisioning_response.dart';
+import 'defender_for_servers_gcp_offering_vm_scanners_response.dart';
 
 /// The Defender for Servers GCP offering configurations
 class DefenderForServersGcpOfferingResponse {
   /// The ARC autoprovisioning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingResponseArcAutoProvisioning>? arcAutoProvisioning;
+  final pulumi.Input<DefenderForServersGcpOfferingArcAutoProvisioningResponse>? arcAutoProvisioning;
   /// The Defender for servers connection configuration
-  final pulumi.Input<DefenderForServersGcpOfferingResponseDefenderForServers>? defenderForServers;
+  final pulumi.Input<DefenderForServersGcpOfferingDefenderForServersResponse>? defenderForServers;
   /// The offering description.
   final pulumi.Input<String> description;
   /// The Microsoft Defender for Endpoint autoprovisioning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingResponseMdeAutoProvisioning>? mdeAutoProvisioning;
+  final pulumi.Input<DefenderForServersGcpOfferingMdeAutoProvisioningResponse>? mdeAutoProvisioning;
   /// The type of the security offering.
   /// Expected value is 'DefenderForServersGcp'.
   final pulumi.Input<String> offeringType;
   /// configuration for the servers offering subPlan
-  final pulumi.Input<DefenderForServersGcpOfferingResponseSubPlan>? subPlan;
+  final pulumi.Input<DefenderForServersGcpOfferingSubPlanResponse>? subPlan;
   /// The Vulnerability Assessment autoprovisioning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingResponseVaAutoProvisioning>? vaAutoProvisioning;
+  final pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningResponse>? vaAutoProvisioning;
   /// The Microsoft Defender for Server VM scanning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingResponseVmScanners>? vmScanners;
+  final pulumi.Input<DefenderForServersGcpOfferingVmScannersResponse>? vmScanners;
 
   /// Creates a new [DefenderForServersGcpOfferingResponse].
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration
@@ -50,28 +50,27 @@ class DefenderForServersGcpOfferingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arcAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingResponseArcAutoProvisioning, Map<String, dynamic>>(arcAutoProvisioning, (value) => value.toMap()),
-      'defenderForServers': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingResponseDefenderForServers, Map<String, dynamic>>(defenderForServers, (value) => value.toMap()),
+      'arcAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingArcAutoProvisioningResponse, Map<String, dynamic>>(arcAutoProvisioning, (value) => value.toMap()),
+      'defenderForServers': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingDefenderForServersResponse, Map<String, dynamic>>(defenderForServers, (value) => value.toMap()),
       'description': description,
-      'mdeAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingResponseMdeAutoProvisioning, Map<String, dynamic>>(mdeAutoProvisioning, (value) => value.toMap()),
+      'mdeAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingMdeAutoProvisioningResponse, Map<String, dynamic>>(mdeAutoProvisioning, (value) => value.toMap()),
       'offeringType': offeringType,
-      'subPlan': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingResponseSubPlan, Map<String, dynamic>>(subPlan, (value) => value.toMap()),
-      'vaAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingResponseVaAutoProvisioning, Map<String, dynamic>>(vaAutoProvisioning, (value) => value.toMap()),
-      'vmScanners': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingResponseVmScanners, Map<String, dynamic>>(vmScanners, (value) => value.toMap()),
+      'subPlan': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingSubPlanResponse, Map<String, dynamic>>(subPlan, (value) => value.toMap()),
+      'vaAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingVaAutoProvisioningResponse, Map<String, dynamic>>(vaAutoProvisioning, (value) => value.toMap()),
+      'vmScanners': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingVmScannersResponse, Map<String, dynamic>>(vmScanners, (value) => value.toMap()),
     };
   }
 
   factory DefenderForServersGcpOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponse(
-      arcAutoProvisioning: (() { final guardedValue = map['arcAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingResponseArcAutoProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defenderForServers: (() { final guardedValue = map['defenderForServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingResponseDefenderForServers.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      arcAutoProvisioning: (() { final guardedValue = map['arcAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingArcAutoProvisioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      defenderForServers: (() { final guardedValue = map['defenderForServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingDefenderForServersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
-      mdeAutoProvisioning: (() { final guardedValue = map['mdeAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingResponseMdeAutoProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      mdeAutoProvisioning: (() { final guardedValue = map['mdeAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingMdeAutoProvisioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
-      subPlan: (() { final guardedValue = map['subPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingResponseSubPlan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vaAutoProvisioning: (() { final guardedValue = map['vaAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingResponseVaAutoProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vmScanners: (() { final guardedValue = map['vmScanners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingResponseVmScanners.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      subPlan: (() { final guardedValue = map['subPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingSubPlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vaAutoProvisioning: (() { final guardedValue = map['vaAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingVaAutoProvisioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vmScanners: (() { final guardedValue = map['vmScanners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingVmScannersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum OrderItemType {
     throw ArgumentError('Unknown OrderItemType value: $value');
   }
 }
-

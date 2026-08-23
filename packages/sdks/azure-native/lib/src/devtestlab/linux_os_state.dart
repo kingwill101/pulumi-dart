@@ -16,4 +16,3 @@ enum LinuxOsState {
     throw ArgumentError('Unknown LinuxOsState value: $value');
   }
 }
-

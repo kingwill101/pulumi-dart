@@ -1,14 +1,15 @@
 /// Request variable to compare with.
 enum MatchVariable {
-  valueRemoteAddr("RemoteAddr"),
-  valueRequestMethod("RequestMethod"),
-  valueQueryString("QueryString"),
-  valuePostArgs("PostArgs"),
-  valueRequestUri("RequestUri"),
-  valueRequestHeader("RequestHeader"),
-  valueRequestBody("RequestBody"),
-  valueCookies("Cookies"),
-  valueSocketAddr("SocketAddr");
+  remoteAddr("RemoteAddr"),
+  requestMethod("RequestMethod"),
+  queryString("QueryString"),
+  postArgs("PostArgs"),
+  requestUri("RequestUri"),
+  requestHeader("RequestHeader"),
+  requestBody("RequestBody"),
+  cookies("Cookies"),
+  socketAddr("SocketAddr"),
+  jA4("JA4");
 
   const MatchVariable(this.wireValue);
   final String wireValue;
@@ -22,4 +23,3 @@ enum MatchVariable {
     throw ArgumentError('Unknown MatchVariable value: $value');
   }
 }
-

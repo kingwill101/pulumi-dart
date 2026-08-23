@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// The current state of a private endpoint connection
+/// The current state of a private endpoint connection.
 class PrivateLinkServiceConnectionState {
   /// Actions required for a private endpoint connection
   final pulumi.Input<String>? actionsRequired;
@@ -37,4 +37,3 @@ class PrivateLinkServiceConnectionState {
     );
   }
 }
-

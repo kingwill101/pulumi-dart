@@ -83,6 +83,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_solutions_jitrequest" "jitRequest" {
+///   application_resource_id = "/subscriptions/00c76877-e316-48a7-af60-4a09fec9d43f/resourceGroups/52F30DB2/providers/Microsoft.Solutions/applications/7E193158"
+///   jit_authorization_policies {
+///     principal_id       = "1db8e132e2934dbcb8e1178a61319491"
+///     role_definition_id = "ecd05a23-931a-4c38-a52b-ac7c4c583334"
+///   }
+///   jit_request_name = "myJitRequest"
+///   jit_scheduling_policy = {
+///     duration   = "PT8H"
+///     start_time = "2021-04-22T05:48:30.6661804Z"
+///     type       = "Once"
+///   }
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +119,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.solutions.JitRequestArgs;
 /// import com.pulumi.azurenative.solutions.inputs.JitAuthorizationPoliciesArgs;
 /// import com.pulumi.azurenative.solutions.inputs.JitSchedulingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

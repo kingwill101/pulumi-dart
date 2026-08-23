@@ -7,7 +7,7 @@ import 'workload_args.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -68,6 +68,28 @@ import 'workload_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mission_workload" "workload" {
+///   location                  = "westcentralus"
+///   resource_group_collection = []
+///   resource_group_name       = "rgopenapi"
+///   tags = {
+///     "TestKey" = "TestValue"
+///   }
+///   virtual_enclave_name = "TestMyEnclave"
+///   workload_name        = "TestMyWorkload"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +98,8 @@ import 'workload_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.mission.Workload;
 /// import com.pulumi.azurenative.mission.WorkloadArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

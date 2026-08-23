@@ -15,4 +15,3 @@ enum AcquireStorageAccountLock {
     throw ArgumentError('Unknown AcquireStorageAccountLock value: $value');
   }
 }
-

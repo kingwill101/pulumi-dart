@@ -1,10 +1,10 @@
 /// Type of a managed network Outbound Rule of a machine learning workspace.
 enum RuleStatus {
-  valueInactive("Inactive"),
-  valueActive("Active"),
-  valueProvisioning("Provisioning"),
-  valueDeleting("Deleting"),
-  valueFailed("Failed");
+  inactive("Inactive"),
+  active("Active"),
+  provisioning("Provisioning"),
+  deleting("Deleting"),
+  failed("Failed");
 
   const RuleStatus(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum RuleStatus {
     throw ArgumentError('Unknown RuleStatus value: $value');
   }
 }
-

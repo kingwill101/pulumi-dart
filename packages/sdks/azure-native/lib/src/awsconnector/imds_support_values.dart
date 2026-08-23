@@ -14,4 +14,3 @@ enum ImdsSupportValues {
     throw ArgumentError('Unknown ImdsSupportValues value: $value');
   }
 }
-

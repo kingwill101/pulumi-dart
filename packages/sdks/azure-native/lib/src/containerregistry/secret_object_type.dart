@@ -16,4 +16,3 @@ enum SecretObjectType {
     throw ArgumentError('Unknown SecretObjectType value: $value');
   }
 }
-

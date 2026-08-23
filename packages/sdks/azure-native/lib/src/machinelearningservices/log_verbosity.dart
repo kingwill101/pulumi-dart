@@ -1,11 +1,11 @@
-/// Log verbosity for the job.
+/// Enum for setting log verbosity.
 enum LogVerbosity {
-  valueNotSet("NotSet"),
-  valueDebug("Debug"),
-  valueInfo("Info"),
-  valueWarning("Warning"),
-  valueError("Error"),
-  valueCritical("Critical");
+  notSet("NotSet"),
+  debug("Debug"),
+  info("Info"),
+  warning("Warning"),
+  error("Error"),
+  critical("Critical");
 
   const LogVerbosity(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum LogVerbosity {
     throw ArgumentError('Unknown LogVerbosity value: $value');
   }
 }
-

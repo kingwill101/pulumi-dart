@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 ///
-/// Other available API versions: 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -139,6 +139,57 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_desktopvirtualization_appattachpackage" "appAttachPackage" {
+///   app_attach_package_name = "msixpackagefullname"
+///   location                = "southcentralus"
+///   properties = {
+///     fail_health_check_on_staging_failure = "NeedsAssistance"
+///     host_pool_references                 = []
+///     image = {
+///       certificate_expiry      = "2023-01-02T17:18:19.1234567Z"
+///       certificate_name        = "certName"
+///       display_name            = "displayname"
+///       image_path              = "imagepath"
+///       is_active               = false
+///       is_regular_registration = false
+///       last_updated            = "2008-09-22T14:01:54.9571247Z"
+///       package_alias           = "msixpackagealias"
+///       package_applications = [{
+///         "appId"          = "AppId"
+///         "appUserModelID" = "AppUserModelId"
+///         "description"    = "PackageApplicationDescription"
+///         "friendlyName"   = "FriendlyName"
+///         "iconImageName"  = "Iconimagename"
+///         "rawIcon"        = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
+///         "rawPng"         = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
+///       }]
+///       package_dependencies = [{
+///         "dependencyName" = "MsixPackage_Dependency_Name"
+///         "minVersion"     = "packageDep_version"
+///         "publisher"      = "MsixPackage_Dependency_Publisher"
+///       }]
+///       package_family_name   = "MsixPackage_FamilyName"
+///       package_full_name     = "MsixPackage_FullName"
+///       package_name          = "MsixPackageName"
+///       package_relative_path = "packagerelativepath"
+///       version               = "packageversion"
+///     }
+///     key_vault_url = ""
+///   }
+///   resource_group_name = "resourceGroup1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +200,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.desktopvirtualization.AppAttachPackageArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.AppAttachPackagePropertiesArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.AppAttachPackageInfoPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

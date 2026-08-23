@@ -43,4 +43,3 @@ class InMageAzureV2DiskInputDetails {
     );
   }
 }
-

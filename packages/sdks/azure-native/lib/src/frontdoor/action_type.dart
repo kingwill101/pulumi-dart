@@ -1,11 +1,12 @@
 /// Describes the override action to be applied when rule matches.
 enum ActionType {
-  valueAllow("Allow"),
-  valueBlock("Block"),
-  valueLog("Log"),
-  valueRedirect("Redirect"),
-  valueAnomalyScoring("AnomalyScoring"),
-  valueJSChallenge("JSChallenge");
+  allow("Allow"),
+  block("Block"),
+  log("Log"),
+  redirect("Redirect"),
+  anomalyScoring("AnomalyScoring"),
+  jSChallenge("JSChallenge"),
+  cAPTCHA("CAPTCHA");
 
   const ActionType(this.wireValue);
   final String wireValue;
@@ -19,4 +20,3 @@ enum ActionType {
     throw ArgumentError('Unknown ActionType value: $value');
   }
 }
-

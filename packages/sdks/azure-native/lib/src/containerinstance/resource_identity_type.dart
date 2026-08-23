@@ -1,9 +1,9 @@
 /// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
 enum ResourceIdentityType {
-  valueSystemAssigned("SystemAssigned"),
-  valueUserAssigned("UserAssigned"),
-  valueSystemAssignedUserAssigned("SystemAssigned, UserAssigned"),
-  valueNone("None");
+  systemAssigned("SystemAssigned"),
+  userAssigned("UserAssigned"),
+  systemAssignedUserAssigned("SystemAssigned, UserAssigned"),
+  none("None");
 
   const ResourceIdentityType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum ResourceIdentityType {
     throw ArgumentError('Unknown ResourceIdentityType value: $value');
   }
 }
-

@@ -3,9 +3,9 @@ import 'workspace_tag_operation_link_args.dart';
 
 /// Tag-operation link details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -21,7 +21,7 @@ import 'workspace_tag_operation_link_args.dart';
 /// {
 ///     var workspaceTagOperationLink = new AzureNative.ApiManagement.WorkspaceTagOperationLink("workspaceTagOperationLink", new()
 ///     {
-///         OperationId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1",
+///         OperationId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1",
 ///         OperationLinkId = "link1",
 ///         ResourceGroupName = "rg1",
 ///         ServiceName = "apimService1",
@@ -45,7 +45,7 @@ import 'workspace_tag_operation_link_args.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apimanagement.NewWorkspaceTagOperationLink(ctx, "workspaceTagOperationLink", &apimanagement.WorkspaceTagOperationLinkArgs{
-/// 			OperationId:       pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1"),
+/// 			OperationId:       pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1"),
 /// 			OperationLinkId:   pulumi.String("link1"),
 /// 			ResourceGroupName: pulumi.String("rg1"),
 /// 			ServiceName:       pulumi.String("apimService1"),
@@ -61,6 +61,26 @@ import 'workspace_tag_operation_link_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_workspacetagoperationlink" "workspaceTagOperationLink" {
+///   operation_id        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1"
+///   operation_link_id   = "link1"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   tag_id              = "tag1"
+///   workspace_id        = "wks1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +89,8 @@ import 'workspace_tag_operation_link_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.WorkspaceTagOperationLink;
 /// import com.pulumi.azurenative.apimanagement.WorkspaceTagOperationLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -83,7 +103,7 @@ import 'workspace_tag_operation_link_args.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var workspaceTagOperationLink = new WorkspaceTagOperationLink("workspaceTagOperationLink", WorkspaceTagOperationLinkArgs.builder()
-///             .operationId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1")
+///             .operationId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1")
 ///             .operationLinkId("link1")
 ///             .resourceGroupName("rg1")
 ///             .serviceName("apimService1")
@@ -101,7 +121,7 @@ import 'workspace_tag_operation_link_args.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const workspaceTagOperationLink = new azure_native.apimanagement.WorkspaceTagOperationLink("workspaceTagOperationLink", {
-///     operationId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1",
+///     operationId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1",
 ///     operationLinkId: "link1",
 ///     resourceGroupName: "rg1",
 ///     serviceName: "apimService1",
@@ -116,7 +136,7 @@ import 'workspace_tag_operation_link_args.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// workspace_tag_operation_link = azure_native.apimanagement.WorkspaceTagOperationLink("workspaceTagOperationLink",
-///     operation_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1",
+///     operation_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1",
 ///     operation_link_id="link1",
 ///     resource_group_name="rg1",
 ///     service_name="apimService1",
@@ -130,7 +150,7 @@ import 'workspace_tag_operation_link_args.dart';
 ///   workspaceTagOperationLink:
 ///     type: azure-native:apimanagement:WorkspaceTagOperationLink
 ///     properties:
-///       operationId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1
+///       operationId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1
 ///       operationLinkId: link1
 ///       resourceGroupName: rg1
 ///       serviceName: apimService1

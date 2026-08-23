@@ -6,7 +6,7 @@ import 'management_policy_schema_response.dart';
 ///
 /// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -237,6 +237,86 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterModificationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterModificationGreaterThan" = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterModificationGreaterThan" = 30
+///             }
+///           }
+///           "snapshot" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer1"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest1"
+///       "type"    = "Lifecycle"
+///       }, {
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterModificationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterModificationGreaterThan" = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterModificationGreaterThan" = 30
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobIndexMatch" = [{
+///             "name"  = "tag1"
+///             "op"    = "=="
+///             "value" = "val1"
+///             }, {
+///             "name"  = "tag2"
+///             "op"    = "=="
+///             "value" = "val2"
+///           }]
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer2"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest2"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +326,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -432,18 +512,18 @@ import 'management_policy_schema_response.dart';
 ///                     "actions": {
 ///                         "base_blob": {
 ///                             "delete": {
-///                                 "days_after_modification_greater_than": 1000,
+///                                 "days_after_modification_greater_than": float(1000),
 ///                             },
 ///                             "tier_to_archive": {
-///                                 "days_after_modification_greater_than": 90,
+///                                 "days_after_modification_greater_than": float(90),
 ///                             },
 ///                             "tier_to_cool": {
-///                                 "days_after_modification_greater_than": 30,
+///                                 "days_after_modification_greater_than": float(30),
 ///                             },
 ///                         },
 ///                         "snapshot": {
 ///                             "delete": {
-///                                 "days_after_creation_greater_than": 30,
+///                                 "days_after_creation_greater_than": float(30),
 ///                             },
 ///                         },
 ///                     },
@@ -461,13 +541,13 @@ import 'management_policy_schema_response.dart';
 ///                     "actions": {
 ///                         "base_blob": {
 ///                             "delete": {
-///                                 "days_after_modification_greater_than": 1000,
+///                                 "days_after_modification_greater_than": float(1000),
 ///                             },
 ///                             "tier_to_archive": {
-///                                 "days_after_modification_greater_than": 90,
+///                                 "days_after_modification_greater_than": float(90),
 ///                             },
 ///                             "tier_to_cool": {
-///                                 "days_after_modification_greater_than": 30,
+///                                 "days_after_modification_greater_than": float(30),
 ///                             },
 ///                         },
 ///                     },
@@ -723,6 +803,68 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterModificationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterModificationGreaterThan" = 90
+///             }
+///             "tierToCold" = {
+///               "daysAfterModificationGreaterThan" = 30
+///             }
+///             "tierToCool" = {
+///               "daysAfterModificationGreaterThan" = 30
+///             }
+///           }
+///           "snapshot" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///             "tierToCold" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///           "version" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///             "tierToCold" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer1"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest1"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -732,8 +874,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -871,32 +1013,32 @@ import 'management_policy_schema_response.dart';
 ///                 "actions": {
 ///                     "base_blob": {
 ///                         "delete": {
-///                             "days_after_modification_greater_than": 1000,
+///                             "days_after_modification_greater_than": float(1000),
 ///                         },
 ///                         "tier_to_archive": {
-///                             "days_after_modification_greater_than": 90,
+///                             "days_after_modification_greater_than": float(90),
 ///                         },
 ///                         "tier_to_cold": {
-///                             "days_after_modification_greater_than": 30,
+///                             "days_after_modification_greater_than": float(30),
 ///                         },
 ///                         "tier_to_cool": {
-///                             "days_after_modification_greater_than": 30,
+///                             "days_after_modification_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "snapshot": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                         "tier_to_cold": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "version": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                         "tier_to_cold": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                 },
@@ -1091,6 +1233,53 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterModificationGreaterThan" = 90
+///             }
+///           }
+///           "snapshot" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 90
+///             }
+///           }
+///           "version" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 90
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob", "appendBlob"]
+///           "prefixMatch" = ["olcmtestcontainer1"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest1"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1100,8 +1289,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1214,17 +1403,17 @@ import 'management_policy_schema_response.dart';
 ///                 "actions": {
 ///                     "base_blob": {
 ///                         "delete": {
-///                             "days_after_modification_greater_than": 90,
+///                             "days_after_modification_greater_than": float(90),
 ///                         },
 ///                     },
 ///                     "snapshot": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 90,
+///                             "days_after_creation_greater_than": float(90),
 ///                         },
 ///                     },
 ///                     "version": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 90,
+///                             "days_after_creation_greater_than": float(90),
 ///                         },
 ///                     },
 ///                 },
@@ -1411,6 +1600,53 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "tierToHot" = {
+///               "daysAfterModificationGreaterThan" = 30
+///             }
+///           }
+///           "snapshot" = {
+///             "tierToHot" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///           "version" = {
+///             "tierToHot" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer1"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest1"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1420,8 +1656,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1529,17 +1765,17 @@ import 'management_policy_schema_response.dart';
 ///                 "actions": {
 ///                     "base_blob": {
 ///                         "tier_to_hot": {
-///                             "days_after_modification_greater_than": 30,
+///                             "days_after_modification_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "snapshot": {
 ///                         "tier_to_hot": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "version": {
 ///                         "tier_to_hot": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                 },
@@ -1764,6 +2000,71 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterModificationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterModificationGreaterThan" = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterModificationGreaterThan" = 30
+///             }
+///           }
+///           "snapshot" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterCreationGreaterThan" = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///           "version" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterCreationGreaterThan" = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer1"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest1"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1773,8 +2074,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1918,35 +2219,35 @@ import 'management_policy_schema_response.dart';
 ///                 "actions": {
 ///                     "base_blob": {
 ///                         "delete": {
-///                             "days_after_modification_greater_than": 1000,
+///                             "days_after_modification_greater_than": float(1000),
 ///                         },
 ///                         "tier_to_archive": {
-///                             "days_after_modification_greater_than": 90,
+///                             "days_after_modification_greater_than": float(90),
 ///                         },
 ///                         "tier_to_cool": {
-///                             "days_after_modification_greater_than": 30,
+///                             "days_after_modification_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "snapshot": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 1000,
+///                             "days_after_creation_greater_than": float(1000),
 ///                         },
 ///                         "tier_to_archive": {
-///                             "days_after_creation_greater_than": 90,
+///                             "days_after_creation_greater_than": float(90),
 ///                         },
 ///                         "tier_to_cool": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "version": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 1000,
+///                             "days_after_creation_greater_than": float(1000),
 ///                         },
 ///                         "tier_to_archive": {
-///                             "days_after_creation_greater_than": 90,
+///                             "days_after_creation_greater_than": float(90),
 ///                         },
 ///                         "tier_to_cool": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                 },
@@ -2131,6 +2432,49 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterCreationGreaterThan" = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer1"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest1"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2140,8 +2484,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2241,13 +2585,13 @@ import 'management_policy_schema_response.dart';
 ///                 "actions": {
 ///                     "base_blob": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 1000,
+///                             "days_after_creation_greater_than": float(1000),
 ///                         },
 ///                         "tier_to_archive": {
-///                             "days_after_creation_greater_than": 90,
+///                             "days_after_creation_greater_than": float(90),
 ///                         },
 ///                         "tier_to_cool": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                 },
@@ -2432,6 +2776,55 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterLastAccessTimeGreaterThan" = 1000
+///             }
+///             "enableAutoTierToHotFromCool" = true
+///             "tierToArchive" = {
+///               "daysAfterLastAccessTimeGreaterThan" = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterLastAccessTimeGreaterThan" = 30
+///             }
+///           }
+///           "snapshot" = {
+///             "delete" = {
+///               "daysAfterCreationGreaterThan" = 30
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2441,8 +2834,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2554,19 +2947,19 @@ import 'management_policy_schema_response.dart';
 ///                 "actions": {
 ///                     "base_blob": {
 ///                         "delete": {
-///                             "days_after_last_access_time_greater_than": 1000,
+///                             "days_after_last_access_time_greater_than": float(1000),
 ///                         },
 ///                         "enable_auto_tier_to_hot_from_cool": True,
 ///                         "tier_to_archive": {
-///                             "days_after_last_access_time_greater_than": 90,
+///                             "days_after_last_access_time_greater_than": float(90),
 ///                         },
 ///                         "tier_to_cool": {
-///                             "days_after_last_access_time_greater_than": 30,
+///                             "days_after_last_access_time_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "snapshot": {
 ///                         "delete": {
-///                             "days_after_creation_greater_than": 30,
+///                             "days_after_creation_greater_than": float(30),
 ///                         },
 ///                     },
 ///                 },
@@ -2771,6 +3164,62 @@ import 'management_policy_schema_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_managementpolicy" "managementPolicy" {
+///   account_name           = "sto9699"
+///   management_policy_name = "default"
+///   policy = {
+///     rules = [{
+///       "definition" = {
+///         "actions" = {
+///           "baseBlob" = {
+///             "delete" = {
+///               "daysAfterModificationGreaterThan" = 1000
+///             }
+///             "tierToArchive" = {
+///               "daysAfterLastTierChangeGreaterThan" = 120
+///               "daysAfterModificationGreaterThan"   = 90
+///             }
+///             "tierToCool" = {
+///               "daysAfterModificationGreaterThan" = 30
+///             }
+///           }
+///           "snapshot" = {
+///             "tierToArchive" = {
+///               "daysAfterCreationGreaterThan"       = 30
+///               "daysAfterLastTierChangeGreaterThan" = 90
+///             }
+///           }
+///           "version" = {
+///             "tierToArchive" = {
+///               "daysAfterCreationGreaterThan"       = 30
+///               "daysAfterLastTierChangeGreaterThan" = 90
+///             }
+///           }
+///         }
+///         "filters" = {
+///           "blobTypes"   = ["blockBlob"]
+///           "prefixMatch" = ["olcmtestcontainer"]
+///         }
+///       }
+///       "enabled" = true
+///       "name"    = "olcmtest"
+///       "type"    = "Lifecycle"
+///     }]
+///   }
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2780,8 +3229,8 @@ import 'management_policy_schema_response.dart';
 /// import com.pulumi.azurenative.storage.ManagementPolicy;
 /// import com.pulumi.azurenative.storage.ManagementPolicyArgs;
 /// import com.pulumi.azurenative.storage.inputs.ManagementPolicySchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2907,26 +3356,26 @@ import 'management_policy_schema_response.dart';
 ///                 "actions": {
 ///                     "base_blob": {
 ///                         "delete": {
-///                             "days_after_modification_greater_than": 1000,
+///                             "days_after_modification_greater_than": float(1000),
 ///                         },
 ///                         "tier_to_archive": {
-///                             "days_after_last_tier_change_greater_than": 120,
-///                             "days_after_modification_greater_than": 90,
+///                             "days_after_last_tier_change_greater_than": float(120),
+///                             "days_after_modification_greater_than": float(90),
 ///                         },
 ///                         "tier_to_cool": {
-///                             "days_after_modification_greater_than": 30,
+///                             "days_after_modification_greater_than": float(30),
 ///                         },
 ///                     },
 ///                     "snapshot": {
 ///                         "tier_to_archive": {
-///                             "days_after_creation_greater_than": 30,
-///                             "days_after_last_tier_change_greater_than": 90,
+///                             "days_after_creation_greater_than": float(30),
+///                             "days_after_last_tier_change_greater_than": float(90),
 ///                         },
 ///                     },
 ///                     "version": {
 ///                         "tier_to_archive": {
-///                             "days_after_creation_greater_than": 30,
-///                             "days_after_last_tier_change_greater_than": 90,
+///                             "days_after_creation_greater_than": float(30),
+///                             "days_after_last_tier_change_greater_than": float(90),
 ///                         },
 ///                     },
 ///                 },

@@ -16,4 +16,3 @@ enum ResourceAccessPolicy {
     throw ArgumentError('Unknown ResourceAccessPolicy value: $value');
   }
 }
-

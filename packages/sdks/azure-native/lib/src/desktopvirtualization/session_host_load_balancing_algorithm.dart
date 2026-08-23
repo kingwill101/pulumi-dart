@@ -15,4 +15,3 @@ enum SessionHostLoadBalancingAlgorithm {
     throw ArgumentError('Unknown SessionHostLoadBalancingAlgorithm value: $value');
   }
 }
-

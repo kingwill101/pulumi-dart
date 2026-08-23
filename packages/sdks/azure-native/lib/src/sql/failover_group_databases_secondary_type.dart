@@ -15,4 +15,3 @@ enum FailoverGroupDatabasesSecondaryType {
     throw ArgumentError('Unknown FailoverGroupDatabasesSecondaryType value: $value');
   }
 }
-

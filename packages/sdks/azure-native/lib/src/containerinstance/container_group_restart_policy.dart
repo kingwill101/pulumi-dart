@@ -19,4 +19,3 @@ enum ContainerGroupRestartPolicy {
     throw ArgumentError('Unknown ContainerGroupRestartPolicy value: $value');
   }
 }
-

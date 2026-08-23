@@ -12,9 +12,9 @@ class TextClassificationResponse {
   final pulumi.Input<NlpVerticalFeaturizationSettingsResponse>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
   final pulumi.Input<NlpVerticalLimitSettingsResponse>? limitSettings;
-  /// Log verbosity for the job.
+  /// Enum for setting log verbosity.
   final pulumi.Input<String>? logVerbosity;
-  /// Primary metric for Text-Classification task.
+  /// Primary metrics for classification tasks.
   final pulumi.Input<String>? primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
@@ -30,8 +30,8 @@ class TextClassificationResponse {
   /// Creates a new [TextClassificationResponse].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
   /// [limitSettings] Execution constraints for AutoMLJob.
-  /// [logVerbosity] Log verbosity for the job.
-  /// [primaryMetric] Primary metric for Text-Classification task.
+  /// [logVerbosity] Enum for setting log verbosity.
+  /// [primaryMetric] Primary metrics for classification tasks.
   /// [targetColumnName] Target column name: This is prediction values column.
   /// [taskType] AutoMLJob Task type.
   /// [trainingData] [Required] Training data input.
@@ -73,4 +73,3 @@ class TextClassificationResponse {
     );
   }
 }
-

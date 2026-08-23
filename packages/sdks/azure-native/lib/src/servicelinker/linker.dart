@@ -94,6 +94,37 @@ import 'vnet_solution_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicelinker_linker" "linker" {
+///   auth_info = {
+///     "authType" = "secret"
+///     "name"     = "name"
+///     "secretInfo" = {
+///       "secretType" = "rawValue"
+///       "value"      = "secret"
+///     }
+///   }
+///   linker_name  = "linkName"
+///   resource_uri = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app"
+///   target_service = {
+///     "id"   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/test-pg/databases/test-db"
+///     "type" = "AzureResource"
+///   }
+///   v_net_solution = {
+///     type = "serviceEndpoint"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +134,8 @@ import 'vnet_solution_response.dart';
 /// import com.pulumi.azurenative.servicelinker.Linker;
 /// import com.pulumi.azurenative.servicelinker.LinkerArgs;
 /// import com.pulumi.azurenative.servicelinker.inputs.VNetSolutionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

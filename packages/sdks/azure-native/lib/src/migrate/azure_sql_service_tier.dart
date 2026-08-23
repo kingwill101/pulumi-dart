@@ -18,4 +18,3 @@ enum AzureSqlServiceTier {
     throw ArgumentError('Unknown AzureSqlServiceTier value: $value');
   }
 }
-

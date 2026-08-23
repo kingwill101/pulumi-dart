@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -121,6 +121,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_containerappssourcecontrol" "containerAppsSourceControl" {
+///   branch             = "master"
+///   container_app_name = "testcanadacentral"
+///   github_action_configuration = {
+///     azure_credentials = {
+///       client_id     = "<clientid>"
+///       client_secret = "<clientsecret>"
+///       kind          = "feaderated"
+///       tenant_id     = "<tenantid>"
+///     }
+///     build_environment_variables = [{
+///       "name"  = "foo1"
+///       "value" = "bar1"
+///       }, {
+///       "name"  = "foo2"
+///       "value" = "bar2"
+///     }]
+///     context_path                 = "./"
+///     dockerfile_path              = "./Dockerfile"
+///     github_personal_access_token = "test"
+///     image                        = "image/tag"
+///     registry_info = {
+///       registry_password  = "<registrypassword>"
+///       registry_url       = "test-registry.azurecr.io"
+///       registry_user_name = "test-registry"
+///     }
+///   }
+///   repo_url            = "https://github.com/xwang971/ghatest"
+///   resource_group_name = "workerapps-rg-xj"
+///   source_control_name = "current"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +175,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.app.inputs.GithubActionConfigurationArgs;
 /// import com.pulumi.azurenative.app.inputs.AzureCredentialsArgs;
 /// import com.pulumi.azurenative.app.inputs.RegistryInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

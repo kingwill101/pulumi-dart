@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'static_site_database_connection_configuration_file_overview_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getStaticSiteDatabaseConnection.
 class GetStaticSiteDatabaseConnectionResult {
@@ -13,17 +14,19 @@ class GetStaticSiteDatabaseConnectionResult {
   final String? connectionIdentity;
   /// The connection string to use to connect to the database.
   final String? connectionString;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// The region of the database resource.
   final String region;
   /// The resource id of the database.
   final String resourceId;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetStaticSiteDatabaseConnectionResult].
@@ -31,12 +34,13 @@ class GetStaticSiteDatabaseConnectionResult {
   /// [configurationFiles] A list of configuration files associated with this database connection.
   /// [connectionIdentity] If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
   /// [connectionString] The connection string to use to connect to the database.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [region] The region of the database resource.
   /// [resourceId] The resource id of the database.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetStaticSiteDatabaseConnectionResult({
     required this.azureApiVersion,
     required this.configurationFiles,
@@ -47,6 +51,7 @@ class GetStaticSiteDatabaseConnectionResult {
     required this.name,
     required this.region,
     required this.resourceId,
+    required this.systemData,
     required this.type,
   });
 
@@ -61,6 +66,7 @@ class GetStaticSiteDatabaseConnectionResult {
       'name': name,
       'region': region,
       'resourceId': resourceId,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -76,8 +82,8 @@ class GetStaticSiteDatabaseConnectionResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceId: map['resourceId'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

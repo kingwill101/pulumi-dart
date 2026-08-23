@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_args.dart';
+import 'system_data_response.dart';
 
 /// A Policy.
 ///
@@ -76,6 +77,34 @@ import 'policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_policy" "policy" {
+///   description         = "{policyDescription}"
+///   evaluator_type      = "{policyEvaluatorType}"
+///   fact_data           = "{policyFactData}"
+///   fact_name           = "{policyFactName}"
+///   lab_name            = "{labName}"
+///   location            = "{location}"
+///   name                = "{policyName}"
+///   policy_set_name     = "{policySetName}"
+///   resource_group_name = "resourceGroupName"
+///   status              = "{policyStatus}"
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+///   threshold = "{policyThreshold}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +113,8 @@ import 'policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devtestlab.Policy;
 /// import com.pulumi.azurenative.devtestlab.PolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,17 +237,19 @@ class Policy extends pulumi.CustomResource {
   late final pulumi.Output<String?> factName;
   /// The location of the resource.
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
   /// The status of the policy.
   late final pulumi.Output<String?> status;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
   late final pulumi.Output<String?> threshold;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -247,6 +278,7 @@ class Policy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     threshold = registerOutput<String?>('threshold');
     type = registerOutput<String>('type');

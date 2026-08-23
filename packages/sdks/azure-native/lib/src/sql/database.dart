@@ -8,7 +8,7 @@ import 'sku_response.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -71,6 +71,29 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+///   sku = {
+///     capacity = 2
+///     family   = "Gen4"
+///     name     = "BC"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,6 +242,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+///   sku = {
+///     capacity = 2
+///     name     = "BC_Gen4"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -228,8 +273,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -358,6 +403,26 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode         = "Restore"
+///   database_name       = "testdw"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+///   source_resource_id  = "/subscriptions/55555555-6666-7777-8888-999999999999/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/srcsvr/restorableDroppedDatabases/srcdw,131403269876900000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -366,8 +431,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,6 +554,26 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode         = "Recovery"
+///   database_name       = "testdw"
+///   location            = "westus"
+///   resource_group_name = "Default-SQL-WestUS"
+///   server_name         = "testsvr"
+///   source_resource_id  = "/subscriptions/55555555-6666-7777-8888-999999999999/resourceGroups/Default-SQL-EastUS/providers/Microsoft.Sql/servers/srcsvr/recoverabledatabases/srcdw"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -497,8 +582,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -622,6 +707,27 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode           = "PointInTimeRestore"
+///   database_name         = "testdw"
+///   location              = "southeastasia"
+///   resource_group_name   = "Default-SQL-SouthEastAsia"
+///   restore_point_in_time = "2022-01-22T05:35:31.503Z"
+///   server_name           = "testsvr"
+///   source_resource_id    = "/subscriptions/55555555-6666-7777-8888-999999999999/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/srcsvr/databases/srcdw"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -630,8 +736,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -766,6 +872,30 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode         = "Copy"
+///   database_name       = "dbcopy"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+///   source_database_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/testsvr/databases/testdb"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -775,8 +905,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -924,6 +1054,31 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode         = "Secondary"
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   secondary_type      = "Standby"
+///   server_name         = "testsvr"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+///   source_database_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-NorthEurope/providers/Microsoft.Sql/servers/testsvr1/databases/testdb"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -933,8 +1088,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1086,6 +1241,31 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode         = "Secondary"
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   secondary_type      = "Geo"
+///   server_name         = "testsvr"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+///   source_database_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-NorthEurope/providers/Microsoft.Sql/servers/testsvr1/databases/testdb"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1095,8 +1275,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1250,6 +1430,32 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode         = "Secondary"
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   secondary_type      = "Named"
+///   server_name         = "testsvr"
+///   sku = {
+///     capacity = 2
+///     name     = "HS_Gen4"
+///     tier     = "Hyperscale"
+///   }
+///   source_database_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-NorthEurope/providers/Microsoft.Sql/servers/testsvr1/databases/primarydb"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1259,8 +1465,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1407,6 +1613,27 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   create_mode           = "PointInTimeRestore"
+///   database_name         = "dbpitr"
+///   location              = "southeastasia"
+///   resource_group_name   = "Default-SQL-SouthEastAsia"
+///   restore_point_in_time = "2020-10-22T05:35:31.503Z"
+///   server_name           = "testsvr"
+///   source_database_id    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SoutheastAsia/providers/Microsoft.Sql/servers/testsvr/databases/testdb"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1415,8 +1642,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1540,6 +1767,25 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   database_name          = "testdb"
+///   location               = "southeastasia"
+///   preferred_enclave_type = "Default"
+///   resource_group_name    = "Default-SQL-SouthEastAsia"
+///   server_name            = "testsvr"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1548,8 +1794,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1665,6 +1911,25 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   database_name          = "testdb"
+///   location               = "southeastasia"
+///   preferred_enclave_type = "VBS"
+///   resource_group_name    = "Default-SQL-SouthEastAsia"
+///   server_name            = "testsvr"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1673,8 +1938,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1805,6 +2070,32 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   availability_zone   = "1"
+///   collation           = "SQL_Latin1_General_CP1_CI_AS"
+///   create_mode         = "Default"
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   max_size_bytes      = 1073741824
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1814,8 +2105,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1878,7 +2169,7 @@ import 'sku_response.dart';
 ///     create_mode=azure_native.sql.CreateMode.DEFAULT,
 ///     database_name="testdb",
 ///     location="southeastasia",
-///     max_size_bytes=1073741824,
+///     max_size_bytes=float(1073741824),
 ///     resource_group_name="Default-SQL-SouthEastAsia",
 ///     server_name="testsvr",
 ///     sku={
@@ -1971,6 +2262,31 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   collation           = "SQL_Latin1_General_CP1_CI_AS"
+///   create_mode         = "Default"
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   max_size_bytes      = 1073741824
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1980,8 +2296,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2041,7 +2357,7 @@ import 'sku_response.dart';
 ///     create_mode=azure_native.sql.CreateMode.DEFAULT,
 ///     database_name="testdb",
 ///     location="southeastasia",
-///     max_size_bytes=1073741824,
+///     max_size_bytes=float(1073741824),
 ///     resource_group_name="Default-SQL-SouthEastAsia",
 ///     server_name="testsvr",
 ///     sku={
@@ -2120,6 +2436,25 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   database_name       = "testdb"
+///   is_ledger_on        = true
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2128,8 +2463,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2243,6 +2578,24 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   database_name       = "testdb"
+///   location            = "southeastasia"
+///   resource_group_name = "Default-SQL-SouthEastAsia"
+///   server_name         = "testsvr"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2251,8 +2604,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2379,6 +2732,32 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   collation                    = "SQL_Latin1_General_CP1_CI_AS"
+///   create_mode                  = "Default"
+///   database_name                = "testdb"
+///   location                     = "southeastasia"
+///   maintenance_configuration_id = "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_SouthEastAsia_1"
+///   max_size_bytes               = 1073741824
+///   resource_group_name          = "Default-SQL-SouthEastAsia"
+///   server_name                  = "testsvr"
+///   sku = {
+///     name = "S2"
+///     tier = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2388,8 +2767,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2452,7 +2831,7 @@ import 'sku_response.dart';
 ///     database_name="testdb",
 ///     location="southeastasia",
 ///     maintenance_configuration_id="/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_SouthEastAsia_1",
-///     max_size_bytes=1073741824,
+///     max_size_bytes=float(1073741824),
 ///     resource_group_name="Default-SQL-SouthEastAsia",
 ///     server_name="testsvr",
 ///     sku={
@@ -2532,6 +2911,25 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_database" "database" {
+///   database_name                       = "testdb"
+///   location                            = "southeastasia"
+///   requested_backup_storage_redundancy = "Zone"
+///   resource_group_name                 = "Default-SQL-SouthEastAsia"
+///   server_name                         = "testsvr"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2540,8 +2938,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.Database;
 /// import com.pulumi.azurenative.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

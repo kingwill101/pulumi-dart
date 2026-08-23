@@ -14,4 +14,3 @@ enum TrustScope {
     throw ArgumentError('Unknown TrustScope value: $value');
   }
 }
-

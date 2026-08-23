@@ -14,4 +14,3 @@ enum SecretKind {
     throw ArgumentError('Unknown SecretKind value: $value');
   }
 }
-

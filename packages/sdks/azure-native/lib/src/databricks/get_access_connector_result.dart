@@ -8,9 +8,9 @@ import 'system_data_response.dart';
 class GetAccessConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// Managed service identity (system assigned and/or user assigned identities)
+  /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
   final String location;
@@ -18,23 +18,23 @@ class GetAccessConnectorResult {
   final String name;
   /// Azure Databricks Access Connector properties
   final AccessConnectorPropertiesResponse properties;
-  /// The system metadata relating to this resource
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetAccessConnectorResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  /// [identity] Managed service identity (system assigned and/or user assigned identities)
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [identity] The managed service identities assigned to this resource.
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
   /// [properties] Azure Databricks Access Connector properties
-  /// [systemData] The system metadata relating to this resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
-  /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAccessConnectorResult({
     required this.azureApiVersion,
     required this.id,
@@ -75,4 +75,3 @@ class GetAccessConnectorResult {
     );
   }
 }
-

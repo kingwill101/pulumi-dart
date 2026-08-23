@@ -17,7 +17,7 @@ class PrivateEndpointConnectionArgs {
   final pulumi.Input<String>? privateEndpointConnectionName;
   /// The private link service connection state.
   final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [PrivateEndpointConnectionArgs].
@@ -25,7 +25,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateEndpoint] The private endpoint information.
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] The private link service connection state.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const PrivateEndpointConnectionArgs({
     required this.accountName,
     this.privateEndpoint,
@@ -54,4 +54,3 @@ class PrivateEndpointConnectionArgs {
     );
   }
 }
-

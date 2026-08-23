@@ -1,0 +1,88 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'key_vault_secret_reference_response.dart';
+
+/// Describes the properties of a Virtual Machine Extension.
+class VirtualMachineExtensionPropertiesResponse {
+  /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  /// How the extension handler should be forced to update even if the extension configuration has not changed.
+  final pulumi.Input<String>? forceUpdateTag;
+  /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  final pulumi.Input<dynamic>? protectedSettings;
+  /// The extensions protected settings that are passed by reference, and consumed from key vault
+  final pulumi.Input<KeyVaultSecretReferenceResponse>? protectedSettingsFromKeyVault;
+  /// Collection of extension names after which this extension needs to be provisioned.
+  final pulumi.Input<List<String>>? provisionAfterExtensions;
+  /// The name of the extension handler publisher.
+  final pulumi.Input<String>? publisher;
+  /// JSON formatted public settings for the extension.
+  final pulumi.Input<dynamic>? settings;
+  /// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+  final pulumi.Input<bool>? suppressFailures;
+  /// Specifies the type of the extension; an example is 'CustomScriptExtension'.
+  final pulumi.Input<String>? type;
+  /// Specifies the version of the script handler.
+  final pulumi.Input<String>? typeHandlerVersion;
+
+  /// Creates a new [VirtualMachineExtensionPropertiesResponse].
+  /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  /// [enableAutomaticUpgrade] Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+  /// [forceUpdateTag] How the extension handler should be forced to update even if the extension configuration has not changed.
+  /// [protectedSettings] The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  /// [protectedSettingsFromKeyVault] The extensions protected settings that are passed by reference, and consumed from key vault
+  /// [provisionAfterExtensions] Collection of extension names after which this extension needs to be provisioned.
+  /// [publisher] The name of the extension handler publisher.
+  /// [settings] JSON formatted public settings for the extension.
+  /// [suppressFailures] Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+  /// [type] Specifies the type of the extension; an example is 'CustomScriptExtension'.
+  /// [typeHandlerVersion] Specifies the version of the script handler.
+  const VirtualMachineExtensionPropertiesResponse({
+    this.autoUpgradeMinorVersion,
+    this.enableAutomaticUpgrade,
+    this.forceUpdateTag,
+    this.protectedSettings,
+    this.protectedSettingsFromKeyVault,
+    this.provisionAfterExtensions,
+    this.publisher,
+    this.settings,
+    this.suppressFailures,
+    this.type,
+    this.typeHandlerVersion,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'autoUpgradeMinorVersion': ?autoUpgradeMinorVersion,
+      'enableAutomaticUpgrade': ?enableAutomaticUpgrade,
+      'forceUpdateTag': ?forceUpdateTag,
+      'protectedSettings': ?protectedSettings,
+      'protectedSettingsFromKeyVault': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretReferenceResponse, Map<String, dynamic>>(protectedSettingsFromKeyVault, (value) => value.toMap()),
+      'provisionAfterExtensions': ?provisionAfterExtensions,
+      'publisher': ?publisher,
+      'settings': ?settings,
+      'suppressFailures': ?suppressFailures,
+      'type': ?type,
+      'typeHandlerVersion': ?typeHandlerVersion,
+    };
+  }
+
+  factory VirtualMachineExtensionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+    return VirtualMachineExtensionPropertiesResponse(
+      autoUpgradeMinorVersion: (() { final guardedValue = map['autoUpgradeMinorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableAutomaticUpgrade: (() { final guardedValue = map['enableAutomaticUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forceUpdateTag: (() { final guardedValue = map['forceUpdateTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protectedSettings: (() { final guardedValue = map['protectedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      protectedSettingsFromKeyVault: (() { final guardedValue = map['protectedSettingsFromKeyVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      provisionAfterExtensions: (() { final guardedValue = map['provisionAfterExtensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      suppressFailures: (() { final guardedValue = map['suppressFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      typeHandlerVersion: (() { final guardedValue = map['typeHandlerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+    );
+  }
+}

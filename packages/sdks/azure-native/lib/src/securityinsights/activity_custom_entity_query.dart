@@ -185,6 +185,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_activitycustomentityquery" "activityCustomEntityQuery" {
+///   content     = "On '{{Computer}}' the account '{{TargetAccount}}' was deleted by '{{AddedBy}}'"
+///   description = "Account deleted on host"
+///   enabled     = true
+///   entities_filter = {
+///     "Host_OsFamily" = ["Windows"]
+///   }
+///   entity_query_id   = "07da3cc8-c8ad-4710-a44e-334cdcb7882b"
+///   input_entity_type = "Host"
+///   kind              = "Activity"
+///   query_definitions = {
+///     query = "let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\nSecurityEvent\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\n// parsing for Host to handle variety of conventions coming from data\n| extend Host_HostName = case(\nComputer has '@', tostring(split(Computer, '@')[0]),\nComputer has '\\\\', tostring(split(Computer, '\\\\')[1]),\nComputer has '.', tostring(split(Computer, '.')[0]),\nComputer\n)\n| extend Host_NTDomain = case(\nComputer has '\\\\', tostring(split(Computer, '\\\\')[0]), \nComputer has '.', tostring(split(Computer, '.')[-2]), \nComputer\n)\n| extend Host_DnsDomain = case(\nComputer has '\\\\', tostring(split(Computer, '\\\\')[0]), \nComputer has '.', strcat_array(array_slice(split(Computer,'.'),-2,-1),'.'), \nComputer\n)\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \nor v_Host_AzureID =~ _ResourceId \nor v_Host_OMSAgentID == SourceComputerId\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid, _ResourceId, SourceComputerId\n| extend AddedBy = SubjectUserName\n// Future support for Activities\n| extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = TargetAccount\n};\nGetAccountActions('{{Host_HostName}}', '{{Host_NTDomain}}', '{{Host_DnsDomain}}', '{{Host_AzureID}}', '{{Host_OMSAgentID}}')\n \n| where EventID == 4726 "
+///   }
+///   required_input_fields_sets = [["Host_HostName", "Host_NTDomain"], ["Host_HostName", "Host_DnsDomain"], ["Host_AzureID"], ["Host_OMSAgentID"]]
+///   resource_group_name        = "myRg"
+///   title                      = "An account was deleted on this host"
+///   workspace_name             = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -194,8 +224,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.ActivityCustomEntityQuery;
 /// import com.pulumi.azurenative.securityinsights.ActivityCustomEntityQueryArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.ActivityEntityQueriesPropertiesQueryDefinitionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,7 +241,7 @@ import 'system_data_response.dart';
 ///             .content("On '{{Computer}}' the account '{{TargetAccount}}' was deleted by '{{AddedBy}}'")
 ///             .description("Account deleted on host")
 ///             .enabled(true)
-///             .entitiesFilter(Map.of("Host_OsFamily", "Windows"))
+///             .entitiesFilter(Map.of("Host_OsFamily", Arrays.asList("Windows")))
 ///             .entityQueryId("07da3cc8-c8ad-4710-a44e-334cdcb7882b")
 ///             .inputEntityType("Host")
 ///             .kind("Activity")

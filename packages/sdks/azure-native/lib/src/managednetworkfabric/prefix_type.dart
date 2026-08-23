@@ -15,4 +15,3 @@ enum PrefixType {
     throw ArgumentError('Unknown PrefixType value: $value');
   }
 }
-

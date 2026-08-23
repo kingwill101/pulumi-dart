@@ -59,6 +59,25 @@ import 'key_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_key" "key" {
+///   is_active_cmk       = true
+///   key_name            = "somekey"
+///   key_vault_url       = "https://vault.azure.net/keys/somesecret"
+///   resource_group_name = "ExampleResourceGroup"
+///   workspace_name      = "ExampleWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'key_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.Key;
 /// import com.pulumi.azurenative.synapse.KeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

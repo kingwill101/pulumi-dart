@@ -1,6 +1,6 @@
 enum ExcludedPrincipalTypes {
-  valueServicePrincipalsAsTarget("ServicePrincipalsAsTarget"),
-  valueServicePrincipalsAsRequestor("ServicePrincipalsAsRequestor");
+  servicePrincipalsAsTarget("ServicePrincipalsAsTarget"),
+  servicePrincipalsAsRequestor("ServicePrincipalsAsRequestor");
 
   const ExcludedPrincipalTypes(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ExcludedPrincipalTypes {
     throw ArgumentError('Unknown ExcludedPrincipalTypes value: $value');
   }
 }
-

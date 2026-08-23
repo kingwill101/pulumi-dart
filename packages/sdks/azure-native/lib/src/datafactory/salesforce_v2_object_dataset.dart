@@ -83,4 +83,3 @@ class SalesforceV2ObjectDataset {
     );
   }
 }
-

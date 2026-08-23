@@ -1,8 +1,8 @@
 /// Protocol over which communication will happen over this endpoint
 enum Protocol {
-  valueTcp("tcp"),
-  valueUdp("udp"),
-  valueHttp("http");
+  tcp("tcp"),
+  udp("udp"),
+  http("http");
 
   const Protocol(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum Protocol {
     throw ArgumentError('Unknown Protocol value: $value');
   }
 }
-

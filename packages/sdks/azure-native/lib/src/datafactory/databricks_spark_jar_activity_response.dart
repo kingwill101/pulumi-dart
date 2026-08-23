@@ -13,7 +13,7 @@ class DatabricksSparkJarActivityResponse {
   /// Activity description.
   final pulumi.Input<String>? description;
   /// A list of libraries to be installed on the cluster that will execute the job.
-  final pulumi.Input<List<Map<String, dynamic>>>? libraries;
+  final pulumi.Input<List<dynamic>>? libraries;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
   /// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. Type: string (or Expression with resultType string).
@@ -83,7 +83,7 @@ class DatabricksSparkJarActivityResponse {
     return DatabricksSparkJarActivityResponse(
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependencyResponse>(guardedValue, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      libraries: (() { final guardedValue = map['libraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, dynamic>>()); })(),
+      libraries: (() { final guardedValue = map['libraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mainClassName: pulumi.Input.fromValue(map['mainClassName']),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -96,4 +96,3 @@ class DatabricksSparkJarActivityResponse {
     );
   }
 }
-

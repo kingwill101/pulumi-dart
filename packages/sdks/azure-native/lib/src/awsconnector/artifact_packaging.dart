@@ -15,4 +15,3 @@ enum ArtifactPackaging {
     throw ArgumentError('Unknown ArtifactPackaging value: $value');
   }
 }
-

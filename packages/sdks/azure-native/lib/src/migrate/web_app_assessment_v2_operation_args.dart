@@ -180,4 +180,3 @@ class WebAppAssessmentV2OperationArgs {
     );
   }
 }
-

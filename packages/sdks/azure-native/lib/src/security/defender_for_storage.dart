@@ -6,7 +6,7 @@ import 'defender_for_storage_setting_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01-preview.
 ///
-/// Other available API versions: 2022-12-01-preview, 2024-08-01-preview, 2025-01-01, 2025-02-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-12-01-preview, 2024-08-01-preview, 2025-01-01, 2025-02-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -86,6 +86,36 @@ import 'defender_for_storage_setting_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_defenderforstorage" "defenderForStorage" {
+///   properties = {
+///     is_enabled = true
+///     malware_scanning = {
+///       on_upload = {
+///         cap_gb_per_month = -1
+///         is_enabled       = true
+///       }
+///       scan_results_event_grid_topic_resource_id = "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.EventGrid/topics/sampletopic"
+///     }
+///     override_subscription_level_settings = true
+///     sensitive_data_discovery = {
+///       is_enabled = true
+///     }
+///   }
+///   resource_id  = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Storage/storageAccounts/samplestorageaccount"
+///   setting_name = "current"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +128,8 @@ import 'defender_for_storage_setting_properties_response.dart';
 /// import com.pulumi.azurenative.security.inputs.MalwareScanningPropertiesArgs;
 /// import com.pulumi.azurenative.security.inputs.OnUploadPropertiesArgs;
 /// import com.pulumi.azurenative.security.inputs.SensitiveDataDiscoveryPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

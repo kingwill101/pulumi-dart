@@ -1,15 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'error_response_response.dart';
+import 'automation_error_response_response.dart';
 import 'software_update_configuration_by_name_args.dart';
 import 'software_update_configuration_tasks_response.dart';
 import 'sucschedule_properties_response.dart';
+import 'system_data_response.dart';
 import 'update_configuration_response.dart';
 
 /// Software update configuration properties.
 ///
-/// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2019-06-01.
 ///
-/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -251,6 +252,75 @@ import 'update_configuration_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_softwareupdateconfigurationbyname" "softwareUpdateConfigurationByName" {
+///   automation_account_name = "myaccount"
+///   resource_group_name     = "mygroup"
+///   schedule_info = {
+///     advanced_schedule = {
+///       week_days = ["Monday", "Thursday"]
+///     }
+///     expiry_time = "2018-11-09T11:22:57+00:00"
+///     frequency   = "Hour"
+///     interval    = 1
+///     start_time  = "2017-10-19T12:22:57+00:00"
+///     time_zone   = "America/Los_Angeles"
+///   }
+///   software_update_configuration_name = "testpatch"
+///   tasks = {
+///     post_task = {
+///       source = "GetCache"
+///     }
+///     pre_task = {
+///       parameters = {
+///         "COMPUTERNAME" = "Computer1"
+///       }
+///       source = "HelloWorld"
+///     }
+///   }
+///   update_configuration = {
+///     azure_virtual_machines   = ["/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01", "/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02", "/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"]
+///     duration                 = "PT2H0M"
+///     non_azure_computer_names = ["box1.contoso.com", "box2.contoso.com"]
+///     operating_system         = "Windows"
+///     targets = {
+///       azure_queries = [{
+///         "locations" = ["Japan East", "UK South"]
+///         "scope"     = ["/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources", "/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067"]
+///         "tagSettings" = {
+///           "filterOperator" = "All"
+///           "tags" = {
+///             "tag1" = ["tag1Value1", "tag1Value2", "tag1Value3"]
+///             "tag2" = ["tag2Value1", "tag2Value2", "tag2Value3"]
+///           }
+///         }
+///       }]
+///       non_azure_queries = [{
+///         "functionAlias" = "SavedSearch1"
+///         "workspaceId"   = "WorkspaceId1"
+///         }, {
+///         "functionAlias" = "SavedSearch2"
+///         "workspaceId"   = "WorkspaceId2"
+///       }]
+///     }
+///     windows = {
+///       excluded_kb_numbers             = ["168934", "168973"]
+///       included_update_classifications = "Critical"
+///       reboot_setting                  = "IfRequired"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +336,8 @@ import 'update_configuration_response.dart';
 /// import com.pulumi.azurenative.automation.inputs.UpdateConfigurationArgs;
 /// import com.pulumi.azurenative.automation.inputs.TargetPropertiesArgs;
 /// import com.pulumi.azurenative.automation.inputs.WindowsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,14 +395,14 @@ import 'update_configuration_response.dart';
 ///                         .tagSettings(TagSettingsPropertiesArgs.builder()
 ///                             .filterOperator("All")
 ///                             .tags(Map.ofEntries(
-///                                 Map.entry("tag1",
+///                                 Map.entry("tag1", Arrays.asList(
 ///                                     "tag1Value1",
 ///                                     "tag1Value2",
-///                                     "tag1Value3"),
-///                                 Map.entry("tag2",
+///                                     "tag1Value3")),
+///                                 Map.entry("tag2", Arrays.asList(
 ///                                     "tag2Value1",
 ///                                     "tag2Value2",
-///                                     "tag2Value3")
+///                                     "tag2Value3"))
 ///                             ))
 ///                             .build())
 ///                         .build())
@@ -471,7 +541,7 @@ import 'update_configuration_response.dart';
 ///         },
 ///         "expiry_time": "2018-11-09T11:22:57+00:00",
 ///         "frequency": azure_native.automation.ScheduleFrequency.HOUR,
-///         "interval": 1,
+///         "interval": float(1),
 ///         "start_time": "2017-10-19T12:22:57+00:00",
 ///         "time_zone": "America/Los_Angeles",
 ///     },
@@ -634,20 +704,22 @@ class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
   /// Creation time of the resource, which only appears in the response.
   late final pulumi.Output<String> creationTime;
   /// Details of provisioning error
-  late final pulumi.Output<ErrorResponseResponse?> error;
+  late final pulumi.Output<AutomationErrorResponseResponse?> error;
   /// LastModifiedBy property, which only appears in the response.
   late final pulumi.Output<String> lastModifiedBy;
   /// Last time resource was modified, which only appears in the response.
   late final pulumi.Output<String> lastModifiedTime;
-  /// Resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Provisioning state for the software update configuration, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
   /// Schedule information for the Software update configuration
   late final pulumi.Output<SUCSchedulePropertiesResponse> scheduleInfo;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Tasks information for the Software update configuration.
   late final pulumi.Output<SoftwareUpdateConfigurationTasksResponse?> tasks;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// update specific properties for the Software update configuration
   late final pulumi.Output<UpdateConfigurationResponse> updateConfiguration;
@@ -669,12 +741,13 @@ class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdBy = registerOutput<String>('createdBy');
     creationTime = registerOutput<String>('creationTime');
-    error = registerOutput<ErrorResponseResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    error = registerOutput<AutomationErrorResponseResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationErrorResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedBy = registerOutput<String>('lastModifiedBy');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     scheduleInfo = registerOutput<SUCSchedulePropertiesResponse>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SUCSchedulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationTasksResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updateConfiguration = registerOutput<UpdateConfigurationResponse>('updateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

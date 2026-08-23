@@ -15,4 +15,3 @@ enum SecurityConfiguration {
     throw ArgumentError('Unknown SecurityConfiguration value: $value');
   }
 }
-

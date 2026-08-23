@@ -1,8 +1,8 @@
 /// The notification level.
 enum NotificationLevel {
-  valueNone("None"),
-  valueCritical("Critical"),
-  valueAll("All");
+  none("None"),
+  critical("Critical"),
+  all("All");
 
   const NotificationLevel(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum NotificationLevel {
     throw ArgumentError('Unknown NotificationLevel value: $value');
   }
 }
-

@@ -1,8 +1,8 @@
 /// Protocol this rule will use when forwarding traffic to backends.
 enum FrontDoorForwardingProtocol {
-  valueHttpOnly("HttpOnly"),
-  valueHttpsOnly("HttpsOnly"),
-  valueMatchRequest("MatchRequest");
+  httpOnly("HttpOnly"),
+  httpsOnly("HttpsOnly"),
+  matchRequest("MatchRequest");
 
   const FrontDoorForwardingProtocol(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum FrontDoorForwardingProtocol {
     throw ArgumentError('Unknown FrontDoorForwardingProtocol value: $value');
   }
 }
-

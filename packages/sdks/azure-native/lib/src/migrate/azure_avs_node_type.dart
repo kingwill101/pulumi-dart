@@ -18,4 +18,3 @@ enum AzureAvsNodeType {
     throw ArgumentError('Unknown AzureAvsNodeType value: $value');
   }
 }
-

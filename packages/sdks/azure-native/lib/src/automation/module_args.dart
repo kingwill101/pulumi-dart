@@ -10,27 +10,27 @@ import 'content_link.dart';
 class ModuleArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Sets the hash.
+  /// Gets or sets the module content link.
   final pulumi.Input<ContentLink> contentLink;
-  /// Sets the location of the resource.
+  /// Gets or sets the location of the resource.
   final pulumi.Input<String>? location;
-  /// The name of module.
+  /// The module name.
   final pulumi.Input<String>? moduleName;
-  /// Sets name of the resource.
+  /// Gets or sets name of the resource.
   final pulumi.Input<String>? name;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Sets the tags attached to the resource.
+  /// Gets or sets the tags attached to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ModuleArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [contentLink] Sets the hash.
-  /// [location] Sets the location of the resource.
-  /// [moduleName] The name of module.
-  /// [name] Sets name of the resource.
-  /// [resourceGroupName] Name of an Azure Resource group.
-  /// [tags] Sets the tags attached to the resource.
+  /// [contentLink] Gets or sets the module content link.
+  /// [location] Gets or sets the location of the resource.
+  /// [moduleName] The module name.
+  /// [name] Gets or sets name of the resource.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [tags] Gets or sets the tags attached to the resource.
   const ModuleArgs({
     required this.automationAccountName,
     required this.contentLink,
@@ -65,4 +65,3 @@ class ModuleArgs {
     );
   }
 }
-

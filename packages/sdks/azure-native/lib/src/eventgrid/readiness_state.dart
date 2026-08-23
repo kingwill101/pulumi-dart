@@ -15,4 +15,3 @@ enum ReadinessState {
     throw ArgumentError('Unknown ReadinessState value: $value');
   }
 }
-

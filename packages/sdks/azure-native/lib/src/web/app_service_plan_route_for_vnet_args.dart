@@ -13,7 +13,7 @@ class AppServicePlanRouteForVnetArgs {
   final pulumi.Input<String>? kind;
   /// Name of the App Service plan.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the Virtual Network route.
   final pulumi.Input<String>? routeName;
@@ -33,7 +33,7 @@ class AppServicePlanRouteForVnetArgs {
   /// [endAddress] The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
   /// [kind] Kind of resource.
   /// [name] Name of the App Service plan.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [routeName] Name of the Virtual Network route.
   /// [routeType] The type of route this is:
   /// [startAddress] The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
@@ -75,4 +75,3 @@ class AppServicePlanRouteForVnetArgs {
     );
   }
 }
-

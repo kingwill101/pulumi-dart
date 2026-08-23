@@ -1,11 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cluster_resource_response_properties_v1.dart';
 import 'garnet_cluster_args.dart';
+import 'garnet_cluster_resource_properties_response.dart';
+import 'managed_cassandra_managed_service_identity_response.dart';
 import 'system_data_response.dart';
 
 /// Representation of a Garnet cache cluster.
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
+///
+/// Other available API versions: 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -23,7 +26,7 @@ import 'system_data_response.dart';
 ///     {
 ///         ClusterName = "garnet-prod",
 ///         Location = "West US",
-///         Properties = new AzureNative.CosmosDB.Inputs.ClusterResourcePropertiesArgs
+///         Properties = new AzureNative.CosmosDB.Inputs.GarnetClusterResourcePropertiesArgs
 ///         {
 ///             NodeCount = 4,
 ///             NodeSku = "Standard_DS13_v2",
@@ -52,7 +55,7 @@ import 'system_data_response.dart';
 /// 		_, err := cosmosdb.NewGarnetCluster(ctx, "garnetCluster", &cosmosdb.GarnetClusterArgs{
 /// 			ClusterName: pulumi.String("garnet-prod"),
 /// 			Location:    pulumi.String("West US"),
-/// 			Properties: &cosmosdb.ClusterResourcePropertiesArgs{
+/// 			Properties: &cosmosdb.GarnetClusterResourcePropertiesArgs{
 /// 				NodeCount:         pulumi.Int(4),
 /// 				NodeSku:           pulumi.String("Standard_DS13_v2"),
 /// 				ReplicationFactor: pulumi.Int(2),
@@ -70,6 +73,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_garnetcluster" "garnetCluster" {
+///   cluster_name = "garnet-prod"
+///   location     = "West US"
+///   properties = {
+///     node_count         = 4
+///     node_sku           = "Standard_DS13_v2"
+///     replication_factor = 2
+///     subnet_id          = "/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management"
+///   }
+///   resource_group_name = "garnet-prod-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,9 +105,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cosmosdb.GarnetCluster;
 /// import com.pulumi.azurenative.cosmosdb.GarnetClusterArgs;
-/// import com.pulumi.azurenative.cosmosdb.inputs.ClusterResourcePropertiesArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.cosmosdb.inputs.GarnetClusterResourcePropertiesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -95,7 +122,7 @@ import 'system_data_response.dart';
 ///         var garnetCluster = new GarnetCluster("garnetCluster", GarnetClusterArgs.builder()
 ///             .clusterName("garnet-prod")
 ///             .location("West US")
-///             .properties(ClusterResourcePropertiesArgs.builder()
+///             .properties(GarnetClusterResourcePropertiesArgs.builder()
 ///                 .nodeCount(4)
 ///                 .nodeSku("Standard_DS13_v2")
 ///                 .replicationFactor(2)
@@ -178,12 +205,14 @@ import 'system_data_response.dart';
 class GarnetCluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+  /// Identity for the resource.
+  late final pulumi.Output<ManagedCassandraManagedServiceIdentityResponse?> identity;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Properties of a Garnet cache cluster.
-  late final pulumi.Output<ClusterResourceResponsePropertiesV1> properties;
+  /// The resource-specific properties for this resource.
+  late final pulumi.Output<GarnetClusterResourcePropertiesResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -206,9 +235,10 @@ class GarnetCluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedCassandraManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedCassandraManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ClusterResourceResponsePropertiesV1>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceResponsePropertiesV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<GarnetClusterResourcePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GarnetClusterResourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

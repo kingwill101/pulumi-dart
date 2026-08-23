@@ -13,4 +13,3 @@ enum EventListenerEndpointDiscriminator {
     throw ArgumentError('Unknown EventListenerEndpointDiscriminator value: $value');
   }
 }
-

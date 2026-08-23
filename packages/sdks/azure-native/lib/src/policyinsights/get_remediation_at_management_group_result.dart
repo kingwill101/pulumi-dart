@@ -2,7 +2,7 @@
 
 import 'remediation_deployment_summary_response.dart';
 import 'remediation_filters_response.dart';
-import 'remediation_properties_response_failure_threshold.dart';
+import 'remediation_properties_failure_threshold_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getRemediationAtManagementGroup.
@@ -16,14 +16,14 @@ class GetRemediationAtManagementGroupResult {
   /// The deployment status summary for all deployments created by the remediation.
   final RemediationDeploymentSummaryResponse deploymentStatus;
   /// The remediation failure threshold settings
-  final RemediationPropertiesResponseFailureThreshold? failureThreshold;
+  final RemediationPropertiesFailureThresholdResponse? failureThreshold;
   /// The filters that will be applied to determine which resources to remediate.
   final RemediationFiltersResponse? filters;
-  /// The ID of the remediation.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// The time at which the remediation was last updated.
   final String lastUpdatedOn;
-  /// The name of the remediation.
+  /// The name of the resource
   final String name;
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   final int? parallelDeployments;
@@ -41,7 +41,7 @@ class GetRemediationAtManagementGroupResult {
   final String statusMessage;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// The type of the remediation.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetRemediationAtManagementGroupResult].
@@ -51,9 +51,9 @@ class GetRemediationAtManagementGroupResult {
   /// [deploymentStatus] The deployment status summary for all deployments created by the remediation.
   /// [failureThreshold] The remediation failure threshold settings
   /// [filters] The filters that will be applied to determine which resources to remediate.
-  /// [id] The ID of the remediation.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [lastUpdatedOn] The time at which the remediation was last updated.
-  /// [name] The name of the remediation.
+  /// [name] The name of the resource
   /// [parallelDeployments] Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   /// [policyAssignmentId] The resource ID of the policy assignment that should be remediated.
   /// [policyDefinitionReferenceId] The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
@@ -62,7 +62,7 @@ class GetRemediationAtManagementGroupResult {
   /// [resourceDiscoveryMode] The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
   /// [statusMessage] The remediation status message. Provides additional details regarding the state of the remediation.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  /// [type] The type of the remediation.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetRemediationAtManagementGroupResult({
     required this.azureApiVersion,
     required this.correlationId,
@@ -113,7 +113,7 @@ class GetRemediationAtManagementGroupResult {
       correlationId: map['correlationId'] as String,
       createdOn: map['createdOn'] as String,
       deploymentStatus: RemediationDeploymentSummaryResponse.fromMap((map['deploymentStatus']! as Map).cast<String, dynamic>()),
-      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return RemediationPropertiesResponseFailureThreshold.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return RemediationPropertiesFailureThresholdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return RemediationFiltersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       lastUpdatedOn: map['lastUpdatedOn'] as String,
@@ -130,4 +130,3 @@ class GetRemediationAtManagementGroupResult {
     );
   }
 }
-

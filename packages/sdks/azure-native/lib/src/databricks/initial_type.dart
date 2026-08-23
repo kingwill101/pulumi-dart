@@ -1,7 +1,7 @@
 /// Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
 enum InitialType {
-  valueHiveMetastore("HiveMetastore"),
-  valueUnityCatalog("UnityCatalog");
+  hiveMetastore("HiveMetastore"),
+  unityCatalog("UnityCatalog");
 
   const InitialType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum InitialType {
     throw ArgumentError('Unknown InitialType value: $value');
   }
 }
-

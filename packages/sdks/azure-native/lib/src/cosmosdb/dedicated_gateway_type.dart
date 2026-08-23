@@ -15,4 +15,3 @@ enum DedicatedGatewayType {
     throw ArgumentError('Unknown DedicatedGatewayType value: $value');
   }
 }
-

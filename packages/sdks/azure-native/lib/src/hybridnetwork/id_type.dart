@@ -16,4 +16,3 @@ enum IdType {
     throw ArgumentError('Unknown IdType value: $value');
   }
 }
-

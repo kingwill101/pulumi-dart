@@ -17,4 +17,3 @@ enum IntegrationAccountSkuName {
     throw ArgumentError('Unknown IntegrationAccountSkuName value: $value');
   }
 }
-

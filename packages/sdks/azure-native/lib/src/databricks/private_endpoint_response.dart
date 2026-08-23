@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// The private endpoint property of a private endpoint connection
+/// The private endpoint property of a private endpoint connection.
 class PrivateEndpointResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
@@ -25,4 +25,3 @@ class PrivateEndpointResponse {
     );
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conditional_credit_args.dart';
+import 'contributor_conditional_credit_properties_response.dart';
 import 'managed_service_identity_response.dart';
 import 'plan_response.dart';
 import 'sku_response.dart';
@@ -9,7 +10,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-12-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -26,12 +27,16 @@ import 'system_data_response.dart';
 ///     var conditionalCredit = new AzureNative.BillingBenefits.ConditionalCredit("conditionalCredit", new()
 ///     {
 ///         ConditionalCreditName = "conditionalCredit_contributor_20250801",
-///         DisplayName = "Contributor Conditional Credit 20250801",
-///         EntityType = AzureNative.BillingBenefits.ConditionalCreditEntityType.Contributor,
 ///         Location = "global",
-///         ProductCode = "000187f7-0000-0260-ab43-b8473ce57f1d",
+///         Properties = new AzureNative.BillingBenefits.Inputs.ContributorConditionalCreditPropertiesArgs
+///         {
+///             DisplayName = "Contributor Conditional Credit 20250801",
+///             EntityType = "Contributor",
+///             PrimaryResourceId = "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801",
+///             ProductCode = "000187f7-0000-0260-ab43-b8473ce57f1d",
+///             StartAt = "2025-09-01T00:00:00Z",
+///         },
 ///         ResourceGroupName = "resource_group_name_02",
-///         StartAt = "2025-09-01T00:00:00Z",
 ///         Tags =
 ///         {
 ///             { "environment", "dev" },
@@ -56,12 +61,15 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := billingbenefits.NewConditionalCredit(ctx, "conditionalCredit", &billingbenefits.ConditionalCreditArgs{
 /// 			ConditionalCreditName: pulumi.String("conditionalCredit_contributor_20250801"),
-/// 			DisplayName:           pulumi.String("Contributor Conditional Credit 20250801"),
-/// 			EntityType:            pulumi.String(billingbenefits.ConditionalCreditEntityTypeContributor),
 /// 			Location:              pulumi.String("global"),
-/// 			ProductCode:           pulumi.String("000187f7-0000-0260-ab43-b8473ce57f1d"),
-/// 			ResourceGroupName:     pulumi.String("resource_group_name_02"),
-/// 			StartAt:               pulumi.String("2025-09-01T00:00:00Z"),
+/// 			Properties: &billingbenefits.ContributorConditionalCreditPropertiesArgs{
+/// 				DisplayName:       pulumi.String("Contributor Conditional Credit 20250801"),
+/// 				EntityType:        pulumi.String("Contributor"),
+/// 				PrimaryResourceId: pulumi.String("/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801"),
+/// 				ProductCode:       pulumi.String("000187f7-0000-0260-ab43-b8473ce57f1d"),
+/// 				StartAt:           pulumi.String("2025-09-01T00:00:00Z"),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("resource_group_name_02"),
 /// 			Tags: pulumi.StringMap{
 /// 				"environment": pulumi.String("dev"),
 /// 				"team":        pulumi.String("finance"),
@@ -76,6 +84,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_conditionalcredit" "conditionalCredit" {
+///   conditional_credit_name = "conditionalCredit_contributor_20250801"
+///   location                = "global"
+///   properties = {
+///     "displayName"       = "Contributor Conditional Credit 20250801"
+///     "entityType"        = "Contributor"
+///     "primaryResourceId" = "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801"
+///     "productCode"       = "000187f7-0000-0260-ab43-b8473ce57f1d"
+///     "startAt"           = "2025-09-01T00:00:00Z"
+///   }
+///   resource_group_name = "resource_group_name_02"
+///   tags = {
+///     "environment" = "dev"
+///     "team"        = "finance"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +120,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCredit;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCreditArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -99,12 +135,15 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var conditionalCredit = new ConditionalCredit("conditionalCredit", ConditionalCreditArgs.builder()
 ///             .conditionalCreditName("conditionalCredit_contributor_20250801")
-///             .displayName("Contributor Conditional Credit 20250801")
-///             .entityType("Contributor")
 ///             .location("global")
-///             .productCode("000187f7-0000-0260-ab43-b8473ce57f1d")
+///             .properties(ContributorConditionalCreditPropertiesArgs.builder()
+///                 .displayName("Contributor Conditional Credit 20250801")
+///                 .entityType("Contributor")
+///                 .primaryResourceId("/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801")
+///                 .productCode("000187f7-0000-0260-ab43-b8473ce57f1d")
+///                 .startAt("2025-09-01T00:00:00Z")
+///                 .build())
 ///             .resourceGroupName("resource_group_name_02")
-///             .startAt("2025-09-01T00:00:00Z")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("environment", "dev"),
 ///                 Map.entry("team", "finance")
@@ -122,12 +161,15 @@ import 'system_data_response.dart';
 ///
 /// const conditionalCredit = new azure_native.billingbenefits.ConditionalCredit("conditionalCredit", {
 ///     conditionalCreditName: "conditionalCredit_contributor_20250801",
-///     displayName: "Contributor Conditional Credit 20250801",
-///     entityType: azure_native.billingbenefits.ConditionalCreditEntityType.Contributor,
 ///     location: "global",
-///     productCode: "000187f7-0000-0260-ab43-b8473ce57f1d",
+///     properties: {
+///         displayName: "Contributor Conditional Credit 20250801",
+///         entityType: "Contributor",
+///         primaryResourceId: "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801",
+///         productCode: "000187f7-0000-0260-ab43-b8473ce57f1d",
+///         startAt: "2025-09-01T00:00:00Z",
+///     },
 ///     resourceGroupName: "resource_group_name_02",
-///     startAt: "2025-09-01T00:00:00Z",
 ///     tags: {
 ///         environment: "dev",
 ///         team: "finance",
@@ -142,12 +184,15 @@ import 'system_data_response.dart';
 ///
 /// conditional_credit = azure_native.billingbenefits.ConditionalCredit("conditionalCredit",
 ///     conditional_credit_name="conditionalCredit_contributor_20250801",
-///     display_name="Contributor Conditional Credit 20250801",
-///     entity_type=azure_native.billingbenefits.ConditionalCreditEntityType.CONTRIBUTOR,
 ///     location="global",
-///     product_code="000187f7-0000-0260-ab43-b8473ce57f1d",
+///     properties={
+///         "display_name": "Contributor Conditional Credit 20250801",
+///         "entity_type": "Contributor",
+///         "primary_resource_id": "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801",
+///         "product_code": "000187f7-0000-0260-ab43-b8473ce57f1d",
+///         "start_at": "2025-09-01T00:00:00Z",
+///     },
 ///     resource_group_name="resource_group_name_02",
-///     start_at="2025-09-01T00:00:00Z",
 ///     tags={
 ///         "environment": "dev",
 ///         "team": "finance",
@@ -161,12 +206,14 @@ import 'system_data_response.dart';
 ///     type: azure-native:billingbenefits:ConditionalCredit
 ///     properties:
 ///       conditionalCreditName: conditionalCredit_contributor_20250801
-///       displayName: Contributor Conditional Credit 20250801
-///       entityType: Contributor
 ///       location: global
-///       productCode: 000187f7-0000-0260-ab43-b8473ce57f1d
+///       properties:
+///         displayName: Contributor Conditional Credit 20250801
+///         entityType: Contributor
+///         primaryResourceId: /subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_01/providers/Microsoft.BillingBenefits/conditionalCredits/conditionalCredit_20250801
+///         productCode: 000187f7-0000-0260-ab43-b8473ce57f1d
+///         startAt: 2025-09-01T00:00:00Z
 ///       resourceGroupName: resource_group_name_02
-///       startAt: 2025-09-01T00:00:00Z
 ///       tags:
 ///         environment: dev
 ///         team: finance
@@ -187,12 +234,59 @@ import 'system_data_response.dart';
 ///     var conditionalCredit = new AzureNative.BillingBenefits.ConditionalCredit("conditionalCredit", new()
 ///     {
 ///         ConditionalCreditName = "conditionalCredit_20250801",
-///         DisplayName = "Conditional Credit 20250801",
-///         EntityType = AzureNative.BillingBenefits.ConditionalCreditEntityType.Primary,
 ///         Location = "global",
-///         ProductCode = "000187f7-0000-0260-ab43-b8473ce57f1d",
+///         Properties = new AzureNative.BillingBenefits.Inputs.PrimaryConditionalCreditPropertiesArgs
+///         {
+///             AllowContributors = AzureNative.BillingBenefits.EnablementMode.Enabled,
+///             DisplayName = "Conditional Credit 20250801",
+///             EntityType = "Primary",
+///             Milestones = new[]
+///             {
+///                 new AzureNative.BillingBenefits.Inputs.ConditionalCreditMilestoneArgs
+///                 {
+///                     Award = new AzureNative.BillingBenefits.Inputs.AwardArgs
+///                     {
+///                         Credit = new AzureNative.BillingBenefits.Inputs.CommitmentArgs
+///                         {
+///                             Amount = 5000,
+///                             CurrencyCode = "USD",
+///                             Grain = AzureNative.BillingBenefits.CommitmentGrain.FullTerm,
+///                         },
+///                         Duration = "P3M",
+///                     },
+///                     EndAt = "2025-09-30T23:59:59Z",
+///                     Name = "Milestone 1",
+///                     SpendTarget = new AzureNative.BillingBenefits.Inputs.PriceArgs
+///                     {
+///                         Amount = 50000,
+///                         CurrencyCode = "USD",
+///                     },
+///                 },
+///                 new AzureNative.BillingBenefits.Inputs.ConditionalCreditMilestoneArgs
+///                 {
+///                     Award = new AzureNative.BillingBenefits.Inputs.AwardArgs
+///                     {
+///                         Credit = new AzureNative.BillingBenefits.Inputs.CommitmentArgs
+///                         {
+///                             Amount = 10000,
+///                             CurrencyCode = "USD",
+///                             Grain = AzureNative.BillingBenefits.CommitmentGrain.FullTerm,
+///                         },
+///                         Duration = "P3M",
+///                     },
+///                     EndAt = "2025-12-31T23:59:59Z",
+///                     Name = "Milestone 2",
+///                     SpendTarget = new AzureNative.BillingBenefits.Inputs.PriceArgs
+///                     {
+///                         Amount = 100000,
+///                         CurrencyCode = "USD",
+///                     },
+///                 },
+///             },
+///             ProductCode = "000187f7-0000-0260-ab43-b8473ce57f1d",
+///             StartAt = "2025-07-01T00:00:00Z",
+///         },
 ///         ResourceGroupName = "resource_group_name_01",
-///         StartAt = "2025-07-01T00:00:00Z",
 ///         Tags =
 ///         {
 ///             { "key1", "value1" },
@@ -217,12 +311,49 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := billingbenefits.NewConditionalCredit(ctx, "conditionalCredit", &billingbenefits.ConditionalCreditArgs{
 /// 			ConditionalCreditName: pulumi.String("conditionalCredit_20250801"),
-/// 			DisplayName:           pulumi.String("Conditional Credit 20250801"),
-/// 			EntityType:            pulumi.String(billingbenefits.ConditionalCreditEntityTypePrimary),
 /// 			Location:              pulumi.String("global"),
-/// 			ProductCode:           pulumi.String("000187f7-0000-0260-ab43-b8473ce57f1d"),
-/// 			ResourceGroupName:     pulumi.String("resource_group_name_01"),
-/// 			StartAt:               pulumi.String("2025-07-01T00:00:00Z"),
+/// 			Properties: &billingbenefits.PrimaryConditionalCreditPropertiesArgs{
+/// 				AllowContributors: pulumi.String(billingbenefits.EnablementModeEnabled),
+/// 				DisplayName:       pulumi.String("Conditional Credit 20250801"),
+/// 				EntityType:        pulumi.String("Primary"),
+/// 				Milestones: billingbenefits.ConditionalCreditMilestoneArray{
+/// 					&billingbenefits.ConditionalCreditMilestoneArgs{
+/// 						Award: &billingbenefits.AwardArgs{
+/// 							Credit: &billingbenefits.CommitmentArgs{
+/// 								Amount:       pulumi.Float64(5000),
+/// 								CurrencyCode: pulumi.String("USD"),
+/// 								Grain:        pulumi.String(billingbenefits.CommitmentGrainFullTerm),
+/// 							},
+/// 							Duration: pulumi.String("P3M"),
+/// 						},
+/// 						EndAt: pulumi.String("2025-09-30T23:59:59Z"),
+/// 						Name:  pulumi.String("Milestone 1"),
+/// 						SpendTarget: &billingbenefits.PriceArgs{
+/// 							Amount:       pulumi.Float64(50000),
+/// 							CurrencyCode: pulumi.String("USD"),
+/// 						},
+/// 					},
+/// 					&billingbenefits.ConditionalCreditMilestoneArgs{
+/// 						Award: &billingbenefits.AwardArgs{
+/// 							Credit: &billingbenefits.CommitmentArgs{
+/// 								Amount:       pulumi.Float64(10000),
+/// 								CurrencyCode: pulumi.String("USD"),
+/// 								Grain:        pulumi.String(billingbenefits.CommitmentGrainFullTerm),
+/// 							},
+/// 							Duration: pulumi.String("P3M"),
+/// 						},
+/// 						EndAt: pulumi.String("2025-12-31T23:59:59Z"),
+/// 						Name:  pulumi.String("Milestone 2"),
+/// 						SpendTarget: &billingbenefits.PriceArgs{
+/// 							Amount:       pulumi.Float64(100000),
+/// 							CurrencyCode: pulumi.String("USD"),
+/// 						},
+/// 					},
+/// 				},
+/// 				ProductCode: pulumi.String("000187f7-0000-0260-ab43-b8473ce57f1d"),
+/// 				StartAt:     pulumi.String("2025-07-01T00:00:00Z"),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("resource_group_name_01"),
 /// 			Tags: pulumi.StringMap{
 /// 				"key1": pulumi.String("value1"),
 /// 				"key2": pulumi.String("value2"),
@@ -237,6 +368,65 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_conditionalcredit" "conditionalCredit" {
+///   conditional_credit_name = "conditionalCredit_20250801"
+///   location                = "global"
+///   properties = {
+///     "allowContributors" = "Enabled"
+///     "displayName"       = "Conditional Credit 20250801"
+///     "entityType"        = "Primary"
+///     "milestones" = [{
+///       "award" = {
+///         "credit" = {
+///           "amount"       = 5000
+///           "currencyCode" = "USD"
+///           "grain"        = "FullTerm"
+///         }
+///         "duration" = "P3M"
+///       }
+///       "endAt" = "2025-09-30T23:59:59Z"
+///       "name"  = "Milestone 1"
+///       "spendTarget" = {
+///         "amount"       = 50000
+///         "currencyCode" = "USD"
+///       }
+///       }, {
+///       "award" = {
+///         "credit" = {
+///           "amount"       = 10000
+///           "currencyCode" = "USD"
+///           "grain"        = "FullTerm"
+///         }
+///         "duration" = "P3M"
+///       }
+///       "endAt" = "2025-12-31T23:59:59Z"
+///       "name"  = "Milestone 2"
+///       "spendTarget" = {
+///         "amount"       = 100000
+///         "currencyCode" = "USD"
+///       }
+///     }]
+///     "productCode" = "000187f7-0000-0260-ab43-b8473ce57f1d"
+///     "startAt"     = "2025-07-01T00:00:00Z"
+///   }
+///   resource_group_name = "resource_group_name_01"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +435,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCredit;
 /// import com.pulumi.azurenative.billingbenefits.ConditionalCreditArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,12 +450,48 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var conditionalCredit = new ConditionalCredit("conditionalCredit", ConditionalCreditArgs.builder()
 ///             .conditionalCreditName("conditionalCredit_20250801")
-///             .displayName("Conditional Credit 20250801")
-///             .entityType("Primary")
 ///             .location("global")
-///             .productCode("000187f7-0000-0260-ab43-b8473ce57f1d")
+///             .properties(PrimaryConditionalCreditPropertiesArgs.builder()
+///                 .allowContributors("Enabled")
+///                 .displayName("Conditional Credit 20250801")
+///                 .entityType("Primary")
+///                 .milestones(
+///                     ConditionalCreditMilestoneArgs.builder()
+///                         .award(AwardArgs.builder()
+///                             .credit(CommitmentArgs.builder()
+///                                 .amount(5000.0)
+///                                 .currencyCode("USD")
+///                                 .grain("FullTerm")
+///                                 .build())
+///                             .duration("P3M")
+///                             .build())
+///                         .endAt("2025-09-30T23:59:59Z")
+///                         .name("Milestone 1")
+///                         .spendTarget(PriceArgs.builder()
+///                             .amount(50000.0)
+///                             .currencyCode("USD")
+///                             .build())
+///                         .build(),
+///                     ConditionalCreditMilestoneArgs.builder()
+///                         .award(AwardArgs.builder()
+///                             .credit(CommitmentArgs.builder()
+///                                 .amount(10000.0)
+///                                 .currencyCode("USD")
+///                                 .grain("FullTerm")
+///                                 .build())
+///                             .duration("P3M")
+///                             .build())
+///                         .endAt("2025-12-31T23:59:59Z")
+///                         .name("Milestone 2")
+///                         .spendTarget(PriceArgs.builder()
+///                             .amount(100000.0)
+///                             .currencyCode("USD")
+///                             .build())
+///                         .build())
+///                 .productCode("000187f7-0000-0260-ab43-b8473ce57f1d")
+///                 .startAt("2025-07-01T00:00:00Z")
+///                 .build())
 ///             .resourceGroupName("resource_group_name_01")
-///             .startAt("2025-07-01T00:00:00Z")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("key1", "value1"),
 ///                 Map.entry("key2", "value2")
@@ -283,12 +509,49 @@ import 'system_data_response.dart';
 ///
 /// const conditionalCredit = new azure_native.billingbenefits.ConditionalCredit("conditionalCredit", {
 ///     conditionalCreditName: "conditionalCredit_20250801",
-///     displayName: "Conditional Credit 20250801",
-///     entityType: azure_native.billingbenefits.ConditionalCreditEntityType.Primary,
 ///     location: "global",
-///     productCode: "000187f7-0000-0260-ab43-b8473ce57f1d",
+///     properties: {
+///         allowContributors: azure_native.billingbenefits.EnablementMode.Enabled,
+///         displayName: "Conditional Credit 20250801",
+///         entityType: "Primary",
+///         milestones: [
+///             {
+///                 award: {
+///                     credit: {
+///                         amount: 5000,
+///                         currencyCode: "USD",
+///                         grain: azure_native.billingbenefits.CommitmentGrain.FullTerm,
+///                     },
+///                     duration: "P3M",
+///                 },
+///                 endAt: "2025-09-30T23:59:59Z",
+///                 name: "Milestone 1",
+///                 spendTarget: {
+///                     amount: 50000,
+///                     currencyCode: "USD",
+///                 },
+///             },
+///             {
+///                 award: {
+///                     credit: {
+///                         amount: 10000,
+///                         currencyCode: "USD",
+///                         grain: azure_native.billingbenefits.CommitmentGrain.FullTerm,
+///                     },
+///                     duration: "P3M",
+///                 },
+///                 endAt: "2025-12-31T23:59:59Z",
+///                 name: "Milestone 2",
+///                 spendTarget: {
+///                     amount: 100000,
+///                     currencyCode: "USD",
+///                 },
+///             },
+///         ],
+///         productCode: "000187f7-0000-0260-ab43-b8473ce57f1d",
+///         startAt: "2025-07-01T00:00:00Z",
+///     },
 ///     resourceGroupName: "resource_group_name_01",
-///     startAt: "2025-07-01T00:00:00Z",
 ///     tags: {
 ///         key1: "value1",
 ///         key2: "value2",
@@ -303,12 +566,49 @@ import 'system_data_response.dart';
 ///
 /// conditional_credit = azure_native.billingbenefits.ConditionalCredit("conditionalCredit",
 ///     conditional_credit_name="conditionalCredit_20250801",
-///     display_name="Conditional Credit 20250801",
-///     entity_type=azure_native.billingbenefits.ConditionalCreditEntityType.PRIMARY,
 ///     location="global",
-///     product_code="000187f7-0000-0260-ab43-b8473ce57f1d",
+///     properties={
+///         "allow_contributors": azure_native.billingbenefits.EnablementMode.ENABLED,
+///         "display_name": "Conditional Credit 20250801",
+///         "entity_type": "Primary",
+///         "milestones": [
+///             {
+///                 "award": {
+///                     "credit": {
+///                         "amount": float(5000),
+///                         "currency_code": "USD",
+///                         "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
+///                     },
+///                     "duration": "P3M",
+///                 },
+///                 "end_at": "2025-09-30T23:59:59Z",
+///                 "name": "Milestone 1",
+///                 "spend_target": {
+///                     "amount": float(50000),
+///                     "currency_code": "USD",
+///                 },
+///             },
+///             {
+///                 "award": {
+///                     "credit": {
+///                         "amount": float(10000),
+///                         "currency_code": "USD",
+///                         "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
+///                     },
+///                     "duration": "P3M",
+///                 },
+///                 "end_at": "2025-12-31T23:59:59Z",
+///                 "name": "Milestone 2",
+///                 "spend_target": {
+///                     "amount": float(100000),
+///                     "currency_code": "USD",
+///                 },
+///             },
+///         ],
+///         "product_code": "000187f7-0000-0260-ab43-b8473ce57f1d",
+///         "start_at": "2025-07-01T00:00:00Z",
+///     },
 ///     resource_group_name="resource_group_name_01",
-///     start_at="2025-07-01T00:00:00Z",
 ///     tags={
 ///         "key1": "value1",
 ///         "key2": "value2",
@@ -322,12 +622,37 @@ import 'system_data_response.dart';
 ///     type: azure-native:billingbenefits:ConditionalCredit
 ///     properties:
 ///       conditionalCreditName: conditionalCredit_20250801
-///       displayName: Conditional Credit 20250801
-///       entityType: Primary
 ///       location: global
-///       productCode: 000187f7-0000-0260-ab43-b8473ce57f1d
+///       properties:
+///         allowContributors: Enabled
+///         displayName: Conditional Credit 20250801
+///         entityType: Primary
+///         milestones:
+///           - award:
+///               credit:
+///                 amount: 5000
+///                 currencyCode: USD
+///                 grain: FullTerm
+///               duration: P3M
+///             endAt: 2025-09-30T23:59:59Z
+///             name: Milestone 1
+///             spendTarget:
+///               amount: 50000
+///               currencyCode: USD
+///           - award:
+///               credit:
+///                 amount: 10000
+///                 currencyCode: USD
+///                 grain: FullTerm
+///               duration: P3M
+///             endAt: 2025-12-31T23:59:59Z
+///             name: Milestone 2
+///             spendTarget:
+///               amount: 100000
+///               currencyCode: USD
+///         productCode: 000187f7-0000-0260-ab43-b8473ce57f1d
+///         startAt: 2025-07-01T00:00:00Z
 ///       resourceGroupName: resource_group_name_01
-///       startAt: 2025-07-01T00:00:00Z
 ///       tags:
 ///         key1: value1
 ///         key2: value2
@@ -347,16 +672,6 @@ import 'system_data_response.dart';
 class ConditionalCredit extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Fully-qualified identifier of the benefit under applicable benefit list.
-  late final pulumi.Output<String> benefitResourceId;
-  /// The billing account resource ID
-  late final pulumi.Output<String?> billingAccountResourceId;
-  /// Display name for the conditional credit
-  late final pulumi.Output<String?> displayName;
-  /// End date of the conditional credit (derived from last milestone)
-  late final pulumi.Output<String?> endAt;
-  /// Type of conditional credit entity
-  late final pulumi.Output<String> entityType;
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
   /// Managed service identity (system assigned and/or user assigned identities)
@@ -371,18 +686,10 @@ class ConditionalCredit extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Plan for the resource.
   late final pulumi.Output<PlanResponse?> plan;
-  /// Product code for the conditional credit
-  late final pulumi.Output<String?> productCode;
-  /// The provisioning state of the resource
-  late final pulumi.Output<String> provisioningState;
-  /// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
-  late final pulumi.Output<String?> resourceId;
+  /// Conditional credit properties
+  late final pulumi.Output<ContributorConditionalCreditPropertiesResponse> properties;
   /// The resource model definition representing SKU
   late final pulumi.Output<SkuResponse?> sku;
-  /// Start date of the conditional credit
-  late final pulumi.Output<String?> startAt;
-  /// The status of the conditional credit
-  late final pulumi.Output<String?> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -405,11 +712,6 @@ class ConditionalCredit extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    benefitResourceId = registerOutput<String>('benefitResourceId');
-    billingAccountResourceId = registerOutput<String?>('billingAccountResourceId');
-    displayName = registerOutput<String?>('displayName');
-    endAt = registerOutput<String?>('endAt');
-    entityType = registerOutput<String>('entityType');
     etag = registerOutput<String>('etag');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
@@ -417,12 +719,8 @@ class ConditionalCredit extends pulumi.CustomResource {
     managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
     plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    productCode = registerOutput<String?>('productCode');
-    provisioningState = registerOutput<String>('provisioningState');
-    resourceId = registerOutput<String?>('resourceId');
+    properties = registerOutput<ContributorConditionalCreditPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContributorConditionalCreditPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    startAt = registerOutput<String?>('startAt');
-    status = registerOutput<String?>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

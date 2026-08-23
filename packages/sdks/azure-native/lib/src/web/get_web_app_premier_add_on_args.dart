@@ -11,13 +11,13 @@ class GetWebAppPremierAddOnArgs {
   final pulumi.Input<String> name;
   /// Add-on name.
   final pulumi.Input<String> premierAddOnName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWebAppPremierAddOnArgs].
   /// [name] Name of the app.
   /// [premierAddOnName] Add-on name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetWebAppPremierAddOnArgs({
     required this.name,
     required this.premierAddOnName,
@@ -40,4 +40,3 @@ class GetWebAppPremierAddOnArgs {
     );
   }
 }
-

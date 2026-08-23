@@ -15,4 +15,3 @@ enum CrossRegionRestoreState {
     throw ArgumentError('Unknown CrossRegionRestoreState value: $value');
   }
 }
-

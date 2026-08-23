@@ -15,4 +15,3 @@ enum AzureFirewallSkuName {
     throw ArgumentError('Unknown AzureFirewallSkuName value: $value');
   }
 }
-

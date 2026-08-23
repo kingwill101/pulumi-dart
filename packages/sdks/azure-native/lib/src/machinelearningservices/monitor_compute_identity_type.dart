@@ -1,7 +1,7 @@
 /// [Required] Specifies the type of identity to use within the monitoring jobs.
 enum MonitorComputeIdentityType {
-  valueAmlToken("AmlToken"),
-  valueManagedIdentity("ManagedIdentity");
+  amlToken("AmlToken"),
+  managedIdentity("ManagedIdentity");
 
   const MonitorComputeIdentityType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum MonitorComputeIdentityType {
     throw ArgumentError('Unknown MonitorComputeIdentityType value: $value');
   }
 }
-

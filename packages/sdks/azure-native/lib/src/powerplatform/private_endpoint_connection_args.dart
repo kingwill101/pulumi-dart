@@ -8,7 +8,7 @@ import 'private_link_service_connection_state.dart';
 /// {@endtemplate}
 /// {@macro pulumi_powerplatform_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
-  /// EnterprisePolicy for the Microsoft Azure subscription.
+  /// The EnterprisePolicy name.
   final pulumi.Input<String> enterprisePolicyName;
   /// The name of the private endpoint connection.
   final pulumi.Input<String>? privateEndpointConnectionName;
@@ -18,7 +18,7 @@ class PrivateEndpointConnectionArgs {
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [PrivateEndpointConnectionArgs].
-  /// [enterprisePolicyName] EnterprisePolicy for the Microsoft Azure subscription.
+  /// [enterprisePolicyName] The EnterprisePolicy name.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
@@ -47,4 +47,3 @@ class PrivateEndpointConnectionArgs {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum OperationalMode {
     throw ArgumentError('Unknown OperationalMode value: $value');
   }
 }
-

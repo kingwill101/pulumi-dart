@@ -72,6 +72,31 @@ import 'power_shell72_module_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_powershell72module" "powerShell72Module" {
+///   automation_account_name = "myAutomationAccount33"
+///   content_link = {
+///     content_hash = {
+///       algorithm = "sha265"
+///       value     = "07E108A962B81DD9C9BAA89BB47C0F6EE52B29E83758B07795E408D258B2B87B"
+///     }
+///     uri     = "https://teststorage.blob.core.windows.net/dsccomposite/OmsCompositeResources.zip"
+///     version = "1.0.0.0"
+///   }
+///   module_name         = "OmsCompositeResources"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +107,8 @@ import 'power_shell72_module_args.dart';
 /// import com.pulumi.azurenative.automation.PowerShell72ModuleArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentLinkArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentHashArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

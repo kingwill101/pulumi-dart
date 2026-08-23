@@ -5,6 +5,7 @@ import 'docker.dart';
 import 'endpoint.dart';
 import 'environment_variable.dart';
 import 'image.dart';
+import 'jupyter_kernel_config.dart';
 import 'volume_definition.dart';
 
 /// Specifies the custom service configuration
@@ -17,6 +18,8 @@ class CustomService {
   final pulumi.Input<Map<String, EnvironmentVariable>>? environmentVariables;
   /// Describes the Image Specifications
   final pulumi.Input<Image>? image;
+  /// Describes the jupyter kernel settings for the image if its a custom environment
+  final pulumi.Input<JupyterKernelConfig>? kernel;
   /// Name of the Custom Service
   final pulumi.Input<String>? name;
   /// Configuring the volumes for the container
@@ -27,6 +30,7 @@ class CustomService {
   /// [endpoints] Configuring the endpoints for the container
   /// [environmentVariables] Environment Variable for the container
   /// [image] Describes the Image Specifications
+  /// [kernel] Describes the jupyter kernel settings for the image if its a custom environment
   /// [name] Name of the Custom Service
   /// [volumes] Configuring the volumes for the container
   const CustomService({
@@ -34,6 +38,7 @@ class CustomService {
     this.endpoints,
     this.environmentVariables,
     this.image,
+    this.kernel,
     this.name,
     this.volumes,
   });
@@ -44,6 +49,7 @@ class CustomService {
       'endpoints': ?pulumi.Input.mapOptionalInputValue<List<Endpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<Endpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'environmentVariables': ?pulumi.Input.mapOptionalInputValue<Map<String, EnvironmentVariable>, Map<String, Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeMapValues<EnvironmentVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': ?pulumi.Input.mapOptionalInputValue<Image, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'kernel': ?pulumi.Input.mapOptionalInputValue<JupyterKernelConfig, Map<String, dynamic>>(kernel, (value) => value.toMap()),
       'name': ?name,
       'volumes': ?pulumi.Input.mapOptionalInputValue<List<VolumeDefinition>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -55,9 +61,9 @@ class CustomService {
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Endpoint>(guardedValue, (value) => Endpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<EnvironmentVariable>(guardedValue, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Image.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kernel: (() { final guardedValue = map['kernel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JupyterKernelConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeDefinition>(guardedValue, (value) => VolumeDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

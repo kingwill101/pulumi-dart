@@ -3,6 +3,7 @@
 import 'day_details_response.dart';
 import 'hour_details_response.dart';
 import 'notification_settings_response.dart';
+import 'system_data_response.dart';
 import 'week_details_response.dart';
 
 /// Result data returned by getSchedule.
@@ -15,11 +16,11 @@ class GetScheduleResult {
   final DayDetailsResponse? dailyRecurrence;
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
   final HourDetailsResponse? hourlyRecurrence;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final String? location;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// Notification settings.
   final NotificationSettingsResponse? notificationSettings;
@@ -27,7 +28,9 @@ class GetScheduleResult {
   final String provisioningState;
   /// The status of the schedule (i.e. Enabled, Disabled)
   final String? status;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
   /// The resource ID to which the schedule belongs
   final String? targetResourceId;
@@ -35,7 +38,7 @@ class GetScheduleResult {
   final String? taskType;
   /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
   final String? timeZoneId;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -47,17 +50,18 @@ class GetScheduleResult {
   /// [createdDate] The creation date of the schedule.
   /// [dailyRecurrence] If the schedule will occur once each day of the week, specify the daily recurrence.
   /// [hourlyRecurrence] If the schedule will occur multiple times a day, specify the hourly recurrence.
-  /// [id] The identifier of the resource.
-  /// [location] The location of the resource.
-  /// [name] The name of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [notificationSettings] Notification settings.
   /// [provisioningState] The provisioning status of the resource.
   /// [status] The status of the schedule (i.e. Enabled, Disabled)
-  /// [tags] The tags of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
   /// [targetResourceId] The resource ID to which the schedule belongs
   /// [taskType] The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
   /// [timeZoneId] The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
-  /// [type] The type of the resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [weeklyRecurrence] If the schedule will occur only some days of the week, specify the weekly recurrence.
   const GetScheduleResult({
@@ -71,6 +75,7 @@ class GetScheduleResult {
     this.notificationSettings,
     required this.provisioningState,
     this.status,
+    required this.systemData,
     this.tags,
     this.targetResourceId,
     this.taskType,
@@ -92,6 +97,7 @@ class GetScheduleResult {
       'notificationSettings': ?notificationSettings?.toMap(),
       'provisioningState': provisioningState,
       'status': ?status,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'targetResourceId': ?targetResourceId,
       'taskType': ?taskType,
@@ -114,6 +120,7 @@ class GetScheduleResult {
       notificationSettings: (() { final guardedValue = map['notificationSettings']; if (guardedValue == null) return null; return NotificationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       taskType: (() { final guardedValue = map['taskType']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -124,4 +131,3 @@ class GetScheduleResult {
     );
   }
 }
-

@@ -21,4 +21,3 @@ enum Threats {
     throw ArgumentError('Unknown Threats value: $value');
   }
 }
-

@@ -83,4 +83,3 @@ class ServiceNowV2ObjectDataset {
     );
   }
 }
-

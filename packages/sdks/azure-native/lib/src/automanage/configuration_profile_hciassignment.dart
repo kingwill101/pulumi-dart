@@ -64,6 +64,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automanage_configurationprofilehciassignment" "configurationProfileHCIAssignment" {
+///   cluster_name                          = "myClusterName"
+///   configuration_profile_assignment_name = "default"
+///   properties = {
+///     configuration_profile = "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+///   }
+///   resource_group_name = "myResourceGroupName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.automanage.ConfigurationProfileHCIAssignment;
 /// import com.pulumi.azurenative.automanage.ConfigurationProfileHCIAssignmentArgs;
 /// import com.pulumi.azurenative.automanage.inputs.ConfigurationProfileAssignmentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

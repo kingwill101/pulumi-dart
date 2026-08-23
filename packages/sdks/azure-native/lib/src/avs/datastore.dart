@@ -68,6 +68,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_datastore" "datastore" {
+///   cluster_name   = "cluster1"
+///   datastore_name = "datastore1"
+///   net_app_volume = {
+///     id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1"
+///   }
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +98,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.avs.Datastore;
 /// import com.pulumi.azurenative.avs.DatastoreArgs;
 /// import com.pulumi.azurenative.avs.inputs.NetAppVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

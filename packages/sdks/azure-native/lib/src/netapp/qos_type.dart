@@ -15,4 +15,3 @@ enum QosType {
     throw ArgumentError('Unknown QosType value: $value');
   }
 }
-

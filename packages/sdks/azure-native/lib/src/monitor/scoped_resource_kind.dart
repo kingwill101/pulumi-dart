@@ -1,7 +1,7 @@
 /// The kind of scoped Azure monitor resource.
 enum ScopedResourceKind {
-  valueResource("Resource"),
-  valueMetrics("Metrics");
+  resource("Resource"),
+  metrics("Metrics");
 
   const ScopedResourceKind(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ScopedResourceKind {
     throw ArgumentError('Unknown ScopedResourceKind value: $value');
   }
 }
-

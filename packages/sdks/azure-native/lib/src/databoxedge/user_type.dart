@@ -16,4 +16,3 @@ enum UserType {
     throw ArgumentError('Unknown UserType value: $value');
   }
 }
-

@@ -14,14 +14,14 @@ class WebAppAzureStorageAccountsArgs {
   final pulumi.Input<String> name;
   /// Azure storage accounts.
   final pulumi.Input<Map<String, AzureStorageInfoValue>>? properties;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [WebAppAzureStorageAccountsArgs].
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [properties] Azure storage accounts.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const WebAppAzureStorageAccountsArgs({
     this.kind,
     required this.name,
@@ -47,4 +47,3 @@ class WebAppAzureStorageAccountsArgs {
     );
   }
 }
-

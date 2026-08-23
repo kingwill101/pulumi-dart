@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
 ///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -89,6 +91,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_migrationentity" "migrationEntity" {
+///   migration_entity_name = "myMigrationEntityName"
+///   project_name          = "myProjectName"
+///   properties = {
+///     assessed_entity_arm_id                = "dihnjnc"
+///     associated_assessment_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Migrate/assessmentprojects/myAssessmentproject/assessments/myAssessment"
+///     associated_inventory_resource_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.OffAzure/VMwareSites/myVMwareSite/vmwareMachines/myDiscoveredVM"
+///     associated_migration_entity_group_ids = ["/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/MyResourceGroup/providers/Microsoft.Migrate/migrateProjects/MyMigrateProject/migrationEntityGroups/myMygrationEntityGroup"]
+///     associated_wave_id                    = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/MyResourceGroup/providers/Microsoft.Migrate/migrateProjects/MyMigrateProject/waves/myWave"
+///     inventory_display_name                = "ywdewqxixfxzgzkkv"
+///     migration_path                        = "PaaSPreferred"
+///     migration_specific_properties         = {}
+///     migration_tool                        = "Server Migration Agentless"
+///     partner_resource_arm_id               = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.RecoveryServices/vaults/MyRecoveryVault/replicationFabrics/HyperVSite/replicationProtectionContainers/HyperVContainer/replicationProtectedItems/MyVM"
+///     target                                = "AzureVM"
+///     target_azure_resource_arm_id          = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+///   }
+///   resource_group_name = "rgwaves"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +132,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.MigrationEntityArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MigrationEntityPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ServerMigrationSpecificPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

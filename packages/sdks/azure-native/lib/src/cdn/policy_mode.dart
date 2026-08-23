@@ -15,4 +15,3 @@ enum PolicyMode {
     throw ArgumentError('Unknown PolicyMode value: $value');
   }
 }
-

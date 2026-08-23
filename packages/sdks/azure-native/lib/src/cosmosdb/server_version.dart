@@ -20,4 +20,3 @@ enum ServerVersion {
     throw ArgumentError('Unknown ServerVersion value: $value');
   }
 }
-

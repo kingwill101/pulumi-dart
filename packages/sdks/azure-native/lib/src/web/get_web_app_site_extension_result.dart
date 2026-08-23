@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppSiteExtension.
 class GetWebAppSiteExtensionResult {
@@ -23,7 +24,7 @@ class GetWebAppSiteExtensionResult {
   final String? feedUrl;
   /// Icon URL.
   final String? iconUrl;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Installed timestamp.
   final String? installedDateTime;
@@ -37,7 +38,7 @@ class GetWebAppSiteExtensionResult {
   final bool? localIsLatestVersion;
   /// Local path.
   final String? localPath;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Project URL.
   final String? projectUrl;
@@ -47,8 +48,10 @@ class GetWebAppSiteExtensionResult {
   final String? publishedDateTime;
   /// Summary description.
   final String? summary;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   final String? title;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Version information.
   final String? version;
@@ -64,20 +67,21 @@ class GetWebAppSiteExtensionResult {
   /// [extensionUrl] Extension URL.
   /// [feedUrl] Feed URL.
   /// [iconUrl] Icon URL.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [installedDateTime] Installed timestamp.
   /// [installerCommandLineParams] Installer command line parameters.
   /// [kind] Kind of resource.
   /// [licenseUrl] License URL.
   /// [localIsLatestVersion] &lt;code&gt;true&lt;/code&gt; if the local version is the latest version; &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [localPath] Local path.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [projectUrl] Project URL.
   /// [provisioningState] Provisioning state.
   /// [publishedDateTime] Published timestamp.
   /// [summary] Summary description.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [title] Optional.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version information.
   const GetWebAppSiteExtensionResult({
     this.authors,
@@ -102,6 +106,7 @@ class GetWebAppSiteExtensionResult {
     this.provisioningState,
     this.publishedDateTime,
     this.summary,
+    required this.systemData,
     this.title,
     required this.type,
     this.version,
@@ -131,6 +136,7 @@ class GetWebAppSiteExtensionResult {
       'provisioningState': ?provisioningState,
       'publishedDateTime': ?publishedDateTime,
       'summary': ?summary,
+      'systemData': systemData.toMap(),
       'title': ?title,
       'type': type,
       'version': ?version,
@@ -161,10 +167,10 @@ class GetWebAppSiteExtensionResult {
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishedDateTime: (() { final guardedValue = map['publishedDateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
-

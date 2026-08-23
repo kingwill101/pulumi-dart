@@ -15,4 +15,3 @@ enum DisableBgpRoutePropagation {
     throw ArgumentError('Unknown DisableBgpRoutePropagation value: $value');
   }
 }
-

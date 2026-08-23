@@ -15,4 +15,3 @@ enum ProximityPlacementGroupType {
     throw ArgumentError('Unknown ProximityPlacementGroupType value: $value');
   }
 }
-

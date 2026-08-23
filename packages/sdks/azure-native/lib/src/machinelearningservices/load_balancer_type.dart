@@ -1,7 +1,7 @@
 /// Load Balancer Type
 enum LoadBalancerType {
-  valuePublicIp("PublicIp"),
-  valueInternalLoadBalancer("InternalLoadBalancer");
+  publicIp("PublicIp"),
+  internalLoadBalancer("InternalLoadBalancer");
 
   const LoadBalancerType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum LoadBalancerType {
     throw ArgumentError('Unknown LoadBalancerType value: $value');
   }
 }
-

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dataset reference type.
 class DatasetReferenceResponse {
   /// Arguments for dataset.
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<dynamic>? parameters;
   /// Reference dataset name.
   final pulumi.Input<String> referenceName;
   /// Dataset reference type.
@@ -31,10 +31,9 @@ class DatasetReferenceResponse {
 
   factory DatasetReferenceResponse.fromMap(Map<String, dynamic> map) {
     return DatasetReferenceResponse(
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

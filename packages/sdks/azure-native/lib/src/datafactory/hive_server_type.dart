@@ -1,8 +1,8 @@
 /// The type of Hive server.
 enum HiveServerType {
-  valueHiveServer1("HiveServer1"),
-  valueHiveServer2("HiveServer2"),
-  valueHiveThriftServer("HiveThriftServer");
+  hiveServer1("HiveServer1"),
+  hiveServer2("HiveServer2"),
+  hiveThriftServer("HiveThriftServer");
 
   const HiveServerType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum HiveServerType {
     throw ArgumentError('Unknown HiveServerType value: $value');
   }
 }
-

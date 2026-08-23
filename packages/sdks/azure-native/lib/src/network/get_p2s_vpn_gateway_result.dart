@@ -112,4 +112,3 @@ class GetP2sVpnGatewayResult {
     );
   }
 }
-

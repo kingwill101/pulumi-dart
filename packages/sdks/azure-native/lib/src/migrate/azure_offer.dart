@@ -24,4 +24,3 @@ enum AzureOffer {
     throw ArgumentError('Unknown AzureOffer value: $value');
   }
 }
-

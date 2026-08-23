@@ -14,7 +14,7 @@ class RoleManagementPolicyArgs {
   final pulumi.Input<String>? displayName;
   /// The role management policy is default policy.
   final pulumi.Input<bool>? isOrganizationDefault;
-  /// The name (guid) of the role management policy to upsert.
+  /// The name (guid) of the role management policy to get.
   final pulumi.Input<String>? roleManagementPolicyName;
   /// The rule applied to the policy.
   final pulumi.Input<List<RoleManagementPolicyApprovalRule>>? rules;
@@ -25,7 +25,7 @@ class RoleManagementPolicyArgs {
   /// [description] The role management policy description.
   /// [displayName] The role management policy display name.
   /// [isOrganizationDefault] The role management policy is default policy.
-  /// [roleManagementPolicyName] The name (guid) of the role management policy to upsert.
+  /// [roleManagementPolicyName] The name (guid) of the role management policy to get.
   /// [rules] The rule applied to the policy.
   /// [scope] The role management policy scope.
   const RoleManagementPolicyArgs({
@@ -59,4 +59,3 @@ class RoleManagementPolicyArgs {
     );
   }
 }
-

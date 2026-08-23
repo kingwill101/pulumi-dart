@@ -15,4 +15,3 @@ enum UserRuleKind {
     throw ArgumentError('Unknown UserRuleKind value: $value');
   }
 }
-

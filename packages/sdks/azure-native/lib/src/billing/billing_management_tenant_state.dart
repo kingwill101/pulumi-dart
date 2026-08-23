@@ -1,9 +1,9 @@
 /// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
 enum BillingManagementTenantState {
-  valueOther("Other"),
-  valueNotAllowed("NotAllowed"),
-  valueActive("Active"),
-  valueRevoked("Revoked");
+  other("Other"),
+  notAllowed("NotAllowed"),
+  active("Active"),
+  revoked("Revoked");
 
   const BillingManagementTenantState(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum BillingManagementTenantState {
     throw ArgumentError('Unknown BillingManagementTenantState value: $value');
   }
 }
-

@@ -79,4 +79,3 @@ class X12ValidationSettings {
     );
   }
 }
-

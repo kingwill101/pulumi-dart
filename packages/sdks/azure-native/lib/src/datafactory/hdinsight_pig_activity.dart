@@ -11,7 +11,7 @@ class HDInsightPigActivity {
   /// User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).
   final pulumi.Input<dynamic>? arguments;
   /// Allows user to specify defines for Pig job request.
-  final pulumi.Input<Map<String, dynamic>>? defines;
+  final pulumi.Input<dynamic>? defines;
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
@@ -97,7 +97,7 @@ class HDInsightPigActivity {
   factory HDInsightPigActivity.fromMap(Map<String, dynamic> map) {
     return HDInsightPigActivity(
       arguments: (() { final guardedValue = map['arguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       getDebugInfo: (() { final guardedValue = map['getDebugInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -114,4 +114,3 @@ class HDInsightPigActivity {
     );
   }
 }
-

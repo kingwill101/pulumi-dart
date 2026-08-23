@@ -41,6 +41,7 @@ import 'system_data_response.dart';
 ///                         {
 ///                             new AzureNative.AwsConnector.Inputs.DimensionArgs
 ///                             {
+///                                 Key = "aevchjwu",
 ///                                 Value = "rosnaljwmrdesiticsc",
 ///                             },
 ///                         },
@@ -97,6 +98,7 @@ import 'system_data_response.dart';
 /// 							DefaultValue: pulumi.Int(7),
 /// 							Dimensions: awsconnector.DimensionArray{
 /// 								&awsconnector.DimensionArgs{
+/// 									Key:   pulumi.String("aevchjwu"),
 /// 									Value: pulumi.String("rosnaljwmrdesiticsc"),
 /// 								},
 /// 							},
@@ -129,6 +131,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_logsmetricfilter" "logsMetricFilter" {
+///   location = "hvjoetfjcwqioibnqqj"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "cjjfhzeoyddkfmdmwsl"
+///     aws_account_id = "z"
+///     aws_properties = {
+///       filter_name    = "xexgsguaaqmkiteqgc"
+///       filter_pattern = "xkejasx"
+///       log_group_name = "cugxyp"
+///       metric_transformations = [{
+///         "defaultValue" = 7
+///         "dimensions" = [{
+///           "key"   = "aevchjwu"
+///           "value" = "rosnaljwmrdesiticsc"
+///         }]
+///         "metricName"      = "oybfr"
+///         "metricNamespace" = "iabzdcxljvduduha"
+///         "metricValue"     = "rpkrrqxywciyvedsvrlbujqjenrlpr"
+///         "unit"            = "Bits"
+///       }]
+///     }
+///     aws_region        = "qjqubwwtlycfy"
+///     aws_source_schema = "tekgcey"
+///     aws_tags = {
+///       "key5547" = "bdcrhaondaponausevadhudvvfitd"
+///     }
+///     public_cloud_connectors_resource_id = "dabxbsdvufxltivnlbpft"
+///     public_cloud_resource_name          = "ljjatut"
+///   }
+///   resource_group_name = "rglogsMetricFilter"
+///   tags = {
+///     "key5537" = "lpylvddirnglehlucv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +188,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LogsMetricFilterArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsMetricFilterPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLogsMetricFilterPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,6 +214,7 @@ import 'system_data_response.dart';
 ///                     .metricTransformations(MetricTransformationArgs.builder()
 ///                         .defaultValue(7)
 ///                         .dimensions(DimensionArgs.builder()
+///                             .key("aevchjwu")
 ///                             .value("rosnaljwmrdesiticsc")
 ///                             .build())
 ///                         .metricName("oybfr")
@@ -205,6 +255,7 @@ import 'system_data_response.dart';
 ///             metricTransformations: [{
 ///                 defaultValue: 7,
 ///                 dimensions: [{
+///                     key: "aevchjwu",
 ///                     value: "rosnaljwmrdesiticsc",
 ///                 }],
 ///                 metricName: "oybfr",
@@ -246,6 +297,7 @@ import 'system_data_response.dart';
 ///             "metric_transformations": [{
 ///                 "default_value": 7,
 ///                 "dimensions": [{
+///                     "key": "aevchjwu",
 ///                     "value": "rosnaljwmrdesiticsc",
 ///                 }],
 ///                 "metric_name": "oybfr",
@@ -286,7 +338,8 @@ import 'system_data_response.dart';
 ///           metricTransformations:
 ///             - defaultValue: 7
 ///               dimensions:
-///                 - value: rosnaljwmrdesiticsc
+///                 - key: aevchjwu
+///                   value: rosnaljwmrdesiticsc
 ///               metricName: oybfr
 ///               metricNamespace: iabzdcxljvduduha
 ///               metricValue: rpkrrqxywciyvedsvrlbujqjenrlpr

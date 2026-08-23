@@ -1,8 +1,8 @@
 /// Isolation mode for the managed network of a machine learning workspace.
 enum IsolationMode {
-  valueDisabled("Disabled"),
-  valueAllowInternetOutbound("AllowInternetOutbound"),
-  valueAllowOnlyApprovedOutbound("AllowOnlyApprovedOutbound");
+  disabled("Disabled"),
+  allowInternetOutbound("AllowInternetOutbound"),
+  allowOnlyApprovedOutbound("AllowOnlyApprovedOutbound");
 
   const IsolationMode(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum IsolationMode {
     throw ArgumentError('Unknown IsolationMode value: $value');
   }
 }
-

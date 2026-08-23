@@ -15,4 +15,3 @@ enum TokenPasswordName {
     throw ArgumentError('Unknown TokenPasswordName value: $value');
   }
 }
-

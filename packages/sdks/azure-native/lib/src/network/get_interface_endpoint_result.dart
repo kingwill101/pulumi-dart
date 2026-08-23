@@ -2,8 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_service_response.dart';
-import 'network_interface_response.dart';
-import 'subnet_response.dart';
+import 'network_interface_interface_endpoint_response.dart';
+import 'subnet_interface_endpoint_response.dart';
 
 /// Result data returned by getInterfaceEndpoint.
 class GetInterfaceEndpointResult {
@@ -22,13 +22,13 @@ class GetInterfaceEndpointResult {
   /// Resource name.
   final String name;
   /// Gets an array of references to the network interfaces created for this interface endpoint.
-  final List<NetworkInterfaceResponse> networkInterfaces;
+  final List<NetworkInterfaceInterfaceEndpointResponse> networkInterfaces;
   /// A read-only property that identifies who created this interface endpoint.
   final String owner;
   /// The provisioning state of the interface endpoint. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   final String provisioningState;
   /// The ID of the subnet from which the private IP will be allocated.
-  final SubnetResponse? subnet;
+  final SubnetInterfaceEndpointResponse? subnet;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
@@ -73,7 +73,7 @@ class GetInterfaceEndpointResult {
       'id': ?id,
       'location': ?location,
       'name': name,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceInterfaceEndpointResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
       'owner': owner,
       'provisioningState': provisioningState,
       'subnet': ?subnet?.toMap(),
@@ -91,13 +91,12 @@ class GetInterfaceEndpointResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces']!, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceInterfaceEndpointResponse>(map['networkInterfaces']!, (value) => NetworkInterfaceInterfaceEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
       owner: map['owner'] as String,
       provisioningState: map['provisioningState'] as String,
-      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return SubnetInterfaceEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

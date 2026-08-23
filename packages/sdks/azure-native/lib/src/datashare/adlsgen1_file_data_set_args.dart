@@ -77,4 +77,3 @@ class ADLSGen1FileDataSetArgs {
     );
   }
 }
-

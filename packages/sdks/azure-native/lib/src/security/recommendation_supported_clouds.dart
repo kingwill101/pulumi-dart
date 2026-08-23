@@ -1,8 +1,8 @@
 /// The cloud that the recommendation is supported on.
 enum RecommendationSupportedClouds {
-  valueAzure("Azure"),
-  valueAWS("AWS"),
-  valueGCP("GCP");
+  azure("Azure"),
+  aWS("AWS"),
+  gCP("GCP");
 
   const RecommendationSupportedClouds(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum RecommendationSupportedClouds {
     throw ArgumentError('Unknown RecommendationSupportedClouds value: $value');
   }
 }
-

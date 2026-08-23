@@ -1,9 +1,9 @@
 /// The redirect type the rule will use when redirecting traffic.
 enum FrontDoorRedirectType {
-  valueMoved("Moved"),
-  valueFound("Found"),
-  valueTemporaryRedirect("TemporaryRedirect"),
-  valuePermanentRedirect("PermanentRedirect");
+  moved("Moved"),
+  found("Found"),
+  temporaryRedirect("TemporaryRedirect"),
+  permanentRedirect("PermanentRedirect");
 
   const FrontDoorRedirectType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum FrontDoorRedirectType {
     throw ArgumentError('Unknown FrontDoorRedirectType value: $value');
   }
 }
-

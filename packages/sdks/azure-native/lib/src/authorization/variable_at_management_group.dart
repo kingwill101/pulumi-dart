@@ -6,7 +6,7 @@ import 'variable_at_management_group_args.dart';
 ///
 /// Uses Azure REST API version 2022-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01-preview.
 ///
-/// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -66,6 +66,25 @@ import 'variable_at_management_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_variableatmanagementgroup" "variableAtManagementGroup" {
+///   columns {
+///     column_name = "TestColumn"
+///   }
+///   management_group_id = "DevOrg"
+///   variable_name       = "DemoTestVariable"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +94,8 @@ import 'variable_at_management_group_args.dart';
 /// import com.pulumi.azurenative.authorization.VariableAtManagementGroup;
 /// import com.pulumi.azurenative.authorization.VariableAtManagementGroupArgs;
 /// import com.pulumi.azurenative.authorization.inputs.PolicyVariableColumnArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

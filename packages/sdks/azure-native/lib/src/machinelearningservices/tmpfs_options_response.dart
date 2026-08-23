@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Describes the tmpfs options for the container
 class TmpfsOptionsResponse {
   /// Mention the Tmpfs size
   final pulumi.Input<int>? size;
@@ -25,4 +24,3 @@ class TmpfsOptionsResponse {
     );
   }
 }
-

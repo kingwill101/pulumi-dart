@@ -15,4 +15,3 @@ enum OperatorScopeType {
     throw ArgumentError('Unknown OperatorScopeType value: $value');
   }
 }
-

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'credentials_response.dart';
-import 'proxy_resource_response_system_data.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getKafkaConfiguration.
 class GetKafkaConfigurationResult {
@@ -13,6 +13,7 @@ class GetKafkaConfigurationResult {
   final CredentialsResponse? credentials;
   /// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
   final String? eventHubPartitionId;
+  /// A type definition that refers the id to an Azure Resource Manager resource.
   final String? eventHubResourceId;
   /// The event hub type.
   final String? eventHubType;
@@ -20,13 +21,13 @@ class GetKafkaConfigurationResult {
   final String? eventStreamingState;
   /// The event streaming service type
   final String? eventStreamingType;
-  /// Gets or sets the identifier.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// Gets or sets the name.
+  /// The name of the resource
   final String name;
-  /// Metadata pertaining to creation and last modification of the resource.
-  final ProxyResourceResponseSystemData systemData;
-  /// Gets or sets the type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetKafkaConfigurationResult].
@@ -34,14 +35,14 @@ class GetKafkaConfigurationResult {
   /// [consumerGroup] Consumer group for hook event hub.
   /// [credentials] Credentials to access the event streaming service attached to the purview account.
   /// [eventHubPartitionId] Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
-  /// [eventHubResourceId] Optional.
+  /// [eventHubResourceId] A type definition that refers the id to an Azure Resource Manager resource.
   /// [eventHubType] The event hub type.
   /// [eventStreamingState] The state of the event streaming service
   /// [eventStreamingType] The event streaming service type
-  /// [id] Gets or sets the identifier.
-  /// [name] Gets or sets the name.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
-  /// [type] Gets or sets the type.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [name] The name of the resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetKafkaConfigurationResult({
     required this.azureApiVersion,
     this.consumerGroup,
@@ -86,9 +87,8 @@ class GetKafkaConfigurationResult {
       eventStreamingType: (() { final guardedValue = map['eventStreamingType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: ProxyResourceResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

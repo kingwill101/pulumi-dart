@@ -8,28 +8,32 @@ class NoneAuthTypeConnectionProperties {
   final pulumi.Input<String> authType;
   /// Category of the connection
   final pulumi.Input<String>? category;
+  /// Provides the error message if the connection fails
   final pulumi.Input<String>? error;
   final pulumi.Input<String>? expiryTime;
   final pulumi.Input<bool>? isSharedToAll;
   /// Store user metadata for this connection
   final pulumi.Input<Map<String, String>>? metadata;
+  /// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
   final pulumi.Input<String>? peRequirement;
+  /// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
   final pulumi.Input<String>? peStatus;
   final pulumi.Input<List<String>>? sharedUserList;
+  /// The connection URL to be used.
   final pulumi.Input<String>? target;
   final pulumi.Input<bool>? useWorkspaceManagedIdentity;
 
   /// Creates a new [NoneAuthTypeConnectionProperties].
   /// [authType] Authentication type of the connection target
   /// [category] Category of the connection
-  /// [error] Optional.
+  /// [error] Provides the error message if the connection fails
   /// [expiryTime] Optional.
   /// [isSharedToAll] Optional.
   /// [metadata] Store user metadata for this connection
-  /// [peRequirement] Optional.
-  /// [peStatus] Optional.
+  /// [peRequirement] Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+  /// [peStatus] Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
   /// [sharedUserList] Optional.
-  /// [target] Optional.
+  /// [target] The connection URL to be used.
   /// [useWorkspaceManagedIdentity] Optional.
   const NoneAuthTypeConnectionProperties({
     required this.authType,
@@ -77,4 +81,3 @@ class NoneAuthTypeConnectionProperties {
     );
   }
 }
-

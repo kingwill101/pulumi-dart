@@ -12,7 +12,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-12-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -83,6 +83,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_macc" "macc" {
+///   end_at              = "2024-07-01T00:00:00Z"
+///   entity_type         = "Contributor"
+///   location            = "global"
+///   macc_name           = "macc_contributor_20230614"
+///   primary_resource_id = "/subscriptions/10000000-0000-0000-0000-000000000000/resourceGroups/resource_group_name_02/providers/Microsoft.BillingBenefits/maccs/macc_20230614"
+///   product_code        = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///   resource_group_name = "resource_group_name_01"
+///   start_at            = "2023-07-01T00:00:00Z"
+///   system_id           = "13810867107109237"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +118,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.billingbenefits.Macc;
 /// import com.pulumi.azurenative.billingbenefits.MaccArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -306,6 +333,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_macc" "macc" {
+///   allow_contributors = true
+///   commitment = {
+///     amount        = 20000
+///     currency_code = "USD"
+///     grain         = "FullTerm"
+///   }
+///   display_name = "macc 20230614"
+///   end_at       = "2028-05-01T23:59:59Z"
+///   entity_type  = "Primary"
+///   location     = "global"
+///   macc_name    = "macc_20230614"
+///   milestones {
+///     commitment = {
+///       amount        = 10000
+///       currency_code = "USD"
+///     }
+///     end_at = "2026-05-31T23:59:59Z"
+///   }
+///   milestones {
+///     commitment = {
+///       amount        = 15000
+///       currency_code = "USD"
+///     }
+///     end_at = "2027-05-31T23:59:59Z"
+///   }
+///   product_code        = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///   resource_group_name = "resource_group_name_01"
+///   start_at            = "2025-05-01T00:00:00Z"
+///   system_id           = "13810867107109237"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +391,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billingbenefits.inputs.CommitmentArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.MaccMilestoneArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.PriceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,7 +497,7 @@ import 'system_data_response.dart';
 /// macc = azure_native.billingbenefits.Macc("macc",
 ///     allow_contributors=True,
 ///     commitment={
-///         "amount": 20000,
+///         "amount": float(20000),
 ///         "currency_code": "USD",
 ///         "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
 ///     },
@@ -435,14 +509,14 @@ import 'system_data_response.dart';
 ///     milestones=[
 ///         {
 ///             "commitment": {
-///                 "amount": 10000,
+///                 "amount": float(10000),
 ///                 "currency_code": "USD",
 ///             },
 ///             "end_at": "2026-05-31T23:59:59Z",
 ///         },
 ///         {
 ///             "commitment": {
-///                 "amount": 15000,
+///                 "amount": float(15000),
 ///                 "currency_code": "USD",
 ///             },
 ///             "end_at": "2027-05-31T23:59:59Z",
@@ -574,6 +648,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billingbenefits_macc" "macc" {
+///   allow_contributors = true
+///   commitment = {
+///     amount        = 20000
+///     currency_code = "USD"
+///     grain         = "FullTerm"
+///   }
+///   display_name        = "macc 20230614"
+///   end_at              = "2024-07-01T00:00:00Z"
+///   entity_type         = "Primary"
+///   location            = "global"
+///   macc_name           = "macc_20230614"
+///   product_code        = "0001d726-0000-0160-330f-a0b98cdbbdc4"
+///   resource_group_name = "resource_group_name_01"
+///   start_at            = "2023-07-01T00:00:00Z"
+///   system_id           = "13810867107109237"
+///   tags = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -583,8 +690,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billingbenefits.Macc;
 /// import com.pulumi.azurenative.billingbenefits.MaccArgs;
 /// import com.pulumi.azurenative.billingbenefits.inputs.CommitmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -658,7 +765,7 @@ import 'system_data_response.dart';
 /// macc = azure_native.billingbenefits.Macc("macc",
 ///     allow_contributors=True,
 ///     commitment={
-///         "amount": 20000,
+///         "amount": float(20000),
 ///         "currency_code": "USD",
 ///         "grain": azure_native.billingbenefits.CommitmentGrain.FULL_TERM,
 ///     },

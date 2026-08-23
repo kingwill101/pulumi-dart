@@ -74,6 +74,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_profileagent" "profileAgent" {
+///   agent_name = "agent1"
+///   custom_domains {
+///     id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customDomains/mydomain.com"
+///   }
+///   profile_name        = "profile1"
+///   resource_group_name = "RG"
+///   web_agent = {
+///     id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/RG/providers/Microsoft.Cdn/webAgents/webagent1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.ProfileAgent;
 /// import com.pulumi.azurenative.cdn.ProfileAgentArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ResourceReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

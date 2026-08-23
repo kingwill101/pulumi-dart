@@ -25,4 +25,3 @@ class Gen2StorageConfigurationOutputResponse {
     );
   }
 }
-

@@ -1,18 +1,18 @@
 /// Enum for all classification models supported by AutoML.
 enum ClassificationModels {
-  valueLogisticRegression("LogisticRegression"),
-  valueSGD("SGD"),
-  valueMultinomialNaiveBayes("MultinomialNaiveBayes"),
-  valueBernoulliNaiveBayes("BernoulliNaiveBayes"),
-  valueSVM("SVM"),
-  valueLinearSVM("LinearSVM"),
-  valueKNN("KNN"),
-  valueDecisionTree("DecisionTree"),
-  valueRandomForest("RandomForest"),
-  valueExtremeRandomTrees("ExtremeRandomTrees"),
-  valueLightGBM("LightGBM"),
-  valueGradientBoosting("GradientBoosting"),
-  valueXGBoostClassifier("XGBoostClassifier");
+  logisticRegression("LogisticRegression"),
+  sGD("SGD"),
+  multinomialNaiveBayes("MultinomialNaiveBayes"),
+  bernoulliNaiveBayes("BernoulliNaiveBayes"),
+  sVM("SVM"),
+  linearSVM("LinearSVM"),
+  kNN("KNN"),
+  decisionTree("DecisionTree"),
+  randomForest("RandomForest"),
+  extremeRandomTrees("ExtremeRandomTrees"),
+  lightGBM("LightGBM"),
+  gradientBoosting("GradientBoosting"),
+  xGBoostClassifier("XGBoostClassifier");
 
   const ClassificationModels(this.wireValue);
   final String wireValue;
@@ -26,4 +26,3 @@ enum ClassificationModels {
     throw ArgumentError('Unknown ClassificationModels value: $value');
   }
 }
-

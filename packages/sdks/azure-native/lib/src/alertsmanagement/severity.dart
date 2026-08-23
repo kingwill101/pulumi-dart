@@ -18,4 +18,3 @@ enum Severity {
     throw ArgumentError('Unknown Severity value: $value');
   }
 }
-

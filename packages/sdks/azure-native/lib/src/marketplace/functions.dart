@@ -3,6 +3,8 @@ import 'get_private_store_collection_args.dart';
 import 'get_private_store_collection_offer_args.dart';
 import 'get_private_store_collection_offer_result.dart';
 import 'get_private_store_collection_result.dart';
+import 'get_user_solution_args.dart';
+import 'get_user_solution_result.dart';
 import 'list_private_store_new_plans_notifications_args.dart';
 import 'list_private_store_new_plans_notifications_result.dart';
 import 'list_private_store_stop_sell_offers_plans_notifications_args.dart';
@@ -48,6 +50,24 @@ Future<GetPrivateStoreCollectionOfferResult> getPrivateStoreCollectionOffer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateStoreCollectionOfferResult.fromMap(result);
+}
+
+/// Get information about the user solution
+///
+/// Uses Azure REST API version 2023-03-01-preview.
+/// [args] Arguments passed to this invoke. {@macro pulumi_marketplace_get_user_solution_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetUserSolutionResult> getUserSolution(
+  GetUserSolutionArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:marketplace:getUserSolution',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetUserSolutionResult.fromMap(result);
 }
 
 /// List new plans notifications

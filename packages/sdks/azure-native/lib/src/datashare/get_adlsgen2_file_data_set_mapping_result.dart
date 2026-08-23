@@ -110,4 +110,3 @@ class GetADLSGen2FileDataSetMappingResult {
     );
   }
 }
-

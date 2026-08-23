@@ -17,4 +17,3 @@ enum RuleQueryStringCachingBehavior {
     throw ArgumentError('Unknown RuleQueryStringCachingBehavior value: $value');
   }
 }
-

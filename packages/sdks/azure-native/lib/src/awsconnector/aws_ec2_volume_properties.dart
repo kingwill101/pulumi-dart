@@ -98,4 +98,3 @@ class AwsEc2VolumeProperties {
     );
   }
 }
-

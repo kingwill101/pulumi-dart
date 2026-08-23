@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_education_get_lab_args_doc}
 class GetLabArgs {
-  /// The ID that uniquely identifies a billing account.
+  /// The name of the billing account.
   final pulumi.Input<String> billingAccountName;
-  /// The ID that uniquely identifies a billing profile.
+  /// The name of the billing profile.
   final pulumi.Input<String> billingProfileName;
   /// May be used to include budget information.
   final pulumi.Input<bool>? includeBudget;
-  /// The ID that uniquely identifies an invoice section.
+  /// The name of the invoice section.
   final pulumi.Input<String> invoiceSectionName;
 
   /// Creates a new [GetLabArgs].
-  /// [billingAccountName] The ID that uniquely identifies a billing account.
-  /// [billingProfileName] The ID that uniquely identifies a billing profile.
+  /// [billingAccountName] The name of the billing account.
+  /// [billingProfileName] The name of the billing profile.
   /// [includeBudget] May be used to include budget information.
-  /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
+  /// [invoiceSectionName] The name of the invoice section.
   const GetLabArgs({
     required this.billingAccountName,
     required this.billingProfileName,
@@ -46,4 +46,3 @@ class GetLabArgs {
     );
   }
 }
-

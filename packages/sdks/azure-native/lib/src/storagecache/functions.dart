@@ -18,7 +18,7 @@ import 'get_storage_target_result.dart';
 ///
 /// Uses Azure REST API version 2024-03-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagecache_get_aml_filesystem_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAmlFilesystemResult> getAmlFilesystem(
@@ -38,7 +38,7 @@ Future<GetAmlFilesystemResult> getAmlFilesystem(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagecache_get_auto_export_job_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAutoExportJobResult> getAutoExportJob(
@@ -57,6 +57,8 @@ Future<GetAutoExportJobResult> getAutoExportJob(
 /// Returns an auto import job.
 ///
 /// Uses Azure REST API version 2025-07-01.
+///
+/// Other available API versions: 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagecache_get_auto_import_job_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAutoImportJobResult> getAutoImportJob(
@@ -76,7 +78,7 @@ Future<GetAutoImportJobResult> getAutoImportJob(
 ///
 /// Uses Azure REST API version 2024-03-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagecache_get_cache_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCacheResult> getCache(
@@ -96,7 +98,7 @@ Future<GetCacheResult> getCache(
 ///
 /// Uses Azure REST API version 2024-03-01.
 ///
-/// Other available API versions: 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagecache_get_import_job_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetImportJobResult> getImportJob(
@@ -116,7 +118,7 @@ Future<GetImportJobResult> getImportJob(
 ///
 /// Uses Azure REST API version 2024-03-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagecache_get_required_aml_fssubnets_size_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRequiredAmlFSSubnetsSizeResult> getRequiredAmlFSSubnetsSize(
@@ -136,7 +138,7 @@ Future<GetRequiredAmlFSSubnetsSizeResult> getRequiredAmlFSSubnetsSize(
 ///
 /// Uses Azure REST API version 2024-03-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagecache_get_storage_target_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStorageTargetResult> getStorageTarget(

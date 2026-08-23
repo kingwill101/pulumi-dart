@@ -83,4 +83,3 @@ class SalesforceServiceCloudV2ObjectDataset {
     );
   }
 }
-

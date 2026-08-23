@@ -1,5 +1,5 @@
 enum DataSource {
-  valueTwinData("TwinData");
+  twinData("TwinData");
 
   const DataSource(this.wireValue);
   final String wireValue;
@@ -13,4 +13,3 @@ enum DataSource {
     throw ArgumentError('Unknown DataSource value: $value');
   }
 }
-

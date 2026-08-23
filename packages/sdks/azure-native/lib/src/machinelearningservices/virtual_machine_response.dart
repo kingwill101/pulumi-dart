@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_response_response.dart';
-import 'virtual_machine_schema_response_properties.dart';
+import 'virtual_machine_schema_properties_response.dart';
 
 /// A Machine Learning compute based on Azure Virtual Machines.
 class VirtualMachineResponse {
@@ -21,7 +21,7 @@ class VirtualMachineResponse {
   final pulumi.Input<bool> isAttachedCompute;
   /// The time at which the compute was last modified.
   final pulumi.Input<String> modifiedOn;
-  final pulumi.Input<VirtualMachineSchemaResponseProperties>? properties;
+  final pulumi.Input<VirtualMachineSchemaPropertiesResponse>? properties;
   /// Errors during provisioning
   final pulumi.Input<List<ErrorResponseResponse>> provisioningErrors;
   /// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -64,7 +64,7 @@ class VirtualMachineResponse {
       'disableLocalAuth': ?disableLocalAuth,
       'isAttachedCompute': isAttachedCompute,
       'modifiedOn': modifiedOn,
-      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineSchemaResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineSchemaPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'provisioningErrors': pulumi.Input.mapInputValue<List<ErrorResponseResponse>, List<Map<String, dynamic>>>(provisioningErrors, (value) => pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'resourceId': ?resourceId,
@@ -80,11 +80,10 @@ class VirtualMachineResponse {
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isAttachedCompute: pulumi.Input.fromValue(map['isAttachedCompute'] as bool),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineSchemaResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineSchemaPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorResponseResponse>(map['provisioningErrors']!, (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -18,7 +18,7 @@ class NGroupArgs {
   final pulumi.Input<ElasticProfile>? elasticProfile;
   /// The identity of the NGroup, if configured.
   final pulumi.Input<NGroupIdentity>? identity;
-  /// The resource location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// The NGroups name.
   final pulumi.Input<String>? ngroupsName;
@@ -26,24 +26,24 @@ class NGroupArgs {
   final pulumi.Input<PlacementProfile>? placementProfile;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// The resource tags.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// Used by the customer to specify the way to update the Container Groups in NGroup.
   final pulumi.Input<UpdateProfile>? updateProfile;
-  /// The zones for the container group.
+  /// The availability zones.
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [NGroupArgs].
   /// [containerGroupProfiles] The Container Group Profiles that could be used in the NGroups resource.
   /// [elasticProfile] The elastic profile.
   /// [identity] The identity of the NGroup, if configured.
-  /// [location] The resource location.
+  /// [location] The geo-location where the resource lives
   /// [ngroupsName] The NGroups name.
   /// [placementProfile] Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [tags] The resource tags.
+  /// [tags] Resource tags.
   /// [updateProfile] Used by the customer to specify the way to update the Container Groups in NGroup.
-  /// [zones] The zones for the container group.
+  /// [zones] The availability zones.
   const NGroupArgs({
     this.containerGroupProfiles,
     this.elasticProfile,
@@ -87,4 +87,3 @@ class NGroupArgs {
     );
   }
 }
-

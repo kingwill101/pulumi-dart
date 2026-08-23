@@ -15,4 +15,3 @@ enum IAASVMPolicyType {
     throw ArgumentError('Unknown IAASVMPolicyType value: $value');
   }
 }
-

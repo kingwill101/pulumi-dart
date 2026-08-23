@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_service_identity.dart';
-import 'online_endpoint_machinelearningservices.dart';
+import 'online_endpoint_properties.dart';
 import 'sku.dart';
 
 /// {@template pulumi_machinelearningservices_online_endpoint_args_doc}
@@ -19,14 +19,14 @@ class OnlineEndpointArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<OnlineEndpointMachinelearningservices> onlineEndpointProperties;
+  final pulumi.Input<OnlineEndpointProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sku details required for ARM contract for Autoscaling.
   final pulumi.Input<Sku>? sku;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [OnlineEndpointArgs].
@@ -34,17 +34,17 @@ class OnlineEndpointArgs {
   /// [identity] Managed service identity (system assigned and/or user assigned identities)
   /// [kind] Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [location] The geo-location where the resource lives
-  /// [onlineEndpointProperties] [Required] Additional attributes of the entity.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const OnlineEndpointArgs({
     this.endpointName,
     this.identity,
     this.kind,
     this.location,
-    required this.onlineEndpointProperties,
+    required this.properties,
     required this.resourceGroupName,
     this.sku,
     this.tags,
@@ -57,7 +57,7 @@ class OnlineEndpointArgs {
       'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'kind': ?kind,
       'location': ?location,
-      'onlineEndpointProperties': onlineEndpointProperties,
+      'properties': pulumi.Input.mapInputValue<OnlineEndpointProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
@@ -71,7 +71,7 @@ class OnlineEndpointArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      onlineEndpointProperties: pulumi.Input.fromValue(map['onlineEndpointProperties'] as OnlineEndpointMachinelearningservices),
+      properties: pulumi.Input.fromValue(OnlineEndpointProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -79,4 +79,3 @@ class OnlineEndpointArgs {
     );
   }
 }
-

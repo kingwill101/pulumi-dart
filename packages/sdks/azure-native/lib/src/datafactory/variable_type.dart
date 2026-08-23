@@ -1,8 +1,8 @@
 /// Variable type.
 enum VariableType {
-  valueString("String"),
-  valueBool("Bool"),
-  valueArray("Array");
+  string_("String"),
+  bool_("Bool"),
+  array("Array");
 
   const VariableType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum VariableType {
     throw ArgumentError('Unknown VariableType value: $value');
   }
 }
-

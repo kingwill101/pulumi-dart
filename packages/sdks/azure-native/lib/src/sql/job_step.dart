@@ -8,7 +8,7 @@ import 'job_step_output_response.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -115,6 +115,50 @@ import 'job_step_output_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_jobstep" "jobStep" {
+///   action = {
+///     source = "Inline"
+///     type   = "TSql"
+///     value  = "select 2"
+///   }
+///   credential = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/credentials/cred1"
+///   execution_options = {
+///     initial_retry_interval_seconds    = 11
+///     maximum_retry_interval_seconds    = 222
+///     retry_attempts                    = 42
+///     retry_interval_backoff_multiplier = 3
+///     timeout_seconds                   = 1234
+///   }
+///   job_agent_name = "agent1"
+///   job_name       = "job1"
+///   output = {
+///     credential          = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/credentials/cred0"
+///     database_name       = "database3"
+///     resource_group_name = "group3"
+///     schema_name         = "myschema1234"
+///     server_name         = "server3"
+///     subscription_id     = "3501b905-a848-4b5d-96e8-b253f62d735a"
+///     table_name          = "mytable5678"
+///     type                = "SqlDatabase"
+///   }
+///   resource_group_name = "group1"
+///   server_name         = "server1"
+///   step_id             = 1
+///   step_name           = "step1"
+///   target_group        = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/targetGroups/targetGroup1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +170,8 @@ import 'job_step_output_response.dart';
 /// import com.pulumi.azurenative.sql.inputs.JobStepActionArgs;
 /// import com.pulumi.azurenative.sql.inputs.JobStepExecutionOptionsArgs;
 /// import com.pulumi.azurenative.sql.inputs.JobStepOutputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,7 +275,7 @@ import 'job_step_output_response.dart';
 ///         "initial_retry_interval_seconds": 11,
 ///         "maximum_retry_interval_seconds": 222,
 ///         "retry_attempts": 42,
-///         "retry_interval_backoff_multiplier": 3,
+///         "retry_interval_backoff_multiplier": float(3),
 ///         "timeout_seconds": 1234,
 ///     },
 ///     job_agent_name="agent1",
@@ -349,6 +393,29 @@ import 'job_step_output_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_jobstep" "jobStep" {
+///   action = {
+///     value = "select 1"
+///   }
+///   job_agent_name      = "agent1"
+///   job_name            = "job1"
+///   resource_group_name = "group1"
+///   server_name         = "server1"
+///   step_name           = "step1"
+///   target_group        = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/targetGroups/targetGroup0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +425,8 @@ import 'job_step_output_response.dart';
 /// import com.pulumi.azurenative.sql.JobStep;
 /// import com.pulumi.azurenative.sql.JobStepArgs;
 /// import com.pulumi.azurenative.sql.inputs.JobStepActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

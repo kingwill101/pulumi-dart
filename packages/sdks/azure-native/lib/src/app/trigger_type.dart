@@ -16,4 +16,3 @@ enum TriggerType {
     throw ArgumentError('Unknown TriggerType value: $value');
   }
 }
-

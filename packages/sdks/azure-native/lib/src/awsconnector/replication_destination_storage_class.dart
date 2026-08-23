@@ -21,4 +21,3 @@ enum ReplicationDestinationStorageClass {
     throw ArgumentError('Unknown ReplicationDestinationStorageClass value: $value');
   }
 }
-

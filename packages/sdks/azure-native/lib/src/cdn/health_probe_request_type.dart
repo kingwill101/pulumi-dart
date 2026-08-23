@@ -16,4 +16,3 @@ enum HealthProbeRequestType {
     throw ArgumentError('Unknown HealthProbeRequestType value: $value');
   }
 }
-

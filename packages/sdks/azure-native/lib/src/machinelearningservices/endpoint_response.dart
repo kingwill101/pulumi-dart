@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Describes the endpoint configuration for the container
 class EndpointResponse {
   /// Host IP over which the application is exposed from the container
   final pulumi.Input<String>? hostIp;
@@ -49,4 +48,3 @@ class EndpointResponse {
     );
   }
 }
-

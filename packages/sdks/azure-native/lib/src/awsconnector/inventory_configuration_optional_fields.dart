@@ -28,4 +28,3 @@ enum InventoryConfigurationOptionalFields {
     throw ArgumentError('Unknown InventoryConfigurationOptionalFields value: $value');
   }
 }
-

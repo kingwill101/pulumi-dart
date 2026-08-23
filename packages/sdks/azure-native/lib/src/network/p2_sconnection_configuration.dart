@@ -51,4 +51,3 @@ class P2SConnectionConfiguration {
     );
   }
 }
-

@@ -3,15 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_runtime_dto_response.dart';
 
-/// Settings for feature store type workspace.
 class FeatureStoreSettingsResponse {
-  /// Compute runtime config for feature store type workspace.
   final pulumi.Input<ComputeRuntimeDtoResponse>? computeRuntime;
   final pulumi.Input<String>? offlineStoreConnectionName;
   final pulumi.Input<String>? onlineStoreConnectionName;
 
   /// Creates a new [FeatureStoreSettingsResponse].
-  /// [computeRuntime] Compute runtime config for feature store type workspace.
+  /// [computeRuntime] Optional.
   /// [offlineStoreConnectionName] Optional.
   /// [onlineStoreConnectionName] Optional.
   const FeatureStoreSettingsResponse({
@@ -36,4 +34,3 @@ class FeatureStoreSettingsResponse {
     );
   }
 }
-

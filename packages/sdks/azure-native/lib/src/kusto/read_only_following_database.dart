@@ -62,6 +62,26 @@ import 'table_level_sharing_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_readonlyfollowingdatabase" "readOnlyFollowingDatabase" {
+///   cluster_name        = "kustoCluster"
+///   database_name       = "kustoReadOnlyDatabase"
+///   hot_cache_period    = "P1D"
+///   kind                = "ReadOnlyFollowing"
+///   location            = "westus"
+///   resource_group_name = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'table_level_sharing_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.ReadOnlyFollowingDatabase;
 /// import com.pulumi.azurenative.kusto.ReadOnlyFollowingDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,6 +209,24 @@ import 'table_level_sharing_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_readonlyfollowingdatabase" "readOnlyFollowingDatabase" {
+///   caller_role         = "Admin"
+///   cluster_name        = "kustoCluster"
+///   database_name       = "KustoDatabase8"
+///   resource_group_name = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +235,8 @@ import 'table_level_sharing_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.ReadOnlyFollowingDatabase;
 /// import com.pulumi.azurenative.kusto.ReadOnlyFollowingDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

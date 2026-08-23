@@ -22,11 +22,11 @@ class StaticSiteArgs {
   final pulumi.Input<String>? enterpriseGradeCdnStatus;
   /// Managed service identity.
   final pulumi.Input<ManagedServiceIdentity>? identity;
-  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// Name of the static site to create or update.
+  /// Name of the static site.
   final pulumi.Input<String>? name;
   /// The provider that submitted the last deployment to the primary environment of the static site.
   final pulumi.Input<String>? provider;
@@ -36,7 +36,7 @@ class StaticSiteArgs {
   final pulumi.Input<String>? repositoryToken;
   /// URL for the repository of the static site.
   final pulumi.Input<String>? repositoryUrl;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Description of a SKU for a scalable resource.
   final pulumi.Input<SkuDescription>? sku;
@@ -53,14 +53,14 @@ class StaticSiteArgs {
   /// [buildProperties] Build properties to configure on the repository.
   /// [enterpriseGradeCdnStatus] State indicating the status of the enterprise grade CDN serving traffic to the static web app.
   /// [identity] Managed service identity.
-  /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
-  /// [name] Name of the static site to create or update.
+  /// [kind] Kind of resource.
+  /// [location] The geo-location where the resource lives
+  /// [name] Name of the static site.
   /// [provider] The provider that submitted the last deployment to the primary environment of the static site.
   /// [publicNetworkAccess] State indicating whether public traffic are allowed or not for a static web app. Allowed Values: 'Enabled', 'Disabled' or an empty string.
   /// [repositoryToken] A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.
   /// [repositoryUrl] URL for the repository of the static site.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] Description of a SKU for a scalable resource.
   /// [stagingEnvironmentPolicy] State indicating whether staging environments are allowed or not allowed for a static web app.
   /// [tags] Resource tags.
@@ -129,4 +129,3 @@ class StaticSiteArgs {
     );
   }
 }
-

@@ -74,6 +74,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azureactivedirectory_ciamtenant" "ciamTenant" {
+///   create_tenant_properties = {
+///     country_code = "US"
+///     display_name = "Contoso"
+///   }
+///   location            = "United States"
+///   resource_group_name = "contosoResourceGroup"
+///   resource_name       = "contoso"
+///   sku = {
+///     name = "Standard"
+///     tier = "A0"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azureactivedirectory.CIAMTenantArgs;
 /// import com.pulumi.azurenative.azureactivedirectory.inputs.CreateCIAMTenantPropertiesArgs;
 /// import com.pulumi.azurenative.azureactivedirectory.inputs.CIAMResourceSKUArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

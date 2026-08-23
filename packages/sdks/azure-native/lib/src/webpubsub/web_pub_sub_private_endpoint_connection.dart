@@ -8,7 +8,7 @@ import 'web_pub_sub_private_endpoint_connection_args.dart';
 ///
 /// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -69,6 +69,28 @@ import 'web_pub_sub_private_endpoint_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_webpubsub_webpubsubprivateendpointconnection" "webPubSubPrivateEndpointConnection" {
+///   private_endpoint                 = {}
+///   private_endpoint_connection_name = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"
+///   private_link_service_connection_state = {
+///     actions_required = "None"
+///     status           = "Approved"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   resource_name       = "myWebPubSubService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +101,8 @@ import 'web_pub_sub_private_endpoint_connection_args.dart';
 /// import com.pulumi.azurenative.webpubsub.WebPubSubPrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.PrivateEndpointArgs;
 /// import com.pulumi.azurenative.webpubsub.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

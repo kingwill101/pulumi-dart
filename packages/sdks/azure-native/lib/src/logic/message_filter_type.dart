@@ -16,4 +16,3 @@ enum MessageFilterType {
     throw ArgumentError('Unknown MessageFilterType value: $value');
   }
 }
-

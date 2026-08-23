@@ -16,7 +16,7 @@ class ManagedPrivateEndpointArgs {
   final pulumi.Input<String> managedVirtualNetworkName;
   /// Managed private endpoint properties.
   final pulumi.Input<ManagedPrivateEndpointDatafactory> properties;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ManagedPrivateEndpointArgs].
@@ -24,7 +24,7 @@ class ManagedPrivateEndpointArgs {
   /// [managedPrivateEndpointName] Managed private endpoint name
   /// [managedVirtualNetworkName] Managed virtual network name
   /// [properties] Managed private endpoint properties.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ManagedPrivateEndpointArgs({
     required this.factoryName,
     this.managedPrivateEndpointName,
@@ -53,4 +53,3 @@ class ManagedPrivateEndpointArgs {
     );
   }
 }
-

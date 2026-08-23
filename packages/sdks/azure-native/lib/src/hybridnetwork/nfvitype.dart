@@ -17,4 +17,3 @@ enum NFVIType {
     throw ArgumentError('Unknown NFVIType value: $value');
   }
 }
-

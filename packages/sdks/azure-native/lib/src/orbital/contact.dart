@@ -69,6 +69,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_orbital_contact" "contact" {
+///   contact_name = "contact1"
+///   contact_profile = {
+///     id = "/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Orbital/contactProfiles/CONTOSO-CP"
+///   }
+///   ground_station_name    = "EASTUS2_0"
+///   reservation_end_time   = "2023-02-22T11:10:45Z"
+///   reservation_start_time = "2023-02-22T10:58:30Z"
+///   resource_group_name    = "contoso-Rgp"
+///   spacecraft_name        = "CONTOSO_SAT"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +101,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.orbital.Contact;
 /// import com.pulumi.azurenative.orbital.ContactArgs;
 /// import com.pulumi.azurenative.orbital.inputs.ContactsPropertiesContactProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

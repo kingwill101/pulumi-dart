@@ -112,6 +112,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_configserviceconfigurationrecorderstatus" "configServiceConfigurationRecorderStatus" {
+///   location = "aanagogcqgqikndwcsiwpf"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "iwxslgken"
+///     aws_account_id = "dnnbcuuhaxys"
+///     aws_properties = {
+///       last_error_code    = "zvduytuuzcdxiwmlqur"
+///       last_error_message = "qcopqdjuuwuwdvdjmupwgrnxux"
+///       last_start_time    = "2024-10-08T03:54:51.026Z"
+///       last_status = {
+///         value = "Failure"
+///       }
+///       last_status_change_time = "2024-10-08T03:54:51.038Z"
+///       last_stop_time          = "2024-10-08T03:54:51.038Z"
+///       name                    = "mvnralcjhhrhhczxctukeumhnhhsvs"
+///       recording               = true
+///     }
+///     aws_region        = "pffplccggyknjkyebtjepdzwbim"
+///     aws_source_schema = "qprhkzdetwvsaznwugwruaned"
+///     aws_tags = {
+///       "key2618" = "igrrsqtvduurjhwftennerlrcmamr"
+///     }
+///     public_cloud_connectors_resource_id = "fzembqicafznmnrvzudikggimnls"
+///     public_cloud_resource_name          = "stvqbbbupeyrxdfrdlslkxbi"
+///   }
+///   resource_group_name = "rgconfigServiceConfigurationRecorderStatus"
+///   tags = {
+///     "key333" = "yypbuvwbxpiokolnuiiq"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +166,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ConfigServiceConfigurationRecorderStatusPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsConfigServiceConfigurationRecorderStatusPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RecorderStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

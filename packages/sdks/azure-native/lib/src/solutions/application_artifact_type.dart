@@ -16,4 +16,3 @@ enum ApplicationArtifactType {
     throw ArgumentError('Unknown ApplicationArtifactType value: $value');
   }
 }
-

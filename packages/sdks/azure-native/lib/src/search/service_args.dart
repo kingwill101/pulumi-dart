@@ -33,17 +33,17 @@ class ServiceArgs {
   final pulumi.Input<String>? location;
   /// Network specific rules that determine how the Azure AI Search service may be reached.
   final pulumi.Input<NetworkRuleSet>? networkRuleSet;
-  /// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+  /// The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
   final pulumi.Input<int>? partitionCount;
   /// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
   final pulumi.Input<String>? publicNetworkAccess;
-  /// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
+  /// The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
   final pulumi.Input<int>? replicaCount;
-  /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// The name of the Azure AI Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net). You cannot change the service name after the service is created.
+  /// The name of the Azure AI Search service associated with the specified resource group.
   final pulumi.Input<String>? searchServiceName;
-  /// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+  /// Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
   final pulumi.Input<String>? semanticSearch;
   /// The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service.
   final pulumi.Input<Sku>? sku;
@@ -63,12 +63,12 @@ class ServiceArgs {
   /// [identity] The identity of the resource.
   /// [location] The geo-location where the resource lives
   /// [networkRuleSet] Network specific rules that determine how the Azure AI Search service may be reached.
-  /// [partitionCount] The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+  /// [partitionCount] The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
   /// [publicNetworkAccess] This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
-  /// [replicaCount] The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
-  /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
-  /// [searchServiceName] The name of the Azure AI Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net). You cannot change the service name after the service is created.
-  /// [semanticSearch] Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+  /// [replicaCount] The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
+  /// [semanticSearch] Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
   /// [sku] The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service.
   /// [tags] Resource tags.
   /// [upgradeAvailable] Indicates if the search service has an upgrade available.
@@ -142,4 +142,3 @@ class ServiceArgs {
     );
   }
 }
-

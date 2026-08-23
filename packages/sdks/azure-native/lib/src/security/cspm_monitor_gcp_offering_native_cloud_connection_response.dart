@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// The native cloud connection configuration
+class CspmMonitorGcpOfferingNativeCloudConnectionResponse {
+  /// The service account email address in GCP for this offering
+  final pulumi.Input<String>? serviceAccountEmailAddress;
+  /// The GCP workload identity provider id for the offering
+  final pulumi.Input<String>? workloadIdentityProviderId;
+
+  /// Creates a new [CspmMonitorGcpOfferingNativeCloudConnectionResponse].
+  /// [serviceAccountEmailAddress] The service account email address in GCP for this offering
+  /// [workloadIdentityProviderId] The GCP workload identity provider id for the offering
+  const CspmMonitorGcpOfferingNativeCloudConnectionResponse({
+    this.serviceAccountEmailAddress,
+    this.workloadIdentityProviderId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'serviceAccountEmailAddress': ?serviceAccountEmailAddress,
+      'workloadIdentityProviderId': ?workloadIdentityProviderId,
+    };
+  }
+
+  factory CspmMonitorGcpOfferingNativeCloudConnectionResponse.fromMap(Map<String, dynamic> map) {
+    return CspmMonitorGcpOfferingNativeCloudConnectionResponse(
+      serviceAccountEmailAddress: (() { final guardedValue = map['serviceAccountEmailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityProviderId: (() { final guardedValue = map['workloadIdentityProviderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+    );
+  }
+}

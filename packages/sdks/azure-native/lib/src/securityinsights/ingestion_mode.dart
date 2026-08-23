@@ -16,4 +16,3 @@ enum IngestionMode {
     throw ArgumentError('Unknown IngestionMode value: $value');
   }
 }
-

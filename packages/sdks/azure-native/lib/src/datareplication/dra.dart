@@ -96,6 +96,42 @@ import 'dra_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datareplication_dra" "dra" {
+///   fabric_agent_name = "M"
+///   fabric_name       = "wPR"
+///   properties = {
+///     authentication_identity = {
+///       aad_authority  = "bubwwbowfhdmujrt"
+///       application_id = "cwktzrwajuvfyyymfstpey"
+///       audience       = "dkjobanyqgzenivyxhvavottpc"
+///       object_id      = "khsiaqfbpuhp"
+///       tenant_id      = "joclkkdovixwapephhxaqtefubhhmq"
+///     }
+///     custom_properties = {}
+///     machine_id        = "envzcoijbqhtrpncbjbhk"
+///     machine_name      = "y"
+///     resource_access_identity = {
+///       aad_authority  = "bubwwbowfhdmujrt"
+///       application_id = "cwktzrwajuvfyyymfstpey"
+///       audience       = "dkjobanyqgzenivyxhvavottpc"
+///       object_id      = "khsiaqfbpuhp"
+///       tenant_id      = "joclkkdovixwapephhxaqtefubhhmq"
+///     }
+///   }
+///   resource_group_name = "rgrecoveryservicesdatareplication"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +143,8 @@ import 'dra_model_response_system_data.dart';
 /// import com.pulumi.azurenative.datareplication.inputs.DraModelPropertiesArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.IdentityModelArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.VMwareDraModelCustomPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

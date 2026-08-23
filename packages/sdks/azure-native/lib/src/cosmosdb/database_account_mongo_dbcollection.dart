@@ -104,6 +104,40 @@ import 'database_account_mongo_dbcollection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_databaseaccountmongodbcollection" "databaseAccountMongoDBCollection" {
+///   account_name    = "ddb1"
+///   collection_name = "collectionName"
+///   database_name   = "databaseName"
+///   options         = {}
+///   resource = {
+///     id = "testcoll"
+///     indexes = [{
+///       "key" = {
+///         "keys" = ["testKey"]
+///       }
+///       "options" = {
+///         "expireAfterSeconds" = 100
+///         "unique"             = true
+///       }
+///     }]
+///     shard_key = {
+///       "testKey" = "Hash"
+///     }
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +147,8 @@ import 'database_account_mongo_dbcollection_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountMongoDBCollection;
 /// import com.pulumi.azurenative.cosmosdb.DatabaseAccountMongoDBCollectionArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.MongoDBCollectionResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

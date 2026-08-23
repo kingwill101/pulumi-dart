@@ -18,7 +18,7 @@ class GetRaiExternalSafetyProviderResult {
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final Map<String, String> tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -38,7 +38,7 @@ class GetRaiExternalSafetyProviderResult {
     required this.name,
     required this.properties,
     required this.systemData,
-    this.tags,
+    required this.tags,
     required this.type,
   });
 
@@ -50,7 +50,7 @@ class GetRaiExternalSafetyProviderResult {
       'name': name,
       'properties': properties.toMap(),
       'systemData': systemData.toMap(),
-      'tags': ?tags,
+      'tags': tags,
       'type': type,
     };
   }
@@ -63,9 +63,8 @@ class GetRaiExternalSafetyProviderResult {
       name: map['name'] as String,
       properties: RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }
 }
-

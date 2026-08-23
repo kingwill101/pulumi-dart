@@ -7,7 +7,7 @@ import 'vpn_gateway_args.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -215,6 +215,72 @@ import 'vpn_gateway_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_vpngateway" "vpnGateway" {
+///   bgp_settings = {
+///     asn = 65515
+///     bgp_peering_addresses = [{
+///       "customBgpIpAddresses" = ["169.254.21.5"]
+///       "ipconfigurationId"    = "Instance0"
+///       }, {
+///       "customBgpIpAddresses" = ["169.254.21.10"]
+///       "ipconfigurationId"    = "Instance1"
+///     }]
+///     peer_weight = 0
+///   }
+///   connections {
+///     name = "vpnConnection1"
+///     remote_vpn_site = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"
+///     }
+///     vpn_link_connections {
+///       connection_bandwidth = 200
+///       egress_nat_rules {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/gateway1/natRules/nat03"
+///       }
+///       name                         = "Connection-Link1"
+///       shared_key                   = "key"
+///       vpn_connection_protocol_type = "IKEv2"
+///       vpn_site_link = {
+///         id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1/vpnSiteLinks/siteLink1"
+///       }
+///     }
+///   }
+///   enable_bgp_route_translation_for_nat = false
+///   gateway_name                         = "gateway1"
+///   is_routing_preference_internet       = false
+///   location                             = "westcentralus"
+///   nat_rules {
+///     external_mappings {
+///       address_space = "192.168.0.0/26"
+///     }
+///     internal_mappings {
+///       address_space = "0.0.0.0/26"
+///     }
+///     ip_configuration_id = ""
+///     mode                = "EgressSnat"
+///     name                = "nat03"
+///     type                = "Static"
+///   }
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   virtual_hub = {
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +293,8 @@ import 'vpn_gateway_args.dart';
 /// import com.pulumi.azurenative.network.inputs.VpnConnectionArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnGatewayNatRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,7 +436,7 @@ import 'vpn_gateway_args.dart';
 ///
 /// vpn_gateway = azure_native.network.VpnGateway("vpnGateway",
 ///     bgp_settings={
-///         "asn": 65515,
+///         "asn": float(65515),
 ///         "bgp_peering_addresses": [
 ///             {
 ///                 "custom_bgp_ip_addresses": ["169.254.21.5"],

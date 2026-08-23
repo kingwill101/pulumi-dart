@@ -17,4 +17,3 @@ enum AssignmentType {
     throw ArgumentError('Unknown AssignmentType value: $value');
   }
 }
-

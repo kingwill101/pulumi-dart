@@ -49,4 +49,3 @@ class AS2EnvelopeSettingsResponse {
     );
   }
 }
-

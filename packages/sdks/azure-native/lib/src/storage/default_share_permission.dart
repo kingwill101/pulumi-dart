@@ -17,4 +17,3 @@ enum DefaultSharePermission {
     throw ArgumentError('Unknown DefaultSharePermission value: $value');
   }
 }
-

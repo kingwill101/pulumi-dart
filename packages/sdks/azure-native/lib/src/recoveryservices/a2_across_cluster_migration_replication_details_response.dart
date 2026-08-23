@@ -62,4 +62,3 @@ class A2ACrossClusterMigrationReplicationDetailsResponse {
     );
   }
 }
-

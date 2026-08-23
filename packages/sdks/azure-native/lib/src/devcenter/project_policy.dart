@@ -75,6 +75,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_projectpolicy" "projectPolicy" {
+///   dev_center_name     = "Contoso"
+///   project_policy_name = "DevOnlyResources"
+///   resource_group_name = "rg1"
+///   resource_policies {
+///     resources = "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff1/resourceGroups/rg1/providers/Microsoft.DevCenter/devcenters/Contoso/attachednetworks/network-westus3"
+///   }
+///   scopes = ["/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff1/resourceGroups/rg1/providers/Microsoft.DevCenter/projects/DevProject"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +105,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.ProjectPolicy;
 /// import com.pulumi.azurenative.devcenter.ProjectPolicyArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.ResourcePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

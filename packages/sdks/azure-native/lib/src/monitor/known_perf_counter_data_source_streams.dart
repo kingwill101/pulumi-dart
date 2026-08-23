@@ -14,4 +14,3 @@ enum KnownPerfCounterDataSourceStreams {
     throw ArgumentError('Unknown KnownPerfCounterDataSourceStreams value: $value');
   }
 }
-

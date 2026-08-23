@@ -13,4 +13,3 @@ enum KnownSyslogDataSourceStreams {
     throw ArgumentError('Unknown KnownSyslogDataSourceStreams value: $value');
   }
 }
-

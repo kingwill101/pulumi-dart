@@ -11,7 +11,7 @@ class GetWebAppDomainOwnershipIdentifierSlotArgs {
   final pulumi.Input<String> domainOwnershipIdentifierName;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
   final pulumi.Input<String> slot;
@@ -19,7 +19,7 @@ class GetWebAppDomainOwnershipIdentifierSlotArgs {
   /// Creates a new [GetWebAppDomainOwnershipIdentifierSlotArgs].
   /// [domainOwnershipIdentifierName] Name of domain ownership identifier.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
   const GetWebAppDomainOwnershipIdentifierSlotArgs({
     required this.domainOwnershipIdentifierName,
@@ -46,4 +46,3 @@ class GetWebAppDomainOwnershipIdentifierSlotArgs {
     );
   }
 }
-

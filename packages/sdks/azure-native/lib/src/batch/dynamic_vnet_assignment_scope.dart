@@ -15,4 +15,3 @@ enum DynamicVNetAssignmentScope {
     throw ArgumentError('Unknown DynamicVNetAssignmentScope value: $value');
   }
 }
-

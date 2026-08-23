@@ -30,4 +30,3 @@ enum ExtensionCategory {
     throw ArgumentError('Unknown ExtensionCategory value: $value');
   }
 }
-

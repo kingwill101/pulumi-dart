@@ -133,6 +133,57 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_rdsexporttask" "rdsExportTask" {
+///   location = "ijwmlpipjiyjjldyoytyluf"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "baufqssokdhluztwcuatl"
+///     aws_account_id = "oaxdvv"
+///     aws_properties = {
+///       export_only            = ["tgbwsfhgnayugsqipjaogglzrm"]
+///       export_task_identifier = "miwmgyeweeibkjbwagqc"
+///       failure_cause          = "mnjjuzhtylheweav"
+///       iam_role_arn           = "fexryvrii"
+///       kms_key_id             = "nzp"
+///       percent_progress       = 5
+///       s3_bucket              = "zwwzvtjvoadrnmvvidwl"
+///       s3_prefix              = "vgo"
+///       snapshot_time          = "2024-10-08T03:51:37.230Z"
+///       source_arn             = "mojassuswxqincuqhoonftpslnqh"
+///       source_type = {
+///         value = "CLUSTER"
+///       }
+///       status                     = "cjaqynzkqtyptrbwud"
+///       task_end_time              = "2024-10-08T03:51:37.231Z"
+///       task_start_time            = "2024-10-08T03:51:37.231Z"
+///       total_extracted_data_in_gb = 7
+///       warning_message            = "hugvgitctxgsxkvywhlldbqe"
+///     }
+///     aws_region        = "bnpl"
+///     aws_source_schema = "eopblwzcihujlmoctzvwfoirhqkbx"
+///     aws_tags = {
+///       "key353" = "mjctanldpnvzjlfsxl"
+///     }
+///     public_cloud_connectors_resource_id = "xugphqsqnlgtlne"
+///     public_cloud_resource_name          = "exprhkzxutckvlwxawcqfy"
+///   }
+///   resource_group_name = "rgrdsExportTask"
+///   tags = {
+///     "key6517" = "fgvwvrfxewegzvticmnntbypm"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -144,8 +195,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsExportTaskPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsExportTaskPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ExportSourceTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

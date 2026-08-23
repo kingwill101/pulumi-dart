@@ -16,4 +16,3 @@ enum DynamicThresholdDirection {
     throw ArgumentError('Unknown DynamicThresholdDirection value: $value');
   }
 }
-

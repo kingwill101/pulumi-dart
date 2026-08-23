@@ -1,9 +1,9 @@
 /// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
 enum AzureFileShareAccessTier {
-  valueCool("Cool"),
-  valueHot("Hot"),
-  valuePremium("Premium"),
-  valueTransactionOptimized("TransactionOptimized");
+  cool("Cool"),
+  hot("Hot"),
+  premium("Premium"),
+  transactionOptimized("TransactionOptimized");
 
   const AzureFileShareAccessTier(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum AzureFileShareAccessTier {
     throw ArgumentError('Unknown AzureFileShareAccessTier value: $value');
   }
 }
-

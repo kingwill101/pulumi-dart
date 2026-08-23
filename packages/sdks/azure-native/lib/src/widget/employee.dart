@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2021-11-01.
 ///
-/// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native widget [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native widget [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -70,6 +70,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_widget_employee" "employee" {
+///   employee_name = "foo"
+///   location      = "itajgxyqozseoygnl"
+///   properties = {
+///     age     = 30
+///     city    = "gydhnntudughbmxlkyzrskcdkotrxn"
+///     profile = "ms"
+///   }
+///   resource_group_name = "rgwidget"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +102,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.widget.Employee;
 /// import com.pulumi.azurenative.widget.EmployeeArgs;
 /// import com.pulumi.azurenative.widget.inputs.EmployeePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum LanguageExtensionName {
     throw ArgumentError('Unknown LanguageExtensionName value: $value');
   }
 }
-

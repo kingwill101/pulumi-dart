@@ -68,4 +68,3 @@ class Ec2KeyPairProperties {
     );
   }
 }
-

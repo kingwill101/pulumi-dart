@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'guest_credential_response.dart';
+import 'guest_credential_vminstance_guest_agent_response.dart';
 import 'http_proxy_configuration_response.dart';
 import 'system_data_response.dart';
 import 'vminstance_guest_agent_args.dart';
@@ -74,6 +74,30 @@ import 'vminstance_guest_agent_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_connectedvmwarevsphere_vminstanceguestagent" "vmInstanceGuestAgent" {
+///   credentials = {
+///     password = "<password>"
+///     username = "tempuser"
+///   }
+///   http_proxy_config = {
+///     https_proxy = "http://192.1.2.3:8080"
+///   }
+///   private_link_scope_resource_id = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/privateLinkScopeName"
+///   provisioning_action            = "install"
+///   resource_uri                   = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.HybridCompute/machines/DemoVM"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +108,8 @@ import 'vminstance_guest_agent_args.dart';
 /// import com.pulumi.azurenative.connectedvmwarevsphere.VMInstanceGuestAgentArgs;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.GuestCredentialArgs;
 /// import com.pulumi.azurenative.connectedvmwarevsphere.inputs.HttpProxyConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,7 +206,7 @@ class VMInstanceGuestAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Username / Password Credentials to provision guest agent.
-  late final pulumi.Output<GuestCredentialResponse?> credentials;
+  late final pulumi.Output<GuestCredentialVMInstanceGuestAgentResponse?> credentials;
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
   /// HTTP Proxy configuration for the VM.
@@ -221,7 +245,7 @@ class VMInstanceGuestAgent extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    credentials = registerOutput<GuestCredentialResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    credentials = registerOutput<GuestCredentialVMInstanceGuestAgentResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestCredentialVMInstanceGuestAgentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customResourceName = registerOutput<String>('customResourceName');
     httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>('httpProxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpProxyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

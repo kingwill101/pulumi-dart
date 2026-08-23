@@ -18,4 +18,3 @@ enum ServerType {
     throw ArgumentError('Unknown ServerType value: $value');
   }
 }
-

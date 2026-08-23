@@ -13,7 +13,7 @@ class WebAppDomainOwnershipIdentifierArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// String representation of the identity.
   final pulumi.Input<String>? value;
@@ -22,7 +22,7 @@ class WebAppDomainOwnershipIdentifierArgs {
   /// [domainOwnershipIdentifierName] Name of domain ownership identifier.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [value] String representation of the identity.
   const WebAppDomainOwnershipIdentifierArgs({
     this.domainOwnershipIdentifierName,
@@ -52,4 +52,3 @@ class WebAppDomainOwnershipIdentifierArgs {
     );
   }
 }
-

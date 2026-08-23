@@ -75,6 +75,30 @@ import 'managed_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_cluster" "cluster" {
+///   cluster_name        = "oiautorest6685"
+///   location            = "australiasoutheast"
+///   resource_group_name = "oiautorest6685"
+///   sku = {
+///     capacity = 1000
+///     name     = "CapacityReservation"
+///   }
+///   tags = {
+///     "tag1" = "val1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +108,8 @@ import 'managed_service_identity_response.dart';
 /// import com.pulumi.azurenative.operationalinsights.Cluster;
 /// import com.pulumi.azurenative.operationalinsights.ClusterArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.ClusterSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,7 +165,7 @@ import 'managed_service_identity_response.dart';
 ///     location="australiasoutheast",
 ///     resource_group_name="oiautorest6685",
 ///     sku={
-///         "capacity": 1000,
+///         "capacity": float(1000),
 ///         "name": azure_native.operationalinsights.ClusterSkuNameEnum.CAPACITY_RESERVATION,
 ///     },
 ///     tags={

@@ -1,9 +1,9 @@
 /// Operator for a given condition.
 enum Operator {
-  valueEquals("Equals"),
-  valueNotEquals("NotEquals"),
-  valueContains("Contains"),
-  valueDoesNotContain("DoesNotContain");
+  equals("Equals"),
+  notEquals("NotEquals"),
+  contains("Contains"),
+  doesNotContain("DoesNotContain");
 
   const Operator(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum Operator {
     throw ArgumentError('Unknown Operator value: $value');
   }
 }
-

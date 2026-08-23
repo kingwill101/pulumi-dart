@@ -16,4 +16,3 @@ enum GalleryApplicationCustomActionParameterType {
     throw ArgumentError('Unknown GalleryApplicationCustomActionParameterType value: $value');
   }
 }
-

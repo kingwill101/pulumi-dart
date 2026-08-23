@@ -21,4 +21,3 @@ enum UpdateSummariesPropertiesState {
     throw ArgumentError('Unknown UpdateSummariesPropertiesState value: $value');
   }
 }
-

@@ -16,7 +16,7 @@ import 'sub_resource_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -286,6 +286,97 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_firewallpolicy" "firewallPolicy" {
+///   dns_settings = {
+///     enable_proxy                    = true
+///     require_proxy_for_network_rules = false
+///     servers                         = ["30.3.4.5"]
+///   }
+///   explicit_proxy = {
+///     enable_explicit_proxy = true
+///     enable_pac_file       = true
+///     http_port             = 8087
+///     https_port            = 8087
+///     pac_file              = "https://tinawstorage.file.core.windows.net/?sv=2020-02-10&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-06-04T07:01:12Z&st=2021-06-03T23:01:12Z&sip=68.65.171.11&spr=https&sig=Plsa0RRVpGbY0IETZZOT6znOHcSro71LLTTbzquYPgs%3D"
+///     pac_file_port         = 8087
+///   }
+///   firewall_policy_name = "firewallPolicy"
+///   insights = {
+///     is_enabled = true
+///     log_analytics_resources = {
+///       default_workspace_id = {
+///         id = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/defaultWorkspace"
+///       }
+///       workspaces = [{
+///         "region" = "westus"
+///         "workspaceId" = {
+///           "id" = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace1"
+///         }
+///         }, {
+///         "region" = "eastus"
+///         "workspaceId" = {
+///           "id" = "/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace2"
+///         }
+///       }]
+///     }
+///     retention_days = 100
+///   }
+///   intrusion_detection = {
+///     configuration = {
+///       bypass_traffic_settings = [{
+///         "description"          = "Rule 1"
+///         "destinationAddresses" = ["5.6.7.8"]
+///         "destinationPorts"     = ["*"]
+///         "name"                 = "bypassRule1"
+///         "protocol"             = "TCP"
+///         "sourceAddresses"      = ["1.2.3.4"]
+///       }]
+///       signature_overrides = [{
+///         "id"   = "2525004"
+///         "mode" = "Deny"
+///       }]
+///     }
+///     mode    = "Alert"
+///     profile = "Balanced"
+///   }
+///   location            = "West US"
+///   resource_group_name = "rg1"
+///   sku = {
+///     tier = "Premium"
+///   }
+///   snat = {
+///     private_ranges = ["IANAPrivateRanges"]
+///   }
+///   sql = {
+///     allow_sql_redirect = true
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   threat_intel_mode = "Alert"
+///   threat_intel_whitelist = {
+///     fqdns        = ["*.microsoft.com"]
+///     ip_addresses = ["20.3.4.5"]
+///   }
+///   transport_security = {
+///     certificate_authority = {
+///       key_vault_secret_id = "https://kv/secret"
+///       name                = "clientcert"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +398,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicyThreatIntelWhitelistArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicyTransportSecurityArgs;
 /// import com.pulumi.azurenative.network.inputs.FirewallPolicyCertificateAuthorityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

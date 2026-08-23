@@ -1,6 +1,6 @@
 /// Emission destination type.
 enum DestinationType {
-  valueAzureMonitor("AzureMonitor");
+  azureMonitor("AzureMonitor");
 
   const DestinationType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum DestinationType {
     throw ArgumentError('Unknown DestinationType value: $value');
   }
 }
-

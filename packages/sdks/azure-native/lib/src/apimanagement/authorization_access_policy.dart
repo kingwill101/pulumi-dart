@@ -3,9 +3,9 @@ import 'authorization_access_policy_args.dart';
 
 /// Authorization access policy contract.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -21,6 +21,10 @@ import 'authorization_access_policy_args.dart';
 /// {
 ///     var authorizationAccessPolicy = new AzureNative.ApiManagement.AuthorizationAccessPolicy("authorizationAccessPolicy", new()
 ///     {
+///         AppIds = new[]
+///         {
+///             "d5f04bb0-ba78-4878-a43e-35a0b74fe315",
+///         },
 ///         AuthorizationAccessPolicyId = "fe0bed83-631f-4149-bd0b-0464b1bc7cab",
 ///         AuthorizationId = "authz1",
 ///         AuthorizationProviderId = "aadwithauthcode",
@@ -46,6 +50,9 @@ import 'authorization_access_policy_args.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apimanagement.NewAuthorizationAccessPolicy(ctx, "authorizationAccessPolicy", &apimanagement.AuthorizationAccessPolicyArgs{
+/// 			AppIds: pulumi.StringArray{
+/// 				pulumi.String("d5f04bb0-ba78-4878-a43e-35a0b74fe315"),
+/// 			},
 /// 			AuthorizationAccessPolicyId: pulumi.String("fe0bed83-631f-4149-bd0b-0464b1bc7cab"),
 /// 			AuthorizationId:             pulumi.String("authz1"),
 /// 			AuthorizationProviderId:     pulumi.String("aadwithauthcode"),
@@ -63,6 +70,28 @@ import 'authorization_access_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_authorizationaccesspolicy" "authorizationAccessPolicy" {
+///   app_ids                        = ["d5f04bb0-ba78-4878-a43e-35a0b74fe315"]
+///   authorization_access_policy_id = "fe0bed83-631f-4149-bd0b-0464b1bc7cab"
+///   authorization_id               = "authz1"
+///   authorization_provider_id      = "aadwithauthcode"
+///   object_id                      = "fe0bed83-631f-4149-bd0b-0464b1bc7cab"
+///   resource_group_name            = "rg1"
+///   service_name                   = "apimService1"
+///   tenant_id                      = "13932a0d-5c63-4d37-901d-1df9c97722ff"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +100,8 @@ import 'authorization_access_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.AuthorizationAccessPolicy;
 /// import com.pulumi.azurenative.apimanagement.AuthorizationAccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -85,6 +114,7 @@ import 'authorization_access_policy_args.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var authorizationAccessPolicy = new AuthorizationAccessPolicy("authorizationAccessPolicy", AuthorizationAccessPolicyArgs.builder()
+///             .appIds("d5f04bb0-ba78-4878-a43e-35a0b74fe315")
 ///             .authorizationAccessPolicyId("fe0bed83-631f-4149-bd0b-0464b1bc7cab")
 ///             .authorizationId("authz1")
 ///             .authorizationProviderId("aadwithauthcode")
@@ -104,6 +134,7 @@ import 'authorization_access_policy_args.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const authorizationAccessPolicy = new azure_native.apimanagement.AuthorizationAccessPolicy("authorizationAccessPolicy", {
+///     appIds: ["d5f04bb0-ba78-4878-a43e-35a0b74fe315"],
 ///     authorizationAccessPolicyId: "fe0bed83-631f-4149-bd0b-0464b1bc7cab",
 ///     authorizationId: "authz1",
 ///     authorizationProviderId: "aadwithauthcode",
@@ -120,6 +151,7 @@ import 'authorization_access_policy_args.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// authorization_access_policy = azure_native.apimanagement.AuthorizationAccessPolicy("authorizationAccessPolicy",
+///     app_ids=["d5f04bb0-ba78-4878-a43e-35a0b74fe315"],
 ///     authorization_access_policy_id="fe0bed83-631f-4149-bd0b-0464b1bc7cab",
 ///     authorization_id="authz1",
 ///     authorization_provider_id="aadwithauthcode",
@@ -135,6 +167,8 @@ import 'authorization_access_policy_args.dart';
 ///   authorizationAccessPolicy:
 ///     type: azure-native:apimanagement:AuthorizationAccessPolicy
 ///     properties:
+///       appIds:
+///         - d5f04bb0-ba78-4878-a43e-35a0b74fe315
 ///       authorizationAccessPolicyId: fe0bed83-631f-4149-bd0b-0464b1bc7cab
 ///       authorizationId: authz1
 ///       authorizationProviderId: aadwithauthcode
@@ -156,6 +190,8 @@ import 'authorization_access_policy_args.dart';
 /// $ pulumi import azure-native:apimanagement:AuthorizationAccessPolicy fe0bed83-631f-4149-bd0b-0464b1bc7cab /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies/{authorizationAccessPolicyId}
 /// ```
 class AuthorizationAccessPolicy extends pulumi.CustomResource {
+  /// The allowed Azure Active Directory Application IDs
+  late final pulumi.Output<List<String>?> appIds;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The name of the resource
@@ -181,6 +217,7 @@ class AuthorizationAccessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appIds = registerOutput<List<String>?>('appIds');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String?>('objectId');

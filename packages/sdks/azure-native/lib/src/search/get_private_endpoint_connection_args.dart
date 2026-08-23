@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionArgs {
   /// The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
   final pulumi.Input<String> privateEndpointConnectionName;
-  /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure AI Search service associated with the specified resource group.
   final pulumi.Input<String> searchServiceName;
 
   /// Creates a new [GetPrivateEndpointConnectionArgs].
   /// [privateEndpointConnectionName] The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
-  /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
   const GetPrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
@@ -40,4 +40,3 @@ class GetPrivateEndpointConnectionArgs {
     );
   }
 }
-

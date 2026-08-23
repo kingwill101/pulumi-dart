@@ -1,6 +1,6 @@
 /// Methodology used to route traffic to the application's deployments.
 enum TrafficRoutingProtocol {
-  valueFixedRatio("FixedRatio");
+  fixedRatio("FixedRatio");
 
   const TrafficRoutingProtocol(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum TrafficRoutingProtocol {
     throw ArgumentError('Unknown TrafficRoutingProtocol value: $value');
   }
 }
-

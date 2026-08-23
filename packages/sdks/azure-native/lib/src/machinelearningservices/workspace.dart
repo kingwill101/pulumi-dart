@@ -13,9 +13,9 @@ import 'workspace_hub_config_response.dart';
 
 /// An object that represents a machine learning workspace.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// ## Import
 ///
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
@@ -39,7 +39,6 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> discoveryUrl;
   late final pulumi.Output<bool?> enableDataIsolation;
   late final pulumi.Output<bool?> enableServiceSideCMKEncryption;
-  /// The encryption settings of Azure ML workspace.
   late final pulumi.Output<EncryptionPropertyResponse?> encryption;
   /// Settings for feature store type workspace.
   late final pulumi.Output<FeatureStoreSettingsResponse?> featureStoreSettings;
@@ -48,14 +47,13 @@ class Workspace extends pulumi.CustomResource {
   /// The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
   late final pulumi.Output<bool?> hbiWorkspace;
   late final pulumi.Output<String?> hubResourceId;
-  /// The identity of the resource.
+  /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// The compute name for image build
   late final pulumi.Output<String?> imageBuildCompute;
   /// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
   late final pulumi.Output<String?> keyVault;
   late final pulumi.Output<String?> kind;
-  /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
   /// Managed Network settings for a machine learning workspace.
   late final pulumi.Output<ManagedNetworkSettingsResponse?> managedNetwork;
@@ -77,7 +75,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> provisioningState;
   /// Whether requests from Public Network are allowed.
   late final pulumi.Output<String?> publicNetworkAccess;
-  /// Settings for serverless compute created in the workspace
+  /// Settings for serverless compute in a workspace
   late final pulumi.Output<ServerlessComputeSettingsResponse?> serverlessComputeSettings;
   /// The service managed resource settings.
   late final pulumi.Output<ServiceManagedResourcesSettingsResponse?> serviceManagedResourcesSettings;
@@ -85,7 +83,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceProvisionedResourceGroup;
   /// The list of shared private link resources in this workspace.
   late final pulumi.Output<List<Map<String, dynamic>>?> sharedPrivateLinkResources;
-  /// The sku of the workspace.
+  /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   late final pulumi.Output<SkuResponse?> sku;
   /// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
   late final pulumi.Output<String?> storageAccount;
@@ -95,7 +93,6 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The auth mode used for accessing the system datastores of the workspace.
   late final pulumi.Output<String?> systemDatastoresAuthMode;
-  /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The tenant id associated with this workspace.
   late final pulumi.Output<String> tenantId;

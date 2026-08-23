@@ -15,4 +15,3 @@ enum RedistributeStaticRoutes {
     throw ArgumentError('Unknown RedistributeStaticRoutes value: $value');
   }
 }
-

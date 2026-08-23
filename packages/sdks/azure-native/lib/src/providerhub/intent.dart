@@ -17,4 +17,3 @@ enum Intent {
     throw ArgumentError('Unknown Intent value: $value');
   }
 }
-

@@ -1,6 +1,6 @@
 /// Emission format type.
 enum EmissionType {
-  valueIPFIX("IPFIX");
+  iPFIX("IPFIX");
 
   const EmissionType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum EmissionType {
     throw ArgumentError('Unknown EmissionType value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum GatewayLoadBalancerTunnelProtocol {
     throw ArgumentError('Unknown GatewayLoadBalancerTunnelProtocol value: $value');
   }
 }
-

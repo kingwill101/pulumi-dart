@@ -19,4 +19,3 @@ enum ClientCertificateValidationScheme {
     throw ArgumentError('Unknown ClientCertificateValidationScheme value: $value');
   }
 }
-

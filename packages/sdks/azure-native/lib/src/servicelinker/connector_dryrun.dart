@@ -91,6 +91,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicelinker_connectordryrun" "connectorDryrun" {
+///   dryrun_name = "dryrunName"
+///   location    = "westus"
+///   parameters = {
+///     action_name = "createOrUpdate"
+///     auth_info = {
+///       "authType" = "secret"
+///       "name"     = "name"
+///       "secretInfo" = {
+///         "secretType" = "rawValue"
+///         "value"      = "secret"
+///       }
+///     }
+///     target_service = {
+///       "id"   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"
+///       "type" = "AzureResource"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +132,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicelinker.ConnectorDryrun;
 /// import com.pulumi.azurenative.servicelinker.ConnectorDryrunArgs;
 /// import com.pulumi.azurenative.servicelinker.inputs.CreateOrUpdateDryrunParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

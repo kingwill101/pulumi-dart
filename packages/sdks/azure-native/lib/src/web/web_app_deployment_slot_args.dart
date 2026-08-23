@@ -19,7 +19,7 @@ class WebAppDeploymentSlotArgs {
   final pulumi.Input<String>? details;
   /// End time.
   final pulumi.Input<String>? endTime;
-  /// ID of an existing deployment.
+  /// Deployment ID.
   final pulumi.Input<String>? id;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
@@ -27,9 +27,9 @@ class WebAppDeploymentSlotArgs {
   final pulumi.Input<String>? message;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot. If a slot is not specified, the API creates a deployment for the production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
   final pulumi.Input<String> slot;
   /// Start time.
   final pulumi.Input<String>? startTime;
@@ -43,12 +43,12 @@ class WebAppDeploymentSlotArgs {
   /// [deployer] Who performed the deployment.
   /// [details] Details on deployment.
   /// [endTime] End time.
-  /// [id] ID of an existing deployment.
+  /// [id] Deployment ID.
   /// [kind] Kind of resource.
   /// [message] Details about deployment status.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API creates a deployment for the production slot.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
   /// [startTime] Start time.
   /// [status] Deployment status.
   const WebAppDeploymentSlotArgs({
@@ -106,4 +106,3 @@ class WebAppDeploymentSlotArgs {
     );
   }
 }
-

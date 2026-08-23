@@ -1,8 +1,8 @@
 /// Which type of manipulation to apply to the header.
 enum HeaderActionType {
-  valueAppend("Append"),
-  valueDelete("Delete"),
-  valueOverwrite("Overwrite");
+  append("Append"),
+  delete("Delete"),
+  overwrite("Overwrite");
 
   const HeaderActionType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum HeaderActionType {
     throw ArgumentError('Unknown HeaderActionType value: $value');
   }
 }
-

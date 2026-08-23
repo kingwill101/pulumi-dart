@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'llmdiagnostic_settings.dart';
 import 'pipeline_diagnostic_settings.dart';
 import 'sampling_settings.dart';
 
@@ -20,8 +19,6 @@ class WorkspaceDiagnosticArgs {
   final pulumi.Input<PipelineDiagnosticSettings>? frontend;
   /// Sets correlation protocol to use for Application Insights diagnostics.
   final pulumi.Input<String>? httpCorrelationProtocol;
-  /// Large Language Models diagnostic settings
-  final pulumi.Input<LLMDiagnosticSettings>? largeLanguageModel;
   /// Log the ClientIP. Default is false.
   final pulumi.Input<bool>? logClientIp;
   /// Resource Id of a target logger.
@@ -47,7 +44,6 @@ class WorkspaceDiagnosticArgs {
   /// [diagnosticId] Diagnostic identifier. Must be unique in the current API Management service instance.
   /// [frontend] Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
   /// [httpCorrelationProtocol] Sets correlation protocol to use for Application Insights diagnostics.
-  /// [largeLanguageModel] Large Language Models diagnostic settings
   /// [logClientIp] Log the ClientIP. Default is false.
   /// [loggerId] Resource Id of a target logger.
   /// [metrics] Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
@@ -63,7 +59,6 @@ class WorkspaceDiagnosticArgs {
     this.diagnosticId,
     this.frontend,
     this.httpCorrelationProtocol,
-    this.largeLanguageModel,
     this.logClientIp,
     required this.loggerId,
     this.metrics,
@@ -82,7 +77,6 @@ class WorkspaceDiagnosticArgs {
       'diagnosticId': ?diagnosticId,
       'frontend': ?pulumi.Input.mapOptionalInputValue<PipelineDiagnosticSettings, Map<String, dynamic>>(frontend, (value) => value.toMap()),
       'httpCorrelationProtocol': ?httpCorrelationProtocol,
-      'largeLanguageModel': ?pulumi.Input.mapOptionalInputValue<LLMDiagnosticSettings, Map<String, dynamic>>(largeLanguageModel, (value) => value.toMap()),
       'logClientIp': ?logClientIp,
       'loggerId': loggerId,
       'metrics': ?metrics,
@@ -102,7 +96,6 @@ class WorkspaceDiagnosticArgs {
       diagnosticId: (() { final guardedValue = map['diagnosticId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frontend: (() { final guardedValue = map['frontend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineDiagnosticSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpCorrelationProtocol: (() { final guardedValue = map['httpCorrelationProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      largeLanguageModel: (() { final guardedValue = map['largeLanguageModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LLMDiagnosticSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logClientIp: (() { final guardedValue = map['logClientIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       loggerId: pulumi.Input.fromValue(map['loggerId'] as String),
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -115,4 +108,3 @@ class WorkspaceDiagnosticArgs {
     );
   }
 }
-

@@ -58,6 +58,25 @@ import 'connector_collection_info_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_cloudconnector" "cloudConnector" {
+///   connector_name     = "aws-123456789012"
+///   credentials_key    = "arn:aws:iam::123456789012:role/AzureCostManagementRole"
+///   credentials_secret = "external-id"
+///   display_name       = "AWS-Consolidated-1"
+///   report_id          = "HourlyWithResources"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +85,8 @@ import 'connector_collection_info_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.costmanagement.CloudConnector;
 /// import com.pulumi.azurenative.costmanagement.CloudConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

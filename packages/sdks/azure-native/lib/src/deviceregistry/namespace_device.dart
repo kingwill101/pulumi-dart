@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -122,6 +122,51 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+///   attributes = {
+///     "deviceCategory" = 16
+///     "deviceOwner"    = "IT"
+///     "deviceType"     = "sensor"
+///   }
+///   device_name = "namespace-device-on-edge"
+///   enabled     = true
+///   endpoints = {
+///     inbound = {
+///       "theOnlyOPCUABroker" = {
+///         address = "opc.tcp://192.168.86.23:51211/UA/SampleServer"
+///         authentication = {
+///           method = "UsernamePassword"
+///           username_password_credentials = {
+///             password_secret_name = "pwd-ref"
+///             username_secret_name = "user-ref"
+///           }
+///         }
+///         endpoint_type = "microsoft.opcua/v1"
+///         version       = "2"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   external_device_id  = "unique-edge-device-identifier"
+///   location            = "West Europe"
+///   namespace_name      = "adr-namespace-gbk0925-n01"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +177,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,6 +439,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+///   attributes = {
+///     "deviceCategory" = 16
+///     "deviceOwner"    = "OT"
+///     "deviceType"     = "dough-maker"
+///   }
+///   device_name = "namespace-device-on-edge"
+///   enabled     = true
+///   endpoints = {
+///     inbound = {
+///       "theOnlyOPCUABroker" = {
+///         address = "opc.tcp://192.168.86.23:51211/UA/SampleServer"
+///         authentication = {
+///           method = "Anonymous"
+///         }
+///         endpoint_type = "microsoft.opcua/v1"
+///         version       = "2"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   external_device_id  = "unique-edge-device-identifier"
+///   location            = "West Europe"
+///   namespace_name      = "adr-namespace-gbk0925-n01"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -404,8 +490,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -690,6 +776,64 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+///   attributes = {
+///     "deviceCategory" = 16
+///     "deviceOwner"    = "OT"
+///     "deviceType"     = "OPCUAServers"
+///   }
+///   device_name = "namespace-device-on-edge"
+///   enabled     = true
+///   endpoints = {
+///     inbound = {
+///       "theV1OPCUAEndpoint" = {
+///         address = "opc.tcp://192.168.86.23:51211/UA/SampleServer"
+///         authentication = {
+///           method = "Certificate"
+///           x509_credentials = {
+///             certificate_secret_name = "cert-secret"
+///           }
+///         }
+///         endpoint_type = "microsoft.opcua/v1"
+///         version       = "2"
+///       }
+///       "theV2OPCUAEndpoint" = {
+///         address = "opc.tcp://192.168.86.23:51211/UA/SampleServer"
+///         authentication = {
+///           method = "Certificate"
+///           x509_credentials = {
+///             certificate_secret_name = "cert-secret"
+///           }
+///         }
+///         endpoint_type = "microsoft.opcua/v1"
+///         trust_settings = {
+///           trust_list = "trust-secret-reference"
+///         }
+///         version = "2"
+///       }
+///     }
+///   }
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   external_device_id  = "unique-edge-device-identifier"
+///   location            = "West Europe"
+///   namespace_name      = "adr-namespace-gbk0925-n01"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -700,8 +844,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -999,6 +1143,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_namespacedevice" "namespaceDevice" {
+///   attributes = {
+///     "deviceCategory" = 16
+///     "deviceOwner"    = "IT"
+///     "deviceType"     = "sensor"
+///   }
+///   device_name = "dev-namespace-gbk0925-n01"
+///   enabled     = true
+///   endpoints = {
+///     outbound = {
+///       assigned = {
+///         "eventGridEndpoint" = {
+///           address       = "https://myeventgridtopic.westeurope-1.eventgrid.azure.net/api/events"
+///           endpoint_type = "Microsoft.EventGrid"
+///         }
+///       }
+///     }
+///   }
+///   external_device_id  = "adr-smart-device3-7a848b15-af47-40a7-8c06-a3f43314d44f"
+///   location            = "West Europe"
+///   namespace_name      = "adr-namespace-gbk0925-n01"
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1009,8 +1188,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.NamespaceDeviceArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.MessagingEndpointsArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.OutboundEndpointsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

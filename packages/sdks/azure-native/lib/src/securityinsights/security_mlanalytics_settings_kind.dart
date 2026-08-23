@@ -14,4 +14,3 @@ enum SecurityMLAnalyticsSettingsKind {
     throw ArgumentError('Unknown SecurityMLAnalyticsSettingsKind value: $value');
   }
 }
-

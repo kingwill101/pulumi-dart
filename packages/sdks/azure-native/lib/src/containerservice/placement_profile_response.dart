@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'placement_v1_cluster_resource_placement_spec_response.dart';
+import 'cluster_resource_placement_spec_response.dart';
 
 /// The configuration profile for default ClusterResourcePlacement for placement.
 class PlacementProfileResponse {
   /// The default ClusterResourcePlacement policy configuration.
-  final pulumi.Input<PlacementV1ClusterResourcePlacementSpecResponse>? defaultClusterResourcePlacement;
+  final pulumi.Input<ClusterResourcePlacementSpecResponse>? defaultClusterResourcePlacement;
 
   /// Creates a new [PlacementProfileResponse].
   /// [defaultClusterResourcePlacement] The default ClusterResourcePlacement policy configuration.
@@ -16,14 +16,13 @@ class PlacementProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultClusterResourcePlacement': ?pulumi.Input.mapOptionalInputValue<PlacementV1ClusterResourcePlacementSpecResponse, Map<String, dynamic>>(defaultClusterResourcePlacement, (value) => value.toMap()),
+      'defaultClusterResourcePlacement': ?pulumi.Input.mapOptionalInputValue<ClusterResourcePlacementSpecResponse, Map<String, dynamic>>(defaultClusterResourcePlacement, (value) => value.toMap()),
     };
   }
 
   factory PlacementProfileResponse.fromMap(Map<String, dynamic> map) {
     return PlacementProfileResponse(
-      defaultClusterResourcePlacement: (() { final guardedValue = map['defaultClusterResourcePlacement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlacementV1ClusterResourcePlacementSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      defaultClusterResourcePlacement: (() { final guardedValue = map['defaultClusterResourcePlacement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterResourcePlacementSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum InterNodeCommunicationState {
     throw ArgumentError('Unknown InterNodeCommunicationState value: $value');
   }
 }
-

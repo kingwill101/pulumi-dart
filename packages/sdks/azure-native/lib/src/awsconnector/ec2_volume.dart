@@ -129,6 +129,55 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2volume" "ec2Volume" {
+///   location = "tvdnvkrfzxnahsvnguhrcancxusw"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "evx"
+///     aws_account_id = "zoosbunhmv"
+///     aws_properties = {
+///       auto_enable_io       = true
+///       availability_zone    = "wtzdrwiuscqtvxwi"
+///       encrypted            = true
+///       iops                 = 3
+///       kms_key_id           = "brtkdxsrwuxdzodllqlhzbrwpgkx"
+///       multi_attach_enabled = true
+///       outpost_arn          = "umrirqwmsnmeeknbjkph"
+///       size                 = 2
+///       snapshot_id          = "upwukogzrkqcaea"
+///       tags = [{
+///         "key"   = "hizjca"
+///         "value" = "hnfhwndsnhbpnwfv"
+///       }]
+///       throughput  = 20
+///       volume_id   = "rdcojpg"
+///       volume_type = "otkmglqvqws"
+///     }
+///     aws_region        = "cw"
+///     aws_source_schema = "wlglq"
+///     aws_tags = {
+///       "key2425" = "rgrfhhzzndrgf"
+///     }
+///     public_cloud_connectors_resource_id = "fw"
+///     public_cloud_resource_name          = "xowgb"
+///   }
+///   resource_group_name = "rgec2Volume"
+///   tags = {
+///     "key271" = "ntenfvupathlqgnlukxvtzwzbmj"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +188,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2VolumeArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2VolumePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2VolumePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -18,4 +18,3 @@ enum SnapshotState {
     throw ArgumentError('Unknown SnapshotState value: $value');
   }
 }
-

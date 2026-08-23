@@ -62,6 +62,26 @@ import 'private_link_hub_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_privatelinkhub" "privateLinkHub" {
+///   location              = "East US"
+///   private_link_hub_name = "privateLinkHub1"
+///   resource_group_name   = "resourceGroup1"
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'private_link_hub_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.PrivateLinkHub;
 /// import com.pulumi.azurenative.synapse.PrivateLinkHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

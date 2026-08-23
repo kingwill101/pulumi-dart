@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_flow_args.dart';
 import 'flowlet_response.dart';
+import 'system_data_response.dart';
 
 /// Data flow resource type.
 ///
@@ -57,7 +58,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "USDOutput",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "USDSink",
 ///                 },
@@ -66,7 +67,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "CADOutput",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "CADSink",
 ///                 },
@@ -78,7 +79,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "CurrencyDatasetUSD",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "USDCurrency",
 ///                 },
@@ -87,7 +88,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "CurrencyDatasetCAD",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "CADSource",
 ///                 },
@@ -145,14 +146,14 @@ import 'flowlet_response.dart';
 /// 					&datafactory.DataFlowSinkArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("USDOutput"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("USDSink"),
 /// 					},
 /// 					&datafactory.DataFlowSinkArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("CADOutput"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("CADSink"),
 /// 					},
@@ -161,14 +162,14 @@ import 'flowlet_response.dart';
 /// 					&datafactory.DataFlowSourceArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("CurrencyDatasetUSD"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("USDCurrency"),
 /// 					},
 /// 					&datafactory.DataFlowSourceArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("CurrencyDatasetCAD"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("CADSource"),
 /// 					},
@@ -186,6 +187,54 @@ import 'flowlet_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_dataflow" "dataFlow" {
+///   data_flow_name = "exampleDataFlow"
+///   factory_name   = "exampleFactoryName"
+///   properties = {
+///     "description" = "Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation."
+///     "scriptLines" = ["source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: false,", "validateSchema: false) ~> USDCurrency", "source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: true,", "validateSchema: false) ~> CADSource", "USDCurrency, CADSource union(byName: true)~> Union", "Union derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn", "NewCurrencyColumn split(Country == 'USD',", "Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)", "ConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink", "ConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"]
+///     "sinks" = [{
+///       "dataset" = {
+///         "referenceName" = "USDOutput"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "USDSink"
+///       }, {
+///       "dataset" = {
+///         "referenceName" = "CADOutput"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "CADSink"
+///     }]
+///     "sources" = [{
+///       "dataset" = {
+///         "referenceName" = "CurrencyDatasetUSD"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "USDCurrency"
+///       }, {
+///       "dataset" = {
+///         "referenceName" = "CurrencyDatasetCAD"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "CADSource"
+///     }]
+///     "type" = "MappingDataFlow"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -194,8 +243,8 @@ import 'flowlet_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.DataFlow;
 /// import com.pulumi.azurenative.datafactory.DataFlowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -312,14 +361,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 dataset: {
 ///                     referenceName: "USDOutput",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "USDSink",
 ///             },
 ///             {
 ///                 dataset: {
 ///                     referenceName: "CADOutput",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "CADSink",
 ///             },
@@ -328,14 +377,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 dataset: {
 ///                     referenceName: "CurrencyDatasetUSD",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "USDCurrency",
 ///             },
 ///             {
 ///                 dataset: {
 ///                     referenceName: "CurrencyDatasetCAD",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "CADSource",
 ///             },
@@ -384,14 +433,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "USDOutput",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "USDSink",
 ///             },
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "CADOutput",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "CADSink",
 ///             },
@@ -400,14 +449,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "CurrencyDatasetUSD",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "USDCurrency",
 ///             },
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "CurrencyDatasetCAD",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "CADSource",
 ///             },
@@ -523,7 +572,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "USDOutput",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "USDSink",
 ///                 },
@@ -532,7 +581,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "CADOutput",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "CADSink",
 ///                 },
@@ -544,7 +593,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "CurrencyDatasetUSD",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "USDCurrency",
 ///                 },
@@ -553,7 +602,7 @@ import 'flowlet_response.dart';
 ///                     Dataset = new AzureNative.DataFactory.Inputs.DatasetReferenceArgs
 ///                     {
 ///                         ReferenceName = "CurrencyDatasetCAD",
-///                         Type = "DatasetReference",
+///                         Type = AzureNative.DataFactory.DatasetReferenceType.DatasetReference,
 ///                     },
 ///                     Name = "CADSource",
 ///                 },
@@ -611,14 +660,14 @@ import 'flowlet_response.dart';
 /// 					&datafactory.DataFlowSinkArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("USDOutput"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("USDSink"),
 /// 					},
 /// 					&datafactory.DataFlowSinkArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("CADOutput"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("CADSink"),
 /// 					},
@@ -627,14 +676,14 @@ import 'flowlet_response.dart';
 /// 					&datafactory.DataFlowSourceArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("CurrencyDatasetUSD"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("USDCurrency"),
 /// 					},
 /// 					&datafactory.DataFlowSourceArgs{
 /// 						Dataset: &datafactory.DatasetReferenceArgs{
 /// 							ReferenceName: pulumi.String("CurrencyDatasetCAD"),
-/// 							Type:          pulumi.String("DatasetReference"),
+/// 							Type:          pulumi.String(datafactory.DatasetReferenceTypeDatasetReference),
 /// 						},
 /// 						Name: pulumi.String("CADSource"),
 /// 					},
@@ -652,6 +701,54 @@ import 'flowlet_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_dataflow" "dataFlow" {
+///   data_flow_name = "exampleDataFlow"
+///   factory_name   = "exampleFactoryName"
+///   properties = {
+///     "description" = "Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation."
+///     "scriptLines" = ["source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: false,", "validateSchema: false) ~> USDCurrency", "source(output(", "PreviousConversionRate as double,", "Country as string,", "DateTime1 as string,", "CurrentConversionRate as double", "),", "allowSchemaDrift: true,", "validateSchema: false) ~> CADSource", "USDCurrency, CADSource union(byName: true)~> Union", "Union derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn", "NewCurrencyColumn split(Country == 'USD',", "Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)", "ConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink", "ConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"]
+///     "sinks" = [{
+///       "dataset" = {
+///         "referenceName" = "USDOutput"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "USDSink"
+///       }, {
+///       "dataset" = {
+///         "referenceName" = "CADOutput"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "CADSink"
+///     }]
+///     "sources" = [{
+///       "dataset" = {
+///         "referenceName" = "CurrencyDatasetUSD"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "USDCurrency"
+///       }, {
+///       "dataset" = {
+///         "referenceName" = "CurrencyDatasetCAD"
+///         "type"          = "DatasetReference"
+///       }
+///       "name" = "CADSource"
+///     }]
+///     "type" = "MappingDataFlow"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -660,8 +757,8 @@ import 'flowlet_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datafactory.DataFlow;
 /// import com.pulumi.azurenative.datafactory.DataFlowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -778,14 +875,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 dataset: {
 ///                     referenceName: "USDOutput",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "USDSink",
 ///             },
 ///             {
 ///                 dataset: {
 ///                     referenceName: "CADOutput",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "CADSink",
 ///             },
@@ -794,14 +891,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 dataset: {
 ///                     referenceName: "CurrencyDatasetUSD",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "USDCurrency",
 ///             },
 ///             {
 ///                 dataset: {
 ///                     referenceName: "CurrencyDatasetCAD",
-///                     type: "DatasetReference",
+///                     type: azure_native.datafactory.DatasetReferenceType.DatasetReference,
 ///                 },
 ///                 name: "CADSource",
 ///             },
@@ -850,14 +947,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "USDOutput",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "USDSink",
 ///             },
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "CADOutput",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "CADSink",
 ///             },
@@ -866,14 +963,14 @@ import 'flowlet_response.dart';
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "CurrencyDatasetUSD",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "USDCurrency",
 ///             },
 ///             {
 ///                 "dataset": {
 ///                     "reference_name": "CurrencyDatasetCAD",
-///                     "type": "DatasetReference",
+///                     "type": azure_native.datafactory.DatasetReferenceType.DATASET_REFERENCE,
 ///                 },
 ///                 "name": "CADSource",
 ///             },
@@ -952,13 +1049,15 @@ import 'flowlet_response.dart';
 class DataFlow extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
-  /// The resource name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Data flow properties.
   late final pulumi.Output<FlowletResponse> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [DataFlow].
@@ -979,6 +1078,7 @@ class DataFlow extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     properties = registerOutput<FlowletResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowletResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

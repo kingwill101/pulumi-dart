@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'namespace_properties_response.dart';
+import 'namespace_properties_namespace_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getNamespace.
@@ -16,7 +16,7 @@ class GetNamespaceResult {
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String name;
   /// Properties of a namespace.
-  final NamespacePropertiesResponse properties;
+  final NamespacePropertiesNamespaceResponse properties;
   /// The system metadata relating to this resource.
   final SystemDataResponse systemData;
   /// The tags to be persisted on the managed cluster namespace.
@@ -67,11 +67,10 @@ class GetNamespaceResult {
       id: map['id'] as String,
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
-      properties: NamespacePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: NamespacePropertiesNamespaceResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -83,4 +83,3 @@ class GoogleBigQueryV2ObjectDataset {
     );
   }
 }
-

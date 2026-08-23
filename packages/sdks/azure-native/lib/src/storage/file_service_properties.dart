@@ -198,6 +198,44 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileserviceproperties" "fileServiceProperties" {
+///   account_name = "sto8607"
+///   cors = {
+///     cors_rules = [{
+///       "allowedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
+///       "allowedMethods"  = ["GET", "HEAD", "POST", "OPTIONS", "MERGE", "PUT"]
+///       "allowedOrigins"  = ["http://www.contoso.com", "http://www.fabrikam.com"]
+///       "exposedHeaders"  = ["x-ms-meta-*"]
+///       "maxAgeInSeconds" = 100
+///       }, {
+///       "allowedHeaders"  = ["*"]
+///       "allowedMethods"  = ["GET"]
+///       "allowedOrigins"  = ["*"]
+///       "exposedHeaders"  = ["*"]
+///       "maxAgeInSeconds" = 2
+///       }, {
+///       "allowedHeaders"  = ["x-ms-meta-12345675754564*"]
+///       "allowedMethods"  = ["GET", "PUT"]
+///       "allowedOrigins"  = ["http://www.abc23.com", "https://www.fabrikam.com/*"]
+///       "exposedHeaders"  = ["x-ms-meta-abc", "x-ms-meta-data*", "x-ms-meta-target*"]
+///       "maxAgeInSeconds" = 2000
+///     }]
+///   }
+///   file_services_name  = "default"
+///   resource_group_name = "res4410"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +245,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.storage.FileServiceProperties;
 /// import com.pulumi.azurenative.storage.FileServicePropertiesArgs;
 /// import com.pulumi.azurenative.storage.inputs.CorsRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -510,6 +548,30 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileserviceproperties" "fileServiceProperties" {
+///   account_name       = "sto8607"
+///   file_services_name = "default"
+///   protocol_settings = {
+///     smb = {
+///       multichannel = {
+///         enabled = true
+///       }
+///     }
+///   }
+///   resource_group_name = "res4410"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -521,8 +583,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.storage.inputs.ProtocolSettingsArgs;
 /// import com.pulumi.azurenative.storage.inputs.SmbSettingArgs;
 /// import com.pulumi.azurenative.storage.inputs.MultichannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -669,6 +731,31 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storage_fileserviceproperties" "fileServiceProperties" {
+///   account_name       = "sto8607"
+///   file_services_name = "default"
+///   protocol_settings = {
+///     smb = {
+///       authentication_methods     = "NTLMv2;Kerberos"
+///       channel_encryption         = "AES-128-CCM;AES-128-GCM;AES-256-GCM"
+///       kerberos_ticket_encryption = "RC4-HMAC;AES-256"
+///       versions                   = "SMB2.1;SMB3.0;SMB3.1.1"
+///     }
+///   }
+///   resource_group_name = "res4410"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -679,8 +766,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.storage.FileServicePropertiesArgs;
 /// import com.pulumi.azurenative.storage.inputs.ProtocolSettingsArgs;
 /// import com.pulumi.azurenative.storage.inputs.SmbSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

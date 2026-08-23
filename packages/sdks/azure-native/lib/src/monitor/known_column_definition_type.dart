@@ -20,4 +20,3 @@ enum KnownColumnDefinitionType {
     throw ArgumentError('Unknown KnownColumnDefinitionType value: $value');
   }
 }
-

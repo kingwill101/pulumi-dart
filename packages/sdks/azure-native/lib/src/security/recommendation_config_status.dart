@@ -1,7 +1,7 @@
 /// Recommendation status. When the recommendation status is disabled recommendations are not generated.
 enum RecommendationConfigStatus {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const RecommendationConfigStatus(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum RecommendationConfigStatus {
     throw ArgumentError('Unknown RecommendationConfigStatus value: $value');
   }
 }
-

@@ -190,4 +190,3 @@ class GetWorkspaceResult {
     );
   }
 }
-

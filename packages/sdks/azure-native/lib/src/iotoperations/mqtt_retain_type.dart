@@ -15,4 +15,3 @@ enum MqttRetainType {
     throw ArgumentError('Unknown MqttRetainType value: $value');
   }
 }
-

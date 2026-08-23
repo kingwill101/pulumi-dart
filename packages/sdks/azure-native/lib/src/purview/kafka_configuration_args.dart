@@ -16,6 +16,7 @@ class KafkaConfigurationArgs {
   final pulumi.Input<Credentials>? credentials;
   /// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
   final pulumi.Input<String>? eventHubPartitionId;
+  /// A type definition that refers the id to an Azure Resource Manager resource.
   final pulumi.Input<String>? eventHubResourceId;
   /// The event hub type.
   final pulumi.Input<String>? eventHubType;
@@ -23,9 +24,9 @@ class KafkaConfigurationArgs {
   final pulumi.Input<String>? eventStreamingState;
   /// The event streaming service type
   final pulumi.Input<String>? eventStreamingType;
-  /// The kafka configuration name.
+  /// Name of kafka configuration.
   final pulumi.Input<String>? kafkaConfigurationName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [KafkaConfigurationArgs].
@@ -33,12 +34,12 @@ class KafkaConfigurationArgs {
   /// [consumerGroup] Consumer group for hook event hub.
   /// [credentials] Credentials to access the event streaming service attached to the purview account.
   /// [eventHubPartitionId] Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
-  /// [eventHubResourceId] Optional.
+  /// [eventHubResourceId] A type definition that refers the id to an Azure Resource Manager resource.
   /// [eventHubType] The event hub type.
   /// [eventStreamingState] The state of the event streaming service
   /// [eventStreamingType] The event streaming service type
-  /// [kafkaConfigurationName] The kafka configuration name.
-  /// [resourceGroupName] The resource group name.
+  /// [kafkaConfigurationName] Name of kafka configuration.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const KafkaConfigurationArgs({
     required this.accountName,
     this.consumerGroup,
@@ -82,4 +83,3 @@ class KafkaConfigurationArgs {
     );
   }
 }
-

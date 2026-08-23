@@ -1,6 +1,6 @@
 /// [Required] Type of the Nodes value
 enum NodesValueType {
-  valueAll("All");
+  all("All");
 
   const NodesValueType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum NodesValueType {
     throw ArgumentError('Unknown NodesValueType value: $value');
   }
 }
-

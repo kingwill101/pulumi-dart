@@ -16,4 +16,3 @@ enum UserImpact {
     throw ArgumentError('Unknown UserImpact value: $value');
   }
 }
-

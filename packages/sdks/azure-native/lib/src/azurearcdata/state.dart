@@ -16,4 +16,3 @@ enum State {
     throw ArgumentError('Unknown State value: $value');
   }
 }
-

@@ -41,4 +41,3 @@ enum ApplicationGatewaySslCipherSuite {
     throw ArgumentError('Unknown ApplicationGatewaySslCipherSuite value: $value');
   }
 }
-

@@ -55,6 +55,23 @@ import 'nsp_profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_nspprofile" "nspProfile" {
+///   network_security_perimeter_name = "nsp1"
+///   profile_name                    = "profile1"
+///   resource_group_name             = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +80,8 @@ import 'nsp_profile_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.NspProfile;
 /// import com.pulumi.azurenative.network.NspProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

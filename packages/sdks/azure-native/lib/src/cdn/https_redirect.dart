@@ -15,4 +15,3 @@ enum HttpsRedirect {
     throw ArgumentError('Unknown HttpsRedirect value: $value');
   }
 }
-

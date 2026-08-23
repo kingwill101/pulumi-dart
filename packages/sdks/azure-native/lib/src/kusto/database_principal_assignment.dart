@@ -5,7 +5,7 @@ import 'database_principal_assignment_args.dart';
 ///
 /// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
 ///
-/// Other available API versions: 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15, 2025-02-14. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -65,6 +65,28 @@ import 'database_principal_assignment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_databaseprincipalassignment" "databasePrincipalAssignment" {
+///   cluster_name              = "kustoCluster"
+///   database_name             = "Kustodatabase8"
+///   principal_assignment_name = "kustoprincipal1"
+///   principal_id              = "87654321-1234-1234-1234-123456789123"
+///   principal_type            = "App"
+///   resource_group_name       = "kustorptest"
+///   role                      = "Admin"
+///   tenant_id                 = "12345678-1234-1234-1234-123456789123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +95,8 @@ import 'database_principal_assignment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.DatabasePrincipalAssignment;
 /// import com.pulumi.azurenative.kusto.DatabasePrincipalAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

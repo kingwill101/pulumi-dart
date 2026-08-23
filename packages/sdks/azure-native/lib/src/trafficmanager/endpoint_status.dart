@@ -15,4 +15,3 @@ enum EndpointStatus {
     throw ArgumentError('Unknown EndpointStatus value: $value');
   }
 }
-

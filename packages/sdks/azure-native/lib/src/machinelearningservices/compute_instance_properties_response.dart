@@ -40,8 +40,12 @@ class ComputeInstancePropertiesResponse {
   final pulumi.Input<List<ComputeInstanceDataMountResponse>> dataMounts;
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
   final pulumi.Input<bool>? enableNodePublicIp;
+  /// Enable SSO (single sign on). Possible values are: true, false.
+  final pulumi.Input<bool>? enableSSO;
   /// Collection of errors encountered on this ComputeInstance.
   final pulumi.Input<List<ErrorResponseResponse>> errors;
+  /// Stops compute instance after user defined period of inactivity. Time is defined in ISO8601 format. Minimum is 15 min, maximum is 3 days.
+  final pulumi.Input<String>? idleTimeBeforeShutdown;
   /// The last operation on ComputeInstance.
   final pulumi.Input<ComputeInstanceLastOperationResponse> lastOperation;
   /// Returns metadata about the operating system image for this compute instance.
@@ -74,7 +78,9 @@ class ComputeInstancePropertiesResponse {
   /// [dataDisks] Describes informations of dataDisks on this ComputeInstance.
   /// [dataMounts] Describes informations of dataMounts on this ComputeInstance.
   /// [enableNodePublicIp] Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
+  /// [enableSSO] Enable SSO (single sign on). Possible values are: true, false.
   /// [errors] Collection of errors encountered on this ComputeInstance.
+  /// [idleTimeBeforeShutdown] Stops compute instance after user defined period of inactivity. Time is defined in ISO8601 format. Minimum is 15 min, maximum is 3 days.
   /// [lastOperation] The last operation on ComputeInstance.
   /// [osImageMetadata] Returns metadata about the operating system image for this compute instance.
   /// [personalComputeInstanceSettings] Settings for a personal compute instance.
@@ -96,7 +102,9 @@ class ComputeInstancePropertiesResponse {
     required this.dataDisks,
     required this.dataMounts,
     this.enableNodePublicIp,
+    this.enableSSO,
     required this.errors,
+    this.idleTimeBeforeShutdown,
     required this.lastOperation,
     required this.osImageMetadata,
     this.personalComputeInstanceSettings,
@@ -121,7 +129,9 @@ class ComputeInstancePropertiesResponse {
       'dataDisks': pulumi.Input.mapInputValue<List<ComputeInstanceDataDiskResponse>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<ComputeInstanceDataDiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataMounts': pulumi.Input.mapInputValue<List<ComputeInstanceDataMountResponse>, List<Map<String, dynamic>>>(dataMounts, (value) => pulumi.Input.encodeList<ComputeInstanceDataMountResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableNodePublicIp': ?enableNodePublicIp,
+      'enableSSO': ?enableSSO,
       'errors': pulumi.Input.mapInputValue<List<ErrorResponseResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ErrorResponseResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'idleTimeBeforeShutdown': ?idleTimeBeforeShutdown,
       'lastOperation': pulumi.Input.mapInputValue<ComputeInstanceLastOperationResponse, Map<String, dynamic>>(lastOperation, (value) => value.toMap()),
       'osImageMetadata': pulumi.Input.mapInputValue<ImageMetadataResponse, Map<String, dynamic>>(osImageMetadata, (value) => value.toMap()),
       'personalComputeInstanceSettings': ?pulumi.Input.mapOptionalInputValue<PersonalComputeInstanceSettingsResponse, Map<String, dynamic>>(personalComputeInstanceSettings, (value) => value.toMap()),
@@ -147,7 +157,9 @@ class ComputeInstancePropertiesResponse {
       dataDisks: pulumi.Input.fromValue(pulumi.Input.decodeList<ComputeInstanceDataDiskResponse>(map['dataDisks']!, (value) => ComputeInstanceDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))),
       dataMounts: pulumi.Input.fromValue(pulumi.Input.decodeList<ComputeInstanceDataMountResponse>(map['dataMounts']!, (value) => ComputeInstanceDataMountResponse.fromMap((value as Map).cast<String, dynamic>()))),
       enableNodePublicIp: (() { final guardedValue = map['enableNodePublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      enableSSO: (() { final guardedValue = map['enableSSO']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorResponseResponse>(map['errors']!, (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      idleTimeBeforeShutdown: (() { final guardedValue = map['idleTimeBeforeShutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastOperation: pulumi.Input.fromValue(ComputeInstanceLastOperationResponse.fromMap((map['lastOperation']! as Map).cast<String, dynamic>())),
       osImageMetadata: pulumi.Input.fromValue(ImageMetadataResponse.fromMap((map['osImageMetadata']! as Map).cast<String, dynamic>())),
       personalComputeInstanceSettings: (() { final guardedValue = map['personalComputeInstanceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PersonalComputeInstanceSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -161,4 +173,3 @@ class ComputeInstancePropertiesResponse {
     );
   }
 }
-

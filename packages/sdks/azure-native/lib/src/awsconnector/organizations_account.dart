@@ -128,6 +128,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_organizationsaccount" "organizationsAccount" {
+///   location = "wyzamnearzlajcvzhj"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "zdirlutwidghhfrufpjhexxbsrfxwl"
+///     aws_account_id = "ggnntqdpbcdtbjxaiabsgxxmtunblo"
+///     aws_properties = {
+///       account_id       = "kkdjvhtsvtqybdxezywfojndmjpou"
+///       account_name     = "vegcsgzymnbxry"
+///       arn              = "ffkjxnnwpewiiudycadgtyrztehy"
+///       email            = "bwriakvcvyhklvulzwvlddeevj"
+///       joined_method    = "CREATED"
+///       joined_timestamp = "xdxxffzfzxgewxyavjim"
+///       parent_ids       = ["xxzonolej"]
+///       role_name        = "izpxv"
+///       status           = "ACTIVE"
+///       tags = [{
+///         "key"   = "jwuqulmpbiwqxudtqfgrtnvxtbyxcb"
+///         "value" = "esqhxwyrftlxbuab"
+///       }]
+///     }
+///     aws_region        = "yvslwciyhnwwnxxrv"
+///     aws_source_schema = "emcozgsikaryx"
+///     aws_tags = {
+///       "key907" = "gwpsscwhgavtczmdnje"
+///     }
+///     public_cloud_connectors_resource_id = "zbgkie"
+///     public_cloud_resource_name          = "tmmwrgytiyucnzokuiq"
+///   }
+///   resource_group_name = "rgorganizationsAccount"
+///   tags = {
+///     "key9774" = "vgzqosjmzoxfqujm"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +184,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.OrganizationsAccountArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OrganizationsAccountPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsOrganizationsAccountPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

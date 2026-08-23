@@ -1,16 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_service_identity_response.dart';
 import 'private_endpoint_connection_args.dart';
-import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
+import 'workspace_private_endpoint_resource_response.dart';
 
 /// The Private Endpoint Connection resource.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -30,7 +30,7 @@ import 'system_data_response.dart';
 ///         PrivateLinkServiceConnectionState = new AzureNative.MachineLearningServices.Inputs.PrivateLinkServiceConnectionStateArgs
 ///         {
 ///             Description = "Auto-Approved",
-///             Status = AzureNative.MachineLearningServices.PrivateEndpointServiceConnectionStatus.Approved,
+///             Status = AzureNative.MachineLearningServices.EndpointServiceConnectionStatus.Approved,
 ///         },
 ///         ResourceGroupName = "rg-1234",
 ///         WorkspaceName = "testworkspace",
@@ -55,7 +55,7 @@ import 'system_data_response.dart';
 /// 			PrivateEndpointConnectionName: pulumi.String("{privateEndpointConnectionName}"),
 /// 			PrivateLinkServiceConnectionState: &machinelearningservices.PrivateLinkServiceConnectionStateArgs{
 /// 				Description: pulumi.String("Auto-Approved"),
-/// 				Status:      pulumi.String(machinelearningservices.PrivateEndpointServiceConnectionStatusApproved),
+/// 				Status:      pulumi.String(machinelearningservices.EndpointServiceConnectionStatusApproved),
 /// 			},
 /// 			ResourceGroupName: pulumi.String("rg-1234"),
 /// 			WorkspaceName:     pulumi.String("testworkspace"),
@@ -69,6 +69,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_privateendpointconnection" "privateEndpointConnection" {
+///   private_endpoint_connection_name = "{privateEndpointConnectionName}"
+///   private_link_service_connection_state = {
+///     description = "Auto-Approved"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "rg-1234"
+///   workspace_name      = "testworkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.machinelearningservices.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.machinelearningservices.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.machinelearningservices.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -114,7 +135,7 @@ import 'system_data_response.dart';
 ///     privateEndpointConnectionName: "{privateEndpointConnectionName}",
 ///     privateLinkServiceConnectionState: {
 ///         description: "Auto-Approved",
-///         status: azure_native.machinelearningservices.PrivateEndpointServiceConnectionStatus.Approved,
+///         status: azure_native.machinelearningservices.EndpointServiceConnectionStatus.Approved,
 ///     },
 ///     resourceGroupName: "rg-1234",
 ///     workspaceName: "testworkspace",
@@ -130,7 +151,7 @@ import 'system_data_response.dart';
 ///     private_endpoint_connection_name="{privateEndpointConnectionName}",
 ///     private_link_service_connection_state={
 ///         "description": "Auto-Approved",
-///         "status": azure_native.machinelearningservices.PrivateEndpointServiceConnectionStatus.APPROVED,
+///         "status": azure_native.machinelearningservices.EndpointServiceConnectionStatus.APPROVED,
 ///     },
 ///     resource_group_name="rg-1234",
 ///     workspace_name="testworkspace")
@@ -164,23 +185,22 @@ import 'system_data_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// The identity of the resource.
+  /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
-  /// Specifies the location of the resource.
+  /// *Same as workspace location.
   late final pulumi.Output<String?> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// The resource of private end point.
-  late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
-  /// A collection of information about the state of the connection between service consumer and provider.
-  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
-  /// The provisioning state of the private endpoint connection resource.
+  /// The Private Endpoint resource.
+  late final pulumi.Output<WorkspacePrivateEndpointResourceResponse?> privateEndpoint;
+  /// The connection state.
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?> privateLinkServiceConnectionState;
+  /// The current provisioning state.
   late final pulumi.Output<String> provisioningState;
-  /// The sku of the workspace.
+  /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   late final pulumi.Output<SkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
@@ -203,8 +223,8 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpoint = registerOutput<WorkspacePrivateEndpointResourceResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspacePrivateEndpointResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse?>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -68,4 +68,3 @@ class GetEc2RouteTableResult {
     );
   }
 }
-

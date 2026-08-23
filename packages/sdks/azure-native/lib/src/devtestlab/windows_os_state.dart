@@ -16,4 +16,3 @@ enum WindowsOsState {
     throw ArgumentError('Unknown WindowsOsState value: $value');
   }
 }
-

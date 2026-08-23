@@ -15,4 +15,3 @@ enum AllowCrashDumpCollection {
     throw ArgumentError('Unknown AllowCrashDumpCollection value: $value');
   }
 }
-

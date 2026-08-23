@@ -1,7 +1,7 @@
 /// The network access type for accessing Application Insights query.
 enum PublicNetworkAccessType {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const PublicNetworkAccessType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PublicNetworkAccessType {
     throw ArgumentError('Unknown PublicNetworkAccessType value: $value');
   }
 }
-

@@ -449,6 +449,161 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+///   backup_data = {
+///     "backupPolicy" = {
+///       "backupManagementType" = "AzureWorkload"
+///       "name"                 = "defaultHanaPolicy"
+///       "protectedItemsCount"  = 0
+///       "settings" = {
+///         "isCompression"    = false
+///         "issqlcompression" = false
+///         "timeZone"         = "UTC"
+///       }
+///       "subProtectionPolicy" = [{
+///         "policyType" = "Full"
+///         "retentionPolicy" = {
+///           "monthlySchedule" = {
+///             "retentionDuration" = {
+///               "count"        = 60
+///               "durationType" = "Months"
+///             }
+///             "retentionScheduleFormatType" = "Weekly"
+///             "retentionScheduleWeekly" = {
+///               "daysOfTheWeek"   = ["Sunday"]
+///               "weeksOfTheMonth" = ["First"]
+///             }
+///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           }
+///           "retentionPolicyType" = "LongTermRetentionPolicy"
+///           "weeklySchedule" = {
+///             "daysOfTheWeek" = ["Sunday"]
+///             "retentionDuration" = {
+///               "count"        = 104
+///               "durationType" = "Weeks"
+///             }
+///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           }
+///           "yearlySchedule" = {
+///             "monthsOfYear" = ["January"]
+///             "retentionDuration" = {
+///               "count"        = 10
+///               "durationType" = "Years"
+///             }
+///             "retentionScheduleFormatType" = "Weekly"
+///             "retentionScheduleWeekly" = {
+///               "daysOfTheWeek"   = ["Sunday"]
+///               "weeksOfTheMonth" = ["First"]
+///             }
+///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           }
+///         }
+///         "schedulePolicy" = {
+///           "schedulePolicyType"   = "SimpleSchedulePolicy"
+///           "scheduleRunDays"      = ["Sunday"]
+///           "scheduleRunFrequency" = "Weekly"
+///           "scheduleRunTimes"     = ["2022-11-29T19:30:00.000Z"]
+///         }
+///         "tieringPolicy" = {
+///           "ArchivedRP" = {
+///             "tieringMode" = "DoNotTier"
+///           }
+///         }
+///         }, {
+///         "policyType" = "Differential"
+///         "retentionPolicy" = {
+///           "retentionDuration" = {
+///             "count"        = 30
+///             "durationType" = "Days"
+///           }
+///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///         }
+///         "schedulePolicy" = {
+///           "schedulePolicyType"      = "SimpleSchedulePolicy"
+///           "scheduleRunDays"         = ["Monday"]
+///           "scheduleRunFrequency"    = "Weekly"
+///           "scheduleRunTimes"        = ["2022-09-29T02:00:00Z"]
+///           "scheduleWeeklyFrequency" = 0
+///         }
+///         }, {
+///         "policyType" = "Log"
+///         "retentionPolicy" = {
+///           "retentionDuration" = {
+///             "count"        = 20
+///             "durationType" = "Days"
+///           }
+///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///         }
+///         "schedulePolicy" = {
+///           "scheduleFrequencyInMins" = 120
+///           "schedulePolicyType"      = "LogSchedulePolicy"
+///         }
+///       }]
+///       "workLoadType" = "SAPHanaDatabase"
+///     }
+///     "backupType" = "HANA"
+///     "dbInstanceSnapshotBackupPolicy" = {
+///       "backupManagementType" = "AzureWorkload"
+///       "name"                 = "defaultDbInstanceSnapshotPolicy"
+///       "settings" = {
+///         "isCompression"    = false
+///         "issqlcompression" = false
+///         "timeZone"         = "UTC"
+///       }
+///       "subProtectionPolicy" = [{
+///         "policyType" = "SnapshotFull"
+///         "schedulePolicy" = {
+///           "schedulePolicyType"   = "SimpleSchedulePolicy"
+///           "scheduleRunFrequency" = "Daily"
+///           "scheduleRunTimes"     = ["2023-09-18T06:30:00.000Z"]
+///         }
+///         "snapshotBackupAdditionalDetails" = {
+///           "instantRPDetails"              = "test-rg"
+///           "instantRpRetentionRangeInDays" = 1
+///           "userAssignedManagedIdentityDetails" = {
+///             "identityArmId" = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testMsi"
+///             "identityName"  = "testMsi"
+///             "userAssignedIdentityProperties" = {
+///               "clientId"    = "c3a877cf-51f8-4031-8f17-ab562d1e7737"
+///               "principalId" = "2f5834bd-4b86-4d85-a8df-6dd829a6418c"
+///             }
+///           }
+///         }
+///       }]
+///       "workLoadType" = "SAPHanaDBInstance"
+///     }
+///     "hdbuserstoreKeyName" = "abcd"
+///     "instanceNumber"      = "00"
+///     "recoveryServicesVault" = {
+///       "name"          = "test-vault"
+///       "resourceGroup" = "test-rg"
+///       "vaultType"     = "New"
+///     }
+///     "sslConfiguration" = {
+///       "sslCryptoProvider"        = "commoncrypto"
+///       "sslHostNameInCertificate" = "hostname"
+///       "sslKeyStore"              = "sapsrv.pse"
+///       "sslTrustStore"            = "sapsrv.pse"
+///     }
+///   }
+///   backup_name         = "dbBackup"
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -457,8 +612,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -481,7 +636,7 @@ import 'system_data_response.dart';
 ///                         .issqlcompression(false)
 ///                         .timeZone("UTC")
 ///                         .build()),
-///                     Map.entry("subProtectionPolicy",
+///                     Map.entry("subProtectionPolicy", Arrays.asList(
 ///                         SubProtectionPolicyArgs.builder()
 ///                             .policyType("Full")
 ///                             .retentionPolicy(LongTermRetentionPolicyArgs.builder()
@@ -560,7 +715,7 @@ import 'system_data_response.dart';
 ///                                 .scheduleFrequencyInMins(120)
 ///                                 .schedulePolicyType("LogSchedulePolicy")
 ///                                 .build())
-///                             .build()),
+///                             .build())),
 ///                     Map.entry("workLoadType", "SAPHanaDatabase")
 ///                 ))
 ///                 .backupType("HANA")
@@ -572,7 +727,7 @@ import 'system_data_response.dart';
 ///                         .issqlcompression(false)
 ///                         .timeZone("UTC")
 ///                         .build()),
-///                     Map.entry("subProtectionPolicy", SubProtectionPolicyArgs.builder()
+///                     Map.entry("subProtectionPolicy", Arrays.asList(SubProtectionPolicyArgs.builder()
 ///                         .policyType("SnapshotFull")
 ///                         .schedulePolicy(SimpleSchedulePolicyArgs.builder()
 ///                             .schedulePolicyType("SimpleSchedulePolicy")
@@ -591,7 +746,7 @@ import 'system_data_response.dart';
 ///                                     .build())
 ///                                 .build())
 ///                             .build())
-///                         .build()),
+///                         .build())),
 ///                     Map.entry("workLoadType", "SAPHanaDBInstance")
 ///                 ))
 ///                 .hdbuserstoreKeyName("abcd")
@@ -1408,6 +1563,125 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+///   backup_data = {
+///     "backupPolicy" = {
+///       "backupManagementType" = "AzureWorkload"
+///       "name"                 = "defaultSqlPolicy"
+///       "protectedItemsCount"  = 0
+///       "settings" = {
+///         "isCompression"    = true
+///         "issqlcompression" = true
+///         "timeZone"         = "UTC"
+///       }
+///       "subProtectionPolicy" = [{
+///         "policyType" = "Full"
+///         "retentionPolicy" = {
+///           "monthlySchedule" = {
+///             "retentionDuration" = {
+///               "count"        = 60
+///               "durationType" = "Months"
+///             }
+///             "retentionScheduleFormatType" = "Weekly"
+///             "retentionScheduleWeekly" = {
+///               "daysOfTheWeek"   = ["Sunday"]
+///               "weeksOfTheMonth" = ["First"]
+///             }
+///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           }
+///           "retentionPolicyType" = "LongTermRetentionPolicy"
+///           "weeklySchedule" = {
+///             "daysOfTheWeek" = ["Sunday"]
+///             "retentionDuration" = {
+///               "count"        = 104
+///               "durationType" = "Weeks"
+///             }
+///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           }
+///           "yearlySchedule" = {
+///             "monthsOfYear" = ["January"]
+///             "retentionDuration" = {
+///               "count"        = 10
+///               "durationType" = "Years"
+///             }
+///             "retentionScheduleFormatType" = "Weekly"
+///             "retentionScheduleWeekly" = {
+///               "daysOfTheWeek"   = ["Sunday"]
+///               "weeksOfTheMonth" = ["First"]
+///             }
+///             "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///           }
+///         }
+///         "schedulePolicy" = {
+///           "schedulePolicyType"   = "SimpleSchedulePolicy"
+///           "scheduleRunDays"      = ["Sunday"]
+///           "scheduleRunFrequency" = "Weekly"
+///           "scheduleRunTimes"     = ["2022-11-29T19:30:00.000Z"]
+///         }
+///         "tieringPolicy" = {
+///           "ArchivedRP" = {
+///             "duration"     = 45
+///             "durationType" = "Days"
+///             "tieringMode"  = "TierAfter"
+///           }
+///         }
+///         }, {
+///         "policyType" = "Differential"
+///         "retentionPolicy" = {
+///           "retentionDuration" = {
+///             "count"        = 30
+///             "durationType" = "Days"
+///           }
+///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///         }
+///         "schedulePolicy" = {
+///           "schedulePolicyType"      = "SimpleSchedulePolicy"
+///           "scheduleRunDays"         = ["Monday"]
+///           "scheduleRunFrequency"    = "Weekly"
+///           "scheduleRunTimes"        = ["2022-09-29T02:00:00Z"]
+///           "scheduleWeeklyFrequency" = 0
+///         }
+///         }, {
+///         "policyType" = "Log"
+///         "retentionPolicy" = {
+///           "retentionDuration" = {
+///             "count"        = 20
+///             "durationType" = "Days"
+///           }
+///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///         }
+///         "schedulePolicy" = {
+///           "scheduleFrequencyInMins" = 120
+///           "schedulePolicyType"      = "LogSchedulePolicy"
+///         }
+///       }]
+///       "workLoadType" = "SQLDataBase"
+///     }
+///     "backupType" = "SQL"
+///     "recoveryServicesVault" = {
+///       "name"          = "test-vault"
+///       "resourceGroup" = "test-rg"
+///       "vaultType"     = "New"
+///     }
+///   }
+///   backup_name         = "dbBackup"
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1416,8 +1690,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1440,7 +1714,7 @@ import 'system_data_response.dart';
 ///                         .issqlcompression(true)
 ///                         .timeZone("UTC")
 ///                         .build()),
-///                     Map.entry("subProtectionPolicy",
+///                     Map.entry("subProtectionPolicy", Arrays.asList(
 ///                         SubProtectionPolicyArgs.builder()
 ///                             .policyType("Full")
 ///                             .retentionPolicy(LongTermRetentionPolicyArgs.builder()
@@ -1521,7 +1795,7 @@ import 'system_data_response.dart';
 ///                                 .scheduleFrequencyInMins(120)
 ///                                 .schedulePolicyType("LogSchedulePolicy")
 ///                                 .build())
-///                             .build()),
+///                             .build())),
 ///                     Map.entry("workLoadType", "SQLDataBase")
 ///                 ))
 ///                 .backupType("SQL")
@@ -2163,6 +2437,104 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+///   backup_data = {
+///     "backupPolicy" = {
+///       "backupManagementType" = "AzureIaasVM"
+///       "instantRPDetails" = {
+///         "azureBackupRGNamePrefix" = "dasas"
+///         "azureBackupRGNameSuffix" = "a"
+///       }
+///       "instantRpRetentionRangeInDays" = 2
+///       "name"                          = "defaultVmPolicy"
+///       "policyType"                    = "V1"
+///       "protectedItemsCount"           = 0
+///       "retentionPolicy" = {
+///         "dailySchedule" = {
+///           "retentionDuration" = {
+///             "count"        = 30
+///             "durationType" = "Days"
+///           }
+///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///         }
+///         "monthlySchedule" = {
+///           "retentionDuration" = {
+///             "count"        = 60
+///             "durationType" = "Months"
+///           }
+///           "retentionScheduleFormatType" = "Weekly"
+///           "retentionScheduleWeekly" = {
+///             "daysOfTheWeek"   = ["Sunday"]
+///             "weeksOfTheMonth" = ["First"]
+///           }
+///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///         }
+///         "retentionPolicyType" = "LongTermRetentionPolicy"
+///         "weeklySchedule" = {
+///           "daysOfTheWeek" = ["Sunday"]
+///           "retentionDuration" = {
+///             "count"        = 12
+///             "durationType" = "Weeks"
+///           }
+///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///         }
+///         "yearlySchedule" = {
+///           "monthsOfYear" = ["January"]
+///           "retentionDuration" = {
+///             "count"        = 10
+///             "durationType" = "Years"
+///           }
+///           "retentionScheduleFormatType" = "Weekly"
+///           "retentionScheduleWeekly" = {
+///             "daysOfTheWeek"   = ["Sunday"]
+///             "weeksOfTheMonth" = ["First"]
+///           }
+///           "retentionTimes" = ["2022-11-29T19:30:00.000Z"]
+///         }
+///       }
+///       "schedulePolicy" = {
+///         "schedulePolicyType"   = "SimpleSchedulePolicy"
+///         "scheduleRunFrequency" = "Daily"
+///         "scheduleRunTimes"     = ["2022-11-29T19:30:00.000Z"]
+///       }
+///       "tieringPolicy" = {
+///         "ArchivedRP" = {
+///           "duration"     = 3
+///           "durationType" = "Months"
+///           "tieringMode"  = "TierAfter"
+///         }
+///       }
+///       "timeZone" = "UTC"
+///     }
+///     "backupType" = "VM"
+///     "diskExclusionProperties" = {
+///       "diskLunList"     = []
+///       "isInclusionList" = true
+///     }
+///     "recoveryServicesVault" = {
+///       "name"          = "test-vault"
+///       "resourceGroup" = "test-rg"
+///       "vaultType"     = "New"
+///     }
+///   }
+///   backup_name         = "vmBackup"
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2171,8 +2543,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2725,6 +3097,75 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+///   backup_data = {
+///     "backupPolicy" = {
+///       "backupManagementType" = "AzureWorkload"
+///       "name"                 = "defaultDbPolicy"
+///       "protectedItemsCount"  = 0
+///       "settings" = {
+///         "isCompression"    = false
+///         "issqlcompression" = false
+///         "timeZone"         = "UTC"
+///       }
+///       "subProtectionPolicy" = [{
+///         "policyType" = "Full"
+///         "retentionPolicy" = {
+///           "dailySchedule" = {
+///             "retentionDuration" = {
+///               "count"        = 30
+///               "durationType" = "Days"
+///             }
+///             "retentionTimes" = ["2018-01-10T18:30:00Z"]
+///           }
+///           "retentionPolicyType" = "LongTermRetentionPolicy"
+///         }
+///         "schedulePolicy" = {
+///           "schedulePolicyType"      = "SimpleSchedulePolicy"
+///           "scheduleRunFrequency"    = "Daily"
+///           "scheduleRunTimes"        = ["2018-01-10T18:30:00Z"]
+///           "scheduleWeeklyFrequency" = 0
+///         }
+///         }, {
+///         "policyType" = "Log"
+///         "retentionPolicy" = {
+///           "retentionDuration" = {
+///             "count"        = 30
+///             "durationType" = "Days"
+///           }
+///           "retentionPolicyType" = "SimpleRetentionPolicy"
+///         }
+///         "schedulePolicy" = {
+///           "scheduleFrequencyInMins" = 60
+///           "schedulePolicyType"      = "LogSchedulePolicy"
+///         }
+///       }]
+///       "workLoadType" = "SQLDataBase"
+///     }
+///     "backupType" = "SQL"
+///     "recoveryServicesVault" = {
+///       "id"        = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
+///       "vaultType" = "Existing"
+///     }
+///   }
+///   backup_name         = "dbBackup"
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2733,8 +3174,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2757,7 +3198,7 @@ import 'system_data_response.dart';
 ///                         .issqlcompression(false)
 ///                         .timeZone("UTC")
 ///                         .build()),
-///                     Map.entry("subProtectionPolicy",
+///                     Map.entry("subProtectionPolicy", Arrays.asList(
 ///                         SubProtectionPolicyArgs.builder()
 ///                             .policyType("Full")
 ///                             .retentionPolicy(LongTermRetentionPolicyArgs.builder()
@@ -2790,7 +3231,7 @@ import 'system_data_response.dart';
 ///                                 .scheduleFrequencyInMins(60)
 ///                                 .schedulePolicyType("LogSchedulePolicy")
 ///                                 .build())
-///                             .build()),
+///                             .build())),
 ///                     Map.entry("workLoadType", "SQLDataBase")
 ///                 ))
 ///                 .backupType("SQL")
@@ -3071,6 +3512,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+///   backup_data = {
+///     "backupPolicy" = {
+///       "name" = "defaultDbPolicy"
+///     }
+///     "backupType" = "SQL"
+///     "recoveryServicesVault" = {
+///       "id"        = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
+///       "vaultType" = "Existing"
+///     }
+///   }
+///   backup_name         = "dbBackup"
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3079,8 +3549,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3322,6 +3792,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+///   backup_data = {
+///     "backupPolicy" = {
+///       "backupManagementType"          = "AzureIaasVM"
+///       "instantRPDetails"              = {}
+///       "instantRpRetentionRangeInDays" = 2
+///       "name"                          = "defaultVmPolicy"
+///       "protectedItemsCount"           = 0
+///       "retentionPolicy" = {
+///         "dailySchedule" = {
+///           "retentionDuration" = {
+///             "count"        = 30
+///             "durationType" = "Days"
+///           }
+///           "retentionTimes" = ["2018-01-10T18:30:00Z"]
+///         }
+///         "retentionPolicyType" = "LongTermRetentionPolicy"
+///       }
+///       "schedulePolicy" = {
+///         "schedulePolicyType"      = "SimpleSchedulePolicy"
+///         "scheduleRunFrequency"    = "Daily"
+///         "scheduleRunTimes"        = ["2018-01-10T18:30:00Z"]
+///         "scheduleWeeklyFrequency" = 0
+///       }
+///     }
+///     "backupType" = "VM"
+///     "diskExclusionProperties" = {
+///       "diskLunList"     = []
+///       "isInclusionList" = true
+///     }
+///     "recoveryServicesVault" = {
+///       "name"          = "test-vault"
+///       "resourceGroup" = "test-rg"
+///       "vaultType"     = "New"
+///     }
+///   }
+///   backup_name         = "vmBackup"
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3330,8 +3854,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3615,6 +4139,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_acssbackupconnection" "acssBackupConnection" {
+///   backup_data = {
+///     "backupPolicy" = {
+///       "name" = "defaultVmPolicy"
+///     }
+///     "backupType" = "VM"
+///     "diskExclusionProperties" = {
+///       "diskLunList"     = []
+///       "isInclusionList" = true
+///     }
+///     "recoveryServicesVault" = {
+///       "id"        = "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/test-vault"
+///       "vaultType" = "Existing"
+///     }
+///   }
+///   backup_name         = "vmBackup"
+///   connector_name      = "C1"
+///   location            = "westcentralus"
+///   resource_group_name = "test-rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3623,8 +4180,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnection;
 /// import com.pulumi.azurenative.workloads.ACSSBackupConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

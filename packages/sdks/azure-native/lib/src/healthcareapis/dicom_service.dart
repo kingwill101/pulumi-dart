@@ -74,6 +74,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_dicomservice" "dicomService" {
+///   dicom_service_name     = "blue"
+///   enable_data_partitions = false
+///   location               = "westus"
+///   resource_group_name    = "testRG"
+///   storage_configuration = {
+///     file_system_name    = "fileSystemName"
+///     storage_resource_id = "/subscriptions/ab309d4e-4c2e-4241-be2e-08e1c8dd4246/resourceGroups/rgname/providers/Microsoft.Storage/storageAccounts/accountname"
+///   }
+///   workspace_name = "workspace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.DicomService;
 /// import com.pulumi.azurenative.healthcareapis.DicomServiceArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.StorageConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

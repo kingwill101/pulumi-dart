@@ -70,6 +70,26 @@ import 'data_collection_endpoint_response_network_acls.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_datacollectionendpoint" "dataCollectionEndpoint" {
+///   data_collection_endpoint_name = "myCollectionEndpoint"
+///   location                      = "eastus"
+///   network_acls = {
+///     public_network_access = "Enabled"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +99,8 @@ import 'data_collection_endpoint_response_network_acls.dart';
 /// import com.pulumi.azurenative.monitor.DataCollectionEndpoint;
 /// import com.pulumi.azurenative.monitor.DataCollectionEndpointArgs;
 /// import com.pulumi.azurenative.monitor.inputs.DataCollectionEndpointNetworkAclsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

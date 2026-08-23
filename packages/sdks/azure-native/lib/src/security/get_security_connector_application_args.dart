@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityConnectorApplicationArgs {
   /// The security Application key - unique key for the standard application
   final pulumi.Input<String> applicationId;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
 
   /// Creates a new [GetSecurityConnectorApplicationArgs].
   /// [applicationId] The security Application key - unique key for the standard application
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   const GetSecurityConnectorApplicationArgs({
     required this.applicationId,
@@ -40,4 +40,3 @@ class GetSecurityConnectorApplicationArgs {
     );
   }
 }
-

@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Access Connector Resource that is going to be associated with Databricks Workspace
+/// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
 class WorkspacePropertiesAccessConnector {
   /// The resource ID of Azure Databricks Access Connector Resource.
   final pulumi.Input<String> id;
@@ -37,4 +37,3 @@ class WorkspacePropertiesAccessConnector {
     );
   }
 }
-

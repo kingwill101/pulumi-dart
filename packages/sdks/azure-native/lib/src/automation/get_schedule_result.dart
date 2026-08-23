@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'advanced_schedule_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getSchedule.
 class GetScheduleResult {
@@ -18,7 +19,7 @@ class GetScheduleResult {
   final double? expiryTimeOffsetMinutes;
   /// Gets or sets the frequency of the schedule.
   final String? frequency;
-  /// Fully qualified resource Id for the resource
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Gets or sets the interval of the schedule.
   final dynamic interval;
@@ -36,9 +37,11 @@ class GetScheduleResult {
   final String? startTime;
   /// Gets the start time's offset in minutes.
   final double startTimeOffsetMinutes;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Gets or sets the time zone of the schedule.
   final String? timeZone;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetScheduleResult].
@@ -49,7 +52,7 @@ class GetScheduleResult {
   /// [expiryTime] Gets or sets the end time of the schedule.
   /// [expiryTimeOffsetMinutes] Gets or sets the expiry time's offset in minutes.
   /// [frequency] Gets or sets the frequency of the schedule.
-  /// [id] Fully qualified resource Id for the resource
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [interval] Gets or sets the interval of the schedule.
   /// [isEnabled] Gets or sets a value indicating whether this schedule is enabled.
   /// [lastModifiedTime] Gets or sets the last modified time.
@@ -58,8 +61,9 @@ class GetScheduleResult {
   /// [nextRunOffsetMinutes] Gets or sets the next run time's offset in minutes.
   /// [startTime] Gets or sets the start time of the schedule.
   /// [startTimeOffsetMinutes] Gets the start time's offset in minutes.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [timeZone] Gets or sets the time zone of the schedule.
-  /// [type] The type of the resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetScheduleResult({
     this.advancedSchedule,
     required this.azureApiVersion,
@@ -77,6 +81,7 @@ class GetScheduleResult {
     this.nextRunOffsetMinutes,
     this.startTime,
     required this.startTimeOffsetMinutes,
+    required this.systemData,
     this.timeZone,
     required this.type,
   });
@@ -99,6 +104,7 @@ class GetScheduleResult {
       'nextRunOffsetMinutes': ?nextRunOffsetMinutes,
       'startTime': ?startTime,
       'startTimeOffsetMinutes': startTimeOffsetMinutes,
+      'systemData': systemData.toMap(),
       'timeZone': ?timeZone,
       'type': type,
     };
@@ -122,9 +128,9 @@ class GetScheduleResult {
       nextRunOffsetMinutes: (() { final guardedValue = map['nextRunOffsetMinutes']; if (guardedValue == null) return null; return guardedValue as double; })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startTimeOffsetMinutes: map['startTimeOffsetMinutes'] as double,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
     );
   }
 }
-

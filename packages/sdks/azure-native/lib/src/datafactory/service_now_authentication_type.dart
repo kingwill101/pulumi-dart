@@ -1,7 +1,7 @@
 /// The authentication type to use.
 enum ServiceNowAuthenticationType {
-  valueBasic("Basic"),
-  valueOAuth2("OAuth2");
+  basic("Basic"),
+  oAuth2("OAuth2");
 
   const ServiceNowAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ServiceNowAuthenticationType {
     throw ArgumentError('Unknown ServiceNowAuthenticationType value: $value');
   }
 }
-

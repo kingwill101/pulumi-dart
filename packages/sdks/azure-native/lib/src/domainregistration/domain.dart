@@ -225,6 +225,101 @@ import 'domain_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_domainregistration_domain" "domain" {
+///   auth_code  = "exampleAuthCode"
+///   auto_renew = true
+///   consent = {
+///     agreed_at      = "2021-09-10T19:30:53Z"
+///     agreed_by      = "192.0.2.1"
+///     agreement_keys = ["agreementKey1"]
+///   }
+///   contact_admin = {
+///     address_mailing = {
+///       address1    = "3400 State St"
+///       city        = "Chicago"
+///       country     = "United States"
+///       postal_code = "67098"
+///       state       = "IL"
+///     }
+///     email        = "admin@email.com"
+///     fax          = "1-245-534-2242"
+///     job_title    = "Admin"
+///     name_first   = "John"
+///     name_last    = "Doe"
+///     name_middle  = ""
+///     organization = "Microsoft Inc."
+///     phone        = "1-245-534-2242"
+///   }
+///   contact_billing = {
+///     address_mailing = {
+///       address1    = "3400 State St"
+///       city        = "Chicago"
+///       country     = "United States"
+///       postal_code = "67098"
+///       state       = "IL"
+///     }
+///     email        = "billing@email.com"
+///     fax          = "1-245-534-2242"
+///     job_title    = "Billing"
+///     name_first   = "John"
+///     name_last    = "Doe"
+///     name_middle  = ""
+///     organization = "Microsoft Inc."
+///     phone        = "1-245-534-2242"
+///   }
+///   contact_registrant = {
+///     address_mailing = {
+///       address1    = "3400 State St"
+///       city        = "Chicago"
+///       country     = "United States"
+///       postal_code = "67098"
+///       state       = "IL"
+///     }
+///     email        = "registrant@email.com"
+///     fax          = "1-245-534-2242"
+///     job_title    = "Registrant"
+///     name_first   = "John"
+///     name_last    = "Doe"
+///     name_middle  = ""
+///     organization = "Microsoft Inc."
+///     phone        = "1-245-534-2242"
+///   }
+///   contact_tech = {
+///     address_mailing = {
+///       address1    = "3400 State St"
+///       city        = "Chicago"
+///       country     = "United States"
+///       postal_code = "67098"
+///       state       = "IL"
+///     }
+///     email        = "tech@email.com"
+///     fax          = "1-245-534-2242"
+///     job_title    = "Tech"
+///     name_first   = "John"
+///     name_last    = "Doe"
+///     name_middle  = ""
+///     organization = "Microsoft Inc."
+///     phone        = "1-245-534-2242"
+///   }
+///   dns_type            = "DefaultDomainRegistrarDns"
+///   domain_name         = "example.com"
+///   location            = "global"
+///   privacy             = false
+///   resource_group_name = "testrg123"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +331,8 @@ import 'domain_args.dart';
 /// import com.pulumi.azurenative.domainregistration.inputs.DomainPurchaseConsentArgs;
 /// import com.pulumi.azurenative.domainregistration.inputs.ContactArgs;
 /// import com.pulumi.azurenative.domainregistration.inputs.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

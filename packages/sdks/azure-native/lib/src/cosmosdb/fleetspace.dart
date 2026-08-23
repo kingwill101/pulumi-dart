@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-10-15.
 ///
-/// Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -77,6 +77,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_fleetspace" "fleetspace" {
+///   data_regions        = ["westus2"]
+///   fleet_name          = "fleet1"
+///   fleetspace_api_kind = "NoSQL"
+///   fleetspace_name     = "fleetspace1"
+///   resource_group_name = "rg1"
+///   service_tier        = "GeneralPurpose"
+///   throughput_pool_configuration = {
+///     max_throughput = 500000
+///     min_throughput = 100000
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.Fleetspace;
 /// import com.pulumi.azurenative.cosmosdb.FleetspaceArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.FleetspacePropertiesThroughputPoolConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

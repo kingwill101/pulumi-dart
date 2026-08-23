@@ -16,4 +16,3 @@ enum DiscountAppliedScopeType {
     throw ArgumentError('Unknown DiscountAppliedScopeType value: $value');
   }
 }
-

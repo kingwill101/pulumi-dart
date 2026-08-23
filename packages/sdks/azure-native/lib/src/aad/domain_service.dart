@@ -12,7 +12,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 ///
-/// Other available API versions: 2025-05-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-05-01, 2025-06-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -120,6 +120,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_aad_domainservice" "domainService" {
+///   domain_name = "TestDomainService.com"
+///   domain_security_settings = {
+///     ntlm_v1             = "Enabled"
+///     sync_ntlm_passwords = "Enabled"
+///     tls_v1              = "Disabled"
+///   }
+///   domain_service_name = "TestDomainService.com"
+///   filtered_sync       = "Enabled"
+///   ldaps_settings = {
+///     external_access          = "Enabled"
+///     ldaps                    = "Enabled"
+///     pfx_certificate          = "MIIDPDCCAiSgAwIBAgIQQUI9P6tq2p9OFIJa7DLNvTANBgkqhkiG9w0BAQsFADAgMR4w..."
+///     pfx_certificate_password = "<pfxCertificatePassword>"
+///   }
+///   notification_settings = {
+///     additional_recipients = ["jicha@microsoft.com", "caalmont@microsoft.com"]
+///     notify_dc_admins      = "Enabled"
+///     notify_global_admins  = "Enabled"
+///   }
+///   replica_sets {
+///     location  = "West US"
+///     subnet_id = "/subscriptions/1639790a-76a2-4ac4-98d9-8562f5dfcb4d/resourceGroups/TestNetworkResourceGroup/providers/Microsoft.Network/virtualNetworks/TestVnetWUS/subnets/TestSubnetWUS"
+///   }
+///   resource_group_name = "TestResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -132,8 +170,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.aad.inputs.LdapsSettingsArgs;
 /// import com.pulumi.azurenative.aad.inputs.NotificationSettingsArgs;
 /// import com.pulumi.azurenative.aad.inputs.ReplicaSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

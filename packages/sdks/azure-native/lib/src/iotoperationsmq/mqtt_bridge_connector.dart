@@ -214,6 +214,92 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_mqttbridgeconnector" "mqttBridgeConnector" {
+///   bridge_instances = 4528
+///   client_id_prefix = "yqipejvabahsexbnttiegjnh"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   image = {
+///     pull_policy  = "imfuzvqxgbdwliqnn"
+///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
+///     repository   = "m"
+///     tag          = "jygfdiamhhm"
+///   }
+///   local_broker_connection = {
+///     authentication = {
+///       kubernetes = {
+///         secret_path                = "soukzfkouir"
+///         service_account_token_name = "suwetviuhmhorhvsidlznnufe"
+///       }
+///     }
+///     endpoint = "xc"
+///     tls = {
+///       tls_enabled                       = true
+///       trusted_ca_certificate_config_map = "rinkomfeznsfedbmllxlbmmhc"
+///     }
+///   }
+///   location                   = "frztvxzhskx"
+///   log_level                  = "gpgijsotipdtvvkpnckuziqqv"
+///   mq_name                    = "R8-6x-Y-L-F-21RP5-XVv"
+///   mqtt_bridge_connector_name = "k1v-U4P2440C1b7T8y-G"
+///   node_tolerations = {
+///     effect   = "eeswvciblqmmaeesjoflyvxqbz"
+///     key      = "wbrstdwxgm"
+///     operator = "lbegegneekwnyodtzraarivtwhmzep"
+///     value    = "sfafsjdcezdmkwibxeluukxgl"
+///   }
+///   protocol = "v3"
+///   remote_broker_connection = {
+///     authentication = {
+///       system_assigned_managed_identity = {
+///         audience       = "kjderojhpehosgfcrxxbh"
+///         extension_name = "cyckjqqzspleajbtkniwrfsqygjfhe"
+///       }
+///       x509 = {
+///         key_vault = {
+///           vault = {
+///             credentials = {
+///               service_principal_local_secret_name = "wuimjwpbhoglbsxxa"
+///             }
+///             directory_id = "eyjniptiykzcgbzok"
+///             name         = "lxmwfan"
+///           }
+///           vault_ca_chain_secret = {
+///             name    = "bmectskddmpjxnsogwooexj"
+///             version = "unjfbf"
+///           }
+///           vault_cert = {
+///             name    = "bmectskddmpjxnsogwooexj"
+///             version = "unjfbf"
+///           }
+///         }
+///         secret_name = "x"
+///       }
+///     }
+///     endpoint = "bshzrukafmxjgnrlhzlxbbzjdbqh"
+///     protocol = "mqtt"
+///     tls = {
+///       tls_enabled                       = true
+///       trusted_ca_certificate_config_map = "ivtebqmclgfjx"
+///     }
+///   }
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +324,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.KeyVaultCredentialsPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.KeyVaultSecretObjectArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.MqttBridgeRemoteBrokerConnectionTlsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

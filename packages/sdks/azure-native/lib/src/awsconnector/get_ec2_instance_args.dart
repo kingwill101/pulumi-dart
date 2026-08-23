@@ -28,4 +28,3 @@ class GetEc2InstanceArgs {
     );
   }
 }
-

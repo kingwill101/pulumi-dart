@@ -86,7 +86,13 @@ import 'system_data_response.dart';
 ///                 {
 ///                     "bwczxgdagr",
 ///                 },
-///                 LoggingConfig = null,
+///                 LoggingConfig = new AzureNative.AwsConnector.Inputs.LoggingConfigArgs
+///                 {
+///                     ApplicationLogLevel = AzureNative.AwsConnector.LoggingConfigApplicationLogLevel.DEBUG,
+///                     LogFormat = AzureNative.AwsConnector.LoggingConfigLogFormat.JSON,
+///                     LogGroup = "zrsmuig",
+///                     SystemLogLevel = AzureNative.AwsConnector.LoggingConfigSystemLogLevel.DEBUG,
+///                 },
 ///                 MemorySize = 21,
 ///                 PackageType = AzureNative.AwsConnector.PackageType.Image,
 ///                 ReservedConcurrentExecutions = 28,
@@ -103,7 +109,8 @@ import 'system_data_response.dart';
 ///                 },
 ///                 SnapStartResponse = new AzureNative.AwsConnector.Inputs.SnapStartResponseArgs
 ///                 {
-///                     ApplyOn = "None",
+///                     ApplyOn = AzureNative.AwsConnector.SnapStartResponseApplyOn.None,
+///                     OptimizationStatus = AzureNative.AwsConnector.SnapStartResponseOptimizationStatus.Off,
 ///                 },
 ///                 Tags = new[]
 ///                 {
@@ -214,7 +221,12 @@ import 'system_data_response.dart';
 /// 					Layers: pulumi.StringArray{
 /// 						pulumi.String("bwczxgdagr"),
 /// 					},
-/// 					LoggingConfig:                &awsconnector.LoggingConfigArgs{},
+/// 					LoggingConfig: &awsconnector.LoggingConfigArgs{
+/// 						ApplicationLogLevel: pulumi.String(awsconnector.LoggingConfigApplicationLogLevelDEBUG),
+/// 						LogFormat:           pulumi.String(awsconnector.LoggingConfigLogFormatJSON),
+/// 						LogGroup:            pulumi.String("zrsmuig"),
+/// 						SystemLogLevel:      pulumi.String(awsconnector.LoggingConfigSystemLogLevelDEBUG),
+/// 					},
 /// 					MemorySize:                   pulumi.Int(21),
 /// 					PackageType:                  pulumi.String(awsconnector.PackageTypeImage),
 /// 					ReservedConcurrentExecutions: pulumi.Int(28),
@@ -228,7 +240,8 @@ import 'system_data_response.dart';
 /// 						ApplyOn: pulumi.String(awsconnector.SnapStartApplyOnNone),
 /// 					},
 /// 					SnapStartResponse: &awsconnector.SnapStartResponseArgs{
-/// 						ApplyOn: pulumi.String("None"),
+/// 						ApplyOn:            pulumi.String(awsconnector.SnapStartResponseApplyOnNone),
+/// 						OptimizationStatus: pulumi.String(awsconnector.SnapStartResponseOptimizationStatusOff),
 /// 					},
 /// 					Tags: awsconnector.TagArray{
 /// 						&awsconnector.TagArgs{
@@ -272,6 +285,109 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_lambdafunction" "lambdaFunction" {
+///   location = "pipiphijlvjolohsfpmym"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "wksjbkhocigdctupfiheutlmloir"
+///     aws_account_id = "jhircduhthqiztp"
+///     aws_properties = {
+///       architectures = ["arm64"]
+///       arn           = "stgpeog"
+///       code = {
+///         image_uri         = "mumnivivaclgokdozsqygicoz"
+///         s3_bucket         = "iqxcjanbelhti"
+///         s3_key            = "c"
+///         s3_object_version = "ixwkaazvqllwohxjwjtivxy"
+///         zip_file          = "cashtgbjnebsmmyijmbuerim"
+///       }
+///       code_signing_config_arn = "qutlevvo"
+///       dead_letter_config = {
+///         target_arn = "yfmmazkodblnhgalpsnx"
+///       }
+///       description = "yvdoxaozwjzszqnt"
+///       environment = {
+///         variables = {
+///           "key999" = "knzbtalbwzajrfxietghzjqrewh"
+///         }
+///       }
+///       ephemeral_storage = {
+///         size = 21
+///       }
+///       file_system_configs = [{
+///         "arn"            = "lgaajhamrjhiw"
+///         "localMountPath" = "ctjvtoy"
+///       }]
+///       function_name = "fkv"
+///       handler       = "penuepcuxqvyjozfpxcxkujpeiib"
+///       image_config = {
+///         command           = ["ypqwmituqujgxriqqe"]
+///         entry_point       = ["vfnpuvvmmxttsaolsfocwhrhvaycbd"]
+///         working_directory = "gnpkvohajxgtqcweloswwofgev"
+///       }
+///       kms_key_arn = "nheruevkdkuk"
+///       layers      = ["bwczxgdagr"]
+///       logging_config = {
+///         application_log_level = "DEBUG"
+///         log_format            = "JSON"
+///         log_group             = "zrsmuig"
+///         system_log_level      = "DEBUG"
+///       }
+///       memory_size                    = 21
+///       package_type                   = "Image"
+///       reserved_concurrent_executions = 28
+///       role                           = "tuoem"
+///       runtime                        = "srxhlxqifkewuflrxzjauzdqqkoatl"
+///       runtime_management_config = {
+///         runtime_version_arn = "lqpuhdoaicnpryovplogsolsacxbk"
+///         update_runtime_on   = "Auto"
+///       }
+///       snap_start = {
+///         apply_on = "None"
+///       }
+///       snap_start_response = {
+///         apply_on            = "None"
+///         optimization_status = "Off"
+///       }
+///       tags = [{
+///         "key"   = "hweqw"
+///         "value" = "qctpnmjttccpi"
+///       }]
+///       timeout = 28
+///       tracing_config = {
+///         mode = "Active"
+///       }
+///       vpc_config = {
+///         ipv6_allowed_for_dual_stack = true
+///         security_group_ids          = ["ovxbygrfhfhno"]
+///         subnet_ids                  = ["inqatpkusunkgccviubzkijhrgslec"]
+///       }
+///     }
+///     aws_region        = "nat"
+///     aws_source_schema = "joyfyjrulh"
+///     aws_tags = {
+///       "key4553" = "qdudhyzvebfiewg"
+///     }
+///     public_cloud_connectors_resource_id = "izvoucedmqtsihfjz"
+///     public_cloud_resource_name          = "odptbducplnqaqoeleidffnyqfcipg"
+///   }
+///   resource_group_name = "rglambdaFunction"
+///   tags = {
+///     "key9520" = "pnmk"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -293,8 +409,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SnapStartResponseArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TracingConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VpcConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,6 +463,10 @@ import 'system_data_response.dart';
 ///                     .kmsKeyArn("nheruevkdkuk")
 ///                     .layers("bwczxgdagr")
 ///                     .loggingConfig(LoggingConfigArgs.builder()
+///                         .applicationLogLevel("DEBUG")
+///                         .logFormat("JSON")
+///                         .logGroup("zrsmuig")
+///                         .systemLogLevel("DEBUG")
 ///                         .build())
 ///                     .memorySize(21)
 ///                     .packageType("Image")
@@ -362,6 +482,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .snapStartResponse(SnapStartResponseArgs.builder()
 ///                         .applyOn("None")
+///                         .optimizationStatus("Off")
 ///                         .build())
 ///                     .tags(TagArgs.builder()
 ///                         .key("hweqw")
@@ -438,7 +559,12 @@ import 'system_data_response.dart';
 ///             },
 ///             kmsKeyArn: "nheruevkdkuk",
 ///             layers: ["bwczxgdagr"],
-///             loggingConfig: {},
+///             loggingConfig: {
+///                 applicationLogLevel: azure_native.awsconnector.LoggingConfigApplicationLogLevel.DEBUG,
+///                 logFormat: azure_native.awsconnector.LoggingConfigLogFormat.JSON,
+///                 logGroup: "zrsmuig",
+///                 systemLogLevel: azure_native.awsconnector.LoggingConfigSystemLogLevel.DEBUG,
+///             },
 ///             memorySize: 21,
 ///             packageType: azure_native.awsconnector.PackageType.Image,
 ///             reservedConcurrentExecutions: 28,
@@ -452,7 +578,8 @@ import 'system_data_response.dart';
 ///                 applyOn: azure_native.awsconnector.SnapStartApplyOn.None,
 ///             },
 ///             snapStartResponse: {
-///                 applyOn: "None",
+///                 applyOn: azure_native.awsconnector.SnapStartResponseApplyOn.None,
+///                 optimizationStatus: azure_native.awsconnector.SnapStartResponseOptimizationStatus.Off,
 ///             },
 ///             tags: [{
 ///                 key: "hweqw",
@@ -530,7 +657,12 @@ import 'system_data_response.dart';
 ///             },
 ///             "kms_key_arn": "nheruevkdkuk",
 ///             "layers": ["bwczxgdagr"],
-///             "logging_config": {},
+///             "logging_config": {
+///                 "application_log_level": azure_native.awsconnector.LoggingConfigApplicationLogLevel.DEBUG,
+///                 "log_format": azure_native.awsconnector.LoggingConfigLogFormat.JSON,
+///                 "log_group": "zrsmuig",
+///                 "system_log_level": azure_native.awsconnector.LoggingConfigSystemLogLevel.DEBUG,
+///             },
 ///             "memory_size": 21,
 ///             "package_type": azure_native.awsconnector.PackageType.IMAGE,
 ///             "reserved_concurrent_executions": 28,
@@ -544,7 +676,8 @@ import 'system_data_response.dart';
 ///                 "apply_on": azure_native.awsconnector.SnapStartApplyOn.NONE,
 ///             },
 ///             "snap_start_response": {
-///                 "apply_on": "None",
+///                 "apply_on": azure_native.awsconnector.SnapStartResponseApplyOn.NONE,
+///                 "optimization_status": azure_native.awsconnector.SnapStartResponseOptimizationStatus.OFF,
 ///             },
 ///             "tags": [{
 ///                 "key": "hweqw",
@@ -618,7 +751,11 @@ import 'system_data_response.dart';
 ///           kmsKeyArn: nheruevkdkuk
 ///           layers:
 ///             - bwczxgdagr
-///           loggingConfig: {}
+///           loggingConfig:
+///             applicationLogLevel: DEBUG
+///             logFormat: JSON
+///             logGroup: zrsmuig
+///             systemLogLevel: DEBUG
 ///           memorySize: 21
 ///           packageType: Image
 ///           reservedConcurrentExecutions: 28
@@ -631,6 +768,7 @@ import 'system_data_response.dart';
 ///             applyOn: None
 ///           snapStartResponse:
 ///             applyOn: None
+///             optimizationStatus: Off
 ///           tags:
 ///             - key: hweqw
 ///               value: qctpnmjttccpi

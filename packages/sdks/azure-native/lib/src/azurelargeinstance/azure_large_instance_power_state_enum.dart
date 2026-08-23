@@ -19,4 +19,3 @@ enum AzureLargeInstancePowerStateEnum {
     throw ArgumentError('Unknown AzureLargeInstancePowerStateEnum value: $value');
   }
 }
-

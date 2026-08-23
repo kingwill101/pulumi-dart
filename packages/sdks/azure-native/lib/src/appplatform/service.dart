@@ -90,6 +90,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_service" "service" {
+///   location = "eastus"
+///   properties = {
+///     maintenance_schedule_configuration = {
+///       day       = "Sunday"
+///       frequency = "Weekly"
+///       hour      = 10
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +132,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.ClusterResourcePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.WeeklyMaintenanceScheduleConfigurationArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,6 +310,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_service" "service" {
+///   location = "eastus"
+///   properties = {
+///     managed_environment_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.App/managedEnvironments/myenvironment"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     name = "S0"
+///     tier = "StandardGen2"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +347,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.ServiceArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ClusterResourcePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -461,6 +519,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_service" "service" {
+///   location = "eastus"
+///   properties = {
+///     marketplace_resource = {
+///       plan      = "tanzu-asc-ent-mtr"
+///       product   = "azure-spring-cloud-vmware-tanzu-2"
+///       publisher = "vmware-inc"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     name = "E0"
+///     tier = "Enterprise"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -472,8 +561,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.ClusterResourcePropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.MarketplaceResourceArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -679,6 +768,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_service" "service" {
+///   location = "eastus"
+///   properties = {
+///     network_profile = {
+///       app_network_resource_group = "my-app-network-rg"
+///       app_subnet_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/apps"
+///       ingress_config = {
+///         read_timeout_in_seconds = 300
+///       }
+///       service_cidr                           = "10.8.0.0/16,10.244.0.0/16,10.245.0.1/16"
+///       service_runtime_network_resource_group = "my-service-runtime-network-rg"
+///       service_runtime_subnet_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/serviceRuntime"
+///     }
+///     vnet_addons = {
+///       data_plane_public_endpoint = true
+///       log_stream_public_endpoint = true
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -692,8 +821,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.IngressConfigArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ServiceVNetAddonsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

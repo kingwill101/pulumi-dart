@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'error_detail_response.dart';
+import 'error_detail_hci_edge_device_response.dart';
 
 /// Arc extension installed on edge device.
 class ExtensionResponse {
   /// Error details while installing Arc extension.
-  final pulumi.Input<List<ErrorDetailResponse>> errorDetails;
+  final pulumi.Input<List<ErrorDetailHciEdgeDeviceResponse>> errorDetails;
   /// Arc extension name installed on edge device.
   final pulumi.Input<String> extensionName;
   /// Arc Extension Azure resource id.
@@ -36,7 +36,7 @@ class ExtensionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorDetails': pulumi.Input.mapInputValue<List<ErrorDetailResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errorDetails': pulumi.Input.mapInputValue<List<ErrorDetailHciEdgeDeviceResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<ErrorDetailHciEdgeDeviceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'extensionName': extensionName,
       'extensionResourceId': extensionResourceId,
       'managedBy': managedBy,
@@ -47,7 +47,7 @@ class ExtensionResponse {
 
   factory ExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ExtensionResponse(
-      errorDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails']!, (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      errorDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorDetailHciEdgeDeviceResponse>(map['errorDetails']!, (value) => ErrorDetailHciEdgeDeviceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
       extensionResourceId: pulumi.Input.fromValue(map['extensionResourceId'] as String),
       managedBy: pulumi.Input.fromValue(map['managedBy'] as String),
@@ -56,4 +56,3 @@ class ExtensionResponse {
     );
   }
 }
-

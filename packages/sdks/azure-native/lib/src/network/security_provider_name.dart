@@ -16,4 +16,3 @@ enum SecurityProviderName {
     throw ArgumentError('Unknown SecurityProviderName value: $value');
   }
 }
-

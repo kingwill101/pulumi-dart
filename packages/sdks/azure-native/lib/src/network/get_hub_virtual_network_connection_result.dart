@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'routing_configuration_response.dart';
+import 'routing_configuration_hub_virtual_network_connection_response.dart';
 import 'sub_resource_response.dart';
 
 /// Result data returned by getHubVirtualNetworkConnection.
@@ -24,7 +24,7 @@ class GetHubVirtualNetworkConnectionResult {
   /// Reference to the remote virtual network.
   final SubResourceResponse? remoteVirtualNetwork;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final RoutingConfigurationResponse? routingConfiguration;
+  final RoutingConfigurationHubVirtualNetworkConnectionResponse? routingConfiguration;
 
   /// Creates a new [GetHubVirtualNetworkConnectionResult].
   /// [allowHubToRemoteVnetTransit] Deprecated: VirtualHub to RemoteVnet transit to enabled or not.
@@ -76,8 +76,7 @@ class GetHubVirtualNetworkConnectionResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       remoteVirtualNetwork: (() { final guardedValue = map['remoteVirtualNetwork']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationHubVirtualNetworkConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
-

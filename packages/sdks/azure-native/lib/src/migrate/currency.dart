@@ -39,4 +39,3 @@ enum Currency {
     throw ArgumentError('Unknown Currency value: $value');
   }
 }
-

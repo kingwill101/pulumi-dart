@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -79,6 +79,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_batchaccount" "batchAccount" {
+///   account_name = "sampleacct"
+///   auto_storage = {
+///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"
+///   }
+///   key_vault_reference = {
+///     id  = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.KeyVault/vaults/sample"
+///     url = "http://sample.vault.azure.net/"
+///   }
+///   location             = "japaneast"
+///   pool_allocation_mode = "UserSubscription"
+///   resource_group_name  = "default-azurebatch-japaneast"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.batch.BatchAccountArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoStorageBasePropertiesArgs;
 /// import com.pulumi.azurenative.batch.inputs.KeyVaultReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,6 +256,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_batchaccount" "batchAccount" {
+///   account_name = "sampleacct"
+///   auto_storage = {
+///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"
+///   }
+///   location            = "japaneast"
+///   resource_group_name = "default-azurebatch-japaneast"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +285,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.batch.BatchAccount;
 /// import com.pulumi.azurenative.batch.BatchAccountArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoStorageBasePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,6 +415,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_batchaccount" "batchAccount" {
+///   account_name = "sampleacct"
+///   auto_storage = {
+///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   location            = "japaneast"
+///   resource_group_name = "default-azurebatch-japaneast"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +448,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.batch.BatchAccountArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoStorageBasePropertiesArgs;
 /// import com.pulumi.azurenative.batch.inputs.BatchAccountIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -525,6 +593,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_batchaccount" "batchAccount" {
+///   account_name = "sampleacct"
+///   auto_storage = {
+///     storage_account_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"
+///   }
+///   key_vault_reference = {
+///     id  = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.KeyVault/vaults/sample"
+///     url = "http://sample.vault.azure.net/"
+///   }
+///   location              = "japaneast"
+///   public_network_access = "Disabled"
+///   resource_group_name   = "default-azurebatch-japaneast"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -535,8 +628,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.batch.BatchAccountArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoStorageBasePropertiesArgs;
 /// import com.pulumi.azurenative.batch.inputs.KeyVaultReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

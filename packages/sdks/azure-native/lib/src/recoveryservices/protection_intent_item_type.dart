@@ -19,4 +19,3 @@ enum ProtectionIntentItemType {
     throw ArgumentError('Unknown ProtectionIntentItemType value: $value');
   }
 }
-

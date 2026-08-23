@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-01-10. In version 2.x of the Azure Native provider, it used API version 2023-02-08-preview.
 ///
-/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -82,6 +82,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotfirmwaredefense_firmware" "firmware" {
+///   description         = "uz"
+///   file_name           = "wresexxulcdsdd"
+///   file_size           = 17
+///   firmware_id         = "umrkdttp"
+///   model               = "f"
+///   resource_group_name = "rgworkspaces-firmwares"
+///   status              = "Pending"
+///   status_messages {
+///     message = "ulvhmhokezathzzauiitu"
+///   }
+///   vendor         = "vycmdhgtmepcptyoubztiuudpkcpd"
+///   version        = "s"
+///   workspace_name = "A7"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +118,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotfirmwaredefense.Firmware;
 /// import com.pulumi.azurenative.iotfirmwaredefense.FirmwareArgs;
 /// import com.pulumi.azurenative.iotfirmwaredefense.inputs.StatusMessageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,7 +181,7 @@ import 'system_data_response.dart';
 /// firmware = azure_native.iotfirmwaredefense.Firmware("firmware",
 ///     description="uz",
 ///     file_name="wresexxulcdsdd",
-///     file_size=17,
+///     file_size=float(17),
 ///     firmware_id="umrkdttp",
 ///     model="f",
 ///     resource_group_name="rgworkspaces-firmwares",
@@ -235,6 +262,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotfirmwaredefense_firmware" "firmware" {
+///   firmware_id         = "umrkdttp"
+///   resource_group_name = "rgworkspaces-firmwares"
+///   workspace_name      = "A7"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +287,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.iotfirmwaredefense.Firmware;
 /// import com.pulumi.azurenative.iotfirmwaredefense.FirmwareArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

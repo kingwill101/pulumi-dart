@@ -99,6 +99,43 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iampolicyversion" "iamPolicyVersion" {
+///   location = "wtyx"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "mszogqxtswvseqggugfxstkwivx"
+///     aws_account_id = "xiv"
+///     aws_properties = {
+///       create_date        = "2024-10-08T03:54:21.310Z"
+///       document           = "bpzfzhilykgroobhu"
+///       is_default_version = true
+///       version_id         = "mjxbhpksrctdbegeyhrsyveoyre"
+///     }
+///     aws_region        = "bhdamksbkmvjl"
+///     aws_source_schema = "ljldtynekavvptoqhcvqdklc"
+///     aws_tags = {
+///       "key2871" = "ejkpbbvnwx"
+///     }
+///     public_cloud_connectors_resource_id = "hqotja"
+///     public_cloud_resource_name          = "mphznssuferlzunnbjbl"
+///   }
+///   resource_group_name = "rgiamPolicyVersion"
+///   tags = {
+///     "key6034" = "pkrkyrharhnjqfubytfj"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +146,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamPolicyVersionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamPolicyVersionPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamPolicyVersionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

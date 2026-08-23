@@ -15,4 +15,3 @@ enum MqttBridgeRemoteBrokerProtocol {
     throw ArgumentError('Unknown MqttBridgeRemoteBrokerProtocol value: $value');
   }
 }
-

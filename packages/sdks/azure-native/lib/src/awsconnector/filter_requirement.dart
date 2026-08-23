@@ -15,4 +15,3 @@ enum FilterRequirement {
     throw ArgumentError('Unknown FilterRequirement value: $value');
   }
 }
-

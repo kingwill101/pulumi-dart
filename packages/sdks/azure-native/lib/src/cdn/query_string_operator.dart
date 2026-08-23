@@ -23,4 +23,3 @@ enum QueryStringOperator {
     throw ArgumentError('Unknown QueryStringOperator value: $value');
   }
 }
-

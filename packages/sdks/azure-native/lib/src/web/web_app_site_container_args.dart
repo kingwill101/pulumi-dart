@@ -18,6 +18,8 @@ class WebAppSiteContainerArgs {
   final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
   /// Image Name
   final pulumi.Input<String> image;
+  /// &lt;code&gt;true&lt;/code&gt; if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; &lt;code&gt;false&lt;/code&gt; otherwise.
+  final pulumi.Input<bool>? inheritAppSettingsAndConnectionStrings;
   /// &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   final pulumi.Input<bool> isMain;
   /// Kind of resource.
@@ -26,7 +28,7 @@ class WebAppSiteContainerArgs {
   final pulumi.Input<String> name;
   /// Password Secret
   final pulumi.Input<String>? passwordSecret;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// StartUp Command
   final pulumi.Input<String>? startUpCommand;
@@ -44,11 +46,12 @@ class WebAppSiteContainerArgs {
   /// [containerName] Site Container Name
   /// [environmentVariables] List of environment variables
   /// [image] Image Name
+  /// [inheritAppSettingsAndConnectionStrings] &lt;code&gt;true&lt;/code&gt; if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [isMain] &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [passwordSecret] Password Secret
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startUpCommand] StartUp Command
   /// [targetPort] Target Port
   /// [userManagedIdentityClientId] UserManagedIdentity ClientId
@@ -59,6 +62,7 @@ class WebAppSiteContainerArgs {
     this.containerName,
     this.environmentVariables,
     required this.image,
+    this.inheritAppSettingsAndConnectionStrings,
     required this.isMain,
     this.kind,
     required this.name,
@@ -77,6 +81,7 @@ class WebAppSiteContainerArgs {
       'containerName': ?containerName,
       'environmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVariable>, List<Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeList<EnvironmentVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
+      'inheritAppSettingsAndConnectionStrings': ?inheritAppSettingsAndConnectionStrings,
       'isMain': isMain,
       'kind': ?kind,
       'name': name,
@@ -96,6 +101,7 @@ class WebAppSiteContainerArgs {
       containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnvironmentVariable>(guardedValue, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: pulumi.Input.fromValue(map['image'] as String),
+      inheritAppSettingsAndConnectionStrings: (() { final guardedValue = map['inheritAppSettingsAndConnectionStrings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isMain: pulumi.Input.fromValue(map['isMain'] as bool),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -109,4 +115,3 @@ class WebAppSiteContainerArgs {
     );
   }
 }
-

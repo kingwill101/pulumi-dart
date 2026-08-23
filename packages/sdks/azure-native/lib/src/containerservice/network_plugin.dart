@@ -16,4 +16,3 @@ enum NetworkPlugin {
     throw ArgumentError('Unknown NetworkPlugin value: $value');
   }
 }
-

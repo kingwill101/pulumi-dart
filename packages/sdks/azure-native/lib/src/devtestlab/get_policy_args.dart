@@ -11,7 +11,7 @@ class GetPolicyArgs {
   final pulumi.Input<String>? expand;
   /// labs
   final pulumi.Input<String> labName;
-  /// The name of the Schedule
+  /// The name of the Policy
   final pulumi.Input<String> name;
   /// policysets
   final pulumi.Input<String> policySetName;
@@ -21,7 +21,7 @@ class GetPolicyArgs {
   /// Creates a new [GetPolicyArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=description)'
   /// [labName] labs
-  /// [name] The name of the Schedule
+  /// [name] The name of the Policy
   /// [policySetName] policysets
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetPolicyArgs({
@@ -52,4 +52,3 @@ class GetPolicyArgs {
     );
   }
 }
-

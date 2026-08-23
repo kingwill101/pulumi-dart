@@ -24,4 +24,3 @@ enum DataConnectorKind {
     throw ArgumentError('Unknown DataConnectorKind value: $value');
   }
 }
-

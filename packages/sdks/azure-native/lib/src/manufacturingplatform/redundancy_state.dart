@@ -15,4 +15,3 @@ enum RedundancyState {
     throw ArgumentError('Unknown RedundancyState value: $value');
   }
 }
-

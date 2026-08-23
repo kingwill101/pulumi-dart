@@ -19,7 +19,7 @@ class CollectorPolicyArgs {
   final pulumi.Input<IngestionPolicyPropertiesFormat>? ingestionPolicy;
   /// Resource location.
   final pulumi.Input<String>? location;
-  /// The name of the resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
@@ -30,7 +30,7 @@ class CollectorPolicyArgs {
   /// [emissionPolicies] Emission policies.
   /// [ingestionPolicy] Ingestion policies.
   /// [location] Resource location.
-  /// [resourceGroupName] The name of the resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   const CollectorPolicyArgs({
     required this.azureTrafficCollectorName,
@@ -66,4 +66,3 @@ class CollectorPolicyArgs {
     );
   }
 }
-

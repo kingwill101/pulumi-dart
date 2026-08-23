@@ -24,7 +24,7 @@ class AutomationAccountArgs {
   final pulumi.Input<String>? name;
   /// Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet
   final pulumi.Input<bool>? publicNetworkAccess;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets account SKU.
   final pulumi.Input<Sku>? sku;
@@ -39,7 +39,7 @@ class AutomationAccountArgs {
   /// [location] Gets or sets the location of the resource.
   /// [name] Gets or sets name of the resource.
   /// [publicNetworkAccess] Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] Gets or sets account SKU.
   /// [tags] Gets or sets the tags attached to the resource.
   const AutomationAccountArgs({
@@ -85,4 +85,3 @@ class AutomationAccountArgs {
     );
   }
 }
-

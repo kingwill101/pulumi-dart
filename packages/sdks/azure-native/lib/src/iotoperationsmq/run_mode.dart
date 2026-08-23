@@ -15,4 +15,3 @@ enum RunMode {
     throw ArgumentError('Unknown RunMode value: $value');
   }
 }
-

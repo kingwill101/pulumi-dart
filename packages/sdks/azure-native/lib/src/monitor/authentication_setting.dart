@@ -68,6 +68,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_authenticationsetting" "authenticationSetting" {
+///   authentication_setting_name  = "myAuthSetting"
+///   azure_monitor_workspace_name = "myWorkspace"
+///   health_model_name            = "myHealthModel"
+///   properties = {
+///     authentication_kind   = "ManagedIdentity"
+///     display_name          = "myDisplayName"
+///     managed_identity_name = "SystemAssigned"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.monitor.AuthenticationSetting;
 /// import com.pulumi.azurenative.monitor.AuthenticationSettingArgs;
 /// import com.pulumi.azurenative.monitor.inputs.ManagedIdentityAuthenticationSettingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

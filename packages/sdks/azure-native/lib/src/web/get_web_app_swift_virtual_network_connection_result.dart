@@ -1,31 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppSwiftVirtualNetworkConnection.
 class GetWebAppSwiftVirtualNetworkConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   final String? subnetResourceId;
   /// A flag that specifies if the scale unit this Web App is on supports Swift integration.
   final bool? swiftSupported;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppSwiftVirtualNetworkConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [subnetResourceId] The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   /// [swiftSupported] A flag that specifies if the scale unit this Web App is on supports Swift integration.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppSwiftVirtualNetworkConnectionResult({
     required this.azureApiVersion,
     required this.id,
@@ -33,6 +37,7 @@ class GetWebAppSwiftVirtualNetworkConnectionResult {
     required this.name,
     this.subnetResourceId,
     this.swiftSupported,
+    required this.systemData,
     required this.type,
   });
 
@@ -44,6 +49,7 @@ class GetWebAppSwiftVirtualNetworkConnectionResult {
       'name': name,
       'subnetResourceId': ?subnetResourceId,
       'swiftSupported': ?swiftSupported,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -56,8 +62,8 @@ class GetWebAppSwiftVirtualNetworkConnectionResult {
       name: map['name'] as String,
       subnetResourceId: (() { final guardedValue = map['subnetResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       swiftSupported: (() { final guardedValue = map['swiftSupported']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

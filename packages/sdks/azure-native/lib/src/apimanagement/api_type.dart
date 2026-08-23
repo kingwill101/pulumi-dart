@@ -3,7 +3,9 @@ enum ApiType {
   valueHttp("http"),
   valueSoap("soap"),
   valueWebsocket("websocket"),
-  valueGraphql("graphql");
+  valueGraphql("graphql"),
+  valueOdata("odata"),
+  valueGrpc("grpc");
 
   const ApiType(this.wireValue);
   final String wireValue;
@@ -17,4 +19,3 @@ enum ApiType {
     throw ArgumentError('Unknown ApiType value: $value');
   }
 }
-

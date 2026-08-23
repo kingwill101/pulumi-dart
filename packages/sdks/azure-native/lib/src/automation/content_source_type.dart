@@ -1,7 +1,7 @@
 /// Gets or sets the content source type.
 enum ContentSourceType {
-  valueEmbeddedContent("embeddedContent"),
-  valueUri("uri");
+  embeddedContent("embeddedContent"),
+  uri("uri");
 
   const ContentSourceType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ContentSourceType {
     throw ArgumentError('Unknown ContentSourceType value: $value');
   }
 }
-

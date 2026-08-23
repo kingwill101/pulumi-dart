@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -140,6 +140,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurearcdata_sqlserverdatabase" "sqlServerDatabase" {
+///   database_name = "testdb"
+///   location      = "southeastasia"
+///   properties = {
+///     backup_information = {
+///       last_full_backup = "2022-05-05T16:26:33.883Z"
+///       last_log_backup  = "2022-05-10T16:26:33.883Z"
+///     }
+///     backup_policy = {
+///       differential_backup_hours      = 12
+///       full_backup_days               = 1
+///       retention_period_days          = 1
+///       transaction_log_backup_minutes = 30
+///     }
+///     collation_name         = "SQL_Latin1_General_CP1_CI_AS"
+///     compatibility_level    = 150
+///     create_mode            = "PointInTimeRestore"
+///     data_file_size_mb      = 80
+///     database_creation_date = "2022-04-05T16:26:33.883Z"
+///     database_options = {
+///       is_auto_close_on               = true
+///       is_auto_create_stats_on        = true
+///       is_auto_shrink_on              = true
+///       is_auto_update_stats_on        = true
+///       is_encrypted                   = true
+///       is_memory_optimization_enabled = true
+///       is_remote_data_archive_enabled = true
+///       is_trustworthy_on              = true
+///     }
+///     is_read_only          = true
+///     log_file_size_mb      = 70
+///     recovery_mode         = "Full"
+///     restore_point_in_time = "2022-05-05T16:26:33.883Z"
+///     size_mb               = 150
+///     source_database_id    = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.AzureArcData/testSqlServerInstance/testsqlManagedInstance/databases/MyDatabase"
+///     space_available_mb    = 100
+///     state                 = "Online"
+///   }
+///   resource_group_name      = "testrg"
+///   sql_server_instance_name = "testSqlServerInstance"
+///   tags = {
+///     "mytag" = "myval"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +208,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerDatabaseResourcePropertiesBackupInformationArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.BackupPolicyArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,7 +341,7 @@ import 'system_data_response.dart';
 ///         "collation_name": "SQL_Latin1_General_CP1_CI_AS",
 ///         "compatibility_level": 150,
 ///         "create_mode": azure_native.azurearcdata.DatabaseCreateMode.POINT_IN_TIME_RESTORE,
-///         "data_file_size_mb": 80,
+///         "data_file_size_mb": float(80),
 ///         "database_creation_date": "2022-04-05T16:26:33.883Z",
 ///         "database_options": {
 ///             "is_auto_close_on": True,
@@ -298,12 +354,12 @@ import 'system_data_response.dart';
 ///             "is_trustworthy_on": True,
 ///         },
 ///         "is_read_only": True,
-///         "log_file_size_mb": 70,
+///         "log_file_size_mb": float(70),
 ///         "recovery_mode": azure_native.azurearcdata.RecoveryMode.FULL,
 ///         "restore_point_in_time": "2022-05-05T16:26:33.883Z",
-///         "size_mb": 150,
+///         "size_mb": float(150),
 ///         "source_database_id": "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.AzureArcData/testSqlServerInstance/testsqlManagedInstance/databases/MyDatabase",
-///         "space_available_mb": 100,
+///         "space_available_mb": float(100),
 ///         "state": azure_native.azurearcdata.DatabaseState.ONLINE,
 ///     },
 ///     resource_group_name="testrg",

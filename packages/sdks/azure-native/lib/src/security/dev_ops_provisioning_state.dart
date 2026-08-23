@@ -28,4 +28,3 @@ enum DevOpsProvisioningState {
     throw ArgumentError('Unknown DevOpsProvisioningState value: $value');
   }
 }
-

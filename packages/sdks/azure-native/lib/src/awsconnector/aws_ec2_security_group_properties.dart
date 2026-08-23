@@ -69,4 +69,3 @@ class AwsEc2SecurityGroupProperties {
     );
   }
 }
-

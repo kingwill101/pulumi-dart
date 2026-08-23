@@ -33,4 +33,3 @@ class AwsS3AccessControlPolicyPropertiesResponse {
     );
   }
 }
-

@@ -1,7 +1,7 @@
 /// Type of application being monitored.
 enum ApplicationType {
-  valueWeb("web"),
-  valueOther("other");
+  web("web"),
+  other("other");
 
   const ApplicationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ApplicationType {
     throw ArgumentError('Unknown ApplicationType value: $value');
   }
 }
-

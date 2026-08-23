@@ -8,7 +8,7 @@ import 'parameter_specification.dart';
 /// A Rest service dataset.
 class RestResourceDataset {
   /// The additional HTTP headers in the request to the RESTful API.
-  final pulumi.Input<Map<String, dynamic>>? additionalHeaders;
+  final pulumi.Input<dynamic>? additionalHeaders;
   /// List of tags that can be used for describing the Dataset.
   final pulumi.Input<List<dynamic>>? annotations;
   /// Dataset description.
@@ -18,7 +18,7 @@ class RestResourceDataset {
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The pagination rules to compose next page requests.
-  final pulumi.Input<Map<String, dynamic>>? paginationRules;
+  final pulumi.Input<dynamic>? paginationRules;
   /// Parameters for dataset.
   final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The relative URL to the resource that the RESTful API provides. Type: string (or Expression with resultType string).
@@ -85,12 +85,12 @@ class RestResourceDataset {
 
   factory RestResourceDataset.fromMap(Map<String, dynamic> map) {
     return RestResourceDataset(
-      additionalHeaders: (() { final guardedValue = map['additionalHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      additionalHeaders: (() { final guardedValue = map['additionalHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
-      paginationRules: (() { final guardedValue = map['paginationRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      paginationRules: (() { final guardedValue = map['paginationRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       relativeUrl: (() { final guardedValue = map['relativeUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       requestBody: (() { final guardedValue = map['requestBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -101,4 +101,3 @@ class RestResourceDataset {
     );
   }
 }
-

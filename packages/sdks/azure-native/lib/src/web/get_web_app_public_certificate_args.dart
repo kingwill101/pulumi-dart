@@ -11,13 +11,13 @@ class GetWebAppPublicCertificateArgs {
   final pulumi.Input<String> name;
   /// Public certificate name.
   final pulumi.Input<String> publicCertificateName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWebAppPublicCertificateArgs].
   /// [name] Name of the app.
   /// [publicCertificateName] Public certificate name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetWebAppPublicCertificateArgs({
     required this.name,
     required this.publicCertificateName,
@@ -40,4 +40,3 @@ class GetWebAppPublicCertificateArgs {
     );
   }
 }
-

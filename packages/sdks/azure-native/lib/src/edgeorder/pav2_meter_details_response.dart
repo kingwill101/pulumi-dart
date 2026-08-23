@@ -44,4 +44,3 @@ class Pav2MeterDetailsResponse {
     );
   }
 }
-

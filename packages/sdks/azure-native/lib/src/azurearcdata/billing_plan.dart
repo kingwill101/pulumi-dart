@@ -15,4 +15,3 @@ enum BillingPlan {
     throw ArgumentError('Unknown BillingPlan value: $value');
   }
 }
-

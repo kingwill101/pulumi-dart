@@ -241,6 +241,85 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_networkfirewallfirewallpolicy" "networkFirewallFirewallPolicy" {
+///   location = "jmirflesx"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "rwqxtqealkkjplaoauziyt"
+///     aws_account_id = "fvglwybfwcjydvshvpaqacdtncc"
+///     aws_properties = {
+///       description = "lgkmdcxkddlt"
+///       firewall_policy = {
+///         policy_variables = {
+///           rule_variables = {
+///             "key6441" = {
+///               definition = ["nwcsmd"]
+///             }
+///           }
+///         }
+///         stateful_default_actions = ["rhluwzzqiehteaka"]
+///         stateful_engine_options = {
+///           rule_order              = "DEFAULT_ACTION_ORDER"
+///           stream_exception_policy = "CONTINUE"
+///         }
+///         stateful_rule_group_references = [{
+///           "override" = {
+///             "action" = "DROP_TO_ALERT"
+///           }
+///           "priority"    = 24
+///           "resourceArn" = "mjmcihwfckvrmkqo"
+///         }]
+///         stateless_custom_actions = [{
+///           "actionDefinition" = {
+///             "publishMetricAction" = {
+///               "dimensions" = [{
+///                 "value" = "kpelhvywxyvfwbkxeepdvujwrlywy"
+///               }]
+///             }
+///           }
+///           "actionName" = "vzrqjgluyejlinwxxhuljye"
+///         }]
+///         stateless_default_actions          = ["bhojbxqneam"]
+///         stateless_fragment_default_actions = ["lnpufwfpveptbxocevsbt"]
+///         stateless_rule_group_references = [{
+///           "priority"    = 11
+///           "resourceArn" = "kjggnkcabwynhgqkoryqzbkwz"
+///         }]
+///         tls_inspection_configuration_arn = "qrdcssdykfcsxjdimv"
+///       }
+///       firewall_policy_arn  = "xpoahy"
+///       firewall_policy_id   = "ofrzbmefsngq"
+///       firewall_policy_name = "xasgbvm"
+///       tags = [{
+///         "key"   = "njlfcpwz"
+///         "value" = "lrpynqejzy"
+///       }]
+///     }
+///     aws_region        = "ujnhepy"
+///     aws_source_schema = "tupxubxwdvvlcxhmjn"
+///     aws_tags = {
+///       "key2264" = "v"
+///     }
+///     public_cloud_connectors_resource_id = "jgglyugkzlbqyphcmiuchfpzd"
+///     public_cloud_resource_name          = "txlbnhchqhqamo"
+///   }
+///   resource_group_name = "rgnetworkFirewallFirewallPolicy"
+///   tags = {
+///     "key2040" = "rrw"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +333,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.FirewallPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RuleVariablesModelArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StatefulEngineOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

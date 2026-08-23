@@ -14,4 +14,3 @@ enum AKSVolumeTypes {
     throw ArgumentError('Unknown AKSVolumeTypes value: $value');
   }
 }
-

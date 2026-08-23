@@ -20,7 +20,7 @@ import 'virtual_machine_scale_set_vmprotection_policy_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -796,6 +796,304 @@ import 'virtual_machine_scale_set_vmprotection_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescalesetvm" "virtualMachineScaleSetVM" {
+///   additional_capabilities = {
+///     hibernation_enabled = true
+///     ultra_ssd_enabled   = true
+///   }
+///   availability_set = {
+///     id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///   }
+///   diagnostics_profile = {
+///     boot_diagnostics = {
+///       enabled     = true
+///       storage_uri = "aaaaaaaaaaaaa"
+///     }
+///   }
+///   hardware_profile = {
+///     vm_size = "Basic_A0"
+///     vm_size_properties = {
+///       v_cp_us_available = 9
+///       v_cp_us_per_core  = 12
+///     }
+///   }
+///   instance_id  = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+///   license_type = "aaaaaaaaaa"
+///   location     = "westus"
+///   network_profile = {
+///     network_api_version = "2020-11-01"
+///     network_interface_configurations = [{
+///       "deleteOption" = "Delete"
+///       "dnsSettings" = {
+///         "dnsServers" = ["aaaaaa"]
+///       }
+///       "dscpConfiguration" = {
+///         "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///       }
+///       "enableAcceleratedNetworking" = true
+///       "enableFpga"                  = true
+///       "enableIPForwarding"          = true
+///       "ipConfigurations" = [{
+///         "applicationGatewayBackendAddressPools" = [{
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }]
+///         "applicationSecurityGroups" = [{
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }]
+///         "loadBalancerBackendAddressPools" = [{
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }]
+///         "name"                    = "aa"
+///         "primary"                 = true
+///         "privateIPAddressVersion" = "IPv4"
+///         "publicIPAddressConfiguration" = {
+///           "deleteOption" = "Delete"
+///           "dnsSettings" = {
+///             "domainNameLabel" = "aaaaaaaaaaaaaaaaaaaaaaaaa"
+///           }
+///           "idleTimeoutInMinutes" = 2
+///           "ipTags" = [{
+///             "ipTagType" = "aaaaaaaaaaaaaaaaaaaaaaaaa"
+///             "tag"       = "aaaaaaaaaaaaaaaaaaaa"
+///           }]
+///           "name"                     = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+///           "publicIPAddressVersion"   = "IPv4"
+///           "publicIPAllocationMethod" = "Dynamic"
+///           "publicIPPrefix" = {
+///             "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///           }
+///           "sku" = {
+///             "name" = "Basic"
+///             "tier" = "Regional"
+///           }
+///         }
+///         "subnet" = {
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }
+///       }]
+///       "name" = "aaaaaaaaaaa"
+///       "networkSecurityGroup" = {
+///         "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///       }
+///       "primary" = true
+///     }]
+///     network_interfaces = [{
+///       "deleteOption" = "Delete"
+///       "id"           = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/{vmss-name}/virtualMachines/0/networkInterfaces/vmsstestnetconfig5415"
+///       "primary"      = true
+///     }]
+///   }
+///   network_profile_configuration = {
+///     network_interface_configurations = [{
+///       "deleteOption" = "Delete"
+///       "dnsSettings" = {
+///         "dnsServers" = []
+///       }
+///       "enableAcceleratedNetworking" = true
+///       "enableFpga"                  = true
+///       "enableIPForwarding"          = true
+///       "ipConfigurations" = [{
+///         "applicationGatewayBackendAddressPools" = [{
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }]
+///         "applicationSecurityGroups" = [{
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }]
+///         "loadBalancerBackendAddressPools" = [{
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }]
+///         "loadBalancerInboundNatPools" = [{
+///           "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///         }]
+///         "name"                    = "vmsstestnetconfig9693"
+///         "primary"                 = true
+///         "privateIPAddressVersion" = "IPv4"
+///         "publicIPAddressConfiguration" = {
+///           "deleteOption" = "Delete"
+///           "dnsSettings" = {
+///             "domainNameLabel" = "aaaaaaaaaaaaaaaaaa"
+///           }
+///           "idleTimeoutInMinutes" = 18
+///           "ipTags" = [{
+///             "ipTagType" = "aaaaaaa"
+///             "tag"       = "aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+///           }]
+///           "name"                   = "aaaaaaaaaaaaaaaaaa"
+///           "publicIPAddressVersion" = "IPv4"
+///           "publicIPPrefix" = {
+///             "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///           }
+///           "sku" = {
+///             "name" = "Basic"
+///             "tier" = "Regional"
+///           }
+///         }
+///         "subnet" = {
+///           "id" = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/vn4071/subnets/sn5503"
+///         }
+///       }]
+///       "name" = "vmsstestnetconfig5415"
+///       "networkSecurityGroup" = {
+///         "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///       }
+///       "primary" = true
+///     }]
+///   }
+///   os_profile = {
+///     admin_password             = "aaaaaaaaaaaaaaaa"
+///     admin_username             = "Foo12"
+///     allow_extension_operations = true
+///     computer_name              = "test000000"
+///     custom_data                = "aaaa"
+///     linux_configuration = {
+///       disable_password_authentication = true
+///       patch_settings = {
+///         assessment_mode = "ImageDefault"
+///         patch_mode      = "ImageDefault"
+///       }
+///       provision_vm_agent = true
+///       ssh = {
+///         public_keys = [{
+///           "keyData" = "aaaaaa"
+///           "path"    = "aaa"
+///         }]
+///       }
+///     }
+///     require_guest_provision_signal = true
+///     secrets                        = []
+///     windows_configuration = {
+///       additional_unattend_content = [{
+///         "componentName" = "Microsoft-Windows-Shell-Setup"
+///         "content"       = "aaaaaaaaaaaaaaaaaaaa"
+///         "passName"      = "OobeSystem"
+///         "settingName"   = "AutoLogon"
+///       }]
+///       enable_automatic_updates = true
+///       patch_settings = {
+///         assessment_mode    = "ImageDefault"
+///         enable_hotpatching = true
+///         patch_mode         = "Manual"
+///       }
+///       provision_vm_agent = true
+///       time_zone          = "aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+///       win_rm = {
+///         listeners = [{
+///           "certificateUrl" = "aaaaaaaaaaaaaaaaaaaaaa"
+///           "protocol"       = "Http"
+///         }]
+///       }
+///     }
+///   }
+///   plan = {
+///     name           = "aaaaaaaaaa"
+///     product        = "aaaaaaaaaaaaaaaaaaaa"
+///     promotion_code = "aaaaaaaaaaaaaaaaaaaa"
+///     publisher      = "aaaaaaaaaaaaaaaaaaaaaa"
+///   }
+///   protection_policy = {
+///     protect_from_scale_in          = true
+///     protect_from_scale_set_actions = true
+///   }
+///   resource_group_name = "rgcompute"
+///   security_profile = {
+///     encryption_at_host = true
+///     security_type      = "TrustedLaunch"
+///     uefi_settings = {
+///       secure_boot_enabled = true
+///       v_tpm_enabled       = true
+///     }
+///   }
+///   storage_profile = {
+///     data_disks = [{
+///       "caching"      = "None"
+///       "createOption" = "Empty"
+///       "deleteOption" = "Delete"
+///       "detachOption" = "ForceDetach"
+///       "diskSizeGB"   = 128
+///       "image" = {
+///         "uri" = "https://{storageAccountName}.blob.core.windows.net/{containerName}/{vhdName}.vhd"
+///       }
+///       "lun" = 1
+///       "managedDisk" = {
+///         "diskEncryptionSet" = {
+///           "id" = "aaaaaaaaaaaa"
+///         }
+///         "id"                 = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d"
+///         "storageAccountType" = "Standard_LRS"
+///       }
+///       "name"         = "vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d"
+///       "toBeDetached" = true
+///       "vhd" = {
+///         "uri" = "https://{storageAccountName}.blob.core.windows.net/{containerName}/{vhdName}.vhd"
+///       }
+///       "writeAcceleratorEnabled" = true
+///     }]
+///     image_reference = {
+///       id                      = "a"
+///       offer                   = "WindowsServer"
+///       publisher               = "MicrosoftWindowsServer"
+///       shared_gallery_image_id = "aaaaaaaaaaaaaaaaaaaa"
+///       sku                     = "2012-R2-Datacenter"
+///       version                 = "4.127.20180315"
+///     }
+///     os_disk = {
+///       caching       = "None"
+///       create_option = "FromImage"
+///       delete_option = "Delete"
+///       diff_disk_settings = {
+///         option    = "Local"
+///         placement = "CacheDisk"
+///       }
+///       disk_size_gb = 127
+///       encryption_settings = {
+///         disk_encryption_key = {
+///           secret_url = "aaaaaaaa"
+///           source_vault = {
+///             id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///           }
+///         }
+///         enabled = true
+///         key_encryption_key = {
+///           key_url = "aaaaaaaaaaaaaa"
+///           source_vault = {
+///             id = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
+///           }
+///         }
+///       }
+///       image = {
+///         uri = "https://{storageAccountName}.blob.core.windows.net/{containerName}/{vhdName}.vhd"
+///       }
+///       managed_disk = {
+///         disk_encryption_set = {
+///           id = "aaaaaaaaaaaa"
+///         }
+///         id                   = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_OsDisk_1_6d72b805e50e4de6830303c5055077fc"
+///         storage_account_type = "Standard_LRS"
+///       }
+///       name    = "vmss3176_vmss3176_0_OsDisk_1_6d72b805e50e4de6830303c5055077fc"
+///       os_type = "Windows"
+///       vhd = {
+///         uri = "https://{storageAccountName}.blob.core.windows.net/{containerName}/{vhdName}.vhd"
+///       }
+///       write_accelerator_enabled = true
+///     }
+///   }
+///   tags              = {}
+///   user_data         = "RXhhbXBsZSBVc2VyRGF0YQ=="
+///   vm_scale_set_name = "aaaaaaaaaaaaaa"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -833,8 +1131,8 @@ import 'virtual_machine_scale_set_vmprotection_policy_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.VirtualHardDiskArgs;
 /// import com.pulumi.azurenative.compute.inputs.ManagedDiskParametersArgs;
 /// import com.pulumi.azurenative.compute.inputs.DiskEncryptionSetParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1997,6 +2295,24 @@ import 'virtual_machine_scale_set_vmprotection_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescalesetvm" "virtualMachineScaleSetVM" {
+///   instance_id         = "aaaaaaaaaaaaaaaaaaaa"
+///   location            = "westus"
+///   resource_group_name = "rgcompute"
+///   vm_scale_set_name   = "aaaaaaaaaaaaaaaaaa"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2005,8 +2321,8 @@ import 'virtual_machine_scale_set_vmprotection_policy_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetVM;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetVMArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

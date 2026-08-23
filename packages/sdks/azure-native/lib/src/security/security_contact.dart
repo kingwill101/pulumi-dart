@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_contact_args.dart';
-import 'security_contact_properties_response_notifications_by_role.dart';
+import 'security_contact_properties_notifications_by_role_response.dart';
+import 'system_data_response.dart';
 
 /// Contact details and configurations for notifications coming from Microsoft Defender for Cloud.
 ///
@@ -95,6 +96,35 @@ import 'security_contact_properties_response_notifications_by_role.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_securitycontact" "securityContact" {
+///   emails     = "john@contoso.com;jane@contoso.com"
+///   is_enabled = true
+///   notifications_by_role = {
+///     roles = ["Owner"]
+///     state = "On"
+///   }
+///   notifications_sources = [{
+///     "minimalRiskLevel" = "Critical"
+///     "sourceType"       = "AttackPath"
+///     }, {
+///     "minimalSeverity" = "Medium"
+///     "sourceType"      = "Alert"
+///   }]
+///   phone                 = "(214)275-4038"
+///   security_contact_name = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +134,8 @@ import 'security_contact_properties_response_notifications_by_role.dart';
 /// import com.pulumi.azurenative.security.SecurityContact;
 /// import com.pulumi.azurenative.security.SecurityContactArgs;
 /// import com.pulumi.azurenative.security.inputs.SecurityContactPropertiesNotificationsByRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,15 +263,17 @@ class SecurityContact extends pulumi.CustomResource {
   late final pulumi.Output<String?> emails;
   /// Indicates whether the security contact is enabled.
   late final pulumi.Output<bool?> isEnabled;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
-  late final pulumi.Output<SecurityContactPropertiesResponseNotificationsByRole?> notificationsByRole;
+  late final pulumi.Output<SecurityContactPropertiesNotificationsByRoleResponse?> notificationsByRole;
   /// A collection of sources types which evaluate the email notification.
   late final pulumi.Output<List<Map<String, dynamic>>?> notificationsSources;
   /// The security contact's phone number
   late final pulumi.Output<String?> phone;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [SecurityContact].
@@ -262,9 +294,10 @@ class SecurityContact extends pulumi.CustomResource {
     emails = registerOutput<String?>('emails');
     isEnabled = registerOutput<bool?>('isEnabled');
     this.name = registerOutput<String>('name');
-    notificationsByRole = registerOutput<SecurityContactPropertiesResponseNotificationsByRole?>('notificationsByRole', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityContactPropertiesResponseNotificationsByRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationsByRole = registerOutput<SecurityContactPropertiesNotificationsByRoleResponse?>('notificationsByRole', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityContactPropertiesNotificationsByRoleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     notificationsSources = registerOutput<List<Map<String, dynamic>>?>('notificationsSources');
     phone = registerOutput<String?>('phone');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

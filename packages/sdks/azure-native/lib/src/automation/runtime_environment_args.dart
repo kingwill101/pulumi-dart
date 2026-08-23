@@ -17,7 +17,7 @@ class RuntimeEnvironmentArgs {
   final pulumi.Input<String>? language;
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Runtime Environment.
   final pulumi.Input<String>? runtimeEnvironmentName;
@@ -32,7 +32,7 @@ class RuntimeEnvironmentArgs {
   /// [description] Gets or sets the description.
   /// [language] Language of Runtime Environment
   /// [location] The geo-location where the resource lives
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
   /// [tags] Resource tags.
   /// [version] Version of Language
@@ -76,4 +76,3 @@ class RuntimeEnvironmentArgs {
     );
   }
 }
-

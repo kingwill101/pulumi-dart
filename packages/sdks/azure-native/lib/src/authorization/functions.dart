@@ -6,6 +6,8 @@ import 'get_access_review_schedule_definition_by_id_result.dart';
 import 'get_client_config_result.dart';
 import 'get_client_token_args.dart';
 import 'get_client_token_result.dart';
+import 'get_deny_assignment_args.dart';
+import 'get_deny_assignment_result.dart';
 import 'get_management_lock_at_resource_group_level_args.dart';
 import 'get_management_lock_at_resource_group_level_result.dart';
 import 'get_management_lock_at_resource_level_args.dart';
@@ -68,6 +70,8 @@ import 'list_policy_set_definition_version_all_at_management_group_args.dart';
 import 'list_policy_set_definition_version_all_at_management_group_result.dart';
 import 'list_policy_set_definition_version_all_builtins_result.dart';
 import 'list_policy_set_definition_version_all_result.dart';
+import 'list_subscriptions_args.dart';
+import 'list_subscriptions_result.dart';
 
 /// Get access review history definition by definition Id
 ///
@@ -138,6 +142,24 @@ Future<GetClientTokenResult> getClientToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientTokenResult.fromMap(result);
+}
+
+/// Get the specified deny assignment.
+///
+/// Uses Azure REST API version 2024-07-01-preview.
+/// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_deny_assignment_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDenyAssignmentResult> getDenyAssignment(
+  GetDenyAssignmentArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:authorization:getDenyAssignment',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDenyAssignmentResult.fromMap(result);
 }
 
 /// Gets a management lock at the resource group level.
@@ -234,7 +256,7 @@ Future<GetPimRoleEligibilityScheduleResult> getPimRoleEligibilitySchedule(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2020-09-01, 2021-06-01, 2022-06-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-09-01, 2021-06-01, 2022-06-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_assignment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyAssignmentResult> getPolicyAssignment(
@@ -254,7 +276,7 @@ Future<GetPolicyAssignmentResult> getPolicyAssignment(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_definition_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyDefinitionResult> getPolicyDefinition(
@@ -274,7 +296,7 @@ Future<GetPolicyDefinitionResult> getPolicyDefinition(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_definition_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyDefinitionAtManagementGroupResult> getPolicyDefinitionAtManagementGroup(
@@ -294,7 +316,7 @@ Future<GetPolicyDefinitionAtManagementGroupResult> getPolicyDefinitionAtManageme
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_definition_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyDefinitionVersionResult> getPolicyDefinitionVersion(
@@ -314,7 +336,7 @@ Future<GetPolicyDefinitionVersionResult> getPolicyDefinitionVersion(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_definition_version_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyDefinitionVersionAtManagementGroupResult> getPolicyDefinitionVersionAtManagementGroup(
@@ -334,7 +356,7 @@ Future<GetPolicyDefinitionVersionAtManagementGroupResult> getPolicyDefinitionVer
 ///
 /// Uses Azure REST API version 2022-07-01-preview.
 ///
-/// Other available API versions: 2020-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-07-01-preview, 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_exemption_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyExemptionResult> getPolicyExemption(
@@ -354,7 +376,7 @@ Future<GetPolicyExemptionResult> getPolicyExemption(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_set_definition_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
@@ -374,7 +396,7 @@ Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_set_definition_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicySetDefinitionAtManagementGroupResult> getPolicySetDefinitionAtManagementGroup(
@@ -394,7 +416,7 @@ Future<GetPolicySetDefinitionAtManagementGroupResult> getPolicySetDefinitionAtMa
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_set_definition_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicySetDefinitionVersionResult> getPolicySetDefinitionVersion(
@@ -414,7 +436,7 @@ Future<GetPolicySetDefinitionVersionResult> getPolicySetDefinitionVersion(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_policy_set_definition_version_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicySetDefinitionVersionAtManagementGroupResult> getPolicySetDefinitionVersionAtManagementGroup(
@@ -586,7 +608,7 @@ Future<GetScopeAccessReviewScheduleDefinitionByIdResult> getScopeAccessReviewSch
 ///
 /// Uses Azure REST API version 2022-08-01-preview.
 ///
-/// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_variable_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVariableResult> getVariable(
@@ -606,7 +628,7 @@ Future<GetVariableResult> getVariable(
 ///
 /// Uses Azure REST API version 2022-08-01-preview.
 ///
-/// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_variable_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVariableAtManagementGroupResult> getVariableAtManagementGroup(
@@ -626,7 +648,7 @@ Future<GetVariableAtManagementGroupResult> getVariableAtManagementGroup(
 ///
 /// Uses Azure REST API version 2022-08-01-preview.
 ///
-/// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_variable_value_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVariableValueResult> getVariableValue(
@@ -646,7 +668,7 @@ Future<GetVariableValueResult> getVariableValue(
 ///
 /// Uses Azure REST API version 2022-08-01-preview.
 ///
-/// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_get_variable_value_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVariableValueAtManagementGroupResult> getVariableValueAtManagementGroup(
@@ -666,7 +688,7 @@ Future<GetVariableValueAtManagementGroupResult> getVariableValueAtManagementGrou
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListPolicyDefinitionVersionAllResult> listPolicyDefinitionVersionAll(
   {
@@ -685,7 +707,7 @@ Future<ListPolicyDefinitionVersionAllResult> listPolicyDefinitionVersionAll(
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_list_policy_definition_version_all_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListPolicyDefinitionVersionAllAtManagementGroupResult> listPolicyDefinitionVersionAllAtManagementGroup(
@@ -705,7 +727,7 @@ Future<ListPolicyDefinitionVersionAllAtManagementGroupResult> listPolicyDefiniti
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListPolicyDefinitionVersionAllBuiltinsResult> listPolicyDefinitionVersionAllBuiltins(
   {
@@ -724,7 +746,7 @@ Future<ListPolicyDefinitionVersionAllBuiltinsResult> listPolicyDefinitionVersion
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListPolicySetDefinitionVersionAllResult> listPolicySetDefinitionVersionAll(
   {
@@ -743,7 +765,7 @@ Future<ListPolicySetDefinitionVersionAllResult> listPolicySetDefinitionVersionAl
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_list_policy_set_definition_version_all_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListPolicySetDefinitionVersionAllAtManagementGroupResult> listPolicySetDefinitionVersionAllAtManagementGroup(
@@ -763,7 +785,7 @@ Future<ListPolicySetDefinitionVersionAllAtManagementGroupResult> listPolicySetDe
 ///
 /// Uses Azure REST API version 2025-01-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<ListPolicySetDefinitionVersionAllBuiltinsResult> listPolicySetDefinitionVersionAllBuiltins(
   {
@@ -776,4 +798,20 @@ Future<ListPolicySetDefinitionVersionAllBuiltinsResult> listPolicySetDefinitionV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListPolicySetDefinitionVersionAllBuiltinsResult.fromMap(result);
+}
+
+/// Use this function to list all subscriptions for the authenticated account. See https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/list for details.
+/// [args] Arguments passed to this invoke. {@macro pulumi_authorization_list_subscriptions_args_doc}
+/// [options] Invoke options controlling this call.
+Future<ListSubscriptionsResult> listSubscriptions(
+  ListSubscriptionsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:authorization:listSubscriptions',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return ListSubscriptionsResult.fromMap(result);
 }

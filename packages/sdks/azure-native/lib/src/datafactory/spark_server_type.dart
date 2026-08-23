@@ -1,8 +1,8 @@
 /// The type of Spark server.
 enum SparkServerType {
-  valueSharkServer("SharkServer"),
-  valueSharkServer2("SharkServer2"),
-  valueSparkThriftServer("SparkThriftServer");
+  sharkServer("SharkServer"),
+  sharkServer2("SharkServer2"),
+  sparkThriftServer("SparkThriftServer");
 
   const SparkServerType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum SparkServerType {
     throw ArgumentError('Unknown SparkServerType value: $value');
   }
 }
-

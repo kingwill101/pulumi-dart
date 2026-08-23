@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkflowTriggerCallbackUrlArgs {
   /// Site name.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The workflow trigger name.
   final pulumi.Input<String> triggerName;
@@ -18,7 +18,7 @@ class ListWorkflowTriggerCallbackUrlArgs {
 
   /// Creates a new [ListWorkflowTriggerCallbackUrlArgs].
   /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [triggerName] The workflow trigger name.
   /// [workflowName] The workflow name.
   const ListWorkflowTriggerCallbackUrlArgs({
@@ -46,4 +46,3 @@ class ListWorkflowTriggerCallbackUrlArgs {
     );
   }
 }
-

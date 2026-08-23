@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
+/// Account key object for workspace connection credential.
 class WorkspaceConnectionAccountKey {
   final pulumi.Input<String>? key;
 
@@ -23,4 +24,3 @@ class WorkspaceConnectionAccountKey {
     );
   }
 }
-

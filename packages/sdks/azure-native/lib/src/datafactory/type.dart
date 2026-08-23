@@ -1,6 +1,6 @@
 /// Linked service reference type.
 enum Type {
-  valueLinkedServiceReference("LinkedServiceReference");
+  linkedServiceReference("LinkedServiceReference");
 
   const Type(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum Type {
     throw ArgumentError('Unknown Type value: $value');
   }
 }
-

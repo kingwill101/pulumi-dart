@@ -91,4 +91,3 @@ class AwsEc2VPCEndpointProperties {
     );
   }
 }
-

@@ -65,6 +65,28 @@ import 'solution_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_solution" "solution" {
+///   migrate_project_name = "project01"
+///   properties = {
+///     goal    = "Databases"
+///     purpose = "Assessment"
+///     tool    = "DataMigrationAssistant"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   solution_name       = "dbsolution"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'solution_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.Solution;
 /// import com.pulumi.azurenative.migrate.SolutionArgs;
 /// import com.pulumi.azurenative.migrate.inputs.SolutionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

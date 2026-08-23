@@ -10,7 +10,7 @@ import 'get_dedicated_hsm_result.dart';
 ///
 /// Uses Azure REST API version 2024-06-30-preview.
 ///
-/// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hardwaresecuritymodules_get_cloud_hsm_cluster_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCloudHsmClusterResult> getCloudHsmCluster(
@@ -30,7 +30,7 @@ Future<GetCloudHsmClusterResult> getCloudHsmCluster(
 ///
 /// Uses Azure REST API version 2024-06-30-preview.
 ///
-/// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hardwaresecuritymodules_get_cloud_hsm_cluster_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCloudHsmClusterPrivateEndpointConnectionResult> getCloudHsmClusterPrivateEndpointConnection(
@@ -50,7 +50,7 @@ Future<GetCloudHsmClusterPrivateEndpointConnectionResult> getCloudHsmClusterPriv
 ///
 /// Uses Azure REST API version 2024-06-30-preview.
 ///
-/// Other available API versions: 2021-11-30, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-30, 2025-03-31, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hardwaresecuritymodules_get_dedicated_hsm_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDedicatedHsmResult> getDedicatedHsm(

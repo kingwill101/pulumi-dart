@@ -15,4 +15,3 @@ enum ElasticSanSkuName {
     throw ArgumentError('Unknown ElasticSanSkuName value: $value');
   }
 }
-

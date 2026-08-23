@@ -114,6 +114,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_labservices_labplan" "labPlan" {
+///   default_auto_shutdown_profile = {
+///     disconnect_delay            = "PT5M"
+///     idle_delay                  = "PT5M"
+///     no_connect_delay            = "PT5M"
+///     shutdown_on_disconnect      = "Enabled"
+///     shutdown_on_idle            = "UserAbsence"
+///     shutdown_when_not_connected = "Enabled"
+///   }
+///   default_connection_profile = {
+///     client_rdp_access = "Public"
+///     client_ssh_access = "Public"
+///     web_rdp_access    = "None"
+///     web_ssh_access    = "None"
+///   }
+///   default_network_profile = {
+///     subnet_id = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
+///   }
+///   lab_plan_name       = "testlabplan"
+///   location            = "westus"
+///   resource_group_name = "testrg123"
+///   shared_gallery_id   = "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Compute/galleries/testsig"
+///   support_info = {
+///     email        = "help@contoso.com"
+///     instructions = "Contact support for help."
+///     phone        = "+1-202-555-0123"
+///     url          = "help.contoso.com"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +167,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.labservices.inputs.ConnectionProfileArgs;
 /// import com.pulumi.azurenative.labservices.inputs.LabPlanNetworkProfileArgs;
 /// import com.pulumi.azurenative.labservices.inputs.SupportInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

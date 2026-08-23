@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -372,6 +372,135 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_managedcluster" "managedCluster" {
+///   addon_features   = ["DnsService", "BackupRestoreService", "ResourceMonitorService"]
+///   admin_password   = "{vm-password}"
+///   admin_user_name  = "vmadmin"
+///   allow_rdp_access = true
+///   application_type_versions_cleanup_policy = {
+///     max_unused_versions_to_keep = 3
+///   }
+///   auxiliary_subnets {
+///     enable_ipv6                           = true
+///     name                                  = "testSubnet1"
+///     network_security_group_id             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/networkSecurityGroups/sn1"
+///     private_endpoint_network_policies     = "enabled"
+///     private_link_service_network_policies = "enabled"
+///   }
+///   client_connection_port                  = 19000
+///   cluster_code_version                    = "7.1.168.9494"
+///   cluster_name                            = "myCluster"
+///   cluster_upgrade_mode                    = "Manual"
+///   ddos_protection_plan_id                 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/ddosProtectionPlans/myDDoSProtectionPlan"
+///   dns_name                                = "myCluster"
+///   enable_auto_os_upgrade                  = true
+///   enable_http_gateway_exclusive_auth_mode = true
+///   enable_ipv6                             = true
+///   fabric_settings {
+///     name = "ManagedIdentityTokenService"
+///     parameters {
+///       name  = "IsEnabled"
+///       value = "true"
+///     }
+///   }
+///   http_gateway_connection_port            = 19080
+///   http_gateway_token_auth_connection_port = 19081
+///   ip_tags {
+///     ip_tag_type = "FirstPartyUsage"
+///     tag         = "SQL"
+///   }
+///   load_balancing_rules {
+///     backend_port   = 80
+///     frontend_port  = 80
+///     probe_port     = 80
+///     probe_protocol = "http"
+///     protocol       = "http"
+///   }
+///   load_balancing_rules {
+///     backend_port   = 443
+///     frontend_port  = 443
+///     probe_port     = 443
+///     probe_protocol = "http"
+///     protocol       = "http"
+///   }
+///   load_balancing_rules {
+///     backend_port      = 10000
+///     frontend_port     = 10000
+///     load_distribution = "Default"
+///     probe_port        = 10000
+///     probe_protocol    = "http"
+///     protocol          = "tcp"
+///   }
+///   location = "eastus"
+///   network_security_rules {
+///     access                       = "allow"
+///     description                  = "Test description"
+///     destination_address_prefixes = ["*"]
+///     destination_port_ranges      = ["*"]
+///     direction                    = "inbound"
+///     name                         = "TestName"
+///     priority                     = 1010
+///     protocol                     = "tcp"
+///     source_address_prefixes      = ["*"]
+///     source_port_ranges           = ["*"]
+///   }
+///   network_security_rules {
+///     access                     = "allow"
+///     destination_address_prefix = "*"
+///     destination_port_range     = "33500-33699"
+///     direction                  = "inbound"
+///     name                       = "AllowARM"
+///     priority                   = 2002
+///     protocol                   = "*"
+///     source_address_prefix      = "AzureResourceManager"
+///     source_port_range          = "*"
+///   }
+///   public_ip_prefix_id    = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.Network/publicIPPrefixes/myPublicIPPrefix"
+///   public_i_pv6_prefix_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.Network/publicIPPrefixes/myPublicIPv6Prefix"
+///   resource_group_name    = "resRg"
+///   service_endpoints {
+///     locations = ["eastus2", "usnorth"]
+///     service   = "Microsoft.Storage"
+///   }
+///   sku = {
+///     name = "Basic"
+///   }
+///   tags = {}
+///   upgrade_description = {
+///     delta_health_policy = {
+///       max_percent_delta_unhealthy_applications         = 40
+///       max_percent_delta_unhealthy_nodes                = 20
+///       max_percent_upgrade_domain_delta_unhealthy_nodes = 40
+///     }
+///     force_restart = false
+///     health_policy = {
+///       max_percent_unhealthy_applications = 30
+///       max_percent_unhealthy_nodes        = 10
+///     }
+///     monitoring_policy = {
+///       health_check_retry_timeout   = "00:55:00"
+///       health_check_stable_duration = "00:45:00"
+///       health_check_wait_duration   = "00:05:00"
+///       upgrade_domain_timeout       = "03:00:00"
+///       upgrade_timeout              = "12:00:00"
+///     }
+///   }
+///   use_custom_vnet   = true
+///   zonal_resiliency  = true
+///   zonal_update_mode = "Fast"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -392,8 +521,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicefabric.inputs.ClusterUpgradeDeltaHealthPolicyArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.ClusterHealthPolicyArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.ClusterMonitoringPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1008,6 +1137,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_managedcluster" "managedCluster" {
+///   admin_password          = "{vm-password}"
+///   admin_user_name         = "vmadmin"
+///   cluster_name            = "myCluster"
+///   cluster_upgrade_cadence = "Wave1"
+///   cluster_upgrade_mode    = "Automatic"
+///   dns_name                = "myCluster"
+///   fabric_settings {
+///     name = "ManagedIdentityTokenService"
+///     parameters {
+///       name  = "IsEnabled"
+///       value = "true"
+///     }
+///   }
+///   location            = "eastus"
+///   resource_group_name = "resRg"
+///   sku = {
+///     name = "Basic"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1018,8 +1179,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SettingsSectionDescriptionArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

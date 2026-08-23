@@ -17,4 +17,3 @@ enum UsernameSource {
     throw ArgumentError('Unknown UsernameSource value: $value');
   }
 }
-

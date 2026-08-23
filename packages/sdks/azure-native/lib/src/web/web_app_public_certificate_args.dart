@@ -18,7 +18,7 @@ class WebAppPublicCertificateArgs {
   final pulumi.Input<PublicCertificateLocation>? publicCertificateLocation;
   /// Public certificate name.
   final pulumi.Input<String>? publicCertificateName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [WebAppPublicCertificateArgs].
@@ -27,7 +27,7 @@ class WebAppPublicCertificateArgs {
   /// [name] Name of the app.
   /// [publicCertificateLocation] Public Certificate Location
   /// [publicCertificateName] Public certificate name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const WebAppPublicCertificateArgs({
     this.blob,
     this.kind,
@@ -59,4 +59,3 @@ class WebAppPublicCertificateArgs {
     );
   }
 }
-

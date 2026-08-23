@@ -1,7 +1,7 @@
-/// Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
+/// Whether requests from Public Network are allowed.
 enum PublicNetworkAccessType {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const PublicNetworkAccessType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PublicNetworkAccessType {
     throw ArgumentError('Unknown PublicNetworkAccessType value: $value');
   }
 }
-

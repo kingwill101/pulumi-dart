@@ -15,4 +15,3 @@ enum EncryptionScopeSource {
     throw ArgumentError('Unknown EncryptionScopeSource value: $value');
   }
 }
-

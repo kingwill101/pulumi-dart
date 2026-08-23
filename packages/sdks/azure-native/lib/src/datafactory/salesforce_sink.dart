@@ -80,4 +80,3 @@ class SalesforceSink {
     );
   }
 }
-

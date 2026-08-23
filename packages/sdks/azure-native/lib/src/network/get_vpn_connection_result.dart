@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ipsec_policy_response.dart';
-import 'routing_configuration_response.dart';
+import 'routing_configuration_vpn_connection_response.dart';
 import 'sub_resource_response.dart';
 import 'traffic_selector_policy_response.dart';
 import 'vpn_site_link_connection_response.dart';
@@ -40,7 +40,7 @@ class GetVpnConnectionResult {
   /// Id of the connected vpn site.
   final SubResourceResponse? remoteVpnSite;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final RoutingConfigurationResponse? routingConfiguration;
+  final RoutingConfigurationVpnConnectionResponse? routingConfiguration;
   /// Routing weight for vpn connection.
   final int? routingWeight;
   /// SharedKey for the vpn connection.
@@ -151,7 +151,7 @@ class GetVpnConnectionResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: map['provisioningState'] as String,
       remoteVpnSite: (() { final guardedValue = map['remoteVpnSite']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationVpnConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return guardedValue as int; })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       trafficSelectorPolicies: (() { final guardedValue = map['trafficSelectorPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficSelectorPolicyResponse>(guardedValue, (value) => TrafficSelectorPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -162,4 +162,3 @@ class GetVpnConnectionResult {
     );
   }
 }
-

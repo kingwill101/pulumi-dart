@@ -59,6 +59,25 @@ import 'sql_pool_transparent_data_encryption_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_sqlpooltransparentdataencryption" "sqlPoolTransparentDataEncryption" {
+///   resource_group_name              = "sqlcrudtest-6852"
+///   sql_pool_name                    = "sqlcrudtest-9187"
+///   status                           = "Enabled"
+///   transparent_data_encryption_name = "current"
+///   workspace_name                   = "sqlcrudtest-2080"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'sql_pool_transparent_data_encryption_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.SqlPoolTransparentDataEncryption;
 /// import com.pulumi.azurenative.synapse.SqlPoolTransparentDataEncryptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

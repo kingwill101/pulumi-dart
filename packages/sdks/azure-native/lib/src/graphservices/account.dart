@@ -60,6 +60,25 @@ import 'account_resource_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_graphservices_account" "account" {
+///   properties = {
+///     app_id = "11111111-aaaa-1111-bbbb-111111111111"
+///   }
+///   resource_group_name = "testResourceGroupGRAM"
+///   resource_name       = "11111111-aaaa-1111-bbbb-1111111111111"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +88,8 @@ import 'account_resource_response_system_data.dart';
 /// import com.pulumi.azurenative.graphservices.Account;
 /// import com.pulumi.azurenative.graphservices.AccountArgs;
 /// import com.pulumi.azurenative.graphservices.inputs.AccountResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,7 +1,7 @@
 /// The event hub type.
 enum EventHubType {
-  valueNotification("Notification"),
-  valueHook("Hook");
+  notification("Notification"),
+  hook("Hook");
 
   const EventHubType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum EventHubType {
     throw ArgumentError('Unknown EventHubType value: $value');
   }
 }
-

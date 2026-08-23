@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'functions_always_ready_config_response.dart';
-import 'functions_scale_and_concurrency_response_triggers.dart';
+import 'functions_scale_and_concurrency_triggers_response.dart';
 
 /// Scale and concurrency settings for the function app.
 class FunctionsScaleAndConcurrencyResponse {
@@ -10,15 +10,15 @@ class FunctionsScaleAndConcurrencyResponse {
   final pulumi.Input<List<FunctionsAlwaysReadyConfigResponse>>? alwaysReady;
   /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
   final pulumi.Input<int>? instanceMemoryMB;
-  /// The maximum number of instances for the function app.
+  /// The maximum number of on demand instances per function group.
   final pulumi.Input<int>? maximumInstanceCount;
   /// Scale and concurrency settings for the function app triggers.
-  final pulumi.Input<FunctionsScaleAndConcurrencyResponseTriggers>? triggers;
+  final pulumi.Input<FunctionsScaleAndConcurrencyTriggersResponse>? triggers;
 
   /// Creates a new [FunctionsScaleAndConcurrencyResponse].
   /// [alwaysReady] 'Always Ready' configuration for the function app.
   /// [instanceMemoryMB] Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  /// [maximumInstanceCount] The maximum number of instances for the function app.
+  /// [maximumInstanceCount] The maximum number of on demand instances per function group.
   /// [triggers] Scale and concurrency settings for the function app triggers.
   const FunctionsScaleAndConcurrencyResponse({
     this.alwaysReady,
@@ -32,7 +32,7 @@ class FunctionsScaleAndConcurrencyResponse {
       'alwaysReady': ?pulumi.Input.mapOptionalInputValue<List<FunctionsAlwaysReadyConfigResponse>, List<Map<String, dynamic>>>(alwaysReady, (value) => pulumi.Input.encodeList<FunctionsAlwaysReadyConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'instanceMemoryMB': ?instanceMemoryMB,
       'maximumInstanceCount': ?maximumInstanceCount,
-      'triggers': ?pulumi.Input.mapOptionalInputValue<FunctionsScaleAndConcurrencyResponseTriggers, Map<String, dynamic>>(triggers, (value) => value.toMap()),
+      'triggers': ?pulumi.Input.mapOptionalInputValue<FunctionsScaleAndConcurrencyTriggersResponse, Map<String, dynamic>>(triggers, (value) => value.toMap()),
     };
   }
 
@@ -41,8 +41,7 @@ class FunctionsScaleAndConcurrencyResponse {
       alwaysReady: (() { final guardedValue = map['alwaysReady']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FunctionsAlwaysReadyConfigResponse>(guardedValue, (value) => FunctionsAlwaysReadyConfigResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       instanceMemoryMB: (() { final guardedValue = map['instanceMemoryMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       maximumInstanceCount: (() { final guardedValue = map['maximumInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      triggers: (() { final guardedValue = map['triggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionsScaleAndConcurrencyResponseTriggers.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      triggers: (() { final guardedValue = map['triggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionsScaleAndConcurrencyTriggersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

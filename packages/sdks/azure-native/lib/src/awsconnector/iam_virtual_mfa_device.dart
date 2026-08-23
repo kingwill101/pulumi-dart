@@ -118,6 +118,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_iamvirtualmfadevice" "iamVirtualMfaDevice" {
+///   location = "ixkqwzfnsthfshdlvsvh"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "soptozsivfaghgr"
+///     aws_account_id = "deoktff"
+///     aws_properties = {
+///       path          = "iuiajbhehzagt"
+///       serial_number = "zbsulwrnmmhdwuelwbybavq"
+///       tags = [{
+///         "key"   = "imskkztsfijhjvvp"
+///         "value" = "kpmtbersaovhycdipca"
+///       }]
+///       users                   = ["pzktvxysprnhhivbnuuutllcomxp"]
+///       virtual_mfa_device_name = "m"
+///     }
+///     aws_region        = "h"
+///     aws_source_schema = "iotqvkkgxaoeewgxegimnri"
+///     aws_tags = {
+///       "key1965" = "rgngzs"
+///     }
+///     public_cloud_connectors_resource_id = "chegzvubkwsrhocspiedvdrzuhkjo"
+///     public_cloud_resource_name          = "uktgscbqvuprtkj"
+///   }
+///   resource_group_name = "rgiamVirtualMFADevice"
+///   tags = {
+///     "key2474" = "za"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +169,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.IamVirtualMfaDeviceArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.IamVirtualMFADevicePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsIamVirtualMFADevicePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

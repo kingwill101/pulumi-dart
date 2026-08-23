@@ -16,4 +16,3 @@ enum TestType {
     throw ArgumentError('Unknown TestType value: $value');
   }
 }
-

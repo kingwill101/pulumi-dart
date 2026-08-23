@@ -18,4 +18,3 @@ enum SharedPrivateLinkResourceProvisioningState {
     throw ArgumentError('Unknown SharedPrivateLinkResourceProvisioningState value: $value');
   }
 }
-

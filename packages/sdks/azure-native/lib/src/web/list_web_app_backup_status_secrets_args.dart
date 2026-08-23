@@ -9,7 +9,7 @@ import 'database_backup_setting.dart';
 /// {@endtemplate}
 /// {@macro pulumi_web_list_web_app_backup_status_secrets_args_doc}
 class ListWebAppBackupStatusSecretsArgs {
-  /// ID of backup.
+  /// ID of the backup.
   final pulumi.Input<String> backupId;
   /// Name of the backup.
   final pulumi.Input<String>? backupName;
@@ -21,22 +21,22 @@ class ListWebAppBackupStatusSecretsArgs {
   final pulumi.Input<bool>? enabled;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
-  /// Name of web app.
+  /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SAS URL to the container.
   final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [ListWebAppBackupStatusSecretsArgs].
-  /// [backupId] ID of backup.
+  /// [backupId] ID of the backup.
   /// [backupName] Name of the backup.
   /// [backupSchedule] Schedule for the backup if it is executed periodically.
   /// [databases] Databases included in the backup.
   /// [enabled] True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   /// [kind] Kind of resource.
-  /// [name] Name of web app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [name] Name of the app.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageAccountUrl] SAS URL to the container.
   const ListWebAppBackupStatusSecretsArgs({
     required this.backupId,
@@ -78,4 +78,3 @@ class ListWebAppBackupStatusSecretsArgs {
     );
   }
 }
-

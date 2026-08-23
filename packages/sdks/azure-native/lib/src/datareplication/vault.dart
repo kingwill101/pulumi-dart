@@ -7,7 +7,7 @@ import 'vault_model_response_system_data.dart';
 ///
 /// Uses Azure REST API version 2021-02-16-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-16-preview.
 ///
-/// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -71,6 +71,29 @@ import 'vault_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datareplication_vault" "vault" {
+///   location = "eck"
+///   properties = {
+///     vault_type = "DisasterRecovery"
+///   }
+///   resource_group_name = "rgrecoveryservicesdatareplication"
+///   tags = {
+///     "key5359" = "ljfilxolxzuxrauopwtyxghrp"
+///   }
+///   vault_name = "4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'vault_model_response_system_data.dart';
 /// import com.pulumi.azurenative.datareplication.Vault;
 /// import com.pulumi.azurenative.datareplication.VaultArgs;
 /// import com.pulumi.azurenative.datareplication.inputs.VaultModelPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

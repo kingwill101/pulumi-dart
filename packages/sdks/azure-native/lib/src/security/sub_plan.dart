@@ -1,7 +1,7 @@
 /// The available sub plans
 enum SubPlan {
-  valueP1("P1"),
-  valueP2("P2");
+  p1("P1"),
+  p2("P2");
 
   const SubPlan(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SubPlan {
     throw ArgumentError('Unknown SubPlan value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum ReplicationMode {
     throw ArgumentError('Unknown ReplicationMode value: $value');
   }
 }
-

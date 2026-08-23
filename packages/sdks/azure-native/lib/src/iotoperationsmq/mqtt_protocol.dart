@@ -15,4 +15,3 @@ enum MqttProtocol {
     throw ArgumentError('Unknown MqttProtocol value: $value');
   }
 }
-

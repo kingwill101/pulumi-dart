@@ -21,4 +21,3 @@ enum ConfigChangeStatus {
     throw ArgumentError('Unknown ConfigChangeStatus value: $value');
   }
 }
-

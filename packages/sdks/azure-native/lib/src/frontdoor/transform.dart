@@ -1,11 +1,11 @@
 /// Describes what transforms are applied before matching
 enum Transform {
-  valueLowercase("Lowercase"),
-  valueUppercase("Uppercase"),
-  valueTrim("Trim"),
-  valueUrlDecode("UrlDecode"),
-  valueUrlEncode("UrlEncode"),
-  valueRemoveNulls("RemoveNulls");
+  lowercase("Lowercase"),
+  uppercase("Uppercase"),
+  trim("Trim"),
+  urlDecode("UrlDecode"),
+  urlEncode("UrlEncode"),
+  removeNulls("RemoveNulls");
 
   const Transform(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum Transform {
     throw ArgumentError('Unknown Transform value: $value');
   }
 }
-

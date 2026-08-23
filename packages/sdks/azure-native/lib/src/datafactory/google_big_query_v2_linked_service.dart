@@ -101,4 +101,3 @@ class GoogleBigQueryV2LinkedService {
     );
   }
 }
-

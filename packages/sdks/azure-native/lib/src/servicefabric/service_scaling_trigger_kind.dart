@@ -1,7 +1,7 @@
-/// Enumerates the ways that a service can be partitioned.
+/// Specifies the trigger associated with this scaling policy.
 enum ServiceScalingTriggerKind {
-  averagePartitionLoadTrigger("AveragePartitionLoadTrigger"),
-  averageServiceLoadTrigger("AverageServiceLoadTrigger");
+  valueAveragePartitionLoadTrigger("AveragePartitionLoadTrigger"),
+  valueAverageServiceLoadTrigger("AverageServiceLoadTrigger");
 
   const ServiceScalingTriggerKind(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ServiceScalingTriggerKind {
     throw ArgumentError('Unknown ServiceScalingTriggerKind value: $value');
   }
 }
-

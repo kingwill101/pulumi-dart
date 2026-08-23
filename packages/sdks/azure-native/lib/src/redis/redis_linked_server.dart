@@ -59,6 +59,26 @@ import 'redis_linked_server_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redis_redislinkedserver" "redisLinkedServer" {
+///   linked_redis_cache_id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Cache/Redis/cache2"
+///   linked_redis_cache_location = "West US"
+///   linked_server_name          = "cache2"
+///   name                        = "cache1"
+///   resource_group_name         = "rg1"
+///   server_role                 = "Secondary"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +87,8 @@ import 'redis_linked_server_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.redis.RedisLinkedServer;
 /// import com.pulumi.azurenative.redis.RedisLinkedServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

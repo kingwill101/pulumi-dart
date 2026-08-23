@@ -16,4 +16,3 @@ enum IPMode {
     throw ArgumentError('Unknown IPMode value: $value');
   }
 }
-

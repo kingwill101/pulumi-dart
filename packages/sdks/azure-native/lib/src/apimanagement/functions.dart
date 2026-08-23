@@ -215,9 +215,9 @@ import 'list_workspace_subscription_secrets_result.dart';
 
 /// Gets the details of the API specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiResult> getApi(
@@ -235,9 +235,9 @@ Future<GetApiResult> getApi(
 
 /// Gets the details of the Diagnostic for an API specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_diagnostic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiDiagnosticResult> getApiDiagnostic(
@@ -255,9 +255,9 @@ Future<GetApiDiagnosticResult> getApiDiagnostic(
 
 /// Gets an API Management gateway resource description.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_gateway_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiGatewayResult> getApiGateway(
@@ -275,9 +275,9 @@ Future<GetApiGatewayResult> getApiGateway(
 
 /// Gets an API Management gateway config connection resource description.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_gateway_config_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiGatewayConfigConnectionResult> getApiGatewayConfigConnection(
@@ -296,6 +296,8 @@ Future<GetApiGatewayConfigConnectionResult> getApiGatewayConfigConnection(
 /// Gets an API Management gateway hostname binding resource description.
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
+///
+/// Other available API versions: 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_gateway_hostname_binding_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiGatewayHostnameBindingResult> getApiGatewayHostnameBinding(
@@ -313,9 +315,9 @@ Future<GetApiGatewayHostnameBindingResult> getApiGatewayHostnameBinding(
 
 /// Gets the details of the Issue for an API specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_issue_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiIssueResult> getApiIssue(
@@ -333,9 +335,9 @@ Future<GetApiIssueResult> getApiIssue(
 
 /// Gets the details of the issue Attachment for an API specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_issue_attachment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiIssueAttachmentResult> getApiIssueAttachment(
@@ -353,9 +355,9 @@ Future<GetApiIssueAttachmentResult> getApiIssueAttachment(
 
 /// Gets the details of the issue Comment for an API specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_issue_comment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiIssueCommentResult> getApiIssueComment(
@@ -373,9 +375,9 @@ Future<GetApiIssueCommentResult> getApiIssueComment(
 
 /// Gets an API Management service resource description.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_management_service_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiManagementServiceResult> getApiManagementService(
@@ -393,9 +395,9 @@ Future<GetApiManagementServiceResult> getApiManagementService(
 
 /// Get the custom domain ownership identifier for an API Management service.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<GetApiManagementServiceDomainOwnershipIdentifierResult> getApiManagementServiceDomainOwnershipIdentifier(
   {
@@ -412,9 +414,9 @@ Future<GetApiManagementServiceDomainOwnershipIdentifierResult> getApiManagementS
 
 /// Gets the Single-Sign-On token for the API Management Service which is valid for 5 Minutes.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_management_service_sso_token_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiManagementServiceSsoTokenResult> getApiManagementServiceSsoToken(
@@ -432,9 +434,9 @@ Future<GetApiManagementServiceSsoTokenResult> getApiManagementServiceSsoToken(
 
 /// Gets the details of the API Operation specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_operation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiOperationResult> getApiOperation(
@@ -452,9 +454,9 @@ Future<GetApiOperationResult> getApiOperation(
 
 /// Get the policy configuration at the API Operation level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_operation_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiOperationPolicyResult> getApiOperationPolicy(
@@ -472,9 +474,9 @@ Future<GetApiOperationPolicyResult> getApiOperationPolicy(
 
 /// Get the policy configuration at the API level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiPolicyResult> getApiPolicy(
@@ -492,9 +494,9 @@ Future<GetApiPolicyResult> getApiPolicy(
 
 /// Returns the details of an API release.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_release_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiReleaseResult> getApiRelease(
@@ -512,9 +514,9 @@ Future<GetApiReleaseResult> getApiRelease(
 
 /// Get the schema configuration at the API level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiSchemaResult> getApiSchema(
@@ -532,9 +534,9 @@ Future<GetApiSchemaResult> getApiSchema(
 
 /// Get Tag description in scope of API
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_tag_description_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiTagDescriptionResult> getApiTagDescription(
@@ -553,6 +555,8 @@ Future<GetApiTagDescriptionResult> getApiTagDescription(
 /// Gets the details of the API Tool specified by its identifier.
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
+///
+/// Other available API versions: 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_tool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiToolResult> getApiTool(
@@ -570,9 +574,9 @@ Future<GetApiToolResult> getApiTool(
 
 /// Gets the details of the Api Version Set specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_version_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiVersionSetResult> getApiVersionSet(
@@ -590,9 +594,9 @@ Future<GetApiVersionSetResult> getApiVersionSet(
 
 /// Gets the details of the Wiki for an API specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_api_wiki_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetApiWikiResult> getApiWiki(
@@ -610,9 +614,9 @@ Future<GetApiWikiResult> getApiWiki(
 
 /// Gets the details of the authorization specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_authorization_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAuthorizationResult> getAuthorization(
@@ -630,9 +634,9 @@ Future<GetAuthorizationResult> getAuthorization(
 
 /// Gets the details of the authorization access policy specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_authorization_access_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAuthorizationAccessPolicyResult> getAuthorizationAccessPolicy(
@@ -650,9 +654,9 @@ Future<GetAuthorizationAccessPolicyResult> getAuthorizationAccessPolicy(
 
 /// Gets authorization login links.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_authorization_login_link_post_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAuthorizationLoginLinkPostResult> getAuthorizationLoginLinkPost(
@@ -670,9 +674,9 @@ Future<GetAuthorizationLoginLinkPostResult> getAuthorizationLoginLinkPost(
 
 /// Gets the details of the authorization provider specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_authorization_provider_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAuthorizationProviderResult> getAuthorizationProvider(
@@ -690,9 +694,9 @@ Future<GetAuthorizationProviderResult> getAuthorizationProvider(
 
 /// Gets the details of the authorization server specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_authorization_server_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAuthorizationServerResult> getAuthorizationServer(
@@ -710,9 +714,9 @@ Future<GetAuthorizationServerResult> getAuthorizationServer(
 
 /// Gets the details of the backend specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_backend_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBackendResult> getBackend(
@@ -730,9 +734,9 @@ Future<GetBackendResult> getBackend(
 
 /// Gets the details of the Cache specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_cache_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCacheResult> getCache(
@@ -750,9 +754,9 @@ Future<GetCacheResult> getCache(
 
 /// Gets the details of the certificate specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_certificate_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateResult> getCertificate(
@@ -772,7 +776,7 @@ Future<GetCertificateResult> getCertificate(
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
 ///
-/// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_client_application_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetClientApplicationResult> getClientApplication(
@@ -792,7 +796,7 @@ Future<GetClientApplicationResult> getClientApplication(
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
 ///
-/// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_client_application_product_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetClientApplicationProductLinkResult> getClientApplicationProductLink(
@@ -810,9 +814,9 @@ Future<GetClientApplicationProductLinkResult> getClientApplicationProductLink(
 
 /// Returns the developer portal's content item specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_content_item_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContentItemResult> getContentItem(
@@ -830,9 +834,9 @@ Future<GetContentItemResult> getContentItem(
 
 /// Gets the details of the developer portal's content type. Content types describe content items' properties, validation rules, and constraints.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_content_type_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContentTypeResult> getContentType(
@@ -850,9 +854,9 @@ Future<GetContentTypeResult> getContentType(
 
 /// Gets the details of the Diagnostic specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_diagnostic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDiagnosticResult> getDiagnostic(
@@ -870,9 +874,9 @@ Future<GetDiagnosticResult> getDiagnostic(
 
 /// Gets the details of the Documentation specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_documentation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDocumentationResult> getDocumentation(
@@ -890,9 +894,9 @@ Future<GetDocumentationResult> getDocumentation(
 
 /// Gets the details of the email template specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_email_template_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEmailTemplateResult> getEmailTemplate(
@@ -910,9 +914,9 @@ Future<GetEmailTemplateResult> getEmailTemplate(
 
 /// Gets the details of the Gateway specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_gateway_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGatewayResult> getGateway(
@@ -930,9 +934,9 @@ Future<GetGatewayResult> getGateway(
 
 /// Get assigned Gateway Certificate Authority details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_gateway_certificate_authority_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGatewayCertificateAuthorityResult> getGatewayCertificateAuthority(
@@ -950,9 +954,9 @@ Future<GetGatewayCertificateAuthorityResult> getGatewayCertificateAuthority(
 
 /// Get details of a hostname configuration
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_gateway_hostname_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGatewayHostnameConfigurationResult> getGatewayHostnameConfiguration(
@@ -970,9 +974,9 @@ Future<GetGatewayHostnameConfigurationResult> getGatewayHostnameConfiguration(
 
 /// Gets the details of the Schema specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_global_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGlobalSchemaResult> getGlobalSchema(
@@ -990,9 +994,9 @@ Future<GetGlobalSchemaResult> getGlobalSchema(
 
 /// Gets the details of the GraphQL API Resolver specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_graph_qlapi_resolver_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGraphQLApiResolverResult> getGraphQLApiResolver(
@@ -1010,9 +1014,9 @@ Future<GetGraphQLApiResolverResult> getGraphQLApiResolver(
 
 /// Get the policy configuration at the GraphQL API Resolver level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_graph_qlapi_resolver_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGraphQLApiResolverPolicyResult> getGraphQLApiResolverPolicy(
@@ -1030,9 +1034,9 @@ Future<GetGraphQLApiResolverPolicyResult> getGraphQLApiResolverPolicy(
 
 /// Gets the details of the group specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGroupResult> getGroup(
@@ -1050,9 +1054,9 @@ Future<GetGroupResult> getGroup(
 
 /// Gets the configuration details of the identity Provider configured in specified service instance.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_identity_provider_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetIdentityProviderResult> getIdentityProvider(
@@ -1070,9 +1074,9 @@ Future<GetIdentityProviderResult> getIdentityProvider(
 
 /// Gets the details of the logger specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_logger_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLoggerResult> getLogger(
@@ -1090,9 +1094,9 @@ Future<GetLoggerResult> getLogger(
 
 /// Gets the details of the named value specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_named_value_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamedValueResult> getNamedValue(
@@ -1110,9 +1114,9 @@ Future<GetNamedValueResult> getNamedValue(
 
 /// Gets specific OpenID Connect Provider without secrets.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_open_id_connect_provider_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
@@ -1130,9 +1134,9 @@ Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
 
 /// Get the Global policy definition of the Api Management service.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyResult> getPolicy(
@@ -1150,9 +1154,9 @@ Future<GetPolicyResult> getPolicy(
 
 /// Gets a policy fragment.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_policy_fragment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyFragmentResult> getPolicyFragment(
@@ -1170,9 +1174,9 @@ Future<GetPolicyFragmentResult> getPolicyFragment(
 
 /// Get the policy restriction of the Api Management service.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_policy_restriction_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyRestrictionResult> getPolicyRestriction(
@@ -1190,9 +1194,9 @@ Future<GetPolicyRestrictionResult> getPolicyRestriction(
 
 /// Gets the details of the Private Endpoint Connection specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_private_endpoint_connection_by_name_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrivateEndpointConnectionByNameResult> getPrivateEndpointConnectionByName(
@@ -1210,9 +1214,9 @@ Future<GetPrivateEndpointConnectionByNameResult> getPrivateEndpointConnectionByN
 
 /// Gets the details of the product specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_product_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProductResult> getProduct(
@@ -1230,9 +1234,9 @@ Future<GetProductResult> getProduct(
 
 /// Gets the API link for the product.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_product_api_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProductApiLinkResult> getProductApiLink(
@@ -1250,9 +1254,9 @@ Future<GetProductApiLinkResult> getProductApiLink(
 
 /// Gets the group link for the product.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_product_group_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProductGroupLinkResult> getProductGroupLink(
@@ -1270,9 +1274,9 @@ Future<GetProductGroupLinkResult> getProductGroupLink(
 
 /// Get the policy configuration at the Product level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_product_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProductPolicyResult> getProductPolicy(
@@ -1290,9 +1294,9 @@ Future<GetProductPolicyResult> getProductPolicy(
 
 /// Gets the details of the Wiki for a Product specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_product_wiki_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProductWikiResult> getProductWiki(
@@ -1328,9 +1332,9 @@ Future<GetSchemaResult> getSchema(
 
 /// Gets the specified Subscription entity.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_subscription_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSubscriptionResult> getSubscription(
@@ -1348,9 +1352,9 @@ Future<GetSubscriptionResult> getSubscription(
 
 /// Gets the details of the tag specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_tag_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTagResult> getTag(
@@ -1368,9 +1372,9 @@ Future<GetTagResult> getTag(
 
 /// Gets the API link for the tag.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_tag_api_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTagApiLinkResult> getTagApiLink(
@@ -1388,9 +1392,9 @@ Future<GetTagApiLinkResult> getTagApiLink(
 
 /// Get tag associated with the API.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_tag_by_api_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTagByApiResult> getTagByApi(
@@ -1408,9 +1412,9 @@ Future<GetTagByApiResult> getTagByApi(
 
 /// Get tag associated with the Operation.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_tag_by_operation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTagByOperationResult> getTagByOperation(
@@ -1428,9 +1432,9 @@ Future<GetTagByOperationResult> getTagByOperation(
 
 /// Get tag associated with the Product.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_tag_by_product_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTagByProductResult> getTagByProduct(
@@ -1448,9 +1452,9 @@ Future<GetTagByProductResult> getTagByProduct(
 
 /// Gets the operation link for the tag.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_tag_operation_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTagOperationLinkResult> getTagOperationLink(
@@ -1468,9 +1472,9 @@ Future<GetTagOperationLinkResult> getTagOperationLink(
 
 /// Gets the product link for the tag.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_tag_product_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTagProductLinkResult> getTagProductLink(
@@ -1488,9 +1492,9 @@ Future<GetTagProductLinkResult> getTagProductLink(
 
 /// Gets the details of the user specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_user_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetUserResult> getUser(
@@ -1508,9 +1512,9 @@ Future<GetUserResult> getUser(
 
 /// Gets the Shared Access Authorization Token for the User.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_user_shared_access_token_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetUserSharedAccessTokenResult> getUserSharedAccessToken(
@@ -1528,9 +1532,9 @@ Future<GetUserSharedAccessTokenResult> getUserSharedAccessToken(
 
 /// Gets the details of the workspace specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceResult> getWorkspace(
@@ -1548,9 +1552,9 @@ Future<GetWorkspaceResult> getWorkspace(
 
 /// Gets the details of the API specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiResult> getWorkspaceApi(
@@ -1568,9 +1572,9 @@ Future<GetWorkspaceApiResult> getWorkspaceApi(
 
 /// Gets the details of the Diagnostic for an API specified by its identifier.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_diagnostic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiDiagnosticResult> getWorkspaceApiDiagnostic(
@@ -1588,9 +1592,9 @@ Future<GetWorkspaceApiDiagnosticResult> getWorkspaceApiDiagnostic(
 
 /// Gets the details of the API Operation specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_operation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiOperationResult> getWorkspaceApiOperation(
@@ -1608,9 +1612,9 @@ Future<GetWorkspaceApiOperationResult> getWorkspaceApiOperation(
 
 /// Get the policy configuration at the API Operation level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_operation_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiOperationPolicyResult> getWorkspaceApiOperationPolicy(
@@ -1628,9 +1632,9 @@ Future<GetWorkspaceApiOperationPolicyResult> getWorkspaceApiOperationPolicy(
 
 /// Get the policy configuration at the API level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiPolicyResult> getWorkspaceApiPolicy(
@@ -1648,9 +1652,9 @@ Future<GetWorkspaceApiPolicyResult> getWorkspaceApiPolicy(
 
 /// Returns the details of an API release.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_release_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiReleaseResult> getWorkspaceApiRelease(
@@ -1668,9 +1672,9 @@ Future<GetWorkspaceApiReleaseResult> getWorkspaceApiRelease(
 
 /// Get the schema configuration at the API level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiSchemaResult> getWorkspaceApiSchema(
@@ -1688,9 +1692,9 @@ Future<GetWorkspaceApiSchemaResult> getWorkspaceApiSchema(
 
 /// Gets the details of the Api Version Set specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_api_version_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceApiVersionSetResult> getWorkspaceApiVersionSet(
@@ -1708,9 +1712,9 @@ Future<GetWorkspaceApiVersionSetResult> getWorkspaceApiVersionSet(
 
 /// Gets the details of the backend specified by its identifier.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_backend_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceBackendResult> getWorkspaceBackend(
@@ -1728,9 +1732,9 @@ Future<GetWorkspaceBackendResult> getWorkspaceBackend(
 
 /// Gets the details of the certificate specified by its identifier.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_certificate_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceCertificateResult> getWorkspaceCertificate(
@@ -1748,9 +1752,9 @@ Future<GetWorkspaceCertificateResult> getWorkspaceCertificate(
 
 /// Gets the details of the Diagnostic specified by its identifier.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_diagnostic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceDiagnosticResult> getWorkspaceDiagnostic(
@@ -1768,9 +1772,9 @@ Future<GetWorkspaceDiagnosticResult> getWorkspaceDiagnostic(
 
 /// Gets the details of the Schema specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_global_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceGlobalSchemaResult> getWorkspaceGlobalSchema(
@@ -1788,9 +1792,9 @@ Future<GetWorkspaceGlobalSchemaResult> getWorkspaceGlobalSchema(
 
 /// Gets the details of the group specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceGroupResult> getWorkspaceGroup(
@@ -1808,9 +1812,9 @@ Future<GetWorkspaceGroupResult> getWorkspaceGroup(
 
 /// Gets the details of the logger specified by its identifier.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_logger_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceLoggerResult> getWorkspaceLogger(
@@ -1828,9 +1832,9 @@ Future<GetWorkspaceLoggerResult> getWorkspaceLogger(
 
 /// Gets the details of the named value specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_named_value_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceNamedValueResult> getWorkspaceNamedValue(
@@ -1848,9 +1852,9 @@ Future<GetWorkspaceNamedValueResult> getWorkspaceNamedValue(
 
 /// Get the policy configuration at the API level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspacePolicyResult> getWorkspacePolicy(
@@ -1868,9 +1872,9 @@ Future<GetWorkspacePolicyResult> getWorkspacePolicy(
 
 /// Gets a policy fragment.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_policy_fragment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspacePolicyFragmentResult> getWorkspacePolicyFragment(
@@ -1888,9 +1892,9 @@ Future<GetWorkspacePolicyFragmentResult> getWorkspacePolicyFragment(
 
 /// Gets the details of the product specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_product_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceProductResult> getWorkspaceProduct(
@@ -1908,9 +1912,9 @@ Future<GetWorkspaceProductResult> getWorkspaceProduct(
 
 /// Gets the API link for the product.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_product_api_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceProductApiLinkResult> getWorkspaceProductApiLink(
@@ -1928,9 +1932,9 @@ Future<GetWorkspaceProductApiLinkResult> getWorkspaceProductApiLink(
 
 /// Gets the group link for the product.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_product_group_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceProductGroupLinkResult> getWorkspaceProductGroupLink(
@@ -1948,9 +1952,9 @@ Future<GetWorkspaceProductGroupLinkResult> getWorkspaceProductGroupLink(
 
 /// Get the policy configuration at the Product level.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_product_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceProductPolicyResult> getWorkspaceProductPolicy(
@@ -1968,9 +1972,9 @@ Future<GetWorkspaceProductPolicyResult> getWorkspaceProductPolicy(
 
 /// Gets the specified Subscription entity.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_subscription_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceSubscriptionResult> getWorkspaceSubscription(
@@ -1988,9 +1992,9 @@ Future<GetWorkspaceSubscriptionResult> getWorkspaceSubscription(
 
 /// Gets the details of the tag specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_tag_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceTagResult> getWorkspaceTag(
@@ -2008,9 +2012,9 @@ Future<GetWorkspaceTagResult> getWorkspaceTag(
 
 /// Gets the API link for the tag.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_tag_api_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceTagApiLinkResult> getWorkspaceTagApiLink(
@@ -2028,9 +2032,9 @@ Future<GetWorkspaceTagApiLinkResult> getWorkspaceTagApiLink(
 
 /// Gets the operation link for the tag.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_tag_operation_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceTagOperationLinkResult> getWorkspaceTagOperationLink(
@@ -2048,9 +2052,9 @@ Future<GetWorkspaceTagOperationLinkResult> getWorkspaceTagOperationLink(
 
 /// Gets the product link for the tag.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_get_workspace_tag_product_link_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkspaceTagProductLinkResult> getWorkspaceTagProductLink(
@@ -2068,9 +2072,9 @@ Future<GetWorkspaceTagProductLinkResult> getWorkspaceTagProductLink(
 
 /// Gets the client secret details of the authorization server.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_authorization_server_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAuthorizationServerSecretsResult> listAuthorizationServerSecrets(
@@ -2090,7 +2094,7 @@ Future<ListAuthorizationServerSecretsResult> listAuthorizationServerSecrets(
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
 ///
-/// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_client_application_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListClientApplicationSecretsResult> listClientApplicationSecrets(
@@ -2128,9 +2132,9 @@ Future<ListDelegationSettingSecretsResult> listDelegationSettingSecrets(
 
 /// Create new debug credentials for gateway.
 ///
-/// Uses Azure REST API version 2024-06-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_gateway_debug_credentials_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGatewayDebugCredentialsResult> listGatewayDebugCredentials(
@@ -2148,9 +2152,9 @@ Future<ListGatewayDebugCredentialsResult> listGatewayDebugCredentials(
 
 /// Retrieves gateway keys.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_gateway_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListGatewayKeysResult> listGatewayKeys(
@@ -2168,9 +2172,9 @@ Future<ListGatewayKeysResult> listGatewayKeys(
 
 /// Gets the client secret details of the Identity Provider.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_identity_provider_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListIdentityProviderSecretsResult> listIdentityProviderSecrets(
@@ -2188,9 +2192,9 @@ Future<ListIdentityProviderSecretsResult> listIdentityProviderSecrets(
 
 /// Gets the secret of the named value specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_named_value_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListNamedValueResult> listNamedValue(
@@ -2208,9 +2212,9 @@ Future<ListNamedValueResult> listNamedValue(
 
 /// Gets the client secret details of the OpenID Connect Provider.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_open_id_connect_provider_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListOpenIdConnectProviderSecretsResult> listOpenIdConnectProviderSecrets(
@@ -2228,9 +2232,9 @@ Future<ListOpenIdConnectProviderSecretsResult> listOpenIdConnectProviderSecrets(
 
 /// Lists policy resources that reference the policy fragment.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_policy_fragment_references_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListPolicyFragmentReferencesResult> listPolicyFragmentReferences(
@@ -2248,9 +2252,9 @@ Future<ListPolicyFragmentReferencesResult> listPolicyFragmentReferences(
 
 /// Gets the specified Subscription keys.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_subscription_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListSubscriptionSecretsResult> listSubscriptionSecrets(
@@ -2268,9 +2272,9 @@ Future<ListSubscriptionSecretsResult> listSubscriptionSecrets(
 
 /// Get tenant access information details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_tenant_access_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListTenantAccessSecretsResult> listTenantAccessSecrets(
@@ -2288,9 +2292,9 @@ Future<ListTenantAccessSecretsResult> listTenantAccessSecrets(
 
 /// Gets the secret of the named value specified by its identifier.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_workspace_named_value_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListWorkspaceNamedValueResult> listWorkspaceNamedValue(
@@ -2308,9 +2312,9 @@ Future<ListWorkspaceNamedValueResult> listWorkspaceNamedValue(
 
 /// Lists policy resources that reference the policy fragment.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_workspace_policy_fragment_references_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListWorkspacePolicyFragmentReferencesResult> listWorkspacePolicyFragmentReferences(
@@ -2328,9 +2332,9 @@ Future<ListWorkspacePolicyFragmentReferencesResult> listWorkspacePolicyFragmentR
 
 /// Gets the specified Subscription keys.
 ///
-/// Uses Azure REST API version 2022-09-01-preview.
+/// Uses Azure REST API version 2024-05-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apimanagement_list_workspace_subscription_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListWorkspaceSubscriptionSecretsResult> listWorkspaceSubscriptionSecrets(

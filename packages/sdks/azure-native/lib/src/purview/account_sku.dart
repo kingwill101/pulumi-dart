@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Gets or sets the Sku.
+/// The Sku
 class AccountSku {
   /// Gets or sets the sku capacity.
   final pulumi.Input<int>? capacity;
@@ -31,4 +31,3 @@ class AccountSku {
     );
   }
 }
-

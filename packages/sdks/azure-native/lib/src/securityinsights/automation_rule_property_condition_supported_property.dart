@@ -71,4 +71,3 @@ enum AutomationRulePropertyConditionSupportedProperty {
     throw ArgumentError('Unknown AutomationRulePropertyConditionSupportedProperty value: $value');
   }
 }
-

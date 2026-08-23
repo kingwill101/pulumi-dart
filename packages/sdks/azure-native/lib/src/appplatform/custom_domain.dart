@@ -68,6 +68,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_customdomain" "customDomain" {
+///   app_name    = "myapp"
+///   domain_name = "mydomain.com"
+///   properties = {
+///     cert_name  = "mycert"
+///     thumbprint = "934367bf1c97033f877db0f15cb1b586957d3133"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.CustomDomain;
 /// import com.pulumi.azurenative.appplatform.CustomDomainArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.CustomDomainPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -17,7 +17,7 @@ class WebAppRelayServiceConnectionArgs {
   final pulumi.Input<String> name;
   final pulumi.Input<int>? port;
   final pulumi.Input<String>? resourceConnectionString;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String>? resourceType;
 
@@ -30,7 +30,7 @@ class WebAppRelayServiceConnectionArgs {
   /// [name] Name of the app.
   /// [port] Optional.
   /// [resourceConnectionString] Optional.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceType] Optional.
   const WebAppRelayServiceConnectionArgs({
     this.biztalkUri,
@@ -75,4 +75,3 @@ class WebAppRelayServiceConnectionArgs {
     );
   }
 }
-

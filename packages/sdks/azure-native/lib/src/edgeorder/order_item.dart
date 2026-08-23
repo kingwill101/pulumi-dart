@@ -147,6 +147,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edgeorder_orderitem" "orderItem" {
+///   address_details = {
+///     forward_address = {
+///       contact_details = {
+///         contact_name    = "XXXX XXXX"
+///         email_list      = ["xxxx@xxxx.xxx"]
+///         phone           = "0000000000"
+///         phone_extension = ""
+///       }
+///       shipping_address = {
+///         address_type      = "None"
+///         city              = "San Francisco"
+///         company_name      = "Microsoft"
+///         country           = "US"
+///         postal_code       = "94107"
+///         state_or_province = "CA"
+///         street_address1   = "16 TOWNSEND ST"
+///         street_address2   = "UNIT 1"
+///       }
+///     }
+///   }
+///   location = "eastus"
+///   order_id = "/subscriptions/eb5dc900-6186-49d8-b7d7-febd866fdc1d/resourceGroups/YourResourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/TestOrderName2"
+///   order_item_details = {
+///     order_item_type = "Purchase"
+///     preferences = {
+///       transport_preferences = {
+///         preferred_shipment_type = "MicrosoftManaged"
+///       }
+///     }
+///     product_details = {
+///       hierarchy_information = {
+///         configuration_name  = "edgep_base"
+///         product_family_name = "azurestackedge"
+///         product_line_name   = "azurestackedge"
+///         product_name        = "azurestackedgegpu"
+///       }
+///     }
+///   }
+///   order_item_name     = "TestOrderItemName2"
+///   resource_group_name = "YourResourceGroupName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +218,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edgeorder.inputs.TransportPreferencesArgs;
 /// import com.pulumi.azurenative.edgeorder.inputs.ProductDetailsArgs;
 /// import com.pulumi.azurenative.edgeorder.inputs.HierarchyInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

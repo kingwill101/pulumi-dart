@@ -18,7 +18,7 @@ class GetFactoryGitHubAccessTokenArgs {
   final pulumi.Input<String>? gitHubClientId;
   /// GitHub bring your own app client secret information.
   final pulumi.Input<GitHubClientSecret>? gitHubClientSecret;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFactoryGitHubAccessTokenArgs].
@@ -27,7 +27,7 @@ class GetFactoryGitHubAccessTokenArgs {
   /// [gitHubAccessTokenBaseUrl] GitHub access token base URL.
   /// [gitHubClientId] GitHub application client ID.
   /// [gitHubClientSecret] GitHub bring your own app client secret information.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetFactoryGitHubAccessTokenArgs({
     required this.factoryName,
     required this.gitHubAccessCode,
@@ -59,4 +59,3 @@ class GetFactoryGitHubAccessTokenArgs {
     );
   }
 }
-

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_search_get_shared_private_link_resource_args_doc}
 class GetSharedPrivateLinkResourceArgs {
-  /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure AI Search service associated with the specified resource group.
   final pulumi.Input<String> searchServiceName;
@@ -15,7 +15,7 @@ class GetSharedPrivateLinkResourceArgs {
   final pulumi.Input<String> sharedPrivateLinkResourceName;
 
   /// Creates a new [GetSharedPrivateLinkResourceArgs].
-  /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
   const GetSharedPrivateLinkResourceArgs({
@@ -40,4 +40,3 @@ class GetSharedPrivateLinkResourceArgs {
     );
   }
 }
-

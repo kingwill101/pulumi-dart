@@ -86,4 +86,3 @@ class GetADLSGen1FolderDataSetResult {
     );
   }
 }
-

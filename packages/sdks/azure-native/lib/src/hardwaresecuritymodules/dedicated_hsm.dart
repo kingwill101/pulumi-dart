@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-06-30-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-30.
 ///
-/// Other available API versions: 2021-11-30, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-30, 2025-03-31, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -100,6 +100,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hardwaresecuritymodules_dedicatedhsm" "dedicatedHsm" {
+///   location = "westus"
+///   name     = "hsm1"
+///   network_profile = {
+///     network_interfaces = [{
+///       "privateIpAddress" = "1.0.0.1"
+///     }]
+///     subnet = {
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
+///     }
+///   }
+///   resource_group_name = "hsm-group"
+///   sku = {
+///     name = "SafeNet Luna Network HSM A790"
+///   }
+///   stamp_id = "stamp01"
+///   tags = {
+///     "Dept"        = "hsm"
+///     "Environment" = "dogfood"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +144,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkProfileArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,6 +350,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hardwaresecuritymodules_dedicatedhsm" "dedicatedHsm" {
+///   location = "westus"
+///   name     = "hsm1"
+///   network_profile = {
+///     network_interfaces = [{
+///       "privateIpAddress" = "1.0.0.1"
+///     }]
+///     subnet = {
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
+///     }
+///   }
+///   resource_group_name = "hsm-group"
+///   sku = {
+///     name = "payShield10K_LMK1_CPS60"
+///   }
+///   stamp_id = "stamp01"
+///   tags = {
+///     "Dept"        = "hsm"
+///     "Environment" = "dogfood"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -328,8 +394,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkProfileArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -558,6 +624,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hardwaresecuritymodules_dedicatedhsm" "dedicatedHsm" {
+///   location = "westus"
+///   management_network_profile = {
+///     network_interfaces = [{
+///       "privateIpAddress" = "1.0.0.2"
+///     }]
+///     subnet = {
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
+///     }
+///   }
+///   name = "hsm1"
+///   network_profile = {
+///     network_interfaces = [{
+///       "privateIpAddress" = "1.0.0.1"
+///     }]
+///     subnet = {
+///       resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/virtualNetworks/stamp01/subnets/stamp01"
+///     }
+///   }
+///   resource_group_name = "hsm-group"
+///   sku = {
+///     name = "payShield10K_LMK1_CPS60"
+///   }
+///   stamp_id = "stamp01"
+///   tags = {
+///     "Dept"        = "hsm"
+///     "Environment" = "dogfood"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -569,8 +676,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.NetworkProfileArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.ApiEntityReferenceArgs;
 /// import com.pulumi.azurenative.hardwaresecuritymodules.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

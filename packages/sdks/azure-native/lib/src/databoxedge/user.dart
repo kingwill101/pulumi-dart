@@ -70,6 +70,29 @@ import 'user_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_user" "user" {
+///   device_name = "testedgedevice"
+///   encrypted_password = {
+///     encryption_algorithm       = "None"
+///     encryption_cert_thumbprint = "blah"
+///     value                      = "<value>"
+///   }
+///   name                = "user1"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   user_type           = "Share"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +102,8 @@ import 'user_args.dart';
 /// import com.pulumi.azurenative.databoxedge.User;
 /// import com.pulumi.azurenative.databoxedge.UserArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.AsymmetricEncryptedSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

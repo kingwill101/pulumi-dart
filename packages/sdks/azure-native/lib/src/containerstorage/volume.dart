@@ -65,6 +65,27 @@ import 'volume_type_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerstorage_volume" "volume" {
+///   capacity_gi_b = 25838
+///   labels = {
+///     "key2039" = "value2039"
+///   }
+///   pool_name           = "test-pool"
+///   resource_group_name = "test-rg"
+///   volume_name         = "test-volume"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'volume_type_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.containerstorage.Volume;
 /// import com.pulumi.azurenative.containerstorage.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -120,7 +141,7 @@ import 'volume_type_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// volume = azure_native.containerstorage.Volume("volume",
-///     capacity_gi_b=25838,
+///     capacity_gi_b=float(25838),
 ///     labels={
 ///         "key2039": "value2039",
 ///     },

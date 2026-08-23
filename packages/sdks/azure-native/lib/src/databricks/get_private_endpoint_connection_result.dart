@@ -1,31 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'private_endpoint_connection_properties_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getPrivateEndpointConnection.
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// The resource identifier.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// The resource name.
+  /// The name of the resource
   final String name;
   /// The private endpoint connection properties.
   final PrivateEndpointConnectionPropertiesResponse properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetPrivateEndpointConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] The resource identifier.
-  /// [name] The resource name.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
   /// [properties] The private endpoint connection properties.
-  /// [type] The resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,
     required this.properties,
+    required this.systemData,
     required this.type,
   });
 
@@ -35,6 +40,7 @@ class GetPrivateEndpointConnectionResult {
       'id': id,
       'name': name,
       'properties': properties.toMap(),
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -45,8 +51,8 @@ class GetPrivateEndpointConnectionResult {
       id: map['id'] as String,
       name: map['name'] as String,
       properties: PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

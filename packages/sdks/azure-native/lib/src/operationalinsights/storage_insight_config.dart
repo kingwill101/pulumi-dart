@@ -82,6 +82,29 @@ import 'storage_insight_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_storageinsightconfig" "storageInsightConfig" {
+///   containers          = ["wad-iis-logfiles"]
+///   resource_group_name = "OIAutoRest5123"
+///   storage_account = {
+///     id  = "/subscriptions/00000000-0000-0000-0000-000000000005/resourcegroups/OIAutoRest6987/providers/microsoft.storage/storageaccounts/AzTestFakeSA9945"
+///     key = "1234"
+///   }
+///   storage_insight_name = "AzTestSI1110"
+///   tables               = ["WADWindowsEventLogsTable", "LinuxSyslogVer2v0"]
+///   workspace_name       = "aztest5048"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +114,8 @@ import 'storage_insight_status_response.dart';
 /// import com.pulumi.azurenative.operationalinsights.StorageInsightConfig;
 /// import com.pulumi.azurenative.operationalinsights.StorageInsightConfigArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.StorageAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

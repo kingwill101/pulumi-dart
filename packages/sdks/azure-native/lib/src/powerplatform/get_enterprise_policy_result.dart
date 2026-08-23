@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'enterprise_policy_identity_response.dart';
-import 'properties_response_encryption.dart';
-import 'properties_response_lockbox.dart';
-import 'properties_response_network_injection.dart';
+import 'properties_encryption_response.dart';
+import 'properties_lockbox_response.dart';
+import 'properties_network_injection_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getEnterprisePolicy.
@@ -11,7 +11,7 @@ class GetEnterprisePolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   /// The encryption settings for a configuration store.
-  final PropertiesResponseEncryption? encryption;
+  final PropertiesEncryptionResponse? encryption;
   /// The health status of the resource.
   final String? healthStatus;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -23,12 +23,12 @@ class GetEnterprisePolicyResult {
   /// The geo-location where the resource lives
   final String location;
   /// Settings concerning lockbox.
-  final PropertiesResponseLockbox? lockbox;
+  final PropertiesLockboxResponse? lockbox;
   /// The name of the resource
   final String name;
   /// Settings concerning network injection.
-  final PropertiesResponseNetworkInjection? networkInjection;
-  /// Metadata pertaining to creation and last modification of the resource.
+  final PropertiesNetworkInjectionResponse? networkInjection;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The internally assigned unique identifier of the resource.
   final String systemId;
@@ -48,7 +48,7 @@ class GetEnterprisePolicyResult {
   /// [lockbox] Settings concerning lockbox.
   /// [name] The name of the resource
   /// [networkInjection] Settings concerning network injection.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [systemId] The internally assigned unique identifier of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -91,15 +91,15 @@ class GetEnterprisePolicyResult {
   factory GetEnterprisePolicyResult.fromMap(Map<String, dynamic> map) {
     return GetEnterprisePolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return PropertiesResponseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return PropertiesEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       healthStatus: (() { final guardedValue = map['healthStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return EnterprisePolicyIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: map['kind'] as String,
       location: map['location'] as String,
-      lockbox: (() { final guardedValue = map['lockbox']; if (guardedValue == null) return null; return PropertiesResponseLockbox.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      lockbox: (() { final guardedValue = map['lockbox']; if (guardedValue == null) return null; return PropertiesLockboxResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
-      networkInjection: (() { final guardedValue = map['networkInjection']; if (guardedValue == null) return null; return PropertiesResponseNetworkInjection.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      networkInjection: (() { final guardedValue = map['networkInjection']; if (guardedValue == null) return null; return PropertiesNetworkInjectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       systemId: map['systemId'] as String,
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
@@ -107,4 +107,3 @@ class GetEnterprisePolicyResult {
     );
   }
 }
-

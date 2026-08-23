@@ -7,7 +7,7 @@ class ServiceTagDestinationResponse {
   /// The action enum for networking rule.
   final pulumi.Input<String>? action;
   /// Optional, if provided, the ServiceTag property will be ignored.
-  final pulumi.Input<List<String>> addressPrefixes;
+  final pulumi.Input<List<String>>? addressPrefixes;
   final pulumi.Input<String>? portRanges;
   final pulumi.Input<String>? protocol;
   final pulumi.Input<String>? serviceTag;
@@ -20,7 +20,7 @@ class ServiceTagDestinationResponse {
   /// [serviceTag] Optional.
   const ServiceTagDestinationResponse({
     this.action,
-    required this.addressPrefixes,
+    this.addressPrefixes,
     this.portRanges,
     this.protocol,
     this.serviceTag,
@@ -29,7 +29,7 @@ class ServiceTagDestinationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'addressPrefixes': addressPrefixes,
+      'addressPrefixes': ?addressPrefixes,
       'portRanges': ?portRanges,
       'protocol': ?protocol,
       'serviceTag': ?serviceTag,
@@ -39,11 +39,10 @@ class ServiceTagDestinationResponse {
   factory ServiceTagDestinationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceTagDestinationResponse(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      addressPrefixes: pulumi.Input.fromValue((map['addressPrefixes'] as List).cast<String>()),
+      addressPrefixes: (() { final guardedValue = map['addressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       portRanges: (() { final guardedValue = map['portRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceTag: (() { final guardedValue = map['serviceTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

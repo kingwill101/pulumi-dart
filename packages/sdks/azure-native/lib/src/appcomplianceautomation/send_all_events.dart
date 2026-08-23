@@ -15,4 +15,3 @@ enum SendAllEvents {
     throw ArgumentError('Unknown SendAllEvents value: $value');
   }
 }
-

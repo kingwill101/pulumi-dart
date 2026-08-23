@@ -74,6 +74,32 @@ import 'custom_api_properties_definition_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_customapi" "customApi" {
+///   api_name = "testCustomApi"
+///   properties = {
+///     api_definitions = {
+///       original_swagger_url = "https://tempuri.org/swagger.json"
+///     }
+///     api_type     = "Rest"
+///     capabilities = []
+///     description  = ""
+///     display_name = "testCustomApi"
+///     icon_uri     = "/testIcon.svg"
+///   }
+///   resource_group_name = "testResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +110,8 @@ import 'custom_api_properties_definition_response.dart';
 /// import com.pulumi.azurenative.web.CustomApiArgs;
 /// import com.pulumi.azurenative.web.inputs.CustomApiPropertiesDefinitionArgs;
 /// import com.pulumi.azurenative.web.inputs.ApiResourceDefinitionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

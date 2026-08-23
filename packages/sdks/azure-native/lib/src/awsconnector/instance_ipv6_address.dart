@@ -31,4 +31,3 @@ class InstanceIpv6Address {
     );
   }
 }
-

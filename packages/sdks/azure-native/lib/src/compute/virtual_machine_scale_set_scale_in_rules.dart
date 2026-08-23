@@ -15,4 +15,3 @@ enum VirtualMachineScaleSetScaleInRules {
     throw ArgumentError('Unknown VirtualMachineScaleSetScaleInRules value: $value');
   }
 }
-

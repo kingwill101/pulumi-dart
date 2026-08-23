@@ -1,6 +1,6 @@
 /// Property to select Azure Storage type. Available options: blobContainer.
 enum FunctionsDeploymentStorageType {
-  valueBlobContainer("blobContainer");
+  blobContainer("blobContainer");
 
   const FunctionsDeploymentStorageType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum FunctionsDeploymentStorageType {
     throw ArgumentError('Unknown FunctionsDeploymentStorageType value: $value');
   }
 }
-

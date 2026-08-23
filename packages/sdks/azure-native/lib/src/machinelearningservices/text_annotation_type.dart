@@ -15,4 +15,3 @@ enum TextAnnotationType {
     throw ArgumentError('Unknown TextAnnotationType value: $value');
   }
 }
-

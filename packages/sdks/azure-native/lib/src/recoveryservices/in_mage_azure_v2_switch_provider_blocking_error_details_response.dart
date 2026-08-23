@@ -55,4 +55,3 @@ class InMageAzureV2SwitchProviderBlockingErrorDetailsResponse {
     );
   }
 }
-

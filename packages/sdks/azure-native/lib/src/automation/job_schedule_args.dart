@@ -15,7 +15,7 @@ class JobScheduleArgs {
   final pulumi.Input<String>? jobScheduleId;
   /// Gets or sets a list of job properties.
   final pulumi.Input<Map<String, String>>? parameters;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the hybrid worker group that the scheduled job should run on.
   final pulumi.Input<String>? runOn;
@@ -28,7 +28,7 @@ class JobScheduleArgs {
   /// [automationAccountName] The name of the automation account.
   /// [jobScheduleId] The job schedule name.
   /// [parameters] Gets or sets a list of job properties.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runOn] Gets or sets the hybrid worker group that the scheduled job should run on.
   /// [runbook] Gets or sets the runbook.
   /// [schedule] Gets or sets the schedule.
@@ -66,4 +66,3 @@ class JobScheduleArgs {
     );
   }
 }
-

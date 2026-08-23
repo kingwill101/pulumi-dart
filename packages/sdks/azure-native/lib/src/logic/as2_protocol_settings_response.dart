@@ -68,4 +68,3 @@ class AS2ProtocolSettingsResponse {
     );
   }
 }
-

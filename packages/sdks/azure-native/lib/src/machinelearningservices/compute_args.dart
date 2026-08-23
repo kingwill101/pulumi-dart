@@ -16,7 +16,7 @@ class ComputeArgs {
   final pulumi.Input<ManagedServiceIdentity>? identity;
   /// Specifies the location of the resource.
   final pulumi.Input<String>? location;
-  /// Compute properties
+  /// The resource-specific properties for this resource.
   final pulumi.Input<AKS>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -24,18 +24,18 @@ class ComputeArgs {
   final pulumi.Input<Sku>? sku;
   /// Contains resource tags defined as key/value pairs.
   final pulumi.Input<Map<String, String>>? tags;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [ComputeArgs].
   /// [computeName] Name of the Azure Machine Learning compute.
   /// [identity] The identity of the resource.
   /// [location] Specifies the location of the resource.
-  /// [properties] Compute properties
+  /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The sku of the workspace.
   /// [tags] Contains resource tags defined as key/value pairs.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const ComputeArgs({
     this.computeName,
     this.identity,
@@ -73,4 +73,3 @@ class ComputeArgs {
     );
   }
 }
-

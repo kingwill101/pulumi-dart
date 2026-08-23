@@ -77,6 +77,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_powerbidedicated_autoscalevcore" "autoScaleVCore" {
+///   capacity_limit      = 10
+///   capacity_object_id  = "a28f00bd-5330-4572-88f1-fa883e074785"
+///   location            = "West US"
+///   resource_group_name = "TestRG"
+///   sku = {
+///     capacity = 0
+///     name     = "AutoScale"
+///     tier     = "AutoScale"
+///   }
+///   tags = {
+///     "testKey" = "testValue"
+///   }
+///   vcore_name = "testvcore"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +113,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.powerbidedicated.AutoScaleVCore;
 /// import com.pulumi.azurenative.powerbidedicated.AutoScaleVCoreArgs;
 /// import com.pulumi.azurenative.powerbidedicated.inputs.AutoScaleVCoreSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

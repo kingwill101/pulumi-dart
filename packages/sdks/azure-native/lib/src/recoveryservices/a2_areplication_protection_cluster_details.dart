@@ -147,4 +147,3 @@ class A2AReplicationProtectionClusterDetails {
     );
   }
 }
-

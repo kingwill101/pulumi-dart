@@ -15,4 +15,3 @@ enum VMBootOptimizationState {
     throw ArgumentError('Unknown VMBootOptimizationState value: $value');
   }
 }
-

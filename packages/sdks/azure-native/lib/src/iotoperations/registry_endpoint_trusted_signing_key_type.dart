@@ -15,4 +15,3 @@ enum RegistryEndpointTrustedSigningKeyType {
     throw ArgumentError('Unknown RegistryEndpointTrustedSigningKeyType value: $value');
   }
 }
-

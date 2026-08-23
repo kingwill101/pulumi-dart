@@ -16,4 +16,3 @@ enum PatchingMode {
     throw ArgumentError('Unknown PatchingMode value: $value');
   }
 }
-

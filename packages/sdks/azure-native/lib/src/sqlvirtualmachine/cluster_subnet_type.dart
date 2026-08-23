@@ -15,4 +15,3 @@ enum ClusterSubnetType {
     throw ArgumentError('Unknown ClusterSubnetType value: $value');
   }
 }
-

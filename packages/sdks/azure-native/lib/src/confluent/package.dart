@@ -15,4 +15,3 @@ enum Package {
     throw ArgumentError('Unknown Package value: $value');
   }
 }
-

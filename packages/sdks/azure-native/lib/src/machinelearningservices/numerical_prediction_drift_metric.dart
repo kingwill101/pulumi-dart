@@ -1,9 +1,9 @@
 /// [Required] The numerical prediction drift metric to calculate.
 enum NumericalPredictionDriftMetric {
-  valueJensenShannonDistance("JensenShannonDistance"),
-  valuePopulationStabilityIndex("PopulationStabilityIndex"),
-  valueNormalizedWassersteinDistance("NormalizedWassersteinDistance"),
-  valueTwoSampleKolmogorovSmirnovTest("TwoSampleKolmogorovSmirnovTest");
+  jensenShannonDistance("JensenShannonDistance"),
+  populationStabilityIndex("PopulationStabilityIndex"),
+  normalizedWassersteinDistance("NormalizedWassersteinDistance"),
+  twoSampleKolmogorovSmirnovTest("TwoSampleKolmogorovSmirnovTest");
 
   const NumericalPredictionDriftMetric(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum NumericalPredictionDriftMetric {
     throw ArgumentError('Unknown NumericalPredictionDriftMetric value: $value');
   }
 }
-

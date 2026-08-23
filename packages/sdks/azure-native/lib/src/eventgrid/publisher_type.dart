@@ -14,4 +14,3 @@ enum PublisherType {
     throw ArgumentError('Unknown PublisherType value: $value');
   }
 }
-

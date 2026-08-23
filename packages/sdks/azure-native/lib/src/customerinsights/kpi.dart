@@ -112,6 +112,45 @@ import 'kpi_thresholds_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_kpi" "kpi" {
+///   aliases {
+///     alias_name = "alias"
+///     expression = "Id+4"
+///   }
+///   calculation_window = "Day"
+///   description = {
+///     "en-us" = "Kpi Description"
+///   }
+///   display_name = {
+///     "en-us" = "Kpi DisplayName"
+///   }
+///   entity_type         = "Profile"
+///   entity_type_name    = "testProfile2327128"
+///   expression          = "SavingAccountBalance"
+///   function            = "Sum"
+///   group_by            = ["SavingAccountBalance"]
+///   hub_name            = "sdkTestHub"
+///   kpi_name            = "kpiTest45453647"
+///   resource_group_name = "TestHubRG"
+///   thres_holds = {
+///     increasing_kpi = true
+///     lower_limit    = 5
+///     upper_limit    = 50
+///   }
+///   unit = "unit"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +161,8 @@ import 'kpi_thresholds_response.dart';
 /// import com.pulumi.azurenative.customerinsights.KpiArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.KpiAliasArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.KpiThresholdsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,8 +263,8 @@ import 'kpi_thresholds_response.dart';
 ///     resource_group_name="TestHubRG",
 ///     thres_holds={
 ///         "increasing_kpi": True,
-///         "lower_limit": 5,
-///         "upper_limit": 50,
+///         "lower_limit": float(5),
+///         "upper_limit": float(50),
 ///     },
 ///     unit="unit")
 ///

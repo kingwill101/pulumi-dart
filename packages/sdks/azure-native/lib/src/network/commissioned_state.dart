@@ -21,4 +21,3 @@ enum CommissionedState {
     throw ArgumentError('Unknown CommissionedState value: $value');
   }
 }
-

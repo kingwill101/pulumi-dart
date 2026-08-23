@@ -40,4 +40,3 @@ class GetVirtualHubRouteTableV2Args {
     );
   }
 }
-

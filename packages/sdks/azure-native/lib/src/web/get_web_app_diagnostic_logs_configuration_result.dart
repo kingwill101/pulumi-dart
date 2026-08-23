@@ -3,6 +3,7 @@
 import 'application_logs_config_response.dart';
 import 'enabled_config_response.dart';
 import 'http_logs_config_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppDiagnosticLogsConfiguration.
 class GetWebAppDiagnosticLogsConfigurationResult {
@@ -16,13 +17,15 @@ class GetWebAppDiagnosticLogsConfigurationResult {
   final EnabledConfigResponse? failedRequestsTracing;
   /// HTTP logs configuration.
   final HttpLogsConfigResponse? httpLogs;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppDiagnosticLogsConfigurationResult].
@@ -31,10 +34,11 @@ class GetWebAppDiagnosticLogsConfigurationResult {
   /// [detailedErrorMessages] Detailed error messages configuration.
   /// [failedRequestsTracing] Failed requests tracing configuration.
   /// [httpLogs] HTTP logs configuration.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
-  /// [type] Resource type.
+  /// [name] The name of the resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppDiagnosticLogsConfigurationResult({
     this.applicationLogs,
     required this.azureApiVersion,
@@ -44,6 +48,7 @@ class GetWebAppDiagnosticLogsConfigurationResult {
     required this.id,
     this.kind,
     required this.name,
+    required this.systemData,
     required this.type,
   });
 
@@ -57,6 +62,7 @@ class GetWebAppDiagnosticLogsConfigurationResult {
       'id': id,
       'kind': ?kind,
       'name': name,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -71,8 +77,8 @@ class GetWebAppDiagnosticLogsConfigurationResult {
       id: map['id'] as String,
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

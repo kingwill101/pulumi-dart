@@ -9,9 +9,9 @@ import 'workspace_backend_args.dart';
 
 /// Backend details.
 ///
-/// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 ///
-/// Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -133,6 +133,48 @@ import 'workspace_backend_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_workspacebackend" "workspaceBackend" {
+///   backend_id = "proxybackend"
+///   credentials = {
+///     authorization = {
+///       parameter = "opensesma"
+///       scheme    = "Basic"
+///     }
+///     header = {
+///       "x-my-1" = ["val1", "val2"]
+///     }
+///     query = {
+///       "sv" = ["xx", "bb", "cc"]
+///     }
+///   }
+///   description = "description5308"
+///   protocol    = "http"
+///   proxy = {
+///     password = "<password>"
+///     url      = "http://192.168.1.1:8080"
+///     username = "Contoso\\admin"
+///   }
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   tls = {
+///     validate_certificate_chain = true
+///     validate_certificate_name  = true
+///   }
+///   url          = "https://backendname2644/"
+///   workspace_id = "wks1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +187,8 @@ import 'workspace_backend_args.dart';
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendAuthorizationHeaderCredentialsArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendProxyContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendTlsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,13 +207,13 @@ import 'workspace_backend_args.dart';
 ///                     .parameter("opensesma")
 ///                     .scheme("Basic")
 ///                     .build())
-///                 .header(Map.of("x-my-1",
+///                 .header(Map.of("x-my-1", Arrays.asList(
 ///                     "val1",
-///                     "val2"))
-///                 .query(Map.of("sv",
+///                     "val2")))
+///                 .query(Map.of("sv", Arrays.asList(
 ///                     "xx",
 ///                     "bb",
-///                     "cc"))
+///                     "cc")))
 ///                 .build())
 ///             .description("description5308")
 ///             .protocol("http")
@@ -407,6 +449,38 @@ import 'workspace_backend_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_workspacebackend" "workspaceBackend" {
+///   backend_id  = "sfbackend"
+///   description = "Service Fabric Test App 1"
+///   properties = {
+///     service_fabric_cluster = {
+///       client_certificate_id            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/certificates/cert1"
+///       management_endpoints             = ["https://somecluster.com"]
+///       max_partition_resolution_retries = 5
+///       server_x509_names = [{
+///         "issuerCertificateThumbprint" = "IssuerCertificateThumbprint1"
+///         "name"                        = "ServerCommonName1"
+///       }]
+///     }
+///   }
+///   protocol            = "http"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   url                 = "fabric:/mytestapp/mytestservice"
+///   workspace_id        = "wks1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -417,8 +491,8 @@ import 'workspace_backend_args.dart';
 /// import com.pulumi.azurenative.apimanagement.WorkspaceBackendArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendPropertiesArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.BackendServiceFabricClusterPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

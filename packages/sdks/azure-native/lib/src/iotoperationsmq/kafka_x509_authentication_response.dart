@@ -32,4 +32,3 @@ class KafkaX509AuthenticationResponse {
     );
   }
 }
-

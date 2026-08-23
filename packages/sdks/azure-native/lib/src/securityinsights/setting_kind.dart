@@ -17,4 +17,3 @@ enum SettingKind {
     throw ArgumentError('Unknown SettingKind value: $value');
   }
 }
-

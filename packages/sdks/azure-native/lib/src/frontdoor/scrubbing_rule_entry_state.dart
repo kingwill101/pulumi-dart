@@ -1,7 +1,7 @@
 /// Defines the state of a log scrubbing rule. Default value is enabled.
 enum ScrubbingRuleEntryState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const ScrubbingRuleEntryState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ScrubbingRuleEntryState {
     throw ArgumentError('Unknown ScrubbingRuleEntryState value: $value');
   }
 }
-

@@ -1,7 +1,7 @@
 /// Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'
 enum BackendEnabledState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const BackendEnabledState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum BackendEnabledState {
     throw ArgumentError('Unknown BackendEnabledState value: $value');
   }
 }
-

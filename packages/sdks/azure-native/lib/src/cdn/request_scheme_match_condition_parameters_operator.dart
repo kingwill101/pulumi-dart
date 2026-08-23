@@ -14,4 +14,3 @@ enum RequestSchemeMatchConditionParametersOperator {
     throw ArgumentError('Unknown RequestSchemeMatchConditionParametersOperator value: $value');
   }
 }
-

@@ -47,4 +47,3 @@ class AvsAssessmentsV2OperationArgs {
     );
   }
 }
-

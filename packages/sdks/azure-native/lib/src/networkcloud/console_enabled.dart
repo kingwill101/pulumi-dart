@@ -15,4 +15,3 @@ enum ConsoleEnabled {
     throw ArgumentError('Unknown ConsoleEnabled value: $value');
   }
 }
-

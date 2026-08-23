@@ -66,6 +66,28 @@ import 'vcenter_controller_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazure_vcentercontroller" "vcenterController" {
+///   fqdn                = "fuclodcnofphkcrnex"
+///   friendly_name       = "qvycnab"
+///   port                = "bdospcacndrchuqluozmwrvetxul"
+///   provisioning_state  = "Created"
+///   resource_group_name = "rgmigrate"
+///   run_as_account_id   = "pqbieohxxmfri"
+///   site_name           = "6T42r-99CFg-44-gFP"
+///   vcenter_name        = "23LDJ0XB7UT-L"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'vcenter_controller_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.offazure.VcenterController;
 /// import com.pulumi.azurenative.offazure.VcenterControllerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

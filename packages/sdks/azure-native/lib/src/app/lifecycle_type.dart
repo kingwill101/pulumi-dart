@@ -15,4 +15,3 @@ enum LifecycleType {
     throw ArgumentError('Unknown LifecycleType value: $value');
   }
 }
-

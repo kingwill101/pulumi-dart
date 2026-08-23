@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -314,6 +314,117 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_endpoint" "endpoint" {
+///   content_types_to_compress = ["text/html", "application/octet-stream"]
+///   default_origin_group = {
+///     id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/originGroups/originGroup1"
+///   }
+///   delivery_policy = {
+///     description = "Test description for a policy."
+///     rules = [{
+///       "actions" = [{
+///         "name" = "CacheExpiration"
+///         "parameters" = {
+///           "cacheBehavior" = "Override"
+///           "cacheDuration" = "10:10:09"
+///           "cacheType"     = "All"
+///           "typeName"      = "DeliveryRuleCacheExpirationActionParameters"
+///         }
+///         }, {
+///         "name" = "ModifyResponseHeader"
+///         "parameters" = {
+///           "headerAction" = "Overwrite"
+///           "headerName"   = "Access-Control-Allow-Origin"
+///           "typeName"     = "DeliveryRuleHeaderActionParameters"
+///           "value"        = "*"
+///         }
+///         }, {
+///         "name" = "ModifyRequestHeader"
+///         "parameters" = {
+///           "headerAction" = "Overwrite"
+///           "headerName"   = "Accept-Encoding"
+///           "typeName"     = "DeliveryRuleHeaderActionParameters"
+///           "value"        = "gzip"
+///         }
+///       }]
+///       "conditions" = [{
+///         "name" = "RemoteAddress"
+///         "parameters" = {
+///           "matchValues"     = ["192.168.1.0/24", "10.0.0.0/24"]
+///           "negateCondition" = true
+///           "operator"        = "IPMatch"
+///           "typeName"        = "DeliveryRuleRemoteAddressConditionParameters"
+///         }
+///       }]
+///       "name"  = "rule1"
+///       "order" = 1
+///     }]
+///   }
+///   endpoint_name          = "endpoint1"
+///   is_compression_enabled = true
+///   is_http_allowed        = true
+///   is_https_allowed       = true
+///   location               = "WestUs"
+///   origin_groups {
+///     health_probe_settings = {
+///       probe_interval_in_seconds = 120
+///       probe_path                = "/health.aspx"
+///       probe_protocol            = "Http"
+///       probe_request_type        = "GET"
+///     }
+///     name = "originGroup1"
+///     origins {
+///       id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/origin1"
+///     }
+///     origins {
+///       id = "/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/origin2"
+///     }
+///     response_based_origin_error_detection_settings = {
+///       response_based_detected_error_types          = "TcpErrorsOnly"
+///       response_based_failover_threshold_percentage = 10
+///     }
+///   }
+///   origin_host_header = "www.bing.com"
+///   origin_path        = "/photos"
+///   origins {
+///     enabled            = true
+///     host_name          = "www.someDomain1.net"
+///     http_port          = 80
+///     https_port         = 443
+///     name               = "origin1"
+///     origin_host_header = "www.someDomain1.net"
+///     priority           = 1
+///     weight             = 50
+///   }
+///   origins {
+///     enabled            = true
+///     host_name          = "www.someDomain2.net"
+///     http_port          = 80
+///     https_port         = 443
+///     name               = "origin2"
+///     origin_host_header = "www.someDomain2.net"
+///     priority           = 2
+///     weight             = 50
+///   }
+///   profile_name                  = "profile1"
+///   query_string_caching_behavior = "BypassCaching"
+///   resource_group_name           = "RG"
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -328,8 +439,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.inputs.HealthProbeParametersArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ResponseBasedOriginErrorDetectionParametersArgs;
 /// import com.pulumi.azurenative.cdn.inputs.DeepCreatedOriginArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

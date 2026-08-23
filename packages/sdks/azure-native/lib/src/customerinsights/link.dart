@@ -105,6 +105,42 @@ import 'link_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_link" "link" {
+///   description = {
+///     "en-us" = "Link Description"
+///   }
+///   display_name = {
+///     "en-us" = "Link DisplayName"
+///   }
+///   hub_name  = "sdkTestHub"
+///   link_name = "linkTest4806"
+///   mappings {
+///     link_type            = "UpdateAlways"
+///     source_property_name = "testInteraction1949"
+///     target_property_name = "testProfile1446"
+///   }
+///   participant_property_references {
+///     source_property_name = "testInteraction1949"
+///     target_property_name = "ProfileId"
+///   }
+///   resource_group_name     = "TestHubRG"
+///   source_entity_type      = "Interaction"
+///   source_entity_type_name = "testInteraction1949"
+///   target_entity_type      = "Profile"
+///   target_entity_type_name = "testProfile1446"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +151,8 @@ import 'link_args.dart';
 /// import com.pulumi.azurenative.customerinsights.LinkArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.TypePropertiesMappingArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.ParticipantPropertyReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

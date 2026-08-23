@@ -15,4 +15,3 @@ enum UpdateChannel {
     throw ArgumentError('Unknown UpdateChannel value: $value');
   }
 }
-

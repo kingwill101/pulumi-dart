@@ -1,8 +1,8 @@
 /// The recipient type.
 enum RecipientType {
-  valueRequestor("Requestor"),
-  valueApprover("Approver"),
-  valueAdmin("Admin");
+  requestor("Requestor"),
+  approver("Approver"),
+  admin("Admin");
 
   const RecipientType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum RecipientType {
     throw ArgumentError('Unknown RecipientType value: $value');
   }
 }
-

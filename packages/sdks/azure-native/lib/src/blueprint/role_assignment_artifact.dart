@@ -53,6 +53,23 @@ import 'role_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+///   artifact_name  = "storageTemplate"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +78,8 @@ import 'role_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,6 +183,23 @@ import 'role_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+///   artifact_name  = "costCenterPolicy"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +208,8 @@ import 'role_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,6 +321,27 @@ import 'role_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+///   artifact_name      = "ownerAssignment"
+///   blueprint_name     = "simpleBlueprint"
+///   display_name       = "enforce owners of given subscription"
+///   kind               = "roleAssignment"
+///   principal_ids      = "[parameters('owners')]"
+///   resource_scope     = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+///   role_definition_id = "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +350,8 @@ import 'role_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -416,6 +471,23 @@ import 'role_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+///   artifact_name  = "storageTemplate"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -424,8 +496,8 @@ import 'role_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -529,6 +601,23 @@ import 'role_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+///   artifact_name  = "costCenterPolicy"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -537,8 +626,8 @@ import 'role_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -650,6 +739,27 @@ import 'role_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_roleassignmentartifact" "roleAssignmentArtifact" {
+///   artifact_name      = "ownerAssignment"
+///   blueprint_name     = "simpleBlueprint"
+///   display_name       = "enforce owners of given subscription"
+///   kind               = "roleAssignment"
+///   principal_ids      = "[parameters('owners')]"
+///   resource_scope     = "subscriptions/00000000-0000-0000-0000-000000000000"
+///   role_definition_id = "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -658,8 +768,8 @@ import 'role_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.RoleAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

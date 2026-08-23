@@ -23,4 +23,3 @@ enum ConnectionAuth {
     throw ArgumentError('Unknown ConnectionAuth value: $value');
   }
 }
-

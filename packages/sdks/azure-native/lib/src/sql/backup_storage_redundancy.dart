@@ -17,4 +17,3 @@ enum BackupStorageRedundancy {
     throw ArgumentError('Unknown BackupStorageRedundancy value: $value');
   }
 }
-

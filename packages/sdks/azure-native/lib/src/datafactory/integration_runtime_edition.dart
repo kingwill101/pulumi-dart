@@ -1,7 +1,7 @@
 /// The edition for the SSIS Integration Runtime
 enum IntegrationRuntimeEdition {
-  valueStandard("Standard"),
-  valueEnterprise("Enterprise");
+  standard("Standard"),
+  enterprise("Enterprise");
 
   const IntegrationRuntimeEdition(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum IntegrationRuntimeEdition {
     throw ArgumentError('Unknown IntegrationRuntimeEdition value: $value');
   }
 }
-

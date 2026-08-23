@@ -125,6 +125,50 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_redshiftclusterparametergroup" "redshiftClusterParameterGroup" {
+///   location = "gskgxjliwptm"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "whliokkrefhwytv"
+///     aws_account_id = "fdljzalgig"
+///     aws_properties = {
+///       description            = "gvl"
+///       parameter_group_family = "bbhnqerzrhqtinntphvuim"
+///       parameter_group_name   = "tiqxhqigpmuckmnpgijvnpwzb"
+///       parameters = [{
+///         "parameterName"  = "jxeucnajvjzv"
+///         "parameterValue" = "ubxmwmoxeslbruenu"
+///       }]
+///       tags = [{
+///         "key"   = "ucdvfenzatoxmpdicwhztuvgtnku"
+///         "value" = "qpznlj"
+///       }]
+///     }
+///     aws_region        = "wrhyhrmwhdmlnjjbrl"
+///     aws_source_schema = "nkdbqnqvsdnvogwatfxlubppr"
+///     aws_tags = {
+///       "key6090" = "vaqtqamdjobsgwecpvyxeerjrrxac"
+///     }
+///     public_cloud_connectors_resource_id = "nrs"
+///     public_cloud_resource_name          = "xnrwtxesebdfzrqiamebczhoyjbqeq"
+///   }
+///   resource_group_name = "rgredshiftClusterParameterGroup"
+///   tags = {
+///     "key4322" = "zjgvmwcimdtqwxhy"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +179,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RedshiftClusterParameterGroupArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RedshiftClusterParameterGroupPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRedshiftClusterParameterGroupPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

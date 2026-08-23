@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'web_test_properties_content_validation.dart';
+import 'web_test_properties_validation_rules_content_validation.dart';
 
 /// The collection of validation rule properties
 class WebTestPropertiesValidationRules {
   /// The collection of content validation properties
-  final pulumi.Input<WebTestPropertiesContentValidation>? contentValidation;
+  final pulumi.Input<WebTestPropertiesValidationRulesContentValidation>? contentValidation;
   /// Validate that the WebTest returns the http status code provided.
   final pulumi.Input<int>? expectedHttpStatusCode;
   /// When set, validation will ignore the status code.
@@ -32,7 +32,7 @@ class WebTestPropertiesValidationRules {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentValidation': ?pulumi.Input.mapOptionalInputValue<WebTestPropertiesContentValidation, Map<String, dynamic>>(contentValidation, (value) => value.toMap()),
+      'contentValidation': ?pulumi.Input.mapOptionalInputValue<WebTestPropertiesValidationRulesContentValidation, Map<String, dynamic>>(contentValidation, (value) => value.toMap()),
       'expectedHttpStatusCode': ?expectedHttpStatusCode,
       'ignoreHttpStatusCode': ?ignoreHttpStatusCode,
       'sSLCertRemainingLifetimeCheck': ?sSLCertRemainingLifetimeCheck,
@@ -42,7 +42,7 @@ class WebTestPropertiesValidationRules {
 
   factory WebTestPropertiesValidationRules.fromMap(Map<String, dynamic> map) {
     return WebTestPropertiesValidationRules(
-      contentValidation: (() { final guardedValue = map['contentValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebTestPropertiesContentValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      contentValidation: (() { final guardedValue = map['contentValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebTestPropertiesValidationRulesContentValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       expectedHttpStatusCode: (() { final guardedValue = map['expectedHttpStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       ignoreHttpStatusCode: (() { final guardedValue = map['ignoreHttpStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sSLCertRemainingLifetimeCheck: (() { final guardedValue = map['sSLCertRemainingLifetimeCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -50,4 +50,3 @@ class WebTestPropertiesValidationRules {
     );
   }
 }
-

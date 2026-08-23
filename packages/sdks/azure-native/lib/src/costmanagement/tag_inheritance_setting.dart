@@ -61,6 +61,26 @@ import 'tag_inheritance_setting_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_taginheritancesetting" "tagInheritanceSetting" {
+///   kind = "taginheritance"
+///   properties = {
+///     prefer_container_tags = false
+///   }
+///   scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+///   type  = "taginheritance"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'tag_inheritance_setting_args.dart';
 /// import com.pulumi.azurenative.costmanagement.TagInheritanceSetting;
 /// import com.pulumi.azurenative.costmanagement.TagInheritanceSettingArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.TagInheritancePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

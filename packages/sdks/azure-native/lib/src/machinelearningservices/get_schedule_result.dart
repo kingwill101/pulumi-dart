@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'schedule_response.dart';
+import 'schedule_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getSchedule.
@@ -12,7 +12,7 @@ class GetScheduleResult {
   /// The name of the resource
   final String name;
   /// [Required] Additional attributes of the entity.
-  final ScheduleResponse scheduleProperties;
+  final SchedulePropertiesResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -22,14 +22,14 @@ class GetScheduleResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [name] The name of the resource
-  /// [scheduleProperties] [Required] Additional attributes of the entity.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetScheduleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,
-    required this.scheduleProperties,
+    required this.properties,
     required this.systemData,
     required this.type,
   });
@@ -39,7 +39,7 @@ class GetScheduleResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'scheduleProperties': scheduleProperties.toMap(),
+      'properties': properties.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -50,10 +50,9 @@ class GetScheduleResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      scheduleProperties: ScheduleResponse.fromMap((map['scheduleProperties']! as Map).cast<String, dynamic>()),
+      properties: SchedulePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

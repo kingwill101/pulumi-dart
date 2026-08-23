@@ -1,8 +1,8 @@
 enum DependencyCondition {
-  valueSucceeded("Succeeded"),
-  valueFailed("Failed"),
-  valueSkipped("Skipped"),
-  valueCompleted("Completed");
+  succeeded("Succeeded"),
+  failed("Failed"),
+  skipped("Skipped"),
+  completed("Completed");
 
   const DependencyCondition(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum DependencyCondition {
     throw ArgumentError('Unknown DependencyCondition value: $value');
   }
 }
-

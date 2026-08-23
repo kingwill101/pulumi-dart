@@ -16,4 +16,3 @@ enum VirtualNetworkPeeringState {
     throw ArgumentError('Unknown VirtualNetworkPeeringState value: $value');
   }
 }
-

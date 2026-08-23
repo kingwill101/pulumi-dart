@@ -11,13 +11,13 @@ class ListFeatureAccountArgs {
   final pulumi.Input<String> accountName;
   /// Set of features
   final pulumi.Input<List<String>>? features;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListFeatureAccountArgs].
   /// [accountName] The name of the account.
   /// [features] Set of features
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ListFeatureAccountArgs({
     required this.accountName,
     this.features,
@@ -40,4 +40,3 @@ class ListFeatureAccountArgs {
     );
   }
 }
-

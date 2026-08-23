@@ -24,4 +24,3 @@ enum CcpAuthType {
     throw ArgumentError('Unknown CcpAuthType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum VirtualMachineEvictionPolicyTypes {
     throw ArgumentError('Unknown VirtualMachineEvictionPolicyTypes value: $value');
   }
 }
-

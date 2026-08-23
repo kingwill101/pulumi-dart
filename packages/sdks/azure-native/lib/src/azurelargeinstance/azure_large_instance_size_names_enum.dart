@@ -58,4 +58,3 @@ enum AzureLargeInstanceSizeNamesEnum {
     throw ArgumentError('Unknown AzureLargeInstanceSizeNamesEnum value: $value');
   }
 }
-

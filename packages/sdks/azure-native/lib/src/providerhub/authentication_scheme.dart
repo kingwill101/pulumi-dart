@@ -15,4 +15,3 @@ enum AuthenticationScheme {
     throw ArgumentError('Unknown AuthenticationScheme value: $value');
   }
 }
-

@@ -285,6 +285,120 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2image" "ec2Image" {
+///   location = "rskzngterhbdzpdgzthkwkfsim"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "qaahwnaabcqlufiiwhkwhv"
+///     aws_account_id = "yvwtilsspffh"
+///     aws_properties = {
+///       architecture = {
+///         value = "arm64"
+///       }
+///       block_device_mappings = [{
+///         "deviceName" = "foqeiqkjrwirhz"
+///         "ebs" = {
+///           "deleteOnTermination" = true
+///           "encrypted"           = true
+///           "iops"                = 6
+///           "kmsKeyId"            = "ilegn"
+///           "outpostArn"          = "yzyqckzzbmbeimvwrvckybpdil"
+///           "snapshotId"          = "yjsctqicabclgsmtr"
+///           "throughput"          = 29
+///           "volumeSize"          = 15
+///           "volumeType" = {
+///             "value" = "gp2"
+///           }
+///         }
+///         "noDevice"    = "rs"
+///         "virtualName" = "lgrpmrjfdvrwmfghttgcdgqsfum"
+///       }]
+///       boot_mode = {
+///         value = "legacy-bios"
+///       }
+///       creation_date             = "iri"
+///       deprecation_time          = "rjbfczermuljog"
+///       deregistration_protection = "qgzillhrsaoasehpuum"
+///       description               = "xcucajel"
+///       ena_support               = true
+///       hypervisor = {
+///         value = "ovm"
+///       }
+///       image_id          = "abwaglkivomqynfncjesal"
+///       image_location    = "pgjapgkiakctxcpfpmvk"
+///       image_owner_alias = "sqvaqlxrlzhlzbczv"
+///       image_type = {
+///         value = "kernel"
+///       }
+///       imds_support = {
+///         value = "v2.0"
+///       }
+///       kernel_id          = "mfsmykrvrtbosarfpfuwahchz"
+///       last_launched_time = "syfznkavvtio"
+///       name               = "secemuogxgahtxnpthro"
+///       owner_id           = "nhuhifhzxvkdxxvaiaibzihkyvbrwh"
+///       platform = {
+///         value = "Windows"
+///       }
+///       platform_details = "lisborjwdvhfnwsziqhfnxiqdmdynp"
+///       product_codes = [{
+///         "productCodeId" = "gkdidapdrunawxoaa"
+///         "productCodeType" = {
+///           "value" = "devpay"
+///         }
+///       }]
+///       public           = true
+///       ramdisk_id       = "xrcwfszijxclkazpcletlaoca"
+///       root_device_name = "jjgzjpjxtlhvqyvdrnqelzasdmn"
+///       root_device_type = {
+///         value = "ebs"
+///       }
+///       source_instance_id = "g"
+///       sriov_net_support  = "sbnokjesjjkngdixqtiijn"
+///       state = {
+///         value = "available"
+///       }
+///       state_reason = {
+///         code    = "xyfxvbpxwvorfincngvphetvrkhajy"
+///         message = "qgjrouiqrxyqi"
+///       }
+///       tags = [{
+///         "key"   = "mcszeusqtxavdhmwinblzyofkns"
+///         "value" = "ehismpwetbakkwkjtngdrofhipjlko"
+///       }]
+///       tpm_support = {
+///         value = "v2.0"
+///       }
+///       usage_operation = "gdlrmqiw"
+///       virtualization_type = {
+///         value = "hvm"
+///       }
+///     }
+///     aws_region        = "chnagdbgxpnwsklnknirzcmbyhif"
+///     aws_source_schema = "zpslskfplbejouiomrfkp"
+///     aws_tags = {
+///       "key3097" = "osnwzuconxacmfwdhcxu"
+///     }
+///     public_cloud_connectors_resource_id = "dth"
+///     public_cloud_resource_name          = "iwvkviywiipsmvxpemnivpyqwnp"
+///   }
+///   resource_group_name = "rgec2Image"
+///   tags = {
+///     "key733" = "rcinsnkdjolysslzbnmptbwfoxc"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +420,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.StateReasonArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.TpmSupportValuesEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VirtualizationTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -20,13 +20,13 @@ class GetIotSecuritySolutionResult {
   final String displayName;
   /// List of additional options for exporting to workspace data.
   final List<String>? export;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// IoT Hub resource IDs
   final List<String> iotHubs;
-  /// The resource location.
+  /// The geo-location where the resource lives
   final String? location;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// List of the configuration status for each recommendation type.
   final List<RecommendationConfigurationPropertiesResponse>? recommendationsConfiguration;
@@ -34,9 +34,9 @@ class GetIotSecuritySolutionResult {
   final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// Resource tags
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Unmasked IP address logging status
   final String? unmaskedIpLoggingStatus;
@@ -52,15 +52,15 @@ class GetIotSecuritySolutionResult {
   /// [disabledDataSources] Disabled data sources. Disabling these data sources compromises the system.
   /// [displayName] Resource display name.
   /// [export] List of additional options for exporting to workspace data.
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [iotHubs] IoT Hub resource IDs
-  /// [location] The resource location.
-  /// [name] Resource name
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [recommendationsConfiguration] List of the configuration status for each recommendation type.
   /// [status] Status of the IoT Security solution.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  /// [tags] Resource tags
-  /// [type] Resource type
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [unmaskedIpLoggingStatus] Unmasked IP address logging status
   /// [userDefinedResources] Properties of the IoT Security solution's user defined resources.
   /// [workspace] Workspace resource ID
@@ -131,4 +131,3 @@ class GetIotSecuritySolutionResult {
     );
   }
 }
-

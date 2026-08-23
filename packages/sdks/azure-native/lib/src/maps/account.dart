@@ -118,6 +118,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_maps_account" "account" {
+///   account_name = "myMapsAccount"
+///   kind         = "Gen2"
+///   location     = "eastus"
+///   properties = {
+///     cors = {
+///       cors_rules = [{
+///         "allowedOrigins" = ["http://www.contoso.com", "http://www.fabrikam.com"]
+///       }]
+///     }
+///     disable_local_auth = true
+///     locations = [{
+///       "locationName" = "northeurope"
+///     }]
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "G2"
+///   }
+///   tags = {
+///     "test" = "true"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +164,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.maps.inputs.MapsAccountPropertiesArgs;
 /// import com.pulumi.azurenative.maps.inputs.CorsRulesArgs;
 /// import com.pulumi.azurenative.maps.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

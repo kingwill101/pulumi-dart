@@ -1,11 +1,11 @@
 /// Global Parameter type.
 enum GlobalParameterType {
-  valueObject("Object"),
-  valueString("String"),
-  valueInt("Int"),
-  valueFloat("Float"),
-  valueBool("Bool"),
-  valueArray("Array");
+  object_("Object"),
+  string_("String"),
+  int_("Int"),
+  float("Float"),
+  bool_("Bool"),
+  array("Array");
 
   const GlobalParameterType(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum GlobalParameterType {
     throw ArgumentError('Unknown GlobalParameterType value: $value');
   }
 }
-

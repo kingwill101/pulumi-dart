@@ -200,6 +200,63 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_consumption_budget" "budget" {
+///   amount      = 100.65
+///   budget_name = "TestBudget"
+///   category    = "Cost"
+///   e_tag       = "\"1d34d016a593709\""
+///   filter = {
+///     and = [{
+///       "dimensions" = {
+///         "name"     = "ResourceId"
+///         "operator" = "In"
+///         "values"   = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1"]
+///       }
+///       }, {
+///       "tags" = {
+///         "name"     = "category"
+///         "operator" = "In"
+///         "values"   = ["Dev", "Prod"]
+///       }
+///       }, {
+///       "tags" = {
+///         "name"     = "department"
+///         "operator" = "In"
+///         "values"   = ["engineering", "sales"]
+///       }
+///     }]
+///   }
+///   notifications = {
+///     "Actual_GreaterThan_80_Percent" = {
+///       contact_emails = ["johndoe@contoso.com", "janesmith@contoso.com"]
+///       contact_groups = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/microsoft.insights/actionGroups/SampleActionGroup"]
+///       contact_roles  = ["Contributor", "Reader"]
+///       enabled        = true
+///       locale         = "en-us"
+///       operator       = "GreaterThan"
+///       threshold      = 80
+///       threshold_type = "Actual"
+///     }
+///   }
+///   scope      = "subscriptions/00000000-0000-0000-0000-000000000000"
+///   time_grain = "Monthly"
+///   time_period = {
+///     end_date   = "2018-10-31T00:00:00Z"
+///     start_date = "2017-10-01T00:00:00Z"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -210,8 +267,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.consumption.BudgetArgs;
 /// import com.pulumi.azurenative.consumption.inputs.BudgetFilterArgs;
 /// import com.pulumi.azurenative.consumption.inputs.BudgetTimePeriodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,7 +470,7 @@ import 'system_data_response.dart';
 ///             "enabled": True,
 ///             "locale": azure_native.consumption.CultureCode.EN_US,
 ///             "operator": azure_native.consumption.OperatorType.GREATER_THAN,
-///             "threshold": 80,
+///             "threshold": float(80),
 ///             "threshold_type": azure_native.consumption.ThresholdType.ACTUAL,
 ///         },
 ///     },

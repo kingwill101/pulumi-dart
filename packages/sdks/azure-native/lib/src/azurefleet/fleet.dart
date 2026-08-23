@@ -13,7 +13,7 @@ import 'vmattributes_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 ///
-/// Other available API versions: 2024-05-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurefleet [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-05-01-preview, 2026-04-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurefleet [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -258,6 +258,100 @@ import 'vmattributes_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurefleet_fleet" "fleet" {
+///   compute_profile = {
+///     base_virtual_machine_profile = {
+///       network_profile = {
+///         network_api_version = "2022-07-01"
+///         network_interface_configurations = [{
+///           "name" = "vmNameTest"
+///           "properties" = {
+///             "enableAcceleratedNetworking" = false
+///             "enableIPForwarding"          = true
+///             "ipConfigurations" = [{
+///               "name" = "vmNameTest"
+///               "properties" = {
+///                 "loadBalancerBackendAddressPools" = [{
+///                   "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}"
+///                 }]
+///                 "primary" = true
+///                 "subnet" = {
+///                   "id" = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}"
+///                 }
+///               }
+///             }]
+///             "primary" = true
+///           }
+///         }]
+///       }
+///       os_profile = {
+///         admin_password       = "TestPassword$0"
+///         admin_username       = "azureuser"
+///         computer_name_prefix = "prefix"
+///         linux_configuration = {
+///           disable_password_authentication = false
+///         }
+///       }
+///       storage_profile = {
+///         image_reference = {
+///           offer     = "0001-com-ubuntu-server-focal"
+///           publisher = "canonical"
+///           sku       = "20_04-lts-gen2"
+///           version   = "latest"
+///         }
+///         os_disk = {
+///           caching       = "ReadWrite"
+///           create_option = "FromImage"
+///           managed_disk = {
+///             storage_account_type = "Standard_LRS"
+///           }
+///           os_type = "Linux"
+///         }
+///       }
+///     }
+///     compute_api_version         = "2023-09-01"
+///     platform_fault_domain_count = 1
+///   }
+///   fleet_name = "testFleet"
+///   location   = "eastus2euap"
+///   regular_priority_profile = {
+///     allocation_strategy = "LowestPrice"
+///     capacity            = 2
+///     min_capacity        = 1
+///   }
+///   resource_group_name = "rgazurefleet"
+///   spot_priority_profile = {
+///     allocation_strategy = "PriceCapacityOptimized"
+///     capacity            = 2
+///     eviction_policy     = "Delete"
+///     maintain            = true
+///     min_capacity        = 1
+///   }
+///   tags = {
+///     "key" = "fleets-test"
+///   }
+///   vm_sizes_profile {
+///     name = "Standard_D2s_v3"
+///   }
+///   vm_sizes_profile {
+///     name = "Standard_D4s_v3"
+///   }
+///   vm_sizes_profile {
+///     name = "Standard_E2s_v3"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -278,8 +372,8 @@ import 'vmattributes_response.dart';
 /// import com.pulumi.azurenative.azurefleet.inputs.RegularPriorityProfileArgs;
 /// import com.pulumi.azurenative.azurefleet.inputs.SpotPriorityProfileArgs;
 /// import com.pulumi.azurenative.azurefleet.inputs.VmSizeProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

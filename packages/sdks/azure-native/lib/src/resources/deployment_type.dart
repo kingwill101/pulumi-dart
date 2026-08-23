@@ -72,6 +72,30 @@ import 'deployment_properties_extended_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_deployment" "deployment" {
+///   deployment_name = "my-deployment"
+///   properties = {
+///     mode       = "Incremental"
+///     parameters = {}
+///     template_link = {
+///       query_string = "sv=2019-02-02&st=2019-04-29T22%3A18%3A26Z&se=2019-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=xxxxxxxx0xxxxxxxxxxxxx%2bxxxxxxxxxxxxxxxxxxxx%3d"
+///       uri          = "https://example.com/exampleTemplate.json"
+///     }
+///   }
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'deployment_properties_extended_response.dart';
 /// import com.pulumi.azurenative.resources.DeploymentArgs;
 /// import com.pulumi.azurenative.resources.inputs.DeploymentPropertiesArgs;
 /// import com.pulumi.azurenative.resources.inputs.TemplateLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,6 +252,29 @@ import 'deployment_properties_extended_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_deployment" "deployment" {
+///   deployment_name = "my-deployment"
+///   properties = {
+///     mode       = "Incremental"
+///     parameters = {}
+///     template_link = {
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1"
+///     }
+///   }
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +285,8 @@ import 'deployment_properties_extended_response.dart';
 /// import com.pulumi.azurenative.resources.DeploymentArgs;
 /// import com.pulumi.azurenative.resources.inputs.DeploymentPropertiesArgs;
 /// import com.pulumi.azurenative.resources.inputs.TemplateLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -389,6 +436,33 @@ import 'deployment_properties_extended_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_deployment" "deployment" {
+///   deployment_name = "my-deployment"
+///   properties = {
+///     mode = "Complete"
+///     on_error_deployment = {
+///       deployment_name = "name-of-deployment-to-use"
+///       type            = "SpecificDeployment"
+///     }
+///     parameters = {}
+///     template_link = {
+///       uri = "https://example.com/exampleTemplate.json"
+///     }
+///   }
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -400,8 +474,8 @@ import 'deployment_properties_extended_response.dart';
 /// import com.pulumi.azurenative.resources.inputs.DeploymentPropertiesArgs;
 /// import com.pulumi.azurenative.resources.inputs.OnErrorDeploymentArgs;
 /// import com.pulumi.azurenative.resources.inputs.TemplateLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -564,6 +638,32 @@ import 'deployment_properties_extended_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_resources_deployment" "deployment" {
+///   deployment_name = "my-deployment"
+///   properties = {
+///     mode = "Complete"
+///     on_error_deployment = {
+///       type = "LastSuccessful"
+///     }
+///     parameters = {}
+///     template_link = {
+///       uri = "https://example.com/exampleTemplate.json"
+///     }
+///   }
+///   resource_group_name = "my-resource-group"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -575,8 +675,8 @@ import 'deployment_properties_extended_response.dart';
 /// import com.pulumi.azurenative.resources.inputs.DeploymentPropertiesArgs;
 /// import com.pulumi.azurenative.resources.inputs.OnErrorDeploymentArgs;
 /// import com.pulumi.azurenative.resources.inputs.TemplateLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

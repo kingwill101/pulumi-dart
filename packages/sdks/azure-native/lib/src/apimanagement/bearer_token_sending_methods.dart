@@ -15,4 +15,3 @@ enum BearerTokenSendingMethods {
     throw ArgumentError('Unknown BearerTokenSendingMethods value: $value');
   }
 }
-

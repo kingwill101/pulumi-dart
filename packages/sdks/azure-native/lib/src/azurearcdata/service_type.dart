@@ -18,4 +18,3 @@ enum ServiceType {
     throw ArgumentError('Unknown ServiceType value: $value');
   }
 }
-

@@ -10,38 +10,38 @@ class GetGraphQueryResult {
   final String? description;
   /// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
   final String? etag;
-  /// Azure resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The location of the resource
   final String? location;
-  /// Azure resource name. This is GUID value. The display name should be assigned within properties field.
+  /// The name of the resource
   final String name;
   /// KQL query that will be graph.
   final String query;
   /// Enum indicating a type of graph query.
   final String resultKind;
-  /// The system metadata relating to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// Resource tags
+  /// Resource tags.
   final Map<String, String>? tags;
   /// Date and time in UTC of the last modification that was made to this graph query definition.
   final String timeModified;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetGraphQueryResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [description] The description of a graph query.
   /// [etag] This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
-  /// [id] Azure resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [location] The location of the resource
-  /// [name] Azure resource name. This is GUID value. The display name should be assigned within properties field.
+  /// [name] The name of the resource
   /// [query] KQL query that will be graph.
   /// [resultKind] Enum indicating a type of graph query.
-  /// [systemData] The system metadata relating to this resource.
-  /// [tags] Resource tags
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
   /// [timeModified] Date and time in UTC of the last modification that was made to this graph query definition.
-  /// [type] Azure resource type
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGraphQueryResult({
     required this.azureApiVersion,
     this.description,
@@ -91,4 +91,3 @@ class GetGraphQueryResult {
     );
   }
 }
-

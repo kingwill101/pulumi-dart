@@ -1,7 +1,7 @@
 /// Encryption Key Source
 enum EncryptionKeySourceType {
-  valueMicrosoftAutomation("Microsoft.Automation"),
-  valueMicrosoftKeyvault("Microsoft.Keyvault");
+  microsoftAutomation("Microsoft.Automation"),
+  microsoftKeyvault("Microsoft.Keyvault");
 
   const EncryptionKeySourceType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum EncryptionKeySourceType {
     throw ArgumentError('Unknown EncryptionKeySourceType value: $value');
   }
 }
-

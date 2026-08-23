@@ -32,4 +32,3 @@ class BrokerAuthenticatorMethodX509 {
     );
   }
 }
-

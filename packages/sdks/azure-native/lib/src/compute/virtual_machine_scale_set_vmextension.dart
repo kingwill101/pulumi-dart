@@ -7,7 +7,7 @@ import 'virtual_machine_scale_set_vmextension_args.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -74,6 +74,31 @@ import 'virtual_machine_scale_set_vmextension_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescalesetvmextension" "virtualMachineScaleSetVMExtension" {
+///   auto_upgrade_minor_version = true
+///   instance_id                = "0"
+///   publisher                  = "extPublisher"
+///   resource_group_name        = "myResourceGroup"
+///   settings = {
+///     "UserName" = "xyz@microsoft.com"
+///   }
+///   type                 = "extType"
+///   type_handler_version = "1.2"
+///   vm_extension_name    = "myVMExtension"
+///   vm_scale_set_name    = "myvmScaleSet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +107,8 @@ import 'virtual_machine_scale_set_vmextension_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetVMExtension;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetVMExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

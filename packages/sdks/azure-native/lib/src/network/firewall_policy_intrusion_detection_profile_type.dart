@@ -17,4 +17,3 @@ enum FirewallPolicyIntrusionDetectionProfileType {
     throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionProfileType value: $value');
   }
 }
-

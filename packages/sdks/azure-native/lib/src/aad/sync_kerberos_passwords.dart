@@ -15,4 +15,3 @@ enum SyncKerberosPasswords {
     throw ArgumentError('Unknown SyncKerberosPasswords value: $value');
   }
 }
-

@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosting_environment_profile_response.dart';
 import 'site_certificate_args.dart';
+import 'system_data_response.dart';
 
 /// SSL certificate for an app.
 ///
-/// Uses Azure REST API version 2024-11-01.
+/// Uses Azure REST API version 2025-05-01.
 ///
-/// Other available API versions: 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -67,6 +68,26 @@ import 'site_certificate_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_sitecertificate" "siteCertificate" {
+///   certificate_name    = "testc6282"
+///   host_names          = ["ServerCert"]
+///   location            = "East US"
+///   name                = "testSiteName"
+///   password            = "<password>"
+///   resource_group_name = "testrg123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'site_certificate_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.web.SiteCertificate;
 /// import com.pulumi.azurenative.web.SiteCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,9 +206,9 @@ class SiteCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> keyVaultSecretStatus;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Certificate password.
   late final pulumi.Output<String?> password;
@@ -203,11 +224,13 @@ class SiteCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> siteName;
   /// Subject name of the certificate.
   late final pulumi.Output<String> subjectName;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Certificate thumbprint.
   late final pulumi.Output<String> thumbprint;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Is the certificate valid?.
   late final pulumi.Output<bool> valid;
@@ -249,6 +272,7 @@ class SiteCertificate extends pulumi.CustomResource {
     serverFarmId = registerOutput<String?>('serverFarmId');
     siteName = registerOutput<String>('siteName');
     subjectName = registerOutput<String>('subjectName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');

@@ -3,9 +3,9 @@ import 'content_type_args.dart';
 
 /// Content type contract details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -161,6 +161,67 @@ import 'content_type_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_contenttype" "contentType" {
+///   content_type_id     = "page"
+///   description         = "A regular page"
+///   name                = "Page"
+///   resource_group_name = "rg1"
+///   schema = {
+///     "additionalProperties" = false
+///     "properties" = {
+///       "en_us" = {
+///         "additionalProperties" = false
+///         "properties" = {
+///           "description" = {
+///             "description" = "Page description. This property gets included in SEO attributes."
+///             "indexed"     = true
+///             "title"       = "Description"
+///             "type"        = "string"
+///           }
+///           "documentId" = {
+///             "description" = "Reference to page content document."
+///             "title"       = "Document ID"
+///             "type"        = "string"
+///           }
+///           "keywords" = {
+///             "description" = "Page keywords. This property gets included in SEO attributes."
+///             "indexed"     = true
+///             "title"       = "Keywords"
+///             "type"        = "string"
+///           }
+///           "permalink" = {
+///             "description" = "Page permalink, e.g. '/about'."
+///             "indexed"     = true
+///             "title"       = "Permalink"
+///             "type"        = "string"
+///           }
+///           "title" = {
+///             "description" = "Page title. This property gets included in SEO attributes."
+///             "indexed"     = true
+///             "title"       = "Title"
+///             "type"        = "string"
+///           }
+///         }
+///         "required" = ["title", "permalink", "documentId"]
+///         "type"     = "object"
+///       }
+///     }
+///   }
+///   service_name = "apimService1"
+///   version      = "1.0.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +230,8 @@ import 'content_type_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.ContentType;
 /// import com.pulumi.azurenative.apimanagement.ContentTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,10 +283,10 @@ import 'content_type_args.dart';
 ///                             Map.entry("type", "string")
 ///                         ))
 ///                     )),
-///                     Map.entry("required",
+///                     Map.entry("required", Arrays.asList(
 ///                         "title",
 ///                         "permalink",
-///                         "documentId"),
+///                         "documentId")),
 ///                     Map.entry("type", "object")
 ///                 )))
 ///             ))

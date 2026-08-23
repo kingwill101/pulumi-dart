@@ -76,6 +76,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_botservice_channel" "channel" {
+///   channel_name = "AlexaChannel"
+///   location     = "global"
+///   properties = {
+///     "channelName" = "AlexaChannel"
+///     "properties" = {
+///       "alexaSkillId" = "XAlexaSkillIdX"
+///       "isEnabled"    = true
+///     }
+///   }
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "samplebotname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,6 +264,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_botservice_channel" "channel" {
+///   channel_name = "EmailChannel"
+///   location     = "global"
+///   properties = {
+///     "channelName" = "EmailChannel"
+///     "properties" = {
+///       "emailAddress" = "a@b.com"
+///       "isEnabled"    = true
+///       "password"     = "pwd"
+///     }
+///   }
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "samplebotname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +298,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -406,6 +457,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_botservice_channel" "channel" {
+///   channel_name = "DirectLineSpeechChannel"
+///   location     = "global"
+///   properties = {
+///     "channelName" = "DirectLineSpeechChannel"
+///     "properties" = {
+///       "cognitiveServiceRegion"          = "XcognitiveServiceRegionX"
+///       "cognitiveServiceSubscriptionKey" = "XcognitiveServiceSubscriptionKeyX"
+///       "isEnabled"                       = true
+///     }
+///   }
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "samplebotname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -414,8 +491,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,6 +652,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_botservice_channel" "channel" {
+///   channel_name = "EmailChannel"
+///   location     = "global"
+///   properties = {
+///     "channelName" = "EmailChannel"
+///     "properties" = {
+///       "authMethod"   = 1
+///       "emailAddress" = "a@b.com"
+///       "isEnabled"    = true
+///       "magicCode"    = "000000"
+///     }
+///   }
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "samplebotname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -583,8 +687,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -649,7 +753,7 @@ import 'system_data_response.dart';
 ///     properties={
 ///         "channel_name": "EmailChannel",
 ///         "properties": {
-///             "auth_method": 1,
+///             "auth_method": float(1),
 ///             "email_address": "a@b.com",
 ///             "is_enabled": True,
 ///             "magic_code": "000000",
@@ -754,6 +858,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_botservice_channel" "channel" {
+///   channel_name = "LineChannel"
+///   location     = "global"
+///   properties = {
+///     "channelName" = "LineChannel"
+///     "properties" = {
+///       "lineRegistrations" = [{
+///         "channelAccessToken" = "channelAccessToken"
+///         "channelSecret"      = "channelSecret"
+///       }]
+///     }
+///   }
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "samplebotname"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -762,8 +893,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.botservice.Channel;
 /// import com.pulumi.azurenative.botservice.ChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

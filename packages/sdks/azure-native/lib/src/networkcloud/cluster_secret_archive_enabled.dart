@@ -15,4 +15,3 @@ enum ClusterSecretArchiveEnabled {
     throw ArgumentError('Unknown ClusterSecretArchiveEnabled value: $value');
   }
 }
-

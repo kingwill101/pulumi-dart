@@ -17,4 +17,3 @@ enum DataflowEndpointKafkaCompression {
     throw ArgumentError('Unknown DataflowEndpointKafkaCompression value: $value');
   }
 }
-

@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'forwarding_configuration_response.dart';
-import 'routing_rule_update_parameters_response_web_application_firewall_policy_link.dart';
+import 'routing_rule_update_parameters_web_application_firewall_policy_link_response.dart';
 import 'sub_resource_response.dart';
 
 /// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
@@ -28,7 +28,7 @@ class RoutingRuleResponse {
   /// Resource type.
   final pulumi.Input<String> type;
   /// Defines the Web Application Firewall policy for each routing rule (if applicable)
-  final pulumi.Input<RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink>? webApplicationFirewallPolicyLink;
+  final pulumi.Input<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse>? webApplicationFirewallPolicyLink;
 
   /// Creates a new [RoutingRuleResponse].
   /// [acceptedProtocols] Protocol schemes to match for this rule
@@ -68,7 +68,7 @@ class RoutingRuleResponse {
       'routeConfiguration': ?pulumi.Input.mapOptionalInputValue<ForwardingConfigurationResponse, Map<String, dynamic>>(routeConfiguration, (value) => value.toMap()),
       'rulesEngine': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(rulesEngine, (value) => value.toMap()),
       'type': type,
-      'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
+      'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
     };
   }
 
@@ -84,8 +84,7 @@ class RoutingRuleResponse {
       routeConfiguration: (() { final guardedValue = map['routeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ForwardingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rulesEngine: (() { final guardedValue = map['rulesEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      webApplicationFirewallPolicyLink: (() { final guardedValue = map['webApplicationFirewallPolicyLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      webApplicationFirewallPolicyLink: (() { final guardedValue = map['webApplicationFirewallPolicyLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

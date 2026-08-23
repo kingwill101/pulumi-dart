@@ -16,4 +16,3 @@ enum DataflowEndpointAuthenticationSaslType {
     throw ArgumentError('Unknown DataflowEndpointAuthenticationSaslType value: $value');
   }
 }
-

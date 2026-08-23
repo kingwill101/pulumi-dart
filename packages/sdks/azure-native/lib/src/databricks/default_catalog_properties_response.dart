@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// These properties lets user specify default catalog properties during workspace creation.
+/// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 class DefaultCatalogPropertiesResponse {
   /// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
   final pulumi.Input<String>? initialName;
@@ -31,4 +31,3 @@ class DefaultCatalogPropertiesResponse {
     );
   }
 }
-

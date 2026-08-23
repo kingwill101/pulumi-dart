@@ -58,6 +58,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_scvmm_inventoryitem" "inventoryItem" {
+///   inventory_item_name = "12345678-1234-1234-1234-123456789abc"
+///   inventory_type      = "Cloud"
+///   resource_group_name = "testrg"
+///   vmm_server_name     = "ContosoVMMServer"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +84,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.scvmm.InventoryItem;
 /// import com.pulumi.azurenative.scvmm.InventoryItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

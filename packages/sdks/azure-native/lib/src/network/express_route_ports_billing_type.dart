@@ -15,4 +15,3 @@ enum ExpressRoutePortsBillingType {
     throw ArgumentError('Unknown ExpressRoutePortsBillingType value: $value');
   }
 }
-

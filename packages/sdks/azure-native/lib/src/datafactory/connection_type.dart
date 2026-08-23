@@ -1,6 +1,6 @@
 /// Type of connection via linked service or dataset.
 enum ConnectionType {
-  valueLinkedservicetype("linkedservicetype");
+  linkedservicetype("linkedservicetype");
 
   const ConnectionType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ConnectionType {
     throw ArgumentError('Unknown ConnectionType value: $value');
   }
 }
-

@@ -54,6 +54,23 @@ import 'subscription_feature_registration_response_properties.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_features_subscriptionfeatureregistration" "subscriptionFeatureRegistration" {
+///   feature_name       = "testFeature"
+///   properties         = {}
+///   provider_namespace = "subscriptionFeatureRegistrationGroupTestRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +80,8 @@ import 'subscription_feature_registration_response_properties.dart';
 /// import com.pulumi.azurenative.features.SubscriptionFeatureRegistration;
 /// import com.pulumi.azurenative.features.SubscriptionFeatureRegistrationArgs;
 /// import com.pulumi.azurenative.features.inputs.SubscriptionFeatureRegistrationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

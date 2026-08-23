@@ -1,7 +1,7 @@
 /// The authentication mechanism to use to connect to the HBase server.
 enum HBaseAuthenticationType {
-  valueAnonymous("Anonymous"),
-  valueBasic("Basic");
+  anonymous("Anonymous"),
+  basic("Basic");
 
   const HBaseAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum HBaseAuthenticationType {
     throw ArgumentError('Unknown HBaseAuthenticationType value: $value');
   }
 }
-

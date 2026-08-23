@@ -7,7 +7,7 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 ///
 /// Uses Azure REST API version 2025-10-15.
 ///
-/// Other available API versions: 2021-03-01-preview, 2021-04-01-preview, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-03-01-preview, 2021-04-01-preview, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -25,7 +25,48 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 ///     {
 ///         ClusterName = "cassandra-prod",
 ///         Location = "West US",
-///         Properties = null,
+///         Properties = new AzureNative.CosmosDB.Inputs.ClusterResourcePropertiesArgs
+///         {
+///             AuthenticationMethod = AzureNative.CosmosDB.AuthenticationMethod.Cassandra,
+///             CassandraVersion = "3.11",
+///             ClientCertificates = new[]
+///             {
+///                 new AzureNative.CosmosDB.Inputs.CertificateArgs
+///                 {
+///                     Pem = @"-----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----",
+///                 },
+///             },
+///             ClusterNameOverride = "ClusterNameIllegalForAzureResource",
+///             DelegatedManagementSubnetId = "/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management",
+///             ExternalGossipCertificates = new[]
+///             {
+///                 new AzureNative.CosmosDB.Inputs.CertificateArgs
+///                 {
+///                     Pem = @"-----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----",
+///                 },
+///             },
+///             ExternalSeedNodes = new[]
+///             {
+///                 new AzureNative.CosmosDB.Inputs.SeedNodeArgs
+///                 {
+///                     IpAddress = "10.52.221.2",
+///                 },
+///                 new AzureNative.CosmosDB.Inputs.SeedNodeArgs
+///                 {
+///                     IpAddress = "10.52.221.3",
+///                 },
+///                 new AzureNative.CosmosDB.Inputs.SeedNodeArgs
+///                 {
+///                     IpAddress = "10.52.221.4",
+///                 },
+///             },
+///             HoursBetweenBackups = 24,
+///             InitialCassandraAdminPassword = "mypassword",
+///         },
 ///         ResourceGroupName = "cassandra-prod-rg",
 ///         Tags = null,
 ///     });
@@ -46,9 +87,37 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cosmosdb.NewCassandraCluster(ctx, "cassandraCluster", &cosmosdb.CassandraClusterArgs{
-/// 			ClusterName:       pulumi.String("cassandra-prod"),
-/// 			Location:          pulumi.String("West US"),
-/// 			Properties:        &cosmosdb.ClusterResourcePropertiesArgs{},
+/// 			ClusterName: pulumi.String("cassandra-prod"),
+/// 			Location:    pulumi.String("West US"),
+/// 			Properties: &cosmosdb.ClusterResourcePropertiesArgs{
+/// 				AuthenticationMethod: pulumi.String(cosmosdb.AuthenticationMethodCassandra),
+/// 				CassandraVersion:     pulumi.String("3.11"),
+/// 				ClientCertificates: cosmosdb.CertificateArray{
+/// 					&cosmosdb.CertificateArgs{
+/// 						Pem: pulumi.String("-----BEGIN CERTIFICATE-----\n...Base64 encoded certificate...\n-----END CERTIFICATE-----"),
+/// 					},
+/// 				},
+/// 				ClusterNameOverride:         pulumi.String("ClusterNameIllegalForAzureResource"),
+/// 				DelegatedManagementSubnetId: pulumi.String("/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management"),
+/// 				ExternalGossipCertificates: cosmosdb.CertificateArray{
+/// 					&cosmosdb.CertificateArgs{
+/// 						Pem: pulumi.String("-----BEGIN CERTIFICATE-----\n...Base64 encoded certificate...\n-----END CERTIFICATE-----"),
+/// 					},
+/// 				},
+/// 				ExternalSeedNodes: cosmosdb.SeedNodeArray{
+/// 					&cosmosdb.SeedNodeArgs{
+/// 						IpAddress: pulumi.String("10.52.221.2"),
+/// 					},
+/// 					&cosmosdb.SeedNodeArgs{
+/// 						IpAddress: pulumi.String("10.52.221.3"),
+/// 					},
+/// 					&cosmosdb.SeedNodeArgs{
+/// 						IpAddress: pulumi.String("10.52.221.4"),
+/// 					},
+/// 				},
+/// 				HoursBetweenBackups:           pulumi.Int(24),
+/// 				InitialCassandraAdminPassword: pulumi.String("mypassword"),
+/// 			},
 /// 			ResourceGroupName: pulumi.String("cassandra-prod-rg"),
 /// 			Tags:              pulumi.StringMap{},
 /// 		})
@@ -57,6 +126,45 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_cassandracluster" "cassandraCluster" {
+///   cluster_name = "cassandra-prod"
+///   location     = "West US"
+///   properties = {
+///     authentication_method = "Cassandra"
+///     cassandra_version     = "3.11"
+///     client_certificates = [{
+///       "pem" = "-----BEGIN CERTIFICATE-----\n...Base64 encoded certificate...\n-----END CERTIFICATE-----"
+///     }]
+///     cluster_name_override          = "ClusterNameIllegalForAzureResource"
+///     delegated_management_subnet_id = "/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management"
+///     external_gossip_certificates = [{
+///       "pem" = "-----BEGIN CERTIFICATE-----\n...Base64 encoded certificate...\n-----END CERTIFICATE-----"
+///     }]
+///     external_seed_nodes = [{
+///       "ipAddress" = "10.52.221.2"
+///       }, {
+///       "ipAddress" = "10.52.221.3"
+///       }, {
+///       "ipAddress" = "10.52.221.4"
+///     }]
+///     hours_between_backups            = 24
+///     initial_cassandra_admin_password = "mypassword"
+///   }
+///   resource_group_name = "cassandra-prod-rg"
+///   tags                = {}
 /// }
 ///
 /// ```
@@ -70,8 +178,8 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.CassandraCluster;
 /// import com.pulumi.azurenative.cosmosdb.CassandraClusterArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.ClusterResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -87,6 +195,34 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 ///             .clusterName("cassandra-prod")
 ///             .location("West US")
 ///             .properties(ClusterResourcePropertiesArgs.builder()
+///                 .authenticationMethod("Cassandra")
+///                 .cassandraVersion("3.11")
+///                 .clientCertificates(CertificateArgs.builder()
+///                     .pem("""
+/// -----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----                    """)
+///                     .build())
+///                 .clusterNameOverride("ClusterNameIllegalForAzureResource")
+///                 .delegatedManagementSubnetId("/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management")
+///                 .externalGossipCertificates(CertificateArgs.builder()
+///                     .pem("""
+/// -----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----                    """)
+///                     .build())
+///                 .externalSeedNodes(
+///                     SeedNodeArgs.builder()
+///                         .ipAddress("10.52.221.2")
+///                         .build(),
+///                     SeedNodeArgs.builder()
+///                         .ipAddress("10.52.221.3")
+///                         .build(),
+///                     SeedNodeArgs.builder()
+///                         .ipAddress("10.52.221.4")
+///                         .build())
+///                 .hoursBetweenBackups(24)
+///                 .initialCassandraAdminPassword("mypassword")
 ///                 .build())
 ///             .resourceGroupName("cassandra-prod-rg")
 ///             .tags(Map.ofEntries(
@@ -105,7 +241,35 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 /// const cassandraCluster = new azure_native.cosmosdb.CassandraCluster("cassandraCluster", {
 ///     clusterName: "cassandra-prod",
 ///     location: "West US",
-///     properties: {},
+///     properties: {
+///         authenticationMethod: azure_native.cosmosdb.AuthenticationMethod.Cassandra,
+///         cassandraVersion: "3.11",
+///         clientCertificates: [{
+///             pem: `-----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----`,
+///         }],
+///         clusterNameOverride: "ClusterNameIllegalForAzureResource",
+///         delegatedManagementSubnetId: "/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management",
+///         externalGossipCertificates: [{
+///             pem: `-----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----`,
+///         }],
+///         externalSeedNodes: [
+///             {
+///                 ipAddress: "10.52.221.2",
+///             },
+///             {
+///                 ipAddress: "10.52.221.3",
+///             },
+///             {
+///                 ipAddress: "10.52.221.4",
+///             },
+///         ],
+///         hoursBetweenBackups: 24,
+///         initialCassandraAdminPassword: "mypassword",
+///     },
 ///     resourceGroupName: "cassandra-prod-rg",
 ///     tags: {},
 /// });
@@ -119,7 +283,35 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 /// cassandra_cluster = azure_native.cosmosdb.CassandraCluster("cassandraCluster",
 ///     cluster_name="cassandra-prod",
 ///     location="West US",
-///     properties={},
+///     properties={
+///         "authentication_method": azure_native.cosmosdb.AuthenticationMethod.CASSANDRA,
+///         "cassandra_version": "3.11",
+///         "client_certificates": [{
+///             "pem": """-----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----""",
+///         }],
+///         "cluster_name_override": "ClusterNameIllegalForAzureResource",
+///         "delegated_management_subnet_id": "/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management",
+///         "external_gossip_certificates": [{
+///             "pem": """-----BEGIN CERTIFICATE-----
+/// ...Base64 encoded certificate...
+/// -----END CERTIFICATE-----""",
+///         }],
+///         "external_seed_nodes": [
+///             {
+///                 "ip_address": "10.52.221.2",
+///             },
+///             {
+///                 "ip_address": "10.52.221.3",
+///             },
+///             {
+///                 "ip_address": "10.52.221.4",
+///             },
+///         ],
+///         "hours_between_backups": 24,
+///         "initial_cassandra_admin_password": "mypassword",
+///     },
 ///     resource_group_name="cassandra-prod-rg",
 ///     tags={})
 ///
@@ -132,7 +324,27 @@ import 'managed_cassandra_managed_service_identity_response.dart';
 ///     properties:
 ///       clusterName: cassandra-prod
 ///       location: West US
-///       properties: {}
+///       properties:
+///         authenticationMethod: Cassandra
+///         cassandraVersion: '3.11'
+///         clientCertificates:
+///           - pem: |-
+///               -----BEGIN CERTIFICATE-----
+///               ...Base64 encoded certificate...
+///               -----END CERTIFICATE-----
+///         clusterNameOverride: ClusterNameIllegalForAzureResource
+///         delegatedManagementSubnetId: /subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management
+///         externalGossipCertificates:
+///           - pem: |-
+///               -----BEGIN CERTIFICATE-----
+///               ...Base64 encoded certificate...
+///               -----END CERTIFICATE-----
+///         externalSeedNodes:
+///           - ipAddress: 10.52.221.2
+///           - ipAddress: 10.52.221.3
+///           - ipAddress: 10.52.221.4
+///         hoursBetweenBackups: 24
+///         initialCassandraAdminPassword: mypassword
 ///       resourceGroupName: cassandra-prod-rg
 ///       tags: {}
 ///

@@ -2,12 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arm_id_wrapper_response.dart';
 import 'private_link_connection_state_response.dart';
 import 'static_site_private_endpoint_connection_args.dart';
+import 'system_data_response.dart';
 
 /// Remote Private Endpoint Connection ARM resource.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -68,6 +69,28 @@ import 'static_site_private_endpoint_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_staticsiteprivateendpointconnection" "staticSitePrivateEndpointConnection" {
+///   name                             = "testSite"
+///   private_endpoint_connection_name = "connection"
+///   private_link_service_connection_state = {
+///     actions_required = ""
+///     description      = "Approved by admin."
+///     status           = "Approved"
+///   }
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +100,8 @@ import 'static_site_private_endpoint_connection_args.dart';
 /// import com.pulumi.azurenative.web.StaticSitePrivateEndpointConnection;
 /// import com.pulumi.azurenative.web.StaticSitePrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.web.inputs.PrivateLinkConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,14 +194,16 @@ class StaticSitePrivateEndpointConnection extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> ipAddresses;
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// PrivateEndpoint of a remote private endpoint connection
   late final pulumi.Output<ArmIdWrapperResponse?> privateEndpoint;
   /// The state of a private link connection
   late final pulumi.Output<PrivateLinkConnectionStateResponse?> privateLinkServiceConnectionState;
   late final pulumi.Output<String> provisioningState;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [StaticSitePrivateEndpointConnection].
@@ -202,6 +227,7 @@ class StaticSitePrivateEndpointConnection extends pulumi.CustomResource {
     privateEndpoint = registerOutput<ArmIdWrapperResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArmIdWrapperResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateLinkServiceConnectionState = registerOutput<PrivateLinkConnectionStateResponse?>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

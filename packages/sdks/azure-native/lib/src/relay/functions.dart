@@ -24,7 +24,7 @@ import 'list_wcfrelay_keys_result.dart';
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_hybrid_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHybridConnectionResult> getHybridConnection(
@@ -44,7 +44,7 @@ Future<GetHybridConnectionResult> getHybridConnection(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_hybrid_connection_authorization_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHybridConnectionAuthorizationRuleResult> getHybridConnectionAuthorizationRule(
@@ -64,7 +64,7 @@ Future<GetHybridConnectionAuthorizationRuleResult> getHybridConnectionAuthorizat
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_namespace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamespaceResult> getNamespace(
@@ -84,7 +84,7 @@ Future<GetNamespaceResult> getNamespace(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_namespace_authorization_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
@@ -104,7 +104,7 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
@@ -124,7 +124,7 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_wcfrelay_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWCFRelayResult> getWCFRelay(
@@ -144,7 +144,7 @@ Future<GetWCFRelayResult> getWCFRelay(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_wcfrelay_authorization_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWCFRelayAuthorizationRuleResult> getWCFRelayAuthorizationRule(
@@ -164,7 +164,7 @@ Future<GetWCFRelayAuthorizationRuleResult> getWCFRelayAuthorizationRule(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_list_hybrid_connection_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListHybridConnectionKeysResult> listHybridConnectionKeys(
@@ -184,7 +184,7 @@ Future<ListHybridConnectionKeysResult> listHybridConnectionKeys(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_list_namespace_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListNamespaceKeysResult> listNamespaceKeys(
@@ -204,7 +204,7 @@ Future<ListNamespaceKeysResult> listNamespaceKeys(
 ///
 /// Uses Azure REST API version 2024-01-01.
 ///
-/// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_list_wcfrelay_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListWCFRelayKeysResult> listWCFRelayKeys(

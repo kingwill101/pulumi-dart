@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'partial_assessment_properties_response.dart';
 import 'standard_metadata_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getSecurityStandard.
 class GetSecurityStandardResult {
@@ -16,17 +17,19 @@ class GetSecurityStandardResult {
   final String? description;
   /// Display name of the standard, equivalent to the standardId
   final String? displayName;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The security standard metadata.
   final StandardMetadataResponse? metadata;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// The policy set definition id associated with the standard.
   final String? policySetDefinitionId;
   /// Standard type (Custom or Default or Compliance only currently)
   final String standardType;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetSecurityStandardResult].
@@ -35,12 +38,13 @@ class GetSecurityStandardResult {
   /// [cloudProviders] List of all standard supported clouds.
   /// [description] Description of the standard
   /// [displayName] Display name of the standard, equivalent to the standardId
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [metadata] The security standard metadata.
-  /// [name] Resource name
+  /// [name] The name of the resource
   /// [policySetDefinitionId] The policy set definition id associated with the standard.
   /// [standardType] Standard type (Custom or Default or Compliance only currently)
-  /// [type] Resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSecurityStandardResult({
     this.assessments,
     required this.azureApiVersion,
@@ -52,6 +56,7 @@ class GetSecurityStandardResult {
     required this.name,
     this.policySetDefinitionId,
     required this.standardType,
+    required this.systemData,
     required this.type,
   });
 
@@ -67,6 +72,7 @@ class GetSecurityStandardResult {
       'name': name,
       'policySetDefinitionId': ?policySetDefinitionId,
       'standardType': standardType,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -83,8 +89,8 @@ class GetSecurityStandardResult {
       name: map['name'] as String,
       policySetDefinitionId: (() { final guardedValue = map['policySetDefinitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       standardType: map['standardType'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

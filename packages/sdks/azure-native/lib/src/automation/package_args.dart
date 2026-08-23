@@ -15,9 +15,9 @@ class PackageArgs {
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the package content link.
   final pulumi.Input<ContentLink> contentLink;
-  /// The name of Package.
+  /// The Package name.
   final pulumi.Input<String>? packageName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Runtime Environment.
   final pulumi.Input<String> runtimeEnvironmentName;
@@ -26,8 +26,8 @@ class PackageArgs {
   /// [allOf] The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
   /// [automationAccountName] The name of the automation account.
   /// [contentLink] Gets or sets the package content link.
-  /// [packageName] The name of Package.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [packageName] The Package name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
   const PackageArgs({
     this.allOf,
@@ -60,4 +60,3 @@ class PackageArgs {
     );
   }
 }
-

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'action_group_args.dart';
 import 'managed_service_identity_response.dart';
+import 'system_data_response.dart';
 
 /// An action group resource.
 ///
@@ -33,23 +34,25 @@ class ActionGroupMonitor extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> eventHubReceivers;
   /// The short name of the action group. This will be used in SMS messages.
   late final pulumi.Output<String> groupShortName;
-  /// Managed service identity (system assigned and/or user assigned identities)
+  /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// The list of incident receivers that are part of this action group.
   late final pulumi.Output<List<Map<String, dynamic>>?> incidentReceivers;
   /// The list of ITSM receivers that are part of this action group.
   late final pulumi.Output<List<Map<String, dynamic>>?> itsmReceivers;
-  /// Resource location
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The list of logic app receivers that are part of this action group.
   late final pulumi.Output<List<Map<String, dynamic>>?> logicAppReceivers;
-  /// Azure resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of SMS receivers that are part of this action group.
   late final pulumi.Output<List<Map<String, dynamic>>?> smsReceivers;
-  /// Resource tags
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The list of voice receivers that are part of this action group.
   late final pulumi.Output<List<Map<String, dynamic>>?> voiceReceivers;
@@ -86,6 +89,7 @@ class ActionGroupMonitor extends pulumi.CustomResource {
     logicAppReceivers = registerOutput<List<Map<String, dynamic>>?>('logicAppReceivers');
     this.name = registerOutput<String>('name');
     smsReceivers = registerOutput<List<Map<String, dynamic>>?>('smsReceivers');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     voiceReceivers = registerOutput<List<Map<String, dynamic>>?>('voiceReceivers');

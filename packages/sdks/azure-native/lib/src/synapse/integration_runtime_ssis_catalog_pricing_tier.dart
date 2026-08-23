@@ -17,4 +17,3 @@ enum IntegrationRuntimeSsisCatalogPricingTier {
     throw ArgumentError('Unknown IntegrationRuntimeSsisCatalogPricingTier value: $value');
   }
 }
-

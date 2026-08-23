@@ -17,4 +17,3 @@ enum OptimizationLogic {
     throw ArgumentError('Unknown OptimizationLogic value: $value');
   }
 }
-

@@ -1,16 +1,16 @@
 /// Represents the current status of the Milestone.
 enum MaccMilestoneStatus {
-  valueUnknown("Unknown"),
-  valueScheduled("Scheduled"),
-  valueActive("Active"),
-  valuePending("Pending"),
-  valueFailed("Failed"),
-  valueCompleted("Completed"),
-  valueCanceled("Canceled"),
-  valueRemoved("Removed"),
-  valuePendingSettlement("PendingSettlement"),
-  valueShortfallCharged("ShortfallCharged"),
-  valueShortfallWaived("ShortfallWaived");
+  unknown("Unknown"),
+  scheduled("Scheduled"),
+  active("Active"),
+  pending("Pending"),
+  failed("Failed"),
+  completed("Completed"),
+  canceled("Canceled"),
+  removed("Removed"),
+  pendingSettlement("PendingSettlement"),
+  shortfallCharged("ShortfallCharged"),
+  shortfallWaived("ShortfallWaived");
 
   const MaccMilestoneStatus(this.wireValue);
   final String wireValue;
@@ -24,4 +24,3 @@ enum MaccMilestoneStatus {
     throw ArgumentError('Unknown MaccMilestoneStatus value: $value');
   }
 }
-

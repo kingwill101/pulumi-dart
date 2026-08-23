@@ -15,4 +15,3 @@ enum CallAs {
     throw ArgumentError('Unknown CallAs value: $value');
   }
 }
-

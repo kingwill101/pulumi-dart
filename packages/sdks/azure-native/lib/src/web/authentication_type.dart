@@ -1,8 +1,8 @@
 /// Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
 enum AuthenticationType {
-  valueSystemAssignedIdentity("SystemAssignedIdentity"),
-  valueUserAssignedIdentity("UserAssignedIdentity"),
-  valueStorageAccountConnectionString("StorageAccountConnectionString");
+  systemAssignedIdentity("SystemAssignedIdentity"),
+  userAssignedIdentity("UserAssignedIdentity"),
+  storageAccountConnectionString("StorageAccountConnectionString");
 
   const AuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum AuthenticationType {
     throw ArgumentError('Unknown AuthenticationType value: $value');
   }
 }
-

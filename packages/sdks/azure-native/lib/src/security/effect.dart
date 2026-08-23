@@ -1,8 +1,8 @@
 /// Expected effect of this assignment (Audit/Exempt/Attest)
 enum Effect {
-  valueAudit("Audit"),
-  valueExempt("Exempt"),
-  valueAttest("Attest");
+  audit("Audit"),
+  exempt("Exempt"),
+  attest("Attest");
 
   const Effect(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum Effect {
     throw ArgumentError('Unknown Effect value: $value');
   }
 }
-

@@ -29,4 +29,3 @@ enum CertificatePermissions {
     throw ArgumentError('Unknown CertificatePermissions value: $value');
   }
 }
-

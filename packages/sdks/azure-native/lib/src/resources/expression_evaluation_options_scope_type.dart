@@ -16,4 +16,3 @@ enum ExpressionEvaluationOptionsScopeType {
     throw ArgumentError('Unknown ExpressionEvaluationOptionsScopeType value: $value');
   }
 }
-

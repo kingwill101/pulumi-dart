@@ -54,9 +54,9 @@ import 'list_key_by_automation_account_result.dart';
 
 /// Get information about an Automation Account.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_automation_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAutomationAccountResult> getAutomationAccount(
@@ -74,9 +74,9 @@ Future<GetAutomationAccountResult> getAutomationAccount(
 
 /// Retrieve the certificate identified by certificate name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_certificate_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateResult> getCertificate(
@@ -94,9 +94,9 @@ Future<GetCertificateResult> getCertificate(
 
 /// Retrieve the connection identified by connection name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectionResult> getConnection(
@@ -114,9 +114,9 @@ Future<GetConnectionResult> getConnection(
 
 /// Retrieve the connection type identified by connection type name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_connection_type_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectionTypeResult> getConnectionType(
@@ -134,9 +134,9 @@ Future<GetConnectionTypeResult> getConnectionType(
 
 /// Retrieve the credential identified by credential name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_credential_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCredentialResult> getCredential(
@@ -154,9 +154,9 @@ Future<GetCredentialResult> getCredential(
 
 /// Retrieve the configuration identified by configuration name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_dsc_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDscConfigurationResult> getDscConfiguration(
@@ -174,9 +174,9 @@ Future<GetDscConfigurationResult> getDscConfiguration(
 
 /// Retrieve the Dsc node configurations by node configuration.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2018-01-15, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2018-01-15, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_dsc_node_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDscNodeConfigurationResult> getDscNodeConfiguration(
@@ -194,9 +194,9 @@ Future<GetDscNodeConfigurationResult> getDscNodeConfiguration(
 
 /// Retrieve a hybrid runbook worker.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_hybrid_runbook_worker_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHybridRunbookWorkerResult> getHybridRunbookWorker(
@@ -214,9 +214,9 @@ Future<GetHybridRunbookWorkerResult> getHybridRunbookWorker(
 
 /// Retrieve a hybrid runbook worker group.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_hybrid_runbook_worker_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHybridRunbookWorkerGroupResult> getHybridRunbookWorkerGroup(
@@ -234,9 +234,9 @@ Future<GetHybridRunbookWorkerGroupResult> getHybridRunbookWorkerGroup(
 
 /// Retrieve the job schedule identified by job schedule name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_job_schedule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetJobScheduleResult> getJobSchedule(
@@ -254,9 +254,9 @@ Future<GetJobScheduleResult> getJobSchedule(
 
 /// Retrieve the module identified by module name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_module_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetModuleResult> getModule(
@@ -274,9 +274,9 @@ Future<GetModuleResult> getModule(
 
 /// Retrieve the Package identified by Package name.
 ///
-/// Uses Azure REST API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_package_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPackageResult> getPackage(
@@ -312,9 +312,9 @@ Future<GetPowerShell72ModuleResult> getPowerShell72Module(
 
 /// Gets a private endpoint connection.
 ///
-/// Uses Azure REST API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2020-01-13-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-01-13-preview, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
@@ -332,9 +332,9 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 
 /// Retrieve the python 2 package identified by package name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2018-06-30, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-30, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_python2_package_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPython2PackageResult> getPython2Package(
@@ -352,9 +352,9 @@ Future<GetPython2PackageResult> getPython2Package(
 
 /// Retrieve the python 3 package identified by package name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_python3_package_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPython3PackageResult> getPython3Package(
@@ -372,9 +372,9 @@ Future<GetPython3PackageResult> getPython3Package(
 
 /// Retrieve the runbook identified by runbook name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2018-06-30, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2018-06-30, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_runbook_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRunbookResult> getRunbook(
@@ -392,9 +392,9 @@ Future<GetRunbookResult> getRunbook(
 
 /// Get information about the Runtime Environment
 ///
-/// Uses Azure REST API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_runtime_environment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRuntimeEnvironmentResult> getRuntimeEnvironment(
@@ -412,9 +412,9 @@ Future<GetRuntimeEnvironmentResult> getRuntimeEnvironment(
 
 /// Retrieve the schedule identified by schedule name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_schedule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetScheduleResult> getSchedule(
@@ -432,9 +432,9 @@ Future<GetScheduleResult> getSchedule(
 
 /// Get a single software update configuration by name.
 ///
-/// Uses Azure REST API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_software_update_configuration_by_name_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSoftwareUpdateConfigurationByNameResult> getSoftwareUpdateConfigurationByName(
@@ -452,9 +452,9 @@ Future<GetSoftwareUpdateConfigurationByNameResult> getSoftwareUpdateConfiguratio
 
 /// Retrieve the source control identified by source control name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_source_control_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSourceControlResult> getSourceControl(
@@ -472,9 +472,9 @@ Future<GetSourceControlResult> getSourceControl(
 
 /// Retrieve the variable identified by variable name.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_variable_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVariableResult> getVariable(
@@ -492,9 +492,9 @@ Future<GetVariableResult> getVariable(
 
 /// Retrieve the watcher identified by watcher name.
 ///
-/// Uses Azure REST API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_watcher_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWatcherResult> getWatcher(
@@ -512,9 +512,9 @@ Future<GetWatcherResult> getWatcher(
 
 /// Retrieve the webhook identified by webhook name.
 ///
-/// Uses Azure REST API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_webhook_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWebhookResult> getWebhook(
@@ -532,9 +532,9 @@ Future<GetWebhookResult> getWebhook(
 
 /// Retrieve the deleted runbooks for an automation account.
 ///
-/// Uses Azure REST API version 2023-05-15-preview.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_list_automation_account_deleted_runbooks_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAutomationAccountDeletedRunbooksResult> listAutomationAccountDeletedRunbooks(
@@ -552,9 +552,9 @@ Future<ListAutomationAccountDeletedRunbooksResult> listAutomationAccountDeletedR
 
 /// Retrieve the automation keys for an account.
 ///
-/// Uses Azure REST API version 2023-11-01.
+/// Uses Azure REST API version 2024-10-23.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_list_key_by_automation_account_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListKeyByAutomationAccountResult> listKeyByAutomationAccount(

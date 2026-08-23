@@ -11,13 +11,13 @@ class ListServerlessEndpointKeysArgs {
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [ListServerlessEndpointKeysArgs].
   /// [name] Serverless Endpoint name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const ListServerlessEndpointKeysArgs({
     required this.name,
     required this.resourceGroupName,
@@ -40,4 +40,3 @@ class ListServerlessEndpointKeysArgs {
     );
   }
 }
-

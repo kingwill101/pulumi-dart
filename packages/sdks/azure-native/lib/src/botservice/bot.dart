@@ -124,6 +124,51 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_botservice_bot" "bot" {
+///   kind     = "sdk"
+///   location = "West US"
+///   properties = {
+///     cmek_key_vault_url                    = "https://myCmekKey"
+///     description                           = "The description of the bot"
+///     developer_app_insight_key             = "appinsightskey"
+///     developer_app_insights_api_key        = "appinsightsapikey"
+///     developer_app_insights_application_id = "appinsightsappid"
+///     disable_local_auth                    = true
+///     display_name                          = "The Name of the bot"
+///     endpoint                              = "http://mybot.coffee"
+///     icon_url                              = "http://myicon"
+///     is_cmek_enabled                       = true
+///     luis_app_ids                          = ["luisappid1", "luisappid2"]
+///     luis_key                              = "luiskey"
+///     msa_app_id                            = "exampleappid"
+///     msa_app_msi_resource_id               = "/subscriptions/foo/resourcegroups/bar/providers/microsoft.managedidentity/userassignedidentities/sampleId"
+///     msa_app_tenant_id                     = "exampleapptenantid"
+///     msa_app_type                          = "UserAssignedMSI"
+///     public_network_access                 = "Enabled"
+///     schema_transformation_version         = "1.0"
+///   }
+///   resource_group_name = "OneResourceGroupName"
+///   resource_name       = "samplebotname"
+///   sku = {
+///     name = "S1"
+///   }
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +179,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.botservice.BotArgs;
 /// import com.pulumi.azurenative.botservice.inputs.BotPropertiesArgs;
 /// import com.pulumi.azurenative.botservice.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

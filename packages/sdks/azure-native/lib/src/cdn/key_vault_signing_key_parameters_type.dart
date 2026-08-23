@@ -13,4 +13,3 @@ enum KeyVaultSigningKeyParametersType {
     throw ArgumentError('Unknown KeyVaultSigningKeyParametersType value: $value');
   }
 }
-

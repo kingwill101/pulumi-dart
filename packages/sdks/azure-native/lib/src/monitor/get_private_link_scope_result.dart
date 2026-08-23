@@ -11,7 +11,7 @@ class GetPrivateLinkScopeResult {
   final AccessModeSettingsResponse accessModeSettings;
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The geo-location where the resource lives
   final String location;
@@ -21,7 +21,7 @@ class GetPrivateLinkScopeResult {
   final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
   /// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
   final String provisioningState;
-  /// System data
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
@@ -31,12 +31,12 @@ class GetPrivateLinkScopeResult {
   /// Creates a new [GetPrivateLinkScopeResult].
   /// [accessModeSettings] Access mode settings
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
   /// [privateEndpointConnections] List of private endpoint connections.
   /// [provisioningState] Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
-  /// [systemData] System data
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateLinkScopeResult({
@@ -82,4 +82,3 @@ class GetPrivateLinkScopeResult {
     );
   }
 }
-

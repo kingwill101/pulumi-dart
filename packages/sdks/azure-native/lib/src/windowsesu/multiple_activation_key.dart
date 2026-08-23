@@ -63,6 +63,28 @@ import 'multiple_activation_key_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_windowsesu_multipleactivationkey" "multipleActivationKey" {
+///   agreement_number             = "1a2b45ag"
+///   installed_server_number      = 100
+///   is_eligible                  = true
+///   location                     = "East US"
+///   multiple_activation_key_name = "server08-key-2019"
+///   os_type                      = "WindowsServer2008"
+///   resource_group_name          = "testgr1"
+///   support_type                 = "SupplementalServicing"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +93,8 @@ import 'multiple_activation_key_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.windowsesu.MultipleActivationKey;
 /// import com.pulumi.azurenative.windowsesu.MultipleActivationKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

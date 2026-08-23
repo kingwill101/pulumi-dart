@@ -74,4 +74,3 @@ class SalesforceServiceCloudV2Source {
     );
   }
 }
-

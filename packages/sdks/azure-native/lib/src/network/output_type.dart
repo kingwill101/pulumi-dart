@@ -14,4 +14,3 @@ enum OutputType {
     throw ArgumentError('Unknown OutputType value: $value');
   }
 }
-

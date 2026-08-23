@@ -2,37 +2,41 @@
 
 import 'arm_id_wrapper_response.dart';
 import 'private_link_connection_state_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppPrivateEndpointConnection.
 class GetWebAppPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Private IPAddresses mapped to the remote private endpoint
   final List<String>? ipAddresses;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// PrivateEndpoint of a remote private endpoint connection
   final ArmIdWrapperResponse? privateEndpoint;
   /// The state of a private link connection
   final PrivateLinkConnectionStateResponse? privateLinkServiceConnectionState;
   final String provisioningState;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppPrivateEndpointConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [ipAddresses] Private IPAddresses mapped to the remote private endpoint
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [privateEndpoint] PrivateEndpoint of a remote private endpoint connection
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [provisioningState] Required.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
@@ -42,6 +46,7 @@ class GetWebAppPrivateEndpointConnectionResult {
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     required this.provisioningState,
+    required this.systemData,
     required this.type,
   });
 
@@ -55,6 +60,7 @@ class GetWebAppPrivateEndpointConnectionResult {
       'privateEndpoint': ?privateEndpoint?.toMap(),
       'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState?.toMap(),
       'provisioningState': provisioningState,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -69,8 +75,8 @@ class GetWebAppPrivateEndpointConnectionResult {
       privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return ArmIdWrapperResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return PrivateLinkConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: map['provisioningState'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

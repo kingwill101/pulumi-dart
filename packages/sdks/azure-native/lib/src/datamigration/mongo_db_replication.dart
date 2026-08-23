@@ -16,4 +16,3 @@ enum MongoDbReplication {
     throw ArgumentError('Unknown MongoDbReplication value: $value');
   }
 }
-

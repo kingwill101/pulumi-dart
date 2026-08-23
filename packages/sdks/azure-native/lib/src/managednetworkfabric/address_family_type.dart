@@ -15,4 +15,3 @@ enum AddressFamilyType {
     throw ArgumentError('Unknown AddressFamilyType value: $value');
   }
 }
-

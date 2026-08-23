@@ -17,4 +17,3 @@ enum HttpMethodVerb {
     throw ArgumentError('Unknown HttpMethodVerb value: $value');
   }
 }
-

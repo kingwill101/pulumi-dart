@@ -4,9 +4,9 @@ import 'project_connection_args.dart';
 
 /// Connection base resource schema.
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -71,6 +71,30 @@ import 'project_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_projectconnection" "projectConnection" {
+///   account_name    = "account-1"
+///   connection_name = "connection-1"
+///   project_name    = "project-1"
+///   properties = {
+///     "authType"   = "None"
+///     "category"   = "ContainerRegistry"
+///     "expiryTime" = "2024-03-15T14:30:00Z"
+///     "target"     = "[tartget url]"
+///   }
+///   resource_group_name = "resourceGroup-1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +103,8 @@ import 'project_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cognitiveservices.ProjectConnection;
 /// import com.pulumi.azurenative.cognitiveservices.ProjectConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

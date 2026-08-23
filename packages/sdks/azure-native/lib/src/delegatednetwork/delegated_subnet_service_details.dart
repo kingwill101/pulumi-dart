@@ -71,6 +71,29 @@ import 'subnet_details_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_delegatednetwork_delegatedsubnetservicedetails" "delegatedSubnetServiceDetails" {
+///   controller_details = {
+///     id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.DelegatedNetwork/controller/dnctestcontroller"
+///   }
+///   location            = "West US"
+///   resource_group_name = "TestRG"
+///   resource_name       = "delegated1"
+///   subnet_details = {
+///     id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/testsubnet"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +104,8 @@ import 'subnet_details_response.dart';
 /// import com.pulumi.azurenative.delegatednetwork.DelegatedSubnetServiceDetailsArgs;
 /// import com.pulumi.azurenative.delegatednetwork.inputs.ControllerDetailsArgs;
 /// import com.pulumi.azurenative.delegatednetwork.inputs.SubnetDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -224,6 +247,30 @@ import 'subnet_details_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_delegatednetwork_delegatedsubnetservicedetails" "delegatedSubnetServiceDetails" {
+///   allocation_block_prefix_size = 27
+///   controller_details = {
+///     id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.DelegatedNetwork/controller/dnctestcontroller"
+///   }
+///   location            = "West US"
+///   resource_group_name = "TestRG"
+///   resource_name       = "delegated1"
+///   subnet_details = {
+///     id = "/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/testsubnet"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +281,8 @@ import 'subnet_details_response.dart';
 /// import com.pulumi.azurenative.delegatednetwork.DelegatedSubnetServiceDetailsArgs;
 /// import com.pulumi.azurenative.delegatednetwork.inputs.ControllerDetailsArgs;
 /// import com.pulumi.azurenative.delegatednetwork.inputs.SubnetDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

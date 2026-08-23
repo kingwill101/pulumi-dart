@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'log_settings_response.dart';
-import 'metric_settings_response.dart';
+import 'diagnostics_log_settings_response.dart';
+import 'diagnostics_metric_settings_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getDiagnosticSetting.
@@ -13,23 +13,23 @@ class GetDiagnosticSettingResult {
   final String? eventHubAuthorizationRuleId;
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   final String? eventHubName;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: &lt;normalized service identity&gt;_&lt;normalized category name&gt;. Possible values are: Dedicated and null (null is default.)
   final String? logAnalyticsDestinationType;
   /// The list of logs settings.
-  final List<LogSettingsResponse>? logs;
+  final List<DiagnosticsLogSettingsResponse>? logs;
   /// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
   final String? marketplacePartnerId;
   /// The list of metric settings.
-  final List<MetricSettingsResponse>? metrics;
+  final List<DiagnosticsMetricSettingsResponse>? metrics;
   /// The name of the resource
   final String name;
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
   final String? serviceBusRuleId;
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
   final String? storageAccountId;
-  /// The system metadata related to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
@@ -40,7 +40,7 @@ class GetDiagnosticSettingResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [eventHubAuthorizationRuleId] The resource Id for the event hub authorization rule.
   /// [eventHubName] The name of the event hub. If none is specified, the default event hub will be selected.
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [logAnalyticsDestinationType] A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: &lt;normalized service identity&gt;_&lt;normalized category name&gt;. Possible values are: Dedicated and null (null is default.)
   /// [logs] The list of logs settings.
   /// [marketplacePartnerId] The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
@@ -48,7 +48,7 @@ class GetDiagnosticSettingResult {
   /// [name] The name of the resource
   /// [serviceBusRuleId] The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
   /// [storageAccountId] The resource ID of the storage account to which you would like to send Diagnostic Logs.
-  /// [systemData] The system metadata related to this resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workspaceId] The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   const GetDiagnosticSettingResult({
@@ -75,9 +75,9 @@ class GetDiagnosticSettingResult {
       'eventHubName': ?eventHubName,
       'id': id,
       'logAnalyticsDestinationType': ?logAnalyticsDestinationType,
-      'logs': ?(() { final guardedValue = logs; if (guardedValue == null) return null; return pulumi.Input.encodeList<LogSettingsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'logs': ?(() { final guardedValue = logs; if (guardedValue == null) return null; return pulumi.Input.encodeList<DiagnosticsLogSettingsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'marketplacePartnerId': ?marketplacePartnerId,
-      'metrics': ?(() { final guardedValue = metrics; if (guardedValue == null) return null; return pulumi.Input.encodeList<MetricSettingsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'metrics': ?(() { final guardedValue = metrics; if (guardedValue == null) return null; return pulumi.Input.encodeList<DiagnosticsMetricSettingsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'name': name,
       'serviceBusRuleId': ?serviceBusRuleId,
       'storageAccountId': ?storageAccountId,
@@ -94,9 +94,9 @@ class GetDiagnosticSettingResult {
       eventHubName: (() { final guardedValue = map['eventHubName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
       logAnalyticsDestinationType: (() { final guardedValue = map['logAnalyticsDestinationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      logs: (() { final guardedValue = map['logs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogSettingsResponse>(guardedValue, (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      logs: (() { final guardedValue = map['logs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticsLogSettingsResponse>(guardedValue, (value) => DiagnosticsLogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       marketplacePartnerId: (() { final guardedValue = map['marketplacePartnerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricSettingsResponse>(guardedValue, (value) => MetricSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticsMetricSettingsResponse>(guardedValue, (value) => DiagnosticsMetricSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: map['name'] as String,
       serviceBusRuleId: (() { final guardedValue = map['serviceBusRuleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -106,4 +106,3 @@ class GetDiagnosticSettingResult {
     );
   }
 }
-

@@ -11,7 +11,7 @@ class GetEnvironmentArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the DtlEnvironment
+  /// The name of the environment.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -21,7 +21,7 @@ class GetEnvironmentArgs {
   /// Creates a new [GetEnvironmentArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=deploymentProperties)'
   /// [labName] The name of the lab.
-  /// [name] The name of the DtlEnvironment
+  /// [name] The name of the environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
   const GetEnvironmentArgs({
@@ -52,4 +52,3 @@ class GetEnvironmentArgs {
     );
   }
 }
-

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alerts_suppression_rule_args.dart';
 import 'suppression_alerts_scope_response.dart';
+import 'system_data_response.dart';
 
 /// Describes the suppression rule
 ///
@@ -63,7 +64,7 @@ import 'suppression_alerts_scope_response.dart';
 /// 			Comment:                   pulumi.String("Test VM"),
 /// 			ExpirationDateUtc:         pulumi.String("2019-12-01T19:50:47.083633Z"),
 /// 			Reason:                    pulumi.String("FalsePositive"),
-/// 			State:                     pulumi.String(security.RuleStateEnabled),
+/// 			State:                     security.RuleStateEnabled,
 /// 			SuppressionAlertsScope: &security.SuppressionAlertsScopeArgs{
 /// 				AllOf: security.ScopeElementArray{
 /// 					&security.ScopeElementArgs{
@@ -84,6 +85,33 @@ import 'suppression_alerts_scope_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_alertssuppressionrule" "alertsSuppressionRule" {
+///   alert_type                   = "IpAnomaly"
+///   alerts_suppression_rule_name = "dismissIpAnomalyAlerts"
+///   comment                      = "Test VM"
+///   expiration_date_utc          = "2019-12-01T19:50:47.083633Z"
+///   reason                       = "FalsePositive"
+///   state                        = "Enabled"
+///   suppression_alerts_scope = {
+///     all_of = [{
+///       "field" = "entities.ip.address"
+///       }, {
+///       "field" = "entities.process.commandline"
+///     }]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +121,8 @@ import 'suppression_alerts_scope_response.dart';
 /// import com.pulumi.azurenative.security.AlertsSuppressionRule;
 /// import com.pulumi.azurenative.security.AlertsSuppressionRuleArgs;
 /// import com.pulumi.azurenative.security.inputs.SuppressionAlertsScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,7 +245,7 @@ class AlertsSuppressionRule extends pulumi.CustomResource {
   late final pulumi.Output<String?> expirationDateUtc;
   /// The last time this rule was modified
   late final pulumi.Output<String> lastModifiedUtc;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The reason for dismissing the alert
   late final pulumi.Output<String> reason;
@@ -225,7 +253,9 @@ class AlertsSuppressionRule extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// The suppression conditions
   late final pulumi.Output<SuppressionAlertsScopeResponse?> suppressionAlertsScope;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [AlertsSuppressionRule].
@@ -251,6 +281,7 @@ class AlertsSuppressionRule extends pulumi.CustomResource {
     reason = registerOutput<String>('reason');
     state = registerOutput<String>('state');
     suppressionAlertsScope = registerOutput<SuppressionAlertsScopeResponse?>('suppressionAlertsScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SuppressionAlertsScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

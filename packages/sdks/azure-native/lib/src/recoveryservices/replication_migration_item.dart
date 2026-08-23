@@ -6,7 +6,7 @@ import 'replication_migration_item_args.dart';
 ///
 /// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01, 2026-01-01, 2026-02-01, 2026-03-31-preview, 2026-05-01, 2026-05-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -102,6 +102,42 @@ import 'replication_migration_item_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_recoveryservices_replicationmigrationitem" "replicationMigrationItem" {
+///   fabric_name         = "vmwarefabric1"
+///   migration_item_name = "virtualmachine1"
+///   properties = {
+///     policy_id = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.RecoveryServices/vaults/migrationvault/replicationPolicies/vmwarepolicy1"
+///     provider_specific_details = {
+///       data_mover_run_as_account_id = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/dataMoverRunAsAccount1"
+///       disks_to_include = [{
+///         "diskId"                         = "disk1"
+///         "isOSDisk"                       = "true"
+///         "logStorageAccountId"            = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Storage/storageAccounts/logStorageAccount1"
+///         "logStorageAccountSasSecretName" = "logStorageSas"
+///       }]
+///       instance_type              = "VMwareCbt"
+///       snapshot_run_as_account_id = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/snapshotRunAsAccount1"
+///       target_network_id          = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworks/virtualNetwork1"
+///       target_resource_group_id   = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1"
+///       vmware_machine_id          = "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/machines/virtualmachine1"
+///     }
+///   }
+///   protection_container_name = "vmwareContainer1"
+///   resource_group_name       = "resourcegroup1"
+///   resource_name             = "migrationvault"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +148,8 @@ import 'replication_migration_item_args.dart';
 /// import com.pulumi.azurenative.recoveryservices.ReplicationMigrationItemArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.EnableMigrationInputPropertiesArgs;
 /// import com.pulumi.azurenative.recoveryservices.inputs.VMwareCbtEnableMigrationInputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,12 +168,12 @@ import 'replication_migration_item_args.dart';
 ///                 .policyId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.RecoveryServices/vaults/migrationvault/replicationPolicies/vmwarepolicy1")
 ///                 .providerSpecificDetails(Map.ofEntries(
 ///                     Map.entry("dataMoverRunAsAccountId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/dataMoverRunAsAccount1"),
-///                     Map.entry("disksToInclude", VMwareCbtDiskInputArgs.builder()
+///                     Map.entry("disksToInclude", Arrays.asList(VMwareCbtDiskInputArgs.builder()
 ///                         .diskId("disk1")
 ///                         .isOSDisk("true")
 ///                         .logStorageAccountId("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Storage/storageAccounts/logStorageAccount1")
 ///                         .logStorageAccountSasSecretName("logStorageSas")
-///                         .build()),
+///                         .build())),
 ///                     Map.entry("instanceType", "VMwareCbt"),
 ///                     Map.entry("snapshotRunAsAccountId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.OffAzure/VMwareSites/vmwaresite1/runasaccounts/snapshotRunAsAccount1"),
 ///                     Map.entry("targetNetworkId", "/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.Network/virtualNetworks/virtualNetwork1"),

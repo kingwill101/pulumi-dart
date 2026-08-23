@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_args.dart';
 import 'hosting_environment_profile_response.dart';
+import 'system_data_response.dart';
 
 /// SSL certificate for an app.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-03-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-03-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -65,6 +66,25 @@ import 'hosting_environment_profile_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_certificate" "certificate" {
+///   host_names          = ["ServerCert"]
+///   location            = "East US"
+///   name                = "testc6282"
+///   password            = "<password>"
+///   resource_group_name = "testrg123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'hosting_environment_profile_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.web.Certificate;
 /// import com.pulumi.azurenative.web.CertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -171,35 +191,39 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String> issueDate;
   /// Certificate issuer.
   late final pulumi.Output<String> issuer;
-  /// Key Vault Csm resource Id.
+  /// Azure Key Vault Csm resource Id.
   late final pulumi.Output<String?> keyVaultId;
-  /// Key Vault secret name.
+  /// Azure Key Vault secret name.
   late final pulumi.Output<String?> keyVaultSecretName;
   /// Status of the Key Vault secret.
   late final pulumi.Output<String> keyVaultSecretStatus;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
+  /// Certificate password.
+  late final pulumi.Output<String?> password;
   /// Pfx blob.
   late final pulumi.Output<String?> pfxBlob;
   /// Public key hash.
   late final pulumi.Output<String> publicKeyHash;
   /// Self link.
   late final pulumi.Output<String> selfLink;
-  /// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+  /// Resource ID of the associated App Service plan.
   late final pulumi.Output<String?> serverFarmId;
   /// App name.
   late final pulumi.Output<String> siteName;
   /// Subject name of the certificate.
   late final pulumi.Output<String> subjectName;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Certificate thumbprint.
   late final pulumi.Output<String> thumbprint;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Is the certificate valid?.
   late final pulumi.Output<bool> valid;
@@ -234,12 +258,14 @@ class Certificate extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password');
     pfxBlob = registerOutput<String?>('pfxBlob');
     publicKeyHash = registerOutput<String>('publicKeyHash');
     selfLink = registerOutput<String>('selfLink');
     serverFarmId = registerOutput<String?>('serverFarmId');
     siteName = registerOutput<String>('siteName');
     subjectName = registerOutput<String>('subjectName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');

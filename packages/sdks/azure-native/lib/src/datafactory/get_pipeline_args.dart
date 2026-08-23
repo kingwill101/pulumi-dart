@@ -11,13 +11,13 @@ class GetPipelineArgs {
   final pulumi.Input<String> factoryName;
   /// The pipeline name.
   final pulumi.Input<String> pipelineName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPipelineArgs].
   /// [factoryName] The factory name.
   /// [pipelineName] The pipeline name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetPipelineArgs({
     required this.factoryName,
     required this.pipelineName,
@@ -40,4 +40,3 @@ class GetPipelineArgs {
     );
   }
 }
-

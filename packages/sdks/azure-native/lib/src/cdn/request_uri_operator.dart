@@ -23,4 +23,3 @@ enum RequestUriOperator {
     throw ArgumentError('Unknown RequestUriOperator value: $value');
   }
 }
-

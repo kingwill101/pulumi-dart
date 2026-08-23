@@ -1,10 +1,10 @@
 /// Represents a reviewer's decision for a given review
 enum AccessReviewResult {
-  valueApprove("Approve"),
-  valueDeny("Deny"),
-  valueNotReviewed("NotReviewed"),
-  valueDontKnow("DontKnow"),
-  valueNotNotified("NotNotified");
+  approve("Approve"),
+  deny("Deny"),
+  notReviewed("NotReviewed"),
+  dontKnow("DontKnow"),
+  notNotified("NotNotified");
 
   const AccessReviewResult(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum AccessReviewResult {
     throw ArgumentError('Unknown AccessReviewResult value: $value');
   }
 }
-

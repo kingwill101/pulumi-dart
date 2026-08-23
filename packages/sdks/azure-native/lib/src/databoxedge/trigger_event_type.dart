@@ -15,4 +15,3 @@ enum TriggerEventType {
     throw ArgumentError('Unknown TriggerEventType value: $value');
   }
 }
-

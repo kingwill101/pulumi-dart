@@ -1,6 +1,6 @@
 /// The authentication type
 enum AuthenticationType {
-  valueAccessToken("AccessToken");
+  accessToken("AccessToken");
 
   const AuthenticationType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum AuthenticationType {
     throw ArgumentError('Unknown AuthenticationType value: $value');
   }
 }
-

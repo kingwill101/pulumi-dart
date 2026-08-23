@@ -15,4 +15,3 @@ enum AutoLearnPrivateRangesMode {
     throw ArgumentError('Unknown AutoLearnPrivateRangesMode value: $value');
   }
 }
-

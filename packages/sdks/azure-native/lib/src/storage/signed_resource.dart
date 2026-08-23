@@ -17,4 +17,3 @@ enum SignedResource {
     throw ArgumentError('Unknown SignedResource value: $value');
   }
 }
-

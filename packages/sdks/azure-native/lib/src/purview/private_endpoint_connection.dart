@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_connection_args.dart';
 import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
-import 'proxy_resource_response_system_data.dart';
+import 'system_data_response.dart';
 
 /// A private endpoint connection class.
 ///
@@ -67,6 +67,27 @@ import 'proxy_resource_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_purview_privateendpointconnection" "privateEndpointConnection" {
+///   account_name                     = "account1"
+///   private_endpoint_connection_name = "privateEndpointConnection1"
+///   private_link_service_connection_state = {
+///     description = "Approved by johndoe@company.com"
+///     status      = "Approved"
+///   }
+///   resource_group_name = "SampleResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'proxy_resource_response_system_data.dart';
 /// import com.pulumi.azurenative.purview.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.purview.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.purview.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -162,7 +183,7 @@ import 'proxy_resource_response_system_data.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Gets or sets the name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The private endpoint information.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
@@ -170,9 +191,9 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
   late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?> privateLinkServiceConnectionState;
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<ProxyResourceResponseSystemData> systemData;
-  /// Gets or sets the type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [PrivateEndpointConnection].
@@ -194,7 +215,7 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse?>('privateLinkServiceConnectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<ProxyResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

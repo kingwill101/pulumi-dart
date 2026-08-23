@@ -15,4 +15,3 @@ enum AddressSpaceAggregationOption {
     throw ArgumentError('Unknown AddressSpaceAggregationOption value: $value');
   }
 }
-

@@ -10,7 +10,7 @@ import 'vm_managed_identity_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -167,6 +167,62 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   capacities = {
+///     "ClientConnections" = "65536"
+///   }
+///   cluster_name              = "myCluster"
+///   data_disk_size_gb         = 200
+///   data_disk_type            = "Premium_LRS"
+///   is_primary                = false
+///   is_stateless              = true
+///   multiple_placement_groups = true
+///   node_type_name            = "BE"
+///   placement_properties = {
+///     "HasSSD"       = "true"
+///     "NodeColor"    = "green"
+///     "SomeProperty" = "5"
+///   }
+///   resource_group_name = "resRg"
+///   vm_extensions {
+///     auto_upgrade_minor_version = true
+///     name                       = "Microsoft.Azure.Geneva.GenevaMonitoring"
+///     publisher                  = "Microsoft.Azure.Geneva"
+///     settings                   = {}
+///     type                       = "GenevaMonitoring"
+///     type_handler_version       = "2.0"
+///   }
+///   vm_image_offer     = "WindowsServer"
+///   vm_image_publisher = "MicrosoftWindowsServer"
+///   vm_image_sku       = "2016-Datacenter-Server-Core"
+///   vm_image_version   = "latest"
+///   vm_instance_count  = -1
+///   vm_managed_identity = {
+///     user_assigned_identities = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity2"]
+///   }
+///   vm_secrets {
+///     source_vault = {
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.KeyVault/vaults/myVault"
+///     }
+///     vault_certificates {
+///       certificate_store = "My"
+///       certificate_url   = "https://myVault.vault.azure.net:443/secrets/myCert/ef1a31d39e1f46bca33def54b6cda54c"
+///     }
+///   }
+///   vm_size = "Standard_DS3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -179,8 +235,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.azurenative.servicefabric.inputs.VmManagedIdentityArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VaultSecretGroupArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -753,6 +809,132 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   additional_data_disks {
+///     disk_letter  = "F"
+///     disk_size_gb = 256
+///     disk_type    = "StandardSSD_LRS"
+///     lun          = 1
+///   }
+///   additional_data_disks {
+///     disk_letter  = "G"
+///     disk_size_gb = 150
+///     disk_type    = "Premium_LRS"
+///     lun          = 2
+///   }
+///   additional_network_interface_configurations {
+///     dscp_configuration = {
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/dscpConfigurations/myDscpConfig"
+///     }
+///     enable_accelerated_networking = true
+///     ip_configurations {
+///       application_gateway_backend_address_pools {
+///         id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/applicationGateways/appgw-test/backendAddressPools/appgwBepoolTest"
+///       }
+///       load_balancer_backend_address_pools {
+///         id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/loadBalancers/test-LB/backendAddressPools/LoadBalancerBEAddressPool"
+///       }
+///       load_balancer_inbound_nat_pools {
+///         id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/loadBalancers/test-LB/inboundNatPools/LoadBalancerNATPool"
+///       }
+///       name                       = "ipconfig-1"
+///       private_ip_address_version = "IPv4"
+///       public_ip_address_configuration = {
+///         ip_tags = [{
+///           "ipTagType" = "RoutingPreference"
+///           "tag"       = "Internet"
+///         }]
+///         name                      = "publicip-1"
+///         public_ip_address_version = "IPv4"
+///       }
+///       subnet = {
+///         id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
+///       }
+///     }
+///     name = "nic-1"
+///   }
+///   capacities = {
+///     "ClientConnections" = "65536"
+///   }
+///   cluster_name                  = "myCluster"
+///   computer_name_prefix          = "BE"
+///   data_disk_letter              = "S"
+///   data_disk_size_gb             = 200
+///   data_disk_type                = "Premium_LRS"
+///   dscp_configuration_id         = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/dscpConfigurations/myDscpConfig"
+///   enable_accelerated_networking = true
+///   enable_encryption_at_host     = true
+///   enable_node_public_ip         = true
+///   enable_node_public_i_pv6      = true
+///   enable_over_provisioning      = false
+///   eviction_policy               = "Deallocate"
+///   frontend_configurations {
+///     application_gateway_backend_address_pool_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/applicationGateways/appgw-test/backendAddressPools/appgwBepoolTest"
+///     load_balancer_backend_address_pool_id       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/loadBalancers/test-LB/backendAddressPools/LoadBalancerBEAddressPool"
+///     load_balancer_inbound_nat_pool_id           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/loadBalancers/test-LB/inboundNatPools/LoadBalancerNATPool"
+///   }
+///   is_primary                = false
+///   is_spot_vm                = true
+///   is_stateless              = true
+///   multiple_placement_groups = true
+///   nat_gateway_id            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/natGateways/myNatGateway"
+///   node_type_name            = "BE-testResourceGroup-testRegion-test"
+///   placement_properties = {
+///     "HasSSD"       = "true"
+///     "NodeColor"    = "green"
+///     "SomeProperty" = "5"
+///   }
+///   resource_group_name              = "resRg"
+///   secure_boot_enabled              = true
+///   security_type                    = "TrustedLaunch"
+///   service_artifact_reference_id    = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Compute/galleries/myGallery/serviceArtifacts/myServiceArtifact/vmArtifactsProfiles/myVmArtifactProfile"
+///   spot_restore_timeout             = "PT30M"
+///   subnet_id                        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
+///   use_default_public_load_balancer = true
+///   use_ephemeral_os_disk            = true
+///   vm_extensions {
+///     auto_upgrade_minor_version = true
+///     enable_automatic_upgrade   = true
+///     force_update_tag           = "v.1.0"
+///     name                       = "Microsoft.Azure.Geneva.GenevaMonitoring"
+///     publisher                  = "Microsoft.Azure.Geneva"
+///     settings                   = {}
+///     setup_order                = ["BeforeSFRuntime"]
+///     type                       = "GenevaMonitoring"
+///     type_handler_version       = "2.0"
+///   }
+///   vm_image_offer     = "WindowsServer"
+///   vm_image_publisher = "MicrosoftWindowsServer"
+///   vm_image_sku       = "2016-Datacenter-Server-Core"
+///   vm_image_version   = "latest"
+///   vm_instance_count  = 10
+///   vm_managed_identity = {
+///     user_assigned_identities = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity2"]
+///   }
+///   vm_secrets {
+///     source_vault = {
+///       id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resRg/providers/Microsoft.KeyVault/vaults/myVault"
+///     }
+///     vault_certificates {
+///       certificate_store = "My"
+///       certificate_url   = "https://myVault.vault.azure.net:443/secrets/myCert/ef1a31d39e1f46bca33def54b6cda54c"
+///     }
+///   }
+///   vm_setup_actions = ["EnableContainers", "EnableHyperV"]
+///   vm_size          = "Standard_DS3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -768,8 +950,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.azurenative.servicefabric.inputs.VMSSExtensionArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VmManagedIdentityArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VaultSecretGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1330,6 +1512,31 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   cluster_name        = "myCluster"
+///   data_disk_size_gb   = 200
+///   is_primary          = false
+///   node_type_name      = "BE"
+///   resource_group_name = "resRg"
+///   vm_image_offer      = "WindowsServer"
+///   vm_image_publisher  = "MicrosoftWindowsServer"
+///   vm_image_sku        = "2016-Datacenter-Server-Core"
+///   vm_image_version    = "latest"
+///   vm_instance_count   = 10
+///   vm_size             = "Standard_D3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1338,8 +1545,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.NodeType;
 /// import com.pulumi.azurenative.servicefabric.NodeTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1519,6 +1726,42 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   cluster_name              = "myCluster"
+///   enable_encryption_at_host = true
+///   is_primary                = false
+///   is_stateless              = true
+///   multiple_placement_groups = true
+///   node_type_name            = "BE"
+///   resource_group_name       = "resRg"
+///   use_temp_data_disk        = true
+///   vm_extensions {
+///     auto_upgrade_minor_version = true
+///     name                       = "Microsoft.Azure.Geneva.GenevaMonitoring"
+///     publisher                  = "Microsoft.Azure.Geneva"
+///     settings                   = {}
+///     type                       = "GenevaMonitoring"
+///     type_handler_version       = "2.0"
+///   }
+///   vm_image_offer     = "WindowsServer"
+///   vm_image_publisher = "MicrosoftWindowsServer"
+///   vm_image_sku       = "2016-Datacenter-Server-Core"
+///   vm_image_version   = "latest"
+///   vm_instance_count  = 10
+///   vm_size            = "Standard_DS3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1528,8 +1771,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.azurenative.servicefabric.NodeType;
 /// import com.pulumi.azurenative.servicefabric.NodeTypeArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VMSSExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1719,6 +1962,28 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   cluster_name         = "myCluster"
+///   data_disk_size_gb    = 200
+///   is_primary           = false
+///   node_type_name       = "BE"
+///   resource_group_name  = "resRg"
+///   vm_image_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-custom-image/providers/Microsoft.Compute/galleries/myCustomImages/images/Win2019DC"
+///   vm_instance_count    = 10
+///   vm_size              = "Standard_D3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1727,8 +1992,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.NodeType;
 /// import com.pulumi.azurenative.servicefabric.NodeTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1883,6 +2148,36 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   capacities           = {}
+///   cluster_name         = "myCluster"
+///   data_disk_size_gb    = 200
+///   data_disk_type       = "StandardSSD_LRS"
+///   host_group_id        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testhostgroupRG/providers/Microsoft.Compute/hostGroups/testHostGroup"
+///   is_primary           = false
+///   node_type_name       = "BE"
+///   placement_properties = {}
+///   resource_group_name  = "resRg"
+///   vm_image_offer       = "WindowsServer"
+///   vm_image_publisher   = "MicrosoftWindowsServer"
+///   vm_image_sku         = "2019-Datacenter"
+///   vm_image_version     = "latest"
+///   vm_instance_count    = 10
+///   vm_size              = "Standard_D8s_v3"
+///   zones                = ["1"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1891,8 +2186,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.NodeType;
 /// import com.pulumi.azurenative.servicefabric.NodeTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2061,6 +2356,28 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   cluster_name               = "myCluster"
+///   data_disk_size_gb          = 200
+///   is_primary                 = false
+///   node_type_name             = "BE"
+///   resource_group_name        = "resRg"
+///   vm_instance_count          = 10
+///   vm_shared_gallery_image_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-custom-image/providers/Microsoft.Compute/sharedGalleries/35349201-a0b3-405e-8a23-9f1450984307-SFSHAREDGALLERY/images/TestNoProdContainerDImage/versions/latest"
+///   vm_size                    = "Standard_D3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2069,8 +2386,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.NodeType;
 /// import com.pulumi.azurenative.servicefabric.NodeTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2221,6 +2538,36 @@ import 'vm_managed_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_nodetype" "nodeType" {
+///   cluster_name        = "myCluster"
+///   data_disk_size_gb   = 200
+///   is_primary          = false
+///   node_type_name      = "BE"
+///   resource_group_name = "resRg"
+///   vm_image_offer      = "windows_2022_test"
+///   vm_image_plan = {
+///     name      = "win_2022_test_20_10_gen2"
+///     product   = "windows_2022_test"
+///     publisher = "testpublisher"
+///   }
+///   vm_image_publisher = "testpublisher"
+///   vm_image_sku       = "win_2022_test_20_10_gen2"
+///   vm_image_version   = "latest"
+///   vm_instance_count  = 10
+///   vm_size            = "Standard_D3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2230,8 +2577,8 @@ import 'vm_managed_identity_response.dart';
 /// import com.pulumi.azurenative.servicefabric.NodeType;
 /// import com.pulumi.azurenative.servicefabric.NodeTypeArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.VmImagePlanArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

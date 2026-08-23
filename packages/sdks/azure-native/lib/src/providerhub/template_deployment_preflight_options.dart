@@ -18,4 +18,3 @@ enum TemplateDeploymentPreflightOptions {
     throw ArgumentError('Unknown TemplateDeploymentPreflightOptions value: $value');
   }
 }
-

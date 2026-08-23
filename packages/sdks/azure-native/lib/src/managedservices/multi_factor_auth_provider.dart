@@ -15,4 +15,3 @@ enum MultiFactorAuthProvider {
     throw ArgumentError('Unknown MultiFactorAuthProvider value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum PublicIPAddressType {
     throw ArgumentError('Unknown PublicIPAddressType value: $value');
   }
 }
-

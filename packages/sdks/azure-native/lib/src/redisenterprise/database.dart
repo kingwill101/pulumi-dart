@@ -6,9 +6,9 @@ import 'system_data_response.dart';
 
 /// Describes a database on the Redis Enterprise cluster
 ///
-/// Uses Azure REST API version 2025-05-01-preview.
+/// Uses Azure REST API version 2025-07-01.
 ///
-/// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-07-01, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-05-01-preview, 2025-08-01-preview, 2026-02-01-preview, 2026-05-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -109,6 +109,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redisenterprise_database" "database" {
+///   access_keys_authentication = "Enabled"
+///   client_protocol            = "Encrypted"
+///   cluster_name               = "cache1"
+///   clustering_policy          = "EnterpriseCluster"
+///   database_name              = "default"
+///   defer_upgrade              = "NotDeferred"
+///   eviction_policy            = "AllKeysLRU"
+///   modules {
+///     args = "ERROR_RATE 0.00 INITIAL_SIZE 400"
+///     name = "RedisBloom"
+///   }
+///   modules {
+///     args = "RETENTION_POLICY 20"
+///     name = "RedisTimeSeries"
+///   }
+///   modules {
+///     name = "RediSearch"
+///   }
+///   persistence = {
+///     aof_enabled   = true
+///     aof_frequency = "1s"
+///   }
+///   port                = 10000
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +157,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redisenterprise.DatabaseArgs;
 /// import com.pulumi.azurenative.redisenterprise.inputs.ModuleArgs;
 /// import com.pulumi.azurenative.redisenterprise.inputs.PersistenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,6 +353,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redisenterprise_database" "database" {
+///   client_protocol     = "Encrypted"
+///   cluster_name        = "cache1"
+///   clustering_policy   = "NoCluster"
+///   database_name       = "default"
+///   eviction_policy     = "NoEviction"
+///   port                = 10000
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -323,8 +382,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.redisenterprise.Database;
 /// import com.pulumi.azurenative.redisenterprise.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -480,6 +539,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redisenterprise_database" "database" {
+///   access_keys_authentication = "Enabled"
+///   client_protocol            = "Encrypted"
+///   cluster_name               = "cache1"
+///   clustering_policy          = "EnterpriseCluster"
+///   database_name              = "default"
+///   eviction_policy            = "NoEviction"
+///   geo_replication = {
+///     group_nickname = "groupName"
+///     linked_databases = [{
+///       "id" = "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"
+///       }, {
+///       "id" = "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8e/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default"
+///     }]
+///   }
+///   port                = 10000
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -489,8 +578,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redisenterprise.Database;
 /// import com.pulumi.azurenative.redisenterprise.DatabaseArgs;
 /// import com.pulumi.azurenative.redisenterprise.inputs.DatabasePropertiesGeoReplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

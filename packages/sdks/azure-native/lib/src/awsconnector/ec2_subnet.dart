@@ -157,6 +157,66 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2subnet" "ec2Subnet" {
+///   location = "zlyeymkfsbtninhfrnvrhxprr"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "swrduvxfquidiycxlrijjixfbwb"
+///     aws_account_id = "mmlzefobqbimxcbqwrkitlgfu"
+///     aws_properties = {
+///       assign_ipv6_address_on_creation = true
+///       availability_zone               = "forrknmiozum"
+///       availability_zone_id            = "gbjfdurjqxgejgwo"
+///       cidr_block                      = "sisksglodnipqskrsfsvkpcrrcy"
+///       enable_dns64                    = true
+///       enable_lni_at_device_index      = 1
+///       ipv4_ipam_pool_id               = "jdpbqiv"
+///       ipv4_netmask_length             = 18
+///       ipv6_cidr_block                 = "ayzvyvftxekjogtumuln"
+///       ipv6_cidr_blocks                = ["amuwewdpaadfixhakcdaqrjzlskguz"]
+///       ipv6_ipam_pool_id               = "lenenhwtwwet"
+///       ipv6_native                     = true
+///       ipv6_netmask_length             = 16
+///       map_public_ip_on_launch         = true
+///       network_acl_association_id      = "saevhbbbzksuojanmdoizrhyxo"
+///       outpost_arn                     = "qzuvnwxqc"
+///       private_dns_name_options_on_launch = {
+///         enable_resource_name_dns_aaaa_record = true
+///         enable_resource_name_dns_a_record    = true
+///         hostname_type                        = "cbuc"
+///       }
+///       subnet_id = "vxxbkvimjzmcfoxur"
+///       tags = [{
+///         "key"   = "sffepghmsdrubyiodc"
+///         "value" = "bfgzdnenxrviyueqzftrrvu"
+///       }]
+///       vpc_id = "aqqzsoyvmaxfyqddvthvxlhdti"
+///     }
+///     aws_region        = "huifdbndfvqyztfwfclpqlxupzib"
+///     aws_source_schema = "wyjdcprcwjbw"
+///     aws_tags = {
+///       "key3667" = "ydqfhlcswoexpb"
+///     }
+///     public_cloud_connectors_resource_id = "svkjfvphtfxopebxrcdvwyj"
+///     public_cloud_resource_name          = "p"
+///   }
+///   resource_group_name = "rgec2Subnet"
+///   tags = {
+///     "key8525" = "tpogejwctbas"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +228,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2SubnetPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2SubnetPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PrivateDnsNameOptionsOnLaunchModelPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

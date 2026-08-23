@@ -88,6 +88,38 @@ import 'migrate_agent_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_migrateagent" "migrateAgent" {
+///   agent_name             = "l"
+///   modernize_project_name = "rq1yec"
+///   properties = {
+///     authentication_identity = {
+///       aad_authority  = "isbicanvfefdaci"
+///       application_id = "dibfqwjrnzikktkwe"
+///       audience       = "yrfxszjhkczoyfi"
+///       object_id      = "xfhhdosr"
+///       tenant_id      = "uwceuawplakwjswbvllffbsz"
+///     }
+///     custom_properties = {}
+///     machine_id        = "sihoniqzqfz"
+///     machine_name      = "glhejppirkiamgxxro"
+///   }
+///   resource_group_name = "rgmigrateEngine"
+///   tags = {
+///     "key5560" = "jgffrfcgjrm"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +131,8 @@ import 'migrate_agent_model_response_system_data.dart';
 /// import com.pulumi.azurenative.migrate.inputs.MigrateAgentModelPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.IdentityModelArgs;
 /// import com.pulumi.azurenative.migrate.inputs.VMwareMigrateAgentModelCustomPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,6 +292,23 @@ import 'migrate_agent_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_migrateagent" "migrateAgent" {
+///   agent_name             = "e85v"
+///   modernize_project_name = "l77ak"
+///   resource_group_name    = "rgmigrateEngine"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -268,8 +317,8 @@ import 'migrate_agent_model_response_system_data.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.migrate.MigrateAgent;
 /// import com.pulumi.azurenative.migrate.MigrateAgentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -20,4 +20,4 @@ export 'networkfunction/ingestion_sources_properties_format_response.dart';
 export 'networkfunction/ingestion_type.dart';
 export 'networkfunction/resource_reference_response.dart';
 export 'networkfunction/source_type.dart';
-export 'networkfunction/tracked_resource_response_system_data.dart';
+export 'networkfunction/system_data_response.dart';

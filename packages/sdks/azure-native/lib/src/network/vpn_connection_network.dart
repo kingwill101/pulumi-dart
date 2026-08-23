@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'routing_configuration_response.dart';
+import 'routing_configuration_vpn_connection_response.dart';
 import 'sub_resource_response.dart';
 import 'vpn_connection_args.dart';
 
@@ -7,7 +7,7 @@ import 'vpn_connection_args.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -109,7 +109,7 @@ import 'vpn_connection_args.dart';
 /// 				Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"),
 /// 			},
 /// 			ResourceGroupName: pulumi.String("rg1"),
-/// 			RoutingConfiguration: &network.RoutingConfigurationArgs{
+/// 			RoutingConfiguration: &network.RoutingConfigurationTypeArgs{
 /// 				AssociatedRouteTable: &network.SubResourceArgs{
 /// 					Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"),
 /// 				},
@@ -161,6 +161,58 @@ import 'vpn_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_vpnconnection" "vpnConnection" {
+///   connection_name = "vpnConnection1"
+///   gateway_name    = "gateway1"
+///   remote_vpn_site = {
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"
+///   }
+///   resource_group_name = "rg1"
+///   routing_configuration = {
+///     associated_route_table = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+///     }
+///     inbound_route_map = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+///     }
+///     outbound_route_map = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+///     }
+///     propagated_route_tables = {
+///       ids = [{
+///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+///         }, {
+///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"
+///         }, {
+///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"
+///       }]
+///       labels = ["label1", "label2"]
+///     }
+///   }
+///   vpn_link_connections {
+///     connection_bandwidth               = 200
+///     name                               = "Connection-Link1"
+///     shared_key                         = "key"
+///     use_policy_based_traffic_selectors = false
+///     vpn_connection_protocol_type       = "IKEv2"
+///     vpn_link_connection_mode           = "Default"
+///     vpn_site_link = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1/vpnSiteLinks/siteLink1"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +225,8 @@ import 'vpn_connection_args.dart';
 /// import com.pulumi.azurenative.network.inputs.RoutingConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.PropagatedRouteTableArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnSiteLinkConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,7 +477,7 @@ class VpnConnectionNetwork extends pulumi.CustomResource {
   /// Id of the connected vpn site.
   late final pulumi.Output<SubResourceResponse?> remoteVpnSite;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  late final pulumi.Output<RoutingConfigurationResponse?> routingConfiguration;
+  late final pulumi.Output<RoutingConfigurationVpnConnectionResponse?> routingConfiguration;
   /// Routing weight for vpn connection.
   late final pulumi.Output<int?> routingWeight;
   /// SharedKey for the vpn connection.
@@ -469,7 +521,7 @@ class VpnConnectionNetwork extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     provisioningState = registerOutput<String>('provisioningState');
     remoteVpnSite = registerOutput<SubResourceResponse?>('remoteVpnSite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    routingConfiguration = registerOutput<RoutingConfigurationResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingConfiguration = registerOutput<RoutingConfigurationVpnConnectionResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationVpnConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     routingWeight = registerOutput<int?>('routingWeight');
     sharedKey = registerOutput<String?>('sharedKey');
     trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>('trafficSelectorPolicies');

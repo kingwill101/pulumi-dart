@@ -11,13 +11,13 @@ class ListWorkspaceConnectionSecretsArgs {
   final pulumi.Input<String> connectionName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [ListWorkspaceConnectionSecretsArgs].
   /// [connectionName] Friendly name of the workspace connection
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const ListWorkspaceConnectionSecretsArgs({
     required this.connectionName,
     required this.resourceGroupName,
@@ -40,4 +40,3 @@ class ListWorkspaceConnectionSecretsArgs {
     );
   }
 }
-

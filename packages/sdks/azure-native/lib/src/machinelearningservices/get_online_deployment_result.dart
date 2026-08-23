@@ -20,7 +20,7 @@ class GetOnlineDeploymentResult {
   /// The name of the resource
   final String name;
   /// [Required] Additional attributes of the entity.
-  final KubernetesOnlineDeploymentResponse onlineDeploymentProperties;
+  final KubernetesOnlineDeploymentResponse properties;
   /// Sku details required for ARM contract for Autoscaling.
   final SkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -37,7 +37,7 @@ class GetOnlineDeploymentResult {
   /// [kind] Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
-  /// [onlineDeploymentProperties] [Required] Additional attributes of the entity.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
@@ -49,7 +49,7 @@ class GetOnlineDeploymentResult {
     this.kind,
     required this.location,
     required this.name,
-    required this.onlineDeploymentProperties,
+    required this.properties,
     this.sku,
     required this.systemData,
     this.tags,
@@ -64,7 +64,7 @@ class GetOnlineDeploymentResult {
       'kind': ?kind,
       'location': location,
       'name': name,
-      'onlineDeploymentProperties': onlineDeploymentProperties.toMap(),
+      'properties': properties.toMap(),
       'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -80,7 +80,7 @@ class GetOnlineDeploymentResult {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      onlineDeploymentProperties: KubernetesOnlineDeploymentResponse.fromMap((map['onlineDeploymentProperties']! as Map).cast<String, dynamic>()),
+      properties: KubernetesOnlineDeploymentResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
@@ -88,4 +88,3 @@ class GetOnlineDeploymentResult {
     );
   }
 }
-

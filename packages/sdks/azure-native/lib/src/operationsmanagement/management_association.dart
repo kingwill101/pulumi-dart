@@ -67,6 +67,29 @@ import 'management_association_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationsmanagement_managementassociation" "managementAssociation" {
+///   location                    = "East US"
+///   management_association_name = "managementAssociation1"
+///   properties = {
+///     application_id = "/subscriptions/sub1/resourcegroups/rg1/providers/Microsoft.Appliance/Appliances/appliance1"
+///   }
+///   provider_name       = "providerName"
+///   resource_group_name = "rg1"
+///   resource_name       = "resourceName"
+///   resource_type       = "resourceType"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +99,8 @@ import 'management_association_properties_response.dart';
 /// import com.pulumi.azurenative.operationsmanagement.ManagementAssociation;
 /// import com.pulumi.azurenative.operationsmanagement.ManagementAssociationArgs;
 /// import com.pulumi.azurenative.operationsmanagement.inputs.ManagementAssociationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -4,6 +4,7 @@ import 'artifact_deployment_status_properties_response.dart';
 import 'compute_vm_properties_response.dart';
 import 'gallery_image_reference_response.dart';
 import 'network_interface_properties_response.dart';
+import 'system_data_response.dart';
 import 'virtual_machine_args.dart';
 
 /// A virtual machine.
@@ -98,6 +99,42 @@ import 'virtual_machine_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_virtualmachine" "virtualMachine" {
+///   allow_claim                = true
+///   disallow_public_ip_address = true
+///   gallery_image_reference = {
+///     offer     = "UbuntuServer"
+///     os_type   = "Linux"
+///     publisher = "Canonical"
+///     sku       = "16.04-LTS"
+///     version   = "Latest"
+///   }
+///   lab_name               = "{labName}"
+///   lab_subnet_name        = "{virtualNetworkName}Subnet"
+///   lab_virtual_network_id = "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/virtualnetworks/{virtualNetworkName}"
+///   location               = "{location}"
+///   name                   = "{vmName}"
+///   password               = "{userPassword}"
+///   resource_group_name    = "resourceGroupName"
+///   size                   = "Standard_A2_v2"
+///   storage_type           = "Standard"
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+///   user_name = "{userName}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +144,8 @@ import 'virtual_machine_args.dart';
 /// import com.pulumi.azurenative.devtestlab.VirtualMachine;
 /// import com.pulumi.azurenative.devtestlab.VirtualMachineArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.GalleryImageReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,9 +327,9 @@ class VirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<String?> labVirtualNetworkId;
   /// Last known compute power state captured in DTL
   late final pulumi.Output<String> lastKnownPowerState;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The network interface properties.
   late final pulumi.Output<NetworkInterfacePropertiesResponse?> networkInterface;
@@ -318,9 +355,11 @@ class VirtualMachine extends pulumi.CustomResource {
   late final pulumi.Output<String?> sshKey;
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
   late final pulumi.Output<String?> storageType;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -378,6 +417,7 @@ class VirtualMachine extends pulumi.CustomResource {
     size = registerOutput<String?>('size');
     sshKey = registerOutput<String?>('sshKey');
     storageType = registerOutput<String?>('storageType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

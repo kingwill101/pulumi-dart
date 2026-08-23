@@ -15,4 +15,3 @@ enum InventoryConfigurationIncludedObjectVersions {
     throw ArgumentError('Unknown InventoryConfigurationIncludedObjectVersions value: $value');
   }
 }
-

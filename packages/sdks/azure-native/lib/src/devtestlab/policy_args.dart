@@ -19,7 +19,7 @@ class PolicyArgs {
   final pulumi.Input<String> labName;
   /// The location of the resource.
   final pulumi.Input<String>? location;
-  /// The name of the Schedule
+  /// The name of the Policy
   final pulumi.Input<String>? name;
   /// policysets
   final pulumi.Input<String> policySetName;
@@ -39,7 +39,7 @@ class PolicyArgs {
   /// [factName] The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
   /// [labName] labs
   /// [location] The location of the resource.
-  /// [name] The name of the Schedule
+  /// [name] The name of the Policy
   /// [policySetName] policysets
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [status] The status of the policy.
@@ -94,4 +94,3 @@ class PolicyArgs {
     );
   }
 }
-

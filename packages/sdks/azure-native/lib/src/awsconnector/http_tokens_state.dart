@@ -15,4 +15,3 @@ enum HttpTokensState {
     throw ArgumentError('Unknown HttpTokensState value: $value');
   }
 }
-

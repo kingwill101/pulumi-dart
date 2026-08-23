@@ -34,4 +34,3 @@ class GetPrivateLinkServicesForM365ComplianceCenterArgs {
     );
   }
 }
-

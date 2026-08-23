@@ -16,7 +16,7 @@ class HybridRunbookWorkerGroupArgs {
   final pulumi.Input<String>? hybridRunbookWorkerGroupName;
   /// Gets or sets the name of the resource.
   final pulumi.Input<String>? name;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [HybridRunbookWorkerGroupArgs].
@@ -24,7 +24,7 @@ class HybridRunbookWorkerGroupArgs {
   /// [credential] Sets the credential of a worker group.
   /// [hybridRunbookWorkerGroupName] The hybrid runbook worker group name
   /// [name] Gets or sets the name of the resource.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const HybridRunbookWorkerGroupArgs({
     required this.automationAccountName,
     this.credential,
@@ -53,4 +53,3 @@ class HybridRunbookWorkerGroupArgs {
     );
   }
 }
-

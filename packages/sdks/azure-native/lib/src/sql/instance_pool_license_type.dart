@@ -15,4 +15,3 @@ enum InstancePoolLicenseType {
     throw ArgumentError('Unknown InstancePoolLicenseType value: $value');
   }
 }
-

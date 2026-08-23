@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_education_get_student_args_doc}
 class GetStudentArgs {
-  /// The ID that uniquely identifies a billing account.
+  /// The name of the billing account.
   final pulumi.Input<String> billingAccountName;
-  /// The ID that uniquely identifies a billing profile.
+  /// The name of the billing profile.
   final pulumi.Input<String> billingProfileName;
-  /// The ID that uniquely identifies an invoice section.
+  /// The name of the invoice section.
   final pulumi.Input<String> invoiceSectionName;
-  /// Student alias.
+  /// The student alias.
   final pulumi.Input<String> studentAlias;
 
   /// Creates a new [GetStudentArgs].
-  /// [billingAccountName] The ID that uniquely identifies a billing account.
-  /// [billingProfileName] The ID that uniquely identifies a billing profile.
-  /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
-  /// [studentAlias] Student alias.
+  /// [billingAccountName] The name of the billing account.
+  /// [billingProfileName] The name of the billing profile.
+  /// [invoiceSectionName] The name of the invoice section.
+  /// [studentAlias] The student alias.
   const GetStudentArgs({
     required this.billingAccountName,
     required this.billingProfileName,
@@ -46,4 +46,3 @@ class GetStudentArgs {
     );
   }
 }
-

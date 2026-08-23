@@ -1,6 +1,6 @@
 /// The scanning mode for the VM scan.
 enum ScanningMode {
-  valueDefault("Default");
+  default_("Default");
 
   const ScanningMode(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ScanningMode {
     throw ArgumentError('Unknown ScanningMode value: $value');
   }
 }
-

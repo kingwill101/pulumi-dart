@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'commitment.dart';
 import 'credit_breakdown_item.dart';
 import 'credit_policies.dart';
+import 'credit_reason.dart';
 import 'managed_service_identity.dart';
 import 'plan.dart';
 import 'sku.dart';
@@ -37,6 +38,8 @@ class CreditArgs {
   final pulumi.Input<CreditPolicies>? policies;
   /// Product UPN for the credit type
   final pulumi.Input<String>? productCode;
+  /// The reason for the credit. Not required if not applicable.
+  final pulumi.Input<CreditReason>? reason;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
@@ -65,6 +68,7 @@ class CreditArgs {
   /// [plan] Plan for the resource.
   /// [policies] Credit breakdown item representing a milestone, line-item, or no-charge service
   /// [productCode] Product UPN for the credit type
+  /// [reason] The reason for the credit. Not required if not applicable.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceId] Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
   /// [sku] The resource model definition representing SKU
@@ -85,6 +89,7 @@ class CreditArgs {
     this.plan,
     this.policies,
     this.productCode,
+    this.reason,
     required this.resourceGroupName,
     this.resourceId,
     this.sku,
@@ -108,6 +113,7 @@ class CreditArgs {
       'plan': ?pulumi.Input.mapOptionalInputValue<Plan, Map<String, dynamic>>(plan, (value) => value.toMap()),
       'policies': ?pulumi.Input.mapOptionalInputValue<CreditPolicies, Map<String, dynamic>>(policies, (value) => value.toMap()),
       'productCode': ?productCode,
+      'reason': ?pulumi.Input.mapOptionalInputValue<CreditReason, Map<String, dynamic>>(reason, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceId': ?resourceId,
       'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
@@ -132,6 +138,7 @@ class CreditArgs {
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Plan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CreditPolicies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CreditReason.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -142,4 +149,3 @@ class CreditArgs {
     );
   }
 }
-

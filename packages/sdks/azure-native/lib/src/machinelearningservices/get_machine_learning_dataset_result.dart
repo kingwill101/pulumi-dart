@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'dataset_response.dart';
-import 'identity_response.dart';
-import 'sku_response.dart';
+import 'identity_machine_learning_dataset_response.dart';
+import 'sku_machine_learning_dataset_response.dart';
 
 /// Result data returned by getMachineLearningDataset.
 class GetMachineLearningDatasetResult {
@@ -11,7 +11,7 @@ class GetMachineLearningDatasetResult {
   /// Specifies the resource ID.
   final String id;
   /// The identity of the resource.
-  final IdentityResponse? identity;
+  final IdentityMachineLearningDatasetResponse? identity;
   /// Specifies the location of the resource.
   final String? location;
   /// Specifies the name of the resource.
@@ -19,7 +19,7 @@ class GetMachineLearningDatasetResult {
   /// Dataset properties
   final DatasetResponse properties;
   /// The sku of the workspace.
-  final SkuResponse? sku;
+  final SkuMachineLearningDatasetResponse? sku;
   /// Contains resource tags defined as key/value pairs.
   final Map<String, String>? tags;
   /// Specifies the type of the resource.
@@ -65,14 +65,13 @@ class GetMachineLearningDatasetResult {
     return GetMachineLearningDatasetResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       properties: DatasetResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

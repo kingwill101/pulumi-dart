@@ -67,6 +67,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotcentral_privateendpointconnection" "privateEndpointConnection" {
+///   private_endpoint_connection_name = "myIoTCentralAppEndpoint"
+///   private_link_service_connection_state = {
+///     actions_required = "None"
+///     description      = "Auto-approved"
+///     status           = "Approved"
+///   }
+///   resource_group_name = "resRg"
+///   resource_name       = "myIoTCentralApp"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +98,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotcentral.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.iotcentral.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.iotcentral.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

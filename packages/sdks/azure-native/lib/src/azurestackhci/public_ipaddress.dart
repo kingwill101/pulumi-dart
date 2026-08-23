@@ -8,6 +8,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -67,6 +69,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_publicipaddress" "publicIPAddress" {
+///   location = "eastus"
+///   properties = {
+///     ip_address                = "10.100.100.4"
+///     ip_allocation_scope       = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.AzureStackHCI/logicalNetworks/lnet1"
+///     public_ip_address_version = "IPv4"
+///   }
+///   public_ip_address_name = "public-ip1"
+///   resource_group_name    = "testrg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.PublicIPAddress;
 /// import com.pulumi.azurenative.azurestackhci.PublicIPAddressArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.PublicIPAddressPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

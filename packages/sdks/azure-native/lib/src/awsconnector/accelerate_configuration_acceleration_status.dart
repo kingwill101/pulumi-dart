@@ -15,4 +15,3 @@ enum AccelerateConfigurationAccelerationStatus {
     throw ArgumentError('Unknown AccelerateConfigurationAccelerationStatus value: $value');
   }
 }
-

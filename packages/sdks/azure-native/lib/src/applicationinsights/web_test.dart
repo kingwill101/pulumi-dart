@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_test_args.dart';
-import 'web_test_properties_response_configuration.dart';
-import 'web_test_properties_response_request.dart';
-import 'web_test_properties_response_validation_rules.dart';
+import 'web_test_properties_configuration_response.dart';
+import 'web_test_properties_request_response.dart';
+import 'web_test_properties_validation_rules_response.dart';
 
 /// An Application Insights WebTest definition.
 ///
@@ -93,6 +93,37 @@ import 'web_test_properties_response_validation_rules.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_webtest" "webTest" {
+///   configuration = {
+///     web_test = "<WebTest Name=\"my-webtest\" Id=\"678ddf96-1ab8-44c8-9274-123456789abc\" Enabled=\"True\" CssProjectStructure=\"\" CssIteration=\"\" Timeout=\"120\" WorkItemIds=\"\" xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\" Description=\"\" CredentialUserName=\"\" CredentialPassword=\"\" PreAuthenticate=\"True\" Proxy=\"default\" StopOnError=\"False\" RecordedResultFile=\"\" ResultsLocale=\"\" ><Items><Request Method=\"GET\" Guid=\"a4162485-9114-fcfc-e086-123456789abc\" Version=\"1.1\" Url=\"http://my-component.azurewebsites.net\" ThinkTime=\"0\" Timeout=\"120\" ParseDependentRequests=\"True\" FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\" ResponseTimeGoal=\"0\" Encoding=\"utf-8\" ExpectedHttpStatusCode=\"200\" ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" /></Items></WebTest>"
+///   }
+///   description = "Ping web test alert for mytestwebapp"
+///   enabled     = true
+///   frequency   = 900
+///   kind        = "ping"
+///   location    = "South Central US"
+///   locations {
+///     location = "us-fl-mia-edge"
+///   }
+///   resource_group_name  = "my-resource-group"
+///   retry_enabled        = true
+///   synthetic_monitor_id = "my-webtest-my-component"
+///   timeout              = 120
+///   web_test_kind        = "ping"
+///   web_test_name        = "my-webtest-my-component"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +134,8 @@ import 'web_test_properties_response_validation_rules.dart';
 /// import com.pulumi.azurenative.applicationinsights.WebTestArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestPropertiesConfigurationArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestGeolocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,6 +362,49 @@ import 'web_test_properties_response_validation_rules.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_webtest" "webTest" {
+///   description = "Ping web test alert for mytestwebapp"
+///   enabled     = true
+///   frequency   = 900
+///   location    = "South Central US"
+///   locations {
+///     location = "us-fl-mia-edge"
+///   }
+///   request = {
+///     headers = [{
+///       "headerFieldName"  = "Content-Language"
+///       "headerFieldValue" = "de-DE"
+///       }, {
+///       "headerFieldName"  = "Accept-Language"
+///       "headerFieldValue" = "de-DE"
+///     }]
+///     http_verb    = "POST"
+///     request_body = "SGVsbG8gd29ybGQ="
+///     request_url  = "https://bing.com"
+///   }
+///   resource_group_name  = "my-resource-group"
+///   retry_enabled        = true
+///   synthetic_monitor_id = "my-webtest-my-component"
+///   timeout              = 120
+///   validation_rules = {
+///     s_sl_cert_remaining_lifetime_check = 100
+///     s_sl_check                         = true
+///   }
+///   web_test_kind = "standard"
+///   web_test_name = "my-webtest-my-component"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -342,8 +416,8 @@ import 'web_test_properties_response_validation_rules.dart';
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestGeolocationArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestPropertiesRequestArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestPropertiesValidationRulesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -590,6 +664,37 @@ import 'web_test_properties_response_validation_rules.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_webtest" "webTest" {
+///   configuration = {
+///     web_test = "<WebTest Name=\"my-webtest\" Id=\"678ddf96-1ab8-44c8-9274-123456789abc\" Enabled=\"True\" CssProjectStructure=\"\" CssIteration=\"\" Timeout=\"30\" WorkItemIds=\"\" xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\" Description=\"\" CredentialUserName=\"\" CredentialPassword=\"\" PreAuthenticate=\"True\" Proxy=\"default\" StopOnError=\"False\" RecordedResultFile=\"\" ResultsLocale=\"\" ><Items><Request Method=\"GET\" Guid=\"a4162485-9114-fcfc-e086-123456789abc\" Version=\"1.1\" Url=\"http://my-component.azurewebsites.net\" ThinkTime=\"0\" Timeout=\"30\" ParseDependentRequests=\"True\" FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\" ResponseTimeGoal=\"0\" Encoding=\"utf-8\" ExpectedHttpStatusCode=\"200\" ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" /></Items></WebTest>"
+///   }
+///   frequency = 600
+///   kind      = "ping"
+///   location  = "South Central US"
+///   locations {
+///     location = "us-fl-mia-edge"
+///   }
+///   locations {
+///     location = "apac-hk-hkn-azr"
+///   }
+///   resource_group_name  = "my-resource-group"
+///   synthetic_monitor_id = "my-webtest-my-component"
+///   timeout              = 30
+///   web_test_kind        = "ping"
+///   web_test_name        = "my-webtest-my-component"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -600,8 +705,8 @@ import 'web_test_properties_response_validation_rules.dart';
 /// import com.pulumi.azurenative.applicationinsights.WebTestArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestPropertiesConfigurationArgs;
 /// import com.pulumi.azurenative.applicationinsights.inputs.WebTestGeolocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -729,7 +834,7 @@ class WebTest extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// An XML configuration specification for a WebTest.
-  late final pulumi.Output<WebTestPropertiesResponseConfiguration?> configuration;
+  late final pulumi.Output<WebTestPropertiesConfigurationResponse?> configuration;
   /// User defined description for this WebTest.
   late final pulumi.Output<String?> description;
   /// Is the test actively being monitored.
@@ -747,7 +852,7 @@ class WebTest extends pulumi.CustomResource {
   /// Current state of this component, whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
   late final pulumi.Output<String> provisioningState;
   /// The collection of request properties
-  late final pulumi.Output<WebTestPropertiesResponseRequest?> request;
+  late final pulumi.Output<WebTestPropertiesRequestResponse?> request;
   /// Allow for retries should this WebTest fail.
   late final pulumi.Output<bool?> retryEnabled;
   /// Unique ID of this WebTest. This is typically the same value as the Name field.
@@ -759,7 +864,7 @@ class WebTest extends pulumi.CustomResource {
   /// Azure resource type
   late final pulumi.Output<String> type;
   /// The collection of validation rule properties
-  late final pulumi.Output<WebTestPropertiesResponseValidationRules?> validationRules;
+  late final pulumi.Output<WebTestPropertiesValidationRulesResponse?> validationRules;
   /// The kind of web test this is, valid choices are ping, multistep and standard.
   late final pulumi.Output<String> webTestKind;
   /// User defined name if this WebTest.
@@ -780,7 +885,7 @@ class WebTest extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configuration = registerOutput<WebTestPropertiesResponseConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesResponseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configuration = registerOutput<WebTestPropertiesConfigurationResponse?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<int?>('frequency');
@@ -789,13 +894,13 @@ class WebTest extends pulumi.CustomResource {
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    request = registerOutput<WebTestPropertiesResponseRequest?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesResponseRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    request = registerOutput<WebTestPropertiesRequestResponse?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<int?>('timeout');
     type = registerOutput<String>('type');
-    validationRules = registerOutput<WebTestPropertiesResponseValidationRules?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesResponseValidationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationRules = registerOutput<WebTestPropertiesValidationRulesResponse?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesValidationRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webTestKind = registerOutput<String>('webTestKind');
     webTestName = registerOutput<String>('webTestName');
   }

@@ -1,7 +1,7 @@
 /// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
 enum ServiceCorrelationScheme {
-  alignedAffinity("AlignedAffinity"),
-  nonAlignedAffinity("NonAlignedAffinity");
+  valueAlignedAffinity("AlignedAffinity"),
+  valueNonAlignedAffinity("NonAlignedAffinity");
 
   const ServiceCorrelationScheme(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ServiceCorrelationScheme {
     throw ArgumentError('Unknown ServiceCorrelationScheme value: $value');
   }
 }
-

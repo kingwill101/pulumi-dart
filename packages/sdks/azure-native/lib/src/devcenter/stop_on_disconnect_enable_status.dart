@@ -15,4 +15,3 @@ enum StopOnDisconnectEnableStatus {
     throw ArgumentError('Unknown StopOnDisconnectEnableStatus value: $value');
   }
 }
-

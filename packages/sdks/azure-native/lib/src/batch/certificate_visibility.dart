@@ -1,3 +1,4 @@
+/// The visibility of the certificate.
 enum CertificateVisibility {
   startTask("StartTask"),
   task("Task"),
@@ -15,4 +16,3 @@ enum CertificateVisibility {
     throw ArgumentError('Unknown CertificateVisibility value: $value');
   }
 }
-

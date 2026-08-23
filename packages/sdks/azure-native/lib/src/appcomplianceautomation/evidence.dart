@@ -60,6 +60,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appcomplianceautomation_evidence" "evidence" {
+///   control_id        = "Operational_Security_10"
+///   evidence_name     = "evidence1"
+///   evidence_type     = "File"
+///   file_path         = "/test-byos/evidence1.png"
+///   report_name       = "testReportName"
+///   responsibility_id = "authorized_ip_ranges_should_be_defined_on_kubernetes_services"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +88,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.appcomplianceautomation.Evidence;
 /// import com.pulumi.azurenative.appcomplianceautomation.EvidenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

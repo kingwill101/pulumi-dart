@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'azure_resource_manager_common_types_extended_location_response.dart';
+import 'extended_location_response.dart';
 import 'instance_properties_response.dart';
 import 'system_data_response.dart';
 
@@ -11,7 +11,7 @@ class GetInstanceResult {
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   final String eTag;
   /// The complex type of the extended location.
-  final AzureResourceManagerCommonTypesExtendedLocationResponse? extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The name of the resource
@@ -60,7 +60,7 @@ class GetInstanceResult {
     return GetInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
-      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       properties: InstancePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
@@ -69,4 +69,3 @@ class GetInstanceResult {
     );
   }
 }
-

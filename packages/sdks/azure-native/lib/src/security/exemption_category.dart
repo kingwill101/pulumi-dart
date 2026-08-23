@@ -1,7 +1,7 @@
 /// Exemption category of this assignment
 enum ExemptionCategory {
-  valueWaiver("waiver"),
-  valueMitigated("mitigated");
+  waiver("waiver"),
+  mitigated("mitigated");
 
   const ExemptionCategory(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ExemptionCategory {
     throw ArgumentError('Unknown ExemptionCategory value: $value');
   }
 }
-

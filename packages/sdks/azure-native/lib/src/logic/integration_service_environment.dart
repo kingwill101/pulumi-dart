@@ -136,6 +136,52 @@ import 'managed_service_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationserviceenvironment" "integrationServiceEnvironment" {
+///   integration_service_environment_name = "testIntegrationServiceEnvironment"
+///   location                             = "brazilsouth"
+///   properties = {
+///     encryption_configuration = {
+///       encryption_key_reference = {
+///         key_name = "testKeyName"
+///         key_vault = {
+///           id = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.KeyVault/vaults/testKeyVault"
+///         }
+///         key_version = "13b261d30b984753869902d7f47f4d55"
+///       }
+///     }
+///     network_configuration = {
+///       access_endpoint = {
+///         type = "Internal"
+///       }
+///       subnets = [{
+///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s1"
+///         }, {
+///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s2"
+///         }, {
+///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s3"
+///         }, {
+///         "id" = "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/testResourceGroup/providers/Microsoft.Network/virtualNetworks/testVNET/subnets/s4"
+///       }]
+///     }
+///   }
+///   resource_group = "testResourceGroup"
+///   sku = {
+///     capacity = 2
+///     name     = "Premium"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +197,8 @@ import 'managed_service_identity_response.dart';
 /// import com.pulumi.azurenative.logic.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.logic.inputs.IntegrationServiceEnvironmentAccessEndpointArgs;
 /// import com.pulumi.azurenative.logic.inputs.IntegrationServiceEnvironmentSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

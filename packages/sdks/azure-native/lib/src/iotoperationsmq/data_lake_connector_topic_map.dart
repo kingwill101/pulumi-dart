@@ -117,6 +117,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_datalakeconnectortopicmap" "dataLakeConnectorTopicMap" {
+///   data_lake_connector_name = "E9gU89-1QnIG7-IP8qOQLV-"
+///   data_lake_connector_ref  = "zirczjfua"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   location = "wjmgeh"
+///   mapping = {
+///     allowed_latency_secs   = 25407
+///     client_id              = "gyjduryceozwqyjdrxhrtwuw"
+///     max_messages_per_batch = 1581641880
+///     message_payload_type   = "pwhpwzqlzlhdrozpqziipvjqrnipo"
+///     mqtt_source_topic      = "mtac"
+///     qos                    = 2
+///     table = {
+///       schema = [{
+///         "format"   = "boolean"
+///         "mapping"  = "lfnyjp"
+///         "name"     = "hejqncdsueoerueffbaqix"
+///         "optional" = true
+///       }]
+///       table_name = "qyvzigmefvxwyjqksofyrstn"
+///       table_path = "cyrkvxsjhbhwjegmhzyixchkdnxe"
+///     }
+///   }
+///   mq_name             = "rc-8Z--2m-MU"
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+///   topic_map_name      = "17-"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +171,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.DataLakeConnectorMapArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.DeltaTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,7 +275,7 @@ import 'system_data_response.dart';
 ///     mapping={
 ///         "allowed_latency_secs": 25407,
 ///         "client_id": "gyjduryceozwqyjdrxhrtwuw",
-///         "max_messages_per_batch": 1581641880,
+///         "max_messages_per_batch": float(1581641880),
 ///         "message_payload_type": "pwhpwzqlzlhdrozpqziipvjqrnipo",
 ///         "mqtt_source_topic": "mtac",
 ///         "qos": 2,

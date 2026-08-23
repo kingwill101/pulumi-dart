@@ -2,7 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notifications_source_alert_response.dart';
-import 'security_contact_properties_response_notifications_by_role.dart';
+import 'security_contact_properties_notifications_by_role_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getSecurityContact.
 class GetSecurityContactResult {
@@ -10,31 +11,34 @@ class GetSecurityContactResult {
   final String azureApiVersion;
   /// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
   final String? emails;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Indicates whether the security contact is enabled.
   final bool? isEnabled;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
-  final SecurityContactPropertiesResponseNotificationsByRole? notificationsByRole;
+  final SecurityContactPropertiesNotificationsByRoleResponse? notificationsByRole;
   /// A collection of sources types which evaluate the email notification.
   final List<NotificationsSourceAlertResponse>? notificationsSources;
   /// The security contact's phone number
   final String? phone;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetSecurityContactResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [emails] List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [isEnabled] Indicates whether the security contact is enabled.
-  /// [name] Resource name
+  /// [name] The name of the resource
   /// [notificationsByRole] Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
   /// [notificationsSources] A collection of sources types which evaluate the email notification.
   /// [phone] The security contact's phone number
-  /// [type] Resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSecurityContactResult({
     required this.azureApiVersion,
     this.emails,
@@ -44,6 +48,7 @@ class GetSecurityContactResult {
     this.notificationsByRole,
     this.notificationsSources,
     this.phone,
+    required this.systemData,
     required this.type,
   });
 
@@ -57,6 +62,7 @@ class GetSecurityContactResult {
       'notificationsByRole': ?notificationsByRole?.toMap(),
       'notificationsSources': ?(() { final guardedValue = notificationsSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<NotificationsSourceAlertResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'phone': ?phone,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -68,11 +74,11 @@ class GetSecurityContactResult {
       id: map['id'] as String,
       isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: map['name'] as String,
-      notificationsByRole: (() { final guardedValue = map['notificationsByRole']; if (guardedValue == null) return null; return SecurityContactPropertiesResponseNotificationsByRole.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      notificationsByRole: (() { final guardedValue = map['notificationsByRole']; if (guardedValue == null) return null; return SecurityContactPropertiesNotificationsByRoleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       notificationsSources: (() { final guardedValue = map['notificationsSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationsSourceAlertResponse>(guardedValue, (value) => NotificationsSourceAlertResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       phone: (() { final guardedValue = map['phone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

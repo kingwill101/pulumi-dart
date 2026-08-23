@@ -17,4 +17,3 @@ enum MetricId {
     throw ArgumentError('Unknown MetricId value: $value');
   }
 }
-

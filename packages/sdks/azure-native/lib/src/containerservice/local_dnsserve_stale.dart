@@ -16,4 +16,3 @@ enum LocalDNSServeStale {
     throw ArgumentError('Unknown LocalDNSServeStale value: $value');
   }
 }
-

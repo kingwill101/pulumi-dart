@@ -15,4 +15,3 @@ enum SsisMigrationOverwriteOption {
     throw ArgumentError('Unknown SsisMigrationOverwriteOption value: $value');
   }
 }
-

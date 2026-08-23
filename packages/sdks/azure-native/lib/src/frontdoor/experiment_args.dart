@@ -22,7 +22,7 @@ class ExperimentArgs {
   final pulumi.Input<String>? location;
   /// The Profile identifier associated with the Tenant and Partner
   final pulumi.Input<String> profileName;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
@@ -35,7 +35,7 @@ class ExperimentArgs {
   /// [experimentName] The Experiment identifier associated with the Experiment
   /// [location] Resource location.
   /// [profileName] The Profile identifier associated with the Tenant and Partner
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   const ExperimentArgs({
     this.description,
@@ -77,4 +77,3 @@ class ExperimentArgs {
     );
   }
 }
-

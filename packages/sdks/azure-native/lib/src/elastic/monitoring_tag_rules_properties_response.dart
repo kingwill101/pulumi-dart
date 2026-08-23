@@ -8,28 +8,27 @@ class MonitoringTagRulesPropertiesResponse {
   /// Rules for sending logs.
   final pulumi.Input<LogRulesResponse>? logRules;
   /// Provisioning state of the monitoring tag rules.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [MonitoringTagRulesPropertiesResponse].
   /// [logRules] Rules for sending logs.
   /// [provisioningState] Provisioning state of the monitoring tag rules.
   const MonitoringTagRulesPropertiesResponse({
     this.logRules,
-    this.provisioningState,
+    required this.provisioningState,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'logRules': ?pulumi.Input.mapOptionalInputValue<LogRulesResponse, Map<String, dynamic>>(logRules, (value) => value.toMap()),
-      'provisioningState': ?provisioningState,
+      'provisioningState': provisioningState,
     };
   }
 
   factory MonitoringTagRulesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringTagRulesPropertiesResponse(
       logRules: (() { final guardedValue = map['logRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );
   }
 }
-

@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPricingArgs {
   /// name of the pricing configuration
   final pulumi.Input<String> pricingName;
-  /// The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scopeId;
 
   /// Creates a new [GetPricingArgs].
   /// [pricingName] name of the pricing configuration
-  /// [scopeId] The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+  /// [scopeId] The fully qualified Azure Resource manager identifier of the resource.
   const GetPricingArgs({
     required this.pricingName,
     required this.scopeId,
@@ -34,4 +34,3 @@ class GetPricingArgs {
     );
   }
 }
-

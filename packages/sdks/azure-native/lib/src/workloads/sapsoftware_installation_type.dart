@@ -16,4 +16,3 @@ enum SAPSoftwareInstallationType {
     throw ArgumentError('Unknown SAPSoftwareInstallationType value: $value');
   }
 }
-

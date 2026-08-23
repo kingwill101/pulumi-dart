@@ -84,4 +84,3 @@ class P2SVpnServerConfigurationProperties {
     );
   }
 }
-

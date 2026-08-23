@@ -15,4 +15,3 @@ enum StorageSKU {
     throw ArgumentError('Unknown StorageSKU value: $value');
   }
 }
-

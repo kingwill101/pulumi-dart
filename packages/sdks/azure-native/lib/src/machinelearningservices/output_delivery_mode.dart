@@ -1,8 +1,8 @@
-/// Output Asset Delivery Mode.
+/// Output data delivery mode enums.
 enum OutputDeliveryMode {
-  valueReadWriteMount("ReadWriteMount"),
-  valueUpload("Upload"),
-  valueDirect("Direct");
+  readWriteMount("ReadWriteMount"),
+  upload("Upload"),
+  direct("Direct");
 
   const OutputDeliveryMode(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum OutputDeliveryMode {
     throw ArgumentError('Unknown OutputDeliveryMode value: $value');
   }
 }
-

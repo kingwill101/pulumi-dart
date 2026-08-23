@@ -16,4 +16,3 @@ enum DefaultMode {
     throw ArgumentError('Unknown DefaultMode value: $value');
   }
 }
-

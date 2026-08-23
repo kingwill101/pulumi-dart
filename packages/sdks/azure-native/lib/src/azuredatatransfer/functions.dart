@@ -32,7 +32,7 @@ import 'list_list_schema_result.dart';
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectionResult> getConnection(
@@ -52,7 +52,7 @@ Future<GetConnectionResult> getConnection(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_flow_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFlowResult> getFlow(
@@ -72,7 +72,7 @@ Future<GetFlowResult> getFlow(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_flow_destination_endpoint_ports_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFlowDestinationEndpointPortsResult> getFlowDestinationEndpointPorts(
@@ -92,7 +92,7 @@ Future<GetFlowDestinationEndpointPortsResult> getFlowDestinationEndpointPorts(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_flow_destination_endpoints_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFlowDestinationEndpointsResult> getFlowDestinationEndpoints(
@@ -112,7 +112,7 @@ Future<GetFlowDestinationEndpointsResult> getFlowDestinationEndpoints(
 ///
 /// Uses Azure REST API version 2025-05-30-preview.
 ///
-/// Other available API versions: 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_flow_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFlowProfileResult> getFlowProfile(
@@ -132,7 +132,7 @@ Future<GetFlowProfileResult> getFlowProfile(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_flow_source_addresses_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFlowSourceAddressesResult> getFlowSourceAddresses(
@@ -152,7 +152,7 @@ Future<GetFlowSourceAddressesResult> getFlowSourceAddresses(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_flow_stream_connection_string_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFlowStreamConnectionStringResult> getFlowStreamConnectionString(
@@ -172,7 +172,7 @@ Future<GetFlowStreamConnectionStringResult> getFlowStreamConnectionString(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_get_pipeline_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPipelineResult> getPipeline(
@@ -192,7 +192,7 @@ Future<GetPipelineResult> getPipeline(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_list_azure_data_transfer_approved_schemas_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAzureDataTransferApprovedSchemasResult> listAzureDataTransferApprovedSchemas(
@@ -212,7 +212,7 @@ Future<ListAzureDataTransferApprovedSchemasResult> listAzureDataTransferApproved
 ///
 /// Uses Azure REST API version 2025-05-30-preview.
 ///
-/// Other available API versions: 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_list_azure_data_transfer_flow_profiles_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAzureDataTransferFlowProfilesResult> listAzureDataTransferFlowProfiles(
@@ -232,7 +232,7 @@ Future<ListAzureDataTransferFlowProfilesResult> listAzureDataTransferFlowProfile
 ///
 /// Uses Azure REST API version 2025-05-21.
 ///
-/// Other available API versions: 2025-04-11-preview, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-11-preview, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_list_list_flows_by_pipeline_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListListFlowsByPipelineResult> listListFlowsByPipeline(
@@ -252,7 +252,7 @@ Future<ListListFlowsByPipelineResult> listListFlowsByPipeline(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_list_list_pending_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListListPendingConnectionResult> listListPendingConnection(
@@ -272,7 +272,7 @@ Future<ListListPendingConnectionResult> listListPendingConnection(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_list_list_pending_flow_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListListPendingFlowResult> listListPendingFlow(
@@ -292,7 +292,7 @@ Future<ListListPendingFlowResult> listListPendingFlow(
 ///
 /// Uses Azure REST API version 2024-09-27.
 ///
-/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_azuredatatransfer_list_list_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListListSchemaResult> listListSchema(

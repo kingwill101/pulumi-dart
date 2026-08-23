@@ -19,6 +19,8 @@ import 'get_dynamic_schema_version_args.dart';
 import 'get_dynamic_schema_version_result.dart';
 import 'get_execution_args.dart';
 import 'get_execution_result.dart';
+import 'get_execution_v2_args.dart';
+import 'get_execution_v2_result.dart';
 import 'get_instance_args.dart';
 import 'get_instance_result.dart';
 import 'get_schema_args.dart';
@@ -45,14 +47,18 @@ import 'get_target_args.dart';
 import 'get_target_result.dart';
 import 'get_workflow_args.dart';
 import 'get_workflow_result.dart';
+import 'get_workflow_v2_args.dart';
+import 'get_workflow_v2_result.dart';
 import 'get_workflow_version_args.dart';
 import 'get_workflow_version_result.dart';
+import 'get_workflow_version_v2_args.dart';
+import 'get_workflow_version_v2_result.dart';
 
 /// Get a Config Template Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_config_template_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConfigTemplateResult> getConfigTemplate(
@@ -112,7 +118,7 @@ Future<GetConfigurationReferenceResult> getConfigurationReference(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_context_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContextResult> getContext(
@@ -132,7 +138,7 @@ Future<GetContextResult> getContext(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_diagnostic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDiagnosticResult> getDiagnostic(
@@ -192,7 +198,7 @@ Future<GetDynamicConfigurationVersionResult> getDynamicConfigurationVersion(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_dynamic_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDynamicSchemaResult> getDynamicSchema(
@@ -212,7 +218,7 @@ Future<GetDynamicSchemaResult> getDynamicSchema(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_dynamic_schema_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDynamicSchemaVersionResult> getDynamicSchemaVersion(
@@ -232,7 +238,7 @@ Future<GetDynamicSchemaVersionResult> getDynamicSchemaVersion(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_execution_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetExecutionResult> getExecution(
@@ -248,11 +254,29 @@ Future<GetExecutionResult> getExecution(
   return GetExecutionResult.fromMap(result);
 }
 
+/// Get ExecutionV2 Resource
+///
+/// Uses Azure REST API version 2025-08-15-preview.
+/// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_execution_v2_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetExecutionV2Result> getExecutionV2(
+  GetExecutionV2Args args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:edge:getExecutionV2',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetExecutionV2Result.fromMap(result);
+}
+
 /// Get Instance Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_instance_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetInstanceResult> getInstance(
@@ -272,7 +296,7 @@ Future<GetInstanceResult> getInstance(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_schema_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSchemaResult> getSchema(
@@ -292,7 +316,7 @@ Future<GetSchemaResult> getSchema(
 ///
 /// Uses Azure REST API version 2025-08-01.
 ///
-/// Other available API versions: 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-06-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_schema_reference_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSchemaReferenceResult> getSchemaReference(
@@ -312,7 +336,7 @@ Future<GetSchemaReferenceResult> getSchemaReference(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_schema_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSchemaVersionResult> getSchemaVersion(
@@ -352,7 +376,7 @@ Future<GetSiteResult> getSite(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_site_reference_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSiteReferenceResult> getSiteReference(
@@ -368,7 +392,7 @@ Future<GetSiteReferenceResult> getSiteReference(
   return GetSiteReferenceResult.fromMap(result);
 }
 
-/// Get Site at SG scope
+/// Get a Site
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
 ///
@@ -412,7 +436,7 @@ Future<GetSitesBySubscriptionResult> getSitesBySubscription(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_solution_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSolutionResult> getSolution(
@@ -432,7 +456,7 @@ Future<GetSolutionResult> getSolution(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_solution_template_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSolutionTemplateResult> getSolutionTemplate(
@@ -452,7 +476,7 @@ Future<GetSolutionTemplateResult> getSolutionTemplate(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_solution_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSolutionVersionResult> getSolutionVersion(
@@ -472,7 +496,7 @@ Future<GetSolutionVersionResult> getSolutionVersion(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_target_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTargetResult> getTarget(
@@ -492,7 +516,7 @@ Future<GetTargetResult> getTarget(
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_workflow_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkflowResult> getWorkflow(
@@ -508,11 +532,29 @@ Future<GetWorkflowResult> getWorkflow(
   return GetWorkflowResult.fromMap(result);
 }
 
+/// Get a Workflow resource
+///
+/// Uses Azure REST API version 2025-08-15-preview.
+/// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_workflow_v2_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetWorkflowV2Result> getWorkflowV2(
+  GetWorkflowV2Args args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:edge:getWorkflowV2',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetWorkflowV2Result.fromMap(result);
+}
+
 /// Get a Workflow Version Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
 ///
-/// Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_workflow_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetWorkflowVersionResult> getWorkflowVersion(
@@ -526,4 +568,22 @@ Future<GetWorkflowVersionResult> getWorkflowVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowVersionResult.fromMap(result);
+}
+
+/// Get a Workflow Version Resource
+///
+/// Uses Azure REST API version 2025-08-15-preview.
+/// [args] Arguments passed to this invoke. {@macro pulumi_edge_get_workflow_version_v2_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetWorkflowVersionV2Result> getWorkflowVersionV2(
+  GetWorkflowVersionV2Args args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:edge:getWorkflowVersionV2',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetWorkflowVersionV2Result.fromMap(result);
 }

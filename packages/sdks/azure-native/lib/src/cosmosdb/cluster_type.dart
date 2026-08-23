@@ -1,7 +1,7 @@
 /// Type of the cluster. If set to Production, some operations might not be permitted on cluster.
 enum ClusterType {
-  valueProduction("Production"),
-  valueNonProduction("NonProduction");
+  production("Production"),
+  nonProduction("NonProduction");
 
   const ClusterType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ClusterType {
     throw ArgumentError('Unknown ClusterType value: $value');
   }
 }
-

@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Environment Variables for the container
 class EnvironmentVariableResponse {
   /// Type of the Environment Variable. Possible values are: local - For local variable
   final pulumi.Input<String>? type;
@@ -31,4 +30,3 @@ class EnvironmentVariableResponse {
     );
   }
 }
-

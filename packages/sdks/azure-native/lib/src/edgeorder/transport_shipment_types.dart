@@ -15,4 +15,3 @@ enum TransportShipmentTypes {
     throw ArgumentError('Unknown TransportShipmentTypes value: $value');
   }
 }
-

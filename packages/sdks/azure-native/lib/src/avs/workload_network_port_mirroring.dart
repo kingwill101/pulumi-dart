@@ -66,6 +66,28 @@ import 'workload_network_port_mirroring_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_workloadnetworkportmirroring" "workloadNetworkPortMirroring" {
+///   destination         = "vmGroup2"
+///   direction           = "BIDIRECTIONAL"
+///   display_name        = "portMirroring1"
+///   port_mirroring_id   = "portMirroring1"
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   revision            = 1
+///   source              = "vmGroup1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'workload_network_port_mirroring_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkPortMirroring;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkPortMirroringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -131,7 +153,7 @@ import 'workload_network_port_mirroring_args.dart';
 ///     port_mirroring_id="portMirroring1",
 ///     private_cloud_name="cloud1",
 ///     resource_group_name="group1",
-///     revision=1,
+///     revision=float(1),
 ///     source="vmGroup1")
 ///
 /// ```

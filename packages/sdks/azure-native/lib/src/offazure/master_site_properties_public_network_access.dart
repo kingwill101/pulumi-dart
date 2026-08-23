@@ -16,4 +16,3 @@ enum MasterSitePropertiesPublicNetworkAccess {
     throw ArgumentError('Unknown MasterSitePropertiesPublicNetworkAccess value: $value');
   }
 }
-

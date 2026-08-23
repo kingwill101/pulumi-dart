@@ -72,6 +72,30 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_nspassociation" "nspAssociation" {
+///   access_mode                     = "Enforced"
+///   association_name                = "association1"
+///   network_security_perimeter_name = "nsp1"
+///   private_link_resource = {
+///     id = "/subscriptions/{paasSubscriptionId}/resourceGroups/{paasResourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}"
+///   }
+///   profile = {
+///     id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityPerimeters/nsp1/profiles/{profileName}"
+///   }
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +105,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.NspAssociation;
 /// import com.pulumi.azurenative.network.NspAssociationArgs;
 /// import com.pulumi.azurenative.network.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

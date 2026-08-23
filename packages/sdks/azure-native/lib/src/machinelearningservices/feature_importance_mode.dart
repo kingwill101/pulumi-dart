@@ -1,7 +1,7 @@
 /// The mode of operation for computing feature importance.
 enum FeatureImportanceMode {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const FeatureImportanceMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum FeatureImportanceMode {
     throw ArgumentError('Unknown FeatureImportanceMode value: $value');
   }
 }
-

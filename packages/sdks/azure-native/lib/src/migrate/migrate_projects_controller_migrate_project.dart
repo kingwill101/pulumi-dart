@@ -1,5 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'migrate_project_properties_response.dart';
+import 'migrate_project_properties_migrate_projects_controller_migrate_project_response.dart';
 import 'migrate_projects_controller_migrate_project_args.dart';
 import 'system_data_response.dart';
 
@@ -64,6 +64,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_migrateprojectscontrollermigrateproject" "migrateProjectsControllerMigrateProject" {
+///   location             = "eastus"
+///   migrate_project_name = "projTest1"
+///   properties = {
+///     public_network_access = "Enabled"
+///   }
+///   resource_group_name = "pajindTest1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.MigrateProjectsControllerMigrateProject;
 /// import com.pulumi.azurenative.migrate.MigrateProjectsControllerMigrateProjectArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MigrateProjectPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -162,7 +182,7 @@ class MigrateProjectsControllerMigrateProject extends pulumi.CustomResource {
   /// Name of the project.
   late final pulumi.Output<String> name;
   /// Properties of a migrate project.
-  late final pulumi.Output<MigrateProjectPropertiesResponse> properties;
+  late final pulumi.Output<MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse> properties;
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Type of the object = [Microsoft.Migrate/migrateProjects].
@@ -186,7 +206,7 @@ class MigrateProjectsControllerMigrateProject extends pulumi.CustomResource {
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<MigrateProjectPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrateProjectPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

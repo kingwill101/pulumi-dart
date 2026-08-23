@@ -1,8 +1,8 @@
 /// HDInsight cluster authentication type.
 enum HDInsightClusterAuthenticationType {
-  valueBasicAuth("BasicAuth"),
-  valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
-  valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
+  basicAuth("BasicAuth"),
+  systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
+  userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const HDInsightClusterAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum HDInsightClusterAuthenticationType {
     throw ArgumentError('Unknown HDInsightClusterAuthenticationType value: $value');
   }
 }
-

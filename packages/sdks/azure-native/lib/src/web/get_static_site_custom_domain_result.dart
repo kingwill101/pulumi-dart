@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getStaticSiteCustomDomain.
 class GetStaticSiteCustomDomainResult {
@@ -10,15 +11,17 @@ class GetStaticSiteCustomDomainResult {
   /// The domain name for the static site custom domain.
   final String domainName;
   final String errorMessage;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// The status of the custom domain
   final String status;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The TXT record validation token
   final String validationToken;
@@ -28,11 +31,12 @@ class GetStaticSiteCustomDomainResult {
   /// [createdOn] The date and time on which the custom domain was created for the static site.
   /// [domainName] The domain name for the static site custom domain.
   /// [errorMessage] Required.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [status] The status of the custom domain
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationToken] The TXT record validation token
   const GetStaticSiteCustomDomainResult({
     required this.azureApiVersion,
@@ -43,6 +47,7 @@ class GetStaticSiteCustomDomainResult {
     this.kind,
     required this.name,
     required this.status,
+    required this.systemData,
     required this.type,
     required this.validationToken,
   });
@@ -57,6 +62,7 @@ class GetStaticSiteCustomDomainResult {
       'kind': ?kind,
       'name': name,
       'status': status,
+      'systemData': systemData.toMap(),
       'type': type,
       'validationToken': validationToken,
     };
@@ -72,9 +78,9 @@ class GetStaticSiteCustomDomainResult {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       status: map['status'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       validationToken: map['validationToken'] as String,
     );
   }
 }
-

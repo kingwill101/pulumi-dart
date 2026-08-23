@@ -14,4 +14,3 @@ enum PostgresInstanceSkuTier {
     throw ArgumentError('Unknown PostgresInstanceSkuTier value: $value');
   }
 }
-

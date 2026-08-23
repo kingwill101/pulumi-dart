@@ -430,6 +430,179 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_broker" "broker" {
+///   auth_image = {
+///     pull_policy  = "imfuzvqxgbdwliqnn"
+///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
+///     repository   = "m"
+///     tag          = "jygfdiamhhm"
+///   }
+///   broker_image = {
+///     pull_policy  = "imfuzvqxgbdwliqnn"
+///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
+///     repository   = "m"
+///     tag          = "jygfdiamhhm"
+///   }
+///   broker_name = "29tAwt4A2-aH6nP"
+///   broker_node_tolerations = {
+///     effect   = "eeswvciblqmmaeesjoflyvxqbz"
+///     key      = "wbrstdwxgm"
+///     operator = "lbegegneekwnyodtzraarivtwhmzep"
+///     value    = "sfafsjdcezdmkwibxeluukxgl"
+///   }
+///   cardinality = {
+///     backend_chain = {
+///       partitions                                     = 34721
+///       redundancy_factor                              = 468
+///       temporary_disk_transfer_enabled                = true
+///       temporary_disk_transfer_high_watermark_percent = 79
+///       temporary_disk_transfer_low_watermark_percent  = 94
+///       temporary_max_backend_mem_usage_percent        = 54
+///       temporary_resource_limits = {
+///         max_inflight_messages           = 33208
+///         max_inflight_patches            = 3410
+///         max_inflight_patches_per_client = 58933
+///         max_message_expiry_secs         = 2036532516
+///         max_queued_messages             = 8083241696687839232
+///         max_queued_qos0_messages        = 6545343433569253376
+///         max_session_expiry_secs         = 2526293894
+///       }
+///       workers = 15754
+///     }
+///     frontend = {
+///       replicas = 38165
+///       temporary_resource_limits = {
+///         max_inflight_messages           = 33208
+///         max_inflight_patches            = 3410
+///         max_inflight_patches_per_client = 58933
+///         max_message_expiry_secs         = 2036532516
+///         max_queued_messages             = 8083241696687839232
+///         max_queued_qos0_messages        = 6545343433569253376
+///         max_session_expiry_secs         = 2526293894
+///       }
+///       workers = 38
+///     }
+///   }
+///   diagnostics = {
+///     diagnostic_service_endpoint     = "cdvelitwasofaaqhdb"
+///     enable_metrics                  = true
+///     enable_self_check               = true
+///     enable_self_tracing             = true
+///     enable_tracing                  = true
+///     log_format                      = "tcivnlakxcajynypbz"
+///     log_level                       = "zdjh"
+///     max_cell_map_lifetime           = 997099872515057664
+///     metric_update_frequency_seconds = 6156703238506293248
+///     probe_image                     = "uzizubdxsgcpjwly"
+///     self_check_frequency_seconds    = 579622483050303872
+///     self_check_timeout_seconds      = 7847246333600883712
+///     self_trace_frequency_seconds    = 6527612490765174784
+///     span_channel_capacity           = 5533451650716961792
+///   }
+///   disk_backed_message_buffer_settings = {
+///     ephemeral_volume_claim_spec = {
+///       access_modes = ["cly"]
+///       data_source = {
+///         api_group = "v"
+///         kind      = "pvzbnjebkoslzzucpaem"
+///         name      = "bgzdfwfpdrubbbnfwzyr"
+///       }
+///       data_source_ref = {
+///         api_group = "e"
+///         kind      = "hjbktqbtg"
+///         name      = "losjjcujomepwhztzptrobavolc"
+///       }
+///       resources = {
+///         limits   = {}
+///         requests = {}
+///       }
+///       selector = {
+///         match_expressions = [{
+///           "key"      = "d"
+///           "operator" = "fcfvoarytcdbtccjervsmdis"
+///           "values"   = ["y"]
+///         }]
+///         match_labels = {}
+///       }
+///       storage_class_name = "etajfhrtgatxi"
+///       volume_mode        = "mipdeutsgidkzpxelbrqggjheplvmx"
+///       volume_name        = "dacuvlvuullautxjxwdctvzlmd"
+///     }
+///     max_size = "gnwxgqjypylz"
+///     persistent_volume_claim_spec = {
+///       access_modes = ["cly"]
+///       data_source = {
+///         api_group = "v"
+///         kind      = "pvzbnjebkoslzzucpaem"
+///         name      = "bgzdfwfpdrubbbnfwzyr"
+///       }
+///       data_source_ref = {
+///         api_group = "e"
+///         kind      = "hjbktqbtg"
+///         name      = "losjjcujomepwhztzptrobavolc"
+///       }
+///       resources = {
+///         limits   = {}
+///         requests = {}
+///       }
+///       selector = {
+///         match_expressions = [{
+///           "key"      = "d"
+///           "operator" = "fcfvoarytcdbtccjervsmdis"
+///           "values"   = ["y"]
+///         }]
+///         match_labels = {}
+///       }
+///       storage_class_name = "etajfhrtgatxi"
+///       volume_mode        = "mipdeutsgidkzpxelbrqggjheplvmx"
+///       volume_name        = "dacuvlvuullautxjxwdctvzlmd"
+///     }
+///   }
+///   encrypt_internal_traffic = true
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   health_manager_image = {
+///     pull_policy  = "imfuzvqxgbdwliqnn"
+///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
+///     repository   = "m"
+///     tag          = "jygfdiamhhm"
+///   }
+///   health_manager_node_tolerations = {
+///     effect   = "eeswvciblqmmaeesjoflyvxqbz"
+///     key      = "wbrstdwxgm"
+///     operator = "lbegegneekwnyodtzraarivtwhmzep"
+///     value    = "sfafsjdcezdmkwibxeluukxgl"
+///   }
+///   internal_certs = {
+///     duration = "xjjmzq"
+///     private_key = {
+///       algorithm       = "wwewfsddymjefuhxzqybwvay"
+///       rotation_policy = "jxmpyvfneckopjiakjtous"
+///       size            = 63427
+///     }
+///     renew_before = "zkajhllevrxkfmfyzasmbllvd"
+///   }
+///   location            = "ltzfwqzs"
+///   memory_profile      = "tiny"
+///   mode                = "auto"
+///   mq_name             = "u229L1RZ5"
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -454,8 +627,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ExtendedLocationPropertyArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.CertManagerCertOptionsArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.CertManagerPrivateKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -845,7 +1018,7 @@ import 'system_data_response.dart';
 ///                 "max_inflight_messages": 33208,
 ///                 "max_inflight_patches": 3410,
 ///                 "max_inflight_patches_per_client": 58933,
-///                 "max_message_expiry_secs": 2036532516,
+///                 "max_message_expiry_secs": float(2036532516),
 ///                 "max_queued_messages": 8083241696687839232,
 ///                 "max_queued_qos0_messages": 6545343433569253376,
 ///                 "max_session_expiry_secs": 2526293894,
@@ -858,7 +1031,7 @@ import 'system_data_response.dart';
 ///                 "max_inflight_messages": 33208,
 ///                 "max_inflight_patches": 3410,
 ///                 "max_inflight_patches_per_client": 58933,
-///                 "max_message_expiry_secs": 2036532516,
+///                 "max_message_expiry_secs": float(2036532516),
 ///                 "max_queued_messages": 8083241696687839232,
 ///                 "max_queued_qos0_messages": 6545343433569253376,
 ///                 "max_session_expiry_secs": 2526293894,

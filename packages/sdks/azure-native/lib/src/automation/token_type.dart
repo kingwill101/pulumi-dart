@@ -1,7 +1,7 @@
 /// The token type. Must be either PersonalAccessToken or Oauth.
 enum TokenType {
-  valuePersonalAccessToken("PersonalAccessToken"),
-  valueOauth("Oauth");
+  personalAccessToken("PersonalAccessToken"),
+  oauth("Oauth");
 
   const TokenType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum TokenType {
     throw ArgumentError('Unknown TokenType value: $value');
   }
 }
-

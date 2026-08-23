@@ -70,6 +70,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dnsresolver_dnsresolverdomainlist" "dnsResolverDomainList" {
+///   dns_resolver_domain_list_name = "sampleDnsResolverDomainList"
+///   domains                       = ["contoso.com"]
+///   location                      = "westus2"
+///   resource_group_name           = "sampleResourceGroup"
+///   tags = {
+///     "key1" = "value1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dnsresolver.DnsResolverDomainList;
 /// import com.pulumi.azurenative.dnsresolver.DnsResolverDomainListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -91,6 +91,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_analyticsconnector" "analyticsConnector" {
+///   analytics_connector_name = "exampleconnector"
+///   data_destination_configuration = {
+///     data_lake_name = "exampledatalake"
+///     type           = "datalake"
+///   }
+///   data_mapping_configuration = {
+///     extension_schema_reference     = "acrexample.azurecr.io/blah@sha256aaa/Extension"
+///     filter_configuration_reference = "acrexample.azurecr.io/blah@sha256xxx"
+///     type                           = "fhirToParquet"
+///   }
+///   data_source_configuration = {
+///     kind = "R4"
+///     type = "fhirservice"
+///     url  = "https://workspace-examplefhir.fhir.azurehealthcareapis.com"
+///   }
+///   location            = "westus"
+///   resource_group_name = "testRG"
+///   workspace_name      = "workspace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +134,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.inputs.AnalyticsConnectorDataLakeDataDestinationArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.AnalyticsConnectorFhirToParquetMappingArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.AnalyticsConnectorFhirServiceDataSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

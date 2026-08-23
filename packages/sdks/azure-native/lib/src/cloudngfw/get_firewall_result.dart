@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_resource_manager_managed_identity_properties_response.dart';
 import 'dnssettings_response.dart';
 import 'frontend_setting_response.dart';
+import 'managed_identity_properties_response.dart';
 import 'marketplace_details_response.dart';
 import 'network_profile_response.dart';
 import 'panorama_config_response.dart';
@@ -25,7 +25,7 @@ class GetFirewallResult {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// The managed service identities assigned to this resource.
-  final AzureResourceManagerManagedIdentityPropertiesResponse? identity;
+  final ManagedIdentityPropertiesResponse? identity;
   /// Panorama Managed: Default is False. Default will be CloudSec managed
   final String? isPanoramaManaged;
   /// Strata Cloud Managed: Default is False. Default will be CloudSec managed
@@ -131,7 +131,7 @@ class GetFirewallResult {
       dnsSettings: DNSSettingsResponse.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>()),
       frontEndSettings: (() { final guardedValue = map['frontEndSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendSettingResponse>(guardedValue, (value) => FrontendSettingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: map['id'] as String,
-      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       isPanoramaManaged: (() { final guardedValue = map['isPanoramaManaged']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isStrataCloudManaged: (() { final guardedValue = map['isStrataCloudManaged']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: map['location'] as String,
@@ -149,4 +149,3 @@ class GetFirewallResult {
     );
   }
 }
-

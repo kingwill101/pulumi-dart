@@ -1,9 +1,9 @@
 /// Specifies the move cost for the service.
 enum MoveCost {
-  zero("Zero"),
-  low("Low"),
-  medium("Medium"),
-  high("High");
+  valueZero("Zero"),
+  valueLow("Low"),
+  valueMedium("Medium"),
+  valueHigh("High");
 
   const MoveCost(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum MoveCost {
     throw ArgumentError('Unknown MoveCost value: $value');
   }
 }
-

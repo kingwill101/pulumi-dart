@@ -1,8 +1,8 @@
 /// State of FTP / FTPS service
 enum FtpsState {
-  valueAllAllowed("AllAllowed"),
-  valueFtpsOnly("FtpsOnly"),
-  valueDisabled("Disabled");
+  allAllowed("AllAllowed"),
+  ftpsOnly("FtpsOnly"),
+  disabled("Disabled");
 
   const FtpsState(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum FtpsState {
     throw ArgumentError('Unknown FtpsState value: $value');
   }
 }
-

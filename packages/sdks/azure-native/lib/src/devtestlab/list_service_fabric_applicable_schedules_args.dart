@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListServiceFabricApplicableSchedulesArgs {
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the ServiceFabric
+  /// The name of the service fabric.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -18,7 +18,7 @@ class ListServiceFabricApplicableSchedulesArgs {
 
   /// Creates a new [ListServiceFabricApplicableSchedulesArgs].
   /// [labName] The name of the lab.
-  /// [name] The name of the ServiceFabric
+  /// [name] The name of the service fabric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
   const ListServiceFabricApplicableSchedulesArgs({
@@ -46,4 +46,3 @@ class ListServiceFabricApplicableSchedulesArgs {
     );
   }
 }
-

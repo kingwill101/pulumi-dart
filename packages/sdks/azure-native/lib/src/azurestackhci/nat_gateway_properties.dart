@@ -6,13 +6,13 @@ import 'public_ipaddress_arm_reference.dart';
 
 /// Nat Gateway resource properties
 class NatGatewayProperties {
-  /// List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+  /// List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
   final pulumi.Input<List<InboundNATRule>>? inboundNATRules;
   /// List of public ip addresses that the gateway can use for NAT.
   final pulumi.Input<List<PublicIPAddressArmReference>>? publicIPAddresses;
 
   /// Creates a new [NatGatewayProperties].
-  /// [inboundNATRules] List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+  /// [inboundNATRules] List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
   /// [publicIPAddresses] List of public ip addresses that the gateway can use for NAT.
   const NatGatewayProperties({
     this.inboundNATRules,
@@ -33,4 +33,3 @@ class NatGatewayProperties {
     );
   }
 }
-

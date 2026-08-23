@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'dimension_response.dart';
+import 'dimension_logs_metric_filter_response.dart';
 
 /// Definition of MetricTransformation
 class MetricTransformationResponse {
   /// (Optional) The value to emit when a filter pattern does not match a log event. This value can be null.
   final pulumi.Input<int>? defaultValue;
   /// The fields to use as dimensions for the metric. One metric filter can include as many as three dimensions.  Metrics extracted from log events are charged as custom metrics. To prevent unexpected high charges, do not specify high-cardinality fields such as ``IPAddress`` or ``requestID`` as dimensions. Each different value found for a dimension is treated as a separate metric and accrues charges as a separate custom metric.  CloudWatch Logs disables a metric filter if it generates 1000 different name/value pairs for your specified dimensions within a certain amount of time. This helps to prevent accidental high charges. You can also set up a billing alarm to alert you if your charges are higher than expected. For more information, see [Creating a Billing Alarm to Monitor Your Estimated Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
-  final pulumi.Input<List<DimensionResponse>>? dimensions;
+  final pulumi.Input<List<DimensionLogsMetricFilterResponse>>? dimensions;
   /// The name of the CloudWatch metric.
   final pulumi.Input<String>? metricName;
   /// A custom namespace to contain your metric in CloudWatch. Use namespaces to group together metrics that are similar. For more information, see [Namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Namespace).
@@ -37,7 +37,7 @@ class MetricTransformationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultValue': ?defaultValue,
-      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<DimensionResponse>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<DimensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<DimensionLogsMetricFilterResponse>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<DimensionLogsMetricFilterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': ?metricName,
       'metricNamespace': ?metricNamespace,
       'metricValue': ?metricValue,
@@ -48,7 +48,7 @@ class MetricTransformationResponse {
   factory MetricTransformationResponse.fromMap(Map<String, dynamic> map) {
     return MetricTransformationResponse(
       defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DimensionResponse>(guardedValue, (value) => DimensionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DimensionLogsMetricFilterResponse>(guardedValue, (value) => DimensionLogsMetricFilterResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricNamespace: (() { final guardedValue = map['metricNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricValue: (() { final guardedValue = map['metricValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -56,4 +56,3 @@ class MetricTransformationResponse {
     );
   }
 }
-

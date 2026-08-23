@@ -64,6 +64,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_edge_dynamicconfiguration" "dynamicConfiguration" {
+///   configuration_name         = "parameterName"
+///   dynamic_configuration_name = "parameterName"
+///   properties = {
+///     current_version = "ltpwymdbybbjdgyuumsfh"
+///   }
+///   resource_group_name = "rgconfigurations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.edge.DynamicConfiguration;
 /// import com.pulumi.azurenative.edge.DynamicConfigurationArgs;
 /// import com.pulumi.azurenative.edge.inputs.DynamicConfigurationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

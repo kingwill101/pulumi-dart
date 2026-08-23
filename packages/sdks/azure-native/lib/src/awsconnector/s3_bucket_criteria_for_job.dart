@@ -32,4 +32,3 @@ class S3BucketCriteriaForJob {
     );
   }
 }
-

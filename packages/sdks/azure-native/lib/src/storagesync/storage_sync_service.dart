@@ -68,6 +68,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagesync_storagesyncservice" "storageSyncService" {
+///   identity = {
+///     type = "SystemAssigned, UserAssigned"
+///   }
+///   incoming_traffic_policy   = "AllowAllTraffic"
+///   location                  = "WestUS"
+///   resource_group_name       = "SampleResourceGroup_1"
+///   storage_sync_service_name = "SampleStorageSyncService_1"
+///   tags                      = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storagesync.StorageSyncService;
 /// import com.pulumi.azurenative.storagesync.StorageSyncServiceArgs;
 /// import com.pulumi.azurenative.storagesync.inputs.ManagedServiceIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

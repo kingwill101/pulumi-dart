@@ -2,8 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assigned_standard_item_response.dart';
 import 'standard_assignment_args.dart';
 import 'standard_assignment_metadata_response.dart';
-import 'standard_assignment_properties_response_attestation_data.dart';
-import 'standard_assignment_properties_response_exemption_data.dart';
+import 'standard_assignment_properties_attestation_data_response.dart';
+import 'standard_assignment_properties_exemption_data_response.dart';
+import 'system_data_response.dart';
 
 /// Security Assignment on a resource group over a given scope
 ///
@@ -23,7 +24,7 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 /// {
 ///     var standardAssignment = new AzureNative.Security.StandardAssignment("standardAssignment", new()
 ///     {
-///         AssignedStandard = new AzureNative.Security.Inputs.AssignedStandardItemArgs
+///         AssignedStandard = new AzureNative.Security.Inputs.CommonAssignedStandardItemArgs
 ///         {
 ///             Id = "/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
 ///         },
@@ -51,7 +52,7 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewStandardAssignment(ctx, "standardAssignment", &security.StandardAssignmentArgs{
-/// 			AssignedStandard: &security.AssignedStandardItemArgs{
+/// 			AssignedStandard: &security.CommonAssignedStandardItemArgs{
 /// 				Id: pulumi.String("/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"),
 /// 			},
 /// 			Description:            pulumi.String("Set of policies monitored by Azure Security Center for cross cloud"),
@@ -70,6 +71,29 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_standardassignment" "standardAssignment" {
+///   assigned_standard = {
+///     id = "/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
+///   }
+///   description              = "Set of policies monitored by Azure Security Center for cross cloud"
+///   display_name             = "ASC Default"
+///   effect                   = "Audit"
+///   excluded_scopes          = []
+///   resource_id              = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+///   standard_assignment_name = "1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,9 +102,9 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.StandardAssignment;
 /// import com.pulumi.azurenative.security.StandardAssignmentArgs;
-/// import com.pulumi.azurenative.security.inputs.AssignedStandardItemArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.security.inputs.CommonAssignedStandardItemArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -93,7 +117,7 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var standardAssignment = new StandardAssignment("standardAssignment", StandardAssignmentArgs.builder()
-///             .assignedStandard(AssignedStandardItemArgs.builder()
+///             .assignedStandard(CommonAssignedStandardItemArgs.builder()
 ///                 .id("/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8")
 ///                 .build())
 ///             .description("Set of policies monitored by Azure Security Center for cross cloud")
@@ -173,7 +197,7 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 /// {
 ///     var standardAssignment = new AzureNative.Security.StandardAssignment("standardAssignment", new()
 ///     {
-///         AssignedStandard = new AzureNative.Security.Inputs.AssignedStandardItemArgs
+///         AssignedStandard = new AzureNative.Security.Inputs.CommonAssignedStandardItemArgs
 ///         {
 ///             Id = "/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
 ///         },
@@ -209,7 +233,7 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewStandardAssignment(ctx, "standardAssignment", &security.StandardAssignmentArgs{
-/// 			AssignedStandard: &security.AssignedStandardItemArgs{
+/// 			AssignedStandard: &security.CommonAssignedStandardItemArgs{
 /// 				Id: pulumi.String("/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"),
 /// 			},
 /// 			Description: pulumi.String("Exemption description"),
@@ -234,6 +258,35 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_standardassignment" "standardAssignment" {
+///   assigned_standard = {
+///     id = "/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
+///   }
+///   description  = "Exemption description"
+///   display_name = "Test exemption"
+///   effect       = "Exempt"
+///   exemption_data = {
+///     assigned_assessment = {
+///       assessment_key = "1195afff-c881-495e-9bc5-1486211ae03f"
+///     }
+///     exemption_category = "waiver"
+///   }
+///   expires_on               = "2022-05-01T19:50:47.083633Z"
+///   resource_id              = "subscriptions/212f9889-769e-45ae-ab43-6da33674bd26/resourceGroups/ANAT_TEST_RG/providers/Microsoft.Compute/virtualMachines/anatTestE2LA"
+///   standard_assignment_name = "1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -242,11 +295,11 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.StandardAssignment;
 /// import com.pulumi.azurenative.security.StandardAssignmentArgs;
-/// import com.pulumi.azurenative.security.inputs.AssignedStandardItemArgs;
+/// import com.pulumi.azurenative.security.inputs.CommonAssignedStandardItemArgs;
 /// import com.pulumi.azurenative.security.inputs.StandardAssignmentPropertiesExemptionDataArgs;
 /// import com.pulumi.azurenative.security.inputs.AssignedAssessmentItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -259,7 +312,7 @@ import 'standard_assignment_properties_response_exemption_data.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var standardAssignment = new StandardAssignment("standardAssignment", StandardAssignmentArgs.builder()
-///             .assignedStandard(AssignedStandardItemArgs.builder()
+///             .assignedStandard(CommonAssignedStandardItemArgs.builder()
 ///                 .id("/providers/Microsoft.Security/securityStandards/1f3afdf9-d0c9-4c3d-847f-89da613e70a8")
 ///                 .build())
 ///             .description("Exemption description")
@@ -362,7 +415,7 @@ class StandardAssignment extends pulumi.CustomResource {
   /// Standard item with key as applied to this standard assignment over the given scope
   late final pulumi.Output<AssignedStandardItemResponse?> assignedStandard;
   /// Additional data about assignment that has Attest effect
-  late final pulumi.Output<StandardAssignmentPropertiesResponseAttestationData?> attestationData;
+  late final pulumi.Output<StandardAssignmentPropertiesAttestationDataResponse?> attestationData;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Description of the standardAssignment
@@ -374,14 +427,16 @@ class StandardAssignment extends pulumi.CustomResource {
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
   late final pulumi.Output<List<String>?> excludedScopes;
   /// Additional data about assignment that has Exempt effect
-  late final pulumi.Output<StandardAssignmentPropertiesResponseExemptionData?> exemptionData;
+  late final pulumi.Output<StandardAssignmentPropertiesExemptionDataResponse?> exemptionData;
   /// Expiration date of this assignment as a full ISO date
   late final pulumi.Output<String?> expiresOn;
   /// The standard assignment metadata.
   late final pulumi.Output<StandardAssignmentMetadataResponse?> metadata;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [StandardAssignment].
@@ -399,16 +454,17 @@ class StandardAssignment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     assignedStandard = registerOutput<AssignedStandardItemResponse?>('assignedStandard', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignedStandardItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    attestationData = registerOutput<StandardAssignmentPropertiesResponseAttestationData?>('attestationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentPropertiesResponseAttestationData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    attestationData = registerOutput<StandardAssignmentPropertiesAttestationDataResponse?>('attestationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentPropertiesAttestationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effect = registerOutput<String?>('effect');
     excludedScopes = registerOutput<List<String>?>('excludedScopes');
-    exemptionData = registerOutput<StandardAssignmentPropertiesResponseExemptionData?>('exemptionData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentPropertiesResponseExemptionData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exemptionData = registerOutput<StandardAssignmentPropertiesExemptionDataResponse?>('exemptionData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentPropertiesExemptionDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     expiresOn = registerOutput<String?>('expiresOn');
     metadata = registerOutput<StandardAssignmentMetadataResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

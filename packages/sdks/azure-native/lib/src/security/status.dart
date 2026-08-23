@@ -1,7 +1,7 @@
 /// The status of the port
 enum Status {
-  valueRevoked("Revoked"),
-  valueInitiated("Initiated");
+  revoked("Revoked"),
+  initiated("Initiated");
 
   const Status(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum Status {
     throw ArgumentError('Unknown Status value: $value');
   }
 }
-

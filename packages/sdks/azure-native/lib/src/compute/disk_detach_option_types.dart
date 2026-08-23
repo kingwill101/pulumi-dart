@@ -14,4 +14,3 @@ enum DiskDetachOptionTypes {
     throw ArgumentError('Unknown DiskDetachOptionTypes value: $value');
   }
 }
-

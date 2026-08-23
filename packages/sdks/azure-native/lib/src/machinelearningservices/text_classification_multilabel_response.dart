@@ -12,7 +12,7 @@ class TextClassificationMultilabelResponse {
   final pulumi.Input<NlpVerticalFeaturizationSettingsResponse>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
   final pulumi.Input<NlpVerticalLimitSettingsResponse>? limitSettings;
-  /// Log verbosity for the job.
+  /// Enum for setting log verbosity.
   final pulumi.Input<String>? logVerbosity;
   /// Primary metric for Text-Classification-Multilabel task.
   /// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
@@ -31,7 +31,7 @@ class TextClassificationMultilabelResponse {
   /// Creates a new [TextClassificationMultilabelResponse].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
   /// [limitSettings] Execution constraints for AutoMLJob.
-  /// [logVerbosity] Log verbosity for the job.
+  /// [logVerbosity] Enum for setting log verbosity.
   /// [primaryMetric] Primary metric for Text-Classification-Multilabel task.
   /// [targetColumnName] Target column name: This is prediction values column.
   /// [taskType] AutoMLJob Task type.
@@ -74,4 +74,3 @@ class TextClassificationMultilabelResponse {
     );
   }
 }
-

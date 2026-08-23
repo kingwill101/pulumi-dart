@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkExperimentProfileArgs {
   /// The Profile identifier associated with the Tenant and Partner
   final pulumi.Input<String> profileName;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetNetworkExperimentProfileArgs].
   /// [profileName] The Profile identifier associated with the Tenant and Partner
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetNetworkExperimentProfileArgs({
     required this.profileName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetNetworkExperimentProfileArgs {
     );
   }
 }
-

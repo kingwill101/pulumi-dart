@@ -188,4 +188,3 @@ class AzureNativeConfig {
 }
 
 const config = AzureNativeConfig();
-

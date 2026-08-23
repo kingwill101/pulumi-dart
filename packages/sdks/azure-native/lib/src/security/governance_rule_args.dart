@@ -9,6 +9,8 @@ import 'governance_rule_owner_source.dart';
 /// {@endtemplate}
 /// {@macro pulumi_security_governance_rule_args_doc}
 class GovernanceRuleArgs {
+  /// The governance rule conditionSets - see examples
+  final pulumi.Input<List<dynamic>> conditionSets;
   /// Description of the governance rule
   final pulumi.Input<String>? description;
   /// Display name of the governance rule
@@ -33,12 +35,13 @@ class GovernanceRuleArgs {
   final pulumi.Input<int> rulePriority;
   /// The rule type of the governance rule, defines the source of the rule e.g. Integrated
   final pulumi.Input<String> ruleType;
-  /// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
   /// The governance rule source, what the rule affects, e.g. Assessments
   final pulumi.Input<String> sourceResourceType;
 
   /// Creates a new [GovernanceRuleArgs].
+  /// [conditionSets] The governance rule conditionSets - see examples
   /// [description] Description of the governance rule
   /// [displayName] Display name of the governance rule
   /// [excludedScopes] Excluded scopes, filter out the descendants of the scope (on management scopes)
@@ -51,9 +54,10 @@ class GovernanceRuleArgs {
   /// [ruleId] The governance rule key - unique key for the standard governance rule (GUID)
   /// [rulePriority] The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
   /// [ruleType] The rule type of the governance rule, defines the source of the rule e.g. Integrated
-  /// [scope] The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// [scope] The fully qualified Azure Resource manager identifier of the resource.
   /// [sourceResourceType] The governance rule source, what the rule affects, e.g. Assessments
   const GovernanceRuleArgs({
+    required this.conditionSets,
     this.description,
     required this.displayName,
     this.excludedScopes,
@@ -72,6 +76,7 @@ class GovernanceRuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'conditionSets': conditionSets,
       'description': ?description,
       'displayName': displayName,
       'excludedScopes': ?excludedScopes,
@@ -91,6 +96,7 @@ class GovernanceRuleArgs {
 
   factory GovernanceRuleArgs.fromMap(Map<String, dynamic> map) {
     return GovernanceRuleArgs(
+      conditionSets: pulumi.Input.fromValue((map['conditionSets'] as List).cast<dynamic>()),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       excludedScopes: (() { final guardedValue = map['excludedScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -108,4 +114,3 @@ class GovernanceRuleArgs {
     );
   }
 }
-

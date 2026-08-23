@@ -98,4 +98,3 @@ class GetADLSGen2FileSystemDataSetMappingResult {
     );
   }
 }
-

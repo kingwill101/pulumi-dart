@@ -21,4 +21,3 @@ enum PrivateEndpointConnectionProvisioningState {
     throw ArgumentError('Unknown PrivateEndpointConnectionProvisioningState value: $value');
   }
 }
-

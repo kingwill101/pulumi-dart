@@ -106,6 +106,46 @@ import 'workload_deployment_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_workloaddeployment" "workloadDeployment" {
+///   modernize_project_name = "l6r8"
+///   properties = {
+///     custom_properties = {
+///       "instanceType" = "IISAKSWorkloadDeployment"
+///     }
+///     display_name    = "wqe"
+///     target_platform = "AzureKubernetesService"
+///     workload_instance_properties = {
+///       custom_properties = {
+///         "instanceType"   = "IISWorkload"
+///         "webAppArmId"    = "xseseqsrzdiga"
+///         "webAppSiteName" = "mirgzmy"
+///       }
+///       display_name     = "juoorbubchvk"
+///       master_site_name = "ubks"
+///       migrate_agent_id = "aqgzsxqbk"
+///       name             = "wonkuhgsafzviuwqerzdmme"
+///       source_name      = "weuxcqzwpeyzsjhdgqflhxlwjhbz"
+///       source_platform  = "eh"
+///     }
+///   }
+///   resource_group_name = "rgmigrateEngine"
+///   tags = {
+///     "key8241" = "gcyxztzr"
+///   }
+///   workload_deployment_name = "l4t"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +156,8 @@ import 'workload_deployment_model_response_system_data.dart';
 /// import com.pulumi.azurenative.migrate.WorkloadDeploymentArgs;
 /// import com.pulumi.azurenative.migrate.inputs.WorkloadDeploymentModelPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.WorkloadInstanceModelPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -304,6 +344,23 @@ import 'workload_deployment_model_response_system_data.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_workloaddeployment" "workloadDeployment" {
+///   modernize_project_name   = "tc"
+///   resource_group_name      = "rgmigrateEngine"
+///   workload_deployment_name = "wo2rs4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -312,8 +369,8 @@ import 'workload_deployment_model_response_system_data.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.migrate.WorkloadDeployment;
 /// import com.pulumi.azurenative.migrate.WorkloadDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

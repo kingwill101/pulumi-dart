@@ -15,4 +15,3 @@ enum EgressNat {
     throw ArgumentError('Unknown EgressNat value: $value');
   }
 }
-

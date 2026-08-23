@@ -1,7 +1,7 @@
-/// Defines if image needs to be rebuilt based on base image changes.
+/// AutoRebuild setting for the derived image
 enum AutoRebuildSetting {
-  valueDisabled("Disabled"),
-  valueOnBaseImageUpdate("OnBaseImageUpdate");
+  disabled("Disabled"),
+  onBaseImageUpdate("OnBaseImageUpdate");
 
   const AutoRebuildSetting(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum AutoRebuildSetting {
     throw ArgumentError('Unknown AutoRebuildSetting value: $value');
   }
 }
-

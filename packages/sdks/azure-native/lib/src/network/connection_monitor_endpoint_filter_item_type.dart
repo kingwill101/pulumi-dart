@@ -14,4 +14,3 @@ enum ConnectionMonitorEndpointFilterItemType {
     throw ArgumentError('Unknown ConnectionMonitorEndpointFilterItemType value: $value');
   }
 }
-

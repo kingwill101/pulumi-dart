@@ -64,6 +64,28 @@ import 'view_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_view" "view" {
+///   definition = "{\\\"isProfileType\\\":false,\\\"profileTypes\\\":[],\\\"widgets\\\":[],\\\"style\\\":[]}"
+///   display_name = {
+///     "en" = "some name"
+///   }
+///   hub_name            = "sdkTestHub"
+///   resource_group_name = "TestHubRG"
+///   user_id             = "testUser"
+///   view_name           = "testView"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +94,8 @@ import 'view_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.customerinsights.View;
 /// import com.pulumi.azurenative.customerinsights.ViewArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

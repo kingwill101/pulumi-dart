@@ -30,4 +30,3 @@ enum AttackTactic {
     throw ArgumentError('Unknown AttackTactic value: $value');
   }
 }
-

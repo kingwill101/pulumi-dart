@@ -64,6 +64,27 @@ import 'integration_account_session_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationaccountsession" "integrationAccountSession" {
+///   content = {
+///     "controlNumber"            = "1234"
+///     "controlNumberChangedTime" = "2017-02-21T22:30:11.9923759Z"
+///   }
+///   integration_account_name = "testia123"
+///   resource_group_name      = "testrg123"
+///   session_name             = "testsession123-ICN"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +93,8 @@ import 'integration_account_session_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.logic.IntegrationAccountSession;
 /// import com.pulumi.azurenative.logic.IntegrationAccountSessionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_control_args.dart';
+import 'system_data_response.dart';
 
 /// Definition of the source control.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2017-05-15-preview, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -78,6 +79,34 @@ import 'source_control_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_sourcecontrol" "sourceControl" {
+///   auto_sync               = true
+///   automation_account_name = "sampleAccount9"
+///   branch                  = "master"
+///   description             = "my description"
+///   folder_path             = "/folderOne/folderTwo"
+///   publish_runbook         = true
+///   repo_url                = "https://sampleUser.visualstudio.com/myProject/_git/myRepository"
+///   resource_group_name     = "rg"
+///   security_token = {
+///     access_token = "******"
+///     token_type   = "PersonalAccessToken"
+///   }
+///   source_control_name = "sampleSourceControl"
+///   source_type         = "VsoGit"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +116,8 @@ import 'source_control_args.dart';
 /// import com.pulumi.azurenative.automation.SourceControl;
 /// import com.pulumi.azurenative.automation.SourceControlArgs;
 /// import com.pulumi.azurenative.automation.inputs.SourceControlSecurityTokenPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,7 +250,9 @@ class SourceControl extends pulumi.CustomResource {
   late final pulumi.Output<String?> repoUrl;
   /// The source type. Must be one of VsoGit, VsoTfvc, GitHub.
   late final pulumi.Output<String?> sourceType;
-  /// The type of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [SourceControl].
@@ -249,6 +280,7 @@ class SourceControl extends pulumi.CustomResource {
     publishRunbook = registerOutput<bool?>('publishRunbook');
     repoUrl = registerOutput<String?>('repoUrl');
     sourceType = registerOutput<String?>('sourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

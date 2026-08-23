@@ -14,4 +14,3 @@ enum PassName {
     throw ArgumentError('Unknown PassName value: $value');
   }
 }
-

@@ -154,6 +154,53 @@ import 'timeout_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_app_appresiliency" "appResiliency" {
+///   app_name = "testcontainerApp0"
+///   circuit_breaker_policy = {
+///     consecutive_errors   = 5
+///     interval_in_seconds  = 10
+///     max_ejection_percent = 50
+///   }
+///   http_connection_pool = {
+///     http1_max_pending_requests = 1024
+///     http2_max_requests         = 1024
+///   }
+///   http_retry_policy = {
+///     errors = ["5xx", "connect-failure", "reset", "retriable-headers", "retriable-status-codes"]
+///     headers = [{
+///       "header"      = "X-Content-Type"
+///       "prefixMatch" = "GOATS"
+///     }]
+///     http_status_codes             = [502, 503]
+///     initial_delay_in_milliseconds = 1000
+///     max_interval_in_milliseconds  = 10000
+///     max_retries                   = 5
+///   }
+///   name                = "resiliency-policy-1"
+///   resource_group_name = "rg"
+///   tcp_connection_pool = {
+///     max_connections = 100
+///   }
+///   tcp_retry_policy = {
+///     max_connect_attempts = 3
+///   }
+///   timeout_policy = {
+///     connection_timeout_in_seconds = 5
+///     response_timeout_in_seconds   = 15
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +215,8 @@ import 'timeout_policy_response.dart';
 /// import com.pulumi.azurenative.app.inputs.TcpConnectionPoolArgs;
 /// import com.pulumi.azurenative.app.inputs.TcpRetryPolicyArgs;
 /// import com.pulumi.azurenative.app.inputs.TimeoutPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,8 +358,8 @@ import 'timeout_policy_response.dart';
 ///             502,
 ///             503,
 ///         ],
-///         "initial_delay_in_milliseconds": 1000,
-///         "max_interval_in_milliseconds": 10000,
+///         "initial_delay_in_milliseconds": float(1000),
+///         "max_interval_in_milliseconds": float(10000),
 ///         "max_retries": 5,
 ///     },
 ///     name="resiliency-policy-1",

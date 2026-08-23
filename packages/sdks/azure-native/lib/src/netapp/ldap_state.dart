@@ -15,4 +15,3 @@ enum LdapState {
     throw ArgumentError('Unknown LdapState value: $value');
   }
 }
-

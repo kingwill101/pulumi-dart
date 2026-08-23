@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -144,6 +144,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_managedclusterapplication" "managedClusterApplication" {
+///   application_name = "myApp"
+///   cluster_name     = "myCluster"
+///   location         = "eastus"
+///   parameters = {
+///     "param1" = "value1"
+///   }
+///   resource_group_name = "resRg"
+///   tags = {
+///     "a" = "b"
+///   }
+///   upgrade_policy = {
+///     application_health_policy = {
+///       consider_warning_as_error = true
+///       default_service_type_health_policy = {
+///         max_percent_unhealthy_partitions_per_service = 0
+///         max_percent_unhealthy_replicas_per_partition = 0
+///         max_percent_unhealthy_services               = 0
+///       }
+///       max_percent_unhealthy_deployed_applications = 0
+///       service_type_health_policy_map = {
+///         "service1" = {
+///           max_percent_unhealthy_partitions_per_service = 30
+///           max_percent_unhealthy_replicas_per_partition = 30
+///           max_percent_unhealthy_services               = 30
+///         }
+///       }
+///     }
+///     force_restart                 = false
+///     instance_close_delay_duration = 600
+///     recreate_application          = false
+///     rolling_upgrade_monitoring_policy = {
+///       failure_action               = "Rollback"
+///       health_check_retry_timeout   = "00:10:00"
+///       health_check_stable_duration = "00:05:00"
+///       health_check_wait_duration   = "00:02:00"
+///       upgrade_domain_timeout       = "00:15:00"
+///       upgrade_timeout              = "01:00:00"
+///     }
+///     upgrade_mode                      = "UnmonitoredAuto"
+///     upgrade_replica_set_check_timeout = 3600
+///   }
+///   version = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applicationTypes/myAppType/versions/1.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +212,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.servicefabric.inputs.ApplicationHealthPolicyArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.ServiceTypeHealthPolicyArgs;
 /// import com.pulumi.azurenative.servicefabric.inputs.RollingUpgradeMonitoringPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -297,7 +353,7 @@ import 'system_data_response.dart';
 ///             },
 ///         },
 ///         "force_restart": False,
-///         "instance_close_delay_duration": 600,
+///         "instance_close_delay_duration": float(600),
 ///         "recreate_application": False,
 ///         "rolling_upgrade_monitoring_policy": {
 ///             "failure_action": azure_native.servicefabric.FailureAction.ROLLBACK,
@@ -308,7 +364,7 @@ import 'system_data_response.dart';
 ///             "upgrade_timeout": "01:00:00",
 ///         },
 ///         "upgrade_mode": azure_native.servicefabric.RollingUpgradeMode.UNMONITORED_AUTO,
-///         "upgrade_replica_set_check_timeout": 3600,
+///         "upgrade_replica_set_check_timeout": float(3600),
 ///     },
 ///     version="/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applicationTypes/myAppType/versions/1.0")
 ///
@@ -407,6 +463,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabric_managedclusterapplication" "managedClusterApplication" {
+///   application_name    = "myApp"
+///   cluster_name        = "myCluster"
+///   location            = "eastus"
+///   resource_group_name = "resRg"
+///   version             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.ServiceFabric/managedclusters/myCluster/applicationTypes/myAppType/versions/1.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -415,8 +490,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterApplication;
 /// import com.pulumi.azurenative.servicefabric.ManagedClusterApplicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

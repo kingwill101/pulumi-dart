@@ -17,4 +17,3 @@ enum TriggerOperator {
     throw ArgumentError('Unknown TriggerOperator value: $value');
   }
 }
-

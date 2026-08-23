@@ -22,4 +22,3 @@ enum WebhookFilterType {
     throw ArgumentError('Unknown WebhookFilterType value: $value');
   }
 }
-

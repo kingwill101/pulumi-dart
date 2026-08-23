@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
 ///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -70,6 +72,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_raiexternalsafetyprovider" "raiExternalSafetyProvider" {
+///   properties = {
+///     key_vault_uri    = "https://example.vault.azure.net"
+///     managed_identity = "00000000-0000-0000-0000-000000000000"
+///     mode             = "sync"
+///     provider_id      = "00000000-0000-0000-0000-000000000000"
+///     provider_name    = "safetyProviderName"
+///     secret_name      = "mySecretName"
+///     url              = "https://example.webhook.endpoint"
+///   }
+///   safety_provider_name = "safetyProviderName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +105,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cognitiveservices.RaiExternalSafetyProvider;
 /// import com.pulumi.azurenative.cognitiveservices.RaiExternalSafetyProviderArgs;
 /// import com.pulumi.azurenative.cognitiveservices.inputs.RaiExternalSafetyProviderSchemaPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,7 +212,7 @@ class RaiExternalSafetyProvider extends pulumi.CustomResource {
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
-  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -209,7 +235,7 @@ class RaiExternalSafetyProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<RaiExternalSafetyProviderSchemaPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
   }
 }

@@ -11,7 +11,7 @@ class GetWebAppPremierAddOnSlotArgs {
   final pulumi.Input<String> name;
   /// Add-on name.
   final pulumi.Input<String> premierAddOnName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. If a slot is not specified, the API will get the named add-on for the production slot.
   final pulumi.Input<String> slot;
@@ -19,7 +19,7 @@ class GetWebAppPremierAddOnSlotArgs {
   /// Creates a new [GetWebAppPremierAddOnSlotArgs].
   /// [name] Name of the app.
   /// [premierAddOnName] Add-on name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will get the named add-on for the production slot.
   const GetWebAppPremierAddOnSlotArgs({
     required this.name,
@@ -46,4 +46,3 @@ class GetWebAppPremierAddOnSlotArgs {
     );
   }
 }
-

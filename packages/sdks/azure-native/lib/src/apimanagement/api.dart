@@ -8,9 +8,9 @@ import 'subscription_key_parameter_names_contract_response.dart';
 
 /// API details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -100,6 +100,38 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id = "tempgroup"
+///   authentication_settings = {
+///     o_auth2 = {
+///       authorization_server_id = "authorizationServerId2283"
+///       scope                   = "oauth2scope2580"
+///     }
+///   }
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   path                = "newapiPath"
+///   protocols           = ["https", "http"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "http://newechoapi.cloudapp.net/api"
+///   subscription_key_parameter_names = {
+///     header = "header4520"
+///     query  = "query3037"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +143,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.OAuth2AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SubscriptionKeyParameterNamesContractArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,7 +294,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         ResourceGroupName = "rg1",
 ///         ServiceName = "apimService1",
 ///         ServiceUrl = "http://echoapi.cloudapp.net/api",
-///         SourceApiId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001",
+///         SourceApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001",
 ///         SubscriptionRequired = true,
 ///     });
 ///
@@ -294,7 +326,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// 			ResourceGroupName:    pulumi.String("rg1"),
 /// 			ServiceName:          pulumi.String("apimService1"),
 /// 			ServiceUrl:           pulumi.String("http://echoapi.cloudapp.net/api"),
-/// 			SourceApiId:          pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001"),
+/// 			SourceApiId:          pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001"),
 /// 			SubscriptionRequired: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -302,6 +334,31 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id                = "echo-api2"
+///   description           = "Copy of Existing Echo Api including Operations."
+///   display_name          = "Echo API2"
+///   is_current            = true
+///   path                  = "echo2"
+///   protocols             = ["http", "https"]
+///   resource_group_name   = "rg1"
+///   service_name          = "apimService1"
+///   service_url           = "http://echoapi.cloudapp.net/api"
+///   source_api_id         = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001"
+///   subscription_required = true
 /// }
 ///
 /// ```
@@ -314,8 +371,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -339,7 +396,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///             .resourceGroupName("rg1")
 ///             .serviceName("apimService1")
 ///             .serviceUrl("http://echoapi.cloudapp.net/api")
-///             .sourceApiId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001")
+///             .sourceApiId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001")
 ///             .subscriptionRequired(true)
 ///             .build());
 ///
@@ -365,7 +422,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     resourceGroupName: "rg1",
 ///     serviceName: "apimService1",
 ///     serviceUrl: "http://echoapi.cloudapp.net/api",
-///     sourceApiId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001",
+///     sourceApiId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001",
 ///     subscriptionRequired: true,
 /// });
 ///
@@ -388,7 +445,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     resource_group_name="rg1",
 ///     service_name="apimService1",
 ///     service_url="http://echoapi.cloudapp.net/api",
-///     source_api_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001",
+///     source_api_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001",
 ///     subscription_required=True)
 ///
 /// ```
@@ -409,7 +466,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///       resourceGroupName: rg1
 ///       serviceName: apimService1
 ///       serviceUrl: http://echoapi.cloudapp.net/api
-///       sourceApiId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001
+///       sourceApiId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/58a4aeac497000007d040001
 ///       subscriptionRequired: true
 ///
 /// ```
@@ -429,7 +486,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     {
 ///         ApiId = "echoapiv3",
 ///         ApiVersion = "v4",
-///         ApiVersionSetId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458",
+///         ApiVersionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458",
 ///         Description = "Create Echo API into a new Version using Existing Version Set and Copy all Operations.",
 ///         DisplayName = "Echo API2",
 ///         IsCurrent = true,
@@ -442,7 +499,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         ResourceGroupName = "rg1",
 ///         ServiceName = "apimService1",
 ///         ServiceUrl = "http://echoapi.cloudapp.net/api",
-///         SourceApiId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath",
+///         SourceApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath",
 ///         SubscriptionRequired = true,
 ///     });
 ///
@@ -464,7 +521,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// 		_, err := apimanagement.NewApi(ctx, "api", &apimanagement.ApiArgs{
 /// 			ApiId:           pulumi.String("echoapiv3"),
 /// 			ApiVersion:      pulumi.String("v4"),
-/// 			ApiVersionSetId: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458"),
+/// 			ApiVersionSetId: pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458"),
 /// 			Description:     pulumi.String("Create Echo API into a new Version using Existing Version Set and Copy all Operations."),
 /// 			DisplayName:     pulumi.String("Echo API2"),
 /// 			IsCurrent:       pulumi.Bool(true),
@@ -476,7 +533,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// 			ResourceGroupName:    pulumi.String("rg1"),
 /// 			ServiceName:          pulumi.String("apimService1"),
 /// 			ServiceUrl:           pulumi.String("http://echoapi.cloudapp.net/api"),
-/// 			SourceApiId:          pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath"),
+/// 			SourceApiId:          pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath"),
 /// 			SubscriptionRequired: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -484,6 +541,33 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id                = "echoapiv3"
+///   api_version           = "v4"
+///   api_version_set_id    = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458"
+///   description           = "Create Echo API into a new Version using Existing Version Set and Copy all Operations."
+///   display_name          = "Echo API2"
+///   is_current            = true
+///   path                  = "echo2"
+///   protocols             = ["http", "https"]
+///   resource_group_name   = "rg1"
+///   service_name          = "apimService1"
+///   service_url           = "http://echoapi.cloudapp.net/api"
+///   source_api_id         = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath"
+///   subscription_required = true
 /// }
 ///
 /// ```
@@ -496,8 +580,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -512,7 +596,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         var api = new Api("api", ApiArgs.builder()
 ///             .apiId("echoapiv3")
 ///             .apiVersion("v4")
-///             .apiVersionSetId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458")
+///             .apiVersionSetId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458")
 ///             .description("Create Echo API into a new Version using Existing Version Set and Copy all Operations.")
 ///             .displayName("Echo API2")
 ///             .isCurrent(true)
@@ -523,7 +607,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///             .resourceGroupName("rg1")
 ///             .serviceName("apimService1")
 ///             .serviceUrl("http://echoapi.cloudapp.net/api")
-///             .sourceApiId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath")
+///             .sourceApiId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath")
 ///             .subscriptionRequired(true)
 ///             .build());
 ///
@@ -539,7 +623,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// const api = new azure_native.apimanagement.Api("api", {
 ///     apiId: "echoapiv3",
 ///     apiVersion: "v4",
-///     apiVersionSetId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458",
+///     apiVersionSetId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458",
 ///     description: "Create Echo API into a new Version using Existing Version Set and Copy all Operations.",
 ///     displayName: "Echo API2",
 ///     isCurrent: true,
@@ -551,7 +635,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     resourceGroupName: "rg1",
 ///     serviceName: "apimService1",
 ///     serviceUrl: "http://echoapi.cloudapp.net/api",
-///     sourceApiId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath",
+///     sourceApiId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath",
 ///     subscriptionRequired: true,
 /// });
 ///
@@ -564,7 +648,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// api = azure_native.apimanagement.Api("api",
 ///     api_id="echoapiv3",
 ///     api_version="v4",
-///     api_version_set_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458",
+///     api_version_set_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458",
 ///     description="Create Echo API into a new Version using Existing Version Set and Copy all Operations.",
 ///     display_name="Echo API2",
 ///     is_current=True,
@@ -576,7 +660,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     resource_group_name="rg1",
 ///     service_name="apimService1",
 ///     service_url="http://echoapi.cloudapp.net/api",
-///     source_api_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath",
+///     source_api_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath",
 ///     subscription_required=True)
 ///
 /// ```
@@ -588,7 +672,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     properties:
 ///       apiId: echoapiv3
 ///       apiVersion: v4
-///       apiVersionSetId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458
+///       apiVersionSetId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/aa9c59e6-c0cd-4258-9356-9ca7d2f0b458
 ///       description: Create Echo API into a new Version using Existing Version Set and Copy all Operations.
 ///       displayName: Echo API2
 ///       isCurrent: true
@@ -599,7 +683,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///       resourceGroupName: rg1
 ///       serviceName: apimService1
 ///       serviceUrl: http://echoapi.cloudapp.net/api
-///       sourceApiId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath
+///       sourceApiId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echoPath
 ///       subscriptionRequired: true
 ///
 /// ```
@@ -623,7 +707,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///         ResourceGroupName = "rg1",
 ///         ServiceName = "apimService1",
 ///         ServiceUrl = "http://echoapi.cloudapp.net/apiv3",
-///         SourceApiId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
+///         SourceApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
 ///     });
 ///
 /// });
@@ -648,13 +732,34 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// 			ResourceGroupName:      pulumi.String("rg1"),
 /// 			ServiceName:            pulumi.String("apimService1"),
 /// 			ServiceUrl:             pulumi.String("http://echoapi.cloudapp.net/apiv3"),
-/// 			SourceApiId:            pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"),
+/// 			SourceApiId:            pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id                   = "echo-api;rev=3"
+///   api_revision_description = "Creating a Revision of an existing API"
+///   path                     = "echo"
+///   resource_group_name      = "rg1"
+///   service_name             = "apimService1"
+///   service_url              = "http://echoapi.cloudapp.net/apiv3"
+///   source_api_id            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"
 /// }
 ///
 /// ```
@@ -667,8 +772,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -687,7 +792,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///             .resourceGroupName("rg1")
 ///             .serviceName("apimService1")
 ///             .serviceUrl("http://echoapi.cloudapp.net/apiv3")
-///             .sourceApiId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api")
+///             .sourceApiId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api")
 ///             .build());
 ///
 ///     }
@@ -706,7 +811,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     resourceGroupName: "rg1",
 ///     serviceName: "apimService1",
 ///     serviceUrl: "http://echoapi.cloudapp.net/apiv3",
-///     sourceApiId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
+///     sourceApiId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
 /// });
 ///
 /// ```
@@ -722,7 +827,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///     resource_group_name="rg1",
 ///     service_name="apimService1",
 ///     service_url="http://echoapi.cloudapp.net/apiv3",
-///     source_api_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api")
+///     source_api_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api")
 ///
 /// ```
 ///
@@ -737,7 +842,7 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///       resourceGroupName: rg1
 ///       serviceName: apimService1
 ///       serviceUrl: http://echoapi.cloudapp.net/apiv3
-///       sourceApiId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api
+///       sourceApiId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api
 ///
 /// ```
 ///
@@ -796,6 +901,27 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "apidocs"
+///   format              = "swagger-link"
+///   path                = "petstoreapi123"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "http://petstore.swagger.wordnik.com/api"
+///   value               = "http://apimpimportviaurl.azurewebsites.net/api/apidocs/"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -804,8 +930,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -931,6 +1057,26 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "petstore"
+///   format              = "openapi-link"
+///   path                = "petstore"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   value               = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -939,8 +1085,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1064,6 +1210,27 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id                                      = "petstore"
+///   format                                      = "openapi-link"
+///   path                                        = "petstore"
+///   resource_group_name                         = "rg1"
+///   service_name                                = "apimService1"
+///   translate_required_query_parameters_conduct = "template"
+///   value                                       = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1072,8 +1239,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1199,6 +1366,26 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "petstore"
+///   format              = "swagger-link-json"
+///   path                = "petstore"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   value               = "http://petstore.swagger.io/v2/swagger.json"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1207,8 +1394,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1330,6 +1517,26 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "petstore"
+///   format              = "wadl-link-json"
+///   path                = "collector"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   value               = "https://developer.cisco.com/media/wae-release-6-2-api-reference/wae-collector-rest-api/application.wadl"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1338,8 +1545,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1509,6 +1716,41 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id = "tempgroup"
+///   authentication_settings = {
+///     o_auth2_authentication_settings = [{
+///       "authorizationServerId" = "authorizationServerId2283"
+///       "scope"                 = "oauth2scope2580"
+///       }, {
+///       "authorizationServerId" = "authorizationServerId2284"
+///       "scope"                 = "oauth2scope2581"
+///     }]
+///   }
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   path                = "newapiPath"
+///   protocols           = ["https", "http"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "http://newechoapi.cloudapp.net/api"
+///   subscription_key_parameter_names = {
+///     header = "header4520"
+///     query  = "query3037"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1519,8 +1761,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SubscriptionKeyParameterNamesContractArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1774,6 +2016,41 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id = "tempgroup"
+///   authentication_settings = {
+///     openid_authentication_settings = [{
+///       "bearerTokenSendingMethods" = ["authorizationHeader"]
+///       "openidProviderId"          = "openidProviderId2283"
+///       }, {
+///       "bearerTokenSendingMethods" = ["authorizationHeader"]
+///       "openidProviderId"          = "openidProviderId2284"
+///     }]
+///   }
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   path                = "newapiPath"
+///   protocols           = ["https", "http"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "http://newechoapi.cloudapp.net/api"
+///   subscription_key_parameter_names = {
+///     header = "header4520"
+///     query  = "query3037"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1784,8 +2061,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SubscriptionKeyParameterNamesContractArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2020,6 +2297,38 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id = "tempgroup"
+///   authentication_settings = {
+///     openid = {
+///       bearer_token_sending_methods = ["authorizationHeader"]
+///       openid_provider_id           = "testopenid"
+///     }
+///   }
+///   description         = "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters."
+///   display_name        = "Swagger Petstore"
+///   path                = "petstore"
+///   protocols           = ["https"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "http://petstore.swagger.io/v2"
+///   subscription_key_parameter_names = {
+///     header = "Ocp-Apim-Subscription-Key"
+///     query  = "subscription-key"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2031,8 +2340,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.OpenIdAuthenticationSettingsContractArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.SubscriptionKeyParameterNamesContractArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2214,6 +2523,29 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "tempgroup"
+///   api_type            = "graphql"
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   path                = "graphql-api"
+///   protocols           = ["http", "https"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "https://api.spacex.land/graphql"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2222,8 +2554,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2316,6 +2648,401 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// {{% /example %}}
 /// {{% example %}}
+/// ### ApiManagementCreateGrpcApi
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var api = new AzureNative.ApiManagement.Api("api", new()
+///     {
+///         ApiId = "tempgroup",
+///         ApiType = AzureNative.ApiManagement.ApiType.Grpc,
+///         Description = "apidescription5200",
+///         DisplayName = "apiname1463",
+///         Format = AzureNative.ApiManagement.ContentFormat.Grpc_link,
+///         Path = "grpc-api",
+///         Protocols = new[]
+///         {
+///             AzureNative.ApiManagement.Protocol.Https,
+///         },
+///         ResourceGroupName = "rg1",
+///         ServiceName = "apimService1",
+///         ServiceUrl = "https://your-api-hostname/samples",
+///         Value = "https://raw.githubusercontent.com/kedacore/keda/main/pkg/scalers/externalscaler/externalscaler.proto",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	apimanagement "github.com/pulumi/pulumi-azure-native-sdk/apimanagement/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := apimanagement.NewApi(ctx, "api", &apimanagement.ApiArgs{
+/// 			ApiId:       pulumi.String("tempgroup"),
+/// 			ApiType:     pulumi.String(apimanagement.ApiTypeGrpc),
+/// 			Description: pulumi.String("apidescription5200"),
+/// 			DisplayName: pulumi.String("apiname1463"),
+/// 			Format:      pulumi.String(apimanagement.ContentFormat_Grpc_Link),
+/// 			Path:        pulumi.String("grpc-api"),
+/// 			Protocols: pulumi.StringArray{
+/// 				pulumi.String(apimanagement.ProtocolHttps),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("rg1"),
+/// 			ServiceName:       pulumi.String("apimService1"),
+/// 			ServiceUrl:        pulumi.String("https://your-api-hostname/samples"),
+/// 			Value:             pulumi.String("https://raw.githubusercontent.com/kedacore/keda/main/pkg/scalers/externalscaler/externalscaler.proto"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "tempgroup"
+///   api_type            = "grpc"
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   format              = "grpc-link"
+///   path                = "grpc-api"
+///   protocols           = ["https"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "https://your-api-hostname/samples"
+///   value               = "https://raw.githubusercontent.com/kedacore/keda/main/pkg/scalers/externalscaler/externalscaler.proto"
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.apimanagement.Api;
+/// import com.pulumi.azurenative.apimanagement.ApiArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var api = new Api("api", ApiArgs.builder()
+///             .apiId("tempgroup")
+///             .apiType("grpc")
+///             .description("apidescription5200")
+///             .displayName("apiname1463")
+///             .format("grpc-link")
+///             .path("grpc-api")
+///             .protocols("https")
+///             .resourceGroupName("rg1")
+///             .serviceName("apimService1")
+///             .serviceUrl("https://your-api-hostname/samples")
+///             .value("https://raw.githubusercontent.com/kedacore/keda/main/pkg/scalers/externalscaler/externalscaler.proto")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const api = new azure_native.apimanagement.Api("api", {
+///     apiId: "tempgroup",
+///     apiType: azure_native.apimanagement.ApiType.Grpc,
+///     description: "apidescription5200",
+///     displayName: "apiname1463",
+///     format: azure_native.apimanagement.ContentFormat.Grpc_link,
+///     path: "grpc-api",
+///     protocols: [azure_native.apimanagement.Protocol.Https],
+///     resourceGroupName: "rg1",
+///     serviceName: "apimService1",
+///     serviceUrl: "https://your-api-hostname/samples",
+///     value: "https://raw.githubusercontent.com/kedacore/keda/main/pkg/scalers/externalscaler/externalscaler.proto",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// api = azure_native.apimanagement.Api("api",
+///     api_id="tempgroup",
+///     api_type=azure_native.apimanagement.ApiType.GRPC,
+///     description="apidescription5200",
+///     display_name="apiname1463",
+///     format=azure_native.apimanagement.ContentFormat.GRPC_LINK,
+///     path="grpc-api",
+///     protocols=[azure_native.apimanagement.Protocol.HTTPS],
+///     resource_group_name="rg1",
+///     service_name="apimService1",
+///     service_url="https://your-api-hostname/samples",
+///     value="https://raw.githubusercontent.com/kedacore/keda/main/pkg/scalers/externalscaler/externalscaler.proto")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   api:
+///     type: azure-native:apimanagement:Api
+///     properties:
+///       apiId: tempgroup
+///       apiType: grpc
+///       description: apidescription5200
+///       displayName: apiname1463
+///       format: grpc-link
+///       path: grpc-api
+///       protocols:
+///         - https
+///       resourceGroupName: rg1
+///       serviceName: apimService1
+///       serviceUrl: https://your-api-hostname/samples
+///       value: https://raw.githubusercontent.com/kedacore/keda/main/pkg/scalers/externalscaler/externalscaler.proto
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% example %}}
+/// ### ApiManagementCreateODataApi
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var api = new AzureNative.ApiManagement.Api("api", new()
+///     {
+///         ApiId = "tempgroup",
+///         ApiType = AzureNative.ApiManagement.ApiType.Odata,
+///         Description = "apidescription5200",
+///         DisplayName = "apiname1463",
+///         Format = AzureNative.ApiManagement.ContentFormat.Odata_link,
+///         Path = "odata-api",
+///         Protocols = new[]
+///         {
+///             AzureNative.ApiManagement.Protocol.Http,
+///             AzureNative.ApiManagement.Protocol.Https,
+///         },
+///         ResourceGroupName = "rg1",
+///         ServiceName = "apimService1",
+///         ServiceUrl = "https://services.odata.org/TripPinWebApiService",
+///         Value = "https://services.odata.org/TripPinWebApiService/$metadata",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	apimanagement "github.com/pulumi/pulumi-azure-native-sdk/apimanagement/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := apimanagement.NewApi(ctx, "api", &apimanagement.ApiArgs{
+/// 			ApiId:       pulumi.String("tempgroup"),
+/// 			ApiType:     pulumi.String(apimanagement.ApiTypeOdata),
+/// 			Description: pulumi.String("apidescription5200"),
+/// 			DisplayName: pulumi.String("apiname1463"),
+/// 			Format:      pulumi.String(apimanagement.ContentFormat_Odata_Link),
+/// 			Path:        pulumi.String("odata-api"),
+/// 			Protocols: pulumi.StringArray{
+/// 				pulumi.String(apimanagement.ProtocolHttp),
+/// 				pulumi.String(apimanagement.ProtocolHttps),
+/// 			},
+/// 			ResourceGroupName: pulumi.String("rg1"),
+/// 			ServiceName:       pulumi.String("apimService1"),
+/// 			ServiceUrl:        pulumi.String("https://services.odata.org/TripPinWebApiService"),
+/// 			Value:             pulumi.String("https://services.odata.org/TripPinWebApiService/$metadata"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "tempgroup"
+///   api_type            = "odata"
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   format              = "odata-link"
+///   path                = "odata-api"
+///   protocols           = ["http", "https"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "https://services.odata.org/TripPinWebApiService"
+///   value               = "https://services.odata.org/TripPinWebApiService/$metadata"
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.apimanagement.Api;
+/// import com.pulumi.azurenative.apimanagement.ApiArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var api = new Api("api", ApiArgs.builder()
+///             .apiId("tempgroup")
+///             .apiType("odata")
+///             .description("apidescription5200")
+///             .displayName("apiname1463")
+///             .format("odata-link")
+///             .path("odata-api")
+///             .protocols(
+///                 "http",
+///                 "https")
+///             .resourceGroupName("rg1")
+///             .serviceName("apimService1")
+///             .serviceUrl("https://services.odata.org/TripPinWebApiService")
+///             .value("https://services.odata.org/TripPinWebApiService/$metadata")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const api = new azure_native.apimanagement.Api("api", {
+///     apiId: "tempgroup",
+///     apiType: azure_native.apimanagement.ApiType.Odata,
+///     description: "apidescription5200",
+///     displayName: "apiname1463",
+///     format: azure_native.apimanagement.ContentFormat.Odata_link,
+///     path: "odata-api",
+///     protocols: [
+///         azure_native.apimanagement.Protocol.Http,
+///         azure_native.apimanagement.Protocol.Https,
+///     ],
+///     resourceGroupName: "rg1",
+///     serviceName: "apimService1",
+///     serviceUrl: "https://services.odata.org/TripPinWebApiService",
+///     value: "https://services.odata.org/TripPinWebApiService/$metadata",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// api = azure_native.apimanagement.Api("api",
+///     api_id="tempgroup",
+///     api_type=azure_native.apimanagement.ApiType.ODATA,
+///     description="apidescription5200",
+///     display_name="apiname1463",
+///     format=azure_native.apimanagement.ContentFormat.ODATA_LINK,
+///     path="odata-api",
+///     protocols=[
+///         azure_native.apimanagement.Protocol.HTTP,
+///         azure_native.apimanagement.Protocol.HTTPS,
+///     ],
+///     resource_group_name="rg1",
+///     service_name="apimService1",
+///     service_url="https://services.odata.org/TripPinWebApiService",
+///     value="https://services.odata.org/TripPinWebApiService/$metadata")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   api:
+///     type: azure-native:apimanagement:Api
+///     properties:
+///       apiId: tempgroup
+///       apiType: odata
+///       description: apidescription5200
+///       displayName: apiname1463
+///       format: odata-link
+///       path: odata-api
+///       protocols:
+///         - http
+///         - https
+///       resourceGroupName: rg1
+///       serviceName: apimService1
+///       serviceUrl: https://services.odata.org/TripPinWebApiService
+///       value: https://services.odata.org/TripPinWebApiService/$metadata
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% example %}}
 /// ### ApiManagementCreateSoapPassThroughApiUsingWsdlImport
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2378,6 +3105,31 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "soapApi"
+///   format              = "wsdl-link"
+///   path                = "currency"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   soap_api_type       = "soap"
+///   value               = "http://www.webservicex.net/CurrencyConvertor.asmx?WSDL"
+///   wsdl_selector = {
+///     wsdl_endpoint_name = "CurrencyConvertorSoap"
+///     wsdl_service_name  = "CurrencyConvertor"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2387,8 +3139,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ApiCreateOrUpdatePropertiesWsdlSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2538,6 +3290,30 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "soapApi"
+///   format              = "wsdl-link"
+///   path                = "currency"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   value               = "http://www.webservicex.net/CurrencyConvertor.asmx?WSDL"
+///   wsdl_selector = {
+///     wsdl_endpoint_name = "CurrencyConvertorSoap"
+///     wsdl_service_name  = "CurrencyConvertor"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2547,8 +3323,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.ApiCreateOrUpdatePropertiesWsdlSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2698,6 +3474,29 @@ import 'subscription_key_parameter_names_contract_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_api" "api" {
+///   api_id              = "tempgroup"
+///   api_type            = "websocket"
+///   description         = "apidescription5200"
+///   display_name        = "apiname1463"
+///   path                = "newapiPath"
+///   protocols           = ["wss", "ws"]
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+///   service_url         = "wss://echo.websocket.org"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2706,8 +3505,8 @@ import 'subscription_key_parameter_names_contract_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.Api;
 /// import com.pulumi.azurenative.apimanagement.ApiArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2845,6 +3644,8 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String> path;
   /// Describes on which protocols the operations in this API can be invoked.
   late final pulumi.Output<List<String>?> protocols;
+  /// The provisioning state
+  late final pulumi.Output<String> provisioningState;
   /// Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
   late final pulumi.Output<String?> serviceUrl;
   /// API identifier of the source API.
@@ -2890,6 +3691,7 @@ class Api extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
     protocols = registerOutput<List<String>?>('protocols');
+    provisioningState = registerOutput<String>('provisioningState');
     serviceUrl = registerOutput<String?>('serviceUrl');
     sourceApiId = registerOutput<String?>('sourceApiId');
     subscriptionKeyParameterNames = registerOutput<SubscriptionKeyParameterNamesContractResponse?>('subscriptionKeyParameterNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionKeyParameterNamesContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

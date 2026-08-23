@@ -3,11 +3,14 @@
 import 'governance_rule_email_notification_response.dart';
 import 'governance_rule_metadata_response.dart';
 import 'governance_rule_owner_source_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getGovernanceRule.
 class GetGovernanceRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+  /// The governance rule conditionSets - see examples
+  final List<dynamic> conditionSets;
   /// Description of the governance rule
   final String? description;
   /// Display name of the governance rule
@@ -16,7 +19,7 @@ class GetGovernanceRuleResult {
   final List<String>? excludedScopes;
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
   final GovernanceRuleEmailNotificationResponse? governanceEmailNotification;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
   final bool? includeMemberScopes;
@@ -26,7 +29,7 @@ class GetGovernanceRuleResult {
   final bool? isGracePeriod;
   /// The governance rule metadata
   final GovernanceRuleMetadataResponse? metadata;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
   final GovernanceRuleOwnerSourceResponse ownerSource;
@@ -38,32 +41,37 @@ class GetGovernanceRuleResult {
   final String ruleType;
   /// The governance rule source, what the rule affects, e.g. Assessments
   final String sourceResourceType;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// The tenantId (GUID)
   final String tenantId;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetGovernanceRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
+  /// [conditionSets] The governance rule conditionSets - see examples
   /// [description] Description of the governance rule
   /// [displayName] Display name of the governance rule
   /// [excludedScopes] Excluded scopes, filter out the descendants of the scope (on management scopes)
   /// [governanceEmailNotification] The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [includeMemberScopes] Defines whether the rule is management scope rule (master connector as a single scope or management scope)
   /// [isDisabled] Defines whether the rule is active/inactive
   /// [isGracePeriod] Defines whether there is a grace period on the governance rule
   /// [metadata] The governance rule metadata
-  /// [name] Resource name
+  /// [name] The name of the resource
   /// [ownerSource] The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
   /// [remediationTimeframe] Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
   /// [rulePriority] The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
   /// [ruleType] The rule type of the governance rule, defines the source of the rule e.g. Integrated
   /// [sourceResourceType] The governance rule source, what the rule affects, e.g. Assessments
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tenantId] The tenantId (GUID)
-  /// [type] Resource type
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGovernanceRuleResult({
     required this.azureApiVersion,
+    required this.conditionSets,
     this.description,
     required this.displayName,
     this.excludedScopes,
@@ -79,6 +87,7 @@ class GetGovernanceRuleResult {
     required this.rulePriority,
     required this.ruleType,
     required this.sourceResourceType,
+    required this.systemData,
     required this.tenantId,
     required this.type,
   });
@@ -86,6 +95,7 @@ class GetGovernanceRuleResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
+      'conditionSets': conditionSets,
       'description': ?description,
       'displayName': displayName,
       'excludedScopes': ?excludedScopes,
@@ -101,6 +111,7 @@ class GetGovernanceRuleResult {
       'rulePriority': rulePriority,
       'ruleType': ruleType,
       'sourceResourceType': sourceResourceType,
+      'systemData': systemData.toMap(),
       'tenantId': tenantId,
       'type': type,
     };
@@ -109,6 +120,7 @@ class GetGovernanceRuleResult {
   factory GetGovernanceRuleResult.fromMap(Map<String, dynamic> map) {
     return GetGovernanceRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
+      conditionSets: (map['conditionSets'] as List).cast<dynamic>(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: map['displayName'] as String,
       excludedScopes: (() { final guardedValue = map['excludedScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
@@ -124,9 +136,9 @@ class GetGovernanceRuleResult {
       rulePriority: map['rulePriority'] as int,
       ruleType: map['ruleType'] as String,
       sourceResourceType: map['sourceResourceType'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
     );
   }
 }
-

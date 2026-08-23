@@ -59,6 +59,25 @@ import 'ip_firewall_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_ipfirewallrule" "ipFirewallRule" {
+///   end_ip_address      = "10.0.0.254"
+///   resource_group_name = "ExampleResourceGroup"
+///   rule_name           = "ExampleIpFirewallRule"
+///   start_ip_address    = "10.0.0.0"
+///   workspace_name      = "ExampleWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'ip_firewall_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.IpFirewallRule;
 /// import com.pulumi.azurenative.synapse.IpFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

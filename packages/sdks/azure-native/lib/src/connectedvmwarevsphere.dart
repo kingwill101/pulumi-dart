@@ -44,6 +44,7 @@ export 'connectedvmwarevsphere/guest_agent_profile.dart';
 export 'connectedvmwarevsphere/guest_agent_profile_response.dart';
 export 'connectedvmwarevsphere/guest_credential.dart';
 export 'connectedvmwarevsphere/guest_credential_response.dart';
+export 'connectedvmwarevsphere/guest_credential_vminstance_guest_agent_response.dart';
 export 'connectedvmwarevsphere/hardware_profile.dart';
 export 'connectedvmwarevsphere/hardware_profile_response.dart';
 export 'connectedvmwarevsphere/host.dart';

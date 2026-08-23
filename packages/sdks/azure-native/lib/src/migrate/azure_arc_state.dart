@@ -16,4 +16,3 @@ enum AzureArcState {
     throw ArgumentError('Unknown AzureArcState value: $value');
   }
 }
-

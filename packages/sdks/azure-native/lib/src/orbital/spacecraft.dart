@@ -97,6 +97,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_orbital_spacecraft" "spacecraft" {
+///   links {
+///     bandwidth_m_hz        = 2
+///     center_frequency_m_hz = 2250
+///     direction             = "Uplink"
+///     name                  = "uplink_lhcp1"
+///     polarization          = "LHCP"
+///   }
+///   links {
+///     bandwidth_m_hz        = 15
+///     center_frequency_m_hz = 8160
+///     direction             = "Downlink"
+///     name                  = "downlink_rhcp1"
+///     polarization          = "RHCP"
+///   }
+///   location            = "eastus2"
+///   norad_id            = "36411"
+///   resource_group_name = "contoso-Rgp"
+///   spacecraft_name     = "CONTOSO_SAT"
+///   title_line          = "CONTOSO_SAT"
+///   tle_line1           = "1 27424U 02022A   22167.05119303  .00000638  00000+0  15103-3 0  9994"
+///   tle_line2           = "2 27424  98.2477 108.9546 0000928  92.9194 327.0802 14.57300770 69982"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +141,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.orbital.Spacecraft;
 /// import com.pulumi.azurenative.orbital.SpacecraftArgs;
 /// import com.pulumi.azurenative.orbital.inputs.SpacecraftLinkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -188,15 +223,15 @@ import 'system_data_response.dart';
 /// spacecraft = azure_native.orbital.Spacecraft("spacecraft",
 ///     links=[
 ///         {
-///             "bandwidth_m_hz": 2,
-///             "center_frequency_m_hz": 2250,
+///             "bandwidth_m_hz": float(2),
+///             "center_frequency_m_hz": float(2250),
 ///             "direction": azure_native.orbital.Direction.UPLINK,
 ///             "name": "uplink_lhcp1",
 ///             "polarization": azure_native.orbital.Polarization.LHCP,
 ///         },
 ///         {
-///             "bandwidth_m_hz": 15,
-///             "center_frequency_m_hz": 8160,
+///             "bandwidth_m_hz": float(15),
+///             "center_frequency_m_hz": float(8160),
 ///             "direction": azure_native.orbital.Direction.DOWNLINK,
 ///             "name": "downlink_rhcp1",
 ///             "polarization": azure_native.orbital.Polarization.RHCP,

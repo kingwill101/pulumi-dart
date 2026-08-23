@@ -15,4 +15,3 @@ enum RecurrenceInterval {
     throw ArgumentError('Unknown RecurrenceInterval value: $value');
   }
 }
-

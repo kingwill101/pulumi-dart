@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertProcessingRuleByNameArgs {
   /// The name of the alert processing rule that needs to be fetched.
   final pulumi.Input<String> alertProcessingRuleName;
-  /// Resource group name where the resource is created.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAlertProcessingRuleByNameArgs].
   /// [alertProcessingRuleName] The name of the alert processing rule that needs to be fetched.
-  /// [resourceGroupName] Resource group name where the resource is created.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetAlertProcessingRuleByNameArgs({
     required this.alertProcessingRuleName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetAlertProcessingRuleByNameArgs {
     );
   }
 }
-

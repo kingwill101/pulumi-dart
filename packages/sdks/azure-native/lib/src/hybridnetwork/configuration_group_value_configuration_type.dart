@@ -16,4 +16,3 @@ enum ConfigurationGroupValueConfigurationType {
     throw ArgumentError('Unknown ConfigurationGroupValueConfigurationType value: $value');
   }
 }
-

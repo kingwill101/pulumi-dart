@@ -55,6 +55,22 @@ import 'warm_store_configuration_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_gen2environment" "gen2Environment" {
+///   environment_name    = "env1"
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +79,8 @@ import 'warm_store_configuration_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.timeseriesinsights.Gen2Environment;
 /// import com.pulumi.azurenative.timeseriesinsights.Gen2EnvironmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -2,13 +2,13 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_group_response.dart';
-import 'connectivity_group_item_response.dart';
+import 'connectivity_group_itemlist_effective_connectivity_configuration_response.dart';
 import 'hub_response.dart';
 
 /// The network manager effective connectivity configuration
 class EffectiveConnectivityConfigurationResponse {
   /// Groups for configuration
-  final pulumi.Input<List<ConnectivityGroupItemResponse>> appliesToGroups;
+  final pulumi.Input<List<ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse>>? appliesToGroups;
   /// Effective configuration groups.
   final pulumi.Input<List<ConfigurationGroupResponse>>? configurationGroups;
   /// Connectivity topology type.
@@ -21,14 +21,12 @@ class EffectiveConnectivityConfigurationResponse {
   final pulumi.Input<String>? displayName;
   /// List of hubItems
   final pulumi.Input<List<HubResponse>>? hubs;
-  /// Connectivity configuration ID.
+  /// Resource ID.
   final pulumi.Input<String>? id;
   /// Flag if global mesh is supported.
   final pulumi.Input<String>? isGlobal;
   /// The provisioning state of the connectivity configuration resource.
   final pulumi.Input<String> provisioningState;
-  /// Unique identifier for this resource.
-  final pulumi.Input<String> resourceGuid;
 
   /// Creates a new [EffectiveConnectivityConfigurationResponse].
   /// [appliesToGroups] Groups for configuration
@@ -38,12 +36,11 @@ class EffectiveConnectivityConfigurationResponse {
   /// [description] A description of the connectivity configuration.
   /// [displayName] A friendly name for the resource.
   /// [hubs] List of hubItems
-  /// [id] Connectivity configuration ID.
+  /// [id] Resource ID.
   /// [isGlobal] Flag if global mesh is supported.
   /// [provisioningState] The provisioning state of the connectivity configuration resource.
-  /// [resourceGuid] Unique identifier for this resource.
   const EffectiveConnectivityConfigurationResponse({
-    required this.appliesToGroups,
+    this.appliesToGroups,
     this.configurationGroups,
     required this.connectivityTopology,
     this.deleteExistingPeering,
@@ -53,12 +50,11 @@ class EffectiveConnectivityConfigurationResponse {
     this.id,
     this.isGlobal,
     required this.provisioningState,
-    required this.resourceGuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesToGroups': pulumi.Input.mapInputValue<List<ConnectivityGroupItemResponse>, List<Map<String, dynamic>>>(appliesToGroups, (value) => pulumi.Input.encodeList<ConnectivityGroupItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'appliesToGroups': ?pulumi.Input.mapOptionalInputValue<List<ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse>, List<Map<String, dynamic>>>(appliesToGroups, (value) => pulumi.Input.encodeList<ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configurationGroups': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationGroupResponse>, List<Map<String, dynamic>>>(configurationGroups, (value) => pulumi.Input.encodeList<ConfigurationGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectivityTopology': connectivityTopology,
       'deleteExistingPeering': ?deleteExistingPeering,
@@ -68,13 +64,12 @@ class EffectiveConnectivityConfigurationResponse {
       'id': ?id,
       'isGlobal': ?isGlobal,
       'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
     };
   }
 
   factory EffectiveConnectivityConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return EffectiveConnectivityConfigurationResponse(
-      appliesToGroups: pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectivityGroupItemResponse>(map['appliesToGroups']!, (value) => ConnectivityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      appliesToGroups: (() { final guardedValue = map['appliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse>(guardedValue, (value) => ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       configurationGroups: (() { final guardedValue = map['configurationGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationGroupResponse>(guardedValue, (value) => ConfigurationGroupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectivityTopology: pulumi.Input.fromValue(map['connectivityTopology'] as String),
       deleteExistingPeering: (() { final guardedValue = map['deleteExistingPeering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -84,8 +79,6 @@ class EffectiveConnectivityConfigurationResponse {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isGlobal: (() { final guardedValue = map['isGlobal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum ComplianceSeverity {
     throw ArgumentError('Unknown ComplianceSeverity value: $value');
   }
 }
-

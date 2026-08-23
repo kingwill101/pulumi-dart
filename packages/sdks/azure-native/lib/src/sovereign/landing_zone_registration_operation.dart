@@ -73,6 +73,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sovereign_landingzoneregistrationoperation" "landingZoneRegistrationOperation" {
+///   landing_zone_account_name      = "lza-RemApiExample"
+///   landing_zone_registration_name = "lzr-RemApiExample"
+///   properties = {
+///     existing_landing_zone_configuration_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-RemApiExample/providers/Microsoft.Sovereign/landingZoneAccounts/lza-RemApiExample/landingZoneConfigurations/lzc-RemApiExample"
+///     existing_top_level_mg_id               = "/providers/Microsoft.Management/managementGroups/mg-example"
+///     managed_identity = {
+///       type                               = "UserAssigned"
+///       user_assigned_identity_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-RemApiExample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-RemApiExample"
+///     }
+///   }
+///   resource_group_name = "rg-RemApiExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.sovereign.LandingZoneRegistrationOperationArgs;
 /// import com.pulumi.azurenative.sovereign.inputs.LandingZoneRegistrationResourcePropertiesArgs;
 /// import com.pulumi.azurenative.sovereign.inputs.ManagedIdentityPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

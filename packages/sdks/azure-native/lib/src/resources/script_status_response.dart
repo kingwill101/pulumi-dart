@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'error_response_response.dart';
+import 'error_detail_response.dart';
 
 /// Generic object modeling results of script execution.
 class ScriptStatusResponse {
@@ -10,7 +10,7 @@ class ScriptStatusResponse {
   /// End time of the script execution.
   final pulumi.Input<String> endTime;
   /// Error that is relayed from the script execution.
-  final pulumi.Input<ErrorResponseResponse>? error;
+  final pulumi.Input<ErrorDetailResponse>? error;
   /// Time the deployment script resource will expire.
   final pulumi.Input<String> expirationTime;
   /// Start time of the script execution.
@@ -38,7 +38,7 @@ class ScriptStatusResponse {
     return <String, dynamic>{
       'containerInstanceId': containerInstanceId,
       'endTime': endTime,
-      'error': ?pulumi.Input.mapOptionalInputValue<ErrorResponseResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'expirationTime': expirationTime,
       'startTime': startTime,
       'storageAccountId': storageAccountId,
@@ -49,11 +49,10 @@ class ScriptStatusResponse {
     return ScriptStatusResponse(
       containerInstanceId: pulumi.Input.fromValue(map['containerInstanceId'] as String),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       expirationTime: pulumi.Input.fromValue(map['expirationTime'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
     );
   }
 }
-

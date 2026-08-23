@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_reference_response.dart';
-import 'tracked_resource_response_system_data.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getAzureTrafficCollector.
 class GetAzureTrafficCollectorResult {
@@ -12,19 +12,19 @@ class GetAzureTrafficCollectorResult {
   final List<ResourceReferenceResponse> collectorPolicies;
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
-  /// Resource ID.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// Resource location.
   final String location;
-  /// Resource name.
+  /// The name of the resource
   final String name;
   /// The provisioning state of the application rule collection resource.
   final String provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
-  final TrackedResourceResponseSystemData systemData;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The virtualHub to which the Azure Traffic Collector belongs.
   final ResourceReferenceResponse? virtualHub;
@@ -33,13 +33,13 @@ class GetAzureTrafficCollectorResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [collectorPolicies] Collector Policies for Azure Traffic Collector.
   /// [etag] A unique read-only string that changes whenever the resource is updated.
-  /// [id] Resource ID.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [location] Resource location.
-  /// [name] Resource name.
+  /// [name] The name of the resource
   /// [provisioningState] The provisioning state of the application rule collection resource.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualHub] The virtualHub to which the Azure Traffic Collector belongs.
   const GetAzureTrafficCollectorResult({
     required this.azureApiVersion,
@@ -80,11 +80,10 @@ class GetAzureTrafficCollectorResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: TrackedResourceResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
-

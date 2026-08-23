@@ -99,6 +99,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_sitenetworkservice" "siteNetworkService" {
+///   location = "westUs2"
+///   properties = {
+///     desired_state_configuration_group_value_references = {
+///       "MyVM_Configuration" = {
+///         id = "/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/configurationgroupvalues/MyVM_Configuration1"
+///       }
+///     }
+///     network_service_design_version_resource_reference = {
+///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"
+///       "idType" = "Secret"
+///     }
+///     site_reference = {
+///       id = "/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite"
+///     }
+///   }
+///   resource_group_name       = "rg1"
+///   site_network_service_name = "testSiteNetworkServiceName"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +144,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SiteNetworkServicePropertiesFormatArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,6 +349,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_sitenetworkservice" "siteNetworkService" {
+///   location = "westUs2"
+///   properties = {
+///     desired_state_configuration_group_value_references = {
+///       "MyVM_Configuration" = {
+///         id = "/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/configurationgroupvalues/MyVM_Configuration1"
+///       }
+///     }
+///     network_service_design_version_resource_reference = {
+///       "id"     = "/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/publishers/TestPublisher/networkServiceDesignGroups/TestNetworkServiceDesignGroupName/networkServiceDesignVersions/1.0.0"
+///       "idType" = "Open"
+///     }
+///     site_reference = {
+///       id = "/subscriptions/subid/resourcegroups/contosorg1/providers/microsoft.hybridnetwork/sites/testSite"
+///     }
+///   }
+///   resource_group_name       = "rg1"
+///   site_network_service_name = "testSiteNetworkServiceName"
+///   sku = {
+///     name = "Standard"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +394,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SiteNetworkServicePropertiesFormatArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ReferencedResourceArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

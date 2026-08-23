@@ -16,4 +16,3 @@ enum ConnectivityType {
     throw ArgumentError('Unknown ConnectivityType value: $value');
   }
 }
-

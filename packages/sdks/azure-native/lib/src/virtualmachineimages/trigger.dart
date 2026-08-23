@@ -7,7 +7,7 @@ import 'trigger_status_response.dart';
 ///
 /// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2022-07-01.
 ///
-/// Other available API versions: 2022-07-01, 2023-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-01, 2023-07-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -59,6 +59,24 @@ import 'trigger_status_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_virtualmachineimages_trigger" "trigger" {
+///   image_template_name = "myImageTemplate"
+///   kind                = "SourceImage"
+///   resource_group_name = "myResourceGroup"
+///   trigger_name        = "source"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +85,8 @@ import 'trigger_status_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.virtualmachineimages.Trigger;
 /// import com.pulumi.azurenative.virtualmachineimages.TriggerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

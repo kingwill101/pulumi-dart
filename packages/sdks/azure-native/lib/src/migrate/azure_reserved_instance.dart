@@ -16,4 +16,3 @@ enum AzureReservedInstance {
     throw ArgumentError('Unknown AzureReservedInstance value: $value');
   }
 }
-

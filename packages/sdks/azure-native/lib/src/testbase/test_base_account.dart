@@ -67,6 +67,27 @@ import 'test_base_account_skuresponse.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_testbase_testbaseaccount" "testBaseAccount" {
+///   location            = "westus"
+///   resource_group_name = "contoso-rg1"
+///   sku = {
+///     name = "S0"
+///     tier = "Standard"
+///   }
+///   test_base_account_name = "contoso-testBaseAccount1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +97,8 @@ import 'test_base_account_skuresponse.dart';
 /// import com.pulumi.azurenative.testbase.TestBaseAccount;
 /// import com.pulumi.azurenative.testbase.TestBaseAccountArgs;
 /// import com.pulumi.azurenative.testbase.inputs.TestBaseAccountSKUArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

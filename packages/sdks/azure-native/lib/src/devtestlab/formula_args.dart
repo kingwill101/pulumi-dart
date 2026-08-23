@@ -15,15 +15,15 @@ class FormulaArgs {
   final pulumi.Input<LabVirtualMachineCreationParameter>? formulaContent;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the Formula
+  /// The name of the formula.
   final pulumi.Input<String>? name;
   /// The OS type of the formula.
   final pulumi.Input<String>? osType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// Information about a VM from which a formula is to be created.
   final pulumi.Input<FormulaPropertiesFromVm>? vm;
@@ -32,11 +32,11 @@ class FormulaArgs {
   /// [description] The description of the formula.
   /// [formulaContent] The content of the formula.
   /// [labName] The name of the lab.
-  /// [location] The location of the resource.
-  /// [name] The name of the Formula
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the formula.
   /// [osType] The OS type of the formula.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   /// [vm] Information about a VM from which a formula is to be created.
   const FormulaArgs({
     this.description,
@@ -78,4 +78,3 @@ class FormulaArgs {
     );
   }
 }
-

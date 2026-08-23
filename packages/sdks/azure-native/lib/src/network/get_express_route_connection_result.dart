@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'express_route_circuit_peering_id_response.dart';
-import 'routing_configuration_response.dart';
+import 'routing_configuration_express_route_connection_response.dart';
 
 /// Result data returned by getExpressRouteConnection.
 class GetExpressRouteConnectionResult {
@@ -24,7 +24,7 @@ class GetExpressRouteConnectionResult {
   /// The provisioning state of the express route connection resource.
   final String provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final RoutingConfigurationResponse? routingConfiguration;
+  final RoutingConfigurationExpressRouteConnectionResponse? routingConfiguration;
   /// The routing weight associated to the connection.
   final int? routingWeight;
 
@@ -81,9 +81,8 @@ class GetExpressRouteConnectionResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationExpressRouteConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return guardedValue as int; })(),
     );
   }
 }
-

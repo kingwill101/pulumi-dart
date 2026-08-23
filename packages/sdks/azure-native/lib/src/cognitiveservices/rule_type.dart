@@ -1,8 +1,8 @@
 /// Type of a managed network Outbound Rule of a cognitive services account.
 enum RuleType {
-  valueFQDN("FQDN"),
-  valuePrivateEndpoint("PrivateEndpoint"),
-  valueServiceTag("ServiceTag");
+  fQDN("FQDN"),
+  privateEndpoint("PrivateEndpoint"),
+  serviceTag("ServiceTag");
 
   const RuleType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum RuleType {
     throw ArgumentError('Unknown RuleType value: $value');
   }
 }
-

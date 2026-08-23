@@ -7,11 +7,11 @@ class WebhookResponse {
   /// A flag to instruct the backend service to rotate webhook secret.
   final pulumi.Input<bool>? rotateWebhookSecret;
   /// Unique identifier for the webhook.
-  final pulumi.Input<String>? webhookId;
+  final pulumi.Input<String> webhookId;
   /// Time when the webhook secret was updated.
-  final pulumi.Input<String>? webhookSecretUpdateTime;
+  final pulumi.Input<String> webhookSecretUpdateTime;
   /// URL that gets invoked by the webhook.
-  final pulumi.Input<String>? webhookUrl;
+  final pulumi.Input<String> webhookUrl;
 
   /// Creates a new [WebhookResponse].
   /// [rotateWebhookSecret] A flag to instruct the backend service to rotate webhook secret.
@@ -20,27 +20,26 @@ class WebhookResponse {
   /// [webhookUrl] URL that gets invoked by the webhook.
   const WebhookResponse({
     this.rotateWebhookSecret,
-    this.webhookId,
-    this.webhookSecretUpdateTime,
-    this.webhookUrl,
+    required this.webhookId,
+    required this.webhookSecretUpdateTime,
+    required this.webhookUrl,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'rotateWebhookSecret': ?rotateWebhookSecret,
-      'webhookId': ?webhookId,
-      'webhookSecretUpdateTime': ?webhookSecretUpdateTime,
-      'webhookUrl': ?webhookUrl,
+      'webhookId': webhookId,
+      'webhookSecretUpdateTime': webhookSecretUpdateTime,
+      'webhookUrl': webhookUrl,
     };
   }
 
   factory WebhookResponse.fromMap(Map<String, dynamic> map) {
     return WebhookResponse(
       rotateWebhookSecret: (() { final guardedValue = map['rotateWebhookSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      webhookId: (() { final guardedValue = map['webhookId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      webhookSecretUpdateTime: (() { final guardedValue = map['webhookSecretUpdateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      webhookUrl: (() { final guardedValue = map['webhookUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webhookId: pulumi.Input.fromValue(map['webhookId'] as String),
+      webhookSecretUpdateTime: pulumi.Input.fromValue(map['webhookSecretUpdateTime'] as String),
+      webhookUrl: pulumi.Input.fromValue(map['webhookUrl'] as String),
     );
   }
 }
-

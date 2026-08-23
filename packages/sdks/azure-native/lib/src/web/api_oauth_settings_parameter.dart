@@ -37,4 +37,3 @@ class ApiOAuthSettingsParameter {
     );
   }
 }
-

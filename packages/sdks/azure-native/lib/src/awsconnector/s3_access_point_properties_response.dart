@@ -74,4 +74,3 @@ class S3AccessPointPropertiesResponse {
     );
   }
 }
-

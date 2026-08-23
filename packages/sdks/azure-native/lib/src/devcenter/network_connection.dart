@@ -68,6 +68,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_networkconnection" "networkConnection" {
+///   domain_join_type               = "HybridAzureADJoin"
+///   domain_name                    = "mydomaincontroller.local"
+///   domain_password                = "Password value for user"
+///   domain_username                = "testuser@mydomaincontroller.local"
+///   location                       = "centralus"
+///   network_connection_name        = "uswest3network"
+///   networking_resource_group_name = "NetworkInterfaces"
+///   resource_group_name            = "rg1"
+///   subnet_id                      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devcenter.NetworkConnection;
 /// import com.pulumi.azurenative.devcenter.NetworkConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

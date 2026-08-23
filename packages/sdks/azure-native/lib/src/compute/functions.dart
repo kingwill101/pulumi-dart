@@ -5,8 +5,6 @@ import 'get_capacity_reservation_args.dart';
 import 'get_capacity_reservation_group_args.dart';
 import 'get_capacity_reservation_group_result.dart';
 import 'get_capacity_reservation_result.dart';
-import 'get_cloud_service_args.dart';
-import 'get_cloud_service_result.dart';
 import 'get_dedicated_host_args.dart';
 import 'get_dedicated_host_group_args.dart';
 import 'get_dedicated_host_group_result.dart';
@@ -74,7 +72,7 @@ import 'get_virtual_machine_scale_set_vmrun_command_result.dart';
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_availability_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAvailabilitySetResult> getAvailabilitySet(
@@ -94,7 +92,7 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_capacity_reservation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCapacityReservationResult> getCapacityReservation(
@@ -114,7 +112,7 @@ Future<GetCapacityReservationResult> getCapacityReservation(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_capacity_reservation_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCapacityReservationGroupResult> getCapacityReservationGroup(
@@ -130,31 +128,11 @@ Future<GetCapacityReservationGroupResult> getCapacityReservationGroup(
   return GetCapacityReservationGroupResult.fromMap(result);
 }
 
-/// Display information about a cloud service.
-///
-/// Uses Azure REST API version 2022-09-04.
-///
-/// Other available API versions: 2022-04-04, 2024-11-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
-/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_cloud_service_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetCloudServiceResult> getCloudService(
-  GetCloudServiceArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:compute:getCloudService',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetCloudServiceResult.fromMap(result);
-}
-
 /// Retrieves information about a dedicated host.
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_dedicated_host_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDedicatedHostResult> getDedicatedHost(
@@ -174,7 +152,7 @@ Future<GetDedicatedHostResult> getDedicatedHost(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_dedicated_host_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDedicatedHostGroupResult> getDedicatedHostGroup(
@@ -194,7 +172,7 @@ Future<GetDedicatedHostGroupResult> getDedicatedHostGroup(
 ///
 /// Uses Azure REST API version 2024-03-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_disk_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDiskResult> getDisk(
@@ -214,7 +192,7 @@ Future<GetDiskResult> getDisk(
 ///
 /// Uses Azure REST API version 2024-03-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_disk_access_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDiskAccessResult> getDiskAccess(
@@ -234,7 +212,7 @@ Future<GetDiskAccessResult> getDiskAccess(
 ///
 /// Uses Azure REST API version 2024-03-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_disk_access_aprivate_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDiskAccessAPrivateEndpointConnectionResult> getDiskAccessAPrivateEndpointConnection(
@@ -254,7 +232,7 @@ Future<GetDiskAccessAPrivateEndpointConnectionResult> getDiskAccessAPrivateEndpo
 ///
 /// Uses Azure REST API version 2024-03-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_disk_encryption_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDiskEncryptionSetResult> getDiskEncryptionSet(
@@ -274,7 +252,7 @@ Future<GetDiskEncryptionSetResult> getDiskEncryptionSet(
 ///
 /// Uses Azure REST API version 2024-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryResult> getGallery(
@@ -294,7 +272,7 @@ Future<GetGalleryResult> getGallery(
 ///
 /// Uses Azure REST API version 2024-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_application_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryApplicationResult> getGalleryApplication(
@@ -314,7 +292,7 @@ Future<GetGalleryApplicationResult> getGalleryApplication(
 ///
 /// Uses Azure REST API version 2024-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_application_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryApplicationVersionResult> getGalleryApplicationVersion(
@@ -334,7 +312,7 @@ Future<GetGalleryApplicationVersionResult> getGalleryApplicationVersion(
 ///
 /// Uses Azure REST API version 2024-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_image_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryImageResult> getGalleryImage(
@@ -354,7 +332,7 @@ Future<GetGalleryImageResult> getGalleryImage(
 ///
 /// Uses Azure REST API version 2024-03-03.
 ///
-/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_image_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryImageVersionResult> getGalleryImageVersion(
@@ -374,7 +352,7 @@ Future<GetGalleryImageVersionResult> getGalleryImageVersion(
 ///
 /// Uses Azure REST API version 2024-03-03.
 ///
-/// Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_in_vmaccess_control_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryInVMAccessControlProfileResult> getGalleryInVMAccessControlProfile(
@@ -394,7 +372,7 @@ Future<GetGalleryInVMAccessControlProfileResult> getGalleryInVMAccessControlProf
 ///
 /// Uses Azure REST API version 2024-03-03.
 ///
-/// Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_in_vmaccess_control_profile_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryInVMAccessControlProfileVersionResult> getGalleryInVMAccessControlProfileVersion(
@@ -413,6 +391,8 @@ Future<GetGalleryInVMAccessControlProfileVersionResult> getGalleryInVMAccessCont
 /// Retrieves information about a gallery script definition.
 ///
 /// Uses Azure REST API version 2025-03-03.
+///
+/// Other available API versions: 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_script_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryScriptResult> getGalleryScript(
@@ -431,6 +411,8 @@ Future<GetGalleryScriptResult> getGalleryScript(
 /// Custom ArmResourceRead operation template with CloudError as Error
 ///
 /// Uses Azure REST API version 2025-03-03.
+///
+/// Other available API versions: 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_script_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGalleryScriptVersionResult> getGalleryScriptVersion(
@@ -450,7 +432,7 @@ Future<GetGalleryScriptVersionResult> getGalleryScriptVersion(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_image_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetImageResult> getImage(
@@ -470,7 +452,7 @@ Future<GetImageResult> getImage(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_log_analytic_export_request_rate_by_interval_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLogAnalyticExportRequestRateByIntervalResult> getLogAnalyticExportRequestRateByInterval(
@@ -490,7 +472,7 @@ Future<GetLogAnalyticExportRequestRateByIntervalResult> getLogAnalyticExportRequ
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_log_analytic_export_throttled_requests_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLogAnalyticExportThrottledRequestsResult> getLogAnalyticExportThrottledRequests(
@@ -510,7 +492,7 @@ Future<GetLogAnalyticExportThrottledRequestsResult> getLogAnalyticExportThrottle
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_proximity_placement_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProximityPlacementGroupResult> getProximityPlacementGroup(
@@ -530,7 +512,7 @@ Future<GetProximityPlacementGroupResult> getProximityPlacementGroup(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_restore_point_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRestorePointResult> getRestorePoint(
@@ -550,7 +532,7 @@ Future<GetRestorePointResult> getRestorePoint(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_restore_point_collection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRestorePointCollectionResult> getRestorePointCollection(
@@ -570,7 +552,7 @@ Future<GetRestorePointCollectionResult> getRestorePointCollection(
 ///
 /// Uses Azure REST API version 2024-03-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_snapshot_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSnapshotResult> getSnapshot(
@@ -590,7 +572,7 @@ Future<GetSnapshotResult> getSnapshot(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_ssh_public_key_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSshPublicKeyResult> getSshPublicKey(
@@ -610,7 +592,7 @@ Future<GetSshPublicKeyResult> getSshPublicKey(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineResult> getVirtualMachine(
@@ -630,7 +612,7 @@ Future<GetVirtualMachineResult> getVirtualMachine(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_extension_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineExtensionResult> getVirtualMachineExtension(
@@ -650,7 +632,7 @@ Future<GetVirtualMachineExtensionResult> getVirtualMachineExtension(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_run_command_by_virtual_machine_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineRunCommandByVirtualMachineResult> getVirtualMachineRunCommandByVirtualMachine(
@@ -670,7 +652,7 @@ Future<GetVirtualMachineRunCommandByVirtualMachineResult> getVirtualMachineRunCo
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSet(
@@ -690,7 +672,7 @@ Future<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSet(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_extension_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineScaleSetExtensionResult> getVirtualMachineScaleSetExtension(
@@ -710,7 +692,7 @@ Future<GetVirtualMachineScaleSetExtensionResult> getVirtualMachineScaleSetExtens
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_vmargs_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineScaleSetVMResult> getVirtualMachineScaleSetVM(
@@ -730,7 +712,7 @@ Future<GetVirtualMachineScaleSetVMResult> getVirtualMachineScaleSetVM(
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_vmextension_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineScaleSetVMExtensionResult> getVirtualMachineScaleSetVMExtension(
@@ -750,7 +732,7 @@ Future<GetVirtualMachineScaleSetVMExtensionResult> getVirtualMachineScaleSetVMEx
 ///
 /// Uses Azure REST API version 2024-11-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_vmrun_command_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineScaleSetVMRunCommandResult> getVirtualMachineScaleSetVMRunCommand(

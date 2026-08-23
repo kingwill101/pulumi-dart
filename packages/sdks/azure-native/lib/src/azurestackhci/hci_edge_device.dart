@@ -100,6 +100,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_hciedgedevice" "hciEdgeDevice" {
+///   edge_device_name = "default"
+///   kind             = "HCI"
+///   properties = {
+///     device_configuration = {
+///       device_metadata = ""
+///       nic_details = [{
+///         "adapterName"          = "ethernet"
+///         "componentId"          = "VMBUS{f8615163-df3e-46c5-913f-f2d2f965ed0g} "
+///         "defaultGateway"       = "10.10.10.1"
+///         "defaultIsolationId"   = "0"
+///         "dnsServers"           = ["100.10.10.1"]
+///         "driverVersion"        = "10.0.20348.1547 "
+///         "interfaceDescription" = "NDIS 6.70 "
+///         "ip4Address"           = "10.10.10.10"
+///         "subnetMask"           = "255.255.255.0"
+///       }]
+///     }
+///   }
+///   resource_uri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.HciEdgeDeviceArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.HciEdgeDevicePropertiesArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.DeviceConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

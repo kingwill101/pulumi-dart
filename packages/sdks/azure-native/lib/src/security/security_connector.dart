@@ -91,6 +91,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_securityconnector" "securityConnector" {
+///   environment_data = {
+///     "environmentType" = "AwsAccount"
+///     "scanInterval"    = 4
+///   }
+///   environment_name     = "AWS"
+///   hierarchy_identifier = "exampleHierarchyId"
+///   location             = "Central US"
+///   offerings = [{
+///     "nativeCloudConnection" = {
+///       "cloudRoleArn" = "arn:aws:iam::00000000:role/ASCMonitor"
+///     }
+///     "offeringType" = "CspmMonitorAws"
+///   }]
+///   resource_group_name     = "exampleResourceGroup"
+///   security_connector_name = "exampleSecurityConnectorName"
+///   tags                    = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +129,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.SecurityConnector;
 /// import com.pulumi.azurenative.security.SecurityConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,7 +199,7 @@ import 'system_data_response.dart';
 /// security_connector = azure_native.security.SecurityConnector("securityConnector",
 ///     environment_data={
 ///         "environment_type": "AwsAccount",
-///         "scan_interval": 4,
+///         "scan_interval": float(4),
 ///     },
 ///     environment_name=azure_native.security.CloudName.AWS,
 ///     hierarchy_identifier="exampleHierarchyId",
@@ -232,17 +262,17 @@ class SecurityConnector extends pulumi.CustomResource {
   late final pulumi.Output<String> hierarchyIdentifierTrialEndDate;
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// A collection of offerings for the security connector.
   late final pulumi.Output<List<Map<String, dynamic>>?> offerings;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [SecurityConnector].

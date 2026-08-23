@@ -18,4 +18,3 @@ enum DataflowMappingType {
     throw ArgumentError('Unknown DataflowMappingType value: $value');
   }
 }
-

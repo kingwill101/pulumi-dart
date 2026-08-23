@@ -1,7 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'change_data_capture_args.dart';
-import 'change_data_capture_response_folder.dart';
+import 'change_data_capture_folder_response.dart';
 import 'mapper_policy_response.dart';
+import 'system_data_response.dart';
 
 /// Change data capture resource type.
 ///
@@ -1478,6 +1479,518 @@ import 'mapper_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_changedatacapture" "changeDataCapture" {
+///   allow_v_net_override     = false
+///   change_data_capture_name = "exampleChangeDataCapture"
+///   description              = "Sample demo change data capture to transfer data from delimited (csv) to Azure SQL Database with automapped and non-automapped mappings."
+///   factory_name             = "exampleFactoryName"
+///   policy = {
+///     mode = "Microbatch"
+///     recurrence = {
+///       frequency = "Minute"
+///       interval  = 15
+///     }
+///   }
+///   resource_group_name = "exampleResourceGroup"
+///   source_connections_info {
+///     connection = {
+///       common_dsl_connector_properties = [{
+///         "name"  = "allowSchemaDrift"
+///         "value" = true
+///         }, {
+///         "name"  = "inferDriftedColumnTypes"
+///         "value" = true
+///         }, {
+///         "name"  = "format"
+///         "value" = "delimited"
+///         }, {
+///         "name"  = "dateFormats"
+///         "value" = ["MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         }, {
+///         "name"  = "timestampFormats"
+///         "value" = ["yyyyMMddHHmm", "yyyyMMdd HHmm", "yyyyMMddHHmmss", "yyyyMMdd HHmmss", "dd-MM-yyyy HH:mm:ss", "dd-MM-yyyy HH:mm", "yyyy-M-d H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy.MM.dd HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "M/d/yyyy H:m:s", "yyyy/MM/dd HH:mm:ss", "yyyy/M/d H:m:s", "dd MMM yyyy HH:mm:ss", "dd MMMM yyyy HH:mm:ss", "d MMM yyyy H:m:s", "d MMMM yyyy H:m:s", "d-M-yyyy H:m:s", "d-M-yyyy H:m", "yyyy-M-d H:m", "MM/dd/yyyy HH:mm", "M/d/yyyy H:m", "yyyy/MM/dd HH:mm", "yyyy/M/d H:m", "dd MMMM yyyy HH:mm", "dd MMM yyyy HH:mm", "d MMMM yyyy H:m", "d MMM yyyy H:m", "MM-dd-yyyy hh:mm:ss a", "MM-dd-yyyy HH:mm:ss", "MM/dd/yyyy hh:mm:ss a", "yyyy.MM.dd hh:mm:ss a", "MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         }, {
+///         "name"  = "enableCdc"
+///         "value" = true
+///         }, {
+///         "name"  = "skipInitialLoad"
+///         "value" = true
+///         }, {
+///         "name"  = "columnNamesAsHeader"
+///         "value" = true
+///         }, {
+///         "name"  = "columnDelimiter"
+///         "value" = ","
+///         }, {
+///         "name"  = "escapeChar"
+///         "value" = "\\\\"
+///         }, {
+///         "name"  = "quoteChar"
+///         "value" = "\\\""
+///       }]
+///       is_inline_dataset = true
+///       linked_service = {
+///         reference_name = "amjaAdls03"
+///         type           = "LinkedServiceReference"
+///       }
+///       linked_service_type = "AzureBlobFS"
+///       type                = "linkedservicetype"
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "folderPath"
+///         value = "customer"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "source/customer"
+///       schema {
+///         data_type = "short"
+///         name      = "CustId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustAddres"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepLoc"
+///       }
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "folderPath"
+///         value = "employee"
+///       }
+///       name = "source/employee"
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "lookup"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "lookup"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "lookup"
+///       schema {
+///         data_type = "short"
+///         name      = "EmpId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "EmpName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "HomeAddress"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "OfficeAddress"
+///       }
+///       schema {
+///         data_type = "integer"
+///         name      = "EmpPhoneNumber"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "DepName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "DepLoc"
+///       }
+///       schema {
+///         data_type = "double"
+///         name      = "DecimalCol"
+///       }
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "folderPath"
+///         value = "justSchema"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "source/justSchema"
+///       schema {
+///         data_type = "string"
+///         name      = "CustId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustAddres"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepLoc"
+///       }
+///     }
+///   }
+///   target_connections_info {
+///     connection = {
+///       common_dsl_connector_properties = [{
+///         "name"  = "allowSchemaDrift"
+///         "value" = true
+///         }, {
+///         "name"  = "inferDriftedColumnTypes"
+///         "value" = true
+///         }, {
+///         "name"  = "format"
+///         "value" = "table"
+///         }, {
+///         "name"  = "store"
+///         "value" = "sqlserver"
+///         }, {
+///         "name"  = "databaseType"
+///         "value" = "databaseType"
+///         }, {
+///         "name"  = "database"
+///         "value" = "database"
+///         }, {
+///         "name"  = "deletable"
+///         "value" = false
+///         }, {
+///         "name"  = "insertable"
+///         "value" = true
+///         }, {
+///         "name"  = "updateable"
+///         "value" = false
+///         }, {
+///         "name"  = "upsertable"
+///         "value" = false
+///         }, {
+///         "name"  = "skipDuplicateMapInputs"
+///         "value" = true
+///         }, {
+///         "name"  = "skipDuplicateMapOutputs"
+///         "value" = true
+///       }]
+///       is_inline_dataset = true
+///       linked_service = {
+///         reference_name = "amjaSql"
+///         type           = "LinkedServiceReference"
+///       }
+///       linked_service_type = "AzureSqlDatabase"
+///       type                = "linkedservicetype"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = []
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "source/customer"
+///       target_entity_name = "dbo.customer"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = [{
+///           "attributeReferences" = [{
+///             "entity" = "lookup"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "EmpName"
+///           }]
+///           "expression"   = "upper(EmpName)"
+///           "functionName" = "upper"
+///           "name"         = "Name"
+///           "type"         = "Derived"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "lookup"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "EmpId"
+///           }
+///           "functionName" = ""
+///           "name"         = "PersonID"
+///           "type"         = "Direct"
+///         }]
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "lookup"
+///       target_entity_name = "dbo.data_source_table"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = []
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "source/employee"
+///       target_entity_name = "dbo.employee"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = [{
+///           "attributeReferences" = [{
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustAddres"
+///           }]
+///           "expression"   = "trim(CustAddres)"
+///           "functionName" = "trim"
+///           "name"         = "CustAddres"
+///           "type"         = "Derived"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustDepLoc"
+///           }
+///           "name" = "CustDepLoc"
+///           "type" = "Direct"
+///           }, {
+///           "attributeReferences" = [{
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustName"
+///             }, {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustDepName"
+///           }]
+///           "expression"   = "concat(CustName, \" -> \", CustDepName)"
+///           "functionName" = ""
+///           "name"         = "CustDepName"
+///           "type"         = "Derived"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustId"
+///           }
+///           "functionName" = ""
+///           "name"         = "CustId"
+///           "type"         = "Direct"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustName"
+///           }
+///           "name" = "CustName"
+///           "type" = "Direct"
+///         }]
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "source/justSchema"
+///       target_entity_name = "dbo.justSchema"
+///     }
+///     relationships = []
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "employee"
+///       }
+///       name = "dbo.employee"
+///     }
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "justSchema"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = true
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = true
+///       }
+///       name = "dbo.justSchema"
+///     }
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "customer"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "dbo.customer"
+///       schema {
+///         data_type = "integer"
+///         name      = "CustId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustAddres"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDeptName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustEmail"
+///       }
+///     }
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "data_source_table"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "defaultToUpsert"
+///         value = false
+///       }
+///       name = "dbo.data_source_table"
+///       schema {
+///         data_type = "integer"
+///         name      = "PersonID"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "Name"
+///       }
+///       schema {
+///         data_type = "timestamp"
+///         name      = "LastModifytime"
+///       }
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1492,8 +2005,8 @@ import 'mapper_policy_response.dart';
 /// import com.pulumi.azurenative.datafactory.inputs.MapperConnectionArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.LinkedServiceReferenceArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperTargetConnectionsInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5393,6 +5906,580 @@ import 'mapper_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datafactory_changedatacapture" "changeDataCapture" {
+///   allow_v_net_override     = false
+///   change_data_capture_name = "exampleChangeDataCapture"
+///   description              = "Sample demo change data capture to transfer data from delimited (csv) to Azure SQL Database. Updating table mappings."
+///   factory_name             = "exampleFactoryName"
+///   policy = {
+///     mode = "Microbatch"
+///     recurrence = {
+///       frequency = "Minute"
+///       interval  = 15
+///     }
+///   }
+///   resource_group_name = "exampleResourceGroup"
+///   source_connections_info {
+///     connection = {
+///       common_dsl_connector_properties = [{
+///         "name"  = "allowSchemaDrift"
+///         "value" = true
+///         }, {
+///         "name"  = "inferDriftedColumnTypes"
+///         "value" = true
+///         }, {
+///         "name"  = "format"
+///         "value" = "delimited"
+///         }, {
+///         "name"  = "dateFormats"
+///         "value" = ["MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         }, {
+///         "name"  = "timestampFormats"
+///         "value" = ["yyyyMMddHHmm", "yyyyMMdd HHmm", "yyyyMMddHHmmss", "yyyyMMdd HHmmss", "dd-MM-yyyy HH:mm:ss", "dd-MM-yyyy HH:mm", "yyyy-M-d H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s\\'Z\\'", "yyyy-M-d\\'T\\'H:m:s", "yyyy-MM-dd\\'T\\'HH:mm:ss", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy.MM.dd HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "M/d/yyyy H:m:s", "yyyy/MM/dd HH:mm:ss", "yyyy/M/d H:m:s", "dd MMM yyyy HH:mm:ss", "dd MMMM yyyy HH:mm:ss", "d MMM yyyy H:m:s", "d MMMM yyyy H:m:s", "d-M-yyyy H:m:s", "d-M-yyyy H:m", "yyyy-M-d H:m", "MM/dd/yyyy HH:mm", "M/d/yyyy H:m", "yyyy/MM/dd HH:mm", "yyyy/M/d H:m", "dd MMMM yyyy HH:mm", "dd MMM yyyy HH:mm", "d MMMM yyyy H:m", "d MMM yyyy H:m", "MM-dd-yyyy hh:mm:ss a", "MM-dd-yyyy HH:mm:ss", "MM/dd/yyyy hh:mm:ss a", "yyyy.MM.dd hh:mm:ss a", "MM/dd/yyyy", "dd/MM/yyyy", "yyyy/MM/dd", "MM-dd-yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "dd.MM.yyyy", "MM.dd.yyyy", "yyyy.MM.dd"]
+///         }, {
+///         "name"  = "enableCdc"
+///         "value" = true
+///         }, {
+///         "name"  = "skipInitialLoad"
+///         "value" = true
+///         }, {
+///         "name"  = "columnNamesAsHeader"
+///         "value" = true
+///         }, {
+///         "name"  = "columnDelimiter"
+///         "value" = ","
+///         }, {
+///         "name"  = "escapeChar"
+///         "value" = "\\\\"
+///         }, {
+///         "name"  = "quoteChar"
+///         "value" = "\\\""
+///       }]
+///       is_inline_dataset = true
+///       linked_service = {
+///         reference_name = "amjaAdls03"
+///         type           = "LinkedServiceReference"
+///       }
+///       linked_service_type = "AzureBlobFS"
+///       type                = "linkedservicetype"
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "folderPath"
+///         value = "customer"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "source/customer"
+///       schema {
+///         data_type = "short"
+///         name      = "CustId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustAddres"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepLoc"
+///       }
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "folderPath"
+///         value = "employee"
+///       }
+///       name = "source/employee"
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "lookup"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "lookup"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "lookup"
+///       schema {
+///         data_type = "short"
+///         name      = "EmpId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "EmpName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "HomeAddress"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "OfficeAddress"
+///       }
+///       schema {
+///         data_type = "integer"
+///         name      = "EmpPhoneNumber"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "DepName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "DepLoc"
+///       }
+///       schema {
+///         data_type = "double"
+///         name      = "DecimalCol"
+///       }
+///     }
+///     source_entities {
+///       dsl_connector_properties {
+///         name  = "container"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "fileSystem"
+///         value = "source"
+///       }
+///       dsl_connector_properties {
+///         name  = "folderPath"
+///         value = "justSchema"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "source/justSchema"
+///       schema {
+///         data_type = "string"
+///         name      = "CustId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustAddres"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDepLoc"
+///       }
+///     }
+///   }
+///   status = "Stopped"
+///   target_connections_info {
+///     connection = {
+///       common_dsl_connector_properties = [{
+///         "name"  = "allowSchemaDrift"
+///         "value" = true
+///         }, {
+///         "name"  = "inferDriftedColumnTypes"
+///         "value" = true
+///         }, {
+///         "name"  = "format"
+///         "value" = "table"
+///         }, {
+///         "name"  = "store"
+///         "value" = "sqlserver"
+///         }, {
+///         "name"  = "databaseType"
+///         "value" = "databaseType"
+///         }, {
+///         "name"  = "database"
+///         "value" = "database"
+///         }, {
+///         "name"  = "deletable"
+///         "value" = false
+///         }, {
+///         "name"  = "insertable"
+///         "value" = true
+///         }, {
+///         "name"  = "updateable"
+///         "value" = false
+///         }, {
+///         "name"  = "upsertable"
+///         "value" = false
+///         }, {
+///         "name"  = "skipDuplicateMapInputs"
+///         "value" = true
+///         }, {
+///         "name"  = "skipDuplicateMapOutputs"
+///         "value" = true
+///       }]
+///       is_inline_dataset = true
+///       linked_service = {
+///         reference_name = "amjaSql"
+///         type           = "LinkedServiceReference"
+///       }
+///       linked_service_type = "AzureSqlDatabase"
+///       type                = "linkedservicetype"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = [{
+///           "attributeReferences" = [{
+///             "entity" = "source/customer"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustAddres"
+///           }]
+///           "expression"   = "trim(CustAddres)"
+///           "functionName" = "trim"
+///           "name"         = "CustAddres"
+///           "type"         = "Derived"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/customer"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustDepName"
+///           }
+///           "functionName" = ""
+///           "name"         = "CustDeptName"
+///           "type"         = "Direct"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/customer"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustName"
+///           }
+///           "functionName" = ""
+///           "name"         = "CustEmail"
+///           "type"         = "Direct"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/customer"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustId"
+///           }
+///           "functionName" = ""
+///           "name"         = "CustId"
+///           "type"         = "Direct"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/customer"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustName"
+///           }
+///           "functionName" = ""
+///           "name"         = "CustName"
+///           "type"         = "Direct"
+///         }]
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "source/customer"
+///       target_entity_name = "dbo.customer"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = [{
+///           "attributeReferences" = [{
+///             "entity" = "lookup"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "EmpName"
+///           }]
+///           "expression"   = "upper(EmpName)"
+///           "functionName" = "upper"
+///           "name"         = "Name"
+///           "type"         = "Derived"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "lookup"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "EmpId"
+///           }
+///           "functionName" = ""
+///           "name"         = "PersonID"
+///           "type"         = "Direct"
+///         }]
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "lookup"
+///       target_entity_name = "dbo.data_source_table"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = []
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "source/employee"
+///       target_entity_name = "dbo.employee"
+///     }
+///     data_mapper_mappings {
+///       attribute_mapping_info = {
+///         attribute_mappings = [{
+///           "attributeReferences" = [{
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustAddres"
+///           }]
+///           "expression"   = "trim(CustAddres)"
+///           "functionName" = "trim"
+///           "name"         = "CustAddres"
+///           "type"         = "Derived"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustDepLoc"
+///           }
+///           "name" = "CustDepLoc"
+///           "type" = "Direct"
+///           }, {
+///           "attributeReferences" = [{
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustName"
+///             }, {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustDepName"
+///           }]
+///           "expression"   = "concat(CustName, \" -> \", CustDepName)"
+///           "functionName" = ""
+///           "name"         = "CustDepName"
+///           "type"         = "Derived"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustId"
+///           }
+///           "functionName" = ""
+///           "name"         = "CustId"
+///           "type"         = "Direct"
+///           }, {
+///           "attributeReference" = {
+///             "entity" = "source/justSchema"
+///             "entityConnectionReference" = {
+///               "connectionName" = "amjaAdls03"
+///               "type"           = "linkedservicetype"
+///             }
+///             "name" = "CustName"
+///           }
+///           "name" = "CustName"
+///           "type" = "Direct"
+///         }]
+///       }
+///       source_connection_reference = {
+///         connection_name = "amjaAdls03"
+///         type            = "linkedservicetype"
+///       }
+///       source_entity_name = "source/justSchema"
+///       target_entity_name = "dbo.justSchema"
+///     }
+///     relationships = []
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "employee"
+///       }
+///       name = "dbo.employee"
+///     }
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "justSchema"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = true
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = true
+///       }
+///       name = "dbo.justSchema"
+///     }
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "customer"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       name = "dbo.customer"
+///       schema {
+///         data_type = "integer"
+///         name      = "CustId"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustAddres"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustDeptName"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "CustEmail"
+///       }
+///     }
+///     target_entities {
+///       dsl_connector_properties {
+///         name  = "schemaName"
+///         value = "dbo"
+///       }
+///       dsl_connector_properties {
+///         name  = "tableName"
+///         value = "data_source_table"
+///       }
+///       dsl_connector_properties {
+///         name  = "allowSchemaDrift"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "inferDriftedColumnTypes"
+///         value = false
+///       }
+///       dsl_connector_properties {
+///         name  = "defaultToUpsert"
+///         value = false
+///       }
+///       name = "dbo.data_source_table"
+///       schema {
+///         data_type = "integer"
+///         name      = "PersonID"
+///       }
+///       schema {
+///         data_type = "string"
+///         name      = "Name"
+///       }
+///       schema {
+///         data_type = "timestamp"
+///         name      = "LastModifytime"
+///       }
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -5407,8 +6494,8 @@ import 'mapper_policy_response.dart';
 /// import com.pulumi.azurenative.datafactory.inputs.MapperConnectionArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.LinkedServiceReferenceArgs;
 /// import com.pulumi.azurenative.datafactory.inputs.MapperTargetConnectionsInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7948,11 +9035,11 @@ class ChangeDataCapture extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// The description of the change data capture.
   late final pulumi.Output<String?> description;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
   /// The folder that this CDC is in. If not specified, CDC will appear at the root level.
-  late final pulumi.Output<ChangeDataCaptureResponseFolder?> folder;
-  /// The resource name.
+  late final pulumi.Output<ChangeDataCaptureFolderResponse?> folder;
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// CDC policy
   late final pulumi.Output<MapperPolicyResponse> policy;
@@ -7960,9 +9047,11 @@ class ChangeDataCapture extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> sourceConnectionsInfo;
   /// Status of the CDC as to if it is running or stopped.
   late final pulumi.Output<String?> status;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// List of target connections that can be used as sources in the CDC.
   late final pulumi.Output<List<Map<String, dynamic>>> targetConnectionsInfo;
-  /// The resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [ChangeDataCapture].
@@ -7983,11 +9072,12 @@ class ChangeDataCapture extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    folder = registerOutput<ChangeDataCaptureResponseFolder?>('folder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeDataCaptureResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    folder = registerOutput<ChangeDataCaptureFolderResponse?>('folder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeDataCaptureFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     policy = registerOutput<MapperPolicyResponse>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapperPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceConnectionsInfo = registerOutput<List<Map<String, dynamic>>>('sourceConnectionsInfo');
     status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetConnectionsInfo = registerOutput<List<Map<String, dynamic>>>('targetConnectionsInfo');
     type = registerOutput<String>('type');
   }

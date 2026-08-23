@@ -1,12 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'content_link_response.dart';
 import 'module_error_info_response.dart';
 import 'python3_package_args.dart';
+import 'system_data_response.dart';
 
 /// Definition of the module type.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +78,32 @@ import 'python3_package_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_python3package" "python3Package" {
+///   automation_account_name = "myAutomationAccount33"
+///   content_link = {
+///     content_hash = {
+///       algorithm = "sha265"
+///       value     = "07E108A962B81DD9C9BAA89BB47C0F6EE52B29E83758B07795E408D258B2B87A"
+///     }
+///     uri     = "https://teststorage.blob.core.windows.net/dsccomposite/OmsCompositeResources.zip"
+///     version = "1.0.0.0"
+///   }
+///   package_name        = "OmsCompositeResources"
+///   resource_group_name = "rg"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +114,8 @@ import 'python3_package_args.dart';
 /// import com.pulumi.azurenative.automation.Python3PackageArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentLinkArgs;
 /// import com.pulumi.azurenative.automation.inputs.ContentHashArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,37 +218,41 @@ import 'python3_package_args.dart';
 /// $ pulumi import azure-native:automation:Python3Package OmsCompositeResources /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}
 /// ```
 class Python3Package extends pulumi.CustomResource {
-  /// Gets the activity count of the module.
+  /// Gets or sets the activity count of the module.
   late final pulumi.Output<int?> activityCount;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// Gets the creation time.
+  /// Gets or sets the contentLink of the module.
+  late final pulumi.Output<ContentLinkResponse?> contentLink;
+  /// Gets or sets the creation time.
   late final pulumi.Output<String?> creationTime;
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
-  /// Gets the error info of the module.
+  /// Gets or sets the error info of the module.
   late final pulumi.Output<ModuleErrorInfoResponse?> error;
-  /// Gets the etag of the resource.
+  /// Gets or sets the etag of the resource.
   late final pulumi.Output<String?> etag;
-  /// Gets type of module, if its composite or not.
+  /// Gets or sets type of module, if its composite or not.
   late final pulumi.Output<bool?> isComposite;
-  /// Gets the isGlobal flag of the module.
+  /// Gets or sets the isGlobal flag of the module.
   late final pulumi.Output<bool?> isGlobal;
-  /// Gets the last modified time.
+  /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
-  /// The Azure Region where the resource lives
-  late final pulumi.Output<String?> location;
+  /// The geo-location where the resource lives
+  late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
-  /// Gets the provisioning state of the module.
+  /// Gets or sets the provisioning state of the module.
   late final pulumi.Output<String?> provisioningState;
-  /// Gets the size in bytes of the module.
+  /// Gets or sets the size in bytes of the module.
   late final pulumi.Output<double?> sizeInBytes;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
-  /// Gets the version of the module.
+  /// Gets or sets the version of the module.
   late final pulumi.Output<String?> version;
 
   /// Creates a new [Python3Package].
@@ -239,6 +271,7 @@ class Python3Package extends pulumi.CustomResource {
         ) {
     activityCount = registerOutput<int?>('activityCount');
     azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentLink = registerOutput<ContentLinkResponse?>('contentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');
     error = registerOutput<ModuleErrorInfoResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -246,10 +279,11 @@ class Python3Package extends pulumi.CustomResource {
     isComposite = registerOutput<bool?>('isComposite');
     isGlobal = registerOutput<bool?>('isGlobal');
     lastModifiedTime = registerOutput<String?>('lastModifiedTime');
-    location = registerOutput<String?>('location');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');
     sizeInBytes = registerOutput<double?>('sizeInBytes');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');

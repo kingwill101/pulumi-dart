@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -162,6 +162,63 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerlistener" "brokerListener" {
+///   broker_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   listener_name = "resource-name123"
+///   properties = {
+///     ports = [{
+///       "authenticationRef" = "tjvdroaqqy"
+///       "authorizationRef"  = "inxhvxnwswyrvt"
+///       "nodePort"          = 7281
+///       "port"              = 1268
+///       "protocol"          = "Mqtt"
+///       "tls" = {
+///         "certManagerCertificateSpec" = {
+///           "duration" = "qmpeffoksron"
+///           "issuerRef" = {
+///             "group" = "jtmuladdkpasfpoyvewekmiy"
+///             "kind"  = "Issuer"
+///             "name"  = "ocwoqpgucvjrsuudtjhb"
+///           }
+///           "privateKey" = {
+///             "algorithm"      = "Ec256"
+///             "rotationPolicy" = "Always"
+///           }
+///           "renewBefore" = "hutno"
+///           "san" = {
+///             "dns" = ["xhvmhrrhgfsapocjeebqtnzarlj"]
+///             "ip"  = ["zbgugfzcgsmegevzktsnibyuyp"]
+///           }
+///           "secretName" = "oagi"
+///         }
+///         "manual" = {
+///           "secretRef" = "secret-name"
+///         }
+///         "mode" = "Automatic"
+///       }
+///     }]
+///     service_name = "tpfiszlapdpxktx"
+///     service_type = "ClusterIp"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -172,8 +229,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerListenerArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerListenerPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,6 +587,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerlistener" "brokerListener" {
+///   broker_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   listener_name = "resource-name123"
+///   properties = {
+///     ports = [{
+///       "authenticationRef" = "example-authentication"
+///       "port"              = 8080
+///       "protocol"          = "WebSockets"
+///       }, {
+///       "authenticationRef" = "example-authentication"
+///       "port"              = 8443
+///       "protocol"          = "WebSockets"
+///       "tls" = {
+///         "certManagerCertificateSpec" = {
+///           "issuerRef" = {
+///             "group" = "jtmuladdkpasfpoyvewekmiy"
+///             "kind"  = "Issuer"
+///             "name"  = "example-issuer"
+///           }
+///         }
+///         "mode" = "Automatic"
+///       }
+///       }, {
+///       "authenticationRef" = "example-authentication"
+///       "port"              = 1883
+///       }, {
+///       "authenticationRef" = "example-authentication"
+///       "port"              = 8883
+///       "tls" = {
+///         "manual" = {
+///           "secretRef" = "example-secret"
+///         }
+///         "mode" = "Manual"
+///       }
+///     }]
+///     service_type = "LoadBalancer"
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -540,8 +653,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerListenerArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerListenerPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -832,6 +945,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerlistener" "brokerListener" {
+///   broker_name = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   listener_name = "resource-name123"
+///   properties = {
+///     ports = [{
+///       "port" = 1883
+///     }]
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -842,8 +982,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerListenerArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerListenerPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

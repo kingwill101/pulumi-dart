@@ -15,7 +15,7 @@ import 'upgrade_policy_response.dart';
 ///
 /// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -86,6 +86,32 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/networking-group/providers/Microsoft.Compute/galleries/testgallery/images/testimagedef/versions/0.0.1"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 18.04"
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   vm_size             = "STANDARD_D4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +123,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.DeploymentConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.VirtualMachineConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -422,6 +448,89 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       data_disks = [{
+///         "caching"            = "ReadWrite"
+///         "diskSizeGB"         = 30
+///         "lun"                = 0
+///         "storageAccountType" = "Premium_LRS"
+///         }, {
+///         "caching"            = "None"
+///         "diskSizeGB"         = 200
+///         "lun"                = 1
+///         "storageAccountType" = "Standard_LRS"
+///       }]
+///       disk_encryption_configuration = {
+///         targets = ["OsDisk", "TemporaryDisk"]
+///       }
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-Datacenter-SmallDisk"
+///         version   = "latest"
+///       }
+///       license_type      = "Windows_Server"
+///       node_agent_sku_id = "batch.node.windows amd64"
+///       node_placement_configuration = {
+///         policy = "Zonal"
+///       }
+///       os_disk = {
+///         ephemeral_os_disk_settings = {
+///           placement = "CacheDisk"
+///         }
+///       }
+///       windows_configuration = {
+///         enable_automatic_updates = false
+///       }
+///     }
+///   }
+///   network_configuration = {
+///     endpoint_configuration = {
+///       inbound_nat_pools = [{
+///         "backendPort"            = 12001
+///         "frontendPortRangeEnd"   = 15100
+///         "frontendPortRangeStart" = 15000
+///         "name"                   = "testnat"
+///         "networkSecurityGroupRules" = [{
+///           "access"              = "Allow"
+///           "priority"            = 150
+///           "sourceAddressPrefix" = "192.100.12.45"
+///           "sourcePortRanges"    = ["1", "2"]
+///           }, {
+///           "access"              = "Deny"
+///           "priority"            = 3500
+///           "sourceAddressPrefix" = "*"
+///           "sourcePortRanges"    = ["*"]
+///         }]
+///         "protocol" = "TCP"
+///       }]
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     auto_scale = {
+///       evaluation_interval = "PT5M"
+///       formula             = "$TargetDedicatedNodes=1"
+///     }
+///   }
+///   vm_size = "STANDARD_D4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -442,8 +551,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.PoolEndpointConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -872,6 +981,41 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "UbuntuServer"
+///         publisher = "Canonical"
+///         sku       = "18.04-LTS"
+///         version   = "latest"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 18.04"
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     auto_scale = {
+///       evaluation_interval = "PT5M"
+///       formula             = "$TargetDedicatedNodes=1"
+///     }
+///   }
+///   vm_size = "STANDARD_D4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -885,8 +1029,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1092,6 +1236,38 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/networking-group/providers/Microsoft.Compute/galleries/testgallery/images/testimagedef/versions/0.0.1"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 18.04"
+///     }
+///   }
+///   network_configuration = {
+///     public_ip_address_configuration = {
+///       provision = "NoPublicIPAddresses"
+///     }
+///     subnet_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg1234/providers/Microsoft.Network/virtualNetworks/network1234/subnets/subnet123"
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   vm_size             = "STANDARD_D4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1105,8 +1281,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.PublicIPAddressConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1307,6 +1483,39 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/networking-group/providers/Microsoft.Compute/galleries/testgallery/images/testimagedef/versions/0.0.1"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 18.04"
+///     }
+///   }
+///   network_configuration = {
+///     public_ip_address_configuration = {
+///       ip_address_ids = ["/subscriptions/12345678-1234-1234-1234-1234567890121/resourceGroups/rg13/providers/Microsoft.Network/publicIPAddresses/ip135"]
+///       provision      = "UserManaged"
+///     }
+///     subnet_id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg1234/providers/Microsoft.Network/virtualNetworks/network1234/subnets/subnet123"
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   vm_size             = "STANDARD_D4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1320,8 +1529,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.PublicIPAddressConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1535,6 +1744,45 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "UbuntuServer"
+///         publisher = "Canonical"
+///         sku       = "18_04-lts-gen2"
+///         version   = "latest"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 18.04"
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   resource_tags = {
+///     "TagName1" = "TagValue1"
+///     "TagName2" = "TagValue2"
+///   }
+///   scale_settings = {
+///     fixed_scale = {
+///       target_dedicated_nodes    = 1
+///       target_low_priority_nodes = 0
+///     }
+///   }
+///   vm_size = "Standard_d4s_v3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1548,8 +1796,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.FixedScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1792,6 +2040,48 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "UbuntuServer"
+///         publisher = "Canonical"
+///         sku       = "18_04-lts-gen2"
+///         version   = "latest"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 18.04"
+///       security_profile = {
+///         encryption_at_host = true
+///         security_type      = "trustedLaunch"
+///         uefi_settings = {
+///           v_tpm_enabled = false
+///         }
+///       }
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     fixed_scale = {
+///       target_dedicated_nodes    = 1
+///       target_low_priority_nodes = 0
+///     }
+///   }
+///   vm_size = "Standard_d4s_v3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1807,8 +2097,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.UefiSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.FixedScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2046,6 +2336,41 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "0001-com-ubuntu-server-jammy"
+///         publisher = "Canonical"
+///         sku       = "22_04-lts"
+///         version   = "latest"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 22.04"
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     fixed_scale = {
+///       target_dedicated_nodes    = 1
+///       target_low_priority_nodes = 0
+///     }
+///   }
+///   vm_size = "Standard_d4s_v3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2059,8 +2384,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.FixedScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2325,6 +2650,65 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2019-datacenter-smalldisk"
+///         version   = "latest"
+///       }
+///       node_agent_sku_id = "batch.node.windows amd64"
+///       node_placement_configuration = {
+///         policy = "Zonal"
+///       }
+///       windows_configuration = {
+///         enable_automatic_updates = false
+///       }
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     fixed_scale = {
+///       target_dedicated_nodes    = 2
+///       target_low_priority_nodes = 0
+///     }
+///   }
+///   upgrade_policy = {
+///     automatic_os_upgrade_policy = {
+///       disable_automatic_rollback  = true
+///       enable_automatic_os_upgrade = true
+///       os_rolling_upgrade_deferral = true
+///       use_rolling_upgrade_policy  = true
+///     }
+///     mode = "automatic"
+///     rolling_upgrade_policy = {
+///       enable_cross_zone_upgrade                  = true
+///       max_batch_instance_percent                 = 20
+///       max_unhealthy_instance_percent             = 20
+///       max_unhealthy_upgraded_instance_percent    = 20
+///       pause_time_between_batches                 = "PT0S"
+///       prioritize_unhealthy_instances             = false
+///       rollback_failed_instances_on_policy_breach = false
+///     }
+///   }
+///   vm_size = "Standard_d4s_v3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2343,8 +2727,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutomaticOSUpgradePolicyArgs;
 /// import com.pulumi.azurenative.batch.inputs.RollingUpgradePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2678,6 +3062,53 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       extensions = [{
+///         "autoUpgradeMinorVersion" = true
+///         "enableAutomaticUpgrade"  = true
+///         "name"                    = "batchextension1"
+///         "publisher"               = "Microsoft.Azure.KeyVault"
+///         "settings" = {
+///           "authenticationSettingsKey"    = "authenticationSettingsValue"
+///           "secretsManagementSettingsKey" = "secretsManagementSettingsValue"
+///         }
+///         "type"               = "KeyVaultForLinux"
+///         "typeHandlerVersion" = "2.0"
+///       }]
+///       image_reference = {
+///         offer     = "0001-com-ubuntu-server-focal"
+///         publisher = "Canonical"
+///         sku       = "20_04-lts"
+///       }
+///       node_agent_sku_id = "batch.node.ubuntu 20.04"
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     auto_scale = {
+///       evaluation_interval = "PT5M"
+///       formula             = "$TargetDedicatedNodes=1"
+///     }
+///   }
+///   target_node_communication_mode = "Default"
+///   vm_size                        = "STANDARD_D4"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2691,8 +3122,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.ImageReferenceArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutoScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2966,6 +3397,48 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "windowsserver"
+///         publisher = "microsoftwindowsserver"
+///         sku       = "2022-datacenter-smalldisk"
+///       }
+///       node_agent_sku_id = "batch.node.windows amd64"
+///       os_disk = {
+///         caching      = "ReadWrite"
+///         disk_size_gb = 100
+///         managed_disk = {
+///           storage_account_type = "StandardSSD_LRS"
+///         }
+///         write_accelerator_enabled = false
+///       }
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     fixed_scale = {
+///       target_dedicated_nodes    = 1
+///       target_low_priority_nodes = 0
+///     }
+///   }
+///   vm_size = "Standard_d2s_v3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2981,8 +3454,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.ManagedDiskArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.FixedScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3248,6 +3721,53 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2019-datacenter-smalldisk"
+///         version   = "latest"
+///       }
+///       node_agent_sku_id = "batch.node.windows amd64"
+///       service_artifact_reference = {
+///         id = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Compute/galleries/myGallery/serviceArtifacts/myServiceArtifact/vmArtifactsProfiles/vmArtifactsProfile"
+///       }
+///       windows_configuration = {
+///         enable_automatic_updates = false
+///       }
+///     }
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     fixed_scale = {
+///       target_dedicated_nodes    = 2
+///       target_low_priority_nodes = 0
+///     }
+///   }
+///   upgrade_policy = {
+///     automatic_os_upgrade_policy = {
+///       enable_automatic_os_upgrade = true
+///     }
+///     mode = "automatic"
+///   }
+///   vm_size = "Standard_d4s_v3"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3265,8 +3785,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.FixedScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.UpgradePolicyArgs;
 /// import com.pulumi.azurenative.batch.inputs.AutomaticOSUpgradePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3531,6 +4051,45 @@ import 'upgrade_policy_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_batch_pool" "pool" {
+///   account_name = "sampleacct"
+///   deployment_configuration = {
+///     virtual_machine_configuration = {
+///       image_reference = {
+///         offer     = "WindowsServer"
+///         publisher = "MicrosoftWindowsServer"
+///         sku       = "2016-datacenter-smalldisk"
+///         version   = "latest"
+///       }
+///       node_agent_sku_id = "batch.node.windows amd64"
+///     }
+///   }
+///   network_configuration = {
+///     enable_accelerated_networking = true
+///     subnet_id                     = "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/rg1234/providers/Microsoft.Network/virtualNetworks/network1234/subnets/subnet123"
+///   }
+///   pool_name           = "testpool"
+///   resource_group_name = "default-azurebatch-japaneast"
+///   scale_settings = {
+///     fixed_scale = {
+///       target_dedicated_nodes    = 1
+///       target_low_priority_nodes = 0
+///     }
+///   }
+///   vm_size = "STANDARD_D1_V2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3545,8 +4104,8 @@ import 'upgrade_policy_response.dart';
 /// import com.pulumi.azurenative.batch.inputs.NetworkConfigurationArgs;
 /// import com.pulumi.azurenative.batch.inputs.ScaleSettingsArgs;
 /// import com.pulumi.azurenative.batch.inputs.FixedScaleSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

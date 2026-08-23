@@ -16,4 +16,3 @@ enum NamespaceDiscoveredManagementActionType {
     throw ArgumentError('Unknown NamespaceDiscoveredManagementActionType value: $value');
   }
 }
-

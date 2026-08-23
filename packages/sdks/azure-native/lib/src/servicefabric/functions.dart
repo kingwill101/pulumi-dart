@@ -1,10 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'get_application_args.dart';
-import 'get_application_result.dart';
-import 'get_application_type_args.dart';
-import 'get_application_type_result.dart';
-import 'get_application_type_version_args.dart';
-import 'get_application_type_version_result.dart';
 import 'get_managed_az_resiliency_status_args.dart';
 import 'get_managed_az_resiliency_status_result.dart';
 import 'get_managed_cluster_application_args.dart';
@@ -25,78 +19,16 @@ import 'get_node_type_args.dart';
 import 'get_node_type_fault_simulation_args.dart';
 import 'get_node_type_fault_simulation_result.dart';
 import 'get_node_type_result.dart';
-import 'get_service_args.dart';
-import 'get_service_result.dart';
 import 'list_managed_cluster_fault_simulation_args.dart';
 import 'list_managed_cluster_fault_simulation_result.dart';
 import 'list_node_type_fault_simulation_args.dart';
 import 'list_node_type_fault_simulation_result.dart';
 
-/// Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
-///
-/// Uses Azure REST API version 2024-11-01-preview.
-///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
-/// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_application_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetApplicationResult> getApplication(
-  GetApplicationArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:servicefabric:getApplication',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetApplicationResult.fromMap(result);
-}
-
-/// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
-///
-/// Uses Azure REST API version 2024-11-01-preview.
-///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
-/// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_application_type_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetApplicationTypeResult> getApplicationType(
-  GetApplicationTypeArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:servicefabric:getApplicationType',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetApplicationTypeResult.fromMap(result);
-}
-
-/// Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
-///
-/// Uses Azure REST API version 2024-11-01-preview.
-///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
-/// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_application_type_version_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetApplicationTypeVersionResult> getApplicationTypeVersion(
-  GetApplicationTypeVersionArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:servicefabric:getApplicationTypeVersion',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetApplicationTypeVersionResult.fromMap(result);
-}
-
 /// Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_az_resiliency_status_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedAzResiliencyStatusResult> getManagedAzResiliencyStatus(
@@ -116,7 +48,7 @@ Future<GetManagedAzResiliencyStatusResult> getManagedAzResiliencyStatus(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_cluster_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedClusterResult> getManagedCluster(
@@ -136,7 +68,7 @@ Future<GetManagedClusterResult> getManagedCluster(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_cluster_application_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedClusterApplicationResult> getManagedClusterApplication(
@@ -156,7 +88,7 @@ Future<GetManagedClusterApplicationResult> getManagedClusterApplication(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_cluster_application_type_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedClusterApplicationTypeResult> getManagedClusterApplicationType(
@@ -176,7 +108,7 @@ Future<GetManagedClusterApplicationTypeResult> getManagedClusterApplicationType(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_cluster_application_type_version_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedClusterApplicationTypeVersionResult> getManagedClusterApplicationTypeVersion(
@@ -196,7 +128,7 @@ Future<GetManagedClusterApplicationTypeVersionResult> getManagedClusterApplicati
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_cluster_fault_simulation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedClusterFaultSimulationResult> getManagedClusterFaultSimulation(
@@ -216,7 +148,7 @@ Future<GetManagedClusterFaultSimulationResult> getManagedClusterFaultSimulation(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_cluster_service_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedClusterServiceResult> getManagedClusterService(
@@ -236,7 +168,7 @@ Future<GetManagedClusterServiceResult> getManagedClusterService(
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_managed_maintenance_window_status_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedMaintenanceWindowStatusResult> getManagedMaintenanceWindowStatus(
@@ -256,7 +188,7 @@ Future<GetManagedMaintenanceWindowStatusResult> getManagedMaintenanceWindowStatu
 ///
 /// Uses Azure REST API version 2024-04-01.
 ///
-/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_node_type_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNodeTypeResult> getNodeType(
@@ -276,7 +208,7 @@ Future<GetNodeTypeResult> getNodeType(
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_node_type_fault_simulation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNodeTypeFaultSimulationResult> getNodeTypeFaultSimulation(
@@ -292,31 +224,11 @@ Future<GetNodeTypeFaultSimulationResult> getNodeTypeFaultSimulation(
   return GetNodeTypeFaultSimulationResult.fromMap(result);
 }
 
-/// Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
-///
-/// Uses Azure REST API version 2024-11-01-preview.
-///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
-/// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_get_service_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetServiceResult> getService(
-  GetServiceArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:servicefabric:getService',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetServiceResult.fromMap(result);
-}
-
 /// Gets the list of recent fault simulations for the cluster.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_list_managed_cluster_fault_simulation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListManagedClusterFaultSimulationResult> listManagedClusterFaultSimulation(
@@ -336,7 +248,7 @@ Future<ListManagedClusterFaultSimulationResult> listManagedClusterFaultSimulatio
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
 ///
-/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicefabric_list_node_type_fault_simulation_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListNodeTypeFaultSimulationResult> listNodeTypeFaultSimulation(

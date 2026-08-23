@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -101,6 +101,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_afdorigingroup" "afdOriginGroup" {
+///   authentication = {
+///     scope = "https://www.contoso.com/.default"
+///     type  = "UserAssignedIdentity"
+///     user_assigned_identity = {
+///       id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-assigned-id-1"
+///     }
+///   }
+///   health_probe_settings = {
+///     probe_interval_in_seconds = 10
+///     probe_path                = "/path2"
+///     probe_protocol            = "NotSet"
+///     probe_request_type        = "NotSet"
+///   }
+///   load_balancing_settings = {
+///     additional_latency_in_milliseconds = 1000
+///     sample_size                        = 3
+///     successful_samples_required        = 3
+///   }
+///   origin_group_name                                              = "origingroup1"
+///   profile_name                                                   = "profile1"
+///   resource_group_name                                            = "RG"
+///   traffic_restoration_time_to_healed_or_new_endpoints_in_minutes = 5
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +149,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cdn.inputs.ResourceReferenceArgs;
 /// import com.pulumi.azurenative.cdn.inputs.HealthProbeParametersArgs;
 /// import com.pulumi.azurenative.cdn.inputs.LoadBalancingSettingsParametersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

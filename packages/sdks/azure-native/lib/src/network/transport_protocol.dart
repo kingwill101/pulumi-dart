@@ -16,4 +16,3 @@ enum TransportProtocol {
     throw ArgumentError('Unknown TransportProtocol value: $value');
   }
 }
-

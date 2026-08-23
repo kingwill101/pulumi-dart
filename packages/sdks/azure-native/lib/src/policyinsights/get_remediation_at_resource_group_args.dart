@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRemediationAtResourceGroupArgs {
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
-  /// Resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetRemediationAtResourceGroupArgs].
   /// [remediationName] The name of the remediation.
-  /// [resourceGroupName] Resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetRemediationAtResourceGroupArgs({
     required this.remediationName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetRemediationAtResourceGroupArgs {
     );
   }
 }
-

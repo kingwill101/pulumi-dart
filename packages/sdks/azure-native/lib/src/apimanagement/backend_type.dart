@@ -15,4 +15,3 @@ enum BackendType {
     throw ArgumentError('Unknown BackendType value: $value');
   }
 }
-

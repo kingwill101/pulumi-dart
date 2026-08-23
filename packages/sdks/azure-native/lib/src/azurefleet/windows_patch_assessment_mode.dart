@@ -19,4 +19,3 @@ enum WindowsPatchAssessmentMode {
     throw ArgumentError('Unknown WindowsPatchAssessmentMode value: $value');
   }
 }
-

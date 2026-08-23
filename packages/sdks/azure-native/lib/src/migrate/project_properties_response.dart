@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'private_endpoint_connection_response.dart';
+import 'private_endpoint_connection_project_response.dart';
 
 /// Properties of a project.
 class ProjectPropertiesResponse {
@@ -24,7 +24,7 @@ class ProjectPropertiesResponse {
   /// Number of machines in the project.
   final pulumi.Input<int> numberOfMachines;
   /// The list of private endpoint connections to the project.
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionProjectResponse>> privateEndpointConnections;
   /// Assessment project status.
   final pulumi.Input<String>? projectStatus;
   /// Provisioning state of the project.
@@ -81,7 +81,7 @@ class ProjectPropertiesResponse {
       'numberOfAssessments': numberOfAssessments,
       'numberOfGroups': numberOfGroups,
       'numberOfMachines': numberOfMachines,
-      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionProjectResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionProjectResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'projectStatus': ?projectStatus,
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
@@ -101,7 +101,7 @@ class ProjectPropertiesResponse {
       numberOfAssessments: pulumi.Input.fromValue(map['numberOfAssessments'] as int),
       numberOfGroups: pulumi.Input.fromValue(map['numberOfGroups'] as int),
       numberOfMachines: pulumi.Input.fromValue(map['numberOfMachines'] as int),
-      privateEndpointConnections: pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      privateEndpointConnections: pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnectionProjectResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionProjectResponse.fromMap((value as Map).cast<String, dynamic>()))),
       projectStatus: (() { final guardedValue = map['projectStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -110,4 +110,3 @@ class ProjectPropertiesResponse {
     );
   }
 }
-

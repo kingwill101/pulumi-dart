@@ -71,6 +71,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_bandwidthschedule" "bandwidthSchedule" {
+///   days                = ["Sunday", "Monday"]
+///   device_name         = "testedgedevice"
+///   name                = "bandwidth-1"
+///   rate_in_mbps        = 100
+///   resource_group_name = "GroupForEdgeAutomation"
+///   start               = "0:0:0"
+///   stop                = "13:59:0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +100,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.databoxedge.BandwidthSchedule;
 /// import com.pulumi.azurenative.databoxedge.BandwidthScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

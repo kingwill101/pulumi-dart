@@ -9,7 +9,7 @@ class AmlComputeNodeInformationResponse {
   /// State of the compute node. Values are idle, running, preparing, unusable, leaving and preempted.
   final pulumi.Input<String> nodeState;
   /// SSH port number of the node.
-  final pulumi.Input<double> port;
+  final pulumi.Input<int> port;
   /// Private IP address of the compute node.
   final pulumi.Input<String> privateIpAddress;
   /// Public IP address of the compute node.
@@ -48,11 +48,10 @@ class AmlComputeNodeInformationResponse {
     return AmlComputeNodeInformationResponse(
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
       nodeState: pulumi.Input.fromValue(map['nodeState'] as String),
-      port: pulumi.Input.fromValue(map['port'] as double),
+      port: pulumi.Input.fromValue(map['port'] as int),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
       runId: pulumi.Input.fromValue(map['runId'] as String),
     );
   }
 }
-

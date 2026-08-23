@@ -145,6 +145,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billing_billingprofile" "billingProfile" {
+///   billing_account_name = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31"
+///   billing_profile_name = "xxxx-xxxx-xxx-xxx"
+///   properties = {
+///     bill_to = {
+///       address_line1    = "Test Address1"
+///       address_line2    = "Test Address2"
+///       address_line3    = "Test Address3"
+///       city             = "City"
+///       company_name     = "Contoso"
+///       country          = "US"
+///       email            = "abc@contoso.com"
+///       first_name       = "Test"
+///       is_valid_address = true
+///       last_name        = "User"
+///       phone_number     = "000-000-0000"
+///       postal_code      = "00000"
+///       region           = "WA"
+///     }
+///     display_name = "Billing Profile 1"
+///     enabled_azure_plans = [{
+///       "skuId" = "0001"
+///       }, {
+///       "skuId" = "0002"
+///     }]
+///     invoice_email_opt_in = true
+///     po_number            = "ABC12345"
+///     ship_to = {
+///       address_line1    = "Test Address1"
+///       address_line2    = "Test Address2"
+///       address_line3    = "Test Address3"
+///       city             = "City"
+///       company_name     = "Contoso"
+///       country          = "US"
+///       email            = "abc@contoso.com"
+///       first_name       = "Test"
+///       is_valid_address = true
+///       last_name        = "User"
+///       phone_number     = "000-000-0000"
+///       postal_code      = "00000"
+///       region           = "WA"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +212,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billing.inputs.BillingProfilePropertiesArgs;
 /// import com.pulumi.azurenative.billing.inputs.BillingProfilePropertiesBillToArgs;
 /// import com.pulumi.azurenative.billing.inputs.BillingProfilePropertiesShipToArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

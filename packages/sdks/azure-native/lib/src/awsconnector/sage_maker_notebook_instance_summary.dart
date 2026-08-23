@@ -126,6 +126,53 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_sagemakernotebookinstancesummary" "sageMakerNotebookInstanceSummary" {
+///   location = "khdjmafoabcvhksslfjtzlyh"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "ncvgnrtwmjxungpgrodvsy"
+///     aws_account_id = "ymlnxodvrwztwew"
+///     aws_properties = {
+///       additional_code_repositories = ["pkjwtq"]
+///       creation_time                = "2024-10-08T03:50:00.672Z"
+///       default_code_repository      = "edbiryeqsbvjcqmwygujvl"
+///       instance_type = {
+///         value = "ml.c4.2xlarge"
+///       }
+///       last_modified_time                      = "2024-10-08T03:50:00.673Z"
+///       notebook_instance_arn                   = "wxrcvukcvvtd"
+///       notebook_instance_lifecycle_config_name = "t"
+///       notebook_instance_name                  = "nwemhcydnbtwmti"
+///       notebook_instance_status = {
+///         value = "Deleting"
+///       }
+///       url = "ricclxhpsojfujeolzbg"
+///     }
+///     aws_region        = "oqykvfkrsmwkvszj"
+///     aws_source_schema = "gqddonfcsn"
+///     aws_tags = {
+///       "key4152" = "dujjfkuxcm"
+///     }
+///     public_cloud_connectors_resource_id = "khlyjmgts"
+///     public_cloud_resource_name          = "ocd"
+///   }
+///   resource_group_name = "rgsageMakerNotebookInstanceSummary"
+///   tags = {
+///     "key9470" = "aluoxfdglqvvkktxeg"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +185,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSageMakerNotebookInstanceSummaryPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.NotebookInstanceStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

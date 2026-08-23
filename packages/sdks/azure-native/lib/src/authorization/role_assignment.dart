@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_assignment_args.dart';
+import 'system_data_response.dart';
 
 /// Role Assignments
 ///
@@ -59,6 +60,25 @@ import 'role_assignment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_roleassignment" "roleAssignment" {
+///   principal_id         = "ce2ce14e-85d7-4629-bdbc-454d0519d987"
+///   principal_type       = "User"
+///   role_assignment_name = "05c5a614-a7d6-4502-b150-c2fb455033ff"
+///   role_definition_id   = "/subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/providers/Microsoft.Authorization/roleDefinitions/0b5fe924-9a61-425c-96af-cfe6e287ca2d"
+///   scope                = "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/resourceGroups/testrg/providers/Microsoft.DocumentDb/databaseAccounts/test-db-account"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +87,8 @@ import 'role_assignment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleAssignment;
 /// import com.pulumi.azurenative.authorization.RoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,6 +204,25 @@ import 'role_assignment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_roleassignment" "roleAssignment" {
+///   principal_id         = "ce2ce14e-85d7-4629-bdbc-454d0519d987"
+///   principal_type       = "User"
+///   role_assignment_name = "05c5a614-a7d6-4502-b150-c2fb455033ff"
+///   role_definition_id   = "/subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/providers/Microsoft.Authorization/roleDefinitions/0b5fe924-9a61-425c-96af-cfe6e287ca2d"
+///   scope                = "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/resourceGroups/testrg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +231,8 @@ import 'role_assignment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleAssignment;
 /// import com.pulumi.azurenative.authorization.RoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,6 +348,25 @@ import 'role_assignment_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_roleassignment" "roleAssignment" {
+///   principal_id         = "ce2ce14e-85d7-4629-bdbc-454d0519d987"
+///   principal_type       = "User"
+///   role_assignment_name = "05c5a614-a7d6-4502-b150-c2fb455033ff"
+///   role_definition_id   = "/subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/providers/Microsoft.Authorization/roleDefinitions/0b5fe924-9a61-425c-96af-cfe6e287ca2d"
+///   scope                = "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +375,8 @@ import 'role_assignment_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleAssignment;
 /// import com.pulumi.azurenative.authorization.RoleAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -408,7 +466,7 @@ class RoleAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String?> delegatedManagedIdentityResourceId;
   /// Description of role assignment
   late final pulumi.Output<String?> description;
-  /// The role assignment name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The principal ID.
   late final pulumi.Output<String> principalId;
@@ -418,7 +476,9 @@ class RoleAssignment extends pulumi.CustomResource {
   late final pulumi.Output<String> roleDefinitionId;
   /// The role assignment scope.
   late final pulumi.Output<String> scope;
-  /// The role assignment type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Id of the user who updated the assignment
   late final pulumi.Output<String> updatedBy;
@@ -451,6 +511,7 @@ class RoleAssignment extends pulumi.CustomResource {
     principalType = registerOutput<String?>('principalType');
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
     scope = registerOutput<String>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedBy = registerOutput<String>('updatedBy');
     updatedOn = registerOutput<String>('updatedOn');

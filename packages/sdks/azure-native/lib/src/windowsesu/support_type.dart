@@ -15,4 +15,3 @@ enum SupportType {
     throw ArgumentError('Unknown SupportType value: $value');
   }
 }
-

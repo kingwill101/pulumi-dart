@@ -9,7 +9,7 @@ import 'virtual_machine_run_command_script_source_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -112,6 +112,45 @@ import 'virtual_machine_run_command_script_source_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachineruncommandbyvirtualmachine" "virtualMachineRunCommandByVirtualMachine" {
+///   async_execution = false
+///   error_blob_uri  = "https://mystorageaccount.blob.core.windows.net/scriptcontainer/scriptURI"
+///   location        = "West US"
+///   output_blob_managed_identity = {
+///     client_id = "22d35efb-0c99-4041-8c5b-6d24db33a69a"
+///   }
+///   output_blob_uri = "https://mystorageaccount.blob.core.windows.net/myscriptoutputcontainer/MyScriptoutput.txt"
+///   parameters {
+///     name  = "param1"
+///     value = "value1"
+///   }
+///   parameters {
+///     name  = "param2"
+///     value = "value2"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   run_as_password     = "<runAsPassword>"
+///   run_as_user         = "user1"
+///   run_command_name    = "myRunCommand"
+///   source = {
+///     script_uri = "https://mystorageaccount.blob.core.windows.net/scriptcontainer/scriptURI"
+///   }
+///   timeout_in_seconds                  = 3600
+///   treat_failure_as_deployment_failure = false
+///   vm_name                             = "myVM"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +162,8 @@ import 'virtual_machine_run_command_script_source_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.RunCommandManagedIdentityArgs;
 /// import com.pulumi.azurenative.compute.inputs.RunCommandInputParameterArgs;
 /// import com.pulumi.azurenative.compute.inputs.VirtualMachineRunCommandScriptSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

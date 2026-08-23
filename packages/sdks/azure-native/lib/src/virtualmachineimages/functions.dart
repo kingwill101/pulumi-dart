@@ -8,7 +8,7 @@ import 'get_virtual_machine_image_template_result.dart';
 ///
 /// Uses Azure REST API version 2024-02-01.
 ///
-/// Other available API versions: 2022-07-01, 2023-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-01, 2023-07-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_virtualmachineimages_get_trigger_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTriggerResult> getTrigger(
@@ -28,7 +28,7 @@ Future<GetTriggerResult> getTrigger(
 ///
 /// Uses Azure REST API version 2024-02-01.
 ///
-/// Other available API versions: 2022-07-01, 2023-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-01, 2023-07-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_virtualmachineimages_get_virtual_machine_image_template_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineImageTemplateResult> getVirtualMachineImageTemplate(

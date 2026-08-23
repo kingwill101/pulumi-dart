@@ -300,6 +300,11 @@ import 'system_data_response.dart';
 ///                     {
 ///                         "gcsqntkatjbigzj",
 ///                     },
+///                     Subnets = new[]
+///                     {
+///                         "vxxzlquh",
+///                     },
+///                     VpcId = "dhjvrtrqgdb",
 ///                 },
 ///                 Webhook = new AzureNative.AwsConnector.Inputs.WebhookArgs
 ///                 {
@@ -580,6 +585,10 @@ import 'system_data_response.dart';
 /// 						SecurityGroupIds: pulumi.StringArray{
 /// 							pulumi.String("gcsqntkatjbigzj"),
 /// 						},
+/// 						Subnets: pulumi.StringArray{
+/// 							pulumi.String("vxxzlquh"),
+/// 						},
+/// 						VpcId: pulumi.String("dhjvrtrqgdb"),
 /// 					},
 /// 					Webhook: &awsconnector.WebhookArgs{
 /// 						BranchFilter: pulumi.String("fpfnqs"),
@@ -621,6 +630,256 @@ import 'system_data_response.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_codebuildproject" "codeBuildProject" {
+///   location = "fpjpnhlms"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "ae"
+///     aws_account_id = "caiac"
+///     aws_properties = {
+///       arn = "wwhfeljvmnwnqcgxusgnvoq"
+///       artifacts = {
+///         artifact_identifier = "hcfdqzwleorpe"
+///         bucket_owner_access = {
+///           value = "FULL"
+///         }
+///         encryption_disabled = true
+///         location            = "zvhsfl"
+///         name                = "dsqyinskfvabyktgjbszny"
+///         namespace_type = {
+///           value = "BUILD_ID"
+///         }
+///         override_artifact_name = true
+///         packaging = {
+///           value = "NONE"
+///         }
+///         path = "zbsfhzkoet"
+///         type = {
+///           value = "CODEPIPELINE"
+///         }
+///       }
+///       badge = {
+///         badge_enabled     = true
+///         badge_request_url = "ulpdsdbgtwm"
+///       }
+///       build_batch_config = {
+///         batch_report_mode = {
+///           value = "REPORT_AGGREGATED_BATCH"
+///         }
+///         combine_artifacts = true
+///         restrictions = {
+///           compute_types_allowed  = ["ievoltoldfrhkpv"]
+///           maximum_builds_allowed = 15
+///         }
+///         service_role    = "lceqjutffrykpuzjxvijbzpames"
+///         timeout_in_mins = 3
+///       }
+///       cache = {
+///         location = "wgmqyjzlxsazecszvdkfr"
+///         modes    = ["LOCAL_CUSTOM_CACHE"]
+///         type = {
+///           value = "LOCAL"
+///         }
+///       }
+///       concurrent_build_limit = 19
+///       created                = "2024-10-08T03:48:48.570Z"
+///       description            = "adnfxoh"
+///       encryption_key         = "upseoicsvrwjjachlewnltupswc"
+///       environment = {
+///         certificate = "olzbdlydjqzkzlflzxcdjjjv"
+///         compute_type = {
+///           value = "BUILD_GENERAL1_2XLARGE"
+///         }
+///         environment_variables = [{
+///           "name" = "bmzlnmjzuxrxeemxfutykrlvemt"
+///           "type" = {
+///             "value" = "PARAMETER_STORE"
+///           }
+///           "value" = "eakfsmirkkwnizotyqqgmgjthn"
+///         }]
+///         fleet = {
+///           fleet_arn = "brslcsjgupcpeistg"
+///         }
+///         image = "kkmioknmuhxurahmnjg"
+///         image_pull_credentials_type = {
+///           value = "CODEBUILD"
+///         }
+///         privileged_mode = true
+///         registry_credential = {
+///           credential = "rpnzfjdjuamclquyzquwicenfpefx"
+///           credential_provider = {
+///             value = "SECRETS_MANAGER"
+///           }
+///         }
+///         type = {
+///           value = "ARM_CONTAINER"
+///         }
+///       }
+///       file_system_locations = [{
+///         "identifier"   = "tdquc"
+///         "location"     = "yeaotrzuhjtdtbfrlpvmlmaoqyioin"
+///         "mountOptions" = "tocdlorjekugjotphpxuyebjj"
+///         "mountPoint"   = "fctmorvlmplsmeqvmavw"
+///         "type" = {
+///           "value" = "EFS"
+///         }
+///       }]
+///       last_modified = "2024-10-08T03:48:48.571Z"
+///       logs_config = {
+///         cloud_watch_logs = {
+///           group_name = "t"
+///           status = {
+///             value = "DISABLED"
+///           }
+///           stream_name = "rrqzbaaicbiblat"
+///         }
+///         s3_logs = {
+///           bucket_owner_access = {
+///             value = "FULL"
+///           }
+///           encryption_disabled = true
+///           location            = "zuepwokmlymlvsvzjawzxe"
+///           status = {
+///             value = "DISABLED"
+///           }
+///         }
+///       }
+///       name = "budzhvktdvhxxy"
+///       project_visibility = {
+///         value = "PRIVATE"
+///       }
+///       public_project_alias      = "vstmzamjxtasdipcehcuwvfef"
+///       queued_timeout_in_minutes = 30
+///       resource_access_role      = "st"
+///       secondary_artifacts = [{
+///         "artifactIdentifier" = "hcfdqzwleorpe"
+///         "bucketOwnerAccess" = {
+///           "value" = "FULL"
+///         }
+///         "encryptionDisabled" = true
+///         "location"           = "zvhsfl"
+///         "name"               = "dsqyinskfvabyktgjbszny"
+///         "namespaceType" = {
+///           "value" = "BUILD_ID"
+///         }
+///         "overrideArtifactName" = true
+///         "packaging" = {
+///           "value" = "NONE"
+///         }
+///         "path" = "zbsfhzkoet"
+///         "type" = {
+///           "value" = "CODEPIPELINE"
+///         }
+///       }]
+///       secondary_source_versions = [{
+///         "sourceIdentifier" = "kiyezlaophakaslamcsxpkzggoj"
+///         "sourceVersion"    = "zy"
+///       }]
+///       secondary_sources = [{
+///         "auth" = {
+///           "resource" = "oyfwquyzyjklbxlyjyddpmhmjgsgk"
+///           "type" = {
+///             "value" = "CODECONNECTIONS"
+///           }
+///         }
+///         "buildStatusConfig" = {
+///           "context"   = "zoghbponrxfhugrjzdheibkada"
+///           "targetUrl" = "ooonrchy"
+///         }
+///         "buildspec"     = "xxcoigvstisdhlfkfiblrgqhbtoqd"
+///         "gitCloneDepth" = 9
+///         "gitSubmodulesConfig" = {
+///           "fetchSubmodules" = true
+///         }
+///         "insecureSsl"       = true
+///         "location"          = "owijjqkiwwegfcrynqcypho"
+///         "reportBuildStatus" = true
+///         "sourceIdentifier"  = "lnhelescdeif"
+///         "type" = {
+///           "value" = "BITBUCKET"
+///         }
+///       }]
+///       service_role = "pydzdifzkz"
+///       source = {
+///         auth = {
+///           resource = "oyfwquyzyjklbxlyjyddpmhmjgsgk"
+///           type = {
+///             value = "CODECONNECTIONS"
+///           }
+///         }
+///         build_status_config = {
+///           context    = "zoghbponrxfhugrjzdheibkada"
+///           target_url = "ooonrchy"
+///         }
+///         buildspec       = "xxcoigvstisdhlfkfiblrgqhbtoqd"
+///         git_clone_depth = 9
+///         git_submodules_config = {
+///           fetch_submodules = true
+///         }
+///         insecure_ssl        = true
+///         location            = "owijjqkiwwegfcrynqcypho"
+///         report_build_status = true
+///         source_identifier   = "lnhelescdeif"
+///         type = {
+///           value = "BITBUCKET"
+///         }
+///       }
+///       source_version = "idpngofzedxghp"
+///       tags = [{
+///         "key"   = "jcnahvslmrynzn"
+///         "value" = "iqwximmqwgsjlwdgv"
+///       }]
+///       timeout_in_minutes = 7
+///       vpc_config = {
+///         security_group_ids = ["gcsqntkatjbigzj"]
+///         subnets            = ["vxxzlquh"]
+///         vpc_id             = "dhjvrtrqgdb"
+///       }
+///       webhook = {
+///         branch_filter = "fpfnqs"
+///         build_type = {
+///           value = "BUILD"
+///         }
+///         filter_groups = [{
+///           "webhookFilter" = {
+///             "excludeMatchedPattern" = true
+///             "pattern"               = "ozqghxeblvksllu"
+///             "type" = {
+///               "value" = "ACTOR_ACCOUNT_ID"
+///             }
+///           }
+///         }]
+///         last_modified_secret = "2024-10-08T03:48:48.574Z"
+///         payload_url          = "wzalmmzopccsfbgwhxjneakxazu"
+///         secret               = "mvic"
+///         url                  = "lwkywiwhmmdrirvajnxo"
+///       }
+///     }
+///     aws_region        = "rakioiwqsjhpjqekyjft"
+///     aws_source_schema = "ujnztglujzqehsvvd"
+///     aws_tags = {
+///       "key9822" = "ryzmieviyiycjaaenwj"
+///     }
+///     public_cloud_connectors_resource_id = "azzcclgcodhtl"
+///     public_cloud_resource_name          = "tzylnhhjwtzngucgrkvklav"
+///   }
+///   resource_group_name = "rgcodeBuildProject"
+///   tags = {
+///     "key4761" = "sranhogw"
+///   }
 /// }
 ///
 /// ```
@@ -667,8 +926,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.VpcConfigArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.WebhookArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.WebhookBuildTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -882,6 +1141,8 @@ import 'system_data_response.dart';
 ///                     .timeoutInMinutes(7)
 ///                     .vpcConfig(VpcConfigArgs.builder()
 ///                         .securityGroupIds("gcsqntkatjbigzj")
+///                         .subnets("vxxzlquh")
+///                         .vpcId("dhjvrtrqgdb")
 ///                         .build())
 ///                     .webhook(WebhookArgs.builder()
 ///                         .branchFilter("fpfnqs")
@@ -1124,6 +1385,8 @@ import 'system_data_response.dart';
 ///             timeoutInMinutes: 7,
 ///             vpcConfig: {
 ///                 securityGroupIds: ["gcsqntkatjbigzj"],
+///                 subnets: ["vxxzlquh"],
+///                 vpcId: "dhjvrtrqgdb",
 ///             },
 ///             webhook: {
 ///                 branchFilter: "fpfnqs",
@@ -1367,6 +1630,8 @@ import 'system_data_response.dart';
 ///             "timeout_in_minutes": 7,
 ///             "vpc_config": {
 ///                 "security_group_ids": ["gcsqntkatjbigzj"],
+///                 "subnets": ["vxxzlquh"],
+///                 "vpc_id": "dhjvrtrqgdb",
 ///             },
 ///             "webhook": {
 ///                 "branch_filter": "fpfnqs",
@@ -1564,6 +1829,9 @@ import 'system_data_response.dart';
 ///           vpcConfig:
 ///             securityGroupIds:
 ///               - gcsqntkatjbigzj
+///             subnets:
+///               - vxxzlquh
+///             vpcId: dhjvrtrqgdb
 ///           webhook:
 ///             branchFilter: fpfnqs
 ///             buildType:

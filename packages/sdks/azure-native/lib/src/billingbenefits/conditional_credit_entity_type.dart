@@ -1,7 +1,7 @@
 /// Type of conditional credit entity
 enum ConditionalCreditEntityType {
-  valuePrimary("Primary"),
-  valueContributor("Contributor");
+  primary("Primary"),
+  contributor("Contributor");
 
   const ConditionalCreditEntityType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ConditionalCreditEntityType {
     throw ArgumentError('Unknown ConditionalCreditEntityType value: $value');
   }
 }
-

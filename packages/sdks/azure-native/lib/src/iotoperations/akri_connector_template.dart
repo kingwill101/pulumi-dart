@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -163,6 +163,67 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_akriconnectortemplate" "akriConnectorTemplate" {
+///   akri_connector_template_name = "resource-name123"
+///   extended_location = {
+///     name = "/subscriptions/F8C729F9-DF9C-4743-848F-96EE433D8E53/resourceGroups/rgiotoperations/providers/Microsoft.ExtendedLocation/customLocations/resource-123"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     aio_metadata = {
+///       aio_max_version = "1.4.0"
+///       aio_min_version = "1.2.0"
+///     }
+///     device_inbound_endpoint_types = [{
+///       "endpointType" = "Microsoft.Rest"
+///       "version"      = "0.0.1"
+///     }]
+///     diagnostics = {
+///       logs = {
+///         level = "info"
+///       }
+///     }
+///     mqtt_connection_configuration = {
+///       authentication = {
+///         method = "ServiceAccountToken"
+///         service_account_token_settings = {
+///           audience = "MQ-SAT"
+///         }
+///       }
+///       host                   = "aio-broker:18883"
+///       keep_alive_seconds     = 10
+///       max_inflight_messages  = 10
+///       protocol               = "Mqtt"
+///       session_expiry_seconds = 60
+///       tls = {
+///         mode                                  = "Enabled"
+///         trusted_ca_certificate_config_map_ref = "azure-iot-operations-aio-ca-trust-bundle"
+///       }
+///     }
+///     runtime_configuration = {
+///       "helmConfigurationSettings" = {
+///         "releaseName"    = "my-install"
+///         "repositoryName" = "my-repo"
+///         "version"        = "1.0.0"
+///       }
+///       "runtimeConfigurationType" = "HelmConfiguration"
+///     }
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +241,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorsServiceAccountAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.AkriConnectorsServiceAccountTokenSettingsArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.TlsPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

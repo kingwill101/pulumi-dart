@@ -1,15 +1,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_plan_args.dart';
+import 'default_identity_response.dart';
 import 'extended_location_response.dart';
 import 'hosting_environment_profile_response.dart';
 import 'kube_environment_profile_response.dart';
+import 'managed_service_identity_response.dart';
+import 'server_farm_network_settings_response.dart';
 import 'sku_description_response.dart';
+import 'system_data_response.dart';
 
 /// App Service plan.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +80,31 @@ import 'sku_description_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_appserviceplan" "appServicePlan" {
+///   kind                = "app"
+///   location            = "East US"
+///   name                = "testsf6141"
+///   resource_group_name = "testrg123"
+///   sku = {
+///     capacity = 1
+///     family   = "P"
+///     name     = "P1"
+///     size     = "P1"
+///     tier     = "Premium"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +114,8 @@ import 'sku_description_response.dart';
 /// import com.pulumi.azurenative.web.AppServicePlan;
 /// import com.pulumi.azurenative.web.AppServicePlanArgs;
 /// import com.pulumi.azurenative.web.inputs.SkuDescriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -185,6 +214,9 @@ import 'sku_description_response.dart';
 /// $ pulumi import azure-native:web:AppServicePlan testsf6141 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}
 /// ```
 class AppServicePlan extends pulumi.CustomResource {
+  /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
+  /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will only attempt sync scaling.
+  late final pulumi.Output<bool?> asyncScalingEnabled;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
@@ -199,6 +231,12 @@ class AppServicePlan extends pulumi.CustomResource {
   late final pulumi.Output<HostingEnvironmentProfileResponse?> hostingEnvironmentProfile;
   /// If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> hyperV;
+  /// Managed service identity.
+  late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+  /// Install scripts associated with this App Service plan.
+  late final pulumi.Output<List<Map<String, dynamic>>?> installScripts;
+  /// Whether this server farm is in custom mode.
+  late final pulumi.Output<bool?> isCustomMode;
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
   late final pulumi.Output<bool?> isSpot;
   /// Obsolete: If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
@@ -207,14 +245,16 @@ class AppServicePlan extends pulumi.CustomResource {
   late final pulumi.Output<String?> kind;
   /// Specification for the Kubernetes Environment to use for the App Service plan.
   late final pulumi.Output<KubeEnvironmentProfileResponse?> kubeEnvironmentProfile;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   late final pulumi.Output<int?> maximumElasticWorkerCount;
   /// Maximum number of instances that can be assigned to this App Service plan.
   late final pulumi.Output<int> maximumNumberOfWorkers;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
+  /// All network settings for the server farm.
+  late final pulumi.Output<ServerFarmNetworkSettingsResponse?> network;
   /// Number of apps assigned to this App Service plan.
   late final pulumi.Output<int> numberOfSites;
   /// The number of instances that are assigned to this App Service plan.
@@ -222,8 +262,15 @@ class AppServicePlan extends pulumi.CustomResource {
   /// If &lt;code&gt;true&lt;/code&gt;, apps assigned to this App Service plan can be scaled independently.
   /// If &lt;code&gt;false&lt;/code&gt;, apps assigned to this App Service plan will scale to all instances of the plan.
   late final pulumi.Output<bool?> perSiteScaling;
+  /// Identity to use by platform for various features and integrations using managed identity.
+  late final pulumi.Output<DefaultIdentityResponse?> planDefaultIdentity;
   /// Provisioning state of the App Service Plan.
   late final pulumi.Output<String> provisioningState;
+  /// If &lt;code&gt;true&lt;/code&gt;, RDP access is enabled for this App Service plan. Only applicable for IsCustomMode ASPs.
+  /// If &lt;code&gt;false&lt;/code&gt;, RDP access is disabled.
+  late final pulumi.Output<bool?> rdpEnabled;
+  /// Registry adapters associated with this App Service plan.
+  late final pulumi.Output<List<Map<String, dynamic>>?> registryAdapters;
   /// If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> reserved;
   /// Resource group of the App Service plan.
@@ -234,15 +281,19 @@ class AppServicePlan extends pulumi.CustomResource {
   late final pulumi.Output<String?> spotExpirationTime;
   /// App Service plan status.
   late final pulumi.Output<String> status;
+  /// Storage mounts associated with this App Service plan.
+  late final pulumi.Output<List<Map<String, dynamic>>?> storageMounts;
   /// App Service plan subscription.
   late final pulumi.Output<String> subscription;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Scaling worker count.
   late final pulumi.Output<int?> targetWorkerCount;
   /// Scaling worker size ID.
   late final pulumi.Output<int?> targetWorkerSizeId;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Target worker tier assigned to the App Service plan.
   late final pulumi.Output<String?> workerTierName;
@@ -264,6 +315,7 @@ class AppServicePlan extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    asyncScalingEnabled = registerOutput<bool?>('asyncScalingEnabled');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     elasticScaleEnabled = registerOutput<bool?>('elasticScaleEnabled');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -271,6 +323,9 @@ class AppServicePlan extends pulumi.CustomResource {
     geoRegion = registerOutput<String>('geoRegion');
     hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse?>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hyperV = registerOutput<bool?>('hyperV');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    installScripts = registerOutput<List<Map<String, dynamic>>?>('installScripts');
+    isCustomMode = registerOutput<bool?>('isCustomMode');
     isSpot = registerOutput<bool?>('isSpot');
     isXenon = registerOutput<bool?>('isXenon');
     kind = registerOutput<String?>('kind');
@@ -279,16 +334,22 @@ class AppServicePlan extends pulumi.CustomResource {
     maximumElasticWorkerCount = registerOutput<int?>('maximumElasticWorkerCount');
     maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
     this.name = registerOutput<String>('name');
+    network = registerOutput<ServerFarmNetworkSettingsResponse?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerFarmNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     numberOfSites = registerOutput<int>('numberOfSites');
     numberOfWorkers = registerOutput<int>('numberOfWorkers');
     perSiteScaling = registerOutput<bool?>('perSiteScaling');
+    planDefaultIdentity = registerOutput<DefaultIdentityResponse?>('planDefaultIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
+    rdpEnabled = registerOutput<bool?>('rdpEnabled');
+    registryAdapters = registerOutput<List<Map<String, dynamic>>?>('registryAdapters');
     reserved = registerOutput<bool?>('reserved');
     resourceGroup = registerOutput<String>('resourceGroup');
     sku = registerOutput<SkuDescriptionResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotExpirationTime = registerOutput<String?>('spotExpirationTime');
     status = registerOutput<String>('status');
+    storageMounts = registerOutput<List<Map<String, dynamic>>?>('storageMounts');
     subscription = registerOutput<String>('subscription');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     targetWorkerCount = registerOutput<int?>('targetWorkerCount');
     targetWorkerSizeId = registerOutput<int?>('targetWorkerSizeId');

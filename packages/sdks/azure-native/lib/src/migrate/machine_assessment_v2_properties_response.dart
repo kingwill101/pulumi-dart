@@ -46,4 +46,3 @@ class MachineAssessmentV2PropertiesResponse {
     );
   }
 }
-

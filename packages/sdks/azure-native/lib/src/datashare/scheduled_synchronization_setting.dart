@@ -62,6 +62,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_scheduledsynchronizationsetting" "scheduledSynchronizationSetting" {
+///   account_name                 = "Account1"
+///   kind                         = "ScheduleBased"
+///   recurrence_interval          = "Day"
+///   resource_group_name          = "SampleResourceGroup"
+///   share_name                   = "Share1"
+///   synchronization_setting_name = "Dataset1"
+///   synchronization_time         = "2018-11-14T04:47:52.9614956Z"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.ScheduledSynchronizationSetting;
 /// import com.pulumi.azurenative.datashare.ScheduledSynchronizationSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

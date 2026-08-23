@@ -15,4 +15,3 @@ enum PartnerType {
     throw ArgumentError('Unknown PartnerType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum AKSIdentityType {
     throw ArgumentError('Unknown AKSIdentityType value: $value');
   }
 }
-

@@ -1,9 +1,9 @@
 /// Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
 enum DaprLogLevel {
-  valueInfo("info"),
-  valueDebug("debug"),
-  valueWarn("warn"),
-  valueError("error");
+  info("info"),
+  debug("debug"),
+  warn("warn"),
+  error("error");
 
   const DaprLogLevel(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum DaprLogLevel {
     throw ArgumentError('Unknown DaprLogLevel value: $value');
   }
 }
-

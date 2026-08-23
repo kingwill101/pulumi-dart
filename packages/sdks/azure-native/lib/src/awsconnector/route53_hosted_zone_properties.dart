@@ -68,4 +68,3 @@ class Route53HostedZoneProperties {
     );
   }
 }
-

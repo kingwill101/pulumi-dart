@@ -1,6 +1,6 @@
 /// Kind of this capability host.
 enum CapabilityHostKind {
-  valueAgents("Agents");
+  agents("Agents");
 
   const CapabilityHostKind(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum CapabilityHostKind {
     throw ArgumentError('Unknown CapabilityHostKind value: $value');
   }
 }
-

@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
 ///
-/// Other available API versions: 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-05-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -25,7 +25,7 @@ import 'system_data_response.dart';
 ///         FleetAnalyticsName = "storageAccount",
 ///         FleetName = "fleet1",
 ///         ResourceGroupName = "rg1",
-///         StorageLocationType = AzureNative.CosmosDB.StorageLocationType.StorageAccount,
+///         StorageLocationType = AzureNative.CosmosDB.FleetAnalyticsPropertiesStorageLocationType.StorageAccount,
 ///         StorageLocationUri = "/subscriptions/d1eb41bc-1b7f-4404-bd2a-868c222852d/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/testStorageAccount1",
 ///     });
 ///
@@ -48,7 +48,7 @@ import 'system_data_response.dart';
 /// 			FleetAnalyticsName:  pulumi.String("storageAccount"),
 /// 			FleetName:           pulumi.String("fleet1"),
 /// 			ResourceGroupName:   pulumi.String("rg1"),
-/// 			StorageLocationType: pulumi.String(cosmosdb.StorageLocationTypeStorageAccount),
+/// 			StorageLocationType: pulumi.String(cosmosdb.FleetAnalyticsPropertiesStorageLocationTypeStorageAccount),
 /// 			StorageLocationUri:  pulumi.String("/subscriptions/d1eb41bc-1b7f-4404-bd2a-868c222852d/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/testStorageAccount1"),
 /// 		})
 /// 		if err != nil {
@@ -56,6 +56,25 @@ import 'system_data_response.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_fleetanalytic" "fleetAnalytic" {
+///   fleet_analytics_name  = "storageAccount"
+///   fleet_name            = "fleet1"
+///   resource_group_name   = "rg1"
+///   storage_location_type = "StorageAccount"
+///   storage_location_uri  = "/subscriptions/d1eb41bc-1b7f-4404-bd2a-868c222852d/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/testStorageAccount1"
 /// }
 ///
 /// ```
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cosmosdb.FleetAnalytic;
 /// import com.pulumi.azurenative.cosmosdb.FleetAnalyticArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -102,7 +121,7 @@ import 'system_data_response.dart';
 ///     fleetAnalyticsName: "storageAccount",
 ///     fleetName: "fleet1",
 ///     resourceGroupName: "rg1",
-///     storageLocationType: azure_native.cosmosdb.StorageLocationType.StorageAccount,
+///     storageLocationType: azure_native.cosmosdb.FleetAnalyticsPropertiesStorageLocationType.StorageAccount,
 ///     storageLocationUri: "/subscriptions/d1eb41bc-1b7f-4404-bd2a-868c222852d/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/testStorageAccount1",
 /// });
 ///
@@ -116,7 +135,7 @@ import 'system_data_response.dart';
 ///     fleet_analytics_name="storageAccount",
 ///     fleet_name="fleet1",
 ///     resource_group_name="rg1",
-///     storage_location_type=azure_native.cosmosdb.StorageLocationType.STORAGE_ACCOUNT,
+///     storage_location_type=azure_native.cosmosdb.FleetAnalyticsPropertiesStorageLocationType.STORAGE_ACCOUNT,
 ///     storage_location_uri="/subscriptions/d1eb41bc-1b7f-4404-bd2a-868c222852d/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/testStorageAccount1")
 ///
 /// ```

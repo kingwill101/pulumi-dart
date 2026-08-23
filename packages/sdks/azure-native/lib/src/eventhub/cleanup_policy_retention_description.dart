@@ -15,4 +15,3 @@ enum CleanupPolicyRetentionDescription {
     throw ArgumentError('Unknown CleanupPolicyRetentionDescription value: $value');
   }
 }
-

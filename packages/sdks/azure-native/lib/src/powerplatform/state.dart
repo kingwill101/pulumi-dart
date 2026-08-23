@@ -1,8 +1,8 @@
 /// lockbox configuration
 enum State {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled"),
-  valueNotConfigured("NotConfigured");
+  enabled("Enabled"),
+  disabled("Disabled"),
+  notConfigured("NotConfigured");
 
   const State(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum State {
     throw ArgumentError('Unknown State value: $value');
   }
 }
-

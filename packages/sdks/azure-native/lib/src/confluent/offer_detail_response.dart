@@ -17,7 +17,7 @@ class OfferDetailResponse {
   /// Publisher Id
   final pulumi.Input<String> publisherId;
   /// SaaS Offer Status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String> status;
   /// Offer Plan Term Id
   final pulumi.Input<String>? termId;
   /// Offer Plan Term unit
@@ -40,7 +40,7 @@ class OfferDetailResponse {
     this.privateOfferId,
     this.privateOfferIds,
     required this.publisherId,
-    this.status,
+    required this.status,
     this.termId,
     required this.termUnit,
   });
@@ -53,7 +53,7 @@ class OfferDetailResponse {
       'privateOfferId': ?privateOfferId,
       'privateOfferIds': ?privateOfferIds,
       'publisherId': publisherId,
-      'status': ?status,
+      'status': status,
       'termId': ?termId,
       'termUnit': termUnit,
     };
@@ -67,10 +67,9 @@ class OfferDetailResponse {
       privateOfferId: (() { final guardedValue = map['privateOfferId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateOfferIds: (() { final guardedValue = map['privateOfferIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       publisherId: pulumi.Input.fromValue(map['publisherId'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
       termId: (() { final guardedValue = map['termId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       termUnit: pulumi.Input.fromValue(map['termUnit'] as String),
     );
   }
 }
-

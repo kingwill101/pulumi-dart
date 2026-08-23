@@ -16,4 +16,3 @@ enum AlertRuleKind {
     throw ArgumentError('Unknown AlertRuleKind value: $value');
   }
 }
-

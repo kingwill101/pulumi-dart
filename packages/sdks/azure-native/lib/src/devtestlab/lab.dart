@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lab_announcement_properties_response.dart';
 import 'lab_args.dart';
 import 'lab_support_properties_response.dart';
+import 'system_data_response.dart';
 
 /// A lab.
 ///
@@ -64,6 +65,27 @@ import 'lab_support_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_lab" "lab" {
+///   lab_storage_type    = "{Standard|Premium}"
+///   location            = "{location}"
+///   name                = "{labName}"
+///   resource_group_name = "resourceGroupName"
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +94,8 @@ import 'lab_support_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devtestlab.Lab;
 /// import com.pulumi.azurenative.devtestlab.LabArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,13 +196,13 @@ class Lab extends pulumi.CustomResource {
   late final pulumi.Output<String?> labStorageType;
   /// The load balancer used to for lab VMs that use shared IP address.
   late final pulumi.Output<String> loadBalancerId;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
   /// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
   late final pulumi.Output<List<String>?> mandatoryArtifactsResourceIdsLinux;
   /// The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
   late final pulumi.Output<List<String>?> mandatoryArtifactsResourceIdsWindows;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
   late final pulumi.Output<String> networkSecurityGroupId;
@@ -196,9 +218,11 @@ class Lab extends pulumi.CustomResource {
   late final pulumi.Output<String> publicIpId;
   /// The properties of any lab support message associated with this lab
   late final pulumi.Output<LabSupportPropertiesResponse?> support;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -241,6 +265,7 @@ class Lab extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     publicIpId = registerOutput<String>('publicIpId');
     support = registerOutput<LabSupportPropertiesResponse?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

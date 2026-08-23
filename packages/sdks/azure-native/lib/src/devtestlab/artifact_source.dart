@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact_source_args.dart';
+import 'system_data_response.dart';
 
 /// Properties of an artifact source.
 ///
@@ -76,6 +77,34 @@ import 'artifact_source_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_artifactsource" "artifactSource" {
+///   arm_template_folder_path = "{armTemplateFolderPath}"
+///   branch_ref               = "{branchRef}"
+///   display_name             = "{displayName}"
+///   folder_path              = "{folderPath}"
+///   lab_name                 = "{labName}"
+///   name                     = "{artifactSourceName}"
+///   resource_group_name      = "resourceGroupName"
+///   security_token           = "{securityToken}"
+///   source_type              = "{VsoGit|GitHub|StorageAccount}"
+///   status                   = "{Enabled|Disabled}"
+///   tags = {
+///     "tagName1" = "tagValue1"
+///   }
+///   uri = "{artifactSourceUri}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +113,8 @@ import 'artifact_source_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devtestlab.ArtifactSource;
 /// import com.pulumi.azurenative.devtestlab.ArtifactSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,9 +235,9 @@ class ArtifactSource extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// The folder containing artifacts.
   late final pulumi.Output<String?> folderPath;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
@@ -218,9 +247,11 @@ class ArtifactSource extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceType;
   /// Indicates if the artifact source is enabled (values: Enabled, Disabled).
   late final pulumi.Output<String?> status;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -253,6 +284,7 @@ class ArtifactSource extends pulumi.CustomResource {
     securityToken = registerOutput<String?>('securityToken');
     sourceType = registerOutput<String?>('sourceType');
     status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

@@ -43,6 +43,8 @@ import 'get_scheduled_query_rule_args.dart';
 import 'get_scheduled_query_rule_result.dart';
 import 'get_signal_definition_args.dart';
 import 'get_signal_definition_result.dart';
+import 'get_sli_args.dart';
+import 'get_sli_result.dart';
 import 'get_subscription_diagnostic_setting_args.dart';
 import 'get_subscription_diagnostic_setting_result.dart';
 import 'get_tenant_action_group_args.dart';
@@ -77,6 +79,8 @@ Future<GetActionGroupResult> getActionGroup(
 /// Get an Activity Log Alert rule.
 ///
 /// Uses Azure REST API version 2020-10-01.
+///
+/// Other available API versions: 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_activity_log_alert_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetActivityLogAlertResult> getActivityLogAlert(
@@ -132,7 +136,7 @@ Future<GetAutoscaleSettingResult> getAutoscaleSetting(
 ///
 /// Uses Azure REST API version 2023-04-03.
 ///
-/// Other available API versions: 2023-10-01-preview, 2025-05-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2025-05-03-preview, 2025-10-03, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_azure_monitor_workspace_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAzureMonitorWorkspaceResult> getAzureMonitorWorkspace(
@@ -283,6 +287,8 @@ Future<GetHealthModelResult> getHealthModel(
 /// Get issue properties
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
+///
+/// Other available API versions: 2025-10-03, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_issue_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetIssueResult> getIssue(
@@ -320,7 +326,7 @@ Future<GetManagementGroupDiagnosticSettingResult> getManagementGroupDiagnosticSe
 ///
 /// Uses Azure REST API version 2018-03-01.
 ///
-/// Other available API versions: 2024-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-03-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_metric_alert_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMetricAlertResult> getMetricAlert(
@@ -340,7 +346,7 @@ Future<GetMetricAlertResult> getMetricAlert(
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
 ///
-/// Other available API versions: 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-10-01-preview, 2025-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_pipeline_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPipelineGroupResult> getPipelineGroup(
@@ -438,7 +444,7 @@ Future<GetRelationshipResult> getRelationship(
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
-/// Other available API versions: 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-12-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_scheduled_query_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetScheduledQueryRuleResult> getScheduledQueryRule(
@@ -470,6 +476,24 @@ Future<GetSignalDefinitionResult> getSignalDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSignalDefinitionResult.fromMap(result);
+}
+
+/// Gets an SLI resource.
+///
+/// Uses Azure REST API version 2025-03-01-preview.
+/// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_sli_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetSliResult> getSli(
+  GetSliArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:monitor:getSli',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetSliResult.fromMap(result);
 }
 
 /// Gets the active subscription diagnostic settings for the specified resource.
@@ -529,6 +553,8 @@ Future<ListDiagnosticSettingsCategoryResult> listDiagnosticSettingsCategory(
 /// List all alerts in the issue - this method uses pagination to return all alerts
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
+///
+/// Other available API versions: 2025-10-03, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_list_issue_alerts_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListIssueAlertsResult> listIssueAlerts(
@@ -547,6 +573,8 @@ Future<ListIssueAlertsResult> listIssueAlerts(
 /// List all resources in the issue - this method uses pagination to return all resources
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
+///
+/// Other available API versions: 2025-10-03, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_list_issue_resources_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListIssueResourcesResult> listIssueResources(

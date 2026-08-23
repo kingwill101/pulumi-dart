@@ -13,14 +13,14 @@ class GetHybridRunbookWorkerArgs {
   final pulumi.Input<String> hybridRunbookWorkerGroupName;
   /// The hybrid runbook worker id
   final pulumi.Input<String> hybridRunbookWorkerId;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetHybridRunbookWorkerArgs].
   /// [automationAccountName] The name of the automation account.
   /// [hybridRunbookWorkerGroupName] The hybrid runbook worker group name
   /// [hybridRunbookWorkerId] The hybrid runbook worker id
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetHybridRunbookWorkerArgs({
     required this.automationAccountName,
     required this.hybridRunbookWorkerGroupName,
@@ -46,4 +46,3 @@ class GetHybridRunbookWorkerArgs {
     );
   }
 }
-

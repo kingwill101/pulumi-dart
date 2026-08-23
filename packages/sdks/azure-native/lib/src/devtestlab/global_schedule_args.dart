@@ -15,7 +15,7 @@ class GlobalScheduleArgs {
   final pulumi.Input<DayDetails>? dailyRecurrence;
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
   final pulumi.Input<HourDetails>? hourlyRecurrence;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// The name of the Schedule
   final pulumi.Input<String>? name;
@@ -25,7 +25,7 @@ class GlobalScheduleArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The status of the schedule (i.e. Enabled, Disabled)
   final pulumi.Input<String>? status;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// The resource ID to which the schedule belongs
   final pulumi.Input<String>? targetResourceId;
@@ -39,12 +39,12 @@ class GlobalScheduleArgs {
   /// Creates a new [GlobalScheduleArgs].
   /// [dailyRecurrence] If the schedule will occur once each day of the week, specify the daily recurrence.
   /// [hourlyRecurrence] If the schedule will occur multiple times a day, specify the hourly recurrence.
-  /// [location] The location of the resource.
+  /// [location] The geo-location where the resource lives
   /// [name] The name of the Schedule
   /// [notificationSettings] Notification settings.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [status] The status of the schedule (i.e. Enabled, Disabled)
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   /// [targetResourceId] The resource ID to which the schedule belongs
   /// [taskType] The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
   /// [timeZoneId] The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
@@ -98,4 +98,3 @@ class GlobalScheduleArgs {
     );
   }
 }
-

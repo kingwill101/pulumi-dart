@@ -143,6 +143,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_healthcareapis_iotconnector" "iotConnector" {
+///   device_mapping = {
+///     content = {
+///       "template" = [{
+///         "template" = {
+///           "deviceIdExpression"  = "$.deviceid"
+///           "timestampExpression" = "$.measurementdatetime"
+///           "typeMatchExpression" = "$..[?(@heartrate)]"
+///           "typeName"            = "heartrate"
+///           "values" = [{
+///             "required"        = "true"
+///             "valueExpression" = "$.heartrate"
+///             "valueName"       = "hr"
+///           }]
+///         }
+///         "templateType" = "JsonPathContent"
+///       }]
+///       "templateType" = "CollectionContent"
+///     }
+///   }
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   ingestion_endpoint_configuration = {
+///     consumer_group                      = "ConsumerGroupA"
+///     event_hub_name                      = "MyEventHubName"
+///     fully_qualified_event_hub_namespace = "myeventhub.servicesbus.windows.net"
+///   }
+///   iot_connector_name  = "blue"
+///   location            = "westus"
+///   resource_group_name = "testRG"
+///   tags = {
+///     "additionalProp1" = "string"
+///     "additionalProp2" = "string"
+///     "additionalProp3" = "string"
+///   }
+///   workspace_name = "workspace1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -154,8 +204,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.healthcareapis.inputs.IotMappingPropertiesArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.ServiceManagedIdentityIdentityArgs;
 /// import com.pulumi.azurenative.healthcareapis.inputs.IotEventHubIngestionEndpointConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,20 +220,20 @@ import 'system_data_response.dart';
 ///         var iotConnector = new IotConnector("iotConnector", IotConnectorArgs.builder()
 ///             .deviceMapping(IotMappingPropertiesArgs.builder()
 ///                 .content(Map.ofEntries(
-///                     Map.entry("template", Map.ofEntries(
+///                     Map.entry("template", Arrays.asList(Map.ofEntries(
 ///                         Map.entry("template", Map.ofEntries(
 ///                             Map.entry("deviceIdExpression", "$.deviceid"),
 ///                             Map.entry("timestampExpression", "$.measurementdatetime"),
 ///                             Map.entry("typeMatchExpression", "$..[?(@heartrate)]"),
 ///                             Map.entry("typeName", "heartrate"),
-///                             Map.entry("values", Map.ofEntries(
+///                             Map.entry("values", Arrays.asList(Map.ofEntries(
 ///                                 Map.entry("required", "true"),
 ///                                 Map.entry("valueExpression", "$.heartrate"),
 ///                                 Map.entry("valueName", "hr")
-///                             ))
+///                             )))
 ///                         )),
 ///                         Map.entry("templateType", "JsonPathContent")
-///                     )),
+///                     ))),
 ///                     Map.entry("templateType", "CollectionContent")
 ///                 ))
 ///                 .build())

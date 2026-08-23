@@ -1,4 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_agent_args.dart';
+import 'get_agent_result.dart';
+import 'get_agent_space_args.dart';
+import 'get_agent_space_result.dart';
+import 'get_agent_spaces_connector_args.dart';
+import 'get_agent_spaces_connector_result.dart';
+import 'get_agents_connector_args.dart';
+import 'get_agents_connector_result.dart';
 import 'get_app_resiliency_args.dart';
 import 'get_app_resiliency_result.dart';
 import 'get_build_args.dart';
@@ -54,6 +62,14 @@ import 'get_managed_environment_private_endpoint_connection_result.dart';
 import 'get_managed_environment_result.dart';
 import 'get_managed_environments_storage_args.dart';
 import 'get_managed_environments_storage_result.dart';
+import 'list_agent_spaces_connector_all_secrets_args.dart';
+import 'list_agent_spaces_connector_all_secrets_result.dart';
+import 'list_agent_spaces_connector_secrets_args.dart';
+import 'list_agent_spaces_connector_secrets_result.dart';
+import 'list_agents_connector_secrets_args.dart';
+import 'list_agents_connector_secrets_result.dart';
+import 'list_agents_connector_with_secrets_by_agent_args.dart';
+import 'list_agents_connector_with_secrets_by_agent_result.dart';
 import 'list_build_auth_token_args.dart';
 import 'list_build_auth_token_result.dart';
 import 'list_connected_environments_dapr_component_secrets_args.dart';
@@ -68,6 +84,78 @@ import 'list_job_secrets_args.dart';
 import 'list_job_secrets_result.dart';
 import 'list_logic_app_workflows_connections_args.dart';
 import 'list_logic_app_workflows_connections_result.dart';
+
+/// Get the properties of an Agent
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_get_agent_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentResult> getAgent(
+  GetAgentArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:getAgent',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentResult.fromMap(result);
+}
+
+/// Get the properties of an Agent Space
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_get_agent_space_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentSpaceResult> getAgentSpace(
+  GetAgentSpaceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:getAgentSpace',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentSpaceResult.fromMap(result);
+}
+
+/// Get the properties of an Agent Space Connector
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_get_agent_spaces_connector_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentSpacesConnectorResult> getAgentSpacesConnector(
+  GetAgentSpacesConnectorArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:getAgentSpacesConnector',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentSpacesConnectorResult.fromMap(result);
+}
+
+/// Get the properties of an Agent Connector
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_get_agents_connector_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentsConnectorResult> getAgentsConnector(
+  GetAgentsConnectorArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:getAgentsConnector',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentsConnectorResult.fromMap(result);
+}
 
 /// Get container app resiliency policy.
 ///
@@ -133,7 +221,7 @@ Future<GetBuilderResult> getBuilder(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_certificate_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCertificateResult> getCertificate(
@@ -153,7 +241,7 @@ Future<GetCertificateResult> getCertificate(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_connected_environment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectedEnvironmentResult> getConnectedEnvironment(
@@ -173,7 +261,7 @@ Future<GetConnectedEnvironmentResult> getConnectedEnvironment(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_connected_environments_certificate_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectedEnvironmentsCertificateResult> getConnectedEnvironmentsCertificate(
@@ -193,7 +281,7 @@ Future<GetConnectedEnvironmentsCertificateResult> getConnectedEnvironmentsCertif
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_connected_environments_dapr_component_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectedEnvironmentsDaprComponentResult> getConnectedEnvironmentsDaprComponent(
@@ -213,7 +301,7 @@ Future<GetConnectedEnvironmentsDaprComponentResult> getConnectedEnvironmentsDapr
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_connected_environments_storage_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectedEnvironmentsStorageResult> getConnectedEnvironmentsStorage(
@@ -233,7 +321,7 @@ Future<GetConnectedEnvironmentsStorageResult> getConnectedEnvironmentsStorage(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_container_app_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContainerAppResult> getContainerApp(
@@ -253,7 +341,7 @@ Future<GetContainerAppResult> getContainerApp(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_container_app_auth_token_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContainerAppAuthTokenResult> getContainerAppAuthToken(
@@ -273,7 +361,7 @@ Future<GetContainerAppAuthTokenResult> getContainerAppAuthToken(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_container_apps_auth_config_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContainerAppsAuthConfigResult> getContainerAppsAuthConfig(
@@ -293,7 +381,7 @@ Future<GetContainerAppsAuthConfigResult> getContainerAppsAuthConfig(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_container_apps_session_pool_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContainerAppsSessionPoolResult> getContainerAppsSessionPool(
@@ -313,7 +401,7 @@ Future<GetContainerAppsSessionPoolResult> getContainerAppsSessionPool(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_container_apps_source_control_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContainerAppsSourceControlResult> getContainerAppsSourceControl(
@@ -333,7 +421,7 @@ Future<GetContainerAppsSourceControlResult> getContainerAppsSourceControl(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
 Future<GetCustomDomainVerificationIdResult> getCustomDomainVerificationId(
   {
@@ -352,7 +440,7 @@ Future<GetCustomDomainVerificationIdResult> getCustomDomainVerificationId(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_dapr_component_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDaprComponentResult> getDaprComponent(
@@ -432,7 +520,7 @@ Future<GetDotNetComponentResult> getDotNetComponent(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_http_route_config_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHttpRouteConfigResult> getHttpRouteConfig(
@@ -452,7 +540,7 @@ Future<GetHttpRouteConfigResult> getHttpRouteConfig(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_java_component_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetJavaComponentResult> getJavaComponent(
@@ -472,7 +560,7 @@ Future<GetJavaComponentResult> getJavaComponent(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_job_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetJobResult> getJob(
@@ -492,7 +580,7 @@ Future<GetJobResult> getJob(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_logic_app_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetLogicAppResult> getLogicApp(
@@ -512,7 +600,7 @@ Future<GetLogicAppResult> getLogicApp(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_maintenance_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMaintenanceConfigurationResult> getMaintenanceConfiguration(
@@ -532,7 +620,7 @@ Future<GetMaintenanceConfigurationResult> getMaintenanceConfiguration(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_managed_certificate_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedCertificateResult> getManagedCertificate(
@@ -552,7 +640,7 @@ Future<GetManagedCertificateResult> getManagedCertificate(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_managed_environment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedEnvironmentResult> getManagedEnvironment(
@@ -572,7 +660,7 @@ Future<GetManagedEnvironmentResult> getManagedEnvironment(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_managed_environment_auth_token_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedEnvironmentAuthTokenResult> getManagedEnvironmentAuthToken(
@@ -592,7 +680,7 @@ Future<GetManagedEnvironmentAuthTokenResult> getManagedEnvironmentAuthToken(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_managed_environment_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedEnvironmentPrivateEndpointConnectionResult> getManagedEnvironmentPrivateEndpointConnection(
@@ -612,7 +700,7 @@ Future<GetManagedEnvironmentPrivateEndpointConnectionResult> getManagedEnvironme
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_get_managed_environments_storage_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedEnvironmentsStorageResult> getManagedEnvironmentsStorage(
@@ -626,6 +714,78 @@ Future<GetManagedEnvironmentsStorageResult> getManagedEnvironmentsStorage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedEnvironmentsStorageResult.fromMap(result);
+}
+
+/// List all secrets for AgentSpace Connectors
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_list_agent_spaces_connector_all_secrets_args_doc}
+/// [options] Invoke options controlling this call.
+Future<ListAgentSpacesConnectorAllSecretsResult> listAgentSpacesConnectorAllSecrets(
+  ListAgentSpacesConnectorAllSecretsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:listAgentSpacesConnectorAllSecrets',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return ListAgentSpacesConnectorAllSecretsResult.fromMap(result);
+}
+
+/// List secrets for an Agent Space Connector
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_list_agent_spaces_connector_secrets_args_doc}
+/// [options] Invoke options controlling this call.
+Future<ListAgentSpacesConnectorSecretsResult> listAgentSpacesConnectorSecrets(
+  ListAgentSpacesConnectorSecretsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:listAgentSpacesConnectorSecrets',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return ListAgentSpacesConnectorSecretsResult.fromMap(result);
+}
+
+/// Get a Data Connector with secrets from an Agent
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_list_agents_connector_secrets_args_doc}
+/// [options] Invoke options controlling this call.
+Future<ListAgentsConnectorSecretsResult> listAgentsConnectorSecrets(
+  ListAgentsConnectorSecretsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:listAgentsConnectorSecrets',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return ListAgentsConnectorSecretsResult.fromMap(result);
+}
+
+/// List all Data Connectors with secrets from an Agent
+///
+/// Uses Azure REST API version 2026-01-01.
+/// [args] Arguments passed to this invoke. {@macro pulumi_app_list_agents_connector_with_secrets_by_agent_args_doc}
+/// [options] Invoke options controlling this call.
+Future<ListAgentsConnectorWithSecretsByAgentResult> listAgentsConnectorWithSecretsByAgent(
+  ListAgentsConnectorWithSecretsByAgentArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:app:listAgentsConnectorWithSecretsByAgent',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return ListAgentsConnectorWithSecretsByAgentResult.fromMap(result);
 }
 
 /// Gets the token used to connect to the endpoint where source code can be uploaded for a build.
@@ -652,7 +812,7 @@ Future<ListBuildAuthTokenResult> listBuildAuthToken(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_connected_environments_dapr_component_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListConnectedEnvironmentsDaprComponentSecretsResult> listConnectedEnvironmentsDaprComponentSecrets(
@@ -672,7 +832,7 @@ Future<ListConnectedEnvironmentsDaprComponentSecretsResult> listConnectedEnviron
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_container_app_custom_host_name_analysis_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListContainerAppCustomHostNameAnalysisResult> listContainerAppCustomHostNameAnalysis(
@@ -692,7 +852,7 @@ Future<ListContainerAppCustomHostNameAnalysisResult> listContainerAppCustomHostN
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_container_app_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListContainerAppSecretsResult> listContainerAppSecrets(
@@ -712,7 +872,7 @@ Future<ListContainerAppSecretsResult> listContainerAppSecrets(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_dapr_component_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListDaprComponentSecretsResult> listDaprComponentSecrets(
@@ -732,7 +892,7 @@ Future<ListDaprComponentSecretsResult> listDaprComponentSecrets(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_job_secrets_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListJobSecretsResult> listJobSecrets(
@@ -752,7 +912,7 @@ Future<ListJobSecretsResult> listJobSecrets(
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
 ///
-/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_app_list_logic_app_workflows_connections_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListLogicAppWorkflowsConnectionsResult> listLogicAppWorkflowsConnections(

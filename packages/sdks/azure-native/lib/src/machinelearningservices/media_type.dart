@@ -15,4 +15,3 @@ enum MediaType {
     throw ArgumentError('Unknown MediaType value: $value');
   }
 }
-

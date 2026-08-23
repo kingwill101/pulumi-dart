@@ -1,7 +1,7 @@
 /// State of the log scrubbing config. Default value is Enabled.
 enum WebApplicationFirewallScrubbingState {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const WebApplicationFirewallScrubbingState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum WebApplicationFirewallScrubbingState {
     throw ArgumentError('Unknown WebApplicationFirewallScrubbingState value: $value');
   }
 }
-

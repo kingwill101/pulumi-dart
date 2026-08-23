@@ -86,6 +86,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_authorizedapplication" "authorizedApplication" {
+///   application_id = "760505bf-dcfa-4311-b890-18da392a00b2"
+///   properties = {
+///     data_authorizations = [{
+///       "resourceTypes" = ["*"]
+///       "role"          = "ServiceOwner"
+///     }]
+///     provider_authorization = {
+///       managed_by_role_definition_id = "1a3b5c7d-8e9f-10g1-1h12-i13j14k1"
+///       role_definition_id            = "123456bf-gkur-2098-b890-98da392a00b2"
+///     }
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +122,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.AuthorizedApplicationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.AuthorizedApplicationPropertiesArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.ApplicationProviderAuthorizationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -17,4 +17,3 @@ enum EndpointTypeResourceType {
     throw ArgumentError('Unknown EndpointTypeResourceType value: $value');
   }
 }
-

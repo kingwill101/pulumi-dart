@@ -1,7 +1,7 @@
 /// Compute OS Type
 enum OsType {
-  valueLinux("Linux"),
-  valueWindows("Windows");
+  linux("Linux"),
+  windows("Windows");
 
   const OsType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum OsType {
     throw ArgumentError('Unknown OsType value: $value');
   }
 }
-

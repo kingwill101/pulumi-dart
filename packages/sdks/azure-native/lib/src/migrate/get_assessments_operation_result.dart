@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cost_component_response.dart';
 import 'system_data_response.dart';
-import 'vm_uptime_response.dart';
+import 'vm_uptime_assessments_operation_response.dart';
 
 /// Result data returned by getAssessmentsOperation.
 class GetAssessmentsOperationResult {
@@ -112,7 +112,7 @@ class GetAssessmentsOperationResult {
   final String updatedTimestamp;
   /// Gets or sets the duration for which the VMs are up in the on-premises
   /// environment.
-  final VmUptimeResponse? vmUptime;
+  final VmUptimeAssessmentsOperationResponse? vmUptime;
 
   /// Creates a new [GetAssessmentsOperationResult].
   /// [assessmentErrorSummary] Gets or sets the assessment error summary.
@@ -312,8 +312,7 @@ class GetAssessmentsOperationResult {
       timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: map['type'] as String,
       updatedTimestamp: map['updatedTimestamp'] as String,
-      vmUptime: (() { final guardedValue = map['vmUptime']; if (guardedValue == null) return null; return VmUptimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vmUptime: (() { final guardedValue = map['vmUptime']; if (guardedValue == null) return null; return VmUptimeAssessmentsOperationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }
-

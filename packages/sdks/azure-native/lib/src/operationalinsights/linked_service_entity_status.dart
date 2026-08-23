@@ -17,4 +17,3 @@ enum LinkedServiceEntityStatus {
     throw ArgumentError('Unknown LinkedServiceEntityStatus value: $value');
   }
 }
-

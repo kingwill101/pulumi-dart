@@ -1,10 +1,10 @@
 /// The authentication type to be used to connect to the HTTP server.
 enum HttpAuthenticationType {
-  valueBasic("Basic"),
-  valueAnonymous("Anonymous"),
-  valueDigest("Digest"),
-  valueWindows("Windows"),
-  valueClientCertificate("ClientCertificate");
+  basic("Basic"),
+  anonymous("Anonymous"),
+  digest("Digest"),
+  windows("Windows"),
+  clientCertificate("ClientCertificate");
 
   const HttpAuthenticationType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum HttpAuthenticationType {
     throw ArgumentError('Unknown HttpAuthenticationType value: $value');
   }
 }
-

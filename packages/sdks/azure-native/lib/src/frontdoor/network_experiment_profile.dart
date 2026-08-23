@@ -3,9 +3,9 @@ import 'network_experiment_profile_args.dart';
 
 /// Defines an Network Experiment Profile and lists of Experiments
 ///
-/// Uses Azure REST API version 2019-11-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-11-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -57,6 +57,24 @@ import 'network_experiment_profile_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_frontdoor_networkexperimentprofile" "networkExperimentProfile" {
+///   enabled_state       = "Enabled"
+///   location            = "WestUs"
+///   profile_name        = "MyProfile"
+///   resource_group_name = "MyResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +83,8 @@ import 'network_experiment_profile_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.frontdoor.NetworkExperimentProfile;
 /// import com.pulumi.azurenative.frontdoor.NetworkExperimentProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

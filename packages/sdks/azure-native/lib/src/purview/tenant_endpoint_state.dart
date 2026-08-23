@@ -1,8 +1,8 @@
 /// Gets or sets the state of tenant endpoint.
 enum TenantEndpointState {
-  valueNotSpecified("NotSpecified"),
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  notSpecified("NotSpecified"),
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const TenantEndpointState(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum TenantEndpointState {
     throw ArgumentError('Unknown TenantEndpointState value: $value');
   }
 }
-

@@ -86,6 +86,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_customrollout" "customRollout" {
+///   properties = {
+///     specification = {
+///       auto_provision_config = {
+///         resource_graph = true
+///         storage        = true
+///       }
+///       canary = {
+///         regions = ["brazilus"]
+///       }
+///       refresh_subscription_registration = true
+///     }
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+///   rollout_name       = "brazilUsShoeBoxTesting"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +126,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.inputs.CustomRolloutPropertiesSpecificationArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.CustomRolloutSpecificationAutoProvisionConfigArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.CustomRolloutSpecificationCanaryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

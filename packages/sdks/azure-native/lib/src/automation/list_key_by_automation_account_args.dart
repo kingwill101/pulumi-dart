@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListKeyByAutomationAccountArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ListKeyByAutomationAccountArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ListKeyByAutomationAccountArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class ListKeyByAutomationAccountArgs {
     );
   }
 }
-

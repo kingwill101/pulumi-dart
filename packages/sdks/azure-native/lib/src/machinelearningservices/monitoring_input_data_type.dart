@@ -1,8 +1,8 @@
 /// [Required] Specifies the type of signal to monitor.
 enum MonitoringInputDataType {
-  valueStatic("Static"),
-  valueRolling("Rolling"),
-  valueFixed("Fixed");
+  static("Static"),
+  rolling("Rolling"),
+  fixed("Fixed");
 
   const MonitoringInputDataType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum MonitoringInputDataType {
     throw ArgumentError('Unknown MonitoringInputDataType value: $value');
   }
 }
-

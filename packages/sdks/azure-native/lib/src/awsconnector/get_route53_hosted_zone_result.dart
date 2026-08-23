@@ -68,4 +68,3 @@ class GetRoute53HostedZoneResult {
     );
   }
 }
-

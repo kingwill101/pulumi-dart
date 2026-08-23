@@ -15,4 +15,3 @@ enum FilterBehavior {
     throw ArgumentError('Unknown FilterBehavior value: $value');
   }
 }
-

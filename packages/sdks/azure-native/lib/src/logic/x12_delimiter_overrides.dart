@@ -74,4 +74,3 @@ class X12DelimiterOverrides {
     );
   }
 }
-

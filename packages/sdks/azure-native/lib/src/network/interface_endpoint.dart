@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_service_response.dart';
 import 'interface_endpoint_args.dart';
-import 'subnet_response.dart';
+import 'subnet_interface_endpoint_response.dart';
 
 /// Interface endpoint resource.
 ///
@@ -71,6 +71,29 @@ import 'subnet_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_interfaceendpoint" "interfaceEndpoint" {
+///   endpoint_service = {
+///     id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Provider/resourceType/resourceName"
+///   }
+///   fqdn                    = "uniqueIdentifier.fqdn.windows.net"
+///   interface_endpoint_name = "testIe"
+///   resource_group_name     = "rg1"
+///   subnet = {
+///     id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +104,8 @@ import 'subnet_response.dart';
 /// import com.pulumi.azurenative.network.InterfaceEndpointArgs;
 /// import com.pulumi.azurenative.network.inputs.EndpointServiceArgs;
 /// import com.pulumi.azurenative.network.inputs.SubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,7 +214,7 @@ class InterfaceEndpoint extends pulumi.CustomResource {
   /// The provisioning state of the interface endpoint. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   late final pulumi.Output<String> provisioningState;
   /// The ID of the subnet from which the private IP will be allocated.
-  late final pulumi.Output<SubnetResponse?> subnet;
+  late final pulumi.Output<SubnetInterfaceEndpointResponse?> subnet;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -220,7 +243,7 @@ class InterfaceEndpoint extends pulumi.CustomResource {
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
     owner = registerOutput<String>('owner');
     provisioningState = registerOutput<String>('provisioningState');
-    subnet = registerOutput<SubnetResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnet = registerOutput<SubnetInterfaceEndpointResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetInterfaceEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

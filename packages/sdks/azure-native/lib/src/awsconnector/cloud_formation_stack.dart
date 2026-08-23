@@ -176,6 +176,70 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_cloudformationstack" "cloudFormationStack" {
+///   location = "igidmxpchpipflxgxqkge"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "wnbcxhzurwtzqcoirs"
+///     aws_account_id = "yuzdhawgkrzzmppqjebmyzrqzsxbgh"
+///     aws_properties = {
+///       capabilities                  = ["CAPABILITY_AUTO_EXPAND"]
+///       change_set_id                 = "diebgdscxgdrjl"
+///       creation_time                 = "rbzmujrpza"
+///       description                   = "qgthunuomcbskx"
+///       disable_rollback              = true
+///       enable_termination_protection = true
+///       last_update_time              = "ziwluvridlkgt"
+///       notification_ar_ns            = ["hiumjcobumu"]
+///       outputs = [{
+///         "description" = "yr"
+///         "exportName"  = "inzgbtgxtlkmbsthsiqyaownydl"
+///         "outputKey"   = "oxvigtrakftzifxp"
+///         "outputValue" = "xrkebm"
+///       }]
+///       parameters = {
+///         "key3924" = "g"
+///       }
+///       parent_id           = "spfnpubjgnn"
+///       role_arn            = "chneost"
+///       root_id             = "dm"
+///       stack_id            = "pfdvktglgjlp"
+///       stack_name          = "kcpmjgjmtil"
+///       stack_policy_url    = "azff"
+///       stack_status        = "CREATE_COMPLETE"
+///       stack_status_reason = "oashauqgm"
+///       tags = [{
+///         "key"   = "xjabhkryhrdgshmztidyvkbzqw"
+///         "value" = "xapmapwprakmhlboq"
+///       }]
+///       template_url       = "prpgfhggbaglqposmnlkc"
+///       timeout_in_minutes = 21
+///     }
+///     aws_region        = "ovumxnjlsoffpzxyegazwgujni"
+///     aws_source_schema = "ascbhyeewelekovixg"
+///     aws_tags = {
+///       "key6002" = "lkyagteqeoafj"
+///     }
+///     public_cloud_connectors_resource_id = "ccuizanjtbypcrcdmoelfyjkx"
+///     public_cloud_resource_name          = "vjnhdxpreaebeaxeqmrhfuro"
+///   }
+///   resource_group_name = "rgcloudFormationStack"
+///   tags = {
+///     "key8740" = "gebtpejhvwgd"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +250,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.CloudFormationStackArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.CloudFormationStackPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsCloudFormationStackPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

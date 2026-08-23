@@ -77,6 +77,30 @@ import 'workload_network_segment_subnet_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_workloadnetworksegment" "workloadNetworkSegment" {
+///   connected_gateway   = "/infra/tier-1s/gateway"
+///   display_name        = "segment1"
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   revision            = 1
+///   segment_id          = "segment1"
+///   subnet = {
+///     dhcp_ranges     = ["40.20.0.0-40.20.0.1"]
+///     gateway_address = "40.20.20.20/16"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +110,8 @@ import 'workload_network_segment_subnet_response.dart';
 /// import com.pulumi.azurenative.avs.WorkloadNetworkSegment;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkSegmentArgs;
 /// import com.pulumi.azurenative.avs.inputs.WorkloadNetworkSegmentSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,7 +169,7 @@ import 'workload_network_segment_subnet_response.dart';
 ///     display_name="segment1",
 ///     private_cloud_name="cloud1",
 ///     resource_group_name="group1",
-///     revision=1,
+///     revision=float(1),
 ///     segment_id="segment1",
 ///     subnet={
 ///         "dhcp_ranges": ["40.20.0.0-40.20.0.1"],

@@ -15,4 +15,3 @@ enum ContentStoragePolicy {
     throw ArgumentError('Unknown ContentStoragePolicy value: $value');
   }
 }
-

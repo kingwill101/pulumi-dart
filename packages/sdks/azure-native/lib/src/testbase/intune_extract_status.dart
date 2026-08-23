@@ -18,4 +18,3 @@ enum IntuneExtractStatus {
     throw ArgumentError('Unknown IntuneExtractStatus value: $value');
   }
 }
-

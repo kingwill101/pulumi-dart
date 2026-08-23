@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'git_hub_action_configuration_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppSourceControl.
 class GetWebAppSourceControlResult {
@@ -12,7 +13,7 @@ class GetWebAppSourceControlResult {
   final bool? deploymentRollbackEnabled;
   /// If GitHub Action is selected, than the associated configuration.
   final GitHubActionConfigurationResponse? gitHubActionConfiguration;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
   final bool? isGitHubAction;
@@ -22,11 +23,13 @@ class GetWebAppSourceControlResult {
   final bool? isMercurial;
   /// Kind of resource.
   final String? kind;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Repository or source control URL.
   final String? repoUrl;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppSourceControlResult].
@@ -34,14 +37,15 @@ class GetWebAppSourceControlResult {
   /// [branch] Name of branch to use for deployment.
   /// [deploymentRollbackEnabled] &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [gitHubActionConfiguration] If GitHub Action is selected, than the associated configuration.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [isGitHubAction] &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
   /// [isManualIntegration] &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
   /// [isMercurial] &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
   /// [kind] Kind of resource.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [repoUrl] Repository or source control URL.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppSourceControlResult({
     required this.azureApiVersion,
     this.branch,
@@ -54,6 +58,7 @@ class GetWebAppSourceControlResult {
     this.kind,
     required this.name,
     this.repoUrl,
+    required this.systemData,
     required this.type,
   });
 
@@ -70,6 +75,7 @@ class GetWebAppSourceControlResult {
       'kind': ?kind,
       'name': name,
       'repoUrl': ?repoUrl,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -87,8 +93,8 @@ class GetWebAppSourceControlResult {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       repoUrl: (() { final guardedValue = map['repoUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

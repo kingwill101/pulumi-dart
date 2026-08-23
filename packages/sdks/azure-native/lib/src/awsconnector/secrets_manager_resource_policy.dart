@@ -97,6 +97,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_secretsmanagerresourcepolicy" "secretsManagerResourcePolicy" {
+///   location = "znrmqmz"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "cvtearqpmshhlnuxxvmsejrzpqsekj"
+///     aws_account_id = "bswnezmdsuirkrgzmxxjsjo"
+///     aws_properties = {
+///       block_public_policy = true
+///       id                  = "hrvehsjtj"
+///       secret_id           = "ibtyhnihzzcswaemsecd"
+///     }
+///     aws_region        = "kpcxxfwomoxngnrmkpregcz"
+///     aws_source_schema = "gkmussnnnguicaskcuprrkexb"
+///     aws_tags = {
+///       "key958" = "ls"
+///     }
+///     public_cloud_connectors_resource_id = "isvozhenarlkfvvrujywfu"
+///     public_cloud_resource_name          = "vtrpmkekofucehtns"
+///   }
+///   resource_group_name = "rgsecretsManagerResourcePolicy"
+///   tags = {
+///     "key6501" = "cgxbtjhbnmjokxwbscjtws"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.SecretsManagerResourcePolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SecretsManagerResourcePolicyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSecretsManagerResourcePolicyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

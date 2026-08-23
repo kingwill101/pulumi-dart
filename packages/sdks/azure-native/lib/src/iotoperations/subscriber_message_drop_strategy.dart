@@ -15,4 +15,3 @@ enum SubscriberMessageDropStrategy {
     throw ArgumentError('Unknown SubscriberMessageDropStrategy value: $value');
   }
 }
-

@@ -58,4 +58,3 @@ class ScopeConnectionArgs {
     );
   }
 }
-

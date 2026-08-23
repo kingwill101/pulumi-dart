@@ -101,6 +101,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_environmentspecificationversion" "environmentSpecificationVersion" {
+///   name = "testEnvironment"
+///   properties = {
+///     conda_file  = "channels:\n- defaults\ndependencies:\n- python=3.7.7\nname: my-env"
+///     description = "string"
+///     docker = {
+///       "dockerSpecificationType" = "Build"
+///       "dockerfile"              = "FROM myimage"
+///     }
+///     properties = {
+///       "additionalProp1" = "string"
+///       "additionalProp2" = "string"
+///       "additionalProp3" = "string"
+///     }
+///     tags = {
+///       "additionalProp1" = "string"
+///       "additionalProp2" = "string"
+///       "additionalProp3" = "string"
+///     }
+///   }
+///   resource_group_name = "testrg123"
+///   version             = "1"
+///   workspace_name      = "testworkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +144,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.EnvironmentSpecificationVersion;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

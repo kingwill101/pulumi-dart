@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2025-12-15-preview, 2026-01-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-04-01, 2026-04-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -98,6 +100,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_netapp_capacitypoolcache" "capacityPoolCache" {
+///   account_name = "account1"
+///   cache_name   = "cache1"
+///   location     = "eastus"
+///   pool_name    = "pool1"
+///   properties = {
+///     cache_subnet_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/cacheVnet/subnets/cacheSubnet1"
+///     encryption_key_source    = "Microsoft.NetApp"
+///     filepath                 = "cache-west-us2-01"
+///     ldap                     = "Enabled"
+///     ldap_server_type         = "OpenLDAP"
+///     origin_cluster_information = {
+///       peer_addresses    = ["192.0.2.10", "192.0.2.11"]
+///       peer_cluster_name = "cluster1"
+///       peer_volume_name  = "originvol1"
+///       peer_vserver_name = "vserver1"
+///     }
+///     peering_subnet_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/icLifVnet/subnets/peeringSubnet1"
+///     size                       = 107374182400
+///   }
+///   resource_group_name = "myRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +144,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.netapp.CapacityPoolCacheArgs;
 /// import com.pulumi.azurenative.netapp.inputs.CachePropertiesArgs;
 /// import com.pulumi.azurenative.netapp.inputs.OriginClusterInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

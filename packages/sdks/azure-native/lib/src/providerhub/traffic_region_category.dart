@@ -21,4 +21,3 @@ enum TrafficRegionCategory {
     throw ArgumentError('Unknown TrafficRegionCategory value: $value');
   }
 }
-

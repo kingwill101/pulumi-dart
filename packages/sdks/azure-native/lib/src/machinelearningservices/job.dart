@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 
 /// Azure Resource Manager resource envelope.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -24,7 +24,7 @@ import 'system_data_response.dart';
 ///     var job = new AzureNative.MachineLearningServices.Job("job", new()
 ///     {
 ///         Id = "string",
-///         JobBaseProperties = new AzureNative.MachineLearningServices.Inputs.AutoMLJobArgs
+///         Properties = new AzureNative.MachineLearningServices.Inputs.AutoMLJobArgs
 ///         {
 ///             ComputeId = "string",
 ///             Description = "string",
@@ -131,7 +131,7 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewJob(ctx, "job", &machinelearningservices.JobArgs{
 /// 			Id: pulumi.String("string"),
-/// 			JobBaseProperties: &machinelearningservices.AutoMLJobArgs{
+/// 			Properties: &machinelearningservices.AutoMLJobArgs{
 /// 				ComputeId:     pulumi.String("string"),
 /// 				Description:   pulumi.String("string"),
 /// 				DisplayName:   pulumi.String("string"),
@@ -210,6 +210,88 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_job" "job" {
+///   id = "string"
+///   properties = {
+///     "computeId"     = "string"
+///     "description"   = "string"
+///     "displayName"   = "string"
+///     "environmentId" = "string"
+///     "environmentVariables" = {
+///       "string" = "string"
+///     }
+///     "experimentName" = "string"
+///     "identity" = {
+///       "identityType" = "AMLToken"
+///     }
+///     "isArchived" = false
+///     "jobType"    = "AutoML"
+///     "outputs" = {
+///       "string" = {
+///         "description"   = "string"
+///         "jobOutputType" = "uri_file"
+///         "mode"          = "ReadWriteMount"
+///         "uri"           = "string"
+///       }
+///     }
+///     "properties" = {
+///       "string" = "string"
+///     }
+///     "resources" = {
+///       "instanceCount" = 1
+///       "instanceType"  = "string"
+///       "properties" = {
+///         "string" = {
+///           "9bec0ab0-c62f-4fa9-a97c-7b24bbcc90ad" = null
+///         }
+///       }
+///     }
+///     "services" = {
+///       "string" = {
+///         "endpoint"       = "string"
+///         "jobServiceType" = "string"
+///         "port"           = 1
+///         "properties" = {
+///           "string" = "string"
+///         }
+///       }
+///     }
+///     "tags" = {
+///       "string" = "string"
+///     }
+///     "taskDetails" = {
+///       "limitSettings" = {
+///         "maxTrials" = 2
+///       }
+///       "modelSettings" = {
+///         "validationCropSize" = 2
+///       }
+///       "searchSpace" = [{
+///         "validationCropSize" = "choice(2, 360)"
+///       }]
+///       "targetColumnName" = "string"
+///       "taskType"         = "ImageClassification"
+///       "trainingData" = {
+///         "jobInputType" = "mltable"
+///         "uri"          = "string"
+///       }
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -218,8 +300,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,7 +315,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var job = new Job("job", JobArgs.builder()
 ///             .id("string")
-///             .jobBaseProperties(AutoMLJobArgs.builder()
+///             .properties(AutoMLJobArgs.builder()
 ///                 .computeId("string")
 ///                 .description("string")
 ///                 .displayName("string")
@@ -297,7 +379,7 @@ import 'system_data_response.dart';
 ///
 /// const job = new azure_native.machinelearningservices.Job("job", {
 ///     id: "string",
-///     jobBaseProperties: {
+///     properties: {
 ///         computeId: "string",
 ///         description: "string",
 ///         displayName: "string",
@@ -374,7 +456,7 @@ import 'system_data_response.dart';
 ///
 /// job = azure_native.machinelearningservices.Job("job",
 ///     id="string",
-///     job_base_properties={
+///     properties={
 ///         "compute_id": "string",
 ///         "description": "string",
 ///         "display_name": "string",
@@ -450,7 +532,7 @@ import 'system_data_response.dart';
 ///     type: azure-native:machinelearningservices:Job
 ///     properties:
 ///       id: string
-///       jobBaseProperties:
+///       properties:
 ///         computeId: string
 ///         description: string
 ///         displayName: string
@@ -516,7 +598,7 @@ import 'system_data_response.dart';
 ///     var job = new AzureNative.MachineLearningServices.Job("job", new()
 ///     {
 ///         Id = "string",
-///         JobBaseProperties = new AzureNative.MachineLearningServices.Inputs.CommandJobArgs
+///         Properties = new AzureNative.MachineLearningServices.Inputs.CommandJobArgs
 ///         {
 ///             CodeId = "string",
 ///             Command = "string",
@@ -619,7 +701,7 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewJob(ctx, "job", &machinelearningservices.JobArgs{
 /// 			Id: pulumi.String("string"),
-/// 			JobBaseProperties: &machinelearningservices.CommandJobArgs{
+/// 			Properties: &machinelearningservices.CommandJobArgs{
 /// 				CodeId:      pulumi.String("string"),
 /// 				Command:     pulumi.String("string"),
 /// 				ComputeId:   pulumi.String("string"),
@@ -696,6 +778,88 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_job" "job" {
+///   id = "string"
+///   properties = {
+///     "codeId"      = "string"
+///     "command"     = "string"
+///     "computeId"   = "string"
+///     "description" = "string"
+///     "displayName" = "string"
+///     "distribution" = {
+///       "distributionType"     = "TensorFlow"
+///       "parameterServerCount" = 1
+///       "workerCount"          = 1
+///     }
+///     "environmentId" = "string"
+///     "environmentVariables" = {
+///       "string" = "string"
+///     }
+///     "experimentName" = "string"
+///     "identity" = {
+///       "identityType" = "AMLToken"
+///     }
+///     "inputs" = {
+///       "string" = {
+///         "description"  = "string"
+///         "jobInputType" = "literal"
+///         "value"        = "string"
+///       }
+///     }
+///     "jobType" = "Command"
+///     "limits" = {
+///       "jobLimitsType" = "Command"
+///       "timeout"       = "PT5M"
+///     }
+///     "outputs" = {
+///       "string" = {
+///         "description"   = "string"
+///         "jobOutputType" = "uri_file"
+///         "mode"          = "ReadWriteMount"
+///         "uri"           = "string"
+///       }
+///     }
+///     "properties" = {
+///       "string" = "string"
+///     }
+///     "resources" = {
+///       "instanceCount" = 1
+///       "instanceType"  = "string"
+///       "properties" = {
+///         "string" = {
+///           "e6b6493e-7d5e-4db3-be1e-306ec641327e" = null
+///         }
+///       }
+///     }
+///     "services" = {
+///       "string" = {
+///         "endpoint"       = "string"
+///         "jobServiceType" = "string"
+///         "port"           = 1
+///         "properties" = {
+///           "string" = "string"
+///         }
+///       }
+///     }
+///     "tags" = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -704,8 +868,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -719,7 +883,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var job = new Job("job", JobArgs.builder()
 ///             .id("string")
-///             .jobBaseProperties(CommandJobArgs.builder()
+///             .properties(CommandJobArgs.builder()
 ///                 .codeId("string")
 ///                 .command("string")
 ///                 .computeId("string")
@@ -781,7 +945,7 @@ import 'system_data_response.dart';
 ///
 /// const job = new azure_native.machinelearningservices.Job("job", {
 ///     id: "string",
-///     jobBaseProperties: {
+///     properties: {
 ///         codeId: "string",
 ///         command: "string",
 ///         computeId: "string",
@@ -858,7 +1022,7 @@ import 'system_data_response.dart';
 ///
 /// job = azure_native.machinelearningservices.Job("job",
 ///     id="string",
-///     job_base_properties={
+///     properties={
 ///         "code_id": "string",
 ///         "command": "string",
 ///         "compute_id": "string",
@@ -934,7 +1098,7 @@ import 'system_data_response.dart';
 ///     type: azure-native:machinelearningservices:Job
 ///     properties:
 ///       id: string
-///       jobBaseProperties:
+///       properties:
 ///         codeId: string
 ///         command: string
 ///         computeId: string
@@ -1001,7 +1165,7 @@ import 'system_data_response.dart';
 ///     var job = new AzureNative.MachineLearningServices.Job("job", new()
 ///     {
 ///         Id = "string",
-///         JobBaseProperties = new AzureNative.MachineLearningServices.Inputs.PipelineJobArgs
+///         Properties = new AzureNative.MachineLearningServices.Inputs.PipelineJobArgs
 ///         {
 ///             ComputeId = "string",
 ///             Description = "string",
@@ -1071,7 +1235,7 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewJob(ctx, "job", &machinelearningservices.JobArgs{
 /// 			Id: pulumi.String("string"),
-/// 			JobBaseProperties: &machinelearningservices.PipelineJobArgs{
+/// 			Properties: &machinelearningservices.PipelineJobArgs{
 /// 				ComputeId:      pulumi.String("string"),
 /// 				Description:    pulumi.String("string"),
 /// 				DisplayName:    pulumi.String("string"),
@@ -1122,6 +1286,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_job" "job" {
+///   id = "string"
+///   properties = {
+///     "computeId"      = "string"
+///     "description"    = "string"
+///     "displayName"    = "string"
+///     "experimentName" = "string"
+///     "inputs" = {
+///       "string" = {
+///         "description"  = "string"
+///         "jobInputType" = "literal"
+///         "value"        = "string"
+///       }
+///     }
+///     "jobType" = "Pipeline"
+///     "outputs" = {
+///       "string" = {
+///         "description"   = "string"
+///         "jobOutputType" = "uri_file"
+///         "mode"          = "Upload"
+///         "uri"           = "string"
+///       }
+///     }
+///     "properties" = {
+///       "string" = "string"
+///     }
+///     "services" = {
+///       "string" = {
+///         "endpoint"       = "string"
+///         "jobServiceType" = "string"
+///         "port"           = 1
+///         "properties" = {
+///           "string" = "string"
+///         }
+///       }
+///     }
+///     "settings" = {}
+///     "tags" = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1130,8 +1350,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1145,7 +1365,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var job = new Job("job", JobArgs.builder()
 ///             .id("string")
-///             .jobBaseProperties(PipelineJobArgs.builder()
+///             .properties(PipelineJobArgs.builder()
 ///                 .computeId("string")
 ///                 .description("string")
 ///                 .displayName("string")
@@ -1188,7 +1408,7 @@ import 'system_data_response.dart';
 ///
 /// const job = new azure_native.machinelearningservices.Job("job", {
 ///     id: "string",
-///     jobBaseProperties: {
+///     properties: {
 ///         computeId: "string",
 ///         description: "string",
 ///         displayName: "string",
@@ -1239,7 +1459,7 @@ import 'system_data_response.dart';
 ///
 /// job = azure_native.machinelearningservices.Job("job",
 ///     id="string",
-///     job_base_properties={
+///     properties={
 ///         "compute_id": "string",
 ///         "description": "string",
 ///         "display_name": "string",
@@ -1289,7 +1509,7 @@ import 'system_data_response.dart';
 ///     type: azure-native:machinelearningservices:Job
 ///     properties:
 ///       id: string
-///       jobBaseProperties:
+///       properties:
 ///         computeId: string
 ///         description: string
 ///         displayName: string
@@ -1337,7 +1557,7 @@ import 'system_data_response.dart';
 ///     var job = new AzureNative.MachineLearningServices.Job("job", new()
 ///     {
 ///         Id = "string",
-///         JobBaseProperties = new AzureNative.MachineLearningServices.Inputs.SweepJobArgs
+///         Properties = new AzureNative.MachineLearningServices.Inputs.SweepJobArgs
 ///         {
 ///             ComputeId = "string",
 ///             Description = "string",
@@ -1442,7 +1662,7 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewJob(ctx, "job", &machinelearningservices.JobArgs{
 /// 			Id: pulumi.String("string"),
-/// 			JobBaseProperties: &machinelearningservices.SweepJobArgs{
+/// 			Properties: &machinelearningservices.SweepJobArgs{
 /// 				ComputeId:   pulumi.String("string"),
 /// 				Description: pulumi.String("string"),
 /// 				DisplayName: pulumi.String("string"),
@@ -1519,6 +1739,88 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_job" "job" {
+///   id = "string"
+///   properties = {
+///     "computeId"   = "string"
+///     "description" = "string"
+///     "displayName" = "string"
+///     "earlyTermination" = {
+///       "delayEvaluation"    = 1
+///       "evaluationInterval" = 1
+///       "policyType"         = "MedianStopping"
+///     }
+///     "experimentName" = "string"
+///     "jobType"        = "Sweep"
+///     "limits" = {
+///       "jobLimitsType"       = "Sweep"
+///       "maxConcurrentTrials" = 1
+///       "maxTotalTrials"      = 1
+///       "trialTimeout"        = "PT1S"
+///     }
+///     "objective" = {
+///       "goal"          = "Minimize"
+///       "primaryMetric" = "string"
+///     }
+///     "properties" = {
+///       "string" = "string"
+///     }
+///     "samplingAlgorithm" = {
+///       "samplingAlgorithmType" = "Grid"
+///     }
+///     "searchSpace" = {
+///       "string" = {}
+///     }
+///     "services" = {
+///       "string" = {
+///         "endpoint"       = "string"
+///         "jobServiceType" = "string"
+///         "port"           = 1
+///         "properties" = {
+///           "string" = "string"
+///         }
+///       }
+///     }
+///     "tags" = {
+///       "string" = "string"
+///     }
+///     "trial" = {
+///       "codeId"  = "string"
+///       "command" = "string"
+///       "distribution" = {
+///         "distributionType"        = "Mpi"
+///         "processCountPerInstance" = 1
+///       }
+///       "environmentId" = "string"
+///       "environmentVariables" = {
+///         "string" = "string"
+///       }
+///       "resources" = {
+///         "instanceCount" = 1
+///         "instanceType"  = "string"
+///         "properties" = {
+///           "string" = {
+///             "e6b6493e-7d5e-4db3-be1e-306ec641327e" = null
+///           }
+///         }
+///       }
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1527,8 +1829,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.Job;
 /// import com.pulumi.azurenative.machinelearningservices.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1542,7 +1844,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var job = new Job("job", JobArgs.builder()
 ///             .id("string")
-///             .jobBaseProperties(SweepJobArgs.builder()
+///             .properties(SweepJobArgs.builder()
 ///                 .computeId("string")
 ///                 .description("string")
 ///                 .displayName("string")
@@ -1607,7 +1909,7 @@ import 'system_data_response.dart';
 ///
 /// const job = new azure_native.machinelearningservices.Job("job", {
 ///     id: "string",
-///     jobBaseProperties: {
+///     properties: {
 ///         computeId: "string",
 ///         description: "string",
 ///         displayName: "string",
@@ -1684,7 +1986,7 @@ import 'system_data_response.dart';
 ///
 /// job = azure_native.machinelearningservices.Job("job",
 ///     id="string",
-///     job_base_properties={
+///     properties={
 ///         "compute_id": "string",
 ///         "description": "string",
 ///         "display_name": "string",
@@ -1760,7 +2062,7 @@ import 'system_data_response.dart';
 ///     type: azure-native:machinelearningservices:Job
 ///     properties:
 ///       id: string
-///       jobBaseProperties:
+///       properties:
 ///         computeId: string
 ///         description: string
 ///         displayName: string
@@ -1826,10 +2128,10 @@ import 'system_data_response.dart';
 class Job extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<AutoMLJobResponse> jobBaseProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<AutoMLJobResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -1850,8 +2152,8 @@ class Job extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    jobBaseProperties = registerOutput<AutoMLJobResponse>('jobBaseProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoMLJobResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    properties = registerOutput<AutoMLJobResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoMLJobResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

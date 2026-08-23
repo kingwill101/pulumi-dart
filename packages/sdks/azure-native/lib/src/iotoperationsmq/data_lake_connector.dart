@@ -212,6 +212,91 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_datalakeconnector" "dataLakeConnector" {
+///   data_lake_connector_name = "87v4D"
+///   database_format          = "delta"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   image = {
+///     pull_policy  = "imfuzvqxgbdwliqnn"
+///     pull_secrets = "klnqimxqsrdwhcqldjvdtsrs"
+///     repository   = "m"
+///     tag          = "jygfdiamhhm"
+///   }
+///   instances = 53467
+///   local_broker_connection = {
+///     authentication = {
+///       kubernetes = {
+///         secret_path                = "soukzfkouir"
+///         service_account_token_name = "suwetviuhmhorhvsidlznnufe"
+///       }
+///     }
+///     endpoint = "xc"
+///     tls = {
+///       tls_enabled                       = true
+///       trusted_ca_certificate_config_map = "rinkomfeznsfedbmllxlbmmhc"
+///     }
+///   }
+///   location  = "ewguwvlahlu"
+///   log_level = "ikicyoalavfmqlodnupfjayxjti"
+///   mq_name   = "Ox--3e65kYN0731DJ1Qg"
+///   node_tolerations = {
+///     effect   = "eeswvciblqmmaeesjoflyvxqbz"
+///     key      = "wbrstdwxgm"
+///     operator = "lbegegneekwnyodtzraarivtwhmzep"
+///     value    = "sfafsjdcezdmkwibxeluukxgl"
+///   }
+///   protocol            = "v3"
+///   resource_group_name = "rgiotoperationsmq"
+///   tags                = {}
+///   target = {
+///     datalake_storage = {
+///       authentication = {
+///         access_token_secret_name = "cfaoxjbfbwdldqjbfczvovgooyqkl"
+///         system_assigned_managed_identity = {
+///           audience       = "kjderojhpehosgfcrxxbh"
+///           extension_name = "cyckjqqzspleajbtkniwrfsqygjfhe"
+///         }
+///       }
+///       endpoint = "bddy"
+///     }
+///     fabric_one_lake = {
+///       authentication = {
+///         system_assigned_managed_identity = {
+///           audience       = "kjderojhpehosgfcrxxbh"
+///           extension_name = "cyckjqqzspleajbtkniwrfsqygjfhe"
+///         }
+///       }
+///       endpoint    = "S.fabric.microsoft.com"
+///       fabric_path = "files"
+///       guids = {
+///         lakehouse_guid = "grsapopwjnuzbmnxbjnawaae"
+///         workspace_guid = "iwqfplayvdkdxumpdc"
+///       }
+///       names = {
+///         lakehouse_name = "iqgqtk"
+///         workspace_name = "fxvlfhfcmlhcbgpopyqfikqsryct"
+///       }
+///     }
+///     local_storage = {
+///       volume_name = "nmzsioldiwteljpplmftk"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +321,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.FabricGuidsArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.FabricNamesArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.DataLakeLocalStorageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

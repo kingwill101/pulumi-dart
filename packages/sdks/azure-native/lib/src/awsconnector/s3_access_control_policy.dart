@@ -137,6 +137,57 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_s3accesscontrolpolicy" "s3AccessControlPolicy" {
+///   location = "ngeydiaovh"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "djqvocoytmrzmkkinwskicuebi"
+///     aws_account_id = "vdzgygqqjlohlqcrnidexbnxccnqjn"
+///     aws_properties = {
+///       grants = [{
+///         "grantee" = {
+///           "displayName"  = "xlmygaefkokdbvi"
+///           "emailAddress" = "crwbnkkz"
+///           "id"           = "uyhsprjfhvowaugesuopxt"
+///           "type" = {
+///             "value" = "AmazonCustomerByEmail"
+///           }
+///           "uri" = "yzwxkelbvsi"
+///         }
+///         "permission" = {
+///           "value" = "FULL_CONTROL"
+///         }
+///       }]
+///       owner = {
+///         display_name = "klnmzlbodf"
+///         id           = "slxuomdlbhuf"
+///       }
+///     }
+///     aws_region        = "ae"
+///     aws_source_schema = "maxtroudgkwcrkhofvwigmhihju"
+///     aws_tags = {
+///       "key2280" = "zerubhrridce"
+///     }
+///     public_cloud_connectors_resource_id = "tpjrczwnhnoxoddvflvntzvw"
+///     public_cloud_resource_name          = "hytdmduqsymgluymquc"
+///   }
+///   resource_group_name = "rgs3AccessControlPolicy"
+///   tags = {
+///     "key3435" = "rhijygbnmiejai"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +199,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.S3AccessControlPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsS3AccessControlPolicyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.OwnerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

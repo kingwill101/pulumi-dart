@@ -5,7 +5,7 @@ import 'data_masking_policy_args.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -61,6 +61,26 @@ import 'data_masking_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_datamaskingpolicy" "dataMaskingPolicy" {
+///   data_masking_policy_name = "Default"
+///   data_masking_state       = "Enabled"
+///   database_name            = "sqlcrudtest-331"
+///   exempt_principals        = "testuser;"
+///   resource_group_name      = "sqlcrudtest-6852"
+///   server_name              = "sqlcrudtest-2080"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +89,8 @@ import 'data_masking_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.DataMaskingPolicy;
 /// import com.pulumi.azurenative.sql.DataMaskingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,6 +210,25 @@ import 'data_masking_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_datamaskingpolicy" "dataMaskingPolicy" {
+///   data_masking_policy_name = "Default"
+///   data_masking_state       = "Enabled"
+///   database_name            = "sqlcrudtest-331"
+///   resource_group_name      = "sqlcrudtest-6852"
+///   server_name              = "sqlcrudtest-2080"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +237,8 @@ import 'data_masking_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.DataMaskingPolicy;
 /// import com.pulumi.azurenative.sql.DataMaskingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

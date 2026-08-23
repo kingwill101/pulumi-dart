@@ -16,4 +16,3 @@ enum SecretStoreType {
     throw ArgumentError('Unknown SecretStoreType value: $value');
   }
 }
-

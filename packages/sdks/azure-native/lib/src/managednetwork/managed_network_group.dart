@@ -88,6 +88,32 @@ import 'managed_network_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetwork_managednetworkgroup" "managedNetworkGroup" {
+///   managed_network_group_name = "myManagedNetworkGroup1"
+///   managed_network_name       = "myManagedNetwork"
+///   resource_group_name        = "myResourceGroup"
+///   subnets {
+///     id = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA/subnets/subnetA"
+///   }
+///   virtual_networks {
+///     id = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetA"
+///   }
+///   virtual_networks {
+///     id = "/subscriptionB/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/VnetB"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +123,8 @@ import 'managed_network_group_args.dart';
 /// import com.pulumi.azurenative.managednetwork.ManagedNetworkGroup;
 /// import com.pulumi.azurenative.managednetwork.ManagedNetworkGroupArgs;
 /// import com.pulumi.azurenative.managednetwork.inputs.ResourceIdArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_space_response.dart';
-import 'routing_configuration_response.dart';
+import 'routing_configuration_p2s_vpn_gateway_response.dart';
 import 'sub_resource_response.dart';
 import 'vpn_server_configuration_policy_group_response.dart';
 
@@ -23,7 +23,7 @@ class P2SConnectionConfigurationResponse {
   /// The provisioning state of the P2SConnectionConfiguration resource.
   final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationResponse>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationP2sVpnGatewayResponse>? routingConfiguration;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
   final pulumi.Input<AddressSpaceResponse>? vpnClientAddressPool;
 
@@ -58,7 +58,7 @@ class P2SConnectionConfigurationResponse {
       'name': ?name,
       'previousConfigurationPolicyGroupAssociations': pulumi.Input.mapInputValue<List<VpnServerConfigurationPolicyGroupResponse>, List<Map<String, dynamic>>>(previousConfigurationPolicyGroupAssociations, (value) => pulumi.Input.encodeList<VpnServerConfigurationPolicyGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
-      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfigurationP2sVpnGatewayResponse, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
       'vpnClientAddressPool': ?pulumi.Input.mapOptionalInputValue<AddressSpaceResponse, Map<String, dynamic>>(vpnClientAddressPool, (value) => value.toMap()),
     };
   }
@@ -72,9 +72,8 @@ class P2SConnectionConfigurationResponse {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       previousConfigurationPolicyGroupAssociations: pulumi.Input.fromValue(pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupResponse>(map['previousConfigurationPolicyGroupAssociations']!, (value) => VpnServerConfigurationPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>()))),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationP2sVpnGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vpnClientAddressPool: (() { final guardedValue = map['vpnClientAddressPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

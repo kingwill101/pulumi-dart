@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hub_virtual_network_connection_args.dart';
-import 'routing_configuration_response.dart';
+import 'routing_configuration_hub_virtual_network_connection_response.dart';
 import 'sub_resource_response.dart';
 
 /// HubVirtualNetworkConnection Resource.
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -115,7 +115,7 @@ import 'sub_resource_response.dart';
 /// 				Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/SpokeVnet1"),
 /// 			},
 /// 			ResourceGroupName: pulumi.String("rg1"),
-/// 			RoutingConfiguration: &network.RoutingConfigurationArgs{
+/// 			RoutingConfiguration: &network.RoutingConfigurationTypeArgs{
 /// 				AssociatedRouteTable: &network.SubResourceArgs{
 /// 					Id: pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
 /// 				},
@@ -171,6 +171,58 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_hubvirtualnetworkconnection" "hubVirtualNetworkConnection" {
+///   connection_name          = "connection1"
+///   enable_internet_security = false
+///   remote_virtual_network = {
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/SpokeVnet1"
+///   }
+///   resource_group_name = "rg1"
+///   routing_configuration = {
+///     associated_route_table = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+///     }
+///     inbound_route_map = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+///     }
+///     outbound_route_map = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+///     }
+///     propagated_route_tables = {
+///       ids = [{
+///         "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+///       }]
+///       labels = ["label1", "label2"]
+///     }
+///     vnet_routes = {
+///       static_routes = [{
+///         "addressPrefixes"  = ["10.1.0.0/16", "10.2.0.0/16"]
+///         "name"             = "route1"
+///         "nextHopIpAddress" = "10.0.0.68"
+///         }, {
+///         "addressPrefixes"  = ["10.3.0.0/16", "10.4.0.0/16"]
+///         "name"             = "route2"
+///         "nextHopIpAddress" = "10.0.0.65"
+///       }]
+///       static_routes_config = {
+///         vnet_local_route_override_criteria = "Equal"
+///       }
+///     }
+///   }
+///   virtual_hub_name = "virtualHub1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +236,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.PropagatedRouteTableArgs;
 /// import com.pulumi.azurenative.network.inputs.VnetRouteArgs;
 /// import com.pulumi.azurenative.network.inputs.StaticRoutesConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -437,7 +489,7 @@ class HubVirtualNetworkConnection extends pulumi.CustomResource {
   /// Reference to the remote virtual network.
   late final pulumi.Output<SubResourceResponse?> remoteVirtualNetwork;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  late final pulumi.Output<RoutingConfigurationResponse?> routingConfiguration;
+  late final pulumi.Output<RoutingConfigurationHubVirtualNetworkConnectionResponse?> routingConfiguration;
 
   /// Creates a new [HubVirtualNetworkConnection].
   /// [name] The Pulumi resource name.
@@ -461,6 +513,6 @@ class HubVirtualNetworkConnection extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     provisioningState = registerOutput<String>('provisioningState');
     remoteVirtualNetwork = registerOutput<SubResourceResponse?>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    routingConfiguration = registerOutput<RoutingConfigurationResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingConfiguration = registerOutput<RoutingConfigurationHubVirtualNetworkConnectionResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationHubVirtualNetworkConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

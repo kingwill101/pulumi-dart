@@ -16,4 +16,3 @@ enum MetricType {
     throw ArgumentError('Unknown MetricType value: $value');
   }
 }
-

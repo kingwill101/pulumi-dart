@@ -112,4 +112,3 @@ class AwsElasticLoadBalancingV2LoadBalancerPropertiesResponse {
     );
   }
 }
-

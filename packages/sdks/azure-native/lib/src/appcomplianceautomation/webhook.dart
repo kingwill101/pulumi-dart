@@ -73,6 +73,30 @@ import 'webhook_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appcomplianceautomation_webhook" "webhook" {
+///   content_type            = "application/json"
+///   enable_ssl_verification = "true"
+///   events                  = ["generate_snapshot_failed"]
+///   payload_url             = "https://example.com"
+///   report_name             = "testReportName"
+///   send_all_events         = "false"
+///   status                  = "Enabled"
+///   update_webhook_key      = "true"
+///   webhook_key             = "00000000-0000-0000-0000-000000000000"
+///   webhook_name            = "testWebhookName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +105,8 @@ import 'webhook_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.appcomplianceautomation.Webhook;
 /// import com.pulumi.azurenative.appcomplianceautomation.WebhookArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

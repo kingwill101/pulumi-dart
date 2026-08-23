@@ -15,4 +15,3 @@ enum StorageTargetType {
     throw ArgumentError('Unknown StorageTargetType value: $value');
   }
 }
-

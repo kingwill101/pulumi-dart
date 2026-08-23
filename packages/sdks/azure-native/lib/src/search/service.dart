@@ -11,7 +11,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview, 2026-03-01-preview, 2026-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -83,6 +83,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type        = "Default"
+///   hosting_mode        = "Default"
+///   location            = "westus"
+///   partition_count     = 1
+///   replica_count       = 3
+///   resource_group_name = "rg1"
+///   search_service_name = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +119,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.Service;
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,6 +294,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   auth_options = {
+///     aad_or_api_key = {
+///       aad_auth_failure_mode = "http401WithBearerChallenge"
+///     }
+///   }
+///   compute_type        = "Default"
+///   hosting_mode        = "Default"
+///   location            = "westus"
+///   partition_count     = 1
+///   replica_count       = 3
+///   resource_group_name = "rg1"
+///   search_service_name = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -278,8 +337,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.inputs.DataPlaneAuthOptionsArgs;
 /// import com.pulumi.azurenative.search.inputs.DataPlaneAadOrApiKeyAuthOptionArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -461,6 +520,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type        = "Default"
+///   disable_local_auth  = true
+///   hosting_mode        = "Default"
+///   location            = "westus"
+///   partition_count     = 1
+///   replica_count       = 3
+///   resource_group_name = "rg1"
+///   search_service_name = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -470,8 +557,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.Service;
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -639,6 +726,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type          = "Default"
+///   hosting_mode          = "Default"
+///   location              = "westus"
+///   partition_count       = 1
+///   public_network_access = "Disabled"
+///   replica_count         = 3
+///   resource_group_name   = "rg1"
+///   search_service_name   = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -648,8 +763,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.Service;
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -839,6 +954,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type = "Default"
+///   hosting_mode = "Default"
+///   location     = "westus"
+///   network_rule_set = {
+///     ip_rules = [{
+///       "value" = "123.4.5.6"
+///       }, {
+///       "value" = "123.4.6.0/18"
+///     }]
+///   }
+///   partition_count     = 1
+///   replica_count       = 1
+///   resource_group_name = "rg1"
+///   search_service_name = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -849,8 +998,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.NetworkRuleSetArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1071,6 +1220,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type = "Default"
+///   hosting_mode = "Default"
+///   location     = "westus"
+///   network_rule_set = {
+///     bypass = "AzureServices"
+///     ip_rules = [{
+///       "value" = "123.4.5.6"
+///       }, {
+///       "value" = "123.4.6.0/18"
+///     }]
+///   }
+///   partition_count     = 1
+///   replica_count       = 1
+///   resource_group_name = "rg1"
+///   search_service_name = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1081,8 +1265,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.NetworkRuleSetArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1288,6 +1472,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type = "Default"
+///   encryption_with_cmk = {
+///     enforcement = "Enabled"
+///   }
+///   hosting_mode        = "Default"
+///   location            = "westus"
+///   partition_count     = 1
+///   replica_count       = 3
+///   resource_group_name = "rg1"
+///   search_service_name = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1298,8 +1512,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.EncryptionWithCmkArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1479,6 +1693,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type                  = "Default"
+///   data_exfiltration_protections = ["BlockAll"]
+///   hosting_mode                  = "Default"
+///   location                      = "westus"
+///   partition_count               = 1
+///   replica_count                 = 3
+///   resource_group_name           = "rg1"
+///   search_service_name           = "mysearchservice"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1488,8 +1730,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.Service;
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1658,6 +1900,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_search_service" "service" {
+///   compute_type        = "Default"
+///   hosting_mode        = "Default"
+///   location            = "westus"
+///   partition_count     = 1
+///   replica_count       = 3
+///   resource_group_name = "rg1"
+///   search_service_name = "mysearchservice"
+///   semantic_search     = "free"
+///   sku = {
+///     name = "standard"
+///   }
+///   tags = {
+///     "app-name" = "My e-commerce app"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1667,8 +1937,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.search.Service;
 /// import com.pulumi.azurenative.search.ServiceArgs;
 /// import com.pulumi.azurenative.search.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1802,7 +2072,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Network specific rules that determine how the Azure AI Search service may be reached.
   late final pulumi.Output<NetworkRuleSetResponse?> networkRuleSet;
-  /// The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+  /// The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
   late final pulumi.Output<int?> partitionCount;
   /// The list of private endpoint connections to the Azure AI Search service.
   late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
@@ -1810,9 +2080,9 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> provisioningState;
   /// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
   late final pulumi.Output<String?> publicNetworkAccess;
-  /// The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
+  /// The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
   late final pulumi.Output<int?> replicaCount;
-  /// Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+  /// Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
   late final pulumi.Output<String?> semanticSearch;
   /// The date and time the search service was last upgraded. This field will be null until the service gets upgraded for the first time.
   late final pulumi.Output<String> serviceUpgradedAt;

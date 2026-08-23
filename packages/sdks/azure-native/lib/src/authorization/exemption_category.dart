@@ -15,4 +15,3 @@ enum ExemptionCategory {
     throw ArgumentError('Unknown ExemptionCategory value: $value');
   }
 }
-

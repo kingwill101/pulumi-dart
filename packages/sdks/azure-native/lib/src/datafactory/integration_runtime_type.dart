@@ -1,7 +1,7 @@
 /// Type of integration runtime.
 enum IntegrationRuntimeType {
-  valueManaged("Managed"),
-  valueSelfHosted("SelfHosted");
+  managed("Managed"),
+  selfHosted("SelfHosted");
 
   const IntegrationRuntimeType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum IntegrationRuntimeType {
     throw ArgumentError('Unknown IntegrationRuntimeType value: $value');
   }
 }
-

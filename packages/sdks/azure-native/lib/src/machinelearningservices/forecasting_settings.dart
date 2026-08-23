@@ -15,7 +15,7 @@ class ForecastingSettings {
   /// example, if `CVStepSize` = 3 for daily data, the origin time for each fold will be
   /// three days apart.
   final pulumi.Input<int>? cvStepSize;
-  /// Flag for generating lags for the numeric features with 'auto' or null.
+  /// Flag for generating lags for the numeric features.
   final pulumi.Input<String>? featureLags;
   /// The desired maximum forecast horizon in units of time-series frequency.
   final pulumi.Input<AutoForecastHorizon>? forecastHorizon;
@@ -26,8 +26,7 @@ class ForecastingSettings {
   final pulumi.Input<AutoSeasonality>? seasonality;
   /// The parameter defining how if AutoML should handle short time series.
   final pulumi.Input<String>? shortSeriesHandlingConfig;
-  /// The function to be used to aggregate the time series target column to conform to a user specified frequency.
-  /// If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
+  /// Target aggregate function.
   final pulumi.Input<String>? targetAggregateFunction;
   /// The number of past periods to lag from the target column.
   final pulumi.Input<AutoTargetLags>? targetLags;
@@ -44,12 +43,12 @@ class ForecastingSettings {
   /// Creates a new [ForecastingSettings].
   /// [countryOrRegionForHolidays] Country or region for holidays for forecasting tasks.
   /// [cvStepSize] Number of periods between the origin time of one CV fold and the next fold. For
-  /// [featureLags] Flag for generating lags for the numeric features with 'auto' or null.
+  /// [featureLags] Flag for generating lags for the numeric features.
   /// [forecastHorizon] The desired maximum forecast horizon in units of time-series frequency.
   /// [frequency] When forecasting, this parameter represents the period with which the forecast is desired, for example daily, weekly, yearly, etc. The forecast frequency is dataset frequency by default.
   /// [seasonality] Set time series seasonality as an integer multiple of the series frequency.
   /// [shortSeriesHandlingConfig] The parameter defining how if AutoML should handle short time series.
-  /// [targetAggregateFunction] The function to be used to aggregate the time series target column to conform to a user specified frequency.
+  /// [targetAggregateFunction] Target aggregate function.
   /// [targetLags] The number of past periods to lag from the target column.
   /// [targetRollingWindowSize] The number of past periods used to create a rolling window average of the target column.
   /// [timeColumnName] The name of the time column. This parameter is required when forecasting to specify the datetime column in the input data used for building the time series and inferring its frequency.
@@ -107,4 +106,3 @@ class ForecastingSettings {
     );
   }
 }
-

@@ -22,4 +22,3 @@ enum EntityStatus {
     throw ArgumentError('Unknown EntityStatus value: $value');
   }
 }
-

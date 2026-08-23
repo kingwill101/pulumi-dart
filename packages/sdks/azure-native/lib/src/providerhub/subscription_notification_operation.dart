@@ -19,4 +19,3 @@ enum SubscriptionNotificationOperation {
     throw ArgumentError('Unknown SubscriptionNotificationOperation value: $value');
   }
 }
-

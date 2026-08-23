@@ -1,7 +1,7 @@
 /// Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
 enum PolicyEnabledState {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const PolicyEnabledState(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PolicyEnabledState {
     throw ArgumentError('Unknown PolicyEnabledState value: $value');
   }
 }
-

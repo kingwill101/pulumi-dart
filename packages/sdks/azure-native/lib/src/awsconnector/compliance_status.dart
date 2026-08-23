@@ -15,4 +15,3 @@ enum ComplianceStatus {
     throw ArgumentError('Unknown ComplianceStatus value: $value');
   }
 }
-

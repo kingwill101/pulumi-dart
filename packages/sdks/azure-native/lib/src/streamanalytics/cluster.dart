@@ -70,6 +70,30 @@ import 'cluster_sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_streamanalytics_cluster" "cluster" {
+///   cluster_name        = "An Example Cluster"
+///   location            = "North US"
+///   resource_group_name = "sjrg"
+///   sku = {
+///     capacity = 48
+///     name     = "Default"
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +103,8 @@ import 'cluster_sku_response.dart';
 /// import com.pulumi.azurenative.streamanalytics.Cluster;
 /// import com.pulumi.azurenative.streamanalytics.ClusterArgs;
 /// import com.pulumi.azurenative.streamanalytics.inputs.ClusterSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

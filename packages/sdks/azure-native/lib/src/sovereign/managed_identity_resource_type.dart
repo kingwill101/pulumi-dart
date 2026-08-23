@@ -15,4 +15,3 @@ enum ManagedIdentityResourceType {
     throw ArgumentError('Unknown ManagedIdentityResourceType value: $value');
   }
 }
-

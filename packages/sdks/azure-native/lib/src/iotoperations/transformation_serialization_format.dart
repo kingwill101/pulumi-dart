@@ -16,4 +16,3 @@ enum TransformationSerializationFormat {
     throw ArgumentError('Unknown TransformationSerializationFormat value: $value');
   }
 }
-

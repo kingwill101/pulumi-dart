@@ -95,6 +95,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_kmsalias" "kmsAlias" {
+///   location = "zsrefx"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "seecdsob"
+///     aws_account_id = "mi"
+///     aws_properties = {
+///       alias_name    = "qpqfyfsgzbqqqwohdqogpksketglb"
+///       target_key_id = "fgiefgtmhdrvw"
+///     }
+///     aws_region        = "zofqccwhxvtaeqhhtqwmruhcjkro"
+///     aws_source_schema = "iwkqjxnfjutfnhhocco"
+///     aws_tags = {
+///       "key6582" = "wejhqyokgch"
+///     }
+///     public_cloud_connectors_resource_id = "n"
+///     public_cloud_resource_name          = "qrdvkbofzddttwvcfunr"
+///   }
+///   resource_group_name = "rgkmsAlias"
+///   tags = {
+///     "key1437" = "lfgpfgxqkrvrlhnpwtzafonw"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +140,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.KmsAliasArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.KmsAliasPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsKmsAliasPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

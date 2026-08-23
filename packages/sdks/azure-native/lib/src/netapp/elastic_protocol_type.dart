@@ -16,4 +16,3 @@ enum ElasticProtocolType {
     throw ArgumentError('Unknown ElasticProtocolType value: $value');
   }
 }
-

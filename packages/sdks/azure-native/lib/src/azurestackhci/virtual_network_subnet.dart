@@ -8,6 +8,8 @@ import 'virtual_network_subnet_properties_response.dart';
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
 ///
+/// Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -63,6 +65,26 @@ import 'virtual_network_subnet_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurestackhci_virtualnetworksubnet" "virtualNetworkSubnet" {
+///   properties = {
+///     address_prefix = "10.0.0.0/28"
+///   }
+///   resource_group_name  = "test-rg"
+///   subnet_name          = "subnet1"
+///   virtual_network_name = "test-vnet"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +94,8 @@ import 'virtual_network_subnet_properties_response.dart';
 /// import com.pulumi.azurenative.azurestackhci.VirtualNetworkSubnet;
 /// import com.pulumi.azurenative.azurestackhci.VirtualNetworkSubnetArgs;
 /// import com.pulumi.azurenative.azurestackhci.inputs.VirtualNetworkSubnetPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -43,4 +43,3 @@ class AwsRoute53DomainsDomainSummaryPropertiesResponse {
     );
   }
 }
-

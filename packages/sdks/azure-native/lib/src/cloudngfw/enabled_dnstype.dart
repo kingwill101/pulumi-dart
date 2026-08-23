@@ -15,4 +15,3 @@ enum EnabledDNSType {
     throw ArgumentError('Unknown EnabledDNSType value: $value');
   }
 }
-

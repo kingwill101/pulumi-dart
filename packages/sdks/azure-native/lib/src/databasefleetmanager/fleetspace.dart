@@ -77,6 +77,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databasefleetmanager_fleetspace" "fleetspace" {
+///   fleet_name      = "production-fleet"
+///   fleetspace_name = "primary-space"
+///   properties = {
+///     capacity_max = 150000
+///     main_principal = {
+///       application_id = "d2d8b19e-c4f7-4c62-8e8d-7f0f96d94e39"
+///       login          = "adminUser"
+///       object_id      = "f8b7c2d3-b9c4-4f3b-85cd-3d56c6e49f92"
+///       principal_type = "Application"
+///       tenant_id      = "bde45d44-ec42-45b8-a5a2-c5b998c65ef6"
+///     }
+///   }
+///   resource_group_name = "rgdatabasefleetmanager"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +114,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databasefleetmanager.FleetspaceArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.FleetspacePropertiesArgs;
 /// import com.pulumi.azurenative.databasefleetmanager.inputs.MainPrincipalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

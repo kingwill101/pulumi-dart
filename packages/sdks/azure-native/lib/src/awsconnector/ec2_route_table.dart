@@ -109,6 +109,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2routetable" "ec2RouteTable" {
+///   location = "hovrzjhgmyvotekfhnhfmvlcak"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "eyazamslrmbbffijotyuugdepfsn"
+///     aws_account_id = "xlalfcqnhp"
+///     aws_properties = {
+///       route_table_id = "wjkircnwaktkmbnrmuglladvcdghmn"
+///       tags = [{
+///         "key"   = "jeqm"
+///         "value" = "ywbmagghbowtrgxkmnquatuohxj"
+///       }]
+///       vpc_id = "ndnaspemjnmztnyriemuybzp"
+///     }
+///     aws_region        = "tmqwjtpadpygxhke"
+///     aws_source_schema = "usgtqolcmcjynbdhavnneb"
+///     aws_tags = {
+///       "key7743" = "osantdzwyijo"
+///     }
+///     public_cloud_connectors_resource_id = "kaqsj"
+///     public_cloud_resource_name          = "ierypwmwselkslavwkgcmz"
+///   }
+///   resource_group_name = "rgec2RouteTable"
+///   tags = {
+///     "key8794" = "fhmajayysunpshosadan"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +158,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.Ec2RouteTableArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.Ec2RouteTablePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsEc2RouteTablePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

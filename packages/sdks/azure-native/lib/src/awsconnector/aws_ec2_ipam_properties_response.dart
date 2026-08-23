@@ -119,4 +119,3 @@ class AwsEc2IpamPropertiesResponse {
     );
   }
 }
-

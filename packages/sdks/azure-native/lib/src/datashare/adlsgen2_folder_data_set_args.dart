@@ -83,4 +83,3 @@ class ADLSGen2FolderDataSetArgs {
     );
   }
 }
-

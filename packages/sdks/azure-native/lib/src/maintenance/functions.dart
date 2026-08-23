@@ -14,7 +14,7 @@ import 'get_maintenance_configuration_result.dart';
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_maintenance_get_configuration_assignment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConfigurationAssignmentResult> getConfigurationAssignment(
@@ -34,7 +34,7 @@ Future<GetConfigurationAssignmentResult> getConfigurationAssignment(
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_maintenance_get_configuration_assignment_parent_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConfigurationAssignmentParentResult> getConfigurationAssignmentParent(
@@ -54,7 +54,7 @@ Future<GetConfigurationAssignmentParentResult> getConfigurationAssignmentParent(
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2023-09-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_maintenance_get_configuration_assignments_for_resource_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConfigurationAssignmentsForResourceGroupResult> getConfigurationAssignmentsForResourceGroup(
@@ -74,7 +74,7 @@ Future<GetConfigurationAssignmentsForResourceGroupResult> getConfigurationAssign
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2023-09-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_maintenance_get_configuration_assignments_for_subscription_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConfigurationAssignmentsForSubscriptionResult> getConfigurationAssignmentsForSubscription(
@@ -94,7 +94,7 @@ Future<GetConfigurationAssignmentsForSubscriptionResult> getConfigurationAssignm
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
 ///
-/// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_maintenance_get_maintenance_configuration_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMaintenanceConfigurationResult> getMaintenanceConfiguration(

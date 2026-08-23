@@ -4,26 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Dimension
 class DimensionResponse {
-  /// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
-  final pulumi.Input<String>? key;
   /// The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
   final pulumi.Input<String>? name;
-  /// Property value
+  /// The value for the dimension, from 1–255 characters in length.
   final pulumi.Input<String>? value;
 
   /// Creates a new [DimensionResponse].
-  /// [key] The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
   /// [name] The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
-  /// [value] Property value
+  /// [value] The value for the dimension, from 1–255 characters in length.
   const DimensionResponse({
-    this.key,
     this.name,
     this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'key': ?key,
       'name': ?name,
       'value': ?value,
     };
@@ -31,10 +26,8 @@ class DimensionResponse {
 
   factory DimensionResponse.fromMap(Map<String, dynamic> map) {
     return DimensionResponse(
-      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

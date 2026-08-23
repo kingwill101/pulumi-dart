@@ -143,6 +143,61 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_kafkaconnectortopicmap" "kafkaConnectorTopicMap" {
+///   batching = {
+///     enabled      = true
+///     latency_ms   = 9110
+///     max_bytes    = 732052221
+///     max_messages = 373078076
+///   }
+///   compression          = "none"
+///   copy_mqtt_properties = "efpqgkycuawnzyubdyt"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   kafka_connector_name   = "216VN"
+///   kafka_connector_ref    = "icivjwerdspx"
+///   location               = "pavphpzfsgdudpyvufyebqh"
+///   mq_name                = "-1-eD-7-J"
+///   partition_key_property = "c"
+///   partition_strategy     = "default"
+///   resource_group_name    = "rgiotoperationsmq"
+///   routes {
+///     kafka_to_mqtt = {
+///       consumer_group_id = "usork"
+///       kafka_topic       = "ggwhwbsr"
+///       mqtt_topic        = "jwvmmhfqqkkmqrpslbdfmpbdetfu"
+///       name              = "lrnvudysggscnqvmnlkrk"
+///       qos               = 1
+///     }
+///     mqtt_to_kafka = {
+///       kafka_acks  = "zero"
+///       kafka_topic = "tellycttwulueqcpqf"
+///       mqtt_topic  = "raipkrcwvdnnflywhgjwnquarf"
+///       name        = "qpshqcaxvxnyjzimvchngupzezdei"
+///       qos         = 1
+///       shared_subscription = {
+///         group_minimum_share_number = 216
+///         group_name                 = "nwdyccsditzhchuksmi"
+///       }
+///     }
+///   }
+///   tags           = {}
+///   topic_map_name = "q582ViEY-b7wF1OO2A"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -157,8 +212,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.KafkaToMqttRoutesArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.MqttToKafkaRoutesArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.KafkaSharedSubscriptionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,8 +333,8 @@ import 'system_data_response.dart';
 ///     batching={
 ///         "enabled": True,
 ///         "latency_ms": 9110,
-///         "max_bytes": 732052221,
-///         "max_messages": 373078076,
+///         "max_bytes": float(732052221),
+///         "max_messages": float(373078076),
 ///     },
 ///     compression=azure_native.iotoperationsmq.KafkaMessageCompressionType.NONE,
 ///     copy_mqtt_properties="efpqgkycuawnzyubdyt",

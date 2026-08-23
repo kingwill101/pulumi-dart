@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sap_instance_args.dart';
-import 'sapmigrate_error_response.dart';
+import 'sapmigrate_error_sap_instance_response.dart';
 import 'system_data_response.dart';
 
 /// Define the SAP Instance resource.
@@ -66,6 +66,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_sapinstance" "sapInstance" {
+///   location                = "eastus"
+///   resource_group_name     = "test-rg"
+///   sap_discovery_site_name = "SampleSite"
+///   sap_instance_name       = "MPP_MPP"
+///   tags = {
+///     "property1" = "value1"
+///     "property2" = "value2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.SapInstance;
 /// import com.pulumi.azurenative.workloads.SapInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,7 +191,7 @@ class SapInstance extends pulumi.CustomResource {
   /// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
   late final pulumi.Output<String> environment;
   /// Defines the errors related to SAP Instance resource.
-  late final pulumi.Output<SAPMigrateErrorResponse> errors;
+  late final pulumi.Output<SAPMigrateErrorSapInstanceResponse> errors;
   /// This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
   late final pulumi.Output<String> landscapeSid;
   /// The geo-location where the resource lives
@@ -204,7 +226,7 @@ class SapInstance extends pulumi.CustomResource {
     application = registerOutput<String>('application');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     environment = registerOutput<String>('environment');
-    errors = registerOutput<SAPMigrateErrorResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPMigrateErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    errors = registerOutput<SAPMigrateErrorSapInstanceResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPMigrateErrorSapInstanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     landscapeSid = registerOutput<String>('landscapeSid');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

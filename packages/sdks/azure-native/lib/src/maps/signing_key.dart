@@ -16,4 +16,3 @@ enum SigningKey {
     throw ArgumentError('Unknown SigningKey value: $value');
   }
 }
-

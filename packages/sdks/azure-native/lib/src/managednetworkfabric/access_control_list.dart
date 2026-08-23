@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -301,6 +301,80 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_managednetworkfabric_accesscontrollist" "accessControlList" {
+///   access_control_list_name = "example-acl"
+///   acls_url                 = "https://ACL-Storage-URL"
+///   annotation               = "annotation"
+///   configuration_type       = "File"
+///   default_action           = "Permit"
+///   dynamic_match_configurations {
+///     ip_groups {
+///       ip_address_type = "IPv4"
+///       ip_prefixes     = ["10.20.3.1/20"]
+///       name            = "example-ipGroup"
+///     }
+///     port_groups {
+///       name  = "example-portGroup"
+///       ports = ["100-200"]
+///     }
+///     vlan_groups {
+///       name  = "example-vlanGroup"
+///       vlans = ["20-30"]
+///     }
+///   }
+///   location = "eastUs"
+///   match_configurations {
+///     actions {
+///       counter_name = "example-counter"
+///       type         = "Count"
+///     }
+///     ip_address_type = "IPv4"
+///     match_conditions {
+///       dscp_markings = ["32"]
+///       ether_types   = ["0x1"]
+///       fragments     = ["0xff00-0xffff"]
+///       ip_condition = {
+///         ip_group_names   = ["example-ipGroup"]
+///         ip_prefix_values = ["10.20.20.20/12"]
+///         prefix_type      = "Prefix"
+///         type             = "SourceIP"
+///       }
+///       ip_lengths = ["4094-9214"]
+///       port_condition = {
+///         flags            = ["established"]
+///         layer4_protocol  = "TCP"
+///         port_group_names = ["example-portGroup"]
+///         port_type        = "SourcePort"
+///         ports            = ["1-20"]
+///       }
+///       protocol_types = ["TCP"]
+///       ttl_values     = ["23"]
+///       vlan_match_condition = {
+///         inner_vlans      = ["30"]
+///         vlan_group_names = ["example-vlanGroup"]
+///         vlans            = ["20-30"]
+///       }
+///     }
+///     match_configuration_name = "example-match"
+///     sequence_number          = 123
+///   }
+///   resource_group_name = "example-rg"
+///   tags = {
+///     "keyID" = "KeyValue"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +385,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.managednetworkfabric.AccessControlListArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.CommonDynamicMatchConfigurationArgs;
 /// import com.pulumi.azurenative.managednetworkfabric.inputs.AccessControlListMatchConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -518,7 +592,7 @@ import 'system_data_response.dart';
 ///             },
 ///         }],
 ///         "match_configuration_name": "example-match",
-///         "sequence_number": 123,
+///         "sequence_number": float(123),
 ///     }],
 ///     resource_group_name="example-rg",
 ///     tags={

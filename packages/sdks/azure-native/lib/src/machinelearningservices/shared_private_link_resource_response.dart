@@ -3,23 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SharedPrivateLinkResourceResponse {
-  /// The private link resource group id.
+  /// group id of the private link
   final pulumi.Input<String>? groupId;
-  /// Unique name of the private link.
+  /// Unique name of the private link
   final pulumi.Input<String>? name;
-  /// The resource id that private link links to.
+  /// the resource id that private link links to
   final pulumi.Input<String>? privateLinkResourceId;
-  /// Request message.
+  /// Request message
   final pulumi.Input<String>? requestMessage;
-  /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+  /// Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -&gt; Approved (Service provider approves the connection request)\r\nPending -&gt; Rejected (Service provider rejects the connection request)\r\nPending -&gt; Disconnected (Service provider deletes the connection)\r\nApproved -&gt; Rejected (Service provider rejects the approved connection)\r\nApproved -&gt; Disconnected (Service provider deletes the connection)\r\nRejected -&gt; Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -&gt; Disconnected (Service provider deletes the connection)
   final pulumi.Input<String>? status;
 
   /// Creates a new [SharedPrivateLinkResourceResponse].
-  /// [groupId] The private link resource group id.
-  /// [name] Unique name of the private link.
-  /// [privateLinkResourceId] The resource id that private link links to.
-  /// [requestMessage] Request message.
-  /// [status] Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+  /// [groupId] group id of the private link
+  /// [name] Unique name of the private link
+  /// [privateLinkResourceId] the resource id that private link links to
+  /// [requestMessage] Request message
+  /// [status] Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -&gt; Approved (Service provider approves the connection request)\r\nPending -&gt; Rejected (Service provider rejects the connection request)\r\nPending -&gt; Disconnected (Service provider deletes the connection)\r\nApproved -&gt; Rejected (Service provider rejects the approved connection)\r\nApproved -&gt; Disconnected (Service provider deletes the connection)\r\nRejected -&gt; Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -&gt; Disconnected (Service provider deletes the connection)
   const SharedPrivateLinkResourceResponse({
     this.groupId,
     this.name,
@@ -48,4 +48,3 @@ class SharedPrivateLinkResourceResponse {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum Percentile {
     throw ArgumentError('Unknown Percentile value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum ReplicationSchedule {
     throw ArgumentError('Unknown ReplicationSchedule value: $value');
   }
 }
-

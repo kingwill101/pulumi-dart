@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmsReceiverResponse {
   /// The country code of the SMS receiver.
   final pulumi.Input<String> countryCode;
-  /// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
+  /// The name of the SMS receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
   /// The phone number of the SMS receiver.
   final pulumi.Input<String> phoneNumber;
@@ -15,7 +15,7 @@ class SmsReceiverResponse {
 
   /// Creates a new [SmsReceiverResponse].
   /// [countryCode] The country code of the SMS receiver.
-  /// [name] The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
+  /// [name] The name of the SMS receiver. Names must be unique across all receivers within an action group.
   /// [phoneNumber] The phone number of the SMS receiver.
   /// [status] The status of the receiver.
   const SmsReceiverResponse({
@@ -43,4 +43,3 @@ class SmsReceiverResponse {
     );
   }
 }
-

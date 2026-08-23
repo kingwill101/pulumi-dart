@@ -3,6 +3,7 @@ import 'governance_rule_args.dart';
 import 'governance_rule_email_notification_response.dart';
 import 'governance_rule_metadata_response.dart';
 import 'governance_rule_owner_source_response.dart';
+import 'system_data_response.dart';
 
 /// Governance rule over a given scope
 ///
@@ -22,6 +23,21 @@ import 'governance_rule_owner_source_response.dart';
 /// {
 ///     var governanceRule = new AzureNative.Security.GovernanceRule("governanceRule", new()
 ///     {
+///         ConditionSets = new[]
+///         {
+///             new Dictionary<string, object?>
+///             {
+///                 ["conditions"] = new[]
+///                 {
+///                     new Dictionary<string, object?>
+///                     {
+///                         ["operator"] = "In",
+///                         ["property"] = "$.AssessmentKey",
+///                         ["value"] = "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///                     },
+///                 },
+///             },
+///         },
 ///         Description = "A rule for a management group",
 ///         DisplayName = "Management group rule",
 ///         ExcludedScopes = new[]
@@ -64,6 +80,17 @@ import 'governance_rule_owner_source_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewGovernanceRule(ctx, "governanceRule", &security.GovernanceRuleArgs{
+/// 			ConditionSets: pulumi.Array{
+/// 				pulumi.Any(map[string]interface{}{
+/// 					"conditions": []map[string]interface{}{
+/// 						map[string]interface{}{
+/// 							"operator": "In",
+/// 							"property": "$.AssessmentKey",
+/// 							"value":    "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+/// 						},
+/// 					},
+/// 				}),
+/// 			},
 /// 			Description: pulumi.String("A rule for a management group"),
 /// 			DisplayName: pulumi.String("Management group rule"),
 /// 			ExcludedScopes: pulumi.StringArray{
@@ -95,6 +122,46 @@ import 'governance_rule_owner_source_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_governancerule" "governanceRule" {
+///   condition_sets = [{
+///     "conditions" = [{
+///       "operator" = "In"
+///       "property" = "$.AssessmentKey"
+///       "value"    = "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]"
+///     }]
+///   }]
+///   description     = "A rule for a management group"
+///   display_name    = "Management group rule"
+///   excluded_scopes = ["/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"]
+///   governance_email_notification = {
+///     disable_manager_email_notification = true
+///     disable_owner_email_notification   = false
+///   }
+///   is_disabled     = false
+///   is_grace_period = true
+///   owner_source = {
+///     type  = "Manually"
+///     value = "user@contoso.com"
+///   }
+///   remediation_timeframe = "7.00:00:00"
+///   rule_id               = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8"
+///   rule_priority         = 200
+///   rule_type             = "Integrated"
+///   scope                 = "providers/Microsoft.Management/managementGroups/contoso"
+///   source_resource_type  = "Assessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +172,8 @@ import 'governance_rule_owner_source_response.dart';
 /// import com.pulumi.azurenative.security.GovernanceRuleArgs;
 /// import com.pulumi.azurenative.security.inputs.GovernanceRuleEmailNotificationArgs;
 /// import com.pulumi.azurenative.security.inputs.GovernanceRuleOwnerSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -119,6 +186,11 @@ import 'governance_rule_owner_source_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var governanceRule = new GovernanceRule("governanceRule", GovernanceRuleArgs.builder()
+///             .conditionSets(Map.of("conditions", Arrays.asList(Map.ofEntries(
+///                 Map.entry("operator", "In"),
+///                 Map.entry("property", "$.AssessmentKey"),
+///                 Map.entry("value", "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]")
+///             ))))
 ///             .description("A rule for a management group")
 ///             .displayName("Management group rule")
 ///             .excludedScopes("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23")
@@ -150,6 +222,13 @@ import 'governance_rule_owner_source_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const governanceRule = new azure_native.security.GovernanceRule("governanceRule", {
+///     conditionSets: [{
+///         conditions: [{
+///             operator: "In",
+///             property: "$.AssessmentKey",
+///             value: "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///         }],
+///     }],
 ///     description: "A rule for a management group",
 ///     displayName: "Management group rule",
 ///     excludedScopes: ["/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"],
@@ -178,6 +257,13 @@ import 'governance_rule_owner_source_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// governance_rule = azure_native.security.GovernanceRule("governanceRule",
+///     condition_sets=[{
+///         "conditions": [{
+///             "operator": "In",
+///             "property": "$.AssessmentKey",
+///             "value": "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///         }],
+///     }],
 ///     description="A rule for a management group",
 ///     display_name="Management group rule",
 ///     excluded_scopes=["/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"],
@@ -205,6 +291,11 @@ import 'governance_rule_owner_source_response.dart';
 ///   governanceRule:
 ///     type: azure-native:security:GovernanceRule
 ///     properties:
+///       conditionSets:
+///         - conditions:
+///             - operator: In
+///               property: $.AssessmentKey
+///               value: '["b1cd27e0-4ecc-4246-939f-49c426d9d72f", "fe83f80b-073d-4ccf-93d9-6797eb870201"]'
 ///       description: A rule for a management group
 ///       displayName: Management group rule
 ///       excludedScopes:
@@ -239,6 +330,21 @@ import 'governance_rule_owner_source_response.dart';
 /// {
 ///     var governanceRule = new AzureNative.Security.GovernanceRule("governanceRule", new()
 ///     {
+///         ConditionSets = new[]
+///         {
+///             new Dictionary<string, object?>
+///             {
+///                 ["conditions"] = new[]
+///                 {
+///                     new Dictionary<string, object?>
+///                     {
+///                         ["operator"] = "In",
+///                         ["property"] = "$.AssessmentKey",
+///                         ["value"] = "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///                     },
+///                 },
+///             },
+///         },
 ///         Description = "A rule on critical GCP recommendations",
 ///         DisplayName = "GCP Admin's rule",
 ///         GovernanceEmailNotification = new AzureNative.Security.Inputs.GovernanceRuleEmailNotificationArgs
@@ -277,6 +383,17 @@ import 'governance_rule_owner_source_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewGovernanceRule(ctx, "governanceRule", &security.GovernanceRuleArgs{
+/// 			ConditionSets: pulumi.Array{
+/// 				pulumi.Any(map[string]interface{}{
+/// 					"conditions": []map[string]interface{}{
+/// 						map[string]interface{}{
+/// 							"operator": "In",
+/// 							"property": "$.AssessmentKey",
+/// 							"value":    "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+/// 						},
+/// 					},
+/// 				}),
+/// 			},
 /// 			Description: pulumi.String("A rule on critical GCP recommendations"),
 /// 			DisplayName: pulumi.String("GCP Admin's rule"),
 /// 			GovernanceEmailNotification: &security.GovernanceRuleEmailNotificationArgs{
@@ -305,6 +422,45 @@ import 'governance_rule_owner_source_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_governancerule" "governanceRule" {
+///   condition_sets = [{
+///     "conditions" = [{
+///       "operator" = "In"
+///       "property" = "$.AssessmentKey"
+///       "value"    = "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]"
+///     }]
+///   }]
+///   description  = "A rule on critical GCP recommendations"
+///   display_name = "GCP Admin's rule"
+///   governance_email_notification = {
+///     disable_manager_email_notification = true
+///     disable_owner_email_notification   = false
+///   }
+///   is_disabled     = false
+///   is_grace_period = true
+///   owner_source = {
+///     type  = "Manually"
+///     value = "user@contoso.com"
+///   }
+///   remediation_timeframe = "7.00:00:00"
+///   rule_id               = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8"
+///   rule_priority         = 200
+///   rule_type             = "Integrated"
+///   scope                 = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/gcpResourceGroup/providers/Microsoft.Security/securityConnectors/gcpconnector"
+///   source_resource_type  = "Assessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -315,8 +471,8 @@ import 'governance_rule_owner_source_response.dart';
 /// import com.pulumi.azurenative.security.GovernanceRuleArgs;
 /// import com.pulumi.azurenative.security.inputs.GovernanceRuleEmailNotificationArgs;
 /// import com.pulumi.azurenative.security.inputs.GovernanceRuleOwnerSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,6 +485,11 @@ import 'governance_rule_owner_source_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var governanceRule = new GovernanceRule("governanceRule", GovernanceRuleArgs.builder()
+///             .conditionSets(Map.of("conditions", Arrays.asList(Map.ofEntries(
+///                 Map.entry("operator", "In"),
+///                 Map.entry("property", "$.AssessmentKey"),
+///                 Map.entry("value", "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]")
+///             ))))
 ///             .description("A rule on critical GCP recommendations")
 ///             .displayName("GCP Admin's rule")
 ///             .governanceEmailNotification(GovernanceRuleEmailNotificationArgs.builder()
@@ -359,6 +520,13 @@ import 'governance_rule_owner_source_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const governanceRule = new azure_native.security.GovernanceRule("governanceRule", {
+///     conditionSets: [{
+///         conditions: [{
+///             operator: "In",
+///             property: "$.AssessmentKey",
+///             value: "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///         }],
+///     }],
 ///     description: "A rule on critical GCP recommendations",
 ///     displayName: "GCP Admin's rule",
 ///     governanceEmailNotification: {
@@ -386,6 +554,13 @@ import 'governance_rule_owner_source_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// governance_rule = azure_native.security.GovernanceRule("governanceRule",
+///     condition_sets=[{
+///         "conditions": [{
+///             "operator": "In",
+///             "property": "$.AssessmentKey",
+///             "value": "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///         }],
+///     }],
 ///     description="A rule on critical GCP recommendations",
 ///     display_name="GCP Admin's rule",
 ///     governance_email_notification={
@@ -412,6 +587,11 @@ import 'governance_rule_owner_source_response.dart';
 ///   governanceRule:
 ///     type: azure-native:security:GovernanceRule
 ///     properties:
+///       conditionSets:
+///         - conditions:
+///             - operator: In
+///               property: $.AssessmentKey
+///               value: '["b1cd27e0-4ecc-4246-939f-49c426d9d72f", "fe83f80b-073d-4ccf-93d9-6797eb870201"]'
 ///       description: A rule on critical GCP recommendations
 ///       displayName: GCP Admin's rule
 ///       governanceEmailNotification:
@@ -444,6 +624,21 @@ import 'governance_rule_owner_source_response.dart';
 /// {
 ///     var governanceRule = new AzureNative.Security.GovernanceRule("governanceRule", new()
 ///     {
+///         ConditionSets = new[]
+///         {
+///             new Dictionary<string, object?>
+///             {
+///                 ["conditions"] = new[]
+///                 {
+///                     new Dictionary<string, object?>
+///                     {
+///                         ["operator"] = "In",
+///                         ["property"] = "$.AssessmentKey",
+///                         ["value"] = "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///                     },
+///                 },
+///             },
+///         },
 ///         Description = "A rule for critical recommendations",
 ///         DisplayName = "Admin's rule",
 ///         GovernanceEmailNotification = new AzureNative.Security.Inputs.GovernanceRuleEmailNotificationArgs
@@ -482,6 +677,17 @@ import 'governance_rule_owner_source_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := security.NewGovernanceRule(ctx, "governanceRule", &security.GovernanceRuleArgs{
+/// 			ConditionSets: pulumi.Array{
+/// 				pulumi.Any(map[string]interface{}{
+/// 					"conditions": []map[string]interface{}{
+/// 						map[string]interface{}{
+/// 							"operator": "In",
+/// 							"property": "$.AssessmentKey",
+/// 							"value":    "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+/// 						},
+/// 					},
+/// 				}),
+/// 			},
 /// 			Description: pulumi.String("A rule for critical recommendations"),
 /// 			DisplayName: pulumi.String("Admin's rule"),
 /// 			GovernanceEmailNotification: &security.GovernanceRuleEmailNotificationArgs{
@@ -510,6 +716,45 @@ import 'governance_rule_owner_source_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_governancerule" "governanceRule" {
+///   condition_sets = [{
+///     "conditions" = [{
+///       "operator" = "In"
+///       "property" = "$.AssessmentKey"
+///       "value"    = "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]"
+///     }]
+///   }]
+///   description  = "A rule for critical recommendations"
+///   display_name = "Admin's rule"
+///   governance_email_notification = {
+///     disable_manager_email_notification = false
+///     disable_owner_email_notification   = false
+///   }
+///   is_disabled     = false
+///   is_grace_period = true
+///   owner_source = {
+///     type  = "Manually"
+///     value = "user@contoso.com"
+///   }
+///   remediation_timeframe = "7.00:00:00"
+///   rule_id               = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8"
+///   rule_priority         = 200
+///   rule_type             = "Integrated"
+///   scope                 = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23"
+///   source_resource_type  = "Assessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -520,8 +765,8 @@ import 'governance_rule_owner_source_response.dart';
 /// import com.pulumi.azurenative.security.GovernanceRuleArgs;
 /// import com.pulumi.azurenative.security.inputs.GovernanceRuleEmailNotificationArgs;
 /// import com.pulumi.azurenative.security.inputs.GovernanceRuleOwnerSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -534,6 +779,11 @@ import 'governance_rule_owner_source_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var governanceRule = new GovernanceRule("governanceRule", GovernanceRuleArgs.builder()
+///             .conditionSets(Map.of("conditions", Arrays.asList(Map.ofEntries(
+///                 Map.entry("operator", "In"),
+///                 Map.entry("property", "$.AssessmentKey"),
+///                 Map.entry("value", "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]")
+///             ))))
 ///             .description("A rule for critical recommendations")
 ///             .displayName("Admin's rule")
 ///             .governanceEmailNotification(GovernanceRuleEmailNotificationArgs.builder()
@@ -564,6 +814,13 @@ import 'governance_rule_owner_source_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const governanceRule = new azure_native.security.GovernanceRule("governanceRule", {
+///     conditionSets: [{
+///         conditions: [{
+///             operator: "In",
+///             property: "$.AssessmentKey",
+///             value: "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///         }],
+///     }],
 ///     description: "A rule for critical recommendations",
 ///     displayName: "Admin's rule",
 ///     governanceEmailNotification: {
@@ -591,6 +848,13 @@ import 'governance_rule_owner_source_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// governance_rule = azure_native.security.GovernanceRule("governanceRule",
+///     condition_sets=[{
+///         "conditions": [{
+///             "operator": "In",
+///             "property": "$.AssessmentKey",
+///             "value": "[\"b1cd27e0-4ecc-4246-939f-49c426d9d72f\", \"fe83f80b-073d-4ccf-93d9-6797eb870201\"]",
+///         }],
+///     }],
 ///     description="A rule for critical recommendations",
 ///     display_name="Admin's rule",
 ///     governance_email_notification={
@@ -617,6 +881,11 @@ import 'governance_rule_owner_source_response.dart';
 ///   governanceRule:
 ///     type: azure-native:security:GovernanceRule
 ///     properties:
+///       conditionSets:
+///         - conditions:
+///             - operator: In
+///               property: $.AssessmentKey
+///               value: '["b1cd27e0-4ecc-4246-939f-49c426d9d72f", "fe83f80b-073d-4ccf-93d9-6797eb870201"]'
 ///       description: A rule for critical recommendations
 ///       displayName: Admin's rule
 ///       governanceEmailNotification:
@@ -649,6 +918,8 @@ import 'governance_rule_owner_source_response.dart';
 class GovernanceRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+  /// The governance rule conditionSets - see examples
+  late final pulumi.Output<List<Map<String, dynamic>>> conditionSets;
   /// Description of the governance rule
   late final pulumi.Output<String?> description;
   /// Display name of the governance rule
@@ -665,7 +936,7 @@ class GovernanceRule extends pulumi.CustomResource {
   late final pulumi.Output<bool?> isGracePeriod;
   /// The governance rule metadata
   late final pulumi.Output<GovernanceRuleMetadataResponse?> metadata;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
   late final pulumi.Output<GovernanceRuleOwnerSourceResponse> ownerSource;
@@ -677,9 +948,11 @@ class GovernanceRule extends pulumi.CustomResource {
   late final pulumi.Output<String> ruleType;
   /// The governance rule source, what the rule affects, e.g. Assessments
   late final pulumi.Output<String> sourceResourceType;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// The tenantId (GUID)
   late final pulumi.Output<String> tenantId;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [GovernanceRule].
@@ -697,6 +970,7 @@ class GovernanceRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
+    conditionSets = registerOutput<List<Map<String, dynamic>>>('conditionSets');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     excludedScopes = registerOutput<List<String>?>('excludedScopes');
@@ -711,6 +985,7 @@ class GovernanceRule extends pulumi.CustomResource {
     rulePriority = registerOutput<int>('rulePriority');
     ruleType = registerOutput<String>('ruleType');
     sourceResourceType = registerOutput<String>('sourceResourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }

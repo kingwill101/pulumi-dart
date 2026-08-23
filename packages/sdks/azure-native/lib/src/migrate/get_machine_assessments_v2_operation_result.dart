@@ -56,4 +56,3 @@ class GetMachineAssessmentsV2OperationResult {
     );
   }
 }
-

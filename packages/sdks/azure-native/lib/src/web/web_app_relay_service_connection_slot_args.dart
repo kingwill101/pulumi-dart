@@ -17,10 +17,10 @@ class WebAppRelayServiceConnectionSlotArgs {
   final pulumi.Input<String> name;
   final pulumi.Input<int>? port;
   final pulumi.Input<String>? resourceConnectionString;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String>? resourceType;
-  /// Name of the deployment slot. If a slot is not specified, the API will create or update a hybrid connection for the production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [WebAppRelayServiceConnectionSlotArgs].
@@ -32,9 +32,9 @@ class WebAppRelayServiceConnectionSlotArgs {
   /// [name] Name of the app.
   /// [port] Optional.
   /// [resourceConnectionString] Optional.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceType] Optional.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will create or update a hybrid connection for the production slot.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
   const WebAppRelayServiceConnectionSlotArgs({
     this.biztalkUri,
     this.entityConnectionString,
@@ -81,4 +81,3 @@ class WebAppRelayServiceConnectionSlotArgs {
     );
   }
 }
-

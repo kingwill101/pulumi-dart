@@ -15,4 +15,3 @@ enum ContainerGroupNetworkProtocol {
     throw ArgumentError('Unknown ContainerGroupNetworkProtocol value: $value');
   }
 }
-

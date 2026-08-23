@@ -15,4 +15,3 @@ enum ExpressRouteCircuitSkuFamily {
     throw ArgumentError('Unknown ExpressRouteCircuitSkuFamily value: $value');
   }
 }
-

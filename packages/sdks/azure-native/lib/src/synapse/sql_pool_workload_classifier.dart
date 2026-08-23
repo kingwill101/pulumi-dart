@@ -71,6 +71,31 @@ import 'sql_pool_workload_classifier_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_sqlpoolworkloadclassifier" "sqlPoolWorkloadClassifier" {
+///   context                  = "test_context"
+///   end_time                 = "14:00"
+///   importance               = "high"
+///   label                    = "test_label"
+///   member_name              = "dbo"
+///   resource_group_name      = "sqlcrudtest-6852"
+///   sql_pool_name            = "sqlcrudtest-9187"
+///   start_time               = "12:00"
+///   workload_classifier_name = "wlm_workloadclassifier"
+///   workload_group_name      = "wlm_workloadgroup"
+///   workspace_name           = "sqlcrudtest-2080"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +104,8 @@ import 'sql_pool_workload_classifier_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadClassifier;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,6 +247,26 @@ import 'sql_pool_workload_classifier_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_sqlpoolworkloadclassifier" "sqlPoolWorkloadClassifier" {
+///   member_name              = "dbo"
+///   resource_group_name      = "sqlcrudtest-6852"
+///   sql_pool_name            = "sqlcrudtest-9187"
+///   workload_classifier_name = "wlm_workloadclassifier"
+///   workload_group_name      = "wlm_workloadgroup"
+///   workspace_name           = "sqlcrudtest-2080"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -230,8 +275,8 @@ import 'sql_pool_workload_classifier_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadClassifier;
 /// import com.pulumi.azurenative.synapse.SqlPoolWorkloadClassifierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

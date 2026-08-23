@@ -16,4 +16,3 @@ enum NextStep {
     throw ArgumentError('Unknown NextStep value: $value');
   }
 }
-

@@ -91,6 +91,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_providerhub_defaultrollout" "defaultRollout" {
+///   properties = {
+///     specification = {
+///       canary = {
+///         skip_regions = ["eastus2euap"]
+///       }
+///       expedited_rollout = {
+///         enabled = true
+///       }
+///       rest_of_the_world_group_two = {
+///         wait_duration = "PT4H"
+///       }
+///     }
+///   }
+///   provider_namespace = "Microsoft.Contoso"
+///   rollout_name       = "2020week10"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +133,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.providerhub.inputs.DefaultRolloutSpecificationCanaryArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.DefaultRolloutSpecificationExpeditedRolloutArgs;
 /// import com.pulumi.azurenative.providerhub.inputs.DefaultRolloutSpecificationRestOfTheWorldGroupTwoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

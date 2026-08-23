@@ -1,7 +1,7 @@
 /// [Required] Type of the job's entry point.
 enum SparkJobEntryType {
-  valueSparkJobPythonEntry("SparkJobPythonEntry"),
-  valueSparkJobScalaEntry("SparkJobScalaEntry");
+  sparkJobPythonEntry("SparkJobPythonEntry"),
+  sparkJobScalaEntry("SparkJobScalaEntry");
 
   const SparkJobEntryType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SparkJobEntryType {
     throw ArgumentError('Unknown SparkJobEntryType value: $value');
   }
 }
-

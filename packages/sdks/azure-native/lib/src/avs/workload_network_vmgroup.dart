@@ -67,6 +67,26 @@ import 'workload_network_vmgroup_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_workloadnetworkvmgroup" "workloadNetworkVMGroup" {
+///   display_name        = "vmGroup1"
+///   members             = ["564d43da-fefc-2a3b-1d92-42855622fa50"]
+///   private_cloud_name  = "cloud1"
+///   resource_group_name = "group1"
+///   revision            = 1
+///   vm_group_id         = "vmGroup1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +95,8 @@ import 'workload_network_vmgroup_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkVMGroup;
 /// import com.pulumi.azurenative.avs.WorkloadNetworkVMGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -126,7 +146,7 @@ import 'workload_network_vmgroup_args.dart';
 ///     members=["564d43da-fefc-2a3b-1d92-42855622fa50"],
 ///     private_cloud_name="cloud1",
 ///     resource_group_name="group1",
-///     revision=1,
+///     revision=float(1),
 ///     vm_group_id="vmGroup1")
 ///
 /// ```

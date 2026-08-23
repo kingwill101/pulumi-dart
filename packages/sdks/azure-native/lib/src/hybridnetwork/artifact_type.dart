@@ -18,4 +18,3 @@ enum ArtifactType {
     throw ArgumentError('Unknown ArtifactType value: $value');
   }
 }
-

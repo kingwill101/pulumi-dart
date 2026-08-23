@@ -65,4 +65,3 @@ class AwsRoute53HostedZonePropertiesResponse {
     );
   }
 }
-

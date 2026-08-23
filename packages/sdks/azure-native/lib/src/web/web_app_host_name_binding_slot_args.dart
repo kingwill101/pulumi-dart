@@ -27,11 +27,11 @@ class WebAppHostNameBindingSlotArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// App Service app name.
   final pulumi.Input<String>? siteName;
-  /// Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
+  /// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   final pulumi.Input<String> slot;
   /// SSL type
   final pulumi.Input<SslState>? sslState;
@@ -47,9 +47,9 @@ class WebAppHostNameBindingSlotArgs {
   /// [hostNameType] Hostname type.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] App Service app name.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
+  /// [slot] Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   /// [sslState] SSL type
   /// [thumbprint] SSL certificate thumbprint
   const WebAppHostNameBindingSlotArgs({
@@ -104,4 +104,3 @@ class WebAppHostNameBindingSlotArgs {
     );
   }
 }
-

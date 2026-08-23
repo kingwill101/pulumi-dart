@@ -94,6 +94,36 @@ import 'tunnel_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_tunnelpolicy" "tunnelPolicy" {
+///   domains {
+///     id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain1"
+///   }
+///   domains {
+///     id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain2"
+///   }
+///   profile_name        = "profile1"
+///   resource_group_name = "RG"
+///   target_groups {
+///     id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/targetgroups/targetgroup1"
+///   }
+///   target_groups {
+///     id = "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/targetgroups/targetgroup2"
+///   }
+///   tunnel_policy_name = "tunnelPolicy1"
+///   tunnel_type        = "HttpConnect"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +134,8 @@ import 'tunnel_policy_args.dart';
 /// import com.pulumi.azurenative.cdn.TunnelPolicyArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ActivatedResourceReferenceArgs;
 /// import com.pulumi.azurenative.cdn.inputs.ResourceReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

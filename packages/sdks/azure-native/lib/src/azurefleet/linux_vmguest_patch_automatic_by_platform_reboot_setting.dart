@@ -18,4 +18,3 @@ enum LinuxVMGuestPatchAutomaticByPlatformRebootSetting {
     throw ArgumentError('Unknown LinuxVMGuestPatchAutomaticByPlatformRebootSetting value: $value');
   }
 }
-

@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -97,6 +97,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mission_approval" "approval" {
+///   approval_name = "TestApprovals"
+///   approvers {
+///     action_performed  = "Approved"
+///     approver_entra_id = "00000000-0000-0000-0000-000000000000"
+///     last_updated_at   = "2023-03-17T20:43:17.760Z"
+///   }
+///   created_at              = "2023-03-17T20:43:17.760Z"
+///   grandparent_resource_id = "/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/testrg/providers/Microsoft.Mission/communities/TestMyCommunity"
+///   parent_resource_id      = "/subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/microsoft.mission/virtualenclaves/TestMyEnclave"
+///   request_metadata = {
+///     approval_callback_payload = "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\"\n}"
+///     approval_callback_route   = "approvalCallback"
+///     approval_status           = "Approved"
+///     resource_action           = "string"
+///   }
+///   resource_uri     = "subscriptions/c64f6eca-bdc5-4bc2-88d6-f8f1dc23f86c/resourceGroups/TestMyRg/providers/Microsoft.Mission/enclaveconnections/TestMyEnclaveConnection"
+///   state_changed_at = "2023-03-17T20:43:17.760Z"
+///   ticket_id        = "string"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +139,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.mission.ApprovalArgs;
 /// import com.pulumi.azurenative.mission.inputs.ApproverArgs;
 /// import com.pulumi.azurenative.mission.inputs.RequestMetadataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

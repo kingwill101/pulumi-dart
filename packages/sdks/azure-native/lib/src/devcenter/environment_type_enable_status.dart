@@ -15,4 +15,3 @@ enum EnvironmentTypeEnableStatus {
     throw ArgumentError('Unknown EnvironmentTypeEnableStatus value: $value');
   }
 }
-

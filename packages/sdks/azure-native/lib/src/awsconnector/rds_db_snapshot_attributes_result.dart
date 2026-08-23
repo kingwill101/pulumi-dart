@@ -112,6 +112,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_rdsdbsnapshotattributesresult" "rdsDbSnapshotAttributesResult" {
+///   location = "luzcqukssqazokzghltlzp"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "wctkioaluqun"
+///     aws_account_id = "za"
+///     aws_properties = {
+///       db_snapshot_attributes = [{
+///         "attributeName"   = "yszcujemf"
+///         "attributeValues" = ["cffn"]
+///       }]
+///       db_snapshot_identifier = "hgeztauvapideyaajrbafqyup"
+///     }
+///     aws_region        = "ndsijffpilnosnrldocuqrlxitjpv"
+///     aws_source_schema = "w"
+///     aws_tags = {
+///       "key3566" = "heyaatumbeog"
+///     }
+///     public_cloud_connectors_resource_id = "bmzbcvocakxlkqxmewfdruhn"
+///     public_cloud_resource_name          = "kuhhovfpzvgapi"
+///   }
+///   resource_group_name = "rgrdsDBSnapshotAttributesResult"
+///   tags = {
+///     "key3873" = "mmtaqjm"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +160,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsDbSnapshotAttributesResultArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDBSnapshotAttributesResultPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsDBSnapshotAttributesResultPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

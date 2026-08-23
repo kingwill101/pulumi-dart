@@ -27,4 +27,3 @@ enum DataSetKind {
     throw ArgumentError('Unknown DataSetKind value: $value');
   }
 }
-

@@ -21,4 +21,3 @@ enum Protocol {
     throw ArgumentError('Unknown Protocol value: $value');
   }
 }
-

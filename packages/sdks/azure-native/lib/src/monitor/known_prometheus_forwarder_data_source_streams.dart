@@ -13,4 +13,3 @@ enum KnownPrometheusForwarderDataSourceStreams {
     throw ArgumentError('Unknown KnownPrometheusForwarderDataSourceStreams value: $value');
   }
 }
-

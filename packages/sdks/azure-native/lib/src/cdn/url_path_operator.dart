@@ -24,4 +24,3 @@ enum UrlPathOperator {
     throw ArgumentError('Unknown UrlPathOperator value: $value');
   }
 }
-

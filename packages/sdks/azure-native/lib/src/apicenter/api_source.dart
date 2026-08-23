@@ -73,6 +73,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apicenter_apisource" "apiSource" {
+///   api_source_name = "contoso-api-management"
+///   azure_api_management_source = {
+///     msi_resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-resources/providers/Microsoft.ManagedIdentity/userAssignedIdentities/contoso-identity"
+///     resource_id     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-resources/providers/Microsoft.ApiManagement/service/contoso"
+///   }
+///   import_specification   = "ondemand"
+///   resource_group_name    = "contoso-resources"
+///   service_name           = "contoso"
+///   target_environment_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-resources/providers/Microsoft.ApiCenter/services/contoso/workspaces/default/environments/azure-api-management"
+///   target_lifecycle_stage = "design"
+///   workspace_name         = "default"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.apicenter.ApiSource;
 /// import com.pulumi.azurenative.apicenter.ApiSourceArgs;
 /// import com.pulumi.azurenative.apicenter.inputs.AzureApiManagementSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

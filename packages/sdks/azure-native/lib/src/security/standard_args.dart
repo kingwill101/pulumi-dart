@@ -19,15 +19,15 @@ class StandardArgs {
   final pulumi.Input<String>? displayName;
   /// Kind of the resource
   final pulumi.Input<String>? kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Security Standard key - unique key for the standard type
   final pulumi.Input<String>? standardId;
   /// List of all standard supported clouds.
   final pulumi.Input<List<StandardSupportedClouds>>? supportedClouds;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [StandardArgs].
@@ -36,11 +36,11 @@ class StandardArgs {
   /// [description] description of the standard
   /// [displayName] display name of the standard, equivalent to the standardId
   /// [kind] Kind of the resource
-  /// [location] Location where the resource is stored
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [location] The geo-location where the resource lives
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [standardId] The Security Standard key - unique key for the standard type
   /// [supportedClouds] List of all standard supported clouds.
-  /// [tags] A list of key value pairs that describe the resource.
+  /// [tags] Resource tags.
   const StandardArgs({
     this.category,
     this.components,
@@ -84,4 +84,3 @@ class StandardArgs {
     );
   }
 }
-

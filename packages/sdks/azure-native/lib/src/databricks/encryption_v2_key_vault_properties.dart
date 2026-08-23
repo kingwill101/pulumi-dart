@@ -37,4 +37,3 @@ class EncryptionV2KeyVaultProperties {
     );
   }
 }
-

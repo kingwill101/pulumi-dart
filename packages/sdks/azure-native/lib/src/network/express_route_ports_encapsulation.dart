@@ -15,4 +15,3 @@ enum ExpressRoutePortsEncapsulation {
     throw ArgumentError('Unknown ExpressRoutePortsEncapsulation value: $value');
   }
 }
-

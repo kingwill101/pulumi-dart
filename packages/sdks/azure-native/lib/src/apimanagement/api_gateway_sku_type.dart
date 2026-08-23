@@ -16,4 +16,3 @@ enum ApiGatewaySkuType {
     throw ArgumentError('Unknown ApiGatewaySkuType value: $value');
   }
 }
-

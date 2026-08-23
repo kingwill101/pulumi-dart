@@ -20,7 +20,7 @@ class KubernetesOnlineDeploymentResponse {
   final pulumi.Input<DataCollectorResponse>? dataCollector;
   /// Description of the endpoint deployment.
   final pulumi.Input<String>? description;
-  /// If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+  /// Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
   final pulumi.Input<String>? egressPublicNetworkAccess;
   /// Enum to determine endpoint compute type.
   /// Expected value is 'Kubernetes'.
@@ -59,7 +59,7 @@ class KubernetesOnlineDeploymentResponse {
   /// [containerResourceRequirements] The resource requirements for the container (cpu and memory).
   /// [dataCollector] The mdc configuration, we disable mdc when it's null.
   /// [description] Description of the endpoint deployment.
-  /// [egressPublicNetworkAccess] If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+  /// [egressPublicNetworkAccess] Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
   /// [endpointComputeType] Enum to determine endpoint compute type.
   /// [environmentId] ARM resource ID or AssetId of the environment specification for the endpoint deployment.
   /// [environmentVariables] Environment variables configuration for the deployment.
@@ -143,4 +143,3 @@ class KubernetesOnlineDeploymentResponse {
     );
   }
 }
-

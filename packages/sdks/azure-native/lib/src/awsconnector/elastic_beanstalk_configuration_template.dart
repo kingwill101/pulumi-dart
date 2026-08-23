@@ -130,6 +130,55 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_elasticbeanstalkconfigurationtemplate" "elasticBeanstalkConfigurationTemplate" {
+///   location = "zzrrrcfibirqbvvfobbhmdfw"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "jnsnkdqnxzjvxlitgjtzledfqpwd"
+///     aws_account_id = "eedsjtwxrqaahfnsjwvrxnzerudq"
+///     aws_properties = {
+///       application_name = "cectxkagk"
+///       description      = "f"
+///       environment_id   = "irk"
+///       option_settings = [{
+///         "namespace"    = "wqnwnaqljiuphwrslzv"
+///         "optionName"   = "jutnzi"
+///         "resourceName" = "cxxafxqqeda"
+///         "value"        = "auojwoarknbok"
+///       }]
+///       platform_arn        = "shxv"
+///       solution_stack_name = "ytiftttvorpjlkspzoqxnv"
+///       source_configuration = {
+///         application_name = "gxvqqvuzcufyvzeguns"
+///         template_name    = "eajnqnevlyqrtelgeur"
+///       }
+///       template_name = "fjixtzihey"
+///     }
+///     aws_region        = "timidysdqvjb"
+///     aws_source_schema = "ehzbquzqlgoysykmpkmfu"
+///     aws_tags = {
+///       "key1871" = "ndxlqvxztqkkkqewenirmqdtxweey"
+///     }
+///     public_cloud_connectors_resource_id = "ezxdkcckcqzvdvfjkioqer"
+///     public_cloud_resource_name          = "lgdolpeaabdfynczxxux"
+///   }
+///   resource_group_name = "rgelasticBeanstalkConfigurationTemplate"
+///   tags = {
+///     "key9826" = "pcgafzfic"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +190,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ElasticBeanstalkConfigurationTemplatePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsElasticBeanstalkConfigurationTemplatePropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SourceConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

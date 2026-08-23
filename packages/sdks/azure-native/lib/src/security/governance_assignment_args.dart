@@ -12,9 +12,9 @@ import 'remediation_eta.dart';
 class GovernanceAssignmentArgs {
   /// The additional data for the governance assignment - e.g. links to ticket (optional), see example
   final pulumi.Input<GovernanceAssignmentAdditionalData>? additionalData;
-  /// The Assessment Key - A unique key for the assessment type
+  /// The assessment key of the governance assignment.
   final pulumi.Input<String> assessmentName;
-  /// The governance assignment key - the assessment key of the required governance assignment
+  /// The governance assignment key.
   final pulumi.Input<String>? assignmentKey;
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
   final pulumi.Input<GovernanceEmailNotification>? governanceEmailNotification;
@@ -26,19 +26,19 @@ class GovernanceAssignmentArgs {
   final pulumi.Input<String> remediationDueDate;
   /// The ETA (estimated time of arrival) for remediation (optional), see example
   final pulumi.Input<RemediationEta>? remediationEta;
-  /// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// The scope of the governance assignment.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GovernanceAssignmentArgs].
   /// [additionalData] The additional data for the governance assignment - e.g. links to ticket (optional), see example
-  /// [assessmentName] The Assessment Key - A unique key for the assessment type
-  /// [assignmentKey] The governance assignment key - the assessment key of the required governance assignment
+  /// [assessmentName] The assessment key of the governance assignment.
+  /// [assignmentKey] The governance assignment key.
   /// [governanceEmailNotification] The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
   /// [isGracePeriod] Defines whether there is a grace period on the governance assignment
   /// [owner] The Owner for the governance assignment - e.g. user@contoso.com - see example
   /// [remediationDueDate] The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
   /// [remediationEta] The ETA (estimated time of arrival) for remediation (optional), see example
-  /// [scope] The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// [scope] The scope of the governance assignment.
   const GovernanceAssignmentArgs({
     this.additionalData,
     required this.assessmentName,
@@ -79,4 +79,3 @@ class GovernanceAssignmentArgs {
     );
   }
 }
-

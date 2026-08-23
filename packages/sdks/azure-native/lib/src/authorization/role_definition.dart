@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_definition_args.dart';
+import 'system_data_response.dart';
 
 /// Role definition.
 ///
@@ -53,6 +54,22 @@ import 'role_definition_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_roledefinition" "roleDefinition" {
+///   role_definition_id = "roleDefinitionId"
+///   scope              = "scope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +78,8 @@ import 'role_definition_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.RoleDefinition;
 /// import com.pulumi.azurenative.authorization.RoleDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -136,7 +153,7 @@ class RoleDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> createdOn;
   /// The role definition description.
   late final pulumi.Output<String?> description;
-  /// The role definition name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Role definition permissions.
   late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
@@ -144,7 +161,9 @@ class RoleDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String?> roleName;
   /// The role type.
   late final pulumi.Output<String?> roleType;
-  /// The role definition type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Id of the user who updated the assignment
   late final pulumi.Output<String> updatedBy;
@@ -174,6 +193,7 @@ class RoleDefinition extends pulumi.CustomResource {
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     roleName = registerOutput<String?>('roleName');
     roleType = registerOutput<String?>('roleType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedBy = registerOutput<String>('updatedBy');
     updatedOn = registerOutput<String>('updatedOn');

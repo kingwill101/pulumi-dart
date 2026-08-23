@@ -13,14 +13,14 @@ class GetExposureControlFeatureValueByFactoryArgs {
   final pulumi.Input<String>? featureName;
   /// The feature type.
   final pulumi.Input<String>? featureType;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetExposureControlFeatureValueByFactoryArgs].
   /// [factoryName] The factory name.
   /// [featureName] The feature name.
   /// [featureType] The feature type.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetExposureControlFeatureValueByFactoryArgs({
     required this.factoryName,
     this.featureName,
@@ -46,4 +46,3 @@ class GetExposureControlFeatureValueByFactoryArgs {
     );
   }
 }
-

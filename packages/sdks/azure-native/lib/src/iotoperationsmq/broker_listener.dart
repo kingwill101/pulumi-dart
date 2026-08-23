@@ -192,6 +192,80 @@ import 'tls_cert_method_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsmq_brokerlistener" "brokerListener" {
+///   authentication_enabled = true
+///   authorization_enabled  = true
+///   broker_name            = "HGF6WIy6oHv756MjW0JRLILF"
+///   broker_ref             = "ikuszpfycikq"
+///   extended_location = {
+///     name = "an"
+///     type = "CustomLocation"
+///   }
+///   listener_name       = "XGEP"
+///   location            = "dppbdcpstouifyko"
+///   mq_name             = "Z1-2BCdNY4JO--84"
+///   node_port           = 34375
+///   port                = 19791
+///   resource_group_name = "rgiotoperationsmq"
+///   service_name        = "euxa"
+///   service_type        = "clusterIp"
+///   tags                = {}
+///   tls = {
+///     automatic = {
+///       duration = "rv"
+///       issuer_ref = {
+///         group = "wxydv"
+///         kind  = "birgjwuxfjcvyqe"
+///         name  = "krmdlovyynymtvgffaveker"
+///       }
+///       private_key = {
+///         algorithm       = "wwewfsddymjefuhxzqybwvay"
+///         rotation_policy = "jxmpyvfneckopjiakjtous"
+///         size            = 63427
+///       }
+///       renew_before = "dexxoqqkgyofhkbk"
+///       san = {
+///         dns = ["nknzptgqgjvbkgzv"]
+///         ip  = ["jpdkemham"]
+///       }
+///       secret_name      = "hquvygbuueerkspqqktviya"
+///       secret_namespace = "aevwndhcnfxitdjykp"
+///     }
+///     key_vault = {
+///       vault = {
+///         credentials = {
+///           service_principal_local_secret_name = "wuimjwpbhoglbsxxa"
+///         }
+///         directory_id = "eyjniptiykzcgbzok"
+///         name         = "lxmwfan"
+///       }
+///       vault_ca_chain_secret = {
+///         name    = "bmectskddmpjxnsogwooexj"
+///         version = "unjfbf"
+///       }
+///       vault_cert = {
+///         name    = "bmectskddmpjxnsogwooexj"
+///         version = "unjfbf"
+///       }
+///     }
+///     manual = {
+///       secret_name      = "fezcl"
+///       secret_namespace = "ozhayajoooingoczovfusqyilin"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +285,8 @@ import 'tls_cert_method_response.dart';
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.KeyVaultCredentialsPropertiesArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.KeyVaultSecretObjectArgs;
 /// import com.pulumi.azurenative.iotoperationsmq.inputs.ManualCertMethodArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

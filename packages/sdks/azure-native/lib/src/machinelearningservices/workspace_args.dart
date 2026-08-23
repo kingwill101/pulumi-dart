@@ -29,7 +29,6 @@ class WorkspaceArgs {
   final pulumi.Input<String>? discoveryUrl;
   final pulumi.Input<bool>? enableDataIsolation;
   final pulumi.Input<bool>? enableServiceSideCMKEncryption;
-  /// The encryption settings of Azure ML workspace.
   final pulumi.Input<EncryptionProperty>? encryption;
   /// Settings for feature store type workspace.
   final pulumi.Input<FeatureStoreSettings>? featureStoreSettings;
@@ -38,14 +37,13 @@ class WorkspaceArgs {
   /// The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
   final pulumi.Input<bool>? hbiWorkspace;
   final pulumi.Input<String>? hubResourceId;
-  /// The identity of the resource.
+  /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentity>? identity;
   /// The compute name for image build
   final pulumi.Input<String>? imageBuildCompute;
   /// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
   final pulumi.Input<String>? keyVault;
   final pulumi.Input<String>? kind;
-  /// Specifies the location of the resource.
   final pulumi.Input<String>? location;
   /// Managed Network settings for a machine learning workspace.
   final pulumi.Input<ManagedNetworkSettings>? managedNetwork;
@@ -57,25 +55,24 @@ class WorkspaceArgs {
   final pulumi.Input<String>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Settings for serverless compute created in the workspace
+  /// Settings for serverless compute in a workspace
   final pulumi.Input<ServerlessComputeSettings>? serverlessComputeSettings;
   /// The service managed resource settings.
   final pulumi.Input<ServiceManagedResourcesSettings>? serviceManagedResourcesSettings;
   /// The list of shared private link resources in this workspace.
   final pulumi.Input<List<SharedPrivateLinkResource>>? sharedPrivateLinkResources;
-  /// The sku of the workspace.
+  /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   final pulumi.Input<Sku>? sku;
   /// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
   final pulumi.Input<String>? storageAccount;
   /// The auth mode used for accessing the system datastores of the workspace.
   final pulumi.Input<String>? systemDatastoresAuthMode;
-  /// Contains resource tags defined as key/value pairs.
   final pulumi.Input<Map<String, String>>? tags;
   /// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
   final pulumi.Input<bool>? v1LegacyMode;
   /// WorkspaceHub's configuration object.
   final pulumi.Input<WorkspaceHubConfig>? workspaceHubConfig;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
@@ -87,31 +84,31 @@ class WorkspaceArgs {
   /// [discoveryUrl] Url for the discovery service to identify regional endpoints for machine learning experimentation services
   /// [enableDataIsolation] Optional.
   /// [enableServiceSideCMKEncryption] Optional.
-  /// [encryption] The encryption settings of Azure ML workspace.
+  /// [encryption] Optional.
   /// [featureStoreSettings] Settings for feature store type workspace.
   /// [friendlyName] The friendly name for this workspace. This name in mutable
   /// [hbiWorkspace] The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
   /// [hubResourceId] Optional.
-  /// [identity] The identity of the resource.
+  /// [identity] The managed service identities assigned to this resource.
   /// [imageBuildCompute] The compute name for image build
   /// [keyVault] ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
   /// [kind] Optional.
-  /// [location] Specifies the location of the resource.
+  /// [location] Optional.
   /// [managedNetwork] Managed Network settings for a machine learning workspace.
   /// [primaryUserAssignedIdentity] The user assigned identity resource id that represents the workspace identity.
   /// [provisionNetworkNow] Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
   /// [publicNetworkAccess] Whether requests from Public Network are allowed.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [serverlessComputeSettings] Settings for serverless compute created in the workspace
+  /// [serverlessComputeSettings] Settings for serverless compute in a workspace
   /// [serviceManagedResourcesSettings] The service managed resource settings.
   /// [sharedPrivateLinkResources] The list of shared private link resources in this workspace.
-  /// [sku] The sku of the workspace.
+  /// [sku] Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   /// [storageAccount] ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
   /// [systemDatastoresAuthMode] The auth mode used for accessing the system datastores of the workspace.
-  /// [tags] Contains resource tags defined as key/value pairs.
+  /// [tags] Optional.
   /// [v1LegacyMode] Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
   /// [workspaceHubConfig] WorkspaceHub's configuration object.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const WorkspaceArgs({
     this.allowPublicAccessWhenBehindVnet,
     this.applicationInsights,
@@ -224,4 +221,3 @@ class WorkspaceArgs {
     );
   }
 }
-

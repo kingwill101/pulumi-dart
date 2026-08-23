@@ -1,8 +1,8 @@
 /// A description of why the `status` has its value
 enum StatusReason {
-  valueExpired("Expired"),
-  valueUserRequested("UserRequested"),
-  valueNewerRequestInitiated("NewerRequestInitiated");
+  expired("Expired"),
+  userRequested("UserRequested"),
+  newerRequestInitiated("NewerRequestInitiated");
 
   const StatusReason(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum StatusReason {
     throw ArgumentError('Unknown StatusReason value: $value');
   }
 }
-

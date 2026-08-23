@@ -1,9 +1,9 @@
 /// Update classifications included in the software update configuration.
 enum LinuxUpdateClasses {
-  valueUnclassified("Unclassified"),
-  valueCritical("Critical"),
-  valueSecurity("Security"),
-  valueOther("Other");
+  unclassified("Unclassified"),
+  critical("Critical"),
+  security("Security"),
+  other("Other");
 
   const LinuxUpdateClasses(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum LinuxUpdateClasses {
     throw ArgumentError('Unknown LinuxUpdateClasses value: $value');
   }
 }
-

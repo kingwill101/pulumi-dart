@@ -14,4 +14,3 @@ enum RefillPolicy {
     throw ArgumentError('Unknown RefillPolicy value: $value');
   }
 }
-

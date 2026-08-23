@@ -15,7 +15,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 ///
-/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +76,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_snapshot" "snapshot" {
+///   creation_data = {
+///     create_option      = "Import"
+///     source_uri         = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
+///     storage_account_id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   snapshot_name       = "mySnapshot1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Snapshot;
 /// import com.pulumi.azurenative.compute.SnapshotArgs;
 /// import com.pulumi.azurenative.compute.inputs.CreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,6 +240,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_snapshot" "snapshot" {
+///   creation_data = {
+///     create_option = "Import"
+///     source_uri    = "https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   snapshot_name       = "mySnapshot1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +270,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Snapshot;
 /// import com.pulumi.azurenative.compute.SnapshotArgs;
 /// import com.pulumi.azurenative.compute.inputs.CreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,6 +399,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_snapshot" "snapshot" {
+///   creation_data = {
+///     create_option           = "CopyFromSanSnapshot"
+///     elastic_san_resource_id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   snapshot_name       = "mySnapshot"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +429,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Snapshot;
 /// import com.pulumi.azurenative.compute.SnapshotArgs;
 /// import com.pulumi.azurenative.compute.inputs.CreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -496,6 +560,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_snapshot" "snapshot" {
+///   creation_data = {
+///     create_option                    = "CopyStart"
+///     provisioned_bandwidth_copy_speed = "Enhanced"
+///     source_resource_id               = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot1"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   snapshot_name       = "mySnapshot2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -505,8 +591,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Snapshot;
 /// import com.pulumi.azurenative.compute.SnapshotArgs;
 /// import com.pulumi.azurenative.compute.inputs.CreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -638,6 +724,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_snapshot" "snapshot" {
+///   creation_data = {
+///     create_option      = "CopyStart"
+///     source_resource_id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot1"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   snapshot_name       = "mySnapshot2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -647,8 +754,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Snapshot;
 /// import com.pulumi.azurenative.compute.SnapshotArgs;
 /// import com.pulumi.azurenative.compute.inputs.CreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -776,6 +883,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_snapshot" "snapshot" {
+///   creation_data = {
+///     create_option      = "Copy"
+///     source_resource_id = "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot1"
+///   }
+///   location            = "West US"
+///   resource_group_name = "myResourceGroup"
+///   snapshot_name       = "mySnapshot2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -785,8 +913,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.Snapshot;
 /// import com.pulumi.azurenative.compute.SnapshotArgs;
 /// import com.pulumi.azurenative.compute.inputs.CreationDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

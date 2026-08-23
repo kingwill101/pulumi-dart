@@ -30,4 +30,3 @@ class L2NetworkAttachmentConfiguration {
     );
   }
 }
-

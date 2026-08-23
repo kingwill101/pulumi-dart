@@ -1,7 +1,7 @@
 /// The repository type of the source control
 enum RepoType {
-  valueGithub("Github"),
-  valueDevOps("DevOps");
+  github("Github"),
+  azureDevOps("AzureDevOps");
 
   const RepoType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum RepoType {
     throw ArgumentError('Unknown RepoType value: $value');
   }
 }
-

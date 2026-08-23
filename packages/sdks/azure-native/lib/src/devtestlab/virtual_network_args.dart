@@ -17,15 +17,15 @@ class VirtualNetworkArgs {
   final pulumi.Input<String>? externalProviderResourceId;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the VirtualNetwork
+  /// The name of the virtual network.
   final pulumi.Input<String>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The subnet overrides of the virtual network.
   final pulumi.Input<List<SubnetOverride>>? subnetOverrides;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [VirtualNetworkArgs].
@@ -33,11 +33,11 @@ class VirtualNetworkArgs {
   /// [description] The description of the virtual network.
   /// [externalProviderResourceId] The Microsoft.Network resource identifier of the virtual network.
   /// [labName] The name of the lab.
-  /// [location] The location of the resource.
-  /// [name] The name of the VirtualNetwork
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the virtual network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnetOverrides] The subnet overrides of the virtual network.
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   const VirtualNetworkArgs({
     this.allowedSubnets,
     this.description,
@@ -78,4 +78,3 @@ class VirtualNetworkArgs {
     );
   }
 }
-

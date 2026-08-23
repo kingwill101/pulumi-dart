@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'datastore_response.dart';
-import 'identity_response.dart';
+import 'identity_machine_learning_datastore_response.dart';
 import 'machine_learning_datastore_args.dart';
-import 'sku_response.dart';
+import 'sku_machine_learning_datastore_response.dart';
 
 /// Machine Learning datastore object wrapped into ARM resource envelope.
 ///
@@ -66,6 +66,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   client_id           = "233d7008-b157-4354-88d1-ba191f06a900"
+///   client_secret       = "vdvgdvdvdv"
+///   data_store_type     = "adls"
+///   datastore_name      = "adlsDatastore"
+///   resource_group_name = "acjain-mleastUS2"
+///   store_name          = "stanley"
+///   tenant_id           = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,6 +233,29 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   account_name        = "nicksadlsgen2storage"
+///   client_id           = "233d7008-b157-4354-88d1-ba191f06a900"
+///   client_secret       = "vdegbvedgeg"
+///   data_store_type     = "adls-gen2"
+///   datastore_name      = "adlsgen2Datastore"
+///   file_system         = "testfs1"
+///   resource_group_name = "acjain-mleastUS2"
+///   tenant_id           = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +264,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,6 +401,27 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   account_key         = "wddrfewfewsgewgrrwegwreg"
+///   account_name        = "acjainmleastus9484093746"
+///   container_name      = "azureml-blobstore-5da947c5-53aa-41a5-bb2b-074074e73b7"
+///   data_store_type     = "blob"
+///   datastore_name      = "blobDatastore"
+///   resource_group_name = "acjain-mleastUS2"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -364,8 +430,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -487,6 +553,24 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   data_store_type     = "dbfs"
+///   datastore_name      = "blobDatastore"
+///   resource_group_name = "acjain-mleastUS2"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -495,8 +579,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -612,6 +696,27 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   account_key         = "wddrfewfewsgewgrrwegwreg"
+///   account_name        = "acjainmleastus9484093746"
+///   data_store_type     = "file"
+///   datastore_name      = "fileDatastore"
+///   resource_group_name = "acjain-mleastUS2"
+///   share_name          = "azureml-filestore-5da947c5-53aa-41a5-bb2b-074074e73b76"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -620,8 +725,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -751,6 +856,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   data_store_type     = "mysqldb"
+///   database_name       = "dataset"
+///   datastore_name      = "mySqlDatastore"
+///   password            = "<password>"
+///   resource_group_name = "acjain-mleastUS2"
+///   server_name         = "dataset-mysql-srv"
+///   user_id             = "demo_user@dataset-mysql-srv"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -759,8 +886,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -894,6 +1021,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   data_store_type     = "psqldb"
+///   database_name       = "dataset"
+///   datastore_name      = "postgreSqlDatastore"
+///   password            = "<password>"
+///   resource_group_name = "acjain-mleastUS2"
+///   server_name         = "dataset-pgsql-srv"
+///   user_id             = "demo_user@dataset-pgsql-srv"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -902,8 +1051,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1037,6 +1186,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_machinelearningdatastore" "machineLearningDatastore" {
+///   data_store_type     = "sqldb"
+///   database_name       = "dataset"
+///   datastore_name      = "sqlDatastore"
+///   password            = "<password>"
+///   resource_group_name = "acjain-mleastUS2"
+///   server_name         = "dataset-azsql-srv"
+///   user_name           = "demo_user"
+///   workspace_name      = "acjain-mleastUS2"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1045,8 +1216,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastore;
 /// import com.pulumi.azurenative.machinelearningservices.MachineLearningDatastoreArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1137,7 +1308,7 @@ class MachineLearningDatastore extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The identity of the resource.
-  late final pulumi.Output<IdentityResponse?> identity;
+  late final pulumi.Output<IdentityMachineLearningDatastoreResponse?> identity;
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
   /// Specifies the name of the resource.
@@ -1145,7 +1316,7 @@ class MachineLearningDatastore extends pulumi.CustomResource {
   /// Datastore properties
   late final pulumi.Output<DatastoreResponse> properties;
   /// The sku of the workspace.
-  late final pulumi.Output<SkuResponse?> sku;
+  late final pulumi.Output<SkuMachineLearningDatastoreResponse?> sku;
   /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the type of the resource.
@@ -1166,11 +1337,11 @@ class MachineLearningDatastore extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityMachineLearningDatastoreResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityMachineLearningDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     properties = registerOutput<DatastoreResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuMachineLearningDatastoreResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuMachineLearningDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

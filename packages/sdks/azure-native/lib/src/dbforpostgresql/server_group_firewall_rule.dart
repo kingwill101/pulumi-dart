@@ -60,6 +60,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupfirewallrule" "serverGroupFirewallRule" {
+///   cluster_name        = "pgtestsvc4"
+///   end_ip_address      = "255.255.255.255"
+///   firewall_rule_name  = "rule1"
+///   resource_group_name = "TestGroup"
+///   start_ip_address    = "0.0.0.0"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupFirewallRule;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

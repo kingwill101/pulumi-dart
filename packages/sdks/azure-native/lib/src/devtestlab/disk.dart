@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_args.dart';
+import 'system_data_response.dart';
 
 /// A Disk.
 ///
@@ -61,6 +62,27 @@ import 'disk_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_disk" "disk" {
+///   disk_size_gi_b      = 1023
+///   disk_type           = "Standard"
+///   lab_name            = "{labName}"
+///   leased_by_lab_vm_id = "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/virtualmachines/vmName"
+///   name                = "{diskName}"
+///   resource_group_name = "resourceGroupName"
+///   user_name           = "{userId}"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +91,8 @@ import 'disk_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.devtestlab.Disk;
 /// import com.pulumi.azurenative.devtestlab.DiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,19 +192,21 @@ class Disk extends pulumi.CustomResource {
   late final pulumi.Output<String?> hostCaching;
   /// The resource ID of the VM to which this disk is leased.
   late final pulumi.Output<String?> leasedByLabVmId;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
   /// When backed by managed disk, this is the ID of the compute disk resource.
   late final pulumi.Output<String?> managedDiskId;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
   /// When backed by a blob, the storage account where the blob is.
   late final pulumi.Output<String?> storageAccountId;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -214,6 +238,7 @@ class Disk extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

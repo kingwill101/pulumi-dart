@@ -3,9 +3,9 @@ import 'authorization_server_args.dart';
 
 /// External OAuth authorization server settings.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -104,6 +104,39 @@ import 'authorization_server_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_authorizationserver" "authorizationServer" {
+///   authorization_endpoint       = "https://www.contoso.com/oauth2/auth"
+///   authorization_methods        = ["GET"]
+///   authsid                      = "newauthServer"
+///   bearer_token_sending_methods = ["authorizationHeader"]
+///   client_id                    = "1"
+///   client_registration_endpoint = "https://www.contoso.com/apps"
+///   client_secret                = "2"
+///   default_scope                = "read write"
+///   description                  = "test server"
+///   display_name                 = "test2"
+///   grant_types                  = ["authorizationCode", "implicit"]
+///   resource_group_name          = "rg1"
+///   resource_owner_password      = "pwd"
+///   resource_owner_username      = "un"
+///   service_name                 = "apimService1"
+///   support_state                = true
+///   token_endpoint               = "https://www.contoso.com/oauth2/token"
+///   use_in_api_documentation     = true
+///   use_in_test_console          = false
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +145,8 @@ import 'authorization_server_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.AuthorizationServer;
 /// import com.pulumi.azurenative.apimanagement.AuthorizationServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

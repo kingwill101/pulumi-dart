@@ -1,13 +1,13 @@
 /// Specifies the data type
 enum FeatureDataType {
-  valueString("String"),
-  valueInteger("Integer"),
-  valueLong("Long"),
-  valueFloat("Float"),
-  valueDouble("Double"),
-  valueBinary("Binary"),
-  valueDatetime("Datetime"),
-  valueBoolean("Boolean");
+  string_("String"),
+  integer("Integer"),
+  long("Long"),
+  float("Float"),
+  double_("Double"),
+  binary("Binary"),
+  datetime("Datetime"),
+  boolean("Boolean");
 
   const FeatureDataType(this.wireValue);
   final String wireValue;
@@ -21,4 +21,3 @@ enum FeatureDataType {
     throw ArgumentError('Unknown FeatureDataType value: $value');
   }
 }
-

@@ -19,21 +19,21 @@ class GetSecurityConnectorResult {
   final String? hierarchyIdentifier;
   /// The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
   final String hierarchyIdentifierTrialEndDate;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Kind of the resource
   final String? kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   final String? location;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// A collection of offerings for the security connector.
   final List<CspmMonitorAwsOfferingResponse>? offerings;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetSecurityConnectorResult].
@@ -43,14 +43,14 @@ class GetSecurityConnectorResult {
   /// [etag] Entity tag is used for comparing two or more entities from the same requested resource.
   /// [hierarchyIdentifier] The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
   /// [hierarchyIdentifierTrialEndDate] The date on which the trial period will end, if applicable. Trial period exists for 30 days after upgrading to payed offerings.
-  /// [id] Resource Id
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of the resource
-  /// [location] Location where the resource is stored
-  /// [name] Resource name
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [offerings] A collection of offerings for the security connector.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  /// [tags] A list of key value pairs that describe the resource.
-  /// [type] Resource type
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSecurityConnectorResult({
     required this.azureApiVersion,
     this.environmentData,
@@ -106,4 +106,3 @@ class GetSecurityConnectorResult {
     );
   }
 }
-

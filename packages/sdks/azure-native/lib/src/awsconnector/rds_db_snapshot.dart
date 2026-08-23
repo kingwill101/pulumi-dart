@@ -187,6 +187,81 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_rdsdbsnapshot" "rdsDbSnapshot" {
+///   location = "ojgfpymabvdpgvknjfvaecf"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "nqbzizmcdbvsukdqhrdcg"
+///     aws_account_id = "gimhekqewbnatvrjiewxszwd"
+///     aws_properties = {
+///       allocated_storage                   = 10
+///       availability_zone                   = "kayjlaciv"
+///       db_instance_identifier              = "sgszwrakxshyzice"
+///       db_snapshot_arn                     = "xdjclnyyjohzhbe"
+///       db_snapshot_identifier              = "yeju"
+///       db_system_id                        = "fzavlejrrugjcdxaetdvvhg"
+///       dbi_resource_id                     = "jwxsvn"
+///       dedicated_log_volume                = true
+///       encrypted                           = true
+///       engine                              = "xkjeovmjwpoycteiloodhzsyly"
+///       engine_version                      = "ycrrezzqweeassrgalnqmcuhnk"
+///       iam_database_authentication_enabled = true
+///       instance_create_time                = "2024-10-08T03:49:38.588Z"
+///       iops                                = 7
+///       kms_key_id                          = "lblvrtpgcfkwhhylmefrzvf"
+///       license_model                       = "wbcqlk"
+///       master_username                     = "ahyhxkpctusl"
+///       multi_tenant                        = true
+///       option_group_name                   = "zxrglvxvd"
+///       original_snapshot_create_time       = "2024-10-08T03:49:38.589Z"
+///       percent_progress                    = 19
+///       port                                = 11
+///       processor_features = [{
+///         "name"  = "sidrqdpoqaeon"
+///         "value" = "elyxiifmhltlaxelehotutvcfcmqii"
+///       }]
+///       snapshot_create_time          = "2024-10-08T03:49:38.589Z"
+///       snapshot_database_time        = "2024-10-08T03:49:38.589Z"
+///       snapshot_target               = "uvkzzwcpvrfjw"
+///       snapshot_type                 = "iiydwpezfwmejabymfqpelcifgzng"
+///       source_db_snapshot_identifier = "awxakkqcvryuhqdbunoz"
+///       source_region                 = "vrldyuopcfabthhgxvpnybgtfdi"
+///       status                        = "mwktzwjlfzywwkgrjhl"
+///       storage_throughput            = 1
+///       storage_type                  = "i"
+///       tag_list = [{
+///         "key"   = "mzixrqjicfutjmwsvhfrku"
+///         "value" = "gbyocywzau"
+///       }]
+///       tde_credential_arn = "eyoddxncbnezesemvnxd"
+///       timezone           = "coraguclwgryiiynjhpes"
+///       vpc_id             = "fpweamshtdzkrbhcqenn"
+///     }
+///     aws_region        = "qk"
+///     aws_source_schema = "sfaw"
+///     aws_tags = {
+///       "key7020" = "vzcdzxrdsvgurfovupzzumr"
+///     }
+///     public_cloud_connectors_resource_id = "ptkmloddhzkiphtdnmdhlx"
+///     public_cloud_resource_name          = "uoecdcxuxiu"
+///   }
+///   resource_group_name = "rgrdsDBSnapshot"
+///   tags = {
+///     "key752" = "byquognttsccsvhrdhc"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +272,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.RdsDbSnapshotArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RdsDBSnapshotPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRdsDBSnapshotPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

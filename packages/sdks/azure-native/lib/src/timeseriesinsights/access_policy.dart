@@ -66,6 +66,26 @@ import 'access_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_accesspolicy" "accessPolicy" {
+///   access_policy_name  = "ap1"
+///   description         = "some description"
+///   environment_name    = "env1"
+///   principal_object_id = "aGuid"
+///   resource_group_name = "rg1"
+///   roles               = ["Reader"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +94,8 @@ import 'access_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.timeseriesinsights.AccessPolicy;
 /// import com.pulumi.azurenative.timeseriesinsights.AccessPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

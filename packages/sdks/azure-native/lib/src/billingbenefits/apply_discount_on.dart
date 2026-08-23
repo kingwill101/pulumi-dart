@@ -16,4 +16,3 @@ enum ApplyDiscountOn {
     throw ArgumentError('Unknown ApplyDiscountOn value: $value');
   }
 }
-

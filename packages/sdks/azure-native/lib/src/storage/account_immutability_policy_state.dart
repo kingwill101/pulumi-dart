@@ -16,4 +16,3 @@ enum AccountImmutabilityPolicyState {
     throw ArgumentError('Unknown AccountImmutabilityPolicyState value: $value');
   }
 }
-

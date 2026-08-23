@@ -67,6 +67,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_management_managementgroup" "managementGroup" {
+///   details = {
+///     parent = {
+///       id = "/providers/Microsoft.Management/managementGroups/RootGroup"
+///     }
+///   }
+///   display_name = "ChildGroup"
+///   group_id     = "ChildGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +98,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.management.ManagementGroupArgs;
 /// import com.pulumi.azurenative.management.inputs.CreateManagementGroupDetailsArgs;
 /// import com.pulumi.azurenative.management.inputs.CreateParentGroupInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

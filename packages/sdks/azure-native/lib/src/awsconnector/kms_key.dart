@@ -131,6 +131,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_kmskey" "kmsKey" {
+///   location = "qozbasr"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "qszqxzva"
+///     aws_account_id = "rvkcvpmljvwdryvsugsuc"
+///     aws_properties = {
+///       arn                                = "qglsfyxssylnrh"
+///       bypass_policy_lockout_safety_check = true
+///       description                        = "mjtmquqbhnvjw"
+///       enable_key_rotation                = true
+///       enabled                            = true
+///       key_id                             = "hgwon"
+///       key_policy                         = {}
+///       key_spec                           = "ECC_NIST_P256"
+///       key_usage                          = "ENCRYPT_DECRYPT"
+///       multi_region                       = true
+///       origin                             = "AWS_KMS"
+///       pending_window_in_days             = 7
+///       rotation_period_in_days            = 4
+///       tags = [{
+///         "key"   = "eprsfobey"
+///         "value" = "lcaeaqxughlzgzhbbi"
+///       }]
+///     }
+///     aws_region        = "hvyzzutginnqrhgkyyripyqhqkofm"
+///     aws_source_schema = "cvatoa"
+///     aws_tags = {
+///       "key8656" = "ctsbcnfhcvojqkiouaoyaetkdt"
+///     }
+///     public_cloud_connectors_resource_id = "tsbeayhnreovxnkbtbrvnuielziq"
+///     public_cloud_resource_name          = "edkcxntzxplnpl"
+///   }
+///   resource_group_name = "rgkmsKey"
+///   tags = {
+///     "key3909" = "dxto"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +191,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.KmsKeyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.KmsKeyPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsKmsKeyPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

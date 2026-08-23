@@ -16,4 +16,3 @@ enum SAPConfigurationType {
     throw ArgumentError('Unknown SAPConfigurationType value: $value');
   }
 }
-

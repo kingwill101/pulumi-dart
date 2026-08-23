@@ -15,4 +15,3 @@ enum ManifestGenerationMode {
     throw ArgumentError('Unknown ManifestGenerationMode value: $value');
   }
 }
-

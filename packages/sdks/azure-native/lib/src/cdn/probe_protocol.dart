@@ -16,4 +16,3 @@ enum ProbeProtocol {
     throw ArgumentError('Unknown ProbeProtocol value: $value');
   }
 }
-

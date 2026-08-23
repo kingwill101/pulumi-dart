@@ -21,4 +21,3 @@ enum ReplicationRegion {
     throw ArgumentError('Unknown ReplicationRegion value: $value');
   }
 }
-

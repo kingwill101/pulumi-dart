@@ -19,6 +19,8 @@ class DeploymentProperties {
   final pulumi.Input<String>? raiPolicyName;
   /// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
   final pulumi.Input<DeploymentScaleSettings>? scaleSettings;
+  /// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+  final pulumi.Input<String>? spilloverDeploymentName;
   /// Deployment model version upgrade option.
   final pulumi.Input<String>? versionUpgradeOption;
 
@@ -29,6 +31,7 @@ class DeploymentProperties {
   /// [parentDeploymentName] The name of parent deployment.
   /// [raiPolicyName] The name of RAI policy.
   /// [scaleSettings] Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
+  /// [spilloverDeploymentName] Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
   /// [versionUpgradeOption] Deployment model version upgrade option.
   const DeploymentProperties({
     this.capacitySettings,
@@ -37,6 +40,7 @@ class DeploymentProperties {
     this.parentDeploymentName,
     this.raiPolicyName,
     this.scaleSettings,
+    this.spilloverDeploymentName,
     this.versionUpgradeOption,
   });
 
@@ -48,6 +52,7 @@ class DeploymentProperties {
       'parentDeploymentName': ?parentDeploymentName,
       'raiPolicyName': ?raiPolicyName,
       'scaleSettings': ?pulumi.Input.mapOptionalInputValue<DeploymentScaleSettings, Map<String, dynamic>>(scaleSettings, (value) => value.toMap()),
+      'spilloverDeploymentName': ?spilloverDeploymentName,
       'versionUpgradeOption': ?versionUpgradeOption,
     };
   }
@@ -60,8 +65,8 @@ class DeploymentProperties {
       parentDeploymentName: (() { final guardedValue = map['parentDeploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       raiPolicyName: (() { final guardedValue = map['raiPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleSettings: (() { final guardedValue = map['scaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentScaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spilloverDeploymentName: (() { final guardedValue = map['spilloverDeploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionUpgradeOption: (() { final guardedValue = map['versionUpgradeOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

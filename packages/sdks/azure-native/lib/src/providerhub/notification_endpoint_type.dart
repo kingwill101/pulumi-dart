@@ -15,4 +15,3 @@ enum NotificationEndpointType {
     throw ArgumentError('Unknown NotificationEndpointType value: $value');
   }
 }
-

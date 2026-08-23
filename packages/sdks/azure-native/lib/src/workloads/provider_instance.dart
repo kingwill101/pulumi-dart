@@ -84,6 +84,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbName"            = "dbName"
+///     "dbPassword"        = "password"
+///     "dbPasswordUri"     = ""
+///     "dbPort"            = "dbPort"
+///     "dbUsername"        = "username"
+///     "hostname"          = "hostname"
+///     "providerType"      = "Db2"
+///     "sapSid"            = "SID"
+///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     "sslPreference"     = "ServerCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +121,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -267,6 +296,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbName"        = "dbName"
+///     "dbPassword"    = "password"
+///     "dbPasswordUri" = ""
+///     "dbPort"        = "dbPort"
+///     "dbUsername"    = "username"
+///     "hostname"      = "hostname"
+///     "providerType"  = "Db2"
+///     "sapSid"        = "SID"
+///     "sslPreference" = "RootCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +332,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,6 +503,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbPassword"        = "****"
+///     "dbPasswordUri"     = ""
+///     "dbPort"            = "5912"
+///     "dbUsername"        = "user"
+///     "hostname"          = "hostname"
+///     "providerType"      = "MsSqlServer"
+///     "sapSid"            = "sid"
+///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     "sslPreference"     = "ServerCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -454,8 +539,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -623,6 +708,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbPassword"    = "****"
+///     "dbPasswordUri" = ""
+///     "dbPort"        = "5912"
+///     "dbUsername"    = "user"
+///     "hostname"      = "hostname"
+///     "providerType"  = "MsSqlServer"
+///     "sapSid"        = "sid"
+///     "sslPreference" = "RootCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -631,8 +743,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -790,6 +902,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "prometheusUrl"     = "http://192.168.0.0:9090/metrics"
+///     "providerType"      = "PrometheusOS"
+///     "sapSid"            = "SID"
+///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     "sslPreference"     = "ServerCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -798,8 +934,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -943,6 +1079,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "prometheusUrl" = "http://192.168.0.0:9090/metrics"
+///     "providerType"  = "PrometheusOS"
+///     "sapSid"        = "SID"
+///     "sslPreference" = "RootCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -951,8 +1110,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1104,6 +1263,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbName"            = "dbName"
+///     "dbPassword"        = "password"
+///     "dbPasswordUri"     = ""
+///     "dbPort"            = "dbPort"
+///     "dbUsername"        = "username"
+///     "hostname"          = "hostname"
+///     "providerType"      = "Oracle"
+///     "sapSid"            = "SID"
+///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     "sslPreference"     = "ServerCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1112,8 +1300,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1283,6 +1471,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "clusterName"       = "clusterName"
+///     "hostname"          = "hostname"
+///     "prometheusUrl"     = "http://192.168.0.0:9090/metrics"
+///     "providerType"      = "PrometheusHaCluster"
+///     "sid"               = "sid"
+///     "sslCertificateUri" = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     "sslPreference"     = "ServerCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1291,8 +1505,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1448,6 +1662,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "clusterName"   = "clusterName"
+///     "hostname"      = "hostname"
+///     "prometheusUrl" = "http://192.168.0.0:9090/metrics"
+///     "providerType"  = "PrometheusHaCluster"
+///     "sid"           = "sid"
+///     "sslPreference" = "RootCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1456,8 +1695,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1621,6 +1860,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbName"                   = "db"
+///     "dbPassword"               = "****"
+///     "dbPasswordUri"            = ""
+///     "dbUsername"               = "user"
+///     "hostname"                 = "name"
+///     "instanceNumber"           = "00"
+///     "providerType"             = "SapHana"
+///     "sapSid"                   = "SID"
+///     "sqlPort"                  = "0000"
+///     "sslCertificateUri"        = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     "sslHostNameInCertificate" = "xyz.domain.com"
+///     "sslPreference"            = "ServerCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1629,8 +1899,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1816,6 +2086,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbName"                   = "db"
+///     "dbPassword"               = "****"
+///     "dbPasswordUri"            = ""
+///     "dbUsername"               = "user"
+///     "hostname"                 = "name"
+///     "instanceNumber"           = "00"
+///     "providerType"             = "SapHana"
+///     "sapSid"                   = "SID"
+///     "sqlPort"                  = "0000"
+///     "sslHostNameInCertificate" = "xyz.domain.com"
+///     "sslPreference"            = "RootCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1824,8 +2124,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2014,6 +2314,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "providerType"       = "SapNetWeaver"
+///     "sapClientId"        = "111"
+///     "sapHostFileEntries" = ["127.0.0.1 name fqdn"]
+///     "sapHostname"        = "name"
+///     "sapInstanceNr"      = "00"
+///     "sapPassword"        = "****"
+///     "sapPasswordUri"     = ""
+///     "sapPortNumber"      = "1234"
+///     "sapSid"             = "SID"
+///     "sapUsername"        = "username"
+///     "sslCertificateUri"  = "https://storageaccount.blob.core.windows.net/containername/filename"
+///     "sslPreference"      = "ServerCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2022,8 +2353,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2215,6 +2546,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "providerType"       = "SapNetWeaver"
+///     "sapClientId"        = "111"
+///     "sapHostFileEntries" = ["127.0.0.1 name fqdn"]
+///     "sapHostname"        = "name"
+///     "sapInstanceNr"      = "00"
+///     "sapPassword"        = "****"
+///     "sapPasswordUri"     = ""
+///     "sapPortNumber"      = "1234"
+///     "sapSid"             = "SID"
+///     "sapUsername"        = "username"
+///     "sslPreference"      = "RootCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2223,8 +2584,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2403,6 +2764,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_providerinstance" "providerInstance" {
+///   monitor_name           = "mySapMonitor"
+///   provider_instance_name = "myProviderInstance"
+///   provider_settings = {
+///     "dbName"        = "dbName"
+///     "dbPassword"    = "password"
+///     "dbPasswordUri" = ""
+///     "dbPort"        = "dbPort"
+///     "dbUsername"    = "username"
+///     "hostname"      = "hostname"
+///     "providerType"  = "Oracle"
+///     "sapSid"        = "SID"
+///     "sslPreference" = "RootCertificate"
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2411,8 +2800,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.workloads.ProviderInstance;
 /// import com.pulumi.azurenative.workloads.ProviderInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

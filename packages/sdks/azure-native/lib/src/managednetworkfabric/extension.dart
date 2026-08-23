@@ -15,4 +15,3 @@ enum Extension {
     throw ArgumentError('Unknown Extension value: $value');
   }
 }
-

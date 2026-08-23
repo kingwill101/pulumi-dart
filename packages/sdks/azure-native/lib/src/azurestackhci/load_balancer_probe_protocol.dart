@@ -15,4 +15,3 @@ enum LoadBalancerProbeProtocol {
     throw ArgumentError('Unknown LoadBalancerProbeProtocol value: $value');
   }
 }
-

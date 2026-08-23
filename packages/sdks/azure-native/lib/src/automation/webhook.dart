@@ -5,9 +5,9 @@ import 'webhook_args.dart';
 
 /// Definition of the webhook type.
 ///
-/// Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2015-10-31.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2015-10-31.
 ///
-/// Other available API versions: 2015-10-31, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -72,6 +72,30 @@ import 'webhook_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_webhook" "webhook" {
+///   automation_account_name = "myAutomationAccount33"
+///   expiry_time             = "2018-03-29T22:18:13.7002872Z"
+///   is_enabled              = true
+///   name                    = "TestWebhook"
+///   resource_group_name     = "rg"
+///   runbook = {
+///     name = "TestRunbook"
+///   }
+///   uri          = "<uri>"
+///   webhook_name = "TestWebhook"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +105,8 @@ import 'webhook_args.dart';
 /// import com.pulumi.azurenative.automation.Webhook;
 /// import com.pulumi.azurenative.automation.WebhookArgs;
 /// import com.pulumi.azurenative.automation.inputs.RunbookAssociationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

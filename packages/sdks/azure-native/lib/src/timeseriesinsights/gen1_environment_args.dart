@@ -79,4 +79,3 @@ class Gen1EnvironmentArgs {
     );
   }
 }
-

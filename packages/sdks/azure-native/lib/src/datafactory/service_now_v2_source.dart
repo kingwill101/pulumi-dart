@@ -75,4 +75,3 @@ class ServiceNowV2Source {
     );
   }
 }
-

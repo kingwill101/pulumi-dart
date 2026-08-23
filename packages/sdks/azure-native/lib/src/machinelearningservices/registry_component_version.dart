@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'component_version_response.dart';
+import 'component_version_properties_response.dart';
 import 'registry_component_version_args.dart';
 import 'system_data_response.dart';
 
 /// Azure Resource Manager resource envelope.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -24,7 +24,7 @@ import 'system_data_response.dart';
 ///     var registryComponentVersion = new AzureNative.MachineLearningServices.RegistryComponentVersion("registryComponentVersion", new()
 ///     {
 ///         ComponentName = "string",
-///         ComponentVersionProperties = new AzureNative.MachineLearningServices.Inputs.ComponentVersionArgs
+///         Properties = new AzureNative.MachineLearningServices.Inputs.ComponentVersionPropertiesArgs
 ///         {
 ///             ComponentSpec = new Dictionary<string, object?>
 ///             {
@@ -63,7 +63,7 @@ import 'system_data_response.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewRegistryComponentVersion(ctx, "registryComponentVersion", &machinelearningservices.RegistryComponentVersionArgs{
 /// 			ComponentName: pulumi.String("string"),
-/// 			ComponentVersionProperties: &machinelearningservices.ComponentVersionTypeArgs{
+/// 			Properties: &machinelearningservices.ComponentVersionPropertiesArgs{
 /// 				ComponentSpec: pulumi.Any(map[string]interface{}{
 /// 					"8ced901b-d826-477d-bfef-329da9672513": nil,
 /// 				}),
@@ -89,6 +89,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_registrycomponentversion" "registryComponentVersion" {
+///   component_name = "string"
+///   properties = {
+///     component_spec = {
+///       "8ced901b-d826-477d-bfef-329da9672513" = null
+///     }
+///     description  = "string"
+///     is_anonymous = false
+///     properties = {
+///       "string" = "string"
+///     }
+///     tags = {
+///       "string" = "string"
+///     }
+///   }
+///   registry_name       = "my-aml-registry"
+///   resource_group_name = "test-rg"
+///   version             = "string"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,9 +128,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryComponentVersion;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryComponentVersionArgs;
-/// import com.pulumi.azurenative.machinelearningservices.inputs.ComponentVersionArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.ComponentVersionPropertiesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -113,7 +144,7 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var registryComponentVersion = new RegistryComponentVersion("registryComponentVersion", RegistryComponentVersionArgs.builder()
 ///             .componentName("string")
-///             .componentVersionProperties(ComponentVersionArgs.builder()
+///             .properties(ComponentVersionPropertiesArgs.builder()
 ///                 .componentSpec(Map.of("8ced901b-d826-477d-bfef-329da9672513", null))
 ///                 .description("string")
 ///                 .isAnonymous(false)
@@ -136,7 +167,7 @@ import 'system_data_response.dart';
 ///
 /// const registryComponentVersion = new azure_native.machinelearningservices.RegistryComponentVersion("registryComponentVersion", {
 ///     componentName: "string",
-///     componentVersionProperties: {
+///     properties: {
 ///         componentSpec: {
 ///             "8ced901b-d826-477d-bfef-329da9672513": null,
 ///         },
@@ -162,7 +193,7 @@ import 'system_data_response.dart';
 ///
 /// registry_component_version = azure_native.machinelearningservices.RegistryComponentVersion("registryComponentVersion",
 ///     component_name="string",
-///     component_version_properties={
+///     properties={
 ///         "component_spec": {
 ///             "8ced901b-d826-477d-bfef-329da9672513": None,
 ///         },
@@ -187,7 +218,7 @@ import 'system_data_response.dart';
 ///     type: azure-native:machinelearningservices:RegistryComponentVersion
 ///     properties:
 ///       componentName: string
-///       componentVersionProperties:
+///       properties:
 ///         componentSpec:
 ///           8ced901b-d826-477d-bfef-329da9672513: null
 ///         description: string
@@ -215,10 +246,10 @@ import 'system_data_response.dart';
 class RegistryComponentVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<ComponentVersionResponse> componentVersionProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<ComponentVersionPropertiesResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -239,8 +270,8 @@ class RegistryComponentVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    componentVersionProperties = registerOutput<ComponentVersionResponse>('componentVersionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComponentVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    properties = registerOutput<ComponentVersionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComponentVersionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

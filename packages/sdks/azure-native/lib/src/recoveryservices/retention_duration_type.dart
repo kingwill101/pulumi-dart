@@ -19,4 +19,3 @@ enum RetentionDurationType {
     throw ArgumentError('Unknown RetentionDurationType value: $value');
   }
 }
-

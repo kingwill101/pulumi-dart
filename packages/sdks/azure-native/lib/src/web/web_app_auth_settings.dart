@@ -3,9 +3,9 @@ import 'web_app_auth_settings_args.dart';
 
 /// Configuration settings for the Azure App Service Authentication / Authorization feature.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -76,6 +76,30 @@ import 'web_app_auth_settings_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_web_webappauthsettings" "webAppAuthSettings" {
+///   allowed_external_redirect_urls = ["sitef6141.customdomain.net", "sitef6141.customdomain.info"]
+///   client_id                      = "42d795a9-8abb-4d06-8534-39528af40f8e.apps.googleusercontent.com"
+///   default_provider               = "Google"
+///   enabled                        = true
+///   name                           = "sitef6141"
+///   resource_group_name            = "testrg123"
+///   runtime_version                = "~1"
+///   token_refresh_extension_hours  = 120
+///   token_store_enabled            = true
+///   unauthenticated_client_action  = "RedirectToLoginPage"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +108,8 @@ import 'web_app_auth_settings_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.web.WebAppAuthSettings;
 /// import com.pulumi.azurenative.web.WebAppAuthSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,7 +178,7 @@ import 'web_app_auth_settings_args.dart';
 ///     name="sitef6141",
 ///     resource_group_name="testrg123",
 ///     runtime_version="~1",
-///     token_refresh_extension_hours=120,
+///     token_refresh_extension_hours=float(120),
 ///     token_store_enabled=True,
 ///     unauthenticated_client_action=azure_native.web.UnauthenticatedClientAction.REDIRECT_TO_LOGIN_PAGE)
 ///

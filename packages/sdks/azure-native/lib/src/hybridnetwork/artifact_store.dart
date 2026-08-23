@@ -77,6 +77,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_artifactstore" "artifactStore" {
+///   artifact_store_name = "TestArtifactStore"
+///   location            = "eastus"
+///   properties = {
+///     managed_resource_group_configuration = {
+///       location = "eastus"
+///       name     = "testRg"
+///     }
+///     replication_strategy = "SingleReplication"
+///     store_type           = "AzureContainerRegistry"
+///   }
+///   publisher_name      = "TestPublisher"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +113,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.ArtifactStoreArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactStorePropertiesFormatArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactStorePropertiesFormatManagedResourceGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -248,6 +274,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_artifactstore" "artifactStore" {
+///   artifact_store_name = "TestArtifactStore"
+///   location            = "eastus"
+///   properties = {
+///     backing_resource_public_network_access = "Disabled"
+///     managed_resource_group_configuration = {
+///       location = "eastus"
+///       name     = "testRg"
+///     }
+///     replication_strategy = "SingleReplication"
+///     store_type           = "AzureContainerRegistry"
+///   }
+///   publisher_name      = "TestPublisher"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -258,8 +311,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.ArtifactStoreArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactStorePropertiesFormatArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactStorePropertiesFormatManagedResourceGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -423,6 +476,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_artifactstore" "artifactStore" {
+///   artifact_store_name = "TestArtifactStore"
+///   location            = "eastus"
+///   properties = {
+///     backing_resource_public_network_access = "Enabled"
+///     managed_resource_group_configuration = {
+///       location = "eastus"
+///       name     = "testRg"
+///     }
+///     replication_strategy = "SingleReplication"
+///     store_type           = "AzureStorageAccount"
+///   }
+///   publisher_name      = "TestPublisher"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -433,8 +513,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.ArtifactStoreArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactStorePropertiesFormatArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactStorePropertiesFormatManagedResourceGroupConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -3,8 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'append_variable_activity_response.dart';
 import 'parameter_specification_response.dart';
+import 'pipeline_folder_response.dart';
 import 'pipeline_policy_response.dart';
-import 'pipeline_response_folder.dart';
+import 'system_data_response.dart';
 import 'variable_specification_response.dart';
 
 /// Result data returned by getPipeline.
@@ -19,21 +20,23 @@ class GetPipelineResult {
   final int? concurrency;
   /// The description of the pipeline.
   final String? description;
-  /// Etag identifies change in the resource.
+  /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   final String etag;
   /// The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
-  final PipelineResponseFolder? folder;
-  /// The resource identifier.
+  final PipelineFolderResponse? folder;
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// The resource name.
+  /// The name of the resource
   final String name;
   /// List of parameters for pipeline.
   final Map<String, ParameterSpecificationResponse>? parameters;
   /// Pipeline Policy.
   final PipelinePolicyResponse? policy;
   /// Dimensions emitted by Pipeline.
-  final Map<String, dynamic>? runDimensions;
-  /// The resource type.
+  final dynamic runDimensions;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// List of variables for pipeline.
   final Map<String, VariableSpecificationResponse>? variables;
@@ -44,14 +47,15 @@ class GetPipelineResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [concurrency] The max number of concurrent runs for the pipeline.
   /// [description] The description of the pipeline.
-  /// [etag] Etag identifies change in the resource.
+  /// [etag] "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   /// [folder] The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
-  /// [id] The resource identifier.
-  /// [name] The resource name.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
   /// [parameters] List of parameters for pipeline.
   /// [policy] Pipeline Policy.
   /// [runDimensions] Dimensions emitted by Pipeline.
-  /// [type] The resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [variables] List of variables for pipeline.
   const GetPipelineResult({
     this.activities,
@@ -66,6 +70,7 @@ class GetPipelineResult {
     this.parameters,
     this.policy,
     this.runDimensions,
+    required this.systemData,
     required this.type,
     this.variables,
   });
@@ -84,6 +89,7 @@ class GetPipelineResult {
       'parameters': ?(() { final guardedValue = parameters; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'policy': ?policy?.toMap(),
       'runDimensions': ?runDimensions,
+      'systemData': systemData.toMap(),
       'type': type,
       'variables': ?(() { final guardedValue = variables; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<VariableSpecificationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
@@ -97,15 +103,15 @@ class GetPipelineResult {
       concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return guardedValue as int; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
-      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return PipelineResponseFolder.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return PipelineFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: map['id'] as String,
       name: map['name'] as String,
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return PipelinePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      runDimensions: (() { final guardedValue = map['runDimensions']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); })(),
+      runDimensions: (() { final guardedValue = map['runDimensions']; if (guardedValue == null) return null; return guardedValue; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<VariableSpecificationResponse>(guardedValue, (value) => VariableSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

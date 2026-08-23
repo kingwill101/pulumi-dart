@@ -16,4 +16,3 @@ enum DefaultPrincipalsModificationKind {
     throw ArgumentError('Unknown DefaultPrincipalsModificationKind value: $value');
   }
 }
-

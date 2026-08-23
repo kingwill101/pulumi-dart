@@ -142,4 +142,3 @@ class VirtualNetworkPeering {
     );
   }
 }
-

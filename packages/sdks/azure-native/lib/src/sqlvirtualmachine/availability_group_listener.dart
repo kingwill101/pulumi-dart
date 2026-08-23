@@ -93,6 +93,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_availabilitygrouplistener" "availabilityGroupListener" {
+///   availability_group_listener_name = "agl-test"
+///   availability_group_name          = "ag-test"
+///   load_balancer_configurations {
+///     load_balancer_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb-test"
+///     private_ip_address = {
+///       ip_address         = "10.1.0.112"
+///       subnet_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
+///     }
+///     probe_port                    = 59983
+///     sql_virtual_machine_instances = ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/testvm2", "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/testvm3"]
+///   }
+///   port                           = 1433
+///   resource_group_name            = "testrg"
+///   sql_virtual_machine_group_name = "testvmgroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +131,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.AvailabilityGroupListenerArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.LoadBalancerConfigurationArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.PrivateIPAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,6 +329,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sqlvirtualmachine_availabilitygrouplistener" "availabilityGroupListener" {
+///   availability_group_listener_name = "agl-test"
+///   availability_group_name          = "ag-test"
+///   multi_subnet_ip_configurations {
+///     private_ip_address = {
+///       ip_address         = "10.0.0.112"
+///       subnet_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
+///     }
+///     sql_virtual_machine_instance = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/testvm2"
+///   }
+///   multi_subnet_ip_configurations {
+///     private_ip_address = {
+///       ip_address         = "10.0.1.112"
+///       subnet_resource_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/alternate"
+///     }
+///     sql_virtual_machine_instance = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/testvm1"
+///   }
+///   port                           = 1433
+///   resource_group_name            = "testrg"
+///   sql_virtual_machine_group_name = "testvmgroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +372,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.sqlvirtualmachine.AvailabilityGroupListenerArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.MultiSubnetIpConfigurationArgs;
 /// import com.pulumi.azurenative.sqlvirtualmachine.inputs.PrivateIPAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

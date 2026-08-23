@@ -16,4 +16,3 @@ enum ImportSpecificationOptions {
     throw ArgumentError('Unknown ImportSpecificationOptions value: $value');
   }
 }
-

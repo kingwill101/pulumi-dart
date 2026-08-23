@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getArtifactSource.
 class GetArtifactSourceResult {
@@ -15,11 +16,11 @@ class GetArtifactSourceResult {
   final String? displayName;
   /// The folder containing artifacts.
   final String? folderPath;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final String? location;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// The provisioning status of the resource.
   final String provisioningState;
@@ -29,9 +30,11 @@ class GetArtifactSourceResult {
   final String? sourceType;
   /// Indicates if the artifact source is enabled (values: Enabled, Disabled).
   final String? status;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -45,15 +48,16 @@ class GetArtifactSourceResult {
   /// [createdDate] The artifact source's creation date.
   /// [displayName] The artifact source's display name.
   /// [folderPath] The folder containing artifacts.
-  /// [id] The identifier of the resource.
-  /// [location] The location of the resource.
-  /// [name] The name of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [provisioningState] The provisioning status of the resource.
   /// [securityToken] The security token to authenticate to the artifact source.
   /// [sourceType] The artifact source's type.
   /// [status] Indicates if the artifact source is enabled (values: Enabled, Disabled).
-  /// [tags] The tags of the resource.
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [uri] The artifact source's URI.
   const GetArtifactSourceResult({
@@ -70,6 +74,7 @@ class GetArtifactSourceResult {
     this.securityToken,
     this.sourceType,
     this.status,
+    required this.systemData,
     this.tags,
     required this.type,
     required this.uniqueIdentifier,
@@ -91,6 +96,7 @@ class GetArtifactSourceResult {
       'securityToken': ?securityToken,
       'sourceType': ?sourceType,
       'status': ?status,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -113,6 +119,7 @@ class GetArtifactSourceResult {
       securityToken: (() { final guardedValue = map['securityToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
@@ -120,4 +127,3 @@ class GetArtifactSourceResult {
     );
   }
 }
-

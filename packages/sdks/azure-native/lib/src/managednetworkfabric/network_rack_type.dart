@@ -16,4 +16,3 @@ enum NetworkRackType {
     throw ArgumentError('Unknown NetworkRackType value: $value');
   }
 }
-

@@ -18,4 +18,3 @@ enum Mode {
     throw ArgumentError('Unknown Mode value: $value');
   }
 }
-

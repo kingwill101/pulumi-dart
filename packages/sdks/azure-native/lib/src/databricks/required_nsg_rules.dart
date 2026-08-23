@@ -1,8 +1,8 @@
-/// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+/// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
 enum RequiredNsgRules {
-  valueAllRules("AllRules"),
-  valueNoAzureDatabricksRules("NoAzureDatabricksRules"),
-  valueNoAzureServiceRules("NoAzureServiceRules");
+  allRules("AllRules"),
+  noAzureDatabricksRules("NoAzureDatabricksRules"),
+  noAzureServiceRules("NoAzureServiceRules");
 
   const RequiredNsgRules(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum RequiredNsgRules {
     throw ArgumentError('Unknown RequiredNsgRules value: $value');
   }
 }
-

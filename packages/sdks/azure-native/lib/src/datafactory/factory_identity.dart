@@ -7,7 +7,7 @@ class FactoryIdentity {
   /// The identity type.
   final pulumi.Input<String> type;
   /// List of user assigned identities for the factory.
-  final pulumi.Input<Map<String, dynamic>>? userAssignedIdentities;
+  final pulumi.Input<dynamic>? userAssignedIdentities;
 
   /// Creates a new [FactoryIdentity].
   /// [type] The identity type.
@@ -27,8 +27,7 @@ class FactoryIdentity {
   factory FactoryIdentity.fromMap(Map<String, dynamic> map) {
     return FactoryIdentity(
       type: pulumi.Input.fromValue(map['type'] as String),
-      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }
-

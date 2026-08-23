@@ -1,8 +1,8 @@
 /// [Required] The compute type of the endpoint.
 enum EndpointComputeType {
-  valueManaged("Managed"),
-  valueKubernetes("Kubernetes"),
-  valueAzureMLCompute("AzureMLCompute");
+  managed("Managed"),
+  kubernetes("Kubernetes"),
+  azureMLCompute("AzureMLCompute");
 
   const EndpointComputeType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum EndpointComputeType {
     throw ArgumentError('Unknown EndpointComputeType value: $value');
   }
 }
-

@@ -11,13 +11,13 @@ class GetChangeDataCaptureArgs {
   final pulumi.Input<String> changeDataCaptureName;
   /// The factory name.
   final pulumi.Input<String> factoryName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetChangeDataCaptureArgs].
   /// [changeDataCaptureName] The change data capture name.
   /// [factoryName] The factory name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetChangeDataCaptureArgs({
     required this.changeDataCaptureName,
     required this.factoryName,
@@ -40,4 +40,3 @@ class GetChangeDataCaptureArgs {
     );
   }
 }
-

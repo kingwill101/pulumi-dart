@@ -14,4 +14,3 @@ enum ClientAuthenticationMethod {
     throw ArgumentError('Unknown ClientAuthenticationMethod value: $value');
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mount_target_properties_response.dart';
 import 'placement_key_value_pairs_response.dart';
 import 'volume_properties_response_data_protection.dart';
-import 'volume_properties_response_export_policy.dart';
+import 'volume_properties_response_export_policy_v1.dart';
 
 /// Volume resource
 class VolumeGroupVolumePropertiesResponse {
@@ -52,7 +52,7 @@ class VolumeGroupVolumePropertiesResponse {
   /// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
   final pulumi.Input<String>? encryptionKeySource;
   /// Set of export policy rules
-  final pulumi.Input<VolumePropertiesResponseExportPolicy>? exportPolicy;
+  final pulumi.Input<VolumePropertiesResponseExportPolicyV1>? exportPolicy;
   /// Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
   final pulumi.Input<String> fileAccessLogs;
   /// Unique FileSystem Identifier.
@@ -281,7 +281,7 @@ class VolumeGroupVolumePropertiesResponse {
       'enableSubvolumes': ?enableSubvolumes,
       'encrypted': encrypted,
       'encryptionKeySource': ?encryptionKeySource,
-      'exportPolicy': ?pulumi.Input.mapOptionalInputValue<VolumePropertiesResponseExportPolicy, Map<String, dynamic>>(exportPolicy, (value) => value.toMap()),
+      'exportPolicy': ?pulumi.Input.mapOptionalInputValue<VolumePropertiesResponseExportPolicyV1, Map<String, dynamic>>(exportPolicy, (value) => value.toMap()),
       'fileAccessLogs': fileAccessLogs,
       'fileSystemId': fileSystemId,
       'id': id,
@@ -347,7 +347,7 @@ class VolumeGroupVolumePropertiesResponse {
       enableSubvolumes: (() { final guardedValue = map['enableSubvolumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       encryptionKeySource: (() { final guardedValue = map['encryptionKeySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      exportPolicy: (() { final guardedValue = map['exportPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumePropertiesResponseExportPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      exportPolicy: (() { final guardedValue = map['exportPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumePropertiesResponseExportPolicyV1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fileAccessLogs: pulumi.Input.fromValue(map['fileAccessLogs'] as String),
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -391,4 +391,3 @@ class VolumeGroupVolumePropertiesResponse {
     );
   }
 }
-

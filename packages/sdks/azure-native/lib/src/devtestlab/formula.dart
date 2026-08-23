@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'formula_args.dart';
 import 'formula_properties_from_vm_response.dart';
 import 'lab_virtual_machine_creation_parameter_response.dart';
+import 'system_data_response.dart';
 
 /// A formula for creating a VM, specifying an image base and other parameters
 ///
@@ -137,6 +138,56 @@ import 'lab_virtual_machine_creation_parameter_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devtestlab_formula" "formula" {
+///   description = "Formula using a Linux base"
+///   formula_content = {
+///     allow_claim = false
+///     artifacts = [{
+///       "artifactId" = "/artifactsources/{artifactSourceName}/artifacts/linux-install-nodejs"
+///       "parameters" = []
+///     }]
+///     disallow_public_ip_address = true
+///     gallery_image_reference = {
+///       offer     = "0001-com-ubuntu-server-groovy"
+///       os_type   = "Linux"
+///       publisher = "canonical"
+///       sku       = "20_10"
+///       version   = "latest"
+///     }
+///     is_authentication_with_ssh_key = false
+///     lab_subnet_name                = "Dtl{labName}Subnet"
+///     lab_virtual_network_id         = "/virtualnetworks/dtl{labName}"
+///     location                       = "{location}"
+///     network_interface = {
+///       shared_public_ip_address_configuration = {
+///         inbound_nat_rules = [{
+///           "backendPort"       = 22
+///           "transportProtocol" = "Tcp"
+///         }]
+///       }
+///     }
+///     notes        = "Ubuntu Server 20.10"
+///     size         = "Standard_B1ms"
+///     storage_type = "Standard"
+///     user_name    = "user"
+///   }
+///   lab_name            = "{labName}"
+///   location            = "{location}"
+///   name                = "{formulaName}"
+///   resource_group_name = "resourceGroupName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -149,8 +200,8 @@ import 'lab_virtual_machine_creation_parameter_response.dart';
 /// import com.pulumi.azurenative.devtestlab.inputs.GalleryImageReferenceArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.NetworkInterfacePropertiesArgs;
 /// import com.pulumi.azurenative.devtestlab.inputs.SharedPublicIpAddressConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,17 +405,19 @@ class Formula extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The content of the formula.
   late final pulumi.Output<LabVirtualMachineCreationParameterResponse?> formulaContent;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// The name of the resource.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The OS type of the formula.
   late final pulumi.Output<String?> osType;
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
@@ -394,6 +447,7 @@ class Formula extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     osType = registerOutput<String?>('osType');
     provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

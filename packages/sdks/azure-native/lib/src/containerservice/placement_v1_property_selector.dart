@@ -26,4 +26,3 @@ class PlacementV1PropertySelector {
     );
   }
 }
-

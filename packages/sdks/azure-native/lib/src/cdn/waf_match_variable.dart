@@ -22,4 +22,3 @@ enum WafMatchVariable {
     throw ArgumentError('Unknown WafMatchVariable value: $value');
   }
 }
-

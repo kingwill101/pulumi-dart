@@ -1,8 +1,8 @@
 /// Configure STL Decomposition of the time-series target column.
 enum UseStl {
-  valueNone("None"),
-  valueSeason("Season"),
-  valueSeasonTrend("SeasonTrend");
+  none("None"),
+  season("Season"),
+  seasonTrend("SeasonTrend");
 
   const UseStl(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum UseStl {
     throw ArgumentError('Unknown UseStl value: $value');
   }
 }
-

@@ -1,18 +1,18 @@
 /// A valid event source type.
 enum EventSource {
-  valueAssessments("Assessments"),
-  valueAssessmentsSnapshot("AssessmentsSnapshot"),
-  valueSubAssessments("SubAssessments"),
-  valueSubAssessmentsSnapshot("SubAssessmentsSnapshot"),
-  valueAlerts("Alerts"),
-  valueSecureScores("SecureScores"),
-  valueSecureScoresSnapshot("SecureScoresSnapshot"),
-  valueSecureScoreControls("SecureScoreControls"),
-  valueSecureScoreControlsSnapshot("SecureScoreControlsSnapshot"),
-  valueRegulatoryComplianceAssessment("RegulatoryComplianceAssessment"),
-  valueRegulatoryComplianceAssessmentSnapshot("RegulatoryComplianceAssessmentSnapshot"),
-  valueAttackPaths("AttackPaths"),
-  valueAttackPathsSnapshot("AttackPathsSnapshot");
+  assessments("Assessments"),
+  assessmentsSnapshot("AssessmentsSnapshot"),
+  subAssessments("SubAssessments"),
+  subAssessmentsSnapshot("SubAssessmentsSnapshot"),
+  alerts("Alerts"),
+  secureScores("SecureScores"),
+  secureScoresSnapshot("SecureScoresSnapshot"),
+  secureScoreControls("SecureScoreControls"),
+  secureScoreControlsSnapshot("SecureScoreControlsSnapshot"),
+  regulatoryComplianceAssessment("RegulatoryComplianceAssessment"),
+  regulatoryComplianceAssessmentSnapshot("RegulatoryComplianceAssessmentSnapshot"),
+  attackPaths("AttackPaths"),
+  attackPathsSnapshot("AttackPathsSnapshot");
 
   const EventSource(this.wireValue);
   final String wireValue;
@@ -26,4 +26,3 @@ enum EventSource {
     throw ArgumentError('Unknown EventSource value: $value');
   }
 }
-

@@ -1,7 +1,11 @@
-/// Content type.
+/// The content type of a source control path.
 enum ContentType {
-  valueAnalyticsRule("AnalyticsRule"),
-  valueWorkbook("Workbook");
+  analyticsRule("AnalyticsRule"),
+  automationRule("AutomationRule"),
+  huntingQuery("HuntingQuery"),
+  parser("Parser"),
+  playbook("Playbook"),
+  workbook("Workbook");
 
   const ContentType(this.wireValue);
   final String wireValue;
@@ -15,4 +19,3 @@ enum ContentType {
     throw ArgumentError('Unknown ContentType value: $value');
   }
 }
-

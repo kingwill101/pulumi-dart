@@ -68,6 +68,26 @@ import 'nsp_access_rule_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_nspaccessrule" "nspAccessRule" {
+///   access_rule_name                = "accessRule1"
+///   address_prefixes                = ["10.11.0.0/16", "10.10.1.0/24"]
+///   direction                       = "Inbound"
+///   network_security_perimeter_name = "nsp1"
+///   profile_name                    = "profile1"
+///   resource_group_name             = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +96,8 @@ import 'nsp_access_rule_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.NspAccessRule;
 /// import com.pulumi.azurenative.network.NspAccessRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

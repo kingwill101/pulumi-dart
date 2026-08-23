@@ -15,4 +15,3 @@ enum DefaultRetentionMode {
     throw ArgumentError('Unknown DefaultRetentionMode value: $value');
   }
 }
-

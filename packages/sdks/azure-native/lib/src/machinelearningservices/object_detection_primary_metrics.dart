@@ -1,6 +1,6 @@
-/// Primary metric to optimize for this task.
+/// Primary metrics for Image ObjectDetection task.
 enum ObjectDetectionPrimaryMetrics {
-  valueMeanAveragePrecision("MeanAveragePrecision");
+  meanAveragePrecision("MeanAveragePrecision");
 
   const ObjectDetectionPrimaryMetrics(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum ObjectDetectionPrimaryMetrics {
     throw ArgumentError('Unknown ObjectDetectionPrimaryMetrics value: $value');
   }
 }
-

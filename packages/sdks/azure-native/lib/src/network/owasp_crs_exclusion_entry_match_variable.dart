@@ -22,4 +22,3 @@ enum OwaspCrsExclusionEntryMatchVariable {
     throw ArgumentError('Unknown OwaspCrsExclusionEntryMatchVariable value: $value');
   }
 }
-

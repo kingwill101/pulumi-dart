@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListRemediationDeploymentsAtResourceGroupArgs {
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
-  /// Resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Maximum number of records to return.
   final pulumi.Input<int>? top;
 
   /// Creates a new [ListRemediationDeploymentsAtResourceGroupArgs].
   /// [remediationName] The name of the remediation.
-  /// [resourceGroupName] Resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [top] Maximum number of records to return.
   const ListRemediationDeploymentsAtResourceGroupArgs({
     required this.remediationName,
@@ -40,4 +40,3 @@ class ListRemediationDeploymentsAtResourceGroupArgs {
     );
   }
 }
-

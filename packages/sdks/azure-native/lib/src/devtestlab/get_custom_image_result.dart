@@ -5,6 +5,7 @@ import 'custom_image_properties_custom_response.dart';
 import 'custom_image_properties_from_plan_response.dart';
 import 'custom_image_properties_from_vm_response.dart';
 import 'data_disk_storage_type_info_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getCustomImage.
 class GetCustomImageResult {
@@ -20,23 +21,25 @@ class GetCustomImageResult {
   final List<DataDiskStorageTypeInfoResponse>? dataDiskStorageInfo;
   /// The description of the custom image.
   final String? description;
-  /// The identifier of the resource.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
   final bool? isPlanAuthorized;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final String? location;
   /// The Managed Image Id backing the custom image.
   final String? managedImageId;
   /// The Managed Snapshot Id backing the custom image.
   final String? managedSnapshotId;
-  /// The name of the resource.
+  /// The name of the resource
   final String name;
   /// The provisioning status of the resource.
   final String provisioningState;
-  /// The tags of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
@@ -52,15 +55,16 @@ class GetCustomImageResult {
   /// [customImagePlan] Storage information about the plan related to this custom image
   /// [dataDiskStorageInfo] Storage information about the data disks present in the custom image
   /// [description] The description of the custom image.
-  /// [id] The identifier of the resource.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [isPlanAuthorized] Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
-  /// [location] The location of the resource.
+  /// [location] The geo-location where the resource lives
   /// [managedImageId] The Managed Image Id backing the custom image.
   /// [managedSnapshotId] The Managed Snapshot Id backing the custom image.
-  /// [name] The name of the resource.
+  /// [name] The name of the resource
   /// [provisioningState] The provisioning status of the resource.
-  /// [tags] The tags of the resource.
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [vhd] The VHD from which the image is to be created.
   /// [vm] The virtual machine from which the image is to be created.
@@ -78,6 +82,7 @@ class GetCustomImageResult {
     this.managedSnapshotId,
     required this.name,
     required this.provisioningState,
+    required this.systemData,
     this.tags,
     required this.type,
     required this.uniqueIdentifier,
@@ -100,6 +105,7 @@ class GetCustomImageResult {
       'managedSnapshotId': ?managedSnapshotId,
       'name': name,
       'provisioningState': provisioningState,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'uniqueIdentifier': uniqueIdentifier,
@@ -123,6 +129,7 @@ class GetCustomImageResult {
       managedSnapshotId: (() { final guardedValue = map['managedSnapshotId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
@@ -131,4 +138,3 @@ class GetCustomImageResult {
     );
   }
 }
-

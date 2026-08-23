@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01-preview.
 ///
-/// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native standbypool [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2025-03-01, 2025-10-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native standbypool [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -95,6 +95,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_standbypool_standbycontainergrouppool" "standbyContainerGroupPool" {
+///   container_group_properties = {
+///     container_group_profile = {
+///       id       = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/cgProfile"
+///       revision = 1
+///     }
+///     subnet_ids = [{
+///       "id" = "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Network/virtualNetworks/cgSubnet/subnets/cgSubnet"
+///     }]
+///   }
+///   elasticity_profile = {
+///     max_ready_capacity = 688
+///     refill_policy      = "always"
+///   }
+///   location                          = "West US"
+///   resource_group_name               = "rgstandbypool"
+///   standby_container_group_pool_name = "pool"
+///   tags                              = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +137,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.standbypool.inputs.ContainerGroupPropertiesArgs;
 /// import com.pulumi.azurenative.standbypool.inputs.ContainerGroupProfileArgs;
 /// import com.pulumi.azurenative.standbypool.inputs.StandbyContainerGroupPoolElasticityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,14 +210,14 @@ import 'system_data_response.dart';
 ///     container_group_properties={
 ///         "container_group_profile": {
 ///             "id": "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/cgProfile",
-///             "revision": 1,
+///             "revision": float(1),
 ///         },
 ///         "subnet_ids": [{
 ///             "id": "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Network/virtualNetworks/cgSubnet/subnets/cgSubnet",
 ///         }],
 ///     },
 ///     elasticity_profile={
-///         "max_ready_capacity": 688,
+///         "max_ready_capacity": float(688),
 ///         "refill_policy": azure_native.standbypool.RefillPolicy.ALWAYS,
 ///     },
 ///     location="West US",

@@ -1,9 +1,9 @@
 /// Database type (e.g. SqlAzure / MySql).
 enum DatabaseType {
-  valueSqlAzure("SqlAzure"),
-  valueMySql("MySql"),
-  valueLocalMySql("LocalMySql"),
-  valuePostgreSql("PostgreSql");
+  sqlAzure("SqlAzure"),
+  mySql("MySql"),
+  localMySql("LocalMySql"),
+  postgreSql("PostgreSql");
 
   const DatabaseType(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum DatabaseType {
     throw ArgumentError('Unknown DatabaseType value: $value');
   }
 }
-

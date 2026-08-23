@@ -80,6 +80,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datamigration_servicetask" "serviceTask" {
+///   group_name = "DmsSdkRg"
+///   properties = {
+///     "input" = {
+///       "sourceConnectionInfo" = {
+///         "port"       = 3306
+///         "serverName" = "localhost"
+///         "type"       = "MySqlConnectionInfo"
+///       }
+///     }
+///     "taskType" = "ConnectToSource.MySql"
+///   }
+///   service_name = "DmsSdkService"
+///   task_name    = "DmsSdkTask"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +115,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datamigration.ServiceTask;
 /// import com.pulumi.azurenative.datamigration.ServiceTaskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

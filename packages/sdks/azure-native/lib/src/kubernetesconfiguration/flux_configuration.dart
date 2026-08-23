@@ -202,6 +202,80 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kubernetesconfiguration_fluxconfiguration" "fluxConfiguration" {
+///   cluster_name            = "clusterName1"
+///   cluster_resource_name   = "connectedClusters"
+///   cluster_rp              = "Microsoft.Kubernetes"
+///   flux_configuration_name = "srs-fluxconfig"
+///   git_repository = {
+///     https_ca_cert = "ZXhhbXBsZWNlcnRpZmljYXRl"
+///     repository_ref = {
+///       branch = "master"
+///     }
+///     sync_interval_in_seconds = 600
+///     timeout_in_seconds       = 600
+///     url                      = "https://github.com/Azure/arc-k8s-demo"
+///   }
+///   kustomizations = {
+///     "srs-kustomization1" = {
+///       depends_on = []
+///       path       = "./test/path"
+///       post_build = {
+///         substitute = {
+///           "cluster_env"   = "prod"
+///           "replica_count" = "2"
+///         }
+///         substitute_from = [{
+///           "kind"     = "ConfigMap"
+///           "name"     = "cluster-test"
+///           "optional" = true
+///         }]
+///       }
+///       sync_interval_in_seconds = 600
+///       timeout_in_seconds       = 600
+///       wait                     = true
+///     }
+///     "srs-kustomization2" = {
+///       depends_on = ["srs-kustomization1"]
+///       path       = "./other/test/path"
+///       post_build = {
+///         substitute_from = [{
+///           "kind"     = "ConfigMap"
+///           "name"     = "cluster-values"
+///           "optional" = true
+///           }, {
+///           "kind"     = "Secret"
+///           "name"     = "secret-name"
+///           "optional" = false
+///         }]
+///       }
+///       prune                     = false
+///       retry_interval_in_seconds = 600
+///       sync_interval_in_seconds  = 600
+///       timeout_in_seconds        = 600
+///       wait                      = false
+///     }
+///   }
+///   namespace                    = "srs-namespace"
+///   reconciliation_wait_duration = "PT30M"
+///   resource_group_name          = "rg1"
+///   scope                        = "cluster"
+///   source_kind                  = "GitRepository"
+///   suspend                      = false
+///   wait_for_reconciliation      = true
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +286,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.kubernetesconfiguration.FluxConfigurationArgs;
 /// import com.pulumi.azurenative.kubernetesconfiguration.inputs.GitRepositoryDefinitionArgs;
 /// import com.pulumi.azurenative.kubernetesconfiguration.inputs.RepositoryRefDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -381,8 +455,8 @@ import 'system_data_response.dart';
 ///         "repository_ref": {
 ///             "branch": "master",
 ///         },
-///         "sync_interval_in_seconds": 600,
-///         "timeout_in_seconds": 600,
+///         "sync_interval_in_seconds": float(600),
+///         "timeout_in_seconds": float(600),
 ///         "url": "https://github.com/Azure/arc-k8s-demo",
 ///     },
 ///     kustomizations={
@@ -400,8 +474,8 @@ import 'system_data_response.dart';
 ///                     "optional": True,
 ///                 }],
 ///             },
-///             "sync_interval_in_seconds": 600,
-///             "timeout_in_seconds": 600,
+///             "sync_interval_in_seconds": float(600),
+///             "timeout_in_seconds": float(600),
 ///             "wait": True,
 ///         },
 ///         "srs-kustomization2": {
@@ -422,9 +496,9 @@ import 'system_data_response.dart';
 ///                 ],
 ///             },
 ///             "prune": False,
-///             "retry_interval_in_seconds": 600,
-///             "sync_interval_in_seconds": 600,
-///             "timeout_in_seconds": 600,
+///             "retry_interval_in_seconds": float(600),
+///             "sync_interval_in_seconds": float(600),
+///             "timeout_in_seconds": float(600),
 ///             "wait": False,
 ///         },
 ///     },
@@ -610,6 +684,52 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kubernetesconfiguration_fluxconfiguration" "fluxConfiguration" {
+///   bucket = {
+///     access_key               = "fluxminiotest"
+///     bucket_name              = "flux"
+///     sync_interval_in_seconds = 1000
+///     timeout_in_seconds       = 1000
+///     url                      = "https://fluxminiotest.az.minio.io"
+///   }
+///   cluster_name            = "clusterName1"
+///   cluster_resource_name   = "connectedClusters"
+///   cluster_rp              = "Microsoft.Kubernetes"
+///   flux_configuration_name = "srs-fluxconfig"
+///   kustomizations = {
+///     "srs-kustomization1" = {
+///       depends_on               = []
+///       path                     = "./test/path"
+///       sync_interval_in_seconds = 600
+///       timeout_in_seconds       = 600
+///     }
+///     "srs-kustomization2" = {
+///       depends_on                = ["srs-kustomization1"]
+///       path                      = "./other/test/path"
+///       prune                     = false
+///       retry_interval_in_seconds = 600
+///       sync_interval_in_seconds  = 600
+///       timeout_in_seconds        = 600
+///     }
+///   }
+///   namespace           = "srs-namespace"
+///   resource_group_name = "rg1"
+///   scope               = "cluster"
+///   source_kind         = "Bucket"
+///   suspend             = false
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -619,8 +739,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.kubernetesconfiguration.FluxConfiguration;
 /// import com.pulumi.azurenative.kubernetesconfiguration.FluxConfigurationArgs;
 /// import com.pulumi.azurenative.kubernetesconfiguration.inputs.BucketDefinitionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -721,8 +841,8 @@ import 'system_data_response.dart';
 ///     bucket={
 ///         "access_key": "fluxminiotest",
 ///         "bucket_name": "flux",
-///         "sync_interval_in_seconds": 1000,
-///         "timeout_in_seconds": 1000,
+///         "sync_interval_in_seconds": float(1000),
+///         "timeout_in_seconds": float(1000),
 ///         "url": "https://fluxminiotest.az.minio.io",
 ///     },
 ///     cluster_name="clusterName1",
@@ -733,16 +853,16 @@ import 'system_data_response.dart';
 ///         "srs-kustomization1": {
 ///             "depends_on": [],
 ///             "path": "./test/path",
-///             "sync_interval_in_seconds": 600,
-///             "timeout_in_seconds": 600,
+///             "sync_interval_in_seconds": float(600),
+///             "timeout_in_seconds": float(600),
 ///         },
 ///         "srs-kustomization2": {
 ///             "depends_on": ["srs-kustomization1"],
 ///             "path": "./other/test/path",
 ///             "prune": False,
-///             "retry_interval_in_seconds": 600,
-///             "sync_interval_in_seconds": 600,
-///             "timeout_in_seconds": 600,
+///             "retry_interval_in_seconds": float(600),
+///             "sync_interval_in_seconds": float(600),
+///             "timeout_in_seconds": float(600),
 ///         },
 ///     },
 ///     namespace="srs-namespace",

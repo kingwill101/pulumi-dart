@@ -15,4 +15,3 @@ enum ClusterUpdateStrategyType {
     throw ArgumentError('Unknown ClusterUpdateStrategyType value: $value');
   }
 }
-

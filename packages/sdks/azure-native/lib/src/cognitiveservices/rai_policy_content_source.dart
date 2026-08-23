@@ -1,11 +1,11 @@
 /// Content source to apply the Content Filters.
 enum RaiPolicyContentSource {
-  valuePrompt("Prompt"),
-  valueCompletion("Completion"),
-  valuePreToolCall("PreToolCall"),
-  valuePostToolCall("PostToolCall"),
-  valuePreRun("PreRun"),
-  valuePostRun("PostRun");
+  prompt("Prompt"),
+  completion("Completion"),
+  preToolCall("PreToolCall"),
+  postToolCall("PostToolCall"),
+  preRun("PreRun"),
+  postRun("PostRun");
 
   const RaiPolicyContentSource(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum RaiPolicyContentSource {
     throw ArgumentError('Unknown RaiPolicyContentSource value: $value');
   }
 }
-

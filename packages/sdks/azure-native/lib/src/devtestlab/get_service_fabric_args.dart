@@ -11,7 +11,7 @@ class GetServiceFabricArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the ServiceFabric
+  /// The name of the service fabric.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -21,7 +21,7 @@ class GetServiceFabricArgs {
   /// Creates a new [GetServiceFabricArgs].
   /// [expand] Specify the $expand query. Example: 'properties($expand=applicableSchedule)'
   /// [labName] The name of the lab.
-  /// [name] The name of the ServiceFabric
+  /// [name] The name of the service fabric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
   const GetServiceFabricArgs({
@@ -52,4 +52,3 @@ class GetServiceFabricArgs {
     );
   }
 }
-

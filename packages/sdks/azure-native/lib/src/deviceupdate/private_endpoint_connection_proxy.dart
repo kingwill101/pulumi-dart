@@ -103,6 +103,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceupdate_privateendpointconnectionproxy" "privateEndpointConnectionProxy" {
+///   account_name                         = "contoso"
+///   private_endpoint_connection_proxy_id = "peexample01"
+///   remote_private_endpoint = {
+///     id                        = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{peName}"
+///     immutable_resource_id     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{peName}"
+///     immutable_subscription_id = "00000000-0000-0000-0000-000000000000"
+///     location                  = "westus2"
+///     manual_private_link_service_connections = [{
+///       "groupIds"       = ["DeviceUpdate"]
+///       "name"           = "{privateEndpointConnectionProxyId}"
+///       "requestMessage" = "Please approve my connection, thanks."
+///     }]
+///     private_link_service_proxies = [{
+///       "groupConnectivityInformation" = []
+///       "id"                           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/privateEndpoints/{privateEndpointConnectionProxyId}/privateLinkServiceProxies/{privateEndpointConnectionProxyId}"
+///     }]
+///   }
+///   resource_group_name = "test-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +144,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceupdate.PrivateEndpointConnectionProxy;
 /// import com.pulumi.azurenative.deviceupdate.PrivateEndpointConnectionProxyArgs;
 /// import com.pulumi.azurenative.deviceupdate.inputs.RemotePrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

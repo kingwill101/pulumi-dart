@@ -16,4 +16,3 @@ enum AzureDevOpsPermissionType {
     throw ArgumentError('Unknown AzureDevOpsPermissionType value: $value');
   }
 }
-

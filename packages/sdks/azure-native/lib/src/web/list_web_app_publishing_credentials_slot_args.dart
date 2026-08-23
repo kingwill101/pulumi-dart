@@ -9,15 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebAppPublishingCredentialsSlotArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of the deployment slot. If a slot is not specified, the API will get the publishing credentials for the production slot.
+  /// If true, the password is included in the response. The default is false.
   final pulumi.Input<String> slot;
 
   /// Creates a new [ListWebAppPublishingCredentialsSlotArgs].
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  /// [slot] Name of the deployment slot. If a slot is not specified, the API will get the publishing credentials for the production slot.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [slot] If true, the password is included in the response. The default is false.
   const ListWebAppPublishingCredentialsSlotArgs({
     required this.name,
     required this.resourceGroupName,
@@ -40,4 +40,3 @@ class ListWebAppPublishingCredentialsSlotArgs {
     );
   }
 }
-

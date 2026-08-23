@@ -92,6 +92,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_deviceregistry_discoveredassetendpointprofile" "discoveredAssetEndpointProfile" {
+///   additional_configuration               = "{\"foo\": \"bar\"}"
+///   discovered_asset_endpoint_profile_name = "my-discoveredassetendpointprofile"
+///   discovery_id                           = "11111111-1111-1111-1111-111111111111"
+///   endpoint_profile_type                  = "myEndpointProfileType"
+///   extended_location = {
+///     name = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.extendedlocation/customlocations/location1"
+///     type = "CustomLocation"
+///   }
+///   location                         = "West Europe"
+///   resource_group_name              = "myResourceGroup"
+///   supported_authentication_methods = ["Anonymous", "Certificate", "UsernamePassword"]
+///   tags = {
+///     "site" = "building-1"
+///   }
+///   target_address = "https://www.example.com/myTargetAddress"
+///   version        = 73766
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +131,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.deviceregistry.DiscoveredAssetEndpointProfile;
 /// import com.pulumi.azurenative.deviceregistry.DiscoveredAssetEndpointProfileArgs;
 /// import com.pulumi.azurenative.deviceregistry.inputs.ExtendedLocationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,7 +222,7 @@ import 'system_data_response.dart';
 ///         "site": "building-1",
 ///     },
 ///     target_address="https://www.example.com/myTargetAddress",
-///     version=73766)
+///     version=float(73766))
 ///
 /// ```
 ///

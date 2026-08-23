@@ -165,6 +165,73 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ssminstanceinformation" "ssmInstanceInformation" {
+///   location = "ermywoyxbvekjsddbgxzdiqctiy"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "oxfqehraraycsdhslhhkjdu"
+///     aws_account_id = "pjfy"
+///     aws_properties = {
+///       activation_id = "wqzon"
+///       agent_version = "bnfjsoeipnlc"
+///       association_overview = {
+///         detailed_status = "cbudhnfwcqmapsmzmdvjbnobfp"
+///         instance_association_status_aggregated_count = {
+///           "key8401" = 17
+///         }
+///       }
+///       association_status                         = "elhplvmlvhpwuyovunmrlynmhejdw"
+///       computer_name                              = "wweceaymirkelywqbxapvxzr"
+///       iam_role                                   = "izwdzmlugehvtmnssak"
+///       instance_id                                = "iubqpfcejhxieuegbecgpkzanri"
+///       ip_address                                 = "httjvosg"
+///       is_latest_version                          = true
+///       last_association_execution_date            = "2024-10-08T03:53:10.068Z"
+///       last_ping_date_time                        = "2024-10-08T03:53:10.068Z"
+///       last_successful_association_execution_date = "2024-10-08T03:53:10.068Z"
+///       name                                       = "iubm"
+///       ping_status = {
+///         value = "ConnectionLost"
+///       }
+///       platform_name = "cbiheizlbfmmcdrsntrldk"
+///       platform_type = {
+///         value = "Linux"
+///       }
+///       platform_version  = "eiopeklxdbhzvyxg"
+///       registration_date = "2024-10-08T03:53:10.069Z"
+///       resource_type = {
+///         value = "EC2Instance"
+///       }
+///       source_id = "mfupyczzkgmebrayfgrmxcdouve"
+///       source_type = {
+///         value = "AWS::EC2::Instance"
+///       }
+///     }
+///     aws_region        = "mzethaciakqyywjomklr"
+///     aws_source_schema = "wetpdek"
+///     aws_tags = {
+///       "key8309" = "mwxaauusamykdmepqrzjjlpozpflmk"
+///     }
+///     public_cloud_connectors_resource_id = "hsdju"
+///     public_cloud_resource_name          = "nmnanlhecnocoemxsevyl"
+///   }
+///   resource_group_name = "rgssmInstanceInformation"
+///   tags = {
+///     "key678" = "gnrhg"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +247,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.PlatformTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ResourceTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SourceTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

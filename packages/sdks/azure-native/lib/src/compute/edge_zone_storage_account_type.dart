@@ -17,4 +17,3 @@ enum EdgeZoneStorageAccountType {
     throw ArgumentError('Unknown EdgeZoneStorageAccountType value: $value');
   }
 }
-

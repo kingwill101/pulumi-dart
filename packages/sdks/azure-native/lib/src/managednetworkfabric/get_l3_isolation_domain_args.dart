@@ -34,4 +34,3 @@ class GetL3IsolationDomainArgs {
     );
   }
 }
-

@@ -2,27 +2,32 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_connection_properties_response.dart';
+import 'system_data_response.dart';
 
-/// The private endpoint connection of a workspace
+/// The private endpoint connection of a workspace.
 class PrivateEndpointConnectionResponse {
-  /// The resource identifier.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
-  /// The resource name.
+  /// The name of the resource
   final pulumi.Input<String> name;
   /// The private endpoint connection properties.
   final pulumi.Input<PrivateEndpointConnectionPropertiesResponse> properties;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
   /// Creates a new [PrivateEndpointConnectionResponse].
-  /// [id] The resource identifier.
-  /// [name] The resource name.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
   /// [properties] The private endpoint connection properties.
-  /// [type] The resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const PrivateEndpointConnectionResponse({
     required this.id,
     required this.name,
     required this.properties,
+    required this.systemData,
     required this.type,
   });
 
@@ -31,6 +36,7 @@ class PrivateEndpointConnectionResponse {
       'id': id,
       'name': name,
       'properties': pulumi.Input.mapInputValue<PrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -40,8 +46,8 @@ class PrivateEndpointConnectionResponse {
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       properties: pulumi.Input.fromValue(PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

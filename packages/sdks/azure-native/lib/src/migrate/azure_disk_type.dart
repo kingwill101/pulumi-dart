@@ -20,4 +20,3 @@ enum AzureDiskType {
     throw ArgumentError('Unknown AzureDiskType value: $value');
   }
 }
-

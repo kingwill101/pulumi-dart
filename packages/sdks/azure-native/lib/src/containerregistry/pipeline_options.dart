@@ -16,4 +16,3 @@ enum PipelineOptions {
     throw ArgumentError('Unknown PipelineOptions value: $value');
   }
 }
-

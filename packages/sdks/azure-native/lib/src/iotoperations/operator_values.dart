@@ -17,4 +17,3 @@ enum OperatorValues {
     throw ArgumentError('Unknown OperatorValues value: $value');
   }
 }
-

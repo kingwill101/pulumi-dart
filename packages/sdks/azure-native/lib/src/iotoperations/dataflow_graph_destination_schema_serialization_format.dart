@@ -15,4 +15,3 @@ enum DataflowGraphDestinationSchemaSerializationFormat {
     throw ArgumentError('Unknown DataflowGraphDestinationSchemaSerializationFormat value: $value');
   }
 }
-

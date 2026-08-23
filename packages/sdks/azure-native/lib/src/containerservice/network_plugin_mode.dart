@@ -14,4 +14,3 @@ enum NetworkPluginMode {
     throw ArgumentError('Unknown NetworkPluginMode value: $value');
   }
 }
-

@@ -114,6 +114,49 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_dynamodbcontinuousbackupsdescription" "dynamoDbContinuousBackupsDescription" {
+///   location = "zlepfxe"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "ftscqdgahea"
+///     aws_account_id = "mf"
+///     aws_properties = {
+///       continuous_backups_status = {
+///         value = "DISABLED"
+///       }
+///       point_in_time_recovery_description = {
+///         earliest_restorable_date_time = "2024-10-08T03:52:00.281Z"
+///         latest_restorable_date_time   = "2024-10-08T03:52:00.281Z"
+///         point_in_time_recovery_status = {
+///           value = "DISABLED"
+///         }
+///       }
+///     }
+///     aws_region        = "vvdgggbbnkqfqlawtbkkxhtn"
+///     aws_source_schema = "qdkzzibfkzzsphoguehj"
+///     aws_tags = {
+///       "key4982" = "etujkpssxnluswfrmpfxwbkvvrbrj"
+///     }
+///     public_cloud_connectors_resource_id = "cmxfprcuzlfsuapudqgzmyrz"
+///     public_cloud_resource_name          = "y"
+///   }
+///   resource_group_name = "rgdynamoDBContinuousBackupsDescription"
+///   tags = {
+///     "key6182" = "vfhpsiualsgltchem"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +170,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ContinuousBackupsStatusEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PointInTimeRecoveryDescriptionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.PointInTimeRecoveryStatusEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

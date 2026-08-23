@@ -17,4 +17,3 @@ enum PolicyExecutionType {
     throw ArgumentError('Unknown PolicyExecutionType value: $value');
   }
 }
-

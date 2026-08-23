@@ -10,7 +10,7 @@ import 'sub_resource_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -391,6 +391,111 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+///   application_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/applicationRuleCollections/apprulecoll"
+///     name     = "apprulecoll"
+///     priority = 110
+///     rules {
+///       description = "Deny inbound rule"
+///       name        = "rule1"
+///       protocols {
+///         port          = 443
+///         protocol_type = "Https"
+///       }
+///       source_addresses = ["216.58.216.164", "10.0.0.0/24"]
+///       target_fqdns     = ["www.test.com"]
+///     }
+///   }
+///   azure_firewall_name = "azurefirewall"
+///   ip_configurations {
+///     name = "azureFirewallIpConfiguration"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+///     }
+///   }
+///   location = "West US"
+///   nat_rule_collections {
+///     action = {
+///       type = "Dnat"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/natRuleCollections/natrulecoll"
+///     name     = "natrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "D-NAT all outbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["443"]
+///       name                  = "DNAT-HTTPS-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_address    = "1.2.3.5"
+///       translated_port       = "8443"
+///     }
+///     rules {
+///       description           = "D-NAT all inbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["80"]
+///       name                  = "DNAT-HTTP-traffic-With-FQDN"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_fqdn       = "internalhttpserver"
+///       translated_port       = "880"
+///     }
+///   }
+///   network_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/networkRuleCollections/netrulecoll"
+///     name     = "netrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "Block traffic based on source IPs and ports"
+///       destination_addresses = ["*"]
+///       destination_ports     = ["443-444", "8443"]
+///       name                  = "L4-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["192.168.1.1-192.168.1.12", "10.1.4.12-10.1.4.255"]
+///     }
+///     rules {
+///       description       = "Block traffic based on source IPs and ports to amazon"
+///       destination_fqdns = ["www.amazon.com"]
+///       destination_ports = ["443-444", "8443"]
+///       name              = "L4-traffic-with-FQDN"
+///       protocols         = ["TCP"]
+///       source_addresses  = ["10.2.4.12-10.2.4.255"]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "AZFW_VNet"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   threat_intel_mode = "Alert"
+///   zones             = []
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -407,8 +512,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1247,6 +1352,115 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+///   additional_properties = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+///   application_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/applicationRuleCollections/apprulecoll"
+///     name     = "apprulecoll"
+///     priority = 110
+///     rules {
+///       description = "Deny inbound rule"
+///       name        = "rule1"
+///       protocols {
+///         port          = 443
+///         protocol_type = "Https"
+///       }
+///       source_addresses = ["216.58.216.164", "10.0.0.0/24"]
+///       target_fqdns     = ["www.test.com"]
+///     }
+///   }
+///   azure_firewall_name = "azurefirewall"
+///   ip_configurations {
+///     name = "azureFirewallIpConfiguration"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+///     }
+///   }
+///   location = "West US"
+///   nat_rule_collections {
+///     action = {
+///       type = "Dnat"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/natRuleCollections/natrulecoll"
+///     name     = "natrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "D-NAT all outbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["443"]
+///       name                  = "DNAT-HTTPS-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_address    = "1.2.3.5"
+///       translated_port       = "8443"
+///     }
+///     rules {
+///       description           = "D-NAT all inbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["80"]
+///       name                  = "DNAT-HTTP-traffic-With-FQDN"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_fqdn       = "internalhttpserver"
+///       translated_port       = "880"
+///     }
+///   }
+///   network_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/networkRuleCollections/netrulecoll"
+///     name     = "netrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "Block traffic based on source IPs and ports"
+///       destination_addresses = ["*"]
+///       destination_ports     = ["443-444", "8443"]
+///       name                  = "L4-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["192.168.1.1-192.168.1.12", "10.1.4.12-10.1.4.255"]
+///     }
+///     rules {
+///       description       = "Block traffic based on source IPs and ports to amazon"
+///       destination_fqdns = ["www.amazon.com"]
+///       destination_ports = ["443-444", "8443"]
+///       name              = "L4-traffic-with-FQDN"
+///       protocols         = ["TCP"]
+///       source_addresses  = ["10.2.4.12-10.2.4.255"]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "AZFW_VNet"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   threat_intel_mode = "Alert"
+///   zones             = []
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1263,8 +1477,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2109,6 +2323,111 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+///   application_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/applicationRuleCollections/apprulecoll"
+///     name     = "apprulecoll"
+///     priority = 110
+///     rules {
+///       description = "Deny inbound rule"
+///       name        = "rule1"
+///       protocols {
+///         port          = 443
+///         protocol_type = "Https"
+///       }
+///       source_addresses = ["216.58.216.164", "10.0.0.0/24"]
+///       target_fqdns     = ["www.test.com"]
+///     }
+///   }
+///   azure_firewall_name = "azurefirewall"
+///   ip_configurations {
+///     name = "azureFirewallIpConfiguration"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+///     }
+///   }
+///   location = "West US"
+///   nat_rule_collections {
+///     action = {
+///       type = "Dnat"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/natRuleCollections/natrulecoll"
+///     name     = "natrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "D-NAT all outbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["443"]
+///       name                  = "DNAT-HTTPS-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_address    = "1.2.3.5"
+///       translated_port       = "8443"
+///     }
+///     rules {
+///       description           = "D-NAT all inbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["80"]
+///       name                  = "DNAT-HTTP-traffic-With-FQDN"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_fqdn       = "internalhttpserver"
+///       translated_port       = "880"
+///     }
+///   }
+///   network_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/networkRuleCollections/netrulecoll"
+///     name     = "netrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "Block traffic based on source IPs and ports"
+///       destination_addresses = ["*"]
+///       destination_ports     = ["443-444", "8443"]
+///       name                  = "L4-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["192.168.1.1-192.168.1.12", "10.1.4.12-10.1.4.255"]
+///     }
+///     rules {
+///       description       = "Block traffic based on source IPs and ports to amazon"
+///       destination_fqdns = ["www.amazon.com"]
+///       destination_ports = ["443-444", "8443"]
+///       name              = "L4-traffic-with-FQDN"
+///       protocols         = ["TCP"]
+///       source_addresses  = ["10.2.4.12-10.2.4.255"]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "AZFW_VNet"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   threat_intel_mode = "Alert"
+///   zones             = []
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2125,8 +2444,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2965,6 +3284,111 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+///   application_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/applicationRuleCollections/apprulecoll"
+///     name     = "apprulecoll"
+///     priority = 110
+///     rules {
+///       description = "Deny inbound rule"
+///       name        = "rule1"
+///       protocols {
+///         port          = 443
+///         protocol_type = "Https"
+///       }
+///       source_addresses = ["216.58.216.164", "10.0.0.0/24"]
+///       target_fqdns     = ["www.test.com"]
+///     }
+///   }
+///   azure_firewall_name = "azurefirewall"
+///   ip_configurations {
+///     name = "azureFirewallIpConfiguration"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+///     }
+///   }
+///   location = "West US 2"
+///   nat_rule_collections {
+///     action = {
+///       type = "Dnat"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/natRuleCollections/natrulecoll"
+///     name     = "natrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "D-NAT all outbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["443"]
+///       name                  = "DNAT-HTTPS-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_address    = "1.2.3.5"
+///       translated_port       = "8443"
+///     }
+///     rules {
+///       description           = "D-NAT all inbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["80"]
+///       name                  = "DNAT-HTTP-traffic-With-FQDN"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_fqdn       = "internalhttpserver"
+///       translated_port       = "880"
+///     }
+///   }
+///   network_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/networkRuleCollections/netrulecoll"
+///     name     = "netrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "Block traffic based on source IPs and ports"
+///       destination_addresses = ["*"]
+///       destination_ports     = ["443-444", "8443"]
+///       name                  = "L4-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["192.168.1.1-192.168.1.12", "10.1.4.12-10.1.4.255"]
+///     }
+///     rules {
+///       description       = "Block traffic based on source IPs and ports to amazon"
+///       destination_fqdns = ["www.amazon.com"]
+///       destination_ports = ["443-444", "8443"]
+///       name              = "L4-traffic-with-FQDN"
+///       protocols         = ["TCP"]
+///       source_addresses  = ["10.2.4.12-10.2.4.255"]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "AZFW_VNet"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   threat_intel_mode = "Alert"
+///   zones             = ["1", "2", "3"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2981,8 +3405,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3847,6 +4271,120 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+///   application_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/applicationRuleCollections/apprulecoll"
+///     name     = "apprulecoll"
+///     priority = 110
+///     rules {
+///       description = "Deny inbound rule"
+///       name        = "rule1"
+///       protocols {
+///         port          = 443
+///         protocol_type = "Https"
+///       }
+///       source_addresses = ["216.58.216.164", "10.0.0.0/24"]
+///       target_fqdns     = ["www.test.com"]
+///     }
+///   }
+///   azure_firewall_name = "azurefirewall"
+///   ip_configurations {
+///     name = "azureFirewallIpConfiguration"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+///     }
+///   }
+///   location = "West US"
+///   management_ip_configuration = {
+///     name = "azureFirewallMgmtIpConfiguration"
+///     public_ip_address = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/managementPipName"
+///     }
+///     subnet = {
+///       id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallManagementSubnet"
+///     }
+///   }
+///   nat_rule_collections {
+///     action = {
+///       type = "Dnat"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/natRuleCollections/natrulecoll"
+///     name     = "natrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "D-NAT all outbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["443"]
+///       name                  = "DNAT-HTTPS-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_address    = "1.2.3.5"
+///       translated_port       = "8443"
+///     }
+///     rules {
+///       description           = "D-NAT all inbound web traffic for inspection"
+///       destination_addresses = ["1.2.3.4"]
+///       destination_ports     = ["80"]
+///       name                  = "DNAT-HTTP-traffic-With-FQDN"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["*"]
+///       translated_fqdn       = "internalhttpserver"
+///       translated_port       = "880"
+///     }
+///   }
+///   network_rule_collections {
+///     action = {
+///       type = "Deny"
+///     }
+///     id       = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/networkRuleCollections/netrulecoll"
+///     name     = "netrulecoll"
+///     priority = 112
+///     rules {
+///       description           = "Block traffic based on source IPs and ports"
+///       destination_addresses = ["*"]
+///       destination_ports     = ["443-444", "8443"]
+///       name                  = "L4-traffic"
+///       protocols             = ["TCP"]
+///       source_addresses      = ["192.168.1.1-192.168.1.12", "10.1.4.12-10.1.4.255"]
+///     }
+///     rules {
+///       description       = "Block traffic based on source IPs and ports to amazon"
+///       destination_fqdns = ["www.amazon.com"]
+///       destination_ports = ["443-444", "8443"]
+///       name              = "L4-traffic-with-FQDN"
+///       protocols         = ["TCP"]
+///       source_addresses  = ["10.2.4.12-10.2.4.255"]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "AZFW_VNet"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   threat_intel_mode = "Alert"
+///   zones             = []
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -3863,8 +4401,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNatRCActionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallNetworkRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4444,6 +4982,44 @@ import 'sub_resource_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_azurefirewall" "azureFirewall" {
+///   azure_firewall_name = "azurefirewall"
+///   firewall_policy = {
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/policy1"
+///   }
+///   hub_ip_addresses = {
+///     public_i_ps = {
+///       addresses = []
+///       count     = 1
+///     }
+///   }
+///   location            = "West US"
+///   resource_group_name = "rg1"
+///   sku = {
+///     name = "AZFW_Hub"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   threat_intel_mode = "Alert"
+///   virtual_hub = {
+///     id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+///   }
+///   zones = []
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -4456,8 +5032,8 @@ import 'sub_resource_response.dart';
 /// import com.pulumi.azurenative.network.inputs.HubIPAddressesArgs;
 /// import com.pulumi.azurenative.network.inputs.HubPublicIPAddressesArgs;
 /// import com.pulumi.azurenative.network.inputs.AzureFirewallSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

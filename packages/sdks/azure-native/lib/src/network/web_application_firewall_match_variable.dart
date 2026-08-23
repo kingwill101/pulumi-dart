@@ -21,4 +21,3 @@ enum WebApplicationFirewallMatchVariable {
     throw ArgumentError('Unknown WebApplicationFirewallMatchVariable value: $value');
   }
 }
-

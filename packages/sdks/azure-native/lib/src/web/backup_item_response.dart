@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_backup_setting_response.dart';
+import 'system_data_response.dart';
 
 /// Backup description.
 class BackupItemResponse {
@@ -17,7 +18,7 @@ class BackupItemResponse {
   final pulumi.Input<List<DatabaseBackupSettingResponse>> databases;
   /// Timestamp when this backup finished.
   final pulumi.Input<String> finishedTimeStamp;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Kind of resource.
   final pulumi.Input<String>? kind;
@@ -25,7 +26,7 @@ class BackupItemResponse {
   final pulumi.Input<String> lastRestoreTimeStamp;
   /// Details regarding this backup. Might contain an error message.
   final pulumi.Input<String> log;
-  /// Resource Name.
+  /// The name of the resource
   final pulumi.Input<String> name;
   /// True if this backup has been created due to a schedule being triggered.
   final pulumi.Input<bool> scheduled;
@@ -35,7 +36,9 @@ class BackupItemResponse {
   final pulumi.Input<String> status;
   /// SAS URL for the storage account container which contains this backup.
   final pulumi.Input<String> storageAccountUrl;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
   /// Size of the original web app which has been backed up.
   final pulumi.Input<double> websiteSizeInBytes;
@@ -47,16 +50,17 @@ class BackupItemResponse {
   /// [created] Timestamp of the backup creation.
   /// [databases] List of databases included in the backup.
   /// [finishedTimeStamp] Timestamp when this backup finished.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [kind] Kind of resource.
   /// [lastRestoreTimeStamp] Timestamp of a last restore operation which used this backup.
   /// [log] Details regarding this backup. Might contain an error message.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [scheduled] True if this backup has been created due to a schedule being triggered.
   /// [sizeInBytes] Size of the backup in bytes.
   /// [status] Backup status.
   /// [storageAccountUrl] SAS URL for the storage account container which contains this backup.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [websiteSizeInBytes] Size of the original web app which has been backed up.
   const BackupItemResponse({
     required this.backupId,
@@ -74,6 +78,7 @@ class BackupItemResponse {
     required this.sizeInBytes,
     required this.status,
     required this.storageAccountUrl,
+    required this.systemData,
     required this.type,
     required this.websiteSizeInBytes,
   });
@@ -95,6 +100,7 @@ class BackupItemResponse {
       'sizeInBytes': sizeInBytes,
       'status': status,
       'storageAccountUrl': storageAccountUrl,
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
       'websiteSizeInBytes': websiteSizeInBytes,
     };
@@ -117,9 +123,9 @@ class BackupItemResponse {
       sizeInBytes: pulumi.Input.fromValue(map['sizeInBytes'] as double),
       status: pulumi.Input.fromValue(map['status'] as String),
       storageAccountUrl: pulumi.Input.fromValue(map['storageAccountUrl'] as String),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
       websiteSizeInBytes: pulumi.Input.fromValue(map['websiteSizeInBytes'] as double),
     );
   }
 }
-

@@ -14,6 +14,8 @@ class GetNamedValueResult {
   final KeyVaultContractPropertiesResponse? keyVault;
   /// The name of the resource
   final String name;
+  /// The provisioning state
+  final String provisioningState;
   /// Determines whether the value is a secret and should be encrypted or not. Default value is false.
   final bool? secret;
   /// Optional tags that when provided can be used to filter the NamedValue list.
@@ -29,6 +31,7 @@ class GetNamedValueResult {
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [keyVault] KeyVault location details of the namedValue.
   /// [name] The name of the resource
+  /// [provisioningState] The provisioning state
   /// [secret] Determines whether the value is a secret and should be encrypted or not. Default value is false.
   /// [tags] Optional tags that when provided can be used to filter the NamedValue list.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,6 +42,7 @@ class GetNamedValueResult {
     required this.id,
     this.keyVault,
     required this.name,
+    required this.provisioningState,
     this.secret,
     this.tags,
     required this.type,
@@ -52,6 +56,7 @@ class GetNamedValueResult {
       'id': id,
       'keyVault': ?keyVault?.toMap(),
       'name': name,
+      'provisioningState': provisioningState,
       'secret': ?secret,
       'tags': ?tags,
       'type': type,
@@ -66,6 +71,7 @@ class GetNamedValueResult {
       id: map['id'] as String,
       keyVault: (() { final guardedValue = map['keyVault']; if (guardedValue == null) return null; return KeyVaultContractPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
+      provisioningState: map['provisioningState'] as String,
       secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       type: map['type'] as String,
@@ -73,4 +79,3 @@ class GetNamedValueResult {
     );
   }
 }
-

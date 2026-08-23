@@ -1,7 +1,7 @@
 /// The authentication type to use.
 enum ZendeskAuthenticationType {
-  valueBasic("Basic"),
-  valueToken("Token");
+  basic("Basic"),
+  token("Token");
 
   const ZendeskAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ZendeskAuthenticationType {
     throw ArgumentError('Unknown ZendeskAuthenticationType value: $value');
   }
 }
-

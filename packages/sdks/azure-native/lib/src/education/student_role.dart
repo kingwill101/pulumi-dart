@@ -1,7 +1,7 @@
 /// Student Role
 enum StudentRole {
-  valueStudent("Student"),
-  valueAdmin("Admin");
+  student("Student"),
+  admin("Admin");
 
   const StudentRole(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum StudentRole {
     throw ArgumentError('Unknown StudentRole value: $value');
   }
 }
-

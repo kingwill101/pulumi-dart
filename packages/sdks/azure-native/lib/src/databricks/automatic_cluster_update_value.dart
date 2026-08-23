@@ -1,6 +1,6 @@
 enum AutomaticClusterUpdateValue {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const AutomaticClusterUpdateValue(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum AutomaticClusterUpdateValue {
     throw ArgumentError('Unknown AutomaticClusterUpdateValue value: $value');
   }
 }
-

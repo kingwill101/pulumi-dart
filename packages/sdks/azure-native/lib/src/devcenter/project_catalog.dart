@@ -71,6 +71,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_projectcatalog" "projectCatalog" {
+///   ado_git = {
+///     branch            = "main"
+///     path              = "/templates"
+///     secret_identifier = "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
+///     uri               = "https://contoso@dev.azure.com/contoso/contosoOrg/_git/centralrepo-fakecontoso"
+///   }
+///   catalog_name        = "CentralCatalog"
+///   project_name        = "DevProject"
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.ProjectCatalog;
 /// import com.pulumi.azurenative.devcenter.ProjectCatalogArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.GitCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,6 +244,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_projectcatalog" "projectCatalog" {
+///   catalog_name = "CentralCatalog"
+///   git_hub = {
+///     branch            = "main"
+///     path              = "/templates"
+///     secret_identifier = "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
+///     uri               = "https://github.com/Contoso/centralrepo-fake.git"
+///   }
+///   project_name        = "DevProject"
+///   resource_group_name = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -230,8 +276,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.ProjectCatalog;
 /// import com.pulumi.azurenative.devcenter.ProjectCatalogArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.GitCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

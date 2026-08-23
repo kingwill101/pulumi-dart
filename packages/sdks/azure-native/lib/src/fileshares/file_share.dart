@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-06-01-preview.
 ///
+/// Other available API versions: 2025-09-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fileshares [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -21,7 +23,7 @@ import 'system_data_response.dart';
 /// {
 ///     var fileShare = new AzureNative.FileShares.FileShare("fileShare", new()
 ///     {
-///         Location = "gdsuixfhrgfbbbfjtgocmlzyuonrr",
+///         Location = "westus",
 ///         Properties = new AzureNative.FileShares.Inputs.FileSharePropertiesArgs
 ///         {
 ///             MediaTier = AzureNative.FileShares.MediaTier.SSD,
@@ -68,7 +70,7 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fileshares.NewFileShare(ctx, "fileShare", &fileshares.FileShareArgs{
-/// 			Location: pulumi.String("gdsuixfhrgfbbbfjtgocmlzyuonrr"),
+/// 			Location: pulumi.String("westus"),
 /// 			Properties: &fileshares.FileSharePropertiesArgs{
 /// 				MediaTier: pulumi.String(fileshares.MediaTierSSD),
 /// 				MountName: pulumi.String("fileshare"),
@@ -102,6 +104,42 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_fileshares_fileshare" "fileShare" {
+///   location = "westus"
+///   properties = {
+///     media_tier = "SSD"
+///     mount_name = "fileshare"
+///     nfs_protocol_properties = {
+///       root_squash = "NoRootSquash"
+///     }
+///     protocol                            = "NFS"
+///     provisioned_io_per_sec              = 5
+///     provisioned_storage_gi_b            = 8
+///     provisioned_throughput_mi_b_per_sec = 22
+///     public_access_properties = {
+///       allowed_subnets = ["/subscriptions/9760acf5-4638-11e7-9bdb-020073ca7778/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"]
+///     }
+///     public_network_access = "Enabled"
+///     redundancy            = "Local"
+///   }
+///   resource_group_name = "rgfileshares"
+///   resource_name       = "fileshare"
+///   tags = {
+///     "key9647" = "xwokdvyoae"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +151,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.fileshares.inputs.FileSharePropertiesArgs;
 /// import com.pulumi.azurenative.fileshares.inputs.NfsProtocolPropertiesArgs;
 /// import com.pulumi.azurenative.fileshares.inputs.PublicAccessPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -127,7 +165,7 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var fileShare = new FileShare("fileShare", FileShareArgs.builder()
-///             .location("gdsuixfhrgfbbbfjtgocmlzyuonrr")
+///             .location("westus")
 ///             .properties(FileSharePropertiesArgs.builder()
 ///                 .mediaTier("SSD")
 ///                 .mountName("fileshare")
@@ -159,7 +197,7 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const fileShare = new azure_native.fileshares.FileShare("fileShare", {
-///     location: "gdsuixfhrgfbbbfjtgocmlzyuonrr",
+///     location: "westus",
 ///     properties: {
 ///         mediaTier: azure_native.fileshares.MediaTier.SSD,
 ///         mountName: "fileshare",
@@ -190,7 +228,7 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// file_share = azure_native.fileshares.FileShare("fileShare",
-///     location="gdsuixfhrgfbbbfjtgocmlzyuonrr",
+///     location="westus",
 ///     properties={
 ///         "media_tier": azure_native.fileshares.MediaTier.SSD,
 ///         "mount_name": "fileshare",
@@ -220,7 +258,7 @@ import 'system_data_response.dart';
 ///   fileShare:
 ///     type: azure-native:fileshares:FileShare
 ///     properties:
-///       location: gdsuixfhrgfbbbfjtgocmlzyuonrr
+///       location: westus
 ///       properties:
 ///         mediaTier: SSD
 ///         mountName: fileshare

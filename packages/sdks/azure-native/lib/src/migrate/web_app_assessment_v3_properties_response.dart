@@ -52,4 +52,3 @@ class WebAppAssessmentV3PropertiesResponse {
     );
   }
 }
-

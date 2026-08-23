@@ -18,4 +18,3 @@ enum ConditionalOperator {
     throw ArgumentError('Unknown ConditionalOperator value: $value');
   }
 }
-

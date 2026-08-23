@@ -15,4 +15,3 @@ enum SyncNtlmPasswords {
     throw ArgumentError('Unknown SyncNtlmPasswords value: $value');
   }
 }
-

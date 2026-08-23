@@ -81,6 +81,33 @@ import 'saved_search_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_savedsearch" "savedSearch" {
+///   category            = "Saved Search Test Category"
+///   display_name        = "Create or Update Saved Search Test"
+///   function_alias      = "heartbeat_func"
+///   function_parameters = "a:int=1"
+///   query               = "Heartbeat | summarize Count() by Computer | take a"
+///   resource_group_name = "TestRG"
+///   saved_search_id     = "00000000-0000-0000-0000-00000000000"
+///   tags {
+///     name  = "Group"
+///     value = "Computer"
+///   }
+///   version        = 2
+///   workspace_name = "TestWS"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +117,8 @@ import 'saved_search_args.dart';
 /// import com.pulumi.azurenative.operationalinsights.SavedSearch;
 /// import com.pulumi.azurenative.operationalinsights.SavedSearchArgs;
 /// import com.pulumi.azurenative.operationalinsights.inputs.TagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -162,7 +189,7 @@ import 'saved_search_args.dart';
 ///         "name": "Group",
 ///         "value": "Computer",
 ///     }],
-///     version=2,
+///     version=float(2),
 ///     workspace_name="TestWS")
 ///
 /// ```

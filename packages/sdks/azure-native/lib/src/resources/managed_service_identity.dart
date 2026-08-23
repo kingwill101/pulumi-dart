@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Managed identity generic object.
+/// Describes the managed identities for an Azure resource.
 class ManagedServiceIdentity {
   /// Type of the managed identity.
   final pulumi.Input<String>? type;
@@ -31,4 +31,3 @@ class ManagedServiceIdentity {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum BrokerResourceDefinitionMethods {
     throw ArgumentError('Unknown BrokerResourceDefinitionMethods value: $value');
   }
 }
-

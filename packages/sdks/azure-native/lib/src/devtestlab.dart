@@ -154,6 +154,7 @@ export 'devtestlab/subnet_override_response.dart';
 export 'devtestlab/subnet_response.dart';
 export 'devtestlab/subnet_shared_public_ip_address_configuration.dart';
 export 'devtestlab/subnet_shared_public_ip_address_configuration_response.dart';
+export 'devtestlab/system_data_response.dart';
 export 'devtestlab/transport_protocol.dart';
 export 'devtestlab/usage_permission_type.dart';
 export 'devtestlab/user.dart';

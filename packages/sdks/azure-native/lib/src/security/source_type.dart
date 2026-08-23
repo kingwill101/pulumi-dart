@@ -1,7 +1,7 @@
 /// The source type that will trigger the notification
 enum SourceType {
-  valueAlert("Alert"),
-  valueAttackPath("AttackPath");
+  alert("Alert"),
+  attackPath("AttackPath");
 
   const SourceType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SourceType {
     throw ArgumentError('Unknown SourceType value: $value');
   }
 }
-

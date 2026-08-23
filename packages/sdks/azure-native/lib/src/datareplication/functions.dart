@@ -8,8 +8,6 @@ import 'get_fabric_result.dart';
 import 'get_policy_args.dart';
 import 'get_policy_result.dart';
 import 'get_private_endpoint_connection_args.dart';
-import 'get_private_endpoint_connection_proxy_args.dart';
-import 'get_private_endpoint_connection_proxy_result.dart';
 import 'get_private_endpoint_connection_result.dart';
 import 'get_protected_item_args.dart';
 import 'get_protected_item_result.dart';
@@ -40,7 +38,7 @@ Future<GetDraResult> getDra(
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
 ///
-/// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_fabric_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFabricResult> getFabric(
@@ -59,6 +57,8 @@ Future<GetFabricResult> getFabric(
 /// Gets the details of the fabric agent.
 ///
 /// Uses Azure REST API version 2024-09-01.
+///
+/// Other available API versions: 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_fabric_agent_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFabricAgentResult> getFabricAgent(
@@ -78,7 +78,7 @@ Future<GetFabricAgentResult> getFabricAgent(
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
 ///
-/// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPolicyResult> getPolicy(
@@ -97,6 +97,8 @@ Future<GetPolicyResult> getPolicy(
 /// Gets the private endpoint connection details.
 ///
 /// Uses Azure REST API version 2024-09-01.
+///
+/// Other available API versions: 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
@@ -112,29 +114,11 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
-/// Gets the private endpoint connection proxy details.
-///
-/// Uses Azure REST API version 2024-09-01.
-/// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_private_endpoint_connection_proxy_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionProxyResult> getPrivateEndpointConnectionProxy(
-  GetPrivateEndpointConnectionProxyArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'azure-native:datareplication:getPrivateEndpointConnectionProxy',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetPrivateEndpointConnectionProxyResult.fromMap(result);
-}
-
 /// Gets the details of the protected item.
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
 ///
-/// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_protected_item_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetProtectedItemResult> getProtectedItem(
@@ -154,7 +138,7 @@ Future<GetProtectedItemResult> getProtectedItem(
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
 ///
-/// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_replication_extension_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetReplicationExtensionResult> getReplicationExtension(
@@ -174,7 +158,7 @@ Future<GetReplicationExtensionResult> getReplicationExtension(
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
 ///
-/// Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datareplication_get_vault_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVaultResult> getVault(

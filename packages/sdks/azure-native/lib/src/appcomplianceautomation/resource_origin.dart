@@ -16,4 +16,3 @@ enum ResourceOrigin {
     throw ArgumentError('Unknown ResourceOrigin value: $value');
   }
 }
-

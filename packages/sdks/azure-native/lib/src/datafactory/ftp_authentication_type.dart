@@ -1,7 +1,7 @@
 /// The authentication type to be used to connect to the FTP server.
 enum FtpAuthenticationType {
-  valueBasic("Basic"),
-  valueAnonymous("Anonymous");
+  basic("Basic"),
+  anonymous("Anonymous");
 
   const FtpAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum FtpAuthenticationType {
     throw ArgumentError('Unknown FtpAuthenticationType value: $value');
   }
 }
-

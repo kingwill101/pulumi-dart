@@ -101,6 +101,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_devtoolportal" "devToolPortal" {
+///   dev_tool_portal_name = "default"
+///   properties = {
+///     features = {
+///       application_accelerator = {
+///         state = "Enabled"
+///       }
+///       application_live_view = {
+///         state = "Enabled"
+///       }
+///     }
+///     public = true
+///     sso_properties = {
+///       client_id     = "00000000-0000-0000-0000-000000000000"
+///       client_secret = "xxxxx"
+///       metadata_url  = "https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/.well-known/openid-configuration"
+///       scopes        = ["openid"]
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +147,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.inputs.DevToolPortalFeatureSettingsArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.DevToolPortalFeatureDetailArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.DevToolPortalSsoPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

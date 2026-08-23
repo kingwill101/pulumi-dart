@@ -73,6 +73,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_catalog" "catalog" {
+///   ado_git = {
+///     branch            = "main"
+///     path              = "/templates"
+///     secret_identifier = "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
+///     uri               = "https://contoso@dev.azure.com/contoso/contosoOrg/_git/centralrepo-fakecontoso"
+///   }
+///   catalog_name        = "CentralCatalog"
+///   dev_center_name     = "Contoso"
+///   resource_group_name = "rg1"
+///   sync_type           = "Scheduled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.Catalog;
 /// import com.pulumi.azurenative.devcenter.CatalogArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.GitCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -229,6 +253,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_catalog" "catalog" {
+///   catalog_name    = "CentralCatalog"
+///   dev_center_name = "Contoso"
+///   git_hub = {
+///     branch            = "main"
+///     path              = "/templates"
+///     secret_identifier = "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
+///     uri               = "https://github.com/Contoso/centralrepo-fake.git"
+///   }
+///   resource_group_name = "rg1"
+///   sync_type           = "Manual"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -238,8 +286,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.Catalog;
 /// import com.pulumi.azurenative.devcenter.CatalogArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.GitCatalogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

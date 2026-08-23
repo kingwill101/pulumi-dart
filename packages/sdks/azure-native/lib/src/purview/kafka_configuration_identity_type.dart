@@ -1,8 +1,8 @@
 /// Identity Type.
 enum KafkaConfigurationIdentityType {
-  valueNone("None"),
-  valueSystemAssigned("SystemAssigned"),
-  valueUserAssigned("UserAssigned");
+  none("None"),
+  systemAssigned("SystemAssigned"),
+  userAssigned("UserAssigned");
 
   const KafkaConfigurationIdentityType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum KafkaConfigurationIdentityType {
     throw ArgumentError('Unknown KafkaConfigurationIdentityType value: $value');
   }
 }
-

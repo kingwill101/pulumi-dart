@@ -1,7 +1,7 @@
 /// Specifies the default access mode of queries through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
 enum AccessMode {
-  valueOpen("Open"),
-  valuePrivateOnly("PrivateOnly");
+  open("Open"),
+  privateOnly("PrivateOnly");
 
   const AccessMode(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum AccessMode {
     throw ArgumentError('Unknown AccessMode value: $value');
   }
 }
-

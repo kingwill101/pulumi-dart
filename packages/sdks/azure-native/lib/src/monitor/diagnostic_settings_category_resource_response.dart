@@ -9,11 +9,11 @@ class DiagnosticSettingsCategoryResourceResponse {
   final pulumi.Input<List<String>>? categoryGroups;
   /// The type of the diagnostic settings category.
   final pulumi.Input<String>? categoryType;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// The name of the resource
   final pulumi.Input<String> name;
-  /// The system metadata related to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
@@ -21,9 +21,9 @@ class DiagnosticSettingsCategoryResourceResponse {
   /// Creates a new [DiagnosticSettingsCategoryResourceResponse].
   /// [categoryGroups] the collection of what category groups are supported.
   /// [categoryType] The type of the diagnostic settings category.
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [name] The name of the resource
-  /// [systemData] The system metadata related to this resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const DiagnosticSettingsCategoryResourceResponse({
     this.categoryGroups,
@@ -56,4 +56,3 @@ class DiagnosticSettingsCategoryResourceResponse {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum AzureVmSecurityType {
     throw ArgumentError('Unknown AzureVmSecurityType value: $value');
   }
 }
-

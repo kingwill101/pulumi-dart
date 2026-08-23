@@ -1,7 +1,7 @@
 /// [Required] Specifies the status of content safety.
 enum ContentSafetyStatus {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const ContentSafetyStatus(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ContentSafetyStatus {
     throw ArgumentError('Unknown ContentSafetyStatus value: $value');
   }
 }
-

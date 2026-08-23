@@ -1,7 +1,7 @@
-/// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+/// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
 enum PublicNetworkAccess {
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const PublicNetworkAccess(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PublicNetworkAccess {
     throw ArgumentError('Unknown PublicNetworkAccess value: $value');
   }
 }
-

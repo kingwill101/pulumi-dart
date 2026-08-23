@@ -37,4 +37,3 @@ enum SourceType {
     throw ArgumentError('Unknown SourceType value: $value');
   }
 }
-

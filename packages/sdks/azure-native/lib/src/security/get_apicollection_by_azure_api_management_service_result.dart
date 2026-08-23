@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getAPICollectionByAzureApiManagementService.
 class GetAPICollectionByAzureApiManagementServiceResult {
@@ -11,9 +12,9 @@ class GetAPICollectionByAzureApiManagementServiceResult {
   final String discoveredVia;
   /// The display name of the API collection.
   final String displayName;
-  /// Resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// Resource name
+  /// The name of the resource
   final String name;
   /// The number of API endpoints discovered in this API collection.
   final double numberOfApiEndpoints;
@@ -29,7 +30,9 @@ class GetAPICollectionByAzureApiManagementServiceResult {
   final String provisioningState;
   /// The highest priority sensitivity label from Microsoft Purview in this API collection.
   final String sensitivityLabel;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetAPICollectionByAzureApiManagementServiceResult].
@@ -37,8 +40,8 @@ class GetAPICollectionByAzureApiManagementServiceResult {
   /// [baseUrl] The base URI for this API collection. All endpoints of this API collection extend this base URI.
   /// [discoveredVia] The resource Id of the resource from where this API collection was discovered.
   /// [displayName] The display name of the API collection.
-  /// [id] Resource Id
-  /// [name] Resource name
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
   /// [numberOfApiEndpoints] The number of API endpoints discovered in this API collection.
   /// [numberOfApiEndpointsWithSensitiveDataExposed] The number of API endpoints in this API collection which are exposing sensitive data in their requests and/or responses.
   /// [numberOfExternalApiEndpoints] The number of API endpoints in this API collection for which API traffic from the internet was observed.
@@ -46,7 +49,8 @@ class GetAPICollectionByAzureApiManagementServiceResult {
   /// [numberOfUnauthenticatedApiEndpoints] The number of API endpoints in this API collection that are unauthenticated.
   /// [provisioningState] Gets the provisioning state of the API collection.
   /// [sensitivityLabel] The highest priority sensitivity label from Microsoft Purview in this API collection.
-  /// [type] Resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAPICollectionByAzureApiManagementServiceResult({
     required this.azureApiVersion,
     required this.baseUrl,
@@ -61,6 +65,7 @@ class GetAPICollectionByAzureApiManagementServiceResult {
     required this.numberOfUnauthenticatedApiEndpoints,
     required this.provisioningState,
     required this.sensitivityLabel,
+    required this.systemData,
     required this.type,
   });
 
@@ -79,6 +84,7 @@ class GetAPICollectionByAzureApiManagementServiceResult {
       'numberOfUnauthenticatedApiEndpoints': numberOfUnauthenticatedApiEndpoints,
       'provisioningState': provisioningState,
       'sensitivityLabel': sensitivityLabel,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -98,8 +104,8 @@ class GetAPICollectionByAzureApiManagementServiceResult {
       numberOfUnauthenticatedApiEndpoints: map['numberOfUnauthenticatedApiEndpoints'] as double,
       provisioningState: map['provisioningState'] as String,
       sensitivityLabel: map['sensitivityLabel'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

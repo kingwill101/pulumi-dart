@@ -2,9 +2,9 @@
 /// If 'Off' is selected then no featurization is done.
 /// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
 enum FeaturizationMode {
-  valueAuto("Auto"),
-  valueCustom("Custom"),
-  valueOff("Off");
+  auto("Auto"),
+  custom("Custom"),
+  off("Off");
 
   const FeaturizationMode(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum FeaturizationMode {
     throw ArgumentError('Unknown FeaturizationMode value: $value');
   }
 }
-

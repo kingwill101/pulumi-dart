@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRuntimeEnvironmentArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Runtime Environment.
   final pulumi.Input<String> runtimeEnvironmentName;
 
   /// Creates a new [GetRuntimeEnvironmentArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
   const GetRuntimeEnvironmentArgs({
     required this.automationAccountName,
@@ -40,4 +40,3 @@ class GetRuntimeEnvironmentArgs {
     );
   }
 }
-

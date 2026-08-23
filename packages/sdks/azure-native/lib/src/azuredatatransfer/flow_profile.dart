@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-30-preview.
 ///
-/// Other available API versions: 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -185,6 +185,67 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azuredatatransfer_flowprofile" "flowProfile" {
+///   flow_profile_name = "testFlowProfile"
+///   location          = "East US"
+///   pipeline_name     = "testPipeline"
+///   properties = {
+///     description          = "Hello world description"
+///     replication_scenario = "Files"
+///     rulesets = {
+///       antivirus = {
+///         av_solutions = ["Defender", "ClamAv"]
+///       }
+///       archives = {
+///         maximum_compression_ratio_limit = 123
+///         maximum_depth_limit             = 12
+///         maximum_expansion_size_limit    = 123456
+///         minimum_size_for_expansion      = 1
+///       }
+///       data_size = {
+///         maximum = 123456789
+///         minimum = 1
+///       }
+///       mime_filters = {
+///         filters = [{
+///           "extensions" = [".json", ".app", ".js"]
+///           "media"      = "application/json"
+///         }]
+///         type = "Allow"
+///       }
+///       text_matching = {
+///         deny = [{
+///           "caseSensitivity" = "Insensitive"
+///           "matchType"       = "Partial"
+///           "text"            = "hello world"
+///           }, {
+///           "caseSensitivity" = "Sensitive"
+///           "matchType"       = "Complete"
+///           "text"            = "hello"
+///         }]
+///       }
+///       xml_filters = {
+///         default_namespace = "testnamespace"
+///         reference         = "Inline"
+///         schema            = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\"></xs:schema>"
+///       }
+///     }
+///     status = "Enabled"
+///   }
+///   resource_group_name = "testRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +262,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.MimeFilterRulesetArgs;
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.TextMatchingRulesetArgs;
 /// import com.pulumi.azurenative.azuredatatransfer.inputs.XmlFilterRulesetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,14 +422,14 @@ import 'system_data_response.dart';
 ///                 ],
 ///             },
 ///             "archives": {
-///                 "maximum_compression_ratio_limit": 123,
-///                 "maximum_depth_limit": 12,
-///                 "maximum_expansion_size_limit": 123456,
-///                 "minimum_size_for_expansion": 1,
+///                 "maximum_compression_ratio_limit": float(123),
+///                 "maximum_depth_limit": float(12),
+///                 "maximum_expansion_size_limit": float(123456),
+///                 "minimum_size_for_expansion": float(1),
 ///             },
 ///             "data_size": {
-///                 "maximum": 123456789,
-///                 "minimum": 1,
+///                 "maximum": float(123456789),
+///                 "minimum": float(1),
 ///             },
 ///             "mime_filters": {
 ///                 "filters": [{

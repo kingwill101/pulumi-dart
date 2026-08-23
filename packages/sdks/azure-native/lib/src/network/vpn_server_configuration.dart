@@ -6,7 +6,7 @@ import 'vpn_server_configuration_properties_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -236,6 +236,81 @@ import 'vpn_server_configuration_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_vpnserverconfiguration" "vpnServerConfiguration" {
+///   location = "West US"
+///   properties = {
+///     configuration_policy_groups = [{
+///       "id"        = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup1"
+///       "isDefault" = true
+///       "name"      = "policyGroup1"
+///       "policyMembers" = [{
+///         "attributeType"  = "RadiusAzureGroupId"
+///         "attributeValue" = "6ad1bd08"
+///         "name"           = "policy1"
+///       }]
+///       "priority" = 0
+///       }, {
+///       "id"        = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup2"
+///       "isDefault" = true
+///       "name"      = "policyGroup2"
+///       "policyMembers" = [{
+///         "attributeType"  = "CertificateGroupId"
+///         "attributeValue" = "red.com"
+///         "name"           = "policy2"
+///       }]
+///       "priority" = 0
+///     }]
+///     radius_client_root_certificates = [{
+///       "name"       = "vpnServerConfigRadiusClientRootCert1"
+///       "thumbprint" = "83FFBFC8848B5A5836C94D0112367E16148A286F"
+///     }]
+///     radius_server_root_certificates = [{
+///       "name"           = "vpnServerConfigRadiusServerRootCer1"
+///       "publicCertData" = "MIIC5zCCAc+gAwIBAgIQErQ0Hk4aDJxIA+Q5RagB+jANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzEyMTQyMTA3MzhaFw0xODEyMTQyMTI3MzhaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP7/NQXmW7cQ/ZR1mv3Y3I29Lt7HTOqzo/1KUOoVH3NItbQIRAQbwKy3UWrOFz4eGNX2GWtNRMdCyWsKeqy9Ltsdfcm1IbKXkl84DFeU/ZacXu4Dl3xX3gV5du4TLZjEowJELyur11Ea2YcjPRQ/FzAF9/hGuboS1HZQEPLx4FdUs9OxCYOtc0MxBCwLfVTTRqarb0Ne+arNYd4kCzIhAke1nOyKAJBda5ZL+VHy3S5S8qGlD46jm8HXugmAkUygS4oIIXOmj/1O9sNAi3LN60zufSzCmP8Rm/iUGX+DHAGGiXxwZOKQLEDaZXKqoHjMPP0XudmSWwOIbyeQVrLhkwIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFEfeNU2trYxNLF9ONmuJUsT13pKDMA0GCSqGSIb3DQEBCwUAA4IBAQBmM6RJzsGGipxyMhimHKN2xlkejhVsgBoTAhOU0llW9aUSwINJ9zFUGgI8IzUFy1VG776fchHp0LMRmPSIUYk5btEPxbsrPtumPuMH8EQGrS+Rt4pD+78c8H1fEPkq5CmDl/PKu4JoFGv+aFcE+Od0hlILstIF10Qysf++QXDolKfzJa/56bgMeYKFiju73loiRM57ns8ddXpfLl792UVpRkFU62LNns6Y1LKTwapmUF4IvIuAIzd6LZNOQng64LAKXtKnViJ1JQiXwf4CEzhgvAti3/ejpb3U90hsrUcyZi6wBv9bZLcAJRWpz61JNYliM1d1grSwQDKGXNQE4xuM"
+///     }]
+///     radius_servers = [{
+///       "radiusServerAddress" = "10.0.0.0"
+///       "radiusServerScore"   = 25
+///       "radiusServerSecret"  = "radiusServerSecret"
+///     }]
+///     vpn_client_ipsec_policies = [{
+///       "dhGroup"             = "DHGroup14"
+///       "ikeEncryption"       = "AES256"
+///       "ikeIntegrity"        = "SHA384"
+///       "ipsecEncryption"     = "AES256"
+///       "ipsecIntegrity"      = "SHA256"
+///       "pfsGroup"            = "PFS14"
+///       "saDataSizeKilobytes" = 429497
+///       "saLifeTimeSeconds"   = 86472
+///     }]
+///     vpn_client_revoked_certificates = [{
+///       "name"       = "vpnServerConfigVpnClientRevokedCert1"
+///       "thumbprint" = "83FFBFC8848B5A5836C94D0112367E16148A286F"
+///     }]
+///     vpn_client_root_certificates = [{
+///       "name"           = "vpnServerConfigVpnClientRootCert1"
+///       "publicCertData" = "MIIC5zCCAc+gAwIBAgIQErQ0Hk4aDJxIA+Q5RagB+jANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzEyMTQyMTA3MzhaFw0xODEyMTQyMTI3MzhaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArP7/NQXmW7cQ/ZR1mv3Y3I29Lt7HTOqzo/1KUOoVH3NItbQIRAQbwKy3UWrOFz4eGNX2GWtNRMdCyWsKeqy9Ltsdfcm1IbKXkl84DFeU/ZacXu4Dl3xX3gV5du4TLZjEowJELyur11Ea2YcjPRQ/FzAF9/hGuboS1HZQEPLx4FdUs9OxCYOtc0MxBCwLfVTTRqarb0Ne+arNYd4kCzIhAke1nOyKAJBda5ZL+VHy3S5S8qGlD46jm8HXugmAkUygS4oIIXOmj/1O9sNAi3LN60zufSzCmP8Rm/iUGX+DHAGGiXxwZOKQLEDaZXKqoHjMPP0XudmSWwOIbyeQVrLhkwIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFEfeNU2trYxNLF9ONmuJUsT13pKDMA0GCSqGSIb3DQEBCwUAA4IBAQBmM6RJzsGGipxyMhimHKN2xlkejhVsgBoTAhOU0llW9aUSwINJ9zFUGgI8IzUFy1VG776fchHp0LMRmPSIUYk5btEPxbsrPtumPuMH8EQGrS+Rt4pD+78c8H1fEPkq5CmDl/PKu4JoFGv+aFcE+Od0hlILstIF10Qysf++QXDolKfzJa/56bgMeYKFiju73loiRM57ns8ddXpfLl792UVpRkFU62LNns6Y1LKTwapmUF4IvIuAIzd6LZNOQng64LAKXtKnViJ1JQiXwf4CEzhgvAti3/ejpb3U90hsrUcyZi6wBv9bZLcAJRWpz61JNYliM1d1grSwQDKGXNQE4xuN"
+///     }]
+///     vpn_protocols = ["IkeV2"]
+///   }
+///   resource_group_name = "rg1"
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   vpn_server_configuration_name = "vpnServerConfiguration1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +320,8 @@ import 'vpn_server_configuration_properties_response.dart';
 /// import com.pulumi.azurenative.network.VpnServerConfiguration;
 /// import com.pulumi.azurenative.network.VpnServerConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.VpnServerConfigurationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,7 +516,7 @@ import 'vpn_server_configuration_properties_response.dart';
 ///         }],
 ///         "radius_servers": [{
 ///             "radius_server_address": "10.0.0.0",
-///             "radius_server_score": 25,
+///             "radius_server_score": float(25),
 ///             "radius_server_secret": "radiusServerSecret",
 ///         }],
 ///         "vpn_client_ipsec_policies": [{

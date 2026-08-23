@@ -105,6 +105,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_s3controlmultiregionaccesspointpolicydocument" "s3ControlMultiRegionAccessPointPolicyDocument" {
+///   location = "mfqwu"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "ugqgpzuzhxnknuancpvpckccl"
+///     aws_account_id = "wotmizsy"
+///     aws_properties = {
+///       established = {
+///         policy = "amcyzzkmwbyuxnbqop"
+///       }
+///       proposed = {
+///         policy = "lbmaqmlw"
+///       }
+///     }
+///     aws_region        = "pshllexnortomzvgcjnsxeoo"
+///     aws_source_schema = "qntzhuq"
+///     aws_tags = {
+///       "key788" = "kirikwibjuyrwctwbefmn"
+///     }
+///     public_cloud_connectors_resource_id = "yyfwlodyfhgbzyfgsl"
+///     public_cloud_resource_name          = "ks"
+///   }
+///   resource_group_name = "rgs3ControlMultiRegionAccessPointPolicyDocument"
+///   tags = {
+///     "key9846" = "qdjukprfk"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +156,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.EstablishedMultiRegionAccessPointPolicyArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ProposedMultiRegionAccessPointPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

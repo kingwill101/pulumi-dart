@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_governance_assignment_args_doc}
 class GetGovernanceAssignmentArgs {
-  /// The Assessment Key - A unique key for the assessment type
+  /// The assessment key of the governance assignment.
   final pulumi.Input<String> assessmentName;
-  /// The governance assignment key - the assessment key of the required governance assignment
+  /// The governance assignment key.
   final pulumi.Input<String> assignmentKey;
-  /// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// The scope of the governance assignment.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetGovernanceAssignmentArgs].
-  /// [assessmentName] The Assessment Key - A unique key for the assessment type
-  /// [assignmentKey] The governance assignment key - the assessment key of the required governance assignment
-  /// [scope] The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+  /// [assessmentName] The assessment key of the governance assignment.
+  /// [assignmentKey] The governance assignment key.
+  /// [scope] The scope of the governance assignment.
   const GetGovernanceAssignmentArgs({
     required this.assessmentName,
     required this.assignmentKey,
@@ -40,4 +40,3 @@ class GetGovernanceAssignmentArgs {
     );
   }
 }
-

@@ -90,6 +90,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dnsresolver_forwardingrule" "forwardingRule" {
+///   dns_forwarding_ruleset_name = "sampleDnsForwardingRuleset"
+///   domain_name                 = "contoso.com."
+///   forwarding_rule_name        = "sampleForwardingRule"
+///   forwarding_rule_state       = "Enabled"
+///   metadata = {
+///     "additionalProp1" = "value1"
+///   }
+///   resource_group_name = "sampleResourceGroup"
+///   target_dns_servers {
+///     ip_address = "10.0.0.1"
+///     port       = 53
+///   }
+///   target_dns_servers {
+///     ip_address = "10.0.0.2"
+///     port       = 53
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +129,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dnsresolver.ForwardingRule;
 /// import com.pulumi.azurenative.dnsresolver.ForwardingRuleArgs;
 /// import com.pulumi.azurenative.dnsresolver.inputs.TargetDnsServerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

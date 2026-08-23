@@ -1,7 +1,7 @@
 /// The multi cloud account's membership type in the organization
 enum OrganizationMembershipType {
-  valueMember("Member"),
-  valueOrganization("Organization");
+  member("Member"),
+  organization("Organization");
 
   const OrganizationMembershipType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum OrganizationMembershipType {
     throw ArgumentError('Unknown OrganizationMembershipType value: $value');
   }
 }
-

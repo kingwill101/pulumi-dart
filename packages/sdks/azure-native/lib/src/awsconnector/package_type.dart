@@ -15,4 +15,3 @@ enum PackageType {
     throw ArgumentError('Unknown PackageType value: $value');
   }
 }
-

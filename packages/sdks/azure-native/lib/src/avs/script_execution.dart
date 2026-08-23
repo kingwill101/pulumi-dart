@@ -105,6 +105,40 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_avs_scriptexecution" "scriptExecution" {
+///   hidden_parameters = [{
+///     "name"        = "Password"
+///     "secureValue" = "PlaceholderPassword"
+///     "type"        = "SecureValue"
+///   }]
+///   parameters = [{
+///     "name"  = "DomainName"
+///     "type"  = "Value"
+///     "value" = "placeholderDomain.local"
+///     }, {
+///     "name"  = "BaseUserDN"
+///     "type"  = "Value"
+///     "value" = "DC=placeholder, DC=placeholder"
+///   }]
+///   private_cloud_name    = "cloud1"
+///   resource_group_name   = "group1"
+///   retention             = "P0Y0M60DT0H60M60S"
+///   script_cmdlet_id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/scriptPackages/AVS.PowerCommands@1.0.0/scriptCmdlets/New-SsoExternalIdentitySource"
+///   script_execution_name = "addSsoServer"
+///   timeout               = "P0Y0M0DT0H60M60S"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +147,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.avs.ScriptExecution;
 /// import com.pulumi.azurenative.avs.ScriptExecutionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

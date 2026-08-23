@@ -16,4 +16,3 @@ enum RecordingStrategyType {
     throw ArgumentError('Unknown RecordingStrategyType value: $value');
   }
 }
-

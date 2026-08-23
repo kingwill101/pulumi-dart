@@ -1,6 +1,6 @@
 enum Protocol {
-  valueTCP("TCP"),
-  valueUDP("UDP"),
+  tCP("TCP"),
+  uDP("UDP"),
   all("*");
 
   const Protocol(this.wireValue);
@@ -15,4 +15,3 @@ enum Protocol {
     throw ArgumentError('Unknown Protocol value: $value');
   }
 }
-

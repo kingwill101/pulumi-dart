@@ -88,6 +88,35 @@ import 'partner_content_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_logic_integrationaccountpartner" "integrationAccountPartner" {
+///   content = {
+///     b2b = {
+///       business_identities = [{
+///         "qualifier" = "AA"
+///         "value"     = "ZZ"
+///       }]
+///     }
+///   }
+///   integration_account_name = "testIntegrationAccount"
+///   location                 = "westus"
+///   metadata                 = {}
+///   partner_name             = "testPartner"
+///   partner_type             = "B2B"
+///   resource_group_name      = "testResourceGroup"
+///   tags                     = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +127,8 @@ import 'partner_content_response.dart';
 /// import com.pulumi.azurenative.logic.IntegrationAccountPartnerArgs;
 /// import com.pulumi.azurenative.logic.inputs.PartnerContentArgs;
 /// import com.pulumi.azurenative.logic.inputs.B2BPartnerContentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

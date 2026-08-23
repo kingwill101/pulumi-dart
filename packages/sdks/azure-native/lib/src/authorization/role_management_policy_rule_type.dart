@@ -1,11 +1,11 @@
 /// The type of rule
 enum RoleManagementPolicyRuleType {
-  valueRoleManagementPolicyApprovalRule("RoleManagementPolicyApprovalRule"),
-  valueRoleManagementPolicyAuthenticationContextRule("RoleManagementPolicyAuthenticationContextRule"),
-  valueRoleManagementPolicyEnablementRule("RoleManagementPolicyEnablementRule"),
-  valueRoleManagementPolicyExpirationRule("RoleManagementPolicyExpirationRule"),
-  valueRoleManagementPolicyNotificationRule("RoleManagementPolicyNotificationRule"),
-  valueRoleManagementPolicyPimOnlyModeRule("RoleManagementPolicyPimOnlyModeRule");
+  roleManagementPolicyApprovalRule("RoleManagementPolicyApprovalRule"),
+  roleManagementPolicyAuthenticationContextRule("RoleManagementPolicyAuthenticationContextRule"),
+  roleManagementPolicyEnablementRule("RoleManagementPolicyEnablementRule"),
+  roleManagementPolicyExpirationRule("RoleManagementPolicyExpirationRule"),
+  roleManagementPolicyNotificationRule("RoleManagementPolicyNotificationRule"),
+  roleManagementPolicyPimOnlyModeRule("RoleManagementPolicyPimOnlyModeRule");
 
   const RoleManagementPolicyRuleType(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum RoleManagementPolicyRuleType {
     throw ArgumentError('Unknown RoleManagementPolicyRuleType value: $value');
   }
 }
-

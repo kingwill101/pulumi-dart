@@ -22,4 +22,3 @@ enum AutoTuneState {
     throw ArgumentError('Unknown AutoTuneState value: $value');
   }
 }
-

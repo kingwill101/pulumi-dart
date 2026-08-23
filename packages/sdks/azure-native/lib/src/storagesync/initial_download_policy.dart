@@ -16,4 +16,3 @@ enum InitialDownloadPolicy {
     throw ArgumentError('Unknown InitialDownloadPolicy value: $value');
   }
 }
-

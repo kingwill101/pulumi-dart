@@ -16,4 +16,3 @@ enum AzureCoreArtifactType {
     throw ArgumentError('Unknown AzureCoreArtifactType value: $value');
   }
 }
-

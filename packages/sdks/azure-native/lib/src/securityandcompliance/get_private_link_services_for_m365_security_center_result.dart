@@ -87,4 +87,3 @@ class GetPrivateLinkServicesForM365SecurityCenterResult {
     );
   }
 }
-

@@ -21,4 +21,3 @@ enum WorkspaceSkuNameEnum {
     throw ArgumentError('Unknown WorkspaceSkuNameEnum value: $value');
   }
 }
-

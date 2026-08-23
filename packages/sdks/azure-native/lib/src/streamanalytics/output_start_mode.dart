@@ -16,4 +16,3 @@ enum OutputStartMode {
     throw ArgumentError('Unknown OutputStartMode value: $value');
   }
 }
-

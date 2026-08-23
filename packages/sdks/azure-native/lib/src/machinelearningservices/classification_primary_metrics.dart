@@ -1,10 +1,10 @@
-/// Primary metric for Text-Classification task.
+/// Primary metrics for classification tasks.
 enum ClassificationPrimaryMetrics {
-  valueAUCWeighted("AUCWeighted"),
-  valueAccuracy("Accuracy"),
-  valueNormMacroRecall("NormMacroRecall"),
-  valueAveragePrecisionScoreWeighted("AveragePrecisionScoreWeighted"),
-  valuePrecisionScoreWeighted("PrecisionScoreWeighted");
+  aUCWeighted("AUCWeighted"),
+  accuracy("Accuracy"),
+  normMacroRecall("NormMacroRecall"),
+  averagePrecisionScoreWeighted("AveragePrecisionScoreWeighted"),
+  precisionScoreWeighted("PrecisionScoreWeighted");
 
   const ClassificationPrimaryMetrics(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum ClassificationPrimaryMetrics {
     throw ArgumentError('Unknown ClassificationPrimaryMetrics value: $value');
   }
 }
-

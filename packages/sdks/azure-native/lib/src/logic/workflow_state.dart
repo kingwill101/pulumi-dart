@@ -19,4 +19,3 @@ enum WorkflowState {
     throw ArgumentError('Unknown WorkflowState value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum DataLakeStorageAuthMethod {
     throw ArgumentError('Unknown DataLakeStorageAuthMethod value: $value');
   }
 }
-

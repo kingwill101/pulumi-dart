@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyArgs {
   /// The name of the Web Application Firewall Policy.
   final pulumi.Input<String> policyName;
-  /// Name of the Resource group within the Azure subscription.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPolicyArgs].
   /// [policyName] The name of the Web Application Firewall Policy.
-  /// [resourceGroupName] Name of the Resource group within the Azure subscription.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetPolicyArgs({
     required this.policyName,
     required this.resourceGroupName,
@@ -34,4 +34,3 @@ class GetPolicyArgs {
     );
   }
 }
-

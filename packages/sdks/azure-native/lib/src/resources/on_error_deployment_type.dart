@@ -15,4 +15,3 @@ enum OnErrorDeploymentType {
     throw ArgumentError('Unknown OnErrorDeploymentType value: $value');
   }
 }
-

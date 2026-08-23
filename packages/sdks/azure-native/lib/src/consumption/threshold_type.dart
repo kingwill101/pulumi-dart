@@ -15,4 +15,3 @@ enum ThresholdType {
     throw ArgumentError('Unknown ThresholdType value: $value');
   }
 }
-

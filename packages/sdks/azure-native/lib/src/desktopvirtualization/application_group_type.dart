@@ -15,4 +15,3 @@ enum ApplicationGroupType {
     throw ArgumentError('Unknown ApplicationGroupType value: $value');
   }
 }
-

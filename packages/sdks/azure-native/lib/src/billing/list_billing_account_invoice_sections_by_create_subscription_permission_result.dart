@@ -5,31 +5,30 @@ import 'invoice_section_with_create_sub_permission_response.dart';
 
 /// Result data returned by listBillingAccountInvoiceSectionsByCreateSubscriptionPermission.
 class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult {
-  /// The link (url) to the next page of results.
-  final String nextLink;
-  /// The list of resources.
+  /// The link to the next page of items
+  final String? nextLink;
+  /// The InvoiceSectionWithCreateSubPermission items on this page
   final List<InvoiceSectionWithCreateSubPermissionResponse> value;
 
   /// Creates a new [ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult].
-  /// [nextLink] The link (url) to the next page of results.
-  /// [value] The list of resources.
+  /// [nextLink] The link to the next page of items
+  /// [value] The InvoiceSectionWithCreateSubPermission items on this page
   const ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult({
-    required this.nextLink,
+    this.nextLink,
     required this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nextLink': nextLink,
+      'nextLink': ?nextLink,
       'value': pulumi.Input.encodeList<InvoiceSectionWithCreateSubPermissionResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap(Map<String, dynamic> map) {
     return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult(
-      nextLink: map['nextLink'] as String,
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       value: pulumi.Input.decodeList<InvoiceSectionWithCreateSubPermissionResponse>(map['value']!, (value) => InvoiceSectionWithCreateSubPermissionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

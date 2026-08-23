@@ -48,7 +48,7 @@ class SynapseSparkJobDefinitionActivity {
   /// Scanning subfolders from the root folder of the main definition file, these files will be added as reference files. The folders named 'jars', 'pyFiles', 'files' or 'archives' will be scanned, and the folders name are case sensitive. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? scanFolder;
   /// Spark configuration property.
-  final pulumi.Input<Map<String, dynamic>>? sparkConfig;
+  final pulumi.Input<dynamic>? sparkConfig;
   /// Synapse spark job reference.
   final pulumi.Input<SynapseSparkJobReference> sparkJob;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
@@ -167,7 +167,7 @@ class SynapseSparkJobDefinitionActivity {
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pythonCodeReference: (() { final guardedValue = map['pythonCodeReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       scanFolder: (() { final guardedValue = map['scanFolder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sparkJob: pulumi.Input.fromValue(SynapseSparkJobReference.fromMap((map['sparkJob']! as Map).cast<String, dynamic>())),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetBigDataPool: (() { final guardedValue = map['targetBigDataPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BigDataPoolParametrizationReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -177,4 +177,3 @@ class SynapseSparkJobDefinitionActivity {
     );
   }
 }
-

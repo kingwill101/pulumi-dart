@@ -17,7 +17,7 @@ class WebAppSlotConfigurationNamesArgs {
   final pulumi.Input<String>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [WebAppSlotConfigurationNamesArgs].
@@ -26,7 +26,7 @@ class WebAppSlotConfigurationNamesArgs {
   /// [connectionStringNames] List of connection string names.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const WebAppSlotConfigurationNamesArgs({
     this.appSettingNames,
     this.azureStorageConfigNames,
@@ -58,4 +58,3 @@ class WebAppSlotConfigurationNamesArgs {
     );
   }
 }
-

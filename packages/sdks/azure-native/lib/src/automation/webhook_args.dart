@@ -18,7 +18,7 @@ class WebhookArgs {
   final pulumi.Input<String> name;
   /// Gets or sets the parameters of the job.
   final pulumi.Input<Map<String, String>>? parameters;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the name of the hybrid worker group the webhook job will run on.
   final pulumi.Input<String>? runOn;
@@ -35,7 +35,7 @@ class WebhookArgs {
   /// [isEnabled] Gets or sets the value of the enabled flag of webhook.
   /// [name] Gets or sets the name of the webhook.
   /// [parameters] Gets or sets the parameters of the job.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runOn] Gets or sets the name of the hybrid worker group the webhook job will run on.
   /// [runbook] Gets or sets the runbook.
   /// [uri] Gets or sets the uri.
@@ -83,4 +83,3 @@ class WebhookArgs {
     );
   }
 }
-

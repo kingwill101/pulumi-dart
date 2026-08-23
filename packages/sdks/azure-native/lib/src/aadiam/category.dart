@@ -15,4 +15,3 @@ enum Category {
     throw ArgumentError('Unknown Category value: $value');
   }
 }
-

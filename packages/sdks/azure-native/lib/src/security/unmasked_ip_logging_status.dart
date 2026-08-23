@@ -1,7 +1,7 @@
 /// Unmasked IP address logging status
 enum UnmaskedIpLoggingStatus {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const UnmaskedIpLoggingStatus(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum UnmaskedIpLoggingStatus {
     throw ArgumentError('Unknown UnmaskedIpLoggingStatus value: $value');
   }
 }
-

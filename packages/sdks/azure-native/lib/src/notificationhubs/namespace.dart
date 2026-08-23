@@ -119,6 +119,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_notificationhubs_namespace" "namespace" {
+///   location       = "South Central US"
+///   namespace_name = "nh-sdk-ns"
+///   network_acls = {
+///     ip_rules = [{
+///       "ipMask" = "185.48.100.00/24"
+///       "rights" = ["Manage", "Send", "Listen"]
+///     }]
+///     public_network_rule = {
+///       rights = ["Listen"]
+///     }
+///   }
+///   resource_group_name = "5ktrial"
+///   sku = {
+///     name = "Standard"
+///     tier = "Standard"
+///   }
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+///   zone_redundancy = "Enabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +165,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.notificationhubs.inputs.NetworkAclsArgs;
 /// import com.pulumi.azurenative.notificationhubs.inputs.PublicInternetAuthorizationRuleArgs;
 /// import com.pulumi.azurenative.notificationhubs.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

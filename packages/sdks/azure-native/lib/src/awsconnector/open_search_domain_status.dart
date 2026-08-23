@@ -468,6 +468,199 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_opensearchdomainstatus" "openSearchDomainStatus" {
+///   location = "cjnfjucekzuxbrhfzskptnxmy"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "xxoyruemlfezddeqgvpfvbvqrmmhzk"
+///     aws_account_id = "l"
+///     aws_properties = {
+///       access_policies = "zmizapetmvhfuhnuevg"
+///       advanced_options = {
+///         "key5855" = "vqbdzcigjhn"
+///       }
+///       advanced_security_options = {
+///         anonymous_auth_disable_date    = "2024-10-08T03:49:18.317Z"
+///         anonymous_auth_enabled         = true
+///         enabled                        = true
+///         internal_user_database_enabled = true
+///         saml_options = {
+///           enabled = true
+///           idp = {
+///             entity_id        = "ujb"
+///             metadata_content = "ncvlnvyvuwdkmspvvynhbjwzzerkl"
+///           }
+///           roles_key               = "pphcuihmcksjghguam"
+///           session_timeout_minutes = 22
+///           subject_key             = "pnnavlixxrzg"
+///         }
+///       }
+///       arn = "svblrdkqxeghxc"
+///       auto_tune_options = {
+///         error_message = "gdouqrr"
+///         state = {
+///           value = "DISABLED"
+///         }
+///         use_off_peak_window = true
+///       }
+///       change_progress_details = {
+///         change_id = "acuqzpomrpdxccssgsjtftt"
+///         config_change_status = {
+///           value = "ApplyingChanges"
+///         }
+///         initiated_by = {
+///           value = "CUSTOMER"
+///         }
+///         last_updated_time = "2024-10-08T03:49:18.319Z"
+///         message           = "netweglaakukislhan"
+///         start_time        = "2024-10-08T03:49:18.319Z"
+///       }
+///       cluster_config = {
+///         cold_storage_options = {
+///           enabled = true
+///         }
+///         dedicated_master_count   = 15
+///         dedicated_master_enabled = true
+///         dedicated_master_type = {
+///           value = "c4.2xlarge.search"
+///         }
+///         instance_count = 6
+///         instance_type = {
+///           value = "c4.2xlarge.search"
+///         }
+///         multi_az_with_standby_enabled = true
+///         warm_count                    = 29
+///         warm_enabled                  = true
+///         warm_type = {
+///           value = "ultrawarm1.large.search"
+///         }
+///         zone_awareness_config = {
+///           availability_zone_count = 20
+///         }
+///         zone_awareness_enabled = true
+///       }
+///       cognito_options = {
+///         enabled          = true
+///         identity_pool_id = "dcpqrbpnpihpqvibpysnhi"
+///         role_arn         = "wdpsbg"
+///         user_pool_id     = "oeiqtnpxt"
+///       }
+///       created = true
+///       deleted = true
+///       domain_endpoint_options = {
+///         custom_endpoint                 = "pkalvbtpzxwdwtzlhet"
+///         custom_endpoint_certificate_arn = "bmcnynq"
+///         custom_endpoint_enabled         = true
+///         enforce_https                   = true
+///         tls_security_policy = {
+///           value = "Policy-Min-TLS-1-0-2019-07"
+///         }
+///       }
+///       domain_id   = "vdvjabmtsxndtepulmirzlkxjc"
+///       domain_name = "zmweyexy"
+///       domain_processing_status = {
+///         value = "Active"
+///       }
+///       ebs_options = {
+///         ebs_enabled = true
+///         iops        = 1
+///         throughput  = 6
+///         volume_size = 16
+///         volume_type = {
+///           value = "gp2"
+///         }
+///       }
+///       encryption_at_rest_options = {
+///         enabled    = true
+///         kms_key_id = "vfmtoghzhlyifmzgt"
+///       }
+///       endpoint    = "y"
+///       endpoint_v2 = "lnmdhcvptzovtjrggoqef"
+///       endpoints = {
+///         "key7016" = "mnbnwxhmvteoxgmcif"
+///       }
+///       engine_version = "nafwkgnvpagjlvctspjtgg"
+///       ip_address_type = {
+///         value = "dualstack"
+///       }
+///       log_publishing_options = {
+///         "key1257" = {
+///           cloud_watch_logs_log_group_arn = "yflaoiiuhbxlodpwh"
+///           enabled                        = true
+///         }
+///       }
+///       modifying_properties = [{
+///         "activeValue"  = "igvntcixfgeammklivfvtjjxfka"
+///         "name"         = "wbfqxsudlhdpidezy"
+///         "pendingValue" = "n"
+///         "valueType" = {
+///           "value" = "PLAIN_TEXT"
+///         }
+///       }]
+///       node_to_node_encryption_options = {
+///         enabled = true
+///       }
+///       off_peak_window_options = {
+///         enabled = true
+///         off_peak_window = {
+///           window_start_time = {
+///             hours   = 19
+///             minutes = 7
+///           }
+///         }
+///       }
+///       processing = true
+///       service_software_options = {
+///         automated_update_date = "2024-10-08T03:49:18.320Z"
+///         cancellable           = true
+///         current_version       = "ugdoxim"
+///         description           = "moodysfsdplowtykjopgnlgeodxt"
+///         new_version           = "awqdkyicwktzdn"
+///         optional_deployment   = true
+///         update_available      = true
+///         update_status = {
+///           value = "COMPLETED"
+///         }
+///       }
+///       snapshot_options = {
+///         automated_snapshot_start_hour = 9
+///       }
+///       software_update_options = {
+///         auto_software_update_enabled = true
+///       }
+///       upgrade_processing = true
+///       vpc_options = {
+///         availability_zones = ["laxoeorkeojjhcnoji"]
+///         security_group_ids = ["ap"]
+///         subnet_ids         = ["oric"]
+///         vpc_id             = "jffbtwxjojtqphtd"
+///       }
+///     }
+///     aws_region        = "mpszpnxbznm"
+///     aws_source_schema = "qrkamtxqjfb"
+///     aws_tags = {
+///       "key5895" = "bosxipjwti"
+///     }
+///     public_cloud_connectors_resource_id = "g"
+///     public_cloud_resource_name          = "sntfjznnaylmvehihglcoyqpcyacz"
+///   }
+///   resource_group_name = "rgopenSearchDomainStatus"
+///   tags = {
+///     "key9493" = "seimlf"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -508,8 +701,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.SnapshotOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SoftwareUpdateOptionsArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VPCDerivedInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1026,8 +1219,8 @@ import 'system_data_response.dart';
 ///                 "enabled": True,
 ///                 "off_peak_window": {
 ///                     "window_start_time": {
-///                         "hours": 19,
-///                         "minutes": 7,
+///                         "hours": float(19),
+///                         "minutes": float(7),
 ///                     },
 ///                 },
 ///             },

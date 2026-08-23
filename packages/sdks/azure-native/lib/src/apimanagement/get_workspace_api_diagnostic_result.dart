@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'llmdiagnostic_settings_response.dart';
 import 'pipeline_diagnostic_settings_response.dart';
 import 'sampling_settings_response.dart';
 
@@ -18,8 +17,6 @@ class GetWorkspaceApiDiagnosticResult {
   final String? httpCorrelationProtocol;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// Large Language Models diagnostic settings
-  final LLMDiagnosticSettingsResponse? largeLanguageModel;
   /// Log the ClientIP. Default is false.
   final bool? logClientIp;
   /// Resource Id of a target logger.
@@ -44,7 +41,6 @@ class GetWorkspaceApiDiagnosticResult {
   /// [frontend] Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
   /// [httpCorrelationProtocol] Sets correlation protocol to use for Application Insights diagnostics.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  /// [largeLanguageModel] Large Language Models diagnostic settings
   /// [logClientIp] Log the ClientIP. Default is false.
   /// [loggerId] Resource Id of a target logger.
   /// [metrics] Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
@@ -60,7 +56,6 @@ class GetWorkspaceApiDiagnosticResult {
     this.frontend,
     this.httpCorrelationProtocol,
     required this.id,
-    this.largeLanguageModel,
     this.logClientIp,
     required this.loggerId,
     this.metrics,
@@ -79,7 +74,6 @@ class GetWorkspaceApiDiagnosticResult {
       'frontend': ?frontend?.toMap(),
       'httpCorrelationProtocol': ?httpCorrelationProtocol,
       'id': id,
-      'largeLanguageModel': ?largeLanguageModel?.toMap(),
       'logClientIp': ?logClientIp,
       'loggerId': loggerId,
       'metrics': ?metrics,
@@ -99,7 +93,6 @@ class GetWorkspaceApiDiagnosticResult {
       frontend: (() { final guardedValue = map['frontend']; if (guardedValue == null) return null; return PipelineDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       httpCorrelationProtocol: (() { final guardedValue = map['httpCorrelationProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: map['id'] as String,
-      largeLanguageModel: (() { final guardedValue = map['largeLanguageModel']; if (guardedValue == null) return null; return LLMDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       logClientIp: (() { final guardedValue = map['logClientIp']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       loggerId: map['loggerId'] as String,
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -111,4 +104,3 @@ class GetWorkspaceApiDiagnosticResult {
     );
   }
 }
-

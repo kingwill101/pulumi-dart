@@ -21,4 +21,3 @@ enum AzureVmCategory {
     throw ArgumentError('Unknown AzureVmCategory value: $value');
   }
 }
-

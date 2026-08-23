@@ -77,4 +77,3 @@ enum AzureSkuName {
     throw ArgumentError('Unknown AzureSkuName value: $value');
   }
 }
-

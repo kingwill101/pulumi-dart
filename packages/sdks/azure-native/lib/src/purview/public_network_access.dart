@@ -1,8 +1,8 @@
 /// Gets or sets the public network access.
 enum PublicNetworkAccess {
-  valueNotSpecified("NotSpecified"),
-  valueEnabled("Enabled"),
-  valueDisabled("Disabled");
+  notSpecified("NotSpecified"),
+  enabled("Enabled"),
+  disabled("Disabled");
 
   const PublicNetworkAccess(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum PublicNetworkAccess {
     throw ArgumentError('Unknown PublicNetworkAccess value: $value');
   }
 }
-

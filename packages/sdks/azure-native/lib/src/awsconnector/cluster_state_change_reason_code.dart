@@ -21,4 +21,3 @@ enum ClusterStateChangeReasonCode {
     throw ArgumentError('Unknown ClusterStateChangeReasonCode value: $value');
   }
 }
-

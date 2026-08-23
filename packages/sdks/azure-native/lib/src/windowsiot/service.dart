@@ -61,6 +61,27 @@ import 'service_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_windowsiot_service" "service" {
+///   admin_domain_name   = "d.e.f"
+///   billing_domain_name = "a.b.c"
+///   device_name         = "service4445"
+///   location            = "East US"
+///   notes               = "blah"
+///   quantity            = 1000000
+///   resource_group_name = "res9101"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +90,8 @@ import 'service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.windowsiot.Service;
 /// import com.pulumi.azurenative.windowsiot.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -123,7 +144,7 @@ import 'service_args.dart';
 ///     device_name="service4445",
 ///     location="East US",
 ///     notes="blah",
-///     quantity=1000000,
+///     quantity=float(1000000),
 ///     resource_group_name="res9101")
 ///
 /// ```

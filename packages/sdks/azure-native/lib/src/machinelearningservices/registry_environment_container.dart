@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'environment_container_response.dart';
+import 'environment_container_properties_response.dart';
 import 'registry_environment_container_args.dart';
 import 'system_data_response.dart';
 
 /// Azure Resource Manager resource envelope.
 ///
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -23,7 +23,8 @@ import 'system_data_response.dart';
 /// {
 ///     var registryEnvironmentContainer = new AzureNative.MachineLearningServices.RegistryEnvironmentContainer("registryEnvironmentContainer", new()
 ///     {
-///         EnvironmentContainerProperties = new AzureNative.MachineLearningServices.Inputs.EnvironmentContainerArgs
+///         EnvironmentName = "testEnvironment",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.EnvironmentContainerPropertiesArgs
 ///         {
 ///             Description = "string",
 ///             Properties =
@@ -39,7 +40,6 @@ import 'system_data_response.dart';
 ///                 { "additionalProp3", "string" },
 ///             },
 ///         },
-///         EnvironmentName = "testEnvironment",
 ///         RegistryName = "testregistry",
 ///         ResourceGroupName = "testrg123",
 ///     });
@@ -60,7 +60,8 @@ import 'system_data_response.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := machinelearningservices.NewRegistryEnvironmentContainer(ctx, "registryEnvironmentContainer", &machinelearningservices.RegistryEnvironmentContainerArgs{
-/// 			EnvironmentContainerProperties: &machinelearningservices.EnvironmentContainerTypeArgs{
+/// 			EnvironmentName: pulumi.String("testEnvironment"),
+/// 			Properties: &machinelearningservices.EnvironmentContainerPropertiesArgs{
 /// 				Description: pulumi.String("string"),
 /// 				Properties: pulumi.StringMap{
 /// 					"additionalProp1": pulumi.String("string"),
@@ -73,7 +74,6 @@ import 'system_data_response.dart';
 /// 					"additionalProp3": pulumi.String("string"),
 /// 				},
 /// 			},
-/// 			EnvironmentName:   pulumi.String("testEnvironment"),
 /// 			RegistryName:      pulumi.String("testregistry"),
 /// 			ResourceGroupName: pulumi.String("testrg123"),
 /// 		})
@@ -86,6 +86,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_registryenvironmentcontainer" "registryEnvironmentContainer" {
+///   environment_name = "testEnvironment"
+///   properties = {
+///     description = "string"
+///     properties = {
+///       "additionalProp1" = "string"
+///       "additionalProp2" = "string"
+///       "additionalProp3" = "string"
+///     }
+///     tags = {
+///       "additionalProp1" = "string"
+///       "additionalProp2" = "string"
+///       "additionalProp3" = "string"
+///     }
+///   }
+///   registry_name       = "testregistry"
+///   resource_group_name = "testrg123"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -94,9 +124,9 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryEnvironmentContainer;
 /// import com.pulumi.azurenative.machinelearningservices.RegistryEnvironmentContainerArgs;
-/// import com.pulumi.azurenative.machinelearningservices.inputs.EnvironmentContainerArgs;
-/// import java.util.List;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.EnvironmentContainerPropertiesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -109,7 +139,8 @@ import 'system_data_response.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var registryEnvironmentContainer = new RegistryEnvironmentContainer("registryEnvironmentContainer", RegistryEnvironmentContainerArgs.builder()
-///             .environmentContainerProperties(EnvironmentContainerArgs.builder()
+///             .environmentName("testEnvironment")
+///             .properties(EnvironmentContainerPropertiesArgs.builder()
 ///                 .description("string")
 ///                 .properties(Map.ofEntries(
 ///                     Map.entry("additionalProp1", "string"),
@@ -122,7 +153,6 @@ import 'system_data_response.dart';
 ///                     Map.entry("additionalProp3", "string")
 ///                 ))
 ///                 .build())
-///             .environmentName("testEnvironment")
 ///             .registryName("testregistry")
 ///             .resourceGroupName("testrg123")
 ///             .build());
@@ -137,7 +167,8 @@ import 'system_data_response.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const registryEnvironmentContainer = new azure_native.machinelearningservices.RegistryEnvironmentContainer("registryEnvironmentContainer", {
-///     environmentContainerProperties: {
+///     environmentName: "testEnvironment",
+///     properties: {
 ///         description: "string",
 ///         properties: {
 ///             additionalProp1: "string",
@@ -150,7 +181,6 @@ import 'system_data_response.dart';
 ///             additionalProp3: "string",
 ///         },
 ///     },
-///     environmentName: "testEnvironment",
 ///     registryName: "testregistry",
 ///     resourceGroupName: "testrg123",
 /// });
@@ -162,7 +192,8 @@ import 'system_data_response.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// registry_environment_container = azure_native.machinelearningservices.RegistryEnvironmentContainer("registryEnvironmentContainer",
-///     environment_container_properties={
+///     environment_name="testEnvironment",
+///     properties={
 ///         "description": "string",
 ///         "properties": {
 ///             "additionalProp1": "string",
@@ -175,7 +206,6 @@ import 'system_data_response.dart';
 ///             "additionalProp3": "string",
 ///         },
 ///     },
-///     environment_name="testEnvironment",
 ///     registry_name="testregistry",
 ///     resource_group_name="testrg123")
 ///
@@ -186,7 +216,8 @@ import 'system_data_response.dart';
 ///   registryEnvironmentContainer:
 ///     type: azure-native:machinelearningservices:RegistryEnvironmentContainer
 ///     properties:
-///       environmentContainerProperties:
+///       environmentName: testEnvironment
+///       properties:
 ///         description: string
 ///         properties:
 ///           additionalProp1: string
@@ -196,7 +227,6 @@ import 'system_data_response.dart';
 ///           additionalProp1: string
 ///           additionalProp2: string
 ///           additionalProp3: string
-///       environmentName: testEnvironment
 ///       registryName: testregistry
 ///       resourceGroupName: testrg123
 ///
@@ -215,10 +245,10 @@ import 'system_data_response.dart';
 class RegistryEnvironmentContainer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<EnvironmentContainerResponse> environmentContainerProperties;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<EnvironmentContainerPropertiesResponse> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -239,8 +269,8 @@ class RegistryEnvironmentContainer extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    environmentContainerProperties = registerOutput<EnvironmentContainerResponse>('environmentContainerProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentContainerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    properties = registerOutput<EnvironmentContainerPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentContainerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

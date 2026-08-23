@@ -161,4 +161,3 @@ class SnowflakeV2LinkedService {
     );
   }
 }
-

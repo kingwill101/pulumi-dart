@@ -1,12 +1,12 @@
 /// Identifies the status of an invoice section.
 enum InvoiceSectionState {
-  valueOther("Other"),
-  valueActive("Active"),
-  valueDeleted("Deleted"),
-  valueDisabled("Disabled"),
-  valueUnderReview("UnderReview"),
-  valueWarned("Warned"),
-  valueRestricted("Restricted");
+  other("Other"),
+  active("Active"),
+  deleted("Deleted"),
+  disabled("Disabled"),
+  underReview("UnderReview"),
+  warned("Warned"),
+  restricted("Restricted");
 
   const InvoiceSectionState(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum InvoiceSectionState {
     throw ArgumentError('Unknown InvoiceSectionState value: $value');
   }
 }
-

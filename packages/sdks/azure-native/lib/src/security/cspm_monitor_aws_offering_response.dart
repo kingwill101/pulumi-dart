@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cspm_monitor_aws_offering_response_native_cloud_connection.dart';
+import 'cspm_monitor_aws_offering_native_cloud_connection_response.dart';
 
 /// The CSPM monitoring for AWS offering
 class CspmMonitorAwsOfferingResponse {
   /// The offering description.
   final pulumi.Input<String> description;
   /// The native cloud connection configuration
-  final pulumi.Input<CspmMonitorAwsOfferingResponseNativeCloudConnection>? nativeCloudConnection;
+  final pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnectionResponse>? nativeCloudConnection;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorAws'.
   final pulumi.Input<String> offeringType;
@@ -26,7 +26,7 @@ class CspmMonitorAwsOfferingResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'nativeCloudConnection': ?pulumi.Input.mapOptionalInputValue<CspmMonitorAwsOfferingResponseNativeCloudConnection, Map<String, dynamic>>(nativeCloudConnection, (value) => value.toMap()),
+      'nativeCloudConnection': ?pulumi.Input.mapOptionalInputValue<CspmMonitorAwsOfferingNativeCloudConnectionResponse, Map<String, dynamic>>(nativeCloudConnection, (value) => value.toMap()),
       'offeringType': offeringType,
     };
   }
@@ -34,9 +34,8 @@ class CspmMonitorAwsOfferingResponse {
   factory CspmMonitorAwsOfferingResponse.fromMap(Map<String, dynamic> map) {
     return CspmMonitorAwsOfferingResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
-      nativeCloudConnection: (() { final guardedValue = map['nativeCloudConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CspmMonitorAwsOfferingResponseNativeCloudConnection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nativeCloudConnection: (() { final guardedValue = map['nativeCloudConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CspmMonitorAwsOfferingNativeCloudConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
-

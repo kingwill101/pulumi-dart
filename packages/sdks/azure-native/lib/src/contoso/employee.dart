@@ -75,6 +75,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_contoso_employee" "employee" {
+///   employee_name = "9KF-f-8b"
+///   location      = "itajgxyqozseoygnl"
+///   properties = {
+///     age     = 30
+///     city    = "gydhnntudughbmxlkyzrskcdkotrxn"
+///     profile = "ms"
+///   }
+///   resource_group_name = "rgopenapi"
+///   tags = {
+///     "key2913" = "urperxmkkhhkp"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.contoso.Employee;
 /// import com.pulumi.azurenative.contoso.EmployeeArgs;
 /// import com.pulumi.azurenative.contoso.inputs.EmployeePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

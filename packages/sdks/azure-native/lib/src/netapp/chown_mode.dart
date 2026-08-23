@@ -15,4 +15,3 @@ enum ChownMode {
     throw ArgumentError('Unknown ChownMode value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum OwnerType {
     throw ArgumentError('Unknown OwnerType value: $value');
   }
 }
-

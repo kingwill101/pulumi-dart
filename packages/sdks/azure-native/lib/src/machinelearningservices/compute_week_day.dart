@@ -1,12 +1,12 @@
 /// Enum of weekday
 enum ComputeWeekDay {
-  valueMonday("Monday"),
-  valueTuesday("Tuesday"),
-  valueWednesday("Wednesday"),
-  valueThursday("Thursday"),
-  valueFriday("Friday"),
-  valueSaturday("Saturday"),
-  valueSunday("Sunday");
+  monday("Monday"),
+  tuesday("Tuesday"),
+  wednesday("Wednesday"),
+  thursday("Thursday"),
+  friday("Friday"),
+  saturday("Saturday"),
+  sunday("Sunday");
 
   const ComputeWeekDay(this.wireValue);
   final String wireValue;
@@ -20,4 +20,3 @@ enum ComputeWeekDay {
     throw ArgumentError('Unknown ComputeWeekDay value: $value');
   }
 }
-

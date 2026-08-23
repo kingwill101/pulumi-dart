@@ -11,7 +11,7 @@ class CertificateArgs {
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the base64 encoded value of the certificate.
   final pulumi.Input<String> base64Value;
-  /// The parameters supplied to the create or update certificate operation.
+  /// The name of certificate.
   final pulumi.Input<String>? certificateName;
   /// Gets or sets the description of the certificate.
   final pulumi.Input<String>? description;
@@ -19,7 +19,7 @@ class CertificateArgs {
   final pulumi.Input<bool>? isExportable;
   /// Gets or sets the name of the certificate.
   final pulumi.Input<String> name;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the thumbprint of the certificate.
   final pulumi.Input<String>? thumbprint;
@@ -27,11 +27,11 @@ class CertificateArgs {
   /// Creates a new [CertificateArgs].
   /// [automationAccountName] The name of the automation account.
   /// [base64Value] Gets or sets the base64 encoded value of the certificate.
-  /// [certificateName] The parameters supplied to the create or update certificate operation.
+  /// [certificateName] The name of certificate.
   /// [description] Gets or sets the description of the certificate.
   /// [isExportable] Gets or sets the is exportable flag of the certificate.
   /// [name] Gets or sets the name of the certificate.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [thumbprint] Gets or sets the thumbprint of the certificate.
   const CertificateArgs({
     required this.automationAccountName,
@@ -70,4 +70,3 @@ class CertificateArgs {
     );
   }
 }
-

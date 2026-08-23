@@ -25,4 +25,3 @@ class CFNS3LogsConfiguration {
     );
   }
 }
-

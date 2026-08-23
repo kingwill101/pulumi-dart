@@ -15,4 +15,3 @@ enum ProvisioningOsType {
     throw ArgumentError('Unknown ProvisioningOsType value: $value');
   }
 }
-

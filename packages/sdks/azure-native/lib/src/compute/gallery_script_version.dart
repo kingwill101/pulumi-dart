@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-03.
 ///
+/// Other available API versions: 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -221,6 +223,85 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_galleryscriptversion" "galleryScriptVersion" {
+///   gallery_name                = "myGalleryName"
+///   gallery_script_name         = "myGalleryScriptName"
+///   gallery_script_version_name = "1.0.0"
+///   location                    = "West US"
+///   properties = {
+///     publishing_profile = {
+///       end_of_life_date = "2027-07-01T07:00:00Z"
+///       replica_count    = 2
+///       source = {
+///         parameters = [{
+///           "defaultValue" = "westus"
+///           "name"         = "location"
+///           "required"     = true
+///           "type"         = "String"
+///           }, {
+///           "defaultValue" = "default value of parameter"
+///           "description"  = "description of the parameter"
+///           "name"         = "myGalleryScriptParameter1"
+///           "required"     = true
+///           "type"         = "String"
+///           }, {
+///           "defaultValue" = "default value of parameter"
+///           "description"  = "description of the parameter"
+///           "name"         = "myGalleryScriptParameter2"
+///           "required"     = false
+///           "type"         = "String"
+///           }, {
+///           "defaultValue" = "3"
+///           "description"  = "description of the parameter"
+///           "maxValue"     = "5"
+///           "minValue"     = "1"
+///           "name"         = "numberOfUnits"
+///           "required"     = true
+///           "type"         = "Int"
+///           }, {
+///           "defaultValue" = "0.6"
+///           "description"  = "description of the parameter"
+///           "maxValue"     = "2"
+///           "minValue"     = "0.1"
+///           "name"         = "weightOfUnit"
+///           "required"     = true
+///           "type"         = "Double"
+///           }, {
+///           "defaultValue" = "Fruit"
+///           "description"  = "description of the parameter"
+///           "enumValues"   = ["Fruit", "Vegetable", "Greens", "Nuts"]
+///           "name"         = "typeOfProduct"
+///           "required"     = false
+///           "type"         = "Enum"
+///         }]
+///         script_link = "https://mystorageaccount.blob.core.windows.net/mycontainer/myScript.ps1?{sasKey}"
+///       }
+///       storage_account_type = "Standard_LRS"
+///       target_regions = [{
+///         "excludeFromLatest"    = false
+///         "name"                 = "West US"
+///         "regionalReplicaCount" = 2
+///         "storageAccountType"   = "Standard_LRS"
+///       }]
+///     }
+///     safety_profile = {
+///       allow_deletion_of_replicated_locations = false
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +314,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.compute.inputs.GalleryScriptVersionPublishingProfileArgs;
 /// import com.pulumi.azurenative.compute.inputs.ScriptSourceArgs;
 /// import com.pulumi.azurenative.compute.inputs.GalleryScriptVersionSafetyProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

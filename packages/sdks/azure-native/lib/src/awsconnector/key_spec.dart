@@ -26,4 +26,3 @@ enum KeySpec {
     throw ArgumentError('Unknown KeySpec value: $value');
   }
 }
-

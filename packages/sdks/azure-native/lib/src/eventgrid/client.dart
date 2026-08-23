@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 ///
-/// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -88,6 +88,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_eventgrid_client" "client" {
+///   attributes = {
+///     "deviceTypes" = ["Fan", "Light", "AC"]
+///     "floor"       = 3
+///     "room"        = "345"
+///   }
+///   client_certificate_authentication = {
+///     validation_scheme = "SubjectMatchesAuthenticationName"
+///   }
+///   client_name         = "exampleClientName1"
+///   description         = "This is a test client"
+///   namespace_name      = "exampleNamespaceName1"
+///   resource_group_name = "examplerg"
+///   state               = "Enabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +124,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.eventgrid.Client;
 /// import com.pulumi.azurenative.eventgrid.ClientArgs;
 /// import com.pulumi.azurenative.eventgrid.inputs.ClientCertificateAuthenticationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -112,10 +139,10 @@ import 'system_data_response.dart';
 ///     public static void stack(Context ctx) {
 ///         var client = new Client("client", ClientArgs.builder()
 ///             .attributes(Map.ofEntries(
-///                 Map.entry("deviceTypes",
+///                 Map.entry("deviceTypes", Arrays.asList(
 ///                     "Fan",
 ///                     "Light",
-///                     "AC"),
+///                     "AC")),
 ///                 Map.entry("floor", 3),
 ///                 Map.entry("room", "345")
 ///             ))

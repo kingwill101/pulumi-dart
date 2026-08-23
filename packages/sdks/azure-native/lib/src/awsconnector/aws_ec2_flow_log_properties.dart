@@ -99,4 +99,3 @@ class AwsEc2FlowLogProperties {
     );
   }
 }
-

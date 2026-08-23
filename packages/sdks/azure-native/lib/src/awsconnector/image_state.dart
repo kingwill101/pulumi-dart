@@ -21,4 +21,3 @@ enum ImageState {
     throw ArgumentError('Unknown ImageState value: $value');
   }
 }
-

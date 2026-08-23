@@ -29,7 +29,7 @@ class DeploymentStackAtManagementGroupArgs {
   final pulumi.Input<String>? description;
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
   final pulumi.Input<String>? location;
-  /// The name of the management group. The name is case insensitive.
+  /// The management group ID.
   final pulumi.Input<String> managementGroupId;
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
   final pulumi.Input<Map<String, DeploymentParameter>>? parameters;
@@ -51,7 +51,7 @@ class DeploymentStackAtManagementGroupArgs {
   /// [deploymentStackName] Name of the deployment stack.
   /// [description] Deployment stack description. Max length of 4096 characters.
   /// [location] The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
-  /// [managementGroupId] The name of the management group. The name is case insensitive.
+  /// [managementGroupId] The management group ID.
   /// [parameters] Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
   /// [parametersLink] The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
   /// [tags] Resource tags.
@@ -112,4 +112,3 @@ class DeploymentStackAtManagementGroupArgs {
     );
   }
 }
-

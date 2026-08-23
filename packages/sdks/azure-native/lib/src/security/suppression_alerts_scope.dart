@@ -25,4 +25,3 @@ class SuppressionAlertsScope {
     );
   }
 }
-

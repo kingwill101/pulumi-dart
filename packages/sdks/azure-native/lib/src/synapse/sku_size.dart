@@ -17,4 +17,3 @@ enum SkuSize {
     throw ArgumentError('Unknown SkuSize value: $value');
   }
 }
-

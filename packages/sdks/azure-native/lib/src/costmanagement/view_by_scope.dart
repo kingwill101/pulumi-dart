@@ -163,6 +163,64 @@ import 'view_by_scope_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_costmanagement_viewbyscope" "viewByScope" {
+///   accumulated = "true"
+///   chart       = "Table"
+///   data_set = {
+///     aggregation = {
+///       "totalCost" = {
+///         function = "Sum"
+///         name     = "PreTaxCost"
+///       }
+///     }
+///     granularity = "Daily"
+///     grouping    = []
+///     sorting = [{
+///       "direction" = "Ascending"
+///       "name"      = "UsageDate"
+///     }]
+///   }
+///   display_name = "swagger Example"
+///   e_tag        = "\"1d4ff9fe66f1d10\""
+///   kpis {
+///     enabled = true
+///     type    = "Forecast"
+///   }
+///   kpis {
+///     enabled = true
+///     id      = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo"
+///     type    = "Budget"
+///   }
+///   metric = "ActualCost"
+///   pivots {
+///     name = "ServiceName"
+///     type = "Dimension"
+///   }
+///   pivots {
+///     name = "MeterCategory"
+///     type = "Dimension"
+///   }
+///   pivots {
+///     name = "swaggerTagKey"
+///     type = "TagKey"
+///   }
+///   scope     = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG"
+///   timeframe = "MonthToDate"
+///   type      = "Usage"
+///   view_name = "swaggerExample"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -174,8 +232,8 @@ import 'view_by_scope_args.dart';
 /// import com.pulumi.azurenative.costmanagement.inputs.ReportConfigDatasetArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.KpiPropertiesArgs;
 /// import com.pulumi.azurenative.costmanagement.inputs.PivotPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

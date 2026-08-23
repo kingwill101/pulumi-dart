@@ -77,4 +77,3 @@ class PostgreSqlV2TableDataset {
     );
   }
 }
-

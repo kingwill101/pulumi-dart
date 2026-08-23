@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
 ///
-/// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -90,6 +90,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_mongomiresourcemongomiroledefinition" "mongoMIResourceMongoMIRoleDefinition" {
+///   account_name      = "myAccountName"
+///   assignable_scopes = ["/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/sales", "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/dbs/purchases"]
+///   permissions {
+///     data_actions     = ["Microsoft.DocumentDB/databaseAccounts/mongoMIDatabases/containers/entities/create", "Microsoft.DocumentDB/databaseAccounts/mongoMIDatabases/containers/entities/read"]
+///     not_data_actions = []
+///   }
+///   resource_group_name = "myResourceGroupName"
+///   role_definition_id  = "myRoleDefinitionId"
+///   role_name           = "myRoleName"
+///   type                = "CustomRole"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +123,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cosmosdb.MongoMIResourceMongoMIRoleDefinition;
 /// import com.pulumi.azurenative.cosmosdb.MongoMIResourceMongoMIRoleDefinitionArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.PermissionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

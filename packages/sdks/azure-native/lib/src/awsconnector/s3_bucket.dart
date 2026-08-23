@@ -885,6 +885,324 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_s3bucket" "s3Bucket" {
+///   location = "pesmjbocvf"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "qoufjwcexyvk"
+///     aws_account_id = "rfckvyuni"
+///     aws_properties = {
+///       accelerate_configuration = {
+///         acceleration_status = "Enabled"
+///       }
+///       access_control = "AuthenticatedRead"
+///       analytics_configurations = [{
+///         "id"     = "ioxkjkuclx"
+///         "prefix" = "errquicjtmxuidndown"
+///         "storageClassAnalysis" = {
+///           "dataExport" = {
+///             "destination" = {
+///               "bucketAccountId" = "sfgcxqtuacvejulm"
+///               "bucketArn"       = "iuwuakbkkh"
+///               "format"          = "CSV"
+///               "prefix"          = "bnbqkueiiffpl"
+///             }
+///             "outputSchemaVersion" = "ojzzqnkekust"
+///           }
+///         }
+///         "tagFilters" = [{
+///           "key"   = "ffmzaifhmkmsljsm"
+///           "value" = "fsby"
+///         }]
+///       }]
+///       arn = "wdn"
+///       bucket_encryption = {
+///         server_side_encryption_configuration = [{
+///           "bucketKeyEnabled" = true
+///           "serverSideEncryptionByDefault" = {
+///             "kmsMasterKeyID" = "mledejya"
+///             "sseAlgorithm"   = "AES256"
+///           }
+///         }]
+///       }
+///       bucket_name = "qapantghvzujpa"
+///       cors_configuration = {
+///         cors_rules = [{
+///           "allowedHeaders" = ["zzooekoypz"]
+///           "allowedMethods" = ["DELETE"]
+///           "allowedOrigins" = ["tqldxbbws"]
+///           "exposedHeaders" = ["wjlikohhmisfgumcfzrnvg"]
+///           "id"             = "zvasxfnbnbpftihvtosdnlmskv"
+///           "maxAge"         = 9
+///         }]
+///       }
+///       domain_name            = "vbhotuxputambztq"
+///       dual_stack_domain_name = "sryuphsbzszrwamvrcsihe"
+///       intelligent_tiering_configurations = [{
+///         "id"     = "dbqsgaw"
+///         "prefix" = "lhizynvczgfiqwaiyuqpvnd"
+///         "status" = "Disabled"
+///         "tagFilters" = [{
+///           "key"   = "ffmzaifhmkmsljsm"
+///           "value" = "fsby"
+///         }]
+///         "tierings" = [{
+///           "accessTier" = "ARCHIVE_ACCESS"
+///           "days"       = 6
+///         }]
+///       }]
+///       inventory_configurations = [{
+///         "destination" = {
+///           "bucketAccountId" = "sfgcxqtuacvejulm"
+///           "bucketArn"       = "iuwuakbkkh"
+///           "format"          = "CSV"
+///           "prefix"          = "bnbqkueiiffpl"
+///         }
+///         "enabled"                = true
+///         "id"                     = "yqyorzlpsfzzycfeqmdgtsstdze"
+///         "includedObjectVersions" = "All"
+///         "optionalFields"         = ["BucketKeyStatus"]
+///         "prefix"                 = "tuzwyujzrv"
+///         "scheduleFrequency"      = "Daily"
+///       }]
+///       lifecycle_configuration = {
+///         rules = [{
+///           "abortIncompleteMultipartUpload" = {
+///             "daysAfterInitiation" = 20
+///           }
+///           "expirationDate"            = "ruijzosqnherfgwbgzbiwau"
+///           "expirationInDays"          = 8
+///           "expiredObjectDeleteMarker" = true
+///           "id"                        = "aofbidgki"
+///           "noncurrentVersionExpiration" = {
+///             "newerNoncurrentVersions" = 4
+///             "noncurrentDays"          = 17
+///           }
+///           "noncurrentVersionExpirationInDays" = 4
+///           "noncurrentVersionTransition" = {
+///             "newerNoncurrentVersions" = 6
+///             "storageClass"            = "DEEP_ARCHIVE"
+///             "transitionInDays"        = 8
+///           }
+///           "noncurrentVersionTransitions" = [{
+///             "newerNoncurrentVersions" = 6
+///             "storageClass"            = "DEEP_ARCHIVE"
+///             "transitionInDays"        = 8
+///           }]
+///           "objectSizeGreaterThan" = "hfifjfbqvmtatza"
+///           "objectSizeLessThan"    = "ew"
+///           "prefix"                = "kbsmshvpardhxehfjgszomvekk"
+///           "status"                = "Disabled"
+///           "tagFilters" = [{
+///             "key"   = "ffmzaifhmkmsljsm"
+///             "value" = "fsby"
+///           }]
+///           "transition" = {
+///             "storageClass"     = "DEEP_ARCHIVE"
+///             "transitionDate"   = "cqdrkqznucygxbnccuvxqbtnm"
+///             "transitionInDays" = 14
+///           }
+///           "transitions" = [{
+///             "storageClass"     = "DEEP_ARCHIVE"
+///             "transitionDate"   = "cqdrkqznucygxbnccuvxqbtnm"
+///             "transitionInDays" = 14
+///           }]
+///         }]
+///       }
+///       logging_configuration = {
+///         destination_bucket_name = "aujj"
+///         log_file_prefix         = "vdmmbfnvymowpvmhbsagekbokzvp"
+///         target_object_key_format = {
+///           partitioned_prefix = {
+///             partition_date_source = "DeliveryTime"
+///           }
+///         }
+///       }
+///       metrics_configurations = [{
+///         "accessPointArn" = "tkhjqpjfplj"
+///         "id"             = "ggheleujxadbvbjogd"
+///         "prefix"         = "zg"
+///         "tagFilters" = [{
+///           "key"   = "ffmzaifhmkmsljsm"
+///           "value" = "fsby"
+///         }]
+///       }]
+///       notification_configuration = {
+///         event_bridge_configuration = {
+///           event_bridge_enabled = true
+///         }
+///         lambda_configurations = [{
+///           "event" = "zpvewswtoarduycggotzdneptucwix"
+///           "filter" = {
+///             "s3Key" = {
+///               "rules" = [{
+///                 "name"  = "ohgjzuamjncbifvbkldogxjuxvhvz"
+///                 "value" = "dauvnhzxpkpqutnrl"
+///               }]
+///             }
+///           }
+///           "function" = "zmyzygfaojliiryslfyuyme"
+///         }]
+///         queue_configurations = [{
+///           "event" = "qgcdpcvmkvjivvpvmmaeqrictlznb"
+///           "filter" = {
+///             "s3Key" = {
+///               "rules" = [{
+///                 "name"  = "ohgjzuamjncbifvbkldogxjuxvhvz"
+///                 "value" = "dauvnhzxpkpqutnrl"
+///               }]
+///             }
+///           }
+///           "queue" = "qwlbvlgmwiaegulyybqggopf"
+///         }]
+///         topic_configurations = [{
+///           "event" = "kxl"
+///           "filter" = {
+///             "s3Key" = {
+///               "rules" = [{
+///                 "name"  = "ohgjzuamjncbifvbkldogxjuxvhvz"
+///                 "value" = "dauvnhzxpkpqutnrl"
+///               }]
+///             }
+///           }
+///           "topic" = "cj"
+///         }]
+///       }
+///       object_lock_configuration = {
+///         object_lock_enabled = "aiocf"
+///         rule = {
+///           default_retention = {
+///             days  = 22
+///             mode  = "COMPLIANCE"
+///             years = 11
+///           }
+///         }
+///       }
+///       object_lock_enabled = true
+///       ownership_controls = {
+///         rules = [{
+///           "objectOwnership" = "BucketOwnerEnforced"
+///         }]
+///       }
+///       public_access_block_configuration = {
+///         block_public_acls       = true
+///         block_public_policy     = true
+///         ignore_public_acls      = true
+///         restrict_public_buckets = true
+///       }
+///       regional_domain_name = "xdbzcoemgixrqq"
+///       replication_configuration = {
+///         role = "rqafufwtmuflkqet"
+///         rules = [{
+///           "deleteMarkerReplication" = {
+///             "status" = "Disabled"
+///           }
+///           "destination" = {
+///             "accessControlTranslation" = {
+///               "owner" = "smyptov"
+///             }
+///             "account" = "hwqiekzz"
+///             "bucket"  = "prjlsmdhkwrputvpdavgn"
+///             "encryptionConfiguration" = {
+///               "replicaKmsKeyID" = "uodgudyknqizofykjokpv"
+///             }
+///             "metrics" = {
+///               "eventThreshold" = {
+///                 "minutes" = 18
+///               }
+///               "status" = "Disabled"
+///             }
+///             "replicationTime" = {
+///               "status" = "Disabled"
+///               "time" = {
+///                 "minutes" = 18
+///               }
+///             }
+///             "storageClass" = "DEEP_ARCHIVE"
+///           }
+///           "filter" = {
+///             "and" = {
+///               "prefix" = "rlralilpznxqfpcseysvvxmfaor"
+///               "tagFilters" = [{
+///                 "key"   = "ffmzaifhmkmsljsm"
+///                 "value" = "fsby"
+///               }]
+///             }
+///             "prefix" = "etzfeufdxmcvjzpvxbjmzikok"
+///             "tagFilter" = {
+///               "key"   = "ffmzaifhmkmsljsm"
+///               "value" = "fsby"
+///             }
+///           }
+///           "id"       = "fjcfzahlddm"
+///           "prefix"   = "agykvphwwnfevfucrxugxejv"
+///           "priority" = 20
+///           "sourceSelectionCriteria" = {
+///             "replicaModifications" = {
+///               "status" = "Disabled"
+///             }
+///             "sseKmsEncryptedObjects" = {
+///               "status" = "Disabled"
+///             }
+///           }
+///           "status" = "Disabled"
+///         }]
+///       }
+///       tags = [{
+///         "key"   = "dxpeasomkyhulmxegodswwuhn"
+///         "value" = "otwjdamxqdydqwujwyfh"
+///       }]
+///       versioning_configuration = {
+///         status = "Enabled"
+///       }
+///       website_configuration = {
+///         error_document = "zxifnrlbyapkasrrhamdkdsqk"
+///         index_document = "umbhsxlihqldbh"
+///         redirect_all_requests_to = {
+///           host_name = "sxmd"
+///           protocol  = "http"
+///         }
+///         routing_rules = [{
+///           "redirectRule" = {
+///             "hostName"             = "odmugwc"
+///             "httpRedirectCode"     = "vfvnluyewsuhlybwzwsc"
+///             "protocol"             = "http"
+///             "replaceKeyPrefixWith" = "khrrcydzrtwzttnlqrlvdqdj"
+///             "replaceKeyWith"       = "axcwbdxqktfrrivec"
+///           }
+///           "routingRuleCondition" = {
+///             "httpErrorCodeReturnedEquals" = "rajjyyktkunsenpficiiq"
+///             "keyPrefixEquals"             = "tgzmwymptfxjolynmpwx"
+///           }
+///         }]
+///       }
+///       website_url = "vtlwozcgstjkkmgfywinjoreomvw"
+///     }
+///     aws_region        = "kckriyydtrwdlelcuztzfeptvcbwj"
+///     aws_source_schema = "kywnqkadqm"
+///     aws_tags = {
+///       "key1337" = "xopsufyohwwvrxsp"
+///     }
+///     public_cloud_connectors_resource_id = "i"
+///     public_cloud_resource_name          = "fmugqeeykklaccblyqplo"
+///   }
+///   resource_group_name = "rgs3Bucket"
+///   tags = {
+///     "key8605" = "s"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -913,8 +1231,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.VersioningConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.WebsiteConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RedirectAllRequestsToArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

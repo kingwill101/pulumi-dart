@@ -8,7 +8,7 @@ class WebhookReceiverResponse {
   final pulumi.Input<String>? identifierUri;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
   final pulumi.Input<String>? managedIdentity;
-  /// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+  /// The name of the webhook receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
   /// Indicates the webhook app object Id for aad auth.
   final pulumi.Input<String>? objectId;
@@ -24,7 +24,7 @@ class WebhookReceiverResponse {
   /// Creates a new [WebhookReceiverResponse].
   /// [identifierUri] Indicates the identifier uri for aad auth.
   /// [managedIdentity] The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  /// [name] The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+  /// [name] The name of the webhook receiver. Names must be unique across all receivers within an action group.
   /// [objectId] Indicates the webhook app object Id for aad auth.
   /// [serviceUri] The URI where webhooks should be sent.
   /// [tenantId] Indicates the tenant id for aad auth.
@@ -67,4 +67,3 @@ class WebhookReceiverResponse {
     );
   }
 }
-

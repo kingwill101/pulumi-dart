@@ -1,8 +1,8 @@
 /// [Required] Specifies the type of distribution framework.
 enum DistributionType {
-  valuePyTorch("PyTorch"),
-  valueTensorFlow("TensorFlow"),
-  valueMpi("Mpi");
+  pyTorch("PyTorch"),
+  tensorFlow("TensorFlow"),
+  mpi("Mpi");
 
   const DistributionType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum DistributionType {
     throw ArgumentError('Unknown DistributionType value: $value');
   }
 }
-

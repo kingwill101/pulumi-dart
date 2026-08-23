@@ -21,4 +21,3 @@ enum DhGroup {
     throw ArgumentError('Unknown DhGroup value: $value');
   }
 }
-

@@ -18,4 +18,3 @@ enum SqlImageSku {
     throw ArgumentError('Unknown SqlImageSku value: $value');
   }
 }
-

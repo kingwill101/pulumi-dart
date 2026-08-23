@@ -21,6 +21,10 @@ import 'get_l3_isolation_domain_args.dart';
 import 'get_l3_isolation_domain_result.dart';
 import 'get_neighbor_group_args.dart';
 import 'get_neighbor_group_result.dart';
+import 'get_network_bootstrap_device_args.dart';
+import 'get_network_bootstrap_device_result.dart';
+import 'get_network_bootstrap_interface_args.dart';
+import 'get_network_bootstrap_interface_result.dart';
 import 'get_network_device_args.dart';
 import 'get_network_device_result.dart';
 import 'get_network_device_status_args.dart';
@@ -54,7 +58,7 @@ import 'get_route_policy_result.dart';
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_access_control_list_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAccessControlListResult> getAccessControlList(
@@ -74,7 +78,7 @@ Future<GetAccessControlListResult> getAccessControlList(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_external_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetExternalNetworkResult> getExternalNetwork(
@@ -94,7 +98,7 @@ Future<GetExternalNetworkResult> getExternalNetwork(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_internal_network_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetInternalNetworkResult> getInternalNetwork(
@@ -114,7 +118,7 @@ Future<GetInternalNetworkResult> getInternalNetwork(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_internet_gateway_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetInternetGatewayResult> getInternetGateway(
@@ -134,7 +138,7 @@ Future<GetInternetGatewayResult> getInternetGateway(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_internet_gateway_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetInternetGatewayRuleResult> getInternetGatewayRule(
@@ -154,7 +158,7 @@ Future<GetInternetGatewayRuleResult> getInternetGatewayRule(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_ip_community_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetIpCommunityResult> getIpCommunity(
@@ -174,7 +178,7 @@ Future<GetIpCommunityResult> getIpCommunity(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_ip_extended_community_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetIpExtendedCommunityResult> getIpExtendedCommunity(
@@ -194,7 +198,7 @@ Future<GetIpExtendedCommunityResult> getIpExtendedCommunity(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_ip_prefix_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetIpPrefixResult> getIpPrefix(
@@ -214,7 +218,7 @@ Future<GetIpPrefixResult> getIpPrefix(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_l2_isolation_domain_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetL2IsolationDomainResult> getL2IsolationDomain(
@@ -234,7 +238,7 @@ Future<GetL2IsolationDomainResult> getL2IsolationDomain(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_l3_isolation_domain_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetL3IsolationDomainResult> getL3IsolationDomain(
@@ -254,7 +258,7 @@ Future<GetL3IsolationDomainResult> getL3IsolationDomain(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_neighbor_group_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNeighborGroupResult> getNeighborGroup(
@@ -270,11 +274,47 @@ Future<GetNeighborGroupResult> getNeighborGroup(
   return GetNeighborGroupResult.fromMap(result);
 }
 
+/// Gets a Network Bootstrap Device resource details.
+///
+/// Uses Azure REST API version 2025-07-15.
+/// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_bootstrap_device_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetNetworkBootstrapDeviceResult> getNetworkBootstrapDevice(
+  GetNetworkBootstrapDeviceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkBootstrapDevice',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetNetworkBootstrapDeviceResult.fromMap(result);
+}
+
+/// Get the Network Bootstrap Interface resource details.
+///
+/// Uses Azure REST API version 2025-07-15.
+/// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_bootstrap_interface_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetNetworkBootstrapInterfaceResult> getNetworkBootstrapInterface(
+  GetNetworkBootstrapInterfaceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkBootstrapInterface',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetNetworkBootstrapInterfaceResult.fromMap(result);
+}
+
 /// Gets the Network Device resource details.
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_device_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkDeviceResult> getNetworkDevice(
@@ -312,7 +352,7 @@ Future<GetNetworkDeviceStatusResult> getNetworkDeviceStatus(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_fabric_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkFabricResult> getNetworkFabric(
@@ -332,7 +372,7 @@ Future<GetNetworkFabricResult> getNetworkFabric(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_fabric_controller_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkFabricControllerResult> getNetworkFabricController(
@@ -352,7 +392,7 @@ Future<GetNetworkFabricControllerResult> getNetworkFabricController(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_fabric_topology_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkFabricTopologyResult> getNetworkFabricTopology(
@@ -372,7 +412,7 @@ Future<GetNetworkFabricTopologyResult> getNetworkFabricTopology(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_interface_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkInterfaceResult> getNetworkInterface(
@@ -409,6 +449,8 @@ Future<GetNetworkInterfaceStatusResult> getNetworkInterfaceStatus(
 /// Implements NetworkMonitor GET method.
 ///
 /// Uses Azure REST API version 2024-06-15-preview.
+///
+/// Other available API versions: 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_monitor_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkMonitorResult> getNetworkMonitor(
@@ -428,7 +470,7 @@ Future<GetNetworkMonitorResult> getNetworkMonitor(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_packet_broker_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkPacketBrokerResult> getNetworkPacketBroker(
@@ -448,7 +490,7 @@ Future<GetNetworkPacketBrokerResult> getNetworkPacketBroker(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_rack_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkRackResult> getNetworkRack(
@@ -468,7 +510,7 @@ Future<GetNetworkRackResult> getNetworkRack(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_tap_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkTapResult> getNetworkTap(
@@ -488,7 +530,7 @@ Future<GetNetworkTapResult> getNetworkTap(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_tap_rule_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkTapRuleResult> getNetworkTapRule(
@@ -508,7 +550,7 @@ Future<GetNetworkTapRuleResult> getNetworkTapRule(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_network_to_network_interconnect_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetNetworkToNetworkInterconnectResult> getNetworkToNetworkInterconnect(
@@ -528,7 +570,7 @@ Future<GetNetworkToNetworkInterconnectResult> getNetworkToNetworkInterconnect(
 ///
 /// Uses Azure REST API version 2023-06-15.
 ///
-/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managednetworkfabric_get_route_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRoutePolicyResult> getRoutePolicy(

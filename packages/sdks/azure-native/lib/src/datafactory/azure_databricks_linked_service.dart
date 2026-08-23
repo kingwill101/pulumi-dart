@@ -31,7 +31,7 @@ class AzureDatabricksLinkedService {
   /// The id of an existing instance pool that will be used for all runs of this activity. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? instancePoolId;
   /// Additional tags for cluster resources. This property is ignored in instance pool configurations.
-  final pulumi.Input<Map<String, dynamic>>? newClusterCustomTags;
+  final pulumi.Input<dynamic>? newClusterCustomTags;
   /// The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? newClusterDriverNodeType;
   /// Enable the elastic disk on the new cluster. This property is now ignored, and takes the default elastic disk behavior in Databricks (elastic disks are always enabled). Type: boolean (or Expression with resultType boolean).
@@ -45,9 +45,9 @@ class AzureDatabricksLinkedService {
   /// If not using an existing interactive cluster, this specifies the number of worker nodes to use for the new job cluster or instance pool. For new job clusters, this a string-formatted Int32, like '1' means numOfWorker is 1 or '1:10' means auto-scale from 1 (min) to 10 (max). For instance pools, this is a string-formatted Int32, and can only specify a fixed number of worker nodes, such as '2'. Required if newClusterVersion is specified. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? newClusterNumOfWorker;
   /// A set of optional, user-specified Spark configuration key-value pairs.
-  final pulumi.Input<Map<String, dynamic>>? newClusterSparkConf;
+  final pulumi.Input<dynamic>? newClusterSparkConf;
   /// A set of optional, user-specified Spark environment variables key-value pairs.
-  final pulumi.Input<Map<String, dynamic>>? newClusterSparkEnvVars;
+  final pulumi.Input<dynamic>? newClusterSparkEnvVars;
   /// If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? newClusterVersion;
   /// Parameters for linked service.
@@ -162,15 +162,15 @@ class AzureDatabricksLinkedService {
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       existingClusterId: (() { final guardedValue = map['existingClusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       instancePoolId: (() { final guardedValue = map['instancePoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      newClusterCustomTags: (() { final guardedValue = map['newClusterCustomTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      newClusterCustomTags: (() { final guardedValue = map['newClusterCustomTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newClusterDriverNodeType: (() { final guardedValue = map['newClusterDriverNodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newClusterEnableElasticDisk: (() { final guardedValue = map['newClusterEnableElasticDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newClusterInitScripts: (() { final guardedValue = map['newClusterInitScripts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newClusterLogDestination: (() { final guardedValue = map['newClusterLogDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newClusterNodeType: (() { final guardedValue = map['newClusterNodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newClusterNumOfWorker: (() { final guardedValue = map['newClusterNumOfWorker']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      newClusterSparkConf: (() { final guardedValue = map['newClusterSparkConf']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
-      newClusterSparkEnvVars: (() { final guardedValue = map['newClusterSparkEnvVars']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      newClusterSparkConf: (() { final guardedValue = map['newClusterSparkConf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      newClusterSparkEnvVars: (() { final guardedValue = map['newClusterSparkEnvVars']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       newClusterVersion: (() { final guardedValue = map['newClusterVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -180,4 +180,3 @@ class AzureDatabricksLinkedService {
     );
   }
 }
-

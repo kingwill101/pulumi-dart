@@ -25,4 +25,3 @@ class S3OriginConfigResponse {
     );
   }
 }
-

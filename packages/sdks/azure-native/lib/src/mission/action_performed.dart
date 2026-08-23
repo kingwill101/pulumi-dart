@@ -15,4 +15,3 @@ enum ActionPerformed {
     throw ArgumentError('Unknown ActionPerformed value: $value');
   }
 }
-

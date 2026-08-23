@@ -73,6 +73,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_compoundassessmentoperation" "compoundAssessmentOperation" {
+///   compound_assessment_name = "assessmentName"
+///   project_name             = "contosoProject"
+///   properties = {
+///     fallback_machine_assessment_arm_id = "/subscriptions/6898488D-BBF0-40FC-A5E3-3DF2C00C5F21/resourceGroups/rgwebAppCompoundAssessments/providers/Microsoft.Migrate/assessmentprojects/contosoProject/assessments/nameOfAssessment"
+///     target_assessment_arm_ids = {
+///       aks                         = "/subscriptions/6898488D-BBF0-40FC-A5E3-3DF2C00C5F21/resourceGroups/rgwebAppCompoundAssessments/providers/Microsoft.Migrate/assessmentprojects/contosoProject/aksAssessments/nameOfAssessment"
+///       azure_app_service           = "/subscriptions/6898488D-BBF0-40FC-A5E3-3DF2C00C5F21/resourceGroups/rgwebAppCompoundAssessments/providers/Microsoft.Migrate/assessmentprojects/contosoProject/webAppAssessments/nameOfAssessment"
+///       azure_app_service_container = "/subscriptions/6898488D-BBF0-40FC-A5E3-3DF2C00C5F21/resourceGroups/rgwebAppCompoundAssessments/providers/Microsoft.Migrate/assessmentprojects/contosoProject/webAppAssessments/nameOfAssessment"
+///     }
+///   }
+///   resource_group_name = "rgwebAppCompoundAssessments"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.CompoundAssessmentOperationArgs;
 /// import com.pulumi.azurenative.migrate.inputs.CompoundAssessmentPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.TargetAssessmentArmIdsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

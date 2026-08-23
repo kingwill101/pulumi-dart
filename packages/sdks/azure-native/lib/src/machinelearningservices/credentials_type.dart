@@ -1,10 +1,10 @@
 /// [Required] Credential type used to authentication with storage.
 enum CredentialsType {
-  valueAccountKey("AccountKey"),
-  valueCertificate("Certificate"),
-  valueNone("None"),
-  valueSas("Sas"),
-  valueServicePrincipal("ServicePrincipal");
+  accountKey("AccountKey"),
+  certificate("Certificate"),
+  none("None"),
+  sas("Sas"),
+  servicePrincipal("ServicePrincipal");
 
   const CredentialsType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum CredentialsType {
     throw ArgumentError('Unknown CredentialsType value: $value');
   }
 }
-

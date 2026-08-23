@@ -4,8 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_app_push_receiver_response.dart';
 import 'email_receiver_response.dart';
 import 'sms_receiver_response.dart';
+import 'system_data_response.dart';
 import 'voice_receiver_response.dart';
-import 'webhook_receiver_response.dart';
+import 'webhook_receiver_tenant_action_group_response.dart';
 
 /// Result data returned by getTenantActionGroup.
 class GetTenantActionGroupResult {
@@ -19,22 +20,24 @@ class GetTenantActionGroupResult {
   final bool enabled;
   /// The short name of the action group. This will be used in SMS messages.
   final String groupShortName;
-  /// Azure resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// Resource location
+  /// The geo-location where the resource lives
   final String location;
-  /// Azure resource name
+  /// The name of the resource
   final String name;
   /// The list of SMS receivers that are part of this tenant action group.
   final List<SmsReceiverResponse>? smsReceivers;
-  /// Resource tags
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The list of voice receivers that are part of this tenant action group.
   final List<VoiceReceiverResponse>? voiceReceivers;
   /// The list of webhook receivers that are part of this tenant action group.
-  final List<WebhookReceiverResponse>? webhookReceivers;
+  final List<WebhookReceiverTenantActionGroupResponse>? webhookReceivers;
 
   /// Creates a new [GetTenantActionGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -42,12 +45,13 @@ class GetTenantActionGroupResult {
   /// [emailReceivers] The list of email receivers that are part of this tenant action group.
   /// [enabled] Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
   /// [groupShortName] The short name of the action group. This will be used in SMS messages.
-  /// [id] Azure resource Id
-  /// [location] Resource location
-  /// [name] Azure resource name
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the resource
   /// [smsReceivers] The list of SMS receivers that are part of this tenant action group.
-  /// [tags] Resource tags
-  /// [type] Azure resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [voiceReceivers] The list of voice receivers that are part of this tenant action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this tenant action group.
   const GetTenantActionGroupResult({
@@ -60,6 +64,7 @@ class GetTenantActionGroupResult {
     required this.location,
     required this.name,
     this.smsReceivers,
+    required this.systemData,
     this.tags,
     required this.type,
     this.voiceReceivers,
@@ -77,10 +82,11 @@ class GetTenantActionGroupResult {
       'location': location,
       'name': name,
       'smsReceivers': ?(() { final guardedValue = smsReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<SmsReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'voiceReceivers': ?(() { final guardedValue = voiceReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<VoiceReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'webhookReceivers': ?(() { final guardedValue = webhookReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<WebhookReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'webhookReceivers': ?(() { final guardedValue = webhookReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<WebhookReceiverTenantActionGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
@@ -95,11 +101,11 @@ class GetTenantActionGroupResult {
       location: map['location'] as String,
       name: map['name'] as String,
       smsReceivers: (() { final guardedValue = map['smsReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SmsReceiverResponse>(guardedValue, (value) => SmsReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       voiceReceivers: (() { final guardedValue = map['voiceReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceReceiverResponse>(guardedValue, (value) => VoiceReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      webhookReceivers: (() { final guardedValue = map['webhookReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookReceiverResponse>(guardedValue, (value) => WebhookReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      webhookReceivers: (() { final guardedValue = map['webhookReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookReceiverTenantActionGroupResponse>(guardedValue, (value) => WebhookReceiverTenantActionGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

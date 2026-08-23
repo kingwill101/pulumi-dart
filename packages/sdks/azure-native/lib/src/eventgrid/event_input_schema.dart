@@ -14,4 +14,3 @@ enum EventInputSchema {
     throw ArgumentError('Unknown EventInputSchema value: $value');
   }
 }
-

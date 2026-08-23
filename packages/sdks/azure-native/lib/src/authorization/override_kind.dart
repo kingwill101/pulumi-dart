@@ -15,4 +15,3 @@ enum OverrideKind {
     throw ArgumentError('Unknown OverrideKind value: $value');
   }
 }
-

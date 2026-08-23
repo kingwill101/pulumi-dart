@@ -1,7 +1,11 @@
 /// Defines whether to send email notifications from AMicrosoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 enum State {
-  valueOn("On"),
-  valueOff("Off");
+  passed("Passed"),
+  failed("Failed"),
+  skipped("Skipped"),
+  unsupported("Unsupported"),
+  on("On"),
+  off("Off");
 
   const State(this.wireValue);
   final String wireValue;
@@ -15,4 +19,3 @@ enum State {
     throw ArgumentError('Unknown State value: $value');
   }
 }
-

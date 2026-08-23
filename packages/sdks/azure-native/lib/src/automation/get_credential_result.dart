@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getCredential.
 class GetCredentialResult {
@@ -9,13 +10,15 @@ class GetCredentialResult {
   final String creationTime;
   /// Gets or sets the description.
   final String? description;
-  /// Fully qualified resource Id for the resource
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Gets the last modified time.
   final String lastModifiedTime;
   /// The name of the resource
   final String name;
-  /// The type of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Gets the user name of the credential.
   final String userName;
@@ -24,10 +27,11 @@ class GetCredentialResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [creationTime] Gets the creation time.
   /// [description] Gets or sets the description.
-  /// [id] Fully qualified resource Id for the resource
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [lastModifiedTime] Gets the last modified time.
   /// [name] The name of the resource
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userName] Gets the user name of the credential.
   const GetCredentialResult({
     required this.azureApiVersion,
@@ -36,6 +40,7 @@ class GetCredentialResult {
     required this.id,
     required this.lastModifiedTime,
     required this.name,
+    required this.systemData,
     required this.type,
     required this.userName,
   });
@@ -48,6 +53,7 @@ class GetCredentialResult {
       'id': id,
       'lastModifiedTime': lastModifiedTime,
       'name': name,
+      'systemData': systemData.toMap(),
       'type': type,
       'userName': userName,
     };
@@ -61,9 +67,9 @@ class GetCredentialResult {
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       userName: map['userName'] as String,
     );
   }
 }
-

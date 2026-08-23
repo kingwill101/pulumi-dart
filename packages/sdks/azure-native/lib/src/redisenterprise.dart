@@ -49,6 +49,7 @@ export 'redisenterprise/private_endpoint_service_connection_status.dart';
 export 'redisenterprise/private_link_service_connection_state.dart';
 export 'redisenterprise/private_link_service_connection_state_response.dart';
 export 'redisenterprise/protocol.dart';
+export 'redisenterprise/public_network_access.dart';
 export 'redisenterprise/rdb_frequency.dart';
 export 'redisenterprise/redis_enterprise.dart';
 export 'redisenterprise/redis_enterprise_args.dart';

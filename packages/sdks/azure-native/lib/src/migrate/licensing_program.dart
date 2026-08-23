@@ -17,4 +17,3 @@ enum LicensingProgram {
     throw ArgumentError('Unknown LicensingProgram value: $value');
   }
 }
-

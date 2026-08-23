@@ -71,6 +71,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_billing_invoicesection" "invoiceSection" {
+///   billing_account_name = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31"
+///   billing_profile_name = "xxxx-xxxx-xxx-xxx"
+///   invoice_section_name = "invoice-section-1"
+///   properties = {
+///     display_name = "Invoice Section 1"
+///     tags = {
+///       "costCategory" = "Support"
+///       "pcCode"       = "A123456"
+///     }
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +104,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.billing.InvoiceSection;
 /// import com.pulumi.azurenative.billing.InvoiceSectionArgs;
 /// import com.pulumi.azurenative.billing.inputs.InvoiceSectionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

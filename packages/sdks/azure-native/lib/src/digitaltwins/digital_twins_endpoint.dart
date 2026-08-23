@@ -68,6 +68,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_digitaltwins_digitaltwinsendpoint" "digitalTwinsEndpoint" {
+///   endpoint_name = "myServiceBus"
+///   properties = {
+///     "authenticationType"        = "KeyBased"
+///     "endpointType"              = "ServiceBus"
+///     "primaryConnectionString"   = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"
+///     "secondaryConnectionString" = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"
+///   }
+///   resource_group_name = "resRg"
+///   resource_name       = "myDigitalTwinsService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +99,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpoint;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,6 +240,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_digitaltwins_digitaltwinsendpoint" "digitalTwinsEndpoint" {
+///   endpoint_name = "myServiceBus"
+///   properties = {
+///     "authenticationType" = "IdentityBased"
+///     "endpointType"       = "ServiceBus"
+///     "endpointUri"        = "sb://mysb.servicebus.windows.net/"
+///     "entityPath"         = "mysbtopic"
+///   }
+///   resource_group_name = "resRg"
+///   resource_name       = "myDigitalTwinsService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -225,8 +271,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpoint;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -375,6 +421,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_digitaltwins_digitaltwinsendpoint" "digitalTwinsEndpoint" {
+///   endpoint_name = "myServiceBus"
+///   properties = {
+///     "authenticationType" = "IdentityBased"
+///     "endpointType"       = "ServiceBus"
+///     "endpointUri"        = "sb://mysb.servicebus.windows.net/"
+///     "entityPath"         = "mysbtopic"
+///     "identity" = {
+///       "type"                 = "UserAssigned"
+///       "userAssignedIdentity" = "/subscriptions/50016170-c839-41ba-a724-51e9df440b9e/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testidentity"
+///     }
+///   }
+///   resource_group_name = "resRg"
+///   resource_name       = "myDigitalTwinsService"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -383,8 +456,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpoint;
 /// import com.pulumi.azurenative.digitaltwins.DigitalTwinsEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

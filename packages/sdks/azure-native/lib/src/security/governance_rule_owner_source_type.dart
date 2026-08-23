@@ -1,7 +1,7 @@
 /// The owner type for the governance rule owner source
 enum GovernanceRuleOwnerSourceType {
-  valueByTag("ByTag"),
-  valueManually("Manually");
+  byTag("ByTag"),
+  manually("Manually");
 
   const GovernanceRuleOwnerSourceType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum GovernanceRuleOwnerSourceType {
     throw ArgumentError('Unknown GovernanceRuleOwnerSourceType value: $value');
   }
 }
-

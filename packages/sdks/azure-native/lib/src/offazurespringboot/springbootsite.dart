@@ -83,6 +83,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazurespringboot_springbootsite" "springbootsite" {
+///   extended_location = {
+///     name = "rywvpbfsqovhlfirtwisugsdsfsgf"
+///     type = "lvsb"
+///   }
+///   location = "tgobtvxktootwhhvjtsmpddvlqlrq"
+///   properties = {
+///     master_site_id     = "xsoimrgshsactearljwuljmi"
+///     migrate_project_id = "wwuattybgco"
+///   }
+///   resource_group_name  = "rgspringbootsites"
+///   springbootsites_name = "xrmzlavpewxtfeitghdrj"
+///   tags = {
+///     "key3558" = "xeuhtglamqzj"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +121,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.offazurespringboot.SpringbootsiteArgs;
 /// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootsitesModelExtendedLocationArgs;
 /// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootsitesPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,6 +265,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazurespringboot_springbootsite" "springbootsite" {
+///   location             = "tgobtvxktootwhhvjtsmpddvlqlrq"
+///   resource_group_name  = "rgspringbootsites"
+///   springbootsites_name = "xrmzlavpewxtfeitghdrj"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +290,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.offazurespringboot.Springbootsite;
 /// import com.pulumi.azurenative.offazurespringboot.SpringbootsiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

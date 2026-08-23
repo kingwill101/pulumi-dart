@@ -14,4 +14,3 @@ enum AuthMode {
     throw ArgumentError('Unknown AuthMode value: $value');
   }
 }
-

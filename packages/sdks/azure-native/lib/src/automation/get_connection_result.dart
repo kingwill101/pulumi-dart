@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'connection_type_association_property_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getConnection.
 class GetConnectionResult {
@@ -14,13 +15,15 @@ class GetConnectionResult {
   final String? description;
   /// Gets the field definition values of the connection.
   final Map<String, String> fieldDefinitionValues;
-  /// Fully qualified resource Id for the resource
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Gets the last modified time.
   final String lastModifiedTime;
   /// The name of the resource
   final String name;
-  /// The type of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetConnectionResult].
@@ -29,10 +32,11 @@ class GetConnectionResult {
   /// [creationTime] Gets the creation time.
   /// [description] Gets or sets the description.
   /// [fieldDefinitionValues] Gets the field definition values of the connection.
-  /// [id] Fully qualified resource Id for the resource
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [lastModifiedTime] Gets the last modified time.
   /// [name] The name of the resource
-  /// [type] The type of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetConnectionResult({
     required this.azureApiVersion,
     this.connectionType,
@@ -42,6 +46,7 @@ class GetConnectionResult {
     required this.id,
     required this.lastModifiedTime,
     required this.name,
+    required this.systemData,
     required this.type,
   });
 
@@ -55,6 +60,7 @@ class GetConnectionResult {
       'id': id,
       'lastModifiedTime': lastModifiedTime,
       'name': name,
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -69,8 +75,8 @@ class GetConnectionResult {
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

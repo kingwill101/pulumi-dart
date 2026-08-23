@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
 ///
-/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -152,6 +152,59 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerauthentication" "brokerAuthentication" {
+///   authentication_name = "resource-name123"
+///   broker_name         = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     authentication_methods = [{
+///       "customSettings" = {
+///         "auth" = {
+///           "x509" = {
+///             "secretRef" = "secret-name"
+///           }
+///         }
+///         "caCertConfigMap" = "pdecudefqyolvncbus"
+///         "endpoint"        = "https://www.example.com"
+///         "headers" = {
+///           "key8518" = "bwityjy"
+///         }
+///       }
+///       "method" = "Custom"
+///       "serviceAccountTokenSettings" = {
+///         "audiences" = ["jqyhyqatuydg"]
+///       }
+///       "x509Settings" = {
+///         "authorizationAttributes" = {
+///           "key3384" = {
+///             "attributes" = {
+///               "key186" = "ucpajramsz"
+///             }
+///             "subject" = "jpgwctfeixitptfgfnqhua"
+///           }
+///         }
+///         "trustedClientCaCert" = "vlctsqddl"
+///       }
+///     }]
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -162,8 +215,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -497,6 +550,62 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperations_brokerauthentication" "brokerAuthentication" {
+///   authentication_name = "resource-name123"
+///   broker_name         = "resource-name123"
+///   extended_location = {
+///     name = "qmbrfwcpwwhggszhrdjv"
+///     type = "CustomLocation"
+///   }
+///   instance_name = "resource-name123"
+///   properties = {
+///     authentication_methods = [{
+///       "method" = "ServiceAccountToken"
+///       "serviceAccountTokenSettings" = {
+///         "audiences" = ["aio-internal"]
+///       }
+///       }, {
+///       "method" = "X509"
+///       "x509Settings" = {
+///         "authorizationAttributes" = {
+///           "intermediate" = {
+///             "attributes" = {
+///               "city" = "seattle"
+///               "foo"  = "bar"
+///             }
+///             "subject" = "CN = Contoso Intermediate CA"
+///           }
+///           "root" = {
+///             "attributes" = {
+///               "organization" = "contoso"
+///             }
+///             "subject" = "CN = Contoso Root CA Cert, OU = Engineering, C = US"
+///           }
+///           "smart-fan" = {
+///             "attributes" = {
+///               "building" = "17"
+///             }
+///             "subject" = "CN = smart-fan"
+///           }
+///         }
+///         "trustedClientCaCert" = "my-ca"
+///       }
+///     }]
+///   }
+///   resource_group_name = "rgiotoperations"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -507,8 +616,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.iotoperations.BrokerAuthenticationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperations.inputs.BrokerAuthenticationPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

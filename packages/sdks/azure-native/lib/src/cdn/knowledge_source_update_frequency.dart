@@ -17,4 +17,3 @@ enum KnowledgeSourceUpdateFrequency {
     throw ArgumentError('Unknown KnowledgeSourceUpdateFrequency value: $value');
   }
 }
-

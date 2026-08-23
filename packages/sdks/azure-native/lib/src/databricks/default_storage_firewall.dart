@@ -1,7 +1,7 @@
-/// Gets or Sets Default Storage Firewall configuration information
+/// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
 enum DefaultStorageFirewall {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const DefaultStorageFirewall(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum DefaultStorageFirewall {
     throw ArgumentError('Unknown DefaultStorageFirewall value: $value');
   }
 }
-

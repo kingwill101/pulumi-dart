@@ -72,6 +72,28 @@ import 'user_rule_collection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_userrulecollection" "userRuleCollection" {
+///   applies_to_groups {
+///     network_group_id = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup"
+///   }
+///   configuration_name   = "myTestSecurityConfig"
+///   description          = "A sample policy"
+///   network_manager_name = "testNetworkManager"
+///   resource_group_name  = "rg1"
+///   rule_collection_name = "testRuleCollection"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +103,8 @@ import 'user_rule_collection_args.dart';
 /// import com.pulumi.azurenative.network.UserRuleCollection;
 /// import com.pulumi.azurenative.network.UserRuleCollectionArgs;
 /// import com.pulumi.azurenative.network.inputs.NetworkManagerSecurityGroupItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

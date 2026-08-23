@@ -15,4 +15,3 @@ enum AdditionalOptionsAsyncOperation {
     throw ArgumentError('Unknown AdditionalOptionsAsyncOperation value: $value');
   }
 }
-

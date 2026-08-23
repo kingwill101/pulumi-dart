@@ -13,7 +13,7 @@ class GetWebAppHybridConnectionSlotArgs {
   final pulumi.Input<String> namespaceName;
   /// The relay name for this hybrid connection.
   final pulumi.Input<String> relayName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the slot for the web app.
   final pulumi.Input<String> slot;
@@ -22,7 +22,7 @@ class GetWebAppHybridConnectionSlotArgs {
   /// [name] The name of the web app.
   /// [namespaceName] The namespace for this hybrid connection.
   /// [relayName] The relay name for this hybrid connection.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [slot] The name of the slot for the web app.
   const GetWebAppHybridConnectionSlotArgs({
     required this.name,
@@ -52,4 +52,3 @@ class GetWebAppHybridConnectionSlotArgs {
     );
   }
 }
-

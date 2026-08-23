@@ -14,4 +14,3 @@ enum LinkedServiceLinkType {
     throw ArgumentError('Unknown LinkedServiceLinkType value: $value');
   }
 }
-

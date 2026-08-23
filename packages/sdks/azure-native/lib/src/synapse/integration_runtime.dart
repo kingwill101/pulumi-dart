@@ -65,6 +65,27 @@ import 'managed_integration_runtime_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_synapse_integrationruntime" "integrationRuntime" {
+///   integration_runtime_name = "exampleIntegrationRuntime"
+///   properties = {
+///     "description" = "A selfhosted integration runtime"
+///     "type"        = "SelfHosted"
+///   }
+///   resource_group_name = "exampleResourceGroup"
+///   workspace_name      = "exampleWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +94,8 @@ import 'managed_integration_runtime_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.synapse.IntegrationRuntime;
 /// import com.pulumi.azurenative.synapse.IntegrationRuntimeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

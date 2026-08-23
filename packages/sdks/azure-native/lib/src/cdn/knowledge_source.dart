@@ -62,6 +62,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cdn_knowledgesource" "knowledgeSource" {
+///   description           = "Website knowledge source for FAQ content"
+///   knowledge_source_name = "myKnowledgeSource1"
+///   resource_group_name   = "RG"
+///   source_type           = "SchemaOrgMarkup"
+///   update_frequency      = "EverySixHours"
+///   url                   = "https://example.com/faq"
+///   web_agent_name        = "myWebAgent1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +91,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cdn.KnowledgeSource;
 /// import com.pulumi.azurenative.cdn.KnowledgeSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

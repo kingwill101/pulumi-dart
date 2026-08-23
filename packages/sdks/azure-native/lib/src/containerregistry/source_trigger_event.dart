@@ -14,4 +14,3 @@ enum SourceTriggerEvent {
     throw ArgumentError('Unknown SourceTriggerEvent value: $value');
   }
 }
-

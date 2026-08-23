@@ -18,4 +18,3 @@ enum RedundancyMode {
     throw ArgumentError('Unknown RedundancyMode value: $value');
   }
 }
-

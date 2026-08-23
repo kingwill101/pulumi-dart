@@ -1,7 +1,7 @@
 /// [Required] JobLimit type.
 enum JobLimitsType {
-  valueCommand("Command"),
-  valueSweep("Sweep");
+  command("Command"),
+  sweep("Sweep");
 
   const JobLimitsType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum JobLimitsType {
     throw ArgumentError('Unknown JobLimitsType value: $value');
   }
 }
-

@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_args.dart';
+import 'system_data_response.dart';
 
 /// Definition of the certificate.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -65,6 +66,28 @@ import 'certificate_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_certificate" "certificate" {
+///   automation_account_name = "myAutomationAccount18"
+///   base64_value            = "base 64 value of cert"
+///   certificate_name        = "testCert"
+///   description             = "Sample Cert"
+///   is_exportable           = false
+///   name                    = "testCert"
+///   resource_group_name     = "rg"
+///   thumbprint              = "thumbprint of cert"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +96,8 @@ import 'certificate_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.automation.Certificate;
 /// import com.pulumi.azurenative.automation.CertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,9 +199,11 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String> lastModifiedTime;
   /// The name of the resource
   late final pulumi.Output<String> name;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
   /// Gets the thumbprint of the certificate.
   late final pulumi.Output<String> thumbprint;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Certificate].
@@ -202,6 +227,7 @@ class Certificate extends pulumi.CustomResource {
     isExportable = registerOutput<bool>('isExportable');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');
   }

@@ -1,10 +1,10 @@
 /// The action types to apply to the content filters
 enum RaiActionType {
-  valueNone("None"),
-  valueBLOCKING("BLOCKING"),
-  valueANNOTATING("ANNOTATING"),
-  valueHITL("HITL"),
-  valueRETRY("RETRY");
+  none("None"),
+  bLOCKING("BLOCKING"),
+  aNNOTATING("ANNOTATING"),
+  hITL("HITL"),
+  rETRY("RETRY");
 
   const RaiActionType(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum RaiActionType {
     throw ArgumentError('Unknown RaiActionType value: $value');
   }
 }
-

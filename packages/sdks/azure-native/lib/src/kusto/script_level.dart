@@ -15,4 +15,3 @@ enum ScriptLevel {
     throw ArgumentError('Unknown ScriptLevel value: $value');
   }
 }
-

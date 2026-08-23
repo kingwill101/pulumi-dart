@@ -55,6 +55,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_officedataconnector" "officeDataConnector" {
+///   data_connector_id   = "c345bf40-8509-4ed2-b947-50cb773aaf04"
+///   resource_group_name = "myRg"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +80,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.OfficeDataConnector;
 /// import com.pulumi.azurenative.securityinsights.OfficeDataConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,6 +185,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_officedataconnector" "officeDataConnector" {
+///   data_connector_id   = "8c569548-a86c-4fb4-8ae4-d1e35a6146f8"
+///   resource_group_name = "myRg"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +210,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.OfficeDataConnector;
 /// import com.pulumi.azurenative.securityinsights.OfficeDataConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,6 +345,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_officedataconnector" "officeDataConnector" {
+///   data_connector_id = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
+///   data_types = {
+///     exchange = {
+///       state = "Enabled"
+///     }
+///     share_point = {
+///       state = "Enabled"
+///     }
+///     teams = {
+///       state = "Enabled"
+///     }
+///   }
+///   kind                = "Office365"
+///   resource_group_name = "myRg"
+///   tenant_id           = "2070ecc9-b4d5-4ae4-adaa-936fa1954fa8"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -323,8 +387,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.securityinsights.inputs.OfficeDataConnectorDataTypesExchangeArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.OfficeDataConnectorDataTypesSharePointArgs;
 /// import com.pulumi.azurenative.securityinsights.inputs.OfficeDataConnectorDataTypesTeamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -476,6 +540,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_securityinsights_officedataconnector" "officeDataConnector" {
+///   data_connector_id   = "73e01a99-5cd7-4139-a149-9f2736ff2ab5"
+///   resource_group_name = "myRg"
+///   workspace_name      = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -484,8 +565,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.securityinsights.OfficeDataConnector;
 /// import com.pulumi.azurenative.securityinsights.OfficeDataConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

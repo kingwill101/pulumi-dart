@@ -74,6 +74,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_fileeventtrigger" "fileEventTrigger" {
+///   custom_context_tag  = "CustomContextTags-1235346475"
+///   device_name         = "testedgedevice"
+///   kind                = "FileEvent"
+///   name                = "trigger1"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   sink_info = {
+///     role_id = "/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/roles/role1"
+///   }
+///   source_info = {
+///     share_id = "/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/GroupForEdgeAutomation/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/testedgedevice/shares/share1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.FileEventTriggerArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.RoleSinkInfoArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.FileSourceInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

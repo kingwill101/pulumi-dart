@@ -65,6 +65,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_attestation_privateendpointconnection" "privateEndpointConnection" {
+///   private_endpoint_connection_name = "{privateEndpointConnectionName}"
+///   private_link_service_connection_state = {
+///     description = "Auto-Approved"
+///     status      = "Approved"
+///   }
+///   provider_name       = "sto9699"
+///   resource_group_name = "res7687"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +95,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.attestation.PrivateEndpointConnection;
 /// import com.pulumi.azurenative.attestation.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.attestation.inputs.PrivateLinkServiceConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

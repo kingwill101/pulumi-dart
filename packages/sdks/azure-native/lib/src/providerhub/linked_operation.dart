@@ -16,4 +16,3 @@ enum LinkedOperation {
     throw ArgumentError('Unknown LinkedOperation value: $value');
   }
 }
-

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueSettingsResponse {
-  /// Controls the compute job tier
+  /// Enum to determine the job tier.
   final pulumi.Input<String>? jobTier;
 
   /// Creates a new [QueueSettingsResponse].
-  /// [jobTier] Controls the compute job tier
+  /// [jobTier] Enum to determine the job tier.
   const QueueSettingsResponse({
     this.jobTier,
   });
@@ -24,4 +24,3 @@ class QueueSettingsResponse {
     );
   }
 }
-

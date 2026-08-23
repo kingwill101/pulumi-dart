@@ -104,6 +104,44 @@ import 'resource_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_modernizeproject" "modernizeProject" {
+///   identity = {
+///     principal_id = "ins"
+///     tenant_id    = "fjnu"
+///     type         = "None"
+///     user_assigned_identities = {
+///       "key6848" = {
+///         client_id    = "lvlngepacjdjryqmxuvfdxwtkc"
+///         principal_id = "lumkynazsspljxiiwvz"
+///       }
+///     }
+///   }
+///   location               = "nbqyuxrgrlhx"
+///   modernize_project_name = "b"
+///   properties = {
+///     migration_configuration = {
+///       key_vault_resource_id          = "vekhittkyogvwnqmggknv"
+///       migration_solution_resource_id = "bglfkwtzvqmhwpddwpvtdzaleaioxo"
+///       storage_account_resource_id    = "dgcoticysafrpynyoxkgrspooiia"
+///     }
+///   }
+///   resource_group_name = "rgmigrateEngine"
+///   tags = {
+///     "key8644" = "wfyi"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +153,8 @@ import 'resource_identity_response.dart';
 /// import com.pulumi.azurenative.migrate.inputs.ResourceIdentityArgs;
 /// import com.pulumi.azurenative.migrate.inputs.ModernizeProjectModelPropertiesArgs;
 /// import com.pulumi.azurenative.migrate.inputs.MigrationConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,6 +330,22 @@ import 'resource_identity_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_modernizeproject" "modernizeProject" {
+///   modernize_project_name = "j"
+///   resource_group_name    = "rgmigrateEngine"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -300,8 +354,8 @@ import 'resource_identity_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.migrate.ModernizeProject;
 /// import com.pulumi.azurenative.migrate.ModernizeProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

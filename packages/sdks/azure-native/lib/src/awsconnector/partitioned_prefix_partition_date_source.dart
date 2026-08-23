@@ -15,4 +15,3 @@ enum PartitionedPrefixPartitionDateSource {
     throw ArgumentError('Unknown PartitionedPrefixPartitionDateSource value: $value');
   }
 }
-

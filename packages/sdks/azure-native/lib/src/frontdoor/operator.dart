@@ -1,17 +1,20 @@
 /// Comparison type to use for matching with the variable value.
 enum Operator {
-  valueAny("Any"),
-  valueIPMatch("IPMatch"),
-  valueGeoMatch("GeoMatch"),
-  valueEqual("Equal"),
-  valueContains("Contains"),
-  valueLessThan("LessThan"),
-  valueGreaterThan("GreaterThan"),
-  valueLessThanOrEqual("LessThanOrEqual"),
-  valueGreaterThanOrEqual("GreaterThanOrEqual"),
-  valueBeginsWith("BeginsWith"),
-  valueEndsWith("EndsWith"),
-  valueRegEx("RegEx");
+  any("Any"),
+  iPMatch("IPMatch"),
+  geoMatch("GeoMatch"),
+  equal("Equal"),
+  contains("Contains"),
+  lessThan("LessThan"),
+  greaterThan("GreaterThan"),
+  lessThanOrEqual("LessThanOrEqual"),
+  greaterThanOrEqual("GreaterThanOrEqual"),
+  beginsWith("BeginsWith"),
+  endsWith("EndsWith"),
+  regEx("RegEx"),
+  serviceTagMatch("ServiceTagMatch"),
+  asnMatch("AsnMatch"),
+  clientFingerprint("ClientFingerprint");
 
   const Operator(this.wireValue);
   final String wireValue;
@@ -25,4 +28,3 @@ enum Operator {
     throw ArgumentError('Unknown Operator value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum TriggerStatus {
     throw ArgumentError('Unknown TriggerStatus value: $value');
   }
 }
-

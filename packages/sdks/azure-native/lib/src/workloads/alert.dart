@@ -128,6 +128,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_alert" "alert" {
+///   alert_name = "myAlert"
+///   alert_rule_properties = {
+///     action_groups = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.insights/actiongroups/actiongroup1", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.insights/actiongroups/actiongroup2"]
+///     alert_query_parameters = [{
+///       "name"  = "providerInstance"
+///       "value" = ""
+///       }, {
+///       "name"  = "workType"
+///       "value" = ""
+///     }]
+///     auto_mitigate            = "Disable"
+///     dimension                = "cpu"
+///     evaluation_frequency     = 5
+///     failing_periods_operator = "GreaterThan"
+///     failing_periods_to_alert = 3
+///     mute_actions_duration    = 0
+///     severity                 = 3
+///     status                   = "Enabled"
+///     threshold                = 80
+///     threshold_operator       = "GreaterThan"
+///     window_size              = 15
+///   }
+///   monitor_name        = "mySapMonitor"
+///   provider_names      = ["hana-provider-1", "hana-provider-2"]
+///   provider_type       = "SapHana"
+///   resource_group_name = "myResourceGroup"
+///   template_name       = "saphana-cpu-memory-health"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +178,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.workloads.Alert;
 /// import com.pulumi.azurenative.workloads.AlertArgs;
 /// import com.pulumi.azurenative.workloads.inputs.AlertRulePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -15,4 +15,3 @@ enum ClusterType {
     throw ArgumentError('Unknown ClusterType value: $value');
   }
 }
-

@@ -240,6 +240,102 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_redshiftcluster" "redshiftCluster" {
+///   location = "jvkejlkfwoynldopbqhnt"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "egooffvtlbzyvp"
+///     aws_account_id = "lnlhkk"
+///     aws_properties = {
+///       allow_version_upgrade               = true
+///       aqua_configuration_status           = "tegpcduavwdyuubx"
+///       automated_snapshot_retention_period = 25
+///       availability_zone                   = "pltpsjmmvhfmsecqjjweuxgloitbor"
+///       availability_zone_relocation        = true
+///       availability_zone_relocation_status = "kcuxuluzsnuoag"
+///       classic                             = true
+///       cluster_identifier                  = "cxlflpabmavbfbcvsew"
+///       cluster_namespace_arn               = "vqeqeacmkdhmzgwd"
+///       cluster_parameter_group_name        = "whpcckoms"
+///       cluster_security_groups             = ["q"]
+///       cluster_subnet_group_name           = "abxmcpkzazgxtuoliedvam"
+///       cluster_type                        = "nvbzlybkkhuyklhhywuofwczf"
+///       cluster_version                     = "slmurdmhpiuakdwrqdthvlrpovqb"
+///       db_name                             = "jsbtuqgydkydraogl"
+///       defer_maintenance                   = true
+///       defer_maintenance_duration          = 14
+///       defer_maintenance_end_time          = "oluxv"
+///       defer_maintenance_identifier        = "icu"
+///       defer_maintenance_start_time        = "muevcssxlqrrmwxvazpsrq"
+///       destination_region                  = "cnklawqwbweklmlrhr"
+///       elastic_ip                          = "ljpfzxzciavjuxk"
+///       encrypted                           = true
+///       endpoint = {
+///         address = "imgtktlniedocmgatpyzycge"
+///         port    = "gm"
+///       }
+///       enhanced_vpc_routing              = true
+///       hsm_client_certificate_identifier = "uguhqzduujaf"
+///       hsm_configuration_identifier      = "cznipmuxibdjvmteim"
+///       iam_roles                         = ["qmy"]
+///       kms_key_id                        = "afzaldvlyzmotwzdmydry"
+///       logging_properties = {
+///         bucket_name   = "mozpscmusdfzk"
+///         s3_key_prefix = "lffsxgand"
+///       }
+///       maintenance_track_name            = "etjeimmqcipuyxiobrnsnd"
+///       manage_master_password            = true
+///       manual_snapshot_retention_period  = 15
+///       master_password_secret_arn        = "upomdaqltagvwlqpyojnlmtme"
+///       master_password_secret_kms_key_id = "izpx"
+///       master_user_password              = "mftjs"
+///       master_username                   = "wleeglygnhojusagxryuk"
+///       multi_az                          = true
+///       node_type                         = "cudgc"
+///       number_of_nodes                   = 23
+///       owner_account                     = "drvv"
+///       port                              = 8
+///       preferred_maintenance_window      = "xpuhqwidzbn"
+///       publicly_accessible               = true
+///       resource_action                   = "nyhkwgrtf"
+///       revision_target                   = "dreawjciiytkiuywtwttqyhojh"
+///       rotate_encryption_key             = true
+///       snapshot_cluster_identifier       = "gu"
+///       snapshot_copy_grant_name          = "mwuomnttvwhduluhwnfkiwkaeztbmd"
+///       snapshot_copy_manual              = true
+///       snapshot_copy_retention_period    = 2
+///       snapshot_identifier               = "viproibmlhehvlszhxkqbbgl"
+///       tags = [{
+///         "key"   = "znz"
+///         "value" = "zawcpsgqfgrsjexrbo"
+///       }]
+///       vpc_security_group_ids = ["grbkothiifmuwwrme"]
+///     }
+///     aws_region        = "lablaxpspbxzhnbsrqz"
+///     aws_source_schema = "zdadxraykcjparteiye"
+///     aws_tags = {
+///       "key9665" = "eyxhhlvcfit"
+///     }
+///     public_cloud_connectors_resource_id = "r"
+///     public_cloud_resource_name          = "ck"
+///   }
+///   resource_group_name = "rgredshiftCluster"
+///   tags = {
+///     "key5296" = "hllwcfzqbninv"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +348,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsRedshiftClusterPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RedshiftClusterEndpointArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LoggingPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

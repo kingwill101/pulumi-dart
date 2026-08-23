@@ -5,31 +5,30 @@ import 'remediation_deployment_response.dart';
 
 /// Result data returned by listRemediationDeploymentsAtResourceGroup.
 class ListRemediationDeploymentsAtResourceGroupResult {
-  /// The URL to get the next set of results.
-  final String nextLink;
-  /// Array of deployments for the remediation.
+  /// The link to the next page of items
+  final String? nextLink;
+  /// The RemediationDeployment items on this page
   final List<RemediationDeploymentResponse> value;
 
   /// Creates a new [ListRemediationDeploymentsAtResourceGroupResult].
-  /// [nextLink] The URL to get the next set of results.
-  /// [value] Array of deployments for the remediation.
+  /// [nextLink] The link to the next page of items
+  /// [value] The RemediationDeployment items on this page
   const ListRemediationDeploymentsAtResourceGroupResult({
-    required this.nextLink,
+    this.nextLink,
     required this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nextLink': nextLink,
+      'nextLink': ?nextLink,
       'value': pulumi.Input.encodeList<RemediationDeploymentResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ListRemediationDeploymentsAtResourceGroupResult.fromMap(Map<String, dynamic> map) {
     return ListRemediationDeploymentsAtResourceGroupResult(
-      nextLink: map['nextLink'] as String,
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       value: pulumi.Input.decodeList<RemediationDeploymentResponse>(map['value']!, (value) => RemediationDeploymentResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum HybridLicenseType {
     throw ArgumentError('Unknown HybridLicenseType value: $value');
   }
 }
-

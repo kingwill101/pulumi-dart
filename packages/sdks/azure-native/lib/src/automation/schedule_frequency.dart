@@ -1,11 +1,11 @@
 /// Gets or sets the frequency of the schedule.
 enum ScheduleFrequency {
-  valueOneTime("OneTime"),
-  valueDay("Day"),
-  valueHour("Hour"),
-  valueWeek("Week"),
-  valueMonth("Month"),
-  valueMinute("Minute");
+  oneTime("OneTime"),
+  day("Day"),
+  hour("Hour"),
+  week("Week"),
+  month("Month"),
+  minute("Minute");
 
   const ScheduleFrequency(this.wireValue);
   final String wireValue;
@@ -19,4 +19,3 @@ enum ScheduleFrequency {
     throw ArgumentError('Unknown ScheduleFrequency value: $value');
   }
 }
-

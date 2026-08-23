@@ -5,7 +5,7 @@ import 'route_map_args.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -134,6 +134,43 @@ import 'route_map_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_routemap" "routeMap" {
+///   associated_inbound_connections  = ["/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGateway1/expressRouteConnections/exrConn1"]
+///   associated_outbound_connections = []
+///   resource_group_name             = "rg1"
+///   route_map_name                  = "routeMap1"
+///   rules {
+///     actions {
+///       parameters {
+///         as_path      = ["22334"]
+///         community    = []
+///         route_prefix = []
+///       }
+///       type = "Add"
+///     }
+///     match_criteria {
+///       as_path         = []
+///       community       = []
+///       match_condition = "Contains"
+///       route_prefix    = ["10.0.0.0/8"]
+///     }
+///     name                 = "rule1"
+///     next_step_if_matched = "Continue"
+///   }
+///   virtual_hub_name = "virtualHub1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +180,8 @@ import 'route_map_args.dart';
 /// import com.pulumi.azurenative.network.RouteMap;
 /// import com.pulumi.azurenative.network.RouteMapArgs;
 /// import com.pulumi.azurenative.network.inputs.RouteMapRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

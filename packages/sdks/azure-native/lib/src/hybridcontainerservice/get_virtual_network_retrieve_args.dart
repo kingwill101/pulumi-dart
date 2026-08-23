@@ -10,28 +10,27 @@ class GetVirtualNetworkRetrieveArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Parameter for the name of the virtual network
-  final pulumi.Input<String> virtualNetworksName;
+  final pulumi.Input<String> virtualNetworkName;
 
   /// Creates a new [GetVirtualNetworkRetrieveArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [virtualNetworksName] Parameter for the name of the virtual network
+  /// [virtualNetworkName] Parameter for the name of the virtual network
   const GetVirtualNetworkRetrieveArgs({
     required this.resourceGroupName,
-    required this.virtualNetworksName,
+    required this.virtualNetworkName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'resourceGroupName': resourceGroupName,
-      'virtualNetworksName': virtualNetworksName,
+      'virtualNetworkName': virtualNetworkName,
     };
   }
 
   factory GetVirtualNetworkRetrieveArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRetrieveArgs(
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      virtualNetworksName: pulumi.Input.fromValue(map['virtualNetworksName'] as String),
+      virtualNetworkName: pulumi.Input.fromValue(map['virtualNetworkName'] as String),
     );
   }
 }
-

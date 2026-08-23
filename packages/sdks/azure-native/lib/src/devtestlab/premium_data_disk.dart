@@ -17,4 +17,3 @@ enum PremiumDataDisk {
     throw ArgumentError('Unknown PremiumDataDisk value: $value');
   }
 }
-

@@ -14,4 +14,3 @@ enum IdentityType {
     throw ArgumentError('Unknown IdentityType value: $value');
   }
 }
-

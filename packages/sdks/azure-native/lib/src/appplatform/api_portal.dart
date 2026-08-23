@@ -85,6 +85,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_apiportal" "apiPortal" {
+///   api_portal_name = "default"
+///   properties = {
+///     api_try_out_enabled_state = "Enabled"
+///     gateway_ids               = ["/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/gateways/default"]
+///     public                    = true
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+///   sku = {
+///     capacity = 2
+///     name     = "E0"
+///     tier     = "Enterprise"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +122,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.ApiPortalArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ApiPortalPropertiesArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

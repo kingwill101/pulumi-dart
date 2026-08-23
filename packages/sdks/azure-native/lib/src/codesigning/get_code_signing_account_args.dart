@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_codesigning_get_code_signing_account_args_doc}
 class GetCodeSigningAccountArgs {
-  /// Trusted Signing account name.
+  /// Artifact Signing account name.
   final pulumi.Input<String> accountName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetCodeSigningAccountArgs].
-  /// [accountName] Trusted Signing account name.
+  /// [accountName] Artifact Signing account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetCodeSigningAccountArgs({
     required this.accountName,
@@ -34,4 +34,3 @@ class GetCodeSigningAccountArgs {
     );
   }
 }
-

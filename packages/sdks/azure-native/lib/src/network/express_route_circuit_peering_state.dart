@@ -15,4 +15,3 @@ enum ExpressRouteCircuitPeeringState {
     throw ArgumentError('Unknown ExpressRouteCircuitPeeringState value: $value');
   }
 }
-

@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
 ///
-/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -230,6 +230,96 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_azurearcdata_sqlmanagedinstance" "sqlManagedInstance" {
+///   extended_location = {
+///     name = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/arclocation"
+///     type = "CustomLocation"
+///   }
+///   location = "northeurope"
+///   properties = {
+///     active_directory_information = {
+///       keytab_information = {
+///         keytab = "********"
+///       }
+///     }
+///     admin = "Admin user"
+///     basic_login_information = {
+///       password = "********"
+///       username = "username"
+///     }
+///     cluster_id   = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/connectedk8s"
+///     end_time     = "Instance end time"
+///     extension_id = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/connectedk8s/providers/Microsoft.KubernetesConfiguration/extensions/extension"
+///     k8s_raw = {
+///       spec = {
+///         replicas = 1
+///         scheduling = {
+///           default = {
+///             resources = {
+///               limits = {
+///                 "additionalProperty" = "additionalValue"
+///                 "cpu"                = "1"
+///                 "memory"             = "8Gi"
+///               }
+///               requests = {
+///                 "additionalProperty" = "additionalValue"
+///                 "cpu"                = "1"
+///                 "memory"             = "8Gi"
+///               }
+///             }
+///           }
+///         }
+///         security = {
+///           active_directory = {
+///             account_name = "Account name"
+///             connector = {
+///               name      = "Name of connector"
+///               namespace = "Namespace of connector"
+///             }
+///             encryption_types = ["Encryption type item1, Encryption type item2,..."]
+///             keytab_secret    = "Key tab secret of account"
+///           }
+///           admin_login_secret         = "test-sql-login-secret"
+///           service_certificate_secret = "Service Certificate Secret"
+///           transparent_data_encryption = {
+///             mode = "SystemManaged"
+///           }
+///         }
+///         settings = {
+///           network = {
+///             forceencryption = 0
+///             tlsciphers      = "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384"
+///             tlsprotocols    = "1.2"
+///           }
+///         }
+///       }
+///     }
+///     license_type = "LicenseIncluded"
+///     start_time   = "Instance start time"
+///   }
+///   resource_group_name = "testrg"
+///   sku = {
+///     dev  = true
+///     name = "vCore"
+///     tier = "GeneralPurpose"
+///   }
+///   sql_managed_instance_name = "testsqlManagedInstance"
+///   tags = {
+///     "mytag" = "myval"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +345,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.azurearcdata.inputs.K8sSettingsArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.K8sNetworkSettingsArgs;
 /// import com.pulumi.azurenative.azurearcdata.inputs.SqlManagedInstanceSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

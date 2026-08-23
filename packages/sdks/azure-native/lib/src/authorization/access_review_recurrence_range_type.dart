@@ -1,8 +1,8 @@
 /// The recurrence range type. The possible values are: endDate, noEnd, numbered.
 enum AccessReviewRecurrenceRangeType {
-  valueEndDate("endDate"),
-  valueNoEnd("noEnd"),
-  valueNumbered("numbered");
+  endDate("endDate"),
+  noEnd("noEnd"),
+  numbered("numbered");
 
   const AccessReviewRecurrenceRangeType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum AccessReviewRecurrenceRangeType {
     throw ArgumentError('Unknown AccessReviewRecurrenceRangeType value: $value');
   }
 }
-

@@ -19,4 +19,3 @@ enum ClusterStatus {
     throw ArgumentError('Unknown ClusterStatus value: $value');
   }
 }
-

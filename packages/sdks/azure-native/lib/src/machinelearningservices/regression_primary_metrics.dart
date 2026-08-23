@@ -1,9 +1,9 @@
-/// Primary metric for regression task.
+/// Primary metrics for Regression task.
 enum RegressionPrimaryMetrics {
-  valueSpearmanCorrelation("SpearmanCorrelation"),
-  valueNormalizedRootMeanSquaredError("NormalizedRootMeanSquaredError"),
-  valueR2Score("R2Score"),
-  valueNormalizedMeanAbsoluteError("NormalizedMeanAbsoluteError");
+  spearmanCorrelation("SpearmanCorrelation"),
+  normalizedRootMeanSquaredError("NormalizedRootMeanSquaredError"),
+  r2Score("R2Score"),
+  normalizedMeanAbsoluteError("NormalizedMeanAbsoluteError");
 
   const RegressionPrimaryMetrics(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum RegressionPrimaryMetrics {
     throw ArgumentError('Unknown RegressionPrimaryMetrics value: $value');
   }
 }
-

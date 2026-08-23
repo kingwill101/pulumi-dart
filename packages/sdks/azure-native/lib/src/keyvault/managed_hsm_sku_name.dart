@@ -18,4 +18,3 @@ enum ManagedHsmSkuName {
     throw ArgumentError('Unknown ManagedHsmSkuName value: $value');
   }
 }
-

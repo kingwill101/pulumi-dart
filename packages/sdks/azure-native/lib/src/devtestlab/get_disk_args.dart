@@ -11,7 +11,7 @@ class GetDiskArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the Disk
+  /// The name of the disk.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -21,7 +21,7 @@ class GetDiskArgs {
   /// Creates a new [GetDiskArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=diskType)'
   /// [labName] The name of the lab.
-  /// [name] The name of the Disk
+  /// [name] The name of the disk.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
   const GetDiskArgs({
@@ -52,4 +52,3 @@ class GetDiskArgs {
     );
   }
 }
-

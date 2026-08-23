@@ -82,6 +82,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   a_records {
+///     ipv4_address = "127.0.0.1"
+///   }
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "A"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +116,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.ARecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,7 +180,7 @@ import 'system_data_response.dart';
 ///     record_type="A",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -242,6 +267,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "A"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   target_resource = {
+///     id = "/subscriptions/726f8cd6-6459-4db4-8e6d-2cd2716904e2/resourceGroups/test/providers/Microsoft.Network/trafficManagerProfiles/testpp2"
+///   }
+///   ttl       = 3600
+///   zone_name = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -251,8 +301,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,7 +365,7 @@ import 'system_data_response.dart';
 ///     target_resource={
 ///         "id": "/subscriptions/726f8cd6-6459-4db4-8e6d-2cd2716904e2/resourceGroups/test/providers/Microsoft.Network/trafficManagerProfiles/testpp2",
 ///     },
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -402,6 +452,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "A"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   traffic_management_profile = {
+///     id = "/subscriptions/726f8cd6-6459-4db4-8e6d-2cd2716904e2/resourceGroups/test/providers/Microsoft.Network/trafficManagerProfiles/testpp2"
+///   }
+///   ttl       = 3600
+///   zone_name = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -411,8 +486,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,7 +550,7 @@ import 'system_data_response.dart';
 ///     traffic_management_profile={
 ///         "id": "/subscriptions/726f8cd6-6459-4db4-8e6d-2cd2716904e2/resourceGroups/test/providers/Microsoft.Network/trafficManagerProfiles/testpp2",
 ///     },
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -567,6 +642,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   aaaa_records {
+///     ipv6_address = "::1"
+///   }
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "AAAA"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -576,8 +676,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.AaaaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -640,7 +740,7 @@ import 'system_data_response.dart';
 ///     record_type="AAAA",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -736,6 +836,33 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   caa_records {
+///     flags = 0
+///     tag   = "issue"
+///     value = "ca.contoso.com"
+///   }
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "CAA"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -745,8 +872,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.CaaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -815,7 +942,7 @@ import 'system_data_response.dart';
 ///     record_type="CAA",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -904,6 +1031,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   cname_record = {
+///     cname = "contoso.com"
+///   }
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "CNAME"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -913,8 +1065,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.CnameRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -977,7 +1129,7 @@ import 'system_data_response.dart';
 ///     record_type="CNAME",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -1080,6 +1232,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   ds_records {
+///     algorithm = 5
+///     digest = {
+///       algorithm_type = 1
+///       value          = "2BB183AF5F22588179A53B0A98631FAD1A292118"
+///     }
+///     key_tag = 60485
+///   }
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "DS"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1090,8 +1272,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.DsRecordArgs;
 /// import com.pulumi.azurenative.dns.inputs.DigestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1169,7 +1351,7 @@ import 'system_data_response.dart';
 ///     record_type="DS",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -1267,6 +1449,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   mx_records {
+///     exchange   = "mail.contoso.com"
+///     preference = 0
+///   }
+///   record_type              = "MX"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1276,8 +1484,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.MxRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1343,7 +1551,7 @@ import 'system_data_response.dart';
 ///     record_type="MX",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -1446,6 +1654,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   naptr_records {
+///     flags       = "U"
+///     order       = 100
+///     preference  = 10
+///     regexp      = "!^.*$!sip:user@example.com!"
+///     replacement = ""
+///     services    = "E2U+sip"
+///   }
+///   record_type              = "NAPTR"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1455,8 +1693,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.NaptrRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1534,7 +1772,7 @@ import 'system_data_response.dart';
 ///     record_type="NAPTR",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -1631,6 +1869,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   ns_records {
+///     nsdname = "ns1.contoso.com"
+///   }
+///   record_type              = "NS"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1640,8 +1903,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.NsRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1704,7 +1967,7 @@ import 'system_data_response.dart';
 ///     record_type="NS",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -1796,6 +2059,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   ptr_records {
+///     ptrdname = "localhost"
+///   }
+///   record_type              = "PTR"
+///   relative_record_set_name = "1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   zone_name                = "0.0.127.in-addr.arpa"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1805,8 +2093,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.PtrRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1869,7 +2157,7 @@ import 'system_data_response.dart';
 ///     record_type="PTR",
 ///     relative_record_set_name="1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="0.0.127.in-addr.arpa")
 ///
 /// ```
@@ -1968,6 +2256,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "SOA"
+///   relative_record_set_name = "@"
+///   resource_group_name      = "rg1"
+///   soa_record = {
+///     email         = "hostmaster.contoso.com"
+///     expire_time   = 2419200
+///     host          = "ns1.contoso.com"
+///     minimum_ttl   = 300
+///     refresh_time  = 3600
+///     retry_time    = 300
+///     serial_number = 1
+///   }
+///   ttl       = 3600
+///   zone_name = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1977,8 +2296,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.SoaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2052,14 +2371,14 @@ import 'system_data_response.dart';
 ///     resource_group_name="rg1",
 ///     soa_record={
 ///         "email": "hostmaster.contoso.com",
-///         "expire_time": 2419200,
+///         "expire_time": float(2419200),
 ///         "host": "ns1.contoso.com",
-///         "minimum_ttl": 300,
-///         "refresh_time": 3600,
-///         "retry_time": 300,
-///         "serial_number": 1,
+///         "minimum_ttl": float(300),
+///         "refresh_time": float(3600),
+///         "retry_time": float(300),
+///         "serial_number": float(1),
 ///     },
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -2163,6 +2482,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "SRV"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   srv_records {
+///     port     = 80
+///     priority = 0
+///     target   = "contoso.com"
+///     weight   = 10
+///   }
+///   ttl       = 3600
+///   zone_name = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2172,8 +2519,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.SrvRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2245,7 +2592,7 @@ import 'system_data_response.dart';
 ///         "target": "contoso.com",
 ///         "weight": 10,
 ///     }],
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -2346,6 +2693,34 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "TLSA"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   tlsa_records {
+///     cert_association_data = "6EC8A4B7F511454D84DCC055213B8D195E8ADA751FE14300AFE32D54B162438B"
+///     matching_type         = 1
+///     selector              = 1
+///     usage                 = 3
+///   }
+///   ttl       = 3600
+///   zone_name = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2355,8 +2730,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.TlsaRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2428,7 +2803,7 @@ import 'system_data_response.dart';
 ///         "selector": 1,
 ///         "usage": 3,
 ///     }],
-///     ttl=3600,
+///     ttl=float(3600),
 ///     zone_name="zone1")
 ///
 /// ```
@@ -2530,6 +2905,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dns_recordset" "recordSet" {
+///   metadata = {
+///     "key1" = "value1"
+///   }
+///   record_type              = "TXT"
+///   relative_record_set_name = "record1"
+///   resource_group_name      = "rg1"
+///   ttl                      = 3600
+///   txt_records {
+///     value = ["string1", "string2"]
+///   }
+///   zone_name = "zone1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -2539,8 +2939,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dns.RecordSet;
 /// import com.pulumi.azurenative.dns.RecordSetArgs;
 /// import com.pulumi.azurenative.dns.inputs.TxtRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2605,7 +3005,7 @@ import 'system_data_response.dart';
 ///     record_type="TXT",
 ///     relative_record_set_name="record1",
 ///     resource_group_name="rg1",
-///     ttl=3600,
+///     ttl=float(3600),
 ///     txt_records=[{
 ///         "value": [
 ///             "string1",

@@ -358,6 +358,7 @@ export 'recoveryservices/private_endpoint_connection_response.dart';
 export 'recoveryservices/private_endpoint_connection_status.dart';
 export 'recoveryservices/private_endpoint_connection_vault_properties_response.dart';
 export 'recoveryservices/private_endpoint_response.dart';
+export 'recoveryservices/private_endpoint_vault_response.dart';
 export 'recoveryservices/private_link_service_connection_state.dart';
 export 'recoveryservices/private_link_service_connection_state_response.dart';
 export 'recoveryservices/process_server_details_response.dart';

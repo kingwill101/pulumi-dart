@@ -84,6 +84,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_standard" "standard" {
+///   category = "SecurityCenter"
+///   components {
+///     key = "1195afff-c881-495e-9bc5-1486211ae03f"
+///   }
+///   components {
+///     key = "dbd0cb49-b563-45e7-9724-889e799fa648"
+///   }
+///   description         = "description of Azure Test Security Standard 1"
+///   display_name        = "Azure Test Security Standard 1"
+///   resource_group_name = "myResourceGroup"
+///   standard_id         = "8bb8be0a-6010-4789-812f-e4d661c4ed0e"
+///   supported_clouds    = ["GCP"]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +119,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.security.Standard;
 /// import com.pulumi.azurenative.security.StandardArgs;
 /// import com.pulumi.azurenative.security.inputs.StandardComponentPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -215,9 +241,9 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<String?> etag;
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
-  /// Location where the resource is stored
+  /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
-  /// Resource name
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// standard type (Custom or BuiltIn only currently)
   late final pulumi.Output<String> standardType;
@@ -225,9 +251,9 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> supportedClouds;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// A list of key value pairs that describe the resource.
+  /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// Resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [Standard].

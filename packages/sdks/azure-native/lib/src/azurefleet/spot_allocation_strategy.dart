@@ -16,4 +16,3 @@ enum SpotAllocationStrategy {
     throw ArgumentError('Unknown SpotAllocationStrategy value: $value');
   }
 }
-

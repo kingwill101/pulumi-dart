@@ -15,4 +15,3 @@ enum HTTPConfigurationMethod {
     throw ArgumentError('Unknown HTTPConfigurationMethod value: $value');
   }
 }
-

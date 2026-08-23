@@ -15,4 +15,3 @@ enum CustomRuleEnabledState {
     throw ArgumentError('Unknown CustomRuleEnabledState value: $value');
   }
 }
-

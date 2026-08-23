@@ -143,6 +143,60 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_sqlassessmentv2operation" "sqlAssessmentV2Operation" {
+///   assessment_name          = "test_swagger_1"
+///   async_commit_mode_intent = "DisasterRecovery"
+///   azure_location           = "SoutheastAsia"
+///   azure_offer_code         = "MSAZR0003P"
+///   azure_offer_code_for_vm  = "MSAZR0003P"
+///   azure_sql_database_settings = {
+///     azure_sql_compute_tier   = "Automatic"
+///     azure_sql_data_base_type = "SingleDatabase"
+///     azure_sql_purchase_model = "VCore"
+///     azure_sql_service_tier   = "Automatic"
+///   }
+///   azure_sql_managed_instance_settings = {
+///     azure_sql_instance_type = "SingleInstance"
+///     azure_sql_service_tier  = "Automatic"
+///   }
+///   azure_sql_vm_settings = {
+///     instance_series = ["Eadsv5_series"]
+///   }
+///   currency                   = "USD"
+///   disaster_recovery_location = "EastAsia"
+///   discount_percentage        = 0
+///   enable_hadr_assessment     = true
+///   entity_uptime = {
+///     days_per_month = 30
+///     hours_per_day  = 24
+///   }
+///   environment_type         = "Production"
+///   group_name               = "test_fci_hadr"
+///   multi_subnet_intent      = "DisasterRecovery"
+///   optimization_logic       = "MinimizeCost"
+///   os_license               = "Unknown"
+///   percentile               = "Percentile95"
+///   project_name             = "fci-test6904project"
+///   reserved_instance        = "None"
+///   reserved_instance_for_vm = "None"
+///   resource_group_name      = "rgmigrate"
+///   scaling_factor           = 1
+///   sizing_criterion         = "PerformanceBased"
+///   sql_server_license       = "Unknown"
+///   time_range               = "Day"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -155,8 +209,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.migrate.inputs.SqlMiSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.SqlVmSettingsArgs;
 /// import com.pulumi.azurenative.migrate.inputs.EntityUptimeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,7 +344,7 @@ import 'system_data_response.dart';
 ///     },
 ///     currency=azure_native.migrate.AzureCurrency.USD,
 ///     disaster_recovery_location=azure_native.migrate.AzureLocation.EAST_ASIA,
-///     discount_percentage=0,
+///     discount_percentage=float(0),
 ///     enable_hadr_assessment=True,
 ///     entity_uptime={
 ///         "days_per_month": 30,
@@ -306,7 +360,7 @@ import 'system_data_response.dart';
 ///     reserved_instance=azure_native.migrate.AzureReservedInstance.NONE,
 ///     reserved_instance_for_vm=azure_native.migrate.AzureReservedInstance.NONE,
 ///     resource_group_name="rgmigrate",
-///     scaling_factor=1,
+///     scaling_factor=float(1),
 ///     sizing_criterion=azure_native.migrate.AssessmentSizingCriterion.PERFORMANCE_BASED,
 ///     sql_server_license=azure_native.migrate.SqlServerLicense.UNKNOWN,
 ///     time_range=azure_native.migrate.TimeRange.DAY)

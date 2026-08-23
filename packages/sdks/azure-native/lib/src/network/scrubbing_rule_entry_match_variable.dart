@@ -19,4 +19,3 @@ enum ScrubbingRuleEntryMatchVariable {
     throw ArgumentError('Unknown ScrubbingRuleEntryMatchVariable value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum DataFormat {
     throw ArgumentError('Unknown DataFormat value: $value');
   }
 }
-

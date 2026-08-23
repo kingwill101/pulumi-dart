@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'model_container_response.dart';
+import 'model_container_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getModelContainer.
@@ -9,10 +9,10 @@ class GetModelContainerResult {
   final String azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
-  /// [Required] Additional attributes of the entity.
-  final ModelContainerResponse modelContainerProperties;
   /// The name of the resource
   final String name;
+  /// [Required] Additional attributes of the entity.
+  final ModelContainerPropertiesResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -21,15 +21,15 @@ class GetModelContainerResult {
   /// Creates a new [GetModelContainerResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  /// [modelContainerProperties] [Required] Additional attributes of the entity.
   /// [name] The name of the resource
+  /// [properties] [Required] Additional attributes of the entity.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetModelContainerResult({
     required this.azureApiVersion,
     required this.id,
-    required this.modelContainerProperties,
     required this.name,
+    required this.properties,
     required this.systemData,
     required this.type,
   });
@@ -38,8 +38,8 @@ class GetModelContainerResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'modelContainerProperties': modelContainerProperties.toMap(),
       'name': name,
+      'properties': properties.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -49,11 +49,10 @@ class GetModelContainerResult {
     return GetModelContainerResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      modelContainerProperties: ModelContainerResponse.fromMap((map['modelContainerProperties']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
+      properties: ModelContainerPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

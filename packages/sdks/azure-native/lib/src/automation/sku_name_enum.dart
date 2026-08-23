@@ -1,7 +1,7 @@
 /// Gets or sets the SKU name of the account.
 enum SkuNameEnum {
-  valueFree("Free"),
-  valueBasic("Basic");
+  free("Free"),
+  basic("Basic");
 
   const SkuNameEnum(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SkuNameEnum {
     throw ArgumentError('Unknown SkuNameEnum value: $value');
   }
 }
-

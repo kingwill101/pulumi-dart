@@ -60,6 +60,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_invitation" "invitation" {
+///   account_name        = "Account1"
+///   expiration_date     = "2020-08-26T22:33:24.5785265Z"
+///   invitation_name     = "Invitation1"
+///   resource_group_name = "SampleResourceGroup"
+///   share_name          = "Share1"
+///   target_email        = "receiver@microsoft.com"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +88,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.Invitation;
 /// import com.pulumi.azurenative.datashare.InvitationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

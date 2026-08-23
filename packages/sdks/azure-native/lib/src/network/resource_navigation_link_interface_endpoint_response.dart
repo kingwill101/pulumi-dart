@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// ResourceNavigationLink resource.
+class ResourceNavigationLinkInterfaceEndpointResponse {
+  /// A unique read-only string that changes whenever the resource is updated.
+  final pulumi.Input<String> etag;
+  /// Resource ID.
+  final pulumi.Input<String>? id;
+  /// Link to the external resource
+  final pulumi.Input<String>? link;
+  /// Resource type of the linked resource.
+  final pulumi.Input<String>? linkedResourceType;
+  /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
+  final pulumi.Input<String>? name;
+  /// Provisioning state of the ResourceNavigationLink resource.
+  final pulumi.Input<String> provisioningState;
+
+  /// Creates a new [ResourceNavigationLinkInterfaceEndpointResponse].
+  /// [etag] A unique read-only string that changes whenever the resource is updated.
+  /// [id] Resource ID.
+  /// [link] Link to the external resource
+  /// [linkedResourceType] Resource type of the linked resource.
+  /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
+  /// [provisioningState] Provisioning state of the ResourceNavigationLink resource.
+  const ResourceNavigationLinkInterfaceEndpointResponse({
+    required this.etag,
+    this.id,
+    this.link,
+    this.linkedResourceType,
+    this.name,
+    required this.provisioningState,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'etag': etag,
+      'id': ?id,
+      'link': ?link,
+      'linkedResourceType': ?linkedResourceType,
+      'name': ?name,
+      'provisioningState': provisioningState,
+    };
+  }
+
+  factory ResourceNavigationLinkInterfaceEndpointResponse.fromMap(Map<String, dynamic> map) {
+    return ResourceNavigationLinkInterfaceEndpointResponse(
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      link: (() { final guardedValue = map['link']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linkedResourceType: (() { final guardedValue = map['linkedResourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
+    );
+  }
+}

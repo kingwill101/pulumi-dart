@@ -14,4 +14,3 @@ enum DiffDiskOptions {
     throw ArgumentError('Unknown DiffDiskOptions value: $value');
   }
 }
-

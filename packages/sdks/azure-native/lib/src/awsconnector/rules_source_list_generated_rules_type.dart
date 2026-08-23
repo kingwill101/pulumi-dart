@@ -15,4 +15,3 @@ enum RulesSourceListGeneratedRulesType {
     throw ArgumentError('Unknown RulesSourceListGeneratedRulesType value: $value');
   }
 }
-

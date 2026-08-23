@@ -59,6 +59,25 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_softwareplan_hybridusebenefit" "hybridUseBenefit" {
+///   plan_id = "94f46eda-45f8-493a-8425-251921463a89"
+///   scope   = "subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.Compute/HostGroups/{host-group-name}/hosts/{host-name}"
+///   sku = {
+///     name = "SQL_Server_Perpetual"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +87,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.softwareplan.HybridUseBenefit;
 /// import com.pulumi.azurenative.softwareplan.HybridUseBenefitArgs;
 /// import com.pulumi.azurenative.softwareplan.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -247,7 +247,10 @@ import 'system_data_response.dart';
 ///                     },
 ///                 },
 ///                 Cpu = "hijyr",
-///                 EphemeralStorage = null,
+///                 EphemeralStorage = new AzureNative.AwsConnector.Inputs.EphemeralStorageArgs
+///                 {
+///                     SizeInGiB = 17,
+///                 },
 ///                 ExecutionRoleArn = "qqqfakequmccjxadppbeamxuwsitta",
 ///                 Family = "atzptqetfqeczglfyn",
 ///                 InferenceAccelerators = new[]
@@ -550,8 +553,10 @@ import 'system_data_response.dart';
 /// 							WorkingDirectory: pulumi.String("jpdgsckyvfez"),
 /// 						},
 /// 					},
-/// 					Cpu:              pulumi.String("hijyr"),
-/// 					EphemeralStorage: &awsconnector.EphemeralStorageArgs{},
+/// 					Cpu: pulumi.String("hijyr"),
+/// 					EphemeralStorage: &awsconnector.EphemeralStorageArgs{
+/// 						SizeInGiB: pulumi.Int(17),
+/// 					},
 /// 					ExecutionRoleArn: pulumi.String("qqqfakequmccjxadppbeamxuwsitta"),
 /// 					Family:           pulumi.String("atzptqetfqeczglfyn"),
 /// 					InferenceAccelerators: awsconnector.InferenceAcceleratorArray{
@@ -650,6 +655,221 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ecstaskdefinition" "ecsTaskDefinition" {
+///   location = "hideafehihasfzxdxuqiqubhhzg"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "mkr"
+///     aws_account_id = "efgvyahxivjf"
+///     aws_properties = {
+///       container_definitions = [{
+///         "command"         = ["jowixdtkttvhtvcluhzsqkcszit"]
+///         "cpu"             = 17
+///         "credentialSpecs" = ["ooravv"]
+///         "dependsOn" = [{
+///           "condition"     = "xpmiwcexgnrimsrqyrdlvyyquiccp"
+///           "containerName" = "wzcyhuwwutzttwwaopqed"
+///         }]
+///         "disableNetworking"     = true
+///         "dnsSearchDomains"      = ["ggzzwoziotxloooklwdsveul"]
+///         "dnsServers"            = ["ngggprelehukiysguto"]
+///         "dockerSecurityOptions" = ["famtfjusztdnyrdzupruqpxufhxp"]
+///         "entryPoint"            = ["oaiompurpnjswlqkmvgraiaj"]
+///         "environment" = [{
+///           "name"  = "edrmixvb"
+///           "value" = "vdms"
+///         }]
+///         "environmentFiles" = [{
+///           "type"  = "psgsoavpms"
+///           "value" = "ydkrwlbkbzqdm"
+///         }]
+///         "essential" = true
+///         "extraHosts" = [{
+///           "hostname"  = "unpwutrc"
+///           "ipAddress" = "mcsjkhhqbwqesxwcpnnasbzamixath"
+///         }]
+///         "firelensConfiguration" = {
+///           "type" = "uuwlwegjjeoorvbgtyzoaeeucp"
+///         }
+///         "healthCheck" = {
+///           "command"     = ["ppgfrdhjiytbzqtwkumhmnpsk"]
+///           "interval"    = 1
+///           "retries"     = 11
+///           "startPeriod" = 21
+///           "timeout"     = 22
+///         }
+///         "hostname"    = "qjkxoayeojuesqmrhe"
+///         "image"       = "lmgx"
+///         "interactive" = true
+///         "links"       = ["awgsbfcuoynoomjr"]
+///         "linuxParameters" = {
+///           "capabilities" = {
+///             "add"  = ["xnobooaglhooafh"]
+///             "drop" = ["uscfx"]
+///           }
+///           "devices" = [{
+///             "containerPath" = "fveecgcpepimcqufoswgvjibavi"
+///             "hostPath"      = "hvwxdqfcbt"
+///             "permissions"   = ["yqev"]
+///           }]
+///           "initProcessEnabled" = true
+///           "maxSwap"            = 24
+///           "sharedMemorySize"   = 1
+///           "swappiness"         = 27
+///           "tmpfs" = [{
+///             "containerPath" = "kxvhyrbeu"
+///             "mountOptions"  = ["lylxsszvvczykn"]
+///             "size"          = 24
+///           }]
+///         }
+///         "logConfiguration" = {
+///           "logDriver" = "zgkgcxxggqdvrfngjbdapez"
+///           "secretOptions" = [{
+///             "name"      = "knumytlyulndziptjvgvcpd"
+///             "valueFrom" = "z"
+///           }]
+///         }
+///         "memory"            = 27
+///         "memoryReservation" = 9
+///         "mountPoints" = [{
+///           "containerPath" = "zjtchyyfjv"
+///           "readOnly"      = true
+///           "sourceVolume"  = "mrimyrhpxx"
+///         }]
+///         "name" = "tfseewfqlgwjqbkjikv"
+///         "portMappings" = [{
+///           "appProtocol"        = "grpc"
+///           "containerPort"      = 17
+///           "containerPortRange" = "hwshvyttesxemvlis"
+///           "hostPort"           = 13
+///           "name"               = "nbxxumpmur"
+///           "protocol"           = "llczx"
+///         }]
+///         "privileged"             = true
+///         "pseudoTerminal"         = true
+///         "readonlyRootFilesystem" = true
+///         "repositoryCredentials" = {
+///           "credentialsParameter" = "pdwxhkhkkxjiwwcpkoiketthuw"
+///         }
+///         "resourceRequirements" = [{
+///           "type"  = "yhtgxyeazgtpygnamvgtrt"
+///           "value" = "msamplxjlrq"
+///         }]
+///         "secrets" = [{
+///           "name"      = "knumytlyulndziptjvgvcpd"
+///           "valueFrom" = "z"
+///         }]
+///         "startTimeout" = 10
+///         "stopTimeout"  = 24
+///         "systemControls" = [{
+///           "namespace" = "hcwgpftfycwhenxygrbczcyqxh"
+///           "value"     = "zzjkfgz"
+///         }]
+///         "ulimits" = [{
+///           "hardLimit" = 16
+///           "name"      = "zswtamsvbvaxlueyfkklzaz"
+///           "softLimit" = 2
+///         }]
+///         "user" = "hosruyaojhjbh"
+///         "volumesFrom" = [{
+///           "readOnly"        = true
+///           "sourceContainer" = "ktlxxpz"
+///         }]
+///         "workingDirectory" = "jpdgsckyvfez"
+///       }]
+///       cpu = "hijyr"
+///       ephemeral_storage = {
+///         size_in_gi_b = 17
+///       }
+///       execution_role_arn = "qqqfakequmccjxadppbeamxuwsitta"
+///       family             = "atzptqetfqeczglfyn"
+///       inference_accelerators = [{
+///         "deviceName" = "mh"
+///         "deviceType" = "zfkvyer"
+///       }]
+///       ipc_mode     = "bynxyc"
+///       memory       = "vwthlhlwlmwyoxowrumsld"
+///       network_mode = "vrvk"
+///       pid_mode     = "pthtbdouatcrybmke"
+///       placement_constraints = [{
+///         "expression" = "skxfvhirrtaegdaujr"
+///         "type"       = "qnklizvyidxybjmtkgdzdls"
+///       }]
+///       proxy_configuration = {
+///         container_name = "tykmharv"
+///         proxy_configuration_properties = [{
+///           "name"  = "edrmixvb"
+///           "value" = "vdms"
+///         }]
+///         type = "htnvhyjaffhosgiq"
+///       }
+///       requires_compatibilities = ["lmugnbkpcgvmibqmoyeicudqghukxl"]
+///       runtime_platform = {
+///         cpu_architecture        = "zcetkrsfadbflliirh"
+///         operating_system_family = "topzpehesx"
+///       }
+///       tags = [{
+///         "key"   = "sktncibpobzyad"
+///         "value" = "glazi"
+///       }]
+///       task_definition_arn = "fpexhci"
+///       task_role_arn       = "vvebkfiglrktpmn"
+///       volumes = [{
+///         "configuredAtLaunch" = true
+///         "dockerVolumeConfiguration" = {
+///           "autoprovision" = true
+///           "driver"        = "fdypjooligpeypyjkojhhnstigr"
+///           "scope"         = "wourdwnfkwgitfhzywc"
+///         }
+///         "efsVolumeConfiguration" = {
+///           "authorizationConfig" = {
+///             "accessPointId" = "ipf"
+///             "iam"           = "DISABLED"
+///           }
+///           "filesystemId"          = "kyluffayszoviyute"
+///           "rootDirectory"         = "vqogypwzwvlqikbwdhvy"
+///           "transitEncryption"     = "DISABLED"
+///           "transitEncryptionPort" = 27
+///         }
+///         "fSxWindowsFileServerVolumeConfiguration" = {
+///           "authorizationConfig" = {
+///             "credentialsParameter" = "ytxpomfevjkqfqrjp"
+///             "domain"               = "igiaaxjfjdstgiwmurfycdsss"
+///           }
+///           "fileSystemId"  = "gxcjekzhsm"
+///           "rootDirectory" = "bkbhxkwlfnslgnapevzhyvmfcdaup"
+///         }
+///         "host" = {
+///           "sourcePath" = "kgadnbxtebvbppaiqqkcmwcipqs"
+///         }
+///         "name" = "qslxsptvrywosrsnrdvo"
+///       }]
+///     }
+///     aws_region        = "vdwjcoqcepgcfqjeedexacghbqhz"
+///     aws_source_schema = "mvndrea"
+///     aws_tags = {
+///       "key1568" = "lbxzgpyhaleuetcbwtwotfxmsedkci"
+///     }
+///     public_cloud_connectors_resource_id = "zrnabgyobuzozcbzvgu"
+///     public_cloud_resource_name          = "mmhr"
+///   }
+///   resource_group_name = "rgecsTaskDefinition"
+///   tags = {
+///     "key6626" = "nytjqmvhitrnxlmkyycses"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -663,8 +883,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.EphemeralStorageArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ProxyConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.RuntimePlatformArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -800,6 +1020,7 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .cpu("hijyr")
 ///                     .ephemeralStorage(EphemeralStorageArgs.builder()
+///                         .sizeInGiB(17)
 ///                         .build())
 ///                     .executionRoleArn("qqqfakequmccjxadppbeamxuwsitta")
 ///                     .family("atzptqetfqeczglfyn")
@@ -1007,7 +1228,9 @@ import 'system_data_response.dart';
 ///                 workingDirectory: "jpdgsckyvfez",
 ///             }],
 ///             cpu: "hijyr",
-///             ephemeralStorage: {},
+///             ephemeralStorage: {
+///                 sizeInGiB: 17,
+///             },
 ///             executionRoleArn: "qqqfakequmccjxadppbeamxuwsitta",
 ///             family: "atzptqetfqeczglfyn",
 ///             inferenceAccelerators: [{
@@ -1215,7 +1438,9 @@ import 'system_data_response.dart';
 ///                 "working_directory": "jpdgsckyvfez",
 ///             }],
 ///             "cpu": "hijyr",
-///             "ephemeral_storage": {},
+///             "ephemeral_storage": {
+///                 "size_in_gi_b": 17,
+///             },
 ///             "execution_role_arn": "qqqfakequmccjxadppbeamxuwsitta",
 ///             "family": "atzptqetfqeczglfyn",
 ///             "inference_accelerators": [{
@@ -1413,7 +1638,8 @@ import 'system_data_response.dart';
 ///                   sourceContainer: ktlxxpz
 ///               workingDirectory: jpdgsckyvfez
 ///           cpu: hijyr
-///           ephemeralStorage: {}
+///           ephemeralStorage:
+///             sizeInGiB: 17
 ///           executionRoleArn: qqqfakequmccjxadppbeamxuwsitta
 ///           family: atzptqetfqeczglfyn
 ///           inferenceAccelerators:

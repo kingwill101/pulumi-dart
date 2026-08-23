@@ -10,7 +10,7 @@ import 'field_definition.dart';
 class ConnectionTypeArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
-  /// The parameters supplied to the create or update connection type operation.
+  /// The name of connection type.
   final pulumi.Input<String>? connectionTypeName;
   /// Gets or sets the field definitions of the connection type.
   final pulumi.Input<Map<String, FieldDefinition>> fieldDefinitions;
@@ -18,16 +18,16 @@ class ConnectionTypeArgs {
   final pulumi.Input<bool>? isGlobal;
   /// Gets or sets the name of the connection type.
   final pulumi.Input<String> name;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [ConnectionTypeArgs].
   /// [automationAccountName] The name of the automation account.
-  /// [connectionTypeName] The parameters supplied to the create or update connection type operation.
+  /// [connectionTypeName] The name of connection type.
   /// [fieldDefinitions] Gets or sets the field definitions of the connection type.
   /// [isGlobal] Gets or sets a Boolean value to indicate if the connection type is global.
   /// [name] Gets or sets the name of the connection type.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const ConnectionTypeArgs({
     required this.automationAccountName,
     this.connectionTypeName,
@@ -59,4 +59,3 @@ class ConnectionTypeArgs {
     );
   }
 }
-

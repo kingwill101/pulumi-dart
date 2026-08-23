@@ -96,6 +96,38 @@ import 'adccatalog_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datacatalog_adccatalog" "adcCatalog" {
+///   admins {
+///     object_id = "99999999-9999-9999-999999999999"
+///     upn       = "myupn@microsoft.com"
+///   }
+///   catalog_name                     = "exampleCatalog"
+///   enable_automatic_unit_adjustment = false
+///   location                         = "North US"
+///   resource_group_name              = "exampleResourceGroup"
+///   sku                              = "Standard"
+///   tags = {
+///     "mykey"  = "myvalue"
+///     "mykey2" = "myvalue2"
+///   }
+///   units = 1
+///   users {
+///     object_id = "99999999-9999-9999-999999999999"
+///     upn       = "myupn@microsoft.com"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +137,8 @@ import 'adccatalog_args.dart';
 /// import com.pulumi.azurenative.datacatalog.ADCCatalog;
 /// import com.pulumi.azurenative.datacatalog.ADCCatalogArgs;
 /// import com.pulumi.azurenative.datacatalog.inputs.PrincipalsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

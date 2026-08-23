@@ -16,4 +16,3 @@ enum EdifactDecimalIndicator {
     throw ArgumentError('Unknown EdifactDecimalIndicator value: $value');
   }
 }
-

@@ -1,9 +1,9 @@
 /// A possible role to configure sending security notification alerts to
 enum SecurityContactRole {
-  valueAccountAdmin("AccountAdmin"),
-  valueServiceAdmin("ServiceAdmin"),
-  valueOwner("Owner"),
-  valueContributor("Contributor");
+  accountAdmin("AccountAdmin"),
+  serviceAdmin("ServiceAdmin"),
+  owner("Owner"),
+  contributor("Contributor");
 
   const SecurityContactRole(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum SecurityContactRole {
     throw ArgumentError('Unknown SecurityContactRole value: $value');
   }
 }
-

@@ -111,6 +111,44 @@ import 'virtual_machine_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_vmwarecloudsimple_virtualmachine" "virtualMachine" {
+///   amount_of_ram = 4096
+///   disks {
+///     controller_id     = "1000"
+///     independence_mode = "persistent"
+///     total_size        = 10485760
+///     virtual_disk_id   = "2000"
+///   }
+///   location = "westus2"
+///   nics {
+///     network = {
+///       id = "/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud/virtualNetworks/dvportgroup-19"
+///     }
+///     nic_type       = "E1000"
+///     power_on_boot  = true
+///     virtual_nic_id = "4000"
+///   }
+///   number_of_cores     = 2
+///   private_cloud_id    = "/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud"
+///   resource_group_name = "myResourceGroup"
+///   resource_pool = {
+///     id = "/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud/resourcePools/resgroup-26"
+///   }
+///   template_id          = "/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud/virtualMachineTemplates/vm-34"
+///   virtual_machine_name = "myVirtualMachine"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +161,8 @@ import 'virtual_machine_args.dart';
 /// import com.pulumi.azurenative.vmwarecloudsimple.inputs.VirtualNicArgs;
 /// import com.pulumi.azurenative.vmwarecloudsimple.inputs.VirtualNetworkArgs;
 /// import com.pulumi.azurenative.vmwarecloudsimple.inputs.ResourcePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

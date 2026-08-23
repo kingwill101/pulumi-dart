@@ -6,7 +6,7 @@ import 'virtual_machine_scale_set_extension_args.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 ///
-/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -83,6 +83,34 @@ import 'virtual_machine_scale_set_extension_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescalesetextension" "virtualMachineScaleSetExtension" {
+///   auto_upgrade_minor_version = true
+///   enable_automatic_upgrade   = true
+///   force_update_tag           = "aaaaaaaaa"
+///   name                       = "{extension-name}"
+///   protected_settings         = {}
+///   provision_after_extensions = ["aa"]
+///   publisher                  = "{extension-Publisher}"
+///   resource_group_name        = "rgcompute"
+///   settings                   = {}
+///   suppress_failures          = true
+///   type                       = "{extension-Type}"
+///   type_handler_version       = "{handler-version}"
+///   vm_scale_set_name          = "aaaaaaa"
+///   vmss_extension_name        = "aaaaaaaaaaaaaaaaaaaaa"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +119,8 @@ import 'virtual_machine_scale_set_extension_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetExtension;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,6 +271,23 @@ import 'virtual_machine_scale_set_extension_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_compute_virtualmachinescalesetextension" "virtualMachineScaleSetExtension" {
+///   resource_group_name = "rgcompute"
+///   vm_scale_set_name   = "aaaaaaaaaaa"
+///   vmss_extension_name = "aaaaaaaaaaa"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -251,8 +296,8 @@ import 'virtual_machine_scale_set_extension_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetExtension;
 /// import com.pulumi.azurenative.compute.VirtualMachineScaleSetExtensionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

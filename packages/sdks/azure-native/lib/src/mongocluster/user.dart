@@ -7,7 +7,7 @@ import 'user_properties_response.dart';
 ///
 /// Uses Azure REST API version 2025-04-01-preview.
 ///
-/// Other available API versions: 2025-07-01-preview, 2025-08-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-01-preview, 2025-08-01-preview, 2025-09-01, 2026-02-01-preview, 2026-06-01, 2026-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -90,6 +90,35 @@ import 'user_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_mongocluster_user" "user" {
+///   mongo_cluster_name = "myMongoCluster"
+///   properties = {
+///     identity_provider = {
+///       properties = {
+///         principal_type = "user"
+///       }
+///       type = "MicrosoftEntraID"
+///     }
+///     roles = [{
+///       "db"   = "admin"
+///       "role" = "dbOwner"
+///     }]
+///   }
+///   resource_group_name = "TestGroup"
+///   user_name           = "uuuuuuuu-uuuu-uuuu-uuuu-uuuuuuuuuuuu"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -101,8 +130,8 @@ import 'user_properties_response.dart';
 /// import com.pulumi.azurenative.mongocluster.inputs.UserPropertiesArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.EntraIdentityProviderArgs;
 /// import com.pulumi.azurenative.mongocluster.inputs.EntraIdentityProviderPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

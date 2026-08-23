@@ -14,4 +14,3 @@ enum MediaTier {
     throw ArgumentError('Unknown MediaTier value: $value');
   }
 }
-

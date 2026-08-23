@@ -14,4 +14,3 @@ enum AuthorizationType {
     throw ArgumentError('Unknown AuthorizationType value: $value');
   }
 }
-

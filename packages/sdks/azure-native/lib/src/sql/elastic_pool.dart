@@ -7,7 +7,7 @@ import 'sku_response.dart';
 ///
 /// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 ///
-/// Other available API versions: 2014-04-01, 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2014-04-01, 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -79,6 +79,33 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   availability_zone = "1"
+///   elastic_pool_name = "sqlcrudtest-8102"
+///   location          = "Japan East"
+///   per_database_settings = {
+///     max_capacity = 2
+///     min_capacity = 0.25
+///   }
+///   resource_group_name = "sqlcrudtest-2369"
+///   server_name         = "sqlcrudtest-8069"
+///   sku = {
+///     name = "HS_Gen5_4"
+///   }
+///   zone_redundant = true
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +116,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
 /// import com.pulumi.azurenative.sql.inputs.ElasticPoolPerDatabaseSettingsArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,7 +181,7 @@ import 'sku_response.dart';
 ///     elastic_pool_name="sqlcrudtest-8102",
 ///     location="Japan East",
 ///     per_database_settings={
-///         "max_capacity": 2,
+///         "max_capacity": float(2),
 ///         "min_capacity": 0.25,
 ///     },
 ///     resource_group_name="sqlcrudtest-2369",
@@ -260,6 +287,36 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   auto_pause_delay  = 60
+///   elastic_pool_name = "sqlcrudtest-8102"
+///   location          = "Japan East"
+///   min_capacity      = 0.5
+///   per_database_settings = {
+///     auto_pause_delay = 80
+///     max_capacity     = 2
+///     min_capacity     = 0
+///   }
+///   resource_group_name = "sqlcrudtest-2369"
+///   server_name         = "sqlcrudtest-8069"
+///   sku = {
+///     capacity = 2
+///     name     = "GP_S_Gen5_2"
+///     tier     = "GeneralPurpose"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -270,8 +327,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
 /// import com.pulumi.azurenative.sql.inputs.ElasticPoolPerDatabaseSettingsArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -343,8 +400,8 @@ import 'sku_response.dart';
 ///     min_capacity=0.5,
 ///     per_database_settings={
 ///         "auto_pause_delay": 80,
-///         "max_capacity": 2,
-///         "min_capacity": 0,
+///         "max_capacity": float(2),
+///         "min_capacity": float(0),
 ///     },
 ///     resource_group_name="sqlcrudtest-2369",
 ///     server_name="sqlcrudtest-8069",
@@ -436,6 +493,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   elastic_pool_name               = "sqlcrudtest-8102"
+///   high_availability_replica_count = 2
+///   location                        = "Japan East"
+///   resource_group_name             = "sqlcrudtest-2369"
+///   server_name                     = "sqlcrudtest-8069"
+///   sku = {
+///     name = "HS_Gen5_4"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -445,8 +524,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.ElasticPool;
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -591,6 +670,33 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   elastic_pool_name = "sqlcrudtest-8102"
+///   location          = "Japan East"
+///   per_database_settings = {
+///     max_capacity = 2
+///     min_capacity = 0.25
+///   }
+///   resource_group_name = "sqlcrudtest-2369"
+///   server_name         = "sqlcrudtest-8069"
+///   sku = {
+///     capacity = 2
+///     name     = "GP_Gen4_2"
+///     tier     = "GeneralPurpose"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -601,8 +707,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
 /// import com.pulumi.azurenative.sql.inputs.ElasticPoolPerDatabaseSettingsArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -665,7 +771,7 @@ import 'sku_response.dart';
 ///     elastic_pool_name="sqlcrudtest-8102",
 ///     location="Japan East",
 ///     per_database_settings={
-///         "max_capacity": 2,
+///         "max_capacity": float(2),
 ///         "min_capacity": 0.25,
 ///     },
 ///     resource_group_name="sqlcrudtest-2369",
@@ -748,6 +854,25 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   elastic_pool_name            = "sqlcrudtest-8102"
+///   location                     = "Japan East"
+///   maintenance_configuration_id = "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_JapanEast_1"
+///   resource_group_name          = "sqlcrudtest-2369"
+///   server_name                  = "sqlcrudtest-8069"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -756,8 +881,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ElasticPool;
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -871,6 +996,24 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   elastic_pool_name   = "sqlcrudtest-8102"
+///   location            = "Japan East"
+///   resource_group_name = "sqlcrudtest-2369"
+///   server_name         = "sqlcrudtest-8069"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -879,8 +1022,8 @@ import 'sku_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.sql.ElasticPool;
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -999,6 +1142,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   elastic_pool_name      = "sqlcrudtest-8102"
+///   location               = "Japan East"
+///   preferred_enclave_type = "Default"
+///   resource_group_name    = "sqlcrudtest-2369"
+///   server_name            = "sqlcrudtest-8069"
+///   sku = {
+///     name = "GP_Gen5_4"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1008,8 +1173,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.ElasticPool;
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1143,6 +1308,28 @@ import 'sku_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_sql_elasticpool" "elasticPool" {
+///   elastic_pool_name      = "sqlcrudtest-8102"
+///   location               = "Japan East"
+///   preferred_enclave_type = "VBS"
+///   resource_group_name    = "sqlcrudtest-2369"
+///   server_name            = "sqlcrudtest-8069"
+///   sku = {
+///     name = "GP_Gen5_4"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1152,8 +1339,8 @@ import 'sku_response.dart';
 /// import com.pulumi.azurenative.sql.ElasticPool;
 /// import com.pulumi.azurenative.sql.ElasticPoolArgs;
 /// import com.pulumi.azurenative.sql.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -21,4 +21,3 @@ enum ColumnTypeEnum {
     throw ArgumentError('Unknown ColumnTypeEnum value: $value');
   }
 }
-

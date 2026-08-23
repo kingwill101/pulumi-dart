@@ -72,6 +72,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apicenter_metadataschema" "metadataSchema" {
+///   assigned_to {
+///     deprecated = true
+///     entity     = "api"
+///   }
+///   metadata_schema_name = "author"
+///   resource_group_name  = "contoso-resources"
+///   schema               = "{\"type\":\"string\", \"title\":\"Author\", pattern: \"^[a-zA-Z]+$\"}"
+///   service_name         = "contoso"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.apicenter.MetadataSchema;
 /// import com.pulumi.azurenative.apicenter.MetadataSchemaArgs;
 /// import com.pulumi.azurenative.apicenter.inputs.MetadataAssignmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

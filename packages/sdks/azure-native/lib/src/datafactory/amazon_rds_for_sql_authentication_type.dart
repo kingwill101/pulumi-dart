@@ -1,7 +1,7 @@
 /// The type used for authentication. Type: string.
 enum AmazonRdsForSqlAuthenticationType {
-  valueSQL("SQL"),
-  valueWindows("Windows");
+  sQL("SQL"),
+  windows("Windows");
 
   const AmazonRdsForSqlAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum AmazonRdsForSqlAuthenticationType {
     throw ArgumentError('Unknown AmazonRdsForSqlAuthenticationType value: $value');
   }
 }
-

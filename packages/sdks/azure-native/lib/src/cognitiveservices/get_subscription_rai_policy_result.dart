@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'rai_policy_properties_response.dart';
+import 'rai_policy_properties_subscription_rai_policy_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getSubscriptionRaiPolicy.
@@ -14,7 +14,7 @@ class GetSubscriptionRaiPolicyResult {
   /// The name of the resource
   final String name;
   /// Properties of Cognitive Services RaiPolicy.
-  final RaiPolicyPropertiesResponse properties;
+  final RaiPolicyPropertiesSubscriptionRaiPolicyResponse properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// Resource tags.
@@ -61,11 +61,10 @@ class GetSubscriptionRaiPolicyResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: RaiPolicyPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: RaiPolicyPropertiesSubscriptionRaiPolicyResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
     );
   }
 }
-

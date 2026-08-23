@@ -7,7 +7,7 @@ import 'connection_monitor_source_response.dart';
 ///
 /// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -138,6 +138,46 @@ import 'connection_monitor_source_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_connectionmonitor" "connectionMonitor" {
+///   connection_monitor_name = "cm1"
+///   endpoints {
+///     name        = "source"
+///     resource_id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/ct1"
+///   }
+///   endpoints {
+///     address = "bing.com"
+///     name    = "destination"
+///   }
+///   location             = "eastus"
+///   network_watcher_name = "nw1"
+///   resource_group_name  = "rg1"
+///   test_configurations {
+///     name     = "tcp"
+///     protocol = "Tcp"
+///     tcp_configuration = {
+///       port = 80
+///     }
+///     test_frequency_sec = 60
+///   }
+///   test_groups {
+///     destinations        = ["destination"]
+///     name                = "tg"
+///     sources             = ["source"]
+///     test_configurations = ["tcp"]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +190,8 @@ import 'connection_monitor_source_response.dart';
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTcpConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -477,6 +517,62 @@ import 'connection_monitor_source_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_connectionmonitor" "connectionMonitor" {
+///   connection_monitor_name = "cm1"
+///   endpoints {
+///     name        = "vm1"
+///     resource_id = "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/NwRgIrinaCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm1"
+///   }
+///   endpoints {
+///     filter = {
+///       items = [{
+///         "address" = "npmuser"
+///         "type"    = "AgentAddress"
+///       }]
+///       type = "Include"
+///     }
+///     name        = "CanaryWorkspaceVamshi"
+///     resource_id = "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/vasamudrRG/providers/Microsoft.OperationalInsights/workspaces/vasamudrWorkspace"
+///   }
+///   endpoints {
+///     address = "bing.com"
+///     name    = "bing"
+///   }
+///   endpoints {
+///     address = "google.com"
+///     name    = "google"
+///   }
+///   network_watcher_name = "nw1"
+///   resource_group_name  = "rg1"
+///   test_configurations {
+///     name     = "testConfig1"
+///     protocol = "Tcp"
+///     tcp_configuration = {
+///       disable_trace_route = false
+///       port                = 80
+///     }
+///     test_frequency_sec = 60
+///   }
+///   test_groups {
+///     destinations        = ["bing", "google"]
+///     disable             = false
+///     name                = "test1"
+///     sources             = ["vm1", "CanaryWorkspaceVamshi"]
+///     test_configurations = ["testConfig1"]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -490,8 +586,8 @@ import 'connection_monitor_source_response.dart';
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTcpConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -908,6 +1004,67 @@ import 'connection_monitor_source_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_connectionmonitor" "connectionMonitor" {
+///   connection_monitor_name = "cm1"
+///   endpoints {
+///     name        = "vm1"
+///     resource_id = "/subscriptions/9cece3e3-0f7d-47ca-af0e-9772773f90b7/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/TESTVM"
+///     type        = "AzureVM"
+///   }
+///   endpoints {
+///     address = "bing.com"
+///     name    = "bing"
+///     type    = "ExternalAddress"
+///   }
+///   endpoints {
+///     address = "google.com"
+///     name    = "google"
+///     type    = "ExternalAddress"
+///   }
+///   endpoints {
+///     location_details = {
+///       region = "eastus"
+///     }
+///     name = "ArcBasedNetwork"
+///     scope = {
+///       include = [{
+///         "address" = "172.21.128.0/20"
+///       }]
+///     }
+///     subscription_id = "9cece3e3-0f7d-47ca-af0e-9772773f90b7"
+///     type            = "AzureArcNetwork"
+///   }
+///   network_watcher_name = "nw1"
+///   resource_group_name  = "rg1"
+///   test_configurations {
+///     name     = "testConfig1"
+///     protocol = "Tcp"
+///     tcp_configuration = {
+///       disable_trace_route = false
+///       port                = 80
+///     }
+///     test_frequency_sec = 60
+///   }
+///   test_groups {
+///     destinations        = ["bing", "google"]
+///     disable             = false
+///     name                = "test1"
+///     sources             = ["vm1", "ArcBasedNetwork"]
+///     test_configurations = ["testConfig1"]
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -922,8 +1079,8 @@ import 'connection_monitor_source_response.dart';
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTcpConfigurationArgs;
 /// import com.pulumi.azurenative.network.inputs.ConnectionMonitorTestGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

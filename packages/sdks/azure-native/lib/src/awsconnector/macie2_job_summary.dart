@@ -292,6 +292,108 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_macie2jobsummary" "macie2JobSummary" {
+///   location = "sxbjamusvyf"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "gdmxefbzkonlgcinjivhec"
+///     aws_account_id = "foqcspfycfsvpqbfbcjutxvsaswla"
+///     aws_properties = {
+///       bucket_criteria = {
+///         excludes = {
+///           and = [{
+///             "simpleCriterion" = {
+///               "comparator" = {
+///                 "value" = "CONTAINS"
+///               }
+///               "key" = {
+///                 "value" = "ACCOUNT_ID"
+///               }
+///               "values" = ["jtymirlxjxhaohkasaozlwag"]
+///             }
+///             "tagCriterion" = {
+///               "comparator" = {
+///                 "value" = "CONTAINS"
+///               }
+///               "tagValues" = [{
+///                 "key"   = "gygqhiagsveuxhrughhbddqpmufuwb"
+///                 "value" = "yfiitptbkmgpsdnnhvfc"
+///               }]
+///             }
+///           }]
+///         }
+///         includes = {
+///           and = [{
+///             "simpleCriterion" = {
+///               "comparator" = {
+///                 "value" = "CONTAINS"
+///               }
+///               "key" = {
+///                 "value" = "ACCOUNT_ID"
+///               }
+///               "values" = ["jtymirlxjxhaohkasaozlwag"]
+///             }
+///             "tagCriterion" = {
+///               "comparator" = {
+///                 "value" = "CONTAINS"
+///               }
+///               "tagValues" = [{
+///                 "key"   = "gygqhiagsveuxhrughhbddqpmufuwb"
+///                 "value" = "yfiitptbkmgpsdnnhvfc"
+///               }]
+///             }
+///           }]
+///         }
+///       }
+///       bucket_definitions = [{
+///         "accountId" = "eprxunabacgebqtyyff"
+///         "buckets"   = ["nxnhxjevimwkagh"]
+///       }]
+///       created_at = "2024-10-08T03:51:31.106Z"
+///       job_id     = "jtjrvg"
+///       job_status = {
+///         value = "CANCELLED"
+///       }
+///       job_type = {
+///         value = "ONE_TIME"
+///       }
+///       last_run_error_status = {
+///         code = {
+///           value = "ERROR"
+///         }
+///       }
+///       name = "hjsakzgyfymsxrppmgaqz"
+///       user_paused_details = {
+///         job_expires_at                           = "2024-10-08T03:51:31.107Z"
+///         job_imminent_expiration_health_event_arn = "tildeulhgl"
+///         job_paused_at                            = "2024-10-08T03:51:31.107Z"
+///       }
+///     }
+///     aws_region        = "lvgptsi"
+///     aws_source_schema = "ucjahtqlqosuutn"
+///     aws_tags = {
+///       "key5346" = "hygpr"
+///     }
+///     public_cloud_connectors_resource_id = "pwacjrxitwye"
+///     public_cloud_resource_name          = "xxlvdlekmm"
+///   }
+///   resource_group_name = "rgmacie2JobSummary"
+///   tags = {
+///     "key7937" = "ksoxoxkqu"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +411,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.LastRunErrorStatusArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LastRunErrorStatusCodeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.UserPausedDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

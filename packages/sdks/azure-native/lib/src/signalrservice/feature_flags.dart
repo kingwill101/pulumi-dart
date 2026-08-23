@@ -21,4 +21,3 @@ enum FeatureFlags {
     throw ArgumentError('Unknown FeatureFlags value: $value');
   }
 }
-

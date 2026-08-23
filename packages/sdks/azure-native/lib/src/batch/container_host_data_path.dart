@@ -19,4 +19,3 @@ enum ContainerHostDataPath {
     throw ArgumentError('Unknown ContainerHostDataPath value: $value');
   }
 }
-

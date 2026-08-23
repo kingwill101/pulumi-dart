@@ -15,4 +15,3 @@ enum ManagedInstanceLicenseType {
     throw ArgumentError('Unknown ManagedInstanceLicenseType value: $value');
   }
 }
-

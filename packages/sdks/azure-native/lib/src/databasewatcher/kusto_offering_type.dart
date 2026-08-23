@@ -16,4 +16,3 @@ enum KustoOfferingType {
     throw ArgumentError('Unknown KustoOfferingType value: $value');
   }
 }
-

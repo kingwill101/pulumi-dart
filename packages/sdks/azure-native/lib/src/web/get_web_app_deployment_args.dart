@@ -11,13 +11,13 @@ class GetWebAppDeploymentArgs {
   final pulumi.Input<String> id;
   /// Name of the app.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetWebAppDeploymentArgs].
   /// [id] Deployment ID.
   /// [name] Name of the app.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetWebAppDeploymentArgs({
     required this.id,
     required this.name,
@@ -40,4 +40,3 @@ class GetWebAppDeploymentArgs {
     );
   }
 }
-

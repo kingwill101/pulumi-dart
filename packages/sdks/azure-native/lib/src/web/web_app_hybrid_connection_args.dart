@@ -21,7 +21,7 @@ class WebAppHybridConnectionArgs {
   final pulumi.Input<String>? relayArmUri;
   /// The name of the Service Bus relay.
   final pulumi.Input<String>? relayName;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
   final pulumi.Input<String>? sendKeyName;
@@ -41,7 +41,7 @@ class WebAppHybridConnectionArgs {
   /// [port] The port of the endpoint.
   /// [relayArmUri] The ARM URI to the Service Bus relay.
   /// [relayName] The name of the Service Bus relay.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sendKeyName] The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
   /// [sendKeyValue] The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
   /// [serviceBusNamespace] The name of the Service Bus namespace.
@@ -95,4 +95,3 @@ class WebAppHybridConnectionArgs {
     );
   }
 }
-

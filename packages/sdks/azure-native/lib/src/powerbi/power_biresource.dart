@@ -63,6 +63,28 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_powerbi_powerbiresource" "powerBIResource" {
+///   azure_resource_name = "azureResourceName"
+///   location            = "global"
+///   resource_group_name = "resourceGroup"
+///   tags = {
+///     "tag1" = "value1"
+///     "tag2" = "value2"
+///   }
+///   tenant_id = "ac2bc297-8a3e-46f3-972d-87c2b4ae6e2f"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -71,8 +93,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.powerbi.PowerBIResource;
 /// import com.pulumi.azurenative.powerbi.PowerBIResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

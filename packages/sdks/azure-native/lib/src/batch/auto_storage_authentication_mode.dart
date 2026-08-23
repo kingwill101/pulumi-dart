@@ -15,4 +15,3 @@ enum AutoStorageAuthenticationMode {
     throw ArgumentError('Unknown AutoStorageAuthenticationMode value: $value');
   }
 }
-

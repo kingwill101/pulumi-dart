@@ -15,4 +15,3 @@ enum HostingMode {
     throw ArgumentError('Unknown HostingMode value: $value');
   }
 }
-

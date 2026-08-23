@@ -289,6 +289,122 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_rdsdbcluster" "rdsDbCluster" {
+///   location = "di"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "lllohvlgyg"
+///     aws_account_id = "rpxoebfhnpwagqqgk"
+///     aws_properties = {
+///       allocated_storage = 12
+///       associated_roles = [{
+///         "featureName" = "yupxlegnstbpoght"
+///         "roleArn"     = "pcilcosyud"
+///       }]
+///       auto_minor_version_upgrade         = true
+///       availability_zones                 = ["xbabqekpowoz"]
+///       backtrack_window                   = 18
+///       backup_retention_period            = 11
+///       copy_tags_to_snapshot              = true
+///       database_name                      = "ttn"
+///       db_cluster_arn                     = "zdohcaiqsymzj"
+///       db_cluster_identifier              = "euvcyppvvutbntragfptjnmzhg"
+///       db_cluster_instance_class          = "suufjmxymxlrberbqtknmsvzrsajw"
+///       db_cluster_parameter_group_name    = "sokiordelmtviobobxrdsw"
+///       db_cluster_resource_id             = "vnwlcfxokdrjitagoefxrsf"
+///       db_instance_parameter_group_name   = "cwhdxixjtyfziflvod"
+///       db_subnet_group_name               = "ajeipefwih"
+///       db_system_id                       = "exockxknyjqihmhxjuin"
+///       deletion_protection                = true
+///       domain                             = "qzpcprovksxsiuithxqu"
+///       domain_iam_role_name               = "psubmwhsowirjcnv"
+///       enable_cloudwatch_logs_exports     = ["lytydxlnpduhnvmifkneiu"]
+///       enable_global_write_forwarding     = true
+///       enable_http_endpoint               = true
+///       enable_iam_database_authentication = true
+///       endpoint = {
+///         address = "pwliordavkhwfklfzwxic"
+///         port    = "nagvki"
+///       }
+///       engine                      = "cehuc"
+///       engine_mode                 = "iokki"
+///       engine_version              = "ziindzjpzdrbcmtougdffweh"
+///       global_cluster_identifier   = "jqoiwozrdbnumywlieglbpzzx"
+///       iops                        = 26
+///       kms_key_id                  = "vqllbldbdhvsyon"
+///       manage_master_user_password = true
+///       master_user_password        = "qscygehnqvqzynuuqqbehubstti"
+///       master_user_secret = {
+///         kms_key_id = "vsghhhqurh"
+///         secret_arn = "ibmtek"
+///       }
+///       master_username                       = "lusozmpnihhahsioubedg"
+///       monitoring_interval                   = 17
+///       monitoring_role_arn                   = "pqckluqmxqazvvi"
+///       network_type                          = "mnsuyqfkeqg"
+///       performance_insights_enabled          = true
+///       performance_insights_kms_key_id       = "qr"
+///       performance_insights_retention_period = 2
+///       port                                  = 23
+///       preferred_backup_window               = "shjtwjtugyols"
+///       preferred_maintenance_window          = "fuuieyvfhfcanzgutwcdbtbenk"
+///       publicly_accessible                   = true
+///       read_endpoint = {
+///         address = "ca"
+///       }
+///       replication_source_identifier = "sdohltrpdqsszpptdh"
+///       restore_to_time               = "srbuhavl"
+///       restore_type                  = "tnsdjgvzcnnsjxw"
+///       scaling_configuration = {
+///         auto_pause               = true
+///         max_capacity             = 3
+///         min_capacity             = 5
+///         seconds_before_timeout   = 28
+///         seconds_until_auto_pause = 25
+///         timeout_action           = "cqgyqshpkcyblfsqmujyxpfiyv"
+///       }
+///       serverless_v2_scaling_configuration = {
+///         max_capacity = 23
+///         min_capacity = 16
+///       }
+///       snapshot_identifier          = "vqowgxcqbclzjexvyigvdzlpcdluvv"
+///       source_db_cluster_identifier = "jtvnbddzyqf"
+///       source_region                = "vrzpezvwoszraxdi"
+///       storage_encrypted            = true
+///       storage_throughput           = 6
+///       storage_type                 = "iiwkeunemifyewevpcvcrbs"
+///       tags = [{
+///         "key"   = "lsvdhwafvfrtobfvrwigfodughve"
+///         "value" = "szbfittyghldzvnflsglc"
+///       }]
+///       use_latest_restorable_time = true
+///       vpc_security_group_ids     = ["jdkxpjhsibvgvorizsuzta"]
+///     }
+///     aws_region        = "fulsvqpnagyrsirhnuxdsppl"
+///     aws_source_schema = "wrucexqlrnssoxvtczytcslheth"
+///     aws_tags = {
+///       "key4409" = "weab"
+///     }
+///     public_cloud_connectors_resource_id = "pexhjqkygfiozfsvo"
+///     public_cloud_resource_name          = "quyqfarecht"
+///   }
+///   resource_group_name = "rgrdsDBCluster"
+///   tags = {
+///     "key1769" = "winoruhwyphtmoskehihj"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -304,8 +420,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.ReadEndpointArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ScalingConfigurationArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ServerlessV2ScalingConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -613,8 +729,8 @@ import 'system_data_response.dart';
 ///                 "timeout_action": "cqgyqshpkcyblfsqmujyxpfiyv",
 ///             },
 ///             "serverless_v2_scaling_configuration": {
-///                 "max_capacity": 23,
-///                 "min_capacity": 16,
+///                 "max_capacity": float(23),
+///                 "min_capacity": float(16),
 ///             },
 ///             "snapshot_identifier": "vqowgxcqbclzjexvyigvdzlpcdluvv",
 ///             "source_db_cluster_identifier": "jtvnbddzyqf",

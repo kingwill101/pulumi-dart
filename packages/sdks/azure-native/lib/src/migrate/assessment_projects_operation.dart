@@ -73,6 +73,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_assessmentprojectsoperation" "assessmentProjectsOperation" {
+///   assessment_solution_id          = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/sakanwar/providers/Microsoft.Storage/storageAccounts/sakanwar1204usa"
+///   customer_storage_account_arm_id = "/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/sakanwar/providers/Microsoft.Storage/storageAccounts/sakanwar1204usa"
+///   location                        = "southeastasia"
+///   project_name                    = "sakanwar1204project"
+///   project_status                  = "Active"
+///   provisioning_state              = "Succeeded"
+///   public_network_access           = "Disabled"
+///   resource_group_name             = "sakanwar"
+///   tags = {
+///     "Migrate Project" = "sakanwar-PE-SEA"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +106,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.migrate.AssessmentProjectsOperation;
 /// import com.pulumi.azurenative.migrate.AssessmentProjectsOperationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

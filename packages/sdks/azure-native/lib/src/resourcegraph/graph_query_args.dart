@@ -17,7 +17,7 @@ class GraphQueryArgs {
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Graph Query resource.
   final pulumi.Input<String>? resourceName;
-  /// Resource tags
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GraphQueryArgs].
@@ -26,7 +26,7 @@ class GraphQueryArgs {
   /// [query] KQL query that will be graph.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Graph Query resource.
-  /// [tags] Resource tags
+  /// [tags] Resource tags.
   const GraphQueryArgs({
     this.description,
     this.location,
@@ -58,4 +58,3 @@ class GraphQueryArgs {
     );
   }
 }
-

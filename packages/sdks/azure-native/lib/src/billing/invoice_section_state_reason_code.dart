@@ -1,10 +1,10 @@
 /// Reason for the specified invoice section status.
 enum InvoiceSectionStateReasonCode {
-  valueOther("Other"),
-  valuePastDue("PastDue"),
-  valueUnusualActivity("UnusualActivity"),
-  valueSpendingLimitReached("SpendingLimitReached"),
-  valueSpendingLimitExpired("SpendingLimitExpired");
+  other("Other"),
+  pastDue("PastDue"),
+  unusualActivity("UnusualActivity"),
+  spendingLimitReached("SpendingLimitReached"),
+  spendingLimitExpired("SpendingLimitExpired");
 
   const InvoiceSectionStateReasonCode(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum InvoiceSectionStateReasonCode {
     throw ArgumentError('Unknown InvoiceSectionStateReasonCode value: $value');
   }
 }
-

@@ -53,6 +53,23 @@ import 'apicollection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_security_apicollection" "apiCollection" {
+///   api_collection_id   = "echo-api"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -61,8 +78,8 @@ import 'apicollection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.security.APICollection;
 /// import com.pulumi.azurenative.security.APICollectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

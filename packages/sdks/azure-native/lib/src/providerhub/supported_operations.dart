@@ -16,4 +16,3 @@ enum SupportedOperations {
     throw ArgumentError('Unknown SupportedOperations value: $value');
   }
 }
-

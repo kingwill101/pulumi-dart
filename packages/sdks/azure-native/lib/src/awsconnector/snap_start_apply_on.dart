@@ -15,4 +15,3 @@ enum SnapStartApplyOn {
     throw ArgumentError('Unknown SnapStartApplyOn value: $value');
   }
 }
-

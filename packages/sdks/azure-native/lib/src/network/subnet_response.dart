@@ -3,7 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_gateway_ipconfiguration_response.dart';
 import 'delegation_response.dart';
-import 'interface_endpoint_response.dart';
 import 'ipam_pool_prefix_allocation_response.dart';
 import 'ipconfiguration_profile_response.dart';
 import 'ipconfiguration_response.dart';
@@ -32,8 +31,6 @@ class SubnetResponse {
   final pulumi.Input<String> etag;
   /// Resource ID.
   final pulumi.Input<String>? id;
-  /// An array of references to interface endpoints
-  final pulumi.Input<List<InterfaceEndpointResponse>>? interfaceEndpoints;
   /// Array of IpAllocation which reference this subnet.
   final pulumi.Input<List<SubResourceResponse>>? ipAllocations;
   /// Array of IP configuration profiles which reference this subnet.
@@ -68,8 +65,6 @@ class SubnetResponse {
   final pulumi.Input<List<ServiceEndpointPolicyResponse>>? serviceEndpointPolicies;
   /// An array of service endpoints.
   final pulumi.Input<List<ServiceEndpointPropertiesFormatResponse>>? serviceEndpoints;
-  /// Reference to an existing service gateway.
-  final pulumi.Input<SubResourceResponse>? serviceGateway;
   /// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
   final pulumi.Input<String>? sharingScope;
   /// Resource type.
@@ -83,7 +78,6 @@ class SubnetResponse {
   /// [delegations] An array of references to the delegations on the subnet.
   /// [etag] A unique read-only string that changes whenever the resource is updated.
   /// [id] Resource ID.
-  /// [interfaceEndpoints] An array of references to interface endpoints
   /// [ipAllocations] Array of IpAllocation which reference this subnet.
   /// [ipConfigurationProfiles] Array of IP configuration profiles which reference this subnet.
   /// [ipConfigurations] An array of references to the network interface IP configurations using subnet.
@@ -101,7 +95,6 @@ class SubnetResponse {
   /// [serviceAssociationLinks] An array of references to services injecting into this subnet.
   /// [serviceEndpointPolicies] An array of service endpoint policies.
   /// [serviceEndpoints] An array of service endpoints.
-  /// [serviceGateway] Reference to an existing service gateway.
   /// [sharingScope] Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
   /// [type] Resource type.
   const SubnetResponse({
@@ -112,7 +105,6 @@ class SubnetResponse {
     this.delegations,
     required this.etag,
     this.id,
-    this.interfaceEndpoints,
     this.ipAllocations,
     required this.ipConfigurationProfiles,
     required this.ipConfigurations,
@@ -130,7 +122,6 @@ class SubnetResponse {
     required this.serviceAssociationLinks,
     this.serviceEndpointPolicies,
     this.serviceEndpoints,
-    this.serviceGateway,
     this.sharingScope,
     this.type,
   });
@@ -144,7 +135,6 @@ class SubnetResponse {
       'delegations': ?pulumi.Input.mapOptionalInputValue<List<DelegationResponse>, List<Map<String, dynamic>>>(delegations, (value) => pulumi.Input.encodeList<DelegationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'etag': etag,
       'id': ?id,
-      'interfaceEndpoints': ?pulumi.Input.mapOptionalInputValue<List<InterfaceEndpointResponse>, List<Map<String, dynamic>>>(interfaceEndpoints, (value) => pulumi.Input.encodeList<InterfaceEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipAllocations': ?pulumi.Input.mapOptionalInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(ipAllocations, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipConfigurationProfiles': pulumi.Input.mapInputValue<List<IPConfigurationProfileResponse>, List<Map<String, dynamic>>>(ipConfigurationProfiles, (value) => pulumi.Input.encodeList<IPConfigurationProfileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipConfigurations': pulumi.Input.mapInputValue<List<IPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<IPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -162,7 +152,6 @@ class SubnetResponse {
       'serviceAssociationLinks': pulumi.Input.mapInputValue<List<ServiceAssociationLinkResponse>, List<Map<String, dynamic>>>(serviceAssociationLinks, (value) => pulumi.Input.encodeList<ServiceAssociationLinkResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceEndpointPolicies': ?pulumi.Input.mapOptionalInputValue<List<ServiceEndpointPolicyResponse>, List<Map<String, dynamic>>>(serviceEndpointPolicies, (value) => pulumi.Input.encodeList<ServiceEndpointPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ServiceEndpointPropertiesFormatResponse>, List<Map<String, dynamic>>>(serviceEndpoints, (value) => pulumi.Input.encodeList<ServiceEndpointPropertiesFormatResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'serviceGateway': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(serviceGateway, (value) => value.toMap()),
       'sharingScope': ?sharingScope,
       'type': ?type,
     };
@@ -177,7 +166,6 @@ class SubnetResponse {
       delegations: (() { final guardedValue = map['delegations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DelegationResponse>(guardedValue, (value) => DelegationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interfaceEndpoints: (() { final guardedValue = map['interfaceEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterfaceEndpointResponse>(guardedValue, (value) => InterfaceEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipAllocations: (() { final guardedValue = map['ipAllocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipConfigurationProfiles: pulumi.Input.fromValue(pulumi.Input.decodeList<IPConfigurationProfileResponse>(map['ipConfigurationProfiles']!, (value) => IPConfigurationProfileResponse.fromMap((value as Map).cast<String, dynamic>()))),
       ipConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<IPConfigurationResponse>(map['ipConfigurations']!, (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))),
@@ -195,10 +183,8 @@ class SubnetResponse {
       serviceAssociationLinks: pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceAssociationLinkResponse>(map['serviceAssociationLinks']!, (value) => ServiceAssociationLinkResponse.fromMap((value as Map).cast<String, dynamic>()))),
       serviceEndpointPolicies: (() { final guardedValue = map['serviceEndpointPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceEndpointPolicyResponse>(guardedValue, (value) => ServiceEndpointPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       serviceEndpoints: (() { final guardedValue = map['serviceEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceEndpointPropertiesFormatResponse>(guardedValue, (value) => ServiceEndpointPropertiesFormatResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      serviceGateway: (() { final guardedValue = map['serviceGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sharingScope: (() { final guardedValue = map['sharingScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

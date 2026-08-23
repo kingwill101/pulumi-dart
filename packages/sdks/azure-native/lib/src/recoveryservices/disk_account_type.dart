@@ -20,4 +20,3 @@ enum DiskAccountType {
     throw ArgumentError('Unknown DiskAccountType value: $value');
   }
 }
-

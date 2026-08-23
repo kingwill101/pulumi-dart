@@ -1,6 +1,6 @@
 /// [Required] OneLake artifact type
 enum OneLakeArtifactType {
-  valueLakeHouse("LakeHouse");
+  lakeHouse("LakeHouse");
 
   const OneLakeArtifactType(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum OneLakeArtifactType {
     throw ArgumentError('Unknown OneLakeArtifactType value: $value');
   }
 }
-

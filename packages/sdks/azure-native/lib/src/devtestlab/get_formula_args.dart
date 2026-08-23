@@ -11,7 +11,7 @@ class GetFormulaArgs {
   final pulumi.Input<String>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The name of the Formula
+  /// The name of the formula.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
@@ -19,7 +19,7 @@ class GetFormulaArgs {
   /// Creates a new [GetFormulaArgs].
   /// [expand] Specify the $expand query. Example: 'properties($select=description)'
   /// [labName] The name of the lab.
-  /// [name] The name of the Formula
+  /// [name] The name of the formula.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetFormulaArgs({
     this.expand,
@@ -46,4 +46,3 @@ class GetFormulaArgs {
     );
   }
 }
-

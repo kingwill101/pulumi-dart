@@ -21,4 +21,3 @@ enum DirectPeeringType {
     throw ArgumentError('Unknown DirectPeeringType value: $value');
   }
 }
-

@@ -1,14 +1,14 @@
 /// The status of the conditional credit
 enum ConditionalCreditStatus {
-  valueUnknown("Unknown"),
-  valueScheduled("Scheduled"),
-  valueActive("Active"),
-  valuePending("Pending"),
-  valueFailed("Failed"),
-  valueCanceled("Canceled"),
-  valueCompleted("Completed"),
-  valueStopped("Stopped"),
-  valuePendingSettlement("PendingSettlement");
+  unknown("Unknown"),
+  scheduled("Scheduled"),
+  active("Active"),
+  pending("Pending"),
+  failed("Failed"),
+  canceled("Canceled"),
+  completed("Completed"),
+  stopped("Stopped"),
+  pendingSettlement("PendingSettlement");
 
   const ConditionalCreditStatus(this.wireValue);
   final String wireValue;
@@ -22,4 +22,3 @@ enum ConditionalCreditStatus {
     throw ArgumentError('Unknown ConditionalCreditStatus value: $value');
   }
 }
-

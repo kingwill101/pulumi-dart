@@ -17,4 +17,3 @@ enum WebPubSubRequestType {
     throw ArgumentError('Unknown WebPubSubRequestType value: $value');
   }
 }
-

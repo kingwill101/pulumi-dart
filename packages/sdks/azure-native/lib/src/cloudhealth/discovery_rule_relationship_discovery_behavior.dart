@@ -15,4 +15,3 @@ enum DiscoveryRuleRelationshipDiscoveryBehavior {
     throw ArgumentError('Unknown DiscoveryRuleRelationshipDiscoveryBehavior value: $value');
   }
 }
-

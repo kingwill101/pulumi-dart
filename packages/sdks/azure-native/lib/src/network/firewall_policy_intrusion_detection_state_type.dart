@@ -16,4 +16,3 @@ enum FirewallPolicyIntrusionDetectionStateType {
     throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionStateType value: $value');
   }
 }
-

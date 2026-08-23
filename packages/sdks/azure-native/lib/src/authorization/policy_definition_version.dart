@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 ///
-/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -133,6 +133,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_authorization_policydefinitionversion" "policyDefinitionVersion" {
+///   description  = "Force resource names to begin with given 'prefix' and/or end with given 'suffix'"
+///   display_name = "Enforce resource naming convention"
+///   metadata = {
+///     "category" = "Naming"
+///   }
+///   mode = "All"
+///   parameters = {
+///     "prefix" = {
+///       metadata = {
+///         description  = "Resource name prefix"
+///         display_name = "Prefix"
+///       }
+///       type = "String"
+///     }
+///     "suffix" = {
+///       metadata = {
+///         description  = "Resource name suffix"
+///         display_name = "Suffix"
+///       }
+///       type = "String"
+///     }
+///   }
+///   policy_definition_name    = "ResourceNaming"
+///   policy_definition_version = "1.2.1"
+///   policy_rule = {
+///     "if" = {
+///       "not" = {
+///         "field" = "name"
+///         "like"  = "[concat(parameters('prefix'), '*', parameters('suffix'))]"
+///       }
+///     }
+///     "then" = {
+///       "effect" = "deny"
+///     }
+///   }
+///   version = "1.2.1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +191,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.authorization.PolicyDefinitionVersion;
 /// import com.pulumi.azurenative.authorization.PolicyDefinitionVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_resource_manager_managed_identity_properties_response.dart';
 import 'global_rulestack_args.dart';
+import 'managed_identity_properties_response.dart';
 import 'security_services_response.dart';
 import 'system_data_response.dart';
 
@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
 ///
-/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -117,6 +117,48 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cloudngfw_globalrulestack" "globalRulestack" {
+///   associated_subscriptions = ["2bf4a339-294d-4c25-b0b2-ef649e9f5c27"]
+///   default_mode             = "IPS"
+///   description              = "global rulestacks"
+///   global_rulestack_name    = "praval"
+///   identity = {
+///     type = "None"
+///     user_assigned_identities = {
+///       "key16" = {
+///         client_id    = "aaaa"
+///         principal_id = "aaaaaaaaaaaaaaa"
+///       }
+///     }
+///   }
+///   location           = "eastus"
+///   min_app_id_version = "8.5.3"
+///   pan_etag           = "2bf4a339-294d-4c25-b0b2-ef649e9f5c12"
+///   pan_location       = "eastus"
+///   scope              = "GLOBAL"
+///   security_services = {
+///     anti_spyware_profile          = "default"
+///     anti_virus_profile            = "default"
+///     dns_subscription              = "default"
+///     file_blocking_profile         = "default"
+///     outbound_trust_certificate    = "default"
+///     outbound_un_trust_certificate = "default"
+///     url_filtering_profile         = "default"
+///     vulnerability_profile         = "default"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +169,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.cloudngfw.GlobalRulestackArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.AzureResourceManagerManagedIdentityPropertiesArgs;
 /// import com.pulumi.azurenative.cloudngfw.inputs.SecurityServicesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,6 +367,22 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cloudngfw_globalrulestack" "globalRulestack" {
+///   global_rulestack_name = "praval"
+///   location              = "eastus"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -333,8 +391,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cloudngfw.GlobalRulestack;
 /// import com.pulumi.azurenative.cloudngfw.GlobalRulestackArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -407,7 +465,7 @@ class GlobalRulestack extends pulumi.CustomResource {
   /// rulestack description
   late final pulumi.Output<String?> description;
   /// The managed service identities assigned to this resource.
-  late final pulumi.Output<AzureResourceManagerManagedIdentityPropertiesResponse?> identity;
+  late final pulumi.Output<ManagedIdentityPropertiesResponse?> identity;
   /// Global Location
   late final pulumi.Output<String> location;
   /// minimum version
@@ -447,7 +505,7 @@ class GlobalRulestack extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     defaultMode = registerOutput<String?>('defaultMode');
     description = registerOutput<String?>('description');
-    identity = registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     minAppIdVersion = registerOutput<String?>('minAppIdVersion');
     this.name = registerOutput<String>('name');

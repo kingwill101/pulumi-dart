@@ -73,6 +73,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridcloud_cloudconnection" "cloudConnection" {
+///   cloud_connection_name = "cloudconnection1"
+///   cloud_connector = {
+///     id = "/subscriptions/subid/resourceGroups/demo-rg/providers/Microsoft.HybridCloud/cloudConnectors/123456789012"
+///   }
+///   location            = "West US"
+///   remote_resource_id  = "arn:aws:ec2:us-east-1:123456789012:VPNGateway/vgw-043da592550819c8a"
+///   resource_group_name = "demo-rg"
+///   shared_key          = "password123"
+///   virtual_hub = {
+///     id = "/subscriptions/subid/resourceGroups/demo-rg/providers/Microsoft.Network/VirtualHubs/testHub"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridcloud.CloudConnection;
 /// import com.pulumi.azurenative.hybridcloud.CloudConnectionArgs;
 /// import com.pulumi.azurenative.hybridcloud.inputs.ResourceReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -87,7 +87,7 @@ class GetStorageAccountResult {
   final String lastGeoFailoverTime;
   /// The geo-location where the resource lives
   final String location;
-  /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+  /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.
   final String? minimumTlsVersion;
   /// The name of the resource
   final String name;
@@ -158,7 +158,7 @@ class GetStorageAccountResult {
   /// [largeFileSharesState] Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
   /// [lastGeoFailoverTime] Gets the timestamp of the most recent instance of a failover to the secondary location. Only the most recent timestamp is retained. This element is not returned if there has never been a failover instance. Only available if the accountType is Standard_GRS or Standard_RAGRS.
   /// [location] The geo-location where the resource lives
-  /// [minimumTlsVersion] Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+  /// [minimumTlsVersion] Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.
   /// [name] The name of the resource
   /// [networkRuleSet] Network rule set
   /// [primaryEndpoints] Gets the URLs that are used to perform a retrieval of a public blob, queue, or table object. Note that Standard_ZRS and Premium_LRS accounts only return the blob endpoint.
@@ -342,4 +342,3 @@ class GetStorageAccountResult {
     );
   }
 }
-

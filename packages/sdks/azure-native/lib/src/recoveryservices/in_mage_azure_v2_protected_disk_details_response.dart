@@ -157,4 +157,3 @@ class InMageAzureV2ProtectedDiskDetailsResponse {
     );
   }
 }
-

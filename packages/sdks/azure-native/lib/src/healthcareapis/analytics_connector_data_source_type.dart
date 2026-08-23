@@ -14,4 +14,3 @@ enum AnalyticsConnectorDataSourceType {
     throw ArgumentError('Unknown AnalyticsConnectorDataSourceType value: $value');
   }
 }
-

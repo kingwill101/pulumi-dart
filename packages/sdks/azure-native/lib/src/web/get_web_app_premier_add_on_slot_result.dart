@@ -1,45 +1,49 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppPremierAddOnSlot.
 class GetWebAppPremierAddOnSlotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+  /// Kind of resource.
   final String? kind;
-  /// Resource Location.
+  /// The geo-location where the resource lives
   final String location;
   /// Premier add on Marketplace offer.
   final String? marketplaceOffer;
   /// Premier add on Marketplace publisher.
   final String? marketplacePublisher;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// Premier add on Product.
   final String? product;
   /// Premier add on SKU.
   final String? sku;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Resource tags.
   final Map<String, String>? tags;
-  /// Resource type.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Premier add on Vendor.
   final String? vendor;
 
   /// Creates a new [GetWebAppPremierAddOnSlotResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Resource Id.
-  /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  /// [location] Resource Location.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [kind] Kind of resource.
+  /// [location] The geo-location where the resource lives
   /// [marketplaceOffer] Premier add on Marketplace offer.
   /// [marketplacePublisher] Premier add on Marketplace publisher.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [product] Premier add on Product.
   /// [sku] Premier add on SKU.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
-  /// [type] Resource type.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vendor] Premier add on Vendor.
   const GetWebAppPremierAddOnSlotResult({
     required this.azureApiVersion,
@@ -51,6 +55,7 @@ class GetWebAppPremierAddOnSlotResult {
     required this.name,
     this.product,
     this.sku,
+    required this.systemData,
     this.tags,
     required this.type,
     this.vendor,
@@ -67,6 +72,7 @@ class GetWebAppPremierAddOnSlotResult {
       'name': name,
       'product': ?product,
       'sku': ?sku,
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'vendor': ?vendor,
@@ -84,10 +90,10 @@ class GetWebAppPremierAddOnSlotResult {
       name: map['name'] as String,
       product: (() { final guardedValue = map['product']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       vendor: (() { final guardedValue = map['vendor']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
-

@@ -75,6 +75,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridconnectivity_publiccloudconnector" "publicCloudConnector" {
+///   aws_cloud_profile = {
+///     account_id                = "snbnuxckevyqpm"
+///     excluded_accounts         = ["rwgqpukglvbqmogqcliqolucp"]
+///     is_organizational_account = true
+///   }
+///   host_type              = "AWS"
+///   location               = "jpiglusfxynfcewcjwvvnn"
+///   public_cloud_connector = "advjwoakdusalamomg"
+///   resource_group_name    = "rgpublicCloud"
+///   tags                   = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +108,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridconnectivity.PublicCloudConnector;
 /// import com.pulumi.azurenative.hybridconnectivity.PublicCloudConnectorArgs;
 /// import com.pulumi.azurenative.hybridconnectivity.inputs.AwsCloudProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

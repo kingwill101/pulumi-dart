@@ -16,4 +16,3 @@ enum ClusterUpgradeCadence {
     throw ArgumentError('Unknown ClusterUpgradeCadence value: $value');
   }
 }
-

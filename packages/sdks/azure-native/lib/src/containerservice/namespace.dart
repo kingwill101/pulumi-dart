@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_args.dart';
-import 'namespace_properties_response.dart';
+import 'namespace_properties_namespace_response.dart';
 import 'system_data_response.dart';
 
 /// Namespace managed by ARM.
@@ -107,6 +107,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_containerservice_namespace" "namespace" {
+///   namespace_name = "namespace1"
+///   properties = {
+///     adoption_policy = "IfIdentical"
+///     annotations = {
+///       "annatationKey" = "annatationValue"
+///     }
+///     default_network_policy = {
+///       egress  = "AllowAll"
+///       ingress = "AllowSameNamespace"
+///     }
+///     default_resource_quota = {
+///       cpu_limit      = "3m"
+///       cpu_request    = "3m"
+///       memory_limit   = "5Gi"
+///       memory_request = "5Gi"
+///     }
+///     delete_policy = "Keep"
+///     labels = {
+///       "kubernetes.io/metadata.name" = "true"
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "clustername1"
+///   tags = {
+///     "tagKey1" = "tagValue1"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +158,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.containerservice.inputs.NamespacePropertiesArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.NetworkPoliciesArgs;
 /// import com.pulumi.azurenative.containerservice.inputs.ResourceQuotaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,7 +316,7 @@ class Namespace extends pulumi.CustomResource {
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String> name;
   /// Properties of a namespace.
-  late final pulumi.Output<NamespacePropertiesResponse> properties;
+  late final pulumi.Output<NamespacePropertiesNamespaceResponse> properties;
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The tags to be persisted on the managed cluster namespace.
@@ -302,7 +342,7 @@ class Namespace extends pulumi.CustomResource {
     eTag = registerOutput<String>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<NamespacePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespacePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<NamespacePropertiesNamespaceResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespacePropertiesNamespaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

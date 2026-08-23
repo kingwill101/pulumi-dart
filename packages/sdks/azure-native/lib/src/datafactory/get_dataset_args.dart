@@ -11,13 +11,13 @@ class GetDatasetArgs {
   final pulumi.Input<String> datasetName;
   /// The factory name.
   final pulumi.Input<String> factoryName;
-  /// The resource group name.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetDatasetArgs].
   /// [datasetName] The dataset name.
   /// [factoryName] The factory name.
-  /// [resourceGroupName] The resource group name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetDatasetArgs({
     required this.datasetName,
     required this.factoryName,
@@ -40,4 +40,3 @@ class GetDatasetArgs {
     );
   }
 }
-

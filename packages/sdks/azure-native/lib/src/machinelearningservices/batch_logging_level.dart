@@ -1,8 +1,10 @@
-/// Logging level for batch inference operation.
+/// Log verbosity for batch inferencing.
+/// Increasing verbosity order for logging is : Warning, Info and Debug.
+/// The default value is Info.
 enum BatchLoggingLevel {
-  valueInfo("Info"),
-  valueWarning("Warning"),
-  valueDebug("Debug");
+  info("Info"),
+  warning("Warning"),
+  debug("Debug");
 
   const BatchLoggingLevel(this.wireValue);
   final String wireValue;
@@ -16,4 +18,3 @@ enum BatchLoggingLevel {
     throw ArgumentError('Unknown BatchLoggingLevel value: $value');
   }
 }
-

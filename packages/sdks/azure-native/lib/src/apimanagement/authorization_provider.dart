@@ -4,9 +4,9 @@ import 'authorization_provider_oauth2_settings_response.dart';
 
 /// Authorization Provider contract.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -31,8 +31,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///             {
 ///                 AuthorizationCode =
 ///                 {
-///                     { "clientId", "59790825-fdd3-4b10-bc7a-4c3aaf25801d" },
-///                     { "clientSecret", "xxxxxxxxxxxxxxxxxxxxxxxx" },
+///                     { "clientId", "clientsecretid" },
+///                     { "clientSecret", "clientsecretvalue" },
 ///                     { "resourceUri", "https://graph.microsoft.com" },
 ///                     { "scopes", "User.Read.All Group.Read.All" },
 ///                 },
@@ -65,8 +65,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// 			Oauth2: &apimanagement.AuthorizationProviderOAuth2SettingsArgs{
 /// 				GrantTypes: &apimanagement.AuthorizationProviderOAuth2GrantTypesArgs{
 /// 					AuthorizationCode: pulumi.StringMap{
-/// 						"clientId":     pulumi.String("59790825-fdd3-4b10-bc7a-4c3aaf25801d"),
-/// 						"clientSecret": pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxx"),
+/// 						"clientId":     pulumi.String("clientsecretid"),
+/// 						"clientSecret": pulumi.String("clientsecretvalue"),
 /// 						"resourceUri":  pulumi.String("https://graph.microsoft.com"),
 /// 						"scopes":       pulumi.String("User.Read.All Group.Read.All"),
 /// 					},
@@ -85,6 +85,36 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_authorizationprovider" "authorizationProvider" {
+///   authorization_provider_id = "aadwithauthcode"
+///   display_name              = "aadwithauthcode"
+///   identity_provider         = "aad"
+///   oauth2 = {
+///     grant_types = {
+///       authorization_code = {
+///         "clientId"     = "clientsecretid"
+///         "clientSecret" = "clientsecretvalue"
+///         "resourceUri"  = "https://graph.microsoft.com"
+///         "scopes"       = "User.Read.All Group.Read.All"
+///       }
+///     }
+///     redirect_url = "https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1"
+///   }
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +125,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// import com.pulumi.azurenative.apimanagement.AuthorizationProviderArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthorizationProviderOAuth2SettingsArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthorizationProviderOAuth2GrantTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,8 +145,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///             .oauth2(AuthorizationProviderOAuth2SettingsArgs.builder()
 ///                 .grantTypes(AuthorizationProviderOAuth2GrantTypesArgs.builder()
 ///                     .authorizationCode(Map.ofEntries(
-///                         Map.entry("clientId", "59790825-fdd3-4b10-bc7a-4c3aaf25801d"),
-///                         Map.entry("clientSecret", "xxxxxxxxxxxxxxxxxxxxxxxx"),
+///                         Map.entry("clientId", "clientsecretid"),
+///                         Map.entry("clientSecret", "clientsecretvalue"),
 ///                         Map.entry("resourceUri", "https://graph.microsoft.com"),
 ///                         Map.entry("scopes", "User.Read.All Group.Read.All")
 ///                     ))
@@ -143,8 +173,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///     oauth2: {
 ///         grantTypes: {
 ///             authorizationCode: {
-///                 clientId: "59790825-fdd3-4b10-bc7a-4c3aaf25801d",
-///                 clientSecret: "xxxxxxxxxxxxxxxxxxxxxxxx",
+///                 clientId: "clientsecretid",
+///                 clientSecret: "clientsecretvalue",
 ///                 resourceUri: "https://graph.microsoft.com",
 ///                 scopes: "User.Read.All Group.Read.All",
 ///             },
@@ -168,8 +198,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///     oauth2={
 ///         "grant_types": {
 ///             "authorization_code": {
-///                 "clientId": "59790825-fdd3-4b10-bc7a-4c3aaf25801d",
-///                 "clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxx",
+///                 "clientId": "clientsecretid",
+///                 "clientSecret": "clientsecretvalue",
 ///                 "resourceUri": "https://graph.microsoft.com",
 ///                 "scopes": "User.Read.All Group.Read.All",
 ///             },
@@ -192,8 +222,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///       oauth2:
 ///         grantTypes:
 ///           authorizationCode:
-///             clientId: 59790825-fdd3-4b10-bc7a-4c3aaf25801d
-///             clientSecret: xxxxxxxxxxxxxxxxxxxxxxxx
+///             clientId: clientsecretid
+///             clientSecret: clientsecretvalue
 ///             resourceUri: https://graph.microsoft.com
 ///             scopes: User.Read.All Group.Read.All
 ///         redirectUrl: https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1
@@ -274,6 +304,34 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_authorizationprovider" "authorizationProvider" {
+///   authorization_provider_id = "aadwithclientcred"
+///   display_name              = "aadwithclientcred"
+///   identity_provider         = "aad"
+///   oauth2 = {
+///     grant_types = {
+///       authorization_code = {
+///         "resourceUri" = "https://graph.microsoft.com"
+///         "scopes"      = "User.Read.All Group.Read.All"
+///       }
+///     }
+///     redirect_url = "https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1"
+///   }
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +342,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// import com.pulumi.azurenative.apimanagement.AuthorizationProviderArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthorizationProviderOAuth2SettingsArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthorizationProviderOAuth2GrantTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -405,8 +463,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///             {
 ///                 AuthorizationCode =
 ///                 {
-///                     { "clientId", "99999999-xxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com" },
-///                     { "clientSecret", "XXXXXXXXXXXXXXXXXXXX" },
+///                     { "clientId", "99999999-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com" },
+///                     { "clientSecret", "clientsecretvalue" },
 ///                     { "scopes", "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email" },
 ///                 },
 ///             },
@@ -438,8 +496,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// 			Oauth2: &apimanagement.AuthorizationProviderOAuth2SettingsArgs{
 /// 				GrantTypes: &apimanagement.AuthorizationProviderOAuth2GrantTypesArgs{
 /// 					AuthorizationCode: pulumi.StringMap{
-/// 						"clientId":     pulumi.String("99999999-xxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com"),
-/// 						"clientSecret": pulumi.String("XXXXXXXXXXXXXXXXXXXX"),
+/// 						"clientId":     pulumi.String("99999999-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com"),
+/// 						"clientSecret": pulumi.String("clientsecretvalue"),
 /// 						"scopes":       pulumi.String("openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"),
 /// 					},
 /// 				},
@@ -457,6 +515,35 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_authorizationprovider" "authorizationProvider" {
+///   authorization_provider_id = "google"
+///   display_name              = "google"
+///   identity_provider         = "google"
+///   oauth2 = {
+///     grant_types = {
+///       authorization_code = {
+///         "clientId"     = "99999999-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com"
+///         "clientSecret" = "clientsecretvalue"
+///         "scopes"       = "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
+///       }
+///     }
+///     redirect_url = "https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1"
+///   }
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -467,8 +554,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// import com.pulumi.azurenative.apimanagement.AuthorizationProviderArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthorizationProviderOAuth2SettingsArgs;
 /// import com.pulumi.azurenative.apimanagement.inputs.AuthorizationProviderOAuth2GrantTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -487,8 +574,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///             .oauth2(AuthorizationProviderOAuth2SettingsArgs.builder()
 ///                 .grantTypes(AuthorizationProviderOAuth2GrantTypesArgs.builder()
 ///                     .authorizationCode(Map.ofEntries(
-///                         Map.entry("clientId", "99999999-xxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com"),
-///                         Map.entry("clientSecret", "XXXXXXXXXXXXXXXXXXXX"),
+///                         Map.entry("clientId", "99999999-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com"),
+///                         Map.entry("clientSecret", "clientsecretvalue"),
 ///                         Map.entry("scopes", "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email")
 ///                     ))
 ///                     .build())
@@ -514,8 +601,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///     oauth2: {
 ///         grantTypes: {
 ///             authorizationCode: {
-///                 clientId: "99999999-xxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
-///                 clientSecret: "XXXXXXXXXXXXXXXXXXXX",
+///                 clientId: "99999999-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
+///                 clientSecret: "clientsecretvalue",
 ///                 scopes: "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
 ///             },
 ///         },
@@ -538,8 +625,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///     oauth2={
 ///         "grant_types": {
 ///             "authorization_code": {
-///                 "clientId": "99999999-xxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
-///                 "clientSecret": "XXXXXXXXXXXXXXXXXXXX",
+///                 "clientId": "99999999-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
+///                 "clientSecret": "clientsecretvalue",
 ///                 "scopes": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
 ///             },
 ///         },
@@ -561,8 +648,8 @@ import 'authorization_provider_oauth2_settings_response.dart';
 ///       oauth2:
 ///         grantTypes:
 ///           authorizationCode:
-///             clientId: 99999999-xxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
-///             clientSecret: XXXXXXXXXXXXXXXXXXXX
+///             clientId: 99999999-xxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
+///             clientSecret: clientsecretvalue
 ///             scopes: openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
 ///         redirectUrl: https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1
 ///       resourceGroupName: rg1

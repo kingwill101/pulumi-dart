@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
 ///
-/// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -114,6 +114,46 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_desktopvirtualization_msixpackage" "msixPackage" {
+///   display_name            = "displayname"
+///   host_pool_name          = "hostpool1"
+///   image_path              = "imagepath"
+///   is_active               = false
+///   is_regular_registration = false
+///   last_updated            = "2008-09-22T14:01:54.9571247Z"
+///   msix_package_full_name  = "msixpackagefullname"
+///   package_applications {
+///     app_id            = "ApplicationId"
+///     app_user_model_id = "AppUserModelId"
+///     description       = "application-desc"
+///     friendly_name     = "friendlyname"
+///     icon_image_name   = "Apptile"
+///     raw_icon          = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
+///     raw_png           = "VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"
+///   }
+///   package_dependencies {
+///     dependency_name = "MsixTest_Dependency_Name"
+///     min_version     = "version"
+///     publisher       = "PublishedName"
+///   }
+///   package_family_name   = "MsixPackage_FamilyName"
+///   package_name          = "MsixPackage_name"
+///   package_relative_path = "packagerelativepath"
+///   resource_group_name   = "resourceGroup1"
+///   version               = "version"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +164,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.desktopvirtualization.MSIXPackageArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.MsixPackageApplicationsArgs;
 /// import com.pulumi.azurenative.desktopvirtualization.inputs.MsixPackageDependenciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

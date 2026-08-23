@@ -14,4 +14,3 @@ enum BlockResponseCode {
     throw ArgumentError('Unknown BlockResponseCode value: $value');
   }
 }
-

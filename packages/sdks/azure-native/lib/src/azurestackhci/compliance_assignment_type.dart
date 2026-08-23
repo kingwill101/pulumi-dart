@@ -15,4 +15,3 @@ enum ComplianceAssignmentType {
     throw ArgumentError('Unknown ComplianceAssignmentType value: $value');
   }
 }
-

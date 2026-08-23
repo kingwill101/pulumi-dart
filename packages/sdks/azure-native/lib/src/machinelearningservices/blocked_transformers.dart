@@ -1,15 +1,15 @@
 /// Enum for all classification models supported by AutoML.
 enum BlockedTransformers {
-  valueTextTargetEncoder("TextTargetEncoder"),
-  valueOneHotEncoder("OneHotEncoder"),
-  valueCatTargetEncoder("CatTargetEncoder"),
-  valueTfIdf("TfIdf"),
-  valueWoETargetEncoder("WoETargetEncoder"),
-  valueLabelEncoder("LabelEncoder"),
-  valueWordEmbedding("WordEmbedding"),
-  valueNaiveBayes("NaiveBayes"),
-  valueCountVectorizer("CountVectorizer"),
-  valueHashOneHotEncoder("HashOneHotEncoder");
+  textTargetEncoder("TextTargetEncoder"),
+  oneHotEncoder("OneHotEncoder"),
+  catTargetEncoder("CatTargetEncoder"),
+  tfIdf("TfIdf"),
+  woETargetEncoder("WoETargetEncoder"),
+  labelEncoder("LabelEncoder"),
+  wordEmbedding("WordEmbedding"),
+  naiveBayes("NaiveBayes"),
+  countVectorizer("CountVectorizer"),
+  hashOneHotEncoder("HashOneHotEncoder");
 
   const BlockedTransformers(this.wireValue);
   final String wireValue;
@@ -23,4 +23,3 @@ enum BlockedTransformers {
     throw ArgumentError('Unknown BlockedTransformers value: $value');
   }
 }
-

@@ -74,6 +74,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dashboard_managedprivateendpoint" "managedPrivateEndpoint" {
+///   group_ids                     = ["grafana"]
+///   location                      = "West US"
+///   managed_private_endpoint_name = "myMPEName"
+///   private_link_resource_id      = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-000000000000/resourceGroups/xx-rg/providers/Microsoft.Kusto/Clusters/sampleKustoResource"
+///   private_link_resource_region  = "West US"
+///   private_link_service_url      = "my-self-hosted-influxdb.westus.mydomain.com"
+///   request_message               = "Example Request Message"
+///   resource_group_name           = "myResourceGroup"
+///   workspace_name                = "myWorkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +105,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dashboard.ManagedPrivateEndpoint;
 /// import com.pulumi.azurenative.dashboard.ManagedPrivateEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

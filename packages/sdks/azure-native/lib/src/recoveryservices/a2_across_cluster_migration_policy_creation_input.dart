@@ -26,4 +26,3 @@ class A2ACrossClusterMigrationPolicyCreationInput {
     );
   }
 }
-

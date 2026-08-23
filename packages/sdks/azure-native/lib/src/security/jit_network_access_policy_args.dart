@@ -16,7 +16,7 @@ class JitNetworkAccessPolicyArgs {
   /// Kind of the resource
   final pulumi.Input<String>? kind;
   final pulumi.Input<List<JitNetworkAccessRequest>>? requests;
-  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Configurations for Microsoft.Compute/virtualMachines resource type.
   final pulumi.Input<List<JitNetworkAccessPolicyVirtualMachine>> virtualMachines;
@@ -26,7 +26,7 @@ class JitNetworkAccessPolicyArgs {
   /// [jitNetworkAccessPolicyName] Name of a Just-in-Time access configuration policy.
   /// [kind] Kind of the resource
   /// [requests] Optional.
-  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualMachines] Configurations for Microsoft.Compute/virtualMachines resource type.
   const JitNetworkAccessPolicyArgs({
     required this.ascLocation,
@@ -59,4 +59,3 @@ class JitNetworkAccessPolicyArgs {
     );
   }
 }
-

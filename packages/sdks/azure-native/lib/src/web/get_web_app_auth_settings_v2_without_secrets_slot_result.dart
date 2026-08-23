@@ -5,6 +5,7 @@ import 'global_validation_response.dart';
 import 'http_settings_response.dart';
 import 'identity_providers_response.dart';
 import 'login_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getWebAppAuthSettingsV2WithoutSecretsSlot.
 class GetWebAppAuthSettingsV2WithoutSecretsSlotResult {
@@ -14,32 +15,35 @@ class GetWebAppAuthSettingsV2WithoutSecretsSlotResult {
   final GlobalValidationResponse? globalValidation;
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
   final HttpSettingsResponse? httpSettings;
-  /// Resource Id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
   final IdentityProvidersResponse? identityProviders;
-  /// Kind of resource.
+  /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
   /// The configuration settings of the login flow of users using App Service Authentication/Authorization.
   final LoginResponse? login;
-  /// Resource Name.
+  /// The name of the resource
   final String name;
   /// The configuration settings of the platform of App Service Authentication/Authorization.
   final AuthPlatformResponse? platform;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetWebAppAuthSettingsV2WithoutSecretsSlotResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [globalValidation] The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
   /// [httpSettings] The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
-  /// [id] Resource Id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [identityProviders] The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
-  /// [kind] Kind of resource.
+  /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   /// [login] The configuration settings of the login flow of users using App Service Authentication/Authorization.
-  /// [name] Resource Name.
+  /// [name] The name of the resource
   /// [platform] The configuration settings of the platform of App Service Authentication/Authorization.
-  /// [type] Resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppAuthSettingsV2WithoutSecretsSlotResult({
     required this.azureApiVersion,
     this.globalValidation,
@@ -50,6 +54,7 @@ class GetWebAppAuthSettingsV2WithoutSecretsSlotResult {
     this.login,
     required this.name,
     this.platform,
+    required this.systemData,
     required this.type,
   });
 
@@ -64,6 +69,7 @@ class GetWebAppAuthSettingsV2WithoutSecretsSlotResult {
       'login': ?login?.toMap(),
       'name': name,
       'platform': ?platform?.toMap(),
+      'systemData': systemData.toMap(),
       'type': type,
     };
   }
@@ -79,8 +85,8 @@ class GetWebAppAuthSettingsV2WithoutSecretsSlotResult {
       login: (() { final guardedValue = map['login']; if (guardedValue == null) return null; return LoginResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: map['name'] as String,
       platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return AuthPlatformResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }
 }
-

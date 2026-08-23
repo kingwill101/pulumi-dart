@@ -18,4 +18,3 @@ enum PartnerConnectorType {
     throw ArgumentError('Unknown PartnerConnectorType value: $value');
   }
 }
-

@@ -51,6 +51,8 @@ import 'system_data_response.dart';
 ///                 LaunchConfigurationName = "rgadwyrtzaxbfkbsbjaygujtc",
 ///                 LaunchTemplate = new AzureNative.AwsConnector.Inputs.LaunchTemplateSpecificationArgs
 ///                 {
+///                     LaunchTemplateId = "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                     LaunchTemplateName = "jq",
 ///                     Version = "kdlpart",
 ///                 },
 ///                 LifecycleHookSpecificationList = new[]
@@ -99,6 +101,8 @@ import 'system_data_response.dart';
 ///                     {
 ///                         LaunchTemplateSpecification = new AzureNative.AwsConnector.Inputs.LaunchTemplateSpecificationArgs
 ///                         {
+///                             LaunchTemplateId = "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                             LaunchTemplateName = "jq",
 ///                             Version = "kdlpart",
 ///                         },
 ///                         Overrides = new[]
@@ -195,6 +199,8 @@ import 'system_data_response.dart';
 ///                                 InstanceType = "phudgcnbis",
 ///                                 LaunchTemplateSpecification = new AzureNative.AwsConnector.Inputs.LaunchTemplateSpecificationArgs
 ///                                 {
+///                                     LaunchTemplateId = "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                                     LaunchTemplateName = "jq",
 ///                                     Version = "kdlpart",
 ///                                 },
 ///                                 WeightedCapacity = "iqa",
@@ -303,7 +309,9 @@ import 'system_data_response.dart';
 /// 					},
 /// 					LaunchConfigurationName: pulumi.String("rgadwyrtzaxbfkbsbjaygujtc"),
 /// 					LaunchTemplate: &awsconnector.LaunchTemplateSpecificationArgs{
-/// 						Version: pulumi.String("kdlpart"),
+/// 						LaunchTemplateId:   pulumi.String("zpcgiqsftmwjzwqifodopjuvfoxed"),
+/// 						LaunchTemplateName: pulumi.String("jq"),
+/// 						Version:            pulumi.String("kdlpart"),
 /// 					},
 /// 					LifecycleHookSpecificationList: awsconnector.LifecycleHookSpecificationArray{
 /// 						&awsconnector.LifecycleHookSpecificationArgs{
@@ -341,7 +349,9 @@ import 'system_data_response.dart';
 /// 						},
 /// 						LaunchTemplate: &awsconnector.LaunchTemplateArgs{
 /// 							LaunchTemplateSpecification: &awsconnector.LaunchTemplateSpecificationArgs{
-/// 								Version: pulumi.String("kdlpart"),
+/// 								LaunchTemplateId:   pulumi.String("zpcgiqsftmwjzwqifodopjuvfoxed"),
+/// 								LaunchTemplateName: pulumi.String("jq"),
+/// 								Version:            pulumi.String("kdlpart"),
 /// 							},
 /// 							Overrides: awsconnector.LaunchTemplateOverridesArray{
 /// 								&awsconnector.LaunchTemplateOverridesArgs{
@@ -416,7 +426,9 @@ import 'system_data_response.dart';
 /// 									},
 /// 									InstanceType: pulumi.String("phudgcnbis"),
 /// 									LaunchTemplateSpecification: &awsconnector.LaunchTemplateSpecificationArgs{
-/// 										Version: pulumi.String("kdlpart"),
+/// 										LaunchTemplateId:   pulumi.String("zpcgiqsftmwjzwqifodopjuvfoxed"),
+/// 										LaunchTemplateName: pulumi.String("jq"),
+/// 										Version:            pulumi.String("kdlpart"),
 /// 									},
 /// 									WeightedCapacity: pulumi.String("iqa"),
 /// 								},
@@ -479,6 +491,175 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_autoscalingautoscalinggroup" "autoScalingAutoScalingGroup" {
+///   location = "vfitxfllzgknmbaqgpsv"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "gsso"
+///     aws_account_id = "eogdcteuaaazi"
+///     aws_properties = {
+///       auto_scaling_group_name   = "zvp"
+///       availability_zones        = ["bvcnltgekeqrzklsnfieubhugr"]
+///       capacity_rebalance        = true
+///       context                   = "dnmovg"
+///       cooldown                  = "r"
+///       default_instance_warmup   = 24
+///       desired_capacity          = "xtu"
+///       desired_capacity_type     = "wncmimbdveox"
+///       health_check_grace_period = 9
+///       health_check_type         = "ustkoarefpvnhxrtqua"
+///       instance_id               = "noghdbfliygsadtjosovasxq"
+///       instance_maintenance_policy = {
+///         max_healthy_percentage = 23
+///         min_healthy_percentage = 6
+///       }
+///       launch_configuration_name = "rgadwyrtzaxbfkbsbjaygujtc"
+///       launch_template = {
+///         launch_template_id   = "zpcgiqsftmwjzwqifodopjuvfoxed"
+///         launch_template_name = "jq"
+///         version              = "kdlpart"
+///       }
+///       lifecycle_hook_specification_list = [{
+///         "defaultResult"         = "qbeojpqbpnhst"
+///         "heartbeatTimeout"      = 14
+///         "lifecycleHookName"     = "xeqfmdmthyzrdxjbmdkyy"
+///         "lifecycleTransition"   = "xsufodhykhlutvc"
+///         "notificationMetadata"  = "bknbkafxdozjlnprrlkrqstgwchxl"
+///         "notificationTargetARN" = "dkeqhlwuifyfamkufdryfiybxnle"
+///         "roleARN"               = "bhenujqtabiiryjgl"
+///       }]
+///       load_balancer_names   = ["qsgaefmtltksmmwswpdfmnlwvovi"]
+///       max_instance_lifetime = 25
+///       max_size              = "vqxfpkdyusfijwc"
+///       metrics_collection = [{
+///         "granularity" = "ygxetadl"
+///         "metrics"     = ["hwukwnkctznjelut"]
+///       }]
+///       min_size = "rfdwflldttnzph"
+///       mixed_instances_policy = {
+///         instances_distribution = {
+///           on_demand_allocation_strategy            = "s"
+///           on_demand_base_capacity                  = 11
+///           on_demand_percentage_above_base_capacity = 13
+///           spot_allocation_strategy                 = "mdqoylvmdfgnktujkkgcargpzgejts"
+///           spot_instance_pools                      = 21
+///           spot_max_price                           = "civdjpljorkrvqganofneu"
+///         }
+///         launch_template = {
+///           launch_template_specification = {
+///             launch_template_id   = "zpcgiqsftmwjzwqifodopjuvfoxed"
+///             launch_template_name = "jq"
+///             version              = "kdlpart"
+///           }
+///           overrides = [{
+///             "instanceRequirements" = {
+///               "acceleratorCount" = {
+///                 "max" = 22
+///                 "min" = 12
+///               }
+///               "acceleratorManufacturers" = ["yrnnynorjjxvzppzrgpahymhm"]
+///               "acceleratorNames"         = ["iqmentbrnypcxv"]
+///               "acceleratorTotalMemoryMiB" = {
+///                 "max" = 7
+///                 "min" = 29
+///               }
+///               "acceleratorTypes"     = ["kmvwibkxxklqitqxqqlpvfifvo"]
+///               "allowedInstanceTypes" = ["tzrxlaofwygbqglbwdxnqjy"]
+///               "bareMetal"            = "kugjpzsjreywlvvzkebv"
+///               "baselineEbsBandwidthMbps" = {
+///                 "max" = 2
+///                 "min" = 19
+///               }
+///               "burstablePerformance"                           = "jpwudasuoonf"
+///               "cpuManufacturers"                               = ["scbxthzijnmur"]
+///               "excludedInstanceTypes"                          = ["edadlo"]
+///               "instanceGenerations"                            = ["f"]
+///               "localStorage"                                   = "wglfmvquwice"
+///               "localStorageTypes"                              = ["talnjrldmventgtzlwpaxfcenp"]
+///               "maxSpotPriceAsPercentageOfOptimalOnDemandPrice" = 15
+///               "memoryGiBPerVCpu" = {
+///                 "max" = 23
+///                 "min" = 29
+///               }
+///               "memoryMiB" = {
+///                 "max" = 27
+///                 "min" = 27
+///               }
+///               "networkBandwidthGbps" = {
+///                 "max" = 18
+///                 "min" = 29
+///               }
+///               "networkInterfaceCount" = {
+///                 "max" = 14
+///                 "min" = 26
+///               }
+///               "onDemandMaxPricePercentageOverLowestPrice" = 8
+///               "requireHibernateSupport"                   = true
+///               "spotMaxPricePercentageOverLowestPrice"     = 9
+///               "totalLocalStorageGB" = {
+///                 "max" = 19
+///                 "min" = 7
+///               }
+///               "vCpuCount" = {
+///                 "max" = 9
+///                 "min" = 26
+///               }
+///             }
+///             "instanceType" = "phudgcnbis"
+///             "launchTemplateSpecification" = {
+///               "launchTemplateId"   = "zpcgiqsftmwjzwqifodopjuvfoxed"
+///               "launchTemplateName" = "jq"
+///               "version"            = "kdlpart"
+///             }
+///             "weightedCapacity" = "iqa"
+///           }]
+///         }
+///       }
+///       new_instances_protected_from_scale_in = true
+///       notification_configuration = {
+///         notification_types = ["jzepnjbwtsw"]
+///         topic_arn          = "hndjrwrlqssgciezop"
+///       }
+///       notification_configurations = [{
+///         "notificationTypes" = ["jzepnjbwtsw"]
+///         "topicARN"          = "hndjrwrlqssgciezop"
+///       }]
+///       placement_group         = "pmanetwktlujhykhxtcekv"
+///       service_linked_role_arn = "ffqtfkdv"
+///       tags = [{
+///         "key"               = "vtmmpdwnenzwsmxgf"
+///         "propagateAtLaunch" = true
+///         "value"             = "xoncdkvjanxdfklvixodkyg"
+///       }]
+///       target_group_ar_ns   = ["ttxjwgboopxrdiqxyqjdujw"]
+///       termination_policies = ["jvwpdujegrgjbdrxbvcjgs"]
+///       vpc_zone_identifier  = ["fmqvstmohqtmjslrnsiuodevi"]
+///     }
+///     aws_region        = "cfqguizvjpckdsvetalwo"
+///     aws_source_schema = "koleijkwf"
+///     aws_tags = {
+///       "key6990" = "lmywyo"
+///     }
+///     public_cloud_connectors_resource_id = "q"
+///     public_cloud_resource_name          = "blomfowfltqwzdghycehvvdnr"
+///   }
+///   resource_group_name = "rgautoScalingAutoScalingGroup"
+///   tags = {
+///     "key2337" = "scybnvsqelp"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -495,8 +676,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.InstancesDistributionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LaunchTemplateArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AutoScalingGroupNotificationConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -532,6 +713,8 @@ import 'system_data_response.dart';
 ///                         .build())
 ///                     .launchConfigurationName("rgadwyrtzaxbfkbsbjaygujtc")
 ///                     .launchTemplate(LaunchTemplateSpecificationArgs.builder()
+///                         .launchTemplateId("zpcgiqsftmwjzwqifodopjuvfoxed")
+///                         .launchTemplateName("jq")
 ///                         .version("kdlpart")
 ///                         .build())
 ///                     .lifecycleHookSpecificationList(LifecycleHookSpecificationArgs.builder()
@@ -562,6 +745,8 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .launchTemplate(LaunchTemplateArgs.builder()
 ///                             .launchTemplateSpecification(LaunchTemplateSpecificationArgs.builder()
+///                                 .launchTemplateId("zpcgiqsftmwjzwqifodopjuvfoxed")
+///                                 .launchTemplateName("jq")
 ///                                 .version("kdlpart")
 ///                                 .build())
 ///                             .overrides(LaunchTemplateOverridesArgs.builder()
@@ -620,6 +805,8 @@ import 'system_data_response.dart';
 ///                                     .build())
 ///                                 .instanceType("phudgcnbis")
 ///                                 .launchTemplateSpecification(LaunchTemplateSpecificationArgs.builder()
+///                                     .launchTemplateId("zpcgiqsftmwjzwqifodopjuvfoxed")
+///                                     .launchTemplateName("jq")
 ///                                     .version("kdlpart")
 ///                                     .build())
 ///                                 .weightedCapacity("iqa")
@@ -689,6 +876,8 @@ import 'system_data_response.dart';
 ///             },
 ///             launchConfigurationName: "rgadwyrtzaxbfkbsbjaygujtc",
 ///             launchTemplate: {
+///                 launchTemplateId: "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                 launchTemplateName: "jq",
 ///                 version: "kdlpart",
 ///             },
 ///             lifecycleHookSpecificationList: [{
@@ -719,6 +908,8 @@ import 'system_data_response.dart';
 ///                 },
 ///                 launchTemplate: {
 ///                     launchTemplateSpecification: {
+///                         launchTemplateId: "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                         launchTemplateName: "jq",
 ///                         version: "kdlpart",
 ///                     },
 ///                     overrides: [{
@@ -777,6 +968,8 @@ import 'system_data_response.dart';
 ///                         },
 ///                         instanceType: "phudgcnbis",
 ///                         launchTemplateSpecification: {
+///                             launchTemplateId: "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                             launchTemplateName: "jq",
 ///                             version: "kdlpart",
 ///                         },
 ///                         weightedCapacity: "iqa",
@@ -847,6 +1040,8 @@ import 'system_data_response.dart';
 ///             },
 ///             "launch_configuration_name": "rgadwyrtzaxbfkbsbjaygujtc",
 ///             "launch_template": {
+///                 "launch_template_id": "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                 "launch_template_name": "jq",
 ///                 "version": "kdlpart",
 ///             },
 ///             "lifecycle_hook_specification_list": [{
@@ -877,6 +1072,8 @@ import 'system_data_response.dart';
 ///                 },
 ///                 "launch_template": {
 ///                     "launch_template_specification": {
+///                         "launch_template_id": "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                         "launch_template_name": "jq",
 ///                         "version": "kdlpart",
 ///                     },
 ///                     "overrides": [{
@@ -935,6 +1132,8 @@ import 'system_data_response.dart';
 ///                         },
 ///                         "instance_type": "phudgcnbis",
 ///                         "launch_template_specification": {
+///                             "launch_template_id": "zpcgiqsftmwjzwqifodopjuvfoxed",
+///                             "launch_template_name": "jq",
 ///                             "version": "kdlpart",
 ///                         },
 ///                         "weighted_capacity": "iqa",
@@ -1004,6 +1203,8 @@ import 'system_data_response.dart';
 ///             minHealthyPercentage: 6
 ///           launchConfigurationName: rgadwyrtzaxbfkbsbjaygujtc
 ///           launchTemplate:
+///             launchTemplateId: zpcgiqsftmwjzwqifodopjuvfoxed
+///             launchTemplateName: jq
 ///             version: kdlpart
 ///           lifecycleHookSpecificationList:
 ///             - defaultResult: qbeojpqbpnhst
@@ -1032,6 +1233,8 @@ import 'system_data_response.dart';
 ///               spotMaxPrice: civdjpljorkrvqganofneu
 ///             launchTemplate:
 ///               launchTemplateSpecification:
+///                 launchTemplateId: zpcgiqsftmwjzwqifodopjuvfoxed
+///                 launchTemplateName: jq
 ///                 version: kdlpart
 ///               overrides:
 ///                 - instanceRequirements:
@@ -1087,6 +1290,8 @@ import 'system_data_response.dart';
 ///                       min: 26
 ///                   instanceType: phudgcnbis
 ///                   launchTemplateSpecification:
+///                     launchTemplateId: zpcgiqsftmwjzwqifodopjuvfoxed
+///                     launchTemplateName: jq
 ///                     version: kdlpart
 ///                   weightedCapacity: iqa
 ///           newInstancesProtectedFromScaleIn: true

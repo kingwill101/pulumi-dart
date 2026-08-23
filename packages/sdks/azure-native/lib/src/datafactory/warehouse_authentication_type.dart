@@ -1,8 +1,8 @@
 /// The authentication type to use.
 enum WarehouseAuthenticationType {
-  valueServicePrincipal("ServicePrincipal"),
-  valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
-  valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
+  servicePrincipal("ServicePrincipal"),
+  systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
+  userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const WarehouseAuthenticationType(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum WarehouseAuthenticationType {
     throw ArgumentError('Unknown WarehouseAuthenticationType value: $value');
   }
 }
-

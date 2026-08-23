@@ -1,8 +1,8 @@
 /// The transport protocol to use in the Thrift layer.
 enum HiveThriftTransportProtocol {
-  valueBinary("Binary"),
-  valueSASL("SASL"),
-  valueHTTP("HTTP ");
+  binary("Binary"),
+  sASL("SASL"),
+  hTTP("HTTP ");
 
   const HiveThriftTransportProtocol(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum HiveThriftTransportProtocol {
     throw ArgumentError('Unknown HiveThriftTransportProtocol value: $value');
   }
 }
-

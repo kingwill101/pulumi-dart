@@ -15,4 +15,3 @@ enum GatewayRouteConfigProtocol {
     throw ArgumentError('Unknown GatewayRouteConfigProtocol value: $value');
   }
 }
-

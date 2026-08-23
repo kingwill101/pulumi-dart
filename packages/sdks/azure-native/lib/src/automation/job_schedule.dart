@@ -2,12 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_schedule_args.dart';
 import 'runbook_association_property_response.dart';
 import 'schedule_association_property_response.dart';
+import 'system_data_response.dart';
 
 /// Definition of the job schedule.
 ///
-/// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+/// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 ///
-/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -80,6 +81,33 @@ import 'schedule_association_property_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_automation_jobschedule" "jobSchedule" {
+///   automation_account_name = "ContoseAutomationAccount"
+///   job_schedule_id         = "0fa462ba-3aa2-4138-83ca-9ebc3bc55cdc"
+///   parameters = {
+///     "jobscheduletag01" = "jobschedulevalue01"
+///     "jobscheduletag02" = "jobschedulevalue02"
+///   }
+///   resource_group_name = "rg"
+///   runbook = {
+///     name = "TestRunbook"
+///   }
+///   schedule = {
+///     name = "ScheduleNameGoesHere332204b5-debe-4348-a5c7-6357457189f2"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +118,8 @@ import 'schedule_association_property_response.dart';
 /// import com.pulumi.azurenative.automation.JobScheduleArgs;
 /// import com.pulumi.azurenative.automation.inputs.RunbookAssociationPropertyArgs;
 /// import com.pulumi.azurenative.automation.inputs.ScheduleAssociationPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,7 +228,7 @@ class JobSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   /// Gets or sets the id of job schedule.
   late final pulumi.Output<String?> jobScheduleId;
-  /// Gets the name of the variable.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// Gets or sets the parameters of the job schedule.
   late final pulumi.Output<Map<String, String>?> parameters;
@@ -210,7 +238,9 @@ class JobSchedule extends pulumi.CustomResource {
   late final pulumi.Output<RunbookAssociationPropertyResponse?> runbook;
   /// Gets or sets the schedule.
   late final pulumi.Output<ScheduleAssociationPropertyResponse?> schedule;
-  /// Resource type
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [JobSchedule].
@@ -234,6 +264,7 @@ class JobSchedule extends pulumi.CustomResource {
     runOn = registerOutput<String?>('runOn');
     runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schedule = registerOutput<ScheduleAssociationPropertyResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }

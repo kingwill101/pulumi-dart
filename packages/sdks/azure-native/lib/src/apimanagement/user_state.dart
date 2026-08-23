@@ -17,4 +17,3 @@ enum UserState {
     throw ArgumentError('Unknown UserState value: $value');
   }
 }
-

@@ -14,4 +14,3 @@ enum ServiceClientOptionsType {
     throw ArgumentError('Unknown ServiceClientOptionsType value: $value');
   }
 }
-

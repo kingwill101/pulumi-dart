@@ -95,6 +95,41 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_logslogstream" "logsLogStream" {
+///   location = "kptftndcymfuhgrknmxtkeqwlpjun"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "lzfqztmbbgeu"
+///     aws_account_id = "wdatjpiqtspvmqdqquuhipephuthnh"
+///     aws_properties = {
+///       log_group_name  = "bfwnrdojlqlwrmih"
+///       log_stream_name = "pbtlxfgftiixnduazjvqezmnpwbr"
+///     }
+///     aws_region        = "dzyiblunsedfhiq"
+///     aws_source_schema = "ffgsbwzxveleoxawcyogkiigworq"
+///     aws_tags = {
+///       "key9843" = "dbwvhopavlbkhbaofrgwznkwoj"
+///     }
+///     public_cloud_connectors_resource_id = "lihllkk"
+///     public_cloud_resource_name          = "wftlmsgyanjghqoyfkzoqgqxrcdkq"
+///   }
+///   resource_group_name = "rglogsLogStream"
+///   tags = {
+///     "key6354" = "a"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +140,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.LogsLogStreamArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.LogsLogStreamPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsLogsLogStreamPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

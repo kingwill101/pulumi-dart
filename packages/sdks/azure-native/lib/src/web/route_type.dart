@@ -5,9 +5,9 @@
 ///
 /// These values will be used for syncing an app's routes with those from a Virtual Network.
 enum RouteType {
-  valueDEFAULT("DEFAULT"),
-  valueINHERITED("INHERITED"),
-  valueSTATIC("STATIC");
+  dEFAULT("DEFAULT"),
+  iNHERITED("INHERITED"),
+  sTATIC("STATIC");
 
   const RouteType(this.wireValue);
   final String wireValue;
@@ -21,4 +21,3 @@ enum RouteType {
     throw ArgumentError('Unknown RouteType value: $value');
   }
 }
-

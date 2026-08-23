@@ -21,17 +21,17 @@ class DiskArgs {
   final pulumi.Input<String> labName;
   /// The resource ID of the VM to which this disk is leased.
   final pulumi.Input<String>? leasedByLabVmId;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// When backed by managed disk, this is the ID of the compute disk resource.
   final pulumi.Input<String>? managedDiskId;
-  /// The name of the Disk
+  /// The name of the disk.
   final pulumi.Input<String>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// When backed by a blob, the storage account where the blob is.
   final pulumi.Input<String>? storageAccountId;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
   /// The name of the user profile.
   final pulumi.Input<String> userName;
@@ -44,12 +44,12 @@ class DiskArgs {
   /// [hostCaching] The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite).
   /// [labName] The name of the lab.
   /// [leasedByLabVmId] The resource ID of the VM to which this disk is leased.
-  /// [location] The location of the resource.
+  /// [location] The geo-location where the resource lives
   /// [managedDiskId] When backed by managed disk, this is the ID of the compute disk resource.
-  /// [name] The name of the Disk
+  /// [name] The name of the disk.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageAccountId] When backed by a blob, the storage account where the blob is.
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   /// [userName] The name of the user profile.
   const DiskArgs({
     this.diskBlobName,
@@ -106,4 +106,3 @@ class DiskArgs {
     );
   }
 }
-

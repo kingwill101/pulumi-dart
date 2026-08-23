@@ -6,14 +6,14 @@ import 'managed_disk_encryption.dart';
 
 /// Encryption entities for databricks workspace resource.
 class EncryptionEntitiesDefinition {
-  /// Encryption properties for the databricks managed disks.
+  /// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<ManagedDiskEncryption>? managedDisk;
-  /// Encryption properties for the databricks managed services.
+  /// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
   final pulumi.Input<EncryptionV2>? managedServices;
 
   /// Creates a new [EncryptionEntitiesDefinition].
-  /// [managedDisk] Encryption properties for the databricks managed disks.
-  /// [managedServices] Encryption properties for the databricks managed services.
+  /// [managedDisk] Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
+  /// [managedServices] Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
   const EncryptionEntitiesDefinition({
     this.managedDisk,
     this.managedServices,
@@ -33,4 +33,3 @@ class EncryptionEntitiesDefinition {
     );
   }
 }
-

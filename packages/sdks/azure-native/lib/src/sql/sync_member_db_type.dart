@@ -15,4 +15,3 @@ enum SyncMemberDbType {
     throw ArgumentError('Unknown SyncMemberDbType value: $value');
   }
 }
-

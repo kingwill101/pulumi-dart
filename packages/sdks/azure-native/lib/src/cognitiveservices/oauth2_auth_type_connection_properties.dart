@@ -12,14 +12,18 @@ class OAuth2AuthTypeConnectionProperties {
   /// ClientId and ClientSecret are required. Other properties are optional
   /// depending on each OAuth2 provider's implementation.
   final pulumi.Input<ConnectionOAuth2>? credentials;
+  /// Provides the error message if the connection fails
   final pulumi.Input<String>? error;
   final pulumi.Input<String>? expiryTime;
   final pulumi.Input<bool>? isSharedToAll;
   /// Store user metadata for this connection
   final pulumi.Input<Map<String, String>>? metadata;
+  /// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
   final pulumi.Input<String>? peRequirement;
+  /// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
   final pulumi.Input<String>? peStatus;
   final pulumi.Input<List<String>>? sharedUserList;
+  /// The connection URL to be used.
   final pulumi.Input<String>? target;
   final pulumi.Input<bool>? useWorkspaceManagedIdentity;
 
@@ -27,14 +31,14 @@ class OAuth2AuthTypeConnectionProperties {
   /// [authType] Authentication type of the connection target
   /// [category] Category of the connection
   /// [credentials] ClientId and ClientSecret are required. Other properties are optional
-  /// [error] Optional.
+  /// [error] Provides the error message if the connection fails
   /// [expiryTime] Optional.
   /// [isSharedToAll] Optional.
   /// [metadata] Store user metadata for this connection
-  /// [peRequirement] Optional.
-  /// [peStatus] Optional.
+  /// [peRequirement] Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+  /// [peStatus] Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
   /// [sharedUserList] Optional.
-  /// [target] Optional.
+  /// [target] The connection URL to be used.
   /// [useWorkspaceManagedIdentity] Optional.
   const OAuth2AuthTypeConnectionProperties({
     required this.authType,
@@ -85,4 +89,3 @@ class OAuth2AuthTypeConnectionProperties {
     );
   }
 }
-

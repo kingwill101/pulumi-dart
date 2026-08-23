@@ -58,6 +58,25 @@ import 'secret_resource_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_servicefabricmesh_secret" "secret" {
+///   location             = "EastUS"
+///   properties           = {}
+///   resource_group_name  = "sbz_demo"
+///   secret_resource_name = "dbConnectionString"
+///   tags                 = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'secret_resource_properties_response.dart';
 /// import com.pulumi.azurenative.servicefabricmesh.Secret;
 /// import com.pulumi.azurenative.servicefabricmesh.SecretArgs;
 /// import com.pulumi.azurenative.servicefabricmesh.inputs.SecretResourcePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

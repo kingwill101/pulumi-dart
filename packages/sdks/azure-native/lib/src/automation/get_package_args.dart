@@ -11,7 +11,7 @@ class GetPackageArgs {
   final pulumi.Input<String> automationAccountName;
   /// The Package name.
   final pulumi.Input<String> packageName;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Runtime Environment.
   final pulumi.Input<String> runtimeEnvironmentName;
@@ -19,7 +19,7 @@ class GetPackageArgs {
   /// Creates a new [GetPackageArgs].
   /// [automationAccountName] The name of the automation account.
   /// [packageName] The Package name.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
   const GetPackageArgs({
     required this.automationAccountName,
@@ -46,4 +46,3 @@ class GetPackageArgs {
     );
   }
 }
-

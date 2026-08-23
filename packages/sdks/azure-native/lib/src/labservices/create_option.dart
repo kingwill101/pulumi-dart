@@ -15,4 +15,3 @@ enum CreateOption {
     throw ArgumentError('Unknown CreateOption value: $value');
   }
 }
-

@@ -14,4 +14,3 @@ enum StatusName {
     throw ArgumentError('Unknown StatusName value: $value');
   }
 }
-

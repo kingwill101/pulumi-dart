@@ -15,4 +15,3 @@ enum ResourceProviderConnection {
     throw ArgumentError('Unknown ResourceProviderConnection value: $value');
   }
 }
-

@@ -1,7 +1,7 @@
 /// Type of value copied from source.
 enum ValueType {
-  valueActual("actual"),
-  valueDisplay("display");
+  actual("actual"),
+  display("display");
 
   const ValueType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum ValueType {
     throw ArgumentError('Unknown ValueType value: $value');
   }
 }
-

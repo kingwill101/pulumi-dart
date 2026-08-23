@@ -30,7 +30,7 @@ import 'list_organization_regions_result.dart';
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_get_connector_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetConnectorResult> getConnector(
@@ -50,7 +50,7 @@ Future<GetConnectorResult> getConnector(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_get_organization_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetOrganizationResult> getOrganization(
@@ -70,7 +70,7 @@ Future<GetOrganizationResult> getOrganization(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_get_organization_cluster_by_id_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetOrganizationClusterByIdResult> getOrganizationClusterById(
@@ -90,7 +90,7 @@ Future<GetOrganizationClusterByIdResult> getOrganizationClusterById(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_get_organization_environment_by_id_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetOrganizationEnvironmentByIdResult> getOrganizationEnvironmentById(
@@ -110,7 +110,7 @@ Future<GetOrganizationEnvironmentByIdResult> getOrganizationEnvironmentById(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_get_topic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTopicResult> getTopic(
@@ -130,7 +130,7 @@ Future<GetTopicResult> getTopic(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_access_clusters_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccessClustersResult> listAccessClusters(
@@ -150,7 +150,7 @@ Future<ListAccessClustersResult> listAccessClusters(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_access_environments_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccessEnvironmentsResult> listAccessEnvironments(
@@ -170,7 +170,7 @@ Future<ListAccessEnvironmentsResult> listAccessEnvironments(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_access_invitations_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccessInvitationsResult> listAccessInvitations(
@@ -190,7 +190,7 @@ Future<ListAccessInvitationsResult> listAccessInvitations(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_access_role_binding_name_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccessRoleBindingNameResult> listAccessRoleBindingName(
@@ -210,7 +210,7 @@ Future<ListAccessRoleBindingNameResult> listAccessRoleBindingName(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_access_role_bindings_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccessRoleBindingsResult> listAccessRoleBindings(
@@ -230,7 +230,7 @@ Future<ListAccessRoleBindingsResult> listAccessRoleBindings(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_access_service_accounts_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccessServiceAccountsResult> listAccessServiceAccounts(
@@ -250,7 +250,7 @@ Future<ListAccessServiceAccountsResult> listAccessServiceAccounts(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_access_users_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListAccessUsersResult> listAccessUsers(
@@ -270,7 +270,7 @@ Future<ListAccessUsersResult> listAccessUsers(
 ///
 /// Uses Azure REST API version 2024-07-01.
 ///
-/// Other available API versions: 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-02-13, 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_confluent_list_organization_regions_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListOrganizationRegionsResult> listOrganizationRegions(

@@ -15,4 +15,3 @@ enum KinesisStreamSpecificationApproximateCreationDateTimePrecision {
     throw ArgumentError('Unknown KinesisStreamSpecificationApproximateCreationDateTimePrecision value: $value');
   }
 }
-

@@ -240,6 +240,7 @@ import 'system_data_response.dart';
 ///                             new AzureNative.AwsConnector.Inputs.InstanceIpv6AddressArgs
 ///                             {
 ///                                 Ipv6Address = "z",
+///                                 IsPrimaryIpv6 = true,
 ///                             },
 ///                         },
 ///                         Ipv6Prefixes = new[]
@@ -570,7 +571,8 @@ import 'system_data_response.dart';
 /// 							},
 /// 							Ipv6Addresses: awsconnector.InstanceIpv6AddressArray{
 /// 								&awsconnector.InstanceIpv6AddressArgs{
-/// 									Ipv6Address: pulumi.String("z"),
+/// 									Ipv6Address:   pulumi.String("z"),
+/// 									IsPrimaryIpv6: pulumi.Bool(true),
 /// 								},
 /// 							},
 /// 							Ipv6Prefixes: awsconnector.InstanceIpv6PrefixArray{
@@ -701,6 +703,284 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_ec2instance" "ec2Instance" {
+///   properties = {
+///     arn            = "noxwkahrsrcnrpz"
+///     aws_account_id = "hhrjjrfopsrebnklxmr"
+///     aws_properties = {
+///       ami_launch_index = 27
+///       architecture = {
+///         value = "arm64"
+///       }
+///       block_device_mappings = [{
+///         "deviceName" = "tfaglaaaklzilxzmk"
+///         "ebs" = {
+///           "associatedResource"  = "pgkczdagxihtrkzzaiuzennp"
+///           "attachTime"          = "2024-10-08T03:49:10.616Z"
+///           "deleteOnTermination" = true
+///           "status" = {
+///             "value" = "attached"
+///           }
+///           "volumeId"      = "ilihhdgfhpylwqnaglcmj"
+///           "volumeOwnerId" = "ruylzxnmlundujqdqkqocknldkttka"
+///         }
+///       }]
+///       boot_mode = {
+///         value = "legacy-bios"
+///       }
+///       capacity_reservation_id = "rgxeywdieyjfmp"
+///       capacity_reservation_specification = {
+///         capacity_reservation_preference = {
+///           value = "none"
+///         }
+///         capacity_reservation_target = {
+///           capacity_reservation_id                 = "dvdusvbgjrkkuqrelloyysinnzpjb"
+///           capacity_reservation_resource_group_arn = "itnyqqrlujfkasgzbrvljlbh"
+///         }
+///       }
+///       client_token = "zgimjubyev"
+///       cpu_options = {
+///         amd_sev_snp = {
+///           value = "disabled"
+///         }
+///         core_count       = 27
+///         threads_per_core = 11
+///       }
+///       current_instance_boot_mode = {
+///         value = "legacy-bios"
+///       }
+///       ebs_optimized = true
+///       elastic_gpu_associations = [{
+///         "elasticGpuAssociationId"    = "jmxqiqiyocefwrivbcumzx"
+///         "elasticGpuAssociationState" = "mkteimwlzs"
+///         "elasticGpuAssociationTime"  = "sosasrnqg"
+///         "elasticGpuId"               = "dnpmhib"
+///       }]
+///       elastic_inference_accelerator_associations = [{
+///         "elasticInferenceAcceleratorArn"              = "pnbrdzuzjxuwrtpdc"
+///         "elasticInferenceAcceleratorAssociationId"    = "uoout"
+///         "elasticInferenceAcceleratorAssociationState" = "bwbmjkusisjrxxdonwtxkbgbaxk"
+///         "elasticInferenceAcceleratorAssociationTime"  = "2024-10-08T03:49:10.617Z"
+///       }]
+///       ena_support = true
+///       enclave_options = {
+///         enabled = true
+///       }
+///       hibernation_options = {
+///         configured = true
+///       }
+///       hypervisor = {
+///         value = "ovm"
+///       }
+///       iam_instance_profile = {
+///         arn = "jvju"
+///         id  = "kdzthqdiqjcknesajpbplmkynzokr"
+///       }
+///       image_id    = "oemhjwhbzkbcwocprtn"
+///       instance_id = "czyyyovcqwce"
+///       instance_lifecycle = {
+///         value = "capacity-block"
+///       }
+///       instance_type = {
+///         value = "a1.2xlarge"
+///       }
+///       ipv6_address = "kuzwkpvttqtjxowkisga"
+///       kernel_id    = "qqehgoolsvuh"
+///       key_name     = "bxxdzmyclfgrwqwnjajhs"
+///       launch_time  = "2024-10-08T03:49:10.618Z"
+///       licenses = [{
+///         "licenseConfigurationArn" = "q"
+///       }]
+///       maintenance_options = {
+///         auto_recovery = {
+///           value = "default"
+///         }
+///       }
+///       metadata_options = {
+///         http_endpoint = {
+///           value = "disabled"
+///         }
+///         http_protocol_ipv6 = {
+///           value = "disabled"
+///         }
+///         http_put_response_hop_limit = 3
+///         http_tokens = {
+///           value = "optional"
+///         }
+///         instance_metadata_tags = {
+///           value = "disabled"
+///         }
+///         state = {
+///           value = "applied"
+///         }
+///       }
+///       monitoring = {
+///         state = {
+///           value = "disabled"
+///         }
+///       }
+///       network_interfaces = [{
+///         "association" = {
+///           "carrierIp"       = "gyqfkluecfuwebntnygczb"
+///           "customerOwnedIp" = "sw"
+///           "ipOwnerId"       = "fbrkixipyqjnao"
+///           "publicDnsName"   = "oivnzjavxqmctzvhgmsavgwesabny"
+///           "publicIp"        = "tojjymqqjmschjp"
+///         }
+///         "attachment" = {
+///           "attachTime"          = "2024-10-08T03:49:10.618Z"
+///           "attachmentId"        = "lsqnlzd"
+///           "deleteOnTermination" = true
+///           "deviceIndex"         = 11
+///           "enaSrdSpecification" = {
+///             "enaSrdEnabled" = true
+///             "enaSrdUdpSpecification" = {
+///               "enaSrdUdpEnabled" = true
+///             }
+///           }
+///           "networkCardIndex" = 9
+///           "status" = {
+///             "value" = "attached"
+///           }
+///         }
+///         "connectionTrackingConfiguration" = {
+///           "tcpEstablishedTimeout" = 23
+///           "udpStreamTimeout"      = 24
+///           "udpTimeout"            = 30
+///         }
+///         "description" = "wcdguczvqhelvbuhnx"
+///         "groups" = [{
+///           "groupId"   = "nwupmxpxrzdroizfewqupyddewi"
+///           "groupName" = "gvsaaqihzfcwdmeocclatfqm"
+///         }]
+///         "interfaceType" = "mphomintds"
+///         "ipv4Prefixes" = [{
+///           "ipv4Prefix" = "ortyghjrffqjz"
+///         }]
+///         "ipv6Addresses" = [{
+///           "ipv6Address"   = "z"
+///           "isPrimaryIpv6" = true
+///         }]
+///         "ipv6Prefixes" = [{
+///           "ipv6Prefix" = "cstrptdpvmberviuvuqfd"
+///         }]
+///         "macAddress"         = "k"
+///         "networkInterfaceId" = "qythf"
+///         "ownerId"            = "fvjysbetbyrzccspcenkpvi"
+///         "privateDnsName"     = "yvorusnuuigavdcqqdxecrkmjmhrf"
+///         "privateIpAddress"   = "m"
+///         "privateIpAddresses" = [{
+///           "association" = {
+///             "carrierIp"       = "gyqfkluecfuwebntnygczb"
+///             "customerOwnedIp" = "sw"
+///             "ipOwnerId"       = "fbrkixipyqjnao"
+///             "publicDnsName"   = "oivnzjavxqmctzvhgmsavgwesabny"
+///             "publicIp"        = "tojjymqqjmschjp"
+///           }
+///           "primary"          = true
+///           "privateDnsName"   = "bdezhkhwoerivtfwgqelrsyiphf"
+///           "privateIpAddress" = "xcqnyrs"
+///         }]
+///         "sourceDestCheck" = true
+///         "status" = {
+///           "value" = "associated"
+///         }
+///         "subnetId" = "euocsemlw"
+///         "vpcId"    = "grahbrhjelkewder"
+///       }]
+///       outpost_arn = "godjddxeidxe"
+///       placement = {
+///         affinity                = "xzseileq"
+///         availability_zone       = "vsfvyosolmnchbavxfvtizqptgmeg"
+///         group_id                = "davwvkjoij"
+///         group_name              = "txqgn"
+///         host_id                 = "mvbshbhxclztfwffsu"
+///         host_resource_group_arn = "zl"
+///         partition_number        = 24
+///         spread_domain           = "t"
+///         tenancy = {
+///           value = "dedicated"
+///         }
+///       }
+///       platform = {
+///         value = "Windows"
+///       }
+///       platform_details = "rcwqyqgcruqjcvzcto"
+///       private_dns_name = "ieuhntvllhoojakokyt"
+///       private_dns_name_options = {
+///         enable_resource_name_dns_aaaa_record = true
+///         enable_resource_name_dns_a_record    = true
+///         hostname_type = {
+///           value = "ip-name"
+///         }
+///       }
+///       private_ip_address = "uosximzwwopktgyzlathmorgqah"
+///       product_codes = [{
+///         "productCodeId" = "sexxutnmcfhkamhmvjrggoscatni"
+///         "productCodeType" = {
+///           "value" = "devpay"
+///         }
+///       }]
+///       public_dns_name   = "qkucqmeldgiumuzribitahwft"
+///       public_ip_address = "ialohsszgtpuycimtqi"
+///       ramdisk_id        = "ggkfkl"
+///       root_device_name  = "dbfwarbazrbzcjnh"
+///       root_device_type = {
+///         value = "ebs"
+///       }
+///       security_groups = [{
+///         "groupId"   = "nwupmxpxrzdroizfewqupyddewi"
+///         "groupName" = "gvsaaqihzfcwdmeocclatfqm"
+///       }]
+///       source_dest_check        = true
+///       spot_instance_request_id = "qiylxsuuinwyq"
+///       sriov_net_support        = "kiffwvajczdtzwcfeefqespn"
+///       state = {
+///         code = 18
+///         name = {
+///           value = "pending"
+///         }
+///       }
+///       state_reason = {
+///         code    = "kdnlidwcsckwbplroijtjciufgg"
+///         message = "dvgendvpuuzx"
+///       }
+///       state_transition_reason = "arenmfmnvv"
+///       subnet_id               = "mgnibedayjllwaidbjh"
+///       tags = [{
+///         "key"   = "pbvbjvyuqibbevydlslmfple"
+///         "value" = "zztbwjxzwgmnjqhegktznmdrqferd"
+///       }]
+///       tpm_support                 = "fvxtckturm"
+///       usage_operation             = "xrctwrcgpcrhlfjzhdvhiovdlcqafq"
+///       usage_operation_update_time = "2024-10-08T03:49:10.619Z"
+///       virtualization_type = {
+///         value = "hvm"
+///       }
+///       vpc_id = "g"
+///     }
+///     aws_region        = "tcaqttnhykcej"
+///     aws_source_schema = "tncjfmwlkponefezhigbyno"
+///     aws_tags = {
+///       "key2934" = "wyx"
+///     }
+///     public_cloud_connectors_resource_id = "shnvqmmslrarjuzdpyhlnfxxp"
+///     public_cloud_resource_name          = "sffqiavopmcwltotrpubudq"
+///   }
+///   resource_uri = "c"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -745,8 +1025,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.InstanceStateNameEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.StateReasonArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.VirtualizationTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -914,6 +1194,7 @@ import 'system_data_response.dart';
 ///                             .build())
 ///                         .ipv6Addresses(InstanceIpv6AddressArgs.builder()
 ///                             .ipv6Address("z")
+///                             .isPrimaryIpv6(true)
 ///                             .build())
 ///                         .ipv6Prefixes(InstanceIpv6PrefixArgs.builder()
 ///                             .ipv6Prefix("cstrptdpvmberviuvuqfd")
@@ -1187,6 +1468,7 @@ import 'system_data_response.dart';
 ///                 }],
 ///                 ipv6Addresses: [{
 ///                     ipv6Address: "z",
+///                     isPrimaryIpv6: true,
 ///                 }],
 ///                 ipv6Prefixes: [{
 ///                     ipv6Prefix: "cstrptdpvmberviuvuqfd",
@@ -1459,6 +1741,7 @@ import 'system_data_response.dart';
 ///                 }],
 ///                 "ipv6_addresses": [{
 ///                     "ipv6_address": "z",
+///                     "is_primary_ipv6": True,
 ///                 }],
 ///                 "ipv6_prefixes": [{
 ///                     "ipv6_prefix": "cstrptdpvmberviuvuqfd",
@@ -1692,6 +1975,7 @@ import 'system_data_response.dart';
 ///                 - ipv4Prefix: ortyghjrffqjz
 ///               ipv6Addresses:
 ///                 - ipv6Address: z
+///                   isPrimaryIpv6: true
 ///               ipv6Prefixes:
 ///                 - ipv6Prefix: cstrptdpvmberviuvuqfd
 ///               macAddress: k

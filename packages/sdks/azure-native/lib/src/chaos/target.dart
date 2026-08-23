@@ -6,7 +6,7 @@ import 'target_args.dart';
 ///
 /// Uses Azure REST API version 2024-03-22-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-15-preview.
 ///
-/// Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01, 2026-05-01-preview, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -79,6 +79,31 @@ import 'target_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_chaos_target" "target" {
+///   parent_provider_namespace = "Microsoft.Compute"
+///   parent_resource_name      = "exampleVM"
+///   parent_resource_type      = "virtualMachines"
+///   properties = {
+///     "identities" = [{
+///       "subject" = "CN=example.subject"
+///       "type"    = "CertificateSubjectIssuer"
+///     }]
+///   }
+///   resource_group_name = "exampleRG"
+///   target_name         = "Microsoft-Agent"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +112,8 @@ import 'target_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.chaos.Target;
 /// import com.pulumi.azurenative.chaos.TargetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -104,10 +129,10 @@ import 'target_args.dart';
 ///             .parentProviderNamespace("Microsoft.Compute")
 ///             .parentResourceName("exampleVM")
 ///             .parentResourceType("virtualMachines")
-///             .properties(Map.of("identities", Map.ofEntries(
+///             .properties(Map.of("identities", Arrays.asList(Map.ofEntries(
 ///                 Map.entry("subject", "CN=example.subject"),
 ///                 Map.entry("type", "CertificateSubjectIssuer")
-///             )))
+///             ))))
 ///             .resourceGroupName("exampleRG")
 ///             .targetName("Microsoft-Agent")
 ///             .build());

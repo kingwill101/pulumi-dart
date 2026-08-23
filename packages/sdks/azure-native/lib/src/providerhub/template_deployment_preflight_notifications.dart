@@ -15,4 +15,3 @@ enum TemplateDeploymentPreflightNotifications {
     throw ArgumentError('Unknown TemplateDeploymentPreflightNotifications value: $value');
   }
 }
-

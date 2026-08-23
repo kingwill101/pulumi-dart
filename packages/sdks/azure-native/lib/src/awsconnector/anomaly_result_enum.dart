@@ -15,4 +15,3 @@ enum AnomalyResultEnum {
     throw ArgumentError('Unknown AnomalyResultEnum value: $value');
   }
 }
-

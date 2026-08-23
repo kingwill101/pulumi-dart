@@ -82,7 +82,6 @@ export 'confluent/partner_connector_type.dart';
 export 'confluent/region_record_response.dart';
 export 'confluent/region_spec_entity_response.dart';
 export 'confluent/role_binding_record_response.dart';
-export 'confluent/saa_soffer_status.dart';
 export 'confluent/sccluster_byok_entity.dart';
 export 'confluent/sccluster_byok_entity_response.dart';
 export 'confluent/sccluster_network_environment_entity.dart';

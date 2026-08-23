@@ -19,4 +19,3 @@ enum ManagedCassandraProvisioningState {
     throw ArgumentError('Unknown ManagedCassandraProvisioningState value: $value');
   }
 }
-

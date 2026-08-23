@@ -1,7 +1,7 @@
 /// The write behavior for the operation. Default is Insert.
 enum SalesforceV2SinkWriteBehavior {
-  valueInsert("Insert"),
-  valueUpsert("Upsert");
+  insert("Insert"),
+  upsert("Upsert");
 
   const SalesforceV2SinkWriteBehavior(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum SalesforceV2SinkWriteBehavior {
     throw ArgumentError('Unknown SalesforceV2SinkWriteBehavior value: $value');
   }
 }
-

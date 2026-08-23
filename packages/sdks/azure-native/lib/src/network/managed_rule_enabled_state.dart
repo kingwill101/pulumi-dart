@@ -15,4 +15,3 @@ enum ManagedRuleEnabledState {
     throw ArgumentError('Unknown ManagedRuleEnabledState value: $value');
   }
 }
-

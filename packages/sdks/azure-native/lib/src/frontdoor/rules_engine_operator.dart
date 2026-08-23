@@ -1,16 +1,16 @@
 /// Describes operator to apply to the match condition.
 enum RulesEngineOperator {
-  valueAny("Any"),
-  valueIPMatch("IPMatch"),
-  valueGeoMatch("GeoMatch"),
-  valueEqual("Equal"),
-  valueContains("Contains"),
-  valueLessThan("LessThan"),
-  valueGreaterThan("GreaterThan"),
-  valueLessThanOrEqual("LessThanOrEqual"),
-  valueGreaterThanOrEqual("GreaterThanOrEqual"),
-  valueBeginsWith("BeginsWith"),
-  valueEndsWith("EndsWith");
+  any("Any"),
+  iPMatch("IPMatch"),
+  geoMatch("GeoMatch"),
+  equal("Equal"),
+  contains("Contains"),
+  lessThan("LessThan"),
+  greaterThan("GreaterThan"),
+  lessThanOrEqual("LessThanOrEqual"),
+  greaterThanOrEqual("GreaterThanOrEqual"),
+  beginsWith("BeginsWith"),
+  endsWith("EndsWith");
 
   const RulesEngineOperator(this.wireValue);
   final String wireValue;
@@ -24,4 +24,3 @@ enum RulesEngineOperator {
     throw ArgumentError('Unknown RulesEngineOperator value: $value');
   }
 }
-

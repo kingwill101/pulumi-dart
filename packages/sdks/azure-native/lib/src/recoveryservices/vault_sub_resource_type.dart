@@ -16,4 +16,3 @@ enum VaultSubResourceType {
     throw ArgumentError('Unknown VaultSubResourceType value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum WebAppSitePropertiesDiscoveryScenario {
     throw ArgumentError('Unknown WebAppSitePropertiesDiscoveryScenario value: $value');
   }
 }
-

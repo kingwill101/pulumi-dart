@@ -19,4 +19,3 @@ enum PrivateLinkServiceConnectionProvisioningState {
     throw ArgumentError('Unknown PrivateLinkServiceConnectionProvisioningState value: $value');
   }
 }
-

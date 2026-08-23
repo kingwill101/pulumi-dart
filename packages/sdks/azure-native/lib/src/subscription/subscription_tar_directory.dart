@@ -59,6 +59,24 @@ import 'target_directory_result_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_subscription_subscriptiontardirectory" "subscriptionTarDirectory" {
+///   properties = {
+///     destination_owner_id  = "abhaypratap@live.com"
+///     destination_tenant_id = "111a82eb-4c7b-48bb-962b-49363c510130"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +86,8 @@ import 'target_directory_result_properties_response.dart';
 /// import com.pulumi.azurenative.subscription.SubscriptionTarDirectory;
 /// import com.pulumi.azurenative.subscription.SubscriptionTarDirectoryArgs;
 /// import com.pulumi.azurenative.subscription.inputs.TargetDirectoryRequestPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

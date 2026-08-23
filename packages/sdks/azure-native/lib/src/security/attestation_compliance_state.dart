@@ -1,8 +1,8 @@
 /// Attest category of this assignment
 enum AttestationComplianceState {
-  valueUnknown("unknown"),
-  valueCompliant("compliant"),
-  valueNonCompliant("nonCompliant");
+  unknown("unknown"),
+  compliant("compliant"),
+  nonCompliant("nonCompliant");
 
   const AttestationComplianceState(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum AttestationComplianceState {
     throw ArgumentError('Unknown AttestationComplianceState value: $value');
   }
 }
-

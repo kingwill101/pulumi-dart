@@ -20,4 +20,3 @@ enum ClusterState {
     throw ArgumentError('Unknown ClusterState value: $value');
   }
 }
-

@@ -1,10 +1,10 @@
 /// Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
 enum ManagedRuleExclusionSelectorMatchOperator {
-  valueEquals("Equals"),
-  valueContains("Contains"),
-  valueStartsWith("StartsWith"),
-  valueEndsWith("EndsWith"),
-  valueEqualsAny("EqualsAny");
+  equals("Equals"),
+  contains("Contains"),
+  startsWith("StartsWith"),
+  endsWith("EndsWith"),
+  equalsAny("EqualsAny");
 
   const ManagedRuleExclusionSelectorMatchOperator(this.wireValue);
   final String wireValue;
@@ -18,4 +18,3 @@ enum ManagedRuleExclusionSelectorMatchOperator {
     throw ArgumentError('Unknown ManagedRuleExclusionSelectorMatchOperator value: $value');
   }
 }
-

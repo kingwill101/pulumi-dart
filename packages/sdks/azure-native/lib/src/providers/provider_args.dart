@@ -35,6 +35,8 @@ class ProviderArgs {
   final pulumi.Input<String>? oidcRequestUrl;
   /// The OIDC token to exchange for an Azure token.
   final pulumi.Input<String>? oidcToken;
+  /// The path to a file containing an OIDC token to exchange for an Azure token.
+  final pulumi.Input<String>? oidcTokenFilePath;
   /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
   final pulumi.Input<String>? partnerId;
   /// The Subscription ID which should be used.
@@ -63,6 +65,7 @@ class ProviderArgs {
   /// [oidcRequestToken] Your cloud service or provider’s bearer token to exchange for an OIDC ID token.
   /// [oidcRequestUrl] The URL to initiate the `oidcRequestToken` OIDC token exchange.
   /// [oidcToken] The OIDC token to exchange for an Azure token.
+  /// [oidcTokenFilePath] The path to a file containing an OIDC token to exchange for an Azure token.
   /// [partnerId] A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
   /// [subscriptionId] The Subscription ID which should be used.
   /// [tenantId] The Tenant ID which should be used.
@@ -84,6 +87,7 @@ class ProviderArgs {
     this.oidcRequestToken,
     this.oidcRequestUrl,
     this.oidcToken,
+    this.oidcTokenFilePath,
     this.partnerId,
     this.subscriptionId,
     this.tenantId,
@@ -108,6 +112,7 @@ class ProviderArgs {
       'oidcRequestToken': ?oidcRequestToken,
       'oidcRequestUrl': ?oidcRequestUrl,
       'oidcToken': ?oidcToken,
+      'oidcTokenFilePath': ?oidcTokenFilePath,
       'partnerId': ?partnerId,
       'subscriptionId': ?subscriptionId,
       'tenantId': ?tenantId,
@@ -133,6 +138,7 @@ class ProviderArgs {
       oidcRequestToken: (() { final guardedValue = map['oidcRequestToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oidcRequestUrl: (() { final guardedValue = map['oidcRequestUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oidcToken: (() { final guardedValue = map['oidcToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oidcTokenFilePath: (() { final guardedValue = map['oidcTokenFilePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partnerId: (() { final guardedValue = map['partnerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -142,4 +148,3 @@ class ProviderArgs {
     );
   }
 }
-

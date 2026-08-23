@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_monitor_list_diagnostic_settings_category_args_doc}
 class ListDiagnosticSettingsCategoryArgs {
-  /// The identifier of the resource.
+  /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [ListDiagnosticSettingsCategoryArgs].
-  /// [resourceUri] The identifier of the resource.
+  /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   const ListDiagnosticSettingsCategoryArgs({
     required this.resourceUri,
   });
@@ -28,4 +28,3 @@ class ListDiagnosticSettingsCategoryArgs {
     );
   }
 }
-

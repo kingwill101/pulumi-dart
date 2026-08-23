@@ -15,4 +15,3 @@ enum ExpressRouteLinkMacSecSciState {
     throw ArgumentError('Unknown ExpressRouteLinkMacSecSciState value: $value');
   }
 }
-

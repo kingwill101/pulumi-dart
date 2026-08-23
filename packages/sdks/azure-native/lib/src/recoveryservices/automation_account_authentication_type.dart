@@ -15,4 +15,3 @@ enum AutomationAccountAuthenticationType {
     throw ArgumentError('Unknown AutomationAccountAuthenticationType value: $value');
   }
 }
-

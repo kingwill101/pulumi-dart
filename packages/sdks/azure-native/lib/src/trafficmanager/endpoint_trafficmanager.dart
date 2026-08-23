@@ -69,6 +69,30 @@ import 'endpoint_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   always_serve        = "Enabled"
+///   endpoint_location   = "North Europe"
+///   endpoint_name       = "azsmnet7187"
+///   endpoint_status     = "Enabled"
+///   endpoint_type       = "ExternalEndpoints"
+///   name                = "azsmnet7187"
+///   profile_name        = "azsmnet6386"
+///   resource_group_name = "azuresdkfornetautoresttrafficmanager1421"
+///   target              = "foobar.contoso.com"
+///   type                = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +101,8 @@ import 'endpoint_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.trafficmanager.Endpoint;
 /// import com.pulumi.azurenative.trafficmanager.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -245,6 +269,37 @@ import 'endpoint_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   custom_headers {
+///     name  = "header-1"
+///     value = "value-1"
+///   }
+///   custom_headers {
+///     name  = "header-2"
+///     value = "value-2"
+///   }
+///   endpoint_location   = "North Europe"
+///   endpoint_name       = "azsmnet7187"
+///   endpoint_status     = "Enabled"
+///   endpoint_type       = "ExternalEndpoints"
+///   name                = "azsmnet7187"
+///   profile_name        = "azsmnet6386"
+///   resource_group_name = "azuresdkfornetautoresttrafficmanager1421"
+///   target              = "foobar.contoso.com"
+///   type                = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +309,8 @@ import 'endpoint_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.Endpoint;
 /// import com.pulumi.azurenative.trafficmanager.EndpointArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.EndpointPropertiesCustomHeadersItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,6 +491,29 @@ import 'endpoint_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   endpoint_name       = "My%20external%20endpoint"
+///   endpoint_status     = "Enabled"
+///   endpoint_type       = "ExternalEndpoints"
+///   geo_mapping         = ["GEO-AS", "GEO-AF"]
+///   name                = "My external endpoint"
+///   profile_name        = "azuresdkfornetautoresttrafficmanager8224"
+///   resource_group_name = "azuresdkfornetautoresttrafficmanager2191"
+///   target              = "foobar.contoso.com"
+///   type                = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +522,8 @@ import 'endpoint_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.trafficmanager.Endpoint;
 /// import com.pulumi.azurenative.trafficmanager.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,6 +673,29 @@ import 'endpoint_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   endpoint_location   = "North Europe"
+///   endpoint_name       = "azsmnet7187"
+///   endpoint_status     = "Enabled"
+///   endpoint_type       = "ExternalEndpoints"
+///   name                = "azsmnet7187"
+///   profile_name        = "azsmnet6386"
+///   resource_group_name = "azuresdkfornetautoresttrafficmanager1421"
+///   target              = "foobar.contoso.com"
+///   type                = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -603,8 +704,8 @@ import 'endpoint_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.trafficmanager.Endpoint;
 /// import com.pulumi.azurenative.trafficmanager.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -765,6 +866,36 @@ import 'endpoint_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_trafficmanager_endpoint" "endpoint" {
+///   endpoint_name       = "My%20external%20endpoint"
+///   endpoint_status     = "Enabled"
+///   endpoint_type       = "ExternalEndpoints"
+///   name                = "My external endpoint"
+///   profile_name        = "azuresdkfornetautoresttrafficmanager8224"
+///   resource_group_name = "azuresdkfornetautoresttrafficmanager2191"
+///   subnets {
+///     first = "1.2.3.0"
+///     scope = 24
+///   }
+///   subnets {
+///     first = "25.26.27.28"
+///     last  = "29.30.31.32"
+///   }
+///   target = "foobar.contoso.com"
+///   type   = "Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -774,8 +905,8 @@ import 'endpoint_args.dart';
 /// import com.pulumi.azurenative.trafficmanager.Endpoint;
 /// import com.pulumi.azurenative.trafficmanager.EndpointArgs;
 /// import com.pulumi.azurenative.trafficmanager.inputs.EndpointPropertiesSubnetsItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

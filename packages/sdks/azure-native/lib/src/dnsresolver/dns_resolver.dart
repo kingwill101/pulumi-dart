@@ -71,6 +71,29 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dnsresolver_dnsresolver" "dnsResolver" {
+///   dns_resolver_name   = "sampleDnsResolver"
+///   location            = "westus2"
+///   resource_group_name = "sampleResourceGroup"
+///   tags = {
+///     "key1" = "value1"
+///   }
+///   virtual_network = {
+///     id = "/subscriptions/cbb1387e-4b03-44f2-ad41-58d4677b9873/resourceGroups/virtualNetworkResourceGroup/providers/Microsoft.Network/virtualNetworks/sampleVirtualNetwork"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -80,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.dnsresolver.DnsResolver;
 /// import com.pulumi.azurenative.dnsresolver.DnsResolverArgs;
 /// import com.pulumi.azurenative.dnsresolver.inputs.SubResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

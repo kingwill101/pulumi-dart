@@ -1,9 +1,9 @@
 /// The status of a private endpoint connection
 enum PrivateLinkServiceConnectionStatus {
-  valuePending("Pending"),
-  valueApproved("Approved"),
-  valueRejected("Rejected"),
-  valueDisconnected("Disconnected");
+  pending("Pending"),
+  approved("Approved"),
+  rejected("Rejected"),
+  disconnected("Disconnected");
 
   const PrivateLinkServiceConnectionStatus(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum PrivateLinkServiceConnectionStatus {
     throw ArgumentError('Unknown PrivateLinkServiceConnectionStatus value: $value');
   }
 }
-

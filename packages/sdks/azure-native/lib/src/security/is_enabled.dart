@@ -1,7 +1,7 @@
 /// Indicates whether the extension is enabled.
 enum IsEnabled {
-  valueTrue("True"),
-  valueFalse("False");
+  true_("True"),
+  false_("False");
 
   const IsEnabled(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum IsEnabled {
     throw ArgumentError('Unknown IsEnabled value: $value');
   }
 }
-

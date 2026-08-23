@@ -101,6 +101,38 @@ import 'throttling_information_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_alertsmanagement_smartdetectoralertrule" "smartDetectorAlertRule" {
+///   action_groups = {
+///     custom_email_subject   = "My custom email subject"
+///     custom_webhook_payload = "{\"AlertRuleName\":\"#alertrulename\"}"
+///     group_ids              = ["/subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourcegroups/actionGroups/providers/microsoft.insights/actiongroups/MyActionGroup"]
+///   }
+///   alert_rule_name = "MyAlertRule"
+///   description     = "Sample smart detector alert rule description"
+///   detector = {
+///     id = "VMMemoryLeak"
+///   }
+///   frequency           = "PT5M"
+///   resource_group_name = "MyAlertRules"
+///   scope               = ["/subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/MyVms/providers/Microsoft.Compute/virtualMachines/vm1"]
+///   severity            = "Sev3"
+///   state               = "Enabled"
+///   throttling = {
+///     duration = "PT20M"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +144,8 @@ import 'throttling_information_response.dart';
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ActionGroupsInformationArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.DetectorArgs;
 /// import com.pulumi.azurenative.alertsmanagement.inputs.ThrottlingInformationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

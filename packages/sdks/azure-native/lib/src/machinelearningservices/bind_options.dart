@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Describes the bind options for the container
 class BindOptions {
   /// Indicate whether to create host path.
   final pulumi.Input<bool>? createHostPath;
@@ -37,4 +36,3 @@ class BindOptions {
     );
   }
 }
-

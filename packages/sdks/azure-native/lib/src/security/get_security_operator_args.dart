@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_security_get_security_operator_args_doc}
 class GetSecurityOperatorArgs {
-  /// name of the pricing configuration
+  /// Name of the pricing configuration.
   final pulumi.Input<String> pricingName;
-  /// name of the securityOperator
+  /// Name of the security operator.
   final pulumi.Input<String> securityOperatorName;
 
   /// Creates a new [GetSecurityOperatorArgs].
-  /// [pricingName] name of the pricing configuration
-  /// [securityOperatorName] name of the securityOperator
+  /// [pricingName] Name of the pricing configuration.
+  /// [securityOperatorName] Name of the security operator.
   const GetSecurityOperatorArgs({
     required this.pricingName,
     required this.securityOperatorName,
@@ -34,4 +34,3 @@ class GetSecurityOperatorArgs {
     );
   }
 }
-

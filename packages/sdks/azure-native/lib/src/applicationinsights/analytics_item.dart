@@ -86,6 +86,27 @@ import 'application_insights_component_analytics_item_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_applicationinsights_analyticsitem" "analyticsItem" {
+///   content             = "let newExceptionsTimeRange = 1d;\nlet timeRangeToCheckBefore = 7d;\nexceptions\n| where timestamp < ago(timeRangeToCheckBefore)\n| summarize count() by problemId\n| join kind= rightanti (\nexceptions\n| where timestamp >= ago(newExceptionsTimeRange)\n| extend stack = tostring(details[0].rawStack)\n| summarize count(), dcount(user_AuthenticatedId), min(timestamp), max(timestamp), any(stack) by problemId  \n) on problemId \n| order by  count_ desc\n"
+///   name                = "Exceptions - New in the last 24 hours"
+///   resource_group_name = "my-resource-group"
+///   resource_name       = "my-component"
+///   scope               = "shared"
+///   scope_path          = "analyticsItems"
+///   type                = "query"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +115,8 @@ import 'application_insights_component_analytics_item_properties_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.applicationinsights.AnalyticsItem;
 /// import com.pulumi.azurenative.applicationinsights.AnalyticsItemArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

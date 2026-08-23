@@ -34,4 +34,3 @@ enum ProtectableContainerType {
     throw ArgumentError('Unknown ProtectableContainerType value: $value');
   }
 }
-

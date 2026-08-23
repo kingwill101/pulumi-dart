@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppSiteExtensionArgs {
   /// Site name.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site extension name.
   final pulumi.Input<String>? siteExtensionId;
 
   /// Creates a new [WebAppSiteExtensionArgs].
   /// [name] Site name.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteExtensionId] Site extension name.
   const WebAppSiteExtensionArgs({
     required this.name,
@@ -40,4 +40,3 @@ class WebAppSiteExtensionArgs {
     );
   }
 }
-

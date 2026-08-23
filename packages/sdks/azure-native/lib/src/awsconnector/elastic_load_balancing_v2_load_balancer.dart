@@ -54,6 +54,9 @@ import 'system_data_response.dart';
 ///                 {
 ///                     new AzureNative.AwsConnector.Inputs.SubnetMappingArgs
 ///                     {
+///                         AllocationId = "dkrqwrzo",
+///                         IPv6Address = "mglejntagkkkioov",
+///                         PrivateIPv4Address = "furnpiatzewmpnhapicnfy",
 ///                         SubnetId = "igo",
 ///                     },
 ///                 },
@@ -129,7 +132,10 @@ import 'system_data_response.dart';
 /// 					},
 /// 					SubnetMappings: awsconnector.SubnetMappingArray{
 /// 						&awsconnector.SubnetMappingArgs{
-/// 							SubnetId: pulumi.String("igo"),
+/// 							AllocationId:       pulumi.String("dkrqwrzo"),
+/// 							IPv6Address:        pulumi.String("mglejntagkkkioov"),
+/// 							PrivateIPv4Address: pulumi.String("furnpiatzewmpnhapicnfy"),
+/// 							SubnetId:           pulumi.String("igo"),
 /// 						},
 /// 					},
 /// 					Subnets: pulumi.StringArray{
@@ -165,6 +171,65 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_elasticloadbalancingv2loadbalancer" "elasticLoadBalancingV2LoadBalancer" {
+///   location = "zrpnzixidbktdxtkovhvkklslaw"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "kojgsx"
+///     aws_account_id = "eopxqyapnygxz"
+///     aws_properties = {
+///       canonical_hosted_zone_id                                     = "cpniwdbqzfxrbtnzkthjyohnbtq"
+///       dns_name                                                     = "mafoyhxa"
+///       enforce_security_group_inbound_rules_on_private_link_traffic = "gsefdpgmvnyizvpidgxdedsusstsmi"
+///       ip_address_type                                              = "ghelcjykqvyqrwtwydiwleni"
+///       load_balancer_arn                                            = "tswueurcdm"
+///       load_balancer_attributes = [{
+///         "key"   = "jmpasivxkgcqvadmp"
+///         "value" = "cbsgvwtlyhuclvjpye"
+///       }]
+///       load_balancer_full_name = "kmxzisdeike"
+///       load_balancer_name      = "bdspilcwdpibhmnlbygrgaebhvbz"
+///       name                    = "erwqxzfowfkksnodfytvnnyefbdsc"
+///       scheme                  = "nqjwo"
+///       security_groups         = ["tavqrnlv"]
+///       subnet_mappings = [{
+///         "allocationId"       = "dkrqwrzo"
+///         "iPv6Address"        = "mglejntagkkkioov"
+///         "privateIPv4Address" = "furnpiatzewmpnhapicnfy"
+///         "subnetId"           = "igo"
+///       }]
+///       subnets = ["xqblkoljy"]
+///       tags = [{
+///         "key"   = "eaenshgcpimgwtmxvu"
+///         "value" = "vxqjrslimcsyqfkfmjiqjcht"
+///       }]
+///       type = "ywggrkrojayvb"
+///     }
+///     aws_region        = "dplxwlbvhvz"
+///     aws_source_schema = "lnmi"
+///     aws_tags = {
+///       "key1771" = "wqbrpppfj"
+///     }
+///     public_cloud_connectors_resource_id = "udwcmojnxevoeyr"
+///     public_cloud_resource_name          = "oicaxqhgvlybdl"
+///   }
+///   resource_group_name = "rgelasticLoadBalancingV2LoadBalancer"
+///   tags = {
+///     "key4383" = "on"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -175,8 +240,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.ElasticLoadBalancingV2LoadBalancerArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ElasticLoadBalancingV2LoadBalancerPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsElasticLoadBalancingV2LoadBalancerPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -210,6 +275,9 @@ import 'system_data_response.dart';
 ///                     .scheme("nqjwo")
 ///                     .securityGroups("tavqrnlv")
 ///                     .subnetMappings(SubnetMappingArgs.builder()
+///                         .allocationId("dkrqwrzo")
+///                         .iPv6Address("mglejntagkkkioov")
+///                         .privateIPv4Address("furnpiatzewmpnhapicnfy")
 ///                         .subnetId("igo")
 ///                         .build())
 ///                     .subnets("xqblkoljy")
@@ -260,6 +328,9 @@ import 'system_data_response.dart';
 ///             scheme: "nqjwo",
 ///             securityGroups: ["tavqrnlv"],
 ///             subnetMappings: [{
+///                 allocationId: "dkrqwrzo",
+///                 iPv6Address: "mglejntagkkkioov",
+///                 privateIPv4Address: "furnpiatzewmpnhapicnfy",
 ///                 subnetId: "igo",
 ///             }],
 ///             subnets: ["xqblkoljy"],
@@ -311,6 +382,9 @@ import 'system_data_response.dart';
 ///             "scheme": "nqjwo",
 ///             "security_groups": ["tavqrnlv"],
 ///             "subnet_mappings": [{
+///                 "allocation_id": "dkrqwrzo",
+///                 "i_pv6_address": "mglejntagkkkioov",
+///                 "private_i_pv4_address": "furnpiatzewmpnhapicnfy",
 ///                 "subnet_id": "igo",
 ///             }],
 ///             "subnets": ["xqblkoljy"],
@@ -361,7 +435,10 @@ import 'system_data_response.dart';
 ///           securityGroups:
 ///             - tavqrnlv
 ///           subnetMappings:
-///             - subnetId: igo
+///             - allocationId: dkrqwrzo
+///               iPv6Address: mglejntagkkkioov
+///               privateIPv4Address: furnpiatzewmpnhapicnfy
+///               subnetId: igo
 ///           subnets:
 ///             - xqblkoljy
 ///           tags:

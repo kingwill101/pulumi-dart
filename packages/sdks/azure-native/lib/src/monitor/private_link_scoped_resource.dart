@@ -62,6 +62,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_privatelinkscopedresource" "privateLinkScopedResource" {
+///   kind                  = "PlatformMetrics"
+///   linked_resource_id    = "/subscriptions/00000000-1111-2222-3333-444444444444"
+///   name                  = "scoped-resource-name"
+///   resource_group_name   = "MyResourceGroup"
+///   scope_name            = "MyPrivateLinkScope"
+///   subscription_location = "eastus"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +90,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.PrivateLinkScopedResource;
 /// import com.pulumi.azurenative.monitor.PrivateLinkScopedResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,6 +211,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_monitor_privatelinkscopedresource" "privateLinkScopedResource" {
+///   kind                = "Resource"
+///   linked_resource_id  = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/components/my-component"
+///   name                = "scoped-resource-name"
+///   resource_group_name = "MyResourceGroup"
+///   scope_name          = "MyPrivateLinkScope"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +238,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.monitor.PrivateLinkScopedResource;
 /// import com.pulumi.azurenative.monitor.PrivateLinkScopedResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,7 +327,7 @@ class PrivateLinkScopedResource extends pulumi.CustomResource {
   late final pulumi.Output<String> provisioningState;
   /// The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
   late final pulumi.Output<String?> subscriptionLocation;
-  /// System data
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;

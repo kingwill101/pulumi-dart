@@ -94,6 +94,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_databoxedge_order" "order" {
+///   contact_information = {
+///     company_name   = "Microsoft"
+///     contact_person = "John Mcclane"
+///     email_list     = ["john@microsoft.com"]
+///     phone          = "(800) 426-9400"
+///   }
+///   device_name         = "testedgedevice"
+///   resource_group_name = "GroupForEdgeAutomation"
+///   shipping_address = {
+///     address_line1 = "Microsoft Corporation"
+///     address_line2 = "One Microsoft Way"
+///     address_line3 = "Redmond"
+///     city          = "WA"
+///     country       = "USA"
+///     postal_code   = "98052"
+///     state         = "WA"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +135,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.databoxedge.OrderArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.ContactDetailsArgs;
 /// import com.pulumi.azurenative.databoxedge.inputs.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

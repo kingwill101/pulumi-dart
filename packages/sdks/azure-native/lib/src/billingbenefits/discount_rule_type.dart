@@ -16,4 +16,3 @@ enum DiscountRuleType {
     throw ArgumentError('Unknown DiscountRuleType value: $value');
   }
 }
-

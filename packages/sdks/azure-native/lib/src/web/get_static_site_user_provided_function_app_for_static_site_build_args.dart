@@ -13,14 +13,14 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
   final pulumi.Input<String> functionAppName;
   /// Name of the static site.
   final pulumi.Input<String> name;
-  /// Name of the resource group to which the resource belongs.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs].
   /// [environmentName] The stage site identifier.
   /// [functionAppName] Name of the function app registered with the static site build.
   /// [name] Name of the static site.
-  /// [resourceGroupName] Name of the resource group to which the resource belongs.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs({
     required this.environmentName,
     required this.functionAppName,
@@ -46,4 +46,3 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
     );
   }
 }
-

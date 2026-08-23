@@ -15,4 +15,3 @@ enum DataMaskingMode {
     throw ArgumentError('Unknown DataMaskingMode value: $value');
   }
 }
-

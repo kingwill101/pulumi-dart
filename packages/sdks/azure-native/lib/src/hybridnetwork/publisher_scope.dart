@@ -15,4 +15,3 @@ enum PublisherScope {
     throw ArgumentError('Unknown PublisherScope value: $value');
   }
 }
-

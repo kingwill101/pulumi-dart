@@ -1,7 +1,7 @@
 /// AuthenticationType to be used for connection.
 enum TeradataAuthenticationType {
-  valueBasic("Basic"),
-  valueWindows("Windows");
+  basic("Basic"),
+  windows("Windows");
 
   const TeradataAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum TeradataAuthenticationType {
     throw ArgumentError('Unknown TeradataAuthenticationType value: $value');
   }
 }
-

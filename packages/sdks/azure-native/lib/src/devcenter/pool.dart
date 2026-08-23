@@ -82,6 +82,35 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_pool" "pool" {
+///   dev_box_definition_name = "WebDevBox"
+///   display_name            = "Developer Pool"
+///   license_type            = "Windows_Client"
+///   local_administrator     = "Enabled"
+///   location                = "centralus"
+///   network_connection_name = "Network1-westus2"
+///   pool_name               = "DevPool"
+///   project_name            = "DevProject"
+///   resource_group_name     = "rg1"
+///   single_sign_on_status   = "Disabled"
+///   stop_on_disconnect = {
+///     grace_period_minutes = 60
+///     status               = "Enabled"
+///   }
+///   virtual_network_type = "Unmanaged"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +120,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.Pool;
 /// import com.pulumi.azurenative.devcenter.PoolArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.StopOnDisconnectConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -275,6 +304,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_devcenter_pool" "pool" {
+///   dev_box_definition_name         = "WebDevBox"
+///   display_name                    = "Developer Pool"
+///   license_type                    = "Windows_Client"
+///   local_administrator             = "Enabled"
+///   location                        = "centralus"
+///   managed_virtual_network_regions = ["centralus"]
+///   network_connection_name         = "managedNetwork"
+///   pool_name                       = "DevPool"
+///   project_name                    = "DevProject"
+///   resource_group_name             = "rg1"
+///   single_sign_on_status           = "Disabled"
+///   stop_on_disconnect = {
+///     grace_period_minutes = 60
+///     status               = "Enabled"
+///   }
+///   virtual_network_type = "Managed"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -284,8 +343,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.devcenter.Pool;
 /// import com.pulumi.azurenative.devcenter.PoolArgs;
 /// import com.pulumi.azurenative.devcenter.inputs.StopOnDisconnectConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

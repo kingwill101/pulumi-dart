@@ -162,6 +162,56 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_m365securityandcompliance_privatelinkservicesformippolicysync" "privateLinkServicesForMIPPolicySync" {
+///   identity = {
+///     type = "SystemAssigned"
+///   }
+///   kind     = "fhir-R4"
+///   location = "westus2"
+///   properties = {
+///     access_policies = [{
+///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///       }, {
+///       "objectId" = "5b307da8-43d4-492b-8b66-b0294ade872f"
+///     }]
+///     authentication_configuration = {
+///       audience            = "https://azurehealthcareapis.com"
+///       authority           = "https://login.microsoftonline.com/abfde7b2-df0f-47e6-aabf-2462b07508dc"
+///       smart_proxy_enabled = true
+///     }
+///     cors_configuration = {
+///       allow_credentials = false
+///       headers           = ["*"]
+///       max_age           = 1440
+///       methods           = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
+///       origins           = ["*"]
+///     }
+///     cosmos_db_configuration = {
+///       key_vault_key_uri = "https://my-vault.vault.azure.net/keys/my-key"
+///       offer_throughput  = 1000
+///     }
+///     export_configuration = {
+///       storage_account_name = "existingStorageAccount"
+///     }
+///     private_endpoint_connections = []
+///     public_network_access        = "Disabled"
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "service1"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +226,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceCorsConfigurationInfoArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceCosmosDbConfigurationInfoArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServiceExportConfigurationInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -324,7 +374,7 @@ import 'system_data_response.dart';
 ///         "cors_configuration": {
 ///             "allow_credentials": False,
 ///             "headers": ["*"],
-///             "max_age": 1440,
+///             "max_age": float(1440),
 ///             "methods": [
 ///                 "DELETE",
 ///                 "GET",
@@ -337,7 +387,7 @@ import 'system_data_response.dart';
 ///         },
 ///         "cosmos_db_configuration": {
 ///             "key_vault_key_uri": "https://my-vault.vault.azure.net/keys/my-key",
-///             "offer_throughput": 1000,
+///             "offer_throughput": float(1000),
 ///         },
 ///         "export_configuration": {
 ///             "storage_account_name": "existingStorageAccount",
@@ -463,6 +513,30 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_m365securityandcompliance_privatelinkservicesformippolicysync" "privateLinkServicesForMIPPolicySync" {
+///   kind     = "fhir-R4"
+///   location = "westus2"
+///   properties = {
+///     access_policies = [{
+///       "objectId" = "c487e7d1-3210-41a3-8ccc-e9372b78da47"
+///     }]
+///   }
+///   resource_group_name = "rg1"
+///   resource_name       = "service2"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -472,8 +546,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.m365securityandcompliance.PrivateLinkServicesForMIPPolicySync;
 /// import com.pulumi.azurenative.m365securityandcompliance.PrivateLinkServicesForMIPPolicySyncArgs;
 /// import com.pulumi.azurenative.m365securityandcompliance.inputs.ServicesPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

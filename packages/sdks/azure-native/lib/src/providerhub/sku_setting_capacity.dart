@@ -43,4 +43,3 @@ class SkuSettingCapacity {
     );
   }
 }
-

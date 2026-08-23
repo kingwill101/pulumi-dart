@@ -15,4 +15,3 @@ enum Distribution {
     throw ArgumentError('Unknown Distribution value: $value');
   }
 }
-

@@ -80,6 +80,32 @@ import 'reference_data_set_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_timeseriesinsights_referencedataset" "referenceDataSet" {
+///   environment_name = "env1"
+///   key_properties {
+///     name = "DeviceId1"
+///     type = "String"
+///   }
+///   key_properties {
+///     name = "DeviceFloor"
+///     type = "Double"
+///   }
+///   location                = "West US"
+///   reference_data_set_name = "rds1"
+///   resource_group_name     = "rg1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +115,8 @@ import 'reference_data_set_args.dart';
 /// import com.pulumi.azurenative.timeseriesinsights.ReferenceDataSet;
 /// import com.pulumi.azurenative.timeseriesinsights.ReferenceDataSetArgs;
 /// import com.pulumi.azurenative.timeseriesinsights.inputs.ReferenceDataSetKeyPropertyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

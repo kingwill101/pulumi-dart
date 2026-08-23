@@ -31,4 +31,3 @@ class AS2ErrorSettingsResponse {
     );
   }
 }
-

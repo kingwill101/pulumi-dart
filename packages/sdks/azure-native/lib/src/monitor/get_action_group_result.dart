@@ -12,6 +12,7 @@ import 'itsm_receiver_response.dart';
 import 'logic_app_receiver_response.dart';
 import 'managed_service_identity_response.dart';
 import 'sms_receiver_response.dart';
+import 'system_data_response.dart';
 import 'voice_receiver_response.dart';
 import 'webhook_receiver_response.dart';
 
@@ -35,25 +36,27 @@ class GetActionGroupResult {
   final List<EventHubReceiverResponse>? eventHubReceivers;
   /// The short name of the action group. This will be used in SMS messages.
   final String groupShortName;
-  /// Azure resource Id
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// Managed service identity (system assigned and/or user assigned identities)
+  /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The list of incident receivers that are part of this action group.
   final List<IncidentReceiverResponse>? incidentReceivers;
   /// The list of ITSM receivers that are part of this action group.
   final List<ItsmReceiverResponse>? itsmReceivers;
-  /// Resource location
+  /// The geo-location where the resource lives
   final String location;
   /// The list of logic app receivers that are part of this action group.
   final List<LogicAppReceiverResponse>? logicAppReceivers;
-  /// Azure resource name
+  /// The name of the resource
   final String name;
   /// The list of SMS receivers that are part of this action group.
   final List<SmsReceiverResponse>? smsReceivers;
-  /// Resource tags
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// Resource tags.
   final Map<String, String>? tags;
-  /// Azure resource type
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The list of voice receivers that are part of this action group.
   final List<VoiceReceiverResponse>? voiceReceivers;
@@ -70,16 +73,17 @@ class GetActionGroupResult {
   /// [enabled] Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
   /// [eventHubReceivers] The list of event hub receivers that are part of this action group.
   /// [groupShortName] The short name of the action group. This will be used in SMS messages.
-  /// [id] Azure resource Id
-  /// [identity] Managed service identity (system assigned and/or user assigned identities)
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [identity] The managed service identities assigned to this resource.
   /// [incidentReceivers] The list of incident receivers that are part of this action group.
   /// [itsmReceivers] The list of ITSM receivers that are part of this action group.
-  /// [location] Resource location
+  /// [location] The geo-location where the resource lives
   /// [logicAppReceivers] The list of logic app receivers that are part of this action group.
-  /// [name] Azure resource name
+  /// [name] The name of the resource
   /// [smsReceivers] The list of SMS receivers that are part of this action group.
-  /// [tags] Resource tags
-  /// [type] Azure resource type
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [tags] Resource tags.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [voiceReceivers] The list of voice receivers that are part of this action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this action group.
   const GetActionGroupResult({
@@ -100,6 +104,7 @@ class GetActionGroupResult {
     this.logicAppReceivers,
     required this.name,
     this.smsReceivers,
+    required this.systemData,
     this.tags,
     required this.type,
     this.voiceReceivers,
@@ -125,6 +130,7 @@ class GetActionGroupResult {
       'logicAppReceivers': ?(() { final guardedValue = logicAppReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<LogicAppReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'name': name,
       'smsReceivers': ?(() { final guardedValue = smsReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<SmsReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
       'voiceReceivers': ?(() { final guardedValue = voiceReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<VoiceReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -151,6 +157,7 @@ class GetActionGroupResult {
       logicAppReceivers: (() { final guardedValue = map['logicAppReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogicAppReceiverResponse>(guardedValue, (value) => LogicAppReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: map['name'] as String,
       smsReceivers: (() { final guardedValue = map['smsReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SmsReceiverResponse>(guardedValue, (value) => SmsReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       type: map['type'] as String,
       voiceReceivers: (() { final guardedValue = map['voiceReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceReceiverResponse>(guardedValue, (value) => VoiceReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -158,4 +165,3 @@ class GetActionGroupResult {
     );
   }
 }
-

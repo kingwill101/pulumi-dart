@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getCertificate.
 class GetCertificateResult {
@@ -11,7 +12,7 @@ class GetCertificateResult {
   final String? description;
   /// Gets the expiry time of the certificate.
   final String expiryTime;
-  /// Fully qualified resource Id for the resource
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// Gets the is exportable flag of the certificate.
   final bool isExportable;
@@ -19,9 +20,11 @@ class GetCertificateResult {
   final String lastModifiedTime;
   /// The name of the resource
   final String name;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
   /// Gets the thumbprint of the certificate.
   final String thumbprint;
-  /// The type of the resource.
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
   /// Creates a new [GetCertificateResult].
@@ -29,12 +32,13 @@ class GetCertificateResult {
   /// [creationTime] Gets the creation time.
   /// [description] Gets or sets the description.
   /// [expiryTime] Gets the expiry time of the certificate.
-  /// [id] Fully qualified resource Id for the resource
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [isExportable] Gets the is exportable flag of the certificate.
   /// [lastModifiedTime] Gets the last modified time.
   /// [name] The name of the resource
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [thumbprint] Gets the thumbprint of the certificate.
-  /// [type] The type of the resource.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetCertificateResult({
     required this.azureApiVersion,
     required this.creationTime,
@@ -44,6 +48,7 @@ class GetCertificateResult {
     required this.isExportable,
     required this.lastModifiedTime,
     required this.name,
+    required this.systemData,
     required this.thumbprint,
     required this.type,
   });
@@ -58,6 +63,7 @@ class GetCertificateResult {
       'isExportable': isExportable,
       'lastModifiedTime': lastModifiedTime,
       'name': name,
+      'systemData': systemData.toMap(),
       'thumbprint': thumbprint,
       'type': type,
     };
@@ -73,9 +79,9 @@ class GetCertificateResult {
       isExportable: map['isExportable'] as bool,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       thumbprint: map['thumbprint'] as String,
       type: map['type'] as String,
     );
   }
 }
-

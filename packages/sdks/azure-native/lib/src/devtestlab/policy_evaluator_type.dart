@@ -15,4 +15,3 @@ enum PolicyEvaluatorType {
     throw ArgumentError('Unknown PolicyEvaluatorType value: $value');
   }
 }
-

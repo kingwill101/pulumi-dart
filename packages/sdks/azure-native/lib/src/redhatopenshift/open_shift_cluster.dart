@@ -166,6 +166,65 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_redhatopenshift_openshiftcluster" "openShiftCluster" {
+///   apiserver_profile = {
+///     visibility = "Public"
+///   }
+///   cluster_profile = {
+///     domain                 = "cluster.location.aroapp.io"
+///     fips_validated_modules = "Enabled"
+///     pull_secret            = "{\"auths\":{\"registry.connect.redhat.com\":{\"auth\":\"\"},\"registry.redhat.io\":{\"auth\":\"\"}}}"
+///     resource_group_id      = "/subscriptions/subscriptionId/resourceGroups/clusterResourceGroup"
+///   }
+///   ingress_profiles {
+///     name       = "default"
+///     visibility = "Public"
+///   }
+///   location = "location"
+///   master_profile = {
+///     encryption_at_host = "Enabled"
+///     subnet_id          = "/subscriptions/subscriptionId/resourceGroups/vnetResourceGroup/providers/Microsoft.Network/virtualNetworks/vnet/subnets/master"
+///     vm_size            = "Standard_D8s_v3"
+///   }
+///   network_profile = {
+///     load_balancer_profile = {
+///       managed_outbound_ips = {
+///         count = 1
+///       }
+///     }
+///     pod_cidr          = "10.128.0.0/14"
+///     preconfigured_nsg = "Disabled"
+///     service_cidr      = "172.30.0.0/16"
+///   }
+///   resource_group_name = "resourceGroup"
+///   resource_name       = "resourceName"
+///   service_principal_profile = {
+///     client_id     = "clientId"
+///     client_secret = "clientSecret"
+///   }
+///   tags = {
+///     "key" = "value"
+///   }
+///   worker_profiles {
+///     count        = 3
+///     disk_size_gb = 128
+///     name         = "worker"
+///     subnet_id    = "/subscriptions/subscriptionId/resourceGroups/vnetResourceGroup/providers/Microsoft.Network/virtualNetworks/vnet/subnets/worker"
+///     vm_size      = "Standard_D2s_v3"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +242,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.redhatopenshift.inputs.ManagedOutboundIPsArgs;
 /// import com.pulumi.azurenative.redhatopenshift.inputs.ServicePrincipalProfileArgs;
 /// import com.pulumi.azurenative.redhatopenshift.inputs.WorkerProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

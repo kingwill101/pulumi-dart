@@ -57,6 +57,24 @@ import 'linked_service_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_operationalinsights_linkedservice" "linkedService" {
+///   linked_service_name      = "Cluster"
+///   resource_group_name      = "mms-eus"
+///   workspace_name           = "TestLinkWS"
+///   write_access_resource_id = "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/clusters/testcluster"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +83,8 @@ import 'linked_service_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.operationalinsights.LinkedService;
 /// import com.pulumi.azurenative.operationalinsights.LinkedServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

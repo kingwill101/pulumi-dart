@@ -31,4 +31,3 @@ class GalleryImageVersionSafetyProfile {
     );
   }
 }
-

@@ -72,6 +72,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_powerbi_privateendpointconnection" "privateEndpointConnection" {
+///   azure_resource_name = "azureResourceName"
+///   private_endpoint = {
+///     id = "/subscriptions/a0020869-4d28-422a-89f4-c2413130d73c/resourceGroups/resourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpointName"
+///   }
+///   private_endpoint_name = "myPrivateEndpointName"
+///   private_link_service_connection_state = {
+///     actions_required = "None"
+///     description      = ""
+///     status           = "Approved "
+///   }
+///   resource_group_name = "resourceGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +107,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.powerbi.PrivateEndpointConnectionArgs;
 /// import com.pulumi.azurenative.powerbi.inputs.PrivateEndpointArgs;
 /// import com.pulumi.azurenative.powerbi.inputs.ConnectionStateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

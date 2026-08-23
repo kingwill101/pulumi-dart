@@ -1,6 +1,6 @@
 /// The incident management service type
 enum IncidentManagementService {
-  valueIcm("Icm");
+  icm("Icm");
 
   const IncidentManagementService(this.wireValue);
   final String wireValue;
@@ -14,4 +14,3 @@ enum IncidentManagementService {
     throw ArgumentError('Unknown IncidentManagementService value: $value');
   }
 }
-

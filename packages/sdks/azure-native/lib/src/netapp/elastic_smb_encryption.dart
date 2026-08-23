@@ -15,4 +15,3 @@ enum ElasticSmbEncryption {
     throw ArgumentError('Unknown ElasticSmbEncryption value: $value');
   }
 }
-

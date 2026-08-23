@@ -5,6 +5,7 @@ import 'access_review_instance_response.dart';
 import 'access_review_recurrence_range_response.dart';
 import 'access_review_reviewer_response.dart';
 import 'access_review_scope_response.dart';
+import 'system_data_response.dart';
 
 /// Result data returned by getAccessReviewScheduleDefinitionById.
 class GetAccessReviewScheduleDefinitionByIdResult {
@@ -24,7 +25,7 @@ class GetAccessReviewScheduleDefinitionByIdResult {
   final String? descriptionForReviewers;
   /// The display name for the schedule definition.
   final String? displayName;
-  /// The access review schedule definition id.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
   /// The duration in days for an instance.
   final int? instanceDurationInDays;
@@ -36,7 +37,7 @@ class GetAccessReviewScheduleDefinitionByIdResult {
   final bool? justificationRequiredOnApproval;
   /// Flag to indicate whether sending mails to reviewers and the review creator is enabled.
   final bool? mailNotificationsEnabled;
-  /// The access review schedule definition unique id.
+  /// The name of the resource
   final String name;
   /// The identity id
   final String principalId;
@@ -60,7 +61,9 @@ class GetAccessReviewScheduleDefinitionByIdResult {
   final AccessReviewScopeResponse scope;
   /// This read-only field specifies the status of an accessReview.
   final String status;
-  /// The resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// The user principal name(if valid)
   final String userPrincipalName;
@@ -74,13 +77,13 @@ class GetAccessReviewScheduleDefinitionByIdResult {
   /// [descriptionForAdmins] The description provided by the access review creator and visible to admins.
   /// [descriptionForReviewers] The description provided by the access review creator to be shown to reviewers.
   /// [displayName] The display name for the schedule definition.
-  /// [id] The access review schedule definition id.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [instanceDurationInDays] The duration in days for an instance.
   /// [instances] This is the collection of instances returned when one does an expand on it.
   /// [interval] The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   /// [justificationRequiredOnApproval] Flag to indicate whether the reviewer is required to pass justification when recording a decision.
   /// [mailNotificationsEnabled] Flag to indicate whether sending mails to reviewers and the review creator is enabled.
-  /// [name] The access review schedule definition unique id.
+  /// [name] The name of the resource
   /// [principalId] The identity id
   /// [principalName] The identity display name
   /// [principalType] The identity type : user/servicePrincipal
@@ -92,7 +95,8 @@ class GetAccessReviewScheduleDefinitionByIdResult {
   /// [reviewersType] This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
   /// [scope] This is used to define what to include in scope of the review. The scope definition includes the resourceId and roleDefinitionId.
   /// [status] This read-only field specifies the status of an accessReview.
-  /// [type] The resource type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userPrincipalName] The user principal name(if valid)
   const GetAccessReviewScheduleDefinitionByIdResult({
     this.autoApplyDecisionsEnabled,
@@ -121,6 +125,7 @@ class GetAccessReviewScheduleDefinitionByIdResult {
     required this.reviewersType,
     required this.scope,
     required this.status,
+    required this.systemData,
     required this.type,
     required this.userPrincipalName,
   });
@@ -153,6 +158,7 @@ class GetAccessReviewScheduleDefinitionByIdResult {
       'reviewersType': reviewersType,
       'scope': scope.toMap(),
       'status': status,
+      'systemData': systemData.toMap(),
       'type': type,
       'userPrincipalName': userPrincipalName,
     };
@@ -186,9 +192,9 @@ class GetAccessReviewScheduleDefinitionByIdResult {
       reviewersType: map['reviewersType'] as String,
       scope: AccessReviewScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>()),
       status: map['status'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       userPrincipalName: map['userPrincipalName'] as String,
     );
   }
 }
-

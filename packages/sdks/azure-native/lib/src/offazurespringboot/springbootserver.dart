@@ -76,6 +76,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazurespringboot_springbootserver" "springbootserver" {
+///   properties = {
+///     errors                   = []
+///     fqdn_and_ip_address_list = []
+///     machine_arm_id           = "fvfkiapbqsprnbzczdfmuryknrna"
+///     port                     = 10
+///     server                   = "thhuxocfyqpeluqcgnypi"
+///     spring_boot_apps         = 17
+///     total_apps               = 5
+///   }
+///   resource_group_name    = "rgspringbootservers"
+///   site_name              = "hlkrzldhyobavtabgpubtjbhlslnjmsvkthwcfboriwyxndacjypzbj"
+///   springbootservers_name = "zkarbqnwnxeozvjrkpdqmgnwedwgtwcmmyqwaijkn"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +111,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.offazurespringboot.Springbootserver;
 /// import com.pulumi.azurenative.offazurespringboot.SpringbootserverArgs;
 /// import com.pulumi.azurenative.offazurespringboot.inputs.SpringbootserversPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,6 +251,23 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazurespringboot_springbootserver" "springbootserver" {
+///   resource_group_name    = "rgspringbootservers"
+///   site_name              = "hlkrzldhyobavtabgpubtjbhlslnjmsvkthwcfboriwyxndacjypzbj"
+///   springbootservers_name = "zkarbqnwnxeozvjrkpdqmgnwedwgtwcmmyqwaijkn"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +276,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.offazurespringboot.Springbootserver;
 /// import com.pulumi.azurenative.offazurespringboot.SpringbootserverArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

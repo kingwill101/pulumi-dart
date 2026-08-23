@@ -17,4 +17,3 @@ enum LastBackupStatus {
     throw ArgumentError('Unknown LastBackupStatus value: $value');
   }
 }
-

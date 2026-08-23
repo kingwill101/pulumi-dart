@@ -120,6 +120,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_workloads_saplandscapemonitor" "sapLandscapeMonitor" {
+///   grouping = {
+///     landscape = [{
+///       "name"   = "Prod"
+///       "topSid" = ["SID1", "SID2"]
+///     }]
+///     sap_application = [{
+///       "name"   = "ERP1"
+///       "topSid" = ["SID1", "SID2"]
+///     }]
+///   }
+///   monitor_name        = "mySapMonitor"
+///   resource_group_name = "myResourceGroup"
+///   top_metrics_thresholds {
+///     green  = 90
+///     name   = "Instance Availability"
+///     red    = 50
+///     yellow = 75
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +162,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.workloads.SapLandscapeMonitorArgs;
 /// import com.pulumi.azurenative.workloads.inputs.SapLandscapeMonitorPropertiesGroupingArgs;
 /// import com.pulumi.azurenative.workloads.inputs.SapLandscapeMonitorMetricThresholdsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -230,10 +262,10 @@ import 'system_data_response.dart';
 ///     monitor_name="mySapMonitor",
 ///     resource_group_name="myResourceGroup",
 ///     top_metrics_thresholds=[{
-///         "green": 90,
+///         "green": float(90),
 ///         "name": "Instance Availability",
-///         "red": 50,
-///         "yellow": 75,
+///         "red": float(50),
+///         "yellow": float(75),
 ///     }])
 ///
 /// ```

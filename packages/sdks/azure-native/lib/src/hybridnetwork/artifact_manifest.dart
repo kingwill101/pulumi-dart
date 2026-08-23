@@ -93,6 +93,36 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_hybridnetwork_artifactmanifest" "artifactManifest" {
+///   artifact_manifest_name = "TestManifest"
+///   artifact_store_name    = "TestArtifactStore"
+///   location               = "eastus"
+///   properties = {
+///     artifacts = [{
+///       "artifactName"    = "fed-rbac"
+///       "artifactType"    = "OCIArtifact"
+///       "artifactVersion" = "1.0.0"
+///       }, {
+///       "artifactName"    = "nginx"
+///       "artifactType"    = "OCIArtifact"
+///       "artifactVersion" = "v1"
+///     }]
+///   }
+///   publisher_name      = "TestPublisher"
+///   resource_group_name = "rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +132,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.hybridnetwork.ArtifactManifest;
 /// import com.pulumi.azurenative.hybridnetwork.ArtifactManifestArgs;
 /// import com.pulumi.azurenative.hybridnetwork.inputs.ArtifactManifestPropertiesFormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

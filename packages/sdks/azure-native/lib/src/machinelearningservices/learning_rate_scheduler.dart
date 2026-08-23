@@ -1,8 +1,8 @@
-/// Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+/// Learning rate scheduler enum.
 enum LearningRateScheduler {
-  valueNone("None"),
-  valueWarmupCosine("WarmupCosine"),
-  valueStep("Step");
+  none("None"),
+  warmupCosine("WarmupCosine"),
+  step("Step");
 
   const LearningRateScheduler(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum LearningRateScheduler {
     throw ArgumentError('Unknown LearningRateScheduler value: $value');
   }
 }
-

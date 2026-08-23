@@ -66,6 +66,27 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_appplatform_apiportalcustomdomain" "apiPortalCustomDomain" {
+///   api_portal_name = "default"
+///   domain_name     = "myDomainName"
+///   properties = {
+///     thumbprint = "*"
+///   }
+///   resource_group_name = "myResourceGroup"
+///   service_name        = "myservice"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +96,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.appplatform.ApiPortalCustomDomain;
 /// import com.pulumi.azurenative.appplatform.ApiPortalCustomDomainArgs;
 /// import com.pulumi.azurenative.appplatform.inputs.ApiPortalCustomDomainPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

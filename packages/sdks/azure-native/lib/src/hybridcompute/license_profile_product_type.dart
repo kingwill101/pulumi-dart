@@ -15,4 +15,3 @@ enum LicenseProfileProductType {
     throw ArgumentError('Unknown LicenseProfileProductType value: $value');
   }
 }
-

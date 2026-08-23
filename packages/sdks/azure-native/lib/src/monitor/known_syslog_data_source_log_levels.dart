@@ -21,4 +21,3 @@ enum KnownSyslogDataSourceLogLevels {
     throw ArgumentError('Unknown KnownSyslogDataSourceLogLevels value: $value');
   }
 }
-

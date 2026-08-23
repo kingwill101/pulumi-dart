@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The logic app action that should be triggered. To learn more about Microsoft Defender for Cloud's Workflow Automation capabilities, visit https://aka.ms/ASCWorkflowAutomationLearnMore
 class AutomationActionLogicAppResponse {
-  /// The type of the action that will be triggered by the Automation
+  /// Enum. Indicates the action type.
   /// Expected value is 'LogicApp'.
   final pulumi.Input<String> actionType;
   /// The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
@@ -13,7 +13,7 @@ class AutomationActionLogicAppResponse {
   final pulumi.Input<String>? uri;
 
   /// Creates a new [AutomationActionLogicAppResponse].
-  /// [actionType] The type of the action that will be triggered by the Automation
+  /// [actionType] Enum. Indicates the action type.
   /// [logicAppResourceId] The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
   /// [uri] The Logic App trigger URI endpoint (it will not be included in any response).
   const AutomationActionLogicAppResponse({
@@ -38,4 +38,3 @@ class AutomationActionLogicAppResponse {
     );
   }
 }
-

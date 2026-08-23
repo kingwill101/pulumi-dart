@@ -66,6 +66,26 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+///   cluster_name        = "testcluster"
+///   location            = "westus"
+///   point_in_time_utc   = "2017-12-14T00:00:37.467Z"
+///   resource_group_name = "TestGroup"
+///   source_location     = "westus"
+///   source_resource_id  = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/source-cluster"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +94,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupCluster;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,6 +215,25 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+///   cluster_name        = "testcluster"
+///   location            = "westus"
+///   resource_group_name = "TestGroup"
+///   source_location     = "westus"
+///   source_resource_id  = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/sourcecluster"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +242,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupCluster;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,6 +386,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+///   administrator_login_password        = "password"
+///   citus_version                       = "11.3"
+///   cluster_name                        = "testcluster-custom-db-name"
+///   coordinator_enable_public_ip_access = true
+///   coordinator_server_edition          = "GeneralPurpose"
+///   coordinator_storage_quota_in_mb     = 131072
+///   coordinator_v_cores                 = 8
+///   database_name                       = "testdbname"
+///   enable_ha                           = true
+///   enable_shards_on_coordinator        = true
+///   location                            = "westus"
+///   node_count                          = 0
+///   postgresql_version                  = "15"
+///   preferred_primary_zone              = "1"
+///   resource_group_name                 = "TestGroup"
+///   tags = {
+///     "owner" = "JohnDoe"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +426,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupCluster;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -549,6 +620,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+///   administrator_login_password        = "password"
+///   citus_version                       = "11.1"
+///   cluster_name                        = "testcluster-multinode"
+///   coordinator_enable_public_ip_access = true
+///   coordinator_server_edition          = "GeneralPurpose"
+///   coordinator_storage_quota_in_mb     = 524288
+///   coordinator_v_cores                 = 4
+///   enable_ha                           = true
+///   enable_shards_on_coordinator        = false
+///   location                            = "westus"
+///   node_count                          = 3
+///   node_enable_public_ip_access        = false
+///   node_server_edition                 = "MemoryOptimized"
+///   node_storage_quota_in_mb            = 524288
+///   node_v_cores                        = 8
+///   postgresql_version                  = "15"
+///   preferred_primary_zone              = "1"
+///   resource_group_name                 = "TestGroup"
+///   tags                                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -557,8 +661,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupCluster;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -756,6 +860,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+///   administrator_login_password        = "password"
+///   citus_version                       = "11.3"
+///   cluster_name                        = "testcluster-burstablev1"
+///   coordinator_enable_public_ip_access = true
+///   coordinator_server_edition          = "BurstableMemoryOptimized"
+///   coordinator_storage_quota_in_mb     = 131072
+///   coordinator_v_cores                 = 1
+///   enable_ha                           = false
+///   enable_shards_on_coordinator        = true
+///   location                            = "westus"
+///   node_count                          = 0
+///   postgresql_version                  = "15"
+///   preferred_primary_zone              = "1"
+///   resource_group_name                 = "TestGroup"
+///   tags = {
+///     "owner" = "JohnDoe"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -764,8 +899,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupCluster;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -951,6 +1086,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+///   administrator_login_password        = "password"
+///   citus_version                       = "11.3"
+///   cluster_name                        = "testcluster-burstablev2"
+///   coordinator_enable_public_ip_access = true
+///   coordinator_server_edition          = "BurstableGeneralPurpose"
+///   coordinator_storage_quota_in_mb     = 131072
+///   coordinator_v_cores                 = 2
+///   enable_ha                           = false
+///   enable_shards_on_coordinator        = true
+///   location                            = "westus"
+///   node_count                          = 0
+///   postgresql_version                  = "15"
+///   preferred_primary_zone              = "1"
+///   resource_group_name                 = "TestGroup"
+///   tags = {
+///     "owner" = "JohnDoe"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -959,8 +1125,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupCluster;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1146,6 +1312,37 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_servergroupcluster" "serverGroupCluster" {
+///   administrator_login_password        = "password"
+///   citus_version                       = "11.3"
+///   cluster_name                        = "testcluster-singlenode"
+///   coordinator_enable_public_ip_access = true
+///   coordinator_server_edition          = "GeneralPurpose"
+///   coordinator_storage_quota_in_mb     = 131072
+///   coordinator_v_cores                 = 8
+///   enable_ha                           = true
+///   enable_shards_on_coordinator        = true
+///   location                            = "westus"
+///   node_count                          = 0
+///   postgresql_version                  = "15"
+///   preferred_primary_zone              = "1"
+///   resource_group_name                 = "TestGroup"
+///   tags = {
+///     "owner" = "JohnDoe"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -1154,8 +1351,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupCluster;
 /// import com.pulumi.azurenative.dbforpostgresql.ServerGroupClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -16,4 +16,3 @@ enum ManagedClusterUpgradeType {
     throw ArgumentError('Unknown ManagedClusterUpgradeType value: $value');
   }
 }
-

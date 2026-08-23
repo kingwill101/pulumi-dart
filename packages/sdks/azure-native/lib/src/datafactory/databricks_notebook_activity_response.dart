@@ -9,13 +9,13 @@ import 'user_property_response.dart';
 /// DatabricksNotebook activity.
 class DatabricksNotebookActivityResponse {
   /// Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
-  final pulumi.Input<Map<String, dynamic>>? baseParameters;
+  final pulumi.Input<dynamic>? baseParameters;
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
   /// Activity description.
   final pulumi.Input<String>? description;
   /// A list of libraries to be installed on the cluster that will execute the job.
-  final pulumi.Input<List<Map<String, dynamic>>>? libraries;
+  final pulumi.Input<List<dynamic>>? libraries;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
   /// Activity name.
@@ -81,10 +81,10 @@ class DatabricksNotebookActivityResponse {
 
   factory DatabricksNotebookActivityResponse.fromMap(Map<String, dynamic> map) {
     return DatabricksNotebookActivityResponse(
-      baseParameters: (() { final guardedValue = map['baseParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      baseParameters: (() { final guardedValue = map['baseParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependencyResponse>(guardedValue, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      libraries: (() { final guardedValue = map['libraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, dynamic>>()); })(),
+      libraries: (() { final guardedValue = map['libraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       notebookPath: pulumi.Input.fromValue(map['notebookPath']),
@@ -96,4 +96,3 @@ class DatabricksNotebookActivityResponse {
     );
   }
 }
-

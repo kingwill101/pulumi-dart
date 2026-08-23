@@ -19,4 +19,3 @@ enum NICType {
     throw ArgumentError('Unknown NICType value: $value');
   }
 }
-

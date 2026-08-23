@@ -15,4 +15,3 @@ enum AlertDetail {
     throw ArgumentError('Unknown AlertDetail value: $value');
   }
 }
-

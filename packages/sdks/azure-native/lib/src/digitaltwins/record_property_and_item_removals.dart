@@ -15,4 +15,3 @@ enum RecordPropertyAndItemRemovals {
     throw ArgumentError('Unknown RecordPropertyAndItemRemovals value: $value');
   }
 }
-

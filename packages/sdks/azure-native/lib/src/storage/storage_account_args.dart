@@ -67,7 +67,7 @@ class StorageAccountArgs {
   final pulumi.Input<String>? largeFileSharesState;
   /// Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
   final pulumi.Input<String>? location;
-  /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+  /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.
   final pulumi.Input<String>? minimumTlsVersion;
   /// Network rule set
   final pulumi.Input<NetworkRuleSet>? networkRuleSet;
@@ -109,7 +109,7 @@ class StorageAccountArgs {
   /// [kind] Required. Indicates the type of storage account.
   /// [largeFileSharesState] Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
   /// [location] Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
-  /// [minimumTlsVersion] Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+  /// [minimumTlsVersion] Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.
   /// [networkRuleSet] Network rule set
   /// [publicNetworkAccess] Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
@@ -226,4 +226,3 @@ class StorageAccountArgs {
     );
   }
 }
-

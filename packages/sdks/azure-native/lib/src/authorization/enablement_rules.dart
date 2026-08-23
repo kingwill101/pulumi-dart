@@ -1,8 +1,8 @@
 /// The type of enablement rule
 enum EnablementRules {
-  valueMultiFactorAuthentication("MultiFactorAuthentication"),
-  valueJustification("Justification"),
-  valueTicketing("Ticketing");
+  multiFactorAuthentication("MultiFactorAuthentication"),
+  justification("Justification"),
+  ticketing("Ticketing");
 
   const EnablementRules(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum EnablementRules {
     throw ArgumentError('Unknown EnablementRules value: $value');
   }
 }
-

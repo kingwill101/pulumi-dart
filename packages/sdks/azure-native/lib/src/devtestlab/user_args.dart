@@ -13,25 +13,25 @@ class UserArgs {
   final pulumi.Input<UserIdentity>? identity;
   /// The name of the lab.
   final pulumi.Input<String> labName;
-  /// The location of the resource.
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
-  /// The name of the User
+  /// The name of the user profile.
   final pulumi.Input<String>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The secret store of the user.
   final pulumi.Input<UserSecretStore>? secretStore;
-  /// The tags of the resource.
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [UserArgs].
   /// [identity] The identity of the user.
   /// [labName] The name of the lab.
-  /// [location] The location of the resource.
-  /// [name] The name of the User
+  /// [location] The geo-location where the resource lives
+  /// [name] The name of the user profile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [secretStore] The secret store of the user.
-  /// [tags] The tags of the resource.
+  /// [tags] Resource tags.
   const UserArgs({
     this.identity,
     required this.labName,
@@ -66,4 +66,3 @@ class UserArgs {
     );
   }
 }
-

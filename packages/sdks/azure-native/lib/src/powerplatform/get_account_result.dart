@@ -14,7 +14,7 @@ class GetAccountResult {
   final String location;
   /// The name of the resource
   final String name;
-  /// Metadata pertaining to creation and last modification of the resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
   /// The internally assigned unique identifier of the resource.
   final String systemId;
@@ -29,7 +29,7 @@ class GetAccountResult {
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [systemId] The internally assigned unique identifier of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -73,4 +73,3 @@ class GetAccountResult {
     );
   }
 }
-

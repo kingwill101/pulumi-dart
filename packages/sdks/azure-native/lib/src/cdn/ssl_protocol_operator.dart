@@ -14,4 +14,3 @@ enum SslProtocolOperator {
     throw ArgumentError('Unknown SslProtocolOperator value: $value');
   }
 }
-

@@ -22,11 +22,11 @@ class SourceControlArgs {
   final pulumi.Input<bool>? publishRunbook;
   /// The repo url of the source control.
   final pulumi.Input<String>? repoUrl;
-  /// Name of an Azure Resource group.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The authorization token for the repo of the source control.
   final pulumi.Input<SourceControlSecurityTokenProperties>? securityToken;
-  /// The source control name.
+  /// The name of source control.
   final pulumi.Input<String>? sourceControlName;
   /// The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
   final pulumi.Input<String>? sourceType;
@@ -39,9 +39,9 @@ class SourceControlArgs {
   /// [folderPath] The folder path of the source control. Path must be relative.
   /// [publishRunbook] The auto publish of the source control. Default is true.
   /// [repoUrl] The repo url of the source control.
-  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityToken] The authorization token for the repo of the source control.
-  /// [sourceControlName] The source control name.
+  /// [sourceControlName] The name of source control.
   /// [sourceType] The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
   const SourceControlArgs({
     this.autoSync,
@@ -89,4 +89,3 @@ class SourceControlArgs {
     );
   }
 }
-

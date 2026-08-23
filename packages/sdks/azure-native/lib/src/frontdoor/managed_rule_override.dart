@@ -13,17 +13,21 @@ class ManagedRuleOverride {
   final pulumi.Input<List<ManagedRuleExclusion>>? exclusions;
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
+  /// Describes the override sensitivity to be applied when rule matches.
+  final pulumi.Input<String>? sensitivity;
 
   /// Creates a new [ManagedRuleOverride].
   /// [action] Describes the override action to be applied when rule matches.
   /// [enabledState] Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
   /// [exclusions] Describes the exclusions that are applied to this specific rule.
   /// [ruleId] Identifier for the managed rule.
+  /// [sensitivity] Describes the override sensitivity to be applied when rule matches.
   const ManagedRuleOverride({
     this.action,
     this.enabledState,
     this.exclusions,
     required this.ruleId,
+    this.sensitivity,
   });
 
   Map<String, dynamic> toMap() {
@@ -32,6 +36,7 @@ class ManagedRuleOverride {
       'enabledState': ?enabledState,
       'exclusions': ?pulumi.Input.mapOptionalInputValue<List<ManagedRuleExclusion>, List<Map<String, dynamic>>>(exclusions, (value) => pulumi.Input.encodeList<ManagedRuleExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleId': ruleId,
+      'sensitivity': ?sensitivity,
     };
   }
 
@@ -41,7 +46,7 @@ class ManagedRuleOverride {
       enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleExclusion>(guardedValue, (value) => ManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
+      sensitivity: (() { final guardedValue = map['sensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

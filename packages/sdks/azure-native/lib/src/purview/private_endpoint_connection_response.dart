@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_response.dart';
 import 'private_link_service_connection_state_response.dart';
-import 'proxy_resource_response_system_data.dart';
+import 'system_data_response.dart';
 
 /// A private endpoint connection class.
 class PrivateEndpointConnectionResponse {
-  /// Gets or sets the identifier.
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
-  /// Gets or sets the name.
+  /// The name of the resource
   final pulumi.Input<String> name;
   /// The private endpoint information.
   final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
@@ -17,19 +17,19 @@ class PrivateEndpointConnectionResponse {
   final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
-  /// Metadata pertaining to creation and last modification of the resource.
-  final pulumi.Input<ProxyResourceResponseSystemData> systemData;
-  /// Gets or sets the type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
   /// Creates a new [PrivateEndpointConnectionResponse].
-  /// [id] Gets or sets the identifier.
-  /// [name] Gets or sets the name.
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [name] The name of the resource
   /// [privateEndpoint] The private endpoint information.
   /// [privateLinkServiceConnectionState] The private link service connection state.
   /// [provisioningState] The provisioning state.
-  /// [systemData] Metadata pertaining to creation and last modification of the resource.
-  /// [type] Gets or sets the type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const PrivateEndpointConnectionResponse({
     required this.id,
     required this.name,
@@ -47,7 +47,7 @@ class PrivateEndpointConnectionResponse {
       'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
       'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'systemData': pulumi.Input.mapInputValue<ProxyResourceResponseSystemData, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -59,9 +59,8 @@ class PrivateEndpointConnectionResponse {
       privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateLinkServiceConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      systemData: pulumi.Input.fromValue(ProxyResourceResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

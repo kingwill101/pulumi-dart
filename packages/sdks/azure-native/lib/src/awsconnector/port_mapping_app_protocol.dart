@@ -16,4 +16,3 @@ enum PortMappingAppProtocol {
     throw ArgumentError('Unknown PortMappingAppProtocol value: $value');
   }
 }
-

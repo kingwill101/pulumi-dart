@@ -17,4 +17,3 @@ enum DirectoryServiceOptions {
     throw ArgumentError('Unknown DirectoryServiceOptions value: $value');
   }
 }
-

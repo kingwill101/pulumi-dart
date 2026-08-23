@@ -17,4 +17,3 @@ enum ExpressRouteLinkMacSecCipher {
     throw ArgumentError('Unknown ExpressRouteLinkMacSecCipher value: $value');
   }
 }
-

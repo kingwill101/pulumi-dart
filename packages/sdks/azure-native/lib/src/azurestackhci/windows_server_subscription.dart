@@ -15,4 +15,3 @@ enum WindowsServerSubscription {
     throw ArgumentError('Unknown WindowsServerSubscription value: $value');
   }
 }
-

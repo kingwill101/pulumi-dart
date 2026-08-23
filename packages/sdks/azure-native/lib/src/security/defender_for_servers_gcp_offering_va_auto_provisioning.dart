@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'defender_for_servers_gcp_offering_configuration.dart';
+import 'defender_for_servers_gcp_offering_va_auto_provisioning_configuration.dart';
 
 /// The Vulnerability Assessment autoprovisioning configuration
 class DefenderForServersGcpOfferingVaAutoProvisioning {
   /// configuration for Vulnerability Assessment autoprovisioning
-  final pulumi.Input<DefenderForServersGcpOfferingConfiguration>? configuration;
+  final pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningConfiguration>? configuration;
   /// Is Vulnerability Assessment auto provisioning enabled
   final pulumi.Input<bool>? enabled;
 
@@ -20,16 +20,15 @@ class DefenderForServersGcpOfferingVaAutoProvisioning {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<DefenderForServersGcpOfferingVaAutoProvisioningConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
   factory DefenderForServersGcpOfferingVaAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingVaAutoProvisioning(
-      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForServersGcpOfferingVaAutoProvisioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

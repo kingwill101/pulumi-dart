@@ -7,6 +7,8 @@ import 'task_properties_response.dart';
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
 ///
+/// Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -72,6 +74,31 @@ import 'task_properties_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_migrate_task" "task" {
+///   project_name = "myProjectName"
+///   properties = {
+///     description  = "lzhl"
+///     display_name = "hhbrpibobilcoypvyiofvr"
+///     scope        = "Wave"
+///     scope_id     = "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/MyResourceGroup/providers/Microsoft.Migrate/migrateProjects/MyMigrateProject/waves/myWave"
+///     stage        = "klaemxmckhvyoooxyauqglexjna"
+///     status       = "Pending"
+///   }
+///   resource_group_name = "rgwaves"
+///   task_name           = "myTaskName"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -81,8 +108,8 @@ import 'task_properties_response.dart';
 /// import com.pulumi.azurenative.migrate.Task;
 /// import com.pulumi.azurenative.migrate.TaskArgs;
 /// import com.pulumi.azurenative.migrate.inputs.TaskPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

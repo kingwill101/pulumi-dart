@@ -54,6 +54,23 @@ import 'policy_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+///   artifact_name  = "storageTemplate"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -62,8 +79,8 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,6 +209,34 @@ import 'policy_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+///   artifact_name  = "costCenterPolicy"
+///   blueprint_name = "simpleBlueprint"
+///   display_name   = "force costCenter tag on all resources"
+///   kind           = "policyAssignment"
+///   parameters = {
+///     "tagName" = {
+///       value = "costCenter"
+///     }
+///     "tagValue" = {
+///       value = "[parameter('costCenter')]"
+///     }
+///   }
+///   policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62"
+///   resource_scope       = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +245,8 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,6 +391,23 @@ import 'policy_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+///   artifact_name  = "ownerAssignment"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -354,8 +416,8 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -459,6 +521,23 @@ import 'policy_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+///   artifact_name  = "storageTemplate"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -467,8 +546,8 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -597,6 +676,34 @@ import 'policy_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+///   artifact_name  = "costCenterPolicy"
+///   blueprint_name = "simpleBlueprint"
+///   display_name   = "force costCenter tag on all resources"
+///   kind           = "policyAssignment"
+///   parameters = {
+///     "tagName" = {
+///       value = "costCenter"
+///     }
+///     "tagValue" = {
+///       value = "[parameter('costCenter')]"
+///     }
+///   }
+///   policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62"
+///   resource_scope       = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -605,8 +712,8 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -751,6 +858,23 @@ import 'policy_assignment_artifact_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_blueprint_policyassignmentartifact" "policyAssignmentArtifact" {
+///   artifact_name  = "ownerAssignment"
+///   blueprint_name = "simpleBlueprint"
+///   resource_scope = "subscriptions/00000000-0000-0000-0000-000000000000"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -759,8 +883,8 @@ import 'policy_assignment_artifact_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifact;
 /// import com.pulumi.azurenative.blueprint.PolicyAssignmentArtifactArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

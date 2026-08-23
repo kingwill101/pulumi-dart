@@ -16,4 +16,3 @@ enum ResourceProviderCapabilitiesEffect {
     throw ArgumentError('Unknown ResourceProviderCapabilitiesEffect value: $value');
   }
 }
-

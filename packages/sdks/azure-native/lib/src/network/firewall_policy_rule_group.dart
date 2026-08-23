@@ -120,6 +120,39 @@ import 'firewall_policy_rule_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_firewallpolicyrulegroup" "firewallPolicyRuleGroup" {
+///   firewall_policy_name = "firewallPolicy"
+///   priority             = 110
+///   resource_group_name  = "rg1"
+///   rule_group_name      = "ruleGroup1"
+///   rules = [{
+///     "action" = {
+///       "type" = "Deny"
+///     }
+///     "name" = "Example-Filter-Rule"
+///     "ruleConditions" = [{
+///       "destinationAddresses" = ["*"]
+///       "destinationPorts"     = ["*"]
+///       "ipProtocols"          = ["TCP"]
+///       "name"                 = "network-condition1"
+///       "ruleConditionType"    = "NetworkRuleCondition"
+///       "sourceAddresses"      = ["10.1.25.0/24"]
+///     }]
+///     "ruleType" = "FirewallPolicyFilterRule"
+///   }]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +161,8 @@ import 'firewall_policy_rule_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleGroup;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,6 +389,39 @@ import 'firewall_policy_rule_group_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_network_firewallpolicyrulegroup" "firewallPolicyRuleGroup" {
+///   firewall_policy_name = "firewallPolicy"
+///   priority             = 110
+///   resource_group_name  = "rg1"
+///   rule_group_name      = "ruleGroup1"
+///   rules = [{
+///     "action" = {
+///       "type" = "Deny"
+///     }
+///     "name" = "Example-Filter-Rule"
+///     "ruleConditions" = [{
+///       "destinationIpGroups" = ["/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2"]
+///       "destinationPorts"    = ["*"]
+///       "ipProtocols"         = ["TCP"]
+///       "name"                = "network-condition1"
+///       "ruleConditionType"   = "NetworkRuleCondition"
+///       "sourceIpGroups"      = ["/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1"]
+///     }]
+///     "ruleType" = "FirewallPolicyFilterRule"
+///   }]
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -364,8 +430,8 @@ import 'firewall_policy_rule_group_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleGroup;
 /// import com.pulumi.azurenative.network.FirewallPolicyRuleGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -14,14 +14,14 @@ class ManagedNetworkSettingsRuleArgs {
   final pulumi.Input<String> resourceGroupName;
   /// Name of the workspace managed network outbound rule
   final pulumi.Input<String>? ruleName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [ManagedNetworkSettingsRuleArgs].
   /// [properties] Outbound Rule for the managed network of a machine learning workspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the workspace managed network outbound rule
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const ManagedNetworkSettingsRuleArgs({
     required this.properties,
     required this.resourceGroupName,
@@ -47,4 +47,3 @@ class ManagedNetworkSettingsRuleArgs {
     );
   }
 }
-

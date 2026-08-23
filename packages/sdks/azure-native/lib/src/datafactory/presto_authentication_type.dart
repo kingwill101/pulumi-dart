@@ -1,7 +1,7 @@
 /// The authentication mechanism used to connect to the Presto server.
 enum PrestoAuthenticationType {
-  valueAnonymous("Anonymous"),
-  valueLDAP("LDAP");
+  anonymous("Anonymous"),
+  lDAP("LDAP");
 
   const PrestoAuthenticationType(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum PrestoAuthenticationType {
     throw ArgumentError('Unknown PrestoAuthenticationType value: $value');
   }
 }
-

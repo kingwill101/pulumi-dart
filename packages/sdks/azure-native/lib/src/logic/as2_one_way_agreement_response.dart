@@ -39,4 +39,3 @@ class AS2OneWayAgreementResponse {
     );
   }
 }
-

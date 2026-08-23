@@ -1,34 +1,53 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agent_reference_properties_response.dart';
+import 'system_data_response.dart';
 
-/// Type modeling a reference to a version of an agent definition.
+/// Agent Reference resource
 class AgentReferenceResponse {
-  /// Gets the agent's unique identifier within the organization (subscription).
-  final pulumi.Input<String>? agentId;
-  /// Gets the agent's name (unique within the project/app).
-  final pulumi.Input<String>? agentName;
+  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  final pulumi.Input<String> id;
+  /// The name of the resource
+  final pulumi.Input<String> name;
+  /// [Required] Additional attributes of the entity.
+  final pulumi.Input<AgentReferencePropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final pulumi.Input<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentReferenceResponse].
-  /// [agentId] Gets the agent's unique identifier within the organization (subscription).
-  /// [agentName] Gets the agent's name (unique within the project/app).
+  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [name] The name of the resource
+  /// [properties] [Required] Additional attributes of the entity.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const AgentReferenceResponse({
-    this.agentId,
-    this.agentName,
+    required this.id,
+    required this.name,
+    required this.properties,
+    required this.systemData,
+    required this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentId': ?agentId,
-      'agentName': ?agentName,
+      'id': id,
+      'name': name,
+      'properties': pulumi.Input.mapInputValue<AgentReferencePropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'type': type,
     };
   }
 
   factory AgentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return AgentReferenceResponse(
-      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      agentName: (() { final guardedValue = map['agentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(AgentReferencePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

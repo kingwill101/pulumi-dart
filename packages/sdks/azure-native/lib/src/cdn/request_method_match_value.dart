@@ -19,4 +19,3 @@ enum RequestMethodMatchValue {
     throw ArgumentError('Unknown RequestMethodMatchValue value: $value');
   }
 }
-

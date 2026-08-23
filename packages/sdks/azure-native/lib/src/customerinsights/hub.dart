@@ -65,6 +65,28 @@ import 'hub_billing_info_format_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_customerinsights_hub" "hub" {
+///   hub_billing_info = {
+///     max_units = 5
+///     min_units = 1
+///     sku_name  = "B0"
+///   }
+///   hub_name            = "sdkTestHub"
+///   location            = "West US"
+///   resource_group_name = "TestHubRG"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +96,8 @@ import 'hub_billing_info_format_response.dart';
 /// import com.pulumi.azurenative.customerinsights.Hub;
 /// import com.pulumi.azurenative.customerinsights.HubArgs;
 /// import com.pulumi.azurenative.customerinsights.inputs.HubBillingInfoFormatArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

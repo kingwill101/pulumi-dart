@@ -55,6 +55,24 @@ import 'iot_hub_data_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_iothubdataconnection" "iotHubDataConnection" {
+///   cluster_name         = "kustoCluster"
+///   data_connection_name = "dataConnectionTest"
+///   database_name        = "KustoDatabase1"
+///   resource_group_name  = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +81,8 @@ import 'iot_hub_data_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.IotHubDataConnection;
 /// import com.pulumi.azurenative.kusto.IotHubDataConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +192,24 @@ import 'iot_hub_data_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_iothubdataconnection" "iotHubDataConnection" {
+///   cluster_name         = "kustoCluster"
+///   data_connection_name = "dataConnectionTest"
+///   database_name        = "KustoDatabase8"
+///   resource_group_name  = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +218,8 @@ import 'iot_hub_data_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.IotHubDataConnection;
 /// import com.pulumi.azurenative.kusto.IotHubDataConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,6 +329,24 @@ import 'iot_hub_data_connection_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_kusto_iothubdataconnection" "iotHubDataConnection" {
+///   cluster_name         = "kustoCluster"
+///   data_connection_name = "dataConnectionTest"
+///   database_name        = "KustoDatabase8"
+///   resource_group_name  = "kustorptest"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +355,8 @@ import 'iot_hub_data_connection_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.kusto.IotHubDataConnection;
 /// import com.pulumi.azurenative.kusto.IotHubDataConnectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

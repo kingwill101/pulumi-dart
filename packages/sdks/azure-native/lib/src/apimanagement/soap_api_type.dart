@@ -3,11 +3,14 @@
 /// * `soap` creates a SOAP pass-through API
 /// * `websocket` creates websocket API
 /// * `graphql` creates GraphQL API.
+/// New types can be added in the future.
 enum SoapApiType {
   soapToRest("http"),
   soapPassThrough("soap"),
   webSocket("websocket"),
-  graphQL("graphql");
+  graphQL("graphql"),
+  oData("odata"),
+  gRPC("grpc");
 
   const SoapApiType(this.wireValue);
   final String wireValue;
@@ -21,4 +24,3 @@ enum SoapApiType {
     throw ArgumentError('Unknown SoapApiType value: $value');
   }
 }
-

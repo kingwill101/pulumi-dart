@@ -38,4 +38,3 @@ class KeyVaultConnectionProperties {
     );
   }
 }
-

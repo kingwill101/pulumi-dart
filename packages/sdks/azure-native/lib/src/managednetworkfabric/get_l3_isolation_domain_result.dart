@@ -117,4 +117,3 @@ class GetL3IsolationDomainResult {
     );
   }
 }
-

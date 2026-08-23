@@ -15,4 +15,3 @@ enum ConnectivityTopology {
     throw ArgumentError('Unknown ConnectivityTopology value: $value');
   }
 }
-

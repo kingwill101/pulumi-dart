@@ -15,4 +15,3 @@ enum FeatureSet {
     throw ArgumentError('Unknown FeatureSet value: $value');
   }
 }
-

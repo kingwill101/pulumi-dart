@@ -5,9 +5,11 @@ import 'online_deployment_args.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
-/// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+/// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 ///
-/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+///
+/// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// ## Import
 ///
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
@@ -27,7 +29,7 @@ class OnlineDeployment extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<KubernetesOnlineDeploymentResponse> onlineDeploymentProperties;
+  late final pulumi.Output<KubernetesOnlineDeploymentResponse> properties;
   /// Sku details required for ARM contract for Autoscaling.
   late final pulumi.Output<SkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -56,7 +58,7 @@ class OnlineDeployment extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    onlineDeploymentProperties = registerOutput<KubernetesOnlineDeploymentResponse>('onlineDeploymentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesOnlineDeploymentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<KubernetesOnlineDeploymentResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesOnlineDeploymentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<Map<String, String>?>('tags');

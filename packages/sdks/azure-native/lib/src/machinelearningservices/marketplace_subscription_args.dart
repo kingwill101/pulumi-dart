@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'marketplace_subscription_machinelearningservices.dart';
+import 'marketplace_subscription_properties.dart';
 
 /// {@template pulumi_machinelearningservices_marketplace_subscription_args_doc}
 /// The set of arguments for MarketplaceSubscription.
 /// {@endtemplate}
 /// {@macro pulumi_machinelearningservices_marketplace_subscription_args_doc}
 class MarketplaceSubscriptionArgs {
-  /// [Required] Additional attributes of the entity.
-  final pulumi.Input<MarketplaceSubscriptionMachinelearningservices> marketplaceSubscriptionProperties;
-  /// Marketplace Subscription name.
+  /// Container name.
   final pulumi.Input<String>? name;
+  /// [Required] Additional attributes of the entity.
+  final pulumi.Input<MarketplaceSubscriptionProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Name of Azure Machine Learning workspace.
+  /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
   /// Creates a new [MarketplaceSubscriptionArgs].
-  /// [marketplaceSubscriptionProperties] [Required] Additional attributes of the entity.
-  /// [name] Marketplace Subscription name.
+  /// [name] Container name.
+  /// [properties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  /// [workspaceName] Name of Azure Machine Learning workspace.
+  /// [workspaceName] Azure Machine Learning Workspace Name
   const MarketplaceSubscriptionArgs({
-    required this.marketplaceSubscriptionProperties,
     this.name,
+    required this.properties,
     required this.resourceGroupName,
     required this.workspaceName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'marketplaceSubscriptionProperties': marketplaceSubscriptionProperties,
       'name': ?name,
+      'properties': pulumi.Input.mapInputValue<MarketplaceSubscriptionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -40,11 +40,10 @@ class MarketplaceSubscriptionArgs {
 
   factory MarketplaceSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MarketplaceSubscriptionArgs(
-      marketplaceSubscriptionProperties: pulumi.Input.fromValue(map['marketplaceSubscriptionProperties'] as MarketplaceSubscriptionMachinelearningservices),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      properties: pulumi.Input.fromValue(MarketplaceSubscriptionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

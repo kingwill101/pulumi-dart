@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_powerplatform_get_private_endpoint_connection_args_doc}
 class GetPrivateEndpointConnectionArgs {
-  /// EnterprisePolicy for the Microsoft Azure subscription.
+  /// The EnterprisePolicy name.
   final pulumi.Input<String> enterprisePolicyName;
   /// The name of the private endpoint connection.
   final pulumi.Input<String> privateEndpointConnectionName;
@@ -15,7 +15,7 @@ class GetPrivateEndpointConnectionArgs {
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPrivateEndpointConnectionArgs].
-  /// [enterprisePolicyName] EnterprisePolicy for the Microsoft Azure subscription.
+  /// [enterprisePolicyName] The EnterprisePolicy name.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetPrivateEndpointConnectionArgs({
@@ -40,4 +40,3 @@ class GetPrivateEndpointConnectionArgs {
     );
   }
 }
-

@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2023-10-20. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
 ///
-/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -106,6 +106,45 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datadog_monitor" "monitor" {
+///   location     = "West US"
+///   monitor_name = "myMonitor"
+///   properties = {
+///     datadog_organization_properties = {
+///       cspm              = false
+///       enterprise_app_id = "00000000-0000-0000-0000-000000000000"
+///       id                = "myOrg123"
+///       linking_auth_code = "someAuthCode"
+///       linking_client_id = "00000000-0000-0000-0000-000000000000"
+///       name              = "myOrg"
+///     }
+///     monitoring_status = "Enabled"
+///     user_info = {
+///       email_address = "alice@microsoft.com"
+///       name          = "Alice"
+///       phone_number  = "123-456-7890"
+///     }
+///   }
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "free_Monthly"
+///   }
+///   tags = {
+///     "Environment" = "Dev"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +157,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.datadog.inputs.DatadogOrganizationPropertiesArgs;
 /// import com.pulumi.azurenative.datadog.inputs.UserInfoArgs;
 /// import com.pulumi.azurenative.datadog.inputs.ResourceSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -1,7 +1,7 @@
 /// Gets or sets the sku name.
 enum AccountSkuName {
-  valueStandard("Standard"),
-  valueFree("Free");
+  standard("Standard"),
+  free("Free");
 
   const AccountSkuName(this.wireValue);
   final String wireValue;
@@ -15,4 +15,3 @@ enum AccountSkuName {
     throw ArgumentError('Unknown AccountSkuName value: $value');
   }
 }
-

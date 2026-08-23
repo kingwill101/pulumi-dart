@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 ///
-/// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01, 2026-02-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -97,6 +97,38 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_keyvault_managedhsm" "managedHsm" {
+///   location = "westus"
+///   name     = "hsm1"
+///   properties = {
+///     enable_purge_protection       = false
+///     enable_soft_delete            = true
+///     initial_admin_object_ids      = ["00000000-0000-0000-0000-000000000000"]
+///     soft_delete_retention_in_days = 90
+///     tenant_id                     = "00000000-0000-0000-0000-000000000000"
+///   }
+///   resource_group_name = "hsm-group"
+///   sku = {
+///     family = "B"
+///     name   = "Standard_B1"
+///   }
+///   tags = {
+///     "Dept"        = "hsm"
+///     "Environment" = "dogfood"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +139,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.keyvault.ManagedHsmArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.ManagedHsmPropertiesArgs;
 /// import com.pulumi.azurenative.keyvault.inputs.ManagedHsmSkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

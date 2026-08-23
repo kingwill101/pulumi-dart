@@ -30,6 +30,8 @@ class DeploymentPropertiesResponse {
   final pulumi.Input<List<ThrottlingRuleResponse>> rateLimits;
   /// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
   final pulumi.Input<DeploymentScaleSettingsResponse>? scaleSettings;
+  /// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+  final pulumi.Input<String>? spilloverDeploymentName;
   /// Deployment model version upgrade option.
   final pulumi.Input<String>? versionUpgradeOption;
 
@@ -45,6 +47,7 @@ class DeploymentPropertiesResponse {
   /// [raiPolicyName] The name of RAI policy.
   /// [rateLimits] Required.
   /// [scaleSettings] Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
+  /// [spilloverDeploymentName] Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
   /// [versionUpgradeOption] Deployment model version upgrade option.
   const DeploymentPropertiesResponse({
     required this.callRateLimit,
@@ -58,6 +61,7 @@ class DeploymentPropertiesResponse {
     this.raiPolicyName,
     required this.rateLimits,
     this.scaleSettings,
+    this.spilloverDeploymentName,
     this.versionUpgradeOption,
   });
 
@@ -74,6 +78,7 @@ class DeploymentPropertiesResponse {
       'raiPolicyName': ?raiPolicyName,
       'rateLimits': pulumi.Input.mapInputValue<List<ThrottlingRuleResponse>, List<Map<String, dynamic>>>(rateLimits, (value) => pulumi.Input.encodeList<ThrottlingRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scaleSettings': ?pulumi.Input.mapOptionalInputValue<DeploymentScaleSettingsResponse, Map<String, dynamic>>(scaleSettings, (value) => value.toMap()),
+      'spilloverDeploymentName': ?spilloverDeploymentName,
       'versionUpgradeOption': ?versionUpgradeOption,
     };
   }
@@ -91,8 +96,8 @@ class DeploymentPropertiesResponse {
       raiPolicyName: (() { final guardedValue = map['raiPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rateLimits: pulumi.Input.fromValue(pulumi.Input.decodeList<ThrottlingRuleResponse>(map['rateLimits']!, (value) => ThrottlingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))),
       scaleSettings: (() { final guardedValue = map['scaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentScaleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      spilloverDeploymentName: (() { final guardedValue = map['spilloverDeploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionUpgradeOption: (() { final guardedValue = map['versionUpgradeOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

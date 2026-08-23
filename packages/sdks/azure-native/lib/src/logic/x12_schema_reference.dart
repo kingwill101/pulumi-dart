@@ -43,4 +43,3 @@ class X12SchemaReference {
     );
   }
 }
-

@@ -87,4 +87,3 @@ class GetB2CTenantResult {
     );
   }
 }
-

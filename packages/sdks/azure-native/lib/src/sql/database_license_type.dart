@@ -15,4 +15,3 @@ enum DatabaseLicenseType {
     throw ArgumentError('Unknown DatabaseLicenseType value: $value');
   }
 }
-

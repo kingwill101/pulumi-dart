@@ -7,6 +7,8 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
 ///
+/// Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
 /// {{% examples %}}
 /// ## Example Usage
 /// {{% example %}}
@@ -100,6 +102,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cognitiveservices_agentdeployment" "agentDeployment" {
+///   account_name    = "my-cognitive-services-account"
+///   app_name        = "agent-app-1"
+///   deployment_name = "deployment-1"
+///   project_name    = "my-project"
+///   properties = {
+///     "agents" = [{
+///       "agentId"      = "agent-123"
+///       "agentName"    = "support-agent"
+///       "agentVersion" = "1.0.0"
+///     }]
+///     "deploymentType" = "Managed"
+///     "displayName"    = "Production Deployment"
+///     "protocols" = [{
+///       "protocol" = "Agent"
+///       "version"  = "1.0"
+///     }]
+///     "state" = "Starting"
+///   }
+///   resource_group_name = "test-rg"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -108,8 +143,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.cognitiveservices.AgentDeployment;
 /// import com.pulumi.azurenative.cognitiveservices.AgentDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

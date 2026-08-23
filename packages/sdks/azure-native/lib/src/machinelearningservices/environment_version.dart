@@ -1,98 +1,402 @@
-// ignore_for_file: unused_element, unnecessary_cast
-
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'build_context.dart';
-import 'inference_container_properties.dart';
+import 'environment_version_args.dart';
+import 'environment_version_properties_response.dart';
+import 'system_data_response.dart';
 
-/// Environment version details.
-class EnvironmentVersion {
-  /// Defines if image needs to be rebuilt based on base image changes.
-  final pulumi.Input<String>? autoRebuild;
-  /// Configuration settings for Docker build context.
-  final pulumi.Input<BuildContext>? build;
-  /// Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
-  /// &lt;see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" /&gt;
-  final pulumi.Input<String>? condaFile;
-  /// The asset description text.
-  final pulumi.Input<String>? description;
-  /// Name of the image that will be used for the environment.
-  /// &lt;seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /&gt;
-  final pulumi.Input<String>? image;
-  /// Defines configuration specific to inference.
-  final pulumi.Input<InferenceContainerProperties>? inferenceConfig;
-  /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
-  /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
-  /// The OS type of the environment.
-  final pulumi.Input<String>? osType;
-  /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
-  /// Stage in the environment lifecycle assigned to this environment
-  final pulumi.Input<String>? stage;
-  /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+/// Azure Resource Manager resource envelope.
+///
+/// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+///
+/// Other available API versions: 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+///
+/// {{% examples %}}
+/// ## Example Usage
+/// {{% example %}}
+/// ### CreateOrUpdate Workspace Environment Version.
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureNative = Pulumi.AzureNative;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var environmentVersion = new AzureNative.MachineLearningServices.EnvironmentVersion("environmentVersion", new()
+///     {
+///         Name = "string",
+///         Properties = new AzureNative.MachineLearningServices.Inputs.EnvironmentVersionPropertiesArgs
+///         {
+///             Build = new AzureNative.MachineLearningServices.Inputs.BuildContextArgs
+///             {
+///                 ContextUri = "https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/",
+///                 DockerfilePath = "prod/Dockerfile",
+///             },
+///             CondaFile = "string",
+///             Description = "string",
+///             Image = "docker.io/tensorflow/serving:latest",
+///             InferenceConfig = new AzureNative.MachineLearningServices.Inputs.InferenceContainerPropertiesArgs
+///             {
+///                 LivenessRoute = new AzureNative.MachineLearningServices.Inputs.RouteArgs
+///                 {
+///                     Path = "string",
+///                     Port = 1,
+///                 },
+///                 ReadinessRoute = new AzureNative.MachineLearningServices.Inputs.RouteArgs
+///                 {
+///                     Path = "string",
+///                     Port = 1,
+///                 },
+///                 ScoringRoute = new AzureNative.MachineLearningServices.Inputs.RouteArgs
+///                 {
+///                     Path = "string",
+///                     Port = 1,
+///                 },
+///             },
+///             IsAnonymous = false,
+///             Properties =
+///             {
+///                 { "string", "string" },
+///             },
+///             Tags =
+///             {
+///                 { "string", "string" },
+///             },
+///         },
+///         ResourceGroupName = "test-rg",
+///         Version = "string",
+///         WorkspaceName = "my-aml-workspace",
+///     });
+///
+/// });
+///
+///
+/// ```
+///
+/// ```go
+/// package main
+///
+/// import (
+/// 	machinelearningservices "github.com/pulumi/pulumi-azure-native-sdk/machinelearningservices/v3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := machinelearningservices.NewEnvironmentVersion(ctx, "environmentVersion", &machinelearningservices.EnvironmentVersionArgs{
+/// 			Name: pulumi.String("string"),
+/// 			Properties: &machinelearningservices.EnvironmentVersionPropertiesArgs{
+/// 				Build: &machinelearningservices.BuildContextArgs{
+/// 					ContextUri:     pulumi.String("https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/"),
+/// 					DockerfilePath: pulumi.String("prod/Dockerfile"),
+/// 				},
+/// 				CondaFile:   pulumi.String("string"),
+/// 				Description: pulumi.String("string"),
+/// 				Image:       pulumi.String("docker.io/tensorflow/serving:latest"),
+/// 				InferenceConfig: &machinelearningservices.InferenceContainerPropertiesArgs{
+/// 					LivenessRoute: &machinelearningservices.RouteArgs{
+/// 						Path: pulumi.String("string"),
+/// 						Port: pulumi.Int(1),
+/// 					},
+/// 					ReadinessRoute: &machinelearningservices.RouteArgs{
+/// 						Path: pulumi.String("string"),
+/// 						Port: pulumi.Int(1),
+/// 					},
+/// 					ScoringRoute: &machinelearningservices.RouteArgs{
+/// 						Path: pulumi.String("string"),
+/// 						Port: pulumi.Int(1),
+/// 					},
+/// 				},
+/// 				IsAnonymous: pulumi.Bool(false),
+/// 				Properties: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 				Tags: pulumi.StringMap{
+/// 					"string": pulumi.String("string"),
+/// 				},
+/// 			},
+/// 			ResourceGroupName: pulumi.String("test-rg"),
+/// 			Version:           pulumi.String("string"),
+/// 			WorkspaceName:     pulumi.String("my-aml-workspace"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+///
+/// ```
+///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearningservices_environmentversion" "environmentVersion" {
+///   name = "string"
+///   properties = {
+///     build = {
+///       context_uri     = "https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/"
+///       dockerfile_path = "prod/Dockerfile"
+///     }
+///     conda_file  = "string"
+///     description = "string"
+///     image       = "docker.io/tensorflow/serving:latest"
+///     inference_config = {
+///       liveness_route = {
+///         path = "string"
+///         port = 1
+///       }
+///       readiness_route = {
+///         path = "string"
+///         port = 1
+///       }
+///       scoring_route = {
+///         path = "string"
+///         port = 1
+///       }
+///     }
+///     is_anonymous = false
+///     properties = {
+///       "string" = "string"
+///     }
+///     tags = {
+///       "string" = "string"
+///     }
+///   }
+///   resource_group_name = "test-rg"
+///   version             = "string"
+///   workspace_name      = "my-aml-workspace"
+/// }
+///
+/// ```
+///
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azurenative.machinelearningservices.EnvironmentVersion;
+/// import com.pulumi.azurenative.machinelearningservices.EnvironmentVersionArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.EnvironmentVersionPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.BuildContextArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.InferenceContainerPropertiesArgs;
+/// import com.pulumi.azurenative.machinelearningservices.inputs.RouteArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var environmentVersion = new EnvironmentVersion("environmentVersion", EnvironmentVersionArgs.builder()
+///             .name("string")
+///             .properties(EnvironmentVersionPropertiesArgs.builder()
+///                 .build(BuildContextArgs.builder()
+///                     .contextUri("https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/")
+///                     .dockerfilePath("prod/Dockerfile")
+///                     .build())
+///                 .condaFile("string")
+///                 .description("string")
+///                 .image("docker.io/tensorflow/serving:latest")
+///                 .inferenceConfig(InferenceContainerPropertiesArgs.builder()
+///                     .livenessRoute(RouteArgs.builder()
+///                         .path("string")
+///                         .port(1)
+///                         .build())
+///                     .readinessRoute(RouteArgs.builder()
+///                         .path("string")
+///                         .port(1)
+///                         .build())
+///                     .scoringRoute(RouteArgs.builder()
+///                         .path("string")
+///                         .port(1)
+///                         .build())
+///                     .build())
+///                 .isAnonymous(false)
+///                 .properties(Map.of("string", "string"))
+///                 .tags(Map.of("string", "string"))
+///                 .build())
+///             .resourceGroupName("test-rg")
+///             .version("string")
+///             .workspaceName("my-aml-workspace")
+///             .build());
+///
+///     }
+/// }
+///
+/// ```
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure_native from "@pulumi/azure-native";
+///
+/// const environmentVersion = new azure_native.machinelearningservices.EnvironmentVersion("environmentVersion", {
+///     name: "string",
+///     properties: {
+///         build: {
+///             contextUri: "https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/",
+///             dockerfilePath: "prod/Dockerfile",
+///         },
+///         condaFile: "string",
+///         description: "string",
+///         image: "docker.io/tensorflow/serving:latest",
+///         inferenceConfig: {
+///             livenessRoute: {
+///                 path: "string",
+///                 port: 1,
+///             },
+///             readinessRoute: {
+///                 path: "string",
+///                 port: 1,
+///             },
+///             scoringRoute: {
+///                 path: "string",
+///                 port: 1,
+///             },
+///         },
+///         isAnonymous: false,
+///         properties: {
+///             string: "string",
+///         },
+///         tags: {
+///             string: "string",
+///         },
+///     },
+///     resourceGroupName: "test-rg",
+///     version: "string",
+///     workspaceName: "my-aml-workspace",
+/// });
+///
+/// ```
+///
+/// ```python
+/// import pulumi
+/// import pulumi_azure_native as azure_native
+///
+/// environment_version = azure_native.machinelearningservices.EnvironmentVersion("environmentVersion",
+///     name="string",
+///     properties={
+///         "build": {
+///             "context_uri": "https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/",
+///             "dockerfile_path": "prod/Dockerfile",
+///         },
+///         "conda_file": "string",
+///         "description": "string",
+///         "image": "docker.io/tensorflow/serving:latest",
+///         "inference_config": {
+///             "liveness_route": {
+///                 "path": "string",
+///                 "port": 1,
+///             },
+///             "readiness_route": {
+///                 "path": "string",
+///                 "port": 1,
+///             },
+///             "scoring_route": {
+///                 "path": "string",
+///                 "port": 1,
+///             },
+///         },
+///         "is_anonymous": False,
+///         "properties": {
+///             "string": "string",
+///         },
+///         "tags": {
+///             "string": "string",
+///         },
+///     },
+///     resource_group_name="test-rg",
+///     version="string",
+///     workspace_name="my-aml-workspace")
+///
+/// ```
+///
+/// ```yaml
+/// resources:
+///   environmentVersion:
+///     type: azure-native:machinelearningservices:EnvironmentVersion
+///     properties:
+///       name: string
+///       properties:
+///         build:
+///           contextUri: https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/
+///           dockerfilePath: prod/Dockerfile
+///         condaFile: string
+///         description: string
+///         image: docker.io/tensorflow/serving:latest
+///         inferenceConfig:
+///           livenessRoute:
+///             path: string
+///             port: 1
+///           readinessRoute:
+///             path: string
+///             port: 1
+///           scoringRoute:
+///             path: string
+///             port: 1
+///         isAnonymous: false
+///         properties:
+///           string: string
+///         tags:
+///           string: string
+///       resourceGroupName: test-rg
+///       version: string
+///       workspaceName: my-aml-workspace
+///
+/// ```
+///
+/// {{% /example %}}
+/// {{% /examples %}}
+///
+/// ## Import
+///
+/// An existing resource can be imported using its type token, name, and identifier, e.g.
+///
+/// ```sh
+/// $ pulumi import azure-native:machinelearningservices:EnvironmentVersion string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}
+/// ```
+class EnvironmentVersion extends pulumi.CustomResource {
+  /// The Azure API version of the resource.
+  late final pulumi.Output<String> azureApiVersion;
+  /// The name of the resource
+  late final pulumi.Output<String> name;
+  /// [Required] Additional attributes of the entity.
+  late final pulumi.Output<EnvironmentVersionPropertiesResponse> properties;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  late final pulumi.Output<String> type;
 
   /// Creates a new [EnvironmentVersion].
-  /// [autoRebuild] Defines if image needs to be rebuilt based on base image changes.
-  /// [build] Configuration settings for Docker build context.
-  /// [condaFile] Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
-  /// [description] The asset description text.
-  /// [image] Name of the image that will be used for the environment.
-  /// [inferenceConfig] Defines configuration specific to inference.
-  /// [isAnonymous] If the name version are system generated (anonymous registration).
-  /// [isArchived] Is the asset archived?
-  /// [osType] The OS type of the environment.
-  /// [properties] The asset property dictionary.
-  /// [stage] Stage in the environment lifecycle assigned to this environment
-  /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const EnvironmentVersion({
-    this.autoRebuild,
-    this.build,
-    this.condaFile,
-    this.description,
-    this.image,
-    this.inferenceConfig,
-    this.isAnonymous,
-    this.isArchived,
-    this.osType,
-    this.properties,
-    this.stage,
-    this.tags,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'autoRebuild': ?autoRebuild,
-      'build': ?pulumi.Input.mapOptionalInputValue<BuildContext, Map<String, dynamic>>(build, (value) => value.toMap()),
-      'condaFile': ?condaFile,
-      'description': ?description,
-      'image': ?image,
-      'inferenceConfig': ?pulumi.Input.mapOptionalInputValue<InferenceContainerProperties, Map<String, dynamic>>(inferenceConfig, (value) => value.toMap()),
-      'isAnonymous': ?isAnonymous,
-      'isArchived': ?isArchived,
-      'osType': ?osType,
-      'properties': ?properties,
-      'stage': ?stage,
-      'tags': ?tags,
-    };
-  }
-
-  factory EnvironmentVersion.fromMap(Map<String, dynamic> map) {
-    return EnvironmentVersion(
-      autoRebuild: (() { final guardedValue = map['autoRebuild']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      build: (() { final guardedValue = map['build']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      condaFile: (() { final guardedValue = map['condaFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      inferenceConfig: (() { final guardedValue = map['inferenceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InferenceContainerProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      isAnonymous: (() { final guardedValue = map['isAnonymous']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      isArchived: (() { final guardedValue = map['isArchived']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-    );
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [EnvironmentVersion]. {@macro pulumi_machinelearningservices_environment_version_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  EnvironmentVersion(
+    String name, {
+    EnvironmentVersionArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure-native:machinelearningservices:EnvironmentVersion',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<EnvironmentVersionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentVersionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
   }
 }
-

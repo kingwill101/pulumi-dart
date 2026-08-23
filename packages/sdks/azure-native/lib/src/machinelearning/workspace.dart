@@ -74,6 +74,32 @@ import 'workspace_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_machinelearning_workspace" "workspace" {
+///   location            = "West Europe"
+///   owner_email         = "abc@microsoft.com"
+///   resource_group_name = "myResourceGroup"
+///   sku = {
+///     name = "Enterprise"
+///     tier = "Enterprise"
+///   }
+///   tags = {
+///     "tagKey1" = "TagValue1"
+///   }
+///   user_storage_account_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/teststorage"
+///   workspace_name          = "testworkspace"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +109,8 @@ import 'workspace_args.dart';
 /// import com.pulumi.azurenative.machinelearning.Workspace;
 /// import com.pulumi.azurenative.machinelearning.WorkspaceArgs;
 /// import com.pulumi.azurenative.machinelearning.inputs.SkuArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

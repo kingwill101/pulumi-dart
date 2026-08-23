@@ -3,9 +3,9 @@ import 'api_release_args.dart';
 
 /// ApiRelease details.
 ///
-/// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+/// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 ///
-/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -21,7 +21,7 @@ import 'api_release_args.dart';
 /// {
 ///     var apiRelease = new AzureNative.ApiManagement.ApiRelease("apiRelease", new()
 ///     {
-///         ApiId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1",
+///         ApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1",
 ///         Notes = "yahooagain",
 ///         ReleaseId = "testrev",
 ///         ResourceGroupName = "rg1",
@@ -44,7 +44,7 @@ import 'api_release_args.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apimanagement.NewApiRelease(ctx, "apiRelease", &apimanagement.ApiReleaseArgs{
-/// 			ApiId:             pulumi.String("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1"),
+/// 			ApiId:             pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1"),
 /// 			Notes:             pulumi.String("yahooagain"),
 /// 			ReleaseId:         pulumi.String("testrev"),
 /// 			ResourceGroupName: pulumi.String("rg1"),
@@ -59,6 +59,25 @@ import 'api_release_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_apimanagement_apirelease" "apiRelease" {
+///   api_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1"
+///   notes               = "yahooagain"
+///   release_id          = "testrev"
+///   resource_group_name = "rg1"
+///   service_name        = "apimService1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +86,8 @@ import 'api_release_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.apimanagement.ApiRelease;
 /// import com.pulumi.azurenative.apimanagement.ApiReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -81,7 +100,7 @@ import 'api_release_args.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var apiRelease = new ApiRelease("apiRelease", ApiReleaseArgs.builder()
-///             .apiId("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1")
+///             .apiId("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1")
 ///             .notes("yahooagain")
 ///             .releaseId("testrev")
 ///             .resourceGroupName("rg1")
@@ -98,7 +117,7 @@ import 'api_release_args.dart';
 /// import * as azure_native from "@pulumi/azure-native";
 ///
 /// const apiRelease = new azure_native.apimanagement.ApiRelease("apiRelease", {
-///     apiId: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1",
+///     apiId: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1",
 ///     notes: "yahooagain",
 ///     releaseId: "testrev",
 ///     resourceGroupName: "rg1",
@@ -112,7 +131,7 @@ import 'api_release_args.dart';
 /// import pulumi_azure_native as azure_native
 ///
 /// api_release = azure_native.apimanagement.ApiRelease("apiRelease",
-///     api_id="/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1",
+///     api_id="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1",
 ///     notes="yahooagain",
 ///     release_id="testrev",
 ///     resource_group_name="rg1",
@@ -125,7 +144,7 @@ import 'api_release_args.dart';
 ///   apiRelease:
 ///     type: azure-native:apimanagement:ApiRelease
 ///     properties:
-///       apiId: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1
+///       apiId: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1
 ///       notes: yahooagain
 ///       releaseId: testrev
 ///       resourceGroupName: rg1

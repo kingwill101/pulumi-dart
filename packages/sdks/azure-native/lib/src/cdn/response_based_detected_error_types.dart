@@ -16,4 +16,3 @@ enum ResponseBasedDetectedErrorTypes {
     throw ArgumentError('Unknown ResponseBasedDetectedErrorTypes value: $value');
   }
 }
-

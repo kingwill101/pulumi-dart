@@ -95,4 +95,3 @@ class SalesforceV2LinkedServiceResponse {
     );
   }
 }
-

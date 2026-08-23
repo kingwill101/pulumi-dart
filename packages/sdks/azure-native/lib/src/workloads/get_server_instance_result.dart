@@ -2,7 +2,7 @@
 
 import 'configuration_data_response.dart';
 import 'excel_performance_data_response.dart';
-import 'sapmigrate_error_response.dart';
+import 'sapmigrate_error_server_instance_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getServerInstance.
@@ -12,7 +12,7 @@ class GetServerInstanceResult {
   /// Configuration data for this server instance.
   final ConfigurationDataResponse configurationData;
   /// Defines the errors related to SAP Instance resource.
-  final SAPMigrateErrorResponse errors;
+  final SAPMigrateErrorServerInstanceResponse errors;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
   /// This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
@@ -96,7 +96,7 @@ class GetServerInstanceResult {
     return GetServerInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       configurationData: ConfigurationDataResponse.fromMap((map['configurationData']! as Map).cast<String, dynamic>()),
-      errors: SAPMigrateErrorResponse.fromMap((map['errors']! as Map).cast<String, dynamic>()),
+      errors: SAPMigrateErrorServerInstanceResponse.fromMap((map['errors']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       instanceSid: map['instanceSid'] as String,
       name: map['name'] as String,
@@ -112,4 +112,3 @@ class GetServerInstanceResult {
     );
   }
 }
-

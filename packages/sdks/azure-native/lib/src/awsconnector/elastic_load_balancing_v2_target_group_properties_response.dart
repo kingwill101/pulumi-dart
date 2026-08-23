@@ -74,4 +74,3 @@ class ElasticLoadBalancingV2TargetGroupPropertiesResponse {
     );
   }
 }
-

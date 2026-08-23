@@ -68,4 +68,3 @@ class GoogleBigQueryV2SourceResponse {
     );
   }
 }
-

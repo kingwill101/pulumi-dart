@@ -15,4 +15,3 @@ enum EBSTagSpecificationPropagateTags {
     throw ArgumentError('Unknown EBSTagSpecificationPropagateTags value: $value');
   }
 }
-

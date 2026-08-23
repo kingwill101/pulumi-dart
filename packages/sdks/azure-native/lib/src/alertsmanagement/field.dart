@@ -1,16 +1,16 @@
 /// Field for a given condition.
 enum Field {
-  valueSeverity("Severity"),
-  valueMonitorService("MonitorService"),
-  valueMonitorCondition("MonitorCondition"),
-  valueSignalType("SignalType"),
-  valueTargetResourceType("TargetResourceType"),
-  valueTargetResource("TargetResource"),
-  valueTargetResourceGroup("TargetResourceGroup"),
-  valueAlertRuleId("AlertRuleId"),
-  valueAlertRuleName("AlertRuleName"),
-  valueDescription("Description"),
-  valueAlertContext("AlertContext");
+  severity("Severity"),
+  monitorService("MonitorService"),
+  monitorCondition("MonitorCondition"),
+  signalType("SignalType"),
+  targetResourceType("TargetResourceType"),
+  targetResource("TargetResource"),
+  targetResourceGroup("TargetResourceGroup"),
+  alertRuleId("AlertRuleId"),
+  alertRuleName("AlertRuleName"),
+  description("Description"),
+  alertContext("AlertContext");
 
   const Field(this.wireValue);
   final String wireValue;
@@ -24,4 +24,3 @@ enum Field {
     throw ArgumentError('Unknown Field value: $value');
   }
 }
-

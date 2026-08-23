@@ -15,4 +15,3 @@ enum InternetEnum {
     throw ArgumentError('Unknown InternetEnum value: $value');
   }
 }
-

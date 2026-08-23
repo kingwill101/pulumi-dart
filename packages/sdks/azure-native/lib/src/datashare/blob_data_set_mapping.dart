@@ -70,6 +70,31 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+///   account_name            = "Account1"
+///   container_name          = "C1"
+///   data_set_id             = "a08f184b-0567-4b11-ba22-a1199336d226"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   file_path               = "file21"
+///   kind                    = "Blob"
+///   resource_group          = "SampleResourceGroup"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+///   storage_account_name    = "storage2"
+///   subscription_id         = "433a8dfd-e5d5-4e77-ad86-90acdc75eb1a"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +103,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMapping;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -217,6 +242,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -225,8 +268,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMapping;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,6 +379,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +405,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMapping;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -455,6 +516,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+///   account_name            = "Account1"
+///   data_set_mapping_name   = "DatasetMapping1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -463,8 +542,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMapping;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -574,6 +653,24 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_datashare_blobdatasetmapping" "blobDataSetMapping" {
+///   account_name            = "consumerAccount"
+///   data_set_mapping_name   = "datasetMappingName1"
+///   resource_group_name     = "SampleResourceGroup"
+///   share_subscription_name = "ShareSubscription1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -582,8 +679,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMapping;
 /// import com.pulumi.azurenative.datashare.BlobDataSetMappingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -19,4 +19,3 @@ enum PropertySelectorOperator {
     throw ArgumentError('Unknown PropertySelectorOperator value: $value');
   }
 }
-

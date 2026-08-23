@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2023-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 ///
-/// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-11-30-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -131,6 +131,58 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_connectedcache_ispcustomer" "ispCustomer" {
+///   customer_resource_name = "MccRPTest2"
+///   location               = "westus"
+///   properties = {
+///     additional_customer_properties = {
+///       customer_asn                    = "hgrelgnrtdkleisnepfolu"
+///       customer_email                  = "zdjgibsidydyzm"
+///       customer_entitlement_expiration = "2024-01-30T00:54:04.773Z"
+///       customer_entitlement_sku_guid   = "rvzmdpxyflgqetvpwupnfaxsweiiz"
+///       customer_entitlement_sku_id     = "b"
+///       customer_entitlement_sku_name   = "waaqfijr"
+///       customer_transit_asn            = "habgklnxqzmozqpazoyejwiphezpi"
+///       customer_transit_state          = "voblixkxfejbmhxilb"
+///       optional_property1              = "qhmwxza"
+///       optional_property2              = "l"
+///       optional_property3              = "mblwwvbie"
+///       optional_property4              = "vzuek"
+///       optional_property5              = "fzjodscdfcdr"
+///     }
+///     customer = {
+///       client_tenant_id            = "fproidkpgvpdnac"
+///       contact_email               = "xquos"
+///       contact_name                = "wxyqjoyoscmvimgwhpitxky"
+///       contact_phone               = "vue"
+///       customer_name               = "mkpzynfqihnjfdbaqbqwyhd"
+///       fully_qualified_resource_id = "uqsbtgae"
+///       is_enterprise_managed       = true
+///       is_entitled                 = true
+///       release_version             = 20
+///       resend_signup_code          = true
+///       should_migrate              = true
+///       verify_signup_code          = true
+///       verify_signup_phrase        = "tprjvttkgmrqlsyicnidhm"
+///     }
+///   }
+///   resource_group_name = "rgConnectedCache"
+///   tags = {
+///     "key1878" = "warz"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +194,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.connectedcache.inputs.CustomerPropertyArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.AdditionalCustomerPropertiesArgs;
 /// import com.pulumi.azurenative.connectedcache.inputs.CustomerEntityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

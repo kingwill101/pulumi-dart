@@ -8,23 +8,23 @@ import 'alert_processing_rule_properties.dart';
 /// {@endtemplate}
 /// {@macro pulumi_alertsmanagement_alert_processing_rule_by_name_args_doc}
 class AlertProcessingRuleByNameArgs {
-  /// The name of the alert processing rule that needs to be created/updated.
+  /// The name of the alert processing rule that needs to be fetched.
   final pulumi.Input<String>? alertProcessingRuleName;
-  /// Resource location
+  /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
   /// Alert processing rule properties.
   final pulumi.Input<AlertProcessingRuleProperties>? properties;
-  /// Resource group name where the resource is created.
+  /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  /// Resource tags
+  /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AlertProcessingRuleByNameArgs].
-  /// [alertProcessingRuleName] The name of the alert processing rule that needs to be created/updated.
-  /// [location] Resource location
+  /// [alertProcessingRuleName] The name of the alert processing rule that needs to be fetched.
+  /// [location] The geo-location where the resource lives
   /// [properties] Alert processing rule properties.
-  /// [resourceGroupName] Resource group name where the resource is created.
-  /// [tags] Resource tags
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [tags] Resource tags.
   const AlertProcessingRuleByNameArgs({
     this.alertProcessingRuleName,
     this.location,
@@ -53,4 +53,3 @@ class AlertProcessingRuleByNameArgs {
     );
   }
 }
-

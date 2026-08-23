@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'system_data_response.dart';
 
 /// Result data returned by getRoleAssignment.
 class GetRoleAssignmentResult {
@@ -17,9 +18,9 @@ class GetRoleAssignmentResult {
   final String? delegatedManagedIdentityResourceId;
   /// Description of role assignment
   final String? description;
-  /// The role assignment ID.
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
-  /// The role assignment name.
+  /// The name of the resource
   final String name;
   /// The principal ID.
   final String principalId;
@@ -29,7 +30,9 @@ class GetRoleAssignmentResult {
   final String roleDefinitionId;
   /// The role assignment scope.
   final String scope;
-  /// The role assignment type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
   /// Id of the user who updated the assignment
   final String updatedBy;
@@ -44,13 +47,14 @@ class GetRoleAssignmentResult {
   /// [createdOn] Time it was created
   /// [delegatedManagedIdentityResourceId] Id of the delegated managed identity resource
   /// [description] Description of role assignment
-  /// [id] The role assignment ID.
-  /// [name] The role assignment name.
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  /// [name] The name of the resource
   /// [principalId] The principal ID.
   /// [principalType] The principal type of the assigned principal ID.
   /// [roleDefinitionId] The role definition ID.
   /// [scope] The role assignment scope.
-  /// [type] The role assignment type.
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedBy] Id of the user who updated the assignment
   /// [updatedOn] Time it was updated
   const GetRoleAssignmentResult({
@@ -67,6 +71,7 @@ class GetRoleAssignmentResult {
     this.principalType,
     required this.roleDefinitionId,
     required this.scope,
+    required this.systemData,
     required this.type,
     required this.updatedBy,
     required this.updatedOn,
@@ -87,6 +92,7 @@ class GetRoleAssignmentResult {
       'principalType': ?principalType,
       'roleDefinitionId': roleDefinitionId,
       'scope': scope,
+      'systemData': systemData.toMap(),
       'type': type,
       'updatedBy': updatedBy,
       'updatedOn': updatedOn,
@@ -108,10 +114,10 @@ class GetRoleAssignmentResult {
       principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleDefinitionId: map['roleDefinitionId'] as String,
       scope: map['scope'] as String,
+      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedBy: map['updatedBy'] as String,
       updatedOn: map['updatedOn'] as String,
     );
   }
 }
-

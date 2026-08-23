@@ -187,4 +187,3 @@ class A2AProtectedManagedDiskDetailsResponse {
     );
   }
 }
-

@@ -96,6 +96,39 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_offazure_sqlsitescontroller" "sqlSitesController" {
+///   discovery_scenario  = "Migrate"
+///   resource_group_name = "rgmigrate"
+///   site_appliance_properties_collection {
+///     agent_details = {
+///       key_vault_id  = "chqtsrpahfayfuqrusmbakvgdqny"
+///       key_vault_uri = "w"
+///     }
+///     appliance_name = "jqv"
+///     service_principal_identity_details = {
+///       aad_authority  = "pykd"
+///       application_id = "lg"
+///       audience       = "emwqxwwqqzwk"
+///       object_id      = "etkbysdzluxvpxkciooxjjmvl"
+///       raw_cert_data  = "kewdmdjrt"
+///       tenant_id      = "aqvsxunpdlrxclnpudkykycsdf"
+///     }
+///   }
+///   site_name     = "H9S6I-U9UI5-J1"
+///   sql_site_name = "6G-FTRBDS-tN1-C6"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -107,8 +140,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.offazure.inputs.SiteAppliancePropertiesArgs;
 /// import com.pulumi.azurenative.offazure.inputs.SiteAgentPropertiesArgs;
 /// import com.pulumi.azurenative.offazure.inputs.SiteSpnPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

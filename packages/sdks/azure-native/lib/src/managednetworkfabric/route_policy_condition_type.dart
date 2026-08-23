@@ -15,4 +15,3 @@ enum RoutePolicyConditionType {
     throw ArgumentError('Unknown RoutePolicyConditionType value: $value');
   }
 }
-

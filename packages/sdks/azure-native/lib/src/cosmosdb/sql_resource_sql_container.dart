@@ -7,7 +7,7 @@ import 'sql_resource_sql_container_args.dart';
 ///
 /// Uses Azure REST API version 2025-10-15.
 ///
-/// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -354,6 +354,122 @@ import 'sql_resource_sql_container_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_cosmosdb_sqlresourcesqlcontainer" "sqlResourceSqlContainer" {
+///   account_name   = "ddb1"
+///   container_name = "containerName"
+///   database_name  = "databaseName"
+///   location       = "West US"
+///   options        = {}
+///   resource = {
+///     client_encryption_policy = {
+///       included_paths = [{
+///         "clientEncryptionKeyId" = "keyId"
+///         "encryptionAlgorithm"   = "AEAD_AES_256_CBC_HMAC_SHA256"
+///         "encryptionType"        = "Deterministic"
+///         "path"                  = "/path"
+///       }]
+///       policy_format_version = 2
+///     }
+///     computed_properties = [{
+///       "name"  = "cp_lowerName"
+///       "query" = "SELECT VALUE LOWER(c.name) FROM c"
+///     }]
+///     conflict_resolution_policy = {
+///       conflict_resolution_path = "/path"
+///       mode                     = "LastWriterWins"
+///     }
+///     default_ttl = 100
+///     full_text_policy = {
+///       default_language = "1033"
+///       full_text_paths = [{
+///         "language" = "en-US"
+///         "path"     = "/ftPath1"
+///         }, {
+///         "language" = "fr-FR"
+///         "path"     = "/ftPath2"
+///         }, {
+///         "language" = "de-DE"
+///         "path"     = "/ftPath3"
+///       }]
+///     }
+///     id = "containerName"
+///     indexing_policy = {
+///       automatic      = true
+///       excluded_paths = []
+///       full_text_indexes = [{
+///         "path" = "/ftPath1"
+///         }, {
+///         "path" = "/ftPath2"
+///         }, {
+///         "path" = "/ftPath3"
+///       }]
+///       included_paths = [{
+///         "indexes" = [{
+///           "dataType"  = "String"
+///           "kind"      = "Range"
+///           "precision" = -1
+///           }, {
+///           "dataType"  = "Number"
+///           "kind"      = "Range"
+///           "precision" = -1
+///         }]
+///         "path" = "/*"
+///       }]
+///       indexing_mode = "consistent"
+///       vector_indexes = [{
+///         "path" = "/vectorPath1"
+///         "type" = "flat"
+///         }, {
+///         "path" = "/vectorPath2"
+///         "type" = "quantizedFlat"
+///         }, {
+///         "path" = "/vectorPath3"
+///         "type" = "diskANN"
+///       }]
+///     }
+///     partition_key = {
+///       kind  = "Hash"
+///       paths = ["/AccountNumber"]
+///     }
+///     unique_key_policy = {
+///       unique_keys = [{
+///         "paths" = ["/testPath"]
+///       }]
+///     }
+///     vector_embedding_policy = {
+///       vector_embeddings = [{
+///         "dataType"         = "float32"
+///         "dimensions"       = 400
+///         "distanceFunction" = "euclidean"
+///         "path"             = "/vectorPath1"
+///         }, {
+///         "dataType"         = "uint8"
+///         "dimensions"       = 512
+///         "distanceFunction" = "cosine"
+///         "path"             = "/vectorPath2"
+///         }, {
+///         "dataType"         = "int8"
+///         "dimensions"       = 512
+///         "distanceFunction" = "dotproduct"
+///         "path"             = "/vectorPath3"
+///       }]
+///     }
+///   }
+///   resource_group_name = "rg1"
+///   tags                = {}
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -371,8 +487,8 @@ import 'sql_resource_sql_container_args.dart';
 /// import com.pulumi.azurenative.cosmosdb.inputs.ContainerPartitionKeyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.UniqueKeyPolicyArgs;
 /// import com.pulumi.azurenative.cosmosdb.inputs.VectorEmbeddingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

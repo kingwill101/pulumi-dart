@@ -15,4 +15,3 @@ enum KekType {
     throw ArgumentError('Unknown KekType value: $value');
   }
 }
-

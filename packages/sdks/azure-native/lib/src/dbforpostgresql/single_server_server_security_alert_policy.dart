@@ -79,6 +79,30 @@ import 'single_server_server_security_alert_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_singleserverserversecurityalertpolicy" "singleServerServerSecurityAlertPolicy" {
+///   disabled_alerts            = ["Access_Anomaly", "Usage_Anomaly"]
+///   email_account_admins       = true
+///   email_addresses            = ["testSecurityAlert@microsoft.com"]
+///   resource_group_name        = "securityalert-4799"
+///   retention_days             = 5
+///   security_alert_policy_name = "Default"
+///   server_name                = "securityalert-6440"
+///   state                      = "Enabled"
+///   storage_account_access_key = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="
+///   storage_endpoint           = "https://mystorage.blob.core.windows.net"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +111,8 @@ import 'single_server_server_security_alert_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerServerSecurityAlertPolicy;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerServerSecurityAlertPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -235,6 +259,25 @@ import 'single_server_server_security_alert_policy_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_dbforpostgresql_singleserverserversecurityalertpolicy" "singleServerServerSecurityAlertPolicy" {
+///   email_account_admins       = true
+///   resource_group_name        = "securityalert-4799"
+///   security_alert_policy_name = "Default"
+///   server_name                = "securityalert-6440"
+///   state                      = "Disabled"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +286,8 @@ import 'single_server_server_security_alert_policy_args.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerServerSecurityAlertPolicy;
 /// import com.pulumi.azurenative.dbforpostgresql.SingleServerServerSecurityAlertPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

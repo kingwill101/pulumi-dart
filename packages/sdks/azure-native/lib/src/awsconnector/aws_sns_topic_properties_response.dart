@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'logging_config_response.dart';
+import 'logging_config_sns_topic_response.dart';
 import 'subscription_response.dart';
 import 'tag_response.dart';
 
@@ -14,7 +14,7 @@ class AwsSnsTopicPropertiesResponse {
   /// The body of the policy document you want to use for this topic. You can only add one policy per topic. The policy must be in JSON string format. Length Constraints: Maximum length of 30,720.
   final pulumi.Input<dynamic>? dataProtectionPolicy;
   /// Property deliveryStatusLogging
-  final pulumi.Input<List<LoggingConfigResponse>>? deliveryStatusLogging;
+  final pulumi.Input<List<LoggingConfigSnsTopicResponse>>? deliveryStatusLogging;
   /// The display name to use for an SNS topic with SMS subscriptions. The display name must be maximum 100 characters long, including hyphens (-), underscores (_), spaces, and tabs.
   final pulumi.Input<String>? displayName;
   /// Set to true to create a FIFO topic.
@@ -69,7 +69,7 @@ class AwsSnsTopicPropertiesResponse {
       'archivePolicy': ?archivePolicy,
       'contentBasedDeduplication': ?contentBasedDeduplication,
       'dataProtectionPolicy': ?dataProtectionPolicy,
-      'deliveryStatusLogging': ?pulumi.Input.mapOptionalInputValue<List<LoggingConfigResponse>, List<Map<String, dynamic>>>(deliveryStatusLogging, (value) => pulumi.Input.encodeList<LoggingConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deliveryStatusLogging': ?pulumi.Input.mapOptionalInputValue<List<LoggingConfigSnsTopicResponse>, List<Map<String, dynamic>>>(deliveryStatusLogging, (value) => pulumi.Input.encodeList<LoggingConfigSnsTopicResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': ?displayName,
       'fifoTopic': ?fifoTopic,
       'kmsMasterKeyId': ?kmsMasterKeyId,
@@ -87,7 +87,7 @@ class AwsSnsTopicPropertiesResponse {
       archivePolicy: (() { final guardedValue = map['archivePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       contentBasedDeduplication: (() { final guardedValue = map['contentBasedDeduplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dataProtectionPolicy: (() { final guardedValue = map['dataProtectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      deliveryStatusLogging: (() { final guardedValue = map['deliveryStatusLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoggingConfigResponse>(guardedValue, (value) => LoggingConfigResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deliveryStatusLogging: (() { final guardedValue = map['deliveryStatusLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoggingConfigSnsTopicResponse>(guardedValue, (value) => LoggingConfigSnsTopicResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fifoTopic: (() { final guardedValue = map['fifoTopic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsMasterKeyId: (() { final guardedValue = map['kmsMasterKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -100,4 +100,3 @@ class AwsSnsTopicPropertiesResponse {
     );
   }
 }
-

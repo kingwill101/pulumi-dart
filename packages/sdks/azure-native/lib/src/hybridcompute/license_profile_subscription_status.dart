@@ -19,4 +19,3 @@ enum LicenseProfileSubscriptionStatus {
     throw ArgumentError('Unknown LicenseProfileSubscriptionStatus value: $value');
   }
 }
-

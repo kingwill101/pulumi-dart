@@ -16,4 +16,3 @@ enum AzureFirewallThreatIntelMode {
     throw ArgumentError('Unknown AzureFirewallThreatIntelMode value: $value');
   }
 }
-

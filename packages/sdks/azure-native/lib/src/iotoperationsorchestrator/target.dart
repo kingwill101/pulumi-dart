@@ -129,6 +129,47 @@ import 'target_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_iotoperationsorchestrator_target" "target" {
+///   components {
+///     dependencies = ["x"]
+///     name         = "yhnelpxsobdyurwvhkq"
+///     properties   = {}
+///     type         = "wiabwsfqhhxru"
+///   }
+///   extended_location = {
+///     name = "bjjhfqsplgzdlbdlddleetyg"
+///     type = "sosibrbmmrfbbyp"
+///   }
+///   location = "pjjkifnrwvzcyohz"
+///   name     = "7---s--1-hl-fl-3f0-wfy34e08-4"
+///   reconciliation_policy = {
+///     interval = "wyrrzydmfgzymvzbppscxyfobku"
+///     type     = "periodic"
+///   }
+///   resource_group_name = "rgopenapi"
+///   scope               = "lm"
+///   tags                = {}
+///   topologies {
+///     bindings {
+///       config   = {}
+///       provider = "qpwesjlyyggcbehwigbobqum"
+///       role     = "role"
+///     }
+///   }
+///   version = "prbigsnjltnzqliu"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +182,8 @@ import 'target_args.dart';
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.ExtendedLocationArgs;
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.ReconciliationPolicyArgs;
 /// import com.pulumi.azurenative.iotoperationsorchestrator.inputs.TopologiesPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

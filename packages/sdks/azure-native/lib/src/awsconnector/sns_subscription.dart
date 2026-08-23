@@ -101,6 +101,44 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_snssubscription" "snsSubscription" {
+///   location = "rteaofwy"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "gnkqmddvoxalgskfwispx"
+///     aws_account_id = "jehvmisbfwgnpihgfrkslaee"
+///     aws_properties = {
+///       endpoint         = "ydbnfs"
+///       owner            = "vhrbkplsbvszhibsvziz"
+///       protocol         = "lcsebez"
+///       subscription_arn = "bis"
+///       topic_arn        = "pdwndjemgtmwwnyvtjmveblsyq"
+///     }
+///     aws_region        = "bkkaopxcwtfmxemxuilfhllcsixga"
+///     aws_source_schema = "ikrkjsw"
+///     aws_tags = {
+///       "key588" = "kxpglwugby"
+///     }
+///     public_cloud_connectors_resource_id = "zokwlgincdzvjml"
+///     public_cloud_resource_name          = "si"
+///   }
+///   resource_group_name = "rgsnsSubscription"
+///   tags = {
+///     "key2041" = "mkbmrvjtiukeqzysrvoebyiqojttw"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +149,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.SnsSubscriptionArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.SnsSubscriptionPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsSnsSubscriptionPropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

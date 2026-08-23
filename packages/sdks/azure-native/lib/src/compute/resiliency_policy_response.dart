@@ -5,7 +5,7 @@ import 'automatic_zone_rebalancing_policy_response.dart';
 import 'resilient_vmcreation_policy_response.dart';
 import 'resilient_vmdeletion_policy_response.dart';
 
-/// Describes an resiliency policy - AutomaticZoneRebalancingPolicy, ResilientVMCreationPolicy and/or ResilientVMDeletionPolicy.
+/// Describes an resiliency policy - AutomaticZoneRebalancingPolicy, ResilientVMCreationPolicy, ResilientVMDeletionPolicy and OperationRecoverySettings (version &gt; 2025-11-01).
 class ResiliencyPolicyResponse {
   /// The configuration parameters used while performing automatic AZ balancing.
   final pulumi.Input<AutomaticZoneRebalancingPolicyResponse>? automaticZoneRebalancingPolicy;
@@ -40,4 +40,3 @@ class ResiliencyPolicyResponse {
     );
   }
 }
-

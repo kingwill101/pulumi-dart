@@ -15,4 +15,3 @@ enum LoadBalancerSkuTier {
     throw ArgumentError('Unknown LoadBalancerSkuTier value: $value');
   }
 }
-

@@ -15,7 +15,7 @@ import 'system_data_response.dart';
 ///
 /// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
-/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -175,6 +175,67 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_storagecache_cache" "cache" {
+///   cache_name    = "sc1"
+///   cache_size_gb = 3072
+///   directory_services_settings = {
+///     username_download = {
+///       credentials = {
+///         bind_dn       = "cn=ldapadmin,dc=contosoad,dc=contoso,dc=local"
+///         bind_password = "<bindPassword>"
+///       }
+///       extended_groups = true
+///       ldap_base_dn    = "dc=contosoad,dc=contoso,dc=local"
+///       ldap_server     = "192.0.2.12"
+///       username_source = "LDAP"
+///     }
+///   }
+///   encryption_settings = {
+///     key_encryption_key = {
+///       key_url = "https://keyvault-cmk.vault.azure.net/keys/key2048/test"
+///       source_vault = {
+///         id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.KeyVault/vaults/keyvault-cmk"
+///       }
+///     }
+///   }
+///   location            = "westus"
+///   resource_group_name = "scgroup"
+///   security_settings = {
+///     access_policies = [{
+///       "accessRules" = [{
+///         "access"         = "rw"
+///         "rootSquash"     = false
+///         "scope"          = "default"
+///         "submountAccess" = true
+///         "suid"           = false
+///       }]
+///       "name" = "default"
+///     }]
+///   }
+///   sku = {
+///     name = "Standard_2G"
+///   }
+///   subnet = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1"
+///   tags = {
+///     "Dept" = "Contoso"
+///   }
+///   upgrade_settings = {
+///     scheduled_time           = "2022-04-26T18:25:43.511Z"
+///     upgrade_schedule_enabled = true
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +253,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.storagecache.inputs.CacheSecuritySettingsArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.CacheSkuArgs;
 /// import com.pulumi.azurenative.storagecache.inputs.CacheUpgradeSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

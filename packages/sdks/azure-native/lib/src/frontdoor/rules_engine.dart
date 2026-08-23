@@ -3,9 +3,9 @@ import 'rules_engine_args.dart';
 
 /// A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
 ///
-/// Uses Azure REST API version 2021-06-01.
+/// Uses Azure REST API version 2025-11-01.
 ///
-/// Other available API versions: 2020-01-01, 2020-04-01, 2020-05-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2020-01-01, 2020-04-01, 2020-05-01, 2021-06-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -249,6 +249,88 @@ import 'rules_engine_args.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_frontdoor_rulesengine" "rulesEngine" {
+///   front_door_name     = "frontDoor1"
+///   resource_group_name = "rg1"
+///   rules {
+///     action = {
+///       route_configuration_override = {
+///         "customFragment"    = "fragment"
+///         "customHost"        = "www.bing.com"
+///         "customPath"        = "/api"
+///         "customQueryString" = "a=b"
+///         "odataType"         = "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration"
+///         "redirectProtocol"  = "HttpsOnly"
+///         "redirectType"      = "Moved"
+///       }
+///     }
+///     match_conditions {
+///       rules_engine_match_value    = ["CH"]
+///       rules_engine_match_variable = "RemoteAddr"
+///       rules_engine_operator       = "GeoMatch"
+///     }
+///     match_processing_behavior = "Stop"
+///     name                      = "Rule1"
+///     priority                  = 1
+///   }
+///   rules {
+///     action = {
+///       response_header_actions = [{
+///         "headerActionType" = "Overwrite"
+///         "headerName"       = "Cache-Control"
+///         "value"            = "public, max-age=31536000"
+///       }]
+///     }
+///     match_conditions {
+///       rules_engine_match_value    = ["jpg"]
+///       rules_engine_match_variable = "RequestFilenameExtension"
+///       rules_engine_operator       = "Equal"
+///       transforms                  = ["Lowercase"]
+///     }
+///     name     = "Rule2"
+///     priority = 2
+///   }
+///   rules {
+///     action = {
+///       route_configuration_override = {
+///         "backendPool" = {
+///           "id" = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"
+///         }
+///         "cacheConfiguration" = {
+///           "cacheDuration"                = "P1DT12H20M30S"
+///           "dynamicCompression"           = "Disabled"
+///           "queryParameterStripDirective" = "StripOnly"
+///           "queryParameters"              = "a=b,p=q"
+///         }
+///         "forwardingProtocol" = "HttpsOnly"
+///         "odataType"          = "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration"
+///       }
+///     }
+///     match_conditions {
+///       negate_condition            = false
+///       rules_engine_match_value    = ["allowoverride"]
+///       rules_engine_match_variable = "RequestHeader"
+///       rules_engine_operator       = "Equal"
+///       selector                    = "Rules-Engine-Route-Forward"
+///       transforms                  = ["Lowercase"]
+///     }
+///     name     = "Rule3"
+///     priority = 3
+///   }
+///   rules_engine_name = "rulesEngine1"
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -259,8 +341,8 @@ import 'rules_engine_args.dart';
 /// import com.pulumi.azurenative.frontdoor.RulesEngineArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RulesEngineRuleArgs;
 /// import com.pulumi.azurenative.frontdoor.inputs.RulesEngineActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

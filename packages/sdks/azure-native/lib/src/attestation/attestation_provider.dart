@@ -74,6 +74,32 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_attestation_attestationprovider" "attestationProvider" {
+///   location = "East US"
+///   properties = {
+///     public_network_access          = "Enabled"
+///     tpm_attestation_authentication = "Enabled"
+///   }
+///   provider_name       = "myattestationprovider"
+///   resource_group_name = "MyResourceGroup"
+///   tags = {
+///     "Property1" = "Value1"
+///     "Property2" = "Value2"
+///     "Property3" = "Value3"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +109,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.attestation.AttestationProvider;
 /// import com.pulumi.azurenative.attestation.AttestationProviderArgs;
 /// import com.pulumi.azurenative.attestation.inputs.AttestationServiceCreationSpecificParamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

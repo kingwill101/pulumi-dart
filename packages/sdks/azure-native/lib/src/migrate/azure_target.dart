@@ -27,4 +27,3 @@ enum AzureTarget {
     throw ArgumentError('Unknown AzureTarget value: $value');
   }
 }
-

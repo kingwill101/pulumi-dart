@@ -109,6 +109,47 @@ import 'system_data_response.dart';
 ///
 /// ```
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure-native = {
+///       source = "pulumi/azure-native"
+///     }
+///   }
+/// }
+///
+/// resource "azure-native_awsconnector_codebuildsourcecredentialsinfo" "codeBuildSourceCredentialsInfo" {
+///   location = "ckmgfv"
+///   name     = "Replace this value with a string matching RegExp ^(z=.{0,259}[^zs.]$)(z!.*[zzzzzzzz])"
+///   properties = {
+///     arn            = "wdxdkxuukdnrlpqgkmmvfagzrwom"
+///     aws_account_id = "bgwhzakphzjipkxqwy"
+///     aws_properties = {
+///       arn = "ewe"
+///       auth_type = {
+///         value = "BASIC_AUTH"
+///       }
+///       resource = "cnzfvgfcneqgffgfclggx"
+///       server_type = {
+///         value = "BITBUCKET"
+///       }
+///     }
+///     aws_region        = "vywlxfetnso"
+///     aws_source_schema = "rhibtnvrfkidnqhyynub"
+///     aws_tags = {
+///       "key3224" = "eky"
+///     }
+///     public_cloud_connectors_resource_id = "cidijgvkoos"
+///     public_cloud_resource_name          = "uazcojlwlavznbfsrjzbtthat"
+///   }
+///   resource_group_name = "rgcodeBuildSourceCredentialsInfo"
+///   tags = {
+///     "key9473" = "osnuolokdgmmhzpdajuqnguse"
+///   }
+/// }
+///
+/// ```
+///
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +162,8 @@ import 'system_data_response.dart';
 /// import com.pulumi.azurenative.awsconnector.inputs.AwsCodeBuildSourceCredentialsInfoPropertiesArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.AuthTypeEnumValueArgs;
 /// import com.pulumi.azurenative.awsconnector.inputs.ServerTypeEnumValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

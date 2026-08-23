@@ -18,4 +18,3 @@ enum QuickStartTemplateType {
     throw ArgumentError('Unknown QuickStartTemplateType value: $value');
   }
 }
-

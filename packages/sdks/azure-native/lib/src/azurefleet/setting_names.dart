@@ -16,4 +16,3 @@ enum SettingNames {
     throw ArgumentError('Unknown SettingNames value: $value');
   }
 }
-

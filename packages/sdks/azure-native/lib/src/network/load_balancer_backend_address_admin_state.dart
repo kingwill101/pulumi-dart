@@ -16,4 +16,3 @@ enum LoadBalancerBackendAddressAdminState {
     throw ArgumentError('Unknown LoadBalancerBackendAddressAdminState value: $value');
   }
 }
-

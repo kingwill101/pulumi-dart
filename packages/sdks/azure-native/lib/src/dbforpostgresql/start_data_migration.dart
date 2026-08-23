@@ -15,4 +15,3 @@ enum StartDataMigration {
     throw ArgumentError('Unknown StartDataMigration value: $value');
   }
 }
-

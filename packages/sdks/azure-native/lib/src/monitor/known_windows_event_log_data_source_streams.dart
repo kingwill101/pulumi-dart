@@ -14,4 +14,3 @@ enum KnownWindowsEventLogDataSourceStreams {
     throw ArgumentError('Unknown KnownWindowsEventLogDataSourceStreams value: $value');
   }
 }
-

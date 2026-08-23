@@ -1,8 +1,8 @@
 /// [Required] The categorical data quality metric to calculate.
 enum CategoricalDataQualityMetric {
-  valueNullValueRate("NullValueRate"),
-  valueDataTypeErrorRate("DataTypeErrorRate"),
-  valueOutOfBoundsRate("OutOfBoundsRate");
+  nullValueRate("NullValueRate"),
+  dataTypeErrorRate("DataTypeErrorRate"),
+  outOfBoundsRate("OutOfBoundsRate");
 
   const CategoricalDataQualityMetric(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum CategoricalDataQualityMetric {
     throw ArgumentError('Unknown CategoricalDataQualityMetric value: $value');
   }
 }
-

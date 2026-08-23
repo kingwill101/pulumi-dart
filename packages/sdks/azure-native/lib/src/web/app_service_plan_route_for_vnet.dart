@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_plan_route_for_vnet_args.dart';
+import 'system_data_response.dart';
 
 /// Virtual Network route contract used to pass routing information for a Virtual Network.
 ///
-/// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+/// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 ///
-/// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// ## Import
 ///
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
@@ -20,7 +21,7 @@ class AppServicePlanRouteForVnet extends pulumi.CustomResource {
   late final pulumi.Output<String?> endAddress;
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
-  /// Resource Name.
+  /// The name of the resource
   late final pulumi.Output<String> name;
   /// The type of route this is:
   /// DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
@@ -31,7 +32,9 @@ class AppServicePlanRouteForVnet extends pulumi.CustomResource {
   late final pulumi.Output<String?> routeType;
   /// The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
   late final pulumi.Output<String?> startAddress;
-  /// Resource type.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  late final pulumi.Output<SystemDataResponse> systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [AppServicePlanRouteForVnet].
@@ -54,6 +57,7 @@ class AppServicePlanRouteForVnet extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     routeType = registerOutput<String?>('routeType');
     startAddress = registerOutput<String?>('startAddress');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
 }
