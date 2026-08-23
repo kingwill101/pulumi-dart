@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package_version.dart';
+
 final class ProviderSchema {
   ProviderSchema({
     required this.name,
@@ -61,8 +63,6 @@ Future<void> main(List<String> args) async {
     'PULUMI_DART_WORKSPACE_RESOLUTION': 'true',
     'PULUMI_DART_PULUMI_DEPENDENCY_PATH': '',
     'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': pulumiVersion,
-    if (parsed.sdkVersion.isNotEmpty)
-      'PULUMI_DART_SDK_VERSION': parsed.sdkVersion,
     'PATH': _mergePathPrefix(
       languageHostPath,
       Platform.environment['PATH'] ?? '',
@@ -74,6 +74,18 @@ Future<void> main(List<String> args) async {
   );
   for (var i = 0; i < selectedProviders.length; i++) {
     final provider = selectedProviders[i];
+    final destinationDir = Directory(
+      _resolveGeneratedPackageDir(repoRoot.path, provider),
+    );
+    final sdkVersion = parsed.sdkVersion.isNotEmpty
+        ? parsed.sdkVersion
+        : readPackageVersion(
+            File(_joinPath([destinationDir.path, 'pubspec.yaml'])),
+          );
+    final providerEnvironment = {...generationEnvironment};
+    if (sdkVersion case final version?) {
+      providerEnvironment['PULUMI_DART_SDK_VERSION'] = version;
+    }
     final schemaPath = await _loadSchemaPath(
       provider.name,
       _joinPath([repoRoot.path, provider.localSchemaPath]),
@@ -109,7 +121,7 @@ Future<void> main(List<String> args) async {
         outputPath,
       ],
       workingDirectory: repoRoot.path,
-      environment: generationEnvironment,
+      environment: providerEnvironment,
       runInShell: false,
     );
 
@@ -130,10 +142,6 @@ Future<void> main(List<String> args) async {
       exitCode = 1;
       return;
     }
-
-    final destinationDir = Directory(
-      _resolveGeneratedPackageDir(repoRoot.path, provider),
-    );
 
     // Replace generated sources as a directory so stale files are cleaned up
     // without leaving the package half-deleted if replacement fails.
