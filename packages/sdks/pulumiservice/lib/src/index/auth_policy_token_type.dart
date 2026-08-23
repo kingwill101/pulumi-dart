@@ -16,4 +16,3 @@ enum AuthPolicyTokenType {
     throw ArgumentError('Unknown AuthPolicyTokenType value: $value');
   }
 }
-

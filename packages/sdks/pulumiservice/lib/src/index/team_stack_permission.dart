@@ -30,7 +30,7 @@ class TeamStackPermission extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     organization = registerOutput<String>('organization');
-    permission = registerOutput<TeamStackPermissionScope>('permission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TeamStackPermissionScope.fromValue(guardedValue as double); });
+    permission = registerOutput<TeamStackPermissionScope>('permission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TeamStackPermissionScope.fromValue(guardedValue as int); });
     project = registerOutput<String>('project');
     stack = registerOutput<String>('stack');
     team = registerOutput<String>('team');

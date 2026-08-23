@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A reference to a policy pack within a policy group.
 class PolicyGroupPolicyPackReference {
-  /// Optional configuration for the policy pack.
+  /// Optional configuration for the policy pack. The special key `all` sets the default enforcement level for every policy in the pack; per-policy entries override it.
   final pulumi.Input<Map<String, dynamic>>? config;
   /// The display name of the policy pack.
   final pulumi.Input<String>? displayName;
   /// The name of the policy pack.
   final pulumi.Input<String> name;
-  /// The version of the policy pack.
+  /// The server-derived numeric version of the policy pack. This is output-only; use `versionTag` to pin a specific version.
   final pulumi.Input<double>? version;
   /// The version tag of the policy pack.
   final pulumi.Input<String>? versionTag;
 
   /// Creates a new [PolicyGroupPolicyPackReference].
-  /// [config] Optional configuration for the policy pack.
+  /// [config] Optional configuration for the policy pack. The special key `all` sets the default enforcement level for every policy in the pack; per-policy entries override it.
   /// [displayName] The display name of the policy pack.
   /// [name] The name of the policy pack.
-  /// [version] The version of the policy pack.
+  /// [version] The server-derived numeric version of the policy pack. This is output-only; use `versionTag` to pin a specific version.
   /// [versionTag] The version tag of the policy pack.
   const PolicyGroupPolicyPackReference({
     this.config,
@@ -49,4 +49,3 @@ class PolicyGroupPolicyPackReference {
     );
   }
 }
-

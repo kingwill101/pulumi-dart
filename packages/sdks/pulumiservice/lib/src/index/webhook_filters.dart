@@ -28,7 +28,9 @@ enum WebhookFilters {
   environmentTagCreated("environment_tag_created"),
   environmentTagDeleted("environment_tag_deleted"),
   environmentTagUpdated("environment_tag_updated"),
-  importedEnvironmentChanged("imported_environment_changed");
+  importedEnvironmentChanged("imported_environment_changed"),
+  environmentRotationSucceeded("environment_rotation_succeeded"),
+  environmentRotationFailed("environment_rotation_failed");
 
   const WebhookFilters(this.wireValue);
   final String wireValue;
@@ -42,4 +44,3 @@ enum WebhookFilters {
     throw ArgumentError('Unknown WebhookFilters value: $value');
   }
 }
-

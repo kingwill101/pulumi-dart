@@ -6,6 +6,7 @@ import 'deployment_settings_executor_context.dart';
 import 'deployment_settings_github.dart';
 import 'deployment_settings_operation_context.dart';
 import 'deployment_settings_source_context.dart';
+import 'deployment_settings_vcs.dart';
 
 /// {@template pulumi_index_deployment_settings_args_doc}
 /// The set of arguments for DeploymentSettings.
@@ -30,6 +31,8 @@ class DeploymentSettingsArgs {
   final pulumi.Input<DeploymentSettingsSourceContext>? sourceContext;
   /// Stack name.
   final pulumi.Input<String> stack;
+  /// VCS settings for the deployment. Supports Azure DevOps and GitHub via the 'provider' discriminator field.
+  final pulumi.Input<DeploymentSettingsVcs>? vcs;
 
   /// Creates a new [DeploymentSettingsArgs].
   /// [agentPoolId] The agent pool identifier to use for the deployment.
@@ -41,6 +44,7 @@ class DeploymentSettingsArgs {
   /// [project] Project name.
   /// [sourceContext] Settings related to the source of the deployment.
   /// [stack] Stack name.
+  /// [vcs] VCS settings for the deployment. Supports Azure DevOps and GitHub via the 'provider' discriminator field.
   const DeploymentSettingsArgs({
     this.agentPoolId,
     this.cacheOptions,
@@ -51,6 +55,7 @@ class DeploymentSettingsArgs {
     required this.project,
     this.sourceContext,
     required this.stack,
+    this.vcs,
   });
 
   Map<String, dynamic> toMap() {
@@ -64,6 +69,7 @@ class DeploymentSettingsArgs {
       'project': project,
       'sourceContext': ?pulumi.Input.mapOptionalInputValue<DeploymentSettingsSourceContext, Map<String, dynamic>>(sourceContext, (value) => value.toMap()),
       'stack': stack,
+      'vcs': ?pulumi.Input.mapOptionalInputValue<DeploymentSettingsVcs, Map<String, dynamic>>(vcs, (value) => value.toMap()),
     };
   }
 
@@ -78,7 +84,7 @@ class DeploymentSettingsArgs {
       project: pulumi.Input.fromValue(map['project'] as String),
       sourceContext: (() { final guardedValue = map['sourceContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentSettingsSourceContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stack: pulumi.Input.fromValue(map['stack'] as String),
+      vcs: (() { final guardedValue = map['vcs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentSettingsVcs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

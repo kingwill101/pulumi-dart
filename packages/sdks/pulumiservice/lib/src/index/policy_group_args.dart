@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'policy_group_policy_pack_reference.dart';
+import 'policy_group_policy_pack_reference_input.dart';
 import 'policy_group_stack_reference.dart';
 
 /// {@template pulumi_index_policy_group_args_doc}
@@ -20,7 +20,7 @@ class PolicyGroupArgs {
   /// The name of the Pulumi organization the policy group belongs to.
   final pulumi.Input<String> organizationName;
   /// List of policy packs applied to this policy group.
-  final pulumi.Input<List<PolicyGroupPolicyPackReference>>? policyPacks;
+  final pulumi.Input<List<PolicyGroupPolicyPackReferenceInput>>? policyPacks;
   /// List of stack references that belong to this policy group.
   final pulumi.Input<List<PolicyGroupStackReference>>? stacks;
 
@@ -49,7 +49,7 @@ class PolicyGroupArgs {
       'mode': ?mode,
       'name': name,
       'organizationName': organizationName,
-      'policyPacks': ?pulumi.Input.mapOptionalInputValue<List<PolicyGroupPolicyPackReference>, List<Map<String, dynamic>>>(policyPacks, (value) => pulumi.Input.encodeList<PolicyGroupPolicyPackReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyPacks': ?pulumi.Input.mapOptionalInputValue<List<PolicyGroupPolicyPackReferenceInput>, List<Map<String, dynamic>>>(policyPacks, (value) => pulumi.Input.encodeList<PolicyGroupPolicyPackReferenceInput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'stacks': ?pulumi.Input.mapOptionalInputValue<List<PolicyGroupStackReference>, List<Map<String, dynamic>>>(stacks, (value) => pulumi.Input.encodeList<PolicyGroupStackReference, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
@@ -61,9 +61,8 @@ class PolicyGroupArgs {
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
-      policyPacks: (() { final guardedValue = map['policyPacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyGroupPolicyPackReference>(guardedValue, (value) => PolicyGroupPolicyPackReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      policyPacks: (() { final guardedValue = map['policyPacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyGroupPolicyPackReferenceInput>(guardedValue, (value) => PolicyGroupPolicyPackReferenceInput.fromMap((value as Map).cast<String, dynamic>()))); })(),
       stacks: (() { final guardedValue = map['stacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyGroupStackReference>(guardedValue, (value) => PolicyGroupStackReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

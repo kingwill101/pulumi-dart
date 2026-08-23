@@ -8,7 +8,7 @@ import 'auth_policy_token_type.dart';
 class AuthPolicyDefinition {
   /// The permission level for organization tokens.
   final pulumi.Input<List<AuthPolicyPermissionLevel>>? authorizedPermissions;
-  /// The rule type of this policy definition
+  /// The rule type of this policy definition.
   final pulumi.Input<AuthPolicyDecision> decision;
   /// OIDC rules to set for this policy.
   final pulumi.Input<Map<String, String>> rules;
@@ -16,18 +16,18 @@ class AuthPolicyDefinition {
   final pulumi.Input<String>? runnerID;
   /// The team name for team tokens.
   final pulumi.Input<String>? teamName;
-  /// The token type for this policy definition
+  /// The token type for this policy definition.
   final pulumi.Input<AuthPolicyTokenType> tokenType;
   /// The user login for personal tokens.
   final pulumi.Input<String>? userLogin;
 
   /// Creates a new [AuthPolicyDefinition].
   /// [authorizedPermissions] The permission level for organization tokens.
-  /// [decision] The rule type of this policy definition
+  /// [decision] The rule type of this policy definition.
   /// [rules] OIDC rules to set for this policy.
   /// [runnerID] The runner ID for deployment runner tokens.
   /// [teamName] The team name for team tokens.
-  /// [tokenType] The token type for this policy definition
+  /// [tokenType] The token type for this policy definition.
   /// [userLogin] The user login for personal tokens.
   const AuthPolicyDefinition({
     this.authorizedPermissions,
@@ -63,4 +63,3 @@ class AuthPolicyDefinition {
     );
   }
 }
-

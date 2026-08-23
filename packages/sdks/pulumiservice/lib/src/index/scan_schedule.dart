@@ -1,6 +1,7 @@
 enum ScanSchedule {
-  valueNone("none"),
-  valueDaily("daily");
+  none("none"),
+  value12h("12h"),
+  daily("daily");
 
   const ScanSchedule(this.wireValue);
   final String wireValue;
@@ -14,4 +15,3 @@ enum ScanSchedule {
     throw ArgumentError('Unknown ScanSchedule value: $value');
   }
 }
-

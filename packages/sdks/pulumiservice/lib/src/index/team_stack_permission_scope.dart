@@ -4,9 +4,9 @@ enum TeamStackPermissionScope {
   admin(103);
 
   const TeamStackPermissionScope(this.wireValue);
-  final double wireValue;
+  final int wireValue;
 
-  static TeamStackPermissionScope fromValue(double value) {
+  static TeamStackPermissionScope fromValue(int value) {
     for (final item in TeamStackPermissionScope.values) {
       if (item.wireValue == value) {
         return item;
@@ -15,4 +15,3 @@ enum TeamStackPermissionScope {
     throw ArgumentError('Unknown TeamStackPermissionScope value: $value');
   }
 }
-

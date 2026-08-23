@@ -1,9 +1,9 @@
 enum CloudProvider {
-  valueAws("aws"),
-  valueAzureNative("azure-native"),
-  valueGcp("gcp"),
-  valueKubernetes("kubernetes"),
-  valueOci("oci");
+  aws("aws"),
+  azureNative("azure-native"),
+  gcp("gcp"),
+  kubernetes("kubernetes"),
+  oci("oci");
 
   const CloudProvider(this.wireValue);
   final String wireValue;
@@ -17,4 +17,3 @@ enum CloudProvider {
     throw ArgumentError('Unknown CloudProvider value: $value');
   }
 }
-

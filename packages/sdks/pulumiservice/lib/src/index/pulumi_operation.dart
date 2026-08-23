@@ -1,8 +1,8 @@
 enum PulumiOperation {
-  valueUpdate("update"),
-  valuePreview("preview"),
-  valueRefresh("refresh"),
-  valueDestroy("destroy");
+  update("update"),
+  preview("preview"),
+  refresh("refresh"),
+  destroy("destroy");
 
   const PulumiOperation(this.wireValue);
   final String wireValue;
@@ -16,4 +16,3 @@ enum PulumiOperation {
     throw ArgumentError('Unknown PulumiOperation value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum WebhookGroup {
     throw ArgumentError('Unknown WebhookGroup value: $value');
   }
 }
-
