@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:artisanal/args.dart';
 import 'package:artisanal/artisanal.dart' show Colors, Style;
+import 'package:artisanal/bubbles.dart' show LinkComponent;
 
 import 'audit_service.dart';
 import 'models.dart';
@@ -123,11 +124,7 @@ final class UpstreamCheckCommand extends Command<int> {
       for (final releaseEntry in byRelease.entries) {
         final releaseFindings = releaseEntry.value;
         final release = releaseFindings.first;
-        final link = Style()
-            .foreground(Colors.info)
-            .underline()
-            .hyperlink(release.url)
-            .render(releaseEntry.key);
+        final link = _terminalLink(release.url, releaseEntry.key);
         final count = Style()
             .foreground(Colors.muted)
             .render(
@@ -186,13 +183,19 @@ final class UpstreamCheckCommand extends Command<int> {
         final label =
             match.group(1) ??
             '${match.group(3)}/${match.group(4)}#${match.group(5)}';
-        return Style()
-            .foreground(Colors.info)
-            .underline()
-            .hyperlink(url)
-            .render(label);
+        return _terminalLink(url, label);
       },
     );
+  }
+
+  String _terminalLink(String url, String label) {
+    if (!LinkComponent.isSupported) return '$label ($url)';
+    return LinkComponent(
+      url: url,
+      text: label,
+      styled: true,
+      renderConfig: io.renderConfig,
+    ).render();
   }
 
   String _wrappedFinding(String summary) {
