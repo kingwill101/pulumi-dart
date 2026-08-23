@@ -71,6 +71,21 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_user" "jdoe" {
+///   user               = "jdoe"
+///   host               = "example.com"
+///   plaintext_password = "password"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +94,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.mysql.User;
 /// import com.pulumi.mysql.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +189,21 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_user" "nologin" {
+///   user        = "nologin"
+///   host        = "example.com"
+///   auth_plugin = "mysql_no_login"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +212,8 @@ import 'user_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.mysql.User;
 /// import com.pulumi.mysql.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,13 +244,13 @@ import 'user_state.dart';
 ///       authPlugin: mysql_no_login
 /// ```
 class User extends pulumi.CustomResource {
-  /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+  /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
   late final pulumi.Output<String?> authPlugin;
   /// The source host of the user. Defaults to "localhost".
   late final pulumi.Output<String?> host;
-  /// Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+  /// Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
   late final pulumi.Output<String?> password;
-  /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+  /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
   late final pulumi.Output<String?> plaintextPassword;
   /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
   ///

@@ -91,4 +91,3 @@ class MysqlConfig {
 }
 
 const config = MysqlConfig();
-

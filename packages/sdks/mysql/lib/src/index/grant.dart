@@ -107,6 +107,27 @@ import 'grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_user" "jdoe" {
+///   user               = "jdoe"
+///   host               = "example.com"
+///   plaintext_password = "password"
+/// }
+/// resource "mysql_grant" "jdoe" {
+///   user       = mysql_user.jdoe.user
+///   host       = mysql_user.jdoe.host
+///   database   = "app"
+///   privileges = ["SELECT", "UPDATE"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +138,8 @@ import 'grant_state.dart';
 /// import com.pulumi.mysql.UserArgs;
 /// import com.pulumi.mysql.Grant;
 /// import com.pulumi.mysql.GrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,6 +277,24 @@ import 'grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_role" "developer" {
+///   name = "developer"
+/// }
+/// resource "mysql_grant" "developer" {
+///   role       = mysql_role.developer.name
+///   database   = "app"
+///   privileges = ["SELECT", "UPDATE"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +305,8 @@ import 'grant_state.dart';
 /// import com.pulumi.mysql.RoleArgs;
 /// import com.pulumi.mysql.Grant;
 /// import com.pulumi.mysql.GrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -419,6 +458,30 @@ import 'grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     mysql = {
+///       source = "pulumi/mysql"
+///     }
+///   }
+/// }
+///
+/// resource "mysql_user" "jdoe" {
+///   user               = "jdoe"
+///   host               = "example.com"
+///   plaintext_password = "password"
+/// }
+/// resource "mysql_role" "developer" {
+///   name = "developer"
+/// }
+/// resource "mysql_grant" "developer" {
+///   user     = mysql_user.jdoe.user
+///   host     = mysql_user.jdoe.host
+///   database = "app"
+///   roles    = [mysql_role.developer.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -431,8 +494,8 @@ import 'grant_state.dart';
 /// import com.pulumi.mysql.RoleArgs;
 /// import com.pulumi.mysql.Grant;
 /// import com.pulumi.mysql.GrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
