@@ -13,7 +13,7 @@ import (
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
-func TestCoerceOutputCollectionTypeConvertsUnsupportedObjectArraysToRawMapType(t *testing.T) {
+func TestCoerceOutputCollectionTypePreservesTypedObjectArrays(t *testing.T) {
 	t.Parallel()
 
 	typeSpec := codegen.PackageTypeSpec{
@@ -27,16 +27,14 @@ func TestCoerceOutputCollectionTypeConvertsUnsupportedObjectArraysToRawMapType(t
 	}
 
 	coerced := codegen.CoerceOutputCollectionType(typeSpec)
-	assert.Equal(t, "List<Map<String, dynamic>>", coerced.DartType)
+	assert.Equal(t, "List<MetadataType>", coerced.DartType)
 	require.NotNil(t, coerced.ElementType)
-	assert.Equal(t, "map", coerced.ElementType.Kind)
-	assert.Equal(t, "Map<String, dynamic>", coerced.ElementType.DartType)
-	require.NotNil(t, coerced.ElementType.ElementType)
-	assert.Equal(t, "dynamic", coerced.ElementType.ElementType.DartType)
-	assert.Equal(t, "dynamic", coerced.ElementType.ElementType.Kind)
+	assert.Equal(t, "object", coerced.ElementType.Kind)
+	assert.Equal(t, "MetadataType", coerced.ElementType.DartType)
+	assert.Equal(t, "MetadataType", coerced.ElementType.ReferenceType)
 }
 
-func TestCoerceOutputCollectionTypeConvertsUnsupportedDynamicArraysToRawMapType(t *testing.T) {
+func TestCoerceOutputCollectionTypePreservesDynamicArrays(t *testing.T) {
 	t.Parallel()
 
 	typeSpec := codegen.PackageTypeSpec{
@@ -49,13 +47,10 @@ func TestCoerceOutputCollectionTypeConvertsUnsupportedDynamicArraysToRawMapType(
 	}
 
 	coerced := codegen.CoerceOutputCollectionType(typeSpec)
-	assert.Equal(t, "List<Map<String, dynamic>>", coerced.DartType)
+	assert.Equal(t, "List<dynamic>", coerced.DartType)
 	require.NotNil(t, coerced.ElementType)
-	assert.Equal(t, "map", coerced.ElementType.Kind)
-	assert.Equal(t, "Map<String, dynamic>", coerced.ElementType.DartType)
-	require.NotNil(t, coerced.ElementType.ElementType)
-	assert.Equal(t, "dynamic", coerced.ElementType.ElementType.DartType)
-	assert.Equal(t, "dynamic", coerced.ElementType.ElementType.Kind)
+	assert.Equal(t, "dynamic", coerced.ElementType.Kind)
+	assert.Equal(t, "dynamic", coerced.ElementType.DartType)
 }
 
 func TestCoerceOutputCollectionTypeLeavesScalarArraysUntouched(t *testing.T) {

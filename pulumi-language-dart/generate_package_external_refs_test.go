@@ -319,9 +319,9 @@ func TestGeneratePackageUsesTypedResourceOutputObjectTypes(t *testing.T) {
 
 	resourceContent := generatedResourceContent(t, targetDir, "widget")
 	assert.Contains(t, resourceContent, "late final pulumi.Output<Metadata?> metadata;")
-	assert.Contains(t, resourceContent, "late final pulumi.Output<List<Map<String, dynamic>>?> history;")
+	assert.Contains(t, resourceContent, "late final pulumi.Output<List<Metadata>?> history;")
 	assert.Contains(t, resourceContent, "metadata = registerOutput<Metadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Metadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });")
-	assert.Contains(t, resourceContent, "history = registerOutput<List<Map<String, dynamic>>?>('history');")
+	assert.Contains(t, resourceContent, "history = registerOutput<List<Metadata>?>('history', decoder:")
 	assert.NotContains(t, resourceContent, "late final pulumi.Output<Map<String, dynamic>?> metadata;")
 }
 
@@ -361,7 +361,7 @@ func TestGeneratePackageUsesRawTypesForResourceOutputComplexTypes(t *testing.T) 
 	assert.Contains(t, resourceContent, "late final pulumi.Output<Map<String, dynamic>?> metadata;")
 	assert.Contains(t, resourceContent, "late final pulumi.Output<List<Map<String, dynamic>>?> history;")
 	assert.Contains(t, resourceContent, "metadata = registerOutput<Map<String, dynamic>?>('metadata');")
-	assert.Contains(t, resourceContent, "history = registerOutput<List<Map<String, dynamic>>?>('history');")
+	assert.Contains(t, resourceContent, "history = registerOutput<List<Map<String, dynamic>>?>('history', decoder:")
 	assert.NotContains(t, resourceContent, "Output<List<dynamic>?>")
 }
 
@@ -408,5 +408,5 @@ func TestGeneratePackageUsesRawTypesForResourceOutputsInRawSchemaMode(t *testing
 	assert.Contains(t, resourceContent, "late final pulumi.Output<Map<String, dynamic>?> metadata;")
 	assert.Contains(t, resourceContent, "late final pulumi.Output<List<Map<String, dynamic>>?> history;")
 	assert.Contains(t, resourceContent, "metadata = registerOutput<Map<String, dynamic>?>('metadata');")
-	assert.Contains(t, resourceContent, "history = registerOutput<List<Map<String, dynamic>>?>('history');")
+	assert.Contains(t, resourceContent, "history = registerOutput<List<Map<String, dynamic>>?>('history', decoder:")
 }

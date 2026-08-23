@@ -327,7 +327,7 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.NotContains(t, content, "size: map['size'] as int")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
-	assert.Contains(t, content, "size: pulumi.Input.fromValue(map['size'] as int)")
+	assert.Contains(t, content, "size: pulumi.Input.fromValue((map['size'] as num).toInt())")
 	assert.Contains(t, content, "label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),")
 
 	assert.Contains(t, content, "late final pulumi.Output<String> arn;")
@@ -342,11 +342,11 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.Contains(t, content, "required this.id")
 	assert.NotContains(t, content, "id =")
 	assert.Contains(t, content, "class GetWidgetResult")
-	assert.Contains(t, content, "final String name;")
+	assert.Contains(t, content, "final String? name;")
 	assert.Contains(t, content, "final List<String>? tags;")
 	assert.Contains(t, content, "Future<GetWidgetResult> getWidget")
 	assert.Contains(t, content, "GetWidgetResult.fromMap(result)")
-	assert.Contains(t, content, "name: map['name'] as String")
+	assert.Contains(t, content, "name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })()")
 	assert.Contains(t, content, "tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),")
 }
 
