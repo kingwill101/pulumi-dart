@@ -8,8 +8,8 @@ class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     pulumi.ResourceReferenceRegistry.register('component:index:Custom', (urn) => component_index.Custom.reference(urn));
     final component1 = component_index.ComponentCustomRefOutput('component1', args: component_index.ComponentCustomRefOutputArgs(value: ('foo-bar-baz').input(), ));
-    final custom1 = component_index.Custom('custom1', args: component_index.CustomArgs(value: (pulumi.output(component1.value).apply<String>((value) => value as String)).input(), ));
-    final custom2 = component_index.Custom('custom2', args: component_index.CustomArgs(value: (pulumi.output(component1.ref.apply<dynamic>((value) => value?.value)).apply<String>((value) => value as String)).input(), ));
+    final custom1 = component_index.Custom('custom1', args: component_index.CustomArgs(value: (pulumi.output(component1.value).apply<String>((value) => (value).toString())).input(), ));
+    final custom2 = component_index.Custom('custom2', args: component_index.CustomArgs(value: (pulumi.output(component1.ref.apply<dynamic>((value) => value?.value)).apply<String>((value) => (value).toString())).input(), ));
 
     _outputProperties = [
     ];
