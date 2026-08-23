@@ -4,7 +4,7 @@ import (
 	"sort"
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
 )
 
 // generatedConfigFile renders the generated config accessors file for provider
@@ -60,31 +60,11 @@ func generatedConfigFile(
 		imports = append(imports, dartir.Import{URI: path, Prefix: externalImports[path]})
 	}
 
-	properties := make([]dartir.ConfigProperty, len(spec.Config.Properties))
-	for index, property := range spec.Config.Properties {
-		properties[index] = lowerConfigProperty(property)
-	}
-	return render.Config(dartir.Config{
-		ClassName:  spec.Config.ClassName,
-		Docs:       spec.Config.Comment,
-		Imports:    imports,
-		Properties: properties,
-	})
-}
-
-func lowerConfigProperty(property packagePropertySpec) dartir.ConfigProperty {
-	result := dartir.ConfigProperty{
-		NameLiteral:     dartStringLiteral(property.Name),
-		FieldName:       property.FieldName,
-		Docs:            property.Comment,
-		GetterType:      configPropertyGetterType(property),
-		ParseExpression: configPropertyParseExpression(property, "raw"),
-	}
-	if property.Required {
-		result.Required = &dartir.RequiredConfigAccessor{
-			MethodName: "require" + toDartClassName(property.FieldName),
-			ReturnType: propertyBaseDartType(property),
+	requiredMethodNames := map[string]string{}
+	for _, property := range spec.Config.Properties {
+		if property.Required {
+			requiredMethodNames[property.FieldName] = "require" + toDartClassName(property.FieldName)
 		}
 	}
-	return result
+	return lower.Config(*spec.Config, imports, requiredMethodNames)
 }
