@@ -36,4 +36,3 @@ class DockerBuildConfig {
 }
 
 const config = DockerBuildConfig();
-

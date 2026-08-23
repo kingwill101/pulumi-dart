@@ -351,6 +351,60 @@ import 'registry.dart';
 ///         type: docker-build:Index
 /// runtime: yaml
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     docker-build = {
+///       source  = "pulumi/docker-build"
+///       version = "0.0.15"
+///     }
+///   }
+/// }
+///
+/// resource "docker-build_image" "amd64" {
+///   cache_from {
+///     registry = {
+///       ref = "docker.io/pulumi/pulumi:cache-amd64"
+///     }
+///   }
+///   cache_to {
+///     registry = {
+///       mode = "max"
+///       ref  = "docker.io/pulumi/pulumi:cache-amd64"
+///     }
+///   }
+///   context = {
+///     location = "app"
+///   }
+///   platforms = ["linux/amd64"]
+///   tags      = ["docker.io/pulumi/pulumi:3.107.0-amd64"]
+/// }
+/// resource "docker-build_image" "arm64" {
+///   cache_from {
+///     registry = {
+///       ref = "docker.io/pulumi/pulumi:cache-arm64"
+///     }
+///   }
+///   cache_to {
+///     registry = {
+///       mode = "max"
+///       ref  = "docker.io/pulumi/pulumi:cache-arm64"
+///     }
+///   }
+///   context = {
+///     location = "app"
+///   }
+///   platforms = ["linux/arm64"]
+///   tags      = ["docker.io/pulumi/pulumi:3.107.0-arm64"]
+/// }
+/// resource "docker-build_index" "index" {
+///   sources = [docker-build_image.amd64.ref, docker-build_image.arm64.ref]
+///   tag     = "docker.io/pulumi/pulumi:3.107.0"
+/// }
+/// output "ref" {
+///   value = docker-build_index.index.ref
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -366,8 +420,8 @@ import 'registry.dart';
 /// import com.pulumi.dockerbuild.inputs.BuildContextArgs;
 /// import com.pulumi.dockerbuild.Index;
 /// import com.pulumi.dockerbuild.IndexArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

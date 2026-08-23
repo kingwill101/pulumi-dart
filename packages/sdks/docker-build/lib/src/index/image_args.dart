@@ -92,6 +92,13 @@ class ImageArgs {
   ///
   /// Equivalent to Docker's `--output` flag.
   final pulumi.Input<List<Export>>? exports;
+  /// A list of secret names to ignore when calculating diffs.
+  ///
+  /// These secrets will not be considered when calculating diffs, even if they
+  /// are changed. Note: only applicable if the secret is present in both the old and the new state.
+  ///
+  /// This is useful when you want to avoid unnecessary rebuilds caused by short-lived secrets that change on every run.
+  final pulumi.Input<List<String>>? ignoreSecretsInDiffCalculation;
   /// Attach arbitrary key/value metadata to the image.
   ///
   /// Equivalent to Docker's `--label` flag.
@@ -173,6 +180,7 @@ class ImageArgs {
   /// [dockerfile] Dockerfile settings.
   /// [exec] Use `exec` mode to build this image.
   /// [exports] Controls where images are persisted after building.
+  /// [ignoreSecretsInDiffCalculation] A list of secret names to ignore when calculating diffs.
   /// [labels] Attach arbitrary key/value metadata to the image.
   /// [load] When `true` the build will automatically include a `docker` export.
   /// [network] Set the network mode for `RUN` instructions. Defaults to `default`.
@@ -196,6 +204,7 @@ class ImageArgs {
     this.dockerfile,
     this.exec,
     this.exports,
+    this.ignoreSecretsInDiffCalculation,
     this.labels,
     this.load,
     this.network,
@@ -222,6 +231,7 @@ class ImageArgs {
       'dockerfile': ?pulumi.Input.mapOptionalInputValue<Dockerfile, Map<String, dynamic>>(dockerfile, (value) => value.toMap()),
       'exec': ?exec,
       'exports': ?pulumi.Input.mapOptionalInputValue<List<Export>, List<Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeList<Export, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ignoreSecretsInDiffCalculation': ?ignoreSecretsInDiffCalculation,
       'labels': ?labels,
       'load': ?load,
       'network': ?pulumi.Input.mapOptionalInputValue<NetworkMode, String>(network, (value) => value.wireValue),
@@ -249,6 +259,7 @@ class ImageArgs {
       dockerfile: (() { final guardedValue = map['dockerfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Dockerfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       exec: (() { final guardedValue = map['exec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exports: (() { final guardedValue = map['exports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Export>(guardedValue, (value) => Export.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ignoreSecretsInDiffCalculation: (() { final guardedValue = map['ignoreSecretsInDiffCalculation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       load: (() { final guardedValue = map['load']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkMode.fromValue(guardedValue as String)); })(),
@@ -264,4 +275,3 @@ class ImageArgs {
     );
   }
 }
-
