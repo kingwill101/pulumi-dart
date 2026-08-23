@@ -16,10 +16,14 @@ func TestFunctionsLibraryLowersInvokeMetadata(t *testing.T) {
 		Name:          "getThing",
 		ArgsDocsMacro: "example.GetThingArgs",
 		Function: schemair.Function{
-			Comment:     "Gets a thing.",
-			HasArgs:     true,
-			ArgsClass:   "GetThingArgs",
-			ResultClass: "GetThingResult",
+			Comment:             "Gets a thing.",
+			HasArgs:             true,
+			ArgsClass:           "GetThingArgs",
+			ResultClass:         "GetThingResult",
+			MultiArgumentInputs: true,
+			Parameters: []schemair.Property{
+				{FieldName: "name", DartType: "String", Required: true},
+			},
 		},
 	}}, []dartir.Import{
 		{URI: "package:pulumi/pulumi.dart", Prefix: "pulumi"},
@@ -32,4 +36,7 @@ func TestFunctionsLibraryLowersInvokeMetadata(t *testing.T) {
 	require.Equal(t, `'example:index:getThing'`, actual.Functions[0].TokenLiteral)
 	require.Equal(t, "example.GetThingArgs", actual.Functions[0].ArgsDocsMacro)
 	require.True(t, actual.Functions[0].HasPackageRegistration)
+	require.True(t, actual.Functions[0].MultiArgumentInputs)
+	require.Equal(t, "name", actual.Functions[0].Parameters[0].Name)
+	require.Equal(t, "pulumi.Input<String>", actual.Functions[0].Parameters[0].DartType)
 }

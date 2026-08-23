@@ -26,6 +26,8 @@ func FunctionsLibrary(invokes []Invoke, imports []dartir.Import, hasPackageRegis
 			ResultClass:            invoke.Function.ResultClass,
 			TokenLiteral:           darttext.StringLiteral(invoke.Token),
 			HasPackageRegistration: hasPackageRegistration,
+			MultiArgumentInputs:    invoke.Function.MultiArgumentInputs,
+			Parameters:             lowerInvokeParameters(invoke.Function.Parameters),
 		}
 	}
 
@@ -33,4 +35,18 @@ func FunctionsLibrary(invokes []Invoke, imports []dartir.Import, hasPackageRegis
 		Imports:   append([]dartir.Import(nil), imports...),
 		Functions: declarations,
 	}
+}
+
+func lowerInvokeParameters(properties []schemair.Property) []dartir.InvokeParameter {
+	parameters := make([]dartir.InvokeParameter, len(properties))
+	for index, property := range properties {
+		parameters[index] = dartir.InvokeParameter{
+			Name: property.FieldName,
+			DartType: ObjectPropertyType(
+				schemair.ObjectClass{UsesInputTypes: true},
+				property,
+			),
+		}
+	}
+	return parameters
 }

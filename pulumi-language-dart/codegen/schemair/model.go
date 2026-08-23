@@ -37,10 +37,12 @@ type Resource struct {
 }
 
 type Function struct {
-	Comment     string
-	HasArgs     bool
-	ArgsClass   string
-	ResultClass string
+	Comment             string
+	HasArgs             bool
+	ArgsClass           string
+	ResultClass         string
+	MultiArgumentInputs bool
+	Parameters          []Property
 }
 
 type ResourceMethod struct {

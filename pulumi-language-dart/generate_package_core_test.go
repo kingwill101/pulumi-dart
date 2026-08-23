@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -86,6 +87,40 @@ func TestGeneratePackageHandlesFunctionTokenSuffix(t *testing.T) {
 	assert.NotContains(t, rootContent, "sdk.dart")
 	assert.Contains(t, content, "Future<Map<String, dynamic>> doEchoMethod")
 	assert.Contains(t, content, "sample:index:Echo/doEchoMethod")
+}
+
+func TestGeneratePackageEmitsMultiArgumentInvokeSignature(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"functions": {
+			"sample:index:lookupWidget": {
+				"inputs": {
+					"properties": {
+						"count": { "type": "integer" },
+						"name": { "type": "string" }
+					},
+					"required": ["name"]
+				},
+				"multiArgumentInputs": ["name", "count"]
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(t, content, "pulumi.Input<String> name,\n  pulumi.Input<int>? count,")
+	assert.Contains(t, content, "LookupWidgetArgs(name: name, count: count, ).toMap()")
+	assert.Less(t, strings.Index(content, "pulumi.Input<String> name,"), strings.Index(content, "pulumi.Input<int>? count,"))
 }
 
 func TestGeneratePackageUsesModuleDirectoryStructure(t *testing.T) {

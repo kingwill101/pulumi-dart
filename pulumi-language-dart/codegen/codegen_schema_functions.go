@@ -36,8 +36,9 @@ func lowerRawFunctions(
 		}
 
 		functionSpec := packageFunctionSpec{
-			Comment: strings.TrimSpace(function.Description),
-			HasArgs: len(inputProperties) > 0,
+			Comment:             strings.TrimSpace(function.Description),
+			HasArgs:             len(inputProperties) > 0,
+			MultiArgumentInputs: len(function.MultiArgumentInputs) > 0,
 		}
 		base := toDartClassName(tokenElementName(token))
 		if classSpec := makeRawObjectClassSpec(
@@ -57,6 +58,12 @@ func lowerRawFunctions(
 			classSpec.CanonicalName = canonicalTypeName(base, "Args")
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ArgsClass = classSpec.ClassName
+			if functionSpec.MultiArgumentInputs {
+				functionSpec.Parameters = orderedFunctionParameters(
+					classSpec.Properties,
+					function.MultiArgumentInputs,
+				)
+			}
 		}
 		if classSpec := makeRawObjectClassSpec(
 			base,
@@ -78,4 +85,18 @@ func lowerRawFunctions(
 		}
 		spec.Functions[token] = functionSpec
 	}
+}
+
+func orderedFunctionParameters(properties []packagePropertySpec, names []string) []packagePropertySpec {
+	byName := make(map[string]packagePropertySpec, len(properties))
+	for _, property := range properties {
+		byName[property.Name] = property
+	}
+	ordered := make([]packagePropertySpec, 0, len(names))
+	for _, name := range names {
+		if property, ok := byName[name]; ok {
+			ordered = append(ordered, property)
+		}
+	}
+	return ordered
 }

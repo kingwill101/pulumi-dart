@@ -30,6 +30,17 @@ func TestFunctionsLibraryRendersTypedAndUntypedInvokes(t *testing.T) {
 				Name:         "listWidgets",
 				TokenLiteral: "'example:index:listWidgets'",
 			},
+			{
+				Name:                "lookupWidget",
+				ArgsClass:           "LookupWidgetArgs",
+				HasArgs:             true,
+				MultiArgumentInputs: true,
+				Parameters: []dartir.InvokeParameter{
+					{Name: "name", DartType: "pulumi.Input<String>"},
+					{Name: "region", DartType: "pulumi.Input<String>?"},
+				},
+				TokenLiteral: "'example:index:lookupWidget'",
+			},
 		},
 	}))
 
@@ -40,4 +51,7 @@ func TestFunctionsLibraryRendersTypedAndUntypedInvokes(t *testing.T) {
 	require.Contains(t, actual, "return GetWidgetResult.fromMap(result);")
 	require.Contains(t, actual, "Future<Map<String, dynamic>> listWidgets(")
 	require.Contains(t, actual, "const <String, dynamic>{}")
+	require.Contains(t, actual, "pulumi.Input<String> name,")
+	require.Contains(t, actual, "pulumi.Input<String>? region,")
+	require.Contains(t, actual, "LookupWidgetArgs(name: name, region: region, ).toMap()")
 }
