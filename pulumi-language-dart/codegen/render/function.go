@@ -25,6 +25,11 @@ func writeInvokeFunction(b *strings.Builder, function dartir.InvokeFunction) {
 	if function.ArgsDocsMacro != "" {
 		fmt.Fprintf(b, "/// [args] Arguments passed to this invoke. {@macro %s}\n", function.ArgsDocsMacro)
 	}
+	if function.MultiArgumentInputs {
+		for _, parameter := range function.Parameters {
+			fmt.Fprintf(b, "/// [%s] Value for the `%s` invoke input.\n", parameter.Name, parameter.Name)
+		}
+	}
 	b.WriteString("/// [options] Invoke options controlling this call.\n")
 
 	signatureArgs := "Map<String, dynamic> args, {\n  pulumi.InvokeOptions? options,\n"
@@ -35,6 +40,16 @@ func writeInvokeFunction(b *strings.Builder, function dartir.InvokeFunction) {
 	} else if !function.HasArgs {
 		signatureArgs = "{\n  pulumi.InvokeOptions? options,\n"
 		invokeArgs = "const <String, dynamic>{}"
+	}
+	if function.MultiArgumentInputs {
+		var signature strings.Builder
+		var constructor strings.Builder
+		for _, parameter := range function.Parameters {
+			fmt.Fprintf(&signature, "%s %s,\n  ", parameter.DartType, parameter.Name)
+			fmt.Fprintf(&constructor, "%s: %s, ", parameter.Name, parameter.Name)
+		}
+		signatureArgs = signature.String() + "{\n  pulumi.InvokeOptions? options,\n"
+		invokeArgs = fmt.Sprintf("%s(%s).toMap()", function.ArgsClass, constructor.String())
 	}
 
 	registrationArg := ""

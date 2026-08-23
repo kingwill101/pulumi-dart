@@ -26,6 +26,11 @@ func generatedFunctionsFile(
 				typeImports[relativeDartImportPath(filePath, path)] = struct{}{}
 			}
 		}
+		for _, reference := range referencedTypesFromProperties(function.Function.Parameters) {
+			if path, ok := resolveTypeFilePath(typeFilesByName, reference, function.ModulePath); ok {
+				typeImports[relativeDartImportPath(filePath, path)] = struct{}{}
+			}
+		}
 	}
 	importPaths := make([]string, 0, len(typeImports))
 	for path := range typeImports {
@@ -34,6 +39,20 @@ func generatedFunctionsFile(
 	sort.Strings(importPaths)
 	for _, path := range importPaths {
 		imports = append(imports, dartir.Import{URI: path})
+	}
+	externalImports := map[string]string{}
+	for _, function := range functions {
+		for path, alias := range externalImportsFromProperties(function.Function.Parameters) {
+			externalImports[path] = alias
+		}
+	}
+	externalPaths := make([]string, 0, len(externalImports))
+	for path := range externalImports {
+		externalPaths = append(externalPaths, path)
+	}
+	sort.Strings(externalPaths)
+	for _, path := range externalPaths {
+		imports = append(imports, dartir.Import{URI: path, Prefix: externalImports[path]})
 	}
 	if hasPackageRegistration {
 		imports = append(imports, dartir.Import{

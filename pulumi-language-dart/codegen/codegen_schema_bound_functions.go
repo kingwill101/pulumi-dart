@@ -34,8 +34,9 @@ func lowerBoundFunctions(
 		}
 
 		functionSpec := packageFunctionSpec{
-			Comment: strings.TrimSpace(function.Comment),
-			HasArgs: len(inputProperties) > 0,
+			Comment:             strings.TrimSpace(function.Comment),
+			HasArgs:             len(inputProperties) > 0,
+			MultiArgumentInputs: function.MultiArgumentInputs,
 		}
 		base := toDartClassName(tokenElementName(function.Token))
 		if classSpec := makeObjectClassSpec(
@@ -54,6 +55,16 @@ func lowerBoundFunctions(
 			classSpec.CanonicalName = canonicalTypeName(base, "Args")
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ArgsClass = classSpec.ClassName
+			if functionSpec.MultiArgumentInputs {
+				propertyNames := make([]string, len(inputProperties))
+				for index, property := range inputProperties {
+					propertyNames[index] = property.Name
+				}
+				functionSpec.Parameters = orderedFunctionParameters(
+					classSpec.Properties,
+					propertyNames,
+				)
+			}
 		}
 		if classSpec := makeObjectClassSpec(
 			base,

@@ -14,4 +14,11 @@ type InvokeFunction struct {
 	ResultClass            string
 	TokenLiteral           string
 	HasPackageRegistration bool
+	MultiArgumentInputs    bool
+	Parameters             []InvokeParameter
+}
+
+type InvokeParameter struct {
+	Name     string
+	DartType string
 }
