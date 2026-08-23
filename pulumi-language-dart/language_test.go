@@ -16,14 +16,18 @@ package main
 
 import (
 	"bufio"
+	"context"
 	"fmt"
+	"hash/crc32"
 	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 	"testing"
+	"time"
 
 	ptesting "github.com/pulumi/pulumi/sdk/v3/go/common/testing"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -336,14 +340,21 @@ func TestLanguageConformance(t *testing.T) {
 		passing[name] = struct{}{}
 	}
 	experimental := requestedExperimentalConformanceTests()
+	shard, err := conformanceShardFromEnvironment()
+	require.NoError(t, err)
 	for _, name := range tests.Tests {
 		t.Run(name, func(t *testing.T) {
+			if !shard.includes(name) {
+				t.Skipf("test belongs to conformance shard %d/%d", shardForName(name, shard.total)+1, shard.total)
+			}
 			_, mustPass := passing[name]
 			_, requested := experimental[name]
 			if !mustPass && !requested {
 				t.Skip("Dart conformance support is not implemented yet")
 			}
-			result, err := client.RunLanguageTest(ctx, &testingrpc.RunLanguageTestRequest{
+			caseCtx, cancel := context.WithTimeout(ctx, conformanceCaseTimeout())
+			defer cancel()
+			result, err := client.RunLanguageTest(caseCtx, &testingrpc.RunLanguageTestRequest{
 				Token: prepare.Token,
 				Test:  name,
 			})
@@ -356,6 +367,48 @@ func TestLanguageConformance(t *testing.T) {
 			assert.True(t, result.Success)
 		})
 	}
+}
+
+type conformanceShard struct {
+	index int
+	total int
+}
+
+func (shard conformanceShard) includes(name string) bool {
+	return shard.total == 1 || shardForName(name, shard.total) == shard.index
+}
+
+func shardForName(name string, total int) int {
+	return int(crc32.ChecksumIEEE([]byte(name)) % uint32(total))
+}
+
+func conformanceShardFromEnvironment() (conformanceShard, error) {
+	raw := strings.TrimSpace(os.Getenv("PULUMI_DART_CONFORMANCE_SHARD"))
+	if raw == "" {
+		return conformanceShard{total: 1}, nil
+	}
+	parts := strings.Split(raw, "/")
+	if len(parts) != 2 {
+		return conformanceShard{}, fmt.Errorf("PULUMI_DART_CONFORMANCE_SHARD must use the 1-based form <index>/<total>, got %q", raw)
+	}
+	index, indexErr := strconv.Atoi(parts[0])
+	total, totalErr := strconv.Atoi(parts[1])
+	if indexErr != nil || totalErr != nil || total < 1 || index < 1 || index > total {
+		return conformanceShard{}, fmt.Errorf("PULUMI_DART_CONFORMANCE_SHARD must use the 1-based form <index>/<total>, got %q", raw)
+	}
+	return conformanceShard{index: index - 1, total: total}, nil
+}
+
+func conformanceCaseTimeout() time.Duration {
+	raw := strings.TrimSpace(os.Getenv("PULUMI_DART_CONFORMANCE_CASE_TIMEOUT"))
+	if raw == "" {
+		return 5 * time.Minute
+	}
+	timeout, err := time.ParseDuration(raw)
+	if err != nil || timeout <= 0 {
+		return 5 * time.Minute
+	}
+	return timeout
 }
 
 func prepareConformancePolicyPacks(t *testing.T) string {

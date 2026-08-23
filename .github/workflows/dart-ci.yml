@@ -106,7 +106,7 @@ jobs:
       - name: Test Dart language host
         run: |
           cd pulumi-language-dart
-          go test -count=1 ./...
+          go test -count=1 -skip '^TestLanguageConformance$' ./...
 
       - name: Install Dart SDK package dependencies
         run: |
