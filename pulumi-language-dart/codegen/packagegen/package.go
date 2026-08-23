@@ -9,13 +9,14 @@ import (
 	"sort"
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 )
 
 // Input contains the semantic package and Dart package identity required to
 // render an SDK. It deliberately contains no filesystem paths or environment
 // configuration.
 type Input struct {
-	Schema         *codegen.PackageSchema
+	Schema         *schemair.Package
 	PackageName    string
 	SDKLibraryName string
 }
