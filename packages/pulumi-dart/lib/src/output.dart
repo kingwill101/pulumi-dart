@@ -2,6 +2,10 @@ import 'dart:async';
 import 'resource/resource.dart';
 import 'input.dart';
 
+/// Produces a typed replacement input after an [Output] fails.
+typedef OutputRecovery<T> =
+    FutureOr<Input<T>> Function(Object error, StackTrace stackTrace);
+
 /// {@template pulumi.output.summary}
 /// A Pulumi output value with dependency and secrecy metadata.
 ///
@@ -69,6 +73,27 @@ class Output<T> implements Input<T> {
 
   /// Returns full output metadata.
   Future<OutputData<T>> getData() => _dataFuture;
+
+  /// Returns this output's value, or a typed replacement when it fails.
+  ///
+  /// The replacement may be a plain-value [Input], another [Output], or a
+  /// future producing either. Its known, secret, and dependency metadata is
+  /// preserved. The recovery callback is not invoked for successful or unknown
+  /// outputs.
+  Output<T> recover(OutputRecovery<T> recovery) {
+    return Output<T>(_recover(recovery));
+  }
+
+  Future<OutputData<T>> _recover(OutputRecovery<T> recovery) async {
+    try {
+      return await _dataFuture;
+    } catch (error, stackTrace) {
+      final replacement = await Future<Input<T>>.value(
+        recovery(error, stackTrace),
+      );
+      return replacement.toOutput().getData();
+    }
+  }
 
   /// Applies [func] to the resolved value and returns a new output.
   ///

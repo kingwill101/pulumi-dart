@@ -8,6 +8,86 @@ import '../../test_utils/output_test_utils.dart';
 
 void main() {
   group('output composition', () {
+    test('recover leaves successful output unchanged', () async {
+      var invoked = false;
+      final source = createOutputData(value: 'original', isKnown: true);
+
+      final data = await source.recover((_, _) {
+        invoked = true;
+        return Input.fromValue('replacement');
+      }).getData();
+
+      expect(invoked, isFalse);
+      expect(data.value, equals('original'));
+      expect(data.isKnown, isTrue);
+    });
+
+    test(
+      'recover replaces a failed output with typed input metadata',
+      () async {
+        final dependency = DependencyResource(
+          'urn:pulumi:dev::proj::pkg:type::replacement',
+        );
+        final source = Output<String>(
+          Future<OutputData<String>>.error(StateError('boom')),
+        );
+        final replacement = createOutputData(
+          value: 'recovered',
+          isKnown: true,
+          isSecret: true,
+          resources: {dependency},
+        );
+
+        final data = await source.recover((error, stackTrace) {
+          expect(error, isA<StateError>());
+          expect(stackTrace, isA<StackTrace>());
+          return replacement;
+        }).getData();
+
+        expect(data.value, equals('recovered'));
+        expect(data.isKnown, isTrue);
+        expect(data.isSecret, isTrue);
+        expect(data.resources, equals({dependency}));
+      },
+    );
+
+    test('recover accepts an asynchronous replacement', () async {
+      final source = Output<int>(
+        Future<OutputData<int>>.error(ArgumentError('bad value')),
+      );
+
+      final value = await source
+          .recover((_, _) async => Input.fromValue(42))
+          .getValue();
+
+      expect(value, equals(42));
+    });
+
+    test('recover propagates a replacement failure', () async {
+      final source = Output<String>(
+        Future<OutputData<String>>.error(StateError('original')),
+      );
+
+      final recovered = source.recover((_, _) {
+        throw ArgumentError('replacement');
+      });
+
+      await expectLater(recovered.getData(), throwsA(isA<ArgumentError>()));
+    });
+
+    test('recover does not treat an unknown output as a failure', () async {
+      var invoked = false;
+      final source = createOutputData<String>(value: null, isKnown: false);
+
+      final data = await source.recover((_, _) {
+        invoked = true;
+        return Input.fromValue('replacement');
+      }).getData();
+
+      expect(invoked, isFalse);
+      expect(data.isKnown, isFalse);
+    });
+
     test('apply resolves nested output value', () async {
       final outer = createOutputData(value: 1, isKnown: true);
       final resolved = outer.apply(
