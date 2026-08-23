@@ -3,6 +3,10 @@ import 'package:test/test.dart';
 
 void main() {
   group('output helper', () {
+    test('stringLength counts user-perceived Unicode characters', () {
+      expect(stringLength('👾-🕹️'), equals(3));
+    });
+
     test('output unwraps nested map/list input values', () async {
       final value = output({
         Input.fromValue('hello'): Output.create('world'),

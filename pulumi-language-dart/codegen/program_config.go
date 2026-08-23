@@ -11,7 +11,8 @@ func (lowerer programLowerer) configVariable(variable *pcl.ConfigVariable) (dart
 	name := propertyFieldName(variable.Name(), lowerer.usedNames)
 	lowerer.names[variable.Name()] = name
 
-	getter, err := dartConfigGetter(variable.Type(), variable.DefaultValue == nil)
+	resolvedType := model.ResolveOutputs(variable.Type())
+	getter, err := dartConfigGetter(resolvedType, variable.DefaultValue == nil)
 	if err != nil {
 		return dartProgramConfig{}, err
 	}
@@ -23,8 +24,11 @@ func (lowerer programLowerer) configVariable(variable *pcl.ConfigVariable) (dart
 		}
 		expression += " ?? " + fallback
 	}
-	if variable.Type() == model.IntType {
+	if resolvedType == model.IntType {
 		expression = "(" + expression + ").toInt()"
+	}
+	if variable.Secret {
+		expression = "pulumi.secret(" + expression + ")"
 	}
 	return dartProgramConfig{Name: name, Expression: expression}, nil
 }

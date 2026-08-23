@@ -19,6 +19,9 @@ func (lowerer programLowerer) unaryExpression(expression *model.UnaryOpExpressio
 	if err != nil {
 		return "", err
 	}
+	if model.ContainsOutputs(expression.Type()) {
+		return "pulumi.output(" + operand + ").apply<dynamic>((value) => " + operator + "(value))", nil
+	}
 	return operator + "(" + operand + ")", nil
 }
 
@@ -40,6 +43,10 @@ func (lowerer programLowerer) binaryExpression(expression *model.BinaryOpExpress
 	right, err := lowerer.expression(expression.RightOperand)
 	if err != nil {
 		return "", err
+	}
+	if model.ContainsOutputs(expression.Type()) {
+		return "pulumi.output([" + left + ", " + right + "]).apply<dynamic>(" +
+			"(values) => (values[0] " + operator + " values[1]))", nil
 	}
 	return "(" + left + " " + operator + " " + right + ")", nil
 }

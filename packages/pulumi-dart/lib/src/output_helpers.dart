@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:characters/characters.dart';
+
 import 'input.dart';
 import 'input_args.dart';
 import 'output.dart';
@@ -39,6 +41,12 @@ Output<dynamic> secret(dynamic value) {
 
 /// Removes the secret bit from an output.
 Output<T> unsecret<T>(Output<T> value) => Output.unsecret(value);
+
+/// Returns the number of user-perceived Unicode characters in [value].
+///
+/// PCL's `length` builtin counts grapheme clusters rather than UTF-16 code
+/// units or Unicode scalar values.
+int stringLength(String value) => value.characters.length;
 
 /// Concatenates typed inputs after resolving their values.
 ///
