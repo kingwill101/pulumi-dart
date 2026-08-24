@@ -16,4 +16,22 @@ void main() {
     expect(script, contains("'backend/bin/server'\"'\"'s.dart'"));
     expect(script, contains("--target-arch='arm64'"));
   });
+
+  test('renders a dart build cli bundle', () {
+    final script = renderDartCliBuildScript(
+      dartExecutable: '/opt/fvm/bin/dart',
+      entryPoint: 'bin/server.dart',
+      outputDirectory: 'build/cli',
+      archivePath: 'build/cli.tar.gz',
+    );
+
+    expect(
+      script,
+      contains(
+        "'/opt/fvm/bin/dart' build cli "
+        "--target='bin/server.dart' --output='build/cli'",
+      ),
+    );
+    expect(script, contains("tar -czf 'build/cli.tar.gz' -C 'build/cli' ."));
+  });
 }

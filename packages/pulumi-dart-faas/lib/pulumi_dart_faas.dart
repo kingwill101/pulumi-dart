@@ -48,6 +48,7 @@ export 'src/aws/args.dart';
 export 'src/aws/function.dart';
 export 'src/build/args.dart';
 export 'src/build/archive.dart';
+export 'src/build/target.dart';
 export 'src/gcp/args.dart';
 export 'src/gcp/function.dart';
 export 'src/models.dart';

@@ -12,10 +12,12 @@ class BinaryUploadStack extends pulumi.Stack {
       'build-binary-bundle',
       args: faas.DartBuildArchiveArgs(
         entryPoint: 'backend/bin/server.dart'.input(),
-        outputBinaryPath: 'build_deploy/bin/server'.input(),
         archivePath: 'build_deploy.tar.gz'.input(),
-        targetOs: 'linux'.input(),
-        targetArch: 'x64'.input(),
+        target: faas.DartBuildTarget.executable(
+          outputPath: 'build_deploy/bin/server'.input(),
+          targetOs: 'linux'.input(),
+          targetArch: 'x64'.input(),
+        ),
         triggers: ['backend/bin/server.dart'].input(),
       ),
     );

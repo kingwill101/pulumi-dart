@@ -25,3 +25,19 @@ String _directoryName(String path) {
 }
 
 String _quote(String value) => "'${value.replaceAll("'", "'\"'\"'")}'";
+
+/// Renders a `dart build cli` command and archives the resulting bundle.
+String renderDartCliBuildScript({
+  required String dartExecutable,
+  required String entryPoint,
+  required String outputDirectory,
+  required String archivePath,
+}) =>
+    '''
+set -euo pipefail
+rm -rf ${_quote(outputDirectory)} ${_quote(archivePath)}
+mkdir -p ${_quote(outputDirectory)}
+
+${_quote(dartExecutable)} build cli --target=${_quote(entryPoint)} --output=${_quote(outputDirectory)}
+tar -czf ${_quote(archivePath)} -C ${_quote(outputDirectory)} .
+''';
