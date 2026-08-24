@@ -56,10 +56,14 @@ func writeGeneratedExtraFiles(
 		if err != nil {
 			return fmt.Errorf("invalid default extra file path %q: %w", filename, err)
 		}
-		if _, err := os.Stat(outputPath); err == nil {
-			continue
-		} else if !os.IsNotExist(err) {
-			return fmt.Errorf("failed to check default extra file %s: %w", filename, err)
+		// LICENSE is derived from the schema SPDX identifier and must track it.
+		// Other scaffolding is intentionally user-maintainable after generation.
+		if filename != "LICENSE" {
+			if _, err := os.Stat(outputPath); err == nil {
+				continue
+			} else if !os.IsNotExist(err) {
+				return fmt.Errorf("failed to check default extra file %s: %w", filename, err)
+			}
 		}
 		extraFiles[filename] = contents
 	}
