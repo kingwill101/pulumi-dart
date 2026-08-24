@@ -18,7 +18,6 @@ type programLowerer struct {
 	resourceReferences       map[string]dartProgramResourceReference
 	rangedResourceKinds      map[string]string
 	needsAsyncInitialization *bool
-	specialProviders         map[string]struct{}
 	componentMode            bool
 	deferredResolutions      map[string][]dartProgramDeferredResolution
 }
@@ -34,7 +33,6 @@ func newProgramLowerer(program *pcl.Program) programLowerer {
 		resourceReferences:       map[string]dartProgramResourceReference{},
 		rangedResourceKinds:      map[string]string{},
 		needsAsyncInitialization: new(bool),
-		specialProviders:         map[string]struct{}{},
 		deferredResolutions:      map[string][]dartProgramDeferredResolution{},
 	}
 }

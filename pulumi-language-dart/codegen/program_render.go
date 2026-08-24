@@ -45,9 +45,6 @@ func renderDartProgram(program dartProgram) []byte {
 	} else {
 		body.WriteString("  GeneratedStack() {\n")
 	}
-	if program.RequiresPulumiProvider {
-		body.WriteString("    pulumi.ProviderResource('pulumi', 'default', null, null);\n")
-	}
 	if len(program.Configs) > 0 {
 		body.WriteString("    final config = pulumi.Config();\n")
 	}

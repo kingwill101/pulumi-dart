@@ -9,7 +9,6 @@ type dartProgram struct {
 	Outputs                  []dartProgramOutput
 	NeedsAsyncInitialization bool
 	ResourceReferences       []dartProgramResourceReference
-	RequiresPulumiProvider   bool
 	Components               []dartProgramComponent
 }
 

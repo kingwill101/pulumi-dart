@@ -40,3 +40,20 @@ func TestSchemaResourceTypeSpecUsesProviderResourceForProviderTokens(t *testing.
 	require.Equal(t, "pulumi.ProviderResource", spec.DartType)
 	require.Equal(t, "pulumi.ProviderResource", spec.ReferenceType)
 }
+
+func TestSchemaResourceTypeSpecUsesNamedResourceReference(t *testing.T) {
+	t.Parallel()
+
+	spec := schemaResourceTypeSpec(
+		&schema.ResourceType{Token: "component:index:Custom"},
+		map[string]packageNamedTypeRef{
+			resourceNamedTypeKey("component:index:Custom"): {Name: "Custom"},
+		},
+		true,
+		"component",
+	)
+
+	require.Equal(t, "resource", spec.Kind)
+	require.Equal(t, "Custom", spec.DartType)
+	require.Equal(t, "Custom", spec.ReferenceType)
+}

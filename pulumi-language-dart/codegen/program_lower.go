@@ -110,6 +110,5 @@ func (lowerer programLowerer) lowerProgram(program *pcl.Program) (dartProgram, e
 	result.Imports = lowerer.sortedImports()
 	result.NeedsAsyncInitialization = *lowerer.needsAsyncInitialization
 	result.ResourceReferences = lowerer.sortedResourceReferences()
-	_, result.RequiresPulumiProvider = lowerer.specialProviders["pulumi"]
 	return result, nil
 }

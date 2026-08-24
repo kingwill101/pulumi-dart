@@ -18,9 +18,6 @@ func (lowerer programLowerer) providerInputExpression(
 		propertyType = property.Type
 	}
 	if propertyType != nil {
-		if providerTypeContainsResource(propertyType) {
-			lowerer.specialProviders["pulumi"] = struct{}{}
-		}
 		value, err := lowerer.typedProviderExpression(defaultPackage, expression, propertyType)
 		if err != nil {
 			return "", err

@@ -43,6 +43,7 @@ func (lowerer programLowerer) registerResourceReference(reference *schema.Resour
 	if diagnostics.HasErrors() {
 		return fmt.Errorf("invalid resource reference token %q", reference.Token)
 	}
+	pkg = dartPackageNameForReference(pkg, resource.PackageReference)
 	module, className, _ := programProviderResourceName(resource)
 	lowerer.imports[pkg+"\x00"+module] = dartProgramImport{Package: pkg, Module: module}
 	lowerer.addResourceReference(reference.Token, pkg, module, className)

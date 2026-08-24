@@ -76,6 +76,15 @@ func schemaResourceTypeSpec(t *schema.ResourceType, named map[string]packageName
 				ReferenceType: "pulumi.ProviderResource", ReferenceWireType: "dynamic",
 			}
 		}
+		if namedType, ok := named[resourceNamedTypeKey(t.Token)]; ok {
+			return referencedNamedType("resource", namedType, "dynamic")
+		}
+		if namedType, ok := named[t.Token]; ok {
+			return referencedNamedType("resource", namedType, "dynamic")
+		}
+		if external, ok := externalTokenTypeSpec(t.Token, provider, "resource", "", true, true); ok {
+			return external
+		}
 		return packageTypeSpec{
 			Kind: "resource", DartType: "pulumi.CustomResource",
 			ReferenceType: "pulumi.CustomResource", ReferenceWireType: "dynamic",
