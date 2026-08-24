@@ -45,6 +45,45 @@ dart analyze
 dart test
 ```
 
+### Generate Language Conformance Testdata
+
+The canonical conformance test definitions come from the pinned Pulumi
+submodule under `thirdparty/pulumi`. The Dart language test runs those
+definitions and checks the generated Dart SDKs and programs against snapshots
+in `pulumi-language-dart/testdata/published`.
+
+Regenerate the snapshot for one conformance case first:
+
+```bash
+devenv shell -- bash -c '
+  cd pulumi-language-dart
+  PULUMI_ACCEPT=true go test -count=1 -v -timeout=10m \
+    -run "^TestLanguageConformance$/^l2-raw-string-bytes$" .
+'
+```
+
+Replace `l2-raw-string-bytes` with the exact upstream conformance test name.
+Review the resulting changes under `pulumi-language-dart/testdata/published`
+before accepting them.
+
+After validating an individual case, regenerate snapshots for every supported
+case:
+
+```bash
+PULUMI_ACCEPT=true devenv shell -- language-conformance-test
+```
+
+Run the suite normally afterward to prove the committed snapshots are stable:
+
+```bash
+devenv shell -- language-conformance-test
+```
+
+Do not edit generated files under `testdata/published` by hand. Provider and
+policy fixtures under `pulumi-language-dart/testdata/providers` and
+`pulumi-language-dart/testdata/policies` are maintained inputs, not generated
+snapshots.
+
 ### Generate A Provider SDK
 
 ```bash
