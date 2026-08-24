@@ -149,11 +149,61 @@ func TestPackCanPackSamePackageMoreThanOnce(t *testing.T) {
 	second, err := host.Pack(context.Background(), request)
 	require.NoError(t, err)
 
-	require.NotEqual(t, first.ArtifactPath, second.ArtifactPath)
 	require.Equal(t, filepath.Join(destinationDir, "pulumi_example"), first.ArtifactPath)
-	require.True(t, strings.HasPrefix(second.ArtifactPath, filepath.Join(destinationDir, "pulumi_example-")))
+	require.Equal(t, first.ArtifactPath, second.ArtifactPath)
 	require.DirExists(t, first.ArtifactPath)
-	require.DirExists(t, second.ArtifactPath)
+}
+
+func TestPackUsesStableContentAddressedPathForDifferentPackageContents(t *testing.T) {
+	t.Parallel()
+
+	destinationDir := t.TempDir()
+	host := &dartLanguageHost{}
+	pack := func(content string) string {
+		packageDir := t.TempDir()
+		require.NoError(t, os.WriteFile(
+			filepath.Join(packageDir, "pubspec.yaml"),
+			[]byte("name: pulumi_example\n"),
+			0o600,
+		))
+		require.NoError(t, os.WriteFile(filepath.Join(packageDir, "content.txt"), []byte(content), 0o600))
+		response, err := host.Pack(context.Background(), &pulumirpc.PackRequest{
+			PackageDirectory: packageDir, DestinationDirectory: destinationDir,
+		})
+		require.NoError(t, err)
+		return response.ArtifactPath
+	}
+
+	first := pack("first")
+	second := pack("second")
+	secondAgain := pack("second")
+
+	require.Equal(t, filepath.Join(destinationDir, "pulumi_example"), first)
+	require.True(t, strings.HasPrefix(second, filepath.Join(destinationDir, "pulumi_example-")))
+	require.Equal(t, second, secondAgain)
+}
+
+func TestDirectoryContentDigestIgnoresDartBuildMetadata(t *testing.T) {
+	t.Parallel()
+
+	packageDir := t.TempDir()
+	require.NoError(t, os.WriteFile(filepath.Join(packageDir, "pubspec.yaml"), []byte("name: example\n"), 0o600))
+	before, err := directoryContentDigest(packageDir)
+	require.NoError(t, err)
+
+	require.NoError(t, os.MkdirAll(filepath.Join(packageDir, ".dart_tool"), 0o700))
+	require.NoError(t, os.WriteFile(
+		filepath.Join(packageDir, ".dart_tool", "package_config.json"),
+		[]byte(`{"rootUri":"/tmp/random"}`),
+		0o600,
+	))
+	require.NoError(t, os.MkdirAll(filepath.Join(packageDir, "build"), 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(packageDir, "build", "output"), []byte("generated"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(packageDir, ".DS_Store"), []byte("metadata"), 0o600))
+	after, err := directoryContentDigest(packageDir)
+	require.NoError(t, err)
+
+	require.Equal(t, before, after)
 }
 
 func TestPackRequiresPackageDirectory(t *testing.T) {

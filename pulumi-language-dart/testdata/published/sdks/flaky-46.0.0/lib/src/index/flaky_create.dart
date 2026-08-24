@@ -15,4 +15,14 @@ class FlakyCreate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args ?? const {}),
           pulumi.CustomResourceOptions(version: '46.0.0').merge(options),
         );
+
+  /// Creates a typed reference to an existing [FlakyCreate] resource.
+  FlakyCreate.reference(String urn)
+    : super(
+        'flaky:index:FlakyCreate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      );
 }

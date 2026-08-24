@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'custom.dart';
 
 /// {@template pulumi_index_component_refs_args_doc}
 /// Arguments for Component.refs.
 /// {@endtemplate}
 /// {@macro pulumi_index_component_refs_args_doc}
 class ComponentRefsArgs {
-  final pulumi.Input<pulumi.CustomResource> resource;
-  final pulumi.Input<List<pulumi.CustomResource>> resourceList;
-  final pulumi.Input<Map<String, pulumi.CustomResource>> resourceMap;
+  final pulumi.Input<Custom> resource;
+  final pulumi.Input<List<Custom>> resourceList;
+  final pulumi.Input<Map<String, Custom>> resourceMap;
 
   /// Creates a new [ComponentRefsArgs].
   /// [resource] Required.
@@ -31,9 +32,9 @@ class ComponentRefsArgs {
 
   factory ComponentRefsArgs.fromMap(Map<String, dynamic> map) {
     return ComponentRefsArgs(
-      resource: pulumi.Input.fromValue(map['resource'] as pulumi.CustomResource),
-      resourceList: pulumi.Input.fromValue((map['resourceList'] as List).cast<pulumi.CustomResource>()),
-      resourceMap: pulumi.Input.fromValue((map['resourceMap'] as Map).cast<String, pulumi.CustomResource>()),
+      resource: pulumi.Input.fromValue(map['resource'] as Custom),
+      resourceList: pulumi.Input.fromValue((map['resourceList'] as List).cast<Custom>()),
+      resourceMap: pulumi.Input.fromValue((map['resourceMap'] as Map).cast<String, Custom>()),
     );
   }
 }

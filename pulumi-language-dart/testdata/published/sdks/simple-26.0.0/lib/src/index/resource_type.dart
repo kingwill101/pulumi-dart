@@ -16,8 +16,20 @@ class ResourceType extends pulumi.CustomResource {
           'simple:index:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '26.0.0').merge(options),
         ) {
+    value = registerOutput<bool>('value');
+  }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'simple:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     value = registerOutput<bool>('value');
   }
 }

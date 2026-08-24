@@ -39,7 +39,7 @@ void main() {
       });
       expect(result.name, 'demo');
       expect(result.mode, mode);
-      expect(result.metadata.owner, isA<Input>());
+      expect(result.metadata!.owner, isA<Input>());
 
       final resourceCtor = mypkg.index.ResourceType;
       final invoke = mypkg.index.getResource;

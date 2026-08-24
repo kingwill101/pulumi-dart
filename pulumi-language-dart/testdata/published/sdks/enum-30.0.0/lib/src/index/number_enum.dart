@@ -1,8 +1,11 @@
-enum NumberEnum {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NumberEnum implements pulumi.PulumiEnum<double> {
   zeroPointOne(0.1),
   one(1);
 
   const NumberEnum(this.wireValue);
+  @override
   final double wireValue;
 
   static NumberEnum fromValue(double value) {

@@ -9,16 +9,16 @@ import (
 
 func (lowerer programLowerer) resourceOutputTraversal(source string, expression *model.ScopeTraversalExpression) (string, error) {
 	traversal := expression.Traversal[1:]
+	if reference, ok := resourceReferenceType(expression); ok {
+		if err := lowerer.registerResourceReference(reference); err != nil {
+			return "", err
+		}
+	}
 	if len(traversal) <= 1 {
 		if lowerer.rangedResourceKinds[expression.RootName] == "bool" {
 			return lowerDartTraversalWithNullAwareProperties(source, traversal, true, true)
 		}
 		return lowerDartTraversal(source, traversal, true)
-	}
-	if reference, ok := resourceReferenceType(expression); ok {
-		if err := lowerer.registerResourceReference(reference); err != nil {
-			return "", err
-		}
 	}
 	start, indexedSource := 0, source
 	if _, indexed := traversal[0].(hcl.TraverseIndex); indexed {

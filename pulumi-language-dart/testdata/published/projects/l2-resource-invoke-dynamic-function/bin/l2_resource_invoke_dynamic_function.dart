@@ -9,7 +9,7 @@ class GeneratedStack extends pulumi.Stack {
     final localValue = 'hello';
 
     _outputProperties = [
-      pulumi.OutputProperty('dynamic', pulumi.output(pulumi_any_type_function_index.dynListToDynOutput(pulumi_any_type_function_index.DynListToDynArgs(inputs: (<dynamic>['hello', localValue, {}]).input())).apply((value) => value.result)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('dynamic', pulumi.output(pulumi_any_type_function_index.dynListToDynOutput(pulumi_any_type_function_index.DynListToDynArgs(inputs: (<dynamic>['hello', localValue, {}]).input())).apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),
     ];
   }
 

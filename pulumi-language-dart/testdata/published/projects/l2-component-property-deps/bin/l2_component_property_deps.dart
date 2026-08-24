@@ -6,7 +6,6 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    pulumi.ProviderResource('pulumi', 'default', null, null);
     pulumi.ResourceReferenceRegistry.register('component-property-deps:index:Custom', (urn) => pulumi_component_property_deps_index.Custom.reference(urn));
     final custom1 = pulumi_component_property_deps_index.Custom('custom1', args: pulumi_component_property_deps_index.CustomArgs(value: pulumi.Input.asInput('hello'), ));
     final custom2 = pulumi_component_property_deps_index.Custom('custom2', args: pulumi_component_property_deps_index.CustomArgs(value: pulumi.Input.asInput('world'), ));

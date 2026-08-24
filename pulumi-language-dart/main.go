@@ -2613,9 +2613,25 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 		if !os.IsExist(err) {
 			return nil, fmt.Errorf("failed to create package artifact: %w", err)
 		}
-		artifactPath, err = os.MkdirTemp(destinationDir, packageName+"-")
+		packageDigest, err := directoryContentDigest(packageDir)
 		if err != nil {
-			return nil, fmt.Errorf("failed to create package artifact: %w", err)
+			return nil, fmt.Errorf("failed to fingerprint package artifact: %w", err)
+		}
+		existingDigest, err := directoryContentDigest(artifactPath)
+		if err == nil && existingDigest == packageDigest {
+			return &pulumirpc.PackResponse{ArtifactPath: artifactPath}, nil
+		}
+
+		artifactPath = filepath.Join(destinationDir, packageName+"-"+packageDigest[:12])
+		if err := os.Mkdir(artifactPath, 0o700); err != nil {
+			if !os.IsExist(err) {
+				return nil, fmt.Errorf("failed to create package artifact: %w", err)
+			}
+			existingDigest, digestErr := directoryContentDigest(artifactPath)
+			if digestErr != nil || existingDigest != packageDigest {
+				return nil, fmt.Errorf("package artifact path collision at %q", artifactPath)
+			}
+			return &pulumirpc.PackResponse{ArtifactPath: artifactPath}, nil
 		}
 	}
 	if err := copyDirContents(packageDir, artifactPath); err != nil {
@@ -2625,6 +2641,49 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 	return &pulumirpc.PackResponse{
 		ArtifactPath: artifactPath,
 	}, nil
+}
+
+func directoryContentDigest(root string) (string, error) {
+	hash := sha256.New()
+	err := filepath.WalkDir(root, func(path string, entry os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if path != root && entry.IsDir() && (entry.Name() == ".dart_tool" || entry.Name() == "build") {
+			return filepath.SkipDir
+		}
+		if entry.IsDir() {
+			return nil
+		}
+		if entry.Name() == ".DS_Store" {
+			return nil
+		}
+		relativePath, err := filepath.Rel(root, path)
+		if err != nil {
+			return err
+		}
+		if _, err := io.WriteString(hash, filepath.ToSlash(relativePath)+"\x00"); err != nil {
+			return err
+		}
+		file, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		_, copyErr := io.Copy(hash, file)
+		closeErr := file.Close()
+		if copyErr != nil {
+			return copyErr
+		}
+		if closeErr != nil {
+			return closeErr
+		}
+		_, err = hash.Write([]byte{0})
+		return err
+	})
+	if err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(hash.Sum(nil)), nil
 }
 
 func (host *dartLanguageHost) Link(

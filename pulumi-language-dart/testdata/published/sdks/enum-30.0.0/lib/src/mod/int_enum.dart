@@ -1,8 +1,11 @@
-enum IntEnum {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum IntEnum implements pulumi.PulumiEnum<int> {
   intOne(1),
   intTwo(2);
 
   const IntEnum(this.wireValue);
+  @override
   final int wireValue;
 
   static IntEnum fromValue(int value) {

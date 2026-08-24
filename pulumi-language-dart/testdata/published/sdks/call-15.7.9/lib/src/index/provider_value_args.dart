@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'custom.dart';
 
 /// {@template pulumi_index_provider_value_args_doc}
 /// Arguments for providerValue.
 /// {@endtemplate}
 /// {@macro pulumi_index_provider_value_args_doc}
 class ProviderValueArgs {
-  final pulumi.Input<pulumi.CustomResource> self;
+  final pulumi.Input<Custom> self;
 
   /// Creates a new [ProviderValueArgs].
   /// [self] Required.
@@ -23,7 +24,7 @@ class ProviderValueArgs {
 
   factory ProviderValueArgs.fromMap(Map<String, dynamic> map) {
     return ProviderValueArgs(
-      self: pulumi.Input.fromValue(map['__self__'] as pulumi.CustomResource),
+      self: pulumi.Input.fromValue(map['__self__'] as Custom),
     );
   }
 }

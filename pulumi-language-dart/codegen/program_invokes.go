@@ -62,8 +62,9 @@ func (lowerer programLowerer) invokeArguments(
 		value, err := lowerer.expression(item.Value)
 		if property != nil {
 			value, err = lowerer.typedProviderExpression(function.Package, item.Value, property.Type)
+		} else {
+			value = typedInvokeInput(value, function.InputTypes[name])
 		}
-		value = typedInvokeInput(value, function.InputTypes[name])
 		if err != nil {
 			return "", fmt.Errorf("invoke input %q: %w", name, err)
 		}

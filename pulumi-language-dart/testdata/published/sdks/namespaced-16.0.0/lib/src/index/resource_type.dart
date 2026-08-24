@@ -1,8 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_args.dart';
+import 'package:pulumi_component/index.dart' as pulumi_component_index;
 
 class ResourceType extends pulumi.CustomResource {
-  late final pulumi.Output<pulumi.CustomResource?> resourceRef;
+  late final pulumi.Output<pulumi_component_index.Custom?> resourceRef;
   late final pulumi.Output<bool> value;
 
   /// Creates a new [ResourceType].
@@ -19,7 +20,7 @@ class ResourceType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           pulumi.CustomResourceOptions(version: '16.0.0').merge(options),
         ) {
-    resourceRef = registerOutput<pulumi.CustomResource?>('resourceRef');
+    resourceRef = registerOutput<pulumi_component_index.Custom?>('resourceRef');
     value = registerOutput<bool>('value');
   }
 
@@ -32,7 +33,7 @@ class ResourceType extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
-    resourceRef = registerOutput<pulumi.CustomResource?>('resourceRef');
+    resourceRef = registerOutput<pulumi_component_index.Custom?>('resourceRef');
     value = registerOutput<bool>('value');
   }
 }

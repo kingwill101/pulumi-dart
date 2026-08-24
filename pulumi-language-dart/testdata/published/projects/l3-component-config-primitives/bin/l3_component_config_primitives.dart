@@ -10,14 +10,14 @@ class PrimitiveComponentArgs {
 
   const PrimitiveComponentArgs({required this.boolean, required this.float, required this.integer, required this.string_, });
 
-  Map<String, dynamic> toMap() => {'boolean': boolean, 'float': float, 'integer': integer, 'string_': string_, };
+  Map<String, dynamic> toMap() => {'boolean': boolean, 'float': float, 'integer': integer, 'string': string_, };
 }
 
 class PrimitiveComponent extends pulumi.ComponentResource {
 
-  PrimitiveComponent(String name, {required PrimitiveComponentArgs args, pulumi.ComponentResourceOptions? options})
-      : super('components:index:PrimitiveComponent', name, pulumi.Input.mapToInputs(args.toMap()), options) {
-    final res = pulumi_primitive_index.ResourceType(name + '-res', args: pulumi_primitive_index.ResourceArgs(boolean: (pulumi.output(args.boolean).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)).input(), float: (pulumi.output(args.float).apply<double>((value) => value is String ? double.parse((value).toString()) : (value as num).toDouble())).input(), integer: (pulumi.output(args.integer).apply<int>((value) => value is String ? int.parse((value).toString()) : (value as num).toInt())).input(), string_: (pulumi.output(args.string_).apply<String>((value) => (value).toString())).input(), numberArray: (<double>[(-1).toDouble(), (0).toDouble(), (1).toDouble()]).input(), booleanMap: (<String, bool>{'t': true, 'f': false}).input(), ), options: pulumi.CustomResourceOptions(parent: this, ));
+  PrimitiveComponent(String name, {required PrimitiveComponentArgs args, bool registerInputs = true, pulumi.ComponentResourceOptions? options})
+      : super('components:index:PrimitiveComponent', name, registerInputs ? pulumi.Input.mapToInputs(args.toMap()) : const {}, options) {
+    final res = pulumi_primitive_index.ResourceType(name + '-' + ('res'), args: pulumi_primitive_index.ResourceArgs(boolean: pulumi.Input.asInput(pulumi.output(args.boolean).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)), float: pulumi.Input.asInput(pulumi.output(args.float).apply<double>((value) => value is String ? double.parse((value).toString()) : (value as num).toDouble())), integer: pulumi.Input.asInput(pulumi.output(args.integer).apply<int>((value) => value is String ? int.parse((value).toString()) : (value as num).toInt())), string_: pulumi.Input.asInput(pulumi.output(args.string_).apply<String>((value) => (value).toString())), numberArray: pulumi.Input.asInput(<double>[(-1).toDouble(), (0).toDouble(), (1).toDouble()]), booleanMap: pulumi.Input.asInput(<String, bool>{'t': true, 'f': false}), ), options: pulumi.CustomResourceOptions(parent: this, ));
     registerOutputs({});
   }
 }
@@ -35,8 +35,8 @@ class GeneratedStack extends pulumi.Stack {
     final secretNumber = pulumi.secret(config.requireNumber('secretNumber')).apply<double>((value) => value as double);
     final secretInteger = pulumi.secret((config.requireNumber('secretInteger')).toInt()).apply<int>((value) => value as int);
     final secretString = pulumi.secret(config.require('secretString')).apply<String>((value) => value as String);
-    final plain = PrimitiveComponent('plain', args: PrimitiveComponentArgs(boolean: (pulumi.output(plainBool).apply<bool>((value) => value as bool)).input(), float: (pulumi.output(plainNumber).apply<double>((value) => (value as num).toDouble())).input(), integer: (pulumi.output(plainInteger).apply<int>((value) => value as int)).input(), string_: (pulumi.output(plainString).apply<String>((value) => value as String)).input(), ));
-    final secret = PrimitiveComponent('secret', args: PrimitiveComponentArgs(boolean: (pulumi.output(secretBool).apply<bool>((value) => value as bool)).input(), float: (pulumi.output(secretNumber).apply<double>((value) => (value as num).toDouble())).input(), integer: (pulumi.output(secretInteger).apply<int>((value) => value as int)).input(), string_: (pulumi.output(secretString).apply<String>((value) => value as String)).input(), ));
+    final plain = PrimitiveComponent('plain', args: PrimitiveComponentArgs(boolean: pulumi.Input.asInput(pulumi.output(plainBool).apply<bool>((value) => value as bool)), float: pulumi.Input.asInput(pulumi.output(plainNumber).apply<double>((value) => (value as num).toDouble())), integer: pulumi.Input.asInput(pulumi.output(plainInteger).apply<int>((value) => value as int)), string_: pulumi.Input.asInput(pulumi.output(plainString).apply<String>((value) => value as String)), ));
+    final secret = PrimitiveComponent('secret', args: PrimitiveComponentArgs(boolean: pulumi.Input.asInput(pulumi.output(secretBool).apply<bool>((value) => value as bool)), float: pulumi.Input.asInput(pulumi.output(secretNumber).apply<double>((value) => (value as num).toDouble())), integer: pulumi.Input.asInput(pulumi.output(secretInteger).apply<int>((value) => value as int)), string_: pulumi.Input.asInput(pulumi.output(secretString).apply<String>((value) => value as String)), ));
 
     _outputProperties = [
     ];

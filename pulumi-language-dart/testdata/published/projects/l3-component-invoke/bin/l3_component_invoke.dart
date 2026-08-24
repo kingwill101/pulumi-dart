@@ -20,7 +20,7 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final prov = pulumi_config_providers.ProviderProvider('prov', args: pulumi_config_providers.ProviderArgs(name: ('my config').input(), ));
+    final prov = pulumi_config_providers.ProviderProvider('prov', args: pulumi_config_providers.ProviderArgs(name: pulumi.Input.asInput('my config'), ));
     final myComponent = InvokeComponent('myComponent', options: pulumi.ComponentResourceOptions(providers: [prov], ));
 
     _outputProperties = [

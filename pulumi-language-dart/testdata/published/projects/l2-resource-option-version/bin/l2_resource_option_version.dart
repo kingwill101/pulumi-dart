@@ -1,14 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_simple/index.dart' as simple_index;
+import 'package:pulumi_simple/index.dart' as pulumi_simple_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final withV2 = simple_index.ResourceType('withV2', args: simple_index.ResourceArgs(value: (true).input(), ), options: pulumi.CustomResourceOptions(version: '2.0.0', ));
-    final withV26 = simple_index.ResourceType('withV26', args: simple_index.ResourceArgs(value: (false).input(), ), options: pulumi.CustomResourceOptions(version: '26.0.0', ));
-    final withDefault = simple_index.ResourceType('withDefault', args: simple_index.ResourceArgs(value: (true).input(), ));
+    final withV2 = pulumi_simple_index.ResourceType('withV2', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(version: '2.0.0', ));
+    final withV26 = pulumi_simple_index.ResourceType('withV26', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(false), ), options: pulumi.CustomResourceOptions(version: '26.0.0', ));
+    final withDefault = pulumi_simple_index.ResourceType('withDefault', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
 
     _outputProperties = [
     ];

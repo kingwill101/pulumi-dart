@@ -18,6 +18,7 @@ func (lowerer programLowerer) readResource(resource *pcl.ReadResource) (dartProg
 	className := sanitizeTypeName(toDartClassName(member))
 	stateClass := sanitizeTypeName(toDartClassName(member) + "State")
 	if resource.Schema != nil && resource.Schema.PackageReference != nil {
+		pkg = dartPackageNameForReference(pkg, resource.Schema.PackageReference)
 		var argsClass string
 		module, className, argsClass = programProviderResourceName(resource.Schema)
 		stateClass = strings.TrimSuffix(argsClass, "Args") + "State"

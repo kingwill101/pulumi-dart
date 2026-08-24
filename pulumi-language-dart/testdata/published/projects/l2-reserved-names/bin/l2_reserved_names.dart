@@ -6,7 +6,7 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final elem = pulumi_reservednames_index.ElementTypeResource('elem', args: pulumi_reservednames_index.ElementTypeArgs(elementType: (pulumi_reservednames_index.ElementType(elementType: ('nested').input())).input(), ));
+    final elem = pulumi_reservednames_index.ElementTypeResource('elem', args: pulumi_reservednames_index.ElementTypeArgs(elementType: pulumi.Input.asInput(pulumi_reservednames_index.ElementType(elementType: ('nested').input())), ));
 
     _outputProperties = [
       pulumi.OutputProperty('elementType', pulumi.output(elem.elementType.apply<dynamic>((value) => value?.elementType)).apply<Object?>((value) => value)),

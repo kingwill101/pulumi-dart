@@ -9,6 +9,6 @@ dependencies:
     pulumi_conformance_component:
         path: ROOT/artifacts/pulumi_conformance_component
     pulumi_simple:
-        path: ROOT/artifacts/pulumi_simple
+        path: ROOT/artifacts/pulumi_simple-65bc2f73dbc7
 dev_dependencies:
     lints: ^6.1.0

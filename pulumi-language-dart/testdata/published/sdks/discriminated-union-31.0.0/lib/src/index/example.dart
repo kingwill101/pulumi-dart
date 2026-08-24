@@ -22,4 +22,17 @@ class Example extends pulumi.CustomResource {
     arrayOfUnionOf = registerOutput<List<dynamic>?>('arrayOfUnionOf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     unionOf = registerOutput<dynamic>('unionOf');
   }
+
+  /// Creates a typed reference to an existing [Example] resource.
+  Example.reference(String urn)
+    : super(
+        'discriminated-union:index:Example',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arrayOfUnionOf = registerOutput<List<dynamic>?>('arrayOfUnionOf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    unionOf = registerOutput<dynamic>('unionOf');
+  }
 }

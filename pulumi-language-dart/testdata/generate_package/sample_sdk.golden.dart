@@ -293,11 +293,14 @@ class WidgetMetadata {
 }
 
 // FILE: index/widget_mode.dart
-enum WidgetMode {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum WidgetMode implements pulumi.PulumiEnum<String> {
   readOnly("read-only"),
   readWrite("read-write");
 
   const WidgetMode(this.wireValue);
+  @override
   final String wireValue;
 
   static WidgetMode fromValue(String value) {

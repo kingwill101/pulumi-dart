@@ -21,6 +21,15 @@ class _DeferredDependencyResource extends Resource {
 
 class _UnknownAssetOrArchive implements AssetOrArchive {}
 
+enum _TestPulumiEnum implements PulumiEnum<String> {
+  value('wire-value');
+
+  const _TestPulumiEnum(this.wireValue);
+
+  @override
+  final String wireValue;
+}
+
 void main() {
   late MockDeploymentImpl mockDeployment;
   late Serializer serializer;
@@ -79,6 +88,13 @@ void main() {
       expect(
         await serializer.serializeAsync('test', 'hello', false),
         equals('hello'),
+      );
+    });
+
+    test('Serialize Pulumi enum wire values', () async {
+      expect(
+        await serializer.serializeAsync('test', _TestPulumiEnum.value, false),
+        equals('wire-value'),
       );
     });
 

@@ -3,6 +3,7 @@ package codegen
 import (
 	"fmt"
 	"math/big"
+	"strconv"
 
 	"github.com/zclconf/go-cty/cty"
 )
@@ -19,7 +20,11 @@ func lowerDartLiteral(value cty.Value) (string, error) {
 	case cty.Number:
 		number := value.AsBigFloat()
 		if integer, accuracy := number.Int(nil); accuracy == big.Exact {
-			return integer.String(), nil
+			if integer.IsInt64() {
+				return integer.String(), nil
+			}
+			floatingPoint, _ := number.Float64()
+			return strconv.FormatFloat(floatingPoint, 'g', -1, 64), nil
 		}
 		return number.Text('g', -1), nil
 	}

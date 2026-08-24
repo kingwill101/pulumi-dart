@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'resource_index_mine.dart';
 
 /// {@template pulumi_index_mine_call_index_mine_args_doc}
 /// Arguments for call.
 /// {@endtemplate}
 /// {@macro pulumi_index_mine_call_index_mine_args_doc}
 class CallIndexMineArgs {
-  final pulumi.Input<pulumi.CustomResource> self;
+  final pulumi.Input<ResourceIndexMine> self;
   final pulumi.Input<String> input;
 
   /// Creates a new [CallIndexMineArgs].
@@ -27,7 +28,7 @@ class CallIndexMineArgs {
 
   factory CallIndexMineArgs.fromMap(Map<String, dynamic> map) {
     return CallIndexMineArgs(
-      self: pulumi.Input.fromValue(map['__self__'] as pulumi.CustomResource),
+      self: pulumi.Input.fromValue(map['__self__'] as ResourceIndexMine),
       input: pulumi.Input.fromValue(map['input'] as String),
     );
   }

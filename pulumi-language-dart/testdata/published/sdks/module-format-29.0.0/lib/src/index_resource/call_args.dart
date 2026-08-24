@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'resource_type.dart';
 
 /// {@template pulumi_index_resource_call_args_doc}
 /// Arguments for call.
 /// {@endtemplate}
 /// {@macro pulumi_index_resource_call_args_doc}
 class CallArgs {
-  final pulumi.Input<pulumi.CustomResource> self;
+  final pulumi.Input<ResourceType> self;
   final pulumi.Input<String> input;
 
   /// Creates a new [CallArgs].
@@ -27,7 +28,7 @@ class CallArgs {
 
   factory CallArgs.fromMap(Map<String, dynamic> map) {
     return CallArgs(
-      self: pulumi.Input.fromValue(map['__self__'] as pulumi.CustomResource),
+      self: pulumi.Input.fromValue(map['__self__'] as ResourceType),
       input: pulumi.Input.fromValue(map['input'] as String),
     );
   }

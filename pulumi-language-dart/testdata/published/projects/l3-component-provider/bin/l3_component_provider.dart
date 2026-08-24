@@ -14,10 +14,10 @@ class ProviderComponentArgs {
 class ProviderComponent extends pulumi.ComponentResource {
   late final pulumi.Output<dynamic> result;
 
-  ProviderComponent(String name, {required ProviderComponentArgs args, pulumi.ComponentResourceOptions? options})
-      : super('components:index:ProviderComponent', name, pulumi.Input.mapToInputs(args.toMap()), options) {
-    final prov = pulumi_config_providers.ProviderProvider(name + '-prov', args: pulumi_config_providers.ProviderArgs(name: ('my config').input(), ), options: pulumi.CustomResourceOptions(parent: this, ));
-    final res = pulumi_config_index.ResourceType(name + '-res', args: pulumi_config_index.ResourceArgs(text: (pulumi.output(args.text).apply<String>((value) => (value).toString())).input(), ), options: pulumi.CustomResourceOptions(provider: prov, parent: this, ));
+  ProviderComponent(String name, {required ProviderComponentArgs args, bool registerInputs = true, pulumi.ComponentResourceOptions? options})
+      : super('components:index:ProviderComponent', name, registerInputs ? pulumi.Input.mapToInputs(args.toMap()) : const {}, options) {
+    final prov = pulumi_config_providers.ProviderProvider(name + '-' + ('prov'), args: pulumi_config_providers.ProviderArgs(name: pulumi.Input.asInput('my config'), ), options: pulumi.CustomResourceOptions(parent: this, ));
+    final res = pulumi_config_index.ResourceType(name + '-' + ('res'), args: pulumi_config_index.ResourceArgs(text: pulumi.Input.asInput(pulumi.output(args.text).apply<String>((value) => (value).toString())), ), options: pulumi.CustomResourceOptions(provider: prov, parent: this, ));
     result = pulumi.output(res.text);
     registerOutputs({'result': result, });
   }
@@ -27,7 +27,7 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final myComponent = ProviderComponent('myComponent', args: ProviderComponentArgs(text: (pulumi.output('hello').apply<String>((value) => value as String)).input(), ));
+    final myComponent = ProviderComponent('myComponent', args: ProviderComponentArgs(text: pulumi.Input.asInput(pulumi.output('hello').apply<String>((value) => value as String)), ));
 
     _outputProperties = [
       pulumi.OutputProperty('result', pulumi.output(myComponent.result).apply<Object?>((value) => value)),

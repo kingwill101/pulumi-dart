@@ -6,6 +6,7 @@ import 'constants.dart';
 import 'input.dart';
 import 'input_collections.dart';
 import 'output.dart';
+import 'pulumi_enum.dart';
 import 'resource/custom_resource.dart';
 
 /// {@template pulumi.serializer.summary}
@@ -204,6 +205,16 @@ class Serializer {
       return _serializeAsync(
         ctx,
         prop.toOutput(),
+        keepResources,
+        keepOutputValues,
+        seenSet,
+      );
+    }
+
+    if (prop is PulumiEnum) {
+      return _serializeAsync(
+        '$ctx.wireValue',
+        prop.wireValue,
         keepResources,
         keepOutputValues,
         seenSet,

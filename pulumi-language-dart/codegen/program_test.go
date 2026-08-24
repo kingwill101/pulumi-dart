@@ -1,6 +1,7 @@
 package codegen
 
 import (
+	"math"
 	"testing"
 
 	"github.com/hashicorp/hcl/v2/hclsyntax"
@@ -34,6 +35,16 @@ func TestLowerDartProgramIntegralNumberAvoidsDoubleLiteral(t *testing.T) {
 	})
 	require.NoError(t, err)
 	assert.Equal(t, "1234567890", result)
+}
+
+func TestLowerDartProgramIntegralNumberOutsideInt64UsesDoubleLiteral(t *testing.T) {
+	t.Parallel()
+
+	result, err := lowerDartProgramExpression(&model.LiteralValueExpression{
+		Value: cty.NumberFloatVal(math.MaxFloat64),
+	})
+	require.NoError(t, err)
+	assert.Equal(t, "1.7976931348623157e+308", result)
 }
 
 func TestLowerDartProgramExpressionOperators(t *testing.T) {

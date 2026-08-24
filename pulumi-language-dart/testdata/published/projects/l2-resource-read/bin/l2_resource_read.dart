@@ -1,12 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:read/index.dart' as read_index;
+import 'package:pulumi_read/index.dart' as pulumi_read_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final res = read_index.ResourceType.get('res', ('existing-id').input(), state: read_index.ResourceState(lookup: ('existing-key').input(), ));
+    final res = pulumi_read_index.ResourceType.get('res', ('existing-id').input(), state: pulumi_read_index.ResourceState(lookup: ('existing-key').input(), ));
 
     _outputProperties = [
       pulumi.OutputProperty('resourceId', pulumi.output(res.id).apply<Object?>((value) => value)),

@@ -11,6 +11,6 @@ class ProviderProvider extends pulumi.ProviderResource {
           'alpha',
           name,
           const <String, pulumi.Input<dynamic>>{},
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.0.0-alpha.1.internal+exp.sha.12345678').merge(options),
         );
 }

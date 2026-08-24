@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'package:pulumi_component/index.dart' as pulumi_component_index;
 
 /// {@template pulumi_index_resource_args_doc}
 /// The set of arguments for Resource.
 /// {@endtemplate}
 /// {@macro pulumi_index_resource_args_doc}
 class ResourceArgs {
-  final pulumi.Input<pulumi.CustomResource?>? resourceRef;
+  final pulumi.Input<pulumi_component_index.Custom?>? resourceRef;
   final pulumi.Input<bool> value;
 
   /// Creates a new [ResourceArgs].
@@ -27,7 +28,7 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      resourceRef: (() { final guardedValue = map['resourceRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi.CustomResource); })(),
+      resourceRef: (() { final guardedValue = map['resourceRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as pulumi_component_index.Custom); })(),
       value: pulumi.Input.fromValue(map['value'] as bool),
     );
   }

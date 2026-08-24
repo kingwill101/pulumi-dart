@@ -19,8 +19,23 @@ class ResourceType extends pulumi.CustomResource {
           'primitive-defaults:index:Resource',
           name,
           pulumi.Input.mapToInputs((args ?? ResourceArgs()).toMap()),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '8.0.0').merge(options),
         ) {
+    boolean = registerOutput<bool?>('boolean');
+    float = registerOutput<double?>('float');
+    integer = registerOutput<int?>('integer');
+    string_ = registerOutput<String?>('string');
+  }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'primitive-defaults:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     boolean = registerOutput<bool?>('boolean');
     float = registerOutput<double?>('float');
     integer = registerOutput<int?>('integer');

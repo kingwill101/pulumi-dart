@@ -9,6 +9,6 @@ dependencies:
     pulumi_fail_on_create:
         path: ROOT/artifacts/pulumi_fail_on_create
     pulumi_simple:
-        path: ROOT/artifacts/pulumi_simple
+        path: ROOT/artifacts/pulumi_simple-65bc2f73dbc7
 dev_dependencies:
     lints: ^6.1.0
