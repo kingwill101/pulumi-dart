@@ -2610,7 +2610,13 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 	// language-neutral RPC's filesystem-path contract.
 	artifactPath := filepath.Join(destinationDir, packageName)
 	if err := os.Mkdir(artifactPath, 0o700); err != nil {
-		return nil, fmt.Errorf("failed to create package artifact: %w", err)
+		if !os.IsExist(err) {
+			return nil, fmt.Errorf("failed to create package artifact: %w", err)
+		}
+		artifactPath, err = os.MkdirTemp(destinationDir, packageName+"-")
+		if err != nil {
+			return nil, fmt.Errorf("failed to create package artifact: %w", err)
+		}
 	}
 	if err := copyDirContents(packageDir, artifactPath); err != nil {
 		return nil, fmt.Errorf("failed to copy package artifact: %w", err)

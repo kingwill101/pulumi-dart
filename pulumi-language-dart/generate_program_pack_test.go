@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -125,6 +126,34 @@ func TestPackProducesDirectoryArtifact(t *testing.T) {
 	assert.Equal(t, filepath.Join(destinationDir, "my_pkg"), resp.ArtifactPath)
 	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "pubspec.yaml"))
 	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "lib", "my_pkg.dart"))
+}
+
+func TestPackCanPackSamePackageMoreThanOnce(t *testing.T) {
+	t.Parallel()
+
+	packageDir := t.TempDir()
+	require.NoError(t, os.WriteFile(
+		filepath.Join(packageDir, "pubspec.yaml"),
+		[]byte("name: pulumi_example\n"),
+		0o600,
+	))
+	destinationDir := t.TempDir()
+	host := &dartLanguageHost{}
+	request := &pulumirpc.PackRequest{
+		PackageDirectory:     packageDir,
+		DestinationDirectory: destinationDir,
+	}
+
+	first, err := host.Pack(context.Background(), request)
+	require.NoError(t, err)
+	second, err := host.Pack(context.Background(), request)
+	require.NoError(t, err)
+
+	require.NotEqual(t, first.ArtifactPath, second.ArtifactPath)
+	require.Equal(t, filepath.Join(destinationDir, "pulumi_example"), first.ArtifactPath)
+	require.True(t, strings.HasPrefix(second.ArtifactPath, filepath.Join(destinationDir, "pulumi_example-")))
+	require.DirExists(t, first.ArtifactPath)
+	require.DirExists(t, second.ArtifactPath)
 }
 
 func TestPackRequiresPackageDirectory(t *testing.T) {
