@@ -7,8 +7,8 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     _outputProperties = [
-      pulumi.OutputProperty('hello', pulumi.output(pulumi_output_only_invoke_index.myInvokeOutput(pulumi_output_only_invoke_index.MyInvokeArgs(value: (pulumi.output('hello').apply<String>((value) => value as String)).input())).apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),
-      pulumi.OutputProperty('goodbye', pulumi.output(pulumi_output_only_invoke_index.myInvokeOutput(pulumi_output_only_invoke_index.MyInvokeArgs(value: (pulumi.output('goodbye').apply<String>((value) => value as String)).input())).apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('hello', pulumi.output(pulumi_output_only_invoke_index.myInvokeOutput(pulumi_output_only_invoke_index.MyInvokeArgs(value: ('hello').input())).apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('goodbye', pulumi.output(pulumi_output_only_invoke_index.myInvokeOutput(pulumi_output_only_invoke_index.MyInvokeArgs(value: ('goodbye').input())).apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),
     ];
   }
 

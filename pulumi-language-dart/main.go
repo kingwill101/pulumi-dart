@@ -2608,31 +2608,20 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 	// Pub path dependencies must point at directories. A compressed archive is
 	// not a usable Dart package artifact, even though it satisfies this
 	// language-neutral RPC's filesystem-path contract.
-	artifactPath := filepath.Join(destinationDir, packageName)
+	packageDigest, err := directoryContentDigest(packageDir)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fingerprint package artifact: %w", err)
+	}
+	artifactPath := filepath.Join(destinationDir, packageName+"-"+packageDigest[:12])
 	if err := os.Mkdir(artifactPath, 0o700); err != nil {
 		if !os.IsExist(err) {
 			return nil, fmt.Errorf("failed to create package artifact: %w", err)
 		}
-		packageDigest, err := directoryContentDigest(packageDir)
-		if err != nil {
-			return nil, fmt.Errorf("failed to fingerprint package artifact: %w", err)
-		}
 		existingDigest, err := directoryContentDigest(artifactPath)
-		if err == nil && existingDigest == packageDigest {
-			return &pulumirpc.PackResponse{ArtifactPath: artifactPath}, nil
+		if err != nil || existingDigest != packageDigest {
+			return nil, fmt.Errorf("package artifact path collision at %q", artifactPath)
 		}
-
-		artifactPath = filepath.Join(destinationDir, packageName+"-"+packageDigest[:12])
-		if err := os.Mkdir(artifactPath, 0o700); err != nil {
-			if !os.IsExist(err) {
-				return nil, fmt.Errorf("failed to create package artifact: %w", err)
-			}
-			existingDigest, digestErr := directoryContentDigest(artifactPath)
-			if digestErr != nil || existingDigest != packageDigest {
-				return nil, fmt.Errorf("package artifact path collision at %q", artifactPath)
-			}
-			return &pulumirpc.PackResponse{ArtifactPath: artifactPath}, nil
-		}
+		return &pulumirpc.PackResponse{ArtifactPath: artifactPath}, nil
 	}
 	if err := copyDirContents(packageDir, artifactPath); err != nil {
 		return nil, fmt.Errorf("failed to copy package artifact: %w", err)

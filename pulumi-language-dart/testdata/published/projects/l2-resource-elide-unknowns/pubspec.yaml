@@ -9,6 +9,6 @@ dependencies:
     pulumi_output:
         path: ROOT/artifacts/pulumi_output
     pulumi_simple:
-        path: ROOT/artifacts/pulumi_simple-65bc2f73dbc7
+        path: ROOT/artifacts/pulumi_simple
 dev_dependencies:
     lints: ^6.1.0

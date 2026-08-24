@@ -30,7 +30,7 @@ void main() {
       );
       final argsMap = args.toMap();
       expect(argsMap['mode'], isA<Input<String>>());
-      expect(argsMap['metadata'], isA<Input<Map<String, dynamic>>>());
+      expect(argsMap['metadata'], isA<Input<Map<String, dynamic>?>>());
 
       final result = mypkg_index.GetResourceResult.fromMap({
         'name': 'demo',

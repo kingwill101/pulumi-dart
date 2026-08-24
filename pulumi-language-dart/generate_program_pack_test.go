@@ -123,7 +123,7 @@ func TestPackProducesDirectoryArtifact(t *testing.T) {
 	})
 	require.NoError(t, err)
 	require.NotNil(t, resp)
-	assert.Equal(t, filepath.Join(destinationDir, "my_pkg"), resp.ArtifactPath)
+	assert.True(t, strings.HasPrefix(resp.ArtifactPath, filepath.Join(destinationDir, "my_pkg-")))
 	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "pubspec.yaml"))
 	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "lib", "my_pkg.dart"))
 }
@@ -149,7 +149,7 @@ func TestPackCanPackSamePackageMoreThanOnce(t *testing.T) {
 	second, err := host.Pack(context.Background(), request)
 	require.NoError(t, err)
 
-	require.Equal(t, filepath.Join(destinationDir, "pulumi_example"), first.ArtifactPath)
+	require.True(t, strings.HasPrefix(first.ArtifactPath, filepath.Join(destinationDir, "pulumi_example-")))
 	require.Equal(t, first.ArtifactPath, second.ArtifactPath)
 	require.DirExists(t, first.ArtifactPath)
 }
@@ -178,8 +178,9 @@ func TestPackUsesStableContentAddressedPathForDifferentPackageContents(t *testin
 	second := pack("second")
 	secondAgain := pack("second")
 
-	require.Equal(t, filepath.Join(destinationDir, "pulumi_example"), first)
+	require.True(t, strings.HasPrefix(first, filepath.Join(destinationDir, "pulumi_example-")))
 	require.True(t, strings.HasPrefix(second, filepath.Join(destinationDir, "pulumi_example-")))
+	require.NotEqual(t, first, second)
 	require.Equal(t, second, secondAgain)
 }
 

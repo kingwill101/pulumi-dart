@@ -331,6 +331,11 @@ func TestLanguageConformance(t *testing.T) {
 				Pattern:     rootDir,
 				Replacement: "ROOT",
 			},
+			{
+				Path:        "pubspec\\.yaml",
+				Pattern:     `(ROOT/artifacts/[a-zA-Z0-9_]+)-[0-9a-f]{12}`,
+				Replacement: "$1",
+			},
 		},
 	})
 	require.NoError(t, err)

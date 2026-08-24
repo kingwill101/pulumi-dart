@@ -7,7 +7,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     _outputProperties = [
-      pulumi.OutputProperty('scalar', pulumi.output(pulumi_simple_invoke_with_scalar_return_index.myInvokeScalarOutput(pulumi_simple_invoke_with_scalar_return_index.MyInvokeScalarArgs(value: (pulumi.output('goodbye').apply<String>((value) => value as String)).input()))).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('scalar', pulumi.output(pulumi_simple_invoke_with_scalar_return_index.myInvokeScalarOutput(pulumi_simple_invoke_with_scalar_return_index.MyInvokeScalarArgs(value: ('goodbye').input()))).apply<Object?>((value) => value)),
     ];
   }
 

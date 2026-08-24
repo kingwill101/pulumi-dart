@@ -7,7 +7,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     final config = pulumi.Config();
-    final myInvokeResult = pulumi_simple_invoke_index.myInvokeOutput(pulumi_simple_invoke_index.MyInvokeArgs(value: (pulumi.output('hello').apply<String>((value) => value as String)).input()));
+    final myInvokeResult = pulumi_simple_invoke_index.myInvokeOutput(pulumi_simple_invoke_index.MyInvokeArgs(value: ('hello').input()));
     final defaultFromInvoke = config.get('defaultFromInvoke') ?? myInvokeResult.apply<dynamic>((value) => value.result);
 
     _outputProperties = [

@@ -62,6 +62,9 @@ func (lowerer programLowerer) invokeArguments(
 		value, err := lowerer.expression(item.Value)
 		if property != nil {
 			value, err = lowerer.typedProviderExpression(function.Package, item.Value, property.Type)
+			if invokePrimitiveNeedsDynamicCast(item.Value, property.Type) {
+				value = typedInvokeInput(value, function.InputTypes[name])
+			}
 		} else {
 			value = typedInvokeInput(value, function.InputTypes[name])
 		}
@@ -72,35 +75,6 @@ func (lowerer programLowerer) invokeArguments(
 	}
 	qualifier := programModuleAlias(function.Package, function.Module)
 	return qualifier + "." + function.ArgsClass + "(" + strings.Join(fields, ", ") + ")", nil
-}
-
-func typedInvokeInput(value, dartType string) string {
-	if dartType == "" || dartType == "dynamic" {
-		return value
-	}
-	nullable := strings.HasSuffix(dartType, "?")
-	baseType := strings.TrimSuffix(dartType, "?")
-	conversion := "value as " + baseType
-	if element, ok := dartGenericArgument(baseType, "List"); ok {
-		conversion = "(value as List).cast<" + element + ">()"
-	} else if entries, ok := dartGenericArgument(baseType, "Map"); ok {
-		parts := strings.SplitN(entries, ",", 2)
-		if len(parts) == 2 {
-			conversion = "(value as Map).cast<" + strings.TrimSpace(parts[0]) + ", " + strings.TrimSpace(parts[1]) + ">()"
-		}
-	}
-	if nullable {
-		conversion = "value == null ? null : " + conversion
-	}
-	return "pulumi.output(" + value + ").apply<" + dartType + ">((value) => " + conversion + ")"
-}
-
-func dartGenericArgument(dartType, generic string) (string, bool) {
-	prefix := generic + "<"
-	if !strings.HasPrefix(dartType, prefix) || !strings.HasSuffix(dartType, ">") {
-		return "", false
-	}
-	return strings.TrimSuffix(strings.TrimPrefix(dartType, prefix), ">"), true
 }
 
 func invokeExpression(expression model.Expression) *model.FunctionCallExpression {

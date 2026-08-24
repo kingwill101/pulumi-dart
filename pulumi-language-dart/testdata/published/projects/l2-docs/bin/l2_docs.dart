@@ -8,7 +8,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     final enumRes = pulumi_enum_index.Res('enumRes', args: pulumi_enum_index.ResArgs(intEnum: pulumi.Input.asInput(pulumi_enum_index.IntEnum.fromValue(1)), stringEnum: pulumi.Input.asInput(pulumi_enum_index.StringEnum.fromValue('one')), ));
-    final res = pulumi_docs_index.ResourceType('res', args: pulumi_docs_index.ResourceArgs(in_: pulumi.Input.asInput(pulumi.output(pulumi_docs_index.funOutput(pulumi_docs_index.FunArgs(in_: (pulumi.output(false).apply<bool>((value) => value as bool)).input())).apply<dynamic>((value) => value.out)).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)), externalEnum: pulumi.Input.asInput(pulumi_enum_index.StringEnum.fromValue('one')), ));
+    final res = pulumi_docs_index.ResourceType('res', args: pulumi_docs_index.ResourceArgs(in_: pulumi.Input.asInput(pulumi.output(pulumi_docs_index.funOutput(pulumi_docs_index.FunArgs(in_: (false).input())).apply<dynamic>((value) => value.out)).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)), externalEnum: pulumi.Input.asInput(pulumi_enum_index.StringEnum.fromValue('one')), ));
 
     _outputProperties = [
     ];

@@ -8,7 +8,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     final explicitProvider = pulumi_simple_invoke_providers.ProviderProvider('explicitProvider');
-    final data = pulumi_simple_invoke_index.myInvokeOutput(pulumi_simple_invoke_index.MyInvokeArgs(value: (pulumi.output('hello').apply<String>((value) => value as String)).input()), options: pulumi.InvokeOutputOptions(provider: explicitProvider, parent: explicitProvider, version: '10.0.0', pluginDownloadURL: 'https://example.com/github/example'));
+    final data = pulumi_simple_invoke_index.myInvokeOutput(pulumi_simple_invoke_index.MyInvokeArgs(value: ('hello').input()), options: pulumi.InvokeOutputOptions(provider: explicitProvider, parent: explicitProvider, version: '10.0.0', pluginDownloadURL: 'https://example.com/github/example'));
 
     _outputProperties = [
       pulumi.OutputProperty('hello', pulumi.output(data.apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),

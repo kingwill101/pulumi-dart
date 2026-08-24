@@ -12,7 +12,7 @@ class GeneratedStack extends pulumi.Stack {
     _outputProperties = [
       pulumi.OutputProperty('parameterValue', pulumi.output(greeting.parameterValue).apply<Object?>((value) => value)),
       pulumi.OutputProperty('parameterValueFromComponent', pulumi.output(greetingComp.parameterValue).apply<Object?>((value) => value)),
-      pulumi.OutputProperty('invokeGreeting', pulumi.output(pulumi_myext_index.greetOutput(pulumi_myext_index.GreetArgs(name: (pulumi.output('Pulumi').apply<String>((value) => value as String)).input())).apply<dynamic>((value) => value.greeting)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('invokeGreeting', pulumi.output(pulumi_myext_index.greetOutput(pulumi_myext_index.GreetArgs(name: ('Pulumi').input())).apply<dynamic>((value) => value.greeting)).apply<Object?>((value) => value)),
     ];
   }
 

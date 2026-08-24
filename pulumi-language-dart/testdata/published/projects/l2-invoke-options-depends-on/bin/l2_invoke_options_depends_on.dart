@@ -7,7 +7,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     final first = pulumi_simple_invoke_index.StringResource('first', args: pulumi_simple_invoke_index.StringResourceArgs(text: pulumi.Input.asInput('first hello'), ));
-    final data = pulumi_simple_invoke_index.myInvokeOutput(pulumi_simple_invoke_index.MyInvokeArgs(value: (pulumi.output('hello').apply<String>((value) => value as String)).input()), options: pulumi.InvokeOutputOptions(dependsOn: [first]));
+    final data = pulumi_simple_invoke_index.myInvokeOutput(pulumi_simple_invoke_index.MyInvokeArgs(value: ('hello').input()), options: pulumi.InvokeOutputOptions(dependsOn: [first]));
     final second = pulumi_simple_invoke_index.StringResource('second', args: pulumi_simple_invoke_index.StringResourceArgs(text: pulumi.Input.asInput(pulumi.output(data.apply<dynamic>((value) => value.result)).apply<String>((value) => (value).toString())), ));
 
     _outputProperties = [
