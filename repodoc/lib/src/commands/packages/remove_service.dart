@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:path/path.dart' as p;
 
+import '../../infrastructure/dart_cli.dart';
 import '../../infrastructure/task_tooling.dart';
 
 final class PackageRemovalPlan {
@@ -28,6 +29,7 @@ final class PackageRemover {
     : repositoryRoot = repositoryRoot ?? findRepoRoot();
 
   final Directory repositoryRoot;
+  DartCli get _dart => DartCli.resolve();
 
   PackageRemovalPlan plan(String provider) {
     if (!RegExp(r'^[a-z0-9][a-z0-9-]*$').hasMatch(provider)) {
@@ -87,7 +89,7 @@ final class PackageRemover {
   }
 
   Future<void> refreshWorkspacePackages() async {
-    final pubGet = await Process.run('dart', [
+    final pubGet = await _dart.run([
       'pub',
       'get',
     ], workingDirectory: repositoryRoot.path);

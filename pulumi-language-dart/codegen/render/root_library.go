@@ -20,11 +20,11 @@ func RootLibrary(library dartir.RootLibrary) []byte {
 
 	b.WriteString("\n")
 	for _, module := range library.Modules {
-		fmt.Fprintf(&b, "final %s = const %s();\n", module.ObjectName, module.ClassName)
+		fmt.Fprintf(&b, "final %s = %s();\n", module.ObjectName, module.ClassName)
 	}
 	b.WriteString("\n")
 	for _, module := range library.Modules {
-		fmt.Fprintf(&b, "class %s {\n  const %s();\n", module.ClassName, module.ClassName)
+		fmt.Fprintf(&b, "class %s {\n  %s();\n", module.ClassName, module.ClassName)
 		for _, symbol := range module.Symbols {
 			fmt.Fprintf(&b, "  final %s = %s;\n", symbol.Name, symbol.Expression)
 		}

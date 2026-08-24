@@ -1,0 +1,118 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'load_balancer_pool_load_shedding.dart';
+import 'load_balancer_pool_notification_filter.dart';
+import 'load_balancer_pool_origin.dart';
+import 'load_balancer_pool_origin_steering.dart';
+
+/// {@template pulumi_index_load_balancer_pool_load_balancer_pool_args_doc}
+/// The set of arguments for LoadBalancerPool.
+/// {@endtemplate}
+/// {@macro pulumi_index_load_balancer_pool_load_balancer_pool_args_doc}
+class LoadBalancerPoolArgs {
+  /// Identifier.
+  final pulumi.Input<String> accountId;
+  /// A list of regions from which to run health checks. Null means every Cloudflare data center.
+  final pulumi.Input<List<String>?>? checkRegions;
+  /// A human-readable description of the pool.
+  final pulumi.Input<String?>? description;
+  /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+  final pulumi.Input<bool?>? enabled;
+  /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
+  final pulumi.Input<double?>? latitude;
+  /// Configures load shedding policies and percentages for the pool.
+  final pulumi.Input<LoadBalancerPoolLoadShedding?>? loadShedding;
+  /// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
+  final pulumi.Input<double?>? longitude;
+  /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
+  final pulumi.Input<int?>? minimumOrigins;
+  /// The ID of the Monitor to use for checking the health of origins within this pool.
+  final pulumi.Input<String?>? monitor;
+  /// The ID of the Monitor Group to use for checking the health of origins within this pool.
+  final pulumi.Input<String?>? monitorGroup;
+  /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
+  final pulumi.Input<String> name;
+  /// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+  final pulumi.Input<String?>? notificationEmail;
+  /// Filter pool and origin health notifications by resource type or health status. Use null to reset.
+  final pulumi.Input<LoadBalancerPoolNotificationFilter?>? notificationFilter;
+  /// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+  final pulumi.Input<LoadBalancerPoolOriginSteering?>? originSteering;
+  /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
+  final pulumi.Input<List<LoadBalancerPoolOrigin>> origins;
+
+  /// Creates a new [LoadBalancerPoolArgs].
+  /// [accountId] Identifier.
+  /// [checkRegions] A list of regions from which to run health checks. Null means every Cloudflare data center.
+  /// [description] A human-readable description of the pool.
+  /// [enabled] Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+  /// [latitude] The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
+  /// [loadShedding] Configures load shedding policies and percentages for the pool.
+  /// [longitude] The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
+  /// [minimumOrigins] The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
+  /// [monitor] The ID of the Monitor to use for checking the health of origins within this pool.
+  /// [monitorGroup] The ID of the Monitor Group to use for checking the health of origins within this pool.
+  /// [name] A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
+  /// [notificationEmail] This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+  /// [notificationFilter] Filter pool and origin health notifications by resource type or health status. Use null to reset.
+  /// [originSteering] Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+  /// [origins] The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
+  const LoadBalancerPoolArgs({
+    required this.accountId,
+    this.checkRegions,
+    this.description,
+    this.enabled,
+    this.latitude,
+    this.loadShedding,
+    this.longitude,
+    this.minimumOrigins,
+    this.monitor,
+    this.monitorGroup,
+    required this.name,
+    this.notificationEmail,
+    this.notificationFilter,
+    this.originSteering,
+    required this.origins,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountId': accountId,
+      'checkRegions': ?checkRegions,
+      'description': ?description,
+      'enabled': ?enabled,
+      'latitude': ?latitude,
+      'loadShedding': ?pulumi.Input.mapOptionalInputValue<LoadBalancerPoolLoadShedding, Map<String, dynamic>>(loadShedding, (value) => value.toMap()),
+      'longitude': ?longitude,
+      'minimumOrigins': ?minimumOrigins,
+      'monitor': ?monitor,
+      'monitorGroup': ?monitorGroup,
+      'name': name,
+      'notificationEmail': ?notificationEmail,
+      'notificationFilter': ?pulumi.Input.mapOptionalInputValue<LoadBalancerPoolNotificationFilter, Map<String, dynamic>>(notificationFilter, (value) => value.toMap()),
+      'originSteering': ?pulumi.Input.mapOptionalInputValue<LoadBalancerPoolOriginSteering, Map<String, dynamic>>(originSteering, (value) => value.toMap()),
+      'origins': pulumi.Input.mapInputValue<List<LoadBalancerPoolOrigin>, List<Map<String, dynamic>>>(origins, (value) => pulumi.Input.encodeList<LoadBalancerPoolOrigin, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
+  }
+
+  factory LoadBalancerPoolArgs.fromMap(Map<String, dynamic> map) {
+    return LoadBalancerPoolArgs(
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      checkRegions: (() { final guardedValue = map['checkRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      latitude: (() { final guardedValue = map['latitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      loadShedding: (() { final guardedValue = map['loadShedding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerPoolLoadShedding.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      longitude: (() { final guardedValue = map['longitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      minimumOrigins: (() { final guardedValue = map['minimumOrigins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      monitor: (() { final guardedValue = map['monitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      monitorGroup: (() { final guardedValue = map['monitorGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      notificationEmail: (() { final guardedValue = map['notificationEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notificationFilter: (() { final guardedValue = map['notificationFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerPoolNotificationFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      originSteering: (() { final guardedValue = map['originSteering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerPoolOriginSteering.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      origins: pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerPoolOrigin>(map['origins']!, (value) => LoadBalancerPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))),
+    );
+  }
+}

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 
+import '../../infrastructure/dart_cli.dart';
 import 'integration_prewarm_impl.dart' as support;
 
 /// Compiles integration programs to content-addressed Dart kernel snapshots.
@@ -25,6 +26,7 @@ class IntegrationPrewarmer {
   final int jobs;
 
   final Map<String, Future<_PackagePreparation>> _packagePreparations = {};
+  final DartCli _dart = DartCli.resolve();
 
   Future<int> run() async {
     if (!root.existsSync()) {
@@ -174,8 +176,7 @@ class IntegrationPrewarmer {
   Future<_PackagePreparation> _preparePackage(Directory directory) {
     final path = directory.absolute.path;
     return _packagePreparations.putIfAbsent(path, () async {
-      final pubGet = await Process.run(
-        'dart',
+      final pubGet = await _dart.run(
         const ['pub', 'get'],
         workingDirectory: path,
         stdoutEncoding: utf8,

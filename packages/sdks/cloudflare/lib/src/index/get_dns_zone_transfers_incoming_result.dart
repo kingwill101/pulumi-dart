@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Result data returned by getDnsZoneTransfersIncoming.
+class GetDnsZoneTransfersIncomingResult {
+  /// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
+  /// Not applicable for primary zones.
+  final double? autoRefreshSeconds;
+  /// The time for a specific event.
+  final String? checkedTime;
+  /// The time for a specific event.
+  final String? createdTime;
+  /// The ID of this resource.
+  final String? id;
+  /// The time for a specific event.
+  final String? modifiedTime;
+  /// Zone name.
+  final String? name;
+  /// A list of peer tags.
+  final List<String>? peers;
+  /// The serial number of the SOA for the given zone.
+  final double? soaSerial;
+  final String? zoneId;
+
+  /// Creates a new [GetDnsZoneTransfersIncomingResult].
+  /// [autoRefreshSeconds] How often should a secondary zone auto refresh regardless of DNS NOTIFY.
+  /// [checkedTime] The time for a specific event.
+  /// [createdTime] The time for a specific event.
+  /// [id] The ID of this resource.
+  /// [modifiedTime] The time for a specific event.
+  /// [name] Zone name.
+  /// [peers] A list of peer tags.
+  /// [soaSerial] The serial number of the SOA for the given zone.
+  /// [zoneId] Optional.
+  const GetDnsZoneTransfersIncomingResult({
+    this.autoRefreshSeconds,
+    this.checkedTime,
+    this.createdTime,
+    this.id,
+    this.modifiedTime,
+    this.name,
+    this.peers,
+    this.soaSerial,
+    this.zoneId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'autoRefreshSeconds': ?autoRefreshSeconds,
+      'checkedTime': ?checkedTime,
+      'createdTime': ?createdTime,
+      'id': ?id,
+      'modifiedTime': ?modifiedTime,
+      'name': ?name,
+      'peers': ?peers,
+      'soaSerial': ?soaSerial,
+      'zoneId': ?zoneId,
+    };
+  }
+
+  factory GetDnsZoneTransfersIncomingResult.fromMap(Map<String, dynamic> map) {
+    return GetDnsZoneTransfersIncomingResult(
+      autoRefreshSeconds: (() { final guardedValue = map['autoRefreshSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      checkedTime: (() { final guardedValue = map['checkedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      modifiedTime: (() { final guardedValue = map['modifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peers: (() { final guardedValue = map['peers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      soaSerial: (() { final guardedValue = map['soaSerial']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+    );
+  }
+}

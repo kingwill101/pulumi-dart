@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class ZoneDnsSettingsSoa {
+  /// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+  final pulumi.Input<double?>? expire;
+  /// The time to live (TTL) for negative caching of records within the zone.
+  final pulumi.Input<double?>? minTtl;
+  /// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+  final pulumi.Input<String?>? mname;
+  /// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+  final pulumi.Input<double?>? refresh;
+  /// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+  final pulumi.Input<double?>? retry;
+  /// The email address of the zone administrator, with the first label representing the local part of the email address.
+  final pulumi.Input<String?>? rname;
+  /// The time to live (TTL) of the SOA record itself.
+  final pulumi.Input<double?>? ttl;
+
+  /// Creates a new [ZoneDnsSettingsSoa].
+  /// [expire] Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
+  /// [minTtl] The time to live (TTL) for negative caching of records within the zone.
+  /// [mname] The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+  /// [refresh] Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
+  /// [retry] Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
+  /// [rname] The email address of the zone administrator, with the first label representing the local part of the email address.
+  /// [ttl] The time to live (TTL) of the SOA record itself.
+  const ZoneDnsSettingsSoa({
+    this.expire,
+    this.minTtl,
+    this.mname,
+    this.refresh,
+    this.retry,
+    this.rname,
+    this.ttl,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'expire': ?expire,
+      'minTtl': ?minTtl,
+      'mname': ?mname,
+      'refresh': ?refresh,
+      'retry': ?retry,
+      'rname': ?rname,
+      'ttl': ?ttl,
+    };
+  }
+
+  factory ZoneDnsSettingsSoa.fromMap(Map<String, dynamic> map) {
+    return ZoneDnsSettingsSoa(
+      expire: (() { final guardedValue = map['expire']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      minTtl: (() { final guardedValue = map['minTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      mname: (() { final guardedValue = map['mname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      refresh: (() { final guardedValue = map['refresh']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      retry: (() { final guardedValue = map['retry']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      rname: (() { final guardedValue = map['rname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+    );
+  }
+}
