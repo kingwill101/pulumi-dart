@@ -1,0 +1,115 @@
+package codegen
+
+import (
+	"fmt"
+
+	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
+)
+
+func (lowerer programLowerer) functionCallExpression(expression *model.FunctionCallExpression) (string, error) {
+	if expression.Name == pcl.Invoke {
+		return lowerer.invokeExpression(expression)
+	}
+	if expression.Name == pcl.Call {
+		return lowerer.callExpression(expression)
+	}
+	if expression.Name == "recover" {
+		return lowerer.recoverExpression(expression)
+	}
+	arguments := make([]string, len(expression.Args))
+	for index, argument := range expression.Args {
+		lowered, err := lowerer.expression(argument)
+		if err != nil {
+			return "", fmt.Errorf("%s argument %d: %w", expression.Name, index, err)
+		}
+		arguments[index] = lowered
+	}
+	if value, err, handled := lowerAssetBuiltin(expression.Name, arguments); handled {
+		return value, err
+	}
+	if value, err, handled := lowerControlBuiltin(expression, arguments); handled {
+		return value, err
+	}
+	switch expression.Name {
+	case "length":
+		return lowerLengthBuiltin(expression, arguments)
+	case "toJSON":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("toJSON expects one argument")
+		}
+		return "pulumi.jsonStringify(" + arguments[0] + ")", nil
+	case "split":
+		if len(arguments) != 2 {
+			return "", fmt.Errorf("split expects two arguments")
+		}
+		return "(" + arguments[1] + ").split(" + arguments[0] + ")", nil
+	case "join":
+		if len(arguments) != 2 {
+			return "", fmt.Errorf("join expects two arguments")
+		}
+		if model.ContainsOutputs(expression.Args[0].Type()) || model.ContainsOutputs(expression.Args[1].Type()) {
+			return "pulumi.output([" + arguments[0] + ", " + arguments[1] + "]).apply<String>((values) => (values[1] as Iterable).join(values[0].toString()))", nil
+		}
+		return "(" + arguments[1] + ").join(" + arguments[0] + ")", nil
+	case "element":
+		if len(arguments) != 2 {
+			return "", fmt.Errorf("element expects two arguments")
+		}
+		return "pulumi.listElement(" + arguments[0] + ", (" + arguments[1] + ").toInt())", nil
+	case "singleOrNone":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("singleOrNone expects one argument")
+		}
+		return "pulumi.singleOrNone(" + arguments[0] + ")", nil
+	case "secret":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("secret expects one argument")
+		}
+		return "pulumi.secret(" + arguments[0] + ")", nil
+	case "unsecret":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("unsecret expects one argument")
+		}
+		return "pulumi.unsecret(" + arguments[0] + ")", nil
+	case "cwd":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.currentWorkingDirectory()")
+	case "rootDirectory":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.projectRootDirectory()")
+	case "project":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.Deployment.instance.projectName")
+	case "stack":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.Deployment.instance.stackName")
+	case "organization":
+		return noArgumentBuiltin(expression.Name, arguments, "pulumi.Deployment.instance.organizationName")
+	case "fromBase64":
+		return lowerOutputAwareBuiltin(expression, arguments, "pulumi.fromBase64")
+	case "toBase64":
+		return lowerOutputAwareBuiltin(expression, arguments, "pulumi.toBase64")
+	case "sha1":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.sha1Hash")
+	case "readFile":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.readTextFile")
+	case "filebase64":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64")
+	case "filebase64sha256":
+		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64Sha256")
+	case "entries":
+		return lowerMapBuiltin(expression, arguments, "pulumi.mapEntries")
+	case "notImplemented":
+		return lowerNotImplementedBuiltin(arguments)
+	case "getOutput":
+		if len(arguments) != 2 {
+			return "", fmt.Errorf("getOutput expects two arguments")
+		}
+		return arguments[0] + ".getOutput((" + arguments[1] + ").input())", nil
+	case "pulumiResourceName":
+		return resourceMetadataBuiltin(expression.Name, arguments, "getResourceName")
+	case "pulumiResourceType":
+		return resourceMetadataBuiltin(expression.Name, arguments, "getResourceType")
+	case "min", "max":
+		return lowerMinMaxBuiltin(expression.Name, arguments, expression.ExpandFinal)
+	default:
+		return "", fmt.Errorf("unsupported function %q", expression.Name)
+	}
+}

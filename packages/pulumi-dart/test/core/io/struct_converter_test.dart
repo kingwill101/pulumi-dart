@@ -1,4 +1,5 @@
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
+import 'package:pulumi/src/asset_archive.dart';
 import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
@@ -109,7 +110,54 @@ void main() {
         providerValue.structValue.fields[Constants.resourceIdName]?.stringValue,
         equals('provider-id'),
       );
+
+      final previewProvider = ProviderResource.reference(
+        'aws',
+        'urn:pulumi:dev::proj::pulumi:providers:aws::preview',
+      );
+      final previewValue = await StructConverter.toValue(previewProvider);
+      expect(
+        previewValue.structValue.fields[Constants.resourceIdName]?.stringValue,
+        equals(Constants.unknownValue),
+      );
     });
+
+    test(
+      'toValue serializes assets and archives with Pulumi signatures',
+      () async {
+        final asset = await StructConverter.toValue(FileAsset('asset.txt'));
+        expect(
+          asset.structValue.fields[Constants.specialSigKey]?.stringValue,
+          Constants.specialAssetSig,
+        );
+        expect(
+          asset
+              .structValue
+              .fields[Constants.assetOrArchivePathName]
+              ?.stringValue,
+          'asset.txt',
+        );
+
+        final archive = await StructConverter.toValue(
+          AssetArchive({'message': StringAsset('hello')}),
+        );
+        expect(
+          archive.structValue.fields[Constants.specialSigKey]?.stringValue,
+          Constants.specialArchiveSig,
+        );
+        final nested = archive
+            .structValue
+            .fields[Constants.archiveAssetsName]!
+            .structValue
+            .fields['message']!
+            .structValue;
+        expect(
+          nested.fields[Constants.specialSigKey]?.stringValue,
+          Constants.specialAssetSig,
+        );
+        expect(nested.fields[Constants.assetTextName]?.stringValue, 'hello');
+      },
+    );
 
     test(
       'toValue marks list and map containers unknown when descendants are unknown',

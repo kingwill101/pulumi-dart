@@ -49,5 +49,12 @@ func lowerRawResourceMethod(spec *packageSchema, raw rawPackageSchema, discovery
 		}
 		result.HasReturn = true
 	}
+	if found && function.ReturnType != nil {
+		result.ReturnType = dartTypeSpecFromRawPropertyType(
+			*function.ReturnType, discovery.namedTypeRefs, true, external,
+		)
+		result.ReturnPlain = function.ReturnType.Plain
+		result.HasReturn = true
+	}
 	return result
 }

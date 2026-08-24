@@ -132,21 +132,83 @@ jobs:
           INTEGRATION_PARALLEL: 4
         run: devenv shell -- integration-ci-run
 
+  language-host-unit:
+    name: Language host unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v16
+        with:
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Test language host runtime
+        run: devenv shell -- language-host-unit-test
+
+  language-codegen:
+    name: Language codegen tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v16
+        with:
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Test language codegen
+        run: devenv shell -- language-codegen-test
+
+  language-conformance:
+    name: Language conformance (${{ matrix.shard }}/8)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6, 7, 8]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v16
+        with:
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Run conformance shard
+        env:
+          PULUMI_DART_CONFORMANCE_SHARD: ${{ matrix.shard }}/8
+          PULUMI_DART_CONFORMANCE_CASE_TIMEOUT: 5m
+        run: devenv shell -- language-conformance-test
+
   check-integration:
     name: check-integration
     if: always()
     runs-on: ubuntu-latest
-    needs: [prepare, core, cloud]
+    needs: [prepare, core, cloud, language-host-unit, language-codegen, language-conformance]
     steps:
       - name: Verify integration job results
         env:
           PREPARE_RESULT: ${{ needs.prepare.result }}
           CORE_RESULT: ${{ needs.core.result }}
           CLOUD_RESULT: ${{ needs.cloud.result }}
+          HOST_UNIT_RESULT: ${{ needs.language-host-unit.result }}
+          CODEGEN_RESULT: ${{ needs.language-codegen.result }}
+          CONFORMANCE_RESULT: ${{ needs.language-conformance.result }}
         run: |
           test "$PREPARE_RESULT" = success
           test "$CORE_RESULT" = success
           test "$CLOUD_RESULT" = success || test "$CLOUD_RESULT" = skipped
+          test "$HOST_UNIT_RESULT" = success
+          test "$CODEGEN_RESULT" = success
+          test "$CONFORMANCE_RESULT" = success
       - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
       - uses: cachix/cachix-action@v16
@@ -154,8 +216,6 @@ jobs:
           name: devenv
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
-      - name: Test Dart language host
-        run: devenv shell -- bash -lc 'cd pulumi-language-dart && go test -count=1 ./...'
       - name: Analyze and test Dart SDK package
         run: >-
           devenv shell -- bash -lc

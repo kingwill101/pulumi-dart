@@ -18,7 +18,7 @@ func parsePackageSchema(schemaJSON string, loadExternalSchema ExternalSchemaLoad
 		return nil, errors.New("package schema is missing name")
 	}
 	spec := &packageSchema{
-		Name: raw.Name, Namespace: raw.Namespace, Version: raw.Version,
+		Name: raw.Name, Namespace: raw.Namespace, Version: raw.Version, PluginDownloadURL: raw.PluginDownloadURL,
 		Description: strings.TrimSpace(raw.Description), License: strings.TrimSpace(raw.License),
 		Homepage: strings.TrimSpace(raw.Homepage), Repository: strings.TrimSpace(raw.Repository),
 		Keywords: append([]string(nil), raw.Keywords...), Resources: map[string]packageResourceSpec{},

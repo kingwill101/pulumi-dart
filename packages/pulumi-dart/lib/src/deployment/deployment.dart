@@ -115,6 +115,11 @@ abstract class Deployment {
   /// Deployment logger.
   EngineLogger get logger;
 
+  /// Registers a requirement on the Pulumi CLI version used for this run.
+  void requirePulumiVersion(String versionRange) {
+    throw UnimplementedError('requirePulumiVersion is not implemented');
+  }
+
   /// Active root stack resource.
   Stack get stack;
 
@@ -165,6 +170,14 @@ abstract class Deployment {
 
   /// Invokes a provider function and returns deserialized result object.
   Future<T> invoke<T>(
+    String token,
+    Map<String, dynamic> args, {
+    models.InvokeOptions? options,
+    models.RegisterPackageRequest? registerPackageRequest,
+  });
+
+  /// Invokes a provider function while retaining Pulumi result metadata.
+  Future<OutputData<T>> invokeOutputData<T>(
     String token,
     Map<String, dynamic> args, {
     models.InvokeOptions? options,
@@ -231,6 +244,9 @@ class DeploymentImpl extends Deployment
     return _instance!;
   }
 
+  /// Active deployment, or `null` when no program/provider operation created one.
+  static Deployment? get current => _instance;
+
   /// Overrides the active deployment instance for tests.
   @visibleForTesting
   static void setInstance(Deployment deployment) {
@@ -258,6 +274,25 @@ class DeploymentImpl extends Deployment
     required Engine engine,
   }) {
     return DeploymentImpl._(
+      organizationName: organizationName,
+      projectName: projectName,
+      stackName: stackName,
+      isDryRun: isDryRun,
+      monitor: monitor,
+      engine: engine,
+    );
+  }
+
+  /// Installs a deployment used while a provider handles Construct/Call RPCs.
+  static void initializeForProvider({
+    required String organizationName,
+    required String projectName,
+    required String stackName,
+    required bool isDryRun,
+    required monitorpkg.Monitor monitor,
+    required Engine engine,
+  }) {
+    _instance = DeploymentImpl._(
       organizationName: organizationName,
       projectName: projectName,
       stackName: stackName,
@@ -321,6 +356,11 @@ class DeploymentImpl extends Deployment
 
   @override
   EngineLogger get logger => _logger;
+
+  @override
+  void requirePulumiVersion(String versionRange) {
+    registerResourceOperation(engine.requirePulumiVersion(versionRange));
+  }
 
   @override
   Stack get stack => _stack ?? (throw StateError('Stack not set'));
@@ -390,7 +430,10 @@ class DeploymentImpl extends Deployment
     );
 
     try {
-      func();
+      final result = func();
+      if (result is Future) {
+        await result;
+      }
       await _instance!.registerOutputs();
       await _instance!.logger.waitForPendingLogs();
       return _instance!.logger.loggedErrors ? 1 : 0;
@@ -426,6 +469,10 @@ class DeploymentImpl extends Deployment
     models.RegisterPackageRequest? registerPackageRequest,
   }) async {
     try {
+      if (resource.getResourceType() != Stack.rootPulumiStackTypeName &&
+          _stack != null) {
+        await _stack!.urn.getData();
+      }
       if (resource.isCustom && (opts.id != null || opts.urn != null)) {
         await _readResource(
           resource: resource as CustomResource,
@@ -448,7 +495,10 @@ class DeploymentImpl extends Deployment
       }
 
       for (final entry in args.entries) {
-        final serializer = Serializer(collapseUnknownCollections: !remote);
+        final serializer = Serializer(
+          collapseUnknownCollections: !remote,
+          excludeResourceReferencesFromDependencies: remote,
+        );
         final serialized = await serializer.serializeAsync(
           'resource:${resource.getResourceName()}.${entry.key}',
           entry.value,
@@ -459,7 +509,6 @@ class DeploymentImpl extends Deployment
         }
 
         serializedProps[entry.key] = serialized;
-
         final urns = await _expandDependencies(
           serializer.dependentResources,
           fromResource: resource,
@@ -469,12 +518,16 @@ class DeploymentImpl extends Deployment
           propertyDependencies[entry.key] =
               RegisterResourceRequest_PropertyDependencies()
                 ..urns.addAll(sortedUrns);
+          dependencyUrns.addAll(urns);
         }
       }
 
       final serializedStruct = await StructConverter.toStruct(
         serializedProps,
-        collapseUnknownCollections: !remote,
+        // Resource registration advertises supportsPartialValues, so preserve
+        // unknown sentinels at collection leaves instead of collapsing the
+        // collection a second time after Serializer has shaped each property.
+        collapseUnknownCollections: false,
       );
       final request = RegisterResourceRequest()
         ..type = resource.getResourceType()
@@ -485,6 +538,7 @@ class DeploymentImpl extends Deployment
         ..protect = resource.isProtected
         ..acceptSecrets = true
         ..acceptResources = true
+        ..acceptsByteString = true
         ..supportsPartialValues = true;
       applyRequestSourceMetadata(request, StackTrace.current);
 
@@ -499,7 +553,7 @@ class DeploymentImpl extends Deployment
         request.parent = await opts.parent!.urn.getValue();
       }
 
-      if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
+      if (dependencyUrns.isNotEmpty) {
         request.dependencies.addAll(dependencyUrns.toList()..sort());
       }
 
@@ -546,6 +600,12 @@ class DeploymentImpl extends Deployment
       if (opts.version != null) {
         request.version = opts.version!;
       }
+      if (opts.importId != null) {
+        final importData = await opts.importId!.toOutput().getData();
+        if (importData.isKnown && importData.value != null) {
+          request.importId = importData.value!;
+        }
+      }
       final validatedIgnoreChanges = _validatePropertyPaths(
         opts.ignoreChanges,
         optionName: 'ignoreChanges',
@@ -559,6 +619,13 @@ class DeploymentImpl extends Deployment
       );
       if (validatedReplaceOnChanges.isNotEmpty) {
         request.replaceOnChanges.addAll(validatedReplaceOnChanges);
+      }
+      final validatedHideDiffs = _validatePropertyPaths(
+        opts.hideDiffs,
+        optionName: 'hideDiffs',
+      );
+      if (validatedHideDiffs.isNotEmpty) {
+        request.hideDiffs.addAll(validatedHideDiffs);
       }
       if (opts.pluginDownloadURL != null) {
         request.pluginDownloadURL = opts.pluginDownloadURL!;
@@ -592,6 +659,14 @@ class DeploymentImpl extends Deployment
       if (opts.additionalSecretOutputs != null &&
           opts.additionalSecretOutputs!.isNotEmpty) {
         request.additionalSecretOutputs.addAll(opts.additionalSecretOutputs!);
+      }
+      if (opts.envVarMappings != null && opts.envVarMappings!.isNotEmpty) {
+        request.envVarMappings.addAll(opts.envVarMappings!);
+      }
+      if (opts.replaceWith != null && opts.replaceWith!.isNotEmpty) {
+        for (final replacement in opts.replaceWith!) {
+          request.replaceWith.add(await replacement.urn.getValue());
+        }
       }
       final replacementTrigger = opts.effectiveReplacementTrigger;
       if (replacementTrigger != null) {
@@ -701,6 +776,17 @@ class DeploymentImpl extends Deployment
         );
       }
       readId = id;
+    } else if (resource.isResourceReference) {
+      final urnData = await opts.urn!.toOutput().getData();
+      final urn = urnData.value;
+      if (!urnData.isKnown || urn == null || urn.isEmpty) {
+        throw ArgumentError(
+          'Cannot read resource "${resource.getResourceName()}" with an unknown or empty urn.',
+        );
+      }
+      readId = urn;
+      await _hydrateResourceReference(resource, urn);
+      return;
     } else {
       final urnData = await opts.urn!.toOutput().getData();
       final urn = urnData.value;
@@ -718,7 +804,8 @@ class DeploymentImpl extends Deployment
       ..id = readId
       ..properties = await StructConverter.toStruct(serializedProps)
       ..acceptSecrets = true
-      ..acceptResources = true;
+      ..acceptResources = true
+      ..acceptsByteString = true;
     applyRequestSourceMetadata(request, StackTrace.current);
 
     if (registerPackageRequest != null) {
@@ -764,6 +851,35 @@ class DeploymentImpl extends Deployment
     resource.resolveUrn(response.urn);
     resource.resolveOutputs(response.properties);
     resource.resolveId(readId, isKnown: true);
+  }
+
+  Future<void> _hydrateResourceReference(
+    CustomResource resource,
+    String urn,
+  ) async {
+    final response = await monitor.invoke(
+      ResourceInvokeRequest(
+        tok: 'pulumi:pulumi:getResource',
+        args: Struct(fields: {'urn': Value(stringValue: urn)}.entries),
+        acceptResources: true,
+        acceptsByteString: true,
+      ),
+    );
+    if (response.failures.isNotEmpty) {
+      throw Exception(
+        'Failed to hydrate resource reference: '
+        '${response.failures.map((failure) => failure.reason).join(', ')}',
+      );
+    }
+    final fields = response.return_1.fields;
+    final state = fields['state'];
+    if (state == null || !state.hasStructValue()) {
+      throw StateError('getResource returned no state for $urn');
+    }
+    final id = fields['id']?.stringValue ?? '';
+    resource.resolveUrn(urn);
+    resource.resolveOutputs(state.structValue);
+    resource.resolveId(id, isKnown: id.isNotEmpty);
   }
 
   @override
@@ -1011,7 +1127,7 @@ class DeploymentImpl extends Deployment
   Future<void> registerOutputs() async {
     _stack?.registerPropertyOutputs();
 
-    if (_resourceOperations.isNotEmpty) {
+    while (_resourceOperations.isNotEmpty) {
       // IMPORTANT:
       // We intentionally use `eagerError: true` here.
       //
@@ -1033,8 +1149,9 @@ class DeploymentImpl extends Deployment
       // observed. Those siblings may still complete in the background, but we do
       // not block shutdown on them. This matches the desired behavior for a
       // failed deployment: prioritize surfacing the primary failure deterministically.
-      await Future.wait(_resourceOperations, eagerError: true);
+      final operations = List<Future<void>>.from(_resourceOperations);
       _resourceOperations.clear();
+      await Future.wait(operations, eagerError: true);
     }
 
     if (_stack == null) {
@@ -1064,7 +1181,9 @@ class DeploymentImpl extends Deployment
           continue;
         }
       }
-      var serializedValue = await _stack!.serializeOutputValue(outputData);
+      final serializedValue = _stack == null
+          ? await serializeOutputData(outputData)
+          : await _stack!.serializeOutputValue(outputData);
       serializedOutputs[entry.key] = serializedValue;
     }
 

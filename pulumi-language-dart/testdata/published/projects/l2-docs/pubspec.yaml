@@ -1,0 +1,14 @@
+name: l2_docs
+description: Generated Pulumi Dart project.
+version: 0.0.1
+environment:
+    sdk: '>=3.11.0 <4.0.0'
+dependencies:
+    pulumi:
+        path: ROOT/artifacts/pulumi
+    pulumi_docs:
+        path: ROOT/artifacts/pulumi_docs
+    pulumi_enum:
+        path: ROOT/artifacts/pulumi_enum
+dev_dependencies:
+    lints: ^6.1.0

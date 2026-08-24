@@ -12,7 +12,7 @@ func newBoundPackageSchema(pkg *schema.Package) *packageSchema {
 		version = pkg.Version.String()
 	}
 	return &packageSchema{
-		Name: pkg.Name, Namespace: pkg.Namespace, Version: version,
+		Name: pkg.Name, Namespace: pkg.Namespace, Version: version, PluginDownloadURL: pkg.PluginDownloadURL,
 		Description: strings.TrimSpace(pkg.Description), License: strings.TrimSpace(pkg.License),
 		Homepage: strings.TrimSpace(pkg.Homepage), Repository: strings.TrimSpace(pkg.Repository),
 		Keywords: append([]string(nil), pkg.Keywords...), Parameterization: boundPackageParameterization(pkg, version),

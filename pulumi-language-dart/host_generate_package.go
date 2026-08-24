@@ -41,7 +41,9 @@ func (host *dartLanguageHost) GeneratePackage(
 	if err := writeGeneratedSources(req.GetDirectory(), packageName, schemaResult.spec, recordGenerated); err != nil {
 		return nil, err
 	}
-	if err := writeGeneratedExtraFiles(req, packageName, schemaResult.spec.Name, pubspec.Version, generatedPaths); err != nil {
+	if err := writeGeneratedExtraFiles(
+		req, packageName, schemaResult.spec.Name, pubspec.Version, schemaResult.spec, generatedPaths,
+	); err != nil {
 		return nil, err
 	}
 	if err := syncGeneratedCodeToWorkspaceMember(req.GetDirectory(), packageName); err != nil {

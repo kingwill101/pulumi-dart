@@ -79,11 +79,11 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(t, content, "final pulumi.Input<String> owner;")
 	assert.Contains(t, content, "final pulumi.Input<WidgetMode> mode;")
 	assert.Contains(t, content, "'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.wireValue),")
-	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode']! as String)")
+	assert.Contains(t, content, "mode: pulumi.Input.fromValue(WidgetMode.fromValue(map['mode']! as String))")
 
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<WidgetMode> mode;")
-	assert.Contains(t, content, "final pulumi.Input<WidgetMetadata>? metadata;")
+	assert.Contains(t, content, "final pulumi.Input<WidgetMetadata?>? metadata;")
 	assert.Contains(t, content, "metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WidgetMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),")
 	assert.Contains(t, content, "mode: pulumi.Input.fromValue(WidgetMode.fromValue(map['mode']! as String))")
 	assert.Contains(
@@ -93,10 +93,10 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	)
 
 	assert.Contains(t, content, "class GetWidgetDetailsResult")
-	assert.Contains(t, content, "final WidgetMetadata metadata;")
-	assert.Contains(t, content, "metadata: WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())")
-	assert.Contains(t, content, "final WidgetMode mode;")
-	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode']! as String)")
+	assert.Contains(t, content, "final WidgetMetadata? metadata;")
+	assert.Contains(t, content, "return WidgetMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())")
+	assert.Contains(t, content, "final WidgetMode? mode;")
+	assert.Contains(t, content, "return WidgetMode.fromValue(guardedValue as String)")
 }
 
 func TestGeneratePackageFromMapUsesNonNullDecodeForOptionalObjectProperties(t *testing.T) {
@@ -182,7 +182,7 @@ func TestGeneratePackageTreatsEmptyObjectTypesAsMaps(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "final pulumi.Input<Map<String, dynamic>>? opaque;")
+	assert.Contains(t, content, "final pulumi.Input<Map<String, dynamic>?>? opaque;")
 	assert.Contains(t, content, "'opaque': ?opaque,")
 	assert.NotContains(t, content, "Input<Opaque>")
 	assert.NotContains(t, content, "index/opaque.dart")

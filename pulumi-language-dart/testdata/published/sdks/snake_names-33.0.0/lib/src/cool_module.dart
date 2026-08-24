@@ -1,0 +1,10 @@
+export 'cool_module/another_resource.dart';
+export 'cool_module/another_resource_args.dart';
+export 'cool_module/entry.dart';
+export 'cool_module/functions.dart';
+export 'cool_module/nested_input.dart';
+export 'cool_module/output_item.dart';
+export 'cool_module/some_data_args.dart';
+export 'cool_module/some_data_result.dart';
+export 'cool_module/some_resource.dart';
+export 'cool_module/some_resource_args.dart';

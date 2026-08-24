@@ -23,6 +23,9 @@ class _RecordingEngine implements Engine {
     }
     requests.add(request);
   }
+
+  @override
+  Future<void> requirePulumiVersion(String versionRange) async {}
 }
 
 void main() {

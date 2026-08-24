@@ -3,7 +3,7 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
+import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i11;
@@ -12,15 +12,16 @@ import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart'
 import 'package:pulumi/src/deployment/deployment.dart' as _i10;
 import 'package:pulumi/src/deployment/models.dart' as _i14;
 import 'package:pulumi/src/deployment/stack.dart' as _i3;
-import 'package:pulumi/src/engine.dart' as _i6;
+import 'package:pulumi/src/engine.dart' as _i8;
 import 'package:pulumi/src/engine_logger.dart' as _i2;
 import 'package:pulumi/src/input.dart' as _i4;
-import 'package:pulumi/src/monitor.dart' as _i5;
-import 'package:pulumi/src/output.dart' as _i8;
-import 'package:pulumi/src/output_completion_source.dart' as _i16;
-import 'package:pulumi/src/resource/component_resource.dart' as _i19;
-import 'package:pulumi/src/resource/custom_resource.dart' as _i18;
-import 'package:pulumi/src/resource/provider_resource.dart' as _i17;
+import 'package:pulumi/src/invoke.dart' as _i16;
+import 'package:pulumi/src/monitor.dart' as _i7;
+import 'package:pulumi/src/output.dart' as _i6;
+import 'package:pulumi/src/output_completion_source.dart' as _i17;
+import 'package:pulumi/src/resource/component_resource.dart' as _i20;
+import 'package:pulumi/src/resource/custom_resource.dart' as _i19;
+import 'package:pulumi/src/resource/provider_resource.dart' as _i18;
 import 'package:pulumi/src/resource/resource.dart' as _i12;
 import 'package:pulumi/src/resource/resource_options.dart' as _i13;
 import 'package:pulumi/src/resource/resource_transformation.dart' as _i15;
@@ -55,33 +56,39 @@ class _FakeInput_2<T> extends _i1.SmartFake implements _i4.Input<T> {
     : super(parent, parentInvocation);
 }
 
-class _FakeMonitor_3 extends _i1.SmartFake implements _i5.Monitor {
-  _FakeMonitor_3(Object parent, Invocation parentInvocation)
+class _FakeFuture_3<T1> extends _i1.SmartFake implements _i5.Future<T1> {
+  _FakeFuture_3(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeEngine_4 extends _i1.SmartFake implements _i6.Engine {
-  _FakeEngine_4(Object parent, Invocation parentInvocation)
+class _FakeOutputData_4<T1> extends _i1.SmartFake
+    implements _i6.OutputData<T1> {
+  _FakeOutputData_4(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeFuture_5<T1> extends _i1.SmartFake implements _i7.Future<T1> {
-  _FakeFuture_5(Object parent, Invocation parentInvocation)
+class _FakeMonitor_5 extends _i1.SmartFake implements _i7.Monitor {
+  _FakeMonitor_5(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeOutput_6<T> extends _i1.SmartFake implements _i8.Output<T> {
-  _FakeOutput_6(Object parent, Invocation parentInvocation)
+class _FakeEngine_6 extends _i1.SmartFake implements _i8.Engine {
+  _FakeEngine_6(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeStruct_7 extends _i1.SmartFake implements _i9.Struct {
-  _FakeStruct_7(Object parent, Invocation parentInvocation)
+class _FakeOutput_7<T> extends _i1.SmartFake implements _i6.Output<T> {
+  _FakeOutput_7(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeValue_8 extends _i1.SmartFake implements _i9.Value {
-  _FakeValue_8(Object parent, Invocation parentInvocation)
+class _FakeStruct_8 extends _i1.SmartFake implements _i9.Struct {
+  _FakeStruct_8(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeValue_9 extends _i1.SmartFake implements _i9.Value {
+  _FakeValue_9(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -168,6 +175,12 @@ class MockDeployment extends _i1.Mock implements _i10.Deployment {
           as _i3.Stack);
 
   @override
+  void requirePulumiVersion(String? versionRange) => super.noSuchMethod(
+    Invocation.method(#requirePulumiVersion, [versionRange]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
   void setStack(_i3.Stack? stack) => super.noSuchMethod(
     Invocation.method(#setStack, [stack]),
     returnValueForMissingStub: null,
@@ -191,7 +204,7 @@ class MockDeployment extends _i1.Mock implements _i10.Deployment {
           as bool);
 
   @override
-  _i7.Future<void> readOrRegisterResource({
+  _i5.Future<void> readOrRegisterResource({
     required _i12.Resource? resource,
     required bool? remote,
     required _i12.Resource Function(String)? newDependency,
@@ -208,38 +221,38 @@ class MockDeployment extends _i1.Mock implements _i10.Deployment {
               #opts: opts,
               #registerPackageRequest: registerPackageRequest,
             }),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
-  void registerResourceOperation(_i7.Future<void>? operation) =>
+  void registerResourceOperation(_i5.Future<void>? operation) =>
       super.noSuchMethod(
         Invocation.method(#registerResourceOperation, [operation]),
         returnValueForMissingStub: null,
       );
 
   @override
-  _i7.Future<void> registerResourceOutputs(
+  _i5.Future<void> registerResourceOutputs(
     _i12.Resource? resource,
-    _i8.Output<Map<String, dynamic>>? outputs,
+    _i6.Output<Map<String, dynamic>>? outputs,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#registerResourceOutputs, [resource, outputs]),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
-  _i7.Future<void> registerOutputs() =>
+  _i5.Future<void> registerOutputs() =>
       (super.noSuchMethod(
             Invocation.method(#registerOutputs, []),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
   _i4.Input<String> collapseAliasToUrn(
@@ -270,6 +283,213 @@ class MockDeployment extends _i1.Mock implements _i10.Deployment {
             ),
           )
           as _i4.Input<String>);
+
+  @override
+  _i5.Future<void> registerResourceTransform(
+    _i15.ResourceTransform? transform,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#registerResourceTransform, [transform]),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> registerInvokeTransform(_i16.InvokeTransform? transform) =>
+      (super.noSuchMethod(
+            Invocation.method(#registerInvokeTransform, [transform]),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
+
+  @override
+  _i5.Future<T> invoke<T>(
+    String? token,
+    Map<String, dynamic>? args, {
+    _i14.InvokeOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #invoke,
+              [token, args],
+              {
+                #options: options,
+                #registerPackageRequest: registerPackageRequest,
+              },
+            ),
+            returnValue:
+                _i11.ifNotNull(
+                  _i11.dummyValueOrNull<T>(
+                    this,
+                    Invocation.method(
+                      #invoke,
+                      [token, args],
+                      {
+                        #options: options,
+                        #registerPackageRequest: registerPackageRequest,
+                      },
+                    ),
+                  ),
+                  (T v) => _i5.Future<T>.value(v),
+                ) ??
+                _FakeFuture_3<T>(
+                  this,
+                  Invocation.method(
+                    #invoke,
+                    [token, args],
+                    {
+                      #options: options,
+                      #registerPackageRequest: registerPackageRequest,
+                    },
+                  ),
+                ),
+            returnValueForMissingStub:
+                _i11.ifNotNull(
+                  _i11.dummyValueOrNull<T>(
+                    this,
+                    Invocation.method(
+                      #invoke,
+                      [token, args],
+                      {
+                        #options: options,
+                        #registerPackageRequest: registerPackageRequest,
+                      },
+                    ),
+                  ),
+                  (T v) => _i5.Future<T>.value(v),
+                ) ??
+                _FakeFuture_3<T>(
+                  this,
+                  Invocation.method(
+                    #invoke,
+                    [token, args],
+                    {
+                      #options: options,
+                      #registerPackageRequest: registerPackageRequest,
+                    },
+                  ),
+                ),
+          )
+          as _i5.Future<T>);
+
+  @override
+  _i5.Future<_i6.OutputData<T>> invokeOutputData<T>(
+    String? token,
+    Map<String, dynamic>? args, {
+    _i14.InvokeOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #invokeOutputData,
+              [token, args],
+              {
+                #options: options,
+                #registerPackageRequest: registerPackageRequest,
+              },
+            ),
+            returnValue: _i5.Future<_i6.OutputData<T>>.value(
+              _FakeOutputData_4<T>(
+                this,
+                Invocation.method(
+                  #invokeOutputData,
+                  [token, args],
+                  {
+                    #options: options,
+                    #registerPackageRequest: registerPackageRequest,
+                  },
+                ),
+              ),
+            ),
+            returnValueForMissingStub: _i5.Future<_i6.OutputData<T>>.value(
+              _FakeOutputData_4<T>(
+                this,
+                Invocation.method(
+                  #invokeOutputData,
+                  [token, args],
+                  {
+                    #options: options,
+                    #registerPackageRequest: registerPackageRequest,
+                  },
+                ),
+              ),
+            ),
+          )
+          as _i5.Future<_i6.OutputData<T>>);
+
+  @override
+  _i5.Future<T> invokeSingle<T>(
+    String? token,
+    Map<String, dynamic>? args, {
+    _i14.InvokeOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #invokeSingle,
+              [token, args],
+              {
+                #options: options,
+                #registerPackageRequest: registerPackageRequest,
+              },
+            ),
+            returnValue:
+                _i11.ifNotNull(
+                  _i11.dummyValueOrNull<T>(
+                    this,
+                    Invocation.method(
+                      #invokeSingle,
+                      [token, args],
+                      {
+                        #options: options,
+                        #registerPackageRequest: registerPackageRequest,
+                      },
+                    ),
+                  ),
+                  (T v) => _i5.Future<T>.value(v),
+                ) ??
+                _FakeFuture_3<T>(
+                  this,
+                  Invocation.method(
+                    #invokeSingle,
+                    [token, args],
+                    {
+                      #options: options,
+                      #registerPackageRequest: registerPackageRequest,
+                    },
+                  ),
+                ),
+            returnValueForMissingStub:
+                _i11.ifNotNull(
+                  _i11.dummyValueOrNull<T>(
+                    this,
+                    Invocation.method(
+                      #invokeSingle,
+                      [token, args],
+                      {
+                        #options: options,
+                        #registerPackageRequest: registerPackageRequest,
+                      },
+                    ),
+                  ),
+                  (T v) => _i5.Future<T>.value(v),
+                ) ??
+                _FakeFuture_3<T>(
+                  this,
+                  Invocation.method(
+                    #invokeSingle,
+                    [token, args],
+                    {
+                      #options: options,
+                      #registerPackageRequest: registerPackageRequest,
+                    },
+                  ),
+                ),
+          )
+          as _i5.Future<T>);
 }
 
 /// A class which mocks [DeploymentImpl].
@@ -277,28 +497,28 @@ class MockDeployment extends _i1.Mock implements _i10.Deployment {
 /// See the documentation for Mockito's code generation for more information.
 class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
   @override
-  _i5.Monitor get monitor =>
+  _i7.Monitor get monitor =>
       (super.noSuchMethod(
             Invocation.getter(#monitor),
-            returnValue: _FakeMonitor_3(this, Invocation.getter(#monitor)),
-            returnValueForMissingStub: _FakeMonitor_3(
+            returnValue: _FakeMonitor_5(this, Invocation.getter(#monitor)),
+            returnValueForMissingStub: _FakeMonitor_5(
               this,
               Invocation.getter(#monitor),
             ),
           )
-          as _i5.Monitor);
+          as _i7.Monitor);
 
   @override
-  _i6.Engine get engine =>
+  _i8.Engine get engine =>
       (super.noSuchMethod(
             Invocation.getter(#engine),
-            returnValue: _FakeEngine_4(this, Invocation.getter(#engine)),
-            returnValueForMissingStub: _FakeEngine_4(
+            returnValue: _FakeEngine_6(this, Invocation.getter(#engine)),
+            returnValueForMissingStub: _FakeEngine_6(
               this,
               Invocation.getter(#engine),
             ),
           )
-          as _i6.Engine);
+          as _i8.Engine);
 
   @override
   String get organizationName =>
@@ -388,13 +608,28 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
           as List<Exception>);
 
   @override
+  Map<String, String> get environment =>
+      (super.noSuchMethod(
+            Invocation.getter(#environment),
+            returnValue: <String, String>{},
+            returnValueForMissingStub: <String, String>{},
+          )
+          as Map<String, String>);
+
+  @override
+  void requirePulumiVersion(String? versionRange) => super.noSuchMethod(
+    Invocation.method(#requirePulumiVersion, [versionRange]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
   void setStack(_i3.Stack? stack) => super.noSuchMethod(
     Invocation.method(#setStack, [stack]),
     returnValueForMissingStub: null,
   );
 
   @override
-  _i7.Future<void> readOrRegisterResource({
+  _i5.Future<void> readOrRegisterResource({
     required _i12.Resource? resource,
     required bool? remote,
     required _i12.Resource Function(String)? newDependency,
@@ -411,13 +646,42 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
               #opts: opts,
               #registerPackageRequest: registerPackageRequest,
             }),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
-  void registerResourceOperation(_i7.Future<void>? operation) =>
+  _i5.Future<String?> resolvePackageRef(_i14.RegisterPackageRequest? request) =>
+      (super.noSuchMethod(
+            Invocation.method(#resolvePackageRef, [request]),
+            returnValue: _i5.Future<String?>.value(),
+            returnValueForMissingStub: _i5.Future<String?>.value(),
+          )
+          as _i5.Future<String?>);
+
+  @override
+  _i5.Future<void> registerResourceTransform(
+    _i15.ResourceTransform? transform,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#registerResourceTransform, [transform]),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
+
+  @override
+  _i5.Future<void> registerInvokeTransform(_i16.InvokeTransform? transform) =>
+      (super.noSuchMethod(
+            Invocation.method(#registerInvokeTransform, [transform]),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
+
+  @override
+  void registerResourceOperation(_i5.Future<void>? operation) =>
       super.noSuchMethod(
         Invocation.method(#registerResourceOperation, [operation]),
         returnValueForMissingStub: null,
@@ -454,25 +718,25 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
           as _i4.Input<String>);
 
   @override
-  _i7.Future<void> registerOutputs() =>
+  _i5.Future<void> registerOutputs() =>
       (super.noSuchMethod(
             Invocation.method(#registerOutputs, []),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
-  _i7.Future<void> registerResourceOutputs(
+  _i5.Future<void> registerResourceOutputs(
     _i12.Resource? resource,
-    _i8.Output<Map<String, dynamic>>? outputs,
+    _i6.Output<Map<String, dynamic>>? outputs,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#registerResourceOutputs, [resource, outputs]),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
   String? getConfig(String? key) =>
@@ -492,13 +756,7 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
           as bool);
 
   @override
-  void initializeConfig() => super.noSuchMethod(
-    Invocation.method(#initializeConfig, []),
-    returnValueForMissingStub: null,
-  );
-
-  @override
-  _i7.Future<T> invoke<T>(
+  _i5.Future<T> invoke<T>(
     String? token,
     Map<String, dynamic>? args, {
     _i14.InvokeOptions? options,
@@ -526,9 +784,9 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                       },
                     ),
                   ),
-                  (T v) => _i7.Future<T>.value(v),
+                  (T v) => _i5.Future<T>.value(v),
                 ) ??
-                _FakeFuture_5<T>(
+                _FakeFuture_3<T>(
                   this,
                   Invocation.method(
                     #invoke,
@@ -552,9 +810,9 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                       },
                     ),
                   ),
-                  (T v) => _i7.Future<T>.value(v),
+                  (T v) => _i5.Future<T>.value(v),
                 ) ??
-                _FakeFuture_5<T>(
+                _FakeFuture_3<T>(
                   this,
                   Invocation.method(
                     #invoke,
@@ -566,10 +824,55 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                   ),
                 ),
           )
-          as _i7.Future<T>);
+          as _i5.Future<T>);
 
   @override
-  _i7.Future<T> invokeSingle<T>(
+  _i5.Future<_i6.OutputData<T>> invokeOutputData<T>(
+    String? token,
+    Map<String, dynamic>? args, {
+    _i14.InvokeOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #invokeOutputData,
+              [token, args],
+              {
+                #options: options,
+                #registerPackageRequest: registerPackageRequest,
+              },
+            ),
+            returnValue: _i5.Future<_i6.OutputData<T>>.value(
+              _FakeOutputData_4<T>(
+                this,
+                Invocation.method(
+                  #invokeOutputData,
+                  [token, args],
+                  {
+                    #options: options,
+                    #registerPackageRequest: registerPackageRequest,
+                  },
+                ),
+              ),
+            ),
+            returnValueForMissingStub: _i5.Future<_i6.OutputData<T>>.value(
+              _FakeOutputData_4<T>(
+                this,
+                Invocation.method(
+                  #invokeOutputData,
+                  [token, args],
+                  {
+                    #options: options,
+                    #registerPackageRequest: registerPackageRequest,
+                  },
+                ),
+              ),
+            ),
+          )
+          as _i5.Future<_i6.OutputData<T>>);
+
+  @override
+  _i5.Future<T> invokeSingle<T>(
     String? token,
     Map<String, dynamic>? args, {
     _i14.InvokeOptions? options,
@@ -597,9 +900,9 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                       },
                     ),
                   ),
-                  (T v) => _i7.Future<T>.value(v),
+                  (T v) => _i5.Future<T>.value(v),
                 ) ??
-                _FakeFuture_5<T>(
+                _FakeFuture_3<T>(
                   this,
                   Invocation.method(
                     #invokeSingle,
@@ -623,9 +926,9 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                       },
                     ),
                   ),
-                  (T v) => _i7.Future<T>.value(v),
+                  (T v) => _i5.Future<T>.value(v),
                 ) ??
-                _FakeFuture_5<T>(
+                _FakeFuture_3<T>(
                   this,
                   Invocation.method(
                     #invokeSingle,
@@ -637,10 +940,16 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                   ),
                 ),
           )
-          as _i7.Future<T>);
+          as _i5.Future<T>);
 
   @override
-  _i7.Future<void> call(
+  void initializeConfig() => super.noSuchMethod(
+    Invocation.method(#initializeConfig, []),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i5.Future<void> call(
     String? token,
     Map<String, dynamic>? args, {
     _i12.Resource? self,
@@ -657,18 +966,19 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                 #registerPackageRequest: registerPackageRequest,
               },
             ),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
-  _i7.Future<T> callWithResult<T>(
+  _i5.Future<T> callWithResult<T>(
     String? token,
     Map<String, dynamic>? args, {
     _i12.Resource? self,
     _i14.CallOptions? options,
     _i14.RegisterPackageRequest? registerPackageRequest,
+    bool? unwrapSingleReturn = false,
   }) =>
       (super.noSuchMethod(
             Invocation.method(
@@ -678,6 +988,7 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                 #self: self,
                 #options: options,
                 #registerPackageRequest: registerPackageRequest,
+                #unwrapSingleReturn: unwrapSingleReturn,
               },
             ),
             returnValue:
@@ -691,12 +1002,13 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                         #self: self,
                         #options: options,
                         #registerPackageRequest: registerPackageRequest,
+                        #unwrapSingleReturn: unwrapSingleReturn,
                       },
                     ),
                   ),
-                  (T v) => _i7.Future<T>.value(v),
+                  (T v) => _i5.Future<T>.value(v),
                 ) ??
-                _FakeFuture_5<T>(
+                _FakeFuture_3<T>(
                   this,
                   Invocation.method(
                     #callWithResult,
@@ -705,6 +1017,7 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                       #self: self,
                       #options: options,
                       #registerPackageRequest: registerPackageRequest,
+                      #unwrapSingleReturn: unwrapSingleReturn,
                     },
                   ),
                 ),
@@ -719,12 +1032,13 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                         #self: self,
                         #options: options,
                         #registerPackageRequest: registerPackageRequest,
+                        #unwrapSingleReturn: unwrapSingleReturn,
                       },
                     ),
                   ),
-                  (T v) => _i7.Future<T>.value(v),
+                  (T v) => _i5.Future<T>.value(v),
                 ) ??
-                _FakeFuture_5<T>(
+                _FakeFuture_3<T>(
                   this,
                   Invocation.method(
                     #callWithResult,
@@ -733,11 +1047,12 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
                       #self: self,
                       #options: options,
                       #registerPackageRequest: registerPackageRequest,
+                      #unwrapSingleReturn: unwrapSingleReturn,
                     },
                   ),
                 ),
           )
-          as _i7.Future<T>);
+          as _i5.Future<T>);
 }
 
 /// A class which mocks [Resource].
@@ -754,16 +1069,16 @@ class MockResource extends _i1.Mock implements _i12.Resource {
           as Set<_i12.Resource>);
 
   @override
-  _i8.Output<String> get urn =>
+  _i6.Output<String> get urn =>
       (super.noSuchMethod(
             Invocation.getter(#urn),
-            returnValue: _FakeOutput_6<String>(this, Invocation.getter(#urn)),
-            returnValueForMissingStub: _FakeOutput_6<String>(
+            returnValue: _FakeOutput_7<String>(this, Invocation.getter(#urn)),
+            returnValueForMissingStub: _FakeOutput_7<String>(
               this,
               Invocation.getter(#urn),
             ),
           )
-          as _i8.Output<String>);
+          as _i6.Output<String>);
 
   @override
   List<_i15.ResourceTransformation> get transformations =>
@@ -775,13 +1090,22 @@ class MockResource extends _i1.Mock implements _i12.Resource {
           as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i16.IOutputCompletionSource> get completionSources =>
+  List<_i15.ResourceTransform> get resourceTransforms =>
+      (super.noSuchMethod(
+            Invocation.getter(#resourceTransforms),
+            returnValue: <_i15.ResourceTransform>[],
+            returnValueForMissingStub: <_i15.ResourceTransform>[],
+          )
+          as List<_i15.ResourceTransform>);
+
+  @override
+  Map<String, _i17.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i16.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
+            returnValue: <String, _i17.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
           )
-          as Map<String, _i16.IOutputCompletionSource>);
+          as Map<String, _i17.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -793,13 +1117,31 @@ class MockResource extends _i1.Mock implements _i12.Resource {
           as bool);
 
   @override
-  set urn(_i8.Output<String>? value) => super.noSuchMethod(
+  bool get isRemote =>
+      (super.noSuchMethod(
+            Invocation.getter(#isRemote),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  bool get isProtected =>
+      (super.noSuchMethod(
+            Invocation.getter(#isProtected),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  set urn(_i6.Output<String>? value) => super.noSuchMethod(
     Invocation.setter(#urn, value),
     returnValueForMissingStub: null,
   );
 
   @override
-  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -812,25 +1154,74 @@ class MockResource extends _i1.Mock implements _i12.Resource {
   );
 
   @override
-  _i7.Future<_i9.Struct> serializeProperties(
+  void failUrn(Object? error) => super.noSuchMethod(
+    Invocation.method(#failUrn, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i6.Output<T> registerOutput<T>(
+    String? propertyName, {
+    Object? Function(Object?)? decoder,
+    bool? isSecret = false,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #registerOutput,
+              [propertyName],
+              {#decoder: decoder, #isSecret: isSecret},
+            ),
+            returnValue: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+            returnValueForMissingStub: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+          )
+          as _i6.Output<T>);
+
+  @override
+  void resolveOutputs(_i9.Struct? outputs) => super.noSuchMethod(
+    Invocation.method(#resolveOutputs, [outputs]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  void failOutputs(Object? error) => super.noSuchMethod(
+    Invocation.method(#failOutputs, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i5.Future<_i9.Struct> serializeProperties(
     Map<String, dynamic>? properties,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#serializeProperties, [properties]),
-            returnValue: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValue: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
-            returnValueForMissingStub: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValueForMissingStub: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
           )
-          as _i7.Future<_i9.Struct>);
+          as _i5.Future<_i9.Struct>);
 
   @override
   String getResourceType() =>
@@ -863,12 +1254,12 @@ class MockResource extends _i1.Mock implements _i12.Resource {
           as String);
 
   @override
-  _i17.ProviderResource? getProvider(String? moduleMember) =>
+  _i18.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i17.ProviderResource?);
+          as _i18.ProviderResource?);
 }
 
 /// A class which mocks [Stack].
@@ -900,16 +1291,16 @@ class MockStack extends _i1.Mock implements _i3.Stack {
           as Set<_i12.Resource>);
 
   @override
-  _i8.Output<String> get urn =>
+  _i6.Output<String> get urn =>
       (super.noSuchMethod(
             Invocation.getter(#urn),
-            returnValue: _FakeOutput_6<String>(this, Invocation.getter(#urn)),
-            returnValueForMissingStub: _FakeOutput_6<String>(
+            returnValue: _FakeOutput_7<String>(this, Invocation.getter(#urn)),
+            returnValueForMissingStub: _FakeOutput_7<String>(
               this,
               Invocation.getter(#urn),
             ),
           )
-          as _i8.Output<String>);
+          as _i6.Output<String>);
 
   @override
   List<_i15.ResourceTransformation> get transformations =>
@@ -921,13 +1312,22 @@ class MockStack extends _i1.Mock implements _i3.Stack {
           as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i16.IOutputCompletionSource> get completionSources =>
+  List<_i15.ResourceTransform> get resourceTransforms =>
+      (super.noSuchMethod(
+            Invocation.getter(#resourceTransforms),
+            returnValue: <_i15.ResourceTransform>[],
+            returnValueForMissingStub: <_i15.ResourceTransform>[],
+          )
+          as List<_i15.ResourceTransform>);
+
+  @override
+  Map<String, _i17.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i16.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
+            returnValue: <String, _i17.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
           )
-          as Map<String, _i16.IOutputCompletionSource>);
+          as Map<String, _i17.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -939,13 +1339,31 @@ class MockStack extends _i1.Mock implements _i3.Stack {
           as bool);
 
   @override
-  set urn(_i8.Output<String>? value) => super.noSuchMethod(
+  bool get isRemote =>
+      (super.noSuchMethod(
+            Invocation.getter(#isRemote),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  bool get isProtected =>
+      (super.noSuchMethod(
+            Invocation.getter(#isProtected),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  set urn(_i6.Output<String>? value) => super.noSuchMethod(
     Invocation.setter(#urn, value),
     returnValueForMissingStub: null,
   );
 
   @override
-  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -958,6 +1376,30 @@ class MockStack extends _i1.Mock implements _i3.Stack {
   );
 
   @override
+  void registerOutputs([Map<String, dynamic>? outputs]) => super.noSuchMethod(
+    Invocation.method(#registerOutputs, [outputs]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i5.Future<void> registerOutputsAsync(
+    _i5.Future<Map<String, dynamic>>? outputs,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#registerOutputsAsync, [outputs]),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
+
+  @override
+  void registerOutputsOutput(_i6.Output<Map<String, dynamic>>? outputs) =>
+      super.noSuchMethod(
+        Invocation.method(#registerOutputsOutput, [outputs]),
+        returnValueForMissingStub: null,
+      );
+
+  @override
   List<_i3.OutputProperty> getOutputProperties() =>
       (super.noSuchMethod(
             Invocation.method(#getOutputProperties, []),
@@ -967,49 +1409,25 @@ class MockStack extends _i1.Mock implements _i3.Stack {
           as List<_i3.OutputProperty>);
 
   @override
-  _i7.Future<_i9.Value> serializeOutputValue(
-    _i8.OutputData<dynamic>? outputData,
+  _i5.Future<_i9.Value> serializeOutputValue(
+    _i6.OutputData<dynamic>? outputData,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#serializeOutputValue, [outputData]),
-            returnValue: _i7.Future<_i9.Value>.value(
-              _FakeValue_8(
+            returnValue: _i5.Future<_i9.Value>.value(
+              _FakeValue_9(
                 this,
                 Invocation.method(#serializeOutputValue, [outputData]),
               ),
             ),
-            returnValueForMissingStub: _i7.Future<_i9.Value>.value(
-              _FakeValue_8(
+            returnValueForMissingStub: _i5.Future<_i9.Value>.value(
+              _FakeValue_9(
                 this,
                 Invocation.method(#serializeOutputValue, [outputData]),
               ),
             ),
           )
-          as _i7.Future<_i9.Value>);
-
-  @override
-  void registerOutputs([Map<String, dynamic>? outputs]) => super.noSuchMethod(
-    Invocation.method(#registerOutputs, [outputs]),
-    returnValueForMissingStub: null,
-  );
-
-  @override
-  _i7.Future<void> registerOutputsAsync(
-    _i7.Future<Map<String, dynamic>>? outputs,
-  ) =>
-      (super.noSuchMethod(
-            Invocation.method(#registerOutputsAsync, [outputs]),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
-          )
-          as _i7.Future<void>);
-
-  @override
-  void registerOutputsOutput(_i8.Output<Map<String, dynamic>>? outputs) =>
-      super.noSuchMethod(
-        Invocation.method(#registerOutputsOutput, [outputs]),
-        returnValueForMissingStub: null,
-      );
+          as _i5.Future<_i9.Value>);
 
   @override
   void resolveUrn(String? value) => super.noSuchMethod(
@@ -1018,25 +1436,74 @@ class MockStack extends _i1.Mock implements _i3.Stack {
   );
 
   @override
-  _i7.Future<_i9.Struct> serializeProperties(
+  void failUrn(Object? error) => super.noSuchMethod(
+    Invocation.method(#failUrn, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i6.Output<T> registerOutput<T>(
+    String? propertyName, {
+    Object? Function(Object?)? decoder,
+    bool? isSecret = false,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #registerOutput,
+              [propertyName],
+              {#decoder: decoder, #isSecret: isSecret},
+            ),
+            returnValue: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+            returnValueForMissingStub: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+          )
+          as _i6.Output<T>);
+
+  @override
+  void resolveOutputs(_i9.Struct? outputs) => super.noSuchMethod(
+    Invocation.method(#resolveOutputs, [outputs]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  void failOutputs(Object? error) => super.noSuchMethod(
+    Invocation.method(#failOutputs, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i5.Future<_i9.Struct> serializeProperties(
     Map<String, dynamic>? properties,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#serializeProperties, [properties]),
-            returnValue: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValue: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
-            returnValueForMissingStub: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValueForMissingStub: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
           )
-          as _i7.Future<_i9.Struct>);
+          as _i5.Future<_i9.Struct>);
 
   @override
   String getResourceType() =>
@@ -1069,32 +1536,32 @@ class MockStack extends _i1.Mock implements _i3.Stack {
           as String);
 
   @override
-  _i17.ProviderResource? getProvider(String? moduleMember) =>
+  _i18.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i17.ProviderResource?);
+          as _i18.ProviderResource?);
 }
 
 /// A class which mocks [CustomResource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
+class MockCustomResource extends _i1.Mock implements _i19.CustomResource {
   @override
-  _i8.Output<String> get id =>
+  _i6.Output<String> get id =>
       (super.noSuchMethod(
             Invocation.getter(#id),
-            returnValue: _FakeOutput_6<String>(this, Invocation.getter(#id)),
-            returnValueForMissingStub: _FakeOutput_6<String>(
+            returnValue: _FakeOutput_7<String>(this, Invocation.getter(#id)),
+            returnValueForMissingStub: _FakeOutput_7<String>(
               this,
               Invocation.getter(#id),
             ),
           )
-          as _i8.Output<String>);
+          as _i6.Output<String>);
 
   @override
-  set id(_i8.Output<String> value) => super.noSuchMethod(
+  set id(_i6.Output<String>? value) => super.noSuchMethod(
     Invocation.setter(#id, value),
     returnValueForMissingStub: null,
   );
@@ -1109,16 +1576,16 @@ class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
           as Set<_i12.Resource>);
 
   @override
-  _i8.Output<String> get urn =>
+  _i6.Output<String> get urn =>
       (super.noSuchMethod(
             Invocation.getter(#urn),
-            returnValue: _FakeOutput_6<String>(this, Invocation.getter(#urn)),
-            returnValueForMissingStub: _FakeOutput_6<String>(
+            returnValue: _FakeOutput_7<String>(this, Invocation.getter(#urn)),
+            returnValueForMissingStub: _FakeOutput_7<String>(
               this,
               Invocation.getter(#urn),
             ),
           )
-          as _i8.Output<String>);
+          as _i6.Output<String>);
 
   @override
   List<_i15.ResourceTransformation> get transformations =>
@@ -1130,13 +1597,22 @@ class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
           as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i16.IOutputCompletionSource> get completionSources =>
+  List<_i15.ResourceTransform> get resourceTransforms =>
+      (super.noSuchMethod(
+            Invocation.getter(#resourceTransforms),
+            returnValue: <_i15.ResourceTransform>[],
+            returnValueForMissingStub: <_i15.ResourceTransform>[],
+          )
+          as List<_i15.ResourceTransform>);
+
+  @override
+  Map<String, _i17.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i16.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
+            returnValue: <String, _i17.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
           )
-          as Map<String, _i16.IOutputCompletionSource>);
+          as Map<String, _i17.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -1148,13 +1624,31 @@ class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
           as bool);
 
   @override
-  set urn(_i8.Output<String>? value) => super.noSuchMethod(
+  bool get isRemote =>
+      (super.noSuchMethod(
+            Invocation.getter(#isRemote),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  bool get isProtected =>
+      (super.noSuchMethod(
+            Invocation.getter(#isProtected),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  set urn(_i6.Output<String>? value) => super.noSuchMethod(
     Invocation.setter(#urn, value),
     returnValueForMissingStub: null,
   );
 
   @override
-  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -1167,31 +1661,86 @@ class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
   );
 
   @override
+  void failId(Object? error) => super.noSuchMethod(
+    Invocation.method(#failId, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
   void resolveUrn(String? value) => super.noSuchMethod(
     Invocation.method(#resolveUrn, [value]),
     returnValueForMissingStub: null,
   );
 
   @override
-  _i7.Future<_i9.Struct> serializeProperties(
+  void failUrn(Object? error) => super.noSuchMethod(
+    Invocation.method(#failUrn, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i6.Output<T> registerOutput<T>(
+    String? propertyName, {
+    Object? Function(Object?)? decoder,
+    bool? isSecret = false,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #registerOutput,
+              [propertyName],
+              {#decoder: decoder, #isSecret: isSecret},
+            ),
+            returnValue: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+            returnValueForMissingStub: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+          )
+          as _i6.Output<T>);
+
+  @override
+  void resolveOutputs(_i9.Struct? outputs) => super.noSuchMethod(
+    Invocation.method(#resolveOutputs, [outputs]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  void failOutputs(Object? error) => super.noSuchMethod(
+    Invocation.method(#failOutputs, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i5.Future<_i9.Struct> serializeProperties(
     Map<String, dynamic>? properties,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#serializeProperties, [properties]),
-            returnValue: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValue: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
-            returnValueForMissingStub: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValueForMissingStub: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
           )
-          as _i7.Future<_i9.Struct>);
+          as _i5.Future<_i9.Struct>);
 
   @override
   String getResourceType() =>
@@ -1224,18 +1773,18 @@ class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
           as String);
 
   @override
-  _i17.ProviderResource? getProvider(String? moduleMember) =>
+  _i18.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i17.ProviderResource?);
+          as _i18.ProviderResource?);
 }
 
 /// A class which mocks [ComponentResource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
+class MockComponentResource extends _i1.Mock implements _i20.ComponentResource {
   @override
   Set<_i12.Resource> get childResources =>
       (super.noSuchMethod(
@@ -1246,16 +1795,16 @@ class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
           as Set<_i12.Resource>);
 
   @override
-  _i8.Output<String> get urn =>
+  _i6.Output<String> get urn =>
       (super.noSuchMethod(
             Invocation.getter(#urn),
-            returnValue: _FakeOutput_6<String>(this, Invocation.getter(#urn)),
-            returnValueForMissingStub: _FakeOutput_6<String>(
+            returnValue: _FakeOutput_7<String>(this, Invocation.getter(#urn)),
+            returnValueForMissingStub: _FakeOutput_7<String>(
               this,
               Invocation.getter(#urn),
             ),
           )
-          as _i8.Output<String>);
+          as _i6.Output<String>);
 
   @override
   List<_i15.ResourceTransformation> get transformations =>
@@ -1267,13 +1816,22 @@ class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
           as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i16.IOutputCompletionSource> get completionSources =>
+  List<_i15.ResourceTransform> get resourceTransforms =>
+      (super.noSuchMethod(
+            Invocation.getter(#resourceTransforms),
+            returnValue: <_i15.ResourceTransform>[],
+            returnValueForMissingStub: <_i15.ResourceTransform>[],
+          )
+          as List<_i15.ResourceTransform>);
+
+  @override
+  Map<String, _i17.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i16.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
+            returnValue: <String, _i17.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
           )
-          as Map<String, _i16.IOutputCompletionSource>);
+          as Map<String, _i17.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -1285,13 +1843,31 @@ class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
           as bool);
 
   @override
-  set urn(_i8.Output<String>? value) => super.noSuchMethod(
+  bool get isRemote =>
+      (super.noSuchMethod(
+            Invocation.getter(#isRemote),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  bool get isProtected =>
+      (super.noSuchMethod(
+            Invocation.getter(#isProtected),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
+
+  @override
+  set urn(_i6.Output<String>? value) => super.noSuchMethod(
     Invocation.setter(#urn, value),
     returnValueForMissingStub: null,
   );
 
   @override
-  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -1304,18 +1880,18 @@ class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
   );
 
   @override
-  _i7.Future<void> registerOutputsAsync(
-    _i7.Future<Map<String, dynamic>>? outputs,
+  _i5.Future<void> registerOutputsAsync(
+    _i5.Future<Map<String, dynamic>>? outputs,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#registerOutputsAsync, [outputs]),
-            returnValue: _i7.Future<void>.value(),
-            returnValueForMissingStub: _i7.Future<void>.value(),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
           )
-          as _i7.Future<void>);
+          as _i5.Future<void>);
 
   @override
-  void registerOutputsOutput(_i8.Output<Map<String, dynamic>>? outputs) =>
+  void registerOutputsOutput(_i6.Output<Map<String, dynamic>>? outputs) =>
       super.noSuchMethod(
         Invocation.method(#registerOutputsOutput, [outputs]),
         returnValueForMissingStub: null,
@@ -1328,25 +1904,74 @@ class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
   );
 
   @override
-  _i7.Future<_i9.Struct> serializeProperties(
+  void failUrn(Object? error) => super.noSuchMethod(
+    Invocation.method(#failUrn, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i6.Output<T> registerOutput<T>(
+    String? propertyName, {
+    Object? Function(Object?)? decoder,
+    bool? isSecret = false,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #registerOutput,
+              [propertyName],
+              {#decoder: decoder, #isSecret: isSecret},
+            ),
+            returnValue: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+            returnValueForMissingStub: _FakeOutput_7<T>(
+              this,
+              Invocation.method(
+                #registerOutput,
+                [propertyName],
+                {#decoder: decoder, #isSecret: isSecret},
+              ),
+            ),
+          )
+          as _i6.Output<T>);
+
+  @override
+  void resolveOutputs(_i9.Struct? outputs) => super.noSuchMethod(
+    Invocation.method(#resolveOutputs, [outputs]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  void failOutputs(Object? error) => super.noSuchMethod(
+    Invocation.method(#failOutputs, [error]),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i5.Future<_i9.Struct> serializeProperties(
     Map<String, dynamic>? properties,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#serializeProperties, [properties]),
-            returnValue: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValue: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
-            returnValueForMissingStub: _i7.Future<_i9.Struct>.value(
-              _FakeStruct_7(
+            returnValueForMissingStub: _i5.Future<_i9.Struct>.value(
+              _FakeStruct_8(
                 this,
                 Invocation.method(#serializeProperties, [properties]),
               ),
             ),
           )
-          as _i7.Future<_i9.Struct>);
+          as _i5.Future<_i9.Struct>);
 
   @override
   String getResourceType() =>
@@ -1379,10 +2004,10 @@ class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
           as String);
 
   @override
-  _i17.ProviderResource? getProvider(String? moduleMember) =>
+  _i18.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i17.ProviderResource?);
+          as _i18.ProviderResource?);
 }

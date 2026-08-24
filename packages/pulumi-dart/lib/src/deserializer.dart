@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/constants.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
+
+import 'resource/dependency_custom_resource.dart';
 
 /// {@template pulumi.deserializer.summary}
 /// Deserializes Pulumi RPC values into Dart runtime values.
@@ -22,6 +26,16 @@ class Deserializer {
         isKnown: false,
         isSecret: isSecret,
         resources: {},
+      );
+    }
+
+    if (_tryDeserializeByteString(value) case (true, var byteString?)) {
+      return OutputData<T>(
+        value: byteString.text as T,
+        isKnown: true,
+        isSecret: isSecret,
+        resources: {},
+        preservedWireValue: byteString.wireValue,
       );
     }
 
@@ -89,6 +103,33 @@ class Deserializer {
       );
     }
     return (false, null);
+  }
+
+  static (bool, ({String text, Map<String, Object?> wireValue})?)
+  _tryDeserializeByteString(Value value) {
+    final (isSpecial, sig) = _isSpecialStruct(value);
+    if (!isSpecial || sig != Constants.specialByteStringSig) {
+      return (false, null);
+    }
+
+    final encoded = value.structValue.fields[Constants.valueName];
+    if (encoded == null || encoded.whichKind() != Value_Kind.stringValue) {
+      throw Exception(
+        'Value was marked as a byte string, but did not contain a base64 string value.',
+      );
+    }
+
+    final bytes = base64.decode(encoded.stringValue);
+    return (
+      true,
+      (
+        text: latin1.decode(bytes),
+        wireValue: <String, Object?>{
+          Constants.specialSigKey: Constants.specialByteStringSig,
+          Constants.valueName: encoded.stringValue,
+        },
+      ),
+    );
   }
 
   static (bool, AssetOrArchive?) _tryDeserializeAssetOrArchive(Value value) {
@@ -181,12 +222,21 @@ class Deserializer {
     final (_, id) = _tryGetStringValue(fields, Constants.resourceIdName);
 
     final urnParts = urn!.split("::");
-    if (urnParts.length > 2 && urnParts[2].startsWith("pulumi:providers:")) {
-      final package = urnParts[2].substring("pulumi:providers:".length);
+    final type = urnParts.length > 2 ? urnParts[2].split(r'$').last : '';
+    if (type.startsWith("pulumi:providers:")) {
+      final package = type.substring("pulumi:providers:".length);
       final provider = ProviderResource.reference(package, urn, id: id);
       return (true, provider);
     }
 
+    final typed = ResourceReferenceRegistry.construct(type, urn);
+    if (typed != null) {
+      return (true, typed);
+    }
+
+    if (id != null) {
+      return (true, DependencyCustomResource(urn, id));
+    }
     return (true, DependencyResource(urn));
   }
 

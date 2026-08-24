@@ -1,0 +1,87 @@
+package codegen
+
+import (
+	"fmt"
+
+	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/pcl"
+)
+
+func (lowerer programLowerer) configVariable(variable *pcl.ConfigVariable) (dartProgramConfig, error) {
+	name := lowerer.names[variable.Name()]
+
+	resolvedType := model.ResolveOutputs(variable.Type())
+	getter, err := dartConfigGetter(resolvedType, variable.DefaultValue == nil)
+	if err != nil {
+		return dartProgramConfig{}, err
+	}
+	expression := fmt.Sprintf("config.%s(%s)", getter, dartStringLiteral(variable.LogicalName()))
+	if variable.DefaultValue != nil {
+		fallback, err := lowerer.expression(variable.DefaultValue)
+		if err != nil {
+			return dartProgramConfig{}, fmt.Errorf("default: %w", err)
+		}
+		expression += " ?? " + fallback
+	}
+	if resolvedType == model.IntType {
+		expression = "(" + expression + ").toInt()"
+	}
+	if variable.Secret {
+		dartType := dartConfigValueType(resolvedType)
+		expression = "pulumi.secret(" + expression + ").apply<" + dartType + ">((value) => value as " + dartType + ")"
+	}
+	return dartProgramConfig{Name: name, Expression: expression}, nil
+}
+
+func dartConfigValueType(typ model.Type) string {
+	switch typ {
+	case model.BoolType:
+		return "bool"
+	case model.IntType:
+		return "int"
+	case model.NumberType:
+		return "double"
+	case model.StringType:
+		return "String"
+	}
+	switch typ.(type) {
+	case *model.ListType, *model.TupleType, *model.SetType:
+		return "List<dynamic>"
+	case *model.MapType, *model.ObjectType:
+		return "Map<String, dynamic>"
+	default:
+		return "dynamic"
+	}
+}
+
+func dartConfigGetter(typ model.Type, required bool) (string, error) {
+	prefix := "get"
+	if required {
+		prefix = "require"
+	}
+	if typ == model.StringType {
+		if required {
+			return "require", nil
+		}
+		return "get", nil
+	}
+	if typ == model.BoolType {
+		return prefix + "Boolean", nil
+	}
+	if typ == model.IntType || typ == model.NumberType {
+		return prefix + "Number", nil
+	}
+	switch typ.(type) {
+	case *model.ListType, *model.TupleType, *model.SetType:
+		return prefix + "Object<List<dynamic>>", nil
+	case *model.MapType, *model.ObjectType:
+		return prefix + "Object<Map<String, dynamic>>", nil
+	case *model.UnionType:
+		return prefix + "Object<dynamic>", nil
+	default:
+		if typ == model.DynamicType {
+			return prefix + "Object<dynamic>", nil
+		}
+		return "", fmt.Errorf("unsupported config type %v", typ)
+	}
+}

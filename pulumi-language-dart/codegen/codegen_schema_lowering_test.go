@@ -27,6 +27,9 @@ func TestRawSchemaLoweringStages(t *testing.T) {
 		Functions: map[string]rawFunctionSpec{
 			"example:index:getWidget": {
 				MultiArgumentInputs: []string{"name"},
+				ReturnType: &rawPropertyTypeSpec{
+					Type: "array", Items: &rawPropertyTypeSpec{Type: "boolean"},
+				},
 				Inputs: &rawObjectSpec{
 					Properties: map[string]rawPropertyTypeSpec{"name": {Type: "string"}},
 				},
@@ -50,4 +53,5 @@ func TestRawSchemaLoweringStages(t *testing.T) {
 	require.True(t, spec.Functions["example:index:getWidget"].HasArgs)
 	require.True(t, spec.Functions["example:index:getWidget"].MultiArgumentInputs)
 	require.Equal(t, "name", spec.Functions["example:index:getWidget"].Parameters[0].Name)
+	require.Equal(t, "List<bool>", spec.Functions["example:index:getWidget"].ReturnType.DartType)
 }

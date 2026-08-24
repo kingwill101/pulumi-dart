@@ -15,10 +15,8 @@
 package main
 
 import (
-	"archive/tar"
 	"bufio"
 	"bytes"
-	"compress/gzip"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
@@ -1123,11 +1121,32 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		version := ""
 		if len(pkg) > 1 {
 			version = normalizePackageDependencyVersion(pkg[1])
+			if version == "" {
+				version = localPathDependencyVersion(pubspecPath, pkg[1])
+			}
 		}
 
 		providerName := aliasName
+		dependencySpec := ""
+		if len(pkg) > 1 {
+			dependencySpec = pkg[1]
+		}
+		if pluginName, pluginVersion := localPathDependencyPlugin(pubspecPath, dependencySpec); pluginName != "" {
+			providerName = pluginName
+			if pluginVersion != "" {
+				version = pluginVersion
+			}
+		}
 		server := ""
 		var parameterization *pulumirpc.PackageParameterization
+		if metadata, ok := readDartPluginMetadata(pubspecPath, pkg[0], pubspec.Dependencies[pkg[0]]); ok {
+			providerName = metadata.Name
+			server = metadata.Server
+			if metadataVersion := normalizePackageDependencyVersion(metadata.Version); metadataVersion != "" {
+				version = metadataVersion
+			}
+			parameterization = metadata.packageParameterization()
+		}
 		if spec, ok := projectPackages[aliasName]; ok {
 			if sourceName := dependencyToPackageName(spec.Source); sourceName != "" {
 				providerName = sourceName
@@ -2117,10 +2136,16 @@ func (host *dartLanguageHost) InstallDependencies(
 	cmd := exec.Command(host.exec, "pub", "get")
 	cmd.Dir = programDirectory
 	cmd.Env = os.Environ()
-	cmd.Stdout, cmd.Stderr = stdout, stderr
+	var diagnostics bytes.Buffer
+	cmd.Stdout = io.MultiWriter(stdout, &diagnostics)
+	cmd.Stderr = io.MultiWriter(stderr, &diagnostics)
 
 	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("`dart pub get` failed to install dependencies: %w", err)
+		return fmt.Errorf(
+			"`dart pub get` failed to install dependencies: %w: %s",
+			err,
+			strings.TrimSpace(diagnostics.String()),
+		)
 	}
 	stdout.Write([]byte("Finished installing dependencies\n\n"))
 
@@ -2580,67 +2605,74 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 		packageName = codegen.SanitizeDartIdentifier(pubspec.Name)
 	}
 
-	artifactPath := filepath.Join(destinationDir, packageName+".tar.gz")
-	artifactFile, err := os.Create(artifactPath)
+	// Pub path dependencies must point at directories. A compressed archive is
+	// not a usable Dart package artifact, even though it satisfies this
+	// language-neutral RPC's filesystem-path contract.
+	packageDigest, err := directoryContentDigest(packageDir)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create archive: %w", err)
+		return nil, fmt.Errorf("failed to fingerprint package artifact: %w", err)
 	}
-	defer artifactFile.Close()
-
-	gzipWriter := gzip.NewWriter(artifactFile)
-	defer gzipWriter.Close()
-	tarWriter := tar.NewWriter(gzipWriter)
-	defer tarWriter.Close()
-
-	var filePaths []string
-	if err := filepath.Walk(packageDir, func(path string, info os.FileInfo, walkErr error) error {
-		if walkErr != nil {
-			return walkErr
+	artifactPath := filepath.Join(destinationDir, packageName+"-"+packageDigest[:12])
+	if err := os.Mkdir(artifactPath, 0o700); err != nil {
+		if !os.IsExist(err) {
+			return nil, fmt.Errorf("failed to create package artifact: %w", err)
 		}
-		if info.IsDir() {
-			return nil
+		existingDigest, err := directoryContentDigest(artifactPath)
+		if err != nil || existingDigest != packageDigest {
+			return nil, fmt.Errorf("package artifact path collision at %q", artifactPath)
 		}
-		filePaths = append(filePaths, path)
-		return nil
-	}); err != nil {
-		return nil, fmt.Errorf("failed to enumerate package files: %w", err)
+		return &pulumirpc.PackResponse{ArtifactPath: artifactPath}, nil
 	}
-	sort.Strings(filePaths)
-
-	for _, path := range filePaths {
-		info, err := os.Lstat(path)
-		if err != nil {
-			return nil, fmt.Errorf("failed to stat %s: %w", path, err)
-		}
-		relPath, err := filepath.Rel(packageDir, path)
-		if err != nil {
-			return nil, fmt.Errorf("failed to compute relative path for %s: %w", path, err)
-		}
-
-		header, err := tar.FileInfoHeader(info, "")
-		if err != nil {
-			return nil, fmt.Errorf("failed to create tar header for %s: %w", path, err)
-		}
-		header.Name = filepath.ToSlash(relPath)
-
-		if err := tarWriter.WriteHeader(header); err != nil {
-			return nil, fmt.Errorf("failed to write tar header for %s: %w", path, err)
-		}
-
-		file, err := os.Open(path)
-		if err != nil {
-			return nil, fmt.Errorf("failed to open %s: %w", path, err)
-		}
-		if _, err := io.Copy(tarWriter, file); err != nil {
-			file.Close()
-			return nil, fmt.Errorf("failed to write %s to archive: %w", path, err)
-		}
-		file.Close()
+	if err := copyDirContents(packageDir, artifactPath); err != nil {
+		return nil, fmt.Errorf("failed to copy package artifact: %w", err)
 	}
 
 	return &pulumirpc.PackResponse{
 		ArtifactPath: artifactPath,
 	}, nil
+}
+
+func directoryContentDigest(root string) (string, error) {
+	hash := sha256.New()
+	err := filepath.WalkDir(root, func(path string, entry os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if path != root && entry.IsDir() && (entry.Name() == ".dart_tool" || entry.Name() == "build") {
+			return filepath.SkipDir
+		}
+		if entry.IsDir() {
+			return nil
+		}
+		if entry.Name() == ".DS_Store" {
+			return nil
+		}
+		relativePath, err := filepath.Rel(root, path)
+		if err != nil {
+			return err
+		}
+		if _, err := io.WriteString(hash, filepath.ToSlash(relativePath)+"\x00"); err != nil {
+			return err
+		}
+		file, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		_, copyErr := io.Copy(hash, file)
+		closeErr := file.Close()
+		if copyErr != nil {
+			return copyErr
+		}
+		if closeErr != nil {
+			return closeErr
+		}
+		_, err = hash.Write([]byte{0})
+		return err
+	})
+	if err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(hash.Sum(nil)), nil
 }
 
 func (host *dartLanguageHost) Link(

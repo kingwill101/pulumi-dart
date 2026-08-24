@@ -216,7 +216,8 @@ class CallbackServer implements ICallbackServer {
       RegisterResourceHookRequest()
         ..name = hook.name
         ..callback = callback
-        ..onDryRun = hook.onDryRun,
+        ..onDryRun = hook.onDryRun
+        ..ignoreErrors = hook.ignoreErrors,
     );
 
     _registeredResourceHookNames.add(hook.name);
@@ -498,7 +499,7 @@ class CallbackServer implements ICallbackServer {
             : List<String>.from(protoOpts.hideDiff),
         replaceWith: protoOpts.replaceWith.isEmpty
             ? null
-            : List<String>.from(protoOpts.replaceWith),
+            : protoOpts.replaceWith.map(DependencyResource.new).toList(),
       );
     }
 
@@ -538,7 +539,7 @@ class CallbackServer implements ICallbackServer {
           : List<String>.from(protoOpts.hideDiff),
       replaceWith: protoOpts.replaceWith.isEmpty
           ? null
-          : List<String>.from(protoOpts.replaceWith),
+          : protoOpts.replaceWith.map(DependencyResource.new).toList(),
     );
   }
 
@@ -621,11 +622,8 @@ class CallbackServer implements ICallbackServer {
       proto.hideDiff.addAll(options.hideDiffs!);
     }
     if (options.replaceWith != null) {
-      proto.replaceWith.addAll(options.replaceWith!);
-    }
-    if (options.envVarMappings != null) {
-      for (final entry in options.envVarMappings!.entries) {
-        proto.providers[entry.key] = entry.value;
+      for (final replacement in options.replaceWith!) {
+        proto.replaceWith.add(await replacement.urn.getValue());
       }
     }
     for (final provider in options.providers) {

@@ -38,6 +38,11 @@ func lowerBoundFunctions(
 			HasArgs:             len(inputProperties) > 0,
 			MultiArgumentInputs: function.MultiArgumentInputs,
 		}
+		if function.ReturnType != nil {
+			functionSpec.ReturnType = dartTypeSpecFromSchemaType(
+				function.ReturnType, namedTypeRefs, true, pkg.Name,
+			)
+		}
 		base := toDartClassName(tokenElementName(function.Token))
 		if classSpec := makeObjectClassSpec(
 			base,
@@ -79,6 +84,7 @@ func lowerBoundFunctions(
 			"Result",
 			"InvokeResult",
 		); classSpec != nil {
+			classSpec.AllowMissingProperties = true
 			classSpec.CanonicalName = canonicalTypeName(base, "Result")
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ResultClass = classSpec.ClassName

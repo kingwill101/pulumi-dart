@@ -296,7 +296,7 @@ dependencies:
 	assert.Contains(t, err.Error(), "pulumi")
 }
 
-func TestGeneratePackageChecksAdditionalLocalDependenciesInExistingPubspec(t *testing.T) {
+func TestGeneratePackageIgnoresUnusedLocalDependenciesInExistingPubspec(t *testing.T) {
 	t.Parallel()
 
 	host := &dartLanguageHost{}
@@ -322,9 +322,7 @@ dependencies:
 			"pulumi_terraform": filepath.Join(targetDir, "..", "pulumi_terraform"),
 		},
 	})
-	require.Error(t, err)
-	assert.Contains(t, err.Error(), "missing required dependencies")
-	assert.Contains(t, err.Error(), "pulumi_terraform")
+	require.NoError(t, err)
 }
 
 func TestGeneratePackageChecksDartLanguageDependenciesInExistingPubspec(t *testing.T) {

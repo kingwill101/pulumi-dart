@@ -9,8 +9,9 @@ import (
 
 func Enum(declaration dartir.Enum) []byte {
 	var b strings.Builder
+	b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n\n")
 	WriteDocComment(&b, "", declaration.Docs)
-	fmt.Fprintf(&b, "enum %s {\n", declaration.Name)
+	fmt.Fprintf(&b, "enum %s implements pulumi.PulumiEnum<%s> {\n", declaration.Name, declaration.UnderlyingType)
 	for index, value := range declaration.Values {
 		suffix := ","
 		if index == len(declaration.Values)-1 {
@@ -21,7 +22,7 @@ func Enum(declaration dartir.Enum) []byte {
 	}
 	b.WriteString("\n")
 	fmt.Fprintf(&b, "  const %s(this.wireValue);\n", declaration.Name)
-	fmt.Fprintf(&b, "  final %s wireValue;\n\n", declaration.UnderlyingType)
+	fmt.Fprintf(&b, "  @override\n  final %s wireValue;\n\n", declaration.UnderlyingType)
 	fmt.Fprintf(&b, "  static %s fromValue(%s value) {\n", declaration.Name, declaration.UnderlyingType)
 	fmt.Fprintf(&b, "    for (final item in %s.values) {\n", declaration.Name)
 	b.WriteString("      if (item.wireValue == value) {\n        return item;\n      }\n    }\n")

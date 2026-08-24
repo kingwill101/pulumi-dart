@@ -1,0 +1,18 @@
+name: l2_map_keys
+description: Generated Pulumi Dart project.
+version: 0.0.1
+environment:
+    sdk: '>=3.11.0 <4.0.0'
+dependencies:
+    pulumi:
+        path: ROOT/artifacts/pulumi
+    pulumi_plain:
+        path: ROOT/artifacts/pulumi_plain
+    pulumi_primitive:
+        path: ROOT/artifacts/pulumi_primitive
+    pulumi_primitive_ref:
+        path: ROOT/artifacts/pulumi_primitive_ref
+    pulumi_ref_ref:
+        path: ROOT/artifacts/pulumi_ref_ref
+dev_dependencies:
+    lints: ^6.1.0

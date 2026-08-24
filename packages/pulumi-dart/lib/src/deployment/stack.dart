@@ -11,6 +11,22 @@ import '../struct_converter.dart';
 import '../resource/resource_transformation.dart';
 import 'deployment.dart';
 
+/// Serializes output metadata for stack and component-provider RPCs.
+Future<Value> serializeOutputData(OutputData outputData) async {
+  final inner = outputData.isKnown
+      ? await StructConverter.toValue(outputData.value)
+      : (Value()..stringValue = Constants.unknownValue);
+  if (!outputData.isSecret) {
+    return inner;
+  }
+
+  final secret = Struct()
+    ..fields[Constants.specialSigKey] = (Value()
+      ..stringValue = Constants.specialSecretSig)
+    ..fields[Constants.valueName] = inner;
+  return Value()..structValue = secret;
+}
+
 /// {@template pulumi.stack.summary}
 /// Root component resource for a Pulumi program.
 ///
@@ -137,20 +153,7 @@ abstract class Stack extends ComponentResource {
 
   /// Serializes stack output metadata to Pulumi wire format.
   Future<Value> serializeOutputValue(OutputData outputData) async {
-    if (!outputData.isKnown) {
-      return Value()..stringValue = Constants.unknownValue;
-    }
-
-    final inner = await StructConverter.toValue(outputData.value);
-    if (!outputData.isSecret) {
-      return inner;
-    }
-
-    final secret = Struct()
-      ..fields[Constants.specialSigKey] = (Value()
-        ..stringValue = Constants.specialSecretSig)
-      ..fields[Constants.valueName] = inner;
-    return Value()..structValue = secret;
+    return serializeOutputData(outputData);
   }
 
   static ComponentResourceOptions? _convertOptions(StackOptions? options) {

@@ -9,4 +9,7 @@ class MockEngine implements Engine {
       errors.add(request.message);
     }
   }
+
+  @override
+  Future<void> requirePulumiVersion(String versionRange) async {}
 }

@@ -25,6 +25,7 @@ func lowerBoundResource(spec *packageSchema, pkg *schema.Package, used map[strin
 		args.CanonicalName = canonicalTypeName(baseName, "Args")
 		spec.ObjectClasses = append(spec.ObjectClasses, *args)
 		result.ArgsClass = args.ClassName
+		result.HasDefaultArgs = objectClassHasDefaults(*args)
 	}
 	if state := makeObjectClassSpec(baseName, modulePath, fmt.Sprintf("Input properties used for looking up and filtering %s resources.", baseName), schemaPropertiesWithoutSelf(schemaObjectPropertiesFromRef(resource.StateInputs)), moduleScopedTypeNameSet(used, modulePath), named, true, true, pkg.Name, "State", "ResourceState"); state != nil {
 		state.CanonicalName = canonicalTypeName(baseName, "State")
@@ -32,6 +33,8 @@ func lowerBoundResource(spec *packageSchema, pkg *schema.Package, used map[strin
 		result.StateClass = state.ClassName
 	}
 	result.Methods = lowerBoundResourceMethods(spec, pkg, used, named, resource, baseName, modulePath)
+	replaceOnChanges, _ := resource.ReplaceOnChanges()
+	result.ReplaceOnChanges = schema.PropertyListJoinToString(replaceOnChanges, func(name string) string { return name })
 	result.OutputProperties = makeResourceOutputPropertySpecs(resource, named, pkg.Name)
 	spec.Resources[resource.Token] = result
 }

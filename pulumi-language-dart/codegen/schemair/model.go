@@ -1,20 +1,21 @@
 package schemair
 
 type Package struct {
-	Name             string
-	Namespace        string
-	Version          string
-	Description      string
-	License          string
-	Homepage         string
-	Repository       string
-	Keywords         []string
-	Parameterization *Parameterization
-	Resources        map[string]Resource
-	Functions        map[string]Function
-	Config           *Config
-	Enums            []Enum
-	ObjectClasses    []ObjectClass
+	Name              string
+	Namespace         string
+	Version           string
+	PluginDownloadURL string
+	Description       string
+	License           string
+	Homepage          string
+	Repository        string
+	Keywords          []string
+	Parameterization  *Parameterization
+	Resources         map[string]Resource
+	Functions         map[string]Function
+	Config            *Config
+	Enums             []Enum
+	ObjectClasses     []ObjectClass
 }
 
 type Parameterization struct {
@@ -33,17 +34,10 @@ type Resource struct {
 	Comment          string
 	StateClass       string
 	ArgsClass        string
+	HasDefaultArgs   bool
 	OutputProperties []Property
 	Methods          []ResourceMethod
-}
-
-type Function struct {
-	Comment             string
-	HasArgs             bool
-	ArgsClass           string
-	ResultClass         string
-	MultiArgumentInputs bool
-	Parameters          []Property
+	ReplaceOnChanges []string
 }
 
 type ResourceMethod struct {
@@ -52,16 +46,19 @@ type ResourceMethod struct {
 	Comment     string
 	ArgsClass   string
 	ResultClass string
+	ReturnType  Type
+	ReturnPlain bool
 	HasReturn   bool
 }
 
 type ObjectClass struct {
-	ClassName      string
-	CanonicalName  string
-	ModulePath     string
-	Comment        string
-	UsesInputTypes bool
-	Properties     []Property
+	ClassName              string
+	CanonicalName          string
+	ModulePath             string
+	Comment                string
+	UsesInputTypes         bool
+	AllowMissingProperties bool
+	Properties             []Property
 }
 
 type Property struct {
@@ -69,6 +66,8 @@ type Property struct {
 	FieldName         string
 	Comment           string
 	Required          bool
+	Secret            bool
+	DefaultExpression string
 	TypeSpec          Type
 	DartType          string
 	ReferenceKind     string

@@ -21,6 +21,15 @@ class _DeferredDependencyResource extends Resource {
 
 class _UnknownAssetOrArchive implements AssetOrArchive {}
 
+enum _TestPulumiEnum implements PulumiEnum<String> {
+  value('wire-value');
+
+  const _TestPulumiEnum(this.wireValue);
+
+  @override
+  final String wireValue;
+}
+
 void main() {
   late MockDeploymentImpl mockDeployment;
   late Serializer serializer;
@@ -79,6 +88,52 @@ void main() {
       expect(
         await serializer.serializeAsync('test', 'hello', false),
         equals('hello'),
+      );
+    });
+
+    test('Serialize Pulumi enum wire values', () async {
+      expect(
+        await serializer.serializeAsync('test', _TestPulumiEnum.value, false),
+        equals('wire-value'),
+      );
+    });
+
+    test('Serialize preserves byte-string output wire values', () async {
+      final wireValue = {
+        Constants.specialSigKey: Constants.specialByteStringSig,
+        Constants.valueName: 'AGhlbGxvIID+/yB3b3JsZPAo',
+      };
+      final output = Output<String>(
+        Future.value(
+          OutputData<String>(
+            value: '\u0000hello \u0080\u00fe\u00ff world\u00f0(',
+            isKnown: true,
+            isSecret: false,
+            resources: {},
+            preservedWireValue: wireValue,
+          ),
+        ),
+      );
+
+      expect(
+        await serializer.serializeAsync('test', output, false),
+        same(wireValue),
+      );
+      expect(
+        await serializer.serializeAsync(
+          'test',
+          output.apply((value) => value),
+          false,
+        ),
+        same(wireValue),
+      );
+      expect(
+        await serializer.serializeAsync(
+          'test',
+          output.apply((value) => '$value!'),
+          false,
+        ),
+        equals('\u0000hello \u0080\u00fe\u00ff world\u00f0(!'),
       );
     });
 
@@ -186,6 +241,30 @@ void main() {
             Constants.assetOrArchiveUriName: 'https://example.com/archive.zip',
           }),
         );
+      },
+    );
+
+    test(
+      'resource references can be excluded from dependency tracking',
+      () async {
+        final custom = MockCustomResource();
+        when(custom.getResourceType()).thenReturn('test:index:Custom');
+        when(custom.getResourceName()).thenReturn('custom');
+        when(custom.urn).thenReturn(
+          Output.create('urn:pulumi:stack::project::test:index:Custom::custom'),
+        );
+        when(custom.id).thenReturn(Output.create('custom-id'));
+
+        final serializer = Serializer(
+          excludeResourceReferencesFromDependencies: true,
+        );
+        final result = await serializer.serializeAsync('test', {
+          'resource': custom,
+          'nested': [custom],
+        }, true);
+
+        expect(result, isA<Map<String, dynamic>>());
+        expect(serializer.dependentResources, isEmpty);
       },
     );
 
@@ -698,6 +777,39 @@ void main() {
       },
     );
 
+    test(
+      'Serialize typed input collections preserves unknown leaves',
+      () async {
+        final unknown = Output<int>(
+          Future.value(
+            const OutputData<int>(
+              value: null,
+              isKnown: false,
+              isSecret: false,
+              resources: {},
+            ),
+          ),
+        );
+
+        expect(
+          await serializer.serializeAsync(
+            'list',
+            inputList<int>([unknown.input()]),
+            false,
+          ),
+          [Constants.unknownNumberValue],
+        );
+        expect(
+          await serializer.serializeAsync(
+            'map',
+            inputMap<int>({'value': unknown.input()}),
+            false,
+          ),
+          {'value': Constants.unknownNumberValue},
+        );
+      },
+    );
+
     test('Serialize OutputValue envelope with metadata', () async {
       final dependency = DependencyResource(
         'urn:pulumi:stack::project::test:index:Resource::dep',
@@ -1017,8 +1129,8 @@ void main() {
 
       var result = Deserializer.deserialize(value).value;
 
-      expect(result, isA<DependencyResource>());
-      var resource = result as DependencyResource;
+      expect(result, isA<CustomResource>());
+      var resource = result as CustomResource;
       expect(resource.getResourceType(), equals('aws:s3/bucket:Bucket'));
       expect(
         resource.urn.getData(),
@@ -1994,8 +2106,8 @@ void main() {
         expect(resultData.resources, isEmpty);
 
         final result = resultData.value!;
-        expect(result['foo'], isA<DependencyResource>());
-        final foo = result['foo'] as DependencyResource;
+        expect(result['foo'], isA<CustomResource>());
+        final foo = result['foo'] as CustomResource;
         expect(await foo.urn.getValue(), equals(resourceUrn));
 
         expect(result['bar'], isA<Output>());

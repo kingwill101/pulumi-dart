@@ -16,10 +16,14 @@ func TestFunctionsLibraryLowersInvokeMetadata(t *testing.T) {
 		Name:          "getThing",
 		ArgsDocsMacro: "example.GetThingArgs",
 		Function: schemair.Function{
-			Comment:             "Gets a thing.",
-			HasArgs:             true,
-			ArgsClass:           "GetThingArgs",
-			ResultClass:         "GetThingResult",
+			Comment:     "Gets a thing.",
+			HasArgs:     true,
+			ArgsClass:   "GetThingArgs",
+			ResultClass: "GetThingResult",
+			ReturnType: schemair.Type{
+				Kind: "array", DartType: "List<bool>",
+				ElementType: &schemair.Type{Kind: "scalar", DartType: "bool"},
+			},
 			MultiArgumentInputs: true,
 			Parameters: []schemair.Property{
 				{FieldName: "name", DartType: "String", Required: true},
@@ -39,4 +43,6 @@ func TestFunctionsLibraryLowersInvokeMetadata(t *testing.T) {
 	require.True(t, actual.Functions[0].MultiArgumentInputs)
 	require.Equal(t, "name", actual.Functions[0].Parameters[0].Name)
 	require.Equal(t, "pulumi.Input<String>", actual.Functions[0].Parameters[0].DartType)
+	require.Equal(t, "List<bool>", actual.Functions[0].ResultType)
+	require.Equal(t, "(value as List).cast<bool>()", actual.Functions[0].ResultDecoder)
 }

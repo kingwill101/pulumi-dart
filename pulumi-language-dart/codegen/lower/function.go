@@ -24,6 +24,8 @@ func FunctionsLibrary(invokes []Invoke, imports []dartir.Import, hasPackageRegis
 			ArgsClass:              invoke.Function.ArgsClass,
 			HasArgs:                invoke.Function.HasArgs,
 			ResultClass:            invoke.Function.ResultClass,
+			ResultType:             invoke.Function.ReturnType.DartType,
+			ResultDecoder:          DecodeExpression(invoke.Function.ReturnType, "value"),
 			TokenLiteral:           darttext.StringLiteral(invoke.Token),
 			HasPackageRegistration: hasPackageRegistration,
 			MultiArgumentInputs:    invoke.Function.MultiArgumentInputs,

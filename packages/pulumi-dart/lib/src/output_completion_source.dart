@@ -35,8 +35,13 @@ class OutputCompletionSource {
   static IOutputCompletionSource create<T>(
     Resource resource, {
     Object? Function(Object?)? decoder,
+    bool isSecret = false,
   }) {
-    return _TypedOutputCompletionSource<T>(resource, decoder: decoder);
+    return _TypedOutputCompletionSource<T>(
+      resource,
+      decoder: decoder,
+      isSecret: isSecret,
+    );
   }
 
   /// Initializes predeclared outputs for [resource].
@@ -54,13 +59,16 @@ class OutputCompletionSource {
 class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
   final Resource _resource;
   final Object? Function(Object?)? _decoder;
+  final bool _isSecret;
   final Completer<OutputData<T>> _completer = Completer<OutputData<T>>();
 
   /// Creates a typed output completion source for one property.
   _TypedOutputCompletionSource(
     this._resource, {
     Object? Function(Object?)? decoder,
-  }) : _decoder = decoder;
+    bool isSecret = false,
+  }) : _decoder = decoder,
+       _isSecret = isSecret;
 
   /// Target type represented by `T`.
   @override
@@ -86,8 +94,10 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     _completer.complete(
       OutputData<T>(
         value: null,
-        isKnown: isKnown,
-        isSecret: false,
+        // An omitted non-nullable provider output cannot represent a known
+        // Dart value. This occurs for resources skipped by targeted updates.
+        isKnown: isKnown && null is T,
+        isSecret: _isSecret,
         resources: {_resource},
       ),
     );
@@ -108,7 +118,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       OutputData<T>(
         value: coerced,
         isKnown: true,
-        isSecret: false,
+        isSecret: _isSecret,
         resources: {_resource},
       ),
     );
@@ -126,8 +136,9 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       OutputData<T>(
         value: coerced,
         isKnown: known,
-        isSecret: data.isSecret,
+        isSecret: data.isSecret || _isSecret,
         resources: {...data.resources, _resource},
+        preservedWireValue: data.preservedWireValue,
       ),
     );
   }
@@ -151,6 +162,12 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       return null;
     }
 
+    // Registration responses can reuse already-decoded input values (for
+    // example provider configuration enums). Do not run wire decoders twice.
+    if (value is T) {
+      return value as T;
+    }
+
     final rawTargetType = _normalizeType(T.toString());
     final targetType = _normalizeType(_stripNullableType(T.toString()));
     final isNullableTarget = rawTargetType.endsWith('?');
@@ -165,6 +182,19 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     }
     if (T == String || targetType == 'String') {
       return value.toString() as T;
+    }
+    if (_decoder != null) {
+      try {
+        final decoded = _decoder(value);
+        if (decoded == null) {
+          return null;
+        }
+        return decoded as T;
+      } on TypeError {
+        return null;
+      } catch (_) {
+        return null;
+      }
     }
     if (value is Map && targetType.startsWith('Map<')) {
       return _coerceMap(value, targetType) as T;
@@ -197,26 +227,6 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
             as T;
       }
       return _coerceList(value, targetType) as T;
-    }
-
-    if (value is Resource && isNullableTarget) {
-      // Resource references that cannot be hydrated into the generated concrete
-      // type are surfaced as null for nullable outputs instead of crashing.
-      return null;
-    }
-
-    if (_decoder != null) {
-      try {
-        final decoded = _decoder(value);
-        if (decoded == null) {
-          return null;
-        }
-        return decoded as T;
-      } on TypeError {
-        return null;
-      } catch (_) {
-        return null;
-      }
     }
 
     try {

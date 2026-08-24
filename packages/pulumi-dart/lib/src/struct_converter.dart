@@ -1,8 +1,10 @@
 import 'constants.dart';
+import 'asset_archive.dart';
 import 'input.dart';
 import 'output.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'resource/resource.dart';
+import 'resource/custom_resource.dart';
 
 /// {@template pulumi.struct_converter.summary}
 /// Converts between Dart values and protobuf `Struct`/`Value`.
@@ -76,18 +78,48 @@ class StructConverter {
           ..stringValue = Constants.specialResourceSig)
         ..fields[Constants.resourceUrnName] = (Value()..stringValue = urn);
 
-      // Custom resources also carry IDs; include them when available.
-      try {
-        final id = await (value as dynamic).id.getValue();
-        if (id is String && id.isNotEmpty) {
-          resourceRef.fields[Constants.resourceIdName] = Value()
-            ..stringValue = id;
-        }
-      } catch (_) {
-        // Non-custom resources do not have IDs.
+      // Resource references for custom resources must always carry the ID
+      // field. During preview an empty ID represents an unknown ID.
+      if (value is CustomResource) {
+        final id = await value.id.getData();
+        resourceRef.fields[Constants.resourceIdName] = Value()
+          ..stringValue = id.isKnown
+              ? id.value ?? Constants.unknownValue
+              : Constants.unknownValue;
       }
 
       result.structValue = resourceRef;
+      return result;
+    }
+
+    if (value is AssetOrArchive) {
+      final encoded = Struct()
+        ..fields[Constants.specialSigKey] = Value()
+        ..fields[Constants.specialSigKey]!.stringValue = value is Asset
+            ? Constants.specialAssetSig
+            : Constants.specialArchiveSig;
+
+      switch (value) {
+        case FileAsset(:final path) || FileArchive(:final path):
+          encoded.fields[Constants.assetOrArchivePathName] = Value()
+            ..stringValue = path;
+        case StringAsset(:final content):
+          encoded.fields[Constants.assetTextName] = Value()
+            ..stringValue = content;
+        case Base64Asset(:final content):
+          encoded.fields[Constants.assetTextName] = Value()
+            ..stringValue = content;
+        case RemoteAsset(:final url) || RemoteArchive(:final url):
+          encoded.fields[Constants.assetOrArchiveUriName] = Value()
+            ..stringValue = url;
+        case AssetArchive(:final assets):
+          encoded.fields[Constants.archiveAssetsName] = await toValue(
+            assets,
+            collapseUnknownCollections: collapseUnknownCollections,
+          );
+      }
+
+      result.structValue = encoded;
       return result;
     }
 

@@ -160,7 +160,7 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	assert.Contains(t, content, "// FILE: index/widget.dart")
 	assert.Contains(t, content, "// FILE: index/functions.dart")
 	assert.Contains(t, content, "final pulumi.Input<List<WidgetMode>> modes;")
-	assert.Contains(t, content, "final pulumi.Input<Map<String, WidgetMetadata>>? metadataById;")
+	assert.Contains(t, content, "final pulumi.Input<Map<String, WidgetMetadata>?>? metadataById;")
 	assert.Contains(
 		t,
 		content,
@@ -172,17 +172,17 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 		"'metadataById': ?pulumi.Input.mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataById, (value) => pulumi.Input.encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),",
 	)
 
-	assert.Contains(t, content, "final List<WidgetMode> modes;")
-	assert.Contains(t, content, "final Map<String, WidgetMetadata> metadataById;")
+	assert.Contains(t, content, "final List<WidgetMode>? modes;")
+	assert.Contains(t, content, "final Map<String, WidgetMetadata>? metadataById;")
 	assert.Contains(
 		t,
 		content,
-		"modes: pulumi.Input.decodeList<WidgetMode>(map['modes']!, (value) => WidgetMode.fromValue(value as String))",
+		"return pulumi.Input.decodeList<WidgetMode>(guardedValue, (value) => WidgetMode.fromValue(value as String))",
 	)
 	assert.Contains(
 		t,
 		content,
-		"metadataById: pulumi.Input.decodeMapValues<WidgetMetadata>(map['metadataById']!, (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()))",
+		"return pulumi.Input.decodeMapValues<WidgetMetadata>(guardedValue, (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()))",
 	)
 
 	assert.Contains(t, content, "List<WidgetMode>? get modeHistory")

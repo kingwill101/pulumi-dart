@@ -103,11 +103,6 @@ jobs:
         if: steps.provider-scope.outputs.run == 'true'
         run: dart run repodoc packages:verify-generated
 
-      - name: Test Dart language host
-        run: |
-          cd pulumi-language-dart
-          go test -count=1 ./...
-
       - name: Install Dart SDK package dependencies
         run: |
           cd packages/pulumi-dart

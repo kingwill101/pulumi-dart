@@ -28,6 +28,13 @@ func TestDecodeExpressionForNestedObjectCollection(t *testing.T) {
 	require.True(t, NeedsDecodeListHelper(typeSpec))
 }
 
+func TestDecodeExpressionNormalizesWireNumbers(t *testing.T) {
+	t.Parallel()
+
+	require.Equal(t, "(raw as num).toInt()", DecodeExpression(schemair.Type{Kind: "scalar", DartType: "int"}, "raw"))
+	require.Equal(t, "(raw as num).toDouble()", DecodeExpression(schemair.Type{Kind: "scalar", DartType: "double"}, "raw"))
+}
+
 func TestObjectPropertyTypeWrapsInputs(t *testing.T) {
 	t.Parallel()
 
@@ -37,6 +44,8 @@ func TestObjectPropertyTypeWrapsInputs(t *testing.T) {
 	}
 
 	require.Equal(t, "pulumi.Input<String>", ObjectPropertyType(schemair.ObjectClass{UsesInputTypes: true}, property))
+	property.Required = false
+	require.Equal(t, "pulumi.Input<String?>?", ObjectPropertyType(schemair.ObjectClass{UsesInputTypes: true}, property))
 }
 
 func TestConfigPropertyParseExpression(t *testing.T) {
@@ -65,6 +74,22 @@ func TestResourceRegisterOutputExpressionUsesDecoder(t *testing.T) {
 	actual := ResourceRegisterOutputExpression(property)
 	require.Contains(t, actual, "registerOutput<Widget>('widget', decoder:")
 	require.Contains(t, actual, "Widget.fromMap")
+}
+
+func TestResourceRegisterOutputExpressionPreservesSchemaSecret(t *testing.T) {
+	t.Parallel()
+
+	property := schemair.Property{
+		Name:     "password",
+		Secret:   true,
+		Required: true,
+		TypeSpec: schemair.Type{Kind: "scalar", DartType: "String"},
+	}
+
+	require.Equal(t,
+		"registerOutput<String>('password', isSecret: true)",
+		ResourceRegisterOutputExpression(property),
+	)
 }
 
 func TestRegisterOutputAssignmentTargetAvoidsConstructorShadowing(t *testing.T) {

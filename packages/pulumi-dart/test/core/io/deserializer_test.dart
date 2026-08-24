@@ -89,5 +89,52 @@ void main() {
         ),
       );
     });
+
+    test('preserves byte-string wire values alongside typed text', () {
+      final byteString = _specialValue(Constants.specialByteStringSig, {
+        Constants.valueName: Value()..stringValue = 'AGhlbGxvIID+/yB3b3JsZPAo',
+      });
+
+      final data = Deserializer.deserialize<String>(byteString);
+
+      expect(data.value!.codeUnits, [
+        0,
+        104,
+        101,
+        108,
+        108,
+        111,
+        32,
+        128,
+        254,
+        255,
+        32,
+        119,
+        111,
+        114,
+        108,
+        100,
+        240,
+        40,
+      ]);
+      expect(data.preservedWireValue, {
+        Constants.specialSigKey: Constants.specialByteStringSig,
+        Constants.valueName: 'AGhlbGxvIID+/yB3b3JsZPAo',
+      });
+    });
+
+    test('preserves custom resource references with ids', () async {
+      const urn = 'urn:pulumi:dev::project::pkg:index:Thing::thing';
+      final reference = _specialValue(Constants.specialResourceSig, {
+        Constants.resourceUrnName: Value()..stringValue = urn,
+        Constants.resourceIdName: Value()..stringValue = 'thing-id',
+      });
+
+      final data = Deserializer.deserialize<CustomResource>(reference);
+
+      expect(data.value, isA<CustomResource>());
+      expect(await data.value!.urn.getValue(), urn);
+      expect(await data.value!.id.getValue(), 'thing-id');
+    });
   });
 }

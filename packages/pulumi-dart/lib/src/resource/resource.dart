@@ -67,6 +67,7 @@ abstract class Resource {
     bool dependency = false,
     models.RegisterPackageRequest? registerPackageRequest,
     bool ignoreDeployment = false,
+    List<String> additionalSecretOutputs = const [],
   }) : _custom = custom,
        _remote = remote,
        _protect = false,
@@ -164,7 +165,11 @@ abstract class Resource {
       }
     }
 
-    options = options.clone();
+    options = options
+        .merge(
+          ResourceOptions(additionalSecretOutputs: additionalSecretOutputs),
+        )
+        .clone();
     if (options.parent == null && parent != null) {
       options = options.merge(ResourceOptions(parent: parent));
     }
@@ -267,8 +272,13 @@ abstract class Resource {
   Output<T> registerOutput<T>(
     String propertyName, {
     Object? Function(Object?)? decoder,
+    bool isSecret = false,
   }) {
-    final source = OutputCompletionSource.create<T>(this, decoder: decoder);
+    final source = OutputCompletionSource.create<T>(
+      this,
+      decoder: decoder,
+      isSecret: isSecret,
+    );
     completionSources[propertyName] = source;
     if (_pendingOutputException != null) {
       source.trySetException(_pendingOutputException!);
@@ -316,12 +326,35 @@ abstract class Resource {
     }
 
     final data = Deserializer.deserialize<Object?>(value);
+    if (data.value case Output nested) {
+      unawaited(
+        nested
+            .apply<Object?>((value) => value)
+            .getData()
+            .then(
+              (inner) => source.setValue(
+                OutputData<Object?>(
+                  value: inner.value,
+                  isKnown: data.isKnown && inner.isKnown,
+                  isSecret: data.isSecret || inner.isSecret,
+                  resources: {...data.resources, ...inner.resources, this},
+                  preservedWireValue: inner.preservedWireValue,
+                ),
+              ),
+              onError: (Object error) => source.trySetException(
+                error is Exception ? error : Exception(error.toString()),
+              ),
+            ),
+      );
+      return;
+    }
     source.setValue(
       OutputData<Object?>(
         value: data.value,
         isKnown: data.isKnown,
         isSecret: data.isSecret,
         resources: {...data.resources, this},
+        preservedWireValue: data.preservedWireValue,
       ),
     );
   }
@@ -534,6 +567,7 @@ ResourceOptions _copyResourceOptionsWithProvider(
   return ResourceOptions(
     id: options.id,
     urn: options.urn,
+    importId: options.importId,
     hideDiffs: options.hideDiffs,
     replaceWith: options.replaceWith,
     envVarMappings: options.envVarMappings,

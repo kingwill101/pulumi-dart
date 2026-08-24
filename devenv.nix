@@ -120,6 +120,25 @@ in
     echo "uv: $(uv --version)"
   '';
 
+  scripts.language-host-unit-test.exec = ''
+    set -eu
+    cd pulumi-language-dart
+    go test -count=1 -skip '^TestLanguageConformance$' . ./dartpub/...
+  '';
+
+  scripts.language-codegen-test.exec = ''
+    set -eu
+    cd pulumi-language-dart
+    go test -count=1 ./codegen/...
+  '';
+
+  scripts.language-conformance-test.exec = ''
+    set -eu
+    cd pulumi-language-dart
+    go test -count=1 -run '^TestLanguageConformance$' -v \
+      -timeout "''${PULUMI_DART_CONFORMANCE_SUITE_TIMEOUT:-25m}" .
+  '';
+
   scripts.integration-build-host.exec = ''
     set -eu
     cd pulumi-language-dart

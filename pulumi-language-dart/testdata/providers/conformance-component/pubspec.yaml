@@ -1,0 +1,12 @@
+name: conformance_component
+version: 22.0.0
+publish_to: none
+environment:
+  sdk: '>=3.11.0 <4.0.0'
+dependencies:
+  pulumi:
+    path: ../../../../packages/pulumi-dart
+  pulumi_simple:
+    path: sdks/simple-2.0.0
+dev_dependencies:
+  lints: ^6.1.0

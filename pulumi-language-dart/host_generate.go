@@ -18,23 +18,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func (host *dartLanguageHost) GenerateProgram(
-	ctx context.Context, req *pulumirpc.GenerateProgramRequest,
-) (*pulumirpc.GenerateProgramResponse, error) {
-	_ = ctx
-	if req == nil {
-		return nil, status.Error(codes.InvalidArgument, "request is required")
-	}
-
-	source := map[string][]byte{
-		"main.dart": codegen.GeneratedProgramStub(req.GetSource()),
-	}
-
-	return &pulumirpc.GenerateProgramResponse{
-		Source: source,
-	}, nil
-}
-
 func (host *dartLanguageHost) GenerateProject(
 	ctx context.Context, req *pulumirpc.GenerateProjectRequest,
 ) (*pulumirpc.GenerateProjectResponse, error) {
@@ -79,24 +62,45 @@ func (host *dartLanguageHost) GenerateProject(
 	if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "Pulumi.yaml"), projectYAML, 0o600); err != nil {
 		return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
 	}
+	programDirectory, err := generatedProgramDirectory(req.GetTargetDirectory(), project.Main)
+	if err != nil {
+		return nil, err
+	}
+	if err := os.MkdirAll(programDirectory, 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create generated program directory: %w", err)
+	}
 
-	pubspec := codegen.BuildGeneratedPubspec(projectName, req.GetLocalDependencies(), nil, configuredPulumiDependency())
+	generatedProgram, err := generateProjectProgram(req)
+	if err != nil {
+		return nil, err
+	}
+	if generatedProgram.hasErrors {
+		return &pulumirpc.GenerateProjectResponse{Diagnostics: generatedProgram.diagnostics}, nil
+	}
+
+	pubspec := codegen.BuildGeneratedPubspec(
+		projectName,
+		dartProgramLocalDependencies(req.GetLocalDependencies(), generatedProgram.packages),
+		nil,
+		configuredPulumiDependency(),
+	)
 	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal generated pubspec.yaml: %w", err)
 	}
-	if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "pubspec.yaml"), pubspecBytes, 0o600); err != nil {
+	if err := os.WriteFile(filepath.Join(programDirectory, "pubspec.yaml"), pubspecBytes, 0o600); err != nil {
 		return nil, fmt.Errorf("failed to write generated pubspec.yaml: %w", err)
 	}
 
-	binDir := filepath.Join(req.GetTargetDirectory(), "bin")
+	binDir := filepath.Join(programDirectory, "bin")
 	if err := os.MkdirAll(binDir, 0o700); err != nil {
 		return nil, fmt.Errorf("failed to create generated bin directory: %w", err)
 	}
+
 	programFile := filepath.Join(binDir, projectName+".dart")
-	if err := os.WriteFile(programFile, codegen.GeneratedProgramStub(nil), 0o600); err != nil {
+	if err := os.WriteFile(programFile, generatedProgram.source, 0o600); err != nil {
 		return nil, fmt.Errorf("failed to write generated program file: %w", err)
 	}
 
-	return &pulumirpc.GenerateProjectResponse{}, nil
+	return &pulumirpc.GenerateProjectResponse{Diagnostics: generatedProgram.diagnostics}, nil
 }

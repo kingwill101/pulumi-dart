@@ -4,7 +4,9 @@ import 'package:pulumi/src/resource/resource.dart';
 
 import 'constants.dart';
 import 'input.dart';
+import 'input_collections.dart';
 import 'output.dart';
+import 'pulumi_enum.dart';
 import 'resource/custom_resource.dart';
 
 /// {@template pulumi.serializer.summary}
@@ -24,12 +26,16 @@ class Serializer {
   final Set<Resource> dependentResources = {};
   final bool _excessiveDebugOutput;
   final bool _collapseUnknownCollections;
+  final bool _excludeResourceReferencesFromDependencies;
 
   Serializer({
     bool excessiveDebugOutput = false,
     bool collapseUnknownCollections = true,
+    bool excludeResourceReferencesFromDependencies = false,
   }) : _excessiveDebugOutput = excessiveDebugOutput,
-       _collapseUnknownCollections = collapseUnknownCollections;
+       _collapseUnknownCollections = collapseUnknownCollections,
+       _excludeResourceReferencesFromDependencies =
+           excludeResourceReferencesFromDependencies;
 
   /// Serializes [prop] in context [ctx].
   ///
@@ -110,15 +116,18 @@ class Serializer {
         final valueSerializer = Serializer(
           excessiveDebugOutput: _excessiveDebugOutput,
           collapseUnknownCollections: _collapseUnknownCollections,
+          excludeResourceReferencesFromDependencies:
+              _excludeResourceReferencesFromDependencies,
         );
         final value = isKnown
-            ? await valueSerializer._serializeAsync(
-                '$ctx.value',
-                data.value,
-                keepResources,
-                false,
-                seenSet,
-              )
+            ? data.preservedWireValue ??
+                  await valueSerializer._serializeAsync(
+                    '$ctx.value',
+                    data.value,
+                    keepResources,
+                    false,
+                    seenSet,
+                  )
             : null;
 
         final promiseDeps = valueSerializer.dependentResources;
@@ -176,6 +185,20 @@ class Serializer {
       }
     }
 
+    if (prop is InputMap) {
+      return serializeMap(
+        ctx,
+        prop.cast(),
+        keepResources,
+        keepOutputValues,
+        seenSet,
+      );
+    }
+
+    if (prop is InputList) {
+      return serializeList(ctx, prop, keepResources, keepOutputValues, seenSet);
+    }
+
     if (prop is Input) {
       if (_excessiveDebugOutput) {
         print('Serialize property[$ctx]: Recursing into Input');
@@ -189,14 +212,35 @@ class Serializer {
       );
     }
 
+    if (prop is PulumiEnum) {
+      return _serializeAsync(
+        '$ctx.wireValue',
+        prop.wireValue,
+        keepResources,
+        keepOutputValues,
+        seenSet,
+      );
+    }
+
     if (prop is CustomResource) {
       if (_excessiveDebugOutput) {
         print('Serialize property[$ctx]: Encountered Resource');
       }
 
-      dependentResources.add(prop);
+      final excludeReferenceDependency =
+          _excludeResourceReferencesFromDependencies && keepResources;
+      if (!excludeReferenceDependency) {
+        dependentResources.add(prop);
+      }
 
-      var id = await _serializeAsync(
+      final referenceSerializer = excludeReferenceDependency
+          ? Serializer(
+              excessiveDebugOutput: _excessiveDebugOutput,
+              collapseUnknownCollections: _collapseUnknownCollections,
+              excludeResourceReferencesFromDependencies: true,
+            )
+          : this;
+      var id = await referenceSerializer._serializeAsync(
         '$ctx.id',
         prop.id,
         keepResources,
@@ -204,7 +248,7 @@ class Serializer {
         seenSet,
       );
       if (keepResources) {
-        var urn = await _serializeAsync(
+        var urn = await referenceSerializer._serializeAsync(
           '$ctx.urn',
           prop.urn,
           keepResources,
@@ -226,9 +270,20 @@ class Serializer {
         print('Serialize property[$ctx]: Encountered Resource');
       }
 
-      dependentResources.add(prop);
+      final excludeReferenceDependency =
+          _excludeResourceReferencesFromDependencies && keepResources;
+      if (!excludeReferenceDependency) {
+        dependentResources.add(prop);
+      }
 
-      var urn = await _serializeAsync(
+      final referenceSerializer = excludeReferenceDependency
+          ? Serializer(
+              excessiveDebugOutput: _excessiveDebugOutput,
+              collapseUnknownCollections: _collapseUnknownCollections,
+              excludeResourceReferencesFromDependencies: true,
+            )
+          : this;
+      var urn = await referenceSerializer._serializeAsync(
         '$ctx.urn',
         prop.urn,
         keepResources,

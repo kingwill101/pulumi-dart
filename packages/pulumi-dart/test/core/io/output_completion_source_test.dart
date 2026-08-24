@@ -1,6 +1,8 @@
 import 'package:pulumi/src/output.dart';
 import 'package:pulumi/src/output_completion_source.dart';
 import 'package:pulumi/src/resource/dependency_resource.dart';
+import 'package:pulumi/src/resource/custom_resource.dart';
+import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:test/test.dart';
 
 class _DecodedOutput {
@@ -40,6 +42,39 @@ void main() {
       final data = await source.output.getData();
       expect(data.isKnown, isFalse);
       expect(data.value, isNull);
+    });
+
+    test('schema-secret unknown outputs remain secret', () async {
+      final source = OutputCompletionSource.create<String?>(
+        resource,
+        isSecret: true,
+      );
+      source.trySetDefaultResult(false);
+
+      final data = await source.output.getData();
+      expect(data.isKnown, isFalse);
+      expect(data.isSecret, isTrue);
+      expect(data.value, isNull);
+    });
+
+    test('schema secrecy is combined with provider output secrecy', () async {
+      final source = OutputCompletionSource.create<String>(
+        resource,
+        isSecret: true,
+      );
+      source.setValue(
+        const OutputData<Object?>(
+          value: 'value',
+          isKnown: true,
+          isSecret: false,
+          resources: {},
+        ),
+      );
+
+      final data = await source.output.getData();
+      expect(data.isKnown, isTrue);
+      expect(data.isSecret, isTrue);
+      expect(data.value, equals('value'));
     });
 
     test('setStringValue ignores updates after completion', () async {
@@ -300,6 +335,30 @@ void main() {
         final data = await source.output.getData();
         expect(data.isKnown, isFalse);
         expect(data.value, isNull);
+      },
+    );
+
+    test(
+      'setValue preserves assignable nullable resource references',
+      () async {
+        final reference = ProviderResource.reference(
+          'example',
+          'urn:pulumi:dev::proj::pulumi:providers:example::default',
+          id: 'provider-id',
+        );
+        final source = OutputCompletionSource.create<CustomResource?>(resource);
+        source.setValue(
+          OutputData<Object?>(
+            value: reference,
+            isKnown: true,
+            isSecret: false,
+            resources: const {},
+          ),
+        );
+
+        final data = await source.output.getData();
+        expect(data.isKnown, isTrue);
+        expect(data.value, same(reference));
       },
     );
 

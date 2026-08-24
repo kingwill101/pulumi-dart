@@ -6,7 +6,10 @@ import (
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 )
 
-func defaultGeneratedExtraFiles(packageName, packagePath, packageVersion string) map[string][]byte {
+func defaultGeneratedExtraFiles(
+	packageName, packagePath, packageVersion string,
+	spec *codegen.PackageSchema,
+) map[string][]byte {
 	return map[string][]byte{
 		"README.md": codegen.GeneratedPackageReadme(
 			packageName,
@@ -17,5 +20,6 @@ func defaultGeneratedExtraFiles(packageName, packagePath, packageVersion string)
 		"CHANGELOG.md":          codegen.GeneratedPackageChangelog(packageVersion),
 		"analysis_options.yaml": codegen.GeneratedPackageAnalysisOptions(),
 		"example/main.dart":     codegen.GeneratedPackageExampleMain(packageName),
+		"pulumi-plugin.json":    codegen.GeneratedPulumiPluginJSON(spec),
 	}
 }

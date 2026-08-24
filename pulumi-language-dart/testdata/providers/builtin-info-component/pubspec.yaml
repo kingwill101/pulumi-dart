@@ -1,0 +1,8 @@
+name: builtin_info_component
+version: 37.0.0
+publish_to: none
+environment:
+  sdk: '>=3.11.0 <4.0.0'
+dependencies:
+  pulumi:
+    path: ../../../../packages/pulumi-dart

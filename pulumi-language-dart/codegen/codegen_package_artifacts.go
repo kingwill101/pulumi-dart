@@ -1,9 +1,38 @@
 package codegen
 
 import (
+	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 )
+
+func generatedPulumiPluginJSON(spec *schemair.Package) []byte {
+	type parameterizationMetadata struct {
+		Name    string `json:"name"`
+		Version string `json:"version"`
+		Value   string `json:"value"`
+	}
+	metadata := struct {
+		Resource         bool                      `json:"resource"`
+		Name             string                    `json:"name"`
+		Version          string                    `json:"version,omitempty"`
+		Server           string                    `json:"server,omitempty"`
+		Parameterization *parameterizationMetadata `json:"parameterization,omitempty"`
+	}{Resource: true, Name: spec.Name, Server: spec.PluginDownloadURL}
+	if parameterization := spec.Parameterization; parameterization != nil {
+		metadata.Name = parameterization.PluginName
+		metadata.Version = parameterization.PluginVersion
+		metadata.Parameterization = &parameterizationMetadata{
+			Name: parameterization.PackageName, Version: parameterization.PackageVersion,
+			Value: base64.StdEncoding.EncodeToString(parameterization.Value),
+		}
+	}
+	contents, _ := json.MarshalIndent(metadata, "", "  ")
+	return append(contents, '\n')
+}
 
 func generatedPackageExampleMain(packageName string) []byte {
 	return []byte(fmt.Sprintf(`// ignore_for_file: unused_import

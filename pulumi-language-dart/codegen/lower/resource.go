@@ -15,20 +15,27 @@ type ResourceMethod struct {
 
 // Resource contains the package-layout decisions needed to lower a resource.
 type Resource struct {
-	Token                  string
-	RegistrationToken      string
-	ClassName              string
-	Kind                   dartir.ResourceKind
-	ArgsDocs               string
-	Imports                []dartir.Import
-	Methods                []ResourceMethod
-	HasPackageRegistration bool
-	Schema                 schemair.Resource
+	Token                    string
+	RegistrationToken        string
+	ClassName                string
+	Kind                     dartir.ResourceKind
+	ArgsDocs                 string
+	Imports                  []dartir.Import
+	Methods                  []ResourceMethod
+	HasPackageRegistration   bool
+	DefaultVersion           string
+	DefaultPluginDownloadURL string
+	Schema                   schemair.Resource
 }
 
 func ResourceClass(resource Resource) dartir.ResourceClass {
 	outputs := make([]dartir.ResourceOutput, len(resource.Schema.OutputProperties))
 	assignments := make([]dartir.Assignment, len(resource.Schema.OutputProperties))
+	secretOutputs := make([]string, 0)
+	replaceOnChanges := make([]string, len(resource.Schema.ReplaceOnChanges))
+	for index, path := range resource.Schema.ReplaceOnChanges {
+		replaceOnChanges[index] = darttext.StringLiteral(path)
+	}
 	constructorNames := resourceConstructorParameterNames(resource.Kind, resource.Schema.ArgsClass != "")
 	for index, property := range resource.Schema.OutputProperties {
 		outputs[index] = dartir.ResourceOutput{
@@ -40,20 +47,28 @@ func ResourceClass(resource Resource) dartir.ResourceClass {
 			Target:     RegisterOutputAssignmentTarget(property.FieldName, constructorNames...),
 			Expression: ResourceRegisterOutputExpression(property),
 		}
+		if property.Secret {
+			secretOutputs = append(secretOutputs, darttext.StringLiteral(property.Name))
+		}
 	}
 
 	return dartir.ResourceClass{
-		Name:                   resource.ClassName,
-		Docs:                   resource.Schema.Comment,
-		Kind:                   resource.Kind,
-		Imports:                append([]dartir.Import(nil), resource.Imports...),
-		ArgsClass:              resource.Schema.ArgsClass,
-		ArgsDocs:               resource.ArgsDocs,
-		TokenLiteral:           darttext.StringLiteral(resource.RegistrationToken),
-		HasPackageRegistration: resource.HasPackageRegistration,
-		Outputs:                outputs,
-		ConstructorAssignments: assignments,
-		Members:                resourceMembers(resource),
+		Name:                            resource.ClassName,
+		Docs:                            resource.Schema.Comment,
+		Kind:                            resource.Kind,
+		Imports:                         append([]dartir.Import(nil), resource.Imports...),
+		ArgsClass:                       resource.Schema.ArgsClass,
+		HasDefaultArgs:                  resource.Schema.HasDefaultArgs,
+		ArgsDocs:                        resource.ArgsDocs,
+		TokenLiteral:                    darttext.StringLiteral(resource.RegistrationToken),
+		HasPackageRegistration:          resource.HasPackageRegistration,
+		DefaultVersionLiteral:           darttext.StringLiteral(resource.DefaultVersion),
+		DefaultPluginDownloadURLLiteral: darttext.StringLiteral(resource.DefaultPluginDownloadURL),
+		AdditionalSecretOutputLiterals:  secretOutputs,
+		ReplaceOnChangesLiterals:        replaceOnChanges,
+		Outputs:                         outputs,
+		ConstructorAssignments:          assignments,
+		Members:                         resourceMembers(resource),
 	}
 }
 
@@ -72,6 +87,8 @@ func resourceMembers(resource Resource) dartir.ResourceMembers {
 			ArgsDocsMacro:          method.ArgsDocsMacro,
 			ArgsClass:              method.Method.ArgsClass,
 			ResultClass:            method.Method.ResultClass,
+			ReturnType:             method.Method.ReturnType.DartType,
+			ReturnPlain:            method.Method.ReturnPlain,
 			HasReturn:              method.Method.HasReturn,
 			TokenLiteral:           darttext.StringLiteral(methodToken),
 			HasPackageRegistration: resource.HasPackageRegistration,
@@ -95,11 +112,4 @@ func resourceMembers(resource Resource) dartir.ResourceMembers {
 		OutputAssignments: assignments,
 	}
 	return members
-}
-
-func resourceConstructorParameterNames(kind dartir.ResourceKind, hasArgsClass bool) []string {
-	if (kind == dartir.ProviderResource || kind == dartir.ComponentResource) && !hasArgsClass {
-		return []string{"name", "options"}
-	}
-	return []string{"name", "args", "options"}
 }

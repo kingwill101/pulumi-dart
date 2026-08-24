@@ -296,6 +296,8 @@ func TestGeneratedResourceFileEmitsGetAndMethodWrappers(t *testing.T) {
 		true,
 		typeFilesByName,
 		"internal/package_registration.dart",
+		"",
+		"",
 	))
 
 	assert.Contains(t, content, "import 'widget_args.dart';")

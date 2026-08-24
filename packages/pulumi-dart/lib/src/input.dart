@@ -124,14 +124,18 @@ abstract class Input<T> {
   }
 
   /// Optional version of [mapInputValue].
-  static Input<U>? mapOptionalInputValue<T, U>(
-    Input<T>? input,
+  static Input<U?>? mapOptionalInputValue<T, U>(
+    Input<T?>? input,
     U Function(T value) mapper,
   ) {
     if (input == null) {
       return null;
     }
-    return mapInputValue<T, U>(input, mapper);
+    return Input.fromOutput(
+      input.toOutput().apply<U?>(
+        (value) => value == null ? null : mapper(value),
+      ),
+    );
   }
 
   /// Decodes a list payload using [decoder] for each element.

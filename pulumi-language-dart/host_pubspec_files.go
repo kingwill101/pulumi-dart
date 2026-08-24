@@ -42,6 +42,24 @@ func localPulumiDependencyPath(dependencies map[string]interface{}, pubspecPath 
 	return filepath.Clean(path)
 }
 
+func localPathDependencyVersion(pubspecPath, dependency string) string {
+	if !strings.HasPrefix(dependency, "path:") {
+		return ""
+	}
+	path := strings.TrimSpace(strings.TrimPrefix(dependency, "path:"))
+	if path == "" {
+		return ""
+	}
+	if !filepath.IsAbs(path) {
+		path = filepath.Join(filepath.Dir(pubspecPath), path)
+	}
+	dependencyPubspec, err := dartpub.Read(filepath.Join(filepath.Clean(path), "pubspec.yaml"))
+	if err != nil {
+		return ""
+	}
+	return normalizePackageDependencyVersion(dependencyPubspec.Version)
+}
+
 func dependencyPackageName(rootDirectory, dependencyPath, fallbackName string) string {
 	path := filepath.Join(rootDirectory, dependencyPath, "pubspec.yaml")
 	pubspec, err := dartpub.Read(path)

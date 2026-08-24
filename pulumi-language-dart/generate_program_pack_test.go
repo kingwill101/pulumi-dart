@@ -1,12 +1,10 @@
 package main
 
 import (
-	"archive/tar"
-	"compress/gzip"
 	"context"
-	"io"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -108,7 +106,7 @@ func TestGenerateProjectRequiresTargetDirectory(t *testing.T) {
 	assert.Contains(t, err.Error(), "target directory is required")
 }
 
-func TestPackProducesArchive(t *testing.T) {
+func TestPackProducesDirectoryArtifact(t *testing.T) {
 	t.Parallel()
 
 	host := &dartLanguageHost{}
@@ -125,29 +123,88 @@ func TestPackProducesArchive(t *testing.T) {
 	})
 	require.NoError(t, err)
 	require.NotNil(t, resp)
-	assert.Equal(t, filepath.Join(destinationDir, "my_pkg.tar.gz"), resp.ArtifactPath)
+	assert.True(t, strings.HasPrefix(resp.ArtifactPath, filepath.Join(destinationDir, "my_pkg-")))
+	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "pubspec.yaml"))
+	assert.FileExists(t, filepath.Join(resp.ArtifactPath, "lib", "my_pkg.dart"))
+}
 
-	archiveFile, err := os.Open(resp.ArtifactPath)
-	require.NoError(t, err)
-	defer archiveFile.Close()
+func TestPackCanPackSamePackageMoreThanOnce(t *testing.T) {
+	t.Parallel()
 
-	gzipReader, err := gzip.NewReader(archiveFile)
-	require.NoError(t, err)
-	defer gzipReader.Close()
-
-	tarReader := tar.NewReader(gzipReader)
-	entries := map[string]bool{}
-	for {
-		hdr, err := tarReader.Next()
-		if err == io.EOF {
-			break
-		}
-		require.NoError(t, err)
-		entries[hdr.Name] = true
+	packageDir := t.TempDir()
+	require.NoError(t, os.WriteFile(
+		filepath.Join(packageDir, "pubspec.yaml"),
+		[]byte("name: pulumi_example\n"),
+		0o600,
+	))
+	destinationDir := t.TempDir()
+	host := &dartLanguageHost{}
+	request := &pulumirpc.PackRequest{
+		PackageDirectory:     packageDir,
+		DestinationDirectory: destinationDir,
 	}
 
-	assert.True(t, entries["pubspec.yaml"])
-	assert.True(t, entries["lib/my_pkg.dart"])
+	first, err := host.Pack(context.Background(), request)
+	require.NoError(t, err)
+	second, err := host.Pack(context.Background(), request)
+	require.NoError(t, err)
+
+	require.True(t, strings.HasPrefix(first.ArtifactPath, filepath.Join(destinationDir, "pulumi_example-")))
+	require.Equal(t, first.ArtifactPath, second.ArtifactPath)
+	require.DirExists(t, first.ArtifactPath)
+}
+
+func TestPackUsesStableContentAddressedPathForDifferentPackageContents(t *testing.T) {
+	t.Parallel()
+
+	destinationDir := t.TempDir()
+	host := &dartLanguageHost{}
+	pack := func(content string) string {
+		packageDir := t.TempDir()
+		require.NoError(t, os.WriteFile(
+			filepath.Join(packageDir, "pubspec.yaml"),
+			[]byte("name: pulumi_example\n"),
+			0o600,
+		))
+		require.NoError(t, os.WriteFile(filepath.Join(packageDir, "content.txt"), []byte(content), 0o600))
+		response, err := host.Pack(context.Background(), &pulumirpc.PackRequest{
+			PackageDirectory: packageDir, DestinationDirectory: destinationDir,
+		})
+		require.NoError(t, err)
+		return response.ArtifactPath
+	}
+
+	first := pack("first")
+	second := pack("second")
+	secondAgain := pack("second")
+
+	require.True(t, strings.HasPrefix(first, filepath.Join(destinationDir, "pulumi_example-")))
+	require.True(t, strings.HasPrefix(second, filepath.Join(destinationDir, "pulumi_example-")))
+	require.NotEqual(t, first, second)
+	require.Equal(t, second, secondAgain)
+}
+
+func TestDirectoryContentDigestIgnoresDartBuildMetadata(t *testing.T) {
+	t.Parallel()
+
+	packageDir := t.TempDir()
+	require.NoError(t, os.WriteFile(filepath.Join(packageDir, "pubspec.yaml"), []byte("name: example\n"), 0o600))
+	before, err := directoryContentDigest(packageDir)
+	require.NoError(t, err)
+
+	require.NoError(t, os.MkdirAll(filepath.Join(packageDir, ".dart_tool"), 0o700))
+	require.NoError(t, os.WriteFile(
+		filepath.Join(packageDir, ".dart_tool", "package_config.json"),
+		[]byte(`{"rootUri":"/tmp/random"}`),
+		0o600,
+	))
+	require.NoError(t, os.MkdirAll(filepath.Join(packageDir, "build"), 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(packageDir, "build", "output"), []byte("generated"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(packageDir, ".DS_Store"), []byte("metadata"), 0o600))
+	after, err := directoryContentDigest(packageDir)
+	require.NoError(t, err)
+
+	require.Equal(t, before, after)
 }
 
 func TestPackRequiresPackageDirectory(t *testing.T) {

@@ -1,8 +1,74 @@
 import 'package:pulumi/pulumi.dart';
+import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 
 void main() {
   group('output helper', () {
+    test('stringLength counts user-perceived Unicode characters', () {
+      expect(stringLength('👾-🕹️'), equals(3));
+    });
+
+    test('list builtins wrap indexes and enforce zero-or-one values', () {
+      expect(listElement(['a', 'b', 'c'], 4), equals('b'));
+      expect(listElement(['a', 'b', 'c'], -1), equals('c'));
+      expect(singleOrNone(<String>[]), isNull);
+      expect(singleOrNone(['only']), equals('only'));
+      expect(() => singleOrNone(['a', 'b']), throwsStateError);
+    });
+
+    test('directory builtins return absolute paths', () {
+      expect(path.isAbsolute(currentWorkingDirectory()), isTrue);
+      expect(path.isAbsolute(projectRootDirectory()), isTrue);
+    });
+
+    test('encoding builtins roundtrip base64 and hash UTF-8 strings', () {
+      final decoded = fromBase64('SGVsbG8h');
+      expect(decoded, equals('Hello!'));
+      expect(toBase64(decoded), equals('SGVsbG8h'));
+      expect(
+        sha1Hash('hello'),
+        equals('aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d'),
+      );
+    });
+
+    test('file builtins read and hash bytes', () {
+      final path = 'test/core/io/output_helpers_test.dart';
+      expect(readTextFile(path), contains("group('output helper'"));
+      expect(fileBase64(path), isNotEmpty);
+      expect(fileBase64Sha256(path), hasLength(44));
+    });
+
+    test('map builtins sort entries and preserve nulls and fallbacks', () {
+      final value = <String, dynamic>{'present': null, 'other': 42};
+      expect(
+        mapEntries(value),
+        equals([
+          {'key': 'other', 'value': 42},
+          {'key': 'present', 'value': null},
+        ]),
+      );
+      expect(mapLookup(value, 'present', 'fallback'), isNull);
+      expect(mapLookup(value, 'missing', 'fallback'), equals('fallback'));
+    });
+
+    test('can and try catch synchronous and output failures', () async {
+      expect(
+        await canValue(() => indexValue({'a': 1}, 'a')).getValue(),
+        isTrue,
+      );
+      expect(
+        await canValue(() => indexValue({'a': 1}, 'b')).getValue(),
+        isFalse,
+      );
+      expect(
+        await tryValue(
+          () => Output<int>(Future.error(StateError('nope'))),
+          () => 42,
+        ).getValue(),
+        equals(42),
+      );
+    });
+
     test('output unwraps nested map/list input values', () async {
       final value = output({
         Input.fromValue('hello'): Output.create('world'),
@@ -59,6 +125,33 @@ void main() {
       expect(plainData.isKnown, isTrue);
       expect(plainData.isSecret, isFalse);
       expect(plainData.value, equals({'a': 1}));
+    });
+
+    test('secret preserves its inferred static value type', () async {
+      final Output<String> wrapped = secret('value');
+      final data = await wrapped.getData();
+
+      expect(data.value, 'value');
+      expect(data.isSecret, isTrue);
+    });
+
+    test('secret flattens and re-secrets an existing output', () async {
+      final original = Output.create('value');
+      final wrapped = secret(original);
+      final data = await wrapped.getData();
+
+      expect(data.value, 'value');
+      expect(data.isSecret, isTrue);
+    });
+
+    test('secretInput preserves a contextual input type', () async {
+      final Input<Map<String, String>> wrapped = secretInput(
+        ({'key': 'value'}).input(),
+      );
+      final data = await wrapped.toOutput().getData();
+
+      expect(data.value, {'key': 'value'});
+      expect(data.isSecret, isTrue);
     });
 
     test('jsonStringify and jsonParse roundtrip values', () async {

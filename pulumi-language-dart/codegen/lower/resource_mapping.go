@@ -23,10 +23,14 @@ func ResourceRegisterOutputExpression(property schemair.Property) string {
 	outputType := ResourceOutputValueType(property)
 	propertyName := darttext.StringLiteral(property.Name)
 	decoderExpr := ResourceOutputDecoderExpression(property)
-	if decoderExpr == "" {
-		return fmt.Sprintf("registerOutput<%s>(%s)", outputType, propertyName)
+	secretArgument := ""
+	if property.Secret {
+		secretArgument = ", isSecret: true"
 	}
-	return fmt.Sprintf("registerOutput<%s>(%s, decoder: %s)", outputType, propertyName, decoderExpr)
+	if decoderExpr == "" {
+		return fmt.Sprintf("registerOutput<%s>(%s%s)", outputType, propertyName, secretArgument)
+	}
+	return fmt.Sprintf("registerOutput<%s>(%s, decoder: %s%s)", outputType, propertyName, decoderExpr, secretArgument)
 }
 
 func RegisterOutputAssignmentTarget(fieldName string, parameterNames ...string) string {

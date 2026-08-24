@@ -34,6 +34,7 @@ func lowerRawResource(spec *packageSchema, raw rawPackageSchema, discovery rawSc
 		}
 	}
 	result.Methods = lowerRawResourceMethods(spec, raw, discovery, external, resource, baseName, modulePath)
+	result.ReplaceOnChanges = rawResourceReplaceOnChanges(raw, resource)
 	result.OutputProperties = makeRawResourceOutputPropertySpecs(resource, discovery.namedTypeRefs, external)
 	spec.Resources[token] = result
 }

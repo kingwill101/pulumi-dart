@@ -44,10 +44,11 @@ func writeGeneratedExtraFiles(
 	packageName string,
 	providerName string,
 	version string,
+	spec *codegen.PackageSchema,
 	generatedPaths map[string]struct{},
 ) error {
 	extraFiles := copyExtraFiles(req.GetExtraFiles())
-	for filename, contents := range defaultGeneratedExtraFiles(packageName, providerName, version) {
+	for filename, contents := range defaultGeneratedExtraFiles(packageName, providerName, version, spec) {
 		if _, explicit := extraFiles[filename]; explicit {
 			continue
 		}

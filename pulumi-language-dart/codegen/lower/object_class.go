@@ -9,6 +9,9 @@ import (
 func ObjectClass(spec schemair.ObjectClass, imports []dartir.Import, docsMacro string) dartir.ObjectClass {
 	properties := make([]dartir.ObjectProperty, len(spec.Properties))
 	for index, property := range spec.Properties {
+		if spec.AllowMissingProperties {
+			property.Required = false
+		}
 		properties[index] = dartir.ObjectProperty{
 			NameLiteral:       darttext.StringLiteral(property.Name),
 			FieldName:         property.FieldName,
@@ -16,6 +19,7 @@ func ObjectClass(spec schemair.ObjectClass, imports []dartir.Import, docsMacro s
 			FieldType:         ObjectPropertyType(spec, property),
 			ConstructorDocs:   ConstructorParameterDocs(property),
 			Required:          property.Required,
+			DefaultExpression: property.DefaultExpression,
 			ToMapExpression:   ObjectToMapExpression(spec, property),
 			FromMapExpression: ObjectFromMapExpression(spec, property),
 		}

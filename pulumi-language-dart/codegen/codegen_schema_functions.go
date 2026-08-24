@@ -40,6 +40,11 @@ func lowerRawFunctions(
 			HasArgs:             len(inputProperties) > 0,
 			MultiArgumentInputs: len(function.MultiArgumentInputs) > 0,
 		}
+		if function.ReturnType != nil {
+			functionSpec.ReturnType = dartTypeSpecFromRawPropertyType(
+				*function.ReturnType, namedTypeRefs, true, externalRefs,
+			)
+		}
 		base := toDartClassName(tokenElementName(token))
 		if classSpec := makeRawObjectClassSpec(
 			base,
@@ -79,6 +84,7 @@ func lowerRawFunctions(
 			"Result",
 			"InvokeResult",
 		); classSpec != nil {
+			classSpec.AllowMissingProperties = true
 			classSpec.CanonicalName = canonicalTypeName(base, "Result")
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ResultClass = classSpec.ClassName

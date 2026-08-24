@@ -1,87 +1,122 @@
 # Pulumi Dart
 
-Community Pulumi support for Dart.
+Pulumi Dart is a community-maintained Pulumi language runtime, core SDK, and
+provider SDK ecosystem for defining infrastructure in Dart.
 
-## Table Of Contents
+The repository contains:
 
-- [Quickstart](#quickstart)
-- [Templates](#templates)
-- [App Platform Foundation](#app-platform-foundation)
-- [FaaS Foundation](#faas-foundation)
-- [Generate Provider SDKs](#generate-provider-sdks)
-- [Contributing](#contributing)
+- the `pulumi-language-dart` language host and Dart code generator;
+- the [`pulumi`](packages/pulumi-dart/README.md) core SDK;
+- generated provider SDKs under [`packages/sdks`](packages/sdks);
+- Automation API, dynamic-resource, and provider-authoring support;
+- application and serverless building blocks; and
+- templates, examples, conformance tests, and repository-maintenance tooling.
 
-## Quickstart
+> [!IMPORTANT]
+> Dart support is community maintained rather than an officially supported
+> Pulumi language. Please report compatibility problems in this repository.
 
-### 1) Install Pulumi CLI
+## Requirements
+
+- Dart SDK `>=3.11.0 <4.0.0`
+- the [Pulumi CLI](https://www.pulumi.com/docs/iac/download-install/)
+- `pulumi-language-dart` on `PATH`
+
+## Install
+
+Install the Dart SDK package and its helper command, then use that command to
+install the matching language host:
 
 ```bash
-curl -fsSL https://get.pulumi.com | sh
+dart pub global activate pulumi
+pulumi-dart install-language-host
+```
+
+Verify the installation:
+
+```bash
+dart --version
 pulumi version
+pulumi-language-dart -help
 ```
 
-### 2) Install `pulumi-language-dart`
-
-> [!NOTE]
-> The install script is currently under development. Please use the `go install` approach below temporarily.
+Pub-generated executable launchers need a real `dart` executable on `PATH`; a
+shell alias such as `alias dart="fvm dart"` is not inherited. With FVM, use:
 
 ```bash
-go install github.com/kingwill101/pulumi-dart/pulumi-language-dart@latest
+fvm exec pulumi-dart install-language-host
 ```
 
-Alternatively, if the script is available:
+The language host can also be installed directly from a release:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | bash
 ```
 
-Verify installation:
+See the [core package documentation](packages/pulumi-dart/README.md) for
+installer version, repository, and destination overrides.
+
+## Quickstart
+
+Create a project from the minimal Dart template:
 
 ```bash
-which pulumi-language-dart
-pulumi-language-dart -help
+pulumi new https://github.com/kingwill101/pulumi-dart/tree/master/templates/dart-minimal \
+  --yes \
+  --name pulumi-dart-quickstart \
+  --stack dev \
+  --secrets-provider passphrase
 ```
 
-### 3) Create a Pulumi Dart project
+The essential project files are a `Pulumi.yaml`, a Dart `pubspec.yaml`, and a
+Dart entrypoint under `bin/`. A small stack looks like this:
 
-Recommended: use the maintained template:
+```dart
+import 'package:pulumi/pulumi.dart';
+
+class QuickstartStack extends Stack {
+  QuickstartStack() {
+    registerOutputs({
+      'message': Output.create<Object?>('hello from Dart'),
+    });
+  }
+}
+
+Future<void> main() async {
+  await Deployment.runOrThrow(() => QuickstartStack());
+}
+```
+
+Install dependencies and deploy:
 
 ```bash
-pulumi new https://github.com/kingwill101/pulumi-dart/tree/master/templates/dart-minimal -y --name pulumi-dart-quickstart --stack dev --secrets-provider passphrase
+dart pub get
+pulumi preview
+pulumi up
 ```
 
-or locally from a clone:
+Clean up the stack when finished:
 
 ```bash
-pulumi new ./templates/dart-minimal -y --name pulumi-dart-quickstart --stack dev --secrets-provider passphrase
+pulumi destroy
 ```
 
-Manual setup (for customization) is still supported:
+## Provider SDKs
+
+Generated packages live under `packages/sdks/<provider>`. The repository tracks
+SDKs for AWS, Azure, GCP, Kubernetes, Random, TLS, and other commonly used
+providers. Browse [`packages/sdks`](packages/sdks) for the current set.
+
+Use a published SDK normally:
 
 ```bash
-mkdir pulumi-dart-quickstart
-cd pulumi-dart-quickstart
-mkdir -p bin
+dart pub add pulumi
+dart pub add pulumi_random
 ```
 
-Create `Pulumi.yaml`:
+Packages that have not yet been published can be consumed from Git:
 
 ```yaml
-name: pulumi-dart-quickstart
-runtime: dart
-description: First Pulumi Dart stack
-```
-
-Create `pubspec.yaml`:
-
-```yaml
-name: pulumi_dart_quickstart
-publish_to: none
-version: 0.1.0
-
-environment:
-  sdk: ">=3.11.0 <4.0.0"
-
 dependencies:
   pulumi:
     git:
@@ -93,195 +128,99 @@ dependencies:
       path: packages/sdks/random
 ```
 
-Create `bin/pulumi_dart_quickstart.dart`:
-
-```dart
-import 'package:pulumi/pulumi.dart';
-import 'package:pulumi_random/index.dart' as random;
-
-class QuickstartStack extends Stack {
-  QuickstartStack() {
-    final pet = random.RandomPet(
-      'pet',
-      args: random.RandomPetArgs(prefix: 'dart'),
-    );
-
-    registerOutputs({'petName': pet.id});
-  }
-}
-
-Future<void> main() async {
-  await Deployment.runOrThrow(() => QuickstartStack());
-}
-```
-
-Install dependencies:
-
-```bash
-dart pub get
-```
-
-### 4) Preview and deploy
-
-```bash
-pulumi stack init dev
-pulumi preview
-pulumi up
-```
-
-Destroy when done:
-
-```bash
-pulumi destroy
-```
-
-## Templates
-
-User-facing templates live under [`templates/`](templates/README.md).
-
-By default, `pulumi-language-dart` rewrites unresolved `pulumi` dependency constraints
-during `pulumi new` to a known source dependency so clean-environment installs work.
-
-`pulumi` dependency source precedence (outside a Dart workspace):
-
-1. `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
-2. `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
-3. Git dependency (`PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL` / `..._GIT_PATH` / `..._GIT_REF`)
-
-When SDK generation runs inside a Dart workspace and workspace resolution is active,
-generated provider packages use the workspace `pulumi` package version directly.
-
-You can override source selection with:
-
-- `PULUMI_DART_PULUMI_DEPENDENCY_PATH`
-- `PULUMI_DART_PULUMI_DEPENDENCY_VERSION`
-- `PULUMI_DART_PULUMI_DEPENDENCY_FROM_PUBDEV` (default: `true`)
-- `PULUMI_DART_PULUMI_DEPENDENCY_PUBDEV_URL` (default: `https://pub.dev/api/packages/pulumi`)
-- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_URL`
-- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_PATH`
-- `PULUMI_DART_PULUMI_DEPENDENCY_GIT_REF`
-- `PULUMI_DART_TEMPLATE_REWRITE_PULUMI=false` to disable rewrite
-
-Useful non-workspace examples:
-
-```bash
-# Pin to explicit version
-export PULUMI_DART_PULUMI_DEPENDENCY_VERSION=0.0.1-dev
-
-# Or read latest published pub.dev version dynamically
-export PULUMI_DART_PULUMI_DEPENDENCY_VERSION="$(curl -fsSL https://pub.dev/api/packages/pulumi | jq -r '.latest.version')"
-```
-
-## App Platform Foundation
-
-This repo now includes an opinionated AWS-first app hosting package:
-
-- [`pulumi_aws_app_platform`](packages/pulumi-aws-app-platform/README.md)
-
-Use it to deploy containerized Dart web services on ECS/Fargate with:
-
-- ECR image build/push
-- ALB ingress
-- optional Route53 + ACM TLS
-- low-cost defaults with scalable settings
-
-Starter template:
-
-```bash
-pulumi new ./templates/dart-aws-app-platform -y --name my-dart-app --stack dev --secrets-provider passphrase
-```
-
-## FaaS Foundation
-
-This repo also includes a unified Dart FaaS package:
-
-- [`pulumi_dart_faas`](packages/pulumi-dart-faas/README.md)
-
-Use it to deploy Dart serverless functions with:
-
-- AWS Lambda container images
-- AWS Lambda zip artifacts from S3 or local archive upload
-- GCP Cloud Run image deployments
-- GCP Cloud Run source-archive deployments
-- shared local build/archive helper (`DartBuildArchive`)
-
-Starter template:
-
-```bash
-pulumi new ./templates/dart-aws-faas -y --name my-dart-fn --stack dev --secrets-provider passphrase
-```
-
-## Generate Provider SDKs
-
-In this repo, generated providers live under `packages/<provider>`.
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | bash
-
-mkdir -p sdk-gen && cd sdk-gen
-```
-
-Create `Pulumi.yaml`:
-
-```yaml
-name: sdk-gen
-runtime: dart
-```
-
-Create `pubspec.yaml`:
-
-```yaml
-name: sdk_gen
-publish_to: none
-version: 0.0.1
-environment:
-  sdk: ">=3.11.0 <4.0.0"
-
-dependencies:
-  pulumi: any
-
-dependency_overrides:
-  pulumi:
-    path: /abs/path/to/pulumi-dart/packages/pulumi-dart
-```
-
-Install dependencies:
-
-```bash
-dart pub get
-```
-
-Generate one or more provider packages:
+Pulumi can also generate a Dart SDK into the current project from a provider
+name, version, or local schema:
 
 ```bash
 pulumi package add random
-pulumi package add aws@7.11.0
-pulumi package add ./path/to/provider.schema.json
+pulumi package add aws@7.20.0
+pulumi package add ./provider.schema.json
 ```
 
-Generated output appears in `packages/sdks/<provider>`.
+## Templates and libraries
 
-If your workspace already contains the provider package, add it to your workspace `pubspec.yaml`
-and consume it directly without `path` overrides:
+Maintained project templates are documented in
+[`templates/README.md`](templates/README.md):
 
-```yaml
-workspace:
-  - packages/command
+- `dart-minimal` for a minimal stack;
+- `dart-random` for an additional starter stack;
+- `dart-aws-app-platform` for ECS/Fargate applications; and
+- `dart-aws-faas` for AWS Lambda workloads.
 
-dependencies:
-  pulumi_command: ^1.0.0
+Higher-level packages include:
+
+- [`pulumi_aws_app_platform`](packages/pulumi-aws-app-platform/README.md) for
+  containerized Dart services on AWS; and
+- [`pulumi_dart_faas`](packages/pulumi-dart-faas/README.md) for AWS Lambda and
+  GCP Cloud Run deployment patterns.
+
+The core SDK also exposes:
+
+- [Automation API](packages/pulumi-dart/README.md#automation-api);
+- [dynamic resources](packages/pulumi-dart/README.md#dynamic-resource-apis);
+  and
+- [provider authoring](packages/pulumi-dart/README.md#provider-authoring-apis).
+
+## Repository development
+
+The checked-in devenv pins the Go, Dart, and Pulumi versions used by the
+repository. After cloning, initialize submodules and enter the environment:
+
+```bash
+git submodule update --init --recursive
+devenv shell
+integration-check
 ```
 
-Then consume it from your app:
+Common validation commands are:
 
-```yaml
-dependencies:
-  pulumi_random:
-    path: /abs/path/to/sdk-gen/sdks/random
+```bash
+dart pub get
+dart analyze
+dart test
+language-host-unit-test
+language-codegen-test
+language-conformance-test
 ```
 
-Full details: [`packages/README.md`](packages/README.md)
+Direct integration tests do not require Dagger:
 
-## Contributing
+```bash
+repodoc integration:prewarm
+repodoc integration:run --run '^TestEmptyDart$' --timeout 10m
+```
 
-Contributor workflows and helper file references are in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+The [`repodoc`](repodoc/README.md) CLI is the source of truth for repository
+maintenance:
+
+```bash
+repodoc --help
+repodoc schema:check
+repodoc packages:update --provider aws
+repodoc upstream:check --details
+```
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for validation, conformance snapshot
+generation, provider maintenance, and pull-request expectations.
+
+## Repository layout
+
+| Path | Contents |
+| --- | --- |
+| `packages/pulumi-dart` | Core Dart SDK and helper CLI |
+| `pulumi-language-dart` | Language host, code generator, and conformance driver |
+| `packages/sdks` | Generated provider SDKs and tracked schemas |
+| `integration_tests` | Direct Go integration harness and Dart programs |
+| `repodoc` | Repository maintenance and CI orchestration CLI |
+| `templates` | `pulumi new` project templates |
+| `examples` | Runnable SDK and infrastructure examples |
+| `docs` | Maintenance, readiness, and parity documentation |
+
+## Contributing and support
+
+Contributions are welcome. Start with [`CONTRIBUTING.md`](CONTRIBUTING.md), and
+use [GitHub Issues](https://github.com/kingwill101/pulumi-dart/issues) for bugs,
+feature requests, and compatibility reports.
+
+Pulumi product documentation is available at
+[pulumi.com/docs](https://www.pulumi.com/docs/).

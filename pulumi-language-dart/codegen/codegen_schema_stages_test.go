@@ -20,6 +20,26 @@ func TestDartTypeSpecFromSchemaTypeUnwrapsInputAndOptionalTypes(t *testing.T) {
 	require.Equal(t, packageTypeSpec{Kind: "scalar", DartType: "String"}, typeSpec)
 }
 
+func TestDartTypeSpecFromSchemaTypeUsesDynamicForHeterogeneousUnion(t *testing.T) {
+	t.Parallel()
+
+	typeSpec := dartTypeSpecFromSchemaType(&schema.UnionType{
+		ElementTypes: []schema.Type{schema.StringType, schema.IntType},
+	}, nil, false, "example")
+
+	require.Equal(t, packageTypeSpec{Kind: "dynamic", DartType: "dynamic"}, typeSpec)
+}
+
+func TestDartTypeSpecFromSchemaTypePreservesHomogeneousUnion(t *testing.T) {
+	t.Parallel()
+
+	typeSpec := dartTypeSpecFromSchemaType(&schema.UnionType{
+		ElementTypes: []schema.Type{schema.StringType, schema.StringType},
+	}, nil, false, "example")
+
+	require.Equal(t, packageTypeSpec{Kind: "scalar", DartType: "String"}, typeSpec)
+}
+
 func TestCoerceOutputCollectionTypePreservesScalarArrays(t *testing.T) {
 	t.Parallel()
 

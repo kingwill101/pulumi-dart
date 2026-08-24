@@ -24,6 +24,7 @@ func makeResourceOutputPropertySpecs(resource *schema.Resource, named map[string
 		fields = append(fields, packagePropertySpec{
 			Name: property.Name, FieldName: propertyFieldName(property.Name, usedNames),
 			Comment: strings.TrimSpace(property.Comment), Required: !resource.IsComponent && property.IsRequired(),
+			Secret:   property.Secret,
 			TypeSpec: typeSpec, DartType: typeSpec.DartType,
 			ReferenceKind: referenceKind, ReferenceType: referenceType, ReferenceWireType: referenceWireType,
 		})
@@ -35,14 +36,5 @@ func makeResourceOutputPropertySpecs(resource *schema.Resource, named map[string
 }
 
 func coerceOutputCollectionType(typeSpec packageTypeSpec) packageTypeSpec {
-	if typeSpec.Kind != "array" || typeSpec.ElementType == nil || outputCollectionElementIsSupported(typeSpec.ElementType) {
-		return typeSpec
-	}
-	dynamicType := packageTypeSpec{Kind: "dynamic", DartType: "dynamic"}
-	mapType := packageTypeSpec{Kind: "map", DartType: "Map<String, dynamic>", ElementType: &dynamicType}
-	return packageTypeSpec{Kind: "array", DartType: "List<Map<String, dynamic>>", ElementType: &mapType}
-}
-
-func outputCollectionElementIsSupported(typeSpec *packageTypeSpec) bool {
-	return typeSpec != nil && (typeSpec.Kind == "scalar" || typeSpec.Kind == "enum")
+	return typeSpec
 }

@@ -1,0 +1,10 @@
+name: l1_builtin_require_pulumi_version
+description: Generated Pulumi Dart project.
+version: 0.0.1
+environment:
+    sdk: '>=3.11.0 <4.0.0'
+dependencies:
+    pulumi:
+        path: ROOT/artifacts/pulumi
+dev_dependencies:
+    lints: ^6.1.0

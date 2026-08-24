@@ -11,7 +11,10 @@ func NeedsDecodeConversion(typeSpec schemair.Type) bool {
 	case "enum", "object":
 		return typeSpec.ReferenceType != ""
 	case "array", "map":
-		return NeedsDecodeConversion(ElementType(typeSpec))
+		// Provider RPC payloads use runtime-typed List/Map objects. Decode every
+		// collection layer so nested generic types are rebuilt instead of relying
+		// on a shallow cast at the outer boundary.
+		return true
 	default:
 		return false
 	}
@@ -77,6 +80,12 @@ func DecodeExpression(typeSpec schemair.Type, sourceExpr string) string {
 	default:
 		if typeSpec.DartType == "" || typeSpec.DartType == "dynamic" {
 			return sourceExpr
+		}
+		if typeSpec.DartType == "int" {
+			return fmt.Sprintf("(%s as num).toInt()", sourceExpr)
+		}
+		if typeSpec.DartType == "double" {
+			return fmt.Sprintf("(%s as num).toDouble()", sourceExpr)
 		}
 		return fmt.Sprintf("%s as %s", sourceExpr, typeSpec.DartType)
 	}

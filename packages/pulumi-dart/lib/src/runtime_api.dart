@@ -114,6 +114,9 @@ const RuntimeFacade runtime = RuntimeFacade();
 class _MockEngine implements Engine {
   @override
   Future<void> log(LogRequest request) async {}
+
+  @override
+  Future<void> requirePulumiVersion(String versionRange) async {}
 }
 
 class _MockMonitor implements mon.Monitor {

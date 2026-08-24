@@ -16,6 +16,7 @@ class CustomResourceOptions extends ResourceOptions {
   CustomResourceOptions({
     super.id,
     super.urn,
+    super.importId,
     super.hideDiffs,
     super.replaceWith,
     super.envVarMappings,
@@ -42,6 +43,40 @@ class CustomResourceOptions extends ResourceOptions {
          resourceTransformations: transformations ?? [],
          resourceTransforms: resourceTransforms ?? [],
        );
+
+  factory CustomResourceOptions.fromResourceOptions(ResourceOptions options) {
+    return CustomResourceOptions(
+      id: options.id,
+      urn: options.urn,
+      importId: options.importId,
+      hideDiffs: options.hideDiffs,
+      replaceWith: options.replaceWith,
+      envVarMappings: options.envVarMappings,
+      parent: options.parent,
+      dependsOn: options.dependsOn,
+      protect: options.protect,
+      provider: options.provider,
+      providers: options.providers,
+      transformations: options.resourceTransformations,
+      resourceTransforms: options.resourceTransforms,
+      hooks: options.hooks,
+      aliases: options.aliases,
+      version: options.version,
+      pluginDownloadURL: options.pluginDownloadURL,
+      replacementTrigger: options.replacementTrigger,
+      customTimeouts: options.customTimeouts,
+      deleteBeforeReplace: options.deleteBeforeReplace,
+      retainOnDelete: options.retainOnDelete,
+      deletedWith: options.deletedWith,
+      additionalSecretOutputs: options.additionalSecretOutputs,
+      ignoreChanges: options.ignoreChanges,
+      replaceOnChanges: options.replaceOnChanges,
+    );
+  }
+
+  @override
+  CustomResourceOptions merge(ResourceOptions? options) =>
+      CustomResourceOptions.fromResourceOptions(super.merge(options));
 }
 
 /// {@template pulumi.custom_resource.summary}
@@ -66,6 +101,9 @@ class CustomResourceOptions extends ResourceOptions {
 /// {@endtemplate}
 ///
 class CustomResource extends Resource {
+  /// Whether this instance represents a resource value returned over RPC.
+  final bool isResourceReference;
+
   late Output<String> id;
   final Completer<OutputData<String>> _idCompleter =
       Completer<OutputData<String>>();
@@ -77,7 +115,9 @@ class CustomResource extends Resource {
     CustomResourceOptions options, {
     bool remote = false,
     bool dependency = false,
+    this.isResourceReference = false,
     models.RegisterPackageRequest? registerPackageRequest,
+    List<String> additionalSecretOutputs = const [],
   }) : super(
          type,
          name,
@@ -87,6 +127,7 @@ class CustomResource extends Resource {
          remote: remote,
          dependency: dependency,
          registerPackageRequest: registerPackageRequest,
+         additionalSecretOutputs: additionalSecretOutputs,
        ) {
     id = Output<String>(_idCompleter.future);
     unawaited(

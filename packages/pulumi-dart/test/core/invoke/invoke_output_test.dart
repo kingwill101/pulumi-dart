@@ -1,8 +1,56 @@
 import 'package:mockito/mockito.dart';
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart';
 import 'package:test/test.dart';
 
 import '../../mocks/mocks.mocks.dart';
+import '../../test_utils/deployment_capture_test_utils.dart';
+
+class _InvokeDependencyMonitor extends CapturingRegisterMonitor {
+  @override
+  Future<RegisterResourceResponse> registerResource(
+    Resource resource,
+    RegisterResourceRequest request,
+  ) async {
+    registerResourceRequests.add(request);
+    return RegisterResourceResponse()
+      ..urn = 'urn:pulumi:stack::project::${request.type}::${request.name}'
+      ..id = '${request.name}-id'
+      ..object = request.object;
+  }
+
+  @override
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
+    return ResourceInvokeResponse()
+      ..return_1 = (Struct()..fields['result'] = request.args.fields['value']!);
+  }
+}
+
+class _UnknownInvokeMonitor extends CapturingRegisterMonitor {
+  @override
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
+    return ResourceInvokeResponse()..unknown = true;
+  }
+}
+
+class _InvokeDependencyResource extends CustomResource {
+  late final Output<String> value;
+
+  _InvokeDependencyResource(String name, Input<String> value)
+    : super('test:index:Dependency', name, {
+        'value': value,
+      }, CustomResourceOptions()) {
+    this.value = registerOutput<String>('value');
+  }
+}
+
+class _InvokeDependentResource extends CustomResource {
+  _InvokeDependentResource(String name, Input<String> value)
+    : super('test:index:Dependent', name, {
+        'value': value,
+      }, CustomResourceOptions());
+}
 
 class _InvokeOutputMocks extends Mocks {
   int callCount = 0;
@@ -146,6 +194,9 @@ void main() {
         runtime.setMocks(mocks);
 
         final dependency = MockResource();
+        when(dependency.urn).thenReturn(
+          Output.create('urn:pulumi:stack::project::test:index:Component::dep'),
+        );
         final result = invokeOutput<Map<String, dynamic>>(
           'test:index:Echo',
           <String, Input<dynamic>>{'value': Input.fromValue(7)},
@@ -159,5 +210,46 @@ void main() {
         expect(mocks.callCount, equals(1));
       },
     );
+
+    test(
+      'preserves invoke input dependencies through resource registration',
+      () async {
+        runtime.clearMocks();
+        final monitor = _InvokeDependencyMonitor();
+        final deployment = configureCapturedDeployment(monitor);
+        final source = _InvokeDependencyResource('source', 'hello'.input());
+        final invoked = invokeOutput<Map<String, dynamic>>('test:index:echo', {
+          'value': source.value.input(),
+        });
+        _InvokeDependentResource(
+          'target',
+          invoked.apply<String>((value) => value['result'] as String).input(),
+        );
+
+        await deployment.registerOutputs();
+
+        final request = monitor.registerResourceRequests.firstWhere(
+          (request) => request.name == 'target',
+        );
+        final sourceUrn = await source.urn.getValue();
+        expect(request.propertyDependencies['value']?.urns, [sourceUrn]);
+        expect(request.dependencies, [sourceUrn]);
+        DeploymentImpl.clearInstance();
+      },
+    );
+
+    test('preserves a wholly unknown monitor invoke response', () async {
+      runtime.clearMocks();
+      configureCapturedDeployment(_UnknownInvokeMonitor());
+
+      final result = invokeOutput<Map<String, dynamic>>(
+        'test:index:echo',
+        <String, Input<dynamic>>{'value': 'hello'.input()},
+      );
+
+      final data = await result.getData();
+      expect(data.isKnown, isFalse);
+      expect(data.value, isNull);
+    });
   });
 }

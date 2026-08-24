@@ -1,0 +1,14 @@
+name: provider_replacement_trigger_component
+description: Generated Pulumi Dart project.
+version: 0.0.1
+environment:
+    sdk: '>=3.11.0 <4.0.0'
+dependencies:
+    pulumi:
+        path: ROOT/artifacts/pulumi
+    pulumi_conformance_component:
+        path: ROOT/artifacts/pulumi_conformance_component
+    pulumi_simple:
+        path: ROOT/artifacts/pulumi_simple
+dev_dependencies:
+    lints: ^6.1.0

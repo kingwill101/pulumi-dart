@@ -30,7 +30,7 @@ func makeRawResourceOutputPropertySpecs(resource rawResourceSpec, named map[stri
 		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
 		fields = append(fields, packagePropertySpec{
 			Name: propertyName, FieldName: propertyFieldName(propertyName, usedNames),
-			Comment: strings.TrimSpace(property.Description), Required: isRequired,
+			Comment: strings.TrimSpace(property.Description), Required: isRequired, Secret: property.Secret,
 			TypeSpec: typeSpec, DartType: typeSpec.DartType,
 			ReferenceKind: referenceKind, ReferenceType: referenceType, ReferenceWireType: referenceWireType,
 		})
