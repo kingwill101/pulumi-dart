@@ -25,7 +25,7 @@ jobs:
     uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
     with:
       sdk: '3.11.0'
-      ignore-packages: 'examples/**,integration_tests/**,pulumi-language-dart/testdata/**,packages/pulumi-aws-app-platform/examples/**,packages/pulumi-dart-faas/examples/**,repodoc,templates/**'
+      ignore-packages: 'examples/**,integration_tests/**,pulumi-language-dart/testdata,pulumi-language-dart/testdata/**,packages/pulumi-aws-app-platform/examples/**,packages/pulumi-dart-faas/example/**,repodoc,templates/**'
     permissions:
       id-token: write
       pull-requests: write

@@ -95,6 +95,42 @@ func TestGeneratePackageUsesVersionOverrideEnv(t *testing.T) {
 	assert.Contains(t, pubspec, "version: 9.9.9-dev.1")
 }
 
+func TestGeneratePackageIncludesConfiguredFalseSecrets(t *testing.T) {
+	t.Setenv(
+		"PULUMI_DART_FALSE_SECRETS",
+		`["/lib/src/generated_example.dart"]`,
+	)
+	t.Setenv("PULUMI_DART_PUBLISH_TO", "none")
+
+	targetDir := t.TempDir()
+	_, err := (&dartLanguageHost{}).GeneratePackage(
+		context.Background(),
+		&pulumirpc.GeneratePackageRequest{
+			Directory: targetDir,
+			Schema:    `{"name":"sample","version":"1.2.3"}`,
+		},
+	)
+	require.NoError(t, err)
+
+	pubspec, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	assert.Contains(t, string(pubspec), "false_secrets:\n    - /lib/src/generated_example.dart")
+	assert.Contains(t, string(pubspec), "publish_to: none")
+}
+
+func TestGeneratePackageRejectsInvalidFalseSecretsConfiguration(t *testing.T) {
+	t.Setenv("PULUMI_DART_FALSE_SECRETS", "not-json")
+
+	_, err := (&dartLanguageHost{}).GeneratePackage(
+		context.Background(),
+		&pulumirpc.GeneratePackageRequest{
+			Directory: t.TempDir(),
+			Schema:    `{"name":"sample","version":"1.2.3"}`,
+		},
+	)
+	require.ErrorContains(t, err, "invalid PULUMI_DART_FALSE_SECRETS JSON")
+}
+
 func TestGeneratePackageUsesVersionSuffixEnv(t *testing.T) {
 	t.Setenv("PULUMI_DART_SDK_VERSION_SUFFIX", "dev.7")
 

@@ -66,9 +66,9 @@ class AppStack extends Stack {
 ## Examples
 
 - AWS examples:
-  - `packages/pulumi-dart-faas/examples/aws-faas/`
+  - `packages/pulumi-dart-faas/example/aws-faas/`
 - GCP examples:
-  - `packages/pulumi-dart-faas/examples/gcp-faas/`
+  - `packages/pulumi-dart-faas/example/gcp-faas/`
 
 ## API surface
 

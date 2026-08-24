@@ -1,4 +1,5 @@
 {
+  "pulumi_dependency_constraint": "^3.0.0",
   "providers": [
     {
       "name": "aws",
@@ -70,13 +71,25 @@
       "name": "gcp",
       "schema_url": "https://www.pulumi.com/registry/packages/gcp/schema.json",
       "local_schema_path": "packages/sdks/schemas/gcp.schema.json",
-      "package_pubspec_path": "packages/sdks/gcp/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/gcp/pubspec.yaml",
+      "false_secrets": [
+        "/lib/src/firebase/app_check_recaptcha_enterprise_config.dart"
+      ]
     },
     {
       "name": "google-native",
       "schema_url": "https://www.pulumi.com/registry/packages/google-native/schema.json",
       "local_schema_path": "packages/sdks/schemas/google-native.schema.json",
-      "package_pubspec_path": "packages/sdks/google-native/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/google-native/pubspec.yaml",
+      "required_property_relaxations": {
+        "google-native:bigquery/v2:QueryParameterTypeResponse": [
+          "arrayType"
+        ],
+        "google-native:bigquery/v2:StandardSqlDataTypeResponse": [
+          "arrayElementType",
+          "rangeElementType"
+        ]
+      }
     },
     {
       "name": "hcloud",
@@ -94,7 +107,8 @@
       "name": "libvirt",
       "schema_url": "https://www.pulumi.com/registry/packages/libvirt/schema.json",
       "local_schema_path": "packages/sdks/schemas/libvirt.schema.json",
-      "package_pubspec_path": "packages/sdks/libvirt/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/libvirt/pubspec.yaml",
+      "publish_to": "none"
     },
     {
       "name": "mysql",

@@ -38,6 +38,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"gopkg.in/yaml.v3"
 )
 
 // passingConformanceTests records the tests that must currently pass. The test
@@ -340,13 +341,14 @@ func TestLanguageConformance(t *testing.T) {
 	rootDir, err := filepath.Abs(t.TempDir())
 	require.NoError(t, err)
 	policyPackDirectory := prepareConformancePolicyPacks(t)
+	coreSDKVersion := readConformanceCoreSDKVersion(t, "../packages/pulumi-dart/pubspec.yaml")
 	prepare, err := client.PrepareLanguageTests(ctx, &testingrpc.PrepareLanguageTestsRequest{
 		LanguagePluginName:   "dart",
 		LanguagePluginTarget: fmt.Sprintf("127.0.0.1:%d", host.Port),
 		TemporaryDirectory:   rootDir,
 		SnapshotDirectory:    "testdata/published",
 		CoreSdkDirectory:     "../packages/pulumi-dart",
-		CoreSdkVersion:       "3.0.0",
+		CoreSdkVersion:       coreSDKVersion,
 		PolicyPackDirectory:  policyPackDirectory,
 		ProvidersDirectory:   "testdata/providers",
 		SnapshotEdits: []*testingrpc.PrepareLanguageTestsRequest_Replacement{
@@ -398,6 +400,25 @@ func TestLanguageConformance(t *testing.T) {
 			assert.True(t, result.Success)
 		})
 	}
+}
+
+func readConformanceCoreSDKVersion(t *testing.T, pubspecPath string) string {
+	t.Helper()
+
+	contents, err := os.ReadFile(pubspecPath)
+	require.NoError(t, err)
+	var pubspec struct {
+		Version string `yaml:"version"`
+	}
+	require.NoError(t, yaml.Unmarshal(contents, &pubspec))
+	require.NotEmpty(t, strings.TrimSpace(pubspec.Version))
+	return strings.TrimSpace(pubspec.Version)
+}
+
+func TestReadConformanceCoreSDKVersion(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "pubspec.yaml")
+	require.NoError(t, os.WriteFile(path, []byte("name: pulumi\nversion: 3.1.0\n"), 0o600))
+	assert.Equal(t, "3.1.0", readConformanceCoreSDKVersion(t, path))
 }
 
 type conformanceShard struct {

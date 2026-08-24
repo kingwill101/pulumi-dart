@@ -50,7 +50,7 @@ jobs:
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
       - name: Prepare host, tests, matrix, and prewarmed kernels
-        run: devenv shell -- integration-ci-prepare
+        run: devenv shell --no-eval-cache -- integration-ci-prepare
       - name: Export test matrix
         id: matrix
         run: echo "matrix=$(tr -d '\n' < .integration-ci/matrix.json)" >> "$GITHUB_OUTPUT"
@@ -73,6 +73,12 @@ jobs:
       - uses: actions/checkout@v7
         with:
           submodules: recursive
+      # The policy-plugin integration coverage invokes npm and Node directly.
+      # Keep Node outside the Nix shell so unrelated Dart jobs do not evaluate
+      # nixpkgs' platform-specific Node codesigning patches.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - uses: cachix/install-nix-action@v31
       - uses: cachix/cachix-action@v16
         with:
@@ -88,7 +94,7 @@ jobs:
           INTEGRATION_TESTS: ${{ matrix.testsCsv }}
           INTEGRATION_TIMEOUT: 60m
           INTEGRATION_PARALLEL: 4
-        run: devenv shell -- integration-ci-run
+        run: devenv shell --no-eval-cache -- integration-ci-run
 
   cloud:
     name: Dart integration (cloud-only)
@@ -130,7 +136,7 @@ jobs:
           INTEGRATION_TESTS: TestEnvironmentsBasicDart,TestEnvironmentsMergeDart,TestTracePropagationDart,TestAutomationEnvironmentManagementDart,TestAutomationRemoteWorkspaceLifecycleDart,TestPolicyPublishEnableDisableDart
           INTEGRATION_TIMEOUT: 60m
           INTEGRATION_PARALLEL: 4
-        run: devenv shell -- integration-ci-run
+        run: devenv shell --no-eval-cache -- integration-ci-run
 
   language-host-unit:
     name: Language host unit tests
@@ -146,7 +152,7 @@ jobs:
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
       - name: Test language host runtime
-        run: devenv shell -- language-host-unit-test
+        run: devenv shell --no-eval-cache -- language-host-unit-test
 
   language-codegen:
     name: Language codegen tests
@@ -162,7 +168,7 @@ jobs:
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
       - name: Test language codegen
-        run: devenv shell -- language-codegen-test
+        run: devenv shell --no-eval-cache -- language-codegen-test
 
   language-conformance:
     name: Language conformance (${{ matrix.shard }}/8)
@@ -186,7 +192,7 @@ jobs:
         env:
           PULUMI_DART_CONFORMANCE_SHARD: ${{ matrix.shard }}/8
           PULUMI_DART_CONFORMANCE_CASE_TIMEOUT: 5m
-        run: devenv shell -- language-conformance-test
+        run: devenv shell --no-eval-cache -- language-conformance-test
 
   check-integration:
     name: check-integration
@@ -218,5 +224,5 @@ jobs:
         run: nix profile add nixpkgs#devenv
       - name: Analyze and test Dart SDK package
         run: >-
-          devenv shell -- bash -lc
+          devenv shell --no-eval-cache -- bash -lc
           'cd packages/pulumi-dart && dart pub get && dart analyze && dart test'

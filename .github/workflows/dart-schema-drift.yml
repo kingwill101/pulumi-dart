@@ -41,7 +41,7 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: 3.11.0
 
       - name: Run drift check
         id: drift
@@ -51,16 +51,18 @@ jobs:
           dart run repodoc schema:check --provider "${{ matrix.provider }}" --json --pretty > "${REPORT_PATH}"
           cat "${REPORT_PATH}"
 
-          echo "report_path=${REPORT_PATH}" >> "$GITHUB_OUTPUT"
-          echo "drift=$(jq -r '.drift' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "local_schema_version=$(jq -r '.local_schema_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "upstream_version=$(jq -r '.upstream_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "upstream_version_source=$(jq -r '.upstream_version_source' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "schema_source=$(jq -r '.schema_source' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "package_version=$(jq -r '.package_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "upstream_version_changed=$(jq -r '.upstream_version_changed' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "upstream_checksum_changed=$(jq -r '.upstream_checksum_changed' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "package_version_matches_local_schema=$(jq -r '.package_version_matches_local_schema' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          {
+            echo "report_path=${REPORT_PATH}"
+            echo "drift=$(jq -r '.drift' "${REPORT_PATH}")"
+            echo "local_schema_version=$(jq -r '.local_schema_version' "${REPORT_PATH}")"
+            echo "upstream_version=$(jq -r '.upstream_version' "${REPORT_PATH}")"
+            echo "upstream_version_source=$(jq -r '.upstream_version_source' "${REPORT_PATH}")"
+            echo "schema_source=$(jq -r '.schema_source' "${REPORT_PATH}")"
+            echo "package_version=$(jq -r '.package_version' "${REPORT_PATH}")"
+            echo "upstream_version_changed=$(jq -r '.upstream_version_changed' "${REPORT_PATH}")"
+            echo "upstream_checksum_changed=$(jq -r '.upstream_checksum_changed' "${REPORT_PATH}")"
+            echo "package_version_matches_local_schema=$(jq -r '.package_version_matches_local_schema' "${REPORT_PATH}")"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Write job summary
         run: |
