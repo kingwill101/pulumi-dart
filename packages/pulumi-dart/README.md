@@ -76,26 +76,20 @@ The installer downloads a released language host. To test the newest
 The
 [Dart Language Host Release](https://github.com/kingwill101/pulumi-dart/actions/workflows/dart-release-language-host.yml)
 workflow can build Linux, macOS, and Windows archives without creating a
-release. Start a `snapshot` run from the workflow page, or with GitHub CLI:
+release. Repository maintainers can start a `snapshot` run from the workflow
+page or capture the exact dispatched run with GitHub CLI:
 
 ```bash
-gh workflow run dart-release-language-host.yml \
+run_url="$(gh workflow run dart-release-language-host.yml \
   --repo kingwill101/pulumi-dart \
   --ref master \
-  -f mode=snapshot
+  -f mode=snapshot)"
+run_id="${run_url##*/}"
 ```
 
-Find and follow the run, then download its artifact:
+Follow that run, then download its artifact:
 
 ```bash
-run_id="$(gh run list \
-  --repo kingwill101/pulumi-dart \
-  --workflow dart-release-language-host.yml \
-  --event workflow_dispatch \
-  --limit 1 \
-  --json databaseId \
-  --jq '.[0].databaseId')"
-
 gh run watch "$run_id" --repo kingwill101/pulumi-dart --exit-status
 gh run download "$run_id" \
   --repo kingwill101/pulumi-dart \
@@ -103,12 +97,36 @@ gh run download "$run_id" \
   --dir .language-host-snapshot
 ```
 
+Users without repository write access cannot dispatch the upstream workflow.
+They can download the artifact from a snapshot run started by a maintainer on
+the workflow page. With GitHub CLI, find the newest successful `master`
+snapshot and download it:
+
+```bash
+run_id="$(gh run list \
+  --repo kingwill101/pulumi-dart \
+  --workflow dart-release-language-host.yml \
+  --event workflow_dispatch \
+  --branch master \
+  --status success \
+  --limit 1 \
+  --json databaseId \
+  --jq '.[0].databaseId')"
+gh run download "$run_id" \
+  --repo kingwill101/pulumi-dart \
+  --name pulumi-language-dart-snapshot \
+  --dir .language-host-snapshot
+```
+
+Alternatively, fork the repository and dispatch the same workflow in the fork.
+
 The artifact contains archives for `darwin`, `linux`, and `windows`, on both
 `amd64` and `arm64`, plus a checksum file. Extract the archive matching your
 machine and install the binary somewhere on `PATH`, for example:
 
 ```bash
 tar -xzf .language-host-snapshot/pulumi-language-dart-*-darwin-arm64.tar.gz
+mkdir -p "$HOME/.local/bin"
 install -m 0755 pulumi-language-dart "$HOME/.local/bin/pulumi-language-dart"
 pulumi-language-dart -help
 ```

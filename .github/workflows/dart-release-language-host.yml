@@ -71,19 +71,9 @@ jobs:
           go version
           dart --version
 
-      - name: Verify language host tests
-        run: |
-          cd pulumi-language-dart
-          go test -count=1 ./...
-
-      - name: Analyze pulumi core package
-        run: dart analyze packages/pulumi-dart
-
-      - name: Test pulumi core package
-        run: |
-          cd packages/pulumi-dart
-          dart test
-
+      # Snapshot artifacts are useful for testing a branch even when its test
+      # suite is still red. Build them before validation; tagged releases still
+      # publish only after every validation step succeeds.
       - name: Build release snapshot
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
         uses: goreleaser/goreleaser-action@v6
@@ -105,6 +95,19 @@ jobs:
             dist/*checksums.txt
           if-no-files-found: error
           retention-days: 7
+
+      - name: Verify language host tests
+        run: |
+          cd pulumi-language-dart
+          go test -count=1 ./...
+
+      - name: Analyze pulumi core package
+        run: dart analyze packages/pulumi-dart
+
+      - name: Test pulumi core package
+        run: |
+          cd packages/pulumi-dart
+          dart test
 
       - name: Publish release assets
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'release')
