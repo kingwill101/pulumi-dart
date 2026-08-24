@@ -45,6 +45,9 @@ class Constants {
   static const String specialOutputValueSig =
       'd0e6a833031e9bbcd3f4e8bde6ca49a4';
 
+  /// Signature for strings whose original bytes are not valid UTF-8.
+  static const String specialByteStringSig = '803fd3297a5875dc03ca845dda5d2a98';
+
   static const String secretName = 'secret';
   static const String valueName = 'value';
   static const String dependenciesName = 'dependencies';

@@ -218,6 +218,7 @@ Future<OutputData<dynamic>> _resolveOutputData(dynamic value) async {
       isKnown: nestedData.isKnown,
       isSecret: outputData.isSecret || nestedData.isSecret,
       resources: {...outputData.resources, ...nestedData.resources},
+      preservedWireValue: outputData.preservedWireValue,
     );
   }
 

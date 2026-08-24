@@ -98,6 +98,45 @@ void main() {
       );
     });
 
+    test('Serialize preserves byte-string output wire values', () async {
+      final wireValue = {
+        Constants.specialSigKey: Constants.specialByteStringSig,
+        Constants.valueName: 'AGhlbGxvIID+/yB3b3JsZPAo',
+      };
+      final output = Output<String>(
+        Future.value(
+          OutputData<String>(
+            value: '\u0000hello \u0080\u00fe\u00ff world\u00f0(',
+            isKnown: true,
+            isSecret: false,
+            resources: {},
+            preservedWireValue: wireValue,
+          ),
+        ),
+      );
+
+      expect(
+        await serializer.serializeAsync('test', output, false),
+        same(wireValue),
+      );
+      expect(
+        await serializer.serializeAsync(
+          'test',
+          output.apply((value) => value),
+          false,
+        ),
+        same(wireValue),
+      );
+      expect(
+        await serializer.serializeAsync(
+          'test',
+          output.apply((value) => '$value!'),
+          false,
+        ),
+        equals('\u0000hello \u0080\u00fe\u00ff world\u00f0(!'),
+      );
+    });
+
     test('Serialize Asset', () async {
       var asset = FileAsset('path/to/file.txt');
       var result = await serializer.serializeAsync('test', asset, false);

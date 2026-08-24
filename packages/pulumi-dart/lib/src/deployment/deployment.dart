@@ -538,6 +538,7 @@ class DeploymentImpl extends Deployment
         ..protect = resource.isProtected
         ..acceptSecrets = true
         ..acceptResources = true
+        ..acceptsByteString = true
         ..supportsPartialValues = true;
       applyRequestSourceMetadata(request, StackTrace.current);
 
@@ -803,7 +804,8 @@ class DeploymentImpl extends Deployment
       ..id = readId
       ..properties = await StructConverter.toStruct(serializedProps)
       ..acceptSecrets = true
-      ..acceptResources = true;
+      ..acceptResources = true
+      ..acceptsByteString = true;
     applyRequestSourceMetadata(request, StackTrace.current);
 
     if (registerPackageRequest != null) {
@@ -860,6 +862,7 @@ class DeploymentImpl extends Deployment
         tok: 'pulumi:pulumi:getResource',
         args: Struct(fields: {'urn': Value(stringValue: urn)}.entries),
         acceptResources: true,
+        acceptsByteString: true,
       ),
     );
     if (response.failures.isNotEmpty) {

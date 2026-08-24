@@ -338,6 +338,7 @@ abstract class Resource {
                   isKnown: data.isKnown && inner.isKnown,
                   isSecret: data.isSecret || inner.isSecret,
                   resources: {...data.resources, ...inner.resources, this},
+                  preservedWireValue: inner.preservedWireValue,
                 ),
               ),
               onError: (Object error) => source.trySetException(
@@ -353,6 +354,7 @@ abstract class Resource {
         isKnown: data.isKnown,
         isSecret: data.isSecret,
         resources: {...data.resources, this},
+        preservedWireValue: data.preservedWireValue,
       ),
     );
   }

@@ -67,6 +67,7 @@ mixin InvokeMixin {
       ..version = options?.version ?? ''
       ..pluginDownloadURL = options?.pluginDownloadURL ?? ''
       ..acceptResources = true
+      ..acceptsByteString = true
       ..dependsOn.addAll(dependencyUrns.toList()..sort());
     if (options?.parent != null) {
       request.parent = await options!.parent!.urn.getValue();

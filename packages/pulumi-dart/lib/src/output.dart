@@ -120,6 +120,18 @@ class Output<T> implements Input<T> {
     }
 
     final result = await Future.value(func(data.value as T));
+    final preservesValue =
+        identical(result, data.value) ||
+        (data.value is String && result is String && result == data.value);
+    if (data.preservedWireValue != null && preservesValue) {
+      return OutputData<U>(
+        value: result as U,
+        isKnown: true,
+        isSecret: data.isSecret,
+        resources: data.resources,
+        preservedWireValue: data.preservedWireValue,
+      );
+    }
     return _resolveOutput<U>(result, data.isSecret, data.resources);
   }
 
@@ -345,11 +357,19 @@ class OutputData<T> {
   final bool isSecret;
   final Set<Resource> resources;
 
+  /// An exact Pulumi wire representation that must be used when this output is
+  /// serialized without transformation.
+  ///
+  /// This is used for values such as byte strings that have no lossless native
+  /// Dart representation. Output transformations deliberately discard it.
+  final Object? preservedWireValue;
+
   const OutputData({
     required this.value,
     required this.isKnown,
     required this.isSecret,
     required this.resources,
+    this.preservedWireValue,
   });
 
   /// Creates an [OutputData] instance from explicit fields.

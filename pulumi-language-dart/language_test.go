@@ -172,6 +172,7 @@ var passingConformanceTests = []string{
 	"l2-builtin-object",
 	"l2-resource-config",
 	"l2-keywords",
+	"l2-raw-string-bytes",
 	"l2-destroy",
 	"l3-for",
 	"l3-for-resource",
@@ -233,9 +234,7 @@ var passingConformanceTests = []string{
 // without changing the public type represented by the provider schema. Keep
 // this list explicit so a newly-added upstream test cannot silently become a
 // generic skip.
-var unsupportedConformanceTests = map[string]string{
-	"l2-raw-string-bytes": "Dart String values cannot represent arbitrary non-UTF-8 bytes losslessly; the runtime must not advertise accepts_byte_string",
-}
+var unsupportedConformanceTests = map[string]string{}
 
 func runConformanceServer(t *testing.T) (string, testingrpc.LanguageTestClient) {
 	t.Helper()

@@ -120,13 +120,14 @@ class Serializer {
               _excludeResourceReferencesFromDependencies,
         );
         final value = isKnown
-            ? await valueSerializer._serializeAsync(
-                '$ctx.value',
-                data.value,
-                keepResources,
-                false,
-                seenSet,
-              )
+            ? data.preservedWireValue ??
+                  await valueSerializer._serializeAsync(
+                    '$ctx.value',
+                    data.value,
+                    keepResources,
+                    false,
+                    seenSet,
+                  )
             : null;
 
         final promiseDeps = valueSerializer.dependentResources;

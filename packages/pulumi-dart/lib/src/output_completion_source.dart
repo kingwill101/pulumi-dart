@@ -138,6 +138,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         isKnown: known,
         isSecret: data.isSecret || _isSecret,
         resources: {...data.resources, _resource},
+        preservedWireValue: data.preservedWireValue,
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/constants.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
@@ -24,6 +26,16 @@ class Deserializer {
         isKnown: false,
         isSecret: isSecret,
         resources: {},
+      );
+    }
+
+    if (_tryDeserializeByteString(value) case (true, var byteString?)) {
+      return OutputData<T>(
+        value: byteString.text as T,
+        isKnown: true,
+        isSecret: isSecret,
+        resources: {},
+        preservedWireValue: byteString.wireValue,
       );
     }
 
@@ -91,6 +103,33 @@ class Deserializer {
       );
     }
     return (false, null);
+  }
+
+  static (bool, ({String text, Map<String, Object?> wireValue})?)
+  _tryDeserializeByteString(Value value) {
+    final (isSpecial, sig) = _isSpecialStruct(value);
+    if (!isSpecial || sig != Constants.specialByteStringSig) {
+      return (false, null);
+    }
+
+    final encoded = value.structValue.fields[Constants.valueName];
+    if (encoded == null || encoded.whichKind() != Value_Kind.stringValue) {
+      throw Exception(
+        'Value was marked as a byte string, but did not contain a base64 string value.',
+      );
+    }
+
+    final bytes = base64.decode(encoded.stringValue);
+    return (
+      true,
+      (
+        text: latin1.decode(bytes),
+        wireValue: <String, Object?>{
+          Constants.specialSigKey: Constants.specialByteStringSig,
+          Constants.valueName: encoded.stringValue,
+        },
+      ),
+    );
   }
 
   static (bool, AssetOrArchive?) _tryDeserializeAssetOrArchive(Value value) {

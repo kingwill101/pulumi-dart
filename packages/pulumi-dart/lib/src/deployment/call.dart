@@ -64,7 +64,8 @@ mixin CallMixin {
       ..args = serializedArgs
       ..provider = providerRef
       ..version = options?.version ?? ''
-      ..pluginDownloadURL = options?.pluginDownloadURL ?? '';
+      ..pluginDownloadURL = options?.pluginDownloadURL ?? ''
+      ..acceptsByteString = true;
     applyRequestSourceMetadata(request, StackTrace.current);
 
     if (registerPackageRequest != null) {
