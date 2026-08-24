@@ -26,6 +26,7 @@ application-facing model.
 - `DartBuildArchive`:
   - compiles a Linux Dart executable locally
   - packages the build output as a Pulumi archive
+  - reuses the active Dart/FVM executable unless `dartExecutable` is provided
   - designed to feed archive-capable provider adapters
 - `AwsLambdaDartFunction`:
   - AWS implementation of the shared source contract

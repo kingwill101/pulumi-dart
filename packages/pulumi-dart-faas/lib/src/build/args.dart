@@ -3,6 +3,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Local Dart build settings that produce a deployable archive.
 class DartBuildArchiveArgs {
   final pulumi.Input<String> entryPoint;
+  final pulumi.Input<String>? dartExecutable;
   final pulumi.Input<String>? outputBinaryPath;
   final pulumi.Input<String>? archivePath;
   final pulumi.Input<String>? workingDirectory;
@@ -13,6 +14,7 @@ class DartBuildArchiveArgs {
 
   const DartBuildArchiveArgs({
     required this.entryPoint,
+    this.dartExecutable,
     this.outputBinaryPath,
     this.archivePath,
     this.workingDirectory,

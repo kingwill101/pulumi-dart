@@ -16,7 +16,6 @@ dependencies:
   pulumi_awsx: ^3.8.0
   pulumi_docker_build: ^0.0.22
   pulumi_gcp: ^9.35.0
-  path: ^1.9.1
 
 dev_dependencies:
   lints: ^6.1.0

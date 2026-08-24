@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_command/local.dart' as commandlocal;
-import 'package:path/path.dart' as p;
 
 import 'args.dart';
+import 'script.dart';
 
 /// Builds a Dart executable and exposes it as a Pulumi archive output.
 ///
@@ -36,32 +38,30 @@ class DartBuildArchive extends pulumi.ComponentResource {
     final workingDirectory = args.workingDirectory ?? '.'.input();
     final targetOs = args.targetOs ?? 'linux'.input();
     final targetArch = args.targetArch ?? 'x64'.input();
+    final dartExecutable =
+        args.dartExecutable ?? Platform.resolvedExecutable.input();
 
     final buildScript =
         pulumi.Output.tuple(
-          pulumi.Output.tuple4(
-            args.entryPoint.toOutput(),
-            outputBinaryPath.toOutput(),
-            archivePath.toOutput(),
-            targetOs.toOutput(),
+          pulumi.Output.tuple(
+            pulumi.Output.tuple4(
+              args.entryPoint.toOutput(),
+              outputBinaryPath.toOutput(),
+              archivePath.toOutput(),
+              targetOs.toOutput(),
+            ),
+            targetArch.toOutput(),
           ),
-          targetArch.toOutput(),
+          dartExecutable.toOutput(),
         ).apply<String>((values) {
-          final entryPoint = values.$1.$1;
-          final binaryPath = values.$1.$2;
-          final archiveFile = values.$1.$3;
-          final os = values.$1.$4;
-          final arch = values.$2;
-          final binaryDir = p.dirname(binaryPath);
-          final stageDir = p.dirname(binaryDir);
-          return '''
-set -euo pipefail
-rm -rf "$stageDir" "$archiveFile"
-mkdir -p "$binaryDir"
-
-dart compile exe "$entryPoint" -o "$binaryPath" --target-os="$os" --target-arch="$arch"
-tar -czf "$archiveFile" -C "$stageDir" .
-''';
+          return renderDartBuildScript(
+            entryPoint: values.$1.$1.$1,
+            binaryPath: values.$1.$1.$2,
+            archivePath: values.$1.$1.$3,
+            targetOs: values.$1.$1.$4,
+            targetArch: values.$1.$2,
+            dartExecutable: values.$2,
+          );
         });
 
     final resolvedTriggers =
