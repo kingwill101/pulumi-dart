@@ -44,7 +44,10 @@
 /// ```
 library pulumi_dart_faas;
 
-export 'src/aws_lambda_dart_function.dart';
-export 'src/build.dart';
-export 'src/gcp_cloud_run_dart_function.dart';
+export 'src/aws/args.dart';
+export 'src/aws/function.dart';
+export 'src/build/args.dart';
+export 'src/build/archive.dart';
+export 'src/gcp/args.dart';
+export 'src/gcp/function.dart';
 export 'src/models.dart';

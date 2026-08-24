@@ -4,57 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
 
-import 'models.dart';
-
-/// Generic Dart function inputs implemented on AWS Lambda by
-/// [AwsLambdaDartFunction].
-class DartFunctionArgs {
-  /// Shared source configuration for the deployed function.
-  final DartFunctionSource source;
-
-  /// Optional explicit Lambda function name.
-  final pulumi.Input<String>? name;
-
-  /// Lambda architecture.
-  ///
-  /// Defaults to `arm64`.
-  final pulumi.Input<String>? architecture;
-
-  /// Lambda memory size in MiB.
-  ///
-  /// Defaults to `128`.
-  final pulumi.Input<int>? memorySize;
-
-  /// Lambda timeout in seconds.
-  ///
-  /// Defaults to `5`.
-  final pulumi.Input<int>? timeout;
-
-  /// Environment variables exposed to the Lambda runtime.
-  final pulumi.Input<Map<String, String>>? environment;
-
-  /// Tags applied to created AWS resources where supported.
-  final pulumi.Input<Map<String, String>>? tags;
-
-  /// Optional HTTP endpoint settings for Lambda Function URL creation.
-  final DartFunctionHttpArgs? http;
-
-  const DartFunctionArgs({
-    required this.source,
-    this.name,
-    this.architecture,
-    this.memorySize,
-    this.timeout,
-    this.environment,
-    this.tags,
-    this.http,
-  });
-}
-
-/// Validates AWS Lambda function arguments against the supported source modes.
-void validateDartFunctionArgs(DartFunctionArgs args) {
-  // All currently defined source variants are supported by the AWS adapter.
-}
+import '../models.dart';
+import 'args.dart';
 
 /// AWS Lambda implementation of the Dart FaaS model.
 ///

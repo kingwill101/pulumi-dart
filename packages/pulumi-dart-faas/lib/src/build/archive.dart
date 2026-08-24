@@ -2,51 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_command/local.dart' as commandlocal;
 import 'package:path/path.dart' as p;
 
-/// Local Dart build settings that produce a deployable archive.
-class DartBuildArchiveArgs {
-  /// Dart entrypoint compiled with `dart compile exe`.
-  final pulumi.Input<String> entryPoint;
-
-  /// Output path for the compiled executable.
-  ///
-  /// Defaults to `build_deploy/bin/server`.
-  final pulumi.Input<String>? outputBinaryPath;
-
-  /// Output path for the generated tarball.
-  ///
-  /// Defaults to `build_deploy.tar.gz`.
-  final pulumi.Input<String>? archivePath;
-
-  /// Working directory used when running the local build command.
-  final pulumi.Input<String>? workingDirectory;
-
-  /// Target operating system passed to `dart compile exe`.
-  ///
-  /// Defaults to `linux`.
-  final pulumi.Input<String>? targetOs;
-
-  /// Target architecture passed to `dart compile exe`.
-  ///
-  /// Defaults to `x64`.
-  final pulumi.Input<String>? targetArch;
-
-  /// Additional change detectors for the underlying `command:local:Command`.
-  final pulumi.Input<List<dynamic>>? triggers;
-
-  /// Extra environment variables passed to the build command.
-  final pulumi.Input<Map<String, String>>? environment;
-
-  const DartBuildArchiveArgs({
-    required this.entryPoint,
-    this.outputBinaryPath,
-    this.archivePath,
-    this.workingDirectory,
-    this.targetOs,
-    this.targetArch,
-    this.triggers,
-    this.environment,
-  });
-}
+import 'args.dart';
 
 /// Builds a Dart executable and exposes it as a Pulumi archive output.
 ///
