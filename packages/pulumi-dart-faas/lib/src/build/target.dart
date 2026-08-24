@@ -1,40 +1,119 @@
-import 'package:pulumi/pulumi.dart' as pulumi;
+/// A Dart compiler frontend supported by `dart compile`.
+enum DartCompilerFrontend {
+  aotSnapshot('aot-snapshot'),
+  jitSnapshot('jit-snapshot'),
+  kernel('kernel'),
+  javascript('js'),
+  webAssembly('wasm');
+
+  const DartCompilerFrontend(this.command);
+
+  final String command;
+}
 
 /// The artifact shape produced by the Dart archive builder.
 sealed class DartBuildTarget {
   const DartBuildTarget();
 
-  /// Produces one self-contained executable with `dart compile exe`.
   factory DartBuildTarget.executable({
-    pulumi.Input<String>? outputPath,
-    pulumi.Input<String>? targetOs,
-    pulumi.Input<String>? targetArch,
+    String outputPath,
+    String targetOs,
+    String targetArch,
+    List<String> arguments,
   }) = DartExecutableBuildTarget;
 
-  /// Produces a CLI bundle with `dart build cli`.
-  ///
-  /// CLI bundles target the platform running the build and may include native
-  /// libraries under `bundle/lib`.
-  factory DartBuildTarget.cli({pulumi.Input<String>? outputDirectory}) =
-      DartCliBuildTarget;
+  factory DartBuildTarget.aotSnapshot({
+    String outputPath = 'build_deploy/bin/app.aot',
+    String targetOs = 'linux',
+    String targetArch = 'x64',
+    List<String> arguments = const [],
+  }) => DartCompilerBuildTarget._(
+    frontend: DartCompilerFrontend.aotSnapshot,
+    outputPath: outputPath,
+    arguments: [
+      '--target-os=$targetOs',
+      '--target-arch=$targetArch',
+      ...arguments,
+    ],
+  );
+
+  factory DartBuildTarget.jitSnapshot({
+    String outputPath = 'build_deploy/bin/app.jit',
+    List<String> arguments = const [],
+  }) => DartCompilerBuildTarget._(
+    frontend: DartCompilerFrontend.jitSnapshot,
+    outputPath: outputPath,
+    arguments: arguments,
+  );
+
+  factory DartBuildTarget.kernel({
+    String outputPath = 'build_deploy/bin/app.dill',
+    List<String> arguments = const [],
+  }) => DartCompilerBuildTarget._(
+    frontend: DartCompilerFrontend.kernel,
+    outputPath: outputPath,
+    arguments: arguments,
+  );
+
+  factory DartBuildTarget.javascript({
+    String outputPath = 'build_deploy/web/main.js',
+    int optimizationLevel = 2,
+    List<String> arguments = const [],
+  }) {
+    if (optimizationLevel < 0 || optimizationLevel > 4) {
+      throw RangeError.range(optimizationLevel, 0, 4, 'optimizationLevel');
+    }
+    return DartCompilerBuildTarget._(
+      frontend: DartCompilerFrontend.javascript,
+      outputPath: outputPath,
+      arguments: ['-O$optimizationLevel', ...arguments],
+    );
+  }
+
+  factory DartBuildTarget.webAssembly({
+    String outputPath = 'build_deploy/web/main.wasm',
+    bool sourceMaps = true,
+    List<String> arguments = const [],
+  }) => DartCompilerBuildTarget._(
+    frontend: DartCompilerFrontend.webAssembly,
+    outputPath: outputPath,
+    arguments: [
+      sourceMaps ? '--source-maps' : '--no-source-maps',
+      ...arguments,
+    ],
+  );
+
+  factory DartBuildTarget.cli({String outputDirectory}) = DartCliBuildTarget;
 }
 
-/// A self-contained executable build target.
 final class DartExecutableBuildTarget extends DartBuildTarget {
-  final pulumi.Input<String>? outputPath;
-  final pulumi.Input<String>? targetOs;
-  final pulumi.Input<String>? targetArch;
+  final String outputPath;
+  final String targetOs;
+  final String targetArch;
+  final List<String> arguments;
 
   const DartExecutableBuildTarget({
-    this.outputPath,
-    this.targetOs,
-    this.targetArch,
+    this.outputPath = 'build_deploy/bin/server',
+    this.targetOs = 'linux',
+    this.targetArch = 'x64',
+    this.arguments = const [],
   });
 }
 
-/// A `dart build cli` bundle target.
-final class DartCliBuildTarget extends DartBuildTarget {
-  final pulumi.Input<String>? outputDirectory;
+final class DartCompilerBuildTarget extends DartBuildTarget {
+  final DartCompilerFrontend frontend;
+  final String outputPath;
+  final List<String> arguments;
 
-  const DartCliBuildTarget({this.outputDirectory});
+  const DartCompilerBuildTarget._({
+    required this.frontend,
+    required this.outputPath,
+    required this.arguments,
+  });
+}
+
+final class DartCliBuildTarget extends DartBuildTarget {
+  final String outputDirectory;
+
+  const DartCliBuildTarget({this.outputDirectory = 'build_deploy'});
 }

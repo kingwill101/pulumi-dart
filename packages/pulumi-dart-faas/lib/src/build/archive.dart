@@ -1,10 +1,11 @@
-import 'dart:io';
-
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_command/local.dart' as commandlocal;
 
 import 'args.dart';
+import 'build_runner.dart';
+import 'dart_executable.dart';
 import 'script.dart';
+import 'source_digest.dart';
 import 'target.dart';
 
 /// Builds a Dart executable and exposes it as a Pulumi archive output.
@@ -33,73 +34,57 @@ class DartBuildArchive extends pulumi.ComponentResource {
        ) {
     final commandOptions = pulumi.CustomResourceOptions(parent: this);
 
-    final archivePath = args.archivePath ?? 'build_deploy.tar.gz'.input();
-    final workingDirectory = args.workingDirectory ?? '.'.input();
-    final dartExecutable =
-        args.dartExecutable ?? Platform.resolvedExecutable.input();
-
-    final pulumi.Output<String> buildScript;
+    final dartExecutable = resolveDartExecutable(args.dartExecutable);
+    String buildScript;
     switch (args.target) {
       case DartExecutableBuildTarget target:
-        final outputPath =
-            target.outputPath ?? 'build_deploy/bin/server'.input();
-        final targetOs = target.targetOs ?? 'linux'.input();
-        final targetArch = target.targetArch ?? 'x64'.input();
-        buildScript =
-            pulumi.Output.tuple(
-              pulumi.Output.tuple(
-                pulumi.Output.tuple4(
-                  args.entryPoint.toOutput(),
-                  outputPath.toOutput(),
-                  archivePath.toOutput(),
-                  targetOs.toOutput(),
-                ),
-                targetArch.toOutput(),
-              ),
-              dartExecutable.toOutput(),
-            ).apply<String>((values) {
-              return renderDartBuildScript(
-                entryPoint: values.$1.$1.$1,
-                binaryPath: values.$1.$1.$2,
-                archivePath: values.$1.$1.$3,
-                targetOs: values.$1.$1.$4,
-                targetArch: values.$1.$2,
-                dartExecutable: values.$2,
-              );
-            });
+        buildScript = renderDartBuildScript(
+          entryPoint: args.entryPoint,
+          binaryPath: target.outputPath,
+          archivePath: args.archivePath,
+          targetOs: target.targetOs,
+          targetArch: target.targetArch,
+          dartExecutable: dartExecutable,
+          arguments: target.arguments,
+        );
+      case DartCompilerBuildTarget target:
+        buildScript = renderDartCompilerScript(
+          dartExecutable: dartExecutable,
+          frontend: target.frontend,
+          entryPoint: args.entryPoint,
+          outputPath: target.outputPath,
+          archivePath: args.archivePath,
+          arguments: target.arguments,
+        );
       case DartCliBuildTarget target:
-        final outputDirectory =
-            target.outputDirectory ?? 'build_deploy'.input();
-        buildScript =
-            pulumi.Output.tuple4(
-              args.entryPoint.toOutput(),
-              outputDirectory.toOutput(),
-              archivePath.toOutput(),
-              dartExecutable.toOutput(),
-            ).apply<String>((values) {
-              return renderDartCliBuildScript(
-                entryPoint: values.$1,
-                outputDirectory: values.$2,
-                archivePath: values.$3,
-                dartExecutable: values.$4,
-              );
-            });
+        buildScript = renderDartCliBuildScript(
+          entryPoint: args.entryPoint,
+          outputDirectory: target.outputDirectory,
+          archivePath: args.archivePath,
+          dartExecutable: dartExecutable,
+        );
+    }
+
+    if (shouldRunBuildRunner(
+      args.buildRunner,
+      workingDirectory: args.workingDirectory,
+    )) {
+      buildScript = prependBuildRunner(
+        buildScript,
+        dartExecutable: dartExecutable,
+      );
     }
 
     final resolvedTriggers =
-        args.triggers ??
-        args.entryPoint.toOutput().apply<List<dynamic>>((value) => [value]);
-    final resolvedArchivePaths = archivePath.toOutput().apply<List<String>>(
-      (value) => [value],
-    );
+        args.triggers ?? [dartBuildSourceDigest(args.workingDirectory)].input();
 
     final build = commandlocal.Command(
       '$name-local-build',
       args: commandlocal.CommandArgs(
-        dir: workingDirectory,
-        create: buildScript,
-        update: buildScript,
-        archivePaths: resolvedArchivePaths,
+        dir: args.workingDirectory.input(),
+        create: buildScript.input(),
+        update: buildScript.input(),
+        archivePaths: [args.archivePath].input(),
         triggers: resolvedTriggers,
         environment: args.environment,
       ),

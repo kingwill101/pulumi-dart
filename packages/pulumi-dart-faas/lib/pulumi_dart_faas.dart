@@ -27,7 +27,7 @@
 ///     final build = faas.DartBuildArchive(
 ///       'build',
 ///       args: faas.DartBuildArchiveArgs(
-///         entryPoint: 'backend/bin/server.dart'.input(),
+///         entryPoint: 'backend/bin/server.dart',
 ///       ),
 ///     );
 ///

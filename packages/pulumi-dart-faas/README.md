@@ -24,9 +24,12 @@ application-facing model.
   - provider-neutral source selection
   - exactly one mode must be set
 - `DartBuildArchive`:
-  - compiles a Linux Dart executable locally
+  - supports `dart compile exe`, AOT/JIT snapshots, kernel, JavaScript, Wasm,
+    and `dart build cli`
   - packages the build output as a Pulumi archive
   - reuses the active Dart/FVM executable unless `dartExecutable` is provided
+  - automatically runs `build_runner` when it appears in the resolved package
+    configuration; use `buildRunner: .always` or `.never` to override detection
   - designed to feed archive-capable provider adapters
 - `AwsLambdaDartFunction`:
   - AWS implementation of the shared source contract
@@ -44,7 +47,7 @@ class AppStack extends Stack {
     final build = faas.DartBuildArchive(
       'build',
       args: faas.DartBuildArchiveArgs(
-        entryPoint: 'backend/bin/server.dart'.input(),
+        entryPoint: 'backend/bin/server.dart',
       ),
     );
 
@@ -89,6 +92,13 @@ native bucket-and-key deployment API requires an AWS S3 object.
 - Shared build helper:
   - `DartBuildArchive`
   - `DartBuildArchiveArgs`
+  - `DartBuildTarget.executable`
+  - `DartBuildTarget.aotSnapshot`
+  - `DartBuildTarget.jitSnapshot`
+  - `DartBuildTarget.kernel`
+  - `DartBuildTarget.javascript`
+  - `DartBuildTarget.webAssembly`
+  - `DartBuildTarget.cli`
 - AWS adapter:
   - `AwsLambdaDartFunction`
   - `DartFunctionArgs`
