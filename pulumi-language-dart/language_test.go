@@ -229,6 +229,14 @@ var passingConformanceTests = []string{
 	"l1-output-string",
 }
 
+// unsupportedConformanceTests records upstream cases that Dart cannot support
+// without changing the public type represented by the provider schema. Keep
+// this list explicit so a newly-added upstream test cannot silently become a
+// generic skip.
+var unsupportedConformanceTests = map[string]string{
+	"l2-raw-string-bytes": "Dart String values cannot represent arbitrary non-UTF-8 bytes losslessly; the runtime must not advertise accepts_byte_string",
+}
+
 func runConformanceServer(t *testing.T) (string, testingrpc.LanguageTestClient) {
 	t.Helper()
 
@@ -293,6 +301,23 @@ func TestLanguageConformance(t *testing.T) {
 		_, registered := available[name]
 		require.True(t, registered, "passing conformance test %q is not registered upstream", name)
 	}
+	for name := range unsupportedConformanceTests {
+		_, registered := available[name]
+		require.True(t, registered, "unsupported conformance test %q is not registered upstream", name)
+	}
+	classified := make(map[string]struct{}, len(passingConformanceTests)+len(unsupportedConformanceTests))
+	for _, name := range passingConformanceTests {
+		classified[name] = struct{}{}
+	}
+	for name := range unsupportedConformanceTests {
+		_, alreadyClassified := classified[name]
+		require.False(t, alreadyClassified, "conformance test %q is both passing and unsupported", name)
+		classified[name] = struct{}{}
+	}
+	for _, name := range tests.Tests {
+		_, isClassified := classified[name]
+		require.True(t, isClassified, "upstream conformance test %q must be classified as passing or unsupported", name)
+	}
 
 	dart, err := exec.LookPath("dart")
 	require.NoError(t, err, "Dart must be available on PATH")
@@ -355,7 +380,9 @@ func TestLanguageConformance(t *testing.T) {
 			_, mustPass := passing[name]
 			_, requested := experimental[name]
 			if !mustPass && !requested {
-				t.Skip("Dart conformance support is not implemented yet")
+				reason, unsupported := unsupportedConformanceTests[name]
+				require.True(t, unsupported, "conformance test %q is not classified", name)
+				t.Skip(reason)
 			}
 			caseCtx, cancel := context.WithTimeout(ctx, conformanceCaseTimeout())
 			defer cancel()
