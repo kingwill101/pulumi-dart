@@ -43,7 +43,7 @@ class GcpDartFunctionComputeArgs {
 /// Inputs for [GcpCloudRunDartFunction].
 class GcpDartFunctionArgs {
   /// Shared source configuration for the deployed service.
-  final DartFunctionSourceArgs source;
+  final DartFunctionSource source;
 
   /// Optional explicit Cloud Run service name.
   final pulumi.Input<String>? name;
@@ -92,21 +92,17 @@ class GcpDartFunctionArgs {
 
 /// Validates GCP Cloud Run arguments against the supported source modes.
 void validateGcpDartFunctionArgs(GcpDartFunctionArgs args) {
-  validateDartFunctionSourceArgs(
-    args.source,
-    allowedModes: const ['image', 'binaryUpload'],
-  );
-  if (args.source.binaryUpload?.baseImageUri == null &&
-      args.source.binaryUpload != null) {
+  if (args.source is AwsLambdaS3Source) {
+    throw ArgumentError('AWS S3 sources are only supported by AWS Lambda.');
+  }
+  if (args.source case DartFunctionArchiveSource(baseImageUri: null)) {
     throw ArgumentError(
-      'source.binaryUpload.baseImageUri is required for the GCP adapter.',
+      'source.baseImageUri is required for archive deployment to Cloud Run.',
     );
   }
 }
 
-_containerEnvsFromMap(
-  pulumi.Input<Map<String, String>>? environment,
-) {
+_containerEnvsFromMap(pulumi.Input<Map<String, String>>? environment) {
   if (environment == null) {
     return null;
   }
@@ -126,8 +122,8 @@ _containerEnvsFromMap(
 /// GCP Cloud Run implementation of the Dart FaaS model.
 ///
 /// Supported source modes:
-/// - `source.image`: build/push container image to Artifact Registry
-/// - `source.binaryUpload`: upload source archive to Cloud Storage and deploy
+/// - [DartFunctionImageSource]: build/push an image to Artifact Registry
+/// - [DartFunctionArchiveSource]: stage an archive in Cloud Storage and deploy
 ///   with Cloud Run source-based container settings
 class GcpCloudRunDartFunction extends pulumi.ComponentResource {
   /// Public service URL returned by Cloud Run.
@@ -195,9 +191,7 @@ class GcpCloudRunDartFunction extends pulumi.ComponentResource {
     pulumi.Input<List<String>>? containerCommands;
     dynamic containerSourceCode;
 
-    if (args.source.image != null) {
-      final sourceImage = args.source.image!;
-
+    if (args.source case DartFunctionImageSource sourceImage) {
       final repository = gcp.artifactregistry.Repository(
         '$name-repository',
         args: gcp.artifactregistry.RepositoryArgs(
@@ -249,7 +243,7 @@ class GcpCloudRunDartFunction extends pulumi.ComponentResource {
       imageDigest = image.digest.apply<String?>((value) => value);
       registryUri = repository.registryUri.apply<String?>((value) => value);
     } else {
-      final binaryUpload = args.source.binaryUpload!;
+      final binaryUpload = args.source as DartFunctionArchiveSource;
       final sourceObjectName =
           binaryUpload.objectName ?? '$normalizedName-source.zip'.input();
       final entryCommand = binaryUpload.command ?? 'bin/server'.input();
@@ -271,7 +265,7 @@ class GcpCloudRunDartFunction extends pulumi.ComponentResource {
         args: gcp.storage.BucketObjectArgs(
           bucket: sourceBucket.name,
           name: sourceObjectName,
-          source: binaryUpload.sourceArchive,
+          source: binaryUpload.archive,
         ),
         options: childCustomOptions,
       );

@@ -23,12 +23,10 @@ class BinaryUploadStack extends pulumi.Stack {
     final service = faas.GcpCloudRunDartFunction(
       'hello-binary',
       args: faas.GcpDartFunctionArgs(
-        source: faas.DartFunctionSourceArgs(
-          binaryUpload: faas.DartFunctionSourceBinaryUploadArgs(
-            sourceArchive: buildBundle.archive,
-            baseImageUri: baseImageUri.input(),
-            command: 'bin/server'.input(),
-          ),
+        source: faas.DartFunctionSource.archive(
+          archive: buildBundle.archive,
+          baseImageUri: baseImageUri.input(),
+          command: 'bin/server'.input(),
         ),
       ),
     );

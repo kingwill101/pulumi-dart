@@ -5,9 +5,7 @@ import 'package:test/test.dart';
 void main() {
   test('validate accepts image source', () {
     final args = GcpDartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        image: DartFunctionSourceImageArgs(context: './app'.input()),
-      ),
+      source: DartFunctionSource.image(context: './app'.input()),
     );
 
     expect(() => validateGcpDartFunctionArgs(args), returnsNormally);
@@ -15,34 +13,33 @@ void main() {
 
   test('validate accepts binary upload source', () {
     final args = GcpDartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        binaryUpload: DartFunctionSourceBinaryUploadArgs(
-          sourceArchive: pulumi.FileArchive('./build_deploy').input(),
-          baseImageUri: 'osonly24'.input(),
-        ),
+      source: DartFunctionSource.archive(
+        archive: pulumi.FileArchive('./build_deploy').input(),
+        baseImageUri: 'osonly24'.input(),
       ),
     );
 
     expect(() => validateGcpDartFunctionArgs(args), returnsNormally);
   });
 
-  test('validate rejects missing source', () {
-    final args = GcpDartFunctionArgs(source: DartFunctionSourceArgs());
-
-    expect(
-      () => validateGcpDartFunctionArgs(args),
-      throwsA(isA<ArgumentError>()),
+  test('validate accepts an archive from S3-compatible object storage', () {
+    final args = GcpDartFunctionArgs(
+      source: DartFunctionSource.archive(
+        archive: pulumi.RemoteArchive(
+          'https://example.r2.cloudflarestorage.com/function.tar.gz?signature=x',
+        ).input(),
+        baseImageUri: 'osonly24'.input(),
+      ),
     );
+
+    expect(() => validateGcpDartFunctionArgs(args), returnsNormally);
   });
 
-  test('validate rejects mixed source modes', () {
+  test('validate rejects AWS S3 source', () {
     final args = GcpDartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        image: DartFunctionSourceImageArgs(context: './app'.input()),
-        binaryUpload: DartFunctionSourceBinaryUploadArgs(
-          sourceArchive: pulumi.FileArchive('./build_deploy').input(),
-          baseImageUri: 'osonly24'.input(),
-        ),
+      source: DartFunctionSource.awsS3(
+        bucket: 'artifacts-bucket'.input(),
+        key: 'fn/function.zip'.input(),
       ),
     );
 
@@ -54,10 +51,8 @@ void main() {
 
   test('validate rejects binary upload without base image', () {
     final args = GcpDartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        binaryUpload: DartFunctionSourceBinaryUploadArgs(
-          sourceArchive: pulumi.FileArchive('./build_deploy').input(),
-        ),
+      source: DartFunctionSource.archive(
+        archive: pulumi.FileArchive('./build_deploy').input(),
       ),
     );
 

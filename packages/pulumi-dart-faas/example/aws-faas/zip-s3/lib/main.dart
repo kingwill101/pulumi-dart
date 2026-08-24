@@ -15,13 +15,11 @@ class ZipS3Stack extends pulumi.Stack {
     final fn = faas.AwsLambdaDartFunction(
       'zipfn',
       args: faas.DartFunctionArgs(
-        source: faas.DartFunctionSourceArgs(
-          zipS3: faas.DartFunctionSourceZipS3Args(
-            bucket: artifactBucket.input(),
-            key: artifactKey.input(),
-            objectVersion: artifactObjectVersion?.input(),
-            sourceCodeHash: sourceCodeHash?.input(),
-          ),
+        source: faas.DartFunctionSource.awsS3(
+          bucket: artifactBucket.input(),
+          key: artifactKey.input(),
+          objectVersion: artifactObjectVersion?.input(),
+          sourceCodeHash: sourceCodeHash?.input(),
         ),
       ),
     );

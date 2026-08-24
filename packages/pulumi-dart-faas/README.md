@@ -20,7 +20,7 @@ application-facing model.
 
 ## Core concepts
 
-- `DartFunctionSourceArgs`:
+- `DartFunctionSource`:
   - provider-neutral source selection
   - exactly one mode must be set
 - `DartBuildArchive`:
@@ -50,11 +50,7 @@ class AppStack extends Stack {
     final app = faas.AwsLambdaDartFunction(
       'hello',
       args: faas.DartFunctionArgs(
-        source: faas.DartFunctionSourceArgs(
-          binaryUpload: faas.DartFunctionSourceBinaryUploadArgs(
-            sourceArchive: build.archive,
-          ),
-        ),
+        source: faas.DartFunctionSource.archive(archive: build.archive),
       ),
     );
 
@@ -70,13 +66,24 @@ class AppStack extends Stack {
 - GCP examples:
   - `packages/pulumi-dart-faas/example/gcp-faas/`
 
+Archives may come from the local filesystem or any object store that can issue
+a signed HTTPS URL, including Cloudflare R2 and other S3-compatible services:
+
+```dart
+final source = faas.DartFunctionSource.archive(
+  archive: pulumi.RemoteArchive(signedObjectUrl).input(),
+);
+```
+
+`DartFunctionSource.awsS3` is a separate AWS-only fast path because Lambda's
+native bucket-and-key deployment API requires an AWS S3 object.
+
 ## API surface
 
 - Shared source and HTTP settings:
-  - `DartFunctionSourceImageArgs`
-  - `DartFunctionSourceZipS3Args`
-  - `DartFunctionSourceBinaryUploadArgs`
-  - `DartFunctionSourceArgs`
+  - `DartFunctionSource.image`
+  - `DartFunctionSource.archive`
+  - `DartFunctionSource.awsS3` (AWS S3 only)
   - `DartFunctionHttpArgs`
 - Shared build helper:
   - `DartBuildArchive`

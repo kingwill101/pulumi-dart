@@ -6,7 +6,7 @@
 /// outputs and controls needed for real deployments.
 ///
 /// ## Main building blocks
-/// - [DartFunctionSourceArgs] selects one deployment source mode.
+/// - [DartFunctionSource] selects one deployment source mode.
 /// - [DartBuildArchive] compiles and archives a Dart entrypoint locally.
 /// - [AwsLambdaDartFunction] deploys the shared model to AWS Lambda.
 /// - [GcpCloudRunDartFunction] deploys the shared model to GCP Cloud Run.
@@ -34,11 +34,7 @@
 ///     final fn = faas.AwsLambdaDartFunction(
 ///       'hello',
 ///       args: faas.DartFunctionArgs(
-///         source: faas.DartFunctionSourceArgs(
-///           binaryUpload: faas.DartFunctionSourceBinaryUploadArgs(
-///             sourceArchive: build.archive,
-///           ),
-///         ),
+///         source: faas.DartFunctionSource.archive(archive: build.archive),
 ///       ),
 ///     );
 ///
