@@ -8,7 +8,7 @@ class Local extends pulumi.ComponentResource {
 
   Local(String name, {pulumi.ComponentResourceOptions? options})
       : super('components:index:Local', name, const {}, options) {
-    final mlc = pulumi_component_index.ComponentForeignChild(name + '-mlc', args: pulumi_component_index.ComponentForeignChildArgs(value: (true).input(), ), options: pulumi.ComponentResourceOptions(parent: this, ));
+    final mlc = pulumi_component_index.ComponentForeignChild(name + '-' + ('mlc'), args: pulumi_component_index.ComponentForeignChildArgs(value: pulumi.Input.asInput(true), ), options: pulumi.ComponentResourceOptions(parent: this, ));
     result = pulumi.output(mlc.value);
     registerOutputs({'result': result, });
   }

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_providers_identity_args_doc}
 class IdentityArgs {
-  final pulumi.Input<pulumi.CustomResource> self;
+  final pulumi.Input<pulumi.ProviderResource> self;
 
   /// Creates a new [IdentityArgs].
   /// [self] Required.
@@ -23,7 +23,7 @@ class IdentityArgs {
 
   factory IdentityArgs.fromMap(Map<String, dynamic> map) {
     return IdentityArgs(
-      self: pulumi.Input.fromValue(map['__self__'] as pulumi.CustomResource),
+      self: pulumi.Input.fromValue(map['__self__'] as pulumi.ProviderResource),
     );
   }
 }

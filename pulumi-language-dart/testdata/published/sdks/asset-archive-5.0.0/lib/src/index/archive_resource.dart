@@ -20,4 +20,16 @@ class ArchiveResource extends pulumi.CustomResource {
         ) {
     value = registerOutput<dynamic>('value');
   }
+
+  /// Creates a typed reference to an existing [ArchiveResource] resource.
+  ArchiveResource.reference(String urn)
+    : super(
+        'asset-archive:index:ArchiveResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    value = registerOutput<dynamic>('value');
+  }
 }

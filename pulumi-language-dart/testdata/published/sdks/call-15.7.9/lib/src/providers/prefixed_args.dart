@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_providers_prefixed_args_doc}
 class PrefixedArgs {
-  final pulumi.Input<pulumi.CustomResource> self;
+  final pulumi.Input<pulumi.ProviderResource> self;
   final pulumi.Input<String> prefix;
 
   /// Creates a new [PrefixedArgs].
@@ -27,7 +27,7 @@ class PrefixedArgs {
 
   factory PrefixedArgs.fromMap(Map<String, dynamic> map) {
     return PrefixedArgs(
-      self: pulumi.Input.fromValue(map['__self__'] as pulumi.CustomResource),
+      self: pulumi.Input.fromValue(map['__self__'] as pulumi.ProviderResource),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
