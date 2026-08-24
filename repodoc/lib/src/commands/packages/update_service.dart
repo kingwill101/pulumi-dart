@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:pub_semver/pub_semver.dart';
 
+import '../../infrastructure/dart_cli.dart';
 import '../../infrastructure/task_tooling.dart';
 import '../schema/check_service.dart' as schemas;
 import 'generate_service.dart' as generator;
@@ -39,6 +40,7 @@ final class PackageUpdater {
     : repositoryRoot = repositoryRoot ?? findRepoRoot();
 
   final Directory repositoryRoot;
+  DartCli get _dart => DartCli.resolve();
 
   Future<PackageUpdatePlan> plan(String provider) async {
     final result = await schemas.checkSchemas(provider: provider);
@@ -129,8 +131,7 @@ final class PackageUpdater {
       ]);
       if (exitCode != 0) throw StateError('Generation failed ($exitCode).');
 
-      final analyze = await Process.start(
-        'dart',
+      final analyze = await _dart.start(
         ['analyze', plan.packagePath],
         workingDirectory: repositoryRoot.path,
         mode: ProcessStartMode.inheritStdio,

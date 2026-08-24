@@ -38,6 +38,19 @@
       "package_pubspec_path": "packages/sdks/azuread/pubspec.yaml"
     },
     {
+      "name": "cloudflare",
+      "schema_url": "https://www.pulumi.com/registry/packages/cloudflare/schema.json",
+      "local_schema_path": "packages/sdks/schemas/cloudflare.schema.json",
+      "package_pubspec_path": "packages/sdks/cloudflare/pubspec.yaml",
+      "false_secrets": [
+        "/lib/src/index/authenticated_origin_pulls_certificate.dart",
+        "/lib/src/index/authenticated_origin_pulls_hostname_certificate.dart",
+        "/lib/src/index/custom_hostname.dart",
+        "/lib/src/index/custom_ssl.dart",
+        "/lib/src/index/mtls_certificate.dart"
+      ]
+    },
+    {
       "name": "command",
       "schema_url": "https://www.pulumi.com/registry/packages/command/schema.json",
       "local_schema_path": "packages/sdks/schemas/command.schema.json",

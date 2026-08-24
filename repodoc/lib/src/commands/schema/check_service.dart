@@ -22,6 +22,13 @@ final class _GitHubRelease {
   final String? schemaUrl;
 }
 
+final class SchemaRelease {
+  const SchemaRelease({required this.version, this.schemaUrl});
+
+  final String version;
+  final String? schemaUrl;
+}
+
 typedef SchemaReportLoader = Future<Map<String, dynamic>> Function();
 typedef SchemaReportRunner =
     Future<Map<String, dynamic>> Function(
@@ -74,6 +81,12 @@ Future<SchemaCheckResult> checkSchemas({
 }
 
 Future<List<int>> downloadSchema(String url) => _fetchBytes(url);
+
+Future<SchemaRelease?> resolveLatestSchemaRelease(String repository) async {
+  final release = await _latestGitHubRelease(repository);
+  if (release == null) return null;
+  return SchemaRelease(version: release.version, schemaUrl: release.schemaUrl);
+}
 
 Directory _findRepoRoot(String start) {
   var current = Directory(start).absolute;

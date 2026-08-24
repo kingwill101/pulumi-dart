@@ -1,0 +1,22 @@
+name: pulumi_cloudflare
+description: A Pulumi package for creating and managing Cloudflare cloud resources.
+version: 6.19.0
+license: Apache-2.0
+homepage: https://www.pulumi.com
+repository: https://github.com/pulumi/pulumi-cloudflare
+topics:
+    - pulumi
+    - cloudflare
+false_secrets:
+    - /lib/src/index/authenticated_origin_pulls_certificate.dart
+    - /lib/src/index/authenticated_origin_pulls_hostname_certificate.dart
+    - /lib/src/index/custom_hostname.dart
+    - /lib/src/index/custom_ssl.dart
+    - /lib/src/index/mtls_certificate.dart
+environment:
+    sdk: '>=3.11.0 <4.0.0'
+resolution: workspace
+dependencies:
+    pulumi: ^3.0.0
+dev_dependencies:
+    lints: ^6.1.0

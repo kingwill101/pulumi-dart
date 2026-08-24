@@ -1,0 +1,321 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'zero_trust_dlp_predefined_profile_args.dart';
+import 'zero_trust_dlp_predefined_profile_entry.dart';
+import 'zero_trust_dlp_predefined_profile_state.dart';
+
+/// Accepted Permissions
+///
+/// - `Zero Trust Read`
+/// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustDlpPredefinedProfile = new cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", {
+///     profileId: "e91a2360-da51-4fdf-9711-bcdecd462614",
+///     accountId: "account_id",
+///     ocrEnabled: true,
+///     enabledEntries: [
+///         "56a8c060-01bb-4f89-ba1e-3ad42770a342",
+///         "7f575e6d-039a-465e-85cf-175bda88d4f2",
+///         "03ebabfd-ce7e-45ed-8061-65e28f0a6e53",
+///         "2d9c356d-b5a3-482a-b01e-0363e0de7458",
+///         "2f3657af-c39b-4899-9a98-22f7d187dd28",
+///         "753a16f9-f533-4208-a5b8-6319b201e9fb",
+///         "ebcea2c4-335a-457c-853b-f7ae7cc74e07",
+///         "3f5c4c83-f34c-4d17-81c7-3028385737b3",
+///         "d1a84fde-c375-4d3c-8a27-8c4eaa33cf60",
+///         "6dbe5604-d3a3-4c3e-905c-57985704bea7",
+///         "55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1",
+///         "5b1d5035-8c53-4bc9-a151-404eb32b34b4",
+///         "acf28d88-2daf-4bc4-aa36-5ac1fac0540a",
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_dlp_predefined_profile = cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile",
+///     profile_id="e91a2360-da51-4fdf-9711-bcdecd462614",
+///     account_id="account_id",
+///     ocr_enabled=True,
+///     enabled_entries=[
+///         "56a8c060-01bb-4f89-ba1e-3ad42770a342",
+///         "7f575e6d-039a-465e-85cf-175bda88d4f2",
+///         "03ebabfd-ce7e-45ed-8061-65e28f0a6e53",
+///         "2d9c356d-b5a3-482a-b01e-0363e0de7458",
+///         "2f3657af-c39b-4899-9a98-22f7d187dd28",
+///         "753a16f9-f533-4208-a5b8-6319b201e9fb",
+///         "ebcea2c4-335a-457c-853b-f7ae7cc74e07",
+///         "3f5c4c83-f34c-4d17-81c7-3028385737b3",
+///         "d1a84fde-c375-4d3c-8a27-8c4eaa33cf60",
+///         "6dbe5604-d3a3-4c3e-905c-57985704bea7",
+///         "55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1",
+///         "5b1d5035-8c53-4bc9-a151-404eb32b34b4",
+///         "acf28d88-2daf-4bc4-aa36-5ac1fac0540a",
+///     ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustDlpPredefinedProfile = new Cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", new()
+///     {
+///         ProfileId = "e91a2360-da51-4fdf-9711-bcdecd462614",
+///         AccountId = "account_id",
+///         OcrEnabled = true,
+///         EnabledEntries = new[]
+///         {
+///             "56a8c060-01bb-4f89-ba1e-3ad42770a342",
+///             "7f575e6d-039a-465e-85cf-175bda88d4f2",
+///             "03ebabfd-ce7e-45ed-8061-65e28f0a6e53",
+///             "2d9c356d-b5a3-482a-b01e-0363e0de7458",
+///             "2f3657af-c39b-4899-9a98-22f7d187dd28",
+///             "753a16f9-f533-4208-a5b8-6319b201e9fb",
+///             "ebcea2c4-335a-457c-853b-f7ae7cc74e07",
+///             "3f5c4c83-f34c-4d17-81c7-3028385737b3",
+///             "d1a84fde-c375-4d3c-8a27-8c4eaa33cf60",
+///             "6dbe5604-d3a3-4c3e-905c-57985704bea7",
+///             "55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1",
+///             "5b1d5035-8c53-4bc9-a151-404eb32b34b4",
+///             "acf28d88-2daf-4bc4-aa36-5ac1fac0540a",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.NewZeroTrustDlpPredefinedProfile(ctx, "example_zero_trust_dlp_predefined_profile", &cloudflare.ZeroTrustDlpPredefinedProfileArgs{
+/// 			ProfileId:  pulumi.String("e91a2360-da51-4fdf-9711-bcdecd462614"),
+/// 			AccountId:  pulumi.String("account_id"),
+/// 			OcrEnabled: pulumi.Bool(true),
+/// 			EnabledEntries: pulumi.StringArray{
+/// 				pulumi.String("56a8c060-01bb-4f89-ba1e-3ad42770a342"),
+/// 				pulumi.String("7f575e6d-039a-465e-85cf-175bda88d4f2"),
+/// 				pulumi.String("03ebabfd-ce7e-45ed-8061-65e28f0a6e53"),
+/// 				pulumi.String("2d9c356d-b5a3-482a-b01e-0363e0de7458"),
+/// 				pulumi.String("2f3657af-c39b-4899-9a98-22f7d187dd28"),
+/// 				pulumi.String("753a16f9-f533-4208-a5b8-6319b201e9fb"),
+/// 				pulumi.String("ebcea2c4-335a-457c-853b-f7ae7cc74e07"),
+/// 				pulumi.String("3f5c4c83-f34c-4d17-81c7-3028385737b3"),
+/// 				pulumi.String("d1a84fde-c375-4d3c-8a27-8c4eaa33cf60"),
+/// 				pulumi.String("6dbe5604-d3a3-4c3e-905c-57985704bea7"),
+/// 				pulumi.String("55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1"),
+/// 				pulumi.String("5b1d5035-8c53-4bc9-a151-404eb32b34b4"),
+/// 				pulumi.String("acf28d88-2daf-4bc4-aa36-5ac1fac0540a"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// resource "cloudflare_zerotrustdlppredefinedprofile" "example_zero_trust_dlp_predefined_profile" {
+///   profile_id  = "e91a2360-da51-4fdf-9711-bcdecd462614"
+///   account_id  = "account_id"
+///   ocr_enabled = true
+///   // Entries in this predefined profile we want to enable. Any entries not included will be disabled
+///   enabled_entries = ["56a8c060-01bb-4f89-ba1e-3ad42770a342", "7f575e6d-039a-465e-85cf-175bda88d4f2", "03ebabfd-ce7e-45ed-8061-65e28f0a6e53", "2d9c356d-b5a3-482a-b01e-0363e0de7458", "2f3657af-c39b-4899-9a98-22f7d187dd28", "753a16f9-f533-4208-a5b8-6319b201e9fb", "ebcea2c4-335a-457c-853b-f7ae7cc74e07", "3f5c4c83-f34c-4d17-81c7-3028385737b3", "d1a84fde-c375-4d3c-8a27-8c4eaa33cf60", "6dbe5604-d3a3-4c3e-905c-57985704bea7", "55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1", "5b1d5035-8c53-4bc9-a151-404eb32b34b4", "acf28d88-2daf-4bc4-aa36-5ac1fac0540a"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfile;
+/// import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfileArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var exampleZeroTrustDlpPredefinedProfile = new ZeroTrustDlpPredefinedProfile("exampleZeroTrustDlpPredefinedProfile", ZeroTrustDlpPredefinedProfileArgs.builder()
+///             .profileId("e91a2360-da51-4fdf-9711-bcdecd462614")
+///             .accountId("account_id")
+///             .ocrEnabled(true)
+///             .enabledEntries(
+///                 "56a8c060-01bb-4f89-ba1e-3ad42770a342",
+///                 "7f575e6d-039a-465e-85cf-175bda88d4f2",
+///                 "03ebabfd-ce7e-45ed-8061-65e28f0a6e53",
+///                 "2d9c356d-b5a3-482a-b01e-0363e0de7458",
+///                 "2f3657af-c39b-4899-9a98-22f7d187dd28",
+///                 "753a16f9-f533-4208-a5b8-6319b201e9fb",
+///                 "ebcea2c4-335a-457c-853b-f7ae7cc74e07",
+///                 "3f5c4c83-f34c-4d17-81c7-3028385737b3",
+///                 "d1a84fde-c375-4d3c-8a27-8c4eaa33cf60",
+///                 "6dbe5604-d3a3-4c3e-905c-57985704bea7",
+///                 "55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1",
+///                 "5b1d5035-8c53-4bc9-a151-404eb32b34b4",
+///                 "acf28d88-2daf-4bc4-aa36-5ac1fac0540a")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   exampleZeroTrustDlpPredefinedProfile:
+///     type: cloudflare:ZeroTrustDlpPredefinedProfile
+///     name: example_zero_trust_dlp_predefined_profile
+///     properties:
+///       profileId: e91a2360-da51-4fdf-9711-bcdecd462614
+///       accountId: account_id
+///       ocrEnabled: true # Entries in this predefined profile we want to enable. Any entries not included will be disabled
+///       enabledEntries:
+///         - 56a8c060-01bb-4f89-ba1e-3ad42770a342
+///         - 7f575e6d-039a-465e-85cf-175bda88d4f2
+///         - 03ebabfd-ce7e-45ed-8061-65e28f0a6e53
+///         - 2d9c356d-b5a3-482a-b01e-0363e0de7458
+///         - 2f3657af-c39b-4899-9a98-22f7d187dd28
+///         - 753a16f9-f533-4208-a5b8-6319b201e9fb
+///         - ebcea2c4-335a-457c-853b-f7ae7cc74e07
+///         - 3f5c4c83-f34c-4d17-81c7-3028385737b3
+///         - d1a84fde-c375-4d3c-8a27-8c4eaa33cf60
+///         - 6dbe5604-d3a3-4c3e-905c-57985704bea7
+///         - 55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1
+///         - 5b1d5035-8c53-4bc9-a151-404eb32b34b4
+///         - acf28d88-2daf-4bc4-aa36-5ac1fac0540a
+/// ```
+///
+///
+/// ## Import
+///
+/// ```sh
+/// $ pulumi import cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile example '<account_id>/<profile_id>'
+/// ```
+class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
+  late final pulumi.Output<String> accountId;
+  late final pulumi.Output<bool> aiContextEnabled;
+  late final pulumi.Output<int> allowedMatchCount;
+  late final pulumi.Output<String> confidenceThreshold;
+  late final pulumi.Output<List<String>?> enabledEntries;
+  late final pulumi.Output<List<ZeroTrustDlpPredefinedProfileEntry>> entries;
+  /// The name of the predefined profile.
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<bool> ocrEnabled;
+  /// Whether this profile can be accessed by anyone.
+  late final pulumi.Output<bool> openAccess;
+  late final pulumi.Output<String> profileId;
+
+  /// Creates a new [ZeroTrustDlpPredefinedProfile].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [ZeroTrustDlpPredefinedProfile]. {@macro pulumi_index_zero_trust_dlp_predefined_profile_zero_trust_dlp_predefined_profile_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  ZeroTrustDlpPredefinedProfile(
+    String name, {
+    ZeroTrustDlpPredefinedProfileArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+        ) {
+    accountId = registerOutput<String>('accountId');
+    aiContextEnabled = registerOutput<bool>('aiContextEnabled');
+    allowedMatchCount = registerOutput<int>('allowedMatchCount');
+    confidenceThreshold = registerOutput<String>('confidenceThreshold');
+    enabledEntries = registerOutput<List<String>?>('enabledEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    entries = registerOutput<List<ZeroTrustDlpPredefinedProfileEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDlpPredefinedProfileEntry>(guardedValue, (value) => ZeroTrustDlpPredefinedProfileEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    ocrEnabled = registerOutput<bool>('ocrEnabled');
+    openAccess = registerOutput<bool>('openAccess');
+    profileId = registerOutput<String>('profileId');
+  }
+
+  /// Gets an existing [ZeroTrustDlpPredefinedProfile] resource's state with the given [name] and [id].
+  static ZeroTrustDlpPredefinedProfile get(
+    String name,
+    pulumi.Input<String> id, {
+    ZeroTrustDlpPredefinedProfileState? state,
+    pulumi.CustomResourceOptions? options,
+  }) {
+    return ZeroTrustDlpPredefinedProfile._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
+    );
+  }
+
+  ZeroTrustDlpPredefinedProfile._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    accountId = registerOutput<String>('accountId');
+    aiContextEnabled = registerOutput<bool>('aiContextEnabled');
+    allowedMatchCount = registerOutput<int>('allowedMatchCount');
+    confidenceThreshold = registerOutput<String>('confidenceThreshold');
+    enabledEntries = registerOutput<List<String>?>('enabledEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    entries = registerOutput<List<ZeroTrustDlpPredefinedProfileEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDlpPredefinedProfileEntry>(guardedValue, (value) => ZeroTrustDlpPredefinedProfileEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    ocrEnabled = registerOutput<bool>('ocrEnabled');
+    openAccess = registerOutput<bool>('openAccess');
+    profileId = registerOutput<String>('profileId');
+  }
+
+  /// Creates a typed reference to an existing [ZeroTrustDlpPredefinedProfile] resource.
+  ZeroTrustDlpPredefinedProfile.reference(String urn)
+    : super(
+        'cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    aiContextEnabled = registerOutput<bool>('aiContextEnabled');
+    allowedMatchCount = registerOutput<int>('allowedMatchCount');
+    confidenceThreshold = registerOutput<String>('confidenceThreshold');
+    enabledEntries = registerOutput<List<String>?>('enabledEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    entries = registerOutput<List<ZeroTrustDlpPredefinedProfileEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDlpPredefinedProfileEntry>(guardedValue, (value) => ZeroTrustDlpPredefinedProfileEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    ocrEnabled = registerOutput<bool>('ocrEnabled');
+    openAccess = registerOutput<bool>('openAccess');
+    profileId = registerOutput<String>('profileId');
+  }
+}

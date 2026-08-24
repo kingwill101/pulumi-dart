@@ -1,5 +1,6 @@
 import 'package:artisanal/args.dart';
 
+import 'commands/packages/add_command.dart';
 import 'commands/packages/generate_command.dart';
 import 'commands/packages/remove_command.dart';
 import 'commands/packages/update_command.dart';
@@ -19,6 +20,7 @@ CommandRunner<int> createRepodocRunner() {
       'repodoc',
       'Repository maintenance, generation, and diagnostics for Pulumi Dart.',
     )
+    ..addCommand(PackagesAddCommand())
     ..addCommand(SchemaCheckCommand())
     ..addCommand(PackagesGenerateCommand())
     ..addCommand(PackagesRemoveCommand())

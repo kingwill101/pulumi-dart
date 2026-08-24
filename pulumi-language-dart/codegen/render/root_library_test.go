@@ -27,7 +27,7 @@ func TestRootLibrary(t *testing.T) {
 	}))
 
 	require.Contains(t, actual, "import 'package:pulumi_example/index.dart' as module_index;")
-	require.Contains(t, actual, "final index = const _IndexModuleNamespace();")
+	require.Contains(t, actual, "final index = _IndexModuleNamespace();")
 	require.Contains(t, actual, "final Widget = module_index.Widget.new;")
 	require.Contains(t, actual, "final getWidget = module_index.getWidget;")
 }
