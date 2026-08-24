@@ -71,31 +71,6 @@ jobs:
           go version
           dart --version
 
-      # Snapshot artifacts are useful for testing a branch even when its test
-      # suite is still red. Build them before validation; tagged releases still
-      # publish only after every validation step succeeds.
-      - name: Build release snapshot
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
-        uses: goreleaser/goreleaser-action@v6
-        with:
-          distribution: goreleaser
-          version: latest
-          args: release --snapshot --clean
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload snapshot archives
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
-        uses: actions/upload-artifact@v7
-        with:
-          name: pulumi-language-dart-snapshot
-          path: |
-            dist/*.tar.gz
-            dist/*.zip
-            dist/*checksums.txt
-          if-no-files-found: error
-          retention-days: 7
-
       - name: Verify language host tests
         run: |
           cd pulumi-language-dart
@@ -108,6 +83,16 @@ jobs:
         run: |
           cd packages/pulumi-dart
           dart test
+
+      - name: Build release snapshot
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --snapshot --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish release assets
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'release')
