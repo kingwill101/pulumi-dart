@@ -7,6 +7,8 @@ repository: https://github.com/pulumi/pulumi-gcp
 topics:
     - pulumi
     - gcp
+false_secrets:
+    - /lib/src/firebase/app_check_recaptcha_enterprise_config.dart
 environment:
     sdk: '>=3.11.0 <4.0.0'
 resolution: workspace

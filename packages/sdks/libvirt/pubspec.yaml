@@ -1,4 +1,5 @@
 name: pulumi_libvirt
+publish_to: none
 description: A Pulumi provider dynamically bridged from libvirt.
 version: 0.9.8
 repository: https://github.com/dmacvicar/terraform-provider-libvirt

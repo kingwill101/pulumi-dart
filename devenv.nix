@@ -73,8 +73,6 @@ in
     pulumiPackage
     pkgs.git
     pkgs.protobuf
-    pkgs.nodejs_22
-    pkgs.pnpm
     pkgs.uv
   ];
 
@@ -115,8 +113,6 @@ in
     echo "Go: $(go version)"
     echo "Dart: $(dart --version 2>&1)"
     echo "Pulumi: $(pulumi version)"
-    echo "Node: $(node --version)"
-    echo "pnpm: $(pnpm --version)"
     echo "uv: $(uv --version)"
   '';
 

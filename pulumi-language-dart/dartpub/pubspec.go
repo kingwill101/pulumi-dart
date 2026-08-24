@@ -15,6 +15,7 @@ type PubSpec struct {
 	IssueTracker        string                 `yaml:"issue_tracker,omitempty" json:"issue_tracker,omitempty"`
 	Documentation       string                 `yaml:"documentation,omitempty" json:"documentation,omitempty"`
 	Topics              []string               `yaml:"topics,omitempty" json:"topics,omitempty"`
+	FalseSecrets        []string               `yaml:"false_secrets,omitempty" json:"false_secrets,omitempty"`
 	PublishTo           string                 `yaml:"publish_to,omitempty" json:"publish_to,omitempty"`
 	Environment         map[string]string      `yaml:"environment,omitempty" json:"environment,omitempty"`
 	Resolution          string                 `yaml:"resolution,omitempty" json:"resolution,omitempty"`

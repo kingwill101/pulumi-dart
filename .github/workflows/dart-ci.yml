@@ -61,37 +61,34 @@ jobs:
         id: provider-scope
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
         run: |
-          if [[ "${{ github.event_name }}" != "pull_request" ]]; then
-            echo "arguments=" >> "$GITHUB_OUTPUT"
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            exit 0
+          compare_sha="$BASE_SHA"
+          if [[ -z "$compare_sha" ]]; then
+            compare_sha="$BEFORE_SHA"
+          fi
+          if [[ -z "$compare_sha" || "$compare_sha" =~ ^0+$ ]]; then
+            compare_sha="HEAD^"
           fi
 
-          # Generator changes must remain reproducible across the whole catalog.
-          if git diff --quiet "$BASE_SHA" HEAD -- \
-            pulumi-language-dart/pkg/codegen/dart \
-            repodoc/lib/src/commands/packages; then
-            arguments=()
-            while IFS= read -r schema; do
-              [[ -f "$schema" ]] || continue
-              provider="${schema##*/}"
-              provider="${provider%.schema.json}"
-              arguments+=(--provider "$provider")
-            done < <(
-              git diff --name-only "$BASE_SHA" HEAD -- \
-                'packages/sdks/schemas/*.schema.json'
-            )
+          # Generator behavior is covered by focused codegen tests. Provider
+          # trees are regenerated only in their schema-update PR, keeping the
+          # catalog modernization incremental and reviewable.
+          arguments=()
+          while IFS= read -r schema; do
+            [[ -f "$schema" ]] || continue
+            provider="${schema##*/}"
+            arguments+=(--provider "${provider%.schema.json}")
+          done < <(
+            git diff --name-only "$compare_sha" HEAD -- \
+              'packages/sdks/schemas/*.schema.json' | sort
+          )
 
-            if (( ${#arguments[@]} == 0 )); then
-              echo "run=false" >> "$GITHUB_OUTPUT"
-            else
-              printf -v quoted_arguments '%q ' "${arguments[@]}"
-              echo "arguments=$quoted_arguments" >> "$GITHUB_OUTPUT"
-              echo "run=true" >> "$GITHUB_OUTPUT"
-            fi
+          if (( ${#arguments[@]} == 0 )); then
+            echo "run=false" >> "$GITHUB_OUTPUT"
           else
-            echo "arguments=" >> "$GITHUB_OUTPUT"
+            printf -v quoted_arguments '%q ' "${arguments[@]}"
+            echo "arguments=$quoted_arguments" >> "$GITHUB_OUTPUT"
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi
 

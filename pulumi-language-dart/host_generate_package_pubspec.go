@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -36,6 +37,14 @@ func buildGeneratedPackagePubspec(
 	}
 	applyLocalPathPublishPolicy(&pubspec)
 	codegen.ApplyPackageMetadataToPubspec(&pubspec, schemaResult.spec)
+	if configured := strings.TrimSpace(os.Getenv("PULUMI_DART_FALSE_SECRETS")); configured != "" {
+		if err := json.Unmarshal([]byte(configured), &pubspec.FalseSecrets); err != nil {
+			return codegen.PubSpec{}, fmt.Errorf("invalid PULUMI_DART_FALSE_SECRETS JSON: %w", err)
+		}
+	}
+	if publishTo := strings.TrimSpace(os.Getenv("PULUMI_DART_PUBLISH_TO")); publishTo != "" {
+		pubspec.PublishTo = publishTo
+	}
 	if strings.TrimSpace(pubspec.Description) == "" {
 		pubspec.Description = fmt.Sprintf("A Pulumi SDK package for %s.", schemaResult.spec.Name)
 	}

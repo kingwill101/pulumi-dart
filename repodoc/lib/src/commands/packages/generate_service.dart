@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package_version.dart';
 import 'pubspec_dependencies.dart';
+import 'schema_normalization.dart';
 
 final class ProviderSchema {
   ProviderSchema({
@@ -10,12 +11,18 @@ final class ProviderSchema {
     required this.localSchemaPath,
     required this.schemaUrl,
     required this.packagePubspecPath,
+    this.falseSecrets = const [],
+    this.publishTo = '',
+    this.requiredPropertyRelaxations = const {},
   });
 
   final String name;
   final String localSchemaPath;
   final String schemaUrl;
   final String packagePubspecPath;
+  final List<String> falseSecrets;
+  final String publishTo;
+  final Map<String, List<String>> requiredPropertyRelaxations;
 }
 
 Future<void> main(List<String> args) async {
@@ -33,7 +40,7 @@ Future<void> main(List<String> args) async {
   final pulumiVersion = _readPulumiPackageVersion(repoRoot.path);
   final pulumiConstraint = parsed.pulumiConstraint.isNotEmpty
       ? parsed.pulumiConstraint
-      : '^$pulumiVersion';
+      : _readPulumiDependencyConstraint(schemaSourcePath) ?? '^$pulumiVersion';
   final allProviders = _loadProviders(schemaSourcePath);
 
   final selectedProviders = _selectProviders(
@@ -92,10 +99,18 @@ Future<void> main(List<String> args) async {
         ? parsed.sdkVersion
         : readPackageVersion(destinationPubspec);
     final providerEnvironment = {...generationEnvironment};
+    if (provider.falseSecrets.isNotEmpty) {
+      providerEnvironment['PULUMI_DART_FALSE_SECRETS'] = jsonEncode(
+        provider.falseSecrets,
+      );
+    }
+    if (provider.publishTo.isNotEmpty) {
+      providerEnvironment['PULUMI_DART_PUBLISH_TO'] = provider.publishTo;
+    }
     if (sdkVersion case final version?) {
       providerEnvironment['PULUMI_DART_SDK_VERSION'] = version;
     }
-    final schemaPath = await _loadSchemaPath(
+    var schemaPath = await _loadSchemaPath(
       provider.name,
       _joinPath([repoRoot.path, provider.localSchemaPath]),
       provider.schemaUrl,
@@ -103,6 +118,20 @@ Future<void> main(List<String> args) async {
     if (schemaPath == null) {
       exitCode = 66;
       return;
+    }
+    if (provider.requiredPropertyRelaxations.isNotEmpty) {
+      final normalizedPath = _joinPath([
+        repoRoot.path,
+        '.gen',
+        'normalized-schemas',
+        '${provider.name}.schema.json',
+      ]);
+      writeNormalizedSchema(
+        source: File(schemaPath),
+        destination: File(normalizedPath),
+        requiredPropertyRelaxations: provider.requiredPropertyRelaxations,
+      );
+      schemaPath = normalizedPath;
     }
     final outputPath = _joinPath([generatedSdksRoot.path, provider.name]);
 
@@ -232,6 +261,44 @@ List<ProviderSchema> _loadProviders(String schemaSourcePath) {
     final localSchemaPath = entry['local_schema_path'];
     final schemaUrl = entry['schema_url'];
     final rawPackagePubspecPath = entry['package_pubspec_path'];
+    final rawFalseSecrets = entry['false_secrets'];
+    final rawPublishTo = entry['publish_to'];
+    final rawRelaxations = entry['required_property_relaxations'];
+    if (rawPublishTo != null && rawPublishTo is! String) {
+      stderr.writeln(
+        'Invalid publish_to for provider $name in $schemaSourcePath.',
+      );
+      exit(65);
+    }
+    final relaxations = <String, List<String>>{};
+    if (rawRelaxations != null) {
+      if (rawRelaxations is! Map<String, dynamic>) {
+        stderr.writeln(
+          'Invalid required_property_relaxations for provider $name.',
+        );
+        exit(65);
+      }
+      for (final relaxation in rawRelaxations.entries) {
+        if (relaxation.value is! List ||
+            (relaxation.value as List).any((value) => value is! String)) {
+          stderr.writeln(
+            'Invalid required_property_relaxations for provider $name.',
+          );
+          exit(65);
+        }
+        relaxations[relaxation.key] = List<String>.unmodifiable(
+          (relaxation.value as List).cast<String>(),
+        );
+      }
+    }
+    if (rawFalseSecrets != null &&
+        (rawFalseSecrets is! List ||
+            rawFalseSecrets.any((value) => value is! String))) {
+      stderr.writeln(
+        'Invalid false_secrets for provider $name in $schemaSourcePath.',
+      );
+      exit(65);
+    }
     if (name is! String ||
         name.isEmpty ||
         localSchemaPath is! String ||
@@ -253,11 +320,31 @@ List<ProviderSchema> _loadProviders(String schemaSourcePath) {
                 rawPackagePubspecPath.trim().isNotEmpty
             ? rawPackagePubspecPath.trim()
             : _joinPath(['packages', 'sdks', name, 'pubspec.yaml']),
+        falseSecrets: rawFalseSecrets == null
+            ? const []
+            : List<String>.unmodifiable(rawFalseSecrets.cast<String>()),
+        publishTo: rawPublishTo is String ? rawPublishTo.trim() : '',
+        requiredPropertyRelaxations: Map.unmodifiable(relaxations),
       ),
     );
   }
 
   return result;
+}
+
+String? _readPulumiDependencyConstraint(String schemaSourcePath) {
+  final decoded =
+      jsonDecode(File(schemaSourcePath).readAsStringSync())
+          as Map<String, dynamic>;
+  final configured = decoded['pulumi_dependency_constraint'];
+  if (configured == null) return null;
+  if (configured is! String || configured.trim().isEmpty) {
+    stderr.writeln(
+      'Invalid pulumi_dependency_constraint in $schemaSourcePath.',
+    );
+    exit(65);
+  }
+  return configured.trim();
 }
 
 List<ProviderSchema> _selectProviders({
