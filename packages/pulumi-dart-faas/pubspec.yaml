@@ -10,13 +10,13 @@ environment:
   sdk: ">=3.11.0 <4.0.0"
 
 dependencies:
+  crypto: ^3.0.7
   pulumi: ^3.0.0
   pulumi_command: ^1.2.1
-  pulumi_aws: ^7.20.0
-  pulumi_awsx: ^3.2.1
+  pulumi_aws: ^7.43.0
+  pulumi_awsx: ^3.8.0
   pulumi_docker_build: ^0.0.22
-  pulumi_gcp: ^9.11.0
-  path: ^1.9.1
+  pulumi_gcp: ^9.35.0
 
 dev_dependencies:
   lints: ^6.1.0

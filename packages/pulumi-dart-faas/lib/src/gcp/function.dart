@@ -2,111 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_docker_build/pulumi_docker_build.dart' as docker_build;
 import 'package:pulumi_gcp/pulumi_gcp.dart' as gcp;
 
-import 'models.dart';
+import '../models.dart';
+import 'args.dart';
 
-/// Cloud Run scaling options.
-class GcpDartFunctionScalingArgs {
-  /// Minimum number of warm instances to keep available.
-  final pulumi.Input<int>? minInstanceCount;
-
-  /// Maximum number of instances Cloud Run may scale out to.
-  final pulumi.Input<int>? maxInstanceCount;
-
-  const GcpDartFunctionScalingArgs({
-    this.minInstanceCount,
-    this.maxInstanceCount,
-  });
-}
-
-/// Cloud Run container compute/runtime options.
-class GcpDartFunctionComputeArgs {
-  /// CPU limit for the Cloud Run container.
-  final pulumi.Input<String>? cpu;
-
-  /// Memory limit for the Cloud Run container.
-  final pulumi.Input<String>? memory;
-
-  /// Container port exposed by the Dart server.
-  final pulumi.Input<int>? port;
-
-  /// Maximum concurrent requests per instance.
-  final pulumi.Input<int>? maxInstanceRequestConcurrency;
-
-  const GcpDartFunctionComputeArgs({
-    this.cpu,
-    this.memory,
-    this.port,
-    this.maxInstanceRequestConcurrency,
-  });
-}
-
-/// Inputs for [GcpCloudRunDartFunction].
-class GcpDartFunctionArgs {
-  /// Shared source configuration for the deployed service.
-  final DartFunctionSourceArgs source;
-
-  /// Optional explicit Cloud Run service name.
-  final pulumi.Input<String>? name;
-
-  /// GCP region for the service and related resources.
-  final pulumi.Input<String>? location;
-
-  /// GCP project id override.
-  final pulumi.Input<String>? project;
-
-  /// Artifact Registry repository id used for image-based deployments.
-  final pulumi.Input<String>? repositoryId;
-
-  /// Optional service account email for the Cloud Run revision.
-  final pulumi.Input<String>? serviceAccount;
-
-  /// Environment variables exposed to the running container.
-  final pulumi.Input<Map<String, String>>? environment;
-
-  /// Labels applied to created GCP resources where supported.
-  final pulumi.Input<Map<String, String>>? labels;
-
-  /// Scaling controls for the Cloud Run service.
-  final GcpDartFunctionScalingArgs? scaling;
-
-  /// Compute and runtime controls for the Cloud Run container.
-  final GcpDartFunctionComputeArgs? compute;
-
-  /// Whether unauthenticated invocation should be allowed.
-  final bool allowUnauthenticated;
-
-  const GcpDartFunctionArgs({
-    required this.source,
-    this.name,
-    this.location,
-    this.project,
-    this.repositoryId,
-    this.serviceAccount,
-    this.environment,
-    this.labels,
-    this.scaling,
-    this.compute,
-    this.allowUnauthenticated = true,
-  });
-}
-
-/// Validates GCP Cloud Run arguments against the supported source modes.
-void validateGcpDartFunctionArgs(GcpDartFunctionArgs args) {
-  validateDartFunctionSourceArgs(
-    args.source,
-    allowedModes: const ['image', 'binaryUpload'],
-  );
-  if (args.source.binaryUpload?.baseImageUri == null &&
-      args.source.binaryUpload != null) {
-    throw ArgumentError(
-      'source.binaryUpload.baseImageUri is required for the GCP adapter.',
-    );
-  }
-}
-
-_containerEnvsFromMap(
-  pulumi.Input<Map<String, String>>? environment,
-) {
+_containerEnvsFromMap(pulumi.Input<Map<String, String>>? environment) {
   if (environment == null) {
     return null;
   }
@@ -126,8 +25,8 @@ _containerEnvsFromMap(
 /// GCP Cloud Run implementation of the Dart FaaS model.
 ///
 /// Supported source modes:
-/// - `source.image`: build/push container image to Artifact Registry
-/// - `source.binaryUpload`: upload source archive to Cloud Storage and deploy
+/// - [DartFunctionImageSource]: build/push an image to Artifact Registry
+/// - [DartFunctionArchiveSource]: stage an archive in Cloud Storage and deploy
 ///   with Cloud Run source-based container settings
 class GcpCloudRunDartFunction extends pulumi.ComponentResource {
   /// Public service URL returned by Cloud Run.
@@ -195,9 +94,7 @@ class GcpCloudRunDartFunction extends pulumi.ComponentResource {
     pulumi.Input<List<String>>? containerCommands;
     dynamic containerSourceCode;
 
-    if (args.source.image != null) {
-      final sourceImage = args.source.image!;
-
+    if (args.source case DartFunctionImageSource sourceImage) {
       final repository = gcp.artifactregistry.Repository(
         '$name-repository',
         args: gcp.artifactregistry.RepositoryArgs(
@@ -249,7 +146,7 @@ class GcpCloudRunDartFunction extends pulumi.ComponentResource {
       imageDigest = image.digest.apply<String?>((value) => value);
       registryUri = repository.registryUri.apply<String?>((value) => value);
     } else {
-      final binaryUpload = args.source.binaryUpload!;
+      final binaryUpload = args.source as DartFunctionArchiveSource;
       final sourceObjectName =
           binaryUpload.objectName ?? '$normalizedName-source.zip'.input();
       final entryCommand = binaryUpload.command ?? 'bin/server'.input();
@@ -271,7 +168,7 @@ class GcpCloudRunDartFunction extends pulumi.ComponentResource {
         args: gcp.storage.BucketObjectArgs(
           bucket: sourceBucket.name,
           name: sourceObjectName,
-          source: binaryUpload.sourceArchive,
+          source: binaryUpload.archive,
         ),
         options: childCustomOptions,
       );

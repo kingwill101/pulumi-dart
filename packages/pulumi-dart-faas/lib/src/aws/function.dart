@@ -4,67 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
 
-import 'models.dart';
-
-/// Generic Dart function inputs implemented on AWS Lambda by
-/// [AwsLambdaDartFunction].
-class DartFunctionArgs {
-  /// Shared source configuration for the deployed function.
-  final DartFunctionSourceArgs source;
-
-  /// Optional explicit Lambda function name.
-  final pulumi.Input<String>? name;
-
-  /// Lambda architecture.
-  ///
-  /// Defaults to `arm64`.
-  final pulumi.Input<String>? architecture;
-
-  /// Lambda memory size in MiB.
-  ///
-  /// Defaults to `128`.
-  final pulumi.Input<int>? memorySize;
-
-  /// Lambda timeout in seconds.
-  ///
-  /// Defaults to `5`.
-  final pulumi.Input<int>? timeout;
-
-  /// Environment variables exposed to the Lambda runtime.
-  final pulumi.Input<Map<String, String>>? environment;
-
-  /// Tags applied to created AWS resources where supported.
-  final pulumi.Input<Map<String, String>>? tags;
-
-  /// Optional HTTP endpoint settings for Lambda Function URL creation.
-  final DartFunctionHttpArgs? http;
-
-  const DartFunctionArgs({
-    required this.source,
-    this.name,
-    this.architecture,
-    this.memorySize,
-    this.timeout,
-    this.environment,
-    this.tags,
-    this.http,
-  });
-}
-
-/// Validates AWS Lambda function arguments against the supported source modes.
-void validateDartFunctionArgs(DartFunctionArgs args) {
-  validateDartFunctionSourceArgs(
-    args.source,
-    allowedModes: const ['image', 'zipS3', 'binaryUpload'],
-  );
-}
+import '../models.dart';
+import 'args.dart';
 
 /// AWS Lambda implementation of the Dart FaaS model.
 ///
 /// Supported source modes:
-/// - `source.image`: build and deploy from ECR image
-/// - `source.zipS3`: deploy prebuilt zip from S3 bucket/key
-/// - `source.binaryUpload`: upload Pulumi archive to S3 then deploy zip
+/// - [DartFunctionImageSource]: build and deploy from an ECR image
+/// - [AwsLambdaS3Source]: deploy a prebuilt zip directly from AWS S3
+/// - [DartFunctionArchiveSource]: stage an archive in S3 and deploy it
 class AwsLambdaDartFunction extends pulumi.ComponentResource {
   /// ARN of the created Lambda function.
   late final pulumi.Output<String> functionArn;
@@ -144,10 +92,8 @@ class AwsLambdaDartFunction extends pulumi.ComponentResource {
     pulumi.Input<String>? zipRuntime;
     pulumi.Input<String>? zipHandler;
 
-    final sourceImage = args.source.image;
-    final sourceZip = args.source.zipS3;
-    final sourceBinaryUpload = args.source.binaryUpload;
-    if (sourceImage != null) {
+    final source = args.source;
+    if (source case DartFunctionImageSource sourceImage) {
       final repo = awsx.ecr.Repository(
         '$name-repo',
         args: awsx.ecr.RepositoryArgs(
@@ -174,7 +120,7 @@ class AwsLambdaDartFunction extends pulumi.ComponentResource {
       resolvedRepositoryUrl = repo.url;
       resolvedImageUri = image.imageUri;
       packageType = 'Image'.input();
-    } else if (sourceZip != null) {
+    } else if (source case AwsLambdaS3Source sourceZip) {
       resolvedRepositoryUrl = pulumi.Output.create<String?>(null);
       resolvedImageUri = pulumi.Output.create<String?>(null);
       packageType = 'Zip'.input();
@@ -185,7 +131,7 @@ class AwsLambdaDartFunction extends pulumi.ComponentResource {
       zipRuntime = sourceZip.runtime ?? 'provided.al2023'.input();
       zipHandler = sourceZip.handler ?? 'bootstrap'.input();
     } else {
-      final upload = sourceBinaryUpload!;
+      final upload = source as DartFunctionArchiveSource;
       final objectKey = upload.objectName ?? '$normalizedName-fn.zip'.input();
 
       pulumi.Input<String> resolvedZipBucket;
@@ -205,7 +151,7 @@ class AwsLambdaDartFunction extends pulumi.ComponentResource {
         args: aws.s3.BucketObjectArgs(
           bucket: resolvedZipBucket,
           key: objectKey,
-          source: upload.sourceArchive,
+          source: upload.archive,
           tags: args.tags,
         ),
         options: childCustomOptions,
@@ -239,15 +185,19 @@ class AwsLambdaDartFunction extends pulumi.ComponentResource {
                   .FunctionEnvironment(variables: args.environment)
                   .input(),
         tags: args.tags,
-        imageUri: sourceImage == null
+        imageUri: source is DartFunctionImageSource
+            ? resolvedImageUri.apply<String>((value) => value!)
+            : null,
+        runtime: source is DartFunctionImageSource ? null : zipRuntime,
+        handler: source is DartFunctionImageSource ? null : zipHandler,
+        s3Bucket: source is DartFunctionImageSource ? null : zipBucket,
+        s3Key: source is DartFunctionImageSource ? null : zipKey,
+        s3ObjectVersion: source is DartFunctionImageSource
             ? null
-            : resolvedImageUri.apply<String>((value) => value!),
-        runtime: sourceImage == null ? zipRuntime : null,
-        handler: sourceImage == null ? zipHandler : null,
-        s3Bucket: sourceImage == null ? zipBucket : null,
-        s3Key: sourceImage == null ? zipKey : null,
-        s3ObjectVersion: sourceImage == null ? zipObjectVersion : null,
-        sourceCodeHash: sourceImage == null ? zipSourceCodeHash : null,
+            : zipObjectVersion,
+        sourceCodeHash: source is DartFunctionImageSource
+            ? null
+            : zipSourceCodeHash,
       ),
       options: childCustomOptions,
     );

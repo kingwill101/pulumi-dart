@@ -9,9 +9,7 @@ class BasicUrlStack extends pulumi.Stack {
     final service = faas.GcpCloudRunDartFunction(
       'hello',
       args: faas.GcpDartFunctionArgs(
-        source: faas.DartFunctionSourceArgs(
-          image: faas.DartFunctionSourceImageArgs(context: './app'.input()),
-        ),
+        source: faas.DartFunctionSource.image(context: './app'.input()),
       ),
     );
 

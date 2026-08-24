@@ -16,8 +16,7 @@ pulumi up
 
 - The example uses `DartBuildArchive` from `pulumi_dart_faas`.
 - `DartBuildArchive` wraps `command:local:Command` and exports an archive output.
-- The archive output is passed directly into
-  `DartFunctionSourceBinaryUploadArgs.sourceArchive`.
+- The archive output is passed directly to `DartFunctionSource.archive`.
 
 ## Cleanup
 

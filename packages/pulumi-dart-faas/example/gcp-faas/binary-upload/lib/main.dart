@@ -11,11 +11,13 @@ class BinaryUploadStack extends pulumi.Stack {
     final buildBundle = faas.DartBuildArchive(
       'build-binary-bundle',
       args: faas.DartBuildArchiveArgs(
-        entryPoint: 'backend/bin/server.dart'.input(),
-        outputBinaryPath: 'build_deploy/bin/server'.input(),
-        archivePath: 'build_deploy.tar.gz'.input(),
-        targetOs: 'linux'.input(),
-        targetArch: 'x64'.input(),
+        entryPoint: 'backend/bin/server.dart',
+        archivePath: 'build_deploy.tar.gz',
+        target: faas.DartBuildTarget.executable(
+          outputPath: 'build_deploy/bin/server',
+          targetOs: 'linux',
+          targetArch: 'x64',
+        ),
         triggers: ['backend/bin/server.dart'].input(),
       ),
     );
@@ -23,12 +25,10 @@ class BinaryUploadStack extends pulumi.Stack {
     final service = faas.GcpCloudRunDartFunction(
       'hello-binary',
       args: faas.GcpDartFunctionArgs(
-        source: faas.DartFunctionSourceArgs(
-          binaryUpload: faas.DartFunctionSourceBinaryUploadArgs(
-            sourceArchive: buildBundle.archive,
-            baseImageUri: baseImageUri.input(),
-            command: 'bin/server'.input(),
-          ),
+        source: faas.DartFunctionSource.archive(
+          archive: buildBundle.archive,
+          baseImageUri: baseImageUri.input(),
+          command: 'bin/server'.input(),
         ),
       ),
     );

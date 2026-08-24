@@ -9,9 +9,7 @@ class BasicUrlStack extends pulumi.Stack {
     final fn = faas.AwsLambdaDartFunction(
       'hello',
       args: faas.DartFunctionArgs(
-        source: faas.DartFunctionSourceArgs(
-          image: faas.DartFunctionSourceImageArgs(context: './app'.input()),
-        ),
+        source: faas.DartFunctionSource.image(context: './app'.input()),
       ),
     );
 

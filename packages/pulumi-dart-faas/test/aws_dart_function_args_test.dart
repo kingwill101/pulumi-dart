@@ -5,9 +5,7 @@ import 'package:test/test.dart';
 void main() {
   test('validate accepts image source', () {
     final args = DartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        image: DartFunctionSourceImageArgs(context: './app'.input()),
-      ),
+      source: DartFunctionSource.image(context: './app'.input()),
     );
 
     expect(() => validateDartFunctionArgs(args), returnsNormally);
@@ -15,11 +13,9 @@ void main() {
 
   test('validate accepts zip s3 source', () {
     final args = DartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        zipS3: DartFunctionSourceZipS3Args(
-          bucket: 'artifacts-bucket'.input(),
-          key: 'fn/function.zip'.input(),
-        ),
+      source: DartFunctionSource.awsS3(
+        bucket: 'artifacts-bucket'.input(),
+        key: 'fn/function.zip'.input(),
       ),
     );
 
@@ -28,33 +24,23 @@ void main() {
 
   test('validate accepts binary upload source', () {
     final args = DartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        binaryUpload: DartFunctionSourceBinaryUploadArgs(
-          sourceArchive: pulumi.FileArchive('./build_deploy').input(),
-        ),
+      source: DartFunctionSource.archive(
+        archive: pulumi.FileArchive('./build_deploy').input(),
       ),
     );
 
     expect(() => validateDartFunctionArgs(args), returnsNormally);
   });
 
-  test('validate rejects missing source', () {
-    final args = DartFunctionArgs(source: DartFunctionSourceArgs());
-
-    expect(() => validateDartFunctionArgs(args), throwsA(isA<ArgumentError>()));
-  });
-
-  test('validate rejects mixed source modes', () {
+  test('validate accepts an archive from S3-compatible object storage', () {
     final args = DartFunctionArgs(
-      source: DartFunctionSourceArgs(
-        image: DartFunctionSourceImageArgs(context: './app'.input()),
-        zipS3: DartFunctionSourceZipS3Args(
-          bucket: 'artifacts-bucket'.input(),
-          key: 'fn/function.zip'.input(),
-        ),
+      source: DartFunctionSource.archive(
+        archive: pulumi.RemoteArchive(
+          'https://example.r2.cloudflarestorage.com/function.zip?signature=x',
+        ).input(),
       ),
     );
 
-    expect(() => validateDartFunctionArgs(args), throwsA(isA<ArgumentError>()));
+    expect(() => validateDartFunctionArgs(args), returnsNormally);
   });
 }

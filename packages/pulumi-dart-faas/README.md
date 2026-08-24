@@ -20,12 +20,16 @@ application-facing model.
 
 ## Core concepts
 
-- `DartFunctionSourceArgs`:
+- `DartFunctionSource`:
   - provider-neutral source selection
   - exactly one mode must be set
 - `DartBuildArchive`:
-  - compiles a Linux Dart executable locally
+  - supports `dart compile exe`, AOT/JIT snapshots, kernel, JavaScript, Wasm,
+    and `dart build cli`
   - packages the build output as a Pulumi archive
+  - reuses the active Dart/FVM executable unless `dartExecutable` is provided
+  - automatically runs `build_runner` when it appears in the resolved package
+    configuration; use `buildRunner: .always` or `.never` to override detection
   - designed to feed archive-capable provider adapters
 - `AwsLambdaDartFunction`:
   - AWS implementation of the shared source contract
@@ -43,18 +47,14 @@ class AppStack extends Stack {
     final build = faas.DartBuildArchive(
       'build',
       args: faas.DartBuildArchiveArgs(
-        entryPoint: 'backend/bin/server.dart'.input(),
+        entryPoint: 'backend/bin/server.dart',
       ),
     );
 
     final app = faas.AwsLambdaDartFunction(
       'hello',
       args: faas.DartFunctionArgs(
-        source: faas.DartFunctionSourceArgs(
-          binaryUpload: faas.DartFunctionSourceBinaryUploadArgs(
-            sourceArchive: build.archive,
-          ),
-        ),
+        source: faas.DartFunctionSource.archive(archive: build.archive),
       ),
     );
 
@@ -70,17 +70,35 @@ class AppStack extends Stack {
 - GCP examples:
   - `packages/pulumi-dart-faas/example/gcp-faas/`
 
+Archives may come from the local filesystem or any object store that can issue
+a signed HTTPS URL, including Cloudflare R2 and other S3-compatible services:
+
+```dart
+final source = faas.DartFunctionSource.archive(
+  archive: pulumi.RemoteArchive(signedObjectUrl).input(),
+);
+```
+
+`DartFunctionSource.awsS3` is a separate AWS-only fast path because Lambda's
+native bucket-and-key deployment API requires an AWS S3 object.
+
 ## API surface
 
 - Shared source and HTTP settings:
-  - `DartFunctionSourceImageArgs`
-  - `DartFunctionSourceZipS3Args`
-  - `DartFunctionSourceBinaryUploadArgs`
-  - `DartFunctionSourceArgs`
+  - `DartFunctionSource.image`
+  - `DartFunctionSource.archive`
+  - `DartFunctionSource.awsS3` (AWS S3 only)
   - `DartFunctionHttpArgs`
 - Shared build helper:
   - `DartBuildArchive`
   - `DartBuildArchiveArgs`
+  - `DartBuildTarget.executable`
+  - `DartBuildTarget.aotSnapshot`
+  - `DartBuildTarget.jitSnapshot`
+  - `DartBuildTarget.kernel`
+  - `DartBuildTarget.javascript`
+  - `DartBuildTarget.webAssembly`
+  - `DartBuildTarget.cli`
 - AWS adapter:
   - `AwsLambdaDartFunction`
   - `DartFunctionArgs`
