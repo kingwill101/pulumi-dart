@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Result data returned by Configurer.nestedPlainProvider.
 class ConfigurerNestedPlainProviderResult {
-  final dynamic provider;
+  final pulumi.ProviderResource provider;
   final int value;
 
   /// Creates a new [ConfigurerNestedPlainProviderResult].
@@ -23,7 +24,7 @@ class ConfigurerNestedPlainProviderResult {
 
   factory ConfigurerNestedPlainProviderResult.fromMap(Map<String, dynamic> map) {
     return ConfigurerNestedPlainProviderResult(
-      provider: map['provider'],
+      provider: map['provider'] as pulumi.ProviderResource,
       value: (map['value'] as num).toInt(),
     );
   }

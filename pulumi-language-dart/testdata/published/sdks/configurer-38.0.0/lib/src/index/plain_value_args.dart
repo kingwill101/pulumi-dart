@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'configurer.dart';
 
 /// {@template pulumi_index_plain_value_args_doc}
 /// Arguments for plainValue.
 /// {@endtemplate}
 /// {@macro pulumi_index_plain_value_args_doc}
 class PlainValueArgs {
-  final pulumi.Input<Configurer> self;
+  final pulumi.Input<pulumi.CustomResource> self;
 
   /// Creates a new [PlainValueArgs].
   /// [self] Required.
@@ -24,7 +23,7 @@ class PlainValueArgs {
 
   factory PlainValueArgs.fromMap(Map<String, dynamic> map) {
     return PlainValueArgs(
-      self: pulumi.Input.fromValue(map['__self__'] as Configurer),
+      self: pulumi.Input.fromValue(map['__self__'] as pulumi.CustomResource),
     );
   }
 }

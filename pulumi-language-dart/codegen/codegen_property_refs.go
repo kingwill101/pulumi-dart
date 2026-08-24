@@ -73,6 +73,9 @@ func objectClassNeedsObjectHelpers(objectClass packageObjectClassSpec) bool {
 		return true
 	}
 	for _, property := range objectClass.Properties {
+		if typeSpecUsesPulumiCore(property.TypeSpec) {
+			return true
+		}
 		typeSpec := lower.PropertyType(property)
 		if lower.NeedsDecodeListHelper(typeSpec) || lower.NeedsDecodeMapHelper(typeSpec) {
 			return true
@@ -82,6 +85,13 @@ func objectClassNeedsObjectHelpers(objectClass packageObjectClassSpec) bool {
 		}
 	}
 	return false
+}
+
+func typeSpecUsesPulumiCore(typeSpec packageTypeSpec) bool {
+	if strings.Contains(typeSpec.DartType, "pulumi.") || strings.Contains(typeSpec.ReferenceType, "pulumi.") {
+		return true
+	}
+	return typeSpec.ElementType != nil && typeSpecUsesPulumiCore(*typeSpec.ElementType)
 }
 
 func configNeedsObjectHelpers(configSpec packageConfigSpec) bool {

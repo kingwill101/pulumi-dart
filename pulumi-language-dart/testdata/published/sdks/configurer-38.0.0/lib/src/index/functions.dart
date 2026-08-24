@@ -34,7 +34,7 @@ pulumi.Output<NestedPlainProviderResult> nestedPlainProviderOutput(
 /// Returns the provider constructed by the component as a single-value plain return.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_plain_provider_args_doc}
 /// [options] Invoke options controlling this call.
-Future<dynamic> plainProvider(
+Future<pulumi.ProviderResource> plainProvider(
   PlainProviderArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -44,10 +44,10 @@ Future<dynamic> plainProvider(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return value;
+  return value as pulumi.ProviderResource;
 }
 
-pulumi.Output<dynamic> plainProviderOutput(
+pulumi.Output<pulumi.ProviderResource> plainProviderOutput(
   PlainProviderArgs args, {
   pulumi.InvokeOutputOptions? options,
 }) {
@@ -55,7 +55,7 @@ pulumi.Output<dynamic> plainProviderOutput(
     'configurer:index:Configurer/plainProvider',
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
-  ).apply<dynamic>((value) => value);
+  ).apply<pulumi.ProviderResource>((value) => value as pulumi.ProviderResource);
 }
 
 /// Returns a plain integer (42) as a single-value plain return.

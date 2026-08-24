@@ -70,6 +70,12 @@ func schemaObjectTypeSpec(t *schema.ObjectType, named map[string]packageNamedTyp
 
 func schemaResourceTypeSpec(t *schema.ResourceType, named map[string]packageNamedTypeRef, useRefs bool, provider string) packageTypeSpec {
 	if useRefs {
+		if isProviderResourceToken(t.Token) {
+			return packageTypeSpec{
+				Kind: "resource", DartType: "pulumi.ProviderResource",
+				ReferenceType: "pulumi.ProviderResource", ReferenceWireType: "dynamic",
+			}
+		}
 		return packageTypeSpec{
 			Kind: "resource", DartType: "pulumi.CustomResource",
 			ReferenceType: "pulumi.CustomResource", ReferenceWireType: "dynamic",

@@ -23,4 +23,17 @@ class ResourceType extends pulumi.CustomResource {
     theEnum = registerOutput<MyEnum>('theEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MyEnum.fromValue(guardedValue as String); });
     theString = registerOutput<String>('theString');
   }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'config-enum:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    theEnum = registerOutput<MyEnum>('theEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MyEnum.fromValue(guardedValue as String); });
+    theString = registerOutput<String>('theString');
+  }
 }

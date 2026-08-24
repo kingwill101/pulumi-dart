@@ -36,9 +36,9 @@ class Configurer extends pulumi.ComponentResource {
   }
 
   /// Returns the provider constructed by the component as a single-value plain return.
-  Future<dynamic> plainProvider() async {
+  Future<pulumi.ProviderResource> plainProvider() async {
     final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;
-    return await deployment.callWithResult<dynamic>(
+    return await deployment.callWithResult<pulumi.ProviderResource>(
       'configurer:index:Configurer/plainProvider',
       const <String, dynamic>{},
       self: this,
