@@ -61,8 +61,9 @@ func (lowerer programLowerer) invokeArguments(
 		property := invokeInputProperty(function.Schema, name)
 		value, err := lowerer.expression(item.Value)
 		if property != nil {
+			untypedValue := value
 			value, err = lowerer.typedProviderExpression(function.Package, item.Value, property.Type)
-			if invokePrimitiveNeedsDynamicCast(item.Value, property.Type) {
+			if value == untypedValue && invokePrimitiveNeedsDynamicCast(item.Value, property.Type) {
 				value = typedInvokeInput(value, function.InputTypes[name])
 			}
 		} else {

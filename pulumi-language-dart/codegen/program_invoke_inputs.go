@@ -9,13 +9,21 @@ import (
 
 func invokePrimitiveNeedsDynamicCast(expression model.Expression, typ schema.Type) bool {
 	typ = unwrapProviderInputType(typ)
+	var target model.Type
 	switch typ {
-	case schema.BoolType, schema.IntType, schema.NumberType, schema.StringType:
+	case schema.BoolType:
+		target = model.BoolType
+	case schema.IntType:
+		target = model.IntType
+	case schema.NumberType:
+		target = model.NumberType
+	case schema.StringType:
+		target = model.StringType
 	default:
 		return false
 	}
 	containsOutputs, containsPromises := model.ContainsEventuals(expression.Type())
-	return containsOutputs || containsPromises
+	return (containsOutputs || containsPromises) && model.ResolveOutputs(expression.Type()).Equals(target)
 }
 
 func typedInvokeInput(value, dartType string) string {
