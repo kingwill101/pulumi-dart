@@ -54,7 +54,8 @@ curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scri
 ```
 
 See the [core package documentation](packages/pulumi-dart/README.md) for
-installer version, repository, and destination overrides.
+installer overrides and instructions for downloading a fresh language-host
+snapshot built by GitHub Actions.
 
 ## Quickstart
 

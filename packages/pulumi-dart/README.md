@@ -1,14 +1,18 @@
 # Pulumi for Dart
 
-`pulumi` is the core SDK for building infrastructure with Pulumi and Dart.
+`pulumi` is the core SDK for defining and managing infrastructure in Dart. It
+provides the runtime primitives used by Pulumi programs, generated provider
+SDKs, Automation API clients, dynamic resources, and Dart-authored providers.
 
-This package provides the runtime primitives used by Pulumi programs and by
-generated provider SDKs.
+> [!IMPORTANT]
+> A Dart Pulumi project needs both this package and the
+> `pulumi-language-dart` executable. The Pulumi CLI starts the language host to
+> load and run your Dart program.
 
 ## Requirements
 
 - Dart SDK `>=3.11.0 <4.0.0`
-- Pulumi CLI
+- [Pulumi CLI](https://www.pulumi.com/docs/iac/download-install/)
 - `pulumi-language-dart` available on your `PATH`
 
 ## Install
@@ -23,6 +27,14 @@ Add a provider SDK as needed:
 
 ```bash
 dart pub add pulumi_random
+```
+
+Verify all three parts of the toolchain before creating a stack:
+
+```bash
+dart --version
+pulumi version
+pulumi-language-dart -help
 ```
 
 ## Install the Dart language host
@@ -55,6 +67,78 @@ pulumi-dart install-language-host --version v3.0.0
 pulumi-dart install-language-host --install-dir "$HOME/bin"
 pulumi-dart install-language-host --repo kingwill101/pulumi-dart
 ```
+
+The installer downloads a released language host. To test the newest
+`master` build before a release, use a CI snapshot instead.
+
+### Download a language host built by CI
+
+The
+[Dart Language Host Release](https://github.com/kingwill101/pulumi-dart/actions/workflows/dart-release-language-host.yml)
+workflow can build Linux, macOS, and Windows archives without creating a
+release. Start a `snapshot` run from the workflow page, or with GitHub CLI:
+
+```bash
+gh workflow run dart-release-language-host.yml \
+  --repo kingwill101/pulumi-dart \
+  --ref master \
+  -f mode=snapshot
+```
+
+Find and follow the run, then download its artifact:
+
+```bash
+run_id="$(gh run list \
+  --repo kingwill101/pulumi-dart \
+  --workflow dart-release-language-host.yml \
+  --event workflow_dispatch \
+  --limit 1 \
+  --json databaseId \
+  --jq '.[0].databaseId')"
+
+gh run watch "$run_id" --repo kingwill101/pulumi-dart --exit-status
+gh run download "$run_id" \
+  --repo kingwill101/pulumi-dart \
+  --name pulumi-language-dart-snapshot \
+  --dir .language-host-snapshot
+```
+
+The artifact contains archives for `darwin`, `linux`, and `windows`, on both
+`amd64` and `arm64`, plus a checksum file. Extract the archive matching your
+machine and install the binary somewhere on `PATH`, for example:
+
+```bash
+tar -xzf .language-host-snapshot/pulumi-language-dart-*-darwin-arm64.tar.gz
+install -m 0755 pulumi-language-dart "$HOME/.local/bin/pulumi-language-dart"
+pulumi-language-dart -help
+```
+
+CI snapshot artifacts are retained for seven days. They are development builds,
+so use a tagged release for stable installations.
+
+## Create a project
+
+A minimal project needs `Pulumi.yaml`, `pubspec.yaml`, and a Dart entrypoint.
+
+```yaml
+# Pulumi.yaml
+name: hello-dart
+runtime: dart
+description: A minimal Pulumi Dart project
+```
+
+```yaml
+# pubspec.yaml
+name: hello_dart
+environment:
+  sdk: ">=3.11.0 <4.0.0"
+dependencies:
+  pulumi: ^3.1.0
+  pulumi_random: ^4.21.1
+```
+
+Place the program below in `bin/main.dart`, then run `dart pub get` and
+`pulumi preview`.
 
 ## Minimal Pulumi program
 
@@ -124,6 +208,15 @@ Destroy when finished:
 
 ```bash
 pulumi destroy
+```
+
+If Pulumi reports that it cannot find the Dart language plugin, confirm that
+`pulumi-language-dart` is executable and visible in the same process `PATH` as
+the `pulumi` command:
+
+```bash
+command -v pulumi-language-dart
+pulumi-language-dart -help
 ```
 
 ## Core concepts

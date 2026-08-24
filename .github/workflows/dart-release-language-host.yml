@@ -94,6 +94,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Upload snapshot archives
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'snapshot'
+        uses: actions/upload-artifact@v7
+        with:
+          name: pulumi-language-dart-snapshot
+          path: |
+            dist/*.tar.gz
+            dist/*.zip
+            dist/*checksums.txt
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Publish release assets
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'release')
         uses: goreleaser/goreleaser-action@v6

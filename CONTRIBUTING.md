@@ -135,4 +135,6 @@ backlog.
 - `.github/workflows/dart-schema-drift.yml`
 - `.github/workflows/dart-release-language-host.yml`
 
-Language host release artifacts are produced from version tags (`vX.Y.Z`).
+Language host release artifacts are produced from version tags (`vX.Y.Z`). A
+manual `snapshot` run uploads the same platform archives as a seven-day GitHub
+Actions artifact without publishing a release.
