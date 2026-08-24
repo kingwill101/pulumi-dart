@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   crypto: ^3.0.6
-  pulumi: 3.0.0
+  pulumi: ^3.0.0
   pulumi_azure: 6.39.0
 
 dev_dependencies:
