@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_read/index.dart' as read_index;
+import 'package:read/index.dart' as read_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;

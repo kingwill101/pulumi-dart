@@ -16,8 +16,20 @@ class StringResource extends pulumi.CustomResource {
           'simple-invoke-with-scalar-return:index:StringResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '17.0.0').merge(options),
         ) {
+    text = registerOutput<String>('text');
+  }
+
+  /// Creates a typed reference to an existing [StringResource] resource.
+  StringResource.reference(String urn)
+    : super(
+        'simple-invoke-with-scalar-return:index:StringResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     text = registerOutput<String>('text');
   }
 }

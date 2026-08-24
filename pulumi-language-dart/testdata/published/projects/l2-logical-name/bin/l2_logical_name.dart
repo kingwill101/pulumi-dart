@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_simple/index.dart' as simple_index;
+import 'package:pulumi_simple/index.dart' as pulumi_simple_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
@@ -8,7 +8,7 @@ class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     final config = pulumi.Config();
     final configLexicalName = config.requireBoolean('cC-Charlie_charlie.😃⁉️');
-    final resourceLexicalName = simple_index.ResourceType('aA-Alpha_alpha.🤯⁉️', args: simple_index.ResourceArgs(value: (configLexicalName).input(), ));
+    final resourceLexicalName = pulumi_simple_index.ResourceType('aA-Alpha_alpha.🤯⁉️', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(configLexicalName), ));
 
     _outputProperties = [
       pulumi.OutputProperty('bB-Beta_beta.💜⁉', pulumi.output(resourceLexicalName.value).apply<Object?>((value) => value)),

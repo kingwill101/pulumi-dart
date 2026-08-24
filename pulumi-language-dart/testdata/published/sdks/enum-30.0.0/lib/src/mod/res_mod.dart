@@ -24,4 +24,17 @@ class ResMod extends pulumi.CustomResource {
     intEnum = registerOutput<IntEnumMod?>('intEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntEnumMod.fromValue(guardedValue as int); });
     stringEnum = registerOutput<StringEnumMod?>('stringEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StringEnumMod.fromValue(guardedValue as String); });
   }
+
+  /// Creates a typed reference to an existing [ResMod] resource.
+  ResMod.reference(String urn)
+    : super(
+        'enum:mod:Res',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    intEnum = registerOutput<IntEnumMod?>('intEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntEnumMod.fromValue(guardedValue as int); });
+    stringEnum = registerOutput<StringEnumMod?>('stringEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StringEnumMod.fromValue(guardedValue as String); });
+  }
 }

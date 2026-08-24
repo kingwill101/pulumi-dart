@@ -8,7 +8,7 @@ import 'package:pulumi_enum/index.dart' as pulumi_enum_index;
 /// {@endtemplate}
 /// {@macro pulumi_index_sink_args_doc}
 class SinkArgs {
-  final pulumi.Input<pulumi_enum_index.StringEnum>? stringEnum;
+  final pulumi.Input<pulumi_enum_index.StringEnum?>? stringEnum;
 
   /// Creates a new [SinkArgs].
   /// [stringEnum] Optional.

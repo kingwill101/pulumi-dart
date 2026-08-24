@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_simple_invoke_with_scalar_return/index.dart' as simple_invoke_with_scalar_return_index;
+import 'package:pulumi_simple_invoke_with_scalar_return/index.dart' as pulumi_simple_invoke_with_scalar_return_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
     _outputProperties = [
-      pulumi.OutputProperty('scalar', pulumi.output(simple_invoke_with_scalar_return_index.myInvokeScalarOutput(simple_invoke_with_scalar_return_index.MyInvokeScalarArgs(value: ('goodbye').input()))).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('scalar', pulumi.output(pulumi_simple_invoke_with_scalar_return_index.myInvokeScalarOutput(pulumi_simple_invoke_with_scalar_return_index.MyInvokeScalarArgs(value: (pulumi.output('goodbye').apply<String>((value) => value as String)).input()))).apply<Object?>((value) => value)),
     ];
   }
 

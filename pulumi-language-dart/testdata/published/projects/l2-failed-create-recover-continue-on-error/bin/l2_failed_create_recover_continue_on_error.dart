@@ -7,9 +7,9 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final failing = pulumi_fail_on_create_index.ResourceType('failing', args: pulumi_fail_on_create_index.ResourceArgs(value: (false).input(), ));
-    final recoveredValue = pulumi_simple_index.ResourceType('recovered_value', args: pulumi_simple_index.ResourceArgs(value: (pulumi.output(pulumi.output(failing.value).recover((caught, _) { final error = caught.toString(); return pulumi.input((error != '')); })).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)).input(), ));
-    final independent = pulumi_simple_index.ResourceType('independent', args: pulumi_simple_index.ResourceArgs(value: (true).input(), ));
+    final failing = pulumi_fail_on_create_index.ResourceType('failing', args: pulumi_fail_on_create_index.ResourceArgs(value: pulumi.Input.asInput(false), ));
+    final recoveredValue = pulumi_simple_index.ResourceType('recovered_value', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(pulumi.output(pulumi.output(failing.value).recover((caught, _) { final error = caught.toString(); return pulumi.input((error != '')); })).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)), ));
+    final independent = pulumi_simple_index.ResourceType('independent', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
 
     _outputProperties = [
       pulumi.OutputProperty('recovered', pulumi.output(pulumi.output(failing.urn).recover((caught, _) { final error = caught.toString(); return pulumi.input('recovered: ' + (error).toString()); })).apply<Object?>((value) => value)),

@@ -1,14 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_optional_primitive_ref/index.dart' as optional_primitive_ref_index;
+import 'package:pulumi_optional_primitive_ref/index.dart' as pulumi_optional_primitive_ref_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final setRes = optional_primitive_ref_index.ResourceType('setRes', args: optional_primitive_ref_index.ResourceArgs(data: (optional_primitive_ref_index.Data(boolean: (true).input(), float: ((3.14).toDouble()).input(), integer: (42).input(), string_: ('hello').input(), numberArray: (<double>[(-1).toDouble(), (0).toDouble(), (1).toDouble()]).input(), booleanMap: (<String, bool>{'t': true, 'f': false}).input())).input(), optionalData: (optional_primitive_ref_index.Data(string_: ('optional parent').input())).input(), ));
-    final unsetRes = optional_primitive_ref_index.ResourceType('unsetRes', args: optional_primitive_ref_index.ResourceArgs(data: (optional_primitive_ref_index.Data()).input(), ));
-    final fromNestedOptional = optional_primitive_ref_index.ResourceType('fromNestedOptional', args: optional_primitive_ref_index.ResourceArgs(data: (optional_primitive_ref_index.Data(string_: (pulumi.output(setRes.optionalData.apply<dynamic>((value) => value?.string_)).apply<String?>((value) => value == null ? null : (value).toString())).input())).input(), ));
+    final setRes = pulumi_optional_primitive_ref_index.ResourceType('setRes', args: pulumi_optional_primitive_ref_index.ResourceArgs(data: pulumi.Input.asInput(pulumi_optional_primitive_ref_index.Data(boolean: (true).input(), float: ((3.14).toDouble()).input(), integer: (42).input(), string_: ('hello').input(), numberArray: (<double>[(-1).toDouble(), (0).toDouble(), (1).toDouble()]).input(), booleanMap: (<String, bool>{'t': true, 'f': false}).input())), optionalData: pulumi.Input.asInput(pulumi_optional_primitive_ref_index.Data(string_: ('optional parent').input())), ));
+    final unsetRes = pulumi_optional_primitive_ref_index.ResourceType('unsetRes', args: pulumi_optional_primitive_ref_index.ResourceArgs(data: pulumi.Input.asInput(pulumi_optional_primitive_ref_index.Data()), ));
+    final fromNestedOptional = pulumi_optional_primitive_ref_index.ResourceType('fromNestedOptional', args: pulumi_optional_primitive_ref_index.ResourceArgs(data: pulumi.Input.asInput(pulumi_optional_primitive_ref_index.Data(string_: (pulumi.output(setRes.optionalData.apply<dynamic>((value) => value?.string_)).apply<String?>((value) => value == null ? null : (value).toString())).input())), ));
 
     _outputProperties = [
       pulumi.OutputProperty('setBoolean', pulumi.output(setRes.data.apply<dynamic>((value) => value?.boolean)).apply<Object?>((value) => value)),

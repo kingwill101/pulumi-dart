@@ -24,4 +24,17 @@ class Res extends pulumi.CustomResource {
     intEnum = registerOutput<IntEnum?>('intEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntEnum.fromValue(guardedValue as int); });
     stringEnum = registerOutput<StringEnum?>('stringEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StringEnum.fromValue(guardedValue as String); });
   }
+
+  /// Creates a typed reference to an existing [Res] resource.
+  Res.reference(String urn)
+    : super(
+        'enum:mod/nested:Res',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    intEnum = registerOutput<IntEnum?>('intEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntEnum.fromValue(guardedValue as int); });
+    stringEnum = registerOutput<StringEnum?>('stringEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StringEnum.fromValue(guardedValue as String); });
+  }
 }

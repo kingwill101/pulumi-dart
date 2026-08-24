@@ -1,19 +1,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_replaceonchanges/index.dart' as replaceonchanges_index;
+import 'package:pulumi_replaceonchanges/index.dart' as pulumi_replaceonchanges_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final schemaReplace = replaceonchanges_index.ResourceA('schemaReplace', args: replaceonchanges_index.ResourceAArgs(value: (true).input(), replaceProp: (true).input(), ));
-    final optionReplace = replaceonchanges_index.ResourceB('optionReplace', args: replaceonchanges_index.ResourceBArgs(value: (true).input(), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
-    final bothReplaceValue = replaceonchanges_index.ResourceA('bothReplaceValue', args: replaceonchanges_index.ResourceAArgs(value: (true).input(), replaceProp: (true).input(), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
-    final bothReplaceProp = replaceonchanges_index.ResourceA('bothReplaceProp', args: replaceonchanges_index.ResourceAArgs(value: (true).input(), replaceProp: (true).input(), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
-    final regularUpdate = replaceonchanges_index.ResourceB('regularUpdate', args: replaceonchanges_index.ResourceBArgs(value: (true).input(), ));
-    final noChange = replaceonchanges_index.ResourceB('noChange', args: replaceonchanges_index.ResourceBArgs(value: (true).input(), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
-    final wrongPropChange = replaceonchanges_index.ResourceA('wrongPropChange', args: replaceonchanges_index.ResourceAArgs(value: (true).input(), replaceProp: (true).input(), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
-    final multiplePropReplace = replaceonchanges_index.ResourceA('multiplePropReplace', args: replaceonchanges_index.ResourceAArgs(value: (true).input(), replaceProp: (true).input(), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value', 'replaceProp'], ));
+    final schemaReplace = pulumi_replaceonchanges_index.ResourceA('schemaReplace', args: pulumi_replaceonchanges_index.ResourceAArgs(value: pulumi.Input.asInput(true), replaceProp: pulumi.Input.asInput(true), ));
+    final optionReplace = pulumi_replaceonchanges_index.ResourceB('optionReplace', args: pulumi_replaceonchanges_index.ResourceBArgs(value: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
+    final bothReplaceValue = pulumi_replaceonchanges_index.ResourceA('bothReplaceValue', args: pulumi_replaceonchanges_index.ResourceAArgs(value: pulumi.Input.asInput(true), replaceProp: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
+    final bothReplaceProp = pulumi_replaceonchanges_index.ResourceA('bothReplaceProp', args: pulumi_replaceonchanges_index.ResourceAArgs(value: pulumi.Input.asInput(true), replaceProp: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
+    final regularUpdate = pulumi_replaceonchanges_index.ResourceB('regularUpdate', args: pulumi_replaceonchanges_index.ResourceBArgs(value: pulumi.Input.asInput(true), ));
+    final noChange = pulumi_replaceonchanges_index.ResourceB('noChange', args: pulumi_replaceonchanges_index.ResourceBArgs(value: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
+    final wrongPropChange = pulumi_replaceonchanges_index.ResourceA('wrongPropChange', args: pulumi_replaceonchanges_index.ResourceAArgs(value: pulumi.Input.asInput(true), replaceProp: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value'], ));
+    final multiplePropReplace = pulumi_replaceonchanges_index.ResourceA('multiplePropReplace', args: pulumi_replaceonchanges_index.ResourceAArgs(value: pulumi.Input.asInput(true), replaceProp: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(replaceOnChanges: ['value', 'replaceProp'], ));
 
     _outputProperties = [
     ];

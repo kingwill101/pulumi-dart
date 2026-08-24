@@ -3,23 +3,23 @@
 
 /// Result data returned by concatWorld.
 class ConcatWorldIndexMineResult {
-  final String result;
+  final String? result;
 
   /// Creates a new [ConcatWorldIndexMineResult].
-  /// [result] Required.
+  /// [result] Optional.
   const ConcatWorldIndexMineResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory ConcatWorldIndexMineResult.fromMap(Map<String, dynamic> map) {
     return ConcatWorldIndexMineResult(
-      result: map['result'] as String,
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

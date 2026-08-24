@@ -20,4 +20,16 @@ class Example extends pulumi.CustomResource {
         ) {
     unionOf = registerOutput<dynamic>('unionOf');
   }
+
+  /// Creates a typed reference to an existing [Example] resource.
+  Example.reference(String urn)
+    : super(
+        'discriminated-union-many:index:Example',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    unionOf = registerOutput<dynamic>('unionOf');
+  }
 }

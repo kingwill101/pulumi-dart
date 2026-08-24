@@ -3,23 +3,23 @@
 
 /// Result data returned by call.
 class CallResult {
-  final double output;
+  final double? output;
 
   /// Creates a new [CallResult].
-  /// [output] Required.
+  /// [output] Optional.
   const CallResult({
-    required this.output,
+    this.output,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'output': output,
+      'output': ?output,
     };
   }
 
   factory CallResult.fromMap(Map<String, dynamic> map) {
     return CallResult(
-      output: (map['output'] as num).toDouble(),
+      output: (() { final guardedValue = map['output']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

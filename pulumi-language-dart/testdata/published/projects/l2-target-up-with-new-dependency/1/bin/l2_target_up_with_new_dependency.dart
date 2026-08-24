@@ -1,14 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_simple/index.dart' as simple_index;
+import 'package:pulumi_simple/index.dart' as pulumi_simple_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final targetOnly = simple_index.ResourceType('targetOnly', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final dep = simple_index.ResourceType('dep', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final unrelated = simple_index.ResourceType('unrelated', args: simple_index.ResourceArgs(value: (true).input(), ), options: pulumi.CustomResourceOptions(dependsOn: [dep], ));
+    final targetOnly = pulumi_simple_index.ResourceType('targetOnly', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final dep = pulumi_simple_index.ResourceType('dep', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final unrelated = pulumi_simple_index.ResourceType('unrelated', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(dependsOn: [dep], ));
 
     _outputProperties = [
     ];

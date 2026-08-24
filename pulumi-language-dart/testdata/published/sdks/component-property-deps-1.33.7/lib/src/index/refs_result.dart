@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Result data returned by refs.
 class RefsResult {
-  final Map<String, List<String>> result;
+  final Map<String, List<String>>? result;
 
   /// Creates a new [RefsResult].
-  /// [result] Required.
+  /// [result] Optional.
   const RefsResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory RefsResult.fromMap(Map<String, dynamic> map) {
     return RefsResult(
-      result: pulumi.Input.decodeMapValues<List<String>>(map['result']!, (value) => (value as List).cast<String>()),
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); })(),
     );
   }
 }

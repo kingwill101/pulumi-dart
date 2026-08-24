@@ -3,28 +3,28 @@
 
 /// Result data returned by secretInvoke.
 class SecretInvokeResult {
-  final String response;
-  final bool secret;
+  final String? response;
+  final bool? secret;
 
   /// Creates a new [SecretInvokeResult].
-  /// [response] Required.
-  /// [secret] Required.
+  /// [response] Optional.
+  /// [secret] Optional.
   const SecretInvokeResult({
-    required this.response,
-    required this.secret,
+    this.response,
+    this.secret,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'response': response,
-      'secret': secret,
+      'response': ?response,
+      'secret': ?secret,
     };
   }
 
   factory SecretInvokeResult.fromMap(Map<String, dynamic> map) {
     return SecretInvokeResult(
-      response: map['response'] as String,
-      secret: map['secret'] as bool,
+      response: (() { final guardedValue = map['response']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

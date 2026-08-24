@@ -3,23 +3,23 @@
 
 /// Result data returned by getText.
 class GetTextResult {
-  final String result;
+  final String? result;
 
   /// Creates a new [GetTextResult].
-  /// [result] Required.
+  /// [result] Optional.
   const GetTextResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory GetTextResult.fromMap(Map<String, dynamic> map) {
     return GetTextResult(
-      result: map['result'] as String,
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

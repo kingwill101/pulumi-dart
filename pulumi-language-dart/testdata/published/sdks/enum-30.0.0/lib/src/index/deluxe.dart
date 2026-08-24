@@ -35,4 +35,21 @@ class Deluxe extends pulumi.CustomResource {
     unionEnum = registerOutput<dynamic>('unionEnum');
     wordyEnum = registerOutput<WordyEnum?>('wordyEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WordyEnum.fromValue(guardedValue as String); });
   }
+
+  /// Creates a typed reference to an existing [Deluxe] resource.
+  Deluxe.reference(String urn)
+    : super(
+        'enum:index:Deluxe',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arrayOfEnum = registerOutput<List<StringEnum>?>('arrayOfEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StringEnum>(guardedValue, (value) => StringEnum.fromValue(value as String)); });
+    holder = registerOutput<Holder?>('holder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Holder.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mapOfEnum = registerOutput<Map<String, IntEnum>?>('mapOfEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<IntEnum>(guardedValue, (value) => IntEnum.fromValue(value as int)); });
+    numberEnum = registerOutput<NumberEnum?>('numberEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NumberEnum.fromValue(guardedValue as double); });
+    unionEnum = registerOutput<dynamic>('unionEnum');
+    wordyEnum = registerOutput<WordyEnum?>('wordyEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WordyEnum.fromValue(guardedValue as String); });
+  }
 }

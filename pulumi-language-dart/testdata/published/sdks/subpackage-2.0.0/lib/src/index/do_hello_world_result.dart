@@ -3,23 +3,23 @@
 
 /// Result data returned by doHelloWorld.
 class DoHelloWorldResult {
-  final String output;
+  final String? output;
 
   /// Creates a new [DoHelloWorldResult].
-  /// [output] Required.
+  /// [output] Optional.
   const DoHelloWorldResult({
-    required this.output,
+    this.output,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'output': output,
+      'output': ?output,
     };
   }
 
   factory DoHelloWorldResult.fromMap(Map<String, dynamic> map) {
     return DoHelloWorldResult(
-      output: map['output'] as String,
+      output: (() { final guardedValue = map['output']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_primitive/index.dart' as primitive_index;
+import 'package:pulumi_primitive/index.dart' as pulumi_primitive_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final res = primitive_index.ResourceType('res', args: primitive_index.ResourceArgs(boolean: (true).input(), float: ((3.14).toDouble()).input(), integer: (42).input(), string_: ('hello').input(), numberArray: ([(-1).toDouble(), (0).toDouble(), (1).toDouble()]).input(), booleanMap: ({'t': true, 'f': false}).input(), ));
+    final res = pulumi_primitive_index.ResourceType('res', args: pulumi_primitive_index.ResourceArgs(boolean: pulumi.Input.asInput(true), float: pulumi.Input.asInput((3.14).toDouble()), integer: pulumi.Input.asInput(42), string_: pulumi.Input.asInput('hello'), numberArray: pulumi.Input.asInput(<double>[(-1).toDouble(), (0).toDouble(), (1).toDouble()]), booleanMap: pulumi.Input.asInput(<String, bool>{'t': true, 'f': false}), ));
 
     _outputProperties = [
     ];

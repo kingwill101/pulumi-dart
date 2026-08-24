@@ -51,4 +51,17 @@ class ResourceType extends pulumi.CustomResource {
     lookup = registerOutput<String>('lookup');
     value = registerOutput<bool>('value');
   }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'read:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    lookup = registerOutput<String>('lookup');
+    value = registerOutput<bool>('value');
+  }
 }

@@ -25,4 +25,19 @@ class ResourceType extends pulumi.CustomResource {
     secretOutput = registerOutput<String>('secretOutput', isSecret: true);
     value = registerOutput<double>('value');
   }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'output:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretOutput'],
+        isResourceReference: true,
+      ) {
+    output = registerOutput<String>('output');
+    secretOutput = registerOutput<String>('secretOutput', isSecret: true);
+    value = registerOutput<double>('value');
+  }
 }

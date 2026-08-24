@@ -26,4 +26,19 @@ class Example extends pulumi.CustomResource {
     stringOrIntegerProperty = registerOutput<dynamic>('stringOrIntegerProperty');
     typedEnumProperty = registerOutput<dynamic>('typedEnumProperty');
   }
+
+  /// Creates a typed reference to an existing [Example] resource.
+  Example.reference(String urn)
+    : super(
+        'union:index:Example',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    mapMapUnionProperty = registerOutput<Map<String, Map<String, dynamic>>?>('mapMapUnionProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, dynamic>>(guardedValue, (value) => (value as Map).cast<String, dynamic>()); });
+    stringEnumUnionListProperty = registerOutput<List<dynamic>?>('stringEnumUnionListProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    stringOrIntegerProperty = registerOutput<dynamic>('stringOrIntegerProperty');
+    typedEnumProperty = registerOutput<dynamic>('typedEnumProperty');
+  }
 }

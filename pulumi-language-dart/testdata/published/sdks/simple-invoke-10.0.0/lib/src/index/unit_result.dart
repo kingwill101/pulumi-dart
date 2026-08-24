@@ -3,23 +3,23 @@
 
 /// Result data returned by unit.
 class UnitResult {
-  final String result;
+  final String? result;
 
   /// Creates a new [UnitResult].
-  /// [result] Required.
+  /// [result] Optional.
   const UnitResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory UnitResult.fromMap(Map<String, dynamic> map) {
     return UnitResult(
-      result: map['result'] as String,
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

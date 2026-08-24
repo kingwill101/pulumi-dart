@@ -6,7 +6,7 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final res1 = pulumi_simple_index.ResourceType('res1', args: pulumi_simple_index.ResourceArgs(value: (true).input(), ));
+    final res1 = pulumi_simple_index.ResourceType('res1', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
 
     _outputProperties = [
     ];

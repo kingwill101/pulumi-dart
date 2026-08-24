@@ -33,4 +33,19 @@ class ResourceType extends pulumi.CustomResource {
     in_ = registerOutput<bool?>('in');
     out = registerOutput<bool>('out');
   }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'docs:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    data = registerOutput<ResourceData>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    externalEnum = registerOutput<pulumi_enum_index.StringEnum>('externalEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi_enum_index.StringEnum.fromValue(guardedValue as String); });
+    in_ = registerOutput<bool?>('in');
+    out = registerOutput<bool>('out');
+  }
 }

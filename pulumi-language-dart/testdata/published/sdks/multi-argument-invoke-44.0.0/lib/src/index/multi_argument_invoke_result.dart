@@ -3,23 +3,23 @@
 
 /// Result data returned by multiArgumentInvoke.
 class MultiArgumentInvokeResult {
-  final String result;
+  final String? result;
 
   /// Creates a new [MultiArgumentInvokeResult].
-  /// [result] Required.
+  /// [result] Optional.
   const MultiArgumentInvokeResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory MultiArgumentInvokeResult.fromMap(Map<String, dynamic> map) {
     return MultiArgumentInvokeResult(
-      result: map['result'] as String,
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

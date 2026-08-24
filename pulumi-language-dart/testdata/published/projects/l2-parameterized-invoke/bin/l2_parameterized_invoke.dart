@@ -7,7 +7,7 @@ class GeneratedStack extends pulumi.Stack {
 
   GeneratedStack() {
     _outputProperties = [
-      pulumi.OutputProperty('parameterValue', pulumi.output(pulumi_subpackage_index.doHelloWorldOutput(pulumi_subpackage_index.DoHelloWorldArgs(input: ('goodbye').input())).apply((value) => value.output)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('parameterValue', pulumi.output(pulumi_subpackage_index.doHelloWorldOutput(pulumi_subpackage_index.DoHelloWorldArgs(input: (pulumi.output('goodbye').apply<String>((value) => value as String)).input())).apply<dynamic>((value) => value.output)).apply<Object?>((value) => value)),
     ];
   }
 

@@ -22,4 +22,17 @@ class ResourceA extends pulumi.CustomResource {
     replaceProp = registerOutput<bool?>('replaceProp');
     value = registerOutput<bool>('value');
   }
+
+  /// Creates a typed reference to an existing [ResourceA] resource.
+  ResourceA.reference(String urn)
+    : super(
+        'replaceonchanges:index:ResourceA',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    replaceProp = registerOutput<bool?>('replaceProp');
+    value = registerOutput<bool>('value');
+  }
 }

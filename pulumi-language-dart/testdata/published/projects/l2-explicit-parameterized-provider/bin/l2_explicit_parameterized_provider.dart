@@ -7,7 +7,7 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final prov = pulumi_goodbye_providers.ProviderProvider('prov', args: pulumi_goodbye_providers.ProviderArgs(text: ('World').input(), ));
+    final prov = pulumi_goodbye_providers.ProviderProvider('prov', args: pulumi_goodbye_providers.ProviderArgs(text: pulumi.Input.asInput('World'), ));
     final res = pulumi_goodbye_index.Goodbye('res', options: pulumi.CustomResourceOptions(provider: prov, ));
 
     _outputProperties = [

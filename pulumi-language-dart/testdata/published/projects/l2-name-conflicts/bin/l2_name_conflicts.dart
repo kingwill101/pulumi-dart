@@ -12,8 +12,8 @@ class GeneratedStack extends pulumi.Stack {
     final names2 = config.getBoolean('Names') ?? true;
     final mod = config.get('mod') ?? 'module';
     final mod2 = config.get('Mod') ?? 'format';
-    final namesResource = pulumi_names_mod.ResMod('namesResource', args: pulumi_names_mod.ResModArgs(value: (names).input(), ));
-    final modResource = pulumi_module_format_mod_resource.ResourceType('modResource', args: pulumi_module_format_mod_resource.ResourceArgs(text: ((mod).toString() + '-' + (mod2).toString()).input(), ));
+    final namesResource = pulumi_names_mod.ResMod('namesResource', args: pulumi_names_mod.ResModArgs(value: pulumi.Input.asInput(names), ));
+    final modResource = pulumi_module_format_mod_resource.ResourceType('modResource', args: pulumi_module_format_mod_resource.ResourceArgs(text: pulumi.Input.asInput((mod).toString() + '-' + (mod2).toString()), ));
 
     _outputProperties = [
       pulumi.OutputProperty('namesResourceVal', pulumi.output(namesResource.value).apply<Object?>((value) => value)),

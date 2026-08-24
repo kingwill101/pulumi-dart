@@ -21,4 +21,16 @@ class Sink extends pulumi.CustomResource {
         ) {
     stringEnum = registerOutput<pulumi_enum_index.StringEnum?>('stringEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi_enum_index.StringEnum.fromValue(guardedValue as String); });
   }
+
+  /// Creates a typed reference to an existing [Sink] resource.
+  Sink.reference(String urn)
+    : super(
+        'extenumref:index:Sink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    stringEnum = registerOutput<pulumi_enum_index.StringEnum?>('stringEnum', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi_enum_index.StringEnum.fromValue(guardedValue as String); });
+  }
 }

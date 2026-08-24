@@ -1,19 +1,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_simple/index.dart' as simple_index;
+import 'package:pulumi_simple/index.dart' as pulumi_simple_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final class_ = simple_index.ResourceType('class', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final export = simple_index.ResourceType('export', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final mod = simple_index.ResourceType('mod', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final import = simple_index.ResourceType('import', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final object_ = simple_index.ResourceType('object', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final self = simple_index.ResourceType('self', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final this_ = simple_index.ResourceType('this', args: simple_index.ResourceArgs(value: (true).input(), ));
-    final if_ = simple_index.ResourceType('if', args: simple_index.ResourceArgs(value: (true).input(), ));
+    final class_ = pulumi_simple_index.ResourceType('class', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final export = pulumi_simple_index.ResourceType('export', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final mod = pulumi_simple_index.ResourceType('mod', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final import = pulumi_simple_index.ResourceType('import', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final object_ = pulumi_simple_index.ResourceType('object', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final self = pulumi_simple_index.ResourceType('self', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final this_ = pulumi_simple_index.ResourceType('this', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
+    final if_ = pulumi_simple_index.ResourceType('if', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
 
     _outputProperties = [
       pulumi.OutputProperty('class', pulumi.output(class_).apply<Object?>((value) => value)),

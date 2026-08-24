@@ -24,4 +24,18 @@ class SomeResource extends pulumi.CustomResource {
     lambda = registerOutput<String>('lambda');
     property = registerOutput<String>('property');
   }
+
+  /// Creates a typed reference to an existing [SomeResource] resource.
+  SomeResource.reference(String urn)
+    : super(
+        'keywords:lambda:SomeResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    builtins = registerOutput<String>('builtins');
+    lambda = registerOutput<String>('lambda');
+    property = registerOutput<String>('property');
+  }
 }

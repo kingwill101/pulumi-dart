@@ -3,23 +3,23 @@
 
 /// Result data returned by greet.
 class GreetResult {
-  final String greeting;
+  final String? greeting;
 
   /// Creates a new [GreetResult].
-  /// [greeting] Required.
+  /// [greeting] Optional.
   const GreetResult({
-    required this.greeting,
+    this.greeting,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'greeting': greeting,
+      'greeting': ?greeting,
     };
   }
 
   factory GreetResult.fromMap(Map<String, dynamic> map) {
     return GreetResult(
-      greeting: map['greeting'] as String,
+      greeting: (() { final guardedValue = map['greeting']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

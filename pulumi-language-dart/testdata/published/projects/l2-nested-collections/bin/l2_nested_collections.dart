@@ -1,12 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_nestedcollections/index.dart' as nestedcollections_index;
+import 'package:pulumi_nestedcollections/index.dart' as pulumi_nestedcollections_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final foo = nestedcollections_index.Foo('foo');
+    final foo = pulumi_nestedcollections_index.Foo('foo');
 
     _outputProperties = [
       pulumi.OutputProperty('secondProp', pulumi.output(foo.conditionSets.apply<dynamic>((value) => pulumi.indexValue(pulumi.indexValue(pulumi.indexValue(value, 0), 0), 1)?.prop)).apply<Object?>((value) => value)),

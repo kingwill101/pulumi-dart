@@ -20,4 +20,16 @@ class StringResource extends pulumi.CustomResource {
         ) {
     text = registerOutput<String>('text');
   }
+
+  /// Creates a typed reference to an existing [StringResource] resource.
+  StringResource.reference(String urn)
+    : super(
+        'simple-invoke:index:StringResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    text = registerOutput<String>('text');
+  }
 }

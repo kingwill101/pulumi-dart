@@ -23,4 +23,17 @@ class Foo extends pulumi.CustomResource {
     conditionSets = registerOutput<List<List<List<Bar>>>>('conditionSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<List<List<Bar>>>(guardedValue, (value) => pulumi.Input.decodeList<List<Bar>>(value, (value) => pulumi.Input.decodeList<Bar>(value, (value) => Bar.fromMap((value as Map).cast<String, dynamic>())))); });
     privateEndpoint = registerOutput<Map<String, Map<String, Map<String, String>>>>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, Map<String, String>>>(guardedValue, (value) => pulumi.Input.decodeMapValues<Map<String, String>>(value, (value) => (value as Map).cast<String, String>())); });
   }
+
+  /// Creates a typed reference to an existing [Foo] resource.
+  Foo.reference(String urn)
+    : super(
+        'nestedcollections:index:Foo',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    conditionSets = registerOutput<List<List<List<Bar>>>>('conditionSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<List<List<Bar>>>(guardedValue, (value) => pulumi.Input.decodeList<List<Bar>>(value, (value) => pulumi.Input.decodeList<Bar>(value, (value) => Bar.fromMap((value as Map).cast<String, dynamic>())))); });
+    privateEndpoint = registerOutput<Map<String, Map<String, Map<String, String>>>>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, Map<String, String>>>(guardedValue, (value) => pulumi.Input.decodeMapValues<Map<String, String>>(value, (value) => (value as Map).cast<String, String>())); });
+  }
 }

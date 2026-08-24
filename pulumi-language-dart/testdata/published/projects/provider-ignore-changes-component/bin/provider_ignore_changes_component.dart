@@ -7,9 +7,9 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final withIgnoreChanges = pulumi_conformance_component_index.Simple('withIgnoreChanges', args: pulumi_conformance_component_index.SimpleArgs(value: (true).input(), ), options: pulumi.ComponentResourceOptions(ignoreChanges: ['value'], ));
-    final withoutIgnoreChanges = pulumi_conformance_component_index.Simple('withoutIgnoreChanges', args: pulumi_conformance_component_index.SimpleArgs(value: (true).input(), ));
-    final simpleResource = pulumi_simple_index.ResourceType('simpleResource', args: pulumi_simple_index.ResourceArgs(value: (false).input(), ));
+    final withIgnoreChanges = pulumi_conformance_component_index.Simple('withIgnoreChanges', args: pulumi_conformance_component_index.SimpleArgs(value: pulumi.Input.asInput(true), ), options: pulumi.ComponentResourceOptions(ignoreChanges: ['value'], ));
+    final withoutIgnoreChanges = pulumi_conformance_component_index.Simple('withoutIgnoreChanges', args: pulumi_conformance_component_index.SimpleArgs(value: pulumi.Input.asInput(true), ));
+    final simpleResource = pulumi_simple_index.ResourceType('simpleResource', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(false), ));
 
     _outputProperties = [
     ];

@@ -22,4 +22,17 @@ class EnumOutput extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [EnumOutput] resource.
+  EnumOutput.reference(String urn)
+    : super(
+        'union:index:EnumOutput',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

@@ -3,23 +3,23 @@
 
 /// Result data returned by myInvoke.
 class MyInvokeResult {
-  final String result;
+  final String? result;
 
   /// Creates a new [MyInvokeResult].
-  /// [result] Required.
+  /// [result] Optional.
   const MyInvokeResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory MyInvokeResult.fromMap(Map<String, dynamic> map) {
     return MyInvokeResult(
-      result: map['result'] as String,
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

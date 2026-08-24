@@ -11,6 +11,6 @@ class ProviderProvider extends pulumi.ProviderResource {
           'scalar-returns',
           name,
           const <String, pulumi.Input<dynamic>>{},
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '21.0.0').merge(options),
         );
 }

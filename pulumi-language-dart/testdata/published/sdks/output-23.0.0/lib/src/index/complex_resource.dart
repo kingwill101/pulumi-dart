@@ -27,4 +27,19 @@ class ComplexResource extends pulumi.CustomResource {
     outputObject = registerOutput<Data>('outputObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Data.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     value = registerOutput<double>('value');
   }
+
+  /// Creates a typed reference to an existing [ComplexResource] resource.
+  ComplexResource.reference(String urn)
+    : super(
+        'output:index:ComplexResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    outputArray = registerOutput<List<String>>('outputArray', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputMap = registerOutput<Map<String, String>>('outputMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    outputObject = registerOutput<Data>('outputObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Data.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    value = registerOutput<double>('value');
+  }
 }

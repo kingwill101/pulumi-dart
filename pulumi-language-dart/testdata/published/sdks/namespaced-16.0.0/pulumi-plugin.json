@@ -1,5 +1,4 @@
 {
-  "name": "namespaced",
   "resource": true,
-  "version": "16.0.0"
+  "name": "namespaced"
 }

@@ -6,11 +6,11 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final target = pulumi_component_index.ComponentCustomRefOutput('target', args: pulumi_component_index.ComponentCustomRefOutputArgs(value: ('checked').input(), ));
-    final data = pulumi_component_index.identity2Output(pulumi_component_index.IdentityInvokeArgs(input: ('reachable').input()), options: pulumi.InvokeOutputOptions(dependsOn: [target]));
+    final target = pulumi_component_index.ComponentCustomRefOutput('target', args: pulumi_component_index.ComponentCustomRefOutputArgs(value: pulumi.Input.asInput('checked'), ));
+    final data = pulumi_component_index.identity2Output(pulumi_component_index.IdentityInvokeArgs(input: (pulumi.output('reachable').apply<String>((value) => value as String)).input()), options: pulumi.InvokeOutputOptions(dependsOn: [target]));
 
     _outputProperties = [
-      pulumi.OutputProperty('echoed', pulumi.output(data.apply((value) => value.result)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('echoed', pulumi.output(data.apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),
     ];
   }
 

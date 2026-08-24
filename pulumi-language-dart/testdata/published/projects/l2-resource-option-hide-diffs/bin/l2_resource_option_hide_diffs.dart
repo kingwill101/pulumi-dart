@@ -1,13 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_simple/index.dart' as simple_index;
+import 'package:pulumi_simple/index.dart' as pulumi_simple_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final hideDiffs = simple_index.ResourceType('hideDiffs', args: simple_index.ResourceArgs(value: (true).input(), ), options: pulumi.CustomResourceOptions(hideDiffs: ['value'], ));
-    final notHideDiffs = simple_index.ResourceType('notHideDiffs', args: simple_index.ResourceArgs(value: (true).input(), ));
+    final hideDiffs = pulumi_simple_index.ResourceType('hideDiffs', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ), options: pulumi.CustomResourceOptions(hideDiffs: ['value'], ));
+    final notHideDiffs = pulumi_simple_index.ResourceType('notHideDiffs', args: pulumi_simple_index.ResourceArgs(value: pulumi.Input.asInput(true), ));
 
     _outputProperties = [
     ];

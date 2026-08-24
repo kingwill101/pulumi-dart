@@ -20,4 +20,16 @@ class ResourceB extends pulumi.CustomResource {
         ) {
     value = registerOutput<bool>('value');
   }
+
+  /// Creates a typed reference to an existing [ResourceB] resource.
+  ResourceB.reference(String urn)
+    : super(
+        'replaceonchanges:index:ResourceB',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    value = registerOutput<bool>('value');
+  }
 }

@@ -27,4 +27,18 @@ class ResourceType extends pulumi.CustomResource {
     dataList = registerOutput<List<InnerData>?>('dataList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InnerData>(guardedValue, (value) => InnerData.fromMap((value as Map).cast<String, dynamic>())); });
     nonPlainData = registerOutput<Data?>('nonPlainData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Data.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'plain:index:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    data = registerOutput<Data>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Data.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataList = registerOutput<List<InnerData>?>('dataList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InnerData>(guardedValue, (value) => InnerData.fromMap((value as Map).cast<String, dynamic>())); });
+    nonPlainData = registerOutput<Data?>('nonPlainData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Data.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

@@ -6,9 +6,9 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final firstResource = pulumi_camelnames_cool_module.SomeResource('firstResource', args: pulumi_camelnames_cool_module.SomeResourceArgs(theInput: (true).input(), ));
-    final secondResource = pulumi_camelnames_cool_module.SomeResource('secondResource', args: pulumi_camelnames_cool_module.SomeResourceArgs(theInput: (pulumi.output(firstResource.theOutput).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)).input(), ));
-    final thirdResource = pulumi_camelnames_cool_module.SomeResource('thirdResource', args: pulumi_camelnames_cool_module.SomeResourceArgs(theInput: (true).input(), resourceName: ('my-cluster').input(), ));
+    final firstResource = pulumi_camelnames_cool_module.SomeResource('firstResource', args: pulumi_camelnames_cool_module.SomeResourceArgs(theInput: pulumi.Input.asInput(true), ));
+    final secondResource = pulumi_camelnames_cool_module.SomeResource('secondResource', args: pulumi_camelnames_cool_module.SomeResourceArgs(theInput: pulumi.Input.asInput(pulumi.output(firstResource.theOutput).apply<bool>((value) => value is String ? bool.parse((value).toString()) : value as bool)), ));
+    final thirdResource = pulumi_camelnames_cool_module.SomeResource('thirdResource', args: pulumi_camelnames_cool_module.SomeResourceArgs(theInput: pulumi.Input.asInput(true), resourceName: pulumi.Input.asInput('my-cluster'), ));
 
     _outputProperties = [
     ];

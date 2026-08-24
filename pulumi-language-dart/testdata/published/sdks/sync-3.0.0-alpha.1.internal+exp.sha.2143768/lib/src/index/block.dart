@@ -13,6 +13,16 @@ class Block extends pulumi.CustomResource {
           'sync:index:Block',
           name,
           pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.0.0-alpha.1.internal+exp.sha.2143768').merge(options),
         );
+
+  /// Creates a typed reference to an existing [Block] resource.
+  Block.reference(String urn)
+    : super(
+        'sync:index:Block',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      );
 }

@@ -20,4 +20,16 @@ class SubsetExample extends pulumi.CustomResource {
         ) {
     unionOf = registerOutput<dynamic>('unionOf');
   }
+
+  /// Creates a typed reference to an existing [SubsetExample] resource.
+  SubsetExample.reference(String urn)
+    : super(
+        'discriminated-union-many:index:SubsetExample',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    unionOf = registerOutput<dynamic>('unionOf');
+  }
 }

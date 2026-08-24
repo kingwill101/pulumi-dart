@@ -1,12 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-import 'package:pulumi_output/index.dart' as output_index;
+import 'package:pulumi_output/index.dart' as pulumi_output_index;
 
 class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final res = output_index.ComplexResource('res', args: output_index.ComplexResourceArgs(value: ((1).toDouble()).input(), ));
+    final res = pulumi_output_index.ComplexResource('res', args: pulumi_output_index.ComplexResourceArgs(value: pulumi.Input.asInput((1).toDouble()), ));
 
     _outputProperties = [
       pulumi.OutputProperty('entriesOutput', pulumi.output(pulumi.output(res.outputMap).apply<dynamic>((value) => pulumi.mapEntries(value))).apply<Object?>((value) => value)),
