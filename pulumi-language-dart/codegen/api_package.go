@@ -20,6 +20,7 @@ func GeneratedPackageReadme(packageName, packagePath, gitURL, gitRef string) []b
 }
 func GeneratedPackageChangelog(version string) []byte { return generatedPackageChangelog(version) }
 func GeneratedPackageAnalysisOptions() []byte         { return generatedPackageAnalysisOptions() }
+func GeneratedPackageLicense(spdxID string) []byte    { return generatedPackageLicense(spdxID) }
 func GeneratedPulumiPluginJSON(spec *PackageSchema) []byte {
 	return generatedPulumiPluginJSON(spec)
 }

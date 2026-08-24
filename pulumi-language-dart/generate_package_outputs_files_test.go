@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"crypto/sha256"
+	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
@@ -198,7 +200,8 @@ func TestGeneratePackageWritesDefaultScaffoldingFiles(t *testing.T) {
 
 	schema := `{
 		"name": "sample",
-		"version": "1.2.3"
+		"version": "1.2.3",
+		"license": "Apache-2.0"
 	}`
 
 	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
@@ -214,6 +217,10 @@ func TestGeneratePackageWritesDefaultScaffoldingFiles(t *testing.T) {
 	changelog, err := os.ReadFile(filepath.Join(targetDir, "CHANGELOG.md"))
 	require.NoError(t, err)
 	assert.Contains(t, string(changelog), "## 1.2.3")
+
+	license, err := os.ReadFile(filepath.Join(targetDir, "LICENSE"))
+	require.NoError(t, err)
+	assert.Contains(t, string(license), "Apache License")
 
 	analysisOptions, err := os.ReadFile(filepath.Join(targetDir, "analysis_options.yaml"))
 	require.NoError(t, err)
@@ -237,12 +244,14 @@ func TestGeneratePackagePreservesExistingScaffoldingFiles(t *testing.T) {
 	require.NoError(t, os.MkdirAll(filepath.Join(targetDir, "example"), 0o700))
 	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "README.md"), []byte("existing readme\n"), 0o600))
 	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "CHANGELOG.md"), []byte("existing changelog\n"), 0o600))
+	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "LICENSE"), []byte("stale license\n"), 0o600))
 	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "analysis_options.yaml"), []byte("existing analysis\n"), 0o600))
 	require.NoError(t, os.WriteFile(filepath.Join(targetDir, "example", "main.dart"), []byte("existing example\n"), 0o600))
 
 	schema := `{
 		"name": "sample",
-		"version": "1.2.3"
+		"version": "1.2.3",
+		"license": "Apache-2.0"
 	}`
 
 	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
@@ -259,6 +268,10 @@ func TestGeneratePackagePreservesExistingScaffoldingFiles(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, "existing changelog\n", string(changelog))
 
+	license, err := os.ReadFile(filepath.Join(targetDir, "LICENSE"))
+	require.NoError(t, err)
+	assert.Contains(t, string(license), "Apache License")
+
 	analysisOptions, err := os.ReadFile(filepath.Join(targetDir, "analysis_options.yaml"))
 	require.NoError(t, err)
 	assert.Equal(t, "existing analysis\n", string(analysisOptions))
@@ -270,6 +283,18 @@ func TestGeneratePackagePreservesExistingScaffoldingFiles(t *testing.T) {
 
 func TestGeneratedPackageAnalysisOptionsUsesRecommendedLints(t *testing.T) {
 	assert.Equal(t, "include: package:lints/recommended.yaml\n", string(codegen.GeneratedPackageAnalysisOptions()))
+}
+
+func TestGeneratedPackageLicenseUsesSchemaSPDXIdentifier(t *testing.T) {
+	license := codegen.GeneratedPackageLicense("Apache-2.0")
+	assert.Contains(t, string(license), "Apache License")
+	assert.Equal(
+		t,
+		"074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+		fmt.Sprintf("%x", sha256.Sum256(license)),
+	)
+	assert.Empty(t, codegen.GeneratedPackageLicense(""))
+	assert.Empty(t, codegen.GeneratedPackageLicense("unknown"))
 }
 
 func TestGeneratePackageRejectsExtraFileCollisions(t *testing.T) {

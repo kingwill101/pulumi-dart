@@ -10,7 +10,7 @@ func defaultGeneratedExtraFiles(
 	packageName, packagePath, packageVersion string,
 	spec *codegen.PackageSchema,
 ) map[string][]byte {
-	return map[string][]byte{
+	files := map[string][]byte{
 		"README.md": codegen.GeneratedPackageReadme(
 			packageName,
 			packagePath,
@@ -22,4 +22,8 @@ func defaultGeneratedExtraFiles(
 		"example/main.dart":     codegen.GeneratedPackageExampleMain(packageName),
 		"pulumi-plugin.json":    codegen.GeneratedPulumiPluginJSON(spec),
 	}
+	if license := codegen.GeneratedPackageLicense(spec.License); len(license) > 0 {
+		files["LICENSE"] = license
+	}
+	return files
 }
