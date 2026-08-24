@@ -1,0 +1,31 @@
+name: Publish Dart packages
+
+# Firehose validates publishable packages on pull requests. A package-prefixed
+# tag publishes exactly the package whose pubspec version matches the tag:
+#
+#   pulumi-v3.1.0
+#   pulumi_random-v4.21.1
+#
+# The unprefixed vX.Y.Z tag remains reserved for language-host releases.
+on:
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    tags:
+      - 'pulumi-v*.*.*'
+      - 'pulumi_*-v*.*.*'
+
+concurrency:
+  group: publish-dart-packages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  publish:
+    uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
+    with:
+      sdk: '3.11.0'
+      ignore-packages: 'examples/**,integration_tests/**,pulumi-language-dart/testdata/**,packages/pulumi-aws-app-platform/examples/**,packages/pulumi-dart-faas/examples/**,repodoc,templates/**'
+    permissions:
+      id-token: write
+      pull-requests: write

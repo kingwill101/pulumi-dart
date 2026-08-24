@@ -8,7 +8,7 @@ environment:
   sdk: ">=3.11.0 <4.0.0"
 
 dependencies:
-  pulumi: 3.0.0
+  pulumi: ^3.0.0
   automation_inline_local_hybrid_infra:
     path: ../infra
 
