@@ -8,6 +8,8 @@ This package is manually maintained from upstream `pulumi-policy` APIs because `
 
 - Public policy authoring API surface is available (policy types, validation/remediation helpers, policy/stack argument models).
 - Analyzer runtime/server execution for Dart policy packs is implemented.
+- Analyzer property decoding follows the official Node.js/Python SDK semantics
+  for preview unknowns, secrets, assets, and archives.
 
 ## Installation
 
@@ -144,3 +146,7 @@ Any remaining object keys are available in callbacks through
 - Repository: https://github.com/pulumi/pulumi-policy
 - Python package path: `sdk/python/lib/pulumi_policy`
 - Node package path: `sdk/nodejs/policy`
+
+This Dart implementation is tested independently in the Pulumi Dart
+repository because upstream does not contain a generated schema or Dart
+package.

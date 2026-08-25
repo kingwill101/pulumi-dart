@@ -53,3 +53,4 @@
 library pulumi_policy;
 
 export 'src/policy.dart';
+export 'src/value_decoder.dart' show Secret, UnknownValueError;
