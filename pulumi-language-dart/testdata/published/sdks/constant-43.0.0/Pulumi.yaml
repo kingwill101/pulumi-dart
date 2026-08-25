@@ -1,0 +1,3 @@
+name: dart-constant-example
+runtime: dart
+main: example/main.dart

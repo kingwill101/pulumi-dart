@@ -3,18 +3,18 @@
 import 'package:pulumi_config_enum/index.dart' as module_index;
 import 'package:pulumi_config_enum/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final MyEnum = module_index.MyEnum.values;
   final ResourceArgs = module_index.ResourceArgs.new;
   final ResourceType = module_index.ResourceType.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final ConfigEnum = module_providers.ProviderProvider.new;
   final ConfigEnumArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

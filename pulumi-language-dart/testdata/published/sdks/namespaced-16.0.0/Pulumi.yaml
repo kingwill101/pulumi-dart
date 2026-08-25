@@ -1,0 +1,3 @@
+name: dart-a-namespace-namespaced-example
+runtime: dart
+main: example/main.dart

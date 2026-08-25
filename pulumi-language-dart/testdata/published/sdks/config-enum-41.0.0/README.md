@@ -1,6 +1,12 @@
 # pulumi_config_enum
 
-Generated Pulumi provider SDK for Dart.
+Dart SDK for the Pulumi config-enum provider.
+
+Provider documentation: [Pulumi Registry](https://www.pulumi.com/registry/packages/config-enum/)
+
+This package is generated from the upstream Pulumi provider schema. It requires
+the [Pulumi Dart SDK](https://pub.dev/packages/pulumi) and the
+`pulumi-language-dart` language host.
 
 ## Installation
 
@@ -11,8 +17,24 @@ dart pub add pulumi_config_enum
 ## Usage
 
 ~~~dart
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_config_enum/pulumi_config_enum.dart' as provider;
 ~~~
+
+Resources are grouped by provider module. For example, a resource constructor
+is exposed as `provider.<module>.<Resource>(...)`. See
+[`example/main.dart`](example/main.dart) for a runnable example.
+
+~~~sh
+# Run these commands from the package directory containing Pulumi.yaml.
+dart pub get
+pulumi preview
+pulumi up
+~~~
+
+Generated resource arguments accept Pulumi `Input<T>` values. Plain Dart
+values can be converted with `.input()` after importing
+`package:pulumi/pulumi.dart`.
 
 ## Alternative: Use directly from GitHub
 
@@ -21,10 +43,9 @@ dependencies:
   pulumi_config_enum:
     git:
       url: https://github.com/kingwill101/pulumi-dart.git
-      path: packages/config-enum
-      ref: main
+      path: packages/sdks/config-enum
+      ref: master
 ~~~
 
-See the example/ directory for a runnable sample.
-
-_This file is preserved across SDK regeneration done via task generate:<provider>._
+For package-specific resources, arguments, and outputs, use the generated Dart
+API documentation and the upstream provider documentation linked above.

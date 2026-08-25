@@ -3,16 +3,16 @@
 import 'package:pulumi_bytesink/index.dart' as module_index;
 import 'package:pulumi_bytesink/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ResourceArgs = module_index.ResourceArgs.new;
   final ResourceType = module_index.ResourceType.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Bytesink = module_providers.ProviderProvider.new;
 }

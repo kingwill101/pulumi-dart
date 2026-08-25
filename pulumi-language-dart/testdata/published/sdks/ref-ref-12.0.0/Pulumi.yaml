@@ -1,0 +1,3 @@
+name: dart-ref-ref-example
+runtime: dart
+main: example/main.dart

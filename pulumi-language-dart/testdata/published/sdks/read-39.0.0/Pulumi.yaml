@@ -1,0 +1,3 @@
+name: dart-read-example
+runtime: dart
+main: example/main.dart

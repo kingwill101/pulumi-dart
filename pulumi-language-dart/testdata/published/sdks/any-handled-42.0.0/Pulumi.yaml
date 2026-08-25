@@ -1,0 +1,3 @@
+name: dart-any-handled-example
+runtime: dart
+main: example/main.dart

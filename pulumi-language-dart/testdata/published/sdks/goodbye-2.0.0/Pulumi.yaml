@@ -1,0 +1,3 @@
+name: dart-goodbye-example
+runtime: dart
+main: example/main.dart

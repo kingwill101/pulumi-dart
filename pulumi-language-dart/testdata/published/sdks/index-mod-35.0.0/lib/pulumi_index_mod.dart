@@ -3,11 +3,11 @@
 import 'package:pulumi_index_mod/index_mine.dart' as module_index_mine;
 import 'package:pulumi_index_mod/providers.dart' as module_providers;
 
-final index_mine = const _IndexMineModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index_mine = _IndexMineModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexMineModuleNamespace {
-  const _IndexMineModuleNamespace();
+  _IndexMineModuleNamespace();
   final CallArgs = module_index_mine.CallArgs.new;
   final CallResult = module_index_mine.CallIndexMineResult.new;
   final CallResultArgs = module_index_mine.CallIndexMineResult.new;
@@ -24,6 +24,6 @@ class _IndexMineModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final IndexMod = module_providers.ProviderProvider.new;
 }

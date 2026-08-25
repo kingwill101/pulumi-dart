@@ -3,11 +3,11 @@
 import 'package:pulumi_output/index.dart' as module_index;
 import 'package:pulumi_output/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ComplexResource = module_index.ComplexResource.new;
   final ComplexResourceArgs = module_index.ComplexResourceArgs.new;
   final Data = module_index.Data.new;
@@ -17,7 +17,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final OutputArgs = module_providers.ProviderArgs.new;
   final OutputType = module_providers.ProviderProvider.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

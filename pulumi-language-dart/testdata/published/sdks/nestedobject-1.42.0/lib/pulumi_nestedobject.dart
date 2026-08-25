@@ -3,11 +3,11 @@
 import 'package:pulumi_nestedobject/index.dart' as module_index;
 import 'package:pulumi_nestedobject/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final Container = module_index.Container.new;
   final ContainerArgs = module_index.ContainerArgs.new;
   final Detail = module_index.Detail.new;
@@ -25,6 +25,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Nestedobject = module_providers.ProviderProvider.new;
 }

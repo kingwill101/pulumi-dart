@@ -3,11 +3,11 @@
 import 'package:pulumi_scalar_returns/index.dart' as module_index;
 import 'package:pulumi_scalar_returns/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final InvokeArrayArgs = module_index.InvokeArrayArgs.new;
   final InvokeMapArgs = module_index.InvokeMapArgs.new;
   final InvokeSecretArgs = module_index.InvokeSecretArgs.new;
@@ -17,6 +17,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final ScalarReturns = module_providers.ProviderProvider.new;
 }

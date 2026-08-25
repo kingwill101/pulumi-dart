@@ -4,12 +4,12 @@ import 'package:pulumi_names/index.dart' as module_index;
 import 'package:pulumi_names/mod.dart' as module_mod;
 import 'package:pulumi_names/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final mod = const _ModModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final mod = _ModModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ResArray = module_index.ResArray.new;
   final ResArrayArgs = module_index.ResArrayArgs.new;
   final ResList = module_index.ResList.new;
@@ -21,12 +21,12 @@ class _IndexModuleNamespace {
 }
 
 class _ModModuleNamespace {
-  const _ModModuleNamespace();
+  _ModModuleNamespace();
   final Res = module_mod.Res.new;
   final ResArgs = module_mod.ResArgs.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Names = module_providers.ProviderProvider.new;
 }
