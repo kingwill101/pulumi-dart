@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_azuread/index.dart' as pulumi_azuread_index;
 
-class GeneratedStack extends pulumi.Stack {
+class AzureadStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  AzureadStack() {
     final application = pulumi_azuread_index.Application(
       'application',
       args: pulumi_azuread_index.ApplicationArgs(
@@ -26,5 +26,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => AzureadStack());
 }

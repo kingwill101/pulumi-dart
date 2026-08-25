@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_mysql/index.dart' as pulumi_mysql_index;
 
-class GeneratedStack extends pulumi.Stack {
+class MysqlStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  MysqlStack() {
     final database = pulumi_mysql_index.Database(
       'database',
       args: pulumi_mysql_index.DatabaseArgs(
@@ -26,5 +26,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => MysqlStack());
 }

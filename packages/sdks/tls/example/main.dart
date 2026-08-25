@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_tls/index.dart' as pulumi_tls_index;
 
-class GeneratedStack extends pulumi.Stack {
+class TlsStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  TlsStack() {
     final privateKey = pulumi_tls_index.PrivateKey(
       'private-key',
       args: pulumi_tls_index.PrivateKeyArgs(
@@ -28,5 +28,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => TlsStack());
 }

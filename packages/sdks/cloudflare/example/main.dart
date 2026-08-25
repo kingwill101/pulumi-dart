@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_cloudflare/index.dart' as pulumi_cloudflare_index;
 
-class GeneratedStack extends pulumi.Stack {
+class CloudflareStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  CloudflareStack() {
     final account = pulumi_cloudflare_index.Account(
       'account',
       args: pulumi_cloudflare_index.AccountArgs(
@@ -26,5 +26,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => CloudflareStack());
 }

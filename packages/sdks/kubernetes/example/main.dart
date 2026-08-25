@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_kubernetes/core.dart' as pulumi_kubernetes_core;
 
-class GeneratedStack extends pulumi.Stack {
+class KubernetesStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  KubernetesStack() {
     final namespace = pulumi_kubernetes_core.NamespaceCoreV1('namespace');
 
     _outputProperties = [
@@ -21,5 +21,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => KubernetesStack());
 }

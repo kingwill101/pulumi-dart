@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_docker/index.dart' as pulumi_docker_index;
 
-class GeneratedStack extends pulumi.Stack {
+class DockerStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  DockerStack() {
     final demoImage = pulumi_docker_index.Image(
       'demo-image',
       args: pulumi_docker_index.ImageArgs(
@@ -34,5 +34,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => DockerStack());
 }

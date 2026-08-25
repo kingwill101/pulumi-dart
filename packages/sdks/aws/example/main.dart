@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_aws/s3.dart' as pulumi_aws_s3;
 
-class GeneratedStack extends pulumi.Stack {
+class AwsStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  AwsStack() {
     final bucket = pulumi_aws_s3.Bucket(
       'bucket',
       args: pulumi_aws_s3.BucketArgs(forceDestroy: pulumi.Input.asInput(true)),
@@ -24,5 +24,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => AwsStack());
 }

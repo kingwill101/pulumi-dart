@@ -3,10 +3,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_google_native/storage.dart'
     as pulumi_google_native_storage;
 
-class GeneratedStack extends pulumi.Stack {
+class GoogleNativeStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  GoogleNativeStack() {
     final bucket = pulumi_google_native_storage.Bucket(
       'bucket',
       args: pulumi_google_native_storage.BucketArgs(
@@ -27,5 +27,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => GoogleNativeStack());
 }

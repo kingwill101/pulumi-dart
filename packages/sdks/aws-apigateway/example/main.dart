@@ -3,10 +3,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws_apigateway/index.dart'
     as pulumi_aws_apigateway_index;
 
-class GeneratedStack extends pulumi.Stack {
+class AwsApigatewayStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  AwsApigatewayStack() {
     final api = pulumi_aws_apigateway_index.RestAPI(
       'api',
       args: pulumi_aws_apigateway_index.RestAPIArgs(
@@ -29,5 +29,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => AwsApigatewayStack());
 }

@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_eks/index.dart' as eks;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
+class EksStack extends pulumi.Stack {
+  EksStack() {
     final cluster = eks.Cluster(
       'cluster',
       args: eks.ClusterArgs(skipDefaultNodeGroup: true.input()),
@@ -12,5 +12,5 @@ class ExampleStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => EksStack());
 }

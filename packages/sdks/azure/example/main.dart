@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_azure/core.dart' as pulumi_azure_core;
 
-class GeneratedStack extends pulumi.Stack {
+class AzureStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  AzureStack() {
     final resourceGroup = pulumi_azure_core.ResourceGroup('resource-group');
 
     _outputProperties = [
@@ -21,5 +21,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => AzureStack());
 }

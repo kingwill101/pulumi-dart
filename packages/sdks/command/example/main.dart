@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_command/local.dart' as pulumi_command_local;
 
-class GeneratedStack extends pulumi.Stack {
+class CommandStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  CommandStack() {
     final greeting = pulumi_command_local.Command(
       'greeting',
       args: pulumi_command_local.CommandArgs(
@@ -26,5 +26,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => CommandStack());
 }

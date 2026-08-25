@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_pulumiservice/index.dart' as pulumi_pulumiservice_index;
 
-class GeneratedStack extends pulumi.Stack {
+class PulumiserviceStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  PulumiserviceStack() {
     final accessToken = pulumi_pulumiservice_index.AccessToken(
       'access-token',
       args: pulumi_pulumiservice_index.AccessTokenArgs(
@@ -26,5 +26,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => PulumiserviceStack());
 }

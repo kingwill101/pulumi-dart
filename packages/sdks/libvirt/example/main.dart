@@ -2,10 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 import 'package:pulumi_libvirt/index.dart' as pulumi_libvirt_index;
 
-class GeneratedStack extends pulumi.Stack {
+class LibvirtStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
-  GeneratedStack() {
+  LibvirtStack() {
     final pool = pulumi_libvirt_index.Pool(
       'pool',
       args: pulumi_libvirt_index.PoolArgs(type: pulumi.Input.asInput('dir')),
@@ -24,5 +24,5 @@ class GeneratedStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => LibvirtStack());
 }
