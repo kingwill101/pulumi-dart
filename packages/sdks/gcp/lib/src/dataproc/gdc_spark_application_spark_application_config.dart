@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GdcSparkApplicationSparkApplicationConfig {
   /// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
-  final pulumi.Input<List<String>>? archiveUris;
+  final pulumi.Input<List<String>?>? archiveUris;
   /// The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// HCFS URIs of files to be placed in the working directory of each executor.
-  final pulumi.Input<List<String>>? fileUris;
+  final pulumi.Input<List<String>?>? fileUris;
   /// HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
-  final pulumi.Input<List<String>>? jarFileUris;
+  final pulumi.Input<List<String>?>? jarFileUris;
   /// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
-  final pulumi.Input<String>? mainClass;
+  final pulumi.Input<String?>? mainClass;
   /// The HCFS URI of the jar file that contains the main class.
-  final pulumi.Input<String>? mainJarFileUri;
+  final pulumi.Input<String?>? mainJarFileUri;
 
   /// Creates a new [GdcSparkApplicationSparkApplicationConfig].
   /// [archiveUris] HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.

@@ -5,7 +5,7 @@ import 'workflow_template_placement_managed_cluster_config_security_config_kerbe
 
 class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
   /// Kerberos related configuration.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig>? kerberosConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig?>? kerberosConfig;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigSecurityConfig].
   /// [kerberosConfig] Kerberos related configuration.

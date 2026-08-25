@@ -25,7 +25,7 @@ class GetAiIndexIndexStat {
 
   factory GetAiIndexIndexStat.fromMap(Map<String, dynamic> map) {
     return GetAiIndexIndexStat(
-      shardsCount: pulumi.Input.fromValue(map['shardsCount'] as int),
+      shardsCount: pulumi.Input.fromValue((map['shardsCount'] as num).toInt()),
       vectorsCount: pulumi.Input.fromValue(map['vectorsCount'] as String),
     );
   }

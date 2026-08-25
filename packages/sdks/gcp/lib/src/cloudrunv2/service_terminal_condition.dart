@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTerminalCondition {
   /// (Output)
   /// A reason for the execution condition.
-  final pulumi.Input<String>? executionReason;
+  final pulumi.Input<String?>? executionReason;
   /// (Output)
   /// Last time the condition transitioned from one status to another.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// (Output)
   /// Human readable message indicating details about the current status.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (Output)
   /// A common (service-level) reason for this condition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// (Output)
   /// A reason for the revision condition.
-  final pulumi.Input<String>? revisionReason;
+  final pulumi.Input<String?>? revisionReason;
   /// (Output)
   /// How to interpret failures of this condition, one of Error, Warning, Info
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// (Output)
   /// State of the condition.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// The allocation type for this traffic target.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServiceTerminalCondition].
   /// [executionReason] (Output)

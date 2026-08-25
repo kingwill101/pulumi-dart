@@ -329,10 +329,10 @@ class ProjectMetadata extends pulumi.CustomResource {
           'gcp:compute/projectMetadata:ProjectMetadata',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
   }
 
@@ -341,11 +341,12 @@ class ProjectMetadata extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectMetadataState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectMetadata._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -360,7 +361,21 @@ class ProjectMetadata extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ProjectMetadata] resource.
+  ProjectMetadata.reference(String urn)
+    : super(
+        'gcp:compute/projectMetadata:ProjectMetadata',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
   }
 }

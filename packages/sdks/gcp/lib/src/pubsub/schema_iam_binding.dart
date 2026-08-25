@@ -980,11 +980,11 @@ class SchemaIamBinding extends pulumi.CustomResource {
           'gcp:pubsub/schemaIamBinding:SchemaIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<SchemaIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     schema = registerOutput<String>('schema');
@@ -995,11 +995,12 @@ class SchemaIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchemaIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SchemaIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1015,7 +1016,24 @@ class SchemaIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<SchemaIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    schema = registerOutput<String>('schema');
+  }
+
+  /// Creates a typed reference to an existing [SchemaIamBinding] resource.
+  SchemaIamBinding.reference(String urn)
+    : super(
+        'gcp:pubsub/schemaIamBinding:SchemaIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<SchemaIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     schema = registerOutput<String>('schema');

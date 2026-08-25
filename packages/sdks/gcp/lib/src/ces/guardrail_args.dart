@@ -15,29 +15,29 @@ import 'guardrail_model_safety.dart';
 class GuardrailArgs {
   /// Action that is taken when a certain precondition is met.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailAction>? action;
+  final pulumi.Input<GuardrailAction?>? action;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> app;
   /// Guardrail that blocks the conversation based on the code callbacks
   /// provided.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailCodeCallback>? codeCallback;
+  final pulumi.Input<GuardrailCodeCallback?>? codeCallback;
   /// Guardrail that bans certain content from being used in the conversation.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailContentFilter>? contentFilter;
+  final pulumi.Input<GuardrailContentFilter?>? contentFilter;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the guardrail.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the guardrail.
   final pulumi.Input<String> displayName;
   /// Whether the guardrail is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The ID to use for the guardrail, which will become the final component of
   /// the guardrail's resource name. If not provided, a unique ID will be
   /// automatically assigned for the guardrail.
@@ -45,21 +45,21 @@ class GuardrailArgs {
   /// Guardrail that blocks the conversation if the LLM response is considered
   /// violating the policy based on the LLM classification.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailLlmPolicy>? llmPolicy;
+  final pulumi.Input<GuardrailLlmPolicy?>? llmPolicy;
   /// Guardrail that blocks the conversation if the input is considered unsafe
   /// based on the LLM classification.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailLlmPromptSecurity>? llmPromptSecurity;
+  final pulumi.Input<GuardrailLlmPromptSecurity?>? llmPromptSecurity;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Model safety settings overrides. When this is set, it will override the
   /// default settings and trigger the guardrail if the response is considered
   /// unsafe.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailModelSafety>? modelSafety;
+  final pulumi.Input<GuardrailModelSafety?>? modelSafety;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GuardrailArgs].
   /// [action] Action that is taken when a certain precondition is met.

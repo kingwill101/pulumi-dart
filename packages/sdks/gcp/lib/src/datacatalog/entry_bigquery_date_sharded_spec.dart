@@ -6,14 +6,14 @@ class EntryBigqueryDateShardedSpec {
   /// (Output)
   /// The Data Catalog resource name of the dataset entry the current table belongs to, for example,
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// (Output)
   /// Total number of shards.
-  final pulumi.Input<int>? shardCount;
+  final pulumi.Input<int?>? shardCount;
   /// (Output)
   /// The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
   /// for example, for shard MyTable20180101, the tablePrefix is MyTable.
-  final pulumi.Input<String>? tablePrefix;
+  final pulumi.Input<String?>? tablePrefix;
 
   /// Creates a new [EntryBigqueryDateShardedSpec].
   /// [dataset] (Output)
@@ -36,7 +36,7 @@ class EntryBigqueryDateShardedSpec {
   factory EntryBigqueryDateShardedSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryDateShardedSpec(
       dataset: (() { final guardedValue = map['dataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tablePrefix: (() { final guardedValue = map['tablePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

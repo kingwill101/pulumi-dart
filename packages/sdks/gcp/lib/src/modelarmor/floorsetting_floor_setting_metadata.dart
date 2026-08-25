@@ -6,7 +6,7 @@ import 'floorsetting_floor_setting_metadata_multi_language_detection.dart';
 class FloorsettingFloorSettingMetadata {
   /// Metadata for multi language detection.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingFloorSettingMetadataMultiLanguageDetection>? multiLanguageDetection;
+  final pulumi.Input<FloorsettingFloorSettingMetadataMultiLanguageDetection?>? multiLanguageDetection;
 
   /// Creates a new [FloorsettingFloorSettingMetadata].
   /// [multiLanguageDetection] Metadata for multi language detection.

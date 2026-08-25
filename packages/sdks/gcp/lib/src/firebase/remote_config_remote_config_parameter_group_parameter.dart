@@ -10,21 +10,21 @@ class RemoteConfigRemoteConfigParameterGroupParameter {
   /// the value of this parameter.
   /// Only one of useInAppDefault or value may be specified.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroupParameterConditionalValue>>? conditionalValues;
+  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroupParameterConditionalValue>?>? conditionalValues;
   /// Value to set the parameter to, when none of the named conditions evaluate to true.
   /// Only one of useInAppDefault or value may be specified.
   /// Structure is documented below.
-  final pulumi.Input<RemoteConfigRemoteConfigParameterGroupParameterDefaultValue>? defaultValue;
+  final pulumi.Input<RemoteConfigRemoteConfigParameterGroupParameterDefaultValue?>? defaultValue;
   /// A description for this Parameter. Its length must be less than or equal to
   /// 256 characters . A description may contain any Unicode characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> parameterName;
   /// The data type for all values of this parameter in the current version of
   /// the template.
   /// Default value is `STRING`.
   /// Possible values are: `STRING`, `BOOLEAN`, `NUMBER`, `JSON`.
-  final pulumi.Input<String>? valueType;
+  final pulumi.Input<String?>? valueType;
 
   /// Creates a new [RemoteConfigRemoteConfigParameterGroupParameter].
   /// [conditionalValues] The conditionName of the highest priority

@@ -15,7 +15,7 @@ class BucketAccessControlArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The entity holding the permission, in one of the following forms:
   /// user-userId
   /// user-email
@@ -34,7 +34,7 @@ class BucketAccessControlArgs {
   final pulumi.Input<String> entity;
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`, `WRITER`.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [BucketAccessControlArgs].
   /// [bucket] The name of the bucket.

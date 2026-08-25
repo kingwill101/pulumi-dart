@@ -5,12 +5,12 @@ import 'feed_details_amazon_sqs_settings_authentication.dart';
 
 class FeedDetailsAmazonSqsSettings {
   /// Account number of the owner of the queue.
-  final pulumi.Input<String>? accountNumber;
+  final pulumi.Input<String?>? accountNumber;
   /// Amazon SQS auth.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonSqsSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAmazonSqsSettingsAuthentication?>? authentication;
   /// Name of the queue.
-  final pulumi.Input<String>? queue;
+  final pulumi.Input<String?>? queue;
   /// Possible values:
   /// US_EAST_1
   /// US_EAST_2
@@ -45,12 +45,12 @@ class FeedDetailsAmazonSqsSettings {
   /// EU_CENTRAL_2
   /// IL_CENTRAL_1
   /// ME_CENTRAL_1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Possible values:
   /// SOURCE_DELETION_NEVER
   /// SOURCE_DELETION_ON_SUCCESS
   /// SOURCE_DELETION_ON_SUCCESS_FILES_ONLY
-  final pulumi.Input<String>? sourceDeletionOption;
+  final pulumi.Input<String?>? sourceDeletionOption;
 
   /// Creates a new [FeedDetailsAmazonSqsSettings].
   /// [accountNumber] Account number of the owner of the queue.

@@ -652,9 +652,9 @@ class Config extends pulumi.CustomResource {
           'gcp:identityplatform/config:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    authorizedDomains = registerOutput<List<String>>('authorizedDomains');
+    authorizedDomains = registerOutput<List<String>>('authorizedDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autodeleteAnonymousUsers = registerOutput<bool?>('autodeleteAnonymousUsers');
     blockingFunctions = registerOutput<ConfigBlockingFunctions?>('blockingFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigBlockingFunctions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<ConfigClient>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -673,11 +673,12 @@ class Config extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Config._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -691,7 +692,30 @@ class Config extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authorizedDomains = registerOutput<List<String>>('authorizedDomains');
+    authorizedDomains = registerOutput<List<String>>('authorizedDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autodeleteAnonymousUsers = registerOutput<bool?>('autodeleteAnonymousUsers');
+    blockingFunctions = registerOutput<ConfigBlockingFunctions?>('blockingFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigBlockingFunctions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    client = registerOutput<ConfigClient>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mfa = registerOutput<ConfigMfa>('mfa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMfa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoring = registerOutput<ConfigMonitoring>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiTenant = registerOutput<ConfigMultiTenant>('multiTenant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMultiTenant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    quota = registerOutput<ConfigQuota?>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signIn = registerOutput<ConfigSignIn>('signIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigSignIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigSmsRegionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Config] resource.
+  Config.reference(String urn)
+    : super(
+        'gcp:identityplatform/config:Config',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizedDomains = registerOutput<List<String>>('authorizedDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autodeleteAnonymousUsers = registerOutput<bool?>('autodeleteAnonymousUsers');
     blockingFunctions = registerOutput<ConfigBlockingFunctions?>('blockingFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigBlockingFunctions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<ConfigClient>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });

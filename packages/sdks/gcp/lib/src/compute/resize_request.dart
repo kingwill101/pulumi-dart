@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resize_request_args.dart';
 import 'resize_request_requested_run_duration.dart';
 import 'resize_request_state.dart';
+import 'resize_request_status.dart';
 
 /// Represents a Managed Instance Group Resize Request
 ///
@@ -594,7 +595,7 @@ class ResizeRequest extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Status of the request.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<ResizeRequestStatus>> statuses;
   /// The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
   late final pulumi.Output<String> zone;
 
@@ -610,7 +611,7 @@ class ResizeRequest extends pulumi.CustomResource {
           'gcp:compute/resizeRequest:ResizeRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -621,7 +622,7 @@ class ResizeRequest extends pulumi.CustomResource {
     requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resizeBy = registerOutput<int>('resizeBy');
     state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ResizeRequestStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResizeRequestStatus>(guardedValue, (value) => ResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>())); });
     zone = registerOutput<String>('zone');
   }
 
@@ -630,11 +631,12 @@ class ResizeRequest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResizeRequestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResizeRequest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -657,7 +659,29 @@ class ResizeRequest extends pulumi.CustomResource {
     requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resizeBy = registerOutput<int>('resizeBy');
     this.state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ResizeRequestStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResizeRequestStatus>(guardedValue, (value) => ResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ResizeRequest] resource.
+  ResizeRequest.reference(String urn)
+    : super(
+        'gcp:compute/resizeRequest:ResizeRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestedRunDuration = registerOutput<ResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resizeBy = registerOutput<int>('resizeBy');
+    state = registerOutput<String>('state');
+    statuses = registerOutput<List<ResizeRequestStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResizeRequestStatus>(guardedValue, (value) => ResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>())); });
     zone = registerOutput<String>('zone');
   }
 }

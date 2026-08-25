@@ -3,94 +3,94 @@
 
 /// Result data returned by getRegionTargetHttpsProxy.
 class GetRegionTargetHttpsProxyResult {
-  final List<String> certificateManagerCertificates;
-  final String creationTimestamp;
-  final String deletionPolicy;
-  final String description;
-  final int httpKeepAliveTimeoutSec;
+  final List<String>? certificateManagerCertificates;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
+  final String? description;
+  final int? httpKeepAliveTimeoutSec;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   final String? project;
-  final int proxyId;
+  final int? proxyId;
   final String? region;
-  final String selfLink;
-  final String serverTlsPolicy;
-  final List<String> sslCertificates;
-  final String sslPolicy;
-  final String urlMap;
+  final String? selfLink;
+  final String? serverTlsPolicy;
+  final List<String>? sslCertificates;
+  final String? sslPolicy;
+  final String? urlMap;
 
   /// Creates a new [GetRegionTargetHttpsProxyResult].
-  /// [certificateManagerCertificates] Required.
-  /// [creationTimestamp] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [httpKeepAliveTimeoutSec] Required.
+  /// [certificateManagerCertificates] Optional.
+  /// [creationTimestamp] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [httpKeepAliveTimeoutSec] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [proxyId] Required.
+  /// [proxyId] Optional.
   /// [region] Optional.
-  /// [selfLink] Required.
-  /// [serverTlsPolicy] Required.
-  /// [sslCertificates] Required.
-  /// [sslPolicy] Required.
-  /// [urlMap] Required.
+  /// [selfLink] Optional.
+  /// [serverTlsPolicy] Optional.
+  /// [sslCertificates] Optional.
+  /// [sslPolicy] Optional.
+  /// [urlMap] Optional.
   const GetRegionTargetHttpsProxyResult({
-    required this.certificateManagerCertificates,
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.httpKeepAliveTimeoutSec,
-    required this.id,
-    required this.name,
+    this.certificateManagerCertificates,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.id,
+    this.name,
     this.project,
-    required this.proxyId,
+    this.proxyId,
     this.region,
-    required this.selfLink,
-    required this.serverTlsPolicy,
-    required this.sslCertificates,
-    required this.sslPolicy,
-    required this.urlMap,
+    this.selfLink,
+    this.serverTlsPolicy,
+    this.sslCertificates,
+    this.sslPolicy,
+    this.urlMap,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateManagerCertificates': certificateManagerCertificates,
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'httpKeepAliveTimeoutSec': httpKeepAliveTimeoutSec,
-      'id': id,
-      'name': name,
+      'certificateManagerCertificates': ?certificateManagerCertificates,
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'httpKeepAliveTimeoutSec': ?httpKeepAliveTimeoutSec,
+      'id': ?id,
+      'name': ?name,
       'project': ?project,
-      'proxyId': proxyId,
+      'proxyId': ?proxyId,
       'region': ?region,
-      'selfLink': selfLink,
-      'serverTlsPolicy': serverTlsPolicy,
-      'sslCertificates': sslCertificates,
-      'sslPolicy': sslPolicy,
-      'urlMap': urlMap,
+      'selfLink': ?selfLink,
+      'serverTlsPolicy': ?serverTlsPolicy,
+      'sslCertificates': ?sslCertificates,
+      'sslPolicy': ?sslPolicy,
+      'urlMap': ?urlMap,
     };
   }
 
   factory GetRegionTargetHttpsProxyResult.fromMap(Map<String, dynamic> map) {
     return GetRegionTargetHttpsProxyResult(
-      certificateManagerCertificates: (map['certificateManagerCertificates'] as List).cast<String>(),
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] as int,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      certificateManagerCertificates: (() { final guardedValue = map['certificateManagerCertificates']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      httpKeepAliveTimeoutSec: (() { final guardedValue = map['httpKeepAliveTimeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      proxyId: map['proxyId'] as int,
+      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      selfLink: map['selfLink'] as String,
-      serverTlsPolicy: map['serverTlsPolicy'] as String,
-      sslCertificates: (map['sslCertificates'] as List).cast<String>(),
-      sslPolicy: map['sslPolicy'] as String,
-      urlMap: map['urlMap'] as String,
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverTlsPolicy: (() { final guardedValue = map['serverTlsPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sslCertificates: (() { final guardedValue = map['sslCertificates']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      sslPolicy: (() { final guardedValue = map['sslPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      urlMap: (() { final guardedValue = map['urlMap']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

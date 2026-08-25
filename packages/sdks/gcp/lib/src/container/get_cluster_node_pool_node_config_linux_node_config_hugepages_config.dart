@@ -25,8 +25,8 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
 
   factory GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig(
-      hugepageSize1g: pulumi.Input.fromValue(map['hugepageSize1g'] as int),
-      hugepageSize2m: pulumi.Input.fromValue(map['hugepageSize2m'] as int),
+      hugepageSize1g: pulumi.Input.fromValue((map['hugepageSize1g'] as num).toInt()),
+      hugepageSize2m: pulumi.Input.fromValue((map['hugepageSize2m'] as num).toInt()),
     );
   }
 }

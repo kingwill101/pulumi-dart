@@ -6,9 +6,9 @@ import 'feed_details_workspace_alerts_settings_authentication.dart';
 class FeedDetailsWorkspaceAlertsSettings {
   /// OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceAlertsSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsWorkspaceAlertsSettingsAuthentication?>? authentication;
   /// Customer ID.
-  final pulumi.Input<String>? workspaceCustomerId;
+  final pulumi.Input<String?>? workspaceCustomerId;
 
   /// Creates a new [FeedDetailsWorkspaceAlertsSettings].
   /// [authentication] OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519

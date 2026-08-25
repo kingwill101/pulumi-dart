@@ -7,9 +7,9 @@ import 'get_instance_groups_instance_group.dart';
 class GetInstanceGroupsResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of all retrieved GCE instance groups. Structure is defined below.
-  final List<GetInstanceGroupsInstanceGroup> instanceGroups;
+  final List<GetInstanceGroupsInstanceGroup>? instanceGroups;
   /// The ID of the project in which the resource belongs.
   final String? project;
   /// The zone of the instance group.
@@ -23,8 +23,8 @@ class GetInstanceGroupsResult {
   /// [zone] The zone of the instance group.
   const GetInstanceGroupsResult({
     this.filter,
-    required this.id,
-    required this.instanceGroups,
+    this.id,
+    this.instanceGroups,
     this.project,
     this.zone,
   });
@@ -32,8 +32,8 @@ class GetInstanceGroupsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'id': id,
-      'instanceGroups': pulumi.Input.encodeList<GetInstanceGroupsInstanceGroup, Map<String, dynamic>>(instanceGroups, (value) => value.toMap()),
+      'id': ?id,
+      'instanceGroups': ?(() { final guardedValue = instanceGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceGroupsInstanceGroup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
       'zone': ?zone,
     };
@@ -42,8 +42,8 @@ class GetInstanceGroupsResult {
   factory GetInstanceGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupsResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      instanceGroups: pulumi.Input.decodeList<GetInstanceGroupsInstanceGroup>(map['instanceGroups']!, (value) => GetInstanceGroupsInstanceGroup.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceGroups: (() { final guardedValue = map['instanceGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceGroupsInstanceGroup>(guardedValue, (value) => GetInstanceGroupsInstanceGroup.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

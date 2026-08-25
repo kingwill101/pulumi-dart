@@ -6,35 +6,35 @@ import 'user_creds_resource_identity.dart';
 /// Input properties used for looking up and filtering UserCreds resources.
 class UserCredsState {
   /// The timestamp at which these user creds were created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The Firestore database ID.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID to use for the user creds, which will become the final component
   /// of the user cred's resource name.
   /// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
   /// with first character a letter and the last a letter or a number. Must not
   /// be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Describes the Resource Identity principal.
   /// Structure is documented below.
-  final pulumi.Input<List<UserCredsResourceIdentity>>? resourceIdentities;
+  final pulumi.Input<List<UserCredsResourceIdentity>?>? resourceIdentities;
   /// The plaintext server-generated password for the user creds.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? securePassword;
+  final pulumi.Input<String?>? securePassword;
   /// The state of the user creds.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The timestamp at which these user creds were updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [UserCredsState].
   /// [createTime] The timestamp at which these user creds were created.

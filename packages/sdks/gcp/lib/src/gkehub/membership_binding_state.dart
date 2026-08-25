@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MembershipBindingState {
   /// (Output)
   /// Code describes the state of a MembershipBinding resource.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
 
   /// Creates a new [MembershipBindingState].
   /// [code] (Output)

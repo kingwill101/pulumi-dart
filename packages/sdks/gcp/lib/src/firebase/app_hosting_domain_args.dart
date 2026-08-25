@@ -16,7 +16,7 @@ class AppHostingDomainArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
   final pulumi.Input<String> domainId;
@@ -24,11 +24,11 @@ class AppHostingDomainArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The serving behavior of the domain. If specified, the domain will
   /// serve content other than its Backend's live content.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingDomainServe>? serve;
+  final pulumi.Input<AppHostingDomainServe?>? serve;
 
   /// Creates a new [AppHostingDomainArgs].
   /// [backend] The ID of the Backend that this Domain is associated with

@@ -7,12 +7,12 @@ import 'prevention_discovery_config_target_cloud_storage_target_filter_collectio
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection {
   /// A collection of regular expressions to match a resource against.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes>? includeRegexes;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes?>? includeRegexes;
   /// For a resource to match the tag filters, the resource must have all of the
   /// provided tags attached. Tags refer to Resource Manager tags bound to the
   /// resource or its ancestors.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags>? includeTags;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags?>? includeTags;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection].
   /// [includeRegexes] A collection of regular expressions to match a resource against.

@@ -10,24 +10,24 @@ class SoarDomainState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// SoarDomain display name, limited to 4096 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// SoarDomain associated logical environments (json).
-  final pulumi.Input<String>? environmentsJson;
+  final pulumi.Input<String?>? environmentsJson;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The unique name(ID) of the SoarDomain.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/soarDomains/{soar_domain_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Id of the domain record.
-  final pulumi.Input<String>? soarDomainId;
+  final pulumi.Input<String?>? soarDomainId;
 
   /// Creates a new [SoarDomainState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

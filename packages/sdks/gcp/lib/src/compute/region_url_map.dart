@@ -3,7 +3,10 @@ import 'region_url_map_args.dart';
 import 'region_url_map_default_route_action.dart';
 import 'region_url_map_default_url_redirect.dart';
 import 'region_url_map_header_action.dart';
+import 'region_url_map_host_rule.dart';
+import 'region_url_map_path_matcher.dart';
 import 'region_url_map_state.dart';
+import 'region_url_map_test.dart';
 
 /// UrlMaps are used to route requests to a backend service based on rules
 /// that you define for the host and path of an incoming URL.
@@ -8334,7 +8337,7 @@ class RegionUrlMap extends pulumi.CustomResource {
   late final pulumi.Output<RegionUrlMapHeaderAction?> headerAction;
   /// The list of HostRules to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hostRules;
+  late final pulumi.Output<List<RegionUrlMapHostRule>?> hostRules;
   /// The unique identifier for the resource.
   late final pulumi.Output<int> mapId;
   /// Name of the resource. Provided by the client when the resource is
@@ -8347,7 +8350,7 @@ class RegionUrlMap extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The list of named PathMatchers to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> pathMatchers;
+  late final pulumi.Output<List<RegionUrlMapPathMatcher>?> pathMatchers;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -8359,7 +8362,7 @@ class RegionUrlMap extends pulumi.CustomResource {
   /// The list of expected URL mappings. Requests to update this UrlMap will
   /// succeed only if all of the test cases pass.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tests;
+  late final pulumi.Output<List<RegionUrlMapTest>?> tests;
 
   /// Creates a new [RegionUrlMap].
   /// [name] The Pulumi resource name.
@@ -8373,7 +8376,7 @@ class RegionUrlMap extends pulumi.CustomResource {
           'gcp:compute/regionUrlMap:RegionUrlMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>('defaultRouteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapDefaultRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -8383,14 +8386,14 @@ class RegionUrlMap extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    hostRules = registerOutput<List<RegionUrlMapHostRule>?>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapHostRule>(guardedValue, (value) => RegionUrlMapHostRule.fromMap((value as Map).cast<String, dynamic>())); });
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    pathMatchers = registerOutput<List<RegionUrlMapPathMatcher>?>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapPathMatcher>(guardedValue, (value) => RegionUrlMapPathMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
-    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
+    tests = registerOutput<List<RegionUrlMapTest>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapTest>(guardedValue, (value) => RegionUrlMapTest.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RegionUrlMap] resource's state with the given [name] and [id].
@@ -8398,11 +8401,12 @@ class RegionUrlMap extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionUrlMapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionUrlMap._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -8424,13 +8428,40 @@ class RegionUrlMap extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    hostRules = registerOutput<List<RegionUrlMapHostRule>?>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapHostRule>(guardedValue, (value) => RegionUrlMapHostRule.fromMap((value as Map).cast<String, dynamic>())); });
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    pathMatchers = registerOutput<List<RegionUrlMapPathMatcher>?>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapPathMatcher>(guardedValue, (value) => RegionUrlMapPathMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
-    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
+    tests = registerOutput<List<RegionUrlMapTest>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapTest>(guardedValue, (value) => RegionUrlMapTest.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegionUrlMap] resource.
+  RegionUrlMap.reference(String urn)
+    : super(
+        'gcp:compute/regionUrlMap:RegionUrlMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>('defaultRouteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapDefaultRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultService = registerOutput<String?>('defaultService');
+    defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>('defaultUrlRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapDefaultUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionUrlMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostRules = registerOutput<List<RegionUrlMapHostRule>?>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapHostRule>(guardedValue, (value) => RegionUrlMapHostRule.fromMap((value as Map).cast<String, dynamic>())); });
+    mapId = registerOutput<int>('mapId');
+    this.name = registerOutput<String>('name');
+    pathMatchers = registerOutput<List<RegionUrlMapPathMatcher>?>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapPathMatcher>(guardedValue, (value) => RegionUrlMapPathMatcher.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    tests = registerOutput<List<RegionUrlMapTest>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionUrlMapTest>(guardedValue, (value) => RegionUrlMapTest.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

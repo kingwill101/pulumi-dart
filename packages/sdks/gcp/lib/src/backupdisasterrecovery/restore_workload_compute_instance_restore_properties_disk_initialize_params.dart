@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
   /// Optional. Specifies the disk name.
-  final pulumi.Input<String>? diskName;
+  final pulumi.Input<String?>? diskName;
   /// Optional. URL of the zone where the disk should be created.
-  final pulumi.Input<List<String>>? replicaZones;
+  final pulumi.Input<List<String>?>? replicaZones;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams].
   /// [diskName] Optional. Specifies the disk name.

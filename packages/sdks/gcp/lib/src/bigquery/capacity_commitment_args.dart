@@ -11,28 +11,28 @@ class CapacityCommitmentArgs {
   /// empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
   /// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
   /// or merged.
-  final pulumi.Input<String>? capacityCommitmentId;
+  final pulumi.Input<String?>? capacityCommitmentId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// If true, fail the request if another project in the organization has a capacity commitment.
-  final pulumi.Input<String>? enforceSingleAdminProjectPerOrg;
+  final pulumi.Input<String?>? enforceSingleAdminProjectPerOrg;
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
   final pulumi.Input<String> plan;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
-  final pulumi.Input<String>? renewalPlan;
+  final pulumi.Input<String?>? renewalPlan;
   /// Number of slots in this commitment.
   final pulumi.Input<int> slotCount;
 
@@ -82,7 +82,7 @@ class CapacityCommitmentArgs {
       plan: pulumi.Input.fromValue(map['plan'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       renewalPlan: (() { final guardedValue = map['renewalPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      slotCount: pulumi.Input.fromValue(map['slotCount'] as int),
+      slotCount: pulumi.Input.fromValue((map['slotCount'] as num).toInt()),
     );
   }
 }

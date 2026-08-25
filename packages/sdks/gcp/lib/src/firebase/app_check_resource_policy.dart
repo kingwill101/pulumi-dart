@@ -275,7 +275,7 @@ class AppCheckResourcePolicy extends pulumi.CustomResource {
           'gcp:firebase/appCheckResourcePolicy:AppCheckResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enforcementMode = registerOutput<String?>('enforcementMode');
@@ -292,11 +292,12 @@ class AppCheckResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppCheckResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppCheckResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -310,6 +311,25 @@ class AppCheckResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    enforcementMode = registerOutput<String?>('enforcementMode');
+    etag = registerOutput<String>('etag');
+    project = registerOutput<String>('project');
+    resourcePolicyId = registerOutput<String>('resourcePolicyId');
+    serviceId = registerOutput<String>('serviceId');
+    targetResource = registerOutput<String>('targetResource');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AppCheckResourcePolicy] resource.
+  AppCheckResourcePolicy.reference(String urn)
+    : super(
+        'gcp:firebase/appCheckResourcePolicy:AppCheckResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enforcementMode = registerOutput<String?>('enforcementMode');
     etag = registerOutput<String>('etag');

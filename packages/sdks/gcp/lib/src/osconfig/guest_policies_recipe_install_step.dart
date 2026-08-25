@@ -12,25 +12,25 @@ import 'guest_policies_recipe_install_step_script_run.dart';
 class GuestPoliciesRecipeInstallStep {
   /// Extracts an archive into the specified directory.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesRecipeInstallStepArchiveExtraction>? archiveExtraction;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepArchiveExtraction?>? archiveExtraction;
   /// Installs a deb file via dpkg.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesRecipeInstallStepDpkgInstallation>? dpkgInstallation;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepDpkgInstallation?>? dpkgInstallation;
   /// Copies a file onto the instance.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesRecipeInstallStepFileCopy>? fileCopy;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepFileCopy?>? fileCopy;
   /// Executes an artifact or local file.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesRecipeInstallStepFileExec>? fileExec;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepFileExec?>? fileExec;
   /// Installs an MSI file.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesRecipeInstallStepMsiInstallation>? msiInstallation;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepMsiInstallation?>? msiInstallation;
   /// Installs an rpm file via the rpm utility.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesRecipeInstallStepRpmInstallation>? rpmInstallation;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepRpmInstallation?>? rpmInstallation;
   /// Runs commands in a shell.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesRecipeInstallStepScriptRun>? scriptRun;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepScriptRun?>? scriptRun;
 
   /// Creates a new [GuestPoliciesRecipeInstallStep].
   /// [archiveExtraction] Extracts an archive into the specified directory.

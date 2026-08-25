@@ -15,26 +15,26 @@ class TargetSiteArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If set to false, a uriPattern is generated to include all pages whose
   /// address contains the provided_uri_pattern. If set to true, an uriPattern
   /// is generated to try to be an exact match of the providedUriPattern or
   /// just the specific page if the providedUriPattern is a specific one.
   /// providedUriPattern is always normalized to generate the URI pattern to
   /// be used by the search engine.
-  final pulumi.Input<bool>? exactMatch;
+  final pulumi.Input<bool?>? exactMatch;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The user provided URI pattern from which the `generatedUriPattern` is
   /// generated.
   final pulumi.Input<String> providedUriPattern;
   /// The possible target site types.
   /// Possible values are: `INCLUDE`, `EXCLUDE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TargetSiteArgs].
   /// [dataStoreId] The unique id of the data store.

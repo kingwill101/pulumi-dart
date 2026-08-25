@@ -9,15 +9,15 @@ import 'api_key_restrictions_server_key_restrictions.dart';
 
 class ApiKeyRestrictions {
   /// The Android apps that are allowed to use the key.
-  final pulumi.Input<ApiKeyRestrictionsAndroidKeyRestrictions>? androidKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsAndroidKeyRestrictions?>? androidKeyRestrictions;
   /// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
-  final pulumi.Input<List<ApiKeyRestrictionsApiTarget>>? apiTargets;
+  final pulumi.Input<List<ApiKeyRestrictionsApiTarget>?>? apiTargets;
   /// The HTTP referrers (websites) that are allowed to use the key.
-  final pulumi.Input<ApiKeyRestrictionsBrowserKeyRestrictions>? browserKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsBrowserKeyRestrictions?>? browserKeyRestrictions;
   /// The iOS apps that are allowed to use the key.
-  final pulumi.Input<ApiKeyRestrictionsIosKeyRestrictions>? iosKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsIosKeyRestrictions?>? iosKeyRestrictions;
   /// The IP addresses of callers that are allowed to use the key.
-  final pulumi.Input<ApiKeyRestrictionsServerKeyRestrictions>? serverKeyRestrictions;
+  final pulumi.Input<ApiKeyRestrictionsServerKeyRestrictions?>? serverKeyRestrictions;
 
   /// Creates a new [ApiKeyRestrictions].
   /// [androidKeyRestrictions] The Android apps that are allowed to use the key.

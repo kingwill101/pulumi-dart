@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterSystemAddonsConfigIngress {
   /// Whether Ingress is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Ingress VIP.
-  final pulumi.Input<String>? ipv4Vip;
+  final pulumi.Input<String?>? ipv4Vip;
 
   /// Creates a new [ClusterSystemAddonsConfigIngress].
   /// [disabled] Whether Ingress is disabled.

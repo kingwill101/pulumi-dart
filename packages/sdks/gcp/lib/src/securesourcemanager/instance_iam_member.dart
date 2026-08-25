@@ -24,7 +24,7 @@ class InstanceIamMember extends pulumi.CustomResource {
           'gcp:securesourcemanager/instanceIamMember:InstanceIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<InstanceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -40,11 +40,12 @@ class InstanceIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -58,6 +59,24 @@ class InstanceIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<InstanceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    instanceId = registerOutput<String>('instanceId');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [InstanceIamMember] resource.
+  InstanceIamMember.reference(String urn)
+    : super(
+        'gcp:securesourcemanager/instanceIamMember:InstanceIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<InstanceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');

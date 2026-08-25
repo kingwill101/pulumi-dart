@@ -5,7 +5,7 @@ import 'instance_desired_user_created_endpoints_desired_user_created_endpoint_co
 
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection>>? connections;
+  final pulumi.Input<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection>?>? connections;
 
   /// Creates a new [InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint].
   /// [connections] Structure is documented below.

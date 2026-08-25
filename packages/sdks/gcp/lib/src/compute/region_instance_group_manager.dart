@@ -4,11 +4,18 @@ import 'region_instance_group_manager_args.dart';
 import 'region_instance_group_manager_auto_healing_policies.dart';
 import 'region_instance_group_manager_instance_flexibility_policy.dart';
 import 'region_instance_group_manager_instance_lifecycle_policy.dart';
+import 'region_instance_group_manager_named_port.dart';
 import 'region_instance_group_manager_params.dart';
 import 'region_instance_group_manager_resource_policies.dart';
 import 'region_instance_group_manager_standby_policy.dart';
 import 'region_instance_group_manager_state.dart';
+import 'region_instance_group_manager_stateful_disk.dart';
+import 'region_instance_group_manager_stateful_external_ip.dart';
+import 'region_instance_group_manager_stateful_internal_ip.dart';
+import 'region_instance_group_manager_status.dart';
+import 'region_instance_group_manager_target_size_policy.dart';
 import 'region_instance_group_manager_update_policy.dart';
+import 'region_instance_group_manager_version.dart';
 
 /// The Google Compute Engine Regional Instance Group Manager API creates and manages pools
 /// of homogeneous Compute Engine virtual machine instances from a common instance
@@ -882,7 +889,7 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The named port configuration. See the section below
   /// for details on configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>?> namedPorts;
+  late final pulumi.Output<List<RegionInstanceGroupManagerNamedPort>?> namedPorts;
   /// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
   late final pulumi.Output<RegionInstanceGroupManagerParams?> params;
   /// The ID of the project in which the resource belongs. If it
@@ -899,13 +906,13 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
   /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
   late final pulumi.Output<RegionInstanceGroupManagerStandbyPolicy> standbyPolicy;
   /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> statefulDisks;
+  late final pulumi.Output<List<RegionInstanceGroupManagerStatefulDisk>?> statefulDisks;
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> statefulExternalIps;
+  late final pulumi.Output<List<RegionInstanceGroupManagerStatefulExternalIp>?> statefulExternalIps;
   /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> statefulInternalIps;
+  late final pulumi.Output<List<RegionInstanceGroupManagerStatefulInternalIp>?> statefulInternalIps;
   /// The status of this managed instance group.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<RegionInstanceGroupManagerStatus>> statuses;
   /// The full URL of all target pools to which new
   /// instances in the group are added. Updating the target pools attribute does
   /// not affect existing instances.
@@ -916,7 +923,7 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
   /// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
   late final pulumi.Output<int> targetSize;
   /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetSizePolicies;
+  late final pulumi.Output<List<RegionInstanceGroupManagerTargetSizePolicy>> targetSizePolicies;
   /// The target number of stopped instances for this managed instance group.
   late final pulumi.Output<int> targetStoppedSize;
   /// The target number of suspended instances for this managed instance group.
@@ -926,7 +933,7 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
   /// Application versions managed by this instance group. Each
   /// version deals with a specific instance template, allowing canary release scenarios.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> versions;
+  late final pulumi.Output<List<RegionInstanceGroupManagerVersion>> versions;
   /// Whether to wait for all instances to be created/updated before
   /// returning. Note that if this is set to true and the operation does not succeed, the provider will
   /// continue trying until it times out.
@@ -949,7 +956,7 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
           'gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allInstancesConfig = registerOutput<RegionInstanceGroupManagerAllInstancesConfig?>('allInstancesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerAllInstancesConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoHealingPolicies = registerOutput<RegionInstanceGroupManagerAutoHealingPolicies?>('autoHealingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerAutoHealingPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -958,7 +965,7 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distributionPolicyTargetShape = registerOutput<String>('distributionPolicyTargetShape');
-    distributionPolicyZones = registerOutput<List<String>>('distributionPolicyZones');
+    distributionPolicyZones = registerOutput<List<String>>('distributionPolicyZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
     instanceFlexibilityPolicy = registerOutput<RegionInstanceGroupManagerInstanceFlexibilityPolicy?>('instanceFlexibilityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceGroup = registerOutput<String>('instanceGroup');
@@ -966,24 +973,24 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     instanceLifecyclePolicy = registerOutput<RegionInstanceGroupManagerInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     listManagedInstancesResults = registerOutput<String?>('listManagedInstancesResults');
     this.name = registerOutput<String>('name');
-    namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
+    namedPorts = registerOutput<List<RegionInstanceGroupManagerNamedPort>?>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerNamedPort>(guardedValue, (value) => RegionInstanceGroupManagerNamedPort.fromMap((value as Map).cast<String, dynamic>())); });
     params = registerOutput<RegionInstanceGroupManagerParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     resourcePolicies = registerOutput<RegionInstanceGroupManagerResourcePolicies?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     standbyPolicy = registerOutput<RegionInstanceGroupManagerStandbyPolicy>('standbyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statefulDisks = registerOutput<List<Map<String, dynamic>>?>('statefulDisks');
-    statefulExternalIps = registerOutput<List<Map<String, dynamic>>?>('statefulExternalIps');
-    statefulInternalIps = registerOutput<List<Map<String, dynamic>>?>('statefulInternalIps');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    targetPools = registerOutput<List<String>?>('targetPools');
+    statefulDisks = registerOutput<List<RegionInstanceGroupManagerStatefulDisk>?>('statefulDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulDisk>(guardedValue, (value) => RegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    statefulExternalIps = registerOutput<List<RegionInstanceGroupManagerStatefulExternalIp>?>('statefulExternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())); });
+    statefulInternalIps = registerOutput<List<RegionInstanceGroupManagerStatefulInternalIp>?>('statefulInternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>())); });
+    statuses = registerOutput<List<RegionInstanceGroupManagerStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatus>(guardedValue, (value) => RegionInstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    targetPools = registerOutput<List<String>?>('targetPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetSize = registerOutput<int>('targetSize');
-    targetSizePolicies = registerOutput<List<Map<String, dynamic>>>('targetSizePolicies');
+    targetSizePolicies = registerOutput<List<RegionInstanceGroupManagerTargetSizePolicy>>('targetSizePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => RegionInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>())); });
     targetStoppedSize = registerOutput<int>('targetStoppedSize');
     targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     updatePolicy = registerOutput<RegionInstanceGroupManagerUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    versions = registerOutput<List<Map<String, dynamic>>>('versions');
+    versions = registerOutput<List<RegionInstanceGroupManagerVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerVersion>(guardedValue, (value) => RegionInstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>())); });
     waitForInstances = registerOutput<bool?>('waitForInstances');
     waitForInstancesStatus = registerOutput<String?>('waitForInstancesStatus');
   }
@@ -993,11 +1000,12 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionInstanceGroupManagerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionInstanceGroupManager._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1018,7 +1026,7 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distributionPolicyTargetShape = registerOutput<String>('distributionPolicyTargetShape');
-    distributionPolicyZones = registerOutput<List<String>>('distributionPolicyZones');
+    distributionPolicyZones = registerOutput<List<String>>('distributionPolicyZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
     instanceFlexibilityPolicy = registerOutput<RegionInstanceGroupManagerInstanceFlexibilityPolicy?>('instanceFlexibilityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceGroup = registerOutput<String>('instanceGroup');
@@ -1026,24 +1034,70 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     instanceLifecyclePolicy = registerOutput<RegionInstanceGroupManagerInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     listManagedInstancesResults = registerOutput<String?>('listManagedInstancesResults');
     this.name = registerOutput<String>('name');
-    namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
+    namedPorts = registerOutput<List<RegionInstanceGroupManagerNamedPort>?>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerNamedPort>(guardedValue, (value) => RegionInstanceGroupManagerNamedPort.fromMap((value as Map).cast<String, dynamic>())); });
     params = registerOutput<RegionInstanceGroupManagerParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     resourcePolicies = registerOutput<RegionInstanceGroupManagerResourcePolicies?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     standbyPolicy = registerOutput<RegionInstanceGroupManagerStandbyPolicy>('standbyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statefulDisks = registerOutput<List<Map<String, dynamic>>?>('statefulDisks');
-    statefulExternalIps = registerOutput<List<Map<String, dynamic>>?>('statefulExternalIps');
-    statefulInternalIps = registerOutput<List<Map<String, dynamic>>?>('statefulInternalIps');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    targetPools = registerOutput<List<String>?>('targetPools');
+    statefulDisks = registerOutput<List<RegionInstanceGroupManagerStatefulDisk>?>('statefulDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulDisk>(guardedValue, (value) => RegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    statefulExternalIps = registerOutput<List<RegionInstanceGroupManagerStatefulExternalIp>?>('statefulExternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())); });
+    statefulInternalIps = registerOutput<List<RegionInstanceGroupManagerStatefulInternalIp>?>('statefulInternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>())); });
+    statuses = registerOutput<List<RegionInstanceGroupManagerStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatus>(guardedValue, (value) => RegionInstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    targetPools = registerOutput<List<String>?>('targetPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetSize = registerOutput<int>('targetSize');
-    targetSizePolicies = registerOutput<List<Map<String, dynamic>>>('targetSizePolicies');
+    targetSizePolicies = registerOutput<List<RegionInstanceGroupManagerTargetSizePolicy>>('targetSizePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => RegionInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>())); });
     targetStoppedSize = registerOutput<int>('targetStoppedSize');
     targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     updatePolicy = registerOutput<RegionInstanceGroupManagerUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    versions = registerOutput<List<Map<String, dynamic>>>('versions');
+    versions = registerOutput<List<RegionInstanceGroupManagerVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerVersion>(guardedValue, (value) => RegionInstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>())); });
+    waitForInstances = registerOutput<bool?>('waitForInstances');
+    waitForInstancesStatus = registerOutput<String?>('waitForInstancesStatus');
+  }
+
+  /// Creates a typed reference to an existing [RegionInstanceGroupManager] resource.
+  RegionInstanceGroupManager.reference(String urn)
+    : super(
+        'gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allInstancesConfig = registerOutput<RegionInstanceGroupManagerAllInstancesConfig?>('allInstancesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerAllInstancesConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoHealingPolicies = registerOutput<RegionInstanceGroupManagerAutoHealingPolicies?>('autoHealingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerAutoHealingPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    baseInstanceName = registerOutput<String>('baseInstanceName');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    distributionPolicyTargetShape = registerOutput<String>('distributionPolicyTargetShape');
+    distributionPolicyZones = registerOutput<List<String>>('distributionPolicyZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fingerprint = registerOutput<String>('fingerprint');
+    instanceFlexibilityPolicy = registerOutput<RegionInstanceGroupManagerInstanceFlexibilityPolicy?>('instanceFlexibilityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceGroup = registerOutput<String>('instanceGroup');
+    instanceGroupManagerId = registerOutput<int>('instanceGroupManagerId');
+    instanceLifecyclePolicy = registerOutput<RegionInstanceGroupManagerInstanceLifecyclePolicy>('instanceLifecyclePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    listManagedInstancesResults = registerOutput<String?>('listManagedInstancesResults');
+    this.name = registerOutput<String>('name');
+    namedPorts = registerOutput<List<RegionInstanceGroupManagerNamedPort>?>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerNamedPort>(guardedValue, (value) => RegionInstanceGroupManagerNamedPort.fromMap((value as Map).cast<String, dynamic>())); });
+    params = registerOutput<RegionInstanceGroupManagerParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    resourcePolicies = registerOutput<RegionInstanceGroupManagerResourcePolicies?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerResourcePolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    standbyPolicy = registerOutput<RegionInstanceGroupManagerStandbyPolicy>('standbyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerStandbyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statefulDisks = registerOutput<List<RegionInstanceGroupManagerStatefulDisk>?>('statefulDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulDisk>(guardedValue, (value) => RegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    statefulExternalIps = registerOutput<List<RegionInstanceGroupManagerStatefulExternalIp>?>('statefulExternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>())); });
+    statefulInternalIps = registerOutput<List<RegionInstanceGroupManagerStatefulInternalIp>?>('statefulInternalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => RegionInstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>())); });
+    statuses = registerOutput<List<RegionInstanceGroupManagerStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerStatus>(guardedValue, (value) => RegionInstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    targetPools = registerOutput<List<String>?>('targetPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetSize = registerOutput<int>('targetSize');
+    targetSizePolicies = registerOutput<List<RegionInstanceGroupManagerTargetSizePolicy>>('targetSizePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => RegionInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    targetStoppedSize = registerOutput<int>('targetStoppedSize');
+    targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
+    updatePolicy = registerOutput<RegionInstanceGroupManagerUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    versions = registerOutput<List<RegionInstanceGroupManagerVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstanceGroupManagerVersion>(guardedValue, (value) => RegionInstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>())); });
     waitForInstances = registerOutput<bool?>('waitForInstances');
     waitForInstancesStatus = registerOutput<String?>('waitForInstancesStatus');
   }

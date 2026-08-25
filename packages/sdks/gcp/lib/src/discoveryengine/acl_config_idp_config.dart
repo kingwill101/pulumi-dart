@@ -6,10 +6,10 @@ import 'acl_config_idp_config_external_idp_config.dart';
 class AclConfigIdpConfig {
   /// External third party identity provider config.
   /// Structure is documented below.
-  final pulumi.Input<AclConfigIdpConfigExternalIdpConfig>? externalIdpConfig;
+  final pulumi.Input<AclConfigIdpConfigExternalIdpConfig?>? externalIdpConfig;
   /// Identity provider type.
   /// Possible values are: `GSUITE`, `THIRD_PARTY`.
-  final pulumi.Input<String>? idpType;
+  final pulumi.Input<String?>? idpType;
 
   /// Creates a new [AclConfigIdpConfig].
   /// [externalIdpConfig] External third party identity provider config.

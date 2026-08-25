@@ -1156,7 +1156,7 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
           'gcp:bigquery/datasetAccess:DatasetAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1179,11 +1179,12 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetAccessBigquery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1197,6 +1198,31 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
+    authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    condition = registerOutput<DatasetAccessCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    domain = registerOutput<String?>('domain');
+    groupByEmail = registerOutput<String?>('groupByEmail');
+    iamMember = registerOutput<String?>('iamMember');
+    project = registerOutput<String>('project');
+    role = registerOutput<String?>('role');
+    routine = registerOutput<DatasetAccessRoutine?>('routine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessRoutine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specialGroup = registerOutput<String?>('specialGroup');
+    userByEmail = registerOutput<String?>('userByEmail');
+    view = registerOutput<DatasetAccessView?>('view', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessView.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetAccessBigquery] resource.
+  DatasetAccessBigquery.reference(String urn)
+    : super(
+        'gcp:bigquery/datasetAccess:DatasetAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     condition = registerOutput<DatasetAccessCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

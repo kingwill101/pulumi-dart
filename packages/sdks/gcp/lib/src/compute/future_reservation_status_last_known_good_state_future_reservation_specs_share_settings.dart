@@ -6,12 +6,12 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings {
   /// A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// Structure is documented below.
-  final pulumi.Input<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>>? projectMaps;
+  final pulumi.Input<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap>?>? projectMaps;
   /// list of Project names to specify consumer projects for this shared-reservation. This is only valid when shareType's value is SPECIFIC_PROJECTS.
-  final pulumi.Input<List<String>>? projects;
+  final pulumi.Input<List<String>?>? projects;
   /// Type of sharing for this future reservation.
   /// Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
-  final pulumi.Input<String>? shareType;
+  final pulumi.Input<String?>? shareType;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings].
   /// [projectMaps] A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.

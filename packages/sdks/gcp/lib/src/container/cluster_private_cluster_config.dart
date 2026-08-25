@@ -8,16 +8,16 @@ class ClusterPrivateClusterConfig {
   /// endpoint is used as the cluster endpoint and access through the public endpoint
   /// is disabled. When `false`, either endpoint can be used. This field only applies
   /// to private clusters, when `enablePrivateNodes` is `true`.
-  final pulumi.Input<bool>? enablePrivateEndpoint;
+  final pulumi.Input<bool?>? enablePrivateEndpoint;
   /// Enables the private cluster feature,
   /// creating a private endpoint on the cluster. In a private cluster, nodes only
   /// have RFC 1918 private addresses and communicate with the master's private
   /// endpoint via private networking.
-  final pulumi.Input<bool>? enablePrivateNodes;
+  final pulumi.Input<bool?>? enablePrivateNodes;
   /// Controls cluster master global
   /// access settings. If unset, the provider will no longer manage this field and will
   /// not modify the previously-set value. Structure is documented below.
-  final pulumi.Input<ClusterPrivateClusterConfigMasterGlobalAccessConfig>? masterGlobalAccessConfig;
+  final pulumi.Input<ClusterPrivateClusterConfigMasterGlobalAccessConfig?>? masterGlobalAccessConfig;
   /// The IP range in CIDR notation to use for
   /// the hosted master network. This range will be used for assigning private IP
   /// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -25,19 +25,19 @@ class ClusterPrivateClusterConfig {
   /// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
   /// for more details. This field only applies to private clusters, when
   /// `enablePrivateNodes` is `true`.
-  final pulumi.Input<String>? masterIpv4CidrBlock;
+  final pulumi.Input<String?>? masterIpv4CidrBlock;
   /// The name of the peering between this cluster and the Google owned VPC.
-  final pulumi.Input<String>? peeringName;
+  final pulumi.Input<String?>? peeringName;
   /// The internal IP address of this cluster's master endpoint.
-  final pulumi.Input<String>? privateEndpoint;
+  final pulumi.Input<String?>? privateEndpoint;
   /// Subnetwork in cluster's network where master's endpoint will be provisioned.
-  final pulumi.Input<String>? privateEndpointSubnetwork;
+  final pulumi.Input<String?>? privateEndpointSubnetwork;
   /// The external IP address of this cluster's master endpoint.
   ///
   /// &gt; The Google provider is unable to validate certain configurations of
   /// `privateClusterConfig` when `enablePrivateNodes` is `false`. It's
   /// recommended that you omit the block entirely if the field is not set to `true`.
-  final pulumi.Input<String>? publicEndpoint;
+  final pulumi.Input<String?>? publicEndpoint;
 
   /// Creates a new [ClusterPrivateClusterConfig].
   /// [enablePrivateEndpoint] When `true`, the cluster's private

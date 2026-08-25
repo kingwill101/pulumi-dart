@@ -92,7 +92,7 @@ class PostureDeployment extends pulumi.CustomResource {
           'gcp:securityposture/postureDeployment:PostureDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -118,11 +118,12 @@ class PostureDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PostureDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PostureDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -151,6 +152,34 @@ class PostureDeployment extends pulumi.CustomResource {
     postureRevisionId = registerOutput<String>('postureRevisionId');
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
+    targetResource = registerOutput<String>('targetResource');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PostureDeployment] resource.
+  PostureDeployment.reference(String urn)
+    : super(
+        'gcp:securityposture/postureDeployment:PostureDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    desiredPostureId = registerOutput<String>('desiredPostureId');
+    desiredPostureRevisionId = registerOutput<String>('desiredPostureRevisionId');
+    etag = registerOutput<String>('etag');
+    failureMessage = registerOutput<String>('failureMessage');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    postureDeploymentId = registerOutput<String>('postureDeploymentId');
+    postureId = registerOutput<String>('postureId');
+    postureRevisionId = registerOutput<String>('postureRevisionId');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
     targetResource = registerOutput<String>('targetResource');
     updateTime = registerOutput<String>('updateTime');
   }

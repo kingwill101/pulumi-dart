@@ -935,11 +935,11 @@ class AccessPolicyIamBinding extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<AccessPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     role = registerOutput<String>('role');
   }
@@ -949,11 +949,12 @@ class AccessPolicyIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPolicyIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPolicyIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -969,7 +970,23 @@ class AccessPolicyIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<AccessPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicyIamBinding] resource.
+  AccessPolicyIamBinding.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<AccessPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     role = registerOutput<String>('role');
   }

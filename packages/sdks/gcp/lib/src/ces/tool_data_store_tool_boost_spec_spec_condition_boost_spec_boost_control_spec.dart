@@ -12,20 +12,20 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
   /// Possible values:
   /// NUMERICAL
   /// FRESHNESS
-  final pulumi.Input<String>? attributeType;
+  final pulumi.Input<String?>? attributeType;
   /// The control points used to define the curve. The monotonic function
   /// (defined through the interpolationType above) passes through the
   /// control points listed here.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>>? controlPoints;
+  final pulumi.Input<List<ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>?>? controlPoints;
   /// The name of the field whose value will be used to determine the
   /// boost amount.
-  final pulumi.Input<String>? fieldName;
+  final pulumi.Input<String?>? fieldName;
   /// The interpolation type to be applied to connect the control points
   /// listed below.
   /// Possible values:
   /// LINEAR
-  final pulumi.Input<String>? interpolationType;
+  final pulumi.Input<String?>? interpolationType;
 
   /// Creates a new [ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec].
   /// [attributeType] The attribute type to be used to determine the boost amount. The

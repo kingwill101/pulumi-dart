@@ -10,7 +10,7 @@ class GetKeysArgs {
   /// The name or id of the Cloud DNS managed zone.
   final pulumi.Input<String> managedZone;
   /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetKeysArgs].
   /// [managedZone] The name or id of the Cloud DNS managed zone.

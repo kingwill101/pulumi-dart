@@ -4,30 +4,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectivityTestDestination {
   /// A Cloud SQL instance URI.
-  final pulumi.Input<String>? cloudSqlInstance;
+  final pulumi.Input<String?>? cloudSqlInstance;
   /// Forwarding rule URI. Forwarding rules are frontends for load balancers,
   /// PSC endpoints, and Protocol Forwarding.
-  final pulumi.Input<String>? forwardingRule;
+  final pulumi.Input<String?>? forwardingRule;
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
   /// Requires gkeMasterCluster to be set, can't be used simultaneoulsly with
   /// ipAddress or network. Applicable only to destination endpoint.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
-  final pulumi.Input<String>? gkeMasterCluster;
+  final pulumi.Input<String?>? gkeMasterCluster;
   /// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
-  final pulumi.Input<String>? gkePod;
+  final pulumi.Input<String?>? gkePod;
   /// A Compute Engine instance URI.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The IP address of the endpoint, which can be an external or internal IP.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// A VPC network URI.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
   /// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// The IP protocol port of the endpoint. Only applicable when protocol is
   /// TCP or UDP.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Project ID where the endpoint is located.
   /// The project ID can be derived from the URI if you provide a endpoint or
   /// network URI.
@@ -37,11 +37,11 @@ class ConnectivityTestDestination {
   /// 2. When you are using Shared VPC and the IP address that you provide is
   /// from the service project. In this case, the network that the IP address
   /// resides in is defined in the host project.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// A Redis Cluster URI.
-  final pulumi.Input<String>? redisCluster;
+  final pulumi.Input<String?>? redisCluster;
   /// A Redis Instance URI.
-  final pulumi.Input<String>? redisInstance;
+  final pulumi.Input<String?>? redisInstance;
 
   /// Creates a new [ConnectivityTestDestination].
   /// [cloudSqlInstance] A Cloud SQL instance URI.
@@ -102,7 +102,7 @@ class ConnectivityTestDestination {
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redisCluster: (() { final guardedValue = map['redisCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redisInstance: (() { final guardedValue = map['redisInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

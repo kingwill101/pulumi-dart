@@ -8,7 +8,7 @@ class AppVersionSnapshotToolOpenApiToolTlsConfig {
   /// Specifies a list of allowed custom CA certificates for HTTPS
   /// verification.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>>? caCerts;
+  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolTlsConfigCaCert>?>? caCerts;
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolTlsConfig].
   /// [caCerts] (Output)

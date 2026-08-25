@@ -1029,12 +1029,12 @@ class MetastoreServiceIamBinding extends pulumi.CustomResource {
           'gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<MetastoreServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     serviceId = registerOutput<String>('serviceId');
@@ -1045,11 +1045,12 @@ class MetastoreServiceIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetastoreServiceIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetastoreServiceIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1066,7 +1067,25 @@ class MetastoreServiceIamBinding extends pulumi.CustomResource {
     condition = registerOutput<MetastoreServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    serviceId = registerOutput<String>('serviceId');
+  }
+
+  /// Creates a typed reference to an existing [MetastoreServiceIamBinding] resource.
+  MetastoreServiceIamBinding.reference(String urn)
+    : super(
+        'gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<MetastoreServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     serviceId = registerOutput<String>('serviceId');

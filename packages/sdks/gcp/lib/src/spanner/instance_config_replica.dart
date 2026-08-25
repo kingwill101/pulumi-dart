@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceConfigReplica {
   /// If true, this location is designated as the default leader location where
   /// leader replicas are placed.
-  final pulumi.Input<bool>? defaultLeaderLocation;
+  final pulumi.Input<bool?>? defaultLeaderLocation;
   /// The location of the serving resources, e.g. "us-central1".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Indicates the type of replica.  See the [replica types
   /// documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
   /// for more details.
   /// Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [InstanceConfigReplica].
   /// [defaultLeaderLocation] If true, this location is designated as the default leader location where

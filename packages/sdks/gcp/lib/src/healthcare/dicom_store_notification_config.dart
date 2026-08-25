@@ -11,7 +11,7 @@ class DicomStoreNotificationConfig {
   /// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
   final pulumi.Input<String> pubsubTopic;
   /// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
-  final pulumi.Input<bool>? sendForBulkImport;
+  final pulumi.Input<bool?>? sendForBulkImport;
 
   /// Creates a new [DicomStoreNotificationConfig].
   /// [pubsubTopic] The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.

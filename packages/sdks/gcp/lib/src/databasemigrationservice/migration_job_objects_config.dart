@@ -6,7 +6,7 @@ import 'migration_job_objects_config_source_objects_config.dart';
 class MigrationJobObjectsConfig {
   /// Configuration for the source objects to be migrated.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobObjectsConfigSourceObjectsConfig>? sourceObjectsConfig;
+  final pulumi.Input<MigrationJobObjectsConfigSourceObjectsConfig?>? sourceObjectsConfig;
 
   /// Creates a new [MigrationJobObjectsConfig].
   /// [sourceObjectsConfig] Configuration for the source objects to be migrated.

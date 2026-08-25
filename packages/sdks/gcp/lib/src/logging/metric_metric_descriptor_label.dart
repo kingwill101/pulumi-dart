@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricMetricDescriptorLabel {
   /// A human-readable description for the label.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The label key.
   final pulumi.Input<String> key;
   /// The type of data that can be assigned to the label.
   /// Default value is `STRING`.
   /// Possible values are: `BOOL`, `INT64`, `STRING`.
-  final pulumi.Input<String>? valueType;
+  final pulumi.Input<String?>? valueType;
 
   /// Creates a new [MetricMetricDescriptorLabel].
   /// [description] A human-readable description for the label.

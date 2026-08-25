@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssessmentRuleSampleRule {
   /// To specify the filter for the conversions that should apply this sample
   /// rule. An empty filter means this sample rule applies to all conversations.
-  final pulumi.Input<String>? conversationFilter;
+  final pulumi.Input<String?>? conversationFilter;
   /// Group by dimension to sample the conversation. If no dimension is
   /// provided, the sampling will be applied to the project level.
   /// Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
-  final pulumi.Input<String>? dimension;
+  final pulumi.Input<String?>? dimension;
   /// Percentage of conversations that we should sample  based on the dimension
   /// between [0, 100].
-  final pulumi.Input<double>? samplePercentage;
+  final pulumi.Input<double?>? samplePercentage;
   /// Number of the conversations that we should sample based on the dimension.
-  final pulumi.Input<int>? sampleRow;
+  final pulumi.Input<int?>? sampleRow;
 
   /// Creates a new [AssessmentRuleSampleRule].
   /// [conversationFilter] To specify the filter for the conversions that should apply this sample
@@ -41,8 +41,8 @@ class AssessmentRuleSampleRule {
     return AssessmentRuleSampleRule(
       conversationFilter: (() { final guardedValue = map['conversationFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      samplePercentage: (() { final guardedValue = map['samplePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      sampleRow: (() { final guardedValue = map['sampleRow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      samplePercentage: (() { final guardedValue = map['samplePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      sampleRow: (() { final guardedValue = map['sampleRow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

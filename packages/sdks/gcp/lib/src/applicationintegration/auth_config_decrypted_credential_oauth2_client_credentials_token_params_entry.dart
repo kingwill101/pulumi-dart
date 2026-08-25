@@ -7,10 +7,10 @@ import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params_
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
   /// Key of the map entry.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey>? key;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey?>? key;
   /// Value of the map entry.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue>? value;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue?>? value;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry].
   /// [key] Key of the map entry.

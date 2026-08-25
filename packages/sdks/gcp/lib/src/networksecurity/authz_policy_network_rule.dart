@@ -7,10 +7,10 @@ import 'authz_policy_network_rule_to.dart';
 class AuthzPolicyNetworkRule {
   /// Describes properties of one or more sources of a request.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyNetworkRuleFrom>? from;
+  final pulumi.Input<AuthzPolicyNetworkRuleFrom?>? from;
   /// Describes properties of one or more targets of a request
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyNetworkRuleTo>? to;
+  final pulumi.Input<AuthzPolicyNetworkRuleTo?>? to;
 
   /// Creates a new [AuthzPolicyNetworkRule].
   /// [from] Describes properties of one or more sources of a request.

@@ -7,10 +7,10 @@ import 'prevention_inspect_template_inspect_config_rule_set_rule_exclusion_rule_
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath>? cloudStoragePath;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath?>? cloudStoragePath;
   /// List of words or phrases to search for.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList>? wordList;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList?>? wordList;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.

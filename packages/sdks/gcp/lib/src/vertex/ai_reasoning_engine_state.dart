@@ -11,10 +11,10 @@ class AiReasoningEngineState {
   /// (Optional, Beta)
   /// Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpec>? contextSpec;
+  final pulumi.Input<AiReasoningEngineContextSpec?>? contextSpec;
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Optional. The deletion policy for the reasoning engine.
   /// Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
   ///
@@ -23,49 +23,49 @@ class AiReasoningEngineState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is permitted.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the ReasoningEngine.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the ReasoningEngine.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
   /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
   /// will be secured by this key.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiReasoningEngineEncryptionSpec?>? encryptionSpec;
   /// The labels associated with this ReasoningEngine. You can use these to
   /// organize and group your ReasoningEngines.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The generated name of the ReasoningEngine, in the format
   /// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The region of the reasoning engine. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Optional. Configurations of the ReasoningEngine.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpec>? spec;
+  final pulumi.Input<AiReasoningEngineSpec?>? spec;
   /// (Optional, Beta)
   /// Optional. Traffic distribution configuration for the Reasoning Engine.
   /// &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineTrafficConfig>? trafficConfig;
+  final pulumi.Input<AiReasoningEngineTrafficConfig?>? trafficConfig;
   /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
   /// format, with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// (Beta)
   /// Output only. The URL of the reasoning engine.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [AiReasoningEngineState].
   /// [contextSpec] (Optional, Beta)

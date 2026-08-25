@@ -62,12 +62,12 @@ class GetServiceTemplateSpec {
 
   factory GetServiceTemplateSpec.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpec(
-      containerConcurrency: pulumi.Input.fromValue(map['containerConcurrency'] as int),
+      containerConcurrency: pulumi.Input.fromValue((map['containerConcurrency'] as num).toInt()),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainer>(map['containers']!, (value) => GetServiceTemplateSpecContainer.fromMap((value as Map).cast<String, dynamic>()))),
       nodeSelector: pulumi.Input.fromValue((map['nodeSelector'] as Map).cast<String, String>()),
       serviceAccountName: pulumi.Input.fromValue(map['serviceAccountName'] as String),
       servingState: pulumi.Input.fromValue(map['servingState'] as String),
-      timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
+      timeoutSeconds: pulumi.Input.fromValue((map['timeoutSeconds'] as num).toInt()),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecVolume>(map['volumes']!, (value) => GetServiceTemplateSpecVolume.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

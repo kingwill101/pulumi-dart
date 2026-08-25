@@ -7,10 +7,10 @@ import 'stream_source_config_salesforce_source_config_include_objects.dart';
 class StreamSourceConfigSalesforceSourceConfig {
   /// Salesforce objects to exclude from the stream.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSalesforceSourceConfigExcludeObjects>? excludeObjects;
+  final pulumi.Input<StreamSourceConfigSalesforceSourceConfigExcludeObjects?>? excludeObjects;
   /// Salesforce objects to retrieve from the source.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSalesforceSourceConfigIncludeObjects>? includeObjects;
+  final pulumi.Input<StreamSourceConfigSalesforceSourceConfigIncludeObjects?>? includeObjects;
   /// Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
   final pulumi.Input<String> pollingInterval;
 

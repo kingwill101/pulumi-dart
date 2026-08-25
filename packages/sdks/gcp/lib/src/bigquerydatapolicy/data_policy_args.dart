@@ -10,7 +10,7 @@ import 'data_policy_data_masking_policy.dart';
 class DataPolicyArgs {
   /// The data masking policy that specifies the data masking rule to use.
   /// Structure is documented below.
-  final pulumi.Input<DataPolicyDataMaskingPolicy>? dataMaskingPolicy;
+  final pulumi.Input<DataPolicyDataMaskingPolicy?>? dataMaskingPolicy;
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
   final pulumi.Input<String> dataPolicyId;
   /// The enrollment level of the service.
@@ -22,14 +22,14 @@ class DataPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the location of the data policy.
   final pulumi.Input<String> location;
   /// Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
   final pulumi.Input<String> policyTag;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DataPolicyArgs].
   /// [dataMaskingPolicy] The data masking policy that specifies the data masking rule to use.

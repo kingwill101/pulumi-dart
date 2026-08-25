@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListingPubsubTopic {
   /// Region hint on where the data might be published. Data affinity regions are modifiable.
   /// See https://cloud.google.com/about/locations for full listing of possible Cloud regions.
-  final pulumi.Input<List<String>>? dataAffinityRegions;
+  final pulumi.Input<List<String>?>? dataAffinityRegions;
   /// Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId
   final pulumi.Input<String> topic;
 

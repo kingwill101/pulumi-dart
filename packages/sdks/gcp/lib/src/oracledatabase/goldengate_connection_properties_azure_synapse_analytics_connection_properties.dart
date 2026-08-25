@@ -6,20 +6,20 @@ class GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties {
   /// JDBC connection string.
   /// e.g.:
   /// 'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
   /// connection in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for Azure Synapse Analytics
   /// connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The technology type of AzureSynapseAnalyticsConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect the associated system of
   /// the given technology.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties].
   /// [connectionString] JDBC connection string.

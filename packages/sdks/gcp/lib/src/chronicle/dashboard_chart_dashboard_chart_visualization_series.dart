@@ -12,45 +12,45 @@ import 'dashboard_chart_dashboard_chart_visualization_series_metric_trend_config
 class DashboardChartDashboardChartVisualizationSeries {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesAreaStyle>? areaStyle;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesAreaStyle?>? areaStyle;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesDataLabel>? dataLabel;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesDataLabel?>? dataLabel;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesEncode>? encode;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesEncode?>? encode;
   /// (Optional)
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesGaugeConfig>? gaugeConfig;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesGaugeConfig?>? gaugeConfig;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesItemColors>? itemColors;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesItemColors?>? itemColors;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesItemStyle>? itemStyle;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesItemStyle?>? itemStyle;
   /// (Optional)
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesMetricTrendConfig>? metricTrendConfig;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesMetricTrendConfig?>? metricTrendConfig;
   /// (Optional)
-  final pulumi.Input<List<String>>? radii;
+  final pulumi.Input<List<String>?>? radii;
   /// User specified series label.
-  final pulumi.Input<String>? seriesName;
+  final pulumi.Input<String?>? seriesName;
   /// Possible values are: `SAMESIGN`, `ALL`, `POSITIVE`, `NEGATIVE`.
-  final pulumi.Input<String>? seriesStackStrategy;
+  final pulumi.Input<String?>? seriesStackStrategy;
   /// Possible values are: `LINE`, `BAR`, `PIE`, `TEXT`, `MAP`, `GAUGE`, `SCATTERPLOT`.
-  final pulumi.Input<String>? seriesType;
+  final pulumi.Input<String?>? seriesType;
   /// (Optional)
-  final pulumi.Input<String>? seriesUniqueValue;
+  final pulumi.Input<String?>? seriesUniqueValue;
   /// (Optional)
-  final pulumi.Input<bool>? showBackground;
+  final pulumi.Input<bool?>? showBackground;
   /// (Optional)
-  final pulumi.Input<bool>? showSymbol;
+  final pulumi.Input<bool?>? showSymbol;
   /// (Optional)
-  final pulumi.Input<String>? stack;
+  final pulumi.Input<String?>? stack;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeries].
   /// [areaStyle] A nested object resource.

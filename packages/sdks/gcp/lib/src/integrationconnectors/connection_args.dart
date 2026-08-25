@@ -17,10 +17,10 @@ import 'connection_ssl_config.dart';
 class ConnectionArgs {
   /// authConfig for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfig>? authConfig;
+  final pulumi.Input<ConnectionAuthConfig?>? authConfig;
   /// Config Variables for the connection.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionConfigVariable>>? configVariables;
+  final pulumi.Input<List<ConnectionConfigVariable>?>? configVariables;
   /// connectorVersion of the Connector.
   final pulumi.Input<String> connectorVersion;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -29,46 +29,46 @@ class ConnectionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An arbitrary description for the Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Define the Connectors target endpoint.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionDestinationConfig>>? destinationConfigs;
+  final pulumi.Input<List<ConnectionDestinationConfig>?>? destinationConfigs;
   /// Eventing Configuration of a connection
   /// Structure is documented below.
-  final pulumi.Input<ConnectionEventingConfig>? eventingConfig;
+  final pulumi.Input<ConnectionEventingConfig?>? eventingConfig;
   /// Eventing enablement type. Will be nil if eventing is not enabled.
   /// Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
-  final pulumi.Input<String>? eventingEnablementType;
+  final pulumi.Input<String?>? eventingEnablementType;
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location in which Connection needs to be created.
   final pulumi.Input<String> location;
   /// Determines whether or no a connection is locked. If locked, a reason must be specified.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionLockConfig>? lockConfig;
+  final pulumi.Input<ConnectionLockConfig?>? lockConfig;
   /// Log configuration for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionLogConfig>? logConfig;
+  final pulumi.Input<ConnectionLogConfig?>? logConfig;
   /// Name of Connection needs to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Node configuration for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionNodeConfig>? nodeConfig;
+  final pulumi.Input<ConnectionNodeConfig?>? nodeConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Service account needed for runtime plane to access Google Cloud resources.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// SSL Configuration of a connection
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSslConfig>? sslConfig;
+  final pulumi.Input<ConnectionSslConfig?>? sslConfig;
   /// Suspended indicates if a user has suspended a connection or not.
-  final pulumi.Input<bool>? suspended;
+  final pulumi.Input<bool?>? suspended;
 
   /// Creates a new [ConnectionArgs].
   /// [authConfig] authConfig for the connection.

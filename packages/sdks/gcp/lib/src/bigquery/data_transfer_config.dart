@@ -1102,7 +1102,7 @@ class DataTransferConfig extends pulumi.CustomResource {
           'gcp:bigquery/dataTransferConfig:DataTransferConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dataRefreshWindowDays = registerOutput<int?>('dataRefreshWindowDays');
     dataSourceId = registerOutput<String>('dataSourceId');
@@ -1115,7 +1115,7 @@ class DataTransferConfig extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     notificationPubsubTopic = registerOutput<String?>('notificationPubsubTopic');
-    params = registerOutput<Map<String, String>>('params');
+    params = registerOutput<Map<String, String>>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     schedule = registerOutput<String?>('schedule');
     scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>('scheduleOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigScheduleOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1128,11 +1128,12 @@ class DataTransferConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataTransferConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataTransferConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1157,7 +1158,35 @@ class DataTransferConfig extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     notificationPubsubTopic = registerOutput<String?>('notificationPubsubTopic');
-    params = registerOutput<Map<String, String>>('params');
+    params = registerOutput<Map<String, String>>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    schedule = registerOutput<String?>('schedule');
+    scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>('scheduleOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigScheduleOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sensitiveParams = registerOutput<DataTransferConfigSensitiveParams?>('sensitiveParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigSensitiveParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccountName = registerOutput<String?>('serviceAccountName');
+  }
+
+  /// Creates a typed reference to an existing [DataTransferConfig] resource.
+  DataTransferConfig.reference(String urn)
+    : super(
+        'gcp:bigquery/dataTransferConfig:DataTransferConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataRefreshWindowDays = registerOutput<int?>('dataRefreshWindowDays');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destinationDatasetId = registerOutput<String?>('destinationDatasetId');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String>('displayName');
+    emailPreferences = registerOutput<DataTransferConfigEmailPreferences?>('emailPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigEmailPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionConfiguration = registerOutput<DataTransferConfigEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    notificationPubsubTopic = registerOutput<String?>('notificationPubsubTopic');
+    params = registerOutput<Map<String, String>>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     schedule = registerOutput<String?>('schedule');
     scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>('scheduleOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferConfigScheduleOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

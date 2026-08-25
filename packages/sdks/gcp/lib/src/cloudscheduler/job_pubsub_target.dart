@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobPubsubTarget {
   /// Attributes for PubsubMessage.
   /// Pubsub message must contain either non-empty data, or at least one attribute.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
   /// The message payload for PubsubMessage.
   /// Pubsub message must contain either non-empty data, or at least one attribute.
   /// A base64-encoded string.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// The full resource name for the Cloud Pub/Sub topic to which
   /// messages will be published when a job is delivered. ~&gt;**NOTE:**
   /// The topic name must be in the same format as required by PubSub's

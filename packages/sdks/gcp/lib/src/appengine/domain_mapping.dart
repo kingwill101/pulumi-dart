@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_mapping_args.dart';
+import 'domain_mapping_resource_record.dart';
 import 'domain_mapping_ssl_settings.dart';
 import 'domain_mapping_state.dart';
 
@@ -180,7 +181,7 @@ class DomainMapping extends pulumi.CustomResource {
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
   /// configuration in order to serve the application via this domain mapping.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceRecords;
+  late final pulumi.Output<List<DomainMappingResourceRecord>> resourceRecords;
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   /// Structure is documented below.
   late final pulumi.Output<DomainMappingSslSettings> sslSettings;
@@ -197,14 +198,14 @@ class DomainMapping extends pulumi.CustomResource {
           'gcp:appengine/domainMapping:DomainMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     overrideStrategy = registerOutput<String?>('overrideStrategy');
     project = registerOutput<String>('project');
-    resourceRecords = registerOutput<List<Map<String, dynamic>>>('resourceRecords');
+    resourceRecords = registerOutput<List<DomainMappingResourceRecord>>('resourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainMappingResourceRecord>(guardedValue, (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>())); });
     sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSslSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -213,11 +214,12 @@ class DomainMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -236,7 +238,25 @@ class DomainMapping extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     overrideStrategy = registerOutput<String?>('overrideStrategy');
     project = registerOutput<String>('project');
-    resourceRecords = registerOutput<List<Map<String, dynamic>>>('resourceRecords');
+    resourceRecords = registerOutput<List<DomainMappingResourceRecord>>('resourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainMappingResourceRecord>(guardedValue, (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSslSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DomainMapping] resource.
+  DomainMapping.reference(String urn)
+    : super(
+        'gcp:appengine/domainMapping:DomainMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
+    overrideStrategy = registerOutput<String?>('overrideStrategy');
+    project = registerOutput<String>('project');
+    resourceRecords = registerOutput<List<DomainMappingResourceRecord>>('resourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainMappingResourceRecord>(guardedValue, (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>())); });
     sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSslSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

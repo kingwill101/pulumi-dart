@@ -7,10 +7,10 @@ import 'patch_deployment_patch_config_post_step_windows_exec_step_config.dart';
 class PatchDeploymentPatchConfigPostStep {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigPostStepLinuxExecStepConfig>? linuxExecStepConfig;
+  final pulumi.Input<PatchDeploymentPatchConfigPostStepLinuxExecStepConfig?>? linuxExecStepConfig;
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigPostStepWindowsExecStepConfig>? windowsExecStepConfig;
+  final pulumi.Input<PatchDeploymentPatchConfigPostStepWindowsExecStepConfig?>? windowsExecStepConfig;
 
   /// Creates a new [PatchDeploymentPatchConfigPostStep].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.

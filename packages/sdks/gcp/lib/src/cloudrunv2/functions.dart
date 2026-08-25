@@ -139,6 +139,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getJob:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for job
 ///
 ///
@@ -272,6 +283,17 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
   return GetJobIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
+  GetJobIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobIamPolicyResult.fromMap);
+}
+
 /// Get information about a Google Cloud Run v2 Service. For more information see
 /// the [official documentation](https://cloud.google.com/run/docs/)
 /// and [API](https://cloud.google.com/run/docs/apis).
@@ -397,6 +419,17 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for service
@@ -532,6 +565,17 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
   return GetServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
+  GetServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getServiceIamPolicy:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyResult.fromMap);
+}
+
 /// Get information about a Google Cloud Run v2 Worker Pool. For more information see
 /// the [official documentation](https://cloud.google.com/run/docs/)
 /// and [API](https://cloud.google.com/run/docs/apis).
@@ -657,6 +701,17 @@ Future<GetWorkerPoolResult> getWorkerPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkerPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
+  GetWorkerPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getWorkerPool:getWorkerPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for workerpool
@@ -790,4 +845,15 @@ Future<GetWorkerPoolIamPolicyResult> getWorkerPoolIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkerPoolIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkerPoolIamPolicyResult> getWorkerPoolIamPolicyOutput(
+  GetWorkerPoolIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrunv2/getWorkerPoolIamPolicy:getWorkerPoolIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolIamPolicyResult.fromMap);
 }

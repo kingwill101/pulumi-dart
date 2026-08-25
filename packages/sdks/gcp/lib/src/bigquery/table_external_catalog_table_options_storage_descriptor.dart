@@ -7,18 +7,18 @@ class TableExternalCatalogTableOptionsStorageDescriptor {
   /// Specifies the fully qualified class name of the
   /// InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
   /// maximum length is 128 characters.
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<String?>? inputFormat;
   /// The physical location of the table (e.g.
   /// 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
   /// 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
-  final pulumi.Input<String>? locationUri;
+  final pulumi.Input<String?>? locationUri;
   /// Specifies the fully qualified class name of the
   /// OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
   /// maximum length is 128 characters.
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// Serializer and deserializer information. Structure
   /// is documented below.
-  final pulumi.Input<TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo>? serdeInfo;
+  final pulumi.Input<TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo?>? serdeInfo;
 
   /// Creates a new [TableExternalCatalogTableOptionsStorageDescriptor].
   /// [inputFormat] Specifies the fully qualified class name of the

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy {
   /// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy].
   /// [actions] Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.

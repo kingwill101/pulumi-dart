@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadWorkloadPropertyExtendedMetadataValue {
   /// (Output)
   /// The resource name for the Extended Metadata Schema.
-  final pulumi.Input<String>? extendedMetadataSchema;
+  final pulumi.Input<String?>? extendedMetadataSchema;
   /// (Output)
   /// The metadata contents as a JSON string.
-  final pulumi.Input<String>? metadataStruct;
+  final pulumi.Input<String?>? metadataStruct;
 
   /// Creates a new [WorkloadWorkloadPropertyExtendedMetadataValue].
   /// [extendedMetadataSchema] (Output)

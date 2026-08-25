@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tls_route_args.dart';
+import 'tls_route_rule.dart';
 import 'tls_route_state.dart';
 
 /// TlsRoute defines how traffic should be routed based on SNI and other matching L3 attributes.
@@ -2286,7 +2287,7 @@ class TlsRoute extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<TlsRouteRule>> rules;
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
   /// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
@@ -2307,19 +2308,19 @@ class TlsRoute extends pulumi.CustomResource {
           'gcp:networkservices/tlsRoute:TlsRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    gateways = registerOutput<List<String>?>('gateways');
+    gateways = registerOutput<List<String>?>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String?>('location');
-    meshes = registerOutput<List<String>?>('meshes');
+    meshes = registerOutput<List<String>?>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<TlsRouteRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsRouteRule>(guardedValue, (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
-    targetProxies = registerOutput<List<String>?>('targetProxies');
+    targetProxies = registerOutput<List<String>?>('targetProxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2328,11 +2329,12 @@ class TlsRoute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TlsRouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TlsRoute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2349,14 +2351,37 @@ class TlsRoute extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    gateways = registerOutput<List<String>?>('gateways');
+    gateways = registerOutput<List<String>?>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String?>('location');
-    meshes = registerOutput<List<String>?>('meshes');
+    meshes = registerOutput<List<String>?>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<TlsRouteRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsRouteRule>(guardedValue, (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
-    targetProxies = registerOutput<List<String>?>('targetProxies');
+    targetProxies = registerOutput<List<String>?>('targetProxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TlsRoute] resource.
+  TlsRoute.reference(String urn)
+    : super(
+        'gcp:networkservices/tlsRoute:TlsRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    gateways = registerOutput<List<String>?>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String?>('location');
+    meshes = registerOutput<List<String>?>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<TlsRouteRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsRouteRule>(guardedValue, (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    targetProxies = registerOutput<List<String>?>('targetProxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

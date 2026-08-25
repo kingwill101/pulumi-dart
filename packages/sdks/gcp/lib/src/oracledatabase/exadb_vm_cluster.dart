@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'exadb_vm_cluster_args.dart';
+import 'exadb_vm_cluster_identity_connector.dart';
 import 'exadb_vm_cluster_properties.dart';
 import 'exadb_vm_cluster_state.dart';
 
@@ -887,7 +888,7 @@ class ExadbVmCluster extends pulumi.CustomResource {
   /// The identity connector details which will allow OCI to securely access
   /// the resources in the customer project.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> identityConnectors;
+  late final pulumi.Output<List<ExadbVmClusterIdentityConnector>> identityConnectors;
   /// The labels or tags associated with the ExadbVmCluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -928,26 +929,27 @@ class ExadbVmCluster extends pulumi.CustomResource {
           'gcp:oracledatabase/exadbVmCluster:ExadbVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupOdbSubnet = registerOutput<String>('backupOdbSubnet');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entitlementId = registerOutput<String>('entitlementId');
     exadbVmClusterId = registerOutput<String>('exadbVmClusterId');
     gcpOracleZone = registerOutput<String>('gcpOracleZone');
-    identityConnectors = registerOutput<List<Map<String, dynamic>>>('identityConnectors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    identityConnectors = registerOutput<List<ExadbVmClusterIdentityConnector>>('identityConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExadbVmClusterIdentityConnector>(guardedValue, (value) => ExadbVmClusterIdentityConnector.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     odbNetwork = registerOutput<String?>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
     project = registerOutput<String>('project');
     properties = registerOutput<ExadbVmClusterProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExadbVmClusterProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 
   /// Gets an existing [ExadbVmCluster] resource's state with the given [name] and [id].
@@ -955,11 +957,12 @@ class ExadbVmCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExadbVmClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExadbVmCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -978,18 +981,48 @@ class ExadbVmCluster extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entitlementId = registerOutput<String>('entitlementId');
     exadbVmClusterId = registerOutput<String>('exadbVmClusterId');
     gcpOracleZone = registerOutput<String>('gcpOracleZone');
-    identityConnectors = registerOutput<List<Map<String, dynamic>>>('identityConnectors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    identityConnectors = registerOutput<List<ExadbVmClusterIdentityConnector>>('identityConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExadbVmClusterIdentityConnector>(guardedValue, (value) => ExadbVmClusterIdentityConnector.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     odbNetwork = registerOutput<String?>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
     project = registerOutput<String>('project');
     properties = registerOutput<ExadbVmClusterProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExadbVmClusterProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ExadbVmCluster] resource.
+  ExadbVmCluster.reference(String urn)
+    : super(
+        'gcp:oracledatabase/exadbVmCluster:ExadbVmCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    backupOdbSubnet = registerOutput<String>('backupOdbSubnet');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    entitlementId = registerOutput<String>('entitlementId');
+    exadbVmClusterId = registerOutput<String>('exadbVmClusterId');
+    gcpOracleZone = registerOutput<String>('gcpOracleZone');
+    identityConnectors = registerOutput<List<ExadbVmClusterIdentityConnector>>('identityConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExadbVmClusterIdentityConnector>(guardedValue, (value) => ExadbVmClusterIdentityConnector.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    odbNetwork = registerOutput<String?>('odbNetwork');
+    odbSubnet = registerOutput<String>('odbSubnet');
+    project = registerOutput<String>('project');
+    properties = registerOutput<ExadbVmClusterProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExadbVmClusterProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 }

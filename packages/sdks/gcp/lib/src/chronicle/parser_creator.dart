@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParserCreator {
   /// (Output)
   /// The name of the author, who created this parser.
-  final pulumi.Input<String>? author;
+  final pulumi.Input<String?>? author;
   /// (Output)
   /// The customer who created it, This can represent the partner as well.
   /// In case of prebuilt parser this will be empty.
-  final pulumi.Input<String>? customer;
+  final pulumi.Input<String?>? customer;
   /// (Output)
   /// The source of the parser.
   /// Possible values:
@@ -17,7 +17,7 @@ class ParserCreator {
   /// CUSTOM_GOOGLE_OVERRIDE
   /// PARTNER
   /// CUSTOMER
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [ParserCreator].
   /// [author] (Output)

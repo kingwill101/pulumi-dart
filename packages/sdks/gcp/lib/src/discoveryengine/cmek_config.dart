@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cmek_config_args.dart';
+import 'cmek_config_single_region_key.dart';
 import 'cmek_config_state.dart';
 
 /// CmekConfig represents configurations used to enable CMEK data encryption with
@@ -269,7 +270,7 @@ class CmekConfig extends pulumi.CustomResource {
   late final pulumi.Output<bool?> setDefault;
   /// Single-regional CMEKs that are required for some VAIS features.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> singleRegionKeys;
+  late final pulumi.Output<List<CmekConfigSingleRegionKey>?> singleRegionKeys;
   /// The state of the CmekConfig.
   late final pulumi.Output<String> state;
 
@@ -285,7 +286,7 @@ class CmekConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/cmekConfig:CmekConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cmekConfigId = registerOutput<String>('cmekConfigId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -298,7 +299,7 @@ class CmekConfig extends pulumi.CustomResource {
     notebooklmState = registerOutput<String>('notebooklmState');
     project = registerOutput<String>('project');
     setDefault = registerOutput<bool?>('setDefault');
-    singleRegionKeys = registerOutput<List<Map<String, dynamic>>?>('singleRegionKeys');
+    singleRegionKeys = registerOutput<List<CmekConfigSingleRegionKey>?>('singleRegionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CmekConfigSingleRegionKey>(guardedValue, (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
   }
 
@@ -307,11 +308,12 @@ class CmekConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CmekConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CmekConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,7 +338,31 @@ class CmekConfig extends pulumi.CustomResource {
     notebooklmState = registerOutput<String>('notebooklmState');
     project = registerOutput<String>('project');
     setDefault = registerOutput<bool?>('setDefault');
-    singleRegionKeys = registerOutput<List<Map<String, dynamic>>?>('singleRegionKeys');
+    singleRegionKeys = registerOutput<List<CmekConfigSingleRegionKey>?>('singleRegionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CmekConfigSingleRegionKey>(guardedValue, (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [CmekConfig] resource.
+  CmekConfig.reference(String urn)
+    : super(
+        'gcp:discoveryengine/cmekConfig:CmekConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cmekConfigId = registerOutput<String>('cmekConfigId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    isDefault = registerOutput<bool>('isDefault');
+    kmsKey = registerOutput<String>('kmsKey');
+    kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
+    lastRotationTimestampMicros = registerOutput<int>('lastRotationTimestampMicros');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notebooklmState = registerOutput<String>('notebooklmState');
+    project = registerOutput<String>('project');
+    setDefault = registerOutput<bool?>('setDefault');
+    singleRegionKeys = registerOutput<List<CmekConfigSingleRegionKey>?>('singleRegionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CmekConfigSingleRegionKey>(guardedValue, (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
   }
 }

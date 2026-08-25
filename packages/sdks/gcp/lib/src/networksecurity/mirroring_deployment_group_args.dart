@@ -13,14 +13,14 @@ class MirroringDeploymentGroupArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description of the deployment group.
   /// Used as additional context for the deployment group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The cloud location of the deployment group, currently restricted to `global`.
   final pulumi.Input<String> location;
   /// The ID to use for the new deployment group, which will become the final
@@ -32,7 +32,7 @@ class MirroringDeploymentGroupArgs {
   final pulumi.Input<String> network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [MirroringDeploymentGroupArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

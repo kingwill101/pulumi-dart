@@ -13,37 +13,37 @@ class NativeDashboardArgs {
   /// Possible values:
   /// DASHBOARD_PRIVATE
   /// DASHBOARD_PUBLIC
-  final pulumi.Input<String>? access;
+  final pulumi.Input<String?>? access;
   /// A list of charts included in the dashboard definition.
   /// Structure is documented below.
-  final pulumi.Input<List<NativeDashboardChart>>? charts;
+  final pulumi.Input<List<NativeDashboardChart>?>? charts;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the dashboard.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name/title of the dashboard visible to users.
   final pulumi.Input<String> displayName;
   /// Global filters defined for the dashboard.
   /// Structure is documented below.
-  final pulumi.Input<List<NativeDashboardFilter>>? filters;
+  final pulumi.Input<List<NativeDashboardFilter>?>? filters;
   /// The ID of the Chronicle instance.
   final pulumi.Input<String> instance;
   /// Whether the dashboard is pinned by the user.
-  final pulumi.Input<bool>? isPinned;
+  final pulumi.Input<bool?>? isPinned;
   /// The location of the Chronicle instance.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The type of dashboard.
   /// Possible values:
   /// CURATED, PRIVATE, PUBLIC, CUSTOM, MARKETPLACE
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [NativeDashboardArgs].
   /// [access] The access level of the dashboard.

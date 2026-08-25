@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkstationConfigHostGceInstanceShieldedInstanceConfig {
   /// Whether the instance has integrity monitoring enabled.
-  final pulumi.Input<bool>? enableIntegrityMonitoring;
+  final pulumi.Input<bool?>? enableIntegrityMonitoring;
   /// Whether the instance has Secure Boot enabled.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
   /// Whether the instance has the vTPM enabled.
-  final pulumi.Input<bool>? enableVtpm;
+  final pulumi.Input<bool?>? enableVtpm;
 
   /// Creates a new [WorkstationConfigHostGceInstanceShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Whether the instance has integrity monitoring enabled.

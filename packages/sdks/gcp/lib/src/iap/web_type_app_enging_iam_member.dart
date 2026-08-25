@@ -2069,7 +2069,7 @@ class WebTypeAppEngingIamMember extends pulumi.CustomResource {
           'gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     condition = registerOutput<WebTypeAppEngingIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTypeAppEngingIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2084,11 +2084,12 @@ class WebTypeAppEngingIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebTypeAppEngingIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebTypeAppEngingIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2102,6 +2103,23 @@ class WebTypeAppEngingIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String>('appId');
+    condition = registerOutput<WebTypeAppEngingIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTypeAppEngingIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [WebTypeAppEngingIamMember] resource.
+  WebTypeAppEngingIamMember.reference(String urn)
+    : super(
+        'gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     condition = registerOutput<WebTypeAppEngingIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTypeAppEngingIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

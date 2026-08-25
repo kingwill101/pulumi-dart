@@ -2043,13 +2043,13 @@ class DatabaseIAMBinding extends pulumi.CustomResource {
           'gcp:spanner/databaseIAMBinding:DatabaseIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<DatabaseIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }
@@ -2059,11 +2059,12 @@ class DatabaseIAMBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseIAMBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseIAMBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2081,7 +2082,25 @@ class DatabaseIAMBinding extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseIAMBinding] resource.
+  DatabaseIAMBinding.reference(String urn)
+    : super(
+        'gcp:spanner/databaseIAMBinding:DatabaseIAMBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<DatabaseIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    database = registerOutput<String>('database');
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }

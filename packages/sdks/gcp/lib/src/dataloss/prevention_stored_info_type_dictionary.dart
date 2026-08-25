@@ -7,10 +7,10 @@ import 'prevention_stored_info_type_dictionary_word_list.dart';
 class PreventionStoredInfoTypeDictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// Structure is documented below.
-  final pulumi.Input<PreventionStoredInfoTypeDictionaryCloudStoragePath>? cloudStoragePath;
+  final pulumi.Input<PreventionStoredInfoTypeDictionaryCloudStoragePath?>? cloudStoragePath;
   /// List of words or phrases to search for.
   /// Structure is documented below.
-  final pulumi.Input<PreventionStoredInfoTypeDictionaryWordList>? wordList;
+  final pulumi.Input<PreventionStoredInfoTypeDictionaryWordList?>? wordList;
 
   /// Creates a new [PreventionStoredInfoTypeDictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.

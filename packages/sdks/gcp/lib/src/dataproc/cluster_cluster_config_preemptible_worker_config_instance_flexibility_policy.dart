@@ -7,11 +7,11 @@ import 'cluster_cluster_config_preemptible_worker_config_instance_flexibility_po
 
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
   /// List of instance selection options that the group will use when creating new VMs.
-  final pulumi.Input<List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>>? instanceSelectionLists;
+  final pulumi.Input<List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>?>? instanceSelectionLists;
   /// A list of instance selection results in the group.
-  final pulumi.Input<List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>>? instanceSelectionResults;
+  final pulumi.Input<List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>?>? instanceSelectionResults;
   /// Defines how the Group selects the provisioning model to ensure required reliability.
-  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix>? provisioningModelMix;
+  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix?>? provisioningModelMix;
 
   /// Creates a new [ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy].
   /// [instanceSelectionLists] List of instance selection options that the group will use when creating new VMs.

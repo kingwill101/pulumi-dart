@@ -7,7 +7,7 @@ class InstanceNetworkPscConfig {
   /// would be set up. This is optional, and only relevant in case the network
   /// is a shared VPC. If this is not specified, the endpoint would be set up
   /// in the VPC host project.
-  final pulumi.Input<String>? endpointProject;
+  final pulumi.Input<String?>? endpointProject;
 
   /// Creates a new [InstanceNetworkPscConfig].
   /// [endpointProject] Consumer service project in which the Private Service Connect endpoint

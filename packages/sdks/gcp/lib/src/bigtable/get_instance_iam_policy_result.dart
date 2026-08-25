@@ -4,45 +4,45 @@
 /// Result data returned by getInstanceIamPolicy.
 class GetInstanceIamPolicyResult {
   /// (Computed) The etag of the IAM policy.
-  final String etag;
+  final String? etag;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String instance;
+  final String? id;
+  final String? instance;
   /// (Computed) The policy data
-  final String policyData;
-  final String project;
+  final String? policyData;
+  final String? project;
 
   /// Creates a new [GetInstanceIamPolicyResult].
   /// [etag] (Computed) The etag of the IAM policy.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instance] Required.
+  /// [instance] Optional.
   /// [policyData] (Computed) The policy data
-  /// [project] Required.
+  /// [project] Optional.
   const GetInstanceIamPolicyResult({
-    required this.etag,
-    required this.id,
-    required this.instance,
-    required this.policyData,
-    required this.project,
+    this.etag,
+    this.id,
+    this.instance,
+    this.policyData,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'etag': etag,
-      'id': id,
-      'instance': instance,
-      'policyData': policyData,
-      'project': project,
+      'etag': ?etag,
+      'id': ?id,
+      'instance': ?instance,
+      'policyData': ?policyData,
+      'project': ?project,
     };
   }
 
   factory GetInstanceIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceIamPolicyResult(
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      instance: map['instance'] as String,
-      policyData: map['policyData'] as String,
-      project: map['project'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyData: (() { final guardedValue = map['policyData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

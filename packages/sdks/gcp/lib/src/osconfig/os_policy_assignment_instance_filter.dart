@@ -8,21 +8,21 @@ import 'os_policy_assignment_instance_filter_inventory.dart';
 class OsPolicyAssignmentInstanceFilter {
   /// Target all VMs in the project. If true, no other criteria
   /// is permitted.
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// List of label sets used for VM exclusion. If
   /// the list has more than one label set, the VM is excluded if any of the label
   /// sets are applicable for the VM. Structure is
   /// documented below.
-  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterExclusionLabel>>? exclusionLabels;
+  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterExclusionLabel>?>? exclusionLabels;
   /// List of label sets used for VM inclusion. If
   /// the list has more than one `LabelSet`, the VM is included if any of the
   /// label sets are applicable for the VM. Structure is
   /// documented below.
-  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterInclusionLabel>>? inclusionLabels;
+  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterInclusionLabel>?>? inclusionLabels;
   /// List of inventories to select VMs. A VM is
   /// selected if its inventory data matches at least one of the following
   /// inventories. Structure is documented below.
-  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterInventory>>? inventories;
+  final pulumi.Input<List<OsPolicyAssignmentInstanceFilterInventory>?>? inventories;
 
   /// Creates a new [OsPolicyAssignmentInstanceFilter].
   /// [all] Target all VMs in the project. If true, no other criteria

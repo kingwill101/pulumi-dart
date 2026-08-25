@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageDefaultBucketBucket {
   /// (Output)
   /// The last segment of bucket.name.
-  final pulumi.Input<String>? bucketId;
+  final pulumi.Input<String?>? bucketId;
   /// (Output)
   /// The resource name of the bucket in the format
   /// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [StorageDefaultBucketBucket].
   /// [bucketId] (Output)

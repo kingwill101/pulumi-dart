@@ -12,28 +12,28 @@ class ProjectBucketConfigArgs {
   /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
   final pulumi.Input<String> bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
-  final pulumi.Input<ProjectBucketConfigCmekSettings>? cmekSettings;
+  final pulumi.Input<ProjectBucketConfigCmekSettings?>? cmekSettings;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Describes this bucket.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
-  final pulumi.Input<bool>? enableAnalytics;
+  final pulumi.Input<bool?>? enableAnalytics;
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  final pulumi.Input<List<ProjectBucketConfigIndexConfig>>? indexConfigs;
+  final pulumi.Input<List<ProjectBucketConfigIndexConfig>?>? indexConfigs;
   /// The location of the bucket.
   final pulumi.Input<String> location;
   /// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// The parent resource that contains the logging bucket.
   final pulumi.Input<String> project;
   /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
 
   /// Creates a new [ProjectBucketConfigArgs].
   /// [bucketId] The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
@@ -85,7 +85,7 @@ class ProjectBucketConfigArgs {
       location: pulumi.Input.fromValue(map['location'] as String),
       locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       project: pulumi.Input.fromValue(map['project'] as String),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

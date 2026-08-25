@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity {
   /// (Optional)
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// (Optional)
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity].
   /// [key] (Optional)

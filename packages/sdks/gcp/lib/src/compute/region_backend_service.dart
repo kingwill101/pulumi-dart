@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_backend_service_args.dart';
+import 'region_backend_service_backend.dart';
 import 'region_backend_service_cdn_policy.dart';
 import 'region_backend_service_circuit_breakers.dart';
 import 'region_backend_service_connection_tracking_policy.dart';
 import 'region_backend_service_consistent_hash.dart';
+import 'region_backend_service_custom_metric.dart';
 import 'region_backend_service_dynamic_forwarding.dart';
 import 'region_backend_service_failover_policy.dart';
 import 'region_backend_service_ha_policy.dart';
@@ -5181,7 +5183,7 @@ class RegionBackendService extends pulumi.CustomResource {
   late final pulumi.Output<int?> affinityCookieTtlSec;
   /// The set of backends that serve this RegionBackendService.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> backends;
+  late final pulumi.Output<List<RegionBackendServiceBackend>?> backends;
   /// Cloud CDN configuration for this BackendService.
   /// Structure is documented below.
   late final pulumi.Output<RegionBackendServiceCdnPolicy> cdnPolicy;
@@ -5210,7 +5212,7 @@ class RegionBackendService extends pulumi.CustomResource {
   late final pulumi.Output<String> creationTimestamp;
   /// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customMetrics;
+  late final pulumi.Output<List<RegionBackendServiceCustomMetric>?> customMetrics;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -5402,17 +5404,17 @@ class RegionBackendService extends pulumi.CustomResource {
           'gcp:compute/regionBackendService:RegionBackendService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
-    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
+    backends = registerOutput<List<RegionBackendServiceBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionBackendServiceBackend>(guardedValue, (value) => RegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); });
     cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     circuitBreakers = registerOutput<RegionBackendServiceCircuitBreakers?>('circuitBreakers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceCircuitBreakers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionDrainingTimeoutSec = registerOutput<int?>('connectionDrainingTimeoutSec');
     connectionTrackingPolicy = registerOutput<RegionBackendServiceConnectionTrackingPolicy?>('connectionTrackingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConnectionTrackingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistentHash = registerOutput<RegionBackendServiceConsistentHash?>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConsistentHash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customMetrics = registerOutput<List<Map<String, dynamic>>?>('customMetrics');
+    customMetrics = registerOutput<List<RegionBackendServiceCustomMetric>?>('customMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionBackendServiceCustomMetric>(guardedValue, (value) => RegionBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>('dynamicForwarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -5450,11 +5452,12 @@ class RegionBackendService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionBackendServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionBackendService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -5469,14 +5472,64 @@ class RegionBackendService extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
-    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
+    backends = registerOutput<List<RegionBackendServiceBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionBackendServiceBackend>(guardedValue, (value) => RegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); });
     cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     circuitBreakers = registerOutput<RegionBackendServiceCircuitBreakers?>('circuitBreakers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceCircuitBreakers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionDrainingTimeoutSec = registerOutput<int?>('connectionDrainingTimeoutSec');
     connectionTrackingPolicy = registerOutput<RegionBackendServiceConnectionTrackingPolicy?>('connectionTrackingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConnectionTrackingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistentHash = registerOutput<RegionBackendServiceConsistentHash?>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConsistentHash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customMetrics = registerOutput<List<Map<String, dynamic>>?>('customMetrics');
+    customMetrics = registerOutput<List<RegionBackendServiceCustomMetric>?>('customMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionBackendServiceCustomMetric>(guardedValue, (value) => RegionBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>('dynamicForwarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableCdn = registerOutput<bool?>('enableCdn');
+    failoverPolicy = registerOutput<RegionBackendServiceFailoverPolicy?>('failoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceFailoverPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fingerprint = registerOutput<String>('fingerprint');
+    generatedId = registerOutput<int>('generatedId');
+    haPolicy = registerOutput<RegionBackendServiceHaPolicy?>('haPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceHaPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthChecks = registerOutput<String?>('healthChecks');
+    iap = registerOutput<RegionBackendServiceIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    localityLbPolicy = registerOutput<String?>('localityLbPolicy');
+    logConfig = registerOutput<RegionBackendServiceLogConfig>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    networkPassThroughLbTrafficPolicy = registerOutput<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>('networkPassThroughLbTrafficPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outlierDetection = registerOutput<RegionBackendServiceOutlierDetection?>('outlierDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceOutlierDetection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    params = registerOutput<RegionBackendServiceParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    portName = registerOutput<String>('portName');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    securityPolicy = registerOutput<String?>('securityPolicy');
+    selfLink = registerOutput<String>('selfLink');
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+    strongSessionAffinityCookie = registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceStrongSessionAffinityCookie.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceSubsetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeoutSec = registerOutput<int>('timeoutSec');
+    tlsSettings = registerOutput<RegionBackendServiceTlsSettings?>('tlsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceTlsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RegionBackendService] resource.
+  RegionBackendService.reference(String urn)
+    : super(
+        'gcp:compute/regionBackendService:RegionBackendService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
+    backends = registerOutput<List<RegionBackendServiceBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionBackendServiceBackend>(guardedValue, (value) => RegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); });
+    cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    circuitBreakers = registerOutput<RegionBackendServiceCircuitBreakers?>('circuitBreakers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceCircuitBreakers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionDrainingTimeoutSec = registerOutput<int?>('connectionDrainingTimeoutSec');
+    connectionTrackingPolicy = registerOutput<RegionBackendServiceConnectionTrackingPolicy?>('connectionTrackingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConnectionTrackingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consistentHash = registerOutput<RegionBackendServiceConsistentHash?>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceConsistentHash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customMetrics = registerOutput<List<RegionBackendServiceCustomMetric>?>('customMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionBackendServiceCustomMetric>(guardedValue, (value) => RegionBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicForwarding = registerOutput<RegionBackendServiceDynamicForwarding?>('dynamicForwarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>()); });

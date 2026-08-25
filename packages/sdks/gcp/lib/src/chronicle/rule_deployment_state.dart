@@ -7,9 +7,9 @@ import 'rule_deployment_schedule_customizations.dart';
 class RuleDeploymentState {
   /// Whether detections resulting from this deployment should be considered
   /// alerts.
-  final pulumi.Input<bool>? alerting;
+  final pulumi.Input<bool?>? alerting;
   /// Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
-  final pulumi.Input<String>? archiveTime;
+  final pulumi.Input<String?>? archiveTime;
   /// The archive state of the rule deployment.
   /// Cannot be set to true unless enabled is set to false i.e.
   /// archiving requires a two-step process: first, disable the rule by
@@ -17,43 +17,43 @@ class RuleDeploymentState {
   /// If set to true, alerting will automatically be set to false.
   /// If currently set to true, enabled, alerting, and runFrequency cannot be
   /// updated.
-  final pulumi.Input<bool>? archived;
+  final pulumi.Input<bool?>? archived;
   /// Output only. The names of the associated/chained consumer rules. Rules are considered
   /// consumers of this rule if their rule text explicitly filters on this rule's ruleid.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
-  final pulumi.Input<List<String>>? consumerRules;
+  final pulumi.Input<List<String>?>? consumerRules;
   /// Whether the rule is currently deployed continuously against incoming data.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The execution state of the rule deployment.
   /// Possible values:
   /// DEFAULT
   /// LIMITED
   /// PAUSED
-  final pulumi.Input<String>? executionState;
+  final pulumi.Input<String?>? executionState;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Output only. The timestamp when the rule deployment alert state was lastly changed. This is filled regardless of the current alert state.E.g. if the current alert status is false, this timestamp will be the timestamp when the alert status was changed to false.
-  final pulumi.Input<String>? lastAlertStatusChangeTime;
+  final pulumi.Input<String?>? lastAlertStatusChangeTime;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the rule deployment.
   /// Note that RuleDeployment is a child of the overall Rule, not any individual
   /// revision, so the resource ID segment for the Rule resource must not
   /// reference a specific revision.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/deployment
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Output only. The names of the associated/chained producer rules. Rules are considered
   /// producers for this rule if this rule explicitly filters on their ruleid.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
-  final pulumi.Input<List<String>>? producerRules;
+  final pulumi.Input<List<String>?>? producerRules;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Rule ID of the rule.
-  final pulumi.Input<String>? rule;
+  final pulumi.Input<String?>? rule;
   /// The run frequency of the rule deployment.
   /// Possible values:
   /// LIVE
@@ -65,11 +65,11 @@ class RuleDeploymentState {
   /// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
   /// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
   /// suppress the diff and ignore the changes to prevent infinite update loops.
-  final pulumi.Input<String>? runFrequency;
+  final pulumi.Input<String?>? runFrequency;
   /// The schedule customizations of the rule deployment. Only valid for
   /// customizable run frequencies.
   /// Structure is documented below.
-  final pulumi.Input<RuleDeploymentScheduleCustomizations>? scheduleCustomizations;
+  final pulumi.Input<RuleDeploymentScheduleCustomizations?>? scheduleCustomizations;
 
   /// Creates a new [RuleDeploymentState].
   /// [alerting] Whether detections resulting from this deployment should be considered

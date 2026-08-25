@@ -6,7 +6,7 @@ import 'target_site_failure_reason_quota_failure.dart';
 class TargetSiteFailureReason {
   /// Site verification state indicating the ownership and validity.
   /// Structure is documented below.
-  final pulumi.Input<TargetSiteFailureReasonQuotaFailure>? quotaFailure;
+  final pulumi.Input<TargetSiteFailureReasonQuotaFailure?>? quotaFailure;
 
   /// Creates a new [TargetSiteFailureReason].
   /// [quotaFailure] Site verification state indicating the ownership and validity.

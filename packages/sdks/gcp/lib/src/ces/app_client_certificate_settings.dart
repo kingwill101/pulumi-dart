@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppClientCertificateSettings {
   /// The passphrase to decrypt the private key.
   /// Should be left unset if the private key is not encrypted.
-  final pulumi.Input<String>? passphrase;
+  final pulumi.Input<String?>? passphrase;
   /// The name of the SecretManager secret version resource
   /// storing the private key encoded in PEM format.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}

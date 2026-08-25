@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceState {
   /// (Output)
   /// Code describes the state of a Namespace resource.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
 
   /// Creates a new [NamespaceState].
   /// [code] (Output)

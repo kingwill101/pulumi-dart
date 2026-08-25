@@ -7,12 +7,12 @@ import 'trigger_repository_event_config_push.dart';
 class TriggerRepositoryEventConfig {
   /// Contains filter properties for matching Pull Requests.
   /// Structure is documented below.
-  final pulumi.Input<TriggerRepositoryEventConfigPullRequest>? pullRequest;
+  final pulumi.Input<TriggerRepositoryEventConfigPullRequest?>? pullRequest;
   /// Contains filter properties for matching git pushes.
   /// Structure is documented below.
-  final pulumi.Input<TriggerRepositoryEventConfigPush>? push;
+  final pulumi.Input<TriggerRepositoryEventConfigPush?>? push;
   /// The resource name of the Repo API resource.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
 
   /// Creates a new [TriggerRepositoryEventConfig].
   /// [pullRequest] Contains filter properties for matching Pull Requests.

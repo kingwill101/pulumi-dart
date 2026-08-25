@@ -1072,7 +1072,8 @@ class Feed extends pulumi.CustomResource {
           'gcp:chronicle/feed:Feed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['secret'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     details = registerOutput<FeedDetails?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeedDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1089,7 +1090,7 @@ class Feed extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     readOnly = registerOutput<bool>('readOnly');
     referenceId = registerOutput<String>('referenceId');
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
   }
@@ -1099,11 +1100,12 @@ class Feed extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FeedState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Feed._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1132,8 +1134,38 @@ class Feed extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     readOnly = registerOutput<bool>('readOnly');
     referenceId = registerOutput<String>('referenceId');
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [Feed] resource.
+  Feed.reference(String urn)
+    : super(
+        'gcp:chronicle/feed:Feed',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secret'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    details = registerOutput<FeedDetails?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeedDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String?>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    failureDetails = registerOutput<FeedFailureDetails?>('failureDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeedFailureDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failureMsg = registerOutput<String>('failureMsg');
+    feed = registerOutput<String>('feed');
+    feedServiceAccount = registerOutput<String>('feedServiceAccount');
+    instance = registerOutput<String>('instance');
+    lastFeedInitiationTime = registerOutput<String>('lastFeedInitiationTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    readOnly = registerOutput<bool>('readOnly');
+    referenceId = registerOutput<String>('referenceId');
+    secret = registerOutput<String>('secret', isSecret: true);
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
   }
 }

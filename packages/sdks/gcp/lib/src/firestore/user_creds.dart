@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_creds_args.dart';
+import 'user_creds_resource_identity.dart';
 import 'user_creds_state.dart';
 
 /// User credentials for a Cloud Firestore with MongoDB compatibility database.
@@ -529,7 +530,7 @@ class UserCreds extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Describes the Resource Identity principal.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceIdentities;
+  late final pulumi.Output<List<UserCredsResourceIdentity>> resourceIdentities;
   /// The plaintext server-generated password for the user creds.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> securePassword;
@@ -550,15 +551,16 @@ class UserCreds extends pulumi.CustomResource {
           'gcp:firestore/userCreds:UserCreds',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['securePassword'],
         ) {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    resourceIdentities = registerOutput<List<Map<String, dynamic>>>('resourceIdentities');
-    securePassword = registerOutput<String>('securePassword');
+    resourceIdentities = registerOutput<List<UserCredsResourceIdentity>>('resourceIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserCredsResourceIdentity>(guardedValue, (value) => UserCredsResourceIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    securePassword = registerOutput<String>('securePassword', isSecret: true);
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -568,11 +570,12 @@ class UserCreds extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserCredsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserCreds._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -591,9 +594,30 @@ class UserCreds extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    resourceIdentities = registerOutput<List<Map<String, dynamic>>>('resourceIdentities');
-    securePassword = registerOutput<String>('securePassword');
+    resourceIdentities = registerOutput<List<UserCredsResourceIdentity>>('resourceIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserCredsResourceIdentity>(guardedValue, (value) => UserCredsResourceIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    securePassword = registerOutput<String>('securePassword', isSecret: true);
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [UserCreds] resource.
+  UserCreds.reference(String urn)
+    : super(
+        'gcp:firestore/userCreds:UserCreds',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['securePassword'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resourceIdentities = registerOutput<List<UserCredsResourceIdentity>>('resourceIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserCredsResourceIdentity>(guardedValue, (value) => UserCredsResourceIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    securePassword = registerOutput<String>('securePassword', isSecret: true);
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

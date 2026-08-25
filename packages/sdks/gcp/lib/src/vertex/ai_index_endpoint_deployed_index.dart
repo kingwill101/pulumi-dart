@@ -3,6 +3,7 @@ import 'ai_index_endpoint_deployed_index_args.dart';
 import 'ai_index_endpoint_deployed_index_automatic_resources.dart';
 import 'ai_index_endpoint_deployed_index_dedicated_resources.dart';
 import 'ai_index_endpoint_deployed_index_deployed_index_auth_config.dart';
+import 'ai_index_endpoint_deployed_index_private_endpoint.dart';
 import 'ai_index_endpoint_deployed_index_state.dart';
 
 /// An endpoint indexes are deployed into. An index endpoint can have multiple deployed indexes.
@@ -1412,7 +1413,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpoints;
+  late final pulumi.Output<List<AiIndexEndpointDeployedIndexPrivateEndpoint>> privateEndpoints;
   /// The region of the index endpoint deployment. eg us-central1
   late final pulumi.Output<String> region;
   /// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
@@ -1433,7 +1434,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
           'gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     automaticResources = registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>('automaticResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexAutomaticResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -1448,9 +1449,9 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     indexEndpoint = registerOutput<String>('indexEndpoint');
     indexSyncTime = registerOutput<String>('indexSyncTime');
     this.name = registerOutput<String>('name');
-    privateEndpoints = registerOutput<List<Map<String, dynamic>>>('privateEndpoints');
+    privateEndpoints = registerOutput<List<AiIndexEndpointDeployedIndexPrivateEndpoint>>('privateEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpoint>(guardedValue, (value) => AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
+    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AiIndexEndpointDeployedIndex] resource's state with the given [name] and [id].
@@ -1458,11 +1459,12 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiIndexEndpointDeployedIndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiIndexEndpointDeployedIndex._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1489,8 +1491,35 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     indexEndpoint = registerOutput<String>('indexEndpoint');
     indexSyncTime = registerOutput<String>('indexSyncTime');
     this.name = registerOutput<String>('name');
-    privateEndpoints = registerOutput<List<Map<String, dynamic>>>('privateEndpoints');
+    privateEndpoints = registerOutput<List<AiIndexEndpointDeployedIndexPrivateEndpoint>>('privateEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpoint>(guardedValue, (value) => AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
+    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AiIndexEndpointDeployedIndex] resource.
+  AiIndexEndpointDeployedIndex.reference(String urn)
+    : super(
+        'gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automaticResources = registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>('automaticResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexAutomaticResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dedicatedResources = registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deployedIndexAuthConfig = registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>('deployedIndexAuthConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployedIndexId = registerOutput<String>('deployedIndexId');
+    deploymentGroup = registerOutput<String?>('deploymentGroup');
+    displayName = registerOutput<String?>('displayName');
+    enableAccessLogging = registerOutput<bool?>('enableAccessLogging');
+    index = registerOutput<String>('index');
+    indexEndpoint = registerOutput<String>('indexEndpoint');
+    indexSyncTime = registerOutput<String>('indexSyncTime');
+    this.name = registerOutput<String>('name');
+    privateEndpoints = registerOutput<List<AiIndexEndpointDeployedIndexPrivateEndpoint>>('privateEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpoint>(guardedValue, (value) => AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

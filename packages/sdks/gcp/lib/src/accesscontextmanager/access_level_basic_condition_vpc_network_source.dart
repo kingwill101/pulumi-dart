@@ -6,7 +6,7 @@ import 'access_level_basic_condition_vpc_network_source_vpc_subnetwork.dart';
 class AccessLevelBasicConditionVpcNetworkSource {
   /// Sub networks within a VPC network.
   /// Structure is documented below.
-  final pulumi.Input<AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork>? vpcSubnetwork;
+  final pulumi.Input<AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork?>? vpcSubnetwork;
 
   /// Creates a new [AccessLevelBasicConditionVpcNetworkSource].
   /// [vpcSubnetwork] Sub networks within a VPC network.

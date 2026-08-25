@@ -9,10 +9,10 @@ class FeedDetailsAwsIamSettings {
   /// USERS
   /// ROLES
   /// GROUPS
-  final pulumi.Input<String>? apiType;
+  final pulumi.Input<String?>? apiType;
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAwsIamSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAwsIamSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsAwsIamSettings].
   /// [apiType] Supported AWS IAM api type.

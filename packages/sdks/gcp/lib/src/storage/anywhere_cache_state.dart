@@ -11,32 +11,32 @@ class AnywhereCacheState {
   /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
   ///
   /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
-  final pulumi.Input<String>? admissionPolicy;
+  final pulumi.Input<String?>? admissionPolicy;
   /// The ID of the Anywhere cache instance.
-  final pulumi.Input<String>? anywhereCacheId;
+  final pulumi.Input<String?>? anywhereCacheId;
   /// A reference to Bucket resource
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The creation time of the cache instance in RFC 3339 format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not the cache ingests data as the data is written to the bucket.
-  final pulumi.Input<bool>? ingestOnWrite;
+  final pulumi.Input<bool?>? ingestOnWrite;
   /// True if the cache instance has an active Update long-running operation.
-  final pulumi.Input<bool>? pendingUpdate;
+  final pulumi.Input<bool?>? pendingUpdate;
   /// The current state of the cache instance.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
   /// The modification time of the cache instance metadata in RFC 3339 format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [AnywhereCacheState].
   /// [admissionPolicy] (Optional, Deprecated)

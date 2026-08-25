@@ -11,34 +11,34 @@ import 'reservation_specific_reservation.dart';
 /// Input properties used for looking up and filtering Reservation resources.
 class ReservationState {
   /// List of all reservation block names in the parent reservation.
-  final pulumi.Input<List<String>>? blockNames;
+  final pulumi.Input<List<String>?>? blockNames;
   /// Full or partial URL to a parent commitment. This field displays for
   /// reservations that are tied to a commitment.
-  final pulumi.Input<String>? commitment;
+  final pulumi.Input<String?>? commitment;
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
   /// Structure is documented below.
-  final pulumi.Input<ReservationDeleteAfterDuration>? deleteAfterDuration;
+  final pulumi.Input<ReservationDeleteAfterDuration?>? deleteAfterDuration;
   /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
   /// Cannot be used with delete_after_duration.
-  final pulumi.Input<String>? deleteAtTime;
+  final pulumi.Input<String?>? deleteAtTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Optional, Beta)
   /// Indicates if this group of VMs have emergent maintenance enabled.
-  final pulumi.Input<bool>? enableEmergentMaintenance;
+  final pulumi.Input<bool?>? enableEmergentMaintenance;
   /// Type of the resource. Always compute#reservations for reservations.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
-  final pulumi.Input<List<String>>? linkedCommitments;
+  final pulumi.Input<List<String>?>? linkedCommitments;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -46,40 +46,40 @@ class ReservationState {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final pulumi.Input<ReservationParams>? params;
+  final pulumi.Input<ReservationParams?>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// (Output)
   /// The number of reservation blocks associated with this reservation.
-  final pulumi.Input<int>? reservationBlockCount;
+  final pulumi.Input<int?>? reservationBlockCount;
   /// Sharing policy for reservations with Google Cloud managed services.
   /// Structure is documented below.
-  final pulumi.Input<ReservationReservationSharingPolicy>? reservationSharingPolicy;
+  final pulumi.Input<ReservationReservationSharingPolicy?>? reservationSharingPolicy;
   /// Status information for Reservation resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationResourceStatus>>? resourceStatuses;
+  final pulumi.Input<List<ReservationResourceStatus>?>? resourceStatuses;
   /// Reserved for future use.
-  final pulumi.Input<bool>? satisfiesPzs;
+  final pulumi.Input<bool?>? satisfiesPzs;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The share setting for reservations.
   /// Structure is documented below.
-  final pulumi.Input<ReservationShareSettings>? shareSettings;
+  final pulumi.Input<ReservationShareSettings?>? shareSettings;
   /// Reservation for instances with specific machine shapes.
   /// Structure is documented below.
-  final pulumi.Input<ReservationSpecificReservation>? specificReservation;
+  final pulumi.Input<ReservationSpecificReservation?>? specificReservation;
   /// When set to true, only VMs that target this reservation by name can
   /// consume this reservation. Otherwise, it can be consumed by VMs with
   /// affinity for any reservation. Defaults to false.
-  final pulumi.Input<bool>? specificReservationRequired;
+  final pulumi.Input<bool?>? specificReservationRequired;
   /// The status of the reservation.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The zone where the reservation is made.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [ReservationState].
   /// [blockNames] List of all reservation block names in the parent reservation.
@@ -174,7 +174,7 @@ class ReservationState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reservationBlockCount: (() { final guardedValue = map['reservationBlockCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      reservationBlockCount: (() { final guardedValue = map['reservationBlockCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       reservationSharingPolicy: (() { final guardedValue = map['reservationSharingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceStatuses: (() { final guardedValue = map['resourceStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

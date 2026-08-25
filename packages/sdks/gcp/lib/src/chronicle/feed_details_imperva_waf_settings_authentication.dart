@@ -6,7 +6,7 @@ import 'feed_details_imperva_waf_settings_authentication_header_key_value.dart';
 class FeedDetailsImpervaWafSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsImpervaWafSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

@@ -9,11 +9,11 @@ class WireGroupWireProperties {
   /// throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
   final pulumi.Input<String> bandwidthAllocation;
   /// The unmetered bandwidth setting.
-  final pulumi.Input<int>? bandwidthUnmetered;
+  final pulumi.Input<int?>? bandwidthUnmetered;
   /// Response when a fault is detected in a pseudowire:
   /// NONE: default.
   /// DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
-  final pulumi.Input<String>? faultResponse;
+  final pulumi.Input<String?>? faultResponse;
 
   /// Creates a new [WireGroupWireProperties].
   /// [bandwidthAllocation] The configuration of a wire's bandwidth allocation.
@@ -36,7 +36,7 @@ class WireGroupWireProperties {
   factory WireGroupWireProperties.fromMap(Map<String, dynamic> map) {
     return WireGroupWireProperties(
       bandwidthAllocation: pulumi.Input.fromValue(map['bandwidthAllocation'] as String),
-      bandwidthUnmetered: (() { final guardedValue = map['bandwidthUnmetered']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bandwidthUnmetered: (() { final guardedValue = map['bandwidthUnmetered']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       faultResponse: (() { final guardedValue = map['faultResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

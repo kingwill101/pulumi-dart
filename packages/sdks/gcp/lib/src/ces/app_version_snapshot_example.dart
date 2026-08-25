@@ -6,37 +6,37 @@ import 'app_version_snapshot_example_message.dart';
 class AppVersionSnapshotExample {
   /// (Output)
   /// Timestamp when the toolset was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the app version.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// The agent that initially handles the conversation. If not specified, the
   /// example represents a conversation that is handled by the root agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final pulumi.Input<String>? entryAgent;
+  final pulumi.Input<String?>? entryAgent;
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// (Output)
   /// The example may become invalid if referencing resources are deleted.
   /// Invalid examples will not be used as few-shot examples.
-  final pulumi.Input<bool>? invalid;
+  final pulumi.Input<bool?>? invalid;
   /// (Output)
   /// The collection of messages that make up the conversation.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessage>>? messages;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessage>?>? messages;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// Timestamp when the toolset was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AppVersionSnapshotExample].
   /// [createTime] (Output)

@@ -12,45 +12,45 @@ class V2PolicyOrchestratorForFolderState {
   /// `orchestrationScope`. Allowed values:
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Timestamp when the policy orchestrator resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Freeform text describing the purpose of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The parent resource name in the form of `folders/{folder_id}/locations/global`.
-  final pulumi.Input<String>? folderId;
+  final pulumi.Input<String?>? folderId;
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Identifier. In form of
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResource>? orchestratedResource;
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResource?>? orchestratedResource;
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScope>? orchestrationScope;
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScope?>? orchestrationScope;
   /// Describes the state of the orchestration process.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForFolderOrchestrationState>>? orchestrationStates;
+  final pulumi.Input<List<V2PolicyOrchestratorForFolderOrchestrationState>?>? orchestrationStates;
   /// The logical identifier of the policy orchestrator, with the following
   /// restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -58,13 +58,13 @@ class V2PolicyOrchestratorForFolderState {
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the parent.
-  final pulumi.Input<String>? policyOrchestratorId;
+  final pulumi.Input<String?>? policyOrchestratorId;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Set to true, if the there are ongoing changes being applied by the
   /// orchestrator.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -72,9 +72,9 @@ class V2PolicyOrchestratorForFolderState {
   /// Note: There might be more states added in the future. We use string here
   /// instead of an enum, to avoid the need of propagating new states to all the
   /// client code.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Timestamp when the policy orchestrator resource was last modified.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [V2PolicyOrchestratorForFolderState].
   /// [action] Action to be done by the orchestrator in

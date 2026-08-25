@@ -37,7 +37,7 @@ class IcebergTableSortOrderField {
     return IcebergTableSortOrderField(
       direction: pulumi.Input.fromValue(map['direction'] as String),
       nullOrder: pulumi.Input.fromValue(map['nullOrder'] as String),
-      sourceId: pulumi.Input.fromValue(map['sourceId'] as int),
+      sourceId: pulumi.Input.fromValue((map['sourceId'] as num).toInt()),
       transform: pulumi.Input.fromValue(map['transform'] as String),
     );
   }

@@ -6,21 +6,21 @@ import 'instance_autoscaling_config_asymmetric_autoscaling_option_overrides_auto
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits>? autoscalingLimits;
+  final pulumi.Input<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits?>? autoscalingLimits;
   /// The target high priority cpu utilization percentage that the autoscaler
   /// should be trying to achieve for this replica.
   /// This number is on a scale from 0 (no utilization) to 100 (full utilization).
-  final pulumi.Input<int>? autoscalingTargetHighPriorityCpuUtilizationPercent;
+  final pulumi.Input<int?>? autoscalingTargetHighPriorityCpuUtilizationPercent;
   /// The target total cpu utilization percentage that the autoscaler
   /// should be trying to achieve for this replica.
   /// This number is on a scale from 0 (no utilization) to 100 (full utilization).
-  final pulumi.Input<int>? autoscalingTargetTotalCpuUtilizationPercent;
+  final pulumi.Input<int?>? autoscalingTargetTotalCpuUtilizationPercent;
   /// If true, disables high priority CPU autoscaling for this replica and ignores
   /// highPriorityCpuUtilizationPercent in the top-level autoscaling configuration.
-  final pulumi.Input<bool>? disableHighPriorityCpuAutoscaling;
+  final pulumi.Input<bool?>? disableHighPriorityCpuAutoscaling;
   /// If true, disables total CPU autoscaling for this replica and ignores
   /// totalCpuUtilizationPercent in the top-level autoscaling configuration.
-  final pulumi.Input<bool>? disableTotalCpuAutoscaling;
+  final pulumi.Input<bool?>? disableTotalCpuAutoscaling;
 
   /// Creates a new [InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides].
   /// [autoscalingLimits] A nested object resource.
@@ -49,8 +49,8 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
   factory InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides(
       autoscalingLimits: (() { final guardedValue = map['autoscalingLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      autoscalingTargetHighPriorityCpuUtilizationPercent: (() { final guardedValue = map['autoscalingTargetHighPriorityCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      autoscalingTargetTotalCpuUtilizationPercent: (() { final guardedValue = map['autoscalingTargetTotalCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      autoscalingTargetHighPriorityCpuUtilizationPercent: (() { final guardedValue = map['autoscalingTargetHighPriorityCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      autoscalingTargetTotalCpuUtilizationPercent: (() { final guardedValue = map['autoscalingTargetTotalCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       disableHighPriorityCpuAutoscaling: (() { final guardedValue = map['disableHighPriorityCpuAutoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableTotalCpuAutoscaling: (() { final guardedValue = map['disableTotalCpuAutoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

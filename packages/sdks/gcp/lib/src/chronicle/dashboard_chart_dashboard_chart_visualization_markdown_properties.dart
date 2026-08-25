@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationMarkdownProperties {
   /// (Optional)
-  final pulumi.Input<String>? backgroundColor;
+  final pulumi.Input<String?>? backgroundColor;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationMarkdownProperties].
   /// [backgroundColor] (Optional)

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaims {
   /// Audience.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Issuer. Usually the client_id.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// Subject. Usually the email.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
 
   /// Creates a new [FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaims].
   /// [audience] Audience.

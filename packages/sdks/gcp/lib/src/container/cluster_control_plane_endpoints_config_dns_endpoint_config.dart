@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
   /// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
-  final pulumi.Input<bool>? allowExternalTraffic;
+  final pulumi.Input<bool?>? allowExternalTraffic;
   /// Controls whether the k8s certs auth is allowed via Dns.
-  final pulumi.Input<bool>? enableK8sCertsViaDns;
+  final pulumi.Input<bool?>? enableK8sCertsViaDns;
   /// Controls whether the k8s token auth is allowed via Dns.
-  final pulumi.Input<bool>? enableK8sTokensViaDns;
+  final pulumi.Input<bool?>? enableK8sTokensViaDns;
   /// The cluster's DNS endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
 
   /// Creates a new [ClusterControlPlaneEndpointsConfigDnsEndpointConfig].
   /// [allowExternalTraffic] Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.

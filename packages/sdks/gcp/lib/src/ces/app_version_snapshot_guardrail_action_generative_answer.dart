@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotGuardrailActionGenerativeAnswer {
   /// (Output)
   /// The prompt definition. If not set, default prompt will be used.
-  final pulumi.Input<String>? prompt;
+  final pulumi.Input<String?>? prompt;
 
   /// Creates a new [AppVersionSnapshotGuardrailActionGenerativeAnswer].
   /// [prompt] (Output)

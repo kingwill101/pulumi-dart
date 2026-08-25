@@ -12,25 +12,25 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// in the future.
   /// This field is optional. If this field is not empty, then it must be a
   /// valid Prometheus label name.
-  final pulumi.Input<String>? alertRule;
+  final pulumi.Input<String?>? alertRule;
   /// Whether to disable metric existence validation for this condition.
   /// This allows alerting policies to be defined on metrics that do not yet
   /// exist, improving advanced customer workflows such as configuring
   /// alerting policies using Terraform.
   /// Users with the `monitoring.alertPolicyViewer` role are able to see the
   /// name of the non-existent metric in the alerting policy condition.
-  final pulumi.Input<bool>? disableMetricValidation;
+  final pulumi.Input<bool?>? disableMetricValidation;
   /// Alerts are considered firing once their PromQL expression evaluated
   /// to be "true" for this long. Alerts whose PromQL expression was not
   /// evaluated to be "true" for long enough are considered pending. The
   /// default value is zero. Must be zero or positive.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// How often this rule should be evaluated. Must be a positive multiple
   /// of 30 seconds or missing. The default value is 30 seconds. If this
   /// PrometheusQueryLanguageCondition was generated from a Prometheus
   /// alerting rule, then this value should be taken from the enclosing
   /// rule group.
-  final pulumi.Input<String>? evaluationInterval;
+  final pulumi.Input<String?>? evaluationInterval;
   /// Labels to add to or overwrite in the PromQL query result. Label names
   /// must be valid.
   /// Label values can be templatized by using variables. The only available
@@ -38,7 +38,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// although label names beginning with \_\_ (two "\_") are reserved for
   /// internal use. "labels" may be empty. This field is intended to be used
   /// for organizing and identifying the AlertPolicy.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The PromQL expression to evaluate. Every evaluation cycle this
   /// expression is evaluated at the current time, and all resultant time
   /// series become pending/firing alerts. This field must not be empty.
@@ -50,7 +50,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// The rule group name and the alert name are necessary to update the
   /// relevant AlertPolicies in case the definition of the rule group changes
   /// in the future. This field is optional.
-  final pulumi.Input<String>? ruleGroup;
+  final pulumi.Input<String?>? ruleGroup;
 
   /// Creates a new [AlertPolicyConditionConditionPrometheusQueryLanguage].
   /// [alertRule] The alerting rule name of this alert in the corresponding Prometheus

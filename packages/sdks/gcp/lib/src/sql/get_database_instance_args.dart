@@ -10,7 +10,7 @@ class GetDatabaseInstanceArgs {
   /// The name of the instance.
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDatabaseInstanceArgs].
   /// [name] The name of the instance.

@@ -184,7 +184,7 @@ class IamMemberRemove extends pulumi.CustomResource {
           'gcp:projects/iamMemberRemove:IamMemberRemove',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');
@@ -196,11 +196,12 @@ class IamMemberRemove extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IamMemberRemoveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IamMemberRemove._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,6 +215,20 @@ class IamMemberRemove extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [IamMemberRemove] resource.
+  IamMemberRemove.reference(String urn)
+    : super(
+        'gcp:projects/iamMemberRemove:IamMemberRemove',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entry_type_args.dart';
+import 'entry_type_required_aspect.dart';
 import 'entry_type_state.dart';
 
 /// An Entry Type is a template for creating Entries.
@@ -592,7 +593,7 @@ class EntryType extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// AspectInfo for the entry type.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> requiredAspects;
+  late final pulumi.Output<List<EntryTypeRequiredAspect>?> requiredAspects;
   /// The system that Entries of this type belongs to.
   late final pulumi.Output<String?> system;
   /// Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
@@ -614,23 +615,24 @@ class EntryType extends pulumi.CustomResource {
           'gcp:dataplex/entryType:EntryType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entryTypeId = registerOutput<String?>('entryTypeId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     platform = registerOutput<String?>('platform');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    requiredAspects = registerOutput<List<Map<String, dynamic>>?>('requiredAspects');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    requiredAspects = registerOutput<List<EntryTypeRequiredAspect>?>('requiredAspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryTypeRequiredAspect>(guardedValue, (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>())); });
     system = registerOutput<String?>('system');
-    typeAliases = registerOutput<List<String>?>('typeAliases');
+    typeAliases = registerOutput<List<String>?>('typeAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -640,11 +642,12 @@ class EntryType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntryTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EntryType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -662,17 +665,46 @@ class EntryType extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entryTypeId = registerOutput<String?>('entryTypeId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     platform = registerOutput<String?>('platform');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    requiredAspects = registerOutput<List<Map<String, dynamic>>?>('requiredAspects');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    requiredAspects = registerOutput<List<EntryTypeRequiredAspect>?>('requiredAspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryTypeRequiredAspect>(guardedValue, (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>())); });
     system = registerOutput<String?>('system');
-    typeAliases = registerOutput<List<String>?>('typeAliases');
+    typeAliases = registerOutput<List<String>?>('typeAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [EntryType] resource.
+  EntryType.reference(String urn)
+    : super(
+        'gcp:dataplex/entryType:EntryType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    entryTypeId = registerOutput<String?>('entryTypeId');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    platform = registerOutput<String?>('platform');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    requiredAspects = registerOutput<List<EntryTypeRequiredAspect>?>('requiredAspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryTypeRequiredAspect>(guardedValue, (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>())); });
+    system = registerOutput<String?>('system');
+    typeAliases = registerOutput<List<String>?>('typeAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

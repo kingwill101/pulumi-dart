@@ -6,18 +6,18 @@ import 'ai_endpoint_with_model_garden_deployment_model_config_container_spec_hea
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet {
   /// Host name to connect to, defaults to the model serving container's IP.
   /// You probably want to set "Host" in httpHeaders instead.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Custom headers to set in the request. HTTP allows repeated headers.
   /// Structure is documented below.
-  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader>>? httpHeaders;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader>?>? httpHeaders;
   /// Path to access on the HTTP server.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Number of the port to access on the container.
   /// Number must be in the range 1 to 65535.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Scheme to use for connecting to the host.
   /// Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGet].
   /// [host] Host name to connect to, defaults to the model serving container's IP.
@@ -48,7 +48,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader>(guardedValue, (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

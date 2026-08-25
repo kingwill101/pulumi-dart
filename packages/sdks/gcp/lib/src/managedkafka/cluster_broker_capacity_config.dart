@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBrokerCapacityConfig {
   /// The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
-  final pulumi.Input<String>? diskSizeGib;
+  final pulumi.Input<String?>? diskSizeGib;
 
   /// Creates a new [ClusterBrokerCapacityConfig].
   /// [diskSizeGib] The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.

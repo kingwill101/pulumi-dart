@@ -8,94 +8,94 @@ import 'get_region_security_policy_user_defined_field.dart';
 
 /// Result data returned by getRegionSecurityPolicy.
 class GetRegionSecurityPolicyResult {
-  final List<GetRegionSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
-  final List<GetRegionSecurityPolicyDdosProtectionConfig> ddosProtectionConfigs;
-  final String deletionPolicy;
-  final String description;
-  final String fingerprint;
+  final List<GetRegionSecurityPolicyAdvancedOptionsConfig>? advancedOptionsConfigs;
+  final List<GetRegionSecurityPolicyDdosProtectionConfig>? ddosProtectionConfigs;
+  final String? deletionPolicy;
+  final String? description;
+  final String? fingerprint;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String policyId;
+  final String? id;
+  final String? name;
+  final String? policyId;
   final String? project;
   final String? region;
-  final List<GetRegionSecurityPolicyRule> rules;
-  final String selfLink;
-  final String selfLinkWithPolicyId;
-  final String type;
-  final List<GetRegionSecurityPolicyUserDefinedField> userDefinedFields;
+  final List<GetRegionSecurityPolicyRule>? rules;
+  final String? selfLink;
+  final String? selfLinkWithPolicyId;
+  final String? type;
+  final List<GetRegionSecurityPolicyUserDefinedField>? userDefinedFields;
 
   /// Creates a new [GetRegionSecurityPolicyResult].
-  /// [advancedOptionsConfigs] Required.
-  /// [ddosProtectionConfigs] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [fingerprint] Required.
+  /// [advancedOptionsConfigs] Optional.
+  /// [ddosProtectionConfigs] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [fingerprint] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [policyId] Required.
+  /// [name] Optional.
+  /// [policyId] Optional.
   /// [project] Optional.
   /// [region] Optional.
-  /// [rules] Required.
-  /// [selfLink] Required.
-  /// [selfLinkWithPolicyId] Required.
-  /// [type] Required.
-  /// [userDefinedFields] Required.
+  /// [rules] Optional.
+  /// [selfLink] Optional.
+  /// [selfLinkWithPolicyId] Optional.
+  /// [type] Optional.
+  /// [userDefinedFields] Optional.
   const GetRegionSecurityPolicyResult({
-    required this.advancedOptionsConfigs,
-    required this.ddosProtectionConfigs,
-    required this.deletionPolicy,
-    required this.description,
-    required this.fingerprint,
-    required this.id,
-    required this.name,
-    required this.policyId,
+    this.advancedOptionsConfigs,
+    this.ddosProtectionConfigs,
+    this.deletionPolicy,
+    this.description,
+    this.fingerprint,
+    this.id,
+    this.name,
+    this.policyId,
     this.project,
     this.region,
-    required this.rules,
-    required this.selfLink,
-    required this.selfLinkWithPolicyId,
-    required this.type,
-    required this.userDefinedFields,
+    this.rules,
+    this.selfLink,
+    this.selfLinkWithPolicyId,
+    this.type,
+    this.userDefinedFields,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedOptionsConfigs': pulumi.Input.encodeList<GetRegionSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(advancedOptionsConfigs, (value) => value.toMap()),
-      'ddosProtectionConfigs': pulumi.Input.encodeList<GetRegionSecurityPolicyDdosProtectionConfig, Map<String, dynamic>>(ddosProtectionConfigs, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'fingerprint': fingerprint,
-      'id': id,
-      'name': name,
-      'policyId': policyId,
+      'advancedOptionsConfigs': ?(() { final guardedValue = advancedOptionsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'ddosProtectionConfigs': ?(() { final guardedValue = ddosProtectionConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionSecurityPolicyDdosProtectionConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'fingerprint': ?fingerprint,
+      'id': ?id,
+      'name': ?name,
+      'policyId': ?policyId,
       'project': ?project,
       'region': ?region,
-      'rules': pulumi.Input.encodeList<GetRegionSecurityPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'selfLink': selfLink,
-      'selfLinkWithPolicyId': selfLinkWithPolicyId,
-      'type': type,
-      'userDefinedFields': pulumi.Input.encodeList<GetRegionSecurityPolicyUserDefinedField, Map<String, dynamic>>(userDefinedFields, (value) => value.toMap()),
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionSecurityPolicyRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'selfLink': ?selfLink,
+      'selfLinkWithPolicyId': ?selfLinkWithPolicyId,
+      'type': ?type,
+      'userDefinedFields': ?(() { final guardedValue = userDefinedFields; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionSecurityPolicyUserDefinedField, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetRegionSecurityPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyResult(
-      advancedOptionsConfigs: pulumi.Input.decodeList<GetRegionSecurityPolicyAdvancedOptionsConfig>(map['advancedOptionsConfigs']!, (value) => GetRegionSecurityPolicyAdvancedOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      ddosProtectionConfigs: pulumi.Input.decodeList<GetRegionSecurityPolicyDdosProtectionConfig>(map['ddosProtectionConfigs']!, (value) => GetRegionSecurityPolicyDdosProtectionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      policyId: map['policyId'] as String,
+      advancedOptionsConfigs: (() { final guardedValue = map['advancedOptionsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionSecurityPolicyAdvancedOptionsConfig>(guardedValue, (value) => GetRegionSecurityPolicyAdvancedOptionsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      ddosProtectionConfigs: (() { final guardedValue = map['ddosProtectionConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionSecurityPolicyDdosProtectionConfig>(guardedValue, (value) => GetRegionSecurityPolicyDdosProtectionConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      rules: pulumi.Input.decodeList<GetRegionSecurityPolicyRule>(map['rules']!, (value) => GetRegionSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
-      selfLink: map['selfLink'] as String,
-      selfLinkWithPolicyId: map['selfLinkWithPolicyId'] as String,
-      type: map['type'] as String,
-      userDefinedFields: pulumi.Input.decodeList<GetRegionSecurityPolicyUserDefinedField>(map['userDefinedFields']!, (value) => GetRegionSecurityPolicyUserDefinedField.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionSecurityPolicyRule>(guardedValue, (value) => GetRegionSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>())); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLinkWithPolicyId: (() { final guardedValue = map['selfLinkWithPolicyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userDefinedFields: (() { final guardedValue = map['userDefinedFields']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionSecurityPolicyUserDefinedField>(guardedValue, (value) => GetRegionSecurityPolicyUserDefinedField.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VPNTunnelCipherSuitePhase1 {
   /// Diffie-Hellman groups.
-  final pulumi.Input<List<String>>? dhs;
+  final pulumi.Input<List<String>?>? dhs;
   /// Encryption algorithms.
-  final pulumi.Input<List<String>>? encryptions;
+  final pulumi.Input<List<String>?>? encryptions;
   /// Integrity algorithms.
-  final pulumi.Input<List<String>>? integrities;
+  final pulumi.Input<List<String>?>? integrities;
   /// Pseudo-random functions.
-  final pulumi.Input<List<String>>? prves;
+  final pulumi.Input<List<String>?>? prves;
 
   /// Creates a new [VPNTunnelCipherSuitePhase1].
   /// [dhs] Diffie-Hellman groups.

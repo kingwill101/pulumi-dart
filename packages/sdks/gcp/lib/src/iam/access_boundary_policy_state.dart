@@ -11,18 +11,18 @@ class AccessBoundaryPolicyState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The hash of the resource. Used internally during updates.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The attachment point is identified by its URL-encoded full resource name.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Rules to be applied.
   /// Structure is documented below.
-  final pulumi.Input<List<AccessBoundaryPolicyRule>>? rules;
+  final pulumi.Input<List<AccessBoundaryPolicyRule>?>? rules;
 
   /// Creates a new [AccessBoundaryPolicyState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

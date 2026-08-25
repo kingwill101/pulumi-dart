@@ -260,19 +260,20 @@ class InstantSnapshot extends pulumi.CustomResource {
           'gcp:compute/instantSnapshot:InstantSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<InstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskId = registerOutput<String>('sourceDiskId');
@@ -284,11 +285,12 @@ class InstantSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstantSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstantSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -306,13 +308,40 @@ class InstantSnapshot extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<InstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    selfLink = registerOutput<String>('selfLink');
+    sourceDisk = registerOutput<String>('sourceDisk');
+    sourceDiskId = registerOutput<String>('sourceDiskId');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstantSnapshot] resource.
+  InstantSnapshot.reference(String urn)
+    : super(
+        'gcp:compute/instantSnapshot:InstantSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<InstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskId = registerOutput<String>('sourceDiskId');

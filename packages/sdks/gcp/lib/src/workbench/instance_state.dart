@@ -8,73 +8,73 @@ import 'instance_upgrade_history.dart';
 class InstanceState {
   /// An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
   /// The milliseconds portion (".SSS") is optional.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Output only. Email address of entity that sent original CreateInstance request.
-  final pulumi.Input<String>? creator;
+  final pulumi.Input<String?>? creator;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// Optional. If true, the workbench instance will not register with the proxy.
-  final pulumi.Input<bool>? disableProxyAccess;
+  final pulumi.Input<bool?>? disableProxyAccess;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Optional. If true, deletion protection will be enabled for this Workbench Instance.
-  final pulumi.Input<bool>? enableDeletionProtection;
+  final pulumi.Input<bool?>? enableDeletionProtection;
   /// Flag to enable managed end user credentials for the instance.
-  final pulumi.Input<bool>? enableManagedEuc;
+  final pulumi.Input<bool?>? enableManagedEuc;
   /// Flag that specifies that a notebook can be accessed with third party
   /// identity provider.
-  final pulumi.Input<bool>? enableThirdPartyIdentity;
+  final pulumi.Input<bool?>? enableThirdPartyIdentity;
   /// The definition of how to configure a VM instance outside of Resources and Identity.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetup>? gceSetup;
+  final pulumi.Input<InstanceGceSetup?>? gceSetup;
   /// 'Output only. Additional information about instance health. Example:
   /// healthInfo": { "dockerProxyAgentStatus": "1", "dockerStatus": "1", "jupyterlabApiStatus":
   /// "-1", "jupyterlabStatus": "-1", "updated": "2020-10-18 09:40:03.573409" }'
-  final pulumi.Input<List<Map<String, dynamic>>>? healthInfos;
+  final pulumi.Input<List<Map<String, dynamic>>?>? healthInfos;
   /// Output only. Instance health_state.
-  final pulumi.Input<String>? healthState;
+  final pulumi.Input<String?>? healthState;
   /// Required. User-defined unique ID of this instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// 'Optional. Input only. The owner of this instance after creation. Format:
   /// `alias@example.com` Currently supports one owner only. If not specified, all of
   /// the service account users of your VM instance''s service account can use the instance.
   /// If specified, sets the access mode to `Single user`. For more details, see
   /// https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
-  final pulumi.Input<List<String>>? instanceOwners;
+  final pulumi.Input<List<String>?>? instanceOwners;
   /// Optional. Labels to apply to this instance. These can be later modified
   /// by the UpdateInstance method.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Part of `parent`. See documentation of `projectsId`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. The proxy endpoint that is used to access the Jupyter notebook.
-  final pulumi.Input<String>? proxyUri;
+  final pulumi.Input<String?>? proxyUri;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// (Output)
   /// Output only. The state of this instance upgrade history entry.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
   /// The milliseconds portion (".SSS") is optional.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Output only. The upgrade history of this instance.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceUpgradeHistory>>? upgradeHistories;
+  final pulumi.Input<List<InstanceUpgradeHistory>?>? upgradeHistories;
 
   /// Creates a new [InstanceState].
   /// [createTime] An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.

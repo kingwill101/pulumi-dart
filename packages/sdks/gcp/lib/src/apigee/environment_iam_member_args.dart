@@ -8,7 +8,7 @@ import 'environment_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_apigee_environment_iam_member_environment_iam_member_args_doc}
 class EnvironmentIamMemberArgs {
-  final pulumi.Input<EnvironmentIamMemberCondition>? condition;
+  final pulumi.Input<EnvironmentIamMemberCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> envId;
   /// Identities that will be granted the privilege in `role`.

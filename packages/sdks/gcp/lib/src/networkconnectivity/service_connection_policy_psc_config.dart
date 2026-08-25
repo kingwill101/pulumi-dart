@@ -12,13 +12,13 @@ class ServiceConnectionPolicyPscConfig {
   /// and is either the ID or the number of the resource type. Format for each
   /// allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
   /// [projects/my-project-id, projects/567, folders/891, organizations/123]
-  final pulumi.Input<List<String>>? allowedGoogleProducersResourceHierarchyLevels;
+  final pulumi.Input<List<String>?>? allowedGoogleProducersResourceHierarchyLevels;
   /// Max number of PSC connections for this policy.
-  final pulumi.Input<String>? limit;
+  final pulumi.Input<String?>? limit;
   /// ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
   /// the Producer instance can be within.
   /// Possible values are: `PRODUCER_INSTANCE_LOCATION_UNSPECIFIED`, `CUSTOM_RESOURCE_HIERARCHY_LEVELS`.
-  final pulumi.Input<String>? producerInstanceLocation;
+  final pulumi.Input<String?>? producerInstanceLocation;
   /// IDs of the subnetworks or fully qualified identifiers for the subnetworks
   final pulumi.Input<List<String>> subnetworks;
 

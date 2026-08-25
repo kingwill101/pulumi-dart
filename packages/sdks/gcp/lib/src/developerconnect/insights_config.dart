@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'insights_config_args.dart';
+import 'insights_config_artifact_config.dart';
+import 'insights_config_error.dart';
+import 'insights_config_runtime_config.dart';
 import 'insights_config_state.dart';
 import 'insights_config_target_projects.dart';
 
@@ -2310,7 +2313,7 @@ class InsightsConfig extends pulumi.CustomResource {
   late final pulumi.Output<String?> appHubApplication;
   /// The artifact configurations of the artifacts that are deployed.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> artifactConfigs;
+  late final pulumi.Output<List<InsightsConfigArtifactConfig>?> artifactConfigs;
   /// [Output only] Create timestamp
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -2329,7 +2332,7 @@ class InsightsConfig extends pulumi.CustomResource {
   /// GetAppHubApplication: Permission denied while getting App Hub
   /// application. Please grant permissions to the P4SA.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<InsightsConfigError>> errors;
   /// ID of the requesting InsightsConfig.
   late final pulumi.Output<String> insightsConfigId;
   /// Set of labels associated with an InsightsConfig.
@@ -2356,7 +2359,7 @@ class InsightsConfig extends pulumi.CustomResource {
   late final pulumi.Output<bool> reconciling;
   /// The runtime configurations where the application is deployed.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> runtimeConfigs;
+  late final pulumi.Output<List<InsightsConfigRuntimeConfig>> runtimeConfigs;
   /// (Output)
   /// The state of the Runtime.
   /// Possible values:
@@ -2382,24 +2385,25 @@ class InsightsConfig extends pulumi.CustomResource {
           'gcp:developerconnect/insightsConfig:InsightsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appHubApplication = registerOutput<String?>('appHubApplication');
-    artifactConfigs = registerOutput<List<Map<String, dynamic>>?>('artifactConfigs');
+    artifactConfigs = registerOutput<List<InsightsConfigArtifactConfig>?>('artifactConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigArtifactConfig>(guardedValue, (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<InsightsConfigError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigError>(guardedValue, (value) => InsightsConfigError.fromMap((value as Map).cast<String, dynamic>())); });
     insightsConfigId = registerOutput<String>('insightsConfigId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
-    runtimeConfigs = registerOutput<List<Map<String, dynamic>>>('runtimeConfigs');
+    runtimeConfigs = registerOutput<List<InsightsConfigRuntimeConfig>>('runtimeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigRuntimeConfig>(guardedValue, (value) => InsightsConfigRuntimeConfig.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
     targetProjects = registerOutput<InsightsConfigTargetProjects?>('targetProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsConfigTargetProjects.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
@@ -2410,11 +2414,12 @@ class InsightsConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InsightsConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InsightsConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2428,23 +2433,54 @@ class InsightsConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appHubApplication = registerOutput<String?>('appHubApplication');
-    artifactConfigs = registerOutput<List<Map<String, dynamic>>?>('artifactConfigs');
+    artifactConfigs = registerOutput<List<InsightsConfigArtifactConfig>?>('artifactConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigArtifactConfig>(guardedValue, (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<InsightsConfigError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigError>(guardedValue, (value) => InsightsConfigError.fromMap((value as Map).cast<String, dynamic>())); });
     insightsConfigId = registerOutput<String>('insightsConfigId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
-    runtimeConfigs = registerOutput<List<Map<String, dynamic>>>('runtimeConfigs');
+    runtimeConfigs = registerOutput<List<InsightsConfigRuntimeConfig>>('runtimeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigRuntimeConfig>(guardedValue, (value) => InsightsConfigRuntimeConfig.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
+    targetProjects = registerOutput<InsightsConfigTargetProjects?>('targetProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsConfigTargetProjects.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [InsightsConfig] resource.
+  InsightsConfig.reference(String urn)
+    : super(
+        'gcp:developerconnect/insightsConfig:InsightsConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appHubApplication = registerOutput<String?>('appHubApplication');
+    artifactConfigs = registerOutput<List<InsightsConfigArtifactConfig>?>('artifactConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigArtifactConfig>(guardedValue, (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<InsightsConfigError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigError>(guardedValue, (value) => InsightsConfigError.fromMap((value as Map).cast<String, dynamic>())); });
+    insightsConfigId = registerOutput<String>('insightsConfigId');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    runtimeConfigs = registerOutput<List<InsightsConfigRuntimeConfig>>('runtimeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsConfigRuntimeConfig>(guardedValue, (value) => InsightsConfigRuntimeConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
     targetProjects = registerOutput<InsightsConfigTargetProjects?>('targetProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsConfigTargetProjects.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

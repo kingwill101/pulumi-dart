@@ -15,68 +15,68 @@ import 'connection_profile_sql_server_profile.dart';
 /// Input properties used for looking up and filtering ConnectionProfile resources.
 class ConnectionProfileState {
   /// BigQuery warehouse profile.
-  final pulumi.Input<Map<String, dynamic>>? bigqueryProfile;
+  final pulumi.Input<Map<String, dynamic>?>? bigqueryProfile;
   /// The connection profile identifier.
-  final pulumi.Input<String>? connectionProfileId;
+  final pulumi.Input<String?>? connectionProfileId;
   /// Create the connection profile without validating it.
-  final pulumi.Input<bool>? createWithoutValidation;
+  final pulumi.Input<bool?>? createWithoutValidation;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Forward SSH tunnel connectivity.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileForwardSshConnectivity>? forwardSshConnectivity;
+  final pulumi.Input<ConnectionProfileForwardSshConnectivity?>? forwardSshConnectivity;
   /// Cloud Storage bucket profile.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileGcsProfile>? gcsProfile;
+  final pulumi.Input<ConnectionProfileGcsProfile?>? gcsProfile;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the location this connection profile is located in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Configuration for connecting to a MongoDB database.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileMongodbProfile>? mongodbProfile;
+  final pulumi.Input<ConnectionProfileMongodbProfile?>? mongodbProfile;
   /// MySQL database profile.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileMysqlProfile>? mysqlProfile;
+  final pulumi.Input<ConnectionProfileMysqlProfile?>? mysqlProfile;
   /// The resource's name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Oracle database profile.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileOracleProfile>? oracleProfile;
+  final pulumi.Input<ConnectionProfileOracleProfile?>? oracleProfile;
   /// PostgreSQL database profile.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfilePostgresqlProfile>? postgresqlProfile;
+  final pulumi.Input<ConnectionProfilePostgresqlProfile?>? postgresqlProfile;
   /// Private connectivity.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfilePrivateConnectivity>? privateConnectivity;
+  final pulumi.Input<ConnectionProfilePrivateConnectivity?>? privateConnectivity;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// (Optional, Beta)
   /// Salesforce profile.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileSalesforceProfile>? salesforceProfile;
+  final pulumi.Input<ConnectionProfileSalesforceProfile?>? salesforceProfile;
   /// (Optional, Beta)
   /// Spanner profile.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileSpannerProfile>? spannerProfile;
+  final pulumi.Input<ConnectionProfileSpannerProfile?>? spannerProfile;
   /// SQL Server database profile.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileSqlServerProfile>? sqlServerProfile;
+  final pulumi.Input<ConnectionProfileSqlServerProfile?>? sqlServerProfile;
 
   /// Creates a new [ConnectionProfileState].
   /// [bigqueryProfile] BigQuery warehouse profile.

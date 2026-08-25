@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RepositoryIamPolicy resources.
 class RepositoryIamPolicyState {
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? policyData;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? policyData;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? repository;
 
   /// Creates a new [RepositoryIamPolicyState].
   /// [etag] Optional.

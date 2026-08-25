@@ -7,16 +7,16 @@ class BackupPlanAssociationRulesConfigInfo {
   /// (Output)
   /// google.rpc.Status object to store the last backup error
   /// Structure is documented below.
-  final pulumi.Input<List<BackupPlanAssociationRulesConfigInfoLastBackupError>>? lastBackupErrors;
+  final pulumi.Input<List<BackupPlanAssociationRulesConfigInfoLastBackupError>?>? lastBackupErrors;
   /// (Output)
   /// State of last backup taken.
-  final pulumi.Input<String>? lastBackupState;
+  final pulumi.Input<String?>? lastBackupState;
   /// (Output)
   /// The point in time when the last successful backup was captured from the source
-  final pulumi.Input<String>? lastSuccessfulBackupConsistencyTime;
+  final pulumi.Input<String?>? lastSuccessfulBackupConsistencyTime;
   /// (Output)
   /// Backup Rule id fetched from backup plan.
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
 
   /// Creates a new [BackupPlanAssociationRulesConfigInfo].
   /// [lastBackupErrors] (Output)

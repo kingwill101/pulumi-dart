@@ -11,7 +11,7 @@ class ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram {
   /// Subsequent buckets will be between one bound and the next.
   /// The final bucket will be from the final bound to infinity.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket>>? buckets;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogramBucket>?>? buckets;
 
   /// Creates a new [ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram].
   /// [buckets] (Output)

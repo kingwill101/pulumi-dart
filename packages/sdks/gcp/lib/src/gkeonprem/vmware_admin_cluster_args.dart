@@ -20,7 +20,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 class VmwareAdminClusterArgs {
   /// The VMware admin cluster addon node configuration.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterAddonNode>? addonNode;
+  final pulumi.Input<VmwareAdminClusterAddonNode?>? addonNode;
   /// Annotations on the VMware Admin Cluster.
   /// This field has the same restrictions as Kubernetes annotations.
   /// The total size of all keys and values combined is limited to 256k.
@@ -32,55 +32,55 @@ class VmwareAdminClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
   /// least three physical hosts in the datacenter.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterAntiAffinityGroups>? antiAffinityGroups;
+  final pulumi.Input<VmwareAdminClusterAntiAffinityGroups?>? antiAffinityGroups;
   /// The VMware admin cluster authorization configuration.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterAuthorization>? authorization;
+  final pulumi.Input<VmwareAdminClusterAuthorization?>? authorization;
   /// Configuration for auto repairing.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterAutoRepairConfig>? autoRepairConfig;
+  final pulumi.Input<VmwareAdminClusterAutoRepairConfig?>? autoRepairConfig;
   /// The bootstrap cluster this VMware admin cluster belongs to.
-  final pulumi.Input<String>? bootstrapClusterMembership;
+  final pulumi.Input<String?>? bootstrapClusterMembership;
   /// The VMware admin cluster control plane node configuration.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterControlPlaneNode>? controlPlaneNode;
+  final pulumi.Input<VmwareAdminClusterControlPlaneNode?>? controlPlaneNode;
   /// A human readable description of this VMware admin cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If set, the advanced cluster feature is enabled.
-  final pulumi.Input<bool>? enableAdvancedCluster;
+  final pulumi.Input<bool?>? enableAdvancedCluster;
   /// The OS image type for the VMware admin cluster.
-  final pulumi.Input<String>? imageType;
+  final pulumi.Input<String?>? imageType;
   /// Specifies the load balancer configuration for VMware admin cluster.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterLoadBalancer>? loadBalancer;
+  final pulumi.Input<VmwareAdminClusterLoadBalancer?>? loadBalancer;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// The VMware admin cluster resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The VMware admin cluster network configuration.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterNetworkConfig> networkConfig;
   /// The Anthos clusters on the VMware version for the admin cluster.
-  final pulumi.Input<String>? onPremVersion;
+  final pulumi.Input<String?>? onPremVersion;
   /// The VMware platform configuration.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterPlatformConfig>? platformConfig;
+  final pulumi.Input<VmwareAdminClusterPlatformConfig?>? platformConfig;
   /// Configuration for private registry.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterPrivateRegistryConfig>? privateRegistryConfig;
+  final pulumi.Input<VmwareAdminClusterPrivateRegistryConfig?>? privateRegistryConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for proxy.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterProxy>? proxy;
+  final pulumi.Input<VmwareAdminClusterProxy?>? proxy;
   /// Specifies vCenter config for the admin cluster.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterVcenter>? vcenter;
+  final pulumi.Input<VmwareAdminClusterVcenter?>? vcenter;
 
   /// Creates a new [VmwareAdminClusterArgs].
   /// [addonNode] The VMware admin cluster addon node configuration.

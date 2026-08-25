@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_pool_args.dart';
 import 'node_pool_autoscaling.dart';
+import 'node_pool_maintenance_policy.dart';
 import 'node_pool_management.dart';
 import 'node_pool_network_config.dart';
 import 'node_pool_node_config.dart';
+import 'node_pool_node_drain_config.dart';
 import 'node_pool_placement_policy.dart';
 import 'node_pool_queued_provisioning.dart';
 import 'node_pool_state.dart';
@@ -633,7 +635,7 @@ class NodePool extends pulumi.CustomResource {
   /// - - -
   late final pulumi.Output<String> location;
   /// The maintenance policy of the pool. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> maintenancePolicies;
+  late final pulumi.Output<List<NodePoolMaintenancePolicy>?> maintenancePolicies;
   /// List of instance group URLs which have been assigned to this node pool.
   late final pulumi.Output<List<String>> managedInstanceGroupUrls;
   /// Node management configuration, wherein auto-repair and
@@ -661,7 +663,7 @@ class NodePool extends pulumi.CustomResource {
   /// update the number of nodes per instance group but should not be used alongside `autoscaling`.
   late final pulumi.Output<int> nodeCount;
   /// The node drain configuration of the pool. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> nodeDrainConfigs;
+  late final pulumi.Output<List<NodePoolNodeDrainConfig>> nodeDrainConfigs;
   /// The list of zones in which the node pool's nodes should be located. Nodes must
   /// be in the region of their regional cluster or in the same region as their
   /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -704,17 +706,17 @@ class NodePool extends pulumi.CustomResource {
           'gcp:container/nodePool:NodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
     initialNodeCount = registerOutput<int>('initialNodeCount');
-    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
+    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
-    maintenancePolicies = registerOutput<List<Map<String, dynamic>>?>('maintenancePolicies');
-    managedInstanceGroupUrls = registerOutput<List<String>>('managedInstanceGroupUrls');
+    maintenancePolicies = registerOutput<List<NodePoolMaintenancePolicy>?>('maintenancePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodePoolMaintenancePolicy>(guardedValue, (value) => NodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    managedInstanceGroupUrls = registerOutput<List<String>>('managedInstanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     management = registerOutput<NodePoolManagement>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
     this.name = registerOutput<String>('name');
@@ -722,8 +724,8 @@ class NodePool extends pulumi.CustomResource {
     networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCount = registerOutput<int>('nodeCount');
-    nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>('nodeDrainConfigs');
-    nodeLocations = registerOutput<List<String>>('nodeLocations');
+    nodeDrainConfigs = registerOutput<List<NodePoolNodeDrainConfig>>('nodeDrainConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodePoolNodeDrainConfig>(guardedValue, (value) => NodePoolNodeDrainConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeLocations = registerOutput<List<String>>('nodeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     operation = registerOutput<String>('operation');
     placementPolicy = registerOutput<NodePoolPlacementPolicy?>('placementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
@@ -737,11 +739,12 @@ class NodePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NodePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NodePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -760,10 +763,10 @@ class NodePool extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
     initialNodeCount = registerOutput<int>('initialNodeCount');
-    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
+    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
-    maintenancePolicies = registerOutput<List<Map<String, dynamic>>?>('maintenancePolicies');
-    managedInstanceGroupUrls = registerOutput<List<String>>('managedInstanceGroupUrls');
+    maintenancePolicies = registerOutput<List<NodePoolMaintenancePolicy>?>('maintenancePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodePoolMaintenancePolicy>(guardedValue, (value) => NodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    managedInstanceGroupUrls = registerOutput<List<String>>('managedInstanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     management = registerOutput<NodePoolManagement>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
     this.name = registerOutput<String>('name');
@@ -771,8 +774,43 @@ class NodePool extends pulumi.CustomResource {
     networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCount = registerOutput<int>('nodeCount');
-    nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>('nodeDrainConfigs');
-    nodeLocations = registerOutput<List<String>>('nodeLocations');
+    nodeDrainConfigs = registerOutput<List<NodePoolNodeDrainConfig>>('nodeDrainConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodePoolNodeDrainConfig>(guardedValue, (value) => NodePoolNodeDrainConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeLocations = registerOutput<List<String>>('nodeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    operation = registerOutput<String>('operation');
+    placementPolicy = registerOutput<NodePoolPlacementPolicy?>('placementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    queuedProvisioning = registerOutput<NodePoolQueuedProvisioning?>('queuedProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolQueuedProvisioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upgradeSettings = registerOutput<NodePoolUpgradeSettings>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolUpgradeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [NodePool] resource.
+  NodePool.reference(String urn)
+    : super(
+        'gcp:container/nodePool:NodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cluster = registerOutput<String>('cluster');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
+    initialNodeCount = registerOutput<int>('initialNodeCount');
+    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    maintenancePolicies = registerOutput<List<NodePoolMaintenancePolicy>?>('maintenancePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodePoolMaintenancePolicy>(guardedValue, (value) => NodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    managedInstanceGroupUrls = registerOutput<List<String>>('managedInstanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    management = registerOutput<NodePoolManagement>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeCount = registerOutput<int>('nodeCount');
+    nodeDrainConfigs = registerOutput<List<NodePoolNodeDrainConfig>>('nodeDrainConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodePoolNodeDrainConfig>(guardedValue, (value) => NodePoolNodeDrainConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeLocations = registerOutput<List<String>>('nodeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     operation = registerOutput<String>('operation');
     placementPolicy = registerOutput<NodePoolPlacementPolicy?>('placementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

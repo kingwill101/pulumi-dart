@@ -61,7 +61,7 @@ class AiRagEngineConfig extends pulumi.CustomResource {
           'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
@@ -75,11 +75,12 @@ class AiRagEngineConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiRagEngineConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiRagEngineConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -93,6 +94,22 @@ class AiRagEngineConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>('ragManagedDbConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiRagEngineConfigRagManagedDbConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AiRagEngineConfig] resource.
+  AiRagEngineConfig.reference(String urn)
+    : super(
+        'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

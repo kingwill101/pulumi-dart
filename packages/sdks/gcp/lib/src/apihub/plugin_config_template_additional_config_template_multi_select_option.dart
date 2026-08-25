@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption {
   /// Description of the option.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the option.
   final pulumi.Input<String> displayName;
   /// Id of the option.

@@ -9,7 +9,7 @@ class WorkloadIdentityPoolProviderX509TrustStore {
   /// trust anchor.
   /// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa>>? intermediateCas;
+  final pulumi.Input<List<WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa>?>? intermediateCas;
   /// List of Trust Anchors to be used while performing validation
   /// against a given TrustStore. The incoming end entity's certificate
   /// must be chained up to one of the trust anchors here.

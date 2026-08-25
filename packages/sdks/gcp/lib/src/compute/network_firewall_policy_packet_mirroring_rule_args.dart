@@ -17,16 +17,16 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description for this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The direction in which this rule applies.
   /// Possible values are: `INGRESS`, `EGRESS`.
   final pulumi.Input<String> direction;
   /// Denotes whether the firewall policy rule is disabled.
   /// When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
   /// If this is unspecified, the firewall policy rule will be enabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The firewall policy of the resource.
   final pulumi.Input<String> firewallPolicy;
   /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -38,21 +38,21 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   final pulumi.Input<int> priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// An optional name for the rule. This field is not a unique identifier and can be updated.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// A fully-qualified URL of a SecurityProfile resource instance.
   /// Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
   /// Must be specified if action = 'mirror' and cannot be specified for other actions.
-  final pulumi.Input<String>? securityProfileGroup;
+  final pulumi.Input<String?>? securityProfileGroup;
   /// A list of secure tags that controls which instances the firewall rule applies to.
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// Structure is documented below.
-  final pulumi.Input<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>>? targetSecureTags;
+  final pulumi.Input<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>?>? targetSecureTags;
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// Can be set only if action = 'mirror' and cannot be set for other actions.
-  final pulumi.Input<bool>? tlsInspect;
+  final pulumi.Input<bool?>? tlsInspect;
 
   /// Creates a new [NetworkFirewallPolicyPacketMirroringRuleArgs].
   /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
@@ -111,7 +111,7 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       firewallPolicy: pulumi.Input.fromValue(map['firewallPolicy'] as String),
       match: pulumi.Input.fromValue(NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityProfileGroup: (() { final guardedValue = map['securityProfileGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

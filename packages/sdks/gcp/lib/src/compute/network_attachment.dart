@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_attachment_args.dart';
+import 'network_attachment_connection_endpoint.dart';
 import 'network_attachment_state.dart';
 
 /// A network attachment is a resource that lets a producer Virtual Private Cloud (VPC) network initiate connections to a consumer VPC network through a Private Service Connect interface.
@@ -759,7 +760,7 @@ import 'network_attachment_state.dart';
 class NetworkAttachment extends pulumi.CustomResource {
   /// An array of connections for all the producers connected to this network attachment.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionEndpoints;
+  late final pulumi.Output<List<NetworkAttachmentConnectionEndpoint>> connectionEndpoints;
   /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
   /// Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.
   late final pulumi.Output<String> connectionPreference;
@@ -812,9 +813,9 @@ class NetworkAttachment extends pulumi.CustomResource {
           'gcp:compute/networkAttachment:NetworkAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    connectionEndpoints = registerOutput<List<Map<String, dynamic>>>('connectionEndpoints');
+    connectionEndpoints = registerOutput<List<NetworkAttachmentConnectionEndpoint>>('connectionEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(guardedValue, (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -823,13 +824,13 @@ class NetworkAttachment extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    producerAcceptLists = registerOutput<List<String>?>('producerAcceptLists');
-    producerRejectLists = registerOutput<List<String>?>('producerRejectLists');
+    producerAcceptLists = registerOutput<List<String>?>('producerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    producerRejectLists = registerOutput<List<String>?>('producerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    subnetworks = registerOutput<List<String>>('subnetworks');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [NetworkAttachment] resource's state with the given [name] and [id].
@@ -837,11 +838,12 @@ class NetworkAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -855,7 +857,7 @@ class NetworkAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connectionEndpoints = registerOutput<List<Map<String, dynamic>>>('connectionEndpoints');
+    connectionEndpoints = registerOutput<List<NetworkAttachmentConnectionEndpoint>>('connectionEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(guardedValue, (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -864,12 +866,39 @@ class NetworkAttachment extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    producerAcceptLists = registerOutput<List<String>?>('producerAcceptLists');
-    producerRejectLists = registerOutput<List<String>?>('producerRejectLists');
+    producerAcceptLists = registerOutput<List<String>?>('producerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    producerRejectLists = registerOutput<List<String>?>('producerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    subnetworks = registerOutput<List<String>>('subnetworks');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkAttachment] resource.
+  NetworkAttachment.reference(String urn)
+    : super(
+        'gcp:compute/networkAttachment:NetworkAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectionEndpoints = registerOutput<List<NetworkAttachmentConnectionEndpoint>>('connectionEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(guardedValue, (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionPreference = registerOutput<String>('connectionPreference');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    producerAcceptLists = registerOutput<List<String>?>('producerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    producerRejectLists = registerOutput<List<String>?>('producerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

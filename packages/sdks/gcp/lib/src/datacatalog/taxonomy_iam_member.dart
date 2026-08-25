@@ -944,7 +944,7 @@ class TaxonomyIamMember extends pulumi.CustomResource {
           'gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<TaxonomyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaxonomyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -960,11 +960,12 @@ class TaxonomyIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaxonomyIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TaxonomyIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -978,6 +979,24 @@ class TaxonomyIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<TaxonomyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaxonomyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    taxonomy = registerOutput<String>('taxonomy');
+  }
+
+  /// Creates a typed reference to an existing [TaxonomyIamMember] resource.
+  TaxonomyIamMember.reference(String urn)
+    : super(
+        'gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<TaxonomyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaxonomyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

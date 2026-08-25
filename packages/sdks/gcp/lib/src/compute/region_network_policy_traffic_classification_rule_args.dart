@@ -12,20 +12,20 @@ import 'region_network_policy_traffic_classification_rule_target_secure_tag.dart
 class RegionNetworkPolicyTrafficClassificationRuleArgs {
   /// The Action to perform when the client connection triggers the rule.
   /// Structure is documented below.
-  final pulumi.Input<RegionNetworkPolicyTrafficClassificationRuleAction>? action;
+  final pulumi.Input<RegionNetworkPolicyTrafficClassificationRuleAction?>? action;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description for this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Denotes whether the network policy rule is disabled.
   /// When set to true, the network policy rule is not enforced and traffic behaves as if it did not exist.
   /// If this is unspecified, the network policy rule will be enabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
   /// Structure is documented below.
   final pulumi.Input<RegionNetworkPolicyTrafficClassificationRuleMatch> match;
@@ -37,18 +37,18 @@ class RegionNetworkPolicyTrafficClassificationRuleArgs {
   final pulumi.Input<int> priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The location of this resource.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// An optional name for the rule. This field is not a unique identifier and can be updated.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// A list of secure tags that controls which instances the traffic classification rule applies to.
   /// If targetSecureTag are specified, then the traffic classification rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>>? targetSecureTags;
+  final pulumi.Input<List<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>?>? targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
-  final pulumi.Input<List<String>>? targetServiceAccounts;
+  final pulumi.Input<List<String>?>? targetServiceAccounts;
 
   /// Creates a new [RegionNetworkPolicyTrafficClassificationRuleArgs].
   /// [action] The Action to perform when the client connection triggers the rule.
@@ -103,7 +103,7 @@ class RegionNetworkPolicyTrafficClassificationRuleArgs {
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       match: pulumi.Input.fromValue(RegionNetworkPolicyTrafficClassificationRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
       networkPolicy: pulumi.Input.fromValue(map['networkPolicy'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

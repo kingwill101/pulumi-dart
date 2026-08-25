@@ -387,7 +387,7 @@ class SchemaBundle extends pulumi.CustomResource {
           'gcp:bigtable/schemaBundle:SchemaBundle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
@@ -405,11 +405,12 @@ class SchemaBundle extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchemaBundleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SchemaBundle._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -423,6 +424,26 @@ class SchemaBundle extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    instance = registerOutput<String?>('instance');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    protoSchema = registerOutput<SchemaBundleProtoSchema>('protoSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaBundleProtoSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schemaBundleId = registerOutput<String>('schemaBundleId');
+    table = registerOutput<String?>('table');
+  }
+
+  /// Creates a typed reference to an existing [SchemaBundle] resource.
+  SchemaBundle.reference(String urn)
+    : super(
+        'gcp:bigtable/schemaBundle:SchemaBundle',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');

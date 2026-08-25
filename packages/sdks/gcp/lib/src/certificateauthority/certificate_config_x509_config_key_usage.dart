@@ -14,7 +14,7 @@ class CertificateConfigX509ConfigKeyUsage {
   final pulumi.Input<CertificateConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsage;
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>>? unknownExtendedKeyUsages;
+  final pulumi.Input<List<CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>?>? unknownExtendedKeyUsages;
 
   /// Creates a new [CertificateConfigX509ConfigKeyUsage].
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.

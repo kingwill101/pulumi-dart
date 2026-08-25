@@ -5,14 +5,14 @@ import 'cx_test_case_test_case_conversation_turn_user_input_input.dart';
 
 class CxTestCaseTestCaseConversationTurnUserInput {
   /// Whether sentiment analysis is enabled.
-  final pulumi.Input<bool>? enableSentimentAnalysis;
+  final pulumi.Input<bool?>? enableSentimentAnalysis;
   /// Parameters that need to be injected into the conversation during intent detection.
-  final pulumi.Input<String>? injectedParameters;
+  final pulumi.Input<String?>? injectedParameters;
   /// User input. Supports text input, event input, dtmf input in the test case.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseTestCaseConversationTurnUserInputInput>? input;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnUserInputInput?>? input;
   /// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-  final pulumi.Input<bool>? isWebhookEnabled;
+  final pulumi.Input<bool?>? isWebhookEnabled;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnUserInput].
   /// [enableSentimentAnalysis] Whether sentiment analysis is enabled.

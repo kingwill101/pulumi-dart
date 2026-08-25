@@ -12,33 +12,33 @@ import 'aws_node_pool_config_taint.dart';
 
 class AwsNodePoolConfig {
   /// Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
-  final pulumi.Input<AwsNodePoolConfigAutoscalingMetricsCollection>? autoscalingMetricsCollection;
+  final pulumi.Input<AwsNodePoolConfigAutoscalingMetricsCollection?>? autoscalingMetricsCollection;
   /// The ARN of the AWS KMS key used to encrypt node pool configuration.
   final pulumi.Input<AwsNodePoolConfigConfigEncryption> configEncryption;
   /// The name of the AWS IAM role assigned to nodes in the pool.
   final pulumi.Input<String> iamInstanceProfile;
   /// The OS image type to use on node pool instances.
-  final pulumi.Input<String>? imageType;
+  final pulumi.Input<String?>? imageType;
   /// Details of placement information for an instance.
-  final pulumi.Input<AwsNodePoolConfigInstancePlacement>? instancePlacement;
+  final pulumi.Input<AwsNodePoolConfigInstancePlacement?>? instancePlacement;
   /// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Proxy configuration for outbound HTTP(S) traffic.
-  final pulumi.Input<AwsNodePoolConfigProxyConfig>? proxyConfig;
+  final pulumi.Input<AwsNodePoolConfigProxyConfig?>? proxyConfig;
   /// Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
-  final pulumi.Input<AwsNodePoolConfigRootVolume>? rootVolume;
+  final pulumi.Input<AwsNodePoolConfigRootVolume?>? rootVolume;
   /// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
-  final pulumi.Input<AwsNodePoolConfigSpotConfig>? spotConfig;
+  final pulumi.Input<AwsNodePoolConfigSpotConfig?>? spotConfig;
   /// Optional. The SSH configuration.
-  final pulumi.Input<AwsNodePoolConfigSshConfig>? sshConfig;
+  final pulumi.Input<AwsNodePoolConfigSshConfig?>? sshConfig;
   /// Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Optional. The initial taints assigned to nodes of this node pool.
-  final pulumi.Input<List<AwsNodePoolConfigTaint>>? taints;
+  final pulumi.Input<List<AwsNodePoolConfigTaint>?>? taints;
 
   /// Creates a new [AwsNodePoolConfig].
   /// [autoscalingMetricsCollection] Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.

@@ -14,7 +14,7 @@ class GetParameterVersionArgs {
   final pulumi.Input<String> parameterVersionId;
   /// The project for retrieving the Parameter Version. If it's not specified,
   /// the provider project will be used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetParameterVersionArgs].
   /// [parameter] The parameter for obtaining the Parameter Version.

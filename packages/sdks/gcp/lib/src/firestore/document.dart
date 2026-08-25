@@ -905,7 +905,7 @@ class Document extends pulumi.CustomResource {
           'gcp:firestore/document:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     collection = registerOutput<String>('collection');
     createTime = registerOutput<String>('createTime');
@@ -924,11 +924,12 @@ class Document extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Document._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -942,6 +943,27 @@ class Document extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    collection = registerOutput<String>('collection');
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    documentId = registerOutput<String>('documentId');
+    fields = registerOutput<String>('fields');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Document] resource.
+  Document.reference(String urn)
+    : super(
+        'gcp:firestore/document:Document',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     collection = registerOutput<String>('collection');
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');

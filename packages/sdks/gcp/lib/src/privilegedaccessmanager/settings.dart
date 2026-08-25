@@ -365,7 +365,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:privilegedaccessmanager/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     emailNotificationSettings = registerOutput<SettingsEmailNotificationSettings?>('emailNotificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsEmailNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -382,11 +382,12 @@ class Settings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Settings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -400,6 +401,25 @@ class Settings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    emailNotificationSettings = registerOutput<SettingsEmailNotificationSettings?>('emailNotificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsEmailNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    serviceAccountApproverSettings = registerOutput<SettingsServiceAccountApproverSettings?>('serviceAccountApproverSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsServiceAccountApproverSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Settings] resource.
+  Settings.reference(String urn)
+    : super(
+        'gcp:privilegedaccessmanager/settings:Settings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     emailNotificationSettings = registerOutput<SettingsEmailNotificationSettings?>('emailNotificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsEmailNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

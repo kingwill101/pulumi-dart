@@ -6,12 +6,12 @@ import 'edge_cache_service_routing_path_matcher_route_rule_match_rule_query_para
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
   /// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
-  final pulumi.Input<String>? fullPathMatch;
+  final pulumi.Input<String?>? fullPathMatch;
   /// Specifies a list of header match criteria, all of which must match corresponding headers in the request.
   /// Structure is documented below.
-  final pulumi.Input<List<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch>>? headerMatches;
+  final pulumi.Input<List<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch>?>? headerMatches;
   /// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// For satisfying the matchRule condition, the path of the request
   /// must match the wildcard pattern specified in pathTemplateMatch
   /// after removing any query parameters and anchor that may be part
@@ -20,12 +20,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
   /// (inclusive).  The pattern specified by pathTemplateMatch may
   /// have at most 5 wildcard operators and at most 5 variable
   /// captures in total.
-  final pulumi.Input<String>? pathTemplateMatch;
+  final pulumi.Input<String?>? pathTemplateMatch;
   /// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
-  final pulumi.Input<String>? prefixMatch;
+  final pulumi.Input<String?>? prefixMatch;
   /// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
   /// Structure is documented below.
-  final pulumi.Input<List<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch>>? queryParameterMatches;
+  final pulumi.Input<List<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch>?>? queryParameterMatches;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule].
   /// [fullPathMatch] For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.

@@ -10,19 +10,19 @@ class GuardrailCodeCallback {
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailCodeCallbackAfterAgentCallback>? afterAgentCallback;
+  final pulumi.Input<GuardrailCodeCallbackAfterAgentCallback?>? afterAgentCallback;
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailCodeCallbackAfterModelCallback>? afterModelCallback;
+  final pulumi.Input<GuardrailCodeCallbackAfterModelCallback?>? afterModelCallback;
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailCodeCallbackBeforeAgentCallback>? beforeAgentCallback;
+  final pulumi.Input<GuardrailCodeCallbackBeforeAgentCallback?>? beforeAgentCallback;
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailCodeCallbackBeforeModelCallback>? beforeModelCallback;
+  final pulumi.Input<GuardrailCodeCallbackBeforeModelCallback?>? beforeModelCallback;
 
   /// Creates a new [GuardrailCodeCallback].
   /// [afterAgentCallback] A callback defines the custom logic to be executed at various stages of

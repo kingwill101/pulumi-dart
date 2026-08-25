@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_with_rules_args.dart';
+import 'firewall_policy_with_rules_predefined_rule.dart';
+import 'firewall_policy_with_rules_rule.dart';
 import 'firewall_policy_with_rules_state.dart';
 
 /// The Compute FirewallPolicy with rules resource. It declaratively manges all
@@ -1260,12 +1262,12 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
   late final pulumi.Output<String> policyId;
   /// A list of pre-define firewall policy rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> predefinedRules;
+  late final pulumi.Output<List<FirewallPolicyWithRulesPredefinedRule>> predefinedRules;
   /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
   late final pulumi.Output<int> ruleTupleCount;
   /// A list of firewall policy rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<FirewallPolicyWithRulesRule>> rules;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Server-defined URL for this resource with the resource id.
@@ -1285,7 +1287,7 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1293,9 +1295,9 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
     fingerprint = registerOutput<String>('fingerprint');
     parent = registerOutput<String>('parent');
     policyId = registerOutput<String>('policyId');
-    predefinedRules = registerOutput<List<Map<String, dynamic>>>('predefinedRules');
+    predefinedRules = registerOutput<List<FirewallPolicyWithRulesPredefinedRule>>('predefinedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyWithRulesPredefinedRule>(guardedValue, (value) => FirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>())); });
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<FirewallPolicyWithRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(guardedValue, (value) => FirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     shortName = registerOutput<String>('shortName');
@@ -1306,11 +1308,12 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyWithRulesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicyWithRules._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1330,9 +1333,32 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
     fingerprint = registerOutput<String>('fingerprint');
     parent = registerOutput<String>('parent');
     policyId = registerOutput<String>('policyId');
-    predefinedRules = registerOutput<List<Map<String, dynamic>>>('predefinedRules');
+    predefinedRules = registerOutput<List<FirewallPolicyWithRulesPredefinedRule>>('predefinedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyWithRulesPredefinedRule>(guardedValue, (value) => FirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>())); });
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<FirewallPolicyWithRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(guardedValue, (value) => FirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    shortName = registerOutput<String>('shortName');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyWithRules] resource.
+  FirewallPolicyWithRules.reference(String urn)
+    : super(
+        'gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    parent = registerOutput<String>('parent');
+    policyId = registerOutput<String>('policyId');
+    predefinedRules = registerOutput<List<FirewallPolicyWithRulesPredefinedRule>>('predefinedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyWithRulesPredefinedRule>(guardedValue, (value) => FirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>())); });
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    rules = registerOutput<List<FirewallPolicyWithRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(guardedValue, (value) => FirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     shortName = registerOutput<String>('shortName');

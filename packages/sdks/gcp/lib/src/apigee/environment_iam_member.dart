@@ -981,7 +981,7 @@ class EnvironmentIamMember extends pulumi.CustomResource {
           'gcp:apigee/environmentIamMember:EnvironmentIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<EnvironmentIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     envId = registerOutput<String>('envId');
@@ -996,11 +996,12 @@ class EnvironmentIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1014,6 +1015,23 @@ class EnvironmentIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<EnvironmentIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    envId = registerOutput<String>('envId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    orgId = registerOutput<String>('orgId');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentIamMember] resource.
+  EnvironmentIamMember.reference(String urn)
+    : super(
+        'gcp:apigee/environmentIamMember:EnvironmentIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<EnvironmentIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     envId = registerOutput<String>('envId');
     etag = registerOutput<String>('etag');

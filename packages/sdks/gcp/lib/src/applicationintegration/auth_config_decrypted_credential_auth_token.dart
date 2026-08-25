@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthConfigDecryptedCredentialAuthToken {
   /// The token for the auth type.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
   /// Authentication type, e.g. "Basic", "Bearer", etc.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AuthConfigDecryptedCredentialAuthToken].
   /// [token] The token for the auth type.

@@ -13,14 +13,14 @@ class CxVersionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The human-readable name of the version. Limit of 64 characters.
   final pulumi.Input<String> displayName;
   /// The Flow to create an Version for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [CxVersionArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

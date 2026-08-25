@@ -17,7 +17,7 @@ import 'tool_widget_tool.dart';
 class ToolArgs {
   /// Represents a tool that allows the agent to call another agent.
   /// Structure is documented below.
-  final pulumi.Input<ToolAgentTool>? agentTool;
+  final pulumi.Input<ToolAgentTool?>? agentTool;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> app;
   /// Represents a client-side function that the agent can invoke. When the
@@ -25,54 +25,54 @@ class ToolArgs {
   /// The client is responsible for executing the function and returning the result
   /// as a ToolResponse to continue the interaction with the agent.
   /// Structure is documented below.
-  final pulumi.Input<ToolClientFunction>? clientFunction;
+  final pulumi.Input<ToolClientFunction?>? clientFunction;
   /// Tool to retrieve from Vertex AI Search datastore or engine for grounding.
   /// Accepts either a datastore or an engine, but not both.
   /// See Vertex AI Search:
   /// https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreTool>? dataStoreTool;
+  final pulumi.Input<ToolDataStoreTool?>? dataStoreTool;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Possible values:
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
-  final pulumi.Input<String>? executionType;
+  final pulumi.Input<String?>? executionType;
   /// The file search tool allows the agent to search across the files uploaded by the
   /// app/agent developer.
   /// Structure is documented below.
-  final pulumi.Input<ToolFileSearchTool>? fileSearchTool;
+  final pulumi.Input<ToolFileSearchTool?>? fileSearchTool;
   /// Represents a tool to perform Google web searches for grounding.
   /// See
   /// https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search.
   /// Structure is documented below.
-  final pulumi.Input<ToolGoogleSearchTool>? googleSearchTool;
+  final pulumi.Input<ToolGoogleSearchTool?>? googleSearchTool;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A Python function tool.
   /// Structure is documented below.
-  final pulumi.Input<ToolPythonFunction>? pythonFunction;
+  final pulumi.Input<ToolPythonFunction?>? pythonFunction;
   /// The timeout for the tool execution. If not set, the default timeout is 30
   /// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// Configuration for tool behavior in fake mode.
   /// Structure is documented below.
-  final pulumi.Input<ToolToolFakeConfig>? toolFakeConfig;
+  final pulumi.Input<ToolToolFakeConfig?>? toolFakeConfig;
   /// The ID to use for the tool, which will become the final component of
   /// the tool's resource name. If not provided, a unique ID will be
   /// automatically assigned for the tool.
   final pulumi.Input<String> toolId;
   /// Represents a widget tool that the agent can invoke.
   /// Structure is documented below.
-  final pulumi.Input<ToolWidgetTool>? widgetTool;
+  final pulumi.Input<ToolWidgetTool?>? widgetTool;
 
   /// Creates a new [ToolArgs].
   /// [agentTool] Represents a tool that allows the agent to call another agent.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SourceIamBindingCondition {
   /// The description of the source (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> expression;
   final pulumi.Input<String> title;
 

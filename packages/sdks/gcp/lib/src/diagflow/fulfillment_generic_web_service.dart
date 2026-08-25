@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FulfillmentGenericWebService {
   /// The password for HTTP Basic authentication.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The HTTP request headers to send together with fulfillment requests.
-  final pulumi.Input<Map<String, String>>? requestHeaders;
+  final pulumi.Input<Map<String, String>?>? requestHeaders;
   /// The fulfillment URI for receiving POST requests. It must use https protocol.
   final pulumi.Input<String> uri;
   /// The user name for HTTP Basic authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [FulfillmentGenericWebService].
   /// [password] The password for HTTP Basic authentication.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AddonsConfigAddonsConfigMonetizationConfig {
   /// Flag that specifies whether the Monetization add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AddonsConfigAddonsConfigMonetizationConfig].
   /// [enabled] Flag that specifies whether the Monetization add-on is enabled.

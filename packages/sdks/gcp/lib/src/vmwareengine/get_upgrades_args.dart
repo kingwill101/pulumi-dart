@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vmwareengine_get_upgrades_get_upgrades_args_doc}
 class GetUpgradesArgs {
   /// The resource name of the specific Upgrade to retrieve. If provided, the 'upgrades' list will contain only this upgrade.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource name of the private cloud for which upgrades will be listed. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
   final pulumi.Input<String> parent;
 

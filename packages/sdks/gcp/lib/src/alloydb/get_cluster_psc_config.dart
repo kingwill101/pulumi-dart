@@ -27,7 +27,7 @@ class GetClusterPscConfig {
   factory GetClusterPscConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPscConfig(
       pscEnabled: pulumi.Input.fromValue(map['pscEnabled'] as bool),
-      serviceOwnedProjectNumber: pulumi.Input.fromValue(map['serviceOwnedProjectNumber'] as int),
+      serviceOwnedProjectNumber: pulumi.Input.fromValue((map['serviceOwnedProjectNumber'] as num).toInt()),
     );
   }
 }

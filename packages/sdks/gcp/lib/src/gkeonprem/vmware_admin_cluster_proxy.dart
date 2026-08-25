@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareAdminClusterProxy {
   /// A comma-separated list of IP addresses, IP address ranges,
   /// host names, and domain names that should not go through the proxy server.
-  final pulumi.Input<String>? noProxy;
+  final pulumi.Input<String?>? noProxy;
   /// The proxy url.
   final pulumi.Input<String> url;
 

@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage {
   /// (Output)
   /// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
-  final pulumi.Input<String>? locale;
+  final pulumi.Input<String?>? locale;
   /// (Output)
   /// The localized error message in the above locale.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage].
   /// [locale] (Output)

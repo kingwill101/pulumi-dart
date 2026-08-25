@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataProductAccessApprovalConfig {
   /// Specifies the email addresses of users who are potential approvers.
-  final pulumi.Input<List<String>>? approverEmails;
+  final pulumi.Input<List<String>?>? approverEmails;
 
   /// Creates a new [DataProductAccessApprovalConfig].
   /// [approverEmails] Specifies the email addresses of users who are potential approvers.

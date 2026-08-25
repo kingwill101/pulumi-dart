@@ -8,7 +8,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollection {
   final pulumi.Input<String> collection;
   /// Fields in the collection.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField>>? fields;
+  final pulumi.Input<List<StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionField>?>? fields;
 
   /// Creates a new [StreamBackfillAllMongodbExcludedObjectsDatabaseCollection].
   /// [collection] Collection name.

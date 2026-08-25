@@ -30,9 +30,9 @@ class MetricBucketOptionsExponentialBuckets {
 
   factory MetricBucketOptionsExponentialBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsExponentialBuckets(
-      growthFactor: pulumi.Input.fromValue(map['growthFactor'] as double),
-      numFiniteBuckets: pulumi.Input.fromValue(map['numFiniteBuckets'] as int),
-      scale: pulumi.Input.fromValue(map['scale'] as double),
+      growthFactor: pulumi.Input.fromValue((map['growthFactor'] as num).toDouble()),
+      numFiniteBuckets: pulumi.Input.fromValue((map['numFiniteBuckets'] as num).toInt()),
+      scale: pulumi.Input.fromValue((map['scale'] as num).toDouble()),
     );
   }
 }

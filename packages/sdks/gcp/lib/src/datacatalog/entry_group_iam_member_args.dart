@@ -8,7 +8,7 @@ import 'entry_group_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datacatalog_entry_group_iam_member_entry_group_iam_member_args_doc}
 class EntryGroupIamMemberArgs {
-  final pulumi.Input<EntryGroupIamMemberCondition>? condition;
+  final pulumi.Input<EntryGroupIamMemberCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> entryGroup;
   /// Identities that will be granted the privilege in `role`.
@@ -26,12 +26,12 @@ class EntryGroupIamMemberArgs {
   final pulumi.Input<String> member;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// EntryGroup location region.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The role that should be applied. Only one
   /// `gcp.datacatalog.EntryGroupIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

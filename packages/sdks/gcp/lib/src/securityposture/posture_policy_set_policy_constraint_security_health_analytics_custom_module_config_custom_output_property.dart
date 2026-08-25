@@ -10,7 +10,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
   /// specified to return the value of the property or a text string enclosed
   /// in quotation marks.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression>? valueExpression;
+  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression?>? valueExpression;
 
   /// Creates a new [PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty].
   /// [name] Name of the property for the custom output.

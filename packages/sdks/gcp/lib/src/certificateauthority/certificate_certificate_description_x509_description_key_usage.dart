@@ -8,13 +8,13 @@ import 'certificate_certificate_description_x509_description_key_usage_unknown_e
 class CertificateCertificateDescriptionX509DescriptionKeyUsage {
   /// Describes high-level ways in which a key may be used.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage>>? baseKeyUsages;
+  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage>?>? baseKeyUsages;
   /// Describes high-level ways in which a key may be used.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage>>? extendedKeyUsages;
+  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage>?>? extendedKeyUsages;
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage>>? unknownExtendedKeyUsages;
+  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage>?>? unknownExtendedKeyUsages;
 
   /// Creates a new [CertificateCertificateDescriptionX509DescriptionKeyUsage].
   /// [baseKeyUsages] Describes high-level ways in which a key may be used.

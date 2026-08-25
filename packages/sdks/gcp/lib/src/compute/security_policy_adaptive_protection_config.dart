@@ -8,9 +8,9 @@ class SecurityPolicyAdaptiveProtectionConfig {
   /// ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
   ///
   /// &lt;a name="nestedLayer7DdosDefenseConfig"&gt;&lt;/a&gt;The `layer7DdosDefenseConfig` block supports:
-  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig>? autoDeployConfig;
+  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig?>? autoDeployConfig;
   /// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig>? layer7DdosDefenseConfig;
+  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig?>? layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfig].
   /// [autoDeployConfig] ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.

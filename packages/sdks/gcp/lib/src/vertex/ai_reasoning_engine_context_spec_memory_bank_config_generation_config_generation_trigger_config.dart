@@ -7,7 +7,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTrig
   /// Optional. The active rule that determines when to flush the buffer. If not set,
   /// then the stream will be force flushed immediately.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule>? generationRule;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule?>? generationRule;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig].
   /// [generationRule] Optional. The active rule that determines when to flush the buffer. If not set,

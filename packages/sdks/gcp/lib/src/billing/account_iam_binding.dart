@@ -881,12 +881,12 @@ class AccountIamBinding extends pulumi.CustomResource {
           'gcp:billing/accountIamBinding:AccountIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     billingAccountId = registerOutput<String>('billingAccountId');
     condition = registerOutput<AccountIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 
@@ -895,11 +895,12 @@ class AccountIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -916,7 +917,23 @@ class AccountIamBinding extends pulumi.CustomResource {
     billingAccountId = registerOutput<String>('billingAccountId');
     condition = registerOutput<AccountIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AccountIamBinding] resource.
+  AccountIamBinding.reference(String urn)
+    : super(
+        'gcp:billing/accountIamBinding:AccountIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    billingAccountId = registerOutput<String>('billingAccountId');
+    condition = registerOutput<AccountIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 }

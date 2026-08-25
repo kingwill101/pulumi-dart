@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminClusterNodeConfig {
   /// The maximum number of pods a node can run. The size of the CIDR range
   /// assigned to the node will be derived from this parameter.
-  final pulumi.Input<int>? maxPodsPerNode;
+  final pulumi.Input<int?>? maxPodsPerNode;
 
   /// Creates a new [BareMetalAdminClusterNodeConfig].
   /// [maxPodsPerNode] The maximum number of pods a node can run. The size of the CIDR range
@@ -21,7 +21,7 @@ class BareMetalAdminClusterNodeConfig {
 
   factory BareMetalAdminClusterNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterNodeConfig(
-      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

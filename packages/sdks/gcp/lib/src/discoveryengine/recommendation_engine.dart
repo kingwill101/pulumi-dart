@@ -645,11 +645,11 @@ class RecommendationEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/recommendationEngine:RecommendationEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     commonConfig = registerOutput<RecommendationEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
@@ -666,11 +666,12 @@ class RecommendationEngine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecommendationEngineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RecommendationEngine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -686,7 +687,30 @@ class RecommendationEngine extends pulumi.CustomResource {
         ) {
     commonConfig = registerOutput<RecommendationEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    engineId = registerOutput<String>('engineId');
+    industryVertical = registerOutput<String?>('industryVertical');
+    location = registerOutput<String>('location');
+    mediaRecommendationEngineConfig = registerOutput<RecommendationEngineMediaRecommendationEngineConfig?>('mediaRecommendationEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationEngineMediaRecommendationEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RecommendationEngine] resource.
+  RecommendationEngine.reference(String urn)
+    : super(
+        'gcp:discoveryengine/recommendationEngine:RecommendationEngine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    commonConfig = registerOutput<RecommendationEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');

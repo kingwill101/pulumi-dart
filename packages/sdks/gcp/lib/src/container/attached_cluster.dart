@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attached_cluster_args.dart';
 import 'attached_cluster_authorization.dart';
 import 'attached_cluster_binary_authorization.dart';
+import 'attached_cluster_error.dart';
 import 'attached_cluster_fleet.dart';
 import 'attached_cluster_logging_config.dart';
 import 'attached_cluster_monitoring_config.dart';
@@ -9,6 +10,7 @@ import 'attached_cluster_oidc_config.dart';
 import 'attached_cluster_proxy_config.dart';
 import 'attached_cluster_security_posture_config.dart';
 import 'attached_cluster_state.dart';
+import 'attached_cluster_workload_identity_config.dart';
 
 /// An Anthos cluster running on customer owned infrastructure.
 ///
@@ -1082,7 +1084,7 @@ class AttachedCluster extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// A set of errors found in the cluster.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<AttachedClusterError>> errors;
   /// Fleet configuration.
   /// Structure is documented below.
   late final pulumi.Output<AttachedClusterFleet> fleet;
@@ -1135,7 +1137,7 @@ class AttachedCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// Workload Identity settings.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityConfigs;
+  late final pulumi.Output<List<AttachedClusterWorkloadIdentityConfig>> workloadIdentityConfigs;
 
   /// Creates a new [AttachedCluster].
   /// [name] The Pulumi resource name.
@@ -1149,9 +1151,9 @@ class AttachedCluster extends pulumi.CustomResource {
           'gcp:container/attachedCluster:AttachedCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AttachedClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterRegion = registerOutput<String>('clusterRegion');
@@ -1159,8 +1161,8 @@ class AttachedCluster extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String>('distribution');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    errors = registerOutput<List<AttachedClusterError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedClusterError>(guardedValue, (value) => AttachedClusterError.fromMap((value as Map).cast<String, dynamic>())); });
     fleet = registerOutput<AttachedClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -1176,7 +1178,7 @@ class AttachedCluster extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
+    workloadIdentityConfigs = registerOutput<List<AttachedClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedClusterWorkloadIdentityConfig>(guardedValue, (value) => AttachedClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AttachedCluster] resource's state with the given [name] and [id].
@@ -1184,11 +1186,12 @@ class AttachedCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttachedClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AttachedCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1202,7 +1205,7 @@ class AttachedCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AttachedClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterRegion = registerOutput<String>('clusterRegion');
@@ -1210,8 +1213,8 @@ class AttachedCluster extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distribution = registerOutput<String>('distribution');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    errors = registerOutput<List<AttachedClusterError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedClusterError>(guardedValue, (value) => AttachedClusterError.fromMap((value as Map).cast<String, dynamic>())); });
     fleet = registerOutput<AttachedClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -1227,6 +1230,43 @@ class AttachedCluster extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
+    workloadIdentityConfigs = registerOutput<List<AttachedClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedClusterWorkloadIdentityConfig>(guardedValue, (value) => AttachedClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AttachedCluster] resource.
+  AttachedCluster.reference(String urn)
+    : super(
+        'gcp:container/attachedCluster:AttachedCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authorization = registerOutput<AttachedClusterAuthorization?>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterRegion = registerOutput<String>('clusterRegion');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    distribution = registerOutput<String>('distribution');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    errors = registerOutput<List<AttachedClusterError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedClusterError>(guardedValue, (value) => AttachedClusterError.fromMap((value as Map).cast<String, dynamic>())); });
+    fleet = registerOutput<AttachedClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<AttachedClusterLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoringConfig = registerOutput<AttachedClusterMonitoringConfig>('monitoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oidcConfig = registerOutput<AttachedClusterOidcConfig>('oidcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterOidcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformVersion = registerOutput<String>('platformVersion');
+    project = registerOutput<String>('project');
+    proxyConfig = registerOutput<AttachedClusterProxyConfig?>('proxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterProxyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reconciling = registerOutput<bool>('reconciling');
+    securityPostureConfig = registerOutput<AttachedClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadIdentityConfigs = registerOutput<List<AttachedClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedClusterWorkloadIdentityConfig>(guardedValue, (value) => AttachedClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

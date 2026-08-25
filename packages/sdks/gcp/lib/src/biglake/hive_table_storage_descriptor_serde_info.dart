@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HiveTableStorageDescriptorSerdeInfo {
   /// Description of the SerDe.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The fully qualified Java class name of the deserializer.
-  final pulumi.Input<String>? deserializerClass;
+  final pulumi.Input<String?>? deserializerClass;
   /// Name of the SerDe, table name by default.
   final pulumi.Input<String> name;
   /// Parameters of the SerDe.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The SerDe type.
   /// Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
-  final pulumi.Input<String>? serdeType;
+  final pulumi.Input<String?>? serdeType;
   /// The fully qualified Java class name of the serialization library.
   final pulumi.Input<String> serializationLib;
   /// The fully qualified Java class name of the serializer.
-  final pulumi.Input<String>? serializerClass;
+  final pulumi.Input<String?>? serializerClass;
 
   /// Creates a new [HiveTableStorageDescriptorSerdeInfo].
   /// [description] Description of the SerDe.

@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchOperationsJobPutMetadata {
   /// Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-  final pulumi.Input<String>? cacheControl;
+  final pulumi.Input<String?>? cacheControl;
   /// Content-Disposition of the object data.
-  final pulumi.Input<String>? contentDisposition;
+  final pulumi.Input<String?>? contentDisposition;
   /// Content Encoding of the object data.
-  final pulumi.Input<String>? contentEncoding;
+  final pulumi.Input<String?>? contentEncoding;
   /// Content-Language of the object data.
-  final pulumi.Input<String>? contentLanguage;
+  final pulumi.Input<String?>? contentLanguage;
   /// Content-Type of the object data.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// User-provided metadata, in key/value pairs.
-  final pulumi.Input<Map<String, String>>? customMetadata;
+  final pulumi.Input<Map<String, String>?>? customMetadata;
   /// Updates the objects fixed custom time metadata.
-  final pulumi.Input<String>? customTime;
+  final pulumi.Input<String?>? customTime;
 
   /// Creates a new [BatchOperationsJobPutMetadata].
   /// [cacheControl] Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600

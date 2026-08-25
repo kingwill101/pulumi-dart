@@ -10,19 +10,19 @@ import 'application_attributes_operator_owner.dart';
 class ApplicationAttributes {
   /// Optional. Business team that ensures user needs are met and value is delivered
   /// Structure is documented below.
-  final pulumi.Input<List<ApplicationAttributesBusinessOwner>>? businessOwners;
+  final pulumi.Input<List<ApplicationAttributesBusinessOwner>?>? businessOwners;
   /// Criticality of the Application, Service, or Workload
   /// Structure is documented below.
-  final pulumi.Input<ApplicationAttributesCriticality>? criticality;
+  final pulumi.Input<ApplicationAttributesCriticality?>? criticality;
   /// Optional. Developer team that owns development and coding.
   /// Structure is documented below.
-  final pulumi.Input<List<ApplicationAttributesDeveloperOwner>>? developerOwners;
+  final pulumi.Input<List<ApplicationAttributesDeveloperOwner>?>? developerOwners;
   /// Environment of the Application, Service, or Workload
   /// Structure is documented below.
-  final pulumi.Input<ApplicationAttributesEnvironment>? environment;
+  final pulumi.Input<ApplicationAttributesEnvironment?>? environment;
   /// Optional. Operator team that ensures runtime and operations.
   /// Structure is documented below.
-  final pulumi.Input<List<ApplicationAttributesOperatorOwner>>? operatorOwners;
+  final pulumi.Input<List<ApplicationAttributesOperatorOwner>?>? operatorOwners;
 
   /// Creates a new [ApplicationAttributes].
   /// [businessOwners] Optional. Business team that ensures user needs are met and value is delivered

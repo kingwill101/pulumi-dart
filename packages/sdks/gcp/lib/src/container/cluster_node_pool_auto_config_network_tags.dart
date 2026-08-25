@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolAutoConfigNetworkTags {
   /// List of network tags applied to auto-provisioned node pools.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [ClusterNodePoolAutoConfigNetworkTags].
   /// [tags] List of network tags applied to auto-provisioned node pools.

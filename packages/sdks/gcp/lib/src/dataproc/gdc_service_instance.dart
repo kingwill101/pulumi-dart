@@ -285,19 +285,20 @@ class GdcServiceInstance extends pulumi.CustomResource {
           'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
     gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>('gdceCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcServiceInstanceGdceCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     requestedState = registerOutput<String>('requestedState');
     serviceAccount = registerOutput<String?>('serviceAccount');
@@ -314,11 +315,12 @@ class GdcServiceInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GdcServiceInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GdcServiceInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,20 +337,52 @@ class GdcServiceInstance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
     gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>('gdceCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcServiceInstanceGdceCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     requestedState = registerOutput<String>('requestedState');
     serviceAccount = registerOutput<String?>('serviceAccount');
     serviceInstanceId = registerOutput<String>('serviceInstanceId');
     sparkServiceInstanceConfig = registerOutput<Map<String, dynamic>?>('sparkServiceInstanceConfig');
     this.state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GdcServiceInstance] resource.
+  GdcServiceInstance.reference(String urn)
+    : super(
+        'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
+    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>('gdceCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcServiceInstanceGdceCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    requestedState = registerOutput<String>('requestedState');
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    serviceInstanceId = registerOutput<String>('serviceInstanceId');
+    sparkServiceInstanceConfig = registerOutput<Map<String, dynamic>?>('sparkServiceInstanceConfig');
+    state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

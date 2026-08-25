@@ -7,12 +7,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfig {
   /// A description of resources that are dedicated to a DeployedModel or
   /// DeployedIndex, and that need a higher degree of manual configuration.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources>? dedicatedResources;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources?>? dedicatedResources;
   /// If true, enable the QMT fast tryout feature for this model if possible.
-  final pulumi.Input<bool>? fastTryoutEnabled;
+  final pulumi.Input<bool?>? fastTryoutEnabled;
   /// System labels for Model Garden deployments.
   /// These labels are managed by Google and for tracking purposes only.
-  final pulumi.Input<Map<String, String>>? systemLabels;
+  final pulumi.Input<Map<String, String>?>? systemLabels;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentDeployConfig].
   /// [dedicatedResources] A description of resources that are dedicated to a DeployedModel or

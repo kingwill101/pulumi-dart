@@ -8,149 +8,149 @@ import 'get_dataset_external_dataset_reference.dart';
 
 /// Result data returned by getDataset.
 class GetDatasetResult {
-  final List<GetDatasetAccess> accesses;
-  final int creationTime;
-  final String datasetId;
-  final String defaultCollation;
-  final List<GetDatasetDefaultEncryptionConfiguration> defaultEncryptionConfigurations;
-  final int defaultPartitionExpirationMs;
-  final int defaultTableExpirationMs;
-  final bool deleteContentsOnDestroy;
-  final String deletionPolicy;
-  final String description;
-  final Map<String, String> effectiveLabels;
-  final String etag;
-  final List<GetDatasetExternalCatalogDatasetOption> externalCatalogDatasetOptions;
-  final List<GetDatasetExternalDatasetReference> externalDatasetReferences;
-  final String friendlyName;
+  final List<GetDatasetAccess>? accesses;
+  final int? creationTime;
+  final String? datasetId;
+  final String? defaultCollation;
+  final List<GetDatasetDefaultEncryptionConfiguration>? defaultEncryptionConfigurations;
+  final int? defaultPartitionExpirationMs;
+  final int? defaultTableExpirationMs;
+  final bool? deleteContentsOnDestroy;
+  final String? deletionPolicy;
+  final String? description;
+  final Map<String, String>? effectiveLabels;
+  final String? etag;
+  final List<GetDatasetExternalCatalogDatasetOption>? externalCatalogDatasetOptions;
+  final List<GetDatasetExternalDatasetReference>? externalDatasetReferences;
+  final String? friendlyName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final bool isCaseInsensitive;
-  final Map<String, String> labels;
-  final int lastModifiedTime;
-  final String location;
-  final String maxTimeTravelHours;
+  final String? id;
+  final bool? isCaseInsensitive;
+  final Map<String, String>? labels;
+  final int? lastModifiedTime;
+  final String? location;
+  final String? maxTimeTravelHours;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final Map<String, String> resourceTags;
-  final String selfLink;
-  final String storageBillingModel;
+  final Map<String, String>? pulumiLabels;
+  final Map<String, String>? resourceTags;
+  final String? selfLink;
+  final String? storageBillingModel;
 
   /// Creates a new [GetDatasetResult].
-  /// [accesses] Required.
-  /// [creationTime] Required.
-  /// [datasetId] Required.
-  /// [defaultCollation] Required.
-  /// [defaultEncryptionConfigurations] Required.
-  /// [defaultPartitionExpirationMs] Required.
-  /// [defaultTableExpirationMs] Required.
-  /// [deleteContentsOnDestroy] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [effectiveLabels] Required.
-  /// [etag] Required.
-  /// [externalCatalogDatasetOptions] Required.
-  /// [externalDatasetReferences] Required.
-  /// [friendlyName] Required.
+  /// [accesses] Optional.
+  /// [creationTime] Optional.
+  /// [datasetId] Optional.
+  /// [defaultCollation] Optional.
+  /// [defaultEncryptionConfigurations] Optional.
+  /// [defaultPartitionExpirationMs] Optional.
+  /// [defaultTableExpirationMs] Optional.
+  /// [deleteContentsOnDestroy] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [effectiveLabels] Optional.
+  /// [etag] Optional.
+  /// [externalCatalogDatasetOptions] Optional.
+  /// [externalDatasetReferences] Optional.
+  /// [friendlyName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [isCaseInsensitive] Required.
-  /// [labels] Required.
-  /// [lastModifiedTime] Required.
-  /// [location] Required.
-  /// [maxTimeTravelHours] Required.
+  /// [isCaseInsensitive] Optional.
+  /// [labels] Optional.
+  /// [lastModifiedTime] Optional.
+  /// [location] Optional.
+  /// [maxTimeTravelHours] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [resourceTags] Required.
-  /// [selfLink] Required.
-  /// [storageBillingModel] Required.
+  /// [pulumiLabels] Optional.
+  /// [resourceTags] Optional.
+  /// [selfLink] Optional.
+  /// [storageBillingModel] Optional.
   const GetDatasetResult({
-    required this.accesses,
-    required this.creationTime,
-    required this.datasetId,
-    required this.defaultCollation,
-    required this.defaultEncryptionConfigurations,
-    required this.defaultPartitionExpirationMs,
-    required this.defaultTableExpirationMs,
-    required this.deleteContentsOnDestroy,
-    required this.deletionPolicy,
-    required this.description,
-    required this.effectiveLabels,
-    required this.etag,
-    required this.externalCatalogDatasetOptions,
-    required this.externalDatasetReferences,
-    required this.friendlyName,
-    required this.id,
-    required this.isCaseInsensitive,
-    required this.labels,
-    required this.lastModifiedTime,
-    required this.location,
-    required this.maxTimeTravelHours,
+    this.accesses,
+    this.creationTime,
+    this.datasetId,
+    this.defaultCollation,
+    this.defaultEncryptionConfigurations,
+    this.defaultPartitionExpirationMs,
+    this.defaultTableExpirationMs,
+    this.deleteContentsOnDestroy,
+    this.deletionPolicy,
+    this.description,
+    this.effectiveLabels,
+    this.etag,
+    this.externalCatalogDatasetOptions,
+    this.externalDatasetReferences,
+    this.friendlyName,
+    this.id,
+    this.isCaseInsensitive,
+    this.labels,
+    this.lastModifiedTime,
+    this.location,
+    this.maxTimeTravelHours,
     this.project,
-    required this.pulumiLabels,
-    required this.resourceTags,
-    required this.selfLink,
-    required this.storageBillingModel,
+    this.pulumiLabels,
+    this.resourceTags,
+    this.selfLink,
+    this.storageBillingModel,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accesses': pulumi.Input.encodeList<GetDatasetAccess, Map<String, dynamic>>(accesses, (value) => value.toMap()),
-      'creationTime': creationTime,
-      'datasetId': datasetId,
-      'defaultCollation': defaultCollation,
-      'defaultEncryptionConfigurations': pulumi.Input.encodeList<GetDatasetDefaultEncryptionConfiguration, Map<String, dynamic>>(defaultEncryptionConfigurations, (value) => value.toMap()),
-      'defaultPartitionExpirationMs': defaultPartitionExpirationMs,
-      'defaultTableExpirationMs': defaultTableExpirationMs,
-      'deleteContentsOnDestroy': deleteContentsOnDestroy,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'effectiveLabels': effectiveLabels,
-      'etag': etag,
-      'externalCatalogDatasetOptions': pulumi.Input.encodeList<GetDatasetExternalCatalogDatasetOption, Map<String, dynamic>>(externalCatalogDatasetOptions, (value) => value.toMap()),
-      'externalDatasetReferences': pulumi.Input.encodeList<GetDatasetExternalDatasetReference, Map<String, dynamic>>(externalDatasetReferences, (value) => value.toMap()),
-      'friendlyName': friendlyName,
-      'id': id,
-      'isCaseInsensitive': isCaseInsensitive,
-      'labels': labels,
-      'lastModifiedTime': lastModifiedTime,
-      'location': location,
-      'maxTimeTravelHours': maxTimeTravelHours,
+      'accesses': ?(() { final guardedValue = accesses; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatasetAccess, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'creationTime': ?creationTime,
+      'datasetId': ?datasetId,
+      'defaultCollation': ?defaultCollation,
+      'defaultEncryptionConfigurations': ?(() { final guardedValue = defaultEncryptionConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatasetDefaultEncryptionConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'defaultPartitionExpirationMs': ?defaultPartitionExpirationMs,
+      'defaultTableExpirationMs': ?defaultTableExpirationMs,
+      'deleteContentsOnDestroy': ?deleteContentsOnDestroy,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'effectiveLabels': ?effectiveLabels,
+      'etag': ?etag,
+      'externalCatalogDatasetOptions': ?(() { final guardedValue = externalCatalogDatasetOptions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatasetExternalCatalogDatasetOption, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'externalDatasetReferences': ?(() { final guardedValue = externalDatasetReferences; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatasetExternalDatasetReference, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'friendlyName': ?friendlyName,
+      'id': ?id,
+      'isCaseInsensitive': ?isCaseInsensitive,
+      'labels': ?labels,
+      'lastModifiedTime': ?lastModifiedTime,
+      'location': ?location,
+      'maxTimeTravelHours': ?maxTimeTravelHours,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'resourceTags': resourceTags,
-      'selfLink': selfLink,
-      'storageBillingModel': storageBillingModel,
+      'pulumiLabels': ?pulumiLabels,
+      'resourceTags': ?resourceTags,
+      'selfLink': ?selfLink,
+      'storageBillingModel': ?storageBillingModel,
     };
   }
 
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetResult(
-      accesses: pulumi.Input.decodeList<GetDatasetAccess>(map['accesses']!, (value) => GetDatasetAccess.fromMap((value as Map).cast<String, dynamic>())),
-      creationTime: map['creationTime'] as int,
-      datasetId: map['datasetId'] as String,
-      defaultCollation: map['defaultCollation'] as String,
-      defaultEncryptionConfigurations: pulumi.Input.decodeList<GetDatasetDefaultEncryptionConfiguration>(map['defaultEncryptionConfigurations']!, (value) => GetDatasetDefaultEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      defaultPartitionExpirationMs: map['defaultPartitionExpirationMs'] as int,
-      defaultTableExpirationMs: map['defaultTableExpirationMs'] as int,
-      deleteContentsOnDestroy: map['deleteContentsOnDestroy'] as bool,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      etag: map['etag'] as String,
-      externalCatalogDatasetOptions: pulumi.Input.decodeList<GetDatasetExternalCatalogDatasetOption>(map['externalCatalogDatasetOptions']!, (value) => GetDatasetExternalCatalogDatasetOption.fromMap((value as Map).cast<String, dynamic>())),
-      externalDatasetReferences: pulumi.Input.decodeList<GetDatasetExternalDatasetReference>(map['externalDatasetReferences']!, (value) => GetDatasetExternalDatasetReference.fromMap((value as Map).cast<String, dynamic>())),
-      friendlyName: map['friendlyName'] as String,
-      id: map['id'] as String,
-      isCaseInsensitive: map['isCaseInsensitive'] as bool,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      lastModifiedTime: map['lastModifiedTime'] as int,
-      location: map['location'] as String,
-      maxTimeTravelHours: map['maxTimeTravelHours'] as String,
+      accesses: (() { final guardedValue = map['accesses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatasetAccess>(guardedValue, (value) => GetDatasetAccess.fromMap((value as Map).cast<String, dynamic>())); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultCollation: (() { final guardedValue = map['defaultCollation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultEncryptionConfigurations: (() { final guardedValue = map['defaultEncryptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatasetDefaultEncryptionConfiguration>(guardedValue, (value) => GetDatasetDefaultEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      deleteContentsOnDestroy: (() { final guardedValue = map['deleteContentsOnDestroy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalCatalogDatasetOptions: (() { final guardedValue = map['externalCatalogDatasetOptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatasetExternalCatalogDatasetOption>(guardedValue, (value) => GetDatasetExternalCatalogDatasetOption.fromMap((value as Map).cast<String, dynamic>())); })(),
+      externalDatasetReferences: (() { final guardedValue = map['externalDatasetReferences']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatasetExternalDatasetReference>(guardedValue, (value) => GetDatasetExternalDatasetReference.fromMap((value as Map).cast<String, dynamic>())); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isCaseInsensitive: (() { final guardedValue = map['isCaseInsensitive']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxTimeTravelHours: (() { final guardedValue = map['maxTimeTravelHours']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      resourceTags: (map['resourceTags'] as Map).cast<String, String>(),
-      selfLink: map['selfLink'] as String,
-      storageBillingModel: map['storageBillingModel'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      resourceTags: (() { final guardedValue = map['resourceTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageBillingModel: (() { final guardedValue = map['storageBillingModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'multicast_domain_activation_args.dart';
 import 'multicast_domain_activation_networkservices_state.dart';
+import 'multicast_domain_activation_state.dart';
 import 'multicast_domain_activation_traffic_spec.dart';
 
 /// Create a multicast domain activation in the specified location of the current project.
@@ -326,7 +327,7 @@ class MulticastDomainActivation extends pulumi.CustomResource {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<MulticastDomainActivationState>> states;
   /// Specifies the traffic volume and multicast group scale parameters that are
   /// used to set up multicast infrastructure for a multicast domain in a zone.
   /// Structure is documented below.
@@ -352,22 +353,23 @@ class MulticastDomainActivation extends pulumi.CustomResource {
           'gcp:networkservices/multicastDomainActivation:MulticastDomainActivation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminNetwork = registerOutput<String>('adminNetwork');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disablePlacementPolicy = registerOutput<bool>('disablePlacementPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicastDomain = registerOutput<String>('multicastDomain');
     multicastDomainActivationId = registerOutput<String>('multicastDomainActivationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastDomainActivationState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastDomainActivationState>(guardedValue, (value) => MulticastDomainActivationState.fromMap((value as Map).cast<String, dynamic>())); });
     trafficSpec = registerOutput<MulticastDomainActivationTrafficSpec?>('trafficSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainActivationTrafficSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
@@ -378,11 +380,12 @@ class MulticastDomainActivation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticastDomainActivationNetworkservicesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticastDomainActivation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -401,15 +404,44 @@ class MulticastDomainActivation extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disablePlacementPolicy = registerOutput<bool>('disablePlacementPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicastDomain = registerOutput<String>('multicastDomain');
     multicastDomainActivationId = registerOutput<String>('multicastDomainActivationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastDomainActivationState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastDomainActivationState>(guardedValue, (value) => MulticastDomainActivationState.fromMap((value as Map).cast<String, dynamic>())); });
+    trafficSpec = registerOutput<MulticastDomainActivationTrafficSpec?>('trafficSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainActivationTrafficSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MulticastDomainActivation] resource.
+  MulticastDomainActivation.reference(String urn)
+    : super(
+        'gcp:networkservices/multicastDomainActivation:MulticastDomainActivation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    adminNetwork = registerOutput<String>('adminNetwork');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disablePlacementPolicy = registerOutput<bool>('disablePlacementPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    multicastDomain = registerOutput<String>('multicastDomain');
+    multicastDomainActivationId = registerOutput<String>('multicastDomainActivationId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastDomainActivationState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastDomainActivationState>(guardedValue, (value) => MulticastDomainActivationState.fromMap((value as Map).cast<String, dynamic>())); });
     trafficSpec = registerOutput<MulticastDomainActivationTrafficSpec?>('trafficSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainActivationTrafficSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');

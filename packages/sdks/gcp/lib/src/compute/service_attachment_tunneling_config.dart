@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceAttachmentTunnelingConfig {
   /// The encapsulation profile for tunneling traffic.
-  final pulumi.Input<String>? encapsulationProfile;
+  final pulumi.Input<String?>? encapsulationProfile;
   /// The routing mode for tunneling traffic.
-  final pulumi.Input<String>? routingMode;
+  final pulumi.Input<String?>? routingMode;
 
   /// Creates a new [ServiceAttachmentTunnelingConfig].
   /// [encapsulationProfile] The encapsulation profile for tunneling traffic.

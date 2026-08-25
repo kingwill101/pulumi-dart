@@ -4,44 +4,44 @@
 /// Result data returned by getToken.
 class GetTokenResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String identifier;
+  final String? id;
+  final String? identifier;
   /// The generated token for use in subsequent verification steps.
-  final String token;
-  final String type;
-  final String verificationMethod;
+  final String? token;
+  final String? type;
+  final String? verificationMethod;
 
   /// Creates a new [GetTokenResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [identifier] Required.
+  /// [identifier] Optional.
   /// [token] The generated token for use in subsequent verification steps.
-  /// [type] Required.
-  /// [verificationMethod] Required.
+  /// [type] Optional.
+  /// [verificationMethod] Optional.
   const GetTokenResult({
-    required this.id,
-    required this.identifier,
-    required this.token,
-    required this.type,
-    required this.verificationMethod,
+    this.id,
+    this.identifier,
+    this.token,
+    this.type,
+    this.verificationMethod,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'identifier': identifier,
-      'token': token,
-      'type': type,
-      'verificationMethod': verificationMethod,
+      'id': ?id,
+      'identifier': ?identifier,
+      'token': ?token,
+      'type': ?type,
+      'verificationMethod': ?verificationMethod,
     };
   }
 
   factory GetTokenResult.fromMap(Map<String, dynamic> map) {
     return GetTokenResult(
-      id: map['id'] as String,
-      identifier: map['identifier'] as String,
-      token: map['token'] as String,
-      type: map['type'] as String,
-      verificationMethod: map['verificationMethod'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      verificationMethod: (() { final guardedValue = map['verificationMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

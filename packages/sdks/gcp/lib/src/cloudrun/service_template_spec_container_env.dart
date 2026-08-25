@@ -5,12 +5,12 @@ import 'service_template_spec_container_env_value_from.dart';
 
 class ServiceTemplateSpecContainerEnv {
   /// Name of the environment variable.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Defaults to "".
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Source for the environment variable's value. Only supports secret_key_ref.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerEnvValueFrom>? valueFrom;
+  final pulumi.Input<ServiceTemplateSpecContainerEnvValueFrom?>? valueFrom;
 
   /// Creates a new [ServiceTemplateSpecContainerEnv].
   /// [name] Name of the environment variable.

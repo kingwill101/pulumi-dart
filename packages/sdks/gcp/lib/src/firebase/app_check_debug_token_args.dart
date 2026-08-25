@@ -18,12 +18,12 @@ class AppCheckDebugTokenArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human readable display name used to identify this debug token.
   final pulumi.Input<String> displayName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The secret token itself. Must be provided during creation, and must be a UUID4,
   /// case insensitive. You may use a method of your choice such as random/random_uuid
   /// to generate the token.

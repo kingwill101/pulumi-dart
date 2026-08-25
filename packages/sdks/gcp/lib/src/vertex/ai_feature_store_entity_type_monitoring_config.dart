@@ -9,16 +9,16 @@ import 'ai_feature_store_entity_type_monitoring_config_snapshot_analysis.dart';
 class AiFeatureStoreEntityTypeMonitoringConfig {
   /// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig>? categoricalThresholdConfig;
+  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig?>? categoricalThresholdConfig;
   /// The config for ImportFeatures Analysis Based Feature Monitoring.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis>? importFeaturesAnalysis;
+  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis?>? importFeaturesAnalysis;
   /// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig>? numericalThresholdConfig;
+  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig?>? numericalThresholdConfig;
   /// The config for Snapshot Analysis Based Feature Monitoring.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis>? snapshotAnalysis;
+  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis?>? snapshotAnalysis;
 
   /// Creates a new [AiFeatureStoreEntityTypeMonitoringConfig].
   /// [categoricalThresholdConfig] Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).

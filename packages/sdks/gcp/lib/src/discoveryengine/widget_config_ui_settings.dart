@@ -7,37 +7,37 @@ import 'widget_config_ui_settings_generative_answer_config.dart';
 class WidgetConfigUiSettings {
   /// Per data store configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<WidgetConfigUiSettingsDataStoreUiConfig>>? dataStoreUiConfigs;
+  final pulumi.Input<List<WidgetConfigUiSettingsDataStoreUiConfig>?>? dataStoreUiConfigs;
   /// The default ordering for search results if specified.
   /// Used to set SearchRequest#orderBy on applicable requests.
-  final pulumi.Input<String>? defaultSearchRequestOrderBy;
+  final pulumi.Input<String?>? defaultSearchRequestOrderBy;
   /// If set to true, the widget will not collect user events.
-  final pulumi.Input<bool>? disableUserEventsCollection;
+  final pulumi.Input<bool?>? disableUserEventsCollection;
   /// Whether or not to enable autocomplete.
-  final pulumi.Input<bool>? enableAutocomplete;
+  final pulumi.Input<bool?>? enableAutocomplete;
   /// If set to true, the widget will enable the create agent button.
-  final pulumi.Input<bool>? enableCreateAgentButton;
+  final pulumi.Input<bool?>? enableCreateAgentButton;
   /// If set to true, the widget will enable people search.
-  final pulumi.Input<bool>? enablePeopleSearch;
+  final pulumi.Input<bool?>? enablePeopleSearch;
   /// Turn on or off collecting the search result quality feedback from end users.
-  final pulumi.Input<bool>? enableQualityFeedback;
+  final pulumi.Input<bool?>? enableQualityFeedback;
   /// Whether to enable safe search.
-  final pulumi.Input<bool>? enableSafeSearch;
+  final pulumi.Input<bool?>? enableSafeSearch;
   /// Whether to enable search-as-you-type behavior for the search widget.
-  final pulumi.Input<bool>? enableSearchAsYouType;
+  final pulumi.Input<bool?>? enableSearchAsYouType;
   /// If set to true, the widget will enable visual content summary on applicable
   /// search requests. Only used by healthcare search.
-  final pulumi.Input<bool>? enableVisualContentSummary;
+  final pulumi.Input<bool?>? enableVisualContentSummary;
   /// Describes generative answer configuration.
   /// Structure is documented below.
-  final pulumi.Input<WidgetConfigUiSettingsGenerativeAnswerConfig>? generativeAnswerConfig;
+  final pulumi.Input<WidgetConfigUiSettingsGenerativeAnswerConfig?>? generativeAnswerConfig;
   /// Describes widget (or web app) interaction type
   /// Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
-  final pulumi.Input<String>? interactionType;
+  final pulumi.Input<String?>? interactionType;
   /// Controls whether result extract is display and how (snippet or extractive answer).
   /// Default to no result if unspecified.
   /// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
-  final pulumi.Input<String>? resultDescriptionType;
+  final pulumi.Input<String?>? resultDescriptionType;
 
   /// Creates a new [WidgetConfigUiSettings].
   /// [dataStoreUiConfigs] Per data store configuration.

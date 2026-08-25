@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceIamMemberCondition {
   /// An optional description of the instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> expression;
   final pulumi.Input<String> title;
 

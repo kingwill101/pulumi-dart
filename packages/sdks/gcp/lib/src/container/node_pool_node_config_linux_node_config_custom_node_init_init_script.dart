@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
   /// The Secret Manager secret URI of the init script.
-  final pulumi.Input<String>? gcpSecretManagerSecretUri;
+  final pulumi.Input<String?>? gcpSecretManagerSecretUri;
   /// The GCS generation of the init script.
-  final pulumi.Input<int>? gcsGeneration;
+  final pulumi.Input<int?>? gcsGeneration;
   /// The GCS URI of the init script.
-  final pulumi.Input<String>? gcsUri;
+  final pulumi.Input<String?>? gcsUri;
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript].
   /// [gcpSecretManagerSecretUri] The Secret Manager secret URI of the init script.
@@ -31,7 +31,7 @@ class NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
   factory NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript(
       gcpSecretManagerSecretUri: (() { final guardedValue = map['gcpSecretManagerSecretUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      gcsGeneration: (() { final guardedValue = map['gcsGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gcsGeneration: (() { final guardedValue = map['gcsGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       gcsUri: (() { final guardedValue = map['gcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

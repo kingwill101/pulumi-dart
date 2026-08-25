@@ -755,7 +755,7 @@ class Attestor extends pulumi.CustomResource {
           'gcp:binaryauthorization/attestor:Attestor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>('attestationAuthorityNote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorAttestationAuthorityNote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -769,11 +769,12 @@ class Attestor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttestorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Attestor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -787,6 +788,22 @@ class Attestor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>('attestationAuthorityNote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorAttestationAuthorityNote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Attestor] resource.
+  Attestor.reference(String urn)
+    : super(
+        'gcp:binaryauthorization/attestor:Attestor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>('attestationAuthorityNote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorAttestationAuthorityNote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

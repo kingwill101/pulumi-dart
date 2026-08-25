@@ -7,7 +7,7 @@ import 'router_route_policy_term_match.dart';
 class RouterRoutePolicyTerm {
   /// 'CEL expressions to evaluate to modify a route when this term matches.'\
   /// Structure is documented below.
-  final pulumi.Input<List<RouterRoutePolicyTermAction>>? actions;
+  final pulumi.Input<List<RouterRoutePolicyTermAction>?>? actions;
   /// CEL expression evaluated against a route to determine if this term applies (see Policy Language).
   /// Structure is documented below.
   final pulumi.Input<RouterRoutePolicyTermMatch> match;
@@ -36,7 +36,7 @@ class RouterRoutePolicyTerm {
     return RouterRoutePolicyTerm(
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RouterRoutePolicyTermAction>(guardedValue, (value) => RouterRoutePolicyTermAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       match: pulumi.Input.fromValue(RouterRoutePolicyTermMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
     );
   }
 }

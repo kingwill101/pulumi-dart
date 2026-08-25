@@ -10,54 +10,54 @@ import 'ai_schedule_create_notebook_execution_job_request_notebook_execution_job
 class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
   /// (Output)
   /// Timestamp when this NotebookExecutionJob was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Compute configuration to use for an execution job.
   /// Structure is documented below.
-  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec>? customEnvironmentSpec;
+  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec?>? customEnvironmentSpec;
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource>? dataformRepositorySource;
+  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource?>? dataformRepositorySource;
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
-  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource>? directNotebookSource;
+  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource?>? directNotebookSource;
   /// The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
   /// Structure is documented below.
-  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec?>? encryptionSpec;
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs).
-  final pulumi.Input<String>? executionTimeout;
+  final pulumi.Input<String?>? executionTimeout;
   /// The user email to run the execution as. Only supported by Colab runtimes.
-  final pulumi.Input<String>? executionUser;
+  final pulumi.Input<String?>? executionUser;
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource>? gcsNotebookSource;
+  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource?>? gcsNotebookSource;
   /// The Cloud Storage location to upload the result to. Format: `gs://bucket-name`
-  final pulumi.Input<String>? gcsOutputUri;
+  final pulumi.Input<String?>? gcsOutputUri;
   /// (Output)
   /// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
-  final pulumi.Input<String>? jobState;
+  final pulumi.Input<String?>? jobState;
   /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
-  final pulumi.Input<String>? kernelName;
+  final pulumi.Input<String?>? kernelName;
   /// The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// (Output)
   /// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NotebookRuntimeTemplate to source compute configuration from.
-  final pulumi.Input<String>? notebookRuntimeTemplateResourceName;
+  final pulumi.Input<String?>? notebookRuntimeTemplateResourceName;
   /// The user-defined parameters to use during notebook execution.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// (Output)
   /// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-  final pulumi.Input<String>? scheduleResourceName;
+  final pulumi.Input<String?>? scheduleResourceName;
   /// The service account to run the execution as.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// (Output)
   /// Timestamp when this NotebookExecutionJob was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Configuration for a Workbench Instances-based environment.
-  final pulumi.Input<Map<String, dynamic>>? workbenchRuntime;
+  final pulumi.Input<Map<String, dynamic>?>? workbenchRuntime;
 
   /// Creates a new [AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob].
   /// [createTime] (Output)

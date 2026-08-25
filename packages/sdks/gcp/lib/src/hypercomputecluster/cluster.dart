@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_compute_resource.dart';
+import 'cluster_network_resource.dart';
 import 'cluster_orchestrator.dart';
 import 'cluster_state.dart';
+import 'cluster_storage_resource.dart';
 
 /// A collection of virtual machines and connected resources forming a high-performance computing cluster capable of running large-scale, tightly coupled workloads. A cluster combines a set a compute resources that perform computations, storage resources that contain inputs and store outputs, an orchestrator that is responsible for assigning jobs to compute resources, and network resources that connect everything together.
 ///
@@ -554,7 +557,7 @@ class Cluster extends pulumi.CustomResource {
   /// to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
   /// alphanumeric, and at most 63 characters).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> computeResources;
+  late final pulumi.Output<List<ClusterComputeResource>?> computeResources;
   /// Time that the cluster was originally created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -585,7 +588,7 @@ class Cluster extends pulumi.CustomResource {
   /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
   /// alphanumeric, and at most 63 characters).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkResources;
+  late final pulumi.Output<List<ClusterNetworkResource>> networkResources;
   /// The component responsible for scheduling and running workloads on the
   /// cluster as well as providing the user interface for interacting with the
   /// cluster at runtime.
@@ -606,7 +609,7 @@ class Cluster extends pulumi.CustomResource {
   /// to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
   /// alphanumeric, and at most 63 characters).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storageResources;
+  late final pulumi.Output<List<ClusterStorageResource>?> storageResources;
   /// Time that the cluster was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -622,23 +625,24 @@ class Cluster extends pulumi.CustomResource {
           'gcp:hypercomputecluster/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clusterId = registerOutput<String>('clusterId');
-    computeResources = registerOutput<List<Map<String, dynamic>>?>('computeResources');
+    computeResources = registerOutput<List<ClusterComputeResource>?>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterComputeResource>(guardedValue, (value) => ClusterComputeResource.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkResources = registerOutput<List<Map<String, dynamic>>>('networkResources');
+    networkResources = registerOutput<List<ClusterNetworkResource>>('networkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNetworkResource>(guardedValue, (value) => ClusterNetworkResource.fromMap((value as Map).cast<String, dynamic>())); });
     orchestrator = registerOutput<ClusterOrchestrator?>('orchestrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOrchestrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
-    storageResources = registerOutput<List<Map<String, dynamic>>?>('storageResources');
+    storageResources = registerOutput<List<ClusterStorageResource>?>('storageResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStorageResource>(guardedValue, (value) => ClusterStorageResource.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -647,11 +651,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -666,20 +671,48 @@ class Cluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    computeResources = registerOutput<List<Map<String, dynamic>>?>('computeResources');
+    computeResources = registerOutput<List<ClusterComputeResource>?>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterComputeResource>(guardedValue, (value) => ClusterComputeResource.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkResources = registerOutput<List<Map<String, dynamic>>>('networkResources');
+    networkResources = registerOutput<List<ClusterNetworkResource>>('networkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNetworkResource>(guardedValue, (value) => ClusterNetworkResource.fromMap((value as Map).cast<String, dynamic>())); });
     orchestrator = registerOutput<ClusterOrchestrator?>('orchestrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOrchestrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
-    storageResources = registerOutput<List<Map<String, dynamic>>?>('storageResources');
+    storageResources = registerOutput<List<ClusterStorageResource>?>('storageResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStorageResource>(guardedValue, (value) => ClusterStorageResource.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'gcp:hypercomputecluster/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    computeResources = registerOutput<List<ClusterComputeResource>?>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterComputeResource>(guardedValue, (value) => ClusterComputeResource.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkResources = registerOutput<List<ClusterNetworkResource>>('networkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNetworkResource>(guardedValue, (value) => ClusterNetworkResource.fromMap((value as Map).cast<String, dynamic>())); });
+    orchestrator = registerOutput<ClusterOrchestrator?>('orchestrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOrchestrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    storageResources = registerOutput<List<ClusterStorageResource>?>('storageResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStorageResource>(guardedValue, (value) => ClusterStorageResource.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

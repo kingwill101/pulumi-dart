@@ -142,6 +142,17 @@ Future<GetFolderSettingsResult> getFolderSettings(
   return GetFolderSettingsResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderSettingsResult> getFolderSettingsOutput(
+  GetFolderSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:observability/getFolderSettings:getFolderSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderSettingsResult.fromMap);
+}
+
 /// Describes the Google Cloud Observability Settings associated with an organization.
 ///
 /// To get more information about Observability Settings, see:
@@ -278,6 +289,17 @@ Future<GetOrganizationSettingsResult> getOrganizationSettings(
   return GetOrganizationSettingsResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationSettingsResult> getOrganizationSettingsOutput(
+  GetOrganizationSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:observability/getOrganizationSettings:getOrganizationSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationSettingsResult.fromMap);
+}
+
 /// Describes the Google Cloud Observability Settings associated with a project.
 ///
 /// To get more information about Observability Settings, see:
@@ -412,4 +434,15 @@ Future<GetProjectSettingsResult> getProjectSettings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectSettingsResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectSettingsResult> getProjectSettingsOutput(
+  GetProjectSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:observability/getProjectSettings:getProjectSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectSettingsResult.fromMap);
 }

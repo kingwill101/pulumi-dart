@@ -1012,7 +1012,7 @@ class GlossaryIamPolicy extends pulumi.CustomResource {
           'gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     glossaryId = registerOutput<String>('glossaryId');
@@ -1026,11 +1026,12 @@ class GlossaryIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlossaryIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlossaryIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1044,6 +1045,22 @@ class GlossaryIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    glossaryId = registerOutput<String>('glossaryId');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [GlossaryIamPolicy] resource.
+  GlossaryIamPolicy.reference(String urn)
+    : super(
+        'gcp:dataplex/glossaryIamPolicy:GlossaryIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     glossaryId = registerOutput<String>('glossaryId');
     location = registerOutput<String>('location');

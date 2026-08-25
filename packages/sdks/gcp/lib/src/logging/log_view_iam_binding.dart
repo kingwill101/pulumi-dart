@@ -2242,13 +2242,13 @@ class LogViewIamBinding extends pulumi.CustomResource {
           'gcp:logging/logViewIamBinding:LogViewIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<LogViewIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogViewIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     role = registerOutput<String>('role');
@@ -2259,11 +2259,12 @@ class LogViewIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogViewIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogViewIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2281,7 +2282,26 @@ class LogViewIamBinding extends pulumi.CustomResource {
     condition = registerOutput<LogViewIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogViewIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [LogViewIamBinding] resource.
+  LogViewIamBinding.reference(String urn)
+    : super(
+        'gcp:logging/logViewIamBinding:LogViewIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    condition = registerOutput<LogViewIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogViewIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     role = registerOutput<String>('role');

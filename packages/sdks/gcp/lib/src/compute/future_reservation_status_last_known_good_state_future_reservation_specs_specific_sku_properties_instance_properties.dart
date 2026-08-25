@@ -7,21 +7,21 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties {
   /// Specifies accelerator type and count.
   /// Structure is documented below.
-  final pulumi.Input<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator>?>? guestAccelerators;
   /// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
   /// Structure is documented below.
-  final pulumi.Input<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd>>? localSsds;
+  final pulumi.Input<List<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd>?>? localSsds;
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
-  final pulumi.Input<String>? locationHint;
+  final pulumi.Input<String?>? locationHint;
   /// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
-  final pulumi.Input<int>? maintenanceFreezeDurationHours;
+  final pulumi.Input<int?>? maintenanceFreezeDurationHours;
   /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
   /// Possible values are: `PERIODIC`.
-  final pulumi.Input<String>? maintenanceInterval;
+  final pulumi.Input<String?>? maintenanceInterval;
   /// Minimum cpu platform the reservation.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties].
   /// [guestAccelerators] Specifies accelerator type and count.
@@ -59,7 +59,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
       localSsds: (() { final guardedValue = map['localSsds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd>(guardedValue, (value) => FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd.fromMap((value as Map).cast<String, dynamic>()))); })(),
       locationHint: (() { final guardedValue = map['locationHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maintenanceFreezeDurationHours: (() { final guardedValue = map['maintenanceFreezeDurationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maintenanceFreezeDurationHours: (() { final guardedValue = map['maintenanceFreezeDurationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       maintenanceInterval: (() { final guardedValue = map['maintenanceInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

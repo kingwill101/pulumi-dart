@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsSqlServerAuditConfig {
   /// The name of the destination bucket (e.g., gs://mybucket).
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? retentionInterval;
+  final pulumi.Input<String?>? retentionInterval;
   /// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? uploadInterval;
+  final pulumi.Input<String?>? uploadInterval;
 
   /// Creates a new [DatabaseInstanceSettingsSqlServerAuditConfig].
   /// [bucket] The name of the destination bucket (e.g., gs://mybucket).

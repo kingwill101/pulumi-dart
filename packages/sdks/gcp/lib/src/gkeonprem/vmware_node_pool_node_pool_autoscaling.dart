@@ -25,8 +25,8 @@ class VMwareNodePoolNodePoolAutoscaling {
 
   factory VMwareNodePoolNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolNodePoolAutoscaling(
-      maxReplicas: pulumi.Input.fromValue(map['maxReplicas'] as int),
-      minReplicas: pulumi.Input.fromValue(map['minReplicas'] as int),
+      maxReplicas: pulumi.Input.fromValue((map['maxReplicas'] as num).toInt()),
+      minReplicas: pulumi.Input.fromValue((map['minReplicas'] as num).toInt()),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationSeriesItemColorsColorValue {
   /// (Optional)
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
   /// (Optional)
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesItemColorsColorValue].
   /// [color] (Optional)

@@ -6,9 +6,9 @@ class AutoLabelingRuleCondition {
   /// A optional CEL expression to be evaluated as a boolean value.
   /// Once evaluated as true, then we will proceed with the value evaluation.
   /// An empty condition will be auto evaluated as true.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// CEL expression to be evaluated as the value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AutoLabelingRuleCondition].
   /// [condition] A optional CEL expression to be evaluated as a boolean value.

@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthConfigDecryptedCredentialOidcToken {
   /// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// The service account email to be used as the identity for the token.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// (Output)
   /// ID token obtained for the service account.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
   /// (Output)
   /// The approximate time until the token retrieved is valid.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? tokenExpireTime;
+  final pulumi.Input<String?>? tokenExpireTime;
 
   /// Creates a new [AuthConfigDecryptedCredentialOidcToken].
   /// [audience] Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for.

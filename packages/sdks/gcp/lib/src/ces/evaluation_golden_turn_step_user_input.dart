@@ -8,27 +8,27 @@ import 'evaluation_golden_turn_step_user_input_tool_responses.dart';
 
 class EvaluationGoldenTurnStepUserInput {
   /// Audio data from the end user.
-  final pulumi.Input<String>? audio;
+  final pulumi.Input<String?>? audio;
   /// Blob data from the end user.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepUserInputBlob>? blob;
+  final pulumi.Input<EvaluationGoldenTurnStepUserInputBlob?>? blob;
   /// DTMF digits from the end user.
-  final pulumi.Input<String>? dtmf;
+  final pulumi.Input<String?>? dtmf;
   /// An event to be sent to the session.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepUserInputEvent>? event;
+  final pulumi.Input<EvaluationGoldenTurnStepUserInputEvent?>? event;
   /// Image data from the end user.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepUserInputImage>? image;
+  final pulumi.Input<EvaluationGoldenTurnStepUserInputImage?>? image;
   /// Natural language query.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
   /// The list of tool execution results.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepUserInputToolResponses>? toolResponses;
+  final pulumi.Input<EvaluationGoldenTurnStepUserInputToolResponses?>? toolResponses;
   /// Map of variables to set.
-  final pulumi.Input<Map<String, String>>? variables;
+  final pulumi.Input<Map<String, String>?>? variables;
   /// Whether the session should continue.
-  final pulumi.Input<bool>? willContinue;
+  final pulumi.Input<bool?>? willContinue;
 
   /// Creates a new [EvaluationGoldenTurnStepUserInput].
   /// [audio] Audio data from the end user.

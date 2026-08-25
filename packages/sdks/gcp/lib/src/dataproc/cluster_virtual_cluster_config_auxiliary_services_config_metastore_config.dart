@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
   /// Resource name of an existing Dataproc Metastore service.
-  final pulumi.Input<String>? dataprocMetastoreService;
+  final pulumi.Input<String?>? dataprocMetastoreService;
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.

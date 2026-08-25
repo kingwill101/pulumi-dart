@@ -5,34 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegionNetworkEndpoint resources.
 class RegionNetworkEndpointState {
   /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
-  final pulumi.Input<int>? clientDestinationPort;
+  final pulumi.Input<int?>? clientDestinationPort;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// IPv4 address external endpoint.
   /// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The unique identifier number for the resource. This identifier is defined by the server.
-  final pulumi.Input<int>? networkEndpointId;
+  final pulumi.Input<int?>? networkEndpointId;
   /// Port number of network endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region where the containing network endpoint group is located.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The network endpoint group this endpoint is part of.
-  final pulumi.Input<String>? regionNetworkEndpointGroup;
+  final pulumi.Input<String?>? regionNetworkEndpointGroup;
 
   /// Creates a new [RegionNetworkEndpointState].
   /// [clientDestinationPort] Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
@@ -75,13 +75,13 @@ class RegionNetworkEndpointState {
 
   factory RegionNetworkEndpointState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointState(
-      clientDestinationPort: (() { final guardedValue = map['clientDestinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clientDestinationPort: (() { final guardedValue = map['clientDestinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkEndpointId: (() { final guardedValue = map['networkEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      networkEndpointId: (() { final guardedValue = map['networkEndpointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionNetworkEndpointGroup: (() { final guardedValue = map['regionNetworkEndpointGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

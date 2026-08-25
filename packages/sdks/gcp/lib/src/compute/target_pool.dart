@@ -269,14 +269,14 @@ class TargetPool extends pulumi.CustomResource {
           'gcp:compute/targetPool:TargetPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     backupPool = registerOutput<String?>('backupPool');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     failoverRatio = registerOutput<double?>('failoverRatio');
     healthChecks = registerOutput<String?>('healthChecks');
-    instances = registerOutput<List<String>>('instances');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -290,11 +290,12 @@ class TargetPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -313,7 +314,30 @@ class TargetPool extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     failoverRatio = registerOutput<double?>('failoverRatio');
     healthChecks = registerOutput<String?>('healthChecks');
-    instances = registerOutput<List<String>>('instances');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    securityPolicy = registerOutput<String?>('securityPolicy');
+    selfLink = registerOutput<String>('selfLink');
+    sessionAffinity = registerOutput<String?>('sessionAffinity');
+  }
+
+  /// Creates a typed reference to an existing [TargetPool] resource.
+  TargetPool.reference(String urn)
+    : super(
+        'gcp:compute/targetPool:TargetPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPool = registerOutput<String?>('backupPool');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    failoverRatio = registerOutput<double?>('failoverRatio');
+    healthChecks = registerOutput<String?>('healthChecks');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

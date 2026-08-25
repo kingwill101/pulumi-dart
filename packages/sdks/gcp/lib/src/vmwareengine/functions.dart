@@ -144,6 +144,17 @@ Future<GetAnnouncementsResult> getAnnouncements(
   return GetAnnouncementsResult.fromMap(result);
 }
 
+pulumi.Output<GetAnnouncementsResult> getAnnouncementsOutput(
+  GetAnnouncementsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getAnnouncements:getAnnouncements',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnnouncementsResult.fromMap);
+}
+
 /// Use this data source to get details about a cluster resource.
 ///
 /// To get more information about private cloud cluster, see:
@@ -272,6 +283,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Get information about a Cloud VMware Engine Datastore.
 ///
 ///
@@ -397,6 +419,17 @@ Future<GetDatastoreResult> getDatastore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatastoreResult.fromMap(result);
+}
+
+pulumi.Output<GetDatastoreResult> getDatastoreOutput(
+  GetDatastoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getDatastore:getDatastore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatastoreResult.fromMap);
 }
 
 /// Use this data source to get details about a external access rule resource.
@@ -527,6 +560,17 @@ Future<GetExternalAccessRuleResult> getExternalAccessRule(
   return GetExternalAccessRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetExternalAccessRuleResult> getExternalAccessRuleOutput(
+  GetExternalAccessRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExternalAccessRuleResult.fromMap);
+}
+
 /// Use this data source to get details about a external address resource.
 ///
 /// To get more information about external address, see:
@@ -653,6 +697,17 @@ Future<GetExternalAddressResult> getExternalAddress(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExternalAddressResult.fromMap(result);
+}
+
+pulumi.Output<GetExternalAddressResult> getExternalAddressOutput(
+  GetExternalAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getExternalAddress:getExternalAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExternalAddressResult.fromMap);
 }
 
 /// Use this data source to get details about a VMwareEngine network resource.
@@ -783,6 +838,17 @@ Future<GetNetworkResult> getNetwork(
   return GetNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getNetwork:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
+}
+
 /// Use this data source to get details about a network peering resource.
 ///
 /// To get more information about network peering, see:
@@ -902,6 +968,17 @@ Future<GetNetworkPeeringResult> getNetworkPeering(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkPeeringResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
+  GetNetworkPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getNetworkPeering:getNetworkPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkPeeringResult.fromMap);
 }
 
 /// Use this data source to get details about a network policy resource.
@@ -1032,6 +1109,17 @@ Future<GetNetworkPolicyResult> getNetworkPolicy(
   return GetNetworkPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkPolicyResult> getNetworkPolicyOutput(
+  GetNetworkPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkPolicyResult.fromMap);
+}
+
 /// Use this data source to get NSX credentials for a Private Cloud.
 ///
 /// To get more information about private cloud NSX credentials, see:
@@ -1151,6 +1239,17 @@ Future<GetNsxCredentialsResult> getNsxCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNsxCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<GetNsxCredentialsResult> getNsxCredentialsOutput(
+  GetNsxCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getNsxCredentials:getNsxCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNsxCredentialsResult.fromMap);
 }
 
 /// Use this data source to get details about a private cloud resource.
@@ -1281,6 +1380,17 @@ Future<GetPrivateCloudResult> getPrivateCloud(
   return GetPrivateCloudResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateCloudResult> getPrivateCloudOutput(
+  GetPrivateCloudArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getPrivateCloud:getPrivateCloud',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateCloudResult.fromMap);
+}
+
 /// Use this data source to get details about a subnet. Management subnets support only read operations and should be configured through this data source. User defined subnets can be configured using the resource as well as the datasource.
 ///
 /// To get more information about private cloud subnet, see:
@@ -1409,6 +1519,17 @@ Future<GetSubnetResult> getSubnet(
   return GetSubnetResult.fromMap(result);
 }
 
+pulumi.Output<GetSubnetResult> getSubnetOutput(
+  GetSubnetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getSubnet:getSubnet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetResult.fromMap);
+}
+
 /// Use this data source to list upgrades for a Private Cloud.
 ///
 /// ## Example Usage
@@ -1525,6 +1646,17 @@ Future<GetUpgradesResult> getUpgrades(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUpgradesResult.fromMap(result);
+}
+
+pulumi.Output<GetUpgradesResult> getUpgradesOutput(
+  GetUpgradesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getUpgrades:getUpgrades',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUpgradesResult.fromMap);
 }
 
 /// Use this data source to get Vcenter credentials for a Private Cloud.
@@ -1646,4 +1778,15 @@ Future<GetVcenterCredentialsResult> getVcenterCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVcenterCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<GetVcenterCredentialsResult> getVcenterCredentialsOutput(
+  GetVcenterCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVcenterCredentialsResult.fromMap);
 }

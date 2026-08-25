@@ -6,7 +6,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// Required. Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
   /// Generation number of the Cloud Storage object.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Required. Name of the Cloud Storage object.
   final pulumi.Input<String> object_;
 

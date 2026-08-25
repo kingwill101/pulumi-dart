@@ -6,29 +6,29 @@ import 'security_profile_v2_profile_assessment_config.dart';
 /// Input properties used for looking up and filtering SecurityProfileV2 resources.
 class SecurityProfileV2State {
   /// The timestamp at which this profile was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the security profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the security profile v2 resource,
   /// in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization associated with the Apigee Security Profile V2,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// A map of the assessment name and the assessment config.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityProfileV2ProfileAssessmentConfig>>? profileAssessmentConfigs;
+  final pulumi.Input<List<SecurityProfileV2ProfileAssessmentConfig>?>? profileAssessmentConfigs;
   /// Resource ID of the security profile.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
   /// The timestamp at which this profile was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [SecurityProfileV2State].
   /// [createTime] The timestamp at which this profile was created.

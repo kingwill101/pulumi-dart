@@ -8,7 +8,7 @@ class InstancePerformanceConfigIopsPerTb {
   /// and rounding to the nearest 1000. The instance max IOPS
   /// will be changed dynamically based on the instance
   /// capacity.
-  final pulumi.Input<int>? maxIopsPerTb;
+  final pulumi.Input<int?>? maxIopsPerTb;
 
   /// Creates a new [InstancePerformanceConfigIopsPerTb].
   /// [maxIopsPerTb] The instance max IOPS will be calculated by multiplying
@@ -24,7 +24,7 @@ class InstancePerformanceConfigIopsPerTb {
 
   factory InstancePerformanceConfigIopsPerTb.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfigIopsPerTb(
-      maxIopsPerTb: (() { final guardedValue = map['maxIopsPerTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxIopsPerTb: (() { final guardedValue = map['maxIopsPerTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

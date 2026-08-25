@@ -8,7 +8,7 @@ class AiReasoningEngineSpecContainerSpec {
   /// container image that is to be run on each worker replica.
   final pulumi.Input<String> imageUri;
   /// Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [AiReasoningEngineSpecContainerSpec].
   /// [imageUri] The Artifact Registry Docker image URI (e.g.,
@@ -28,7 +28,7 @@ class AiReasoningEngineSpecContainerSpec {
   factory AiReasoningEngineSpecContainerSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecContainerSpec(
       imageUri: pulumi.Input.fromValue(map['imageUri'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

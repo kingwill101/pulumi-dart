@@ -6,19 +6,19 @@ import 'stream_source_config_sql_server_source_config_include_objects.dart';
 
 class StreamSourceConfigSqlServerSourceConfig {
   /// CDC reader reads from change tables.
-  final pulumi.Input<Map<String, dynamic>>? changeTables;
+  final pulumi.Input<Map<String, dynamic>?>? changeTables;
   /// SQL Server objects to exclude from the stream.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSqlServerSourceConfigExcludeObjects>? excludeObjects;
+  final pulumi.Input<StreamSourceConfigSqlServerSourceConfigExcludeObjects?>? excludeObjects;
   /// SQL Server objects to retrieve from the source.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSqlServerSourceConfigIncludeObjects>? includeObjects;
+  final pulumi.Input<StreamSourceConfigSqlServerSourceConfigIncludeObjects?>? includeObjects;
   /// Max concurrent backfill tasks.
-  final pulumi.Input<int>? maxConcurrentBackfillTasks;
+  final pulumi.Input<int?>? maxConcurrentBackfillTasks;
   /// Max concurrent CDC tasks.
-  final pulumi.Input<int>? maxConcurrentCdcTasks;
+  final pulumi.Input<int?>? maxConcurrentCdcTasks;
   /// CDC reader reads from transaction logs.
-  final pulumi.Input<Map<String, dynamic>>? transactionLogs;
+  final pulumi.Input<Map<String, dynamic>?>? transactionLogs;
 
   /// Creates a new [StreamSourceConfigSqlServerSourceConfig].
   /// [changeTables] CDC reader reads from change tables.
@@ -52,8 +52,8 @@ class StreamSourceConfigSqlServerSourceConfig {
       changeTables: (() { final guardedValue = map['changeTables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       excludeObjects: (() { final guardedValue = map['excludeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigSqlServerSourceConfigExcludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       includeObjects: (() { final guardedValue = map['includeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigSqlServerSourceConfigIncludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       transactionLogs: (() { final guardedValue = map['transactionLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

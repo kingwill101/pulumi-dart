@@ -5,10 +5,10 @@ import 'record_set_routing_policy_wrr_health_checked_targets_internal_load_balan
 
 class RecordSetRoutingPolicyWrrHealthCheckedTargets {
   /// The list of external endpoint addresses to health check.
-  final pulumi.Input<List<String>>? externalEndpoints;
+  final pulumi.Input<List<String>?>? externalEndpoints;
   /// The list of internal load balancers to health check.
   /// Structure is documented below.
-  final pulumi.Input<List<RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>>? internalLoadBalancers;
+  final pulumi.Input<List<RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>?>? internalLoadBalancers;
 
   /// Creates a new [RecordSetRoutingPolicyWrrHealthCheckedTargets].
   /// [externalEndpoints] The list of external endpoint addresses to health check.

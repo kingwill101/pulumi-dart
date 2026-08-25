@@ -13,7 +13,7 @@ class AppCheckServiceConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The App Check enforcement mode for a service supported by App Check. Valid values are
   /// (Unset)
   /// Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -40,10 +40,10 @@ class AppCheckServiceConfigArgs {
   /// If your app has not launched yet, you should enable enforcement immediately, since there are no outdated
   /// clients in use.
   /// Possible values are: `UNENFORCED`, `ENFORCED`.
-  final pulumi.Input<String>? enforcementMode;
+  final pulumi.Input<String?>? enforcementMode;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
   /// firebasestorage.googleapis.com (Cloud Storage for Firebase)
   /// firebasedatabase.googleapis.com (Firebase Realtime Database)

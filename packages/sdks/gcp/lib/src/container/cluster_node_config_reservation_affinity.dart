@@ -13,9 +13,9 @@ class ClusterNodeConfigReservationAffinity {
   /// * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
   final pulumi.Input<String> consumeReservationType;
   /// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ClusterNodeConfigReservationAffinity].
   /// [consumeReservationType] The type of reservation consumption

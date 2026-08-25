@@ -8,7 +8,7 @@ class ClusterSystemAddonsConfig {
   /// object to manage external access to the servers in a cluster. The add-on
   /// consists of istiod and istio-ingress.
   /// Structure is documented below.
-  final pulumi.Input<ClusterSystemAddonsConfigIngress>? ingress;
+  final pulumi.Input<ClusterSystemAddonsConfigIngress?>? ingress;
 
   /// Creates a new [ClusterSystemAddonsConfig].
   /// [ingress] Config for the Ingress add-on which allows customers to create an Ingress

@@ -10,16 +10,16 @@ import 'alert_policy_condition_condition_sql_row_count_test.dart';
 class AlertPolicyConditionConditionSql {
   /// A test that uses an alerting result in a boolean column produced by the SQL query.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSqlBooleanTest>? booleanTest;
+  final pulumi.Input<AlertPolicyConditionConditionSqlBooleanTest?>? booleanTest;
   /// Used to schedule the query to run every so many days.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSqlDaily>? daily;
+  final pulumi.Input<AlertPolicyConditionConditionSqlDaily?>? daily;
   /// Used to schedule the query to run every so many hours.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSqlHourly>? hourly;
+  final pulumi.Input<AlertPolicyConditionConditionSqlHourly?>? hourly;
   /// Used to schedule the query to run every so many minutes.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSqlMinutes>? minutes;
+  final pulumi.Input<AlertPolicyConditionConditionSqlMinutes?>? minutes;
   /// The Log Analytics SQL query to run, as a string.  The query must
   /// conform to the required shape. Specifically, the query must not try to
   /// filter the input by time.  A filter will automatically be applied
@@ -28,7 +28,7 @@ class AlertPolicyConditionConditionSql {
   final pulumi.Input<String> query;
   /// A test that checks if the number of rows in the result set violates some threshold.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSqlRowCountTest>? rowCountTest;
+  final pulumi.Input<AlertPolicyConditionConditionSqlRowCountTest?>? rowCountTest;
 
   /// Creates a new [AlertPolicyConditionConditionSql].
   /// [booleanTest] A test that uses an alerting result in a boolean column produced by the SQL query.

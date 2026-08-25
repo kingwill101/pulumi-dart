@@ -9,11 +9,11 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindow {
   /// The exclusion window occurs every day if set to "True".
   /// Specifying this field to "False" is an error.
   /// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
-  final pulumi.Input<bool>? daily;
+  final pulumi.Input<bool?>? daily;
   /// The exclusion window occurs on these days of each week in UTC.
   /// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek>? daysOfWeek;
+  final pulumi.Input<BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek?>? daysOfWeek;
   /// Specifies duration of the window in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s". Restrictions for duration based on the
   /// recurrence type to allow some time for backup to happen:
@@ -26,7 +26,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindow {
   /// No recurrence. The exclusion window occurs only once and on this date in UTC.
   /// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate>? singleOccurrenceDate;
+  final pulumi.Input<BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate?>? singleOccurrenceDate;
   /// Specifies the start time of the window using time of the day in UTC.
   /// Structure is documented below.
   final pulumi.Input<BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime> startTime;

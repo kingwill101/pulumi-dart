@@ -11,34 +11,34 @@ class HostingCustomDomainState {
   /// for your domain name. Spark plan `CustomDomain`s only have access to the
   /// `GROUPED` cert type, while Blaze plan can select any option.
   /// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
-  final pulumi.Input<String>? certPreference;
+  final pulumi.Input<String?>? certPreference;
   /// The SSL certificate Hosting has for this `CustomDomain`'s domain name.
   /// For new `CustomDomain`s, this often represents Hosting's intent to create
   /// a certificate, rather than an actual cert. Check the `state` field for
   /// more.
   /// Structure is documented below.
-  final pulumi.Input<List<HostingCustomDomainCert>>? certs;
+  final pulumi.Input<List<HostingCustomDomainCert>?>? certs;
   /// The `CustomDomain`'s create time.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-  final pulumi.Input<String>? customDomain;
+  final pulumi.Input<String?>? customDomain;
   /// The time the `CustomDomain` was deleted; null for `CustomDomains` that
   /// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
   /// days, after which time Hosting removes them completely.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A string that represents the current state of the `CustomDomain` and
   /// allows you to confirm its initial state in requests that would modify it.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The minimum time before a soft-deleted `CustomDomain` is completely removed
   /// from Hosting; null for `CustomDomains` that haven't been deleted.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// The host state of your domain name. Host state is determined by checking each
   /// IP address associated with your domain name to see if it's serving
   /// Hosting content.
@@ -59,14 +59,14 @@ class HostingCustomDomainState {
   /// All requests against your `CustomDomain`'s domain name are served by
   /// Hosting. If the `CustomDomain`'s `OwnershipState` is also `ACTIVE`, Hosting
   /// serves your Hosting Site's content on the domain name.
-  final pulumi.Input<String>? hostState;
+  final pulumi.Input<String?>? hostState;
   /// A set of errors Hosting systems encountered when trying to establish
   /// Hosting's ability to serve secure content for your domain name. Resolve
   /// these issues to ensure your `CustomDomain` behaves properly.
   /// Structure is documented below.
-  final pulumi.Input<List<HostingCustomDomainIssue>>? issues;
+  final pulumi.Input<List<HostingCustomDomainIssue>?>? issues;
   /// The fully-qualified name of the `CustomDomain`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ownership state of your domain name. Ownership is determined at a
   /// Firebase project level, and established by adding `TXT` records to your
   /// domain name's DNS records.
@@ -99,32 +99,32 @@ class HostingCustomDomainState {
   /// OWNERSHIP_ACTIVE:
   /// Your `CustomDomain`'s domain name has `TXT` records that grant its project
   /// permission to act on its behalf.
-  final pulumi.Input<String>? ownershipState;
+  final pulumi.Input<String?>? ownershipState;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// if true, indicates that Hosting's systems are attempting to
   /// make the `CustomDomain`'s state match your preferred state. This is most
   /// frequently `true` when initially provisioning a `CustomDomain` or when creating
   /// a new SSL certificate to match an updated `certPreference`
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
   /// with an HTTP 301 code, and route traffic to the specified `redirectTarget`
   /// instead.
-  final pulumi.Input<String>? redirectTarget;
+  final pulumi.Input<String?>? redirectTarget;
   /// A set of updates you should make to the domain name's DNS records to
   /// let Hosting serve secure content on its behalf.
   /// Structure is documented below.
-  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdate>>? requiredDnsUpdates;
+  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdate>?>? requiredDnsUpdates;
   /// The ID of the site in which to create this custom domain association.
-  final pulumi.Input<String>? siteId;
+  final pulumi.Input<String?>? siteId;
   /// The last time the `CustomDomain` was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
   /// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
   /// the `CustomDomain` will be returned and stored in the Terraform state.
-  final pulumi.Input<bool>? waitDnsVerification;
+  final pulumi.Input<bool?>? waitDnsVerification;
 
   /// Creates a new [HostingCustomDomainState].
   /// [certPreference] A field that lets you specify which SSL certificate type Hosting creates

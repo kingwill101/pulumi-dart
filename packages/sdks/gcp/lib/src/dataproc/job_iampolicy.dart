@@ -901,7 +901,7 @@ class JobIAMPolicy extends pulumi.CustomResource {
           'gcp:dataproc/jobIAMPolicy:JobIAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     jobId = registerOutput<String>('jobId');
@@ -915,11 +915,12 @@ class JobIAMPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobIAMPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobIAMPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -933,6 +934,22 @@ class JobIAMPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    jobId = registerOutput<String>('jobId');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [JobIAMPolicy] resource.
+  JobIAMPolicy.reference(String urn)
+    : super(
+        'gcp:dataproc/jobIAMPolicy:JobIAMPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     jobId = registerOutput<String>('jobId');
     policyData = registerOutput<String>('policyData');

@@ -5,7 +5,7 @@ import 'cluster_node_config_containerd_config_private_registry_access_config_cer
 
 class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
   /// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
-  final pulumi.Input<List<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>>? certificateAuthorityDomainConfigs;
+  final pulumi.Input<List<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>?>? certificateAuthorityDomainConfigs;
   /// Enables private registry config. If set to false, all other fields in this object must not be set.
   final pulumi.Input<bool> enabled;
 

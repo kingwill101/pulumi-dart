@@ -11,7 +11,7 @@ class BrandArgs {
   final pulumi.Input<String> applicationTitle;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Support email displayed on the OAuth consent screen. Can be either a
   /// user or group email. When a user email is specified, the caller must
   /// be the user with the associated email address. When a group email is

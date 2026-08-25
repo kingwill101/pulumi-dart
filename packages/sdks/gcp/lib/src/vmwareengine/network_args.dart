@@ -13,16 +13,16 @@ class NetworkArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this VMware Engine network.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The location where the VMwareEngineNetwork should reside.
   final pulumi.Input<String> location;
   /// The ID of the VMwareEngineNetwork.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// VMware Engine network type.
   /// Possible values are: `LEGACY`, `STANDARD`.
   final pulumi.Input<String> type;

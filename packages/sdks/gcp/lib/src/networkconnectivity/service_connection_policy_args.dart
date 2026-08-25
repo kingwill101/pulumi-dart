@@ -14,26 +14,26 @@ class ServiceConnectionPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the ServiceConnectionPolicy.
   final pulumi.Input<String> location;
   /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
   final pulumi.Input<String> network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   /// Structure is documented below.
-  final pulumi.Input<ServiceConnectionPolicyPscConfig>? pscConfig;
+  final pulumi.Input<ServiceConnectionPolicyPscConfig?>? pscConfig;
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
   /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
   /// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).

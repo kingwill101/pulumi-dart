@@ -11,13 +11,13 @@ class SloWindowsBasedSli {
   /// appear in the window. One of `goodBadMetricFilter`,
   /// `goodTotalRatioThreshold`, `metricMeanInRange`,
   /// `metricSumInRange` must be set for `windowsBasedSli`.
-  final pulumi.Input<String>? goodBadMetricFilter;
+  final pulumi.Input<String?>? goodBadMetricFilter;
   /// Criterion that describes a window as good if its performance is
   /// high enough. One of `goodBadMetricFilter`,
   /// `goodTotalRatioThreshold`, `metricMeanInRange`,
   /// `metricSumInRange` must be set for `windowsBasedSli`.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThreshold>? goodTotalRatioThreshold;
+  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThreshold?>? goodTotalRatioThreshold;
   /// Criterion that describes a window as good if the metric's value
   /// is in a good range, *averaged* across returned streams.
   /// One of `goodBadMetricFilter`,
@@ -26,7 +26,7 @@ class SloWindowsBasedSli {
   /// Average value X of `timeSeries` should satisfy
   /// `range.min &lt;= X &lt;= range.max` for a good window.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliMetricMeanInRange>? metricMeanInRange;
+  final pulumi.Input<SloWindowsBasedSliMetricMeanInRange?>? metricMeanInRange;
   /// Criterion that describes a window as good if the metric's value
   /// is in a good range, *summed* across returned streams.
   /// Summed value `X` of `timeSeries` should satisfy
@@ -35,11 +35,11 @@ class SloWindowsBasedSli {
   /// `goodTotalRatioThreshold`, `metricMeanInRange`,
   /// `metricSumInRange` must be set for `windowsBasedSli`.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliMetricSumInRange>? metricSumInRange;
+  final pulumi.Input<SloWindowsBasedSliMetricSumInRange?>? metricSumInRange;
   /// Duration over which window quality is evaluated, given as a
   /// duration string "{X}s" representing X seconds. Must be an
   /// integer fraction of a day and at least 60s.
-  final pulumi.Input<String>? windowPeriod;
+  final pulumi.Input<String?>? windowPeriod;
 
   /// Creates a new [SloWindowsBasedSli].
   /// [goodBadMetricFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)

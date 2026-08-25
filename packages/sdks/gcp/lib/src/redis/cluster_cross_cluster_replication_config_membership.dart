@@ -6,9 +6,9 @@ import 'cluster_cross_cluster_replication_config_membership_secondary_cluster.da
 
 class ClusterCrossClusterReplicationConfigMembership {
   /// Details of the primary cluster that is used as the replication source for all the secondary clusters.
-  final pulumi.Input<List<ClusterCrossClusterReplicationConfigMembershipPrimaryCluster>>? primaryClusters;
+  final pulumi.Input<List<ClusterCrossClusterReplicationConfigMembershipPrimaryCluster>?>? primaryClusters;
   /// List of secondary clusters that are replicating from the primary cluster.
-  final pulumi.Input<List<ClusterCrossClusterReplicationConfigMembershipSecondaryCluster>>? secondaryClusters;
+  final pulumi.Input<List<ClusterCrossClusterReplicationConfigMembershipSecondaryCluster>?>? secondaryClusters;
 
   /// Creates a new [ClusterCrossClusterReplicationConfigMembership].
   /// [primaryClusters] Details of the primary cluster that is used as the replication source for all the secondary clusters.

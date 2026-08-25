@@ -13,7 +13,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
   final pulumi.Input<String> operator;
   /// Value to compare against. [Mandatory, except for EXISTS tests.]
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue>? value;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue?>? value;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition].
   /// [field] Field within the record this condition is evaluated against.

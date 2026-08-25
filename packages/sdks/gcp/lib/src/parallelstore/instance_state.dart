@@ -6,28 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceState {
   /// Output only. List of access_points.
   /// Contains a list of IPv4 addresses used for client side configuration.
-  final pulumi.Input<List<String>>? accessPoints;
+  final pulumi.Input<List<String>?>? accessPoints;
   /// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
-  final pulumi.Input<String>? capacityGib;
+  final pulumi.Input<String?>? capacityGib;
   /// The time when the instance was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The version of DAOS software running in the instance.
-  final pulumi.Input<String>? daosVersion;
+  final pulumi.Input<String?>? daosVersion;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Parallelstore Instance deployment type.
   /// Possible values:
   /// DEPLOYMENT_TYPE_UNSPECIFIED
   /// SCRATCH
   /// PERSISTENT
-  final pulumi.Input<String>? deploymentType;
+  final pulumi.Input<String?>? deploymentType;
   /// The description of the instance. 2048 characters or less.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Stripe level for directories.
   /// MIN when directory has a small number of files.
   /// MAX when directory has a large number of files.
@@ -36,14 +36,14 @@ class InstanceState {
   /// DIRECTORY_STRIPE_LEVEL_MIN
   /// DIRECTORY_STRIPE_LEVEL_BALANCED
   /// DIRECTORY_STRIPE_LEVEL_MAX
-  final pulumi.Input<String>? directoryStripeLevel;
+  final pulumi.Input<String?>? directoryStripeLevel;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Immutable. Contains the id of the allocated IP address
   /// range associated with the private service access connection for example, \"test-default\"
   /// associated with IP range 10.0.0.0/29. This field is populated by the service
   /// and contains the value currently used by the service.
-  final pulumi.Input<String>? effectiveReservedIpRange;
+  final pulumi.Input<String?>? effectiveReservedIpRange;
   /// Stripe level for files.
   /// MIN better suited for small size files.
   /// MAX higher throughput performance for larger files.
@@ -52,14 +52,14 @@ class InstanceState {
   /// FILE_STRIPE_LEVEL_MIN
   /// FILE_STRIPE_LEVEL_BALANCED
   /// FILE_STRIPE_LEVEL_MAX
-  final pulumi.Input<String>? fileStripeLevel;
+  final pulumi.Input<String?>? fileStripeLevel;
   /// The logical name of the Parallelstore instance in the user project with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the customer project/ location
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Cloud Labels are a flexible and lightweight mechanism for
   /// organizing cloud resources into groups that reflect a customer's organizational
   /// needs and deployment strategies. Cloud Labels can be used to filter collections
@@ -81,26 +81,26 @@ class InstanceState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Part of `parent`. See documentation of `projectsId`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the instance, in the format
   /// `projects/{project}/locations/{location}/instances/{instance_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
   /// to which the instance is connected.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Immutable. Contains the id of the allocated IP address range
   /// associated with the private service access connection for example, \"test-default\"
   /// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
   /// be considered.
-  final pulumi.Input<String>? reservedIpRange;
+  final pulumi.Input<String?>? reservedIpRange;
   /// The instance state.
   /// Possible values:
   /// STATE_UNSPECIFIED
@@ -109,9 +109,9 @@ class InstanceState {
   /// DELETING
   /// FAILED
   /// UPGRADING
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The time when the instance was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [InstanceState].
   /// [accessPoints] Output only. List of access_points.

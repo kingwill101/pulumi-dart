@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entity_type_args.dart';
+import 'entity_type_entity.dart';
 import 'entity_type_state.dart';
 
 /// Represents an entity type. Entity types serve as a tool for extracting parameter values from natural language queries.
@@ -313,7 +314,7 @@ class EntityType extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableFuzzyExtraction;
   /// The collection of entity entries associated with the entity type.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> entities;
+  late final pulumi.Output<List<EntityTypeEntity>?> entities;
   /// Indicates the kind of entity type.
   /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
   /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
@@ -340,12 +341,12 @@ class EntityType extends pulumi.CustomResource {
           'gcp:diagflow/entityType:EntityType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
-    entities = registerOutput<List<Map<String, dynamic>>?>('entities');
+    entities = registerOutput<List<EntityTypeEntity>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityTypeEntity>(guardedValue, (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -356,11 +357,12 @@ class EntityType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntityTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EntityType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -377,7 +379,25 @@ class EntityType extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
-    entities = registerOutput<List<Map<String, dynamic>>?>('entities');
+    entities = registerOutput<List<EntityTypeEntity>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityTypeEntity>(guardedValue, (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [EntityType] resource.
+  EntityType.reference(String urn)
+    : super(
+        'gcp:diagflow/entityType:EntityType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
+    entities = registerOutput<List<EntityTypeEntity>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityTypeEntity>(guardedValue, (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

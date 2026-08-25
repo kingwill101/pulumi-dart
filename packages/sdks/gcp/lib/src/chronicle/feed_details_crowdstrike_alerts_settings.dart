@@ -13,7 +13,7 @@ class FeedDetailsCrowdstrikeAlertsSettings {
   /// Possible values:
   /// BRING_ALL_ALERTS
   /// BRING_ONLY_NEW_ALERTS
-  final pulumi.Input<String>? ingestionType;
+  final pulumi.Input<String?>? ingestionType;
 
   /// Creates a new [FeedDetailsCrowdstrikeAlertsSettings].
   /// [authentication] OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.

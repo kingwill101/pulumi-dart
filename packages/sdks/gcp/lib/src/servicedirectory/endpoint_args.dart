@@ -8,14 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicedirectory_endpoint_endpoint_args_doc}
 class EndpointArgs {
   /// IPv4 or IPv6 address of the endpoint.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   final pulumi.Input<String> endpointId;
@@ -23,12 +23,12 @@ class EndpointArgs {
   /// by service clients. The entire metadata dictionary may contain
   /// up to 512 characters, spread across all key-value pairs.
   /// Metadata that goes beyond any these limits will be rejected.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Port that the endpoint is running on, must be in the
   /// range of [0, 65535]. If unspecified, the default is 0.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The resource name of the service that this endpoint provides.
   final pulumi.Input<String> service;
 
@@ -69,7 +69,7 @@ class EndpointArgs {
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }

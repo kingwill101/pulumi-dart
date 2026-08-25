@@ -6,7 +6,7 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression {
   /// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition>? condition;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition?>? condition;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression].
   /// [condition] A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.

@@ -10,7 +10,7 @@ import 'dns_managed_zone_iam_binding_condition.dart';
 class DnsManagedZoneIamBindingArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<DnsManagedZoneIamBindingCondition>? condition;
+  final pulumi.Input<DnsManagedZoneIamBindingCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> managedZone;
   /// Identities that will be granted the privilege in `role`.
@@ -28,7 +28,7 @@ class DnsManagedZoneIamBindingArgs {
   final pulumi.Input<List<String>> members;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.dns.DnsManagedZoneIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

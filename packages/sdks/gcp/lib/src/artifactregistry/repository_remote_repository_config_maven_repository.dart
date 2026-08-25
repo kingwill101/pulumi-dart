@@ -6,10 +6,10 @@ import 'repository_remote_repository_config_maven_repository_custom_repository.d
 class RepositoryRemoteRepositoryConfigMavenRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository>? customRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository?>? customRepository;
   /// Address of the remote repository.
   /// Possible values are: `MAVEN_CENTRAL`.
-  final pulumi.Input<String>? publicRepository;
+  final pulumi.Input<String?>? publicRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigMavenRepository].
   /// [customRepository] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.

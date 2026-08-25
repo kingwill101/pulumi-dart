@@ -15,26 +15,26 @@ class RepositoryArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the repository, which cannot exceed 500 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Initial configurations for the repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryInitialConfig>? initialConfig;
+  final pulumi.Input<RepositoryInitialConfig?>? initialConfig;
   /// The name of the instance in which the repository is hosted.
   final pulumi.Input<String> instance;
   /// The location for the Repository.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID for the Repository.
   final pulumi.Input<String> repositoryId;
   /// Provides configuration for scanning.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryScanConfig>? scanConfig;
+  final pulumi.Input<RepositoryScanConfig?>? scanConfig;
   /// Repository level service account.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [RepositoryArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.

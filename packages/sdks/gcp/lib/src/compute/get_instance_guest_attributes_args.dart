@@ -12,18 +12,18 @@ class GetInstanceGuestAttributesArgs {
   /// The ID of the project in which the resource belongs.
   /// If `selfLink` is provided, this value is ignored.  If neither `selfLink`
   /// nor `project` are provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Path to query for the guest attributes. Consists of
   /// `namespace` name for the attributes followed with a `/`.
-  final pulumi.Input<String>? queryPath;
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? queryPath;
+  final pulumi.Input<String?>? region;
   /// Key of a variable to get the value of. Consists of
   /// `namespace` name and `key` name for the variable separated by a `/`.
-  final pulumi.Input<String>? variableKey;
+  final pulumi.Input<String?>? variableKey;
   /// The zone of the instance. If `selfLink` is provided, this
   /// value is ignored.  If neither `selfLink` nor `zone` are provided, the
   /// provider zone is used.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetInstanceGuestAttributesArgs].
   /// [name] The name or selfLink of the instance.

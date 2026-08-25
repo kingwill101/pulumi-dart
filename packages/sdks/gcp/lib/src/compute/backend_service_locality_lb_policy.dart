@@ -8,10 +8,10 @@ class BackendServiceLocalityLbPolicy {
   /// The configuration for a custom policy implemented by the user and
   /// deployed with the client.
   /// Structure is documented below.
-  final pulumi.Input<BackendServiceLocalityLbPolicyCustomPolicy>? customPolicy;
+  final pulumi.Input<BackendServiceLocalityLbPolicyCustomPolicy?>? customPolicy;
   /// The configuration for a built-in load balancing policy.
   /// Structure is documented below.
-  final pulumi.Input<BackendServiceLocalityLbPolicyPolicy>? policy;
+  final pulumi.Input<BackendServiceLocalityLbPolicyPolicy?>? policy;
 
   /// Creates a new [BackendServiceLocalityLbPolicy].
   /// [customPolicy] The configuration for a custom policy implemented by the user and

@@ -12,9 +12,9 @@ class GetRouterNatArgs {
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region where the router and NAT reside.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the Cloud Router in which this NAT will be configured.
   ///
   /// - - -

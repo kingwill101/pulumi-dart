@@ -9,11 +9,11 @@ class ClusterOrchestratorSlurm {
   /// Default partition to use for submitted jobs that do not explicitly specify
   /// a partition. Required if and only if there is more than one partition, in
   /// which case it must match the id of one of the partitions.
-  final pulumi.Input<String>? defaultPartition;
+  final pulumi.Input<String?>? defaultPartition;
   /// Slurm [epilog scripts](https://slurm.schedmd.com/prolog_epilog.html), which
   /// will be executed by compute nodes whenever a node finishes running a job.
   /// Values must not be empty.
-  final pulumi.Input<List<String>>? epilogBashScripts;
+  final pulumi.Input<List<String>?>? epilogBashScripts;
   /// Configuration for Slurm [login
   /// nodes](https://slurm.schedmd.com/quickstart_admin.html#login) in the cluster.
   /// Login nodes are Compute Engine VM instances that allow users to access the
@@ -32,7 +32,7 @@ class ClusterOrchestratorSlurm {
   /// Slurm [prolog scripts](https://slurm.schedmd.com/prolog_epilog.html), which
   /// will be executed by compute nodes before a node begins running a new job.
   /// Values must not be empty.
-  final pulumi.Input<List<String>>? prologBashScripts;
+  final pulumi.Input<List<String>?>? prologBashScripts;
 
   /// Creates a new [ClusterOrchestratorSlurm].
   /// [defaultPartition] Default partition to use for submitted jobs that do not explicitly specify

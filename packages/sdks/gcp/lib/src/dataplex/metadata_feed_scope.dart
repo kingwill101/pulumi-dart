@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetadataFeedScope {
   /// The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
-  final pulumi.Input<List<String>>? entryGroups;
+  final pulumi.Input<List<String>?>? entryGroups;
   /// Whether the metadata feed is at the organization-level.
   /// If true, all changes happened to the entries in the same organization as the feed are published.
   /// If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false.
-  final pulumi.Input<bool>? organizationLevel;
+  final pulumi.Input<bool?>? organizationLevel;
   /// The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}.
-  final pulumi.Input<List<String>>? projects;
+  final pulumi.Input<List<String>?>? projects;
 
   /// Creates a new [MetadataFeedScope].
   /// [entryGroups] The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.

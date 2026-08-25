@@ -357,10 +357,10 @@ class Topic extends pulumi.CustomResource {
           'gcp:managedkafka/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cluster = registerOutput<String>('cluster');
-    configs = registerOutput<Map<String, String>?>('configs');
+    configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -375,11 +375,12 @@ class Topic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Topic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -394,7 +395,27 @@ class Topic extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cluster = registerOutput<String>('cluster');
-    configs = registerOutput<Map<String, String>?>('configs');
+    configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    partitionCount = registerOutput<int?>('partitionCount');
+    project = registerOutput<String>('project');
+    replicationFactor = registerOutput<int>('replicationFactor');
+    topicId = registerOutput<String>('topicId');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'gcp:managedkafka/topic:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cluster = registerOutput<String>('cluster');
+    configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -6,11 +6,11 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_canary_deploymen
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis {
   /// Optional. Custom analysis checks from 3P metric providers.
-  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck>>? customChecks;
+  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheck>?>? customChecks;
   /// Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
   final pulumi.Input<String> duration;
   /// Optional. Google Cloud - based analysis checks.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud>? googleCloud;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloud?>? googleCloud;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis].
   /// [customChecks] Optional. Custom analysis checks from 3P metric providers.

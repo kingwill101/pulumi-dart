@@ -3,6 +3,7 @@ import 'secret_args.dart';
 import 'secret_replication.dart';
 import 'secret_rotation.dart';
 import 'secret_state.dart';
+import 'secret_topic.dart';
 
 /// A Secret is a logical secret whose value and versions can be accessed.
 ///
@@ -882,7 +883,7 @@ class Secret extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> topics;
+  late final pulumi.Output<List<SecretTopic>?> topics;
   /// The TTL for the Secret.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   /// Only one of `ttl` or `expireTime` can be provided.
@@ -914,26 +915,27 @@ class Secret extends pulumi.CustomResource {
           'gcp:secretmanager/secret:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     replication = registerOutput<SecretReplication>('replication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rotation = registerOutput<SecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<SecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretTopic>(guardedValue, (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');
-    versionAliases = registerOutput<Map<String, String>?>('versionAliases');
+    versionAliases = registerOutput<Map<String, String>?>('versionAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionDestroyTtl = registerOutput<String?>('versionDestroyTtl');
   }
 
@@ -942,11 +944,12 @@ class Secret extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Secret._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -960,24 +963,55 @@ class Secret extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     replication = registerOutput<SecretReplication>('replication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rotation = registerOutput<SecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<SecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretTopic>(guardedValue, (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');
-    versionAliases = registerOutput<Map<String, String>?>('versionAliases');
+    versionAliases = registerOutput<Map<String, String>?>('versionAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionDestroyTtl = registerOutput<String?>('versionDestroyTtl');
+  }
+
+  /// Creates a typed reference to an existing [Secret] resource.
+  Secret.reference(String urn)
+    : super(
+        'gcp:secretmanager/secret:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    expireTime = registerOutput<String>('expireTime');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replication = registerOutput<SecretReplication>('replication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rotation = registerOutput<SecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretId = registerOutput<String>('secretId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<SecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretTopic>(guardedValue, (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
+    ttl = registerOutput<String?>('ttl');
+    versionAliases = registerOutput<Map<String, String>?>('versionAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionDestroyTtl = registerOutput<String?>('versionDestroyTtl');
   }
 }

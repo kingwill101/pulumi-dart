@@ -6,11 +6,11 @@ import 'data_connector_destination_config_destination.dart';
 class DataConnectorDestinationConfig {
   /// The list of destinations for this configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<DataConnectorDestinationConfigDestination>>? destinations;
+  final pulumi.Input<List<DataConnectorDestinationConfigDestination>?>? destinations;
   /// The key of the destination configuration, for example `url`.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Additional parameters for this destination config in structured json format.
-  final pulumi.Input<String>? params;
+  final pulumi.Input<String?>? params;
 
   /// Creates a new [DataConnectorDestinationConfig].
   /// [destinations] The list of destinations for this configuration.

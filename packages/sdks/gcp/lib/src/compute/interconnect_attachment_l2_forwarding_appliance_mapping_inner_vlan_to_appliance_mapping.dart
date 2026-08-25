@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping {
   /// The inner appliance IP address.
-  final pulumi.Input<String>? innerApplianceIpAddress;
+  final pulumi.Input<String?>? innerApplianceIpAddress;
   /// List of inner VLAN tags.
-  final pulumi.Input<List<String>>? innerVlanTags;
+  final pulumi.Input<List<String>?>? innerVlanTags;
 
   /// Creates a new [InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping].
   /// [innerApplianceIpAddress] The inner appliance IP address.

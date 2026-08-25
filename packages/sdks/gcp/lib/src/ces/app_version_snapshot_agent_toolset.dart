@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotAgentToolset {
   /// (Output)
   /// The tools IDs to filter the toolset.
-  final pulumi.Input<List<String>>? toolIds;
+  final pulumi.Input<List<String>?>? toolIds;
   /// (Output)
   /// The resource name of the Toolset from which this tool is derived.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? toolset;
+  final pulumi.Input<String?>? toolset;
 
   /// Creates a new [AppVersionSnapshotAgentToolset].
   /// [toolIds] (Output)

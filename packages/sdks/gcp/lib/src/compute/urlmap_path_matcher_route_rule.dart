@@ -12,30 +12,30 @@ import 'urlmap_path_matcher_route_rule_url_redirect.dart';
 class URLMapPathMatcherRouteRule {
   /// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleCustomErrorResponsePolicy>? customErrorResponsePolicy;
+  final pulumi.Input<URLMapPathMatcherRouteRuleCustomErrorResponsePolicy?>? customErrorResponsePolicy;
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService. The headerAction specified here are applied before
   /// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
   /// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleHeaderAction>? headerAction;
+  final pulumi.Input<URLMapPathMatcherRouteRuleHeaderAction?>? headerAction;
   /// (Optional, Beta)
   /// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
   /// httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// See ForwardingRule for more details.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherRouteRuleHttpFilterConfig>>? httpFilterConfigs;
+  final pulumi.Input<List<URLMapPathMatcherRouteRuleHttpFilterConfig>?>? httpFilterConfigs;
   /// (Optional, Beta)
   /// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
   /// httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// See ForwardingRule for more details.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherRouteRuleHttpFilterMetadata>>? httpFilterMetadatas;
+  final pulumi.Input<List<URLMapPathMatcherRouteRuleHttpFilterMetadata>?>? httpFilterMetadatas;
   /// The rules for determining a match.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherRouteRuleMatchRule>>? matchRules;
+  final pulumi.Input<List<URLMapPathMatcherRouteRuleMatchRule>?>? matchRules;
   /// For routeRules within a given pathMatcher, priority determines the order
   /// in which load balancer will interpret routeRules. RouteRules are evaluated
   /// in order of priority, from the lowest to highest number. The priority of
@@ -57,7 +57,7 @@ class URLMapPathMatcherRouteRule {
   /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
   /// or urlRedirect must be set.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteAction>? routeAction;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteAction?>? routeAction;
   /// The backend service resource to which traffic is
   /// directed if this rule is matched. If routeAction is additionally specified,
   /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
@@ -65,12 +65,12 @@ class URLMapPathMatcherRouteRule {
   /// contain any weightedBackendService s. Conversely, if routeAction specifies any
   /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
   /// service or routeAction.weightedBackendService must be set.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// When this rule is matched, the request is redirected to a URL specified by
   /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
   /// set.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleUrlRedirect>? urlRedirect;
+  final pulumi.Input<URLMapPathMatcherRouteRuleUrlRedirect?>? urlRedirect;
 
   /// Creates a new [URLMapPathMatcherRouteRule].
   /// [customErrorResponsePolicy] customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
@@ -115,7 +115,7 @@ class URLMapPathMatcherRouteRule {
       httpFilterConfigs: (() { final guardedValue = map['httpFilterConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterConfig>(guardedValue, (value) => URLMapPathMatcherRouteRuleHttpFilterConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       httpFilterMetadatas: (() { final guardedValue = map['httpFilterMetadatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterMetadata>(guardedValue, (value) => URLMapPathMatcherRouteRuleHttpFilterMetadata.fromMap((value as Map).cast<String, dynamic>()))); })(),
       matchRules: (() { final guardedValue = map['matchRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<URLMapPathMatcherRouteRuleMatchRule>(guardedValue, (value) => URLMapPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       routeAction: (() { final guardedValue = map['routeAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherRouteRuleRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       urlRedirect: (() { final guardedValue = map['urlRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherRouteRuleUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

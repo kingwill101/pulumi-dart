@@ -7,9 +7,9 @@ class CloudControlRule {
   /// A [CEL
   /// expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
   /// Structure is documented below.
-  final pulumi.Input<CloudControlRuleCelExpression>? celExpression;
+  final pulumi.Input<CloudControlRuleCelExpression?>? celExpression;
   /// Description of the Rule. The maximum length is 2000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The functionality enabled by the Rule.
   final pulumi.Input<List<String>> ruleActionTypes;
 

@@ -10,17 +10,17 @@ class ContactState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The email address to send notifications to. This does not need to be a Google account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
-  final pulumi.Input<String>? languageTag;
+  final pulumi.Input<String?>? languageTag;
   /// The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The categories of notifications that the contact will receive communications for.
-  final pulumi.Input<List<String>>? notificationCategorySubscriptions;
+  final pulumi.Input<List<String>?>? notificationCategorySubscriptions;
   /// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [ContactState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

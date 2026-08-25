@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareNodePoolConfigTaint {
   /// Available taint effects.
   /// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// Key associated with the effect.
   final pulumi.Input<String> key;
   /// Value associated with the effect.

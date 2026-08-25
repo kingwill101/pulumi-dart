@@ -15,16 +15,16 @@ class BackendBucketSignedUrlKeyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// 128-bit key value used for signing the URL. The key value must be a
   /// valid RFC 4648 Section 5 base64url encoded string.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> keyValue;
   /// Name of the signed URL key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [BackendBucketSignedUrlKeyArgs].
   /// [backendBucket] The backend bucket this signed URL key belongs.

@@ -10,25 +10,25 @@ import 'management_organization_security_health_analytics_custom_module_custom_c
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  final pulumi.Input<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig;
+  final pulumi.Input<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>? customConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? enablementState;
+  final pulumi.Input<String?>? enablementState;
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Numerical ID of the parent organization.
   final pulumi.Input<String> organization;
 

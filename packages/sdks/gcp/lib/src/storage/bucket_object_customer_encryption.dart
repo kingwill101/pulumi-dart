@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketObjectCustomerEncryption {
   /// Encryption algorithm. Default: AES256
-  final pulumi.Input<String>? encryptionAlgorithm;
+  final pulumi.Input<String?>? encryptionAlgorithm;
   /// Base64 encoded Customer-Supplied Encryption Key.
   final pulumi.Input<String> encryptionKey;
 

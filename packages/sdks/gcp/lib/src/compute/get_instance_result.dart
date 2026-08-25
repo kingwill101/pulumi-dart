@@ -19,104 +19,104 @@ import 'get_instance_workload_identity_config.dart';
 
 /// Result data returned by getInstance.
 class GetInstanceResult {
-  final List<GetInstanceAdvancedMachineFeature> advancedMachineFeatures;
-  final bool allowStoppingForUpdate;
+  final List<GetInstanceAdvancedMachineFeature>? advancedMachineFeatures;
+  final bool? allowStoppingForUpdate;
   /// List of disks attached to the instance. Structure is documented below.
-  final List<GetInstanceAttachedDisk> attachedDisks;
+  final List<GetInstanceAttachedDisk>? attachedDisks;
   /// The boot disk for the instance. Structure is documented below.
-  final List<GetInstanceBootDisk> bootDisks;
+  final List<GetInstanceBootDisk>? bootDisks;
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-  final bool canIpForward;
-  final List<GetInstanceConfidentialInstanceConfig> confidentialInstanceConfigs;
+  final bool? canIpForward;
+  final List<GetInstanceConfidentialInstanceConfig>? confidentialInstanceConfigs;
   /// The CPU platform used by this instance.
-  final String cpuPlatform;
+  final String? cpuPlatform;
   /// Creation timestamp in RFC3339 text format.
-  final String creationTimestamp;
+  final String? creationTimestamp;
   /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
-  final String currentStatus;
-  final String deletionPolicy;
+  final String? currentStatus;
+  final String? deletionPolicy;
   /// Whether deletion protection is enabled on this instance.
-  final bool deletionProtection;
+  final bool? deletionProtection;
   /// A brief description of the resource.
-  final String description;
-  final String desiredStatus;
-  final Map<String, String> effectiveLabels;
+  final String? description;
+  final String? desiredStatus;
+  final Map<String, String>? effectiveLabels;
   /// Whether the instance has virtual displays enabled.
-  final bool enableDisplay;
-  final bool eraseWindowsVssSignature;
+  final bool? enableDisplay;
+  final bool? eraseWindowsVssSignature;
   /// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
-  final List<GetInstanceGuestAccelerator> guestAccelerators;
-  final String hostname;
+  final List<GetInstanceGuestAccelerator>? guestAccelerators;
+  final String? hostname;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetInstanceInstanceEncryptionKey> instanceEncryptionKeys;
+  final String? id;
+  final List<GetInstanceInstanceEncryptionKey>? instanceEncryptionKeys;
   /// The server-assigned unique identifier of this instance.
-  final String instanceId;
+  final String? instanceId;
   /// Action to be taken when a customer's encryption key is revoked.
-  final String keyRevocationActionType;
+  final String? keyRevocationActionType;
   /// The unique fingerprint of the labels.
-  final String labelFingerprint;
+  final String? labelFingerprint;
   /// A set of key/value label pairs assigned to the disk.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The machine type to create.
-  final String machineType;
+  final String? machineType;
   /// Metadata key/value pairs made available within the instance.
-  final Map<String, String> metadata;
+  final Map<String, String>? metadata;
   /// The unique fingerprint of the metadata.
-  final String metadataFingerprint;
-  final String metadataStartupScript;
+  final String? metadataFingerprint;
+  final String? metadataStartupScript;
   /// The minimum CPU platform specified for the VM instance. Set to "AUTOMATIC" to remove a previously-set value.
-  final String minCpuPlatform;
+  final String? minCpuPlatform;
   final String? name;
   /// The networks attached to the instance. Structure is documented below.
-  final List<GetInstanceNetworkInterface> networkInterfaces;
+  final List<GetInstanceNetworkInterface>? networkInterfaces;
   /// The network performance configuration setting for the instance, if set. Structure is documented below.
-  final List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
-  final List<GetInstanceParam> params;
-  final Map<String, String> partnerMetadata;
+  final List<GetInstanceNetworkPerformanceConfig>? networkPerformanceConfigs;
+  final List<GetInstanceParam>? params;
+  final Map<String, String>? partnerMetadata;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final List<GetInstanceReservationAffinity> reservationAffinities;
+  final Map<String, String>? pulumiLabels;
+  final List<GetInstanceReservationAffinity>? reservationAffinities;
   /// A list of selfLinks to resource policies attached to the selected `bootDisk`
-  final List<String> resourcePolicies;
+  final List<String>? resourcePolicies;
   /// The scheduling strategy being used by the instance. Structure is documented below
-  final List<GetInstanceScheduling> schedulings;
+  final List<GetInstanceScheduling>? schedulings;
   /// The scratch disks attached to the instance. Structure is documented below.
-  final List<GetInstanceScratchDisk> scratchDisks;
+  final List<GetInstanceScratchDisk>? scratchDisks;
   /// The URI of the created resource.
   final String? selfLink;
   /// The service account to attach to the instance. Structure is documented below.
-  final List<GetInstanceServiceAccount> serviceAccounts;
+  final List<GetInstanceServiceAccount>? serviceAccounts;
   /// The shielded vm config being used by the instance. Structure is documented below.
-  final List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs;
+  final List<GetInstanceShieldedInstanceConfig>? shieldedInstanceConfigs;
   /// The list of tags attached to the instance.
-  final List<String> tags;
+  final List<String>? tags;
   /// The unique fingerprint of the tags.
-  final String tagsFingerprint;
-  final List<GetInstanceWorkloadIdentityConfig> workloadIdentityConfigs;
+  final String? tagsFingerprint;
+  final List<GetInstanceWorkloadIdentityConfig>? workloadIdentityConfigs;
   final String? zone;
 
   /// Creates a new [GetInstanceResult].
-  /// [advancedMachineFeatures] Required.
-  /// [allowStoppingForUpdate] Required.
+  /// [advancedMachineFeatures] Optional.
+  /// [allowStoppingForUpdate] Optional.
   /// [attachedDisks] List of disks attached to the instance. Structure is documented below.
   /// [bootDisks] The boot disk for the instance. Structure is documented below.
   /// [canIpForward] Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-  /// [confidentialInstanceConfigs] Required.
+  /// [confidentialInstanceConfigs] Optional.
   /// [cpuPlatform] The CPU platform used by this instance.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [currentStatus] The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
-  /// [deletionPolicy] Required.
+  /// [deletionPolicy] Optional.
   /// [deletionProtection] Whether deletion protection is enabled on this instance.
   /// [description] A brief description of the resource.
-  /// [desiredStatus] Required.
-  /// [effectiveLabels] Required.
+  /// [desiredStatus] Optional.
+  /// [effectiveLabels] Optional.
   /// [enableDisplay] Whether the instance has virtual displays enabled.
-  /// [eraseWindowsVssSignature] Required.
+  /// [eraseWindowsVssSignature] Optional.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance. Structure is documented below.
-  /// [hostname] Required.
+  /// [hostname] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instanceEncryptionKeys] Required.
+  /// [instanceEncryptionKeys] Optional.
   /// [instanceId] The server-assigned unique identifier of this instance.
   /// [keyRevocationActionType] Action to be taken when a customer's encryption key is revoked.
   /// [labelFingerprint] The unique fingerprint of the labels.
@@ -124,16 +124,16 @@ class GetInstanceResult {
   /// [machineType] The machine type to create.
   /// [metadata] Metadata key/value pairs made available within the instance.
   /// [metadataFingerprint] The unique fingerprint of the metadata.
-  /// [metadataStartupScript] Required.
+  /// [metadataStartupScript] Optional.
   /// [minCpuPlatform] The minimum CPU platform specified for the VM instance. Set to "AUTOMATIC" to remove a previously-set value.
   /// [name] Optional.
   /// [networkInterfaces] The networks attached to the instance. Structure is documented below.
   /// [networkPerformanceConfigs] The network performance configuration setting for the instance, if set. Structure is documented below.
-  /// [params] Required.
-  /// [partnerMetadata] Required.
+  /// [params] Optional.
+  /// [partnerMetadata] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [reservationAffinities] Required.
+  /// [pulumiLabels] Optional.
+  /// [reservationAffinities] Optional.
   /// [resourcePolicies] A list of selfLinks to resource policies attached to the selected `bootDisk`
   /// [schedulings] The scheduling strategy being used by the instance. Structure is documented below
   /// [scratchDisks] The scratch disks attached to the instance. Structure is documented below.
@@ -142,158 +142,158 @@ class GetInstanceResult {
   /// [shieldedInstanceConfigs] The shielded vm config being used by the instance. Structure is documented below.
   /// [tags] The list of tags attached to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
-  /// [workloadIdentityConfigs] Required.
+  /// [workloadIdentityConfigs] Optional.
   /// [zone] Optional.
   const GetInstanceResult({
-    required this.advancedMachineFeatures,
-    required this.allowStoppingForUpdate,
-    required this.attachedDisks,
-    required this.bootDisks,
-    required this.canIpForward,
-    required this.confidentialInstanceConfigs,
-    required this.cpuPlatform,
-    required this.creationTimestamp,
-    required this.currentStatus,
-    required this.deletionPolicy,
-    required this.deletionProtection,
-    required this.description,
-    required this.desiredStatus,
-    required this.effectiveLabels,
-    required this.enableDisplay,
-    required this.eraseWindowsVssSignature,
-    required this.guestAccelerators,
-    required this.hostname,
-    required this.id,
-    required this.instanceEncryptionKeys,
-    required this.instanceId,
-    required this.keyRevocationActionType,
-    required this.labelFingerprint,
-    required this.labels,
-    required this.machineType,
-    required this.metadata,
-    required this.metadataFingerprint,
-    required this.metadataStartupScript,
-    required this.minCpuPlatform,
+    this.advancedMachineFeatures,
+    this.allowStoppingForUpdate,
+    this.attachedDisks,
+    this.bootDisks,
+    this.canIpForward,
+    this.confidentialInstanceConfigs,
+    this.cpuPlatform,
+    this.creationTimestamp,
+    this.currentStatus,
+    this.deletionPolicy,
+    this.deletionProtection,
+    this.description,
+    this.desiredStatus,
+    this.effectiveLabels,
+    this.enableDisplay,
+    this.eraseWindowsVssSignature,
+    this.guestAccelerators,
+    this.hostname,
+    this.id,
+    this.instanceEncryptionKeys,
+    this.instanceId,
+    this.keyRevocationActionType,
+    this.labelFingerprint,
+    this.labels,
+    this.machineType,
+    this.metadata,
+    this.metadataFingerprint,
+    this.metadataStartupScript,
+    this.minCpuPlatform,
     this.name,
-    required this.networkInterfaces,
-    required this.networkPerformanceConfigs,
-    required this.params,
-    required this.partnerMetadata,
+    this.networkInterfaces,
+    this.networkPerformanceConfigs,
+    this.params,
+    this.partnerMetadata,
     this.project,
-    required this.pulumiLabels,
-    required this.reservationAffinities,
-    required this.resourcePolicies,
-    required this.schedulings,
-    required this.scratchDisks,
+    this.pulumiLabels,
+    this.reservationAffinities,
+    this.resourcePolicies,
+    this.schedulings,
+    this.scratchDisks,
     this.selfLink,
-    required this.serviceAccounts,
-    required this.shieldedInstanceConfigs,
-    required this.tags,
-    required this.tagsFingerprint,
-    required this.workloadIdentityConfigs,
+    this.serviceAccounts,
+    this.shieldedInstanceConfigs,
+    this.tags,
+    this.tagsFingerprint,
+    this.workloadIdentityConfigs,
     this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedMachineFeatures': pulumi.Input.encodeList<GetInstanceAdvancedMachineFeature, Map<String, dynamic>>(advancedMachineFeatures, (value) => value.toMap()),
-      'allowStoppingForUpdate': allowStoppingForUpdate,
-      'attachedDisks': pulumi.Input.encodeList<GetInstanceAttachedDisk, Map<String, dynamic>>(attachedDisks, (value) => value.toMap()),
-      'bootDisks': pulumi.Input.encodeList<GetInstanceBootDisk, Map<String, dynamic>>(bootDisks, (value) => value.toMap()),
-      'canIpForward': canIpForward,
-      'confidentialInstanceConfigs': pulumi.Input.encodeList<GetInstanceConfidentialInstanceConfig, Map<String, dynamic>>(confidentialInstanceConfigs, (value) => value.toMap()),
-      'cpuPlatform': cpuPlatform,
-      'creationTimestamp': creationTimestamp,
-      'currentStatus': currentStatus,
-      'deletionPolicy': deletionPolicy,
-      'deletionProtection': deletionProtection,
-      'description': description,
-      'desiredStatus': desiredStatus,
-      'effectiveLabels': effectiveLabels,
-      'enableDisplay': enableDisplay,
-      'eraseWindowsVssSignature': eraseWindowsVssSignature,
-      'guestAccelerators': pulumi.Input.encodeList<GetInstanceGuestAccelerator, Map<String, dynamic>>(guestAccelerators, (value) => value.toMap()),
-      'hostname': hostname,
-      'id': id,
-      'instanceEncryptionKeys': pulumi.Input.encodeList<GetInstanceInstanceEncryptionKey, Map<String, dynamic>>(instanceEncryptionKeys, (value) => value.toMap()),
-      'instanceId': instanceId,
-      'keyRevocationActionType': keyRevocationActionType,
-      'labelFingerprint': labelFingerprint,
-      'labels': labels,
-      'machineType': machineType,
-      'metadata': metadata,
-      'metadataFingerprint': metadataFingerprint,
-      'metadataStartupScript': metadataStartupScript,
-      'minCpuPlatform': minCpuPlatform,
+      'advancedMachineFeatures': ?(() { final guardedValue = advancedMachineFeatures; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceAdvancedMachineFeature, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'allowStoppingForUpdate': ?allowStoppingForUpdate,
+      'attachedDisks': ?(() { final guardedValue = attachedDisks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceAttachedDisk, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'bootDisks': ?(() { final guardedValue = bootDisks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceBootDisk, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'canIpForward': ?canIpForward,
+      'confidentialInstanceConfigs': ?(() { final guardedValue = confidentialInstanceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceConfidentialInstanceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'cpuPlatform': ?cpuPlatform,
+      'creationTimestamp': ?creationTimestamp,
+      'currentStatus': ?currentStatus,
+      'deletionPolicy': ?deletionPolicy,
+      'deletionProtection': ?deletionProtection,
+      'description': ?description,
+      'desiredStatus': ?desiredStatus,
+      'effectiveLabels': ?effectiveLabels,
+      'enableDisplay': ?enableDisplay,
+      'eraseWindowsVssSignature': ?eraseWindowsVssSignature,
+      'guestAccelerators': ?(() { final guardedValue = guestAccelerators; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceGuestAccelerator, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'hostname': ?hostname,
+      'id': ?id,
+      'instanceEncryptionKeys': ?(() { final guardedValue = instanceEncryptionKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceInstanceEncryptionKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'instanceId': ?instanceId,
+      'keyRevocationActionType': ?keyRevocationActionType,
+      'labelFingerprint': ?labelFingerprint,
+      'labels': ?labels,
+      'machineType': ?machineType,
+      'metadata': ?metadata,
+      'metadataFingerprint': ?metadataFingerprint,
+      'metadataStartupScript': ?metadataStartupScript,
+      'minCpuPlatform': ?minCpuPlatform,
       'name': ?name,
-      'networkInterfaces': pulumi.Input.encodeList<GetInstanceNetworkInterface, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
-      'networkPerformanceConfigs': pulumi.Input.encodeList<GetInstanceNetworkPerformanceConfig, Map<String, dynamic>>(networkPerformanceConfigs, (value) => value.toMap()),
-      'params': pulumi.Input.encodeList<GetInstanceParam, Map<String, dynamic>>(params, (value) => value.toMap()),
-      'partnerMetadata': partnerMetadata,
+      'networkInterfaces': ?(() { final guardedValue = networkInterfaces; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceNetworkInterface, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'networkPerformanceConfigs': ?(() { final guardedValue = networkPerformanceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceNetworkPerformanceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'params': ?(() { final guardedValue = params; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceParam, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'partnerMetadata': ?partnerMetadata,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'reservationAffinities': pulumi.Input.encodeList<GetInstanceReservationAffinity, Map<String, dynamic>>(reservationAffinities, (value) => value.toMap()),
-      'resourcePolicies': resourcePolicies,
-      'schedulings': pulumi.Input.encodeList<GetInstanceScheduling, Map<String, dynamic>>(schedulings, (value) => value.toMap()),
-      'scratchDisks': pulumi.Input.encodeList<GetInstanceScratchDisk, Map<String, dynamic>>(scratchDisks, (value) => value.toMap()),
+      'pulumiLabels': ?pulumiLabels,
+      'reservationAffinities': ?(() { final guardedValue = reservationAffinities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceReservationAffinity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourcePolicies': ?resourcePolicies,
+      'schedulings': ?(() { final guardedValue = schedulings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceScheduling, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'scratchDisks': ?(() { final guardedValue = scratchDisks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceScratchDisk, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'selfLink': ?selfLink,
-      'serviceAccounts': pulumi.Input.encodeList<GetInstanceServiceAccount, Map<String, dynamic>>(serviceAccounts, (value) => value.toMap()),
-      'shieldedInstanceConfigs': pulumi.Input.encodeList<GetInstanceShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfigs, (value) => value.toMap()),
-      'tags': tags,
-      'tagsFingerprint': tagsFingerprint,
-      'workloadIdentityConfigs': pulumi.Input.encodeList<GetInstanceWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfigs, (value) => value.toMap()),
+      'serviceAccounts': ?(() { final guardedValue = serviceAccounts; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceServiceAccount, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'shieldedInstanceConfigs': ?(() { final guardedValue = shieldedInstanceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceShieldedInstanceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'tagsFingerprint': ?tagsFingerprint,
+      'workloadIdentityConfigs': ?(() { final guardedValue = workloadIdentityConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceWorkloadIdentityConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'zone': ?zone,
     };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      advancedMachineFeatures: pulumi.Input.decodeList<GetInstanceAdvancedMachineFeature>(map['advancedMachineFeatures']!, (value) => GetInstanceAdvancedMachineFeature.fromMap((value as Map).cast<String, dynamic>())),
-      allowStoppingForUpdate: map['allowStoppingForUpdate'] as bool,
-      attachedDisks: pulumi.Input.decodeList<GetInstanceAttachedDisk>(map['attachedDisks']!, (value) => GetInstanceAttachedDisk.fromMap((value as Map).cast<String, dynamic>())),
-      bootDisks: pulumi.Input.decodeList<GetInstanceBootDisk>(map['bootDisks']!, (value) => GetInstanceBootDisk.fromMap((value as Map).cast<String, dynamic>())),
-      canIpForward: map['canIpForward'] as bool,
-      confidentialInstanceConfigs: pulumi.Input.decodeList<GetInstanceConfidentialInstanceConfig>(map['confidentialInstanceConfigs']!, (value) => GetInstanceConfidentialInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      cpuPlatform: map['cpuPlatform'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      currentStatus: map['currentStatus'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      description: map['description'] as String,
-      desiredStatus: map['desiredStatus'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      enableDisplay: map['enableDisplay'] as bool,
-      eraseWindowsVssSignature: map['eraseWindowsVssSignature'] as bool,
-      guestAccelerators: pulumi.Input.decodeList<GetInstanceGuestAccelerator>(map['guestAccelerators']!, (value) => GetInstanceGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())),
-      hostname: map['hostname'] as String,
-      id: map['id'] as String,
-      instanceEncryptionKeys: pulumi.Input.decodeList<GetInstanceInstanceEncryptionKey>(map['instanceEncryptionKeys']!, (value) => GetInstanceInstanceEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      instanceId: map['instanceId'] as String,
-      keyRevocationActionType: map['keyRevocationActionType'] as String,
-      labelFingerprint: map['labelFingerprint'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      machineType: map['machineType'] as String,
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      metadataFingerprint: map['metadataFingerprint'] as String,
-      metadataStartupScript: map['metadataStartupScript'] as String,
-      minCpuPlatform: map['minCpuPlatform'] as String,
+      advancedMachineFeatures: (() { final guardedValue = map['advancedMachineFeatures']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceAdvancedMachineFeature>(guardedValue, (value) => GetInstanceAdvancedMachineFeature.fromMap((value as Map).cast<String, dynamic>())); })(),
+      allowStoppingForUpdate: (() { final guardedValue = map['allowStoppingForUpdate']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      attachedDisks: (() { final guardedValue = map['attachedDisks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceAttachedDisk>(guardedValue, (value) => GetInstanceAttachedDisk.fromMap((value as Map).cast<String, dynamic>())); })(),
+      bootDisks: (() { final guardedValue = map['bootDisks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceBootDisk>(guardedValue, (value) => GetInstanceBootDisk.fromMap((value as Map).cast<String, dynamic>())); })(),
+      canIpForward: (() { final guardedValue = map['canIpForward']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      confidentialInstanceConfigs: (() { final guardedValue = map['confidentialInstanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceConfidentialInstanceConfig>(guardedValue, (value) => GetInstanceConfidentialInstanceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      cpuPlatform: (() { final guardedValue = map['cpuPlatform']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentStatus: (() { final guardedValue = map['currentStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      desiredStatus: (() { final guardedValue = map['desiredStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      enableDisplay: (() { final guardedValue = map['enableDisplay']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      eraseWindowsVssSignature: (() { final guardedValue = map['eraseWindowsVssSignature']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      guestAccelerators: (() { final guardedValue = map['guestAccelerators']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceGuestAccelerator>(guardedValue, (value) => GetInstanceGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())); })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceEncryptionKeys: (() { final guardedValue = map['instanceEncryptionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceInstanceEncryptionKey>(guardedValue, (value) => GetInstanceInstanceEncryptionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyRevocationActionType: (() { final guardedValue = map['keyRevocationActionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      metadataFingerprint: (() { final guardedValue = map['metadataFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadataStartupScript: (() { final guardedValue = map['metadataStartupScript']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      networkInterfaces: pulumi.Input.decodeList<GetInstanceNetworkInterface>(map['networkInterfaces']!, (value) => GetInstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
-      networkPerformanceConfigs: pulumi.Input.decodeList<GetInstanceNetworkPerformanceConfig>(map['networkPerformanceConfigs']!, (value) => GetInstanceNetworkPerformanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      params: pulumi.Input.decodeList<GetInstanceParam>(map['params']!, (value) => GetInstanceParam.fromMap((value as Map).cast<String, dynamic>())),
-      partnerMetadata: (map['partnerMetadata'] as Map).cast<String, String>(),
+      networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceNetworkInterface>(guardedValue, (value) => GetInstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); })(),
+      networkPerformanceConfigs: (() { final guardedValue = map['networkPerformanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceNetworkPerformanceConfig>(guardedValue, (value) => GetInstanceNetworkPerformanceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceParam>(guardedValue, (value) => GetInstanceParam.fromMap((value as Map).cast<String, dynamic>())); })(),
+      partnerMetadata: (() { final guardedValue = map['partnerMetadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      reservationAffinities: pulumi.Input.decodeList<GetInstanceReservationAffinity>(map['reservationAffinities']!, (value) => GetInstanceReservationAffinity.fromMap((value as Map).cast<String, dynamic>())),
-      resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
-      schedulings: pulumi.Input.decodeList<GetInstanceScheduling>(map['schedulings']!, (value) => GetInstanceScheduling.fromMap((value as Map).cast<String, dynamic>())),
-      scratchDisks: pulumi.Input.decodeList<GetInstanceScratchDisk>(map['scratchDisks']!, (value) => GetInstanceScratchDisk.fromMap((value as Map).cast<String, dynamic>())),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      reservationAffinities: (() { final guardedValue = map['reservationAffinities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceReservationAffinity>(guardedValue, (value) => GetInstanceReservationAffinity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      schedulings: (() { final guardedValue = map['schedulings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceScheduling>(guardedValue, (value) => GetInstanceScheduling.fromMap((value as Map).cast<String, dynamic>())); })(),
+      scratchDisks: (() { final guardedValue = map['scratchDisks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceScratchDisk>(guardedValue, (value) => GetInstanceScratchDisk.fromMap((value as Map).cast<String, dynamic>())); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      serviceAccounts: pulumi.Input.decodeList<GetInstanceServiceAccount>(map['serviceAccounts']!, (value) => GetInstanceServiceAccount.fromMap((value as Map).cast<String, dynamic>())),
-      shieldedInstanceConfigs: pulumi.Input.decodeList<GetInstanceShieldedInstanceConfig>(map['shieldedInstanceConfigs']!, (value) => GetInstanceShieldedInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as List).cast<String>(),
-      tagsFingerprint: map['tagsFingerprint'] as String,
-      workloadIdentityConfigs: pulumi.Input.decodeList<GetInstanceWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetInstanceWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())),
+      serviceAccounts: (() { final guardedValue = map['serviceAccounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceServiceAccount>(guardedValue, (value) => GetInstanceServiceAccount.fromMap((value as Map).cast<String, dynamic>())); })(),
+      shieldedInstanceConfigs: (() { final guardedValue = map['shieldedInstanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceShieldedInstanceConfig>(guardedValue, (value) => GetInstanceShieldedInstanceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tagsFingerprint: (() { final guardedValue = map['tagsFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workloadIdentityConfigs: (() { final guardedValue = map['workloadIdentityConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceWorkloadIdentityConfig>(guardedValue, (value) => GetInstanceWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

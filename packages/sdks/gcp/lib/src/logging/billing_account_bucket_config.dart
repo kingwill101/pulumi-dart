@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_account_bucket_config_args.dart';
 import 'billing_account_bucket_config_cmek_settings.dart';
+import 'billing_account_bucket_config_index_config.dart';
 import 'billing_account_bucket_config_state.dart';
 
 /// Manages a billing account level logging bucket config. For more information see
@@ -352,7 +353,7 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
   /// Describes this bucket.
   late final pulumi.Output<String> description;
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> indexConfigs;
+  late final pulumi.Output<List<BillingAccountBucketConfigIndexConfig>> indexConfigs;
   /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
   late final pulumi.Output<String> lifecycleState;
   /// The location of the bucket.
@@ -374,14 +375,14 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
           'gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<BillingAccountBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    indexConfigs = registerOutput<List<BillingAccountBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(guardedValue, (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -393,11 +394,12 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BillingAccountBucketConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BillingAccountBucketConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -416,7 +418,28 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
     cmekSettings = registerOutput<BillingAccountBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    indexConfigs = registerOutput<List<BillingAccountBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(guardedValue, (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    retentionDays = registerOutput<int?>('retentionDays');
+  }
+
+  /// Creates a typed reference to an existing [BillingAccountBucketConfig] resource.
+  BillingAccountBucketConfig.reference(String urn)
+    : super(
+        'gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    billingAccount = registerOutput<String>('billingAccount');
+    bucketId = registerOutput<String>('bucketId');
+    cmekSettings = registerOutput<BillingAccountBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    indexConfigs = registerOutput<List<BillingAccountBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingAccountBucketConfigIndexConfig>(guardedValue, (value) => BillingAccountBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

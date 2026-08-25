@@ -37,7 +37,7 @@ class GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail {
     return GetControlProjectIntelligenceFindingsSummaryFindingSummarySummaryDetail(
       count: pulumi.Input.fromValue(map['count'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      percentage: pulumi.Input.fromValue(map['percentage'] as double),
+      percentage: pulumi.Input.fromValue((map['percentage'] as num).toDouble()),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }

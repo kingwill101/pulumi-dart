@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyWorkloadPolicy {
   /// The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// and cannot be set if max topology distance is set.
-  final pulumi.Input<String>? acceleratorTopology;
+  final pulumi.Input<String?>? acceleratorTopology;
   /// (Optional, Beta)
   /// Specifies the connection mode for the accelerator topology.
   /// Supported values are:
@@ -14,11 +14,11 @@ class ResourcePolicyWorkloadPolicy {
   /// If not specified, the default is AUTO_CONNECT.
   /// This field can be set only when the workload policy type is HIGH_THROUGHPUT and cannot be set if max topology distance is set.
   /// Possible values are: `AUTO_CONNECT`, `PROVISION_ONLY`.
-  final pulumi.Input<String>? acceleratorTopologyMode;
+  final pulumi.Input<String?>? acceleratorTopologyMode;
   /// The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// and cannot be set if accelerator topology or accelerator topology mode is set.
   /// Possible values are: `BLOCK`, `CLUSTER`, `SUBBLOCK`.
-  final pulumi.Input<String>? maxTopologyDistance;
+  final pulumi.Input<String?>? maxTopologyDistance;
   /// The type of workload policy.
   /// Possible values are: `HIGH_AVAILABILITY`, `HIGH_THROUGHPUT`.
   final pulumi.Input<String> type;

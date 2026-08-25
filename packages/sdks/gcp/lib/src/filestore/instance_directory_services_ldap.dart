@@ -8,7 +8,7 @@ class InstanceDirectoryServicesLdap {
   /// The groups Organizational Unit (OU) is optional. This parameter is a hint
   /// to allow faster lookup in the LDAP namespace. In case that this parameter
   /// is not provided, Filestore instance will query the whole LDAP namespace.
-  final pulumi.Input<String>? groupsOu;
+  final pulumi.Input<String?>? groupsOu;
   /// The servers names are used for specifying the LDAP servers names.
   /// The LDAP servers names can come with two formats:
   /// 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
@@ -19,7 +19,7 @@ class InstanceDirectoryServicesLdap {
   /// The users Organizational Unit (OU) is optional. This parameter is a hint
   /// to allow faster lookup in the LDAP namespace. In case that this parameter
   /// is not provided, Filestore instance will query the whole LDAP namespace.
-  final pulumi.Input<String>? usersOu;
+  final pulumi.Input<String?>? usersOu;
 
   /// Creates a new [InstanceDirectoryServicesLdap].
   /// [domain] The LDAP domain name in the format of `my-domain.com`.

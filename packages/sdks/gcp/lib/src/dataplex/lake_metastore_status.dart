@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LakeMetastoreStatus {
   /// The URI of the endpoint used to access the Metastore service.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Additional information about the current status.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. The time when the lake was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [LakeMetastoreStatus].
   /// [endpoint] The URI of the endpoint used to access the Metastore service.

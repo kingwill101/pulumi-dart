@@ -5,10 +5,10 @@ import 'prevention_job_trigger_trigger_schedule.dart';
 
 class PreventionJobTriggerTrigger {
   /// For use with hybrid jobs. Jobs must be manually created and finished.
-  final pulumi.Input<Map<String, dynamic>>? manual;
+  final pulumi.Input<Map<String, dynamic>?>? manual;
   /// Schedule for triggered jobs
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerTriggerSchedule>? schedule;
+  final pulumi.Input<PreventionJobTriggerTriggerSchedule?>? schedule;
 
   /// Creates a new [PreventionJobTriggerTrigger].
   /// [manual] For use with hybrid jobs. Jobs must be manually created and finished.

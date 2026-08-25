@@ -8,54 +8,54 @@ import 'toolset_tool_fake_config.dart';
 /// Input properties used for looking up and filtering Toolset resources.
 class ToolsetState {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? app;
+  final pulumi.Input<String?>? app;
   /// Timestamp when the toolset was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the toolset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the toolset. Must be unique within the same app.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Possible values:
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
-  final pulumi.Input<String>? executionType;
+  final pulumi.Input<String?>? executionType;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A toolset that contains a list of tools that are offered by the MCP
   /// server.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolset>? mcpToolset;
+  final pulumi.Input<ToolsetMcpToolset?>? mcpToolset;
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A toolset that contains a list of tools that are defined by an OpenAPI
   /// schema.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolset>? openApiToolset;
+  final pulumi.Input<ToolsetOpenApiToolset?>? openApiToolset;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for tools behavior in fake mode.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetToolFakeConfig>? toolFakeConfig;
+  final pulumi.Input<ToolsetToolFakeConfig?>? toolFakeConfig;
   /// The ID to use for the toolset, which will become the final component of
   /// the toolset's resource name. If not provided, a unique ID will be
   /// automatically assigned for the toolset.
-  final pulumi.Input<String>? toolsetId;
+  final pulumi.Input<String?>? toolsetId;
   /// Timestamp when the toolset was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ToolsetState].
   /// [app] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.

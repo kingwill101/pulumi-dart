@@ -17,11 +17,11 @@ class SharedflowArgs {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
-  final pulumi.Input<String>? detectMd5hash;
+  final pulumi.Input<String?>? detectMd5hash;
   /// The ID of the shared flow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization name associated with the Apigee instance.
   final pulumi.Input<String> orgId;
 

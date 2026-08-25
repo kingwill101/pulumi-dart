@@ -686,7 +686,7 @@ class DataPolicy extends pulumi.CustomResource {
           'gcp:bigquerydatapolicy/dataPolicy:DataPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
@@ -703,11 +703,12 @@ class DataPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -721,6 +722,25 @@ class DataPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataPolicyId = registerOutput<String>('dataPolicyId');
+    dataPolicyType = registerOutput<String>('dataPolicyType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    policyTag = registerOutput<String>('policyTag');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [DataPolicy] resource.
+  DataPolicy.reference(String urn)
+    : super(
+        'gcp:bigquerydatapolicy/dataPolicy:DataPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');

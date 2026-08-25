@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionConfigurationAsset {
   /// The name of the database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The full resource name of the Google Cloud resource.
   /// For AlloyDB, this is in the format of
   /// `//alloydb.googleapis.com/projects/{project}/locations/{region}/clusters/{cluster}/instances/{instance}`.
-  final pulumi.Input<String>? googleCloudResource;
+  final pulumi.Input<String?>? googleCloudResource;
 
   /// Creates a new [ConnectionConfigurationAsset].
   /// [database] The name of the database.

@@ -13,17 +13,17 @@ class URLMapPathMatcherRouteRuleRouteActionCachePolicy {
   /// e.g. Pragma or Authorization headers. Values are case-insensitive. Up to 5
   /// header names can be specified. The cache is bypassed for all cacheMode
   /// values.
-  final pulumi.Input<List<String>>? cacheBypassRequestHeaderNames;
+  final pulumi.Input<List<String>?>? cacheBypassRequestHeaderNames;
   /// The cache key configuration. If not specified, the default behavior depends
   /// on the backend type: for Backend Services, the complete request URI is
   /// used; for Backend Buckets, the request URI is used without the protocol or
   /// host, and only query parameters known to Cloud Storage are included.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyCacheKeyPolicy>? cacheKeyPolicy;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyCacheKeyPolicy?>? cacheKeyPolicy;
   /// Specifies the cache setting for all responses from this route. If not
   /// specified, Cloud CDN uses CACHE_ALL_STATIC mode.
   /// Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
-  final pulumi.Input<String>? cacheMode;
+  final pulumi.Input<String?>? cacheMode;
   /// Specifies a separate client (e.g. browser client) maximum TTL for cached
   /// content. This is used to clamp the max-age (or Expires) value sent to the
   /// client. With FORCE_CACHE_ALL, the lesser of clientTtl and defaultTtl
@@ -36,7 +36,7 @@ class URLMapPathMatcherRouteRuleRouteActionCachePolicy {
   /// 3600s (1 hour) for CACHE_ALL_STATIC mode. Cannot exceed maxTtl.
   /// Cannot be specified when cacheMode is USE_ORIGIN_HEADERS.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyClientTtl>? clientTtl;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyClientTtl?>? clientTtl;
   /// Specifies the default TTL for cached content for responses that do not have
   /// an existing valid TTL (max-age or s-maxage). Setting a TTL of "0" means
   /// "always revalidate". The value of defaultTtl cannot be set to a value
@@ -48,7 +48,7 @@ class URLMapPathMatcherRouteRuleRouteActionCachePolicy {
   /// FORCE_CACHE_ALL modes. Cannot be specified when cacheMode is
   /// USE_ORIGIN_HEADERS.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyDefaultTtl>? defaultTtl;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyDefaultTtl?>? defaultTtl;
   /// Specifies the maximum allowed TTL for cached content. Cache directives that
   /// attempt to set a max-age or s-maxage higher than this, or an Expires header
   /// more than maxTtl seconds in the future will be capped at the value of
@@ -60,7 +60,7 @@ class URLMapPathMatcherRouteRuleRouteActionCachePolicy {
   /// CACHE_ALL_STATIC mode. Can be specified only for CACHE_ALL_STATIC cache
   /// mode.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyMaxTtl>? maxTtl;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyMaxTtl?>? maxTtl;
   /// Negative caching allows per-status code TTLs to be set, in order to apply
   /// fine-grained caching for common errors or redirects. This can reduce the
   /// load on your origin and improve end-user experience by reducing response
@@ -76,7 +76,7 @@ class URLMapPathMatcherRouteRuleRouteActionCachePolicy {
   /// * 405 (Method Not Found), 501 (Not Implemented): 60s
   /// These defaults can be overridden in negativeCachingPolicy. If not
   /// specified, Cloud CDN applies negative caching by default.
-  final pulumi.Input<bool>? negativeCaching;
+  final pulumi.Input<bool?>? negativeCaching;
   /// Sets a cache TTL for the specified HTTP status code. negativeCaching
   /// must be enabled to configure negativeCachingPolicy. Omitting the policy
   /// and leaving negativeCaching enabled will use Cloud CDN's default cache
@@ -85,11 +85,11 @@ class URLMapPathMatcherRouteRuleRouteActionCachePolicy {
   /// wish to cache. Cloud CDN will not apply any default negative caching when
   /// a policy exists.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherRouteRuleRouteActionCachePolicyNegativeCachingPolicy>>? negativeCachingPolicies;
+  final pulumi.Input<List<URLMapPathMatcherRouteRuleRouteActionCachePolicyNegativeCachingPolicy>?>? negativeCachingPolicies;
   /// If true then Cloud CDN will combine multiple concurrent cache fill
   /// requests into a small number of requests to the origin. If not specified,
   /// Cloud CDN applies request coalescing by default.
-  final pulumi.Input<bool>? requestCoalescing;
+  final pulumi.Input<bool?>? requestCoalescing;
   /// Serve existing content from the cache (if available) when revalidating
   /// content with the origin, or when an error is encountered when refreshing
   /// the cache. This setting defines the default "max-stale" duration for any
@@ -100,7 +100,7 @@ class URLMapPathMatcherRouteRuleRouteActionCachePolicy {
   /// a cached response. The maximum allowed value is 604800 (1 week). Set this
   /// to zero (0) to disable serve-while-stale.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStale>? serveWhileStale;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStale?>? serveWhileStale;
 
   /// Creates a new [URLMapPathMatcherRouteRuleRouteActionCachePolicy].
   /// [cacheBypassRequestHeaderNames] Bypass the cache when the specified request headers are matched by name,

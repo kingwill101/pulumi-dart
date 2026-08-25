@@ -17,13 +17,13 @@ class ExtensionsInstanceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID to use for the Extension Instance, which will become the final
   /// component of the instance's name.
   final pulumi.Input<String> instanceId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ExtensionsInstanceArgs].
   /// [config] The current Config of the Extension Instance.

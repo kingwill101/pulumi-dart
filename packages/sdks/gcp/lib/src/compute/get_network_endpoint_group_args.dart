@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name.
   /// Provide either this or a `selfLink`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Network Endpoint Group self_link.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The Network Endpoint Group availability zone.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetNetworkEndpointGroupArgs].
   /// [name] The Network Endpoint Group name.

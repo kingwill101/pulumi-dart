@@ -6,21 +6,21 @@ import 'data_access_scope_denied_data_access_label_ingestion_label.dart';
 class DataAccessScopeDeniedDataAccessLabel {
   /// The asset namespace configured in the forwarder
   /// of the customer's events.
-  final pulumi.Input<String>? assetNamespace;
+  final pulumi.Input<String?>? assetNamespace;
   /// The name of the data access label.
-  final pulumi.Input<String>? dataAccessLabel;
+  final pulumi.Input<String?>? dataAccessLabel;
   /// (Output)
   /// Output only. The display name of the label.
   /// Data access label and log types's name
   /// will match the display name of the resource.
   /// The asset namespace will match the namespace itself.
   /// The ingestion key value pair will match the key of the tuple.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Representation of an ingestion label type.
   /// Structure is documented below.
-  final pulumi.Input<DataAccessScopeDeniedDataAccessLabelIngestionLabel>? ingestionLabel;
+  final pulumi.Input<DataAccessScopeDeniedDataAccessLabelIngestionLabel?>? ingestionLabel;
   /// The name of the log type.
-  final pulumi.Input<String>? logType;
+  final pulumi.Input<String?>? logType;
 
   /// Creates a new [DataAccessScopeDeniedDataAccessLabel].
   /// [assetNamespace] The asset namespace configured in the forwarder

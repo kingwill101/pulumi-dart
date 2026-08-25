@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpokeReason {
   /// The code associated with this reason.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Human-readable details about this reason.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Additional information provided by the user in the RejectSpoke call.
-  final pulumi.Input<String>? userDetails;
+  final pulumi.Input<String?>? userDetails;
 
   /// Creates a new [SpokeReason].
   /// [code] The code associated with this reason.

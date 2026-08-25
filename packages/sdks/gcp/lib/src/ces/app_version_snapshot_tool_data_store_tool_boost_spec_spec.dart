@@ -7,7 +7,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpec {
   /// (Output)
   /// A list of boosting specifications.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>>? conditionBoostSpecs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>?>? conditionBoostSpecs;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpec].
   /// [conditionBoostSpecs] (Output)

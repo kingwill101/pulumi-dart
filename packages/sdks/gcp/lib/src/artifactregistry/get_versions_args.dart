@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_artifactregistry_get_versions_get_versions_args_doc}
 class GetVersionsArgs {
   /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `version`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.versions/list#query-parameters).
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the artifact registry.
   final pulumi.Input<String> location;
   /// The name of the package.
   final pulumi.Input<String> packageName;
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
   /// The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetVersionsArgs].
   /// [filter] An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `version`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.versions/list#query-parameters).

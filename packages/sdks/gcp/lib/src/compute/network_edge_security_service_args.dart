@@ -13,18 +13,18 @@ class NetworkEdgeSecurityServiceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the resource. Provided by the client when the resource is created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the gateway security policy.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The resource URL for the network edge security service associated with this network edge security service.
-  final pulumi.Input<String>? securityPolicy;
+  final pulumi.Input<String?>? securityPolicy;
 
   /// Creates a new [NetworkEdgeSecurityServiceArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

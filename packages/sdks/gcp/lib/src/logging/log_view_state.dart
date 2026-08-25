@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LogView resources.
 class LogViewState {
   /// The bucket of the resource
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Output only. The creation timestamp of the view.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Describes this view.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gceInstance" AND LOG_ID("stdout")
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of the resource.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Output only. The last update timestamp of the view.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [LogViewState].
   /// [bucket] The bucket of the resource

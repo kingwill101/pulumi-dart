@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig {
   /// (Optional)
-  final pulumi.Input<int>? asn;
+  final pulumi.Input<int?>? asn;
   /// The IP address of the control plane node that
   /// connects to the external peer.
-  final pulumi.Input<List<String>>? controlPlaneNodes;
+  final pulumi.Input<List<String>?>? controlPlaneNodes;
   /// (Optional)
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig].
   /// [asn] (Optional)
@@ -31,7 +31,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig {
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig(
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       controlPlaneNodes: (() { final guardedValue = map['controlPlaneNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

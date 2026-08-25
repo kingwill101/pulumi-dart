@@ -19,7 +19,7 @@ class GetAccountArgs {
   final pulumi.Input<String> accountId;
   /// The ID of the project that the service account is present in.
   /// Defaults to the provider project configuration.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAccountArgs].
   /// [accountId] The Google service account ID. This must be one of:

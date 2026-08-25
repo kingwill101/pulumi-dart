@@ -8,23 +8,23 @@ import 'dashboard_chart_dashboard_chart_visualization.dart';
 class DashboardChartDashboardChart {
   /// Query and datasource used in the chart.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartChartDatasource>? chartDatasource;
+  final pulumi.Input<DashboardChartDashboardChartChartDatasource?>? chartDatasource;
   /// Description of the dashboardChart.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name/Title of the dashboardChart visible to users.
   final pulumi.Input<String> displayName;
   /// Drill down configuration.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartDrillDownConfig>? drillDownConfig;
+  final pulumi.Input<DashboardChartDashboardChartDrillDownConfig?>? drillDownConfig;
   /// (Output)
   /// This checksum is computed by the server.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// (Output)
   /// The resource name of the DashboardChart.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of tile (e.g., visualization, button, markdown).
   /// Possible values are: `TILE_TYPE_UNSPECIFIED`, `TILE_TYPE_VISUALIZATION`, `TILE_TYPE_BUTTON`, `TILE_TYPE_MARKDOWN`.
-  final pulumi.Input<String>? tileType;
+  final pulumi.Input<String?>? tileType;
   /// Visualization config for a chart.
   /// Structure is documented below.
   final pulumi.Input<DashboardChartDashboardChartVisualization> visualization;

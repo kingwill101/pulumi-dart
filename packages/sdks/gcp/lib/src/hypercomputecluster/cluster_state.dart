@@ -10,67 +10,67 @@ import 'cluster_storage_resource.dart';
 class ClusterState {
   /// ID of the cluster to create. Must start with a lowercase letter,
   /// use only lowercase letters and numbers, and be at most 10 characters long.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// Compute resources available to the cluster. Keys specify the ID of the
   /// compute resource by which it can be referenced elsewhere, and must conform
   /// to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
   /// alphanumeric, and at most 63 characters).
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterComputeResource>>? computeResources;
+  final pulumi.Input<List<ClusterComputeResource>?>? computeResources;
   /// Time that the cluster was originally created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description of the cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// [Labels](https://cloud.google.com/compute/docs/labeling-resources) applied
   /// to the cluster. Labels can be used to organize clusters and to filter them
   /// in queries.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. [Relative resource name](https://google.aip.dev/122) of the cluster, in the
   /// format `projects/{project}/locations/{location}/clusters/{cluster}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network resources available to the cluster. Must contain at most one value.
   /// Keys specify the ID of the network resource by which it can be referenced
   /// elsewhere, and must conform to
   /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
   /// alphanumeric, and at most 63 characters).
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterNetworkResource>>? networkResources;
+  final pulumi.Input<List<ClusterNetworkResource>?>? networkResources;
   /// The component responsible for scheduling and running workloads on the
   /// cluster as well as providing the user interface for interacting with the
   /// cluster at runtime.
   /// Structure is documented below.
-  final pulumi.Input<ClusterOrchestrator>? orchestrator;
+  final pulumi.Input<ClusterOrchestrator?>? orchestrator;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Indicates whether changes to the cluster are currently in flight. If this
   /// is `true`, then the current state might not match the cluster's intended
   /// state.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Storage resources available to the cluster. Keys specify the ID of the
   /// storage resource by which it can be referenced elsewhere, and must conform
   /// to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
   /// alphanumeric, and at most 63 characters).
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterStorageResource>>? storageResources;
+  final pulumi.Input<List<ClusterStorageResource>?>? storageResources;
   /// Time that the cluster was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ClusterState].
   /// [clusterId] ID of the cluster to create. Must start with a lowercase letter,

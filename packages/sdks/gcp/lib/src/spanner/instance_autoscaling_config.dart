@@ -8,7 +8,7 @@ import 'instance_autoscaling_config_autoscaling_targets.dart';
 class InstanceAutoscalingConfig {
   /// Asymmetric autoscaling options for specific replicas.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceAutoscalingConfigAsymmetricAutoscalingOption>>? asymmetricAutoscalingOptions;
+  final pulumi.Input<List<InstanceAutoscalingConfigAsymmetricAutoscalingOption>?>? asymmetricAutoscalingOptions;
   /// Defines scale in controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events. Users can define the minimum and
   /// maximum compute capacity allocated to the instance, and the autoscaler will
@@ -16,11 +16,11 @@ class InstanceAutoscalingConfig {
   /// units to specify the limits, but should use the same unit to set both the
   /// minLimit and max_limit.
   /// Structure is documented below.
-  final pulumi.Input<InstanceAutoscalingConfigAutoscalingLimits>? autoscalingLimits;
+  final pulumi.Input<InstanceAutoscalingConfigAutoscalingLimits?>? autoscalingLimits;
   /// Defines scale in controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
-  final pulumi.Input<InstanceAutoscalingConfigAutoscalingTargets>? autoscalingTargets;
+  final pulumi.Input<InstanceAutoscalingConfigAutoscalingTargets?>? autoscalingTargets;
 
   /// Creates a new [InstanceAutoscalingConfig].
   /// [asymmetricAutoscalingOptions] Asymmetric autoscaling options for specific replicas.

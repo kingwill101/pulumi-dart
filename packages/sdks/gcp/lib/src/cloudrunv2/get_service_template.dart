@@ -131,7 +131,7 @@ class GetServiceTemplate {
       gpuZonalRedundancyDisabled: pulumi.Input.fromValue(map['gpuZonalRedundancyDisabled'] as bool),
       healthCheckDisabled: pulumi.Input.fromValue(map['healthCheckDisabled'] as bool),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
-      maxInstanceRequestConcurrency: pulumi.Input.fromValue(map['maxInstanceRequestConcurrency'] as int),
+      maxInstanceRequestConcurrency: pulumi.Input.fromValue((map['maxInstanceRequestConcurrency'] as num).toInt()),
       nodeSelectors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateNodeSelector>(map['nodeSelectors']!, (value) => GetServiceTemplateNodeSelector.fromMap((value as Map).cast<String, dynamic>()))),
       revision: pulumi.Input.fromValue(map['revision'] as String),
       sandboxes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSandbox>(map['sandboxes']!, (value) => GetServiceTemplateSandbox.fromMap((value as Map).cast<String, dynamic>()))),

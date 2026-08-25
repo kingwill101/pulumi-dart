@@ -13,9 +13,9 @@ class WorkforcePoolProviderScimTokenArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-specified display name for the scim token. Cannot exceed 32 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location for the resource.
   final pulumi.Input<String> location;
   /// The ID of the Provider.

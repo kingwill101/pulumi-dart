@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceServicePropertyRegistrationType {
   /// (Output)
   /// Output only. The registration type of a service.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServiceServicePropertyRegistrationType].
   /// [type] (Output)

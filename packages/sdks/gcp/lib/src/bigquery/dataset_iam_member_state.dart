@@ -7,11 +7,11 @@ import 'dataset_iam_member_condition.dart';
 class DatasetIamMemberState {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<DatasetIamMemberCondition>? condition;
+  final pulumi.Input<DatasetIamMemberCondition?>? condition;
   /// The dataset ID.
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
   /// (Computed) The etag of the dataset's IAM policy.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -24,14 +24,14 @@ class DatasetIamMemberState {
   /// * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-  final pulumi.Input<String>? member;
+  final pulumi.Input<String?>? member;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [DatasetIamMemberState].
   /// [condition] An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.

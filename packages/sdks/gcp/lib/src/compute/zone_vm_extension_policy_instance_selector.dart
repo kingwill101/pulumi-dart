@@ -6,7 +6,7 @@ import 'zone_vm_extension_policy_instance_selector_label_selector.dart';
 class ZoneVmExtensionPolicyInstanceSelector {
   /// LabelSelector matches VM labels.
   /// Structure is documented below.
-  final pulumi.Input<ZoneVmExtensionPolicyInstanceSelectorLabelSelector>? labelSelector;
+  final pulumi.Input<ZoneVmExtensionPolicyInstanceSelectorLabelSelector?>? labelSelector;
 
   /// Creates a new [ZoneVmExtensionPolicyInstanceSelector].
   /// [labelSelector] LabelSelector matches VM labels.

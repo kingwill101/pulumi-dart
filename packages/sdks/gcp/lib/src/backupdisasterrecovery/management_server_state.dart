@@ -12,26 +12,26 @@ class ManagementServerState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location for the management server (management console)
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The management console URI
   /// Structure is documented below.
-  final pulumi.Input<List<ManagementServerManagementUri>>? managementUris;
+  final pulumi.Input<List<ManagementServerManagementUri>?>? managementUris;
   /// The name of management server (management console)
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network details to create management server (management console).
   /// Structure is documented below.
-  final pulumi.Input<List<ManagementServerNetwork>>? networks;
+  final pulumi.Input<List<ManagementServerNetwork>?>? networks;
   /// The oauth2ClientId of management console.
-  final pulumi.Input<String>? oauth2ClientId;
+  final pulumi.Input<String?>? oauth2ClientId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The type of management server (management console).
   /// Default value is `BACKUP_RESTORE`.
   /// Possible values are: `BACKUP_RESTORE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ManagementServerState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

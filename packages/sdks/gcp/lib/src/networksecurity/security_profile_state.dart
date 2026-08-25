@@ -9,59 +9,59 @@ import 'security_profile_url_filtering_profile.dart';
 /// Input properties used for looking up and filtering SecurityProfile resources.
 class SecurityProfileState {
   /// Time the security profile was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The configuration for defining the Intercept Endpoint Group used to
   /// intercept traffic to third-party firewall appliances.
   /// Structure is documented below.
-  final pulumi.Input<SecurityProfileCustomInterceptProfile>? customInterceptProfile;
+  final pulumi.Input<SecurityProfileCustomInterceptProfile?>? customInterceptProfile;
   /// The configuration for defining the Mirroring Endpoint Group used to
   /// mirror traffic to third-party collectors.
   /// Structure is documented below.
-  final pulumi.Input<SecurityProfileCustomMirroringProfile>? customMirroringProfile;
+  final pulumi.Input<SecurityProfileCustomMirroringProfile?>? customMirroringProfile;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of the security profile. The Max length is 512 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// This checksum is computed by the server based on the value of other fields,
   /// and may be sent on update and delete requests to ensure the client has an up-to-date
   /// value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the security profile.
   /// The default value is `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the security profile resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the parent this security profile belongs to.
   /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Server-defined URL of this resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The threat prevention configuration for the security profile.
   /// Structure is documented below.
-  final pulumi.Input<SecurityProfileThreatPreventionProfile>? threatPreventionProfile;
+  final pulumi.Input<SecurityProfileThreatPreventionProfile?>? threatPreventionProfile;
   /// The type of security profile.
   /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Time the security profile was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The url filtering configuration for the security profile.
   /// Structure is documented below.
-  final pulumi.Input<SecurityProfileUrlFilteringProfile>? urlFilteringProfile;
+  final pulumi.Input<SecurityProfileUrlFilteringProfile?>? urlFilteringProfile;
 
   /// Creates a new [SecurityProfileState].
   /// [createTime] Time the security profile was created in UTC.

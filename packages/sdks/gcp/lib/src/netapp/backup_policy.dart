@@ -252,21 +252,22 @@ class BackupPolicy extends pulumi.CustomResource {
           'gcp:netapp/backupPolicy:BackupPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
     createTime = registerOutput<String>('createTime');
     dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enabled = registerOutput<bool?>('enabled');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
   }
@@ -276,11 +277,12 @@ class BackupPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -299,15 +301,42 @@ class BackupPolicy extends pulumi.CustomResource {
     dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enabled = registerOutput<bool?>('enabled');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
+    weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
+  }
+
+  /// Creates a typed reference to an existing [BackupPolicy] resource.
+  BackupPolicy.reference(String urn)
+    : super(
+        'gcp:netapp/backupPolicy:BackupPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
+    createTime = registerOutput<String>('createTime');
+    dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    enabled = registerOutput<bool?>('enabled');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
     weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
   }
 }

@@ -6,9 +6,9 @@ class ZoneVmExtensionPolicyExtensionPolicy {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> extensionName;
   /// The specific version of the extension to install.
-  final pulumi.Input<String>? pinnedVersion;
+  final pulumi.Input<String?>? pinnedVersion;
   /// String-based configuration data for the extension.
-  final pulumi.Input<String>? stringConfig;
+  final pulumi.Input<String?>? stringConfig;
 
   /// Creates a new [ZoneVmExtensionPolicyExtensionPolicy].
   /// [extensionName] The identifier for this object. Format specified above.

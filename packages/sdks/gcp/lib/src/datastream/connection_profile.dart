@@ -3386,17 +3386,18 @@ class ConnectionProfile extends pulumi.CustomResource {
           'gcp:datastream/connectionProfile:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigqueryProfile = registerOutput<Map<String, dynamic>?>('bigqueryProfile');
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forwardSshConnectivity = registerOutput<ConnectionProfileForwardSshConnectivity?>('forwardSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileForwardSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcsProfile = registerOutput<ConnectionProfileGcsProfile?>('gcsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileGcsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mongodbProfile = registerOutput<ConnectionProfileMongodbProfile?>('mongodbProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMongodbProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mysqlProfile = registerOutput<ConnectionProfileMysqlProfile?>('mysqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMysqlProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3405,7 +3406,7 @@ class ConnectionProfile extends pulumi.CustomResource {
     postgresqlProfile = registerOutput<ConnectionProfilePostgresqlProfile?>('postgresqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresqlProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateConnectivity = registerOutput<ConnectionProfilePrivateConnectivity?>('privateConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePrivateConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     salesforceProfile = registerOutput<ConnectionProfileSalesforceProfile?>('salesforceProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSalesforceProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spannerProfile = registerOutput<ConnectionProfileSpannerProfile?>('spannerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSpannerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sqlServerProfile = registerOutput<ConnectionProfileSqlServerProfile?>('sqlServerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSqlServerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3416,11 +3417,12 @@ class ConnectionProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3439,10 +3441,10 @@ class ConnectionProfile extends pulumi.CustomResource {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forwardSshConnectivity = registerOutput<ConnectionProfileForwardSshConnectivity?>('forwardSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileForwardSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcsProfile = registerOutput<ConnectionProfileGcsProfile?>('gcsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileGcsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mongodbProfile = registerOutput<ConnectionProfileMongodbProfile?>('mongodbProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMongodbProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mysqlProfile = registerOutput<ConnectionProfileMysqlProfile?>('mysqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMysqlProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3451,7 +3453,40 @@ class ConnectionProfile extends pulumi.CustomResource {
     postgresqlProfile = registerOutput<ConnectionProfilePostgresqlProfile?>('postgresqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresqlProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateConnectivity = registerOutput<ConnectionProfilePrivateConnectivity?>('privateConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePrivateConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    salesforceProfile = registerOutput<ConnectionProfileSalesforceProfile?>('salesforceProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSalesforceProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spannerProfile = registerOutput<ConnectionProfileSpannerProfile?>('spannerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSpannerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sqlServerProfile = registerOutput<ConnectionProfileSqlServerProfile?>('sqlServerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSqlServerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ConnectionProfile] resource.
+  ConnectionProfile.reference(String urn)
+    : super(
+        'gcp:datastream/connectionProfile:ConnectionProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    bigqueryProfile = registerOutput<Map<String, dynamic>?>('bigqueryProfile');
+    connectionProfileId = registerOutput<String>('connectionProfileId');
+    createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    forwardSshConnectivity = registerOutput<ConnectionProfileForwardSshConnectivity?>('forwardSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileForwardSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcsProfile = registerOutput<ConnectionProfileGcsProfile?>('gcsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileGcsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mongodbProfile = registerOutput<ConnectionProfileMongodbProfile?>('mongodbProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMongodbProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mysqlProfile = registerOutput<ConnectionProfileMysqlProfile?>('mysqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMysqlProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oracleProfile = registerOutput<ConnectionProfileOracleProfile?>('oracleProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileOracleProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresqlProfile = registerOutput<ConnectionProfilePostgresqlProfile?>('postgresqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresqlProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateConnectivity = registerOutput<ConnectionProfilePrivateConnectivity?>('privateConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePrivateConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     salesforceProfile = registerOutput<ConnectionProfileSalesforceProfile?>('salesforceProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSalesforceProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spannerProfile = registerOutput<ConnectionProfileSpannerProfile?>('spannerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSpannerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sqlServerProfile = registerOutput<ConnectionProfileSqlServerProfile?>('sqlServerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileSqlServerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });

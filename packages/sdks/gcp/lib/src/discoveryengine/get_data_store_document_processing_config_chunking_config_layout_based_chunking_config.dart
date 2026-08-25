@@ -27,7 +27,7 @@ class GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfi
 
   factory GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap(Map<String, dynamic> map) {
     return GetDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig(
-      chunkSize: pulumi.Input.fromValue(map['chunkSize'] as int),
+      chunkSize: pulumi.Input.fromValue((map['chunkSize'] as num).toInt()),
       includeAncestorHeadings: pulumi.Input.fromValue(map['includeAncestorHeadings'] as bool),
     );
   }

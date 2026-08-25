@@ -9,7 +9,7 @@ class RegionInstanceTemplateSchedulingGracefulShutdown {
   /// The time allotted for the instance to gracefully shut down.
   /// If the graceful shutdown isn't complete after this time, then the instance
   /// transitions to the STOPPING state. Structure is documented below:
-  final pulumi.Input<RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration>? maxDuration;
+  final pulumi.Input<RegionInstanceTemplateSchedulingGracefulShutdownMaxDuration?>? maxDuration;
 
   /// Creates a new [RegionInstanceTemplateSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.

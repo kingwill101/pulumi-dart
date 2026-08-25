@@ -6,9 +6,9 @@ import 'workstation_config_ephemeral_directory_gce_pd.dart';
 class WorkstationConfigEphemeralDirectory {
   /// An EphemeralDirectory backed by a Compute Engine persistent disk.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigEphemeralDirectoryGcePd>? gcePd;
+  final pulumi.Input<WorkstationConfigEphemeralDirectoryGcePd?>? gcePd;
   /// Location of this directory in the running workstation.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
 
   /// Creates a new [WorkstationConfigEphemeralDirectory].
   /// [gcePd] An EphemeralDirectory backed by a Compute Engine persistent disk.

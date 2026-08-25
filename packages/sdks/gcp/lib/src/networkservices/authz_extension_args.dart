@@ -8,43 +8,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkservices_authz_extension_authz_extension_args_doc}
 class AuthzExtensionArgs {
   /// The :authority header in the gRPC request sent from Envoy to the extension service.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Determines how the proxy behaves if the call to the extension fails or times out.
   /// When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
   /// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
   /// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
-  final pulumi.Input<bool>? failOpen;
+  final pulumi.Input<bool?>? failOpen;
   /// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
-  final pulumi.Input<List<String>>? forwardHeaders;
+  final pulumi.Input<List<String>?>? forwardHeaders;
   /// Set of labels associated with the AuthzExtension resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Required when the service points to a backend service. All backend services and forwarding rules referenced by
   /// this extension must share the same load balancing scheme. For more information, refer to
   /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
   /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-  final pulumi.Input<String>? loadBalancingScheme;
+  final pulumi.Input<String?>? loadBalancingScheme;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
   /// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Identifier. Name of the AuthzExtension resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The service that runs the extension.
   /// The following values and formats are accepted:
   /// * `iap.googleapis.com` when the policyProfile is set to REQUEST_AUTHZ
@@ -71,7 +71,7 @@ class AuthzExtensionArgs {
   /// The backend service must support HTTP/2 or H2C.
   /// This option is only supported for regional AuthzExtension resources.
   /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
-  final pulumi.Input<String>? wireFormat;
+  final pulumi.Input<String?>? wireFormat;
 
   /// Creates a new [AuthzExtensionArgs].
   /// [authority] The :authority header in the gRPC request sent from Envoy to the extension service.

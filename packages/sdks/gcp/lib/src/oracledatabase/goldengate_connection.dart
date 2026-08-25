@@ -2336,16 +2336,17 @@ class GoldengateConnection extends pulumi.CustomResource {
           'gcp:oracledatabase/goldengateConnection:GoldengateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entitlementId = registerOutput<String>('entitlementId');
     gcpOracleZone = registerOutput<String>('gcpOracleZone');
     goldengateConnectionId = registerOutput<String>('goldengateConnectionId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ociUrl = registerOutput<String>('ociUrl');
@@ -2353,7 +2354,7 @@ class GoldengateConnection extends pulumi.CustomResource {
     odbSubnet = registerOutput<String?>('odbSubnet');
     project = registerOutput<String>('project');
     properties = registerOutput<GoldengateConnectionProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoldengateConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 
   /// Gets an existing [GoldengateConnection] resource's state with the given [name] and [id].
@@ -2361,11 +2362,12 @@ class GoldengateConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GoldengateConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GoldengateConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2382,11 +2384,11 @@ class GoldengateConnection extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entitlementId = registerOutput<String>('entitlementId');
     gcpOracleZone = registerOutput<String>('gcpOracleZone');
     goldengateConnectionId = registerOutput<String>('goldengateConnectionId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ociUrl = registerOutput<String>('ociUrl');
@@ -2394,6 +2396,34 @@ class GoldengateConnection extends pulumi.CustomResource {
     odbSubnet = registerOutput<String?>('odbSubnet');
     project = registerOutput<String>('project');
     properties = registerOutput<GoldengateConnectionProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoldengateConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [GoldengateConnection] resource.
+  GoldengateConnection.reference(String urn)
+    : super(
+        'gcp:oracledatabase/goldengateConnection:GoldengateConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    entitlementId = registerOutput<String>('entitlementId');
+    gcpOracleZone = registerOutput<String>('gcpOracleZone');
+    goldengateConnectionId = registerOutput<String>('goldengateConnectionId');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    ociUrl = registerOutput<String>('ociUrl');
+    odbNetwork = registerOutput<String?>('odbNetwork');
+    odbSubnet = registerOutput<String?>('odbSubnet');
+    project = registerOutput<String>('project');
+    properties = registerOutput<GoldengateConnectionProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoldengateConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 }

@@ -7,53 +7,53 @@ class SubnetState {
   /// The time when the subnet was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
-  final pulumi.Input<List<String>>? ipv4Cidrs;
+  final pulumi.Input<List<String>?>? ipv4Cidrs;
   /// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
-  final pulumi.Input<List<String>>? ipv6Cidrs;
+  final pulumi.Input<List<String>?>? ipv6Cidrs;
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The canonical name of this resource, with format
   /// `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the network to which this router belongs.
   /// Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Current stage of the resource to the device by config push.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A unique ID that identifies this subnet.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// The time when the subnet was last updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// VLAN ID for this subnetwork. If not specified, one is assigned automatically.
-  final pulumi.Input<int>? vlanId;
+  final pulumi.Input<int?>? vlanId;
   /// The name of the target Distributed Cloud Edge zone.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [SubnetState].
   /// [createTime] The time when the subnet was created.
@@ -132,7 +132,7 @@ class SubnetState {
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

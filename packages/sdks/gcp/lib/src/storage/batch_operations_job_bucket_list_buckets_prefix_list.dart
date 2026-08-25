@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchOperationsJobBucketListBucketsPrefixList {
   /// (Optional)
-  final pulumi.Input<List<String>>? includedObjectPrefixes;
+  final pulumi.Input<List<String>?>? includedObjectPrefixes;
 
   /// Creates a new [BatchOperationsJobBucketListBucketsPrefixList].
   /// [includedObjectPrefixes] (Optional)

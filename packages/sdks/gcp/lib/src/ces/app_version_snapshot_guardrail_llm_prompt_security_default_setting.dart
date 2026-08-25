@@ -7,7 +7,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting {
   /// The default prompt template used by the system.
   /// This field is for display purposes to show the user what prompt
   /// the system uses by default. It is OUTPUT_ONLY.
-  final pulumi.Input<String>? defaultPromptTemplate;
+  final pulumi.Input<String?>? defaultPromptTemplate;
 
   /// Creates a new [AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting].
   /// [defaultPromptTemplate] (Output)

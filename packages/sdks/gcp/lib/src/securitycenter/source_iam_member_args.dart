@@ -8,7 +8,7 @@ import 'source_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_securitycenter_source_iam_member_source_iam_member_args_doc}
 class SourceIamMemberArgs {
-  final pulumi.Input<SourceIamMemberCondition>? condition;
+  final pulumi.Input<SourceIamMemberCondition?>? condition;
   final pulumi.Input<String> member;
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.

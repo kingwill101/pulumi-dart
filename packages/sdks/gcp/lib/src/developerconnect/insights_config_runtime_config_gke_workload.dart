@@ -11,7 +11,7 @@ class InsightsConfigRuntimeConfigGkeWorkload {
   /// The name of the GKE deployment.
   /// Format:
   /// `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
-  final pulumi.Input<String>? deployment;
+  final pulumi.Input<String?>? deployment;
 
   /// Creates a new [InsightsConfigRuntimeConfigGkeWorkload].
   /// [cluster] The name of the GKE cluster.

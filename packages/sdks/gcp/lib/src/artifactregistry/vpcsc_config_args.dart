@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_artifactregistry_vpcsc_config_vpcsc_config_args_doc}
 class VpcscConfigArgs {
   /// The name of the location this config is located in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The VPC SC policy for project and location.
   /// Possible values are: `DENY`, `ALLOW`.
-  final pulumi.Input<String>? vpcscPolicy;
+  final pulumi.Input<String?>? vpcscPolicy;
 
   /// Creates a new [VpcscConfigArgs].
   /// [location] The name of the location this config is located in.

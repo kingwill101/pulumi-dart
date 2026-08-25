@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Project resources.
 class ProjectState {
   /// The GCP project display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The number of the Google Project that Firebase is enabled on.
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
 
   /// Creates a new [ProjectState].
   /// [displayName] The GCP project display name

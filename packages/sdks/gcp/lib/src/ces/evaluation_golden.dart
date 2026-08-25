@@ -5,7 +5,7 @@ import 'evaluation_golden_turn.dart';
 
 class EvaluationGolden {
   /// The evaluation expectations to evaluate the replayed conversation against. Format: projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}
-  final pulumi.Input<List<String>>? evaluationExpectations;
+  final pulumi.Input<List<String>?>? evaluationExpectations;
   /// The golden turns required to replay a golden conversation.
   /// Structure is documented below.
   final pulumi.Input<List<EvaluationGoldenTurn>> turns;

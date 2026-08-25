@@ -322,7 +322,7 @@ class HiveDatabase extends pulumi.CustomResource {
           'gcp:biglake/hiveDatabase:HiveDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     createTime = registerOutput<String>('createTime');
@@ -330,7 +330,7 @@ class HiveDatabase extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     locationUri = registerOutput<String?>('locationUri');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -340,11 +340,12 @@ class HiveDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HiveDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HiveDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -364,7 +365,27 @@ class HiveDatabase extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     locationUri = registerOutput<String?>('locationUri');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [HiveDatabase] resource.
+  HiveDatabase.reference(String urn)
+    : super(
+        'gcp:biglake/hiveDatabase:HiveDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalog = registerOutput<String>('catalog');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    locationUri = registerOutput<String?>('locationUri');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
   }

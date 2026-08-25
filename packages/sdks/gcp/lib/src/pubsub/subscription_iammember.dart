@@ -882,7 +882,7 @@ class SubscriptionIAMMember extends pulumi.CustomResource {
           'gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<SubscriptionIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -897,11 +897,12 @@ class SubscriptionIAMMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionIAMMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubscriptionIAMMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -915,6 +916,23 @@ class SubscriptionIAMMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<SubscriptionIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    subscription = registerOutput<String>('subscription');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionIAMMember] resource.
+  SubscriptionIAMMember.reference(String urn)
+    : super(
+        'gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<SubscriptionIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

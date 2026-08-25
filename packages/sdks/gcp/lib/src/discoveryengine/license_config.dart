@@ -276,7 +276,7 @@ class LicenseConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/licenseConfig:LicenseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     endDate = registerOutput<LicenseConfigEndDate?>('endDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -296,11 +296,12 @@ class LicenseConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicenseConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicenseConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,6 +315,28 @@ class LicenseConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoRenew = registerOutput<bool?>('autoRenew');
+    endDate = registerOutput<LicenseConfigEndDate?>('endDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    freeTrial = registerOutput<bool?>('freeTrial');
+    licenseConfigId = registerOutput<String>('licenseConfigId');
+    licenseCount = registerOutput<int>('licenseCount');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    startDate = registerOutput<LicenseConfigStartDate>('startDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigStartDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriptionTerm = registerOutput<String>('subscriptionTerm');
+    subscriptionTier = registerOutput<String>('subscriptionTier');
+  }
+
+  /// Creates a typed reference to an existing [LicenseConfig] resource.
+  LicenseConfig.reference(String urn)
+    : super(
+        'gcp:discoveryengine/licenseConfig:LicenseConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     endDate = registerOutput<LicenseConfigEndDate?>('endDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     freeTrial = registerOutput<bool?>('freeTrial');

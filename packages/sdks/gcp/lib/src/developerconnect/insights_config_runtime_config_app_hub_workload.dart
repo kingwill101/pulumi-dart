@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightsConfigRuntimeConfigAppHubWorkload {
   /// (Output)
   /// The criticality of the App Hub Workload.
-  final pulumi.Input<String>? criticality;
+  final pulumi.Input<String?>? criticality;
   /// (Output)
   /// The environment of the App Hub Workload.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// (Output)
   /// Output only. The name of the App Hub Workload.
   /// Format:
   /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
-  final pulumi.Input<String>? workload;
+  final pulumi.Input<String?>? workload;
 
   /// Creates a new [InsightsConfigRuntimeConfigAppHubWorkload].
   /// [criticality] (Output)

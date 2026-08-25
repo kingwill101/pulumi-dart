@@ -9,18 +9,18 @@ class InterconnectApplicationAwareInterconnect {
   /// Bandwidth Percentage policy allows you to have granular control over how your Interconnect
   /// bandwidth is utilized among your workloads mapping to different traffic classes.
   /// Structure is documented below.
-  final pulumi.Input<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy>? bandwidthPercentagePolicy;
+  final pulumi.Input<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy?>? bandwidthPercentagePolicy;
   /// (Optional, Beta)
   /// A description for the AAI profile on this interconnect.
-  final pulumi.Input<String>? profileDescription;
+  final pulumi.Input<String?>? profileDescription;
   /// (Optional, Beta)
   /// Optional field to specify a list of shape average percentages to be
   /// applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>>? shapeAveragePercentages;
+  final pulumi.Input<List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>?>? shapeAveragePercentages;
   /// (Optional, Beta)
   /// Specify configuration for StrictPriorityPolicy.
-  final pulumi.Input<Map<String, dynamic>>? strictPriorityPolicy;
+  final pulumi.Input<Map<String, dynamic>?>? strictPriorityPolicy;
 
   /// Creates a new [InterconnectApplicationAwareInterconnect].
   /// [bandwidthPercentagePolicy] (Optional, Beta)

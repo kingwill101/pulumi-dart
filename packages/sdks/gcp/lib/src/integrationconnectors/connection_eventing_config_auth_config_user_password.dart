@@ -6,9 +6,9 @@ import 'connection_eventing_config_auth_config_user_password_password.dart';
 class ConnectionEventingConfigAuthConfigUserPassword {
   /// Password for Authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionEventingConfigAuthConfigUserPasswordPassword>? password;
+  final pulumi.Input<ConnectionEventingConfigAuthConfigUserPasswordPassword?>? password;
   /// Username for Authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConnectionEventingConfigAuthConfigUserPassword].
   /// [password] Password for Authentication.

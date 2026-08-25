@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_connection_policy_args.dart';
 import 'service_connection_policy_psc_config.dart';
+import 'service_connection_policy_psc_connection.dart';
 import 'service_connection_policy_state.dart';
 
 /// Manage Service Connection Policies.
@@ -324,7 +325,7 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
   late final pulumi.Output<ServiceConnectionPolicyPscConfig?> pscConfig;
   /// Information about each Private Service Connect connection.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pscConnections;
+  late final pulumi.Output<List<ServiceConnectionPolicyPscConnection>> pscConnections;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -347,22 +348,23 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
           'gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     infrastructure = registerOutput<String>('infrastructure');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     pscConfig = registerOutput<ServiceConnectionPolicyPscConfig?>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceConnectionPolicyPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pscConnections = registerOutput<List<Map<String, dynamic>>>('pscConnections');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pscConnections = registerOutput<List<ServiceConnectionPolicyPscConnection>>('pscConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceConnectionPolicyPscConnection>(guardedValue, (value) => ServiceConnectionPolicyPscConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceClass = registerOutput<String>('serviceClass');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -372,11 +374,12 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceConnectionPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceConnectionPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -393,17 +396,45 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     infrastructure = registerOutput<String>('infrastructure');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     pscConfig = registerOutput<ServiceConnectionPolicyPscConfig?>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceConnectionPolicyPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pscConnections = registerOutput<List<Map<String, dynamic>>>('pscConnections');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pscConnections = registerOutput<List<ServiceConnectionPolicyPscConnection>>('pscConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceConnectionPolicyPscConnection>(guardedValue, (value) => ServiceConnectionPolicyPscConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serviceClass = registerOutput<String>('serviceClass');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ServiceConnectionPolicy] resource.
+  ServiceConnectionPolicy.reference(String urn)
+    : super(
+        'gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    infrastructure = registerOutput<String>('infrastructure');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    pscConfig = registerOutput<ServiceConnectionPolicyPscConfig?>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceConnectionPolicyPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pscConnections = registerOutput<List<ServiceConnectionPolicyPscConnection>>('pscConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceConnectionPolicyPscConnection>(guardedValue, (value) => ServiceConnectionPolicyPscConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceClass = registerOutput<String>('serviceClass');
     updateTime = registerOutput<String>('updateTime');
   }

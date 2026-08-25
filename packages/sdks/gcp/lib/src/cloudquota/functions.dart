@@ -136,6 +136,17 @@ Future<GetSQuotaInfoResult> getSQuotaInfo(
   return GetSQuotaInfoResult.fromMap(result);
 }
 
+pulumi.Output<GetSQuotaInfoResult> getSQuotaInfoOutput(
+  GetSQuotaInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudquota/getSQuotaInfo:getSQuotaInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSQuotaInfoResult.fromMap);
+}
+
 /// Provides information about all quotas for a given project, folder or organization.
 ///
 /// ## Example Usage
@@ -259,4 +270,15 @@ Future<GetSQuotaInfosResult> getSQuotaInfos(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSQuotaInfosResult.fromMap(result);
+}
+
+pulumi.Output<GetSQuotaInfosResult> getSQuotaInfosOutput(
+  GetSQuotaInfosArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudquota/getSQuotaInfos:getSQuotaInfos',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSQuotaInfosResult.fromMap);
 }

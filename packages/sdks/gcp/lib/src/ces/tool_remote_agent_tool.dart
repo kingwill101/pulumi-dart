@@ -7,13 +7,13 @@ class ToolRemoteAgentTool {
   /// (Output)
   /// The agent card of the remote agent that this tool invokes.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolRemoteAgentToolAgentCard>>? agentCards;
+  final pulumi.Input<List<ToolRemoteAgentToolAgentCard>?>? agentCards;
   /// (Output)
   /// The description of the system tool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// The name of the system tool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ToolRemoteAgentTool].
   /// [agentCards] (Output)

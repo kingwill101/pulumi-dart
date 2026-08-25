@@ -9,33 +9,33 @@ class LinkedDatasetState {
   /// with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
   /// Views corresponding to the LogViews in the bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<LinkedDatasetBigqueryDataset>>? bigqueryDatasets;
+  final pulumi.Input<List<LinkedDatasetBigqueryDataset>?>? bigqueryDatasets;
   /// The bucket to which the linked dataset is attached.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
   /// and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Describes this link. The maximum length of the description is 8000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Output only. The linked dataset lifecycle state.
-  final pulumi.Input<String>? lifecycleState;
+  final pulumi.Input<String?>? lifecycleState;
   /// The id of the linked dataset.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
   /// The location of the linked dataset.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the linked dataset. The name can have up to 100 characters. A valid link id
   /// (at the end of the link name) must only have alphanumeric characters and underscores within it.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of the linked dataset.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [LinkedDatasetState].
   /// [bigqueryDatasets] The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along

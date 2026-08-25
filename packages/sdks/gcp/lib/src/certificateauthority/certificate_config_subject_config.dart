@@ -10,7 +10,7 @@ class CertificateConfigSubjectConfig {
   final pulumi.Input<CertificateConfigSubjectConfigSubject> subject;
   /// The subject alternative name fields.
   /// Structure is documented below.
-  final pulumi.Input<CertificateConfigSubjectConfigSubjectAltName>? subjectAltName;
+  final pulumi.Input<CertificateConfigSubjectConfigSubjectAltName?>? subjectAltName;
 
   /// Creates a new [CertificateConfigSubjectConfig].
   /// [subject] Contains distinguished name fields such as the location and organization.

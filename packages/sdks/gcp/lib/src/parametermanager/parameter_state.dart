@@ -6,23 +6,23 @@ import 'parameter_policy_member.dart';
 /// Input properties used for looking up and filtering Parameter resources.
 class ParameterState {
   /// The time at which the Parameter was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The format type of the parameter resource.
   /// Default value is `UNFORMATTED`.
   /// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// The labels assigned to this Parameter.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
   /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -34,23 +34,23 @@ class ParameterState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The resource name of the Parameter. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// This must be unique within the project.
-  final pulumi.Input<String>? parameterId;
+  final pulumi.Input<String?>? parameterId;
   /// Policy member strings of a Google Cloud resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ParameterPolicyMember>>? policyMembers;
+  final pulumi.Input<List<ParameterPolicyMember>?>? policyMembers;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The time at which the Parameter was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ParameterState].
   /// [createTime] The time at which the Parameter was created.

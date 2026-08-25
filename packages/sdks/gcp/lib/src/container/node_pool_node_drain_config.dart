@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeDrainConfig {
   /// The duration of the grace termination period for node drain.
-  final pulumi.Input<String>? graceTerminationDuration;
+  final pulumi.Input<String?>? graceTerminationDuration;
   /// The duration of the PDB timeout period for node drain.
-  final pulumi.Input<String>? pdbTimeoutDuration;
+  final pulumi.Input<String?>? pdbTimeoutDuration;
   /// Whether to respect PodDisruptionBudget policy during node pool deletion.
-  final pulumi.Input<bool>? respectPdbDuringNodePoolDeletion;
+  final pulumi.Input<bool?>? respectPdbDuringNodePoolDeletion;
 
   /// Creates a new [NodePoolNodeDrainConfig].
   /// [graceTerminationDuration] The duration of the grace termination period for node drain.

@@ -7,12 +7,12 @@ import 'workstation_config_persistent_directory_gce_pd.dart';
 class WorkstationConfigPersistentDirectory {
   /// A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigPersistentDirectoryGceHd>? gceHd;
+  final pulumi.Input<WorkstationConfigPersistentDirectoryGceHd?>? gceHd;
   /// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigPersistentDirectoryGcePd>? gcePd;
+  final pulumi.Input<WorkstationConfigPersistentDirectoryGcePd?>? gcePd;
   /// Location of this directory in the running workstation.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
 
   /// Creates a new [WorkstationConfigPersistentDirectory].
   /// [gceHd] A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.

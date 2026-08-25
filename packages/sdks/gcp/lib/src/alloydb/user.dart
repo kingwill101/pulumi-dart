@@ -997,14 +997,15 @@ class User extends pulumi.CustomResource {
           'gcp:alloydb/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
     cluster = registerOutput<String>('cluster');
-    databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
-    passwordWo = registerOutput<String?>('passwordWo');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<String?>('passwordWoVersion');
     userId = registerOutput<String>('userId');
     userType = registerOutput<String>('userType');
@@ -1015,11 +1016,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1034,11 +1036,32 @@ class User extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cluster = registerOutput<String>('cluster');
-    databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
-    passwordWo = registerOutput<String?>('passwordWo');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
+    passwordWoVersion = registerOutput<String?>('passwordWoVersion');
+    userId = registerOutput<String>('userId');
+    userType = registerOutput<String>('userType');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'gcp:alloydb/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
+        isResourceReference: true,
+      ) {
+    cluster = registerOutput<String>('cluster');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<String?>('passwordWoVersion');
     userId = registerOutput<String>('userId');
     userType = registerOutput<String>('userType');

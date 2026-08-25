@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entry_args.dart';
+import 'entry_bigquery_date_sharded_spec.dart';
+import 'entry_bigquery_table_spec.dart';
 import 'entry_gcs_fileset_spec.dart';
 import 'entry_state.dart';
 
@@ -760,10 +762,10 @@ class Entry extends pulumi.CustomResource {
   /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
   /// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> bigqueryDateShardedSpecs;
+  late final pulumi.Output<List<EntryBigqueryDateShardedSpec>> bigqueryDateShardedSpecs;
   /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> bigqueryTableSpecs;
+  late final pulumi.Output<List<EntryBigqueryTableSpec>> bigqueryTableSpecs;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -828,10 +830,10 @@ class Entry extends pulumi.CustomResource {
           'gcp:datacatalog/entry:Entry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    bigqueryDateShardedSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryDateShardedSpecs');
-    bigqueryTableSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryTableSpecs');
+    bigqueryDateShardedSpecs = registerOutput<List<EntryBigqueryDateShardedSpec>>('bigqueryDateShardedSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(guardedValue, (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>())); });
+    bigqueryTableSpecs = registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryTableSpec>(guardedValue, (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -852,11 +854,12 @@ class Entry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Entry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -870,8 +873,34 @@ class Entry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    bigqueryDateShardedSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryDateShardedSpecs');
-    bigqueryTableSpecs = registerOutput<List<Map<String, dynamic>>>('bigqueryTableSpecs');
+    bigqueryDateShardedSpecs = registerOutput<List<EntryBigqueryDateShardedSpec>>('bigqueryDateShardedSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(guardedValue, (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>())); });
+    bigqueryTableSpecs = registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryTableSpec>(guardedValue, (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    entryGroup = registerOutput<String>('entryGroup');
+    entryId = registerOutput<String>('entryId');
+    gcsFilesetSpec = registerOutput<EntryGcsFilesetSpec?>('gcsFilesetSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntryGcsFilesetSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    integratedSystem = registerOutput<String>('integratedSystem');
+    linkedResource = registerOutput<String>('linkedResource');
+    this.name = registerOutput<String>('name');
+    schema = registerOutput<String?>('schema');
+    type = registerOutput<String?>('type');
+    userSpecifiedSystem = registerOutput<String?>('userSpecifiedSystem');
+    userSpecifiedType = registerOutput<String?>('userSpecifiedType');
+  }
+
+  /// Creates a typed reference to an existing [Entry] resource.
+  Entry.reference(String urn)
+    : super(
+        'gcp:datacatalog/entry:Entry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryDateShardedSpecs = registerOutput<List<EntryBigqueryDateShardedSpec>>('bigqueryDateShardedSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(guardedValue, (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>())); });
+    bigqueryTableSpecs = registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryTableSpec>(guardedValue, (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

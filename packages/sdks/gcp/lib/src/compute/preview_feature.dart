@@ -204,7 +204,7 @@ class PreviewFeature extends pulumi.CustomResource {
           'gcp:compute/previewFeature:PreviewFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     activationStatus = registerOutput<String>('activationStatus');
     this.name = registerOutput<String>('name');
@@ -217,11 +217,12 @@ class PreviewFeature extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PreviewFeatureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PreviewFeature._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,6 +236,21 @@ class PreviewFeature extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    activationStatus = registerOutput<String>('activationStatus');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rolloutOperation = registerOutput<PreviewFeatureRolloutOperation?>('rolloutOperation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreviewFeatureRolloutOperation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PreviewFeature] resource.
+  PreviewFeature.reference(String urn)
+    : super(
+        'gcp:compute/previewFeature:PreviewFeature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     activationStatus = registerOutput<String>('activationStatus');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

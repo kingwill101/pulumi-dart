@@ -931,7 +931,7 @@ class TagTemplateIamPolicy extends pulumi.CustomResource {
           'gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
@@ -945,11 +945,12 @@ class TagTemplateIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagTemplateIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagTemplateIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -963,6 +964,22 @@ class TagTemplateIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    tagTemplate = registerOutput<String>('tagTemplate');
+  }
+
+  /// Creates a typed reference to an existing [TagTemplateIamPolicy] resource.
+  TagTemplateIamPolicy.reference(String urn)
+    : super(
+        'gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
     project = registerOutput<String>('project');

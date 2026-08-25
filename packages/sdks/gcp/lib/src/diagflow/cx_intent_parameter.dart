@@ -9,10 +9,10 @@ class CxIntentParameter {
   /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
   final pulumi.Input<String> id;
   /// Indicates whether the parameter represents a list of values.
-  final pulumi.Input<bool>? isList;
+  final pulumi.Input<bool?>? isList;
   /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
   /// Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
-  final pulumi.Input<bool>? redact;
+  final pulumi.Input<bool?>? redact;
 
   /// Creates a new [CxIntentParameter].
   /// [entityType] The entity type of the parameter.

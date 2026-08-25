@@ -7,16 +7,16 @@ import 'addons_config_addons_config.dart';
 class AddonsConfigState {
   /// Addon configurations of the Apigee organization.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfig>? addonsConfig;
+  final pulumi.Input<AddonsConfigAddonsConfig?>? addonsConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Name of the Apigee organization.
-  final pulumi.Input<String>? org;
+  final pulumi.Input<String?>? org;
 
   /// Creates a new [AddonsConfigState].
   /// [addonsConfig] Addon configurations of the Apigee organization.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrincipalAccessBoundaryPolicyDetailsRule {
   /// The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The access relationship of principals to the resources in this rule.
   /// Possible values: ALLOW
   final pulumi.Input<String> effect;

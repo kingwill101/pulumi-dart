@@ -9,10 +9,10 @@ class DestinationStateTimelineState {
   /// transient state of the resource will be effective. For instance, if the
   /// state is `ADDING`, this field shows the time when the resource state
   /// transitions to `ACTIVE`.
-  final pulumi.Input<String>? effectiveTime;
+  final pulumi.Input<String?>? effectiveTime;
   /// (Output)
   /// The state of the resource.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DestinationStateTimelineState].
   /// [effectiveTime] (Output)

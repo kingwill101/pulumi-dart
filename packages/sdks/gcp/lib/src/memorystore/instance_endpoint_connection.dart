@@ -6,7 +6,7 @@ import 'instance_endpoint_connection_psc_auto_connection.dart';
 class InstanceEndpointConnection {
   /// Detailed information of a PSC connection that is created through service connectivity automation.
   /// Structure is documented below.
-  final pulumi.Input<InstanceEndpointConnectionPscAutoConnection>? pscAutoConnection;
+  final pulumi.Input<InstanceEndpointConnectionPscAutoConnection?>? pscAutoConnection;
 
   /// Creates a new [InstanceEndpointConnection].
   /// [pscAutoConnection] Detailed information of a PSC connection that is created through service connectivity automation.

@@ -6,7 +6,7 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
   /// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
   final pulumi.Input<String> network;
   /// A list of CIDR block IP subnetwork specification. Must be IPv4.
-  final pulumi.Input<List<String>>? vpcIpSubnetworks;
+  final pulumi.Input<List<String>?>? vpcIpSubnetworks;
 
   /// Creates a new [AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork].
   /// [network] Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.

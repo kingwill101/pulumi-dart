@@ -1071,7 +1071,7 @@ class IcebergTableIamMember extends pulumi.CustomResource {
           'gcp:biglake/icebergTableIamMember:IcebergTableIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<IcebergTableIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1088,11 +1088,12 @@ class IcebergTableIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IcebergTableIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IcebergTableIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1106,6 +1107,25 @@ class IcebergTableIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalog = registerOutput<String>('catalog');
+    condition = registerOutput<IcebergTableIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String>('namespace');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [IcebergTableIamMember] resource.
+  IcebergTableIamMember.reference(String urn)
+    : super(
+        'gcp:biglake/icebergTableIamMember:IcebergTableIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<IcebergTableIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

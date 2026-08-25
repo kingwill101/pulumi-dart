@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolloutPlanWaveValidationTimeBasedValidationMetadata {
   /// The duration that the system waits in between waves. This wait starts
   /// after all changes in the wave are rolled out.
-  final pulumi.Input<String>? waitDuration;
+  final pulumi.Input<String?>? waitDuration;
 
   /// Creates a new [RolloutPlanWaveValidationTimeBasedValidationMetadata].
   /// [waitDuration] The duration that the system waits in between waves. This wait starts

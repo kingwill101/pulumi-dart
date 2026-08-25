@@ -5,99 +5,99 @@ import 'get_connector_subnet.dart';
 
 /// Result data returned by getConnector.
 class GetConnectorResult {
-  final List<String> connectedProjects;
-  final String deletionPolicy;
+  final List<String>? connectedProjects;
+  final String? deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String ipCidrRange;
-  final String machineType;
-  final int maxInstances;
-  final int maxThroughput;
-  final int minInstances;
-  final int minThroughput;
-  final String name;
-  final String network;
+  final String? id;
+  final String? ipCidrRange;
+  final String? machineType;
+  final int? maxInstances;
+  final int? maxThroughput;
+  final int? minInstances;
+  final int? minThroughput;
+  final String? name;
+  final String? network;
   final String? project;
   final String? region;
-  final String selfLink;
-  final String state;
-  final List<GetConnectorSubnet> subnets;
+  final String? selfLink;
+  final String? state;
+  final List<GetConnectorSubnet>? subnets;
 
   /// Creates a new [GetConnectorResult].
-  /// [connectedProjects] Required.
-  /// [deletionPolicy] Required.
+  /// [connectedProjects] Optional.
+  /// [deletionPolicy] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipCidrRange] Required.
-  /// [machineType] Required.
-  /// [maxInstances] Required.
-  /// [maxThroughput] Required.
-  /// [minInstances] Required.
-  /// [minThroughput] Required.
-  /// [name] Required.
-  /// [network] Required.
+  /// [ipCidrRange] Optional.
+  /// [machineType] Optional.
+  /// [maxInstances] Optional.
+  /// [maxThroughput] Optional.
+  /// [minInstances] Optional.
+  /// [minThroughput] Optional.
+  /// [name] Optional.
+  /// [network] Optional.
   /// [project] Optional.
   /// [region] Optional.
-  /// [selfLink] Required.
-  /// [state] Required.
-  /// [subnets] Required.
+  /// [selfLink] Optional.
+  /// [state] Optional.
+  /// [subnets] Optional.
   const GetConnectorResult({
-    required this.connectedProjects,
-    required this.deletionPolicy,
-    required this.id,
-    required this.ipCidrRange,
-    required this.machineType,
-    required this.maxInstances,
-    required this.maxThroughput,
-    required this.minInstances,
-    required this.minThroughput,
-    required this.name,
-    required this.network,
+    this.connectedProjects,
+    this.deletionPolicy,
+    this.id,
+    this.ipCidrRange,
+    this.machineType,
+    this.maxInstances,
+    this.maxThroughput,
+    this.minInstances,
+    this.minThroughput,
+    this.name,
+    this.network,
     this.project,
     this.region,
-    required this.selfLink,
-    required this.state,
-    required this.subnets,
+    this.selfLink,
+    this.state,
+    this.subnets,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectedProjects': connectedProjects,
-      'deletionPolicy': deletionPolicy,
-      'id': id,
-      'ipCidrRange': ipCidrRange,
-      'machineType': machineType,
-      'maxInstances': maxInstances,
-      'maxThroughput': maxThroughput,
-      'minInstances': minInstances,
-      'minThroughput': minThroughput,
-      'name': name,
-      'network': network,
+      'connectedProjects': ?connectedProjects,
+      'deletionPolicy': ?deletionPolicy,
+      'id': ?id,
+      'ipCidrRange': ?ipCidrRange,
+      'machineType': ?machineType,
+      'maxInstances': ?maxInstances,
+      'maxThroughput': ?maxThroughput,
+      'minInstances': ?minInstances,
+      'minThroughput': ?minThroughput,
+      'name': ?name,
+      'network': ?network,
       'project': ?project,
       'region': ?region,
-      'selfLink': selfLink,
-      'state': state,
-      'subnets': pulumi.Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(subnets, (value) => value.toMap()),
+      'selfLink': ?selfLink,
+      'state': ?state,
+      'subnets': ?(() { final guardedValue = subnets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
-      connectedProjects: (map['connectedProjects'] as List).cast<String>(),
-      deletionPolicy: map['deletionPolicy'] as String,
-      id: map['id'] as String,
-      ipCidrRange: map['ipCidrRange'] as String,
-      machineType: map['machineType'] as String,
-      maxInstances: map['maxInstances'] as int,
-      maxThroughput: map['maxThroughput'] as int,
-      minInstances: map['minInstances'] as int,
-      minThroughput: map['minThroughput'] as int,
-      name: map['name'] as String,
-      network: map['network'] as String,
+      connectedProjects: (() { final guardedValue = map['connectedProjects']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipCidrRange: (() { final guardedValue = map['ipCidrRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      minThroughput: (() { final guardedValue = map['minThroughput']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      selfLink: map['selfLink'] as String,
-      state: map['state'] as String,
-      subnets: pulumi.Input.decodeList<GetConnectorSubnet>(map['subnets']!, (value) => GetConnectorSubnet.fromMap((value as Map).cast<String, dynamic>())),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnets: (() { final guardedValue = map['subnets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectorSubnet>(guardedValue, (value) => GetConnectorSubnet.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

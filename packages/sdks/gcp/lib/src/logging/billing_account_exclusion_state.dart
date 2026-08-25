@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BillingAccountExclusion resources.
 class BillingAccountExclusionState {
   /// The billing account to create the exclusion for.
-  final pulumi.Input<String>? billingAccount;
+  final pulumi.Input<String?>? billingAccount;
   /// A human-readable description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The name of the logging exclusion.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [BillingAccountExclusionState].
   /// [billingAccount] The billing account to create the exclusion for.

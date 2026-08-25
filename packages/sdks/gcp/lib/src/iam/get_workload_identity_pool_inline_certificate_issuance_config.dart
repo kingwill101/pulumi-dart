@@ -69,7 +69,7 @@ class GetWorkloadIdentityPoolInlineCertificateIssuanceConfig {
       caPools: pulumi.Input.fromValue((map['caPools'] as Map).cast<String, String>()),
       keyAlgorithm: pulumi.Input.fromValue(map['keyAlgorithm'] as String),
       lifetime: pulumi.Input.fromValue(map['lifetime'] as String),
-      rotationWindowPercentage: pulumi.Input.fromValue(map['rotationWindowPercentage'] as int),
+      rotationWindowPercentage: pulumi.Input.fromValue((map['rotationWindowPercentage'] as num).toInt()),
       useDefaultSharedCa: pulumi.Input.fromValue(map['useDefaultSharedCa'] as bool),
     );
   }

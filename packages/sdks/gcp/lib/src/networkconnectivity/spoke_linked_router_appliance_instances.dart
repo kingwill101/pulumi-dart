@@ -5,14 +5,14 @@ import 'spoke_linked_router_appliance_instances_instance.dart';
 
 class SpokeLinkedRouterApplianceInstances {
   /// Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
-  final pulumi.Input<List<String>>? excludeExportRanges;
+  final pulumi.Input<List<String>?>? excludeExportRanges;
   /// Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
-  final pulumi.Input<List<String>>? excludeImportRanges;
+  final pulumi.Input<List<String>?>? excludeImportRanges;
   /// Dynamic routes fully encompassed by include export ranges are included during export to hub.
-  final pulumi.Input<List<String>>? includeExportRanges;
+  final pulumi.Input<List<String>?>? includeExportRanges;
   /// Hub routes fully encompassed by include import ranges are included during import from hub.
   /// "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
-  final pulumi.Input<List<String>>? includeImportRanges;
+  final pulumi.Input<List<String>?>? includeImportRanges;
   /// The list of router appliance instances
   /// Structure is documented below.
   final pulumi.Input<List<SpokeLinkedRouterApplianceInstancesInstance>> instances;

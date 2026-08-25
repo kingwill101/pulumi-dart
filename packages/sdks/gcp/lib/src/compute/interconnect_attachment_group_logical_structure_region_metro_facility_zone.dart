@@ -7,19 +7,19 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
   /// URLs of Attachments in the given zone, to the given
   /// region, on Interconnects in the given facility and metro. Every
   /// Attachment in the AG has such an entry.
-  final pulumi.Input<List<String>>? attachment;
+  final pulumi.Input<List<String>?>? attachment;
   /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
   /// strings. Users are encouraged, but not required, to use their preferred
   /// format for resource links as keys.
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Attachments per group" quota.
   /// Structure is documented below.
-  final pulumi.Input<List<String>>? attachments;
+  final pulumi.Input<List<String>?>? attachments;
   /// (Output)
   /// The zones that Attachments in this group are present
   /// in, in the given facilities.  This is inherited from their
   /// Interconnects.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone].
   /// [attachment] (Output, Deprecated)

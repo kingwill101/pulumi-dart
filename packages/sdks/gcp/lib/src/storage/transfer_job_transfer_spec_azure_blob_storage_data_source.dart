@@ -6,17 +6,17 @@ import 'transfer_job_transfer_spec_azure_blob_storage_data_source_federated_iden
 
 class TransferJobTransferSpecAzureBlobStorageDataSource {
   /// ) Credentials used to authenticate API requests to Azure block.
-  final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials>? azureCredentials;
+  final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials?>? azureCredentials;
   /// The container to transfer from the Azure Storage account.`
   final pulumi.Input<String> container;
   /// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
-  final pulumi.Input<String>? credentialsSecret;
+  final pulumi.Input<String?>? credentialsSecret;
   /// Federated identity config of a user registered Azure application. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig>? federatedIdentityConfig;
+  final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig?>? federatedIdentityConfig;
   /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
-  final pulumi.Input<String>? privateNetworkService;
+  final pulumi.Input<String?>? privateNetworkService;
   /// The name of the Azure Storage account.
   final pulumi.Input<String> storageAccount;
 

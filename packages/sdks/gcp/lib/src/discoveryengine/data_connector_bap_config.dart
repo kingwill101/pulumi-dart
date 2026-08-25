@@ -7,10 +7,10 @@ class DataConnectorBapConfig {
   /// values include: `createIssue`, `updateIssue`,
   /// `changeIssueStatus`, `createComment`, `updateComment`,
   /// `uploadAttachment`.
-  final pulumi.Input<List<String>>? enabledActions;
+  final pulumi.Input<List<String>?>? enabledActions;
   /// The connector modes supported by the BAP configuration.
   /// The possible values include: `ACTIONS`.
-  final pulumi.Input<List<String>>? supportedConnectorModes;
+  final pulumi.Input<List<String>?>? supportedConnectorModes;
 
   /// Creates a new [DataConnectorBapConfig].
   /// [enabledActions] The list of enabled actions for this connector. Supported

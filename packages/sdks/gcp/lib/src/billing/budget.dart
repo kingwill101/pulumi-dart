@@ -4,6 +4,7 @@ import 'budget_amount.dart';
 import 'budget_args.dart';
 import 'budget_budget_filter.dart';
 import 'budget_state.dart';
+import 'budget_threshold_rule.dart';
 
 /// Budget configuration for a billing account.
 ///
@@ -1911,7 +1912,7 @@ class Budget extends pulumi.CustomResource {
   /// crossed) when spend exceeds the specified percentages of the
   /// budget.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> thresholdRules;
+  late final pulumi.Output<List<BudgetThresholdRule>?> thresholdRules;
 
   /// Creates a new [Budget].
   /// [name] The Pulumi resource name.
@@ -1925,7 +1926,7 @@ class Budget extends pulumi.CustomResource {
           'gcp:billing/budget:Budget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAllUpdatesRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     amount = registerOutput<BudgetAmount>('amount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAmount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1935,7 +1936,7 @@ class Budget extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     ownershipScope = registerOutput<String?>('ownershipScope');
-    thresholdRules = registerOutput<List<Map<String, dynamic>>?>('thresholdRules');
+    thresholdRules = registerOutput<List<BudgetThresholdRule>?>('thresholdRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetThresholdRule>(guardedValue, (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Budget] resource's state with the given [name] and [id].
@@ -1943,11 +1944,12 @@ class Budget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BudgetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Budget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1969,6 +1971,26 @@ class Budget extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     ownershipScope = registerOutput<String?>('ownershipScope');
-    thresholdRules = registerOutput<List<Map<String, dynamic>>?>('thresholdRules');
+    thresholdRules = registerOutput<List<BudgetThresholdRule>?>('thresholdRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetThresholdRule>(guardedValue, (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Budget] resource.
+  Budget.reference(String urn)
+    : super(
+        'gcp:billing/budget:Budget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAllUpdatesRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    amount = registerOutput<BudgetAmount>('amount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAmount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billingAccount = registerOutput<String>('billingAccount');
+    budgetFilter = registerOutput<BudgetBudgetFilter>('budgetFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetBudgetFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    ownershipScope = registerOutput<String?>('ownershipScope');
+    thresholdRules = registerOutput<List<BudgetThresholdRule>?>('thresholdRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetThresholdRule>(guardedValue, (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

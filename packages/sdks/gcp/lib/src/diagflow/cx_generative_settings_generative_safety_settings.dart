@@ -6,10 +6,10 @@ import 'cx_generative_settings_generative_safety_settings_banned_phrase.dart';
 class CxGenerativeSettingsGenerativeSafetySettings {
   /// Banned phrases for generated text.
   /// Structure is documented below.
-  final pulumi.Input<List<CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase>>? bannedPhrases;
+  final pulumi.Input<List<CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase>?>? bannedPhrases;
   /// Optional. Default phrase match strategy for banned phrases.
   /// See [PhraseMatchStrategy](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/GenerativeSettings#phrasematchstrategy) for valid values.
-  final pulumi.Input<String>? defaultBannedPhraseMatchStrategy;
+  final pulumi.Input<String?>? defaultBannedPhraseMatchStrategy;
 
   /// Creates a new [CxGenerativeSettingsGenerativeSafetySettings].
   /// [bannedPhrases] Banned phrases for generated text.

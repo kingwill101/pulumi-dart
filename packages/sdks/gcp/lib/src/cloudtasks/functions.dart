@@ -134,3 +134,14 @@ Future<GetQueueIamPolicyResult> getQueueIamPolicy(
   );
   return GetQueueIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetQueueIamPolicyResult> getQueueIamPolicyOutput(
+  GetQueueIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueIamPolicyResult.fromMap);
+}

@@ -6,10 +6,10 @@ import 'prevention_discovery_config_action_pub_sub_notification_pubsub_condition
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions {
   /// Conditions to apply to the expression
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>>? conditions;
+  final pulumi.Input<List<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>?>? conditions;
   /// The operator to apply to the collection of conditions
   /// Possible values are: `OR`, `AND`.
-  final pulumi.Input<String>? logicalOperator;
+  final pulumi.Input<String?>? logicalOperator;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions].
   /// [conditions] Conditions to apply to the expression

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
   /// Whether to enable public internet access. Default false.
-  final pulumi.Input<bool>? enableInternetAccess;
+  final pulumi.Input<bool?>? enableInternetAccess;
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec].
   /// [enableInternetAccess] Whether to enable public internet access. Default false.

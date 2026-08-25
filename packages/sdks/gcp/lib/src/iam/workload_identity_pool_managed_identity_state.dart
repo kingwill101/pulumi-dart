@@ -9,50 +9,50 @@ class WorkloadIdentityPoolManagedIdentityState {
   /// defined under a managed identity, matching workloads may receive that identity. A maximum of
   /// 50 AttestationRules can be set.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadIdentityPoolManagedIdentityAttestationRule>>? attestationRules;
+  final pulumi.Input<List<WorkloadIdentityPoolManagedIdentityAttestationRule>?>? attestationRules;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the managed identity. Cannot exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
   /// the identity, however existing credentials will still be accepted until they expire.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The resource name of the managed identity as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}/managedIdentities/{workload_identity_pool_managed_identity_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The current state of the managed identity.
   /// * `ACTIVE`: The managed identity is active.
   /// * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
   /// permanently deleted after approximately 30 days. You can restore a soft-deleted managed
   /// identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
   /// soft-deleted managed identity until it is permanently deleted.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  final pulumi.Input<String>? workloadIdentityPoolId;
+  final pulumi.Input<String?>? workloadIdentityPoolId;
   /// The ID to use for the managed identity. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
   /// The prefix `gcp-` will be reserved for future uses.
-  final pulumi.Input<String>? workloadIdentityPoolManagedIdentityId;
+  final pulumi.Input<String?>? workloadIdentityPoolManagedIdentityId;
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
   /// The prefix `gcp-` will be reserved for future uses.
-  final pulumi.Input<String>? workloadIdentityPoolNamespaceId;
+  final pulumi.Input<String?>? workloadIdentityPoolNamespaceId;
 
   /// Creates a new [WorkloadIdentityPoolManagedIdentityState].
   /// [attestationRules] Defines which workloads can receive an identity within a pool. When an AttestationRule is

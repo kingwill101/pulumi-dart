@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_analysis_googl
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud {
   /// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
-  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck>>? alertPolicyChecks;
+  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheck>?>? alertPolicyChecks;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloud].
   /// [alertPolicyChecks] Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.

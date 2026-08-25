@@ -9,17 +9,17 @@ class AppVersionSnapshotToolDataStoreToolEngineSource {
   /// If empty, the search applies to all DataStores associated with the
   /// Engine.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>>? dataStoreSources;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>?>? dataStoreSources;
   /// (Output)
   /// Full resource name of the Engine.
   /// Format:
   /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// (Output)
   /// Filter specification for the DataStore.
   /// See:
   /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolEngineSource].
   /// [dataStoreSources] (Output)

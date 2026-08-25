@@ -199,7 +199,7 @@ class SnapshotSettings extends pulumi.CustomResource {
           'gcp:compute/snapshotSettings:SnapshotSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     project = registerOutput<String>('project');
     storageLocation = registerOutput<SnapshotSettingsStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSettingsStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -210,11 +210,12 @@ class SnapshotSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SnapshotSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,6 +229,19 @@ class SnapshotSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    project = registerOutput<String>('project');
+    storageLocation = registerOutput<SnapshotSettingsStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSettingsStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SnapshotSettings] resource.
+  SnapshotSettings.reference(String urn)
+    : super(
+        'gcp:compute/snapshotSettings:SnapshotSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     project = registerOutput<String>('project');
     storageLocation = registerOutput<SnapshotSettingsStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSettingsStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

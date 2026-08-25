@@ -10,58 +10,58 @@ class NativeDashboardState {
   /// Possible values:
   /// DASHBOARD_PRIVATE
   /// DASHBOARD_PUBLIC
-  final pulumi.Input<String>? access;
+  final pulumi.Input<String?>? access;
   /// A list of charts included in the dashboard definition.
   /// Structure is documented below.
-  final pulumi.Input<List<NativeDashboardChart>>? charts;
+  final pulumi.Input<List<NativeDashboardChart>?>? charts;
   /// The creation time of the dashboard.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The ID of the user who created the dashboard.
-  final pulumi.Input<String>? createUserId;
+  final pulumi.Input<String?>? createUserId;
   /// The unique ID of the Dashboard.
-  final pulumi.Input<String>? dashboardId;
+  final pulumi.Input<String?>? dashboardId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the dashboard.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name/title of the dashboard visible to users.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Server-computed checksum for optimistic concurrency control,
   /// sent on update and delete requests.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Global filters defined for the dashboard.
   /// Structure is documented below.
-  final pulumi.Input<List<NativeDashboardFilter>>? filters;
+  final pulumi.Input<List<NativeDashboardFilter>?>? filters;
   /// (Output)
   /// The server-generated fingerprint of the dashboard definition.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// The ID of the Chronicle instance.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Whether the dashboard is pinned by the user.
-  final pulumi.Input<bool>? isPinned;
+  final pulumi.Input<bool?>? isPinned;
   /// (Output)
   /// The time when this dashboard was last viewed.
-  final pulumi.Input<String>? lastViewedTime;
+  final pulumi.Input<String?>? lastViewedTime;
   /// The location of the Chronicle instance.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The full resource name of the dashboard.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The type of dashboard.
   /// Possible values:
   /// CURATED, PRIVATE, PUBLIC, CUSTOM, MARKETPLACE
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The time when the dashboard was last edited.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The ID of the user who last edited the dashboard.
-  final pulumi.Input<String>? updateUserId;
+  final pulumi.Input<String?>? updateUserId;
 
   /// Creates a new [NativeDashboardState].
   /// [access] The access level of the dashboard.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeysZoneSigningKeyDigest {
   /// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetKeysZoneSigningKeyDigest].
   /// [digest] The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.

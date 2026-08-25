@@ -10,46 +10,46 @@ import 'alert_policy_documentation.dart';
 class AlertPolicyState {
   /// Control over how this alert policy's notification channels are notified.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyAlertStrategy>? alertStrategy;
+  final pulumi.Input<AlertPolicyAlertStrategy?>? alertStrategy;
   /// How to combine the results of multiple conditions to
   /// determine if an incident should be opened.
   /// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
-  final pulumi.Input<String>? combiner;
+  final pulumi.Input<String?>? combiner;
   /// A list of conditions for the policy. The conditions are combined by
   /// AND or OR according to the combiner field. If the combined conditions
   /// evaluate to true, then an incident is created. A policy can have from
   /// one to six conditions.
   /// Structure is documented below.
-  final pulumi.Input<List<AlertPolicyCondition>>? conditions;
+  final pulumi.Input<List<AlertPolicyCondition>?>? conditions;
   /// A read-only record of the creation of the alerting policy.
   /// If provided in a call to create or update, this field will
   /// be ignored.
   /// Structure is documented below.
-  final pulumi.Input<List<AlertPolicyCreationRecord>>? creationRecords;
+  final pulumi.Input<List<AlertPolicyCreationRecord>?>? creationRecords;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A short name or phrase used to identify the policy in
   /// dashboards, notifications, and incidents. To avoid confusion, don't use
   /// the same display name for multiple policies in the same project. The
   /// name is limited to 512 Unicode characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Documentation that is included with notifications and incidents related
   /// to this policy. Best practice is for the documentation to include information
   /// to help responders understand, mitigate, escalate, and correct the underlying
   /// problems detected by the alerting policy. Notification channels that have
   /// limited capacity might not show this documentation.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyDocumentation>? documentation;
+  final pulumi.Input<AlertPolicyDocumentation?>? documentation;
   /// Whether or not the policy is enabled. The default is true.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The unique resource name for this policy.
   /// Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Identifies the notification channels to which notifications should be
   /// sent when incidents are opened or closed or when new violations occur
   /// on an already opened incident. Each element of this array corresponds
@@ -57,21 +57,21 @@ class AlertPolicyState {
   /// returned from the notificationChannels.list method. The syntax of the
   /// entries in this field is
   /// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
-  final pulumi.Input<List<String>>? notificationChannels;
+  final pulumi.Input<List<String>?>? notificationChannels;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The severity of an alert policy indicates how important incidents generated
   /// by that policy are. The severity level will be displayed on the Incident
   /// detail page and in notifications.
   /// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// This field is intended to be used for organizing and identifying the AlertPolicy
   /// objects.The field can contain up to 64 entries. Each key and value is limited
   /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
   /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
   /// must begin with a letter.
-  final pulumi.Input<Map<String, String>>? userLabels;
+  final pulumi.Input<Map<String, String>?>? userLabels;
 
   /// Creates a new [AlertPolicyState].
   /// [alertStrategy] Control over how this alert policy's notification channels are notified.

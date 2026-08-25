@@ -10,24 +10,24 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication {
   /// (Output)
   /// Configurations for authentication with API key.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig>>? apiKeyConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig>?>? apiKeyConfigs;
   /// (Output)
   /// Configurations for authentication with a bearer token.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig>>? bearerTokenConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig>?>? bearerTokenConfigs;
   /// (Output)
   /// Configurations for authentication with OAuth.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfig>>? oauthConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfig>?>? oauthConfigs;
   /// (Output)
   /// Configurations for authentication using a custom service account.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig>>? serviceAccountAuthConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig>?>? serviceAccountAuthConfigs;
   /// (Output)
   /// Configurations for authentication with [ID
   /// token](https://cloud.google.com/docs/authentication/token-types#id) generated
   /// from service agent.
-  final pulumi.Input<List<Map<String, dynamic>>>? serviceAgentIdTokenAuthConfigs;
+  final pulumi.Input<List<Map<String, dynamic>>?>? serviceAgentIdTokenAuthConfigs;
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication].
   /// [apiKeyConfigs] (Output)

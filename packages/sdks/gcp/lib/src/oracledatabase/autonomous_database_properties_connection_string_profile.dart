@@ -11,46 +11,46 @@ class AutonomousDatabasePropertiesConnectionStringProfile {
   /// LOW
   /// TP
   /// TPURGENT
-  final pulumi.Input<String>? consumerGroup;
+  final pulumi.Input<String?>? consumerGroup;
   /// The display name for the Autonomous Database. The name does not have to
   /// be unique within your project.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The host name format being currently used in connection string.
   /// Possible values:
   /// HOST_FORMAT_UNSPECIFIED
   /// FQDN
   /// IP
-  final pulumi.Input<String>? hostFormat;
+  final pulumi.Input<String?>? hostFormat;
   /// This field indicates if the connection string is regional and is only
   /// applicable for cross-region Data Guard.
-  final pulumi.Input<bool>? isRegional;
+  final pulumi.Input<bool?>? isRegional;
   /// The protocol being used by the connection.
   /// Possible values:
   /// PROTOCOL_UNSPECIFIED
   /// TCP
   /// TCPS
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The current session mode of the connection.
   /// Possible values:
   /// SESSION_MODE_UNSPECIFIED
   /// DIRECT
   /// INDIRECT
-  final pulumi.Input<String>? sessionMode;
+  final pulumi.Input<String?>? sessionMode;
   /// The syntax of the connection string.
   /// Possible values:
   /// SYNTAX_FORMAT_UNSPECIFIED
   /// LONG
   /// EZCONNECT
   /// EZCONNECTPLUS
-  final pulumi.Input<String>? syntaxFormat;
+  final pulumi.Input<String?>? syntaxFormat;
   /// This field indicates the TLS authentication type of the connection.
   /// Possible values:
   /// TLS_AUTHENTICATION_UNSPECIFIED
   /// SERVER
   /// MUTUAL
-  final pulumi.Input<String>? tlsAuthentication;
+  final pulumi.Input<String?>? tlsAuthentication;
   /// The value of the connection string.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AutonomousDatabasePropertiesConnectionStringProfile].
   /// [consumerGroup] The current consumer group being used by the connection.

@@ -1701,11 +1701,11 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     caPool = registerOutput<String>('caPool');
     createTime = registerOutput<String>('createTime');
-    customTlsFeatures = registerOutput<List<String>?>('customTlsFeatures');
+    customTlsFeatures = registerOutput<List<String>?>('customTlsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     excludePublicCaSet = registerOutput<bool?>('excludePublicCaSet');
@@ -1723,11 +1723,12 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TlsInspectionPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TlsInspectionPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1743,7 +1744,31 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
         ) {
     caPool = registerOutput<String>('caPool');
     createTime = registerOutput<String>('createTime');
-    customTlsFeatures = registerOutput<List<String>?>('customTlsFeatures');
+    customTlsFeatures = registerOutput<List<String>?>('customTlsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    excludePublicCaSet = registerOutput<bool?>('excludePublicCaSet');
+    location = registerOutput<String?>('location');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tlsFeatureProfile = registerOutput<String?>('tlsFeatureProfile');
+    trustConfig = registerOutput<String?>('trustConfig');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TlsInspectionPolicy] resource.
+  TlsInspectionPolicy.reference(String urn)
+    : super(
+        'gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    caPool = registerOutput<String>('caPool');
+    createTime = registerOutput<String>('createTime');
+    customTlsFeatures = registerOutput<List<String>?>('customTlsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     excludePublicCaSet = registerOutput<bool?>('excludePublicCaSet');

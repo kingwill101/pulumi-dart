@@ -7,7 +7,7 @@ class AppHostingTrafficCurrent {
   /// (Output)
   /// A list of traffic splits that together represent where traffic is being routed.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingTrafficCurrentSplit>>? splits;
+  final pulumi.Input<List<AppHostingTrafficCurrentSplit>?>? splits;
 
   /// Creates a new [AppHostingTrafficCurrent].
   /// [splits] (Output)

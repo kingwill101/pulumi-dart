@@ -11,66 +11,66 @@ import 'listing_restricted_export_config.dart';
 /// Input properties used for looking up and filtering Listing resources.
 class ListingState {
   /// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
-  final pulumi.Input<bool>? allowOnlyMetadataSharing;
+  final pulumi.Input<bool?>? allowOnlyMetadataSharing;
   /// Shared dataset i.e. BigQuery dataset source.
   /// Structure is documented below.
-  final pulumi.Input<ListingBigqueryDataset>? bigqueryDataset;
+  final pulumi.Input<ListingBigqueryDataset?>? bigqueryDataset;
   /// Categories of the listing. Up to two categories are allowed.
-  final pulumi.Input<List<String>>? categories;
+  final pulumi.Input<List<String>?>? categories;
   /// Commercial info contains the information about the commercial data products associated with the listing.
   /// Structure is documented below.
-  final pulumi.Input<List<ListingCommercialInfo>>? commercialInfos;
+  final pulumi.Input<List<ListingCommercialInfo>?>? commercialInfos;
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  final pulumi.Input<String>? dataExchangeId;
+  final pulumi.Input<String?>? dataExchangeId;
   /// Details of the data provider who owns the source data.
   /// Structure is documented below.
-  final pulumi.Input<ListingDataProvider>? dataProvider;
+  final pulumi.Input<ListingDataProvider?>? dataProvider;
   /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
-  final pulumi.Input<bool>? deleteCommercial;
+  final pulumi.Input<bool?>? deleteCommercial;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
   /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
-  final pulumi.Input<String>? discoveryType;
+  final pulumi.Input<String?>? discoveryType;
   /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Documentation describing the listing.
-  final pulumi.Input<String>? documentation;
+  final pulumi.Input<String?>? documentation;
   /// Base64 encoded image representing the listing.
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  final pulumi.Input<String>? listingId;
+  final pulumi.Input<String?>? listingId;
   /// The name of the location this data exchange listing.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
-  final pulumi.Input<bool>? logLinkedDatasetQueryUserEmail;
+  final pulumi.Input<bool?>? logLinkedDatasetQueryUserEmail;
   /// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Email or URL of the primary point of contact of the listing.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Details of the publisher who owns the listing and who can share the source data.
   /// Structure is documented below.
-  final pulumi.Input<ListingPublisher>? publisher;
+  final pulumi.Input<ListingPublisher?>? publisher;
   /// Pub/Sub topic source.
   /// Structure is documented below.
-  final pulumi.Input<ListingPubsubTopic>? pubsubTopic;
+  final pulumi.Input<ListingPubsubTopic?>? pubsubTopic;
   /// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
-  final pulumi.Input<String>? requestAccess;
+  final pulumi.Input<String?>? requestAccess;
   /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
   /// Structure is documented below.
-  final pulumi.Input<ListingRestrictedExportConfig>? restrictedExportConfig;
+  final pulumi.Input<ListingRestrictedExportConfig?>? restrictedExportConfig;
   /// Current state of the listing.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ListingState].
   /// [allowOnlyMetadataSharing] If true, the listing is only available to get the resource metadata. Listing is non subscribable.

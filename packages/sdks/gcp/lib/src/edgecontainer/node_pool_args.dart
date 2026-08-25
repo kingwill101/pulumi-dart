@@ -17,32 +17,32 @@ class NodePoolArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Local disk encryption options. This field is only used when enabling CMEK support.
   /// Structure is documented below.
-  final pulumi.Input<NodePoolLocalDiskEncryption>? localDiskEncryption;
+  final pulumi.Input<NodePoolLocalDiskEncryption?>? localDiskEncryption;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// Only machines matching this filter will be allowed to join the node pool.
   /// The filtering language accepts strings like "name=&lt;name&gt;", and is
   /// documented in more detail in [AIP-160](https://google.aip.dev/160).
-  final pulumi.Input<String>? machineFilter;
+  final pulumi.Input<String?>? machineFilter;
   /// The resource name of the node pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for each node in the NodePool
   /// Structure is documented below.
-  final pulumi.Input<NodePoolNodeConfig>? nodeConfig;
+  final pulumi.Input<NodePoolNodeConfig?>? nodeConfig;
   /// The number of nodes in the pool.
   final pulumi.Input<int> nodeCount;
   /// Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
   final pulumi.Input<String> nodeLocation;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [NodePoolArgs].
   /// [cluster] The name of the target Distributed Cloud Edge Cluster.
@@ -96,7 +96,7 @@ class NodePoolArgs {
       machineFilter: (() { final guardedValue = map['machineFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       nodeLocation: pulumi.Input.fromValue(map['nodeLocation'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

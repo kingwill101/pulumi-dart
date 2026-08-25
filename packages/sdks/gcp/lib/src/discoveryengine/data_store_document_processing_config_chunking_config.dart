@@ -6,7 +6,7 @@ import 'data_store_document_processing_config_chunking_config_layout_based_chunk
 class DataStoreDocumentProcessingConfigChunkingConfig {
   /// Configuration for the layout based chunking.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig>? layoutBasedChunkingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig?>? layoutBasedChunkingConfig;
 
   /// Creates a new [DataStoreDocumentProcessingConfigChunkingConfig].
   /// [layoutBasedChunkingConfig] Configuration for the layout based chunking.

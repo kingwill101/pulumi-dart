@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsAccessSettingsOauthSettings {
   /// OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// OAuth secret paired with client ID.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// (Output)
   /// OAuth secret sha256 paired with client ID.
-  final pulumi.Input<String>? clientSecretSha256;
+  final pulumi.Input<String?>? clientSecretSha256;
   /// Domain hint to send as hd=? parameter in OAuth request flow.
   /// Enables redirect to primary IDP by skipping Google's login screen.
   /// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
   /// Note: IAP does not verify that the id token's hd claim matches this value
   /// since access behavior is managed by IAM policies.
   /// * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
-  final pulumi.Input<String>? loginHint;
+  final pulumi.Input<String?>? loginHint;
   /// List of client ids allowed to use IAP programmatically.
-  final pulumi.Input<List<String>>? programmaticClients;
+  final pulumi.Input<List<String>?>? programmaticClients;
 
   /// Creates a new [SettingsAccessSettingsOauthSettings].
   /// [clientId] OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this.

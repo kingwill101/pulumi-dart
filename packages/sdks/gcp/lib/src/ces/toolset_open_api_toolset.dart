@@ -8,18 +8,18 @@ import 'toolset_open_api_toolset_tls_config.dart';
 class ToolsetOpenApiToolset {
   /// Authentication information required for API calls.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthentication>? apiAuthentication;
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthentication?>? apiAuthentication;
   /// If true, the agent will ignore unknown fields in the API response for all
   /// operations defined in the OpenAPI schema.
-  final pulumi.Input<bool>? ignoreUnknownFields;
+  final pulumi.Input<bool?>? ignoreUnknownFields;
   /// The OpenAPI schema of the toolset.
   final pulumi.Input<String> openApiSchema;
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// The TLS configuration.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetTlsConfig>? tlsConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetTlsConfig?>? tlsConfig;
   /// (Output)
   /// The server URL of the Open API schema.
   /// This field is only set in toolsets in the environment dependencies
@@ -27,7 +27,7 @@ class ToolsetOpenApiToolset {
   /// During the import process, if this url is present in the environment dependencies
   /// and the schema has the $env_var placeholder,
   /// it will replace the placeholder in the schema.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ToolsetOpenApiToolset].
   /// [apiAuthentication] Authentication information required for API calls.

@@ -216,7 +216,7 @@ class SshPublicKey extends pulumi.CustomResource {
           'gcp:oslogin/sshPublicKey:SshPublicKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');
@@ -231,11 +231,12 @@ class SshPublicKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SshPublicKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SshPublicKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,6 +250,23 @@ class SshPublicKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');
+    fingerprint = registerOutput<String>('fingerprint');
+    key = registerOutput<String>('key');
+    project = registerOutput<String?>('project');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [SshPublicKey] resource.
+  SshPublicKey.reference(String urn)
+    : super(
+        'gcp:oslogin/sshPublicKey:SshPublicKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');
     fingerprint = registerOutput<String>('fingerprint');

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionBuildConfigOnDeployUpdatePolicy {
   /// (Output)
   /// The runtime version which was used during latest function deployment.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [FunctionBuildConfigOnDeployUpdatePolicy].
   /// [runtimeVersion] (Output)

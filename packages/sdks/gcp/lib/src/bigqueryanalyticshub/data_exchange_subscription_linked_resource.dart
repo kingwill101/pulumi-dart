@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataExchangeSubscriptionLinkedResource {
   /// (Output)
   /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
-  final pulumi.Input<String>? linkedDataset;
+  final pulumi.Input<String?>? linkedDataset;
   /// (Output)
   /// Output only. Listing for which linked resource is created.
-  final pulumi.Input<String>? listing;
+  final pulumi.Input<String?>? listing;
 
   /// Creates a new [DataExchangeSubscriptionLinkedResource].
   /// [linkedDataset] (Output)

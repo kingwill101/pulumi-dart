@@ -13,27 +13,27 @@ import 'workflow_template_job_spark_sql_job.dart';
 
 class WorkflowTemplateJob {
   /// Job is a Hadoop job.
-  final pulumi.Input<WorkflowTemplateJobHadoopJob>? hadoopJob;
+  final pulumi.Input<WorkflowTemplateJobHadoopJob?>? hadoopJob;
   /// Job is a Hive job.
-  final pulumi.Input<WorkflowTemplateJobHiveJob>? hiveJob;
+  final pulumi.Input<WorkflowTemplateJobHiveJob?>? hiveJob;
   /// The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Job is a Pig job.
-  final pulumi.Input<WorkflowTemplateJobPigJob>? pigJob;
+  final pulumi.Input<WorkflowTemplateJobPigJob?>? pigJob;
   /// The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
-  final pulumi.Input<List<String>>? prerequisiteStepIds;
+  final pulumi.Input<List<String>?>? prerequisiteStepIds;
   /// Job is a Presto job.
-  final pulumi.Input<WorkflowTemplateJobPrestoJob>? prestoJob;
+  final pulumi.Input<WorkflowTemplateJobPrestoJob?>? prestoJob;
   /// Job is a PySpark job.
-  final pulumi.Input<WorkflowTemplateJobPysparkJob>? pysparkJob;
+  final pulumi.Input<WorkflowTemplateJobPysparkJob?>? pysparkJob;
   /// Job scheduling configuration.
-  final pulumi.Input<WorkflowTemplateJobScheduling>? scheduling;
+  final pulumi.Input<WorkflowTemplateJobScheduling?>? scheduling;
   /// Job is a Spark job.
-  final pulumi.Input<WorkflowTemplateJobSparkJob>? sparkJob;
+  final pulumi.Input<WorkflowTemplateJobSparkJob?>? sparkJob;
   /// Job is a SparkR job.
-  final pulumi.Input<WorkflowTemplateJobSparkRJob>? sparkRJob;
+  final pulumi.Input<WorkflowTemplateJobSparkRJob?>? sparkRJob;
   /// Job is a SparkSql job.
-  final pulumi.Input<WorkflowTemplateJobSparkSqlJob>? sparkSqlJob;
+  final pulumi.Input<WorkflowTemplateJobSparkSqlJob?>? sparkSqlJob;
   /// Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
   final pulumi.Input<String> stepId;
 

@@ -6,13 +6,13 @@ import 'certificate_certificate_description_subject_description_subject_alt_name
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
   /// (Output)
   /// Indicates whether or not the name constraints are marked critical.
-  final pulumi.Input<bool>? critical;
+  final pulumi.Input<bool?>? critical;
   /// (Output)
   /// Describes how some of the technical fields in a certificate should be populated.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>>? obectIds;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>?>? obectIds;
   /// The value of this X.509 extension. A base64-encoded string.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan].
   /// [critical] (Output)

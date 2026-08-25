@@ -10,53 +10,53 @@ import 'listing_subscription_linked_resource.dart';
 class ListingSubscriptionState {
   /// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
   /// Structure is documented below.
-  final pulumi.Input<List<ListingSubscriptionCommercialInfo>>? commercialInfos;
+  final pulumi.Input<List<ListingSubscriptionCommercialInfo>?>? commercialInfos;
   /// Timestamp when the subscription was created.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  final pulumi.Input<String>? dataExchangeId;
+  final pulumi.Input<String?>? dataExchangeId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The destination dataset for this subscription.
   /// Structure is documented below.
-  final pulumi.Input<ListingSubscriptionDestinationDataset>? destinationDataset;
+  final pulumi.Input<ListingSubscriptionDestinationDataset?>? destinationDataset;
   /// Timestamp when the subscription was last modified.
-  final pulumi.Input<String>? lastModifyTime;
+  final pulumi.Input<String?>? lastModifyTime;
   /// Output only. Map of listing resource names to associated linked resource,
   /// e.g. projects/123/locations/US/dataExchanges/456/listings/789 &gt; projects/123/datasets/my_dataset
   /// Structure is documented below.
-  final pulumi.Input<List<ListingSubscriptionLinkedDatasetMap>>? linkedDatasetMaps;
+  final pulumi.Input<List<ListingSubscriptionLinkedDatasetMap>?>? linkedDatasetMaps;
   /// Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
   /// Structure is documented below.
-  final pulumi.Input<List<ListingSubscriptionLinkedResource>>? linkedResources;
+  final pulumi.Input<List<ListingSubscriptionLinkedResource>?>? linkedResources;
   /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  final pulumi.Input<String>? listingId;
+  final pulumi.Input<String?>? listingId;
   /// The name of the location of the data exchange. Distinct from the location of the destination data set.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
-  final pulumi.Input<bool>? logLinkedDatasetQueryUserEmail;
+  final pulumi.Input<bool?>? logLinkedDatasetQueryUserEmail;
   /// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Display name of the project of this subscription.
-  final pulumi.Input<String>? organizationDisplayName;
+  final pulumi.Input<String?>? organizationDisplayName;
   /// Organization of the project this subscription belongs to.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Listing shared asset type.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Current state of the subscription.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Email of the subscriber.
-  final pulumi.Input<String>? subscriberContact;
+  final pulumi.Input<String?>? subscriberContact;
   /// The subscription id used to reference the subscription.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [ListingSubscriptionState].
   /// [commercialInfos] Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.

@@ -6,7 +6,7 @@ class BackendServiceParams {
   /// Resource manager tags to be bound to the backend service. Tag keys and values have the
   /// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
   /// and values are in the format tagValues/456.
-  final pulumi.Input<Map<String, String>>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>?>? resourceManagerTags;
 
   /// Creates a new [BackendServiceParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the backend service. Tag keys and values have the

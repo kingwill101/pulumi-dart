@@ -26,7 +26,7 @@ class InstanceAcceleratorConfig {
 
   factory InstanceAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return InstanceAcceleratorConfig(
-      coreCount: pulumi.Input.fromValue(map['coreCount'] as int),
+      coreCount: pulumi.Input.fromValue((map['coreCount'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

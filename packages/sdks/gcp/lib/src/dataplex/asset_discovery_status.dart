@@ -5,17 +5,17 @@ import 'asset_discovery_status_stat.dart';
 
 class AssetDiscoveryStatus {
   /// The duration of the last discovery run.
-  final pulumi.Input<String>? lastRunDuration;
+  final pulumi.Input<String?>? lastRunDuration;
   /// The start time of the last discovery run.
-  final pulumi.Input<String>? lastRunTime;
+  final pulumi.Input<String?>? lastRunTime;
   /// Additional information about the current state.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Data Stats of the asset reported by discovery.
-  final pulumi.Input<List<AssetDiscoveryStatusStat>>? stats;
+  final pulumi.Input<List<AssetDiscoveryStatusStat>?>? stats;
   /// Output only. The time when the asset was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AssetDiscoveryStatus].
   /// [lastRunDuration] The duration of the last discovery run.

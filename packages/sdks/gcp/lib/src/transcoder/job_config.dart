@@ -15,34 +15,34 @@ import 'job_config_pubsub_destination.dart';
 class JobConfig {
   /// Ad break.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigAdBreak>>? adBreaks;
+  final pulumi.Input<List<JobConfigAdBreak>?>? adBreaks;
   /// List of input assets stored in Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigEditList>>? editLists;
+  final pulumi.Input<List<JobConfigEditList>?>? editLists;
   /// List of input assets stored in Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigElementaryStream>>? elementaryStreams;
+  final pulumi.Input<List<JobConfigElementaryStream>?>? elementaryStreams;
   /// List of encryption configurations for the content.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigEncryption>>? encryptions;
+  final pulumi.Input<List<JobConfigEncryption>?>? encryptions;
   /// List of input assets stored in Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigInput>>? inputs;
+  final pulumi.Input<List<JobConfigInput>?>? inputs;
   /// Manifest configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigManifest>>? manifests;
+  final pulumi.Input<List<JobConfigManifest>?>? manifests;
   /// Multiplexing settings for output stream.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigMuxStream>>? muxStreams;
+  final pulumi.Input<List<JobConfigMuxStream>?>? muxStreams;
   /// Location of output file(s) in a Cloud Storage bucket.
   /// Structure is documented below.
-  final pulumi.Input<JobConfigOutput>? output;
+  final pulumi.Input<JobConfigOutput?>? output;
   /// List of overlays on the output video, in descending Z-order.
   /// Structure is documented below.
-  final pulumi.Input<List<JobConfigOverlay>>? overlays;
+  final pulumi.Input<List<JobConfigOverlay>?>? overlays;
   /// Pub/Sub destination.
   /// Structure is documented below.
-  final pulumi.Input<JobConfigPubsubDestination>? pubsubDestination;
+  final pulumi.Input<JobConfigPubsubDestination?>? pubsubDestination;
 
   /// Creates a new [JobConfig].
   /// [adBreaks] Ad break.

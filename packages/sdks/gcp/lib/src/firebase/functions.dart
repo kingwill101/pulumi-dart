@@ -41,6 +41,17 @@ Future<GetAdminSdkConfigResult> getAdminSdkConfig(
   return GetAdminSdkConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetAdminSdkConfigResult> getAdminSdkConfigOutput(
+  GetAdminSdkConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getAdminSdkConfig:getAdminSdkConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdminSdkConfigResult.fromMap);
+}
+
 /// A Google Cloud Firebase Android application instance
 ///
 /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -60,6 +71,17 @@ Future<GetAndroidAppResult> getAndroidApp(
   return GetAndroidAppResult.fromMap(result);
 }
 
+pulumi.Output<GetAndroidAppResult> getAndroidAppOutput(
+  GetAndroidAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getAndroidApp:getAndroidApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAndroidAppResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebase_get_android_app_config_get_android_app_config_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAndroidAppConfigResult> getAndroidAppConfig(
@@ -73,6 +95,17 @@ Future<GetAndroidAppConfigResult> getAndroidAppConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAndroidAppConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetAndroidAppConfigResult> getAndroidAppConfigOutput(
+  GetAndroidAppConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getAndroidAppConfig:getAndroidAppConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAndroidAppConfigResult.fromMap);
 }
 
 /// A Google Cloud Firebase Apple application instance
@@ -92,6 +125,17 @@ Future<GetAppleAppResult> getAppleApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppleAppResult.fromMap(result);
+}
+
+pulumi.Output<GetAppleAppResult> getAppleAppOutput(
+  GetAppleAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getAppleApp:getAppleApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppleAppResult.fromMap);
 }
 
 /// A Google Cloud Firebase Apple application configuration
@@ -119,6 +163,17 @@ Future<GetAppleAppConfigResult> getAppleAppConfig(
   return GetAppleAppConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetAppleAppConfigResult> getAppleAppConfigOutput(
+  GetAppleAppConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getAppleAppConfig:getAppleAppConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppleAppConfigResult.fromMap);
+}
+
 /// A Google Cloud Firebase Hosting Channel instance
 ///
 /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -138,6 +193,17 @@ Future<GetHostingChannelResult> getHostingChannel(
   return GetHostingChannelResult.fromMap(result);
 }
 
+pulumi.Output<GetHostingChannelResult> getHostingChannelOutput(
+  GetHostingChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getHostingChannel:getHostingChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostingChannelResult.fromMap);
+}
+
 /// A Google Cloud Firebase web application instance
 ///
 /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -155,6 +221,17 @@ Future<GetWebAppResult> getWebApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppResult> getWebAppOutput(
+  GetWebAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getWebApp:getWebApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppResult.fromMap);
 }
 
 /// A Google Cloud Firebase web application configuration
@@ -180,4 +257,15 @@ Future<GetWebAppConfigResult> getWebAppConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppConfigResult> getWebAppConfigOutput(
+  GetWebAppConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firebase/getWebAppConfig:getWebAppConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppConfigResult.fromMap);
 }

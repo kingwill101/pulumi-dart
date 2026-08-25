@@ -7,10 +7,10 @@ import 'prevention_discovery_config_action_tag_resources_tag_condition_tag.dart'
 class PreventionDiscoveryConfigActionTagResourcesTagCondition {
   /// Conditions attaching the tag to a resource on its profile having this sensitivity score.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore>? sensitivityScore;
+  final pulumi.Input<PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore?>? sensitivityScore;
   /// The tag value to attach to resources.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionTagResourcesTagConditionTag>? tag;
+  final pulumi.Input<PreventionDiscoveryConfigActionTagResourcesTagConditionTag?>? tag;
 
   /// Creates a new [PreventionDiscoveryConfigActionTagResourcesTagCondition].
   /// [sensitivityScore] Conditions attaching the tag to a resource on its profile having this sensitivity score.

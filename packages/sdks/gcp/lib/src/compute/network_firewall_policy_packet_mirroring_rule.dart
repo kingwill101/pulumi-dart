@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_firewall_policy_packet_mirroring_rule_args.dart';
 import 'network_firewall_policy_packet_mirroring_rule_match.dart';
 import 'network_firewall_policy_packet_mirroring_rule_state.dart';
+import 'network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 
 /// Represents a packet mirroring rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (mirror or do_not_mirror).
 ///
@@ -750,7 +751,7 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetSecureTags;
+  late final pulumi.Output<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>?> targetSecureTags;
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// Can be set only if action = 'mirror' and cannot be set for other actions.
   late final pulumi.Output<bool?> tlsInspect;
@@ -767,7 +768,7 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -783,7 +784,7 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
+    targetSecureTags = registerOutput<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(guardedValue, (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 
@@ -792,11 +793,12 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkFirewallPolicyPacketMirroringRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkFirewallPolicyPacketMirroringRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -824,7 +826,34 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
+    targetSecureTags = registerOutput<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(guardedValue, (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    tlsInspect = registerOutput<bool?>('tlsInspect');
+  }
+
+  /// Creates a typed reference to an existing [NetworkFirewallPolicyPacketMirroringRule] resource.
+  NetworkFirewallPolicyPacketMirroringRule.reference(String urn)
+    : super(
+        'gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    direction = registerOutput<String>('direction');
+    disabled = registerOutput<bool?>('disabled');
+    firewallPolicy = registerOutput<String>('firewallPolicy');
+    kind = registerOutput<String>('kind');
+    match = registerOutput<NetworkFirewallPolicyPacketMirroringRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    ruleName = registerOutput<String?>('ruleName');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    securityProfileGroup = registerOutput<String?>('securityProfileGroup');
+    targetSecureTags = registerOutput<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>(guardedValue, (value) => NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 }

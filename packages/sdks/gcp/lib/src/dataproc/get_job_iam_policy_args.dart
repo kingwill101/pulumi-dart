@@ -11,10 +11,10 @@ class GetJobIamPolicyArgs {
   final pulumi.Input<String> jobId;
   /// The project in which the job belongs. If it
   /// is not provided, Terraform will use the provider default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region in which the job belongs. If it
   /// is not provided, Terraform will use the provider default.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetJobIamPolicyArgs].
   /// [jobId] The name or relative resource id of the job to manage IAM policies for.

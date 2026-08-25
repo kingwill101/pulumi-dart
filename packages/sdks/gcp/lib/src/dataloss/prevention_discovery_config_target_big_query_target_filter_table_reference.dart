@@ -8,7 +8,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
   /// The Google Cloud project ID of the project containing the table.
   /// If omitted, the project ID is inferred from the parent project.
   /// This field is required if the parent resource is an organization.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// Name of the table.
   final pulumi.Input<String> tableId;
 

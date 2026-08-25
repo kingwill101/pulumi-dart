@@ -13,21 +13,21 @@ class AuthorizedViewState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// -----
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
   /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
-  final pulumi.Input<String>? deletionProtection;
+  final pulumi.Input<String?>? deletionProtection;
   /// The name of the Bigtable instance in which the authorized view belongs.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-  final pulumi.Input<AuthorizedViewSubsetView>? subsetView;
+  final pulumi.Input<AuthorizedViewSubsetView?>? subsetView;
   /// The name of the Bigtable table in which the authorized view belongs.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [AuthorizedViewState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

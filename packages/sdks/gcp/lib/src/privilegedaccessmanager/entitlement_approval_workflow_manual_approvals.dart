@@ -5,7 +5,7 @@ import 'entitlement_approval_workflow_manual_approvals_step.dart';
 
 class EntitlementApprovalWorkflowManualApprovals {
   /// Optional. Do the approvers need to provide a justification for their actions?
-  final pulumi.Input<bool>? requireApproverJustification;
+  final pulumi.Input<bool?>? requireApproverJustification;
   /// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
   /// Structure is documented below.
   final pulumi.Input<List<EntitlementApprovalWorkflowManualApprovalsStep>> steps;

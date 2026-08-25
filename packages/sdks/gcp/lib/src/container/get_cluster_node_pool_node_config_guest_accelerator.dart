@@ -42,7 +42,7 @@ class GetClusterNodePoolNodeConfigGuestAccelerator {
 
   factory GetClusterNodePoolNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigGuestAccelerator(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       gpuDriverInstallationConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>(map['gpuDriverInstallationConfigs']!, (value) => GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((value as Map).cast<String, dynamic>()))),
       gpuPartitionSize: pulumi.Input.fromValue(map['gpuPartitionSize'] as String),
       gpuSharingConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>(map['gpuSharingConfigs']!, (value) => GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((value as Map).cast<String, dynamic>()))),

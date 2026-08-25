@@ -7,12 +7,12 @@ import 'pipeline_destination_output_payload_format_protobuf.dart';
 class PipelineDestinationOutputPayloadFormat {
   /// The format of an AVRO message payload.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationOutputPayloadFormatAvro>? avro;
+  final pulumi.Input<PipelineDestinationOutputPayloadFormatAvro?>? avro;
   /// The format of a JSON message payload.
-  final pulumi.Input<Map<String, dynamic>>? json;
+  final pulumi.Input<Map<String, dynamic>?>? json;
   /// The format of a Protobuf message payload.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationOutputPayloadFormatProtobuf>? protobuf;
+  final pulumi.Input<PipelineDestinationOutputPayloadFormatProtobuf?>? protobuf;
 
   /// Creates a new [PipelineDestinationOutputPayloadFormat].
   /// [avro] The format of an AVRO message payload.

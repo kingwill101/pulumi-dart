@@ -7,7 +7,7 @@ class AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample
   ///
   /// - Expected Format:
   /// - {group}.{table_name}
-  final pulumi.Input<String>? f1Table;
+  final pulumi.Input<String?>? f1Table;
 
   /// Creates a new [AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource].
   /// [f1Table] ## - Points to an f1 table to use.

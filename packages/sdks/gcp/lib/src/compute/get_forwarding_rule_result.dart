@@ -5,209 +5,209 @@ import 'get_forwarding_rule_service_directory_registration.dart';
 
 /// Result data returned by getForwardingRule.
 class GetForwardingRuleResult {
-  final bool allPorts;
-  final bool allowGlobalAccess;
-  final bool allowPscGlobalAccess;
-  final String backendService;
-  final String baseForwardingRule;
-  final String creationTimestamp;
-  final String deletionPolicy;
-  final String description;
-  final Map<String, String> effectiveLabels;
-  final int forwardingRuleId;
+  final bool? allPorts;
+  final bool? allowGlobalAccess;
+  final bool? allowPscGlobalAccess;
+  final String? backendService;
+  final String? baseForwardingRule;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
+  final String? description;
+  final Map<String, String>? effectiveLabels;
+  final int? forwardingRuleId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String ipAddress;
-  final String ipCollection;
-  final String ipProtocol;
-  final String ipVersion;
-  final bool isMirroringCollector;
-  final String labelFingerprint;
-  final Map<String, String> labels;
-  final String loadBalancingScheme;
-  final String name;
-  final String network;
-  final String networkTier;
-  final bool noAutomateDnsZone;
-  final String portRange;
-  final List<String> ports;
+  final String? id;
+  final String? ipAddress;
+  final String? ipCollection;
+  final String? ipProtocol;
+  final String? ipVersion;
+  final bool? isMirroringCollector;
+  final String? labelFingerprint;
+  final Map<String, String>? labels;
+  final String? loadBalancingScheme;
+  final String? name;
+  final String? network;
+  final String? networkTier;
+  final bool? noAutomateDnsZone;
+  final String? portRange;
+  final List<String>? ports;
   final String? project;
-  final String pscConnectionId;
-  final String pscConnectionStatus;
-  final Map<String, String> pulumiLabels;
-  final bool recreateClosedPsc;
+  final String? pscConnectionId;
+  final String? pscConnectionStatus;
+  final Map<String, String>? pulumiLabels;
+  final bool? recreateClosedPsc;
   final String? region;
-  final String selfLink;
-  final List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
-  final String serviceLabel;
-  final String serviceName;
-  final List<String> sourceIpRanges;
-  final String subnetwork;
-  final String target;
+  final String? selfLink;
+  final List<GetForwardingRuleServiceDirectoryRegistration>? serviceDirectoryRegistrations;
+  final String? serviceLabel;
+  final String? serviceName;
+  final List<String>? sourceIpRanges;
+  final String? subnetwork;
+  final String? target;
 
   /// Creates a new [GetForwardingRuleResult].
-  /// [allPorts] Required.
-  /// [allowGlobalAccess] Required.
-  /// [allowPscGlobalAccess] Required.
-  /// [backendService] Required.
-  /// [baseForwardingRule] Required.
-  /// [creationTimestamp] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [effectiveLabels] Required.
-  /// [forwardingRuleId] Required.
+  /// [allPorts] Optional.
+  /// [allowGlobalAccess] Optional.
+  /// [allowPscGlobalAccess] Optional.
+  /// [backendService] Optional.
+  /// [baseForwardingRule] Optional.
+  /// [creationTimestamp] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [effectiveLabels] Optional.
+  /// [forwardingRuleId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipAddress] Required.
-  /// [ipCollection] Required.
-  /// [ipProtocol] Required.
-  /// [ipVersion] Required.
-  /// [isMirroringCollector] Required.
-  /// [labelFingerprint] Required.
-  /// [labels] Required.
-  /// [loadBalancingScheme] Required.
-  /// [name] Required.
-  /// [network] Required.
-  /// [networkTier] Required.
-  /// [noAutomateDnsZone] Required.
-  /// [portRange] Required.
-  /// [ports] Required.
+  /// [ipAddress] Optional.
+  /// [ipCollection] Optional.
+  /// [ipProtocol] Optional.
+  /// [ipVersion] Optional.
+  /// [isMirroringCollector] Optional.
+  /// [labelFingerprint] Optional.
+  /// [labels] Optional.
+  /// [loadBalancingScheme] Optional.
+  /// [name] Optional.
+  /// [network] Optional.
+  /// [networkTier] Optional.
+  /// [noAutomateDnsZone] Optional.
+  /// [portRange] Optional.
+  /// [ports] Optional.
   /// [project] Optional.
-  /// [pscConnectionId] Required.
-  /// [pscConnectionStatus] Required.
-  /// [pulumiLabels] Required.
-  /// [recreateClosedPsc] Required.
+  /// [pscConnectionId] Optional.
+  /// [pscConnectionStatus] Optional.
+  /// [pulumiLabels] Optional.
+  /// [recreateClosedPsc] Optional.
   /// [region] Optional.
-  /// [selfLink] Required.
-  /// [serviceDirectoryRegistrations] Required.
-  /// [serviceLabel] Required.
-  /// [serviceName] Required.
-  /// [sourceIpRanges] Required.
-  /// [subnetwork] Required.
-  /// [target] Required.
+  /// [selfLink] Optional.
+  /// [serviceDirectoryRegistrations] Optional.
+  /// [serviceLabel] Optional.
+  /// [serviceName] Optional.
+  /// [sourceIpRanges] Optional.
+  /// [subnetwork] Optional.
+  /// [target] Optional.
   const GetForwardingRuleResult({
-    required this.allPorts,
-    required this.allowGlobalAccess,
-    required this.allowPscGlobalAccess,
-    required this.backendService,
-    required this.baseForwardingRule,
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.effectiveLabels,
-    required this.forwardingRuleId,
-    required this.id,
-    required this.ipAddress,
-    required this.ipCollection,
-    required this.ipProtocol,
-    required this.ipVersion,
-    required this.isMirroringCollector,
-    required this.labelFingerprint,
-    required this.labels,
-    required this.loadBalancingScheme,
-    required this.name,
-    required this.network,
-    required this.networkTier,
-    required this.noAutomateDnsZone,
-    required this.portRange,
-    required this.ports,
+    this.allPorts,
+    this.allowGlobalAccess,
+    this.allowPscGlobalAccess,
+    this.backendService,
+    this.baseForwardingRule,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.effectiveLabels,
+    this.forwardingRuleId,
+    this.id,
+    this.ipAddress,
+    this.ipCollection,
+    this.ipProtocol,
+    this.ipVersion,
+    this.isMirroringCollector,
+    this.labelFingerprint,
+    this.labels,
+    this.loadBalancingScheme,
+    this.name,
+    this.network,
+    this.networkTier,
+    this.noAutomateDnsZone,
+    this.portRange,
+    this.ports,
     this.project,
-    required this.pscConnectionId,
-    required this.pscConnectionStatus,
-    required this.pulumiLabels,
-    required this.recreateClosedPsc,
+    this.pscConnectionId,
+    this.pscConnectionStatus,
+    this.pulumiLabels,
+    this.recreateClosedPsc,
     this.region,
-    required this.selfLink,
-    required this.serviceDirectoryRegistrations,
-    required this.serviceLabel,
-    required this.serviceName,
-    required this.sourceIpRanges,
-    required this.subnetwork,
-    required this.target,
+    this.selfLink,
+    this.serviceDirectoryRegistrations,
+    this.serviceLabel,
+    this.serviceName,
+    this.sourceIpRanges,
+    this.subnetwork,
+    this.target,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allPorts': allPorts,
-      'allowGlobalAccess': allowGlobalAccess,
-      'allowPscGlobalAccess': allowPscGlobalAccess,
-      'backendService': backendService,
-      'baseForwardingRule': baseForwardingRule,
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'effectiveLabels': effectiveLabels,
-      'forwardingRuleId': forwardingRuleId,
-      'id': id,
-      'ipAddress': ipAddress,
-      'ipCollection': ipCollection,
-      'ipProtocol': ipProtocol,
-      'ipVersion': ipVersion,
-      'isMirroringCollector': isMirroringCollector,
-      'labelFingerprint': labelFingerprint,
-      'labels': labels,
-      'loadBalancingScheme': loadBalancingScheme,
-      'name': name,
-      'network': network,
-      'networkTier': networkTier,
-      'noAutomateDnsZone': noAutomateDnsZone,
-      'portRange': portRange,
-      'ports': ports,
+      'allPorts': ?allPorts,
+      'allowGlobalAccess': ?allowGlobalAccess,
+      'allowPscGlobalAccess': ?allowPscGlobalAccess,
+      'backendService': ?backendService,
+      'baseForwardingRule': ?baseForwardingRule,
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'effectiveLabels': ?effectiveLabels,
+      'forwardingRuleId': ?forwardingRuleId,
+      'id': ?id,
+      'ipAddress': ?ipAddress,
+      'ipCollection': ?ipCollection,
+      'ipProtocol': ?ipProtocol,
+      'ipVersion': ?ipVersion,
+      'isMirroringCollector': ?isMirroringCollector,
+      'labelFingerprint': ?labelFingerprint,
+      'labels': ?labels,
+      'loadBalancingScheme': ?loadBalancingScheme,
+      'name': ?name,
+      'network': ?network,
+      'networkTier': ?networkTier,
+      'noAutomateDnsZone': ?noAutomateDnsZone,
+      'portRange': ?portRange,
+      'ports': ?ports,
       'project': ?project,
-      'pscConnectionId': pscConnectionId,
-      'pscConnectionStatus': pscConnectionStatus,
-      'pulumiLabels': pulumiLabels,
-      'recreateClosedPsc': recreateClosedPsc,
+      'pscConnectionId': ?pscConnectionId,
+      'pscConnectionStatus': ?pscConnectionStatus,
+      'pulumiLabels': ?pulumiLabels,
+      'recreateClosedPsc': ?recreateClosedPsc,
       'region': ?region,
-      'selfLink': selfLink,
-      'serviceDirectoryRegistrations': pulumi.Input.encodeList<GetForwardingRuleServiceDirectoryRegistration, Map<String, dynamic>>(serviceDirectoryRegistrations, (value) => value.toMap()),
-      'serviceLabel': serviceLabel,
-      'serviceName': serviceName,
-      'sourceIpRanges': sourceIpRanges,
-      'subnetwork': subnetwork,
-      'target': target,
+      'selfLink': ?selfLink,
+      'serviceDirectoryRegistrations': ?(() { final guardedValue = serviceDirectoryRegistrations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetForwardingRuleServiceDirectoryRegistration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'serviceLabel': ?serviceLabel,
+      'serviceName': ?serviceName,
+      'sourceIpRanges': ?sourceIpRanges,
+      'subnetwork': ?subnetwork,
+      'target': ?target,
     };
   }
 
   factory GetForwardingRuleResult.fromMap(Map<String, dynamic> map) {
     return GetForwardingRuleResult(
-      allPorts: map['allPorts'] as bool,
-      allowGlobalAccess: map['allowGlobalAccess'] as bool,
-      allowPscGlobalAccess: map['allowPscGlobalAccess'] as bool,
-      backendService: map['backendService'] as String,
-      baseForwardingRule: map['baseForwardingRule'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      forwardingRuleId: map['forwardingRuleId'] as int,
-      id: map['id'] as String,
-      ipAddress: map['ipAddress'] as String,
-      ipCollection: map['ipCollection'] as String,
-      ipProtocol: map['ipProtocol'] as String,
-      ipVersion: map['ipVersion'] as String,
-      isMirroringCollector: map['isMirroringCollector'] as bool,
-      labelFingerprint: map['labelFingerprint'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      loadBalancingScheme: map['loadBalancingScheme'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkTier: map['networkTier'] as String,
-      noAutomateDnsZone: map['noAutomateDnsZone'] as bool,
-      portRange: map['portRange'] as String,
-      ports: (map['ports'] as List).cast<String>(),
+      allPorts: (() { final guardedValue = map['allPorts']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      allowGlobalAccess: (() { final guardedValue = map['allowGlobalAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      allowPscGlobalAccess: (() { final guardedValue = map['allowPscGlobalAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      backendService: (() { final guardedValue = map['backendService']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      baseForwardingRule: (() { final guardedValue = map['baseForwardingRule']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      forwardingRuleId: (() { final guardedValue = map['forwardingRuleId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipCollection: (() { final guardedValue = map['ipCollection']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isMirroringCollector: (() { final guardedValue = map['isMirroringCollector']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      loadBalancingScheme: (() { final guardedValue = map['loadBalancingScheme']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkTier: (() { final guardedValue = map['networkTier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      noAutomateDnsZone: (() { final guardedValue = map['noAutomateDnsZone']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      portRange: (() { final guardedValue = map['portRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pscConnectionId: map['pscConnectionId'] as String,
-      pscConnectionStatus: map['pscConnectionStatus'] as String,
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      recreateClosedPsc: map['recreateClosedPsc'] as bool,
+      pscConnectionId: (() { final guardedValue = map['pscConnectionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pscConnectionStatus: (() { final guardedValue = map['pscConnectionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      recreateClosedPsc: (() { final guardedValue = map['recreateClosedPsc']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      selfLink: map['selfLink'] as String,
-      serviceDirectoryRegistrations: pulumi.Input.decodeList<GetForwardingRuleServiceDirectoryRegistration>(map['serviceDirectoryRegistrations']!, (value) => GetForwardingRuleServiceDirectoryRegistration.fromMap((value as Map).cast<String, dynamic>())),
-      serviceLabel: map['serviceLabel'] as String,
-      serviceName: map['serviceName'] as String,
-      sourceIpRanges: (map['sourceIpRanges'] as List).cast<String>(),
-      subnetwork: map['subnetwork'] as String,
-      target: map['target'] as String,
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceDirectoryRegistrations: (() { final guardedValue = map['serviceDirectoryRegistrations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetForwardingRuleServiceDirectoryRegistration>(guardedValue, (value) => GetForwardingRuleServiceDirectoryRegistration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      serviceLabel: (() { final guardedValue = map['serviceLabel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceIpRanges: (() { final guardedValue = map['sourceIpRanges']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_config_args.dart';
 import 'api_config_gateway_config.dart';
+import 'api_config_grpc_service.dart';
+import 'api_config_managed_service_config.dart';
+import 'api_config_openapi_document.dart';
 import 'api_config_state.dart';
 
 /// An API Configuration is an association of an API Controller Config and a Gateway Config
@@ -57,7 +60,7 @@ class ApiConfig extends pulumi.CustomResource {
   late final pulumi.Output<ApiConfigGatewayConfig?> gatewayConfig;
   /// gRPC service definition files. If specified, openapiDocuments must not be included.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> grpcServices;
+  late final pulumi.Output<List<ApiConfigGrpcService>?> grpcServices;
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -66,12 +69,12 @@ class ApiConfig extends pulumi.CustomResource {
   /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
   /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> managedServiceConfigs;
+  late final pulumi.Output<List<ApiConfigManagedServiceConfig>?> managedServiceConfigs;
   /// The resource name of the API Config.
   late final pulumi.Output<String> name;
   /// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> openapiDocuments;
+  late final pulumi.Output<List<ApiConfigOpenapiDocument>?> openapiDocuments;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -93,22 +96,23 @@ class ApiConfig extends pulumi.CustomResource {
           'gcp:apigateway/apiConfig:ApiConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     api = registerOutput<String>('api');
     apiConfigId = registerOutput<String>('apiConfigId');
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    grpcServices = registerOutput<List<Map<String, dynamic>>?>('grpcServices');
-    labels = registerOutput<Map<String, String>?>('labels');
-    managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>('managedServiceConfigs');
+    grpcServices = registerOutput<List<ApiConfigGrpcService>?>('grpcServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigGrpcService>(guardedValue, (value) => ApiConfigGrpcService.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    managedServiceConfigs = registerOutput<List<ApiConfigManagedServiceConfig>?>('managedServiceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigManagedServiceConfig>(guardedValue, (value) => ApiConfigManagedServiceConfig.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    openapiDocuments = registerOutput<List<Map<String, dynamic>>?>('openapiDocuments');
+    openapiDocuments = registerOutput<List<ApiConfigOpenapiDocument>?>('openapiDocuments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigOpenapiDocument>(guardedValue, (value) => ApiConfigOpenapiDocument.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceConfigId = registerOutput<String>('serviceConfigId');
   }
 
@@ -117,11 +121,12 @@ class ApiConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -140,15 +145,42 @@ class ApiConfig extends pulumi.CustomResource {
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    grpcServices = registerOutput<List<Map<String, dynamic>>?>('grpcServices');
-    labels = registerOutput<Map<String, String>?>('labels');
-    managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>('managedServiceConfigs');
+    grpcServices = registerOutput<List<ApiConfigGrpcService>?>('grpcServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigGrpcService>(guardedValue, (value) => ApiConfigGrpcService.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    managedServiceConfigs = registerOutput<List<ApiConfigManagedServiceConfig>?>('managedServiceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigManagedServiceConfig>(guardedValue, (value) => ApiConfigManagedServiceConfig.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    openapiDocuments = registerOutput<List<Map<String, dynamic>>?>('openapiDocuments');
+    openapiDocuments = registerOutput<List<ApiConfigOpenapiDocument>?>('openapiDocuments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigOpenapiDocument>(guardedValue, (value) => ApiConfigOpenapiDocument.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serviceConfigId = registerOutput<String>('serviceConfigId');
+  }
+
+  /// Creates a typed reference to an existing [ApiConfig] resource.
+  ApiConfig.reference(String urn)
+    : super(
+        'gcp:apigateway/apiConfig:ApiConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    api = registerOutput<String>('api');
+    apiConfigId = registerOutput<String>('apiConfigId');
+    apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    grpcServices = registerOutput<List<ApiConfigGrpcService>?>('grpcServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigGrpcService>(guardedValue, (value) => ApiConfigGrpcService.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    managedServiceConfigs = registerOutput<List<ApiConfigManagedServiceConfig>?>('managedServiceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigManagedServiceConfig>(guardedValue, (value) => ApiConfigManagedServiceConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    openapiDocuments = registerOutput<List<ApiConfigOpenapiDocument>?>('openapiDocuments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiConfigOpenapiDocument>(guardedValue, (value) => ApiConfigOpenapiDocument.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceConfigId = registerOutput<String>('serviceConfigId');
   }
 }

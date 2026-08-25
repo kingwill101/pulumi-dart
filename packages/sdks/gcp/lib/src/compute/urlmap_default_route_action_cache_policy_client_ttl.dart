@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class URLMapDefaultRouteActionCachePolicyClientTtl {
   /// Span of time that's a fraction of a second at nanosecond resolution.
-  final pulumi.Input<int>? nanos;
+  final pulumi.Input<int?>? nanos;
   /// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
   final pulumi.Input<String> seconds;
 
@@ -25,7 +25,7 @@ class URLMapDefaultRouteActionCachePolicyClientTtl {
 
   factory URLMapDefaultRouteActionCachePolicyClientTtl.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionCachePolicyClientTtl(
-      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       seconds: pulumi.Input.fromValue(map['seconds'] as String),
     );
   }

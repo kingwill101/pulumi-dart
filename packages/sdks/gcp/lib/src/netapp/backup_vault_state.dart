@@ -6,59 +6,59 @@ import 'backup_vault_backup_retention_policy.dart';
 /// Input properties used for looking up and filtering BackupVault resources.
 class BackupVaultState {
   /// Region in which backup is stored.
-  final pulumi.Input<String>? backupRegion;
+  final pulumi.Input<String?>? backupRegion;
   /// Backup retention policy defining the retention of the backups.
   /// Structure is documented below.
-  final pulumi.Input<BackupVaultBackupRetentionPolicy>? backupRetentionPolicy;
+  final pulumi.Input<BackupVaultBackupRetentionPolicy?>? backupRetentionPolicy;
   /// Type of the backup vault to be created. Default is IN_REGION.
   /// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
-  final pulumi.Input<String>? backupVaultType;
+  final pulumi.Input<String?>? backupVaultType;
   /// The crypto key version used to encrypt the backup vault.
   /// Format:
   /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
-  final pulumi.Input<String>? backupsCryptoKeyVersion;
+  final pulumi.Input<String?>? backupsCryptoKeyVersion;
   /// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the Backup vault created in backup region.
-  final pulumi.Input<String>? destinationBackupVault;
+  final pulumi.Input<String?>? destinationBackupVault;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Encryption state of customer-managed encryption keys (CMEK) backups.
-  final pulumi.Input<String>? encryptionState;
+  final pulumi.Input<String?>? encryptionState;
   /// Specifies the Key Management System (KMS) configuration to be used for
   /// backup encryption. Format:
   /// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
-  final pulumi.Input<String>? kmsConfig;
+  final pulumi.Input<String?>? kmsConfig;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location (region) of the backup vault.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the backup vault. Needs to be unique per location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Name of the Backup vault created in source region.
-  final pulumi.Input<String>? sourceBackupVault;
+  final pulumi.Input<String?>? sourceBackupVault;
   /// Region in which the backup vault is created.
-  final pulumi.Input<String>? sourceRegion;
+  final pulumi.Input<String?>? sourceRegion;
   /// The state of the Backup Vault.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [BackupVaultState].
   /// [backupRegion] Region in which backup is stored.

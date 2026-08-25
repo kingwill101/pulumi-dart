@@ -6,13 +6,13 @@ import 'dashboard_chart_dashboard_query_input.dart';
 class DashboardChartDashboardQuery {
   /// (Output)
   /// This checksum is computed by the server.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Input parameters for the query, such as time windows.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardQueryInput>? input;
+  final pulumi.Input<DashboardChartDashboardQueryInput?>? input;
   /// (Output)
   /// name of the query.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The raw query string.
   final pulumi.Input<String> query;
 

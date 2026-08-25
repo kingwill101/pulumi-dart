@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'policy_admission_whitelist_pattern.dart';
 import 'policy_args.dart';
+import 'policy_cluster_admission_rule.dart';
 import 'policy_default_admission_rule.dart';
 import 'policy_state.dart';
 
@@ -621,7 +623,7 @@ class Policy extends pulumi.CustomResource {
   /// image's name matches a whitelist pattern, the image's admission
   /// requests will always be permitted regardless of your admission rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> admissionWhitelistPatterns;
+  late final pulumi.Output<List<PolicyAdmissionWhitelistPattern>?> admissionWhitelistPatterns;
   /// Per-cluster admission rules. An admission rule specifies either that
   /// all container images used in a pod creation request must be attested
   /// to by one or more attestors, that all pod creations will be allowed,
@@ -631,7 +633,7 @@ class Policy extends pulumi.CustomResource {
   /// A location is either a compute zone (e.g. `us-central1-a`) or a region
   /// (e.g. `us-central1`).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> clusterAdmissionRules;
+  late final pulumi.Output<List<PolicyClusterAdmissionRule>?> clusterAdmissionRules;
   /// Default admission rule for a cluster without a per-cluster admission
   /// rule.
   /// Structure is documented below.
@@ -666,10 +668,10 @@ class Policy extends pulumi.CustomResource {
           'gcp:binaryauthorization/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    admissionWhitelistPatterns = registerOutput<List<Map<String, dynamic>>?>('admissionWhitelistPatterns');
-    clusterAdmissionRules = registerOutput<List<Map<String, dynamic>>?>('clusterAdmissionRules');
+    admissionWhitelistPatterns = registerOutput<List<PolicyAdmissionWhitelistPattern>?>('admissionWhitelistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(guardedValue, (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterAdmissionRules = registerOutput<List<PolicyClusterAdmissionRule>?>('clusterAdmissionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyClusterAdmissionRule>(guardedValue, (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>())); });
     defaultAdmissionRule = registerOutput<PolicyDefaultAdmissionRule>('defaultAdmissionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefaultAdmissionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -682,11 +684,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -700,8 +703,26 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    admissionWhitelistPatterns = registerOutput<List<Map<String, dynamic>>?>('admissionWhitelistPatterns');
-    clusterAdmissionRules = registerOutput<List<Map<String, dynamic>>?>('clusterAdmissionRules');
+    admissionWhitelistPatterns = registerOutput<List<PolicyAdmissionWhitelistPattern>?>('admissionWhitelistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(guardedValue, (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterAdmissionRules = registerOutput<List<PolicyClusterAdmissionRule>?>('clusterAdmissionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyClusterAdmissionRule>(guardedValue, (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultAdmissionRule = registerOutput<PolicyDefaultAdmissionRule>('defaultAdmissionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefaultAdmissionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    globalPolicyEvaluationMode = registerOutput<String>('globalPolicyEvaluationMode');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'gcp:binaryauthorization/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    admissionWhitelistPatterns = registerOutput<List<PolicyAdmissionWhitelistPattern>?>('admissionWhitelistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(guardedValue, (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterAdmissionRules = registerOutput<List<PolicyClusterAdmissionRule>?>('clusterAdmissionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyClusterAdmissionRule>(guardedValue, (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>())); });
     defaultAdmissionRule = registerOutput<PolicyDefaultAdmissionRule>('defaultAdmissionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefaultAdmissionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

@@ -5,7 +5,7 @@ import 'pipeline_job_reconciliation_pipeline_job_merge_config_whistle_config_sou
 
 class PipelineJobReconciliationPipelineJobMergeConfig {
   /// Describes the mapping configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the path to the mapping configuration for harmonization pipeline.
   /// Structure is documented below.
   final pulumi.Input<PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource> whistleConfigSource;

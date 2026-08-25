@@ -10,7 +10,7 @@ import 'iammember_condition.dart';
 class IAMMemberArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<IAMMemberCondition>? condition;
+  final pulumi.Input<IAMMemberCondition?>? condition;
   /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

@@ -136,6 +136,17 @@ Future<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(
   return GetConsentStoreIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicyOutput(
+  GetConsentStoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConsentStoreIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
 ///
 /// ## example
@@ -252,6 +263,17 @@ Future<GetDatasetIamPolicyResult> getDatasetIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatasetIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
+  GetDatasetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
@@ -372,6 +394,17 @@ Future<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(
   return GetDicomStoreIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicyOutput(
+  GetDicomStoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDicomStoreIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
 ///
 /// ## example
@@ -490,6 +523,17 @@ Future<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicy(
   return GetFhirStoreIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicyOutput(
+  GetFhirStoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFhirStoreIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
 ///
 /// ## example
@@ -606,4 +650,15 @@ Future<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHl7V2StoreIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicyOutput(
+  GetHl7V2StoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHl7V2StoreIamPolicyResult.fromMap);
 }

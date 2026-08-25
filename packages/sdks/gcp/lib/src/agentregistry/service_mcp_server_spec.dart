@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceMcpServerSpec {
   /// The content of the MCP Server spec. This payload is validated against the schema for the specified type.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The type of the MCP Server spec content.
   /// Possible values are: `NO_SPEC`, `TOOL_SPEC`.
   final pulumi.Input<String> type;

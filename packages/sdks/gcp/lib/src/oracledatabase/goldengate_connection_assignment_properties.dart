@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateConnectionAssignmentProperties {
   /// (Output)
   /// Credential store alias.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// The GoldengateConnection resource to be assigned.
   /// Format:
   /// projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
@@ -18,7 +18,7 @@ class GoldengateConnectionAssignmentProperties {
   /// The
   /// [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
   /// of the connection assignment being referenced.
-  final pulumi.Input<String>? ocid;
+  final pulumi.Input<String?>? ocid;
   /// (Output)
   /// The lifecycle state of the connection assignment.
   /// Possible values:
@@ -27,7 +27,7 @@ class GoldengateConnectionAssignmentProperties {
   /// FAILED
   /// UPDATING
   /// DELETING
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [GoldengateConnectionAssignmentProperties].
   /// [alias] (Output)

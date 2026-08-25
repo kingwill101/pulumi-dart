@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_product_args.dart';
+import 'api_product_attribute.dart';
 import 'api_product_graphql_operation_group.dart';
 import 'api_product_grpc_operation_group.dart';
 import 'api_product_operation_group.dart';
@@ -1106,7 +1107,7 @@ class ApiProduct extends pulumi.CustomResource {
   /// Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
   /// Use this property to specify the access level of the API product as either public, private, or internal.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
+  late final pulumi.Output<List<ApiProductAttribute>?> attributes;
   /// Response only. Creation time of this environment as milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1170,28 +1171,28 @@ class ApiProduct extends pulumi.CustomResource {
           'gcp:apigee/apiProduct:ApiProduct',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    apiResources = registerOutput<List<String>?>('apiResources');
+    apiResources = registerOutput<List<String>?>('apiResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     approvalType = registerOutput<String?>('approvalType');
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<ApiProductAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiProductAttribute>(guardedValue, (value) => ApiProductAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    environments = registerOutput<List<String>?>('environments');
+    environments = registerOutput<List<String>?>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     graphqlOperationGroup = registerOutput<ApiProductGraphqlOperationGroup?>('graphqlOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductGraphqlOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grpcOperationGroup = registerOutput<ApiProductGrpcOperationGroup?>('grpcOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductGrpcOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     operationGroup = registerOutput<ApiProductOperationGroup?>('operationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orgId = registerOutput<String>('orgId');
-    proxies = registerOutput<List<String>?>('proxies');
+    proxies = registerOutput<List<String>?>('proxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     quota = registerOutput<String?>('quota');
     quotaCounterScope = registerOutput<String?>('quotaCounterScope');
     quotaInterval = registerOutput<String?>('quotaInterval');
     quotaTimeUnit = registerOutput<String?>('quotaTimeUnit');
-    scopes = registerOutput<List<String>?>('scopes');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     space = registerOutput<String?>('space');
   }
 
@@ -1200,11 +1201,12 @@ class ApiProduct extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiProductState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiProduct._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1218,26 +1220,58 @@ class ApiProduct extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiResources = registerOutput<List<String>?>('apiResources');
+    apiResources = registerOutput<List<String>?>('apiResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     approvalType = registerOutput<String?>('approvalType');
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<ApiProductAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiProductAttribute>(guardedValue, (value) => ApiProductAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    environments = registerOutput<List<String>?>('environments');
+    environments = registerOutput<List<String>?>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     graphqlOperationGroup = registerOutput<ApiProductGraphqlOperationGroup?>('graphqlOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductGraphqlOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grpcOperationGroup = registerOutput<ApiProductGrpcOperationGroup?>('grpcOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductGrpcOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     operationGroup = registerOutput<ApiProductOperationGroup?>('operationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orgId = registerOutput<String>('orgId');
-    proxies = registerOutput<List<String>?>('proxies');
+    proxies = registerOutput<List<String>?>('proxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     quota = registerOutput<String?>('quota');
     quotaCounterScope = registerOutput<String?>('quotaCounterScope');
     quotaInterval = registerOutput<String?>('quotaInterval');
     quotaTimeUnit = registerOutput<String?>('quotaTimeUnit');
-    scopes = registerOutput<List<String>?>('scopes');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    space = registerOutput<String?>('space');
+  }
+
+  /// Creates a typed reference to an existing [ApiProduct] resource.
+  ApiProduct.reference(String urn)
+    : super(
+        'gcp:apigee/apiProduct:ApiProduct',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiResources = registerOutput<List<String>?>('apiResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    approvalType = registerOutput<String?>('approvalType');
+    attributes = registerOutput<List<ApiProductAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiProductAttribute>(guardedValue, (value) => ApiProductAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    createdAt = registerOutput<String>('createdAt');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    environments = registerOutput<List<String>?>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    graphqlOperationGroup = registerOutput<ApiProductGraphqlOperationGroup?>('graphqlOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductGraphqlOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    grpcOperationGroup = registerOutput<ApiProductGrpcOperationGroup?>('grpcOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductGrpcOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    operationGroup = registerOutput<ApiProductOperationGroup?>('operationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiProductOperationGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orgId = registerOutput<String>('orgId');
+    proxies = registerOutput<List<String>?>('proxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    quota = registerOutput<String?>('quota');
+    quotaCounterScope = registerOutput<String?>('quotaCounterScope');
+    quotaInterval = registerOutput<String?>('quotaInterval');
+    quotaTimeUnit = registerOutput<String?>('quotaTimeUnit');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     space = registerOutput<String?>('space');
   }
 }

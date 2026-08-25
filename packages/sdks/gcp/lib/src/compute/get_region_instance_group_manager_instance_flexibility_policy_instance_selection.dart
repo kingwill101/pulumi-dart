@@ -45,7 +45,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
       machineTypes: pulumi.Input.fromValue((map['machineTypes'] as List).cast<String>()),
       minCpuPlatform: pulumi.Input.fromValue(map['minCpuPlatform'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      rank: pulumi.Input.fromValue(map['rank'] as int),
+      rank: pulumi.Input.fromValue((map['rank'] as num).toInt()),
     );
   }
 }

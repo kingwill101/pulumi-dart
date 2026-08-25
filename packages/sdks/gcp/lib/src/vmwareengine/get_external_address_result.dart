@@ -3,74 +3,74 @@
 
 /// Result data returned by getExternalAddress.
 class GetExternalAddressResult {
-  final String createTime;
-  final String deletionPolicy;
-  final String description;
-  final String externalIp;
+  final String? createTime;
+  final String? deletionPolicy;
+  final String? description;
+  final String? externalIp;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String internalIp;
-  final String name;
-  final String parent;
-  final String state;
-  final String uid;
-  final String updateTime;
+  final String? id;
+  final String? internalIp;
+  final String? name;
+  final String? parent;
+  final String? state;
+  final String? uid;
+  final String? updateTime;
 
   /// Creates a new [GetExternalAddressResult].
-  /// [createTime] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [externalIp] Required.
+  /// [createTime] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [externalIp] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [internalIp] Required.
-  /// [name] Required.
-  /// [parent] Required.
-  /// [state] Required.
-  /// [uid] Required.
-  /// [updateTime] Required.
+  /// [internalIp] Optional.
+  /// [name] Optional.
+  /// [parent] Optional.
+  /// [state] Optional.
+  /// [uid] Optional.
+  /// [updateTime] Optional.
   const GetExternalAddressResult({
-    required this.createTime,
-    required this.deletionPolicy,
-    required this.description,
-    required this.externalIp,
-    required this.id,
-    required this.internalIp,
-    required this.name,
-    required this.parent,
-    required this.state,
-    required this.uid,
-    required this.updateTime,
+    this.createTime,
+    this.deletionPolicy,
+    this.description,
+    this.externalIp,
+    this.id,
+    this.internalIp,
+    this.name,
+    this.parent,
+    this.state,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'externalIp': externalIp,
-      'id': id,
-      'internalIp': internalIp,
-      'name': name,
-      'parent': parent,
-      'state': state,
-      'uid': uid,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'externalIp': ?externalIp,
+      'id': ?id,
+      'internalIp': ?internalIp,
+      'name': ?name,
+      'parent': ?parent,
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetExternalAddressResult.fromMap(Map<String, dynamic> map) {
     return GetExternalAddressResult(
-      createTime: map['createTime'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      externalIp: map['externalIp'] as String,
-      id: map['id'] as String,
-      internalIp: map['internalIp'] as String,
-      name: map['name'] as String,
-      parent: map['parent'] as String,
-      state: map['state'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      internalIp: (() { final guardedValue = map['internalIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

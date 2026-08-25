@@ -7,11 +7,11 @@ class TagTemplateFieldType {
   /// Represents an enum type.
   /// Exactly one of `primitiveType` or `enumType` must be set
   /// Structure is documented below.
-  final pulumi.Input<TagTemplateFieldTypeEnumType>? enumType;
+  final pulumi.Input<TagTemplateFieldTypeEnumType?>? enumType;
   /// Represents primitive types - string, bool etc.
   /// Exactly one of `primitiveType` or `enumType` must be set
   /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
-  final pulumi.Input<String>? primitiveType;
+  final pulumi.Input<String?>? primitiveType;
 
   /// Creates a new [TagTemplateFieldType].
   /// [enumType] Represents an enum type.

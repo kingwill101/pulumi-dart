@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_args.dart';
 import 'network_state.dart';
+import 'network_vpc_network.dart';
 
 /// Provides connectivity for VMware Engine private clouds.
 ///
@@ -500,7 +501,7 @@ class Network extends pulumi.CustomResource {
   /// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
   /// the internet, and other Google Cloud services.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpcNetworks;
+  late final pulumi.Output<List<NetworkVpcNetwork>> vpcNetworks;
 
   /// Creates a new [Network].
   /// [name] The Pulumi resource name.
@@ -514,7 +515,7 @@ class Network extends pulumi.CustomResource {
           'gcp:vmwareengine/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -527,7 +528,7 @@ class Network extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vpcNetworks = registerOutput<List<Map<String, dynamic>>>('vpcNetworks');
+    vpcNetworks = registerOutput<List<NetworkVpcNetwork>>('vpcNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkVpcNetwork>(guardedValue, (value) => NetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Network] resource's state with the given [name] and [id].
@@ -535,11 +536,12 @@ class Network extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Network._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -564,6 +566,29 @@ class Network extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vpcNetworks = registerOutput<List<Map<String, dynamic>>>('vpcNetworks');
+    vpcNetworks = registerOutput<List<NetworkVpcNetwork>>('vpcNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkVpcNetwork>(guardedValue, (value) => NetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Network] resource.
+  Network.reference(String urn)
+    : super(
+        'gcp:vmwareengine/network:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vpcNetworks = registerOutput<List<NetworkVpcNetwork>>('vpcNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkVpcNetwork>(guardedValue, (value) => NetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

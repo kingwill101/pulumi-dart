@@ -22,7 +22,7 @@ class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization {
 
   factory RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization(
-      target: pulumi.Input.fromValue(map['target'] as double),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
     );
   }
 }

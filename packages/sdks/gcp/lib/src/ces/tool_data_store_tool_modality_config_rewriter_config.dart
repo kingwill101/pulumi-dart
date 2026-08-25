@@ -5,12 +5,12 @@ import 'tool_data_store_tool_modality_config_rewriter_config_model_settings.dart
 
 class ToolDataStoreToolModalityConfigRewriterConfig {
   /// Whether the rewriter is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
   final pulumi.Input<ToolDataStoreToolModalityConfigRewriterConfigModelSettings> modelSettings;
   /// The prompt definition. If not set, default prompt will be used.
-  final pulumi.Input<String>? prompt;
+  final pulumi.Input<String?>? prompt;
 
   /// Creates a new [ToolDataStoreToolModalityConfigRewriterConfig].
   /// [disabled] Whether the rewriter is disabled.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigMuxStreamSegmentSettings {
   /// Duration of the segments in seconds. The default is `6.0s`.
-  final pulumi.Input<String>? segmentDuration;
+  final pulumi.Input<String?>? segmentDuration;
 
   /// Creates a new [JobTemplateConfigMuxStreamSegmentSettings].
   /// [segmentDuration] Duration of the segments in seconds. The default is `6.0s`.

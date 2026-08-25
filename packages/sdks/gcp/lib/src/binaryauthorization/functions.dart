@@ -127,3 +127,14 @@ Future<GetAttestorIamPolicyResult> getAttestorIamPolicy(
   );
   return GetAttestorIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetAttestorIamPolicyResult> getAttestorIamPolicyOutput(
+  GetAttestorIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttestorIamPolicyResult.fromMap);
+}

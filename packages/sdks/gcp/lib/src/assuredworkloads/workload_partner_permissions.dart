@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadPartnerPermissions {
   /// Optional. Allow partner to view violation alerts.
-  final pulumi.Input<bool>? assuredWorkloadsMonitoring;
+  final pulumi.Input<bool?>? assuredWorkloadsMonitoring;
   /// Allow the partner to view inspectability logs and monitoring violations.
-  final pulumi.Input<bool>? dataLogsViewer;
+  final pulumi.Input<bool?>? dataLogsViewer;
   /// Optional. Allow partner to view access approval logs.
-  final pulumi.Input<bool>? serviceAccessApprover;
+  final pulumi.Input<bool?>? serviceAccessApprover;
 
   /// Creates a new [WorkloadPartnerPermissions].
   /// [assuredWorkloadsMonitoring] Optional. Allow partner to view violation alerts.

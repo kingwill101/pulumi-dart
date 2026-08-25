@@ -10,10 +10,10 @@ import 'prevention_inspect_template_inspect_config_custom_info_type_stored_type.
 class PreventionInspectTemplateInspectConfigCustomInfoType {
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary>? dictionary;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary?>? dictionary;
   /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
   /// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
-  final pulumi.Input<String>? exclusionType;
+  final pulumi.Input<String?>? exclusionType;
   /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
   /// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
   /// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
@@ -24,18 +24,18 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
   /// specified by the rule.
   /// Default value is `VERY_LIKELY`.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-  final pulumi.Input<String>? likelihood;
+  final pulumi.Input<String?>? likelihood;
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeRegex>? regex;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeRegex?>? regex;
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore>? sensitivityScore;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore?>? sensitivityScore;
   /// A reference to a StoredInfoType to use with scanning.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType>? storedType;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType?>? storedType;
   /// Message for detecting output from deidentification transformations that support reversing.
-  final pulumi.Input<Map<String, dynamic>>? surrogateType;
+  final pulumi.Input<Map<String, dynamic>?>? surrogateType;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigCustomInfoType].
   /// [dictionary] Dictionary which defines the rule.

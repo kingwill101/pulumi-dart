@@ -13,11 +13,11 @@ class DiskAsyncReplicationState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// The `secondaryDisk` block includes:
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The primary disk (source of replication).
-  final pulumi.Input<String>? primaryDisk;
+  final pulumi.Input<String?>? primaryDisk;
   /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-  final pulumi.Input<DiskAsyncReplicationSecondaryDisk>? secondaryDisk;
+  final pulumi.Input<DiskAsyncReplicationSecondaryDisk?>? secondaryDisk;
 
   /// Creates a new [DiskAsyncReplicationState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

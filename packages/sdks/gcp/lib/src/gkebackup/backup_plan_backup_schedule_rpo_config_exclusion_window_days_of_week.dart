@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
   /// A list of days of week.
   /// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-  final pulumi.Input<List<String>>? daysOfWeeks;
+  final pulumi.Input<List<String>?>? daysOfWeeks;
 
   /// Creates a new [BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek].
   /// [daysOfWeeks] A list of days of week.

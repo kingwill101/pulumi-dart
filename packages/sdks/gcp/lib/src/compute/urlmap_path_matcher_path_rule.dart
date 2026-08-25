@@ -14,7 +14,7 @@ class URLMapPathMatcherPathRule {
   /// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
   /// customErrorResponsePolicy is supported only for global external Application Load Balancers.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherPathRuleCustomErrorResponsePolicy>? customErrorResponsePolicy;
+  final pulumi.Input<URLMapPathMatcherPathRuleCustomErrorResponsePolicy?>? customErrorResponsePolicy;
   /// The list of path patterns to match. Each must start with / and the only place a
   /// \* is allowed is at the end following a /. The string fed to the path matcher
   /// does not include any text after the first ? or #, and those chars are not
@@ -27,14 +27,14 @@ class URLMapPathMatcherPathRule {
   /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
   /// or urlRedirect must be set.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherPathRuleRouteAction>? routeAction;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteAction?>? routeAction;
   /// The backend service or backend bucket to use if any of the given paths match.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// When a path pattern is matched, the request is redirected to a URL specified
   /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
   /// be set.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherPathRuleUrlRedirect>? urlRedirect;
+  final pulumi.Input<URLMapPathMatcherPathRuleUrlRedirect?>? urlRedirect;
 
   /// Creates a new [URLMapPathMatcherPathRule].
   /// [customErrorResponsePolicy] customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.

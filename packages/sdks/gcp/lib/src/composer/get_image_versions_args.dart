@@ -9,10 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageVersionsArgs {
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The location to list versions in.
   /// If it is not provider, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetImageVersionsArgs].
   /// [project] The ID of the project to list versions in.

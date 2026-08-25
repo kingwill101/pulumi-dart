@@ -1488,7 +1488,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:orgpolicy/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1503,11 +1503,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1521,6 +1522,23 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    spec = registerOutput<PolicySpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'gcp:orgpolicy/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

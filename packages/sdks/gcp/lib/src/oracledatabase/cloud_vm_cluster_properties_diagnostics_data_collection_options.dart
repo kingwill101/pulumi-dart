@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudVmClusterPropertiesDiagnosticsDataCollectionOptions {
   /// Indicates whether diagnostic collection is enabled for the VM cluster
-  final pulumi.Input<bool>? diagnosticsEventsEnabled;
+  final pulumi.Input<bool?>? diagnosticsEventsEnabled;
   /// Indicates whether health monitoring is enabled for the VM cluster
-  final pulumi.Input<bool>? healthMonitoringEnabled;
+  final pulumi.Input<bool?>? healthMonitoringEnabled;
   /// Indicates whether incident logs and trace collection are enabled for the VM
   /// cluster
-  final pulumi.Input<bool>? incidentLogsEnabled;
+  final pulumi.Input<bool?>? incidentLogsEnabled;
 
   /// Creates a new [CloudVmClusterPropertiesDiagnosticsDataCollectionOptions].
   /// [diagnosticsEventsEnabled] Indicates whether diagnostic collection is enabled for the VM cluster

@@ -48,7 +48,7 @@ class GetInstanceFileShare {
 
   factory GetInstanceFileShare.fromMap(Map<String, dynamic> map) {
     return GetInstanceFileShare(
-      capacityGb: pulumi.Input.fromValue(map['capacityGb'] as int),
+      capacityGb: pulumi.Input.fromValue((map['capacityGb'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
       nfsExportOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceFileShareNfsExportOption>(map['nfsExportOptions']!, (value) => GetInstanceFileShareNfsExportOption.fromMap((value as Map).cast<String, dynamic>()))),
       sourceBackup: pulumi.Input.fromValue(map['sourceBackup'] as String),

@@ -12,7 +12,7 @@ class SloRequestBasedSli {
   /// measuring good service and total service.
   /// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
   /// Structure is documented below.
-  final pulumi.Input<SloRequestBasedSliDistributionCut>? distributionCut;
+  final pulumi.Input<SloRequestBasedSliDistributionCut?>? distributionCut;
   /// A means to compute a ratio of `goodService` to `totalService`.
   /// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
   /// Must specify exactly two of good, bad, and total service filters.
@@ -20,7 +20,7 @@ class SloRequestBasedSli {
   /// will be assumed.
   /// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
   /// Structure is documented below.
-  final pulumi.Input<SloRequestBasedSliGoodTotalRatio>? goodTotalRatio;
+  final pulumi.Input<SloRequestBasedSliGoodTotalRatio?>? goodTotalRatio;
 
   /// Creates a new [SloRequestBasedSli].
   /// [distributionCut] Used when goodService is defined by a count of values aggregated in a

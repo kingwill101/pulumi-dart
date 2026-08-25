@@ -6,18 +6,18 @@ import 'alert_policy_alert_strategy_notification_rate_limit.dart';
 
 class AlertPolicyAlertStrategy {
   /// If an alert policy that was active has no data for this long, any open incidents will close.
-  final pulumi.Input<String>? autoClose;
+  final pulumi.Input<String?>? autoClose;
   /// Control over how the notification channels in `notificationChannels`
   /// are notified when this alert fires, on a per-channel basis.
   /// Structure is documented below.
-  final pulumi.Input<List<AlertPolicyAlertStrategyNotificationChannelStrategy>>? notificationChannelStrategies;
+  final pulumi.Input<List<AlertPolicyAlertStrategyNotificationChannelStrategy>?>? notificationChannelStrategies;
   /// Control when notifications will be sent out.
   /// Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
-  final pulumi.Input<List<String>>? notificationPrompts;
+  final pulumi.Input<List<String>?>? notificationPrompts;
   /// Required for alert policies with a LogMatch condition.
   /// This limit is not implemented for alert policies that are not log-based.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyAlertStrategyNotificationRateLimit>? notificationRateLimit;
+  final pulumi.Input<AlertPolicyAlertStrategyNotificationRateLimit?>? notificationRateLimit;
 
   /// Creates a new [AlertPolicyAlertStrategy].
   /// [autoClose] If an alert policy that was active has no data for this long, any open incidents will close.

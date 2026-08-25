@@ -4,39 +4,39 @@
 /// Result data returned by getNodeTypes.
 class GetNodeTypesResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of node types available in the given zone and project.
-  final List<String> names;
-  final String project;
-  final String zone;
+  final List<String>? names;
+  final String? project;
+  final String? zone;
 
   /// Creates a new [GetNodeTypesResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] A list of node types available in the given zone and project.
-  /// [project] Required.
-  /// [zone] Required.
+  /// [project] Optional.
+  /// [zone] Optional.
   const GetNodeTypesResult({
-    required this.id,
-    required this.names,
-    required this.project,
-    required this.zone,
+    this.id,
+    this.names,
+    this.project,
+    this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'names': names,
-      'project': project,
-      'zone': zone,
+      'id': ?id,
+      'names': ?names,
+      'project': ?project,
+      'zone': ?zone,
     };
   }
 
   factory GetNodeTypesResult.fromMap(Map<String, dynamic> map) {
     return GetNodeTypesResult(
-      id: map['id'] as String,
-      names: (map['names'] as List).cast<String>(),
-      project: map['project'] as String,
-      zone: map['zone'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

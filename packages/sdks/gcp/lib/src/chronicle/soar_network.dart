@@ -228,7 +228,7 @@ class SoarNetwork extends pulumi.CustomResource {
           'gcp:chronicle/soarNetwork:SoarNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     address = registerOutput<String>('address');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -247,11 +247,12 @@ class SoarNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SoarNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SoarNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -265,6 +266,27 @@ class SoarNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    address = registerOutput<String>('address');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    environmentsJson = registerOutput<String>('environmentsJson');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int?>('priority');
+    project = registerOutput<String>('project');
+    soarNetworkId = registerOutput<String>('soarNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [SoarNetwork] resource.
+  SoarNetwork.reference(String urn)
+    : super(
+        'gcp:chronicle/soarNetwork:SoarNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     address = registerOutput<String>('address');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

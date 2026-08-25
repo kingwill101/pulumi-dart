@@ -1870,7 +1870,7 @@ class Database extends pulumi.CustomResource {
           'gcp:firestore/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appEngineIntegrationMode = registerOutput<String>('appEngineIntegrationMode');
     cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseCmekConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1889,7 +1889,7 @@ class Database extends pulumi.CustomResource {
     pointInTimeRecoveryEnablement = registerOutput<String?>('pointInTimeRecoveryEnablement');
     project = registerOutput<String>('project');
     realtimeUpdatesMode = registerOutput<String>('realtimeUpdatesMode');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -1901,11 +1901,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1936,7 +1937,40 @@ class Database extends pulumi.CustomResource {
     pointInTimeRecoveryEnablement = registerOutput<String?>('pointInTimeRecoveryEnablement');
     project = registerOutput<String>('project');
     realtimeUpdatesMode = registerOutput<String>('realtimeUpdatesMode');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    versionRetentionPeriod = registerOutput<String>('versionRetentionPeriod');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'gcp:firestore/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appEngineIntegrationMode = registerOutput<String>('appEngineIntegrationMode');
+    cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseCmekConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    concurrencyMode = registerOutput<String>('concurrencyMode');
+    createTime = registerOutput<String>('createTime');
+    databaseEdition = registerOutput<String>('databaseEdition');
+    deleteProtectionState = registerOutput<String>('deleteProtectionState');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    earliestVersionTime = registerOutput<String>('earliestVersionTime');
+    etag = registerOutput<String>('etag');
+    firestoreDataAccessMode = registerOutput<String>('firestoreDataAccessMode');
+    keyPrefix = registerOutput<String>('keyPrefix');
+    locationId = registerOutput<String>('locationId');
+    mongodbCompatibleDataAccessMode = registerOutput<String>('mongodbCompatibleDataAccessMode');
+    this.name = registerOutput<String>('name');
+    pointInTimeRecoveryEnablement = registerOutput<String?>('pointInTimeRecoveryEnablement');
+    project = registerOutput<String>('project');
+    realtimeUpdatesMode = registerOutput<String>('realtimeUpdatesMode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

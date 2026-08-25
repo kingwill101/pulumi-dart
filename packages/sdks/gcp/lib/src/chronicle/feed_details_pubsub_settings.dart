@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsPubsubSettings {
   /// Google Service Account Email.
-  final pulumi.Input<String>? googleServiceAccountEmail;
+  final pulumi.Input<String?>? googleServiceAccountEmail;
 
   /// Creates a new [FeedDetailsPubsubSettings].
   /// [googleServiceAccountEmail] Google Service Account Email.

@@ -7,10 +7,10 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusio
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath>? cloudStoragePath;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath?>? cloudStoragePath;
   /// List of words or phrases to search for.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList>? wordList;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList?>? wordList;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.

@@ -291,11 +291,12 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
           'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['keyValue'],
         ) {
     backendBucket = registerOutput<String>('backendBucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    keyValue = registerOutput<String>('keyValue');
+    keyValue = registerOutput<String>('keyValue', isSecret: true);
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }
@@ -305,11 +306,12 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackendBucketSignedUrlKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackendBucketSignedUrlKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,7 +327,24 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
         ) {
     backendBucket = registerOutput<String>('backendBucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    keyValue = registerOutput<String>('keyValue');
+    keyValue = registerOutput<String>('keyValue', isSecret: true);
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [BackendBucketSignedUrlKey] resource.
+  BackendBucketSignedUrlKey.reference(String urn)
+    : super(
+        'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['keyValue'],
+        isResourceReference: true,
+      ) {
+    backendBucket = registerOutput<String>('backendBucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    keyValue = registerOutput<String>('keyValue', isSecret: true);
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }

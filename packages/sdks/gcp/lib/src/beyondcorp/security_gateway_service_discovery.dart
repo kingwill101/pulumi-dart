@@ -6,7 +6,7 @@ import 'security_gateway_service_discovery_api_gateway.dart';
 class SecurityGatewayServiceDiscovery {
   /// External API configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayServiceDiscoveryApiGateway>? apiGateway;
+  final pulumi.Input<SecurityGatewayServiceDiscoveryApiGateway?>? apiGateway;
 
   /// Creates a new [SecurityGatewayServiceDiscovery].
   /// [apiGateway] External API configuration.

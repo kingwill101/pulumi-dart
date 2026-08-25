@@ -6,7 +6,7 @@ import 'urlmap_path_matcher_route_rule_match_rule_header_match_range_match.dart'
 class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// The value should exactly match contents of exactMatch. Only one of exactMatch,
   /// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-  final pulumi.Input<String>? exactMatch;
+  final pulumi.Input<String?>? exactMatch;
   /// The name of the HTTP header to match. For matching against the HTTP request's
   /// authority, use a headerMatch with the header name ":authority". For matching a
   /// request's method, use the headerName ":method".
@@ -14,15 +14,15 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// If set to false, the headerMatch is considered a match if the match criteria
   /// above are met. If set to true, the headerMatch is considered a match if the
   /// match criteria above are NOT met. Defaults to false.
-  final pulumi.Input<bool>? invertMatch;
+  final pulumi.Input<bool?>? invertMatch;
   /// The value of the header must start with the contents of prefixMatch. Only one of
   /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
   /// must be set.
-  final pulumi.Input<String>? prefixMatch;
+  final pulumi.Input<String?>? prefixMatch;
   /// A header with the contents of headerName must exist. The match takes place
   /// whether or not the request's header has a value or not. Only one of exactMatch,
   /// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-  final pulumi.Input<bool>? presentMatch;
+  final pulumi.Input<bool?>? presentMatch;
   /// The header value must be an integer and its value must be in the range specified
   /// in rangeMatch. If the header does not contain an integer, number or is empty,
   /// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
@@ -30,7 +30,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
   /// must be set.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch>? rangeMatch;
+  final pulumi.Input<URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch?>? rangeMatch;
   /// The value of the header must match the regular expression specified in
   /// regexMatch. For regular expression grammar, please see:
   /// en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
@@ -38,11 +38,11 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// a regular expression that satisfies the RFC2616 Host header's port specifier.
   /// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
   /// rangeMatch must be set.
-  final pulumi.Input<String>? regexMatch;
+  final pulumi.Input<String?>? regexMatch;
   /// The value of the header must end with the contents of suffixMatch. Only one of
   /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
   /// must be set.
-  final pulumi.Input<String>? suffixMatch;
+  final pulumi.Input<String?>? suffixMatch;
 
   /// Creates a new [URLMapPathMatcherRouteRuleMatchRuleHeaderMatch].
   /// [exactMatch] The value should exactly match contents of exactMatch. Only one of exactMatch,

@@ -3,94 +3,94 @@
 
 /// Result data returned by getRegionSslCertificate.
 class GetRegionSslCertificateResult {
-  final String certificate;
-  final int certificateId;
-  final String creationTimestamp;
-  final String deletionPolicy;
-  final String description;
-  final String expireTime;
+  final String? certificate;
+  final int? certificateId;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
+  final String? description;
+  final String? expireTime;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String namePrefix;
-  final String privateKey;
-  final String privateKeyWo;
-  final String privateKeyWoVersion;
+  final String? id;
+  final String? name;
+  final String? namePrefix;
+  final String? privateKey;
+  final String? privateKeyWo;
+  final String? privateKeyWoVersion;
   final String? project;
   final String? region;
-  final String selfLink;
+  final String? selfLink;
 
   /// Creates a new [GetRegionSslCertificateResult].
-  /// [certificate] Required.
-  /// [certificateId] Required.
-  /// [creationTimestamp] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [expireTime] Required.
+  /// [certificate] Optional.
+  /// [certificateId] Optional.
+  /// [creationTimestamp] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [expireTime] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [namePrefix] Required.
-  /// [privateKey] Required.
-  /// [privateKeyWo] Required.
-  /// [privateKeyWoVersion] Required.
+  /// [name] Optional.
+  /// [namePrefix] Optional.
+  /// [privateKey] Optional.
+  /// [privateKeyWo] Optional.
+  /// [privateKeyWoVersion] Optional.
   /// [project] Optional.
   /// [region] Optional.
-  /// [selfLink] Required.
+  /// [selfLink] Optional.
   const GetRegionSslCertificateResult({
-    required this.certificate,
-    required this.certificateId,
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.expireTime,
-    required this.id,
-    required this.name,
-    required this.namePrefix,
-    required this.privateKey,
-    required this.privateKeyWo,
-    required this.privateKeyWoVersion,
+    this.certificate,
+    this.certificateId,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.expireTime,
+    this.id,
+    this.name,
+    this.namePrefix,
+    this.privateKey,
+    this.privateKeyWo,
+    this.privateKeyWoVersion,
     this.project,
     this.region,
-    required this.selfLink,
+    this.selfLink,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate': certificate,
-      'certificateId': certificateId,
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'expireTime': expireTime,
-      'id': id,
-      'name': name,
-      'namePrefix': namePrefix,
-      'privateKey': privateKey,
-      'privateKeyWo': privateKeyWo,
-      'privateKeyWoVersion': privateKeyWoVersion,
+      'certificate': ?certificate,
+      'certificateId': ?certificateId,
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'expireTime': ?expireTime,
+      'id': ?id,
+      'name': ?name,
+      'namePrefix': ?namePrefix,
+      'privateKey': ?privateKey,
+      'privateKeyWo': ?privateKeyWo,
+      'privateKeyWoVersion': ?privateKeyWoVersion,
       'project': ?project,
       'region': ?region,
-      'selfLink': selfLink,
+      'selfLink': ?selfLink,
     };
   }
 
   factory GetRegionSslCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetRegionSslCertificateResult(
-      certificate: map['certificate'] as String,
-      certificateId: map['certificateId'] as int,
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      namePrefix: map['namePrefix'] as String,
-      privateKey: map['privateKey'] as String,
-      privateKeyWo: map['privateKeyWo'] as String,
-      privateKeyWoVersion: map['privateKeyWoVersion'] as String,
+      certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateKeyWo: (() { final guardedValue = map['privateKeyWo']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      selfLink: map['selfLink'] as String,
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

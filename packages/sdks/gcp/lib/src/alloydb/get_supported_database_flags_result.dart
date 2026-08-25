@@ -6,39 +6,39 @@ import 'get_supported_database_flags_supported_database_flag.dart';
 /// Result data returned by getSupportedDatabaseFlags.
 class GetSupportedDatabaseFlagsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   final String? project;
   /// Contains a list of `flag`, which contains the details about a particular flag.
-  final List<GetSupportedDatabaseFlagsSupportedDatabaseFlag> supportedDatabaseFlags;
+  final List<GetSupportedDatabaseFlagsSupportedDatabaseFlag>? supportedDatabaseFlags;
 
   /// Creates a new [GetSupportedDatabaseFlagsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [project] Optional.
   /// [supportedDatabaseFlags] Contains a list of `flag`, which contains the details about a particular flag.
   const GetSupportedDatabaseFlagsResult({
-    required this.id,
-    required this.location,
+    this.id,
+    this.location,
     this.project,
-    required this.supportedDatabaseFlags,
+    this.supportedDatabaseFlags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'location': location,
+      'id': ?id,
+      'location': ?location,
       'project': ?project,
-      'supportedDatabaseFlags': pulumi.Input.encodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag, Map<String, dynamic>>(supportedDatabaseFlags, (value) => value.toMap()),
+      'supportedDatabaseFlags': ?(() { final guardedValue = supportedDatabaseFlags; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetSupportedDatabaseFlagsResult.fromMap(Map<String, dynamic> map) {
     return GetSupportedDatabaseFlagsResult(
-      id: map['id'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      supportedDatabaseFlags: pulumi.Input.decodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag>(map['supportedDatabaseFlags']!, (value) => GetSupportedDatabaseFlagsSupportedDatabaseFlag.fromMap((value as Map).cast<String, dynamic>())),
+      supportedDatabaseFlags: (() { final guardedValue = map['supportedDatabaseFlags']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag>(guardedValue, (value) => GetSupportedDatabaseFlagsSupportedDatabaseFlag.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

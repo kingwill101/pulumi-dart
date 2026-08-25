@@ -9,10 +9,10 @@ class GetIAMPolicyResult {
   final List<GetIAMPolicyAuditConfig>? auditConfigs;
   final List<GetIAMPolicyBinding>? bindings;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The above bindings serialized in a format suitable for
   /// referencing from a resource that supports IAM.
-  final String policyData;
+  final String? policyData;
 
   /// Creates a new [GetIAMPolicyResult].
   /// [auditConfigs] Optional.
@@ -22,16 +22,16 @@ class GetIAMPolicyResult {
   const GetIAMPolicyResult({
     this.auditConfigs,
     this.bindings,
-    required this.id,
-    required this.policyData,
+    this.id,
+    this.policyData,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'auditConfigs': ?(() { final guardedValue = auditConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetIAMPolicyAuditConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'bindings': ?(() { final guardedValue = bindings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetIAMPolicyBinding, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'policyData': policyData,
+      'id': ?id,
+      'policyData': ?policyData,
     };
   }
 
@@ -39,8 +39,8 @@ class GetIAMPolicyResult {
     return GetIAMPolicyResult(
       auditConfigs: (() { final guardedValue = map['auditConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(guardedValue, (value) => GetIAMPolicyAuditConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       bindings: (() { final guardedValue = map['bindings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetIAMPolicyBinding>(guardedValue, (value) => GetIAMPolicyBinding.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      policyData: map['policyData'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyData: (() { final guardedValue = map['policyData']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

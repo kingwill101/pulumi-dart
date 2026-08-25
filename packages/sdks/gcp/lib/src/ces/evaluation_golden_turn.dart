@@ -8,7 +8,7 @@ class EvaluationGoldenTurn {
   /// (Output)
   /// The root span of the golden turn for processing and maintaining audio information.
   /// Structure is documented below.
-  final pulumi.Input<List<EvaluationGoldenTurnRootSpan>>? rootSpans;
+  final pulumi.Input<List<EvaluationGoldenTurnRootSpan>?>? rootSpans;
   /// The sequence of steps required to replay a golden conversation turn.
   /// Structure is documented below.
   ///

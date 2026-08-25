@@ -10,7 +10,7 @@ class GetSupportedDatabaseFlagsArgs {
   /// The canonical id of the location. For example: `us-east1`.
   final pulumi.Input<String> location;
   /// The ID of the project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetSupportedDatabaseFlagsArgs].
   /// [location] The canonical id of the location. For example: `us-east1`.

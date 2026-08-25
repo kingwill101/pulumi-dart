@@ -8,12 +8,12 @@ class SavedQueryLoggingQuery {
   /// is used to match log entries.
   final pulumi.Input<String> filter;
   /// Characters will be counted from the end of the string.
-  final pulumi.Input<int>? summaryFieldEnd;
+  final pulumi.Input<int?>? summaryFieldEnd;
   /// Characters will be counted from the start of the string.
-  final pulumi.Input<int>? summaryFieldStart;
+  final pulumi.Input<int?>? summaryFieldStart;
   /// The names of the fields to display in the summary.
   /// Structure is documented below.
-  final pulumi.Input<List<SavedQueryLoggingQuerySummaryField>>? summaryFields;
+  final pulumi.Input<List<SavedQueryLoggingQuerySummaryField>?>? summaryFields;
 
   /// Creates a new [SavedQueryLoggingQuery].
   /// [filter] An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
@@ -39,8 +39,8 @@ class SavedQueryLoggingQuery {
   factory SavedQueryLoggingQuery.fromMap(Map<String, dynamic> map) {
     return SavedQueryLoggingQuery(
       filter: pulumi.Input.fromValue(map['filter'] as String),
-      summaryFieldEnd: (() { final guardedValue = map['summaryFieldEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      summaryFieldStart: (() { final guardedValue = map['summaryFieldStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      summaryFieldEnd: (() { final guardedValue = map['summaryFieldEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      summaryFieldStart: (() { final guardedValue = map['summaryFieldStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       summaryFields: (() { final guardedValue = map['summaryFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SavedQueryLoggingQuerySummaryField>(guardedValue, (value) => SavedQueryLoggingQuerySummaryField.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

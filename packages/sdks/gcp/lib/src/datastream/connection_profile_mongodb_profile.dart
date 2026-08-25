@@ -9,29 +9,29 @@ class ConnectionProfileMongodbProfile {
   /// A map of additional options for the MongoDB connection.
   /// Keys are case-sensitive and should match the official
   /// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
-  final pulumi.Input<Map<String, String>>? additionalOptions;
+  final pulumi.Input<Map<String, String>?>? additionalOptions;
   /// List of host addresses for a MongoDB cluster.
   /// Structure is documented below.
   final pulumi.Input<List<ConnectionProfileMongodbProfileHostAddress>> hostAddresses;
   /// Password for the MongoDB connection. Mutually exclusive with
   /// secretManagerStoredPassword.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Name of the replica set.
-  final pulumi.Input<String>? replicaSet;
+  final pulumi.Input<String?>? replicaSet;
   /// A reference to a Secret Manager resource name storing the MongoDB
   /// connection password. Mutually exclusive with password.
-  final pulumi.Input<String>? secretManagerStoredPassword;
+  final pulumi.Input<String?>? secretManagerStoredPassword;
   /// Srv connection format. Mutually exclusive with
   /// standard_connection_Format.
-  final pulumi.Input<Map<String, dynamic>>? srvConnectionFormat;
+  final pulumi.Input<Map<String, dynamic>?>? srvConnectionFormat;
   /// SSL configuration for the MongoDB connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileMongodbProfileSslConfig>? sslConfig;
+  final pulumi.Input<ConnectionProfileMongodbProfileSslConfig?>? sslConfig;
   /// Standard connection format. Mutually exclusive with
   /// srv_connection_format.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileMongodbProfileStandardConnectionFormat>? standardConnectionFormat;
+  final pulumi.Input<ConnectionProfileMongodbProfileStandardConnectionFormat?>? standardConnectionFormat;
   /// Username for the MongoDB connection.
   final pulumi.Input<String> username;
 

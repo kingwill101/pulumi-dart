@@ -122,6 +122,17 @@ Future<GetIamPolicyResult> getIamPolicy(
   return GetIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
+  GetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:folder/getIamPolicy:getIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamPolicyResult.fromMap);
+}
+
 /// Allows management of Organization policies for a Google Folder. For more information see
 /// [the official
 /// documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
@@ -261,4 +272,15 @@ Future<GetOrganizationPolicyResult> getOrganizationPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationPolicyResult> getOrganizationPolicyOutput(
+  GetOrganizationPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:folder/getOrganizationPolicy:getOrganizationPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationPolicyResult.fromMap);
 }

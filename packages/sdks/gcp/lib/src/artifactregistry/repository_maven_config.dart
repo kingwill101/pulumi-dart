@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryMavenConfig {
   /// The repository with this flag will allow publishing the same
   /// snapshot versions.
-  final pulumi.Input<bool>? allowSnapshotOverwrites;
+  final pulumi.Input<bool?>? allowSnapshotOverwrites;
   /// Version policy defines the versions that the registry will accept.
   /// Default value is `VERSION_POLICY_UNSPECIFIED`.
   /// Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
-  final pulumi.Input<String>? versionPolicy;
+  final pulumi.Input<String?>? versionPolicy;
 
   /// Creates a new [RepositoryMavenConfig].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same

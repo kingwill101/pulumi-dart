@@ -12,34 +12,34 @@ class WorkstationClusterArgs {
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human-readable name for this resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Configuration options for a custom domain.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationClusterDomainConfig>? domainConfig;
+  final pulumi.Input<WorkstationClusterDomainConfig?>? domainConfig;
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the workstation cluster should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The relative resource name of the VPC network on which the instance can be accessed.
   /// It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
   final pulumi.Input<String> network;
   /// Configuration for private cluster.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationClusterPrivateClusterConfig>? privateClusterConfig;
+  final pulumi.Input<WorkstationClusterPrivateClusterConfig?>? privateClusterConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
   /// Must be part of the subnetwork specified for this cluster.
   final pulumi.Input<String> subnetwork;
@@ -47,15 +47,15 @@ class WorkstationClusterArgs {
   /// For example:
   /// "123/environment": "production",
   /// "123/costCenter": "marketing"
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
   /// Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
-  final pulumi.Input<String>? workstationAuthorizationUrl;
+  final pulumi.Input<String?>? workstationAuthorizationUrl;
   /// ID to use for the workstation cluster.
   final pulumi.Input<String> workstationClusterId;
   /// Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
   /// Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
-  final pulumi.Input<String>? workstationLaunchUrl;
+  final pulumi.Input<String?>? workstationLaunchUrl;
 
   /// Creates a new [WorkstationClusterArgs].
   /// [annotations] Client-specified annotations. This is distinct from labels.

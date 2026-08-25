@@ -2069,12 +2069,12 @@ class WebForwardingRuleServiceIamBinding extends pulumi.CustomResource {
           'gcp:iap/webForwardingRuleServiceIamBinding:WebForwardingRuleServiceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<WebForwardingRuleServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebForwardingRuleServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     forwardingRuleServiceName = registerOutput<String>('forwardingRuleServiceName');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }
@@ -2084,11 +2084,12 @@ class WebForwardingRuleServiceIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebForwardingRuleServiceIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebForwardingRuleServiceIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2105,7 +2106,24 @@ class WebForwardingRuleServiceIamBinding extends pulumi.CustomResource {
     condition = registerOutput<WebForwardingRuleServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebForwardingRuleServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     forwardingRuleServiceName = registerOutput<String>('forwardingRuleServiceName');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [WebForwardingRuleServiceIamBinding] resource.
+  WebForwardingRuleServiceIamBinding.reference(String urn)
+    : super(
+        'gcp:iap/webForwardingRuleServiceIamBinding:WebForwardingRuleServiceIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<WebForwardingRuleServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebForwardingRuleServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    forwardingRuleServiceName = registerOutput<String>('forwardingRuleServiceName');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }

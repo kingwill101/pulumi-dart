@@ -8,12 +8,12 @@ class FeedDetailsAzureBlobStoreSettingsAuthentication {
   ///
   ///
   /// &lt;a name="nestedDetailsAzureBlobStoreV2SettingsAuthenticationAzureV2WorkloadIdentityFederation"&gt;&lt;/a&gt;The `azureV2WorkloadIdentityFederation` block supports:
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// Shared Key.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   ///
   /// &lt;a name="nestedDetailsAzureBlobStoreV2Settings"&gt;&lt;/a&gt;The `azureBlobStoreV2Settings` block supports:
-  final pulumi.Input<String>? sharedKey;
+  final pulumi.Input<String?>? sharedKey;
 
   /// Creates a new [FeedDetailsAzureBlobStoreSettingsAuthentication].
   /// [sasToken] SAS Token.

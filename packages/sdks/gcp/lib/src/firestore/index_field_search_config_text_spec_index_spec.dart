@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexFieldSearchConfigTextSpecIndexSpec {
   /// Ways to index the text field value.
-  final pulumi.Input<String>? indexType;
+  final pulumi.Input<String?>? indexType;
   /// How to match the text field value.
-  final pulumi.Input<String>? matchType;
+  final pulumi.Input<String?>? matchType;
 
   /// Creates a new [IndexFieldSearchConfigTextSpecIndexSpec].
   /// [indexType] Ways to index the text field value.

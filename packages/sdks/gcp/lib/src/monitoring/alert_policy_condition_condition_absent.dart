@@ -15,7 +15,7 @@ class AlertPolicyConditionConditionAbsent {
   /// Multiple aggregations are applied in the
   /// order specified.
   /// Structure is documented below.
-  final pulumi.Input<List<AlertPolicyConditionConditionAbsentAggregation>>? aggregations;
+  final pulumi.Input<List<AlertPolicyConditionConditionAbsentAggregation>?>? aggregations;
   /// The amount of time that a time series must
   /// fail to report new data to be considered
   /// failing. Currently, only values that are a
@@ -34,7 +34,7 @@ class AlertPolicyConditionConditionAbsent {
   /// resource labels, and metric labels. This
   /// field may not exceed 2048 Unicode characters
   /// in length.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The number/percent of time series for which
   /// the comparison must hold in order for the
   /// condition to trigger. If unspecified, then
@@ -42,7 +42,7 @@ class AlertPolicyConditionConditionAbsent {
   /// is true for any of the time series that have
   /// been identified by filter and aggregations.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionAbsentTrigger>? trigger;
+  final pulumi.Input<AlertPolicyConditionConditionAbsentTrigger?>? trigger;
 
   /// Creates a new [AlertPolicyConditionConditionAbsent].
   /// [aggregations] Specifies the alignment of data points in

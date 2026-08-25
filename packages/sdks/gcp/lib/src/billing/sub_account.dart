@@ -161,7 +161,7 @@ class SubAccount extends pulumi.CustomResource {
           'gcp:billing/subAccount:SubAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     billingAccountId = registerOutput<String>('billingAccountId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -176,11 +176,12 @@ class SubAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -194,6 +195,23 @@ class SubAccount extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    billingAccountId = registerOutput<String>('billingAccountId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    masterBillingAccount = registerOutput<String>('masterBillingAccount');
+    this.name = registerOutput<String>('name');
+    open = registerOutput<bool>('open');
+  }
+
+  /// Creates a typed reference to an existing [SubAccount] resource.
+  SubAccount.reference(String urn)
+    : super(
+        'gcp:billing/subAccount:SubAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     billingAccountId = registerOutput<String>('billingAccountId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

@@ -239,10 +239,10 @@ class Service extends pulumi.CustomResource {
           'gcp:servicedirectory/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     serviceId = registerOutput<String>('serviceId');
@@ -253,11 +253,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -272,7 +273,23 @@ class Service extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String>('namespace');
+    serviceId = registerOutput<String>('serviceId');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'gcp:servicedirectory/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     serviceId = registerOutput<String>('serviceId');

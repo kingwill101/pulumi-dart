@@ -9,11 +9,11 @@ import 'policy_restore_policy.dart';
 class PolicyState {
   /// A boolean policy is a constraint that is either enforced or not. Structure is documented
   /// below.
-  final pulumi.Input<PolicyBooleanPolicy>? booleanPolicy;
+  final pulumi.Input<PolicyBooleanPolicy?>? booleanPolicy;
   /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   ///
   /// - - -
-  final pulumi.Input<String>? constraint;
+  final pulumi.Input<String?>? constraint;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -22,22 +22,22 @@ class PolicyState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
-  final pulumi.Input<PolicyListPolicy>? listPolicy;
+  final pulumi.Input<PolicyListPolicy?>? listPolicy;
   /// The numeric ID of the organization to set the policy for.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
   /// &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
   /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-  final pulumi.Input<PolicyRestorePolicy>? restorePolicy;
+  final pulumi.Input<PolicyRestorePolicy?>? restorePolicy;
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Version of the Policy. Default version is 0.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [PolicyState].
   /// [booleanPolicy] A boolean policy is a constraint that is either enforced or not. Structure is documented
@@ -85,7 +85,7 @@ class PolicyState {
       orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restorePolicy: (() { final guardedValue = map['restorePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

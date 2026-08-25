@@ -124,6 +124,17 @@ Future<GetFunctionResult> getFunction(
   return GetFunctionResult.fromMap(result);
 }
 
+pulumi.Output<GetFunctionResult> getFunctionOutput(
+  GetFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudfunctions/getFunction:getFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for cloudfunction
 ///
 ///
@@ -255,4 +266,15 @@ Future<GetFunctionIamPolicyResult> getFunctionIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetFunctionIamPolicyResult> getFunctionIamPolicyOutput(
+  GetFunctionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionIamPolicyResult.fromMap);
 }

@@ -14,7 +14,7 @@ class RemoteConfigRemoteConfigCondition {
   /// The color associated with this condition for display purposes in the Firebase Console.
   /// Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
   /// Possible values are: `BLUE`, `BROWN`, `CYAN`, `DEEP_ORANGE`, `GREEN`, `INDIGO`, `LIME`, `ORANGE`, `PINK`, `PURPLE`, `TEAL`.
-  final pulumi.Input<String>? tagColor;
+  final pulumi.Input<String?>? tagColor;
 
   /// Creates a new [RemoteConfigRemoteConfigCondition].
   /// [expression] The logic of this condition.

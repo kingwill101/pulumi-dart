@@ -7,9 +7,9 @@ import 'connection_eventing_config_auth_config_user_password.dart';
 class ConnectionEventingConfigAuthConfig {
   /// List containing additional auth configs.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionEventingConfigAuthConfigAdditionalVariable>>? additionalVariables;
+  final pulumi.Input<List<ConnectionEventingConfigAuthConfigAdditionalVariable>?>? additionalVariables;
   /// The type of authentication configured.
-  final pulumi.Input<String>? authKey;
+  final pulumi.Input<String?>? authKey;
   /// authType of the Connection
   /// Possible values are: `USER_PASSWORD`.
   final pulumi.Input<String> authType;

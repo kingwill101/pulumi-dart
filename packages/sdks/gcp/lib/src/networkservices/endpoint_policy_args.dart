@@ -10,35 +10,35 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// {@macro pulumi_networkservices_endpoint_policy_endpoint_policy_args_doc}
 class EndpointPolicyArgs {
   /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
-  final pulumi.Input<String>? authorizationPolicy;
+  final pulumi.Input<String?>? authorizationPolicy;
   /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
-  final pulumi.Input<String>? clientTlsPolicy;
+  final pulumi.Input<String?>? clientTlsPolicy;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. A matcher that selects endpoints to which the policies should be applied.
   /// Structure is documented below.
   final pulumi.Input<EndpointPolicyEndpointMatcher> endpointMatcher;
   /// Set of label tags associated with the TcpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the EndpointPolicy resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-  final pulumi.Input<String>? serverTlsPolicy;
+  final pulumi.Input<String?>? serverTlsPolicy;
   /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// Structure is documented below.
-  final pulumi.Input<EndpointPolicyTrafficPortSelector>? trafficPortSelector;
+  final pulumi.Input<EndpointPolicyTrafficPortSelector?>? trafficPortSelector;
   /// The type of endpoint policy. This is primarily used to validate the configuration.
   /// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
   final pulumi.Input<String> type;

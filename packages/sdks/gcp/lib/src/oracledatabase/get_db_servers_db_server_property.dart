@@ -66,15 +66,15 @@ class GetDbServersDbServerProperty {
   factory GetDbServersDbServerProperty.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerProperty(
       dbNodeIds: pulumi.Input.fromValue((map['dbNodeIds'] as List).cast<String>()),
-      dbNodeStorageSizeGb: pulumi.Input.fromValue(map['dbNodeStorageSizeGb'] as int),
-      maxDbNodeStorageSizeGb: pulumi.Input.fromValue(map['maxDbNodeStorageSizeGb'] as int),
-      maxMemorySizeGb: pulumi.Input.fromValue(map['maxMemorySizeGb'] as int),
-      maxOcpuCount: pulumi.Input.fromValue(map['maxOcpuCount'] as int),
-      memorySizeGb: pulumi.Input.fromValue(map['memorySizeGb'] as int),
+      dbNodeStorageSizeGb: pulumi.Input.fromValue((map['dbNodeStorageSizeGb'] as num).toInt()),
+      maxDbNodeStorageSizeGb: pulumi.Input.fromValue((map['maxDbNodeStorageSizeGb'] as num).toInt()),
+      maxMemorySizeGb: pulumi.Input.fromValue((map['maxMemorySizeGb'] as num).toInt()),
+      maxOcpuCount: pulumi.Input.fromValue((map['maxOcpuCount'] as num).toInt()),
+      memorySizeGb: pulumi.Input.fromValue((map['memorySizeGb'] as num).toInt()),
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
-      ocpuCount: pulumi.Input.fromValue(map['ocpuCount'] as int),
+      ocpuCount: pulumi.Input.fromValue((map['ocpuCount'] as num).toInt()),
       state: pulumi.Input.fromValue(map['state'] as String),
-      vmCount: pulumi.Input.fromValue(map['vmCount'] as int),
+      vmCount: pulumi.Input.fromValue((map['vmCount'] as num).toInt()),
     );
   }
 }

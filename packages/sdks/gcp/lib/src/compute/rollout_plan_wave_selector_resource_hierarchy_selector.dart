@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RolloutPlanWaveSelectorResourceHierarchySelector {
   /// Format: "folders/{folder_id}"
-  final pulumi.Input<List<String>>? includedFolders;
+  final pulumi.Input<List<String>?>? includedFolders;
   /// Format: "organizations/{organization_id}"
-  final pulumi.Input<List<String>>? includedOrganizations;
+  final pulumi.Input<List<String>?>? includedOrganizations;
   /// Format: "projects/{project_id}"
-  final pulumi.Input<List<String>>? includedProjects;
+  final pulumi.Input<List<String>?>? includedProjects;
 
   /// Creates a new [RolloutPlanWaveSelectorResourceHierarchySelector].
   /// [includedFolders] Format: "folders/{folder_id}"

@@ -10,52 +10,52 @@ class FunctionState {
   /// Describes the Build step of the function that builds a container
   /// from the given source.
   /// Structure is documented below.
-  final pulumi.Input<FunctionBuildConfig>? buildConfig;
+  final pulumi.Input<FunctionBuildConfig?>? buildConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description of a function.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The environment the function is hosted on.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// An Eventarc trigger managed by Google Cloud Functions that fires events in
   /// response to a condition in another service.
   /// Structure is documented below.
-  final pulumi.Input<FunctionEventTrigger>? eventTrigger;
+  final pulumi.Input<FunctionEventTrigger?>? eventTrigger;
   /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
   /// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// A set of key/value label pairs associated with this Cloud Function.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of this cloud function.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A user-defined name of the function. Function names must
   /// be unique globally and match pattern `projects/*/locations/*/functions/*`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Describes the Service being deployed.
   /// Structure is documented below.
-  final pulumi.Input<FunctionServiceConfig>? serviceConfig;
+  final pulumi.Input<FunctionServiceConfig?>? serviceConfig;
   /// Describes the current state of the function.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The last update timestamp of a Cloud Function.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Output only. The deployed url for the function.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [FunctionState].
   /// [buildConfig] Describes the Build step of the function that builds a container

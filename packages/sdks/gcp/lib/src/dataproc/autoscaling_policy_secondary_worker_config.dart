@@ -6,9 +6,9 @@ class AutoscalingPolicySecondaryWorkerConfig {
   /// Maximum number of instances for this group. Note that by default, clusters will not use
   /// secondary workers. Required for secondary workers if the minimum secondary instances is set.
   /// Bounds: [minInstances, ). Defaults to 0.
-  final pulumi.Input<int>? maxInstances;
+  final pulumi.Input<int?>? maxInstances;
   /// Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
-  final pulumi.Input<int>? minInstances;
+  final pulumi.Input<int?>? minInstances;
   /// Weight for the instance group, which is used to determine the fraction of total workers
   /// in the cluster from this instance group. For example, if primary workers have weight 2,
   /// and secondary workers have weight 1, the cluster will have approximately 2 primary workers
@@ -21,7 +21,7 @@ class AutoscalingPolicySecondaryWorkerConfig {
   /// within the configured size bounds for each group. If weight is set for one group only,
   /// the cluster will default to zero weight on the unset group. For example if weight is set
   /// only on primary workers, the cluster will use primary workers only and no secondary workers.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [AutoscalingPolicySecondaryWorkerConfig].
   /// [maxInstances] Maximum number of instances for this group. Note that by default, clusters will not use
@@ -43,9 +43,9 @@ class AutoscalingPolicySecondaryWorkerConfig {
 
   factory AutoscalingPolicySecondaryWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicySecondaryWorkerConfig(
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

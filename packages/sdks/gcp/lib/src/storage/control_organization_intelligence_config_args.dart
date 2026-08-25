@@ -9,12 +9,12 @@ import 'control_organization_intelligence_config_filter.dart';
 /// {@macro pulumi_storage_control_organization_intelligence_config_control_organization_intelligence_config_args_doc}
 class ControlOrganizationIntelligenceConfigArgs {
   /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
-  final pulumi.Input<String>? editionConfig;
+  final pulumi.Input<String?>? editionConfig;
   /// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlOrganizationIntelligenceConfigFilter>? filter;
+  final pulumi.Input<ControlOrganizationIntelligenceConfigFilter?>? filter;
   /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ControlOrganizationIntelligenceConfigArgs].
   /// [editionConfig] Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.

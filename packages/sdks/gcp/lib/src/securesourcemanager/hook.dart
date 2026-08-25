@@ -85,19 +85,20 @@ class Hook extends pulumi.CustomResource {
           'gcp:securesourcemanager/hook:Hook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['sensitiveQueryString'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
-    events = registerOutput<List<String>>('events');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hookId = registerOutput<String>('hookId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
-    sensitiveQueryString = registerOutput<String?>('sensitiveQueryString');
+    sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -108,11 +109,12 @@ class Hook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -129,14 +131,40 @@ class Hook extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
-    events = registerOutput<List<String>>('events');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hookId = registerOutput<String>('hookId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
-    sensitiveQueryString = registerOutput<String?>('sensitiveQueryString');
+    sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
+    targetUri = registerOutput<String>('targetUri');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Hook] resource.
+  Hook.reference(String urn)
+    : super(
+        'gcp:securesourcemanager/hook:Hook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sensitiveQueryString'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hookId = registerOutput<String>('hookId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repositoryId = registerOutput<String>('repositoryId');
+    sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

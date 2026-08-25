@@ -7,21 +7,21 @@ class ClientState {
   /// Identifier of the brand to which this client
   /// is attached to. The format is
   /// `projects/{project_number}/brands/{brand_id}`.
-  final pulumi.Input<String>? brand;
+  final pulumi.Input<String?>? brand;
   /// Output only. Unique identifier of the OAuth client.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human-friendly name given to the OAuth client.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Output only. Client secret of the OAuth client.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
 
   /// Creates a new [ClientState].
   /// [brand] Identifier of the brand to which this client

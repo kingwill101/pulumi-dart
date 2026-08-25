@@ -6,9 +6,9 @@ import 'feed_details_mimecast_mail_settings_authentication.dart';
 class FeedDetailsMimecastMailSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMimecastMailSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsMimecastMailSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsMimecastMailSettings].
   /// [authentication] HTTP header based authentication.

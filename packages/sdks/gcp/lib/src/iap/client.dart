@@ -312,13 +312,14 @@ class Client extends pulumi.CustomResource {
           'gcp:iap/client:Client',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['secret'],
         ) {
     brand = registerOutput<String>('brand');
     clientId = registerOutput<String>('clientId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
   }
 
   /// Gets an existing [Client] resource's state with the given [name] and [id].
@@ -326,11 +327,12 @@ class Client extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Client._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -348,6 +350,23 @@ class Client extends pulumi.CustomResource {
     clientId = registerOutput<String>('clientId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [Client] resource.
+  Client.reference(String urn)
+    : super(
+        'gcp:iap/client:Client',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secret'],
+        isResourceReference: true,
+      ) {
+    brand = registerOutput<String>('brand');
+    clientId = registerOutput<String>('clientId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    secret = registerOutput<String>('secret', isSecret: true);
   }
 }

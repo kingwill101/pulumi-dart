@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties {
   /// The service account key file Cloud Storage containing the
   /// credentials required to use Google BigQuery.
-  final pulumi.Input<String>? serviceAccountKeyFile;
+  final pulumi.Input<String?>? serviceAccountKeyFile;
   /// The technology type.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties].
   /// [serviceAccountKeyFile] The service account key file Cloud Storage containing the

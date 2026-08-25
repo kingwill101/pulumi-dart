@@ -6,7 +6,7 @@ import 'prevention_discovery_config_target_cloud_sql_target_filter_collection_in
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes {
   /// The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern>>? patterns;
+  final pulumi.Input<List<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern>?>? patterns;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes].
   /// [patterns] The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.

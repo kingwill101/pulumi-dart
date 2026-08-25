@@ -6,7 +6,7 @@ import 'feed_details_sentinelone_alert_settings_authentication_header_key_value.
 class FeedDetailsSentineloneAlertSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsSentineloneAlertSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

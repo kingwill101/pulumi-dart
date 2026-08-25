@@ -47,8 +47,8 @@ class GetClusterDatastoreMountConfigDatastoreNetwork {
 
   factory GetClusterDatastoreMountConfigDatastoreNetwork.fromMap(Map<String, dynamic> map) {
     return GetClusterDatastoreMountConfigDatastoreNetwork(
-      connectionCount: pulumi.Input.fromValue(map['connectionCount'] as int),
-      mtu: pulumi.Input.fromValue(map['mtu'] as int),
+      connectionCount: pulumi.Input.fromValue((map['connectionCount'] as num).toInt()),
+      mtu: pulumi.Input.fromValue((map['mtu'] as num).toInt()),
       networkPeering: pulumi.Input.fromValue(map['networkPeering'] as String),
       subnet: pulumi.Input.fromValue(map['subnet'] as String),
     );

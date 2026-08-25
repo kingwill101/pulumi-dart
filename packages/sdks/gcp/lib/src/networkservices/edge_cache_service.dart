@@ -3080,22 +3080,23 @@ class EdgeCacheService extends pulumi.CustomResource {
           'gcp:networkservices/edgeCacheService:EdgeCacheService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disableHttp2 = registerOutput<bool?>('disableHttp2');
     disableQuic = registerOutput<bool>('disableQuic');
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
-    edgeSslCertificates = registerOutput<List<String>?>('edgeSslCertificates');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    ipv4Addresses = registerOutput<List<String>>('ipv4Addresses');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
-    labels = registerOutput<Map<String, String>?>('labels');
+    edgeSslCertificates = registerOutput<List<String>?>('edgeSslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ipv4Addresses = registerOutput<List<String>>('ipv4Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     logConfig = registerOutput<EdgeCacheServiceLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheServiceLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     requireTls = registerOutput<bool>('requireTls');
     routing = registerOutput<EdgeCacheServiceRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheServiceRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sslPolicy = registerOutput<String?>('sslPolicy');
@@ -3106,11 +3107,12 @@ class EdgeCacheService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EdgeCacheServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EdgeCacheService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3129,15 +3131,44 @@ class EdgeCacheService extends pulumi.CustomResource {
     disableHttp2 = registerOutput<bool?>('disableHttp2');
     disableQuic = registerOutput<bool>('disableQuic');
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
-    edgeSslCertificates = registerOutput<List<String>?>('edgeSslCertificates');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    ipv4Addresses = registerOutput<List<String>>('ipv4Addresses');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
-    labels = registerOutput<Map<String, String>?>('labels');
+    edgeSslCertificates = registerOutput<List<String>?>('edgeSslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ipv4Addresses = registerOutput<List<String>>('ipv4Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     logConfig = registerOutput<EdgeCacheServiceLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheServiceLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    requireTls = registerOutput<bool>('requireTls');
+    routing = registerOutput<EdgeCacheServiceRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheServiceRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslPolicy = registerOutput<String?>('sslPolicy');
+  }
+
+  /// Creates a typed reference to an existing [EdgeCacheService] resource.
+  EdgeCacheService.reference(String urn)
+    : super(
+        'gcp:networkservices/edgeCacheService:EdgeCacheService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disableHttp2 = registerOutput<bool?>('disableHttp2');
+    disableQuic = registerOutput<bool>('disableQuic');
+    edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
+    edgeSslCertificates = registerOutput<List<String>?>('edgeSslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ipv4Addresses = registerOutput<List<String>>('ipv4Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    logConfig = registerOutput<EdgeCacheServiceLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheServiceLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     requireTls = registerOutput<bool>('requireTls');
     routing = registerOutput<EdgeCacheServiceRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheServiceRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sslPolicy = registerOutput<String?>('sslPolicy');

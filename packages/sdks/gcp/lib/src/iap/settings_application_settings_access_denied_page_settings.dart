@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsApplicationSettingsAccessDeniedPageSettings {
   /// The URI to be redirected to when access is denied.
-  final pulumi.Input<String>? accessDeniedPageUri;
+  final pulumi.Input<String?>? accessDeniedPageUri;
   /// Whether to generate a troubleshooting URL on access denied events to this application.
-  final pulumi.Input<bool>? generateTroubleshootingUri;
+  final pulumi.Input<bool?>? generateTroubleshootingUri;
   /// Whether to generate remediation token on access denied events to this application.
-  final pulumi.Input<bool>? remediationTokenGenerationEnabled;
+  final pulumi.Input<bool?>? remediationTokenGenerationEnabled;
 
   /// Creates a new [SettingsApplicationSettingsAccessDeniedPageSettings].
   /// [accessDeniedPageUri] The URI to be redirected to when access is denied.

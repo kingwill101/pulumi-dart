@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteConfigRemoteConfigVersionUpdateUser {
   /// (Output)
   /// Email address.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// (Output)
   /// Image URL.
-  final pulumi.Input<String>? imageUrl;
+  final pulumi.Input<String?>? imageUrl;
   /// (Output)
   /// Display name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RemoteConfigRemoteConfigVersionUpdateUser].
   /// [email] (Output)

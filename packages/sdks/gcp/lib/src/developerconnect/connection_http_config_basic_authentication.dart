@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionHttpConfigBasicAuthentication {
   /// The password SecretManager secret version to authenticate as.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The username to authenticate as.
   final pulumi.Input<String> username;
 

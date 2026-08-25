@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerPubsubConfig {
   /// Service account that will make the push request.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// (Output)
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Output only. Name of the subscription.
-  final pulumi.Input<String>? subscription;
+  final pulumi.Input<String?>? subscription;
   /// The name of the topic from which this subscription is receiving messages.
   final pulumi.Input<String> topic;
 

@@ -1178,22 +1178,23 @@ class Snapshot extends pulumi.CustomResource {
           'gcp:compute/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     chainName = registerOutput<String?>('chainName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     guestFlush = registerOutput<bool?>('guestFlush');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
-    licenses = registerOutput<List<String>>('licenses');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<SnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     snapshotEncryptionKey = registerOutput<SnapshotSnapshotEncryptionKey?>('snapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     snapshotId = registerOutput<int>('snapshotId');
@@ -1202,7 +1203,7 @@ class Snapshot extends pulumi.CustomResource {
     sourceDiskEncryptionKey = registerOutput<SnapshotSourceDiskEncryptionKey?>('sourceDiskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSourceDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
     storageBytes = registerOutput<int>('storageBytes');
-    storageLocations = registerOutput<List<String>>('storageLocations');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     zone = registerOutput<String>('zone');
   }
 
@@ -1211,11 +1212,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1234,15 +1236,15 @@ class Snapshot extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     guestFlush = registerOutput<bool?>('guestFlush');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
-    licenses = registerOutput<List<String>>('licenses');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<SnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     snapshotEncryptionKey = registerOutput<SnapshotSnapshotEncryptionKey?>('snapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     snapshotId = registerOutput<int>('snapshotId');
@@ -1251,7 +1253,43 @@ class Snapshot extends pulumi.CustomResource {
     sourceDiskEncryptionKey = registerOutput<SnapshotSourceDiskEncryptionKey?>('sourceDiskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSourceDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
     storageBytes = registerOutput<int>('storageBytes');
-    storageLocations = registerOutput<List<String>>('storageLocations');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'gcp:compute/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    chainName = registerOutput<String?>('chainName');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    guestFlush = registerOutput<bool?>('guestFlush');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<SnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    selfLink = registerOutput<String>('selfLink');
+    snapshotEncryptionKey = registerOutput<SnapshotSnapshotEncryptionKey?>('snapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    snapshotId = registerOutput<int>('snapshotId');
+    snapshotType = registerOutput<String?>('snapshotType');
+    sourceDisk = registerOutput<String>('sourceDisk');
+    sourceDiskEncryptionKey = registerOutput<SnapshotSourceDiskEncryptionKey?>('sourceDiskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSourceDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
+    storageBytes = registerOutput<int>('storageBytes');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     zone = registerOutput<String>('zone');
   }
 }

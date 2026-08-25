@@ -1979,12 +1979,12 @@ class BucketIAMBinding extends pulumi.CustomResource {
           'gcp:storage/bucketIAMBinding:BucketIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<BucketIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 
@@ -1993,11 +1993,12 @@ class BucketIAMBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketIAMBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketIAMBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2014,7 +2015,23 @@ class BucketIAMBinding extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<BucketIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [BucketIAMBinding] resource.
+  BucketIAMBinding.reference(String urn)
+    : super(
+        'gcp:storage/bucketIAMBinding:BucketIAMBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    condition = registerOutput<BucketIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 }

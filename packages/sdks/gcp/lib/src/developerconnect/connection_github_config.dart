@@ -5,11 +5,11 @@ import 'connection_github_config_authorizer_credential.dart';
 
 class ConnectionGithubConfig {
   /// Optional. GitHub App installation id.
-  final pulumi.Input<String>? appInstallationId;
+  final pulumi.Input<String?>? appInstallationId;
   /// Represents an OAuth token of the account that authorized the Connection,
   /// and associated metadata.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential>? authorizerCredential;
+  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential?>? authorizerCredential;
   /// Required. Immutable. The GitHub Application that was installed to the GitHub user or
   /// organization.
   /// Possible values:
@@ -20,7 +20,7 @@ class ConnectionGithubConfig {
   /// (Output)
   /// Output only. The URI to navigate to in order to manage the installation associated
   /// with this GitHubConfig.
-  final pulumi.Input<String>? installationUri;
+  final pulumi.Input<String?>? installationUri;
 
   /// Creates a new [ConnectionGithubConfig].
   /// [appInstallationId] Optional. GitHub App installation id.

@@ -9,19 +9,19 @@ class DomainMappingStatus {
   /// Array of observed DomainMappingConditions, indicating the current state
   /// of the DomainMapping.
   /// Structure is documented below.
-  final pulumi.Input<List<DomainMappingStatusCondition>>? conditions;
+  final pulumi.Input<List<DomainMappingStatusCondition>?>? conditions;
   /// (Output)
   /// The name of the route that the mapping currently points to.
-  final pulumi.Input<String>? mappedRouteName;
+  final pulumi.Input<String?>? mappedRouteName;
   /// (Output)
   /// ObservedGeneration is the 'Generation' of the DomainMapping that
   /// was last processed by the controller.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// The resource records required to configure this domain mapping. These
   /// records must be added to the domain's DNS configuration in order to
   /// serve the application via this domain mapping.
   /// Structure is documented below.
-  final pulumi.Input<List<DomainMappingStatusResourceRecord>>? resourceRecords;
+  final pulumi.Input<List<DomainMappingStatusResourceRecord>?>? resourceRecords;
 
   /// Creates a new [DomainMappingStatus].
   /// [conditions] (Output)
@@ -48,7 +48,7 @@ class DomainMappingStatus {
     return DomainMappingStatus(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainMappingStatusCondition>(guardedValue, (value) => DomainMappingStatusCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mappedRouteName: (() { final guardedValue = map['mappedRouteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceRecords: (() { final guardedValue = map['resourceRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainMappingStatusResourceRecord>(guardedValue, (value) => DomainMappingStatusResourceRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

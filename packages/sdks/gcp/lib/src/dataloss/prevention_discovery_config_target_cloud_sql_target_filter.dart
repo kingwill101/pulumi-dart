@@ -7,12 +7,12 @@ import 'prevention_discovery_config_target_cloud_sql_target_filter_database_reso
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
   /// A collection of resources for this filter to apply to.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection>? collection;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection?>? collection;
   /// The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference>? databaseResourceReference;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference?>? databaseResourceReference;
   /// Match discovery resources not covered by any other filter.
-  final pulumi.Input<Map<String, dynamic>>? others;
+  final pulumi.Input<Map<String, dynamic>?>? others;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetFilter].
   /// [collection] A collection of resources for this filter to apply to.

@@ -13,20 +13,20 @@ class GatewaySecurityPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The location of the gateway security policy.
   /// The default value is `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
   /// gatewaySecurityPolicy should match the pattern:(^a-z?$).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
-  final pulumi.Input<String>? tlsInspectionPolicy;
+  final pulumi.Input<String?>? tlsInspectionPolicy;
 
   /// Creates a new [GatewaySecurityPolicyArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

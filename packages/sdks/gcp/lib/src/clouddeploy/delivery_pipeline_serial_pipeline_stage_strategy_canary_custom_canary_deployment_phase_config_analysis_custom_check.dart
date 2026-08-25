@@ -5,11 +5,11 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_de
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck {
   /// Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// Required. The ID of the custom Analysis check.
   final pulumi.Input<String> id;
   /// Required. The Task to be run for this custom check.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask>? task;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask?>? task;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheck].
   /// [frequency] Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.

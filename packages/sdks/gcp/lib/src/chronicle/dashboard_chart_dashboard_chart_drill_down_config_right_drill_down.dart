@@ -7,10 +7,10 @@ import 'dashboard_chart_dashboard_chart_drill_down_config_right_drill_down_defau
 class DashboardChartDashboardChartDrillDownConfigRightDrillDown {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettings>? customSettings;
+  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettings?>? customSettings;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettings>? defaultSettings;
+  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettings?>? defaultSettings;
   /// (Required)
   final pulumi.Input<String> displayName;
   /// (Required)

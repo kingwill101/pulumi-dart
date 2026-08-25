@@ -6,7 +6,7 @@ import 'feed_details_anomali_settings_authentication.dart';
 class FeedDetailsAnomaliSettings {
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAnomaliSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAnomaliSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsAnomaliSettings].
   /// [authentication] Info for username and secret based authentication.

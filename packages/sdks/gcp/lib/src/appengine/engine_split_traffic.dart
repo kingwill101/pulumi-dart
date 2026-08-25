@@ -609,7 +609,7 @@ class EngineSplitTraffic extends pulumi.CustomResource {
           'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');
@@ -622,11 +622,12 @@ class EngineSplitTraffic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EngineSplitTrafficState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EngineSplitTraffic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -640,6 +641,21 @@ class EngineSplitTraffic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    migrateTraffic = registerOutput<bool?>('migrateTraffic');
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
+    split = registerOutput<EngineSplitTrafficSplit>('split', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineSplitTrafficSplit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EngineSplitTraffic] resource.
+  EngineSplitTraffic.reference(String urn)
+    : super(
+        'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');

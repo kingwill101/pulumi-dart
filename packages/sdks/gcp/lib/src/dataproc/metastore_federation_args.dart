@@ -17,11 +17,11 @@ class MetastoreFederationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the federation. Defaults to false.
   /// When the field is set to true in Terraform state, a `pulumi up`
   /// or `terraform destroy` that would delete the federation will fail.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
   /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
   /// 3 and 63 characters.
@@ -29,16 +29,16 @@ class MetastoreFederationArgs {
   /// User-defined labels for the metastore federation.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the metastore federation should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
   final pulumi.Input<String> version;
 

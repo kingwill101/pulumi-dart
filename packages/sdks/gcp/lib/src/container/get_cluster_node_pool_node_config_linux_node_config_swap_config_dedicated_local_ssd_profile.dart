@@ -20,7 +20,7 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProf
 
   factory GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile(
-      diskCount: pulumi.Input.fromValue(map['diskCount'] as int),
+      diskCount: pulumi.Input.fromValue((map['diskCount'] as num).toInt()),
     );
   }
 }

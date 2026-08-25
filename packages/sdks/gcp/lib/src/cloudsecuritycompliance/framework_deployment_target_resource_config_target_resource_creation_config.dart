@@ -8,11 +8,11 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
   /// FolderCreationConfig contains the config to create a new folder to be used
   /// as the targetResource of a deployment.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig>? folderCreationConfig;
+  final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig?>? folderCreationConfig;
   /// ProjectCreationConfig contains the config to create a new project to be used
   /// as the targetResource of a deployment.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig>? projectCreationConfig;
+  final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig?>? projectCreationConfig;
 
   /// Creates a new [FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig].
   /// [folderCreationConfig] FolderCreationConfig contains the config to create a new folder to be used

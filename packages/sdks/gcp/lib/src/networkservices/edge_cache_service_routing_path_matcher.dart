@@ -5,7 +5,7 @@ import 'edge_cache_service_routing_path_matcher_route_rule.dart';
 
 class EdgeCacheServiceRoutingPathMatcher {
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name to which this PathMatcher is referred by the HostRule.
   final pulumi.Input<String> name;
   /// The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.

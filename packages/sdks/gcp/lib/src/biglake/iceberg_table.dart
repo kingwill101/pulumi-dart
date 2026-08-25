@@ -1233,7 +1233,7 @@ class IcebergTable extends pulumi.CustomResource {
           'gcp:biglake/icebergTable:IcebergTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1242,7 +1242,7 @@ class IcebergTable extends pulumi.CustomResource {
     namespace = registerOutput<String>('namespace');
     partitionSpec = registerOutput<IcebergTablePartitionSpec>('partitionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTablePartitionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    properties = registerOutput<Map<String, String>>('properties');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     schema = registerOutput<IcebergTableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sortOrder = registerOutput<IcebergTableSortOrder>('sortOrder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableSortOrder.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -1252,11 +1252,12 @@ class IcebergTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IcebergTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IcebergTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1277,7 +1278,28 @@ class IcebergTable extends pulumi.CustomResource {
     namespace = registerOutput<String>('namespace');
     partitionSpec = registerOutput<IcebergTablePartitionSpec>('partitionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTablePartitionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    properties = registerOutput<Map<String, String>>('properties');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schema = registerOutput<IcebergTableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sortOrder = registerOutput<IcebergTableSortOrder>('sortOrder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableSortOrder.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [IcebergTable] resource.
+  IcebergTable.reference(String urn)
+    : super(
+        'gcp:biglake/icebergTable:IcebergTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalog = registerOutput<String>('catalog');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String>('namespace');
+    partitionSpec = registerOutput<IcebergTablePartitionSpec>('partitionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTablePartitionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     schema = registerOutput<IcebergTableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sortOrder = registerOutput<IcebergTableSortOrder>('sortOrder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableSortOrder.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -11,12 +11,12 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
   /// The user must grant the dns.peer role to the Vertex AI
   /// service Agent on the target project.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>>? dnsPeeringConfigs;
+  final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>?>? dnsPeeringConfigs;
   /// Optional. The name of the Compute Engine network attachment
   /// to attach to the resource within the region and user project.
   /// To specify this field, you must have already created a network attachment.
   /// This field is only used for resources using PSC-Interface.
-  final pulumi.Input<String>? networkAttachment;
+  final pulumi.Input<String?>? networkAttachment;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig].
   /// [dnsPeeringConfigs] Optional. DNS peering configurations.

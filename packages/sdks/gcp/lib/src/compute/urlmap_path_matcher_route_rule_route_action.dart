@@ -17,11 +17,11 @@ class URLMapPathMatcherRouteRuleRouteAction {
   /// property must be specified. This policy cannot be specified if any target
   /// backend has Identity-Aware Proxy enabled.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicy>? cachePolicy;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCachePolicy?>? cachePolicy;
   /// The specification for allowing client side cross-origin requests. Please see W3C
   /// Recommendation for Cross Origin Resource Sharing
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCorsPolicy>? corsPolicy;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionCorsPolicy?>? corsPolicy;
   /// The specification for fault injection introduced into traffic to test the
   /// resiliency of clients to backend service failure. As part of fault injection,
   /// when clients send requests to a backend service, delays can be introduced by
@@ -30,33 +30,33 @@ class URLMapPathMatcherRouteRuleRouteAction {
   /// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
   /// ignored by clients that are configured with a fault_injection_policy.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy>? faultInjectionPolicy;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy?>? faultInjectionPolicy;
   /// Specifies the maximum duration (timeout) for streams on the selected route.
   /// Unlike the `Timeout` field where the timeout duration starts from the time the request
   /// has been fully processed (known as end-of-stream), the duration in this field
   /// is computed from the beginning of the stream until the response has been processed,
   /// including all retries. A stream that does not complete in this duration is closed.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration>? maxStreamDuration;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration?>? maxStreamDuration;
   /// Specifies the policy on how requests intended for the route's backends are
   /// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
   /// responses from the shadow service. Prior to sending traffic to the shadow
   /// service, the host / authority header is suffixed with -shadow.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy>? requestMirrorPolicy;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy?>? requestMirrorPolicy;
   /// Specifies the retry policy associated with this route.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionRetryPolicy>? retryPolicy;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionRetryPolicy?>? retryPolicy;
   /// Specifies the timeout for the selected route. Timeout is computed from the time
   /// the request is has been fully processed (i.e. end-of-stream) up until the
   /// response has been completely processed. Timeout includes all retries. If not
   /// specified, the default value is 15 seconds.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionTimeout>? timeout;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionTimeout?>? timeout;
   /// The spec to modify the URL of the request, prior to forwarding the request to
   /// the matched service
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionUrlRewrite>? urlRewrite;
+  final pulumi.Input<URLMapPathMatcherRouteRuleRouteActionUrlRewrite?>? urlRewrite;
   /// A list of weighted backend services to send traffic to when a route match
   /// occurs. The weights determine the fraction of traffic that flows to their
   /// corresponding backend service. If all traffic needs to go to a single backend
@@ -66,7 +66,7 @@ class URLMapPathMatcherRouteRuleRouteAction {
   /// transformations are applied depending on additional settings specified in this
   /// HttpRouteAction.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherRouteRuleRouteActionWeightedBackendService>>? weightedBackendServices;
+  final pulumi.Input<List<URLMapPathMatcherRouteRuleRouteActionWeightedBackendService>?>? weightedBackendServices;
 
   /// Creates a new [URLMapPathMatcherRouteRuleRouteAction].
   /// [cachePolicy] Specifies the cache policy configuration for matched traffic. Available

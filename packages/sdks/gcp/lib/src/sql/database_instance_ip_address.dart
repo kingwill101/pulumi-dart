@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceIpAddress {
   /// The IPv4 address assigned.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The time this IP address will be retired, in RFC
   /// 3339 format.
-  final pulumi.Input<String>? timeToRetire;
+  final pulumi.Input<String?>? timeToRetire;
   /// The type of this IP address.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DatabaseInstanceIpAddress].
   /// [ipAddress] The IPv4 address assigned.

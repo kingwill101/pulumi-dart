@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'acl_acl_entry.dart';
 import 'acl_args.dart';
 import 'acl_state.dart';
 
@@ -379,7 +380,7 @@ import 'acl_state.dart';
 class Acl extends pulumi.CustomResource {
   /// The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> aclEntries;
+  late final pulumi.Output<List<AclAclEntry>> aclEntries;
   /// The ID to use for the acl, which will become the final component of the acl's name. The structure of `aclId` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `aclId` is structured like one of the following:
   /// For acls on the cluster: `cluster`
   /// For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}`
@@ -428,9 +429,9 @@ class Acl extends pulumi.CustomResource {
           'gcp:managedkafka/acl:Acl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    aclEntries = registerOutput<List<Map<String, dynamic>>>('aclEntries');
+    aclEntries = registerOutput<List<AclAclEntry>>('aclEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AclAclEntry>(guardedValue, (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>())); });
     aclId = registerOutput<String>('aclId');
     cluster = registerOutput<String>('cluster');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -448,11 +449,12 @@ class Acl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AclState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Acl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -466,7 +468,29 @@ class Acl extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aclEntries = registerOutput<List<Map<String, dynamic>>>('aclEntries');
+    aclEntries = registerOutput<List<AclAclEntry>>('aclEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AclAclEntry>(guardedValue, (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    aclId = registerOutput<String>('aclId');
+    cluster = registerOutput<String>('cluster');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    patternType = registerOutput<String>('patternType');
+    project = registerOutput<String>('project');
+    resourceName = registerOutput<String>('resourceName');
+    resourceType = registerOutput<String>('resourceType');
+  }
+
+  /// Creates a typed reference to an existing [Acl] resource.
+  Acl.reference(String urn)
+    : super(
+        'gcp:managedkafka/acl:Acl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aclEntries = registerOutput<List<AclAclEntry>>('aclEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AclAclEntry>(guardedValue, (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>())); });
     aclId = registerOutput<String>('aclId');
     cluster = registerOutput<String>('cluster');
     deletionPolicy = registerOutput<String>('deletionPolicy');

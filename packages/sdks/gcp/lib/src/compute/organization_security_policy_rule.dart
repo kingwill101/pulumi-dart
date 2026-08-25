@@ -1709,7 +1709,7 @@ class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
           'gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1723,8 +1723,8 @@ class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
     redirectOptions = registerOutput<OrganizationSecurityPolicyRuleRedirectOptions?>('redirectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyRuleRedirectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetResources = registerOutput<List<String>?>('targetResources');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetResources = registerOutput<List<String>?>('targetResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [OrganizationSecurityPolicyRule] resource's state with the given [name] and [id].
@@ -1732,11 +1732,12 @@ class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationSecurityPolicyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationSecurityPolicyRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1762,7 +1763,32 @@ class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
     redirectOptions = registerOutput<OrganizationSecurityPolicyRuleRedirectOptions?>('redirectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyRuleRedirectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetResources = registerOutput<List<String>?>('targetResources');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetResources = registerOutput<List<String>?>('targetResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [OrganizationSecurityPolicyRule] resource.
+  OrganizationSecurityPolicyRule.reference(String urn)
+    : super(
+        'gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    direction = registerOutput<String?>('direction');
+    enableLogging = registerOutput<bool?>('enableLogging');
+    headerAction = registerOutput<OrganizationSecurityPolicyRuleHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyRuleHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    match = registerOutput<OrganizationSecurityPolicyRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policyId = registerOutput<String>('policyId');
+    preconfiguredWafConfig = registerOutput<OrganizationSecurityPolicyRulePreconfiguredWafConfig?>('preconfiguredWafConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyRulePreconfiguredWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preview = registerOutput<bool?>('preview');
+    priority = registerOutput<int>('priority');
+    redirectOptions = registerOutput<OrganizationSecurityPolicyRuleRedirectOptions?>('redirectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyRuleRedirectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetResources = registerOutput<List<String>?>('targetResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -6,12 +6,12 @@ import 'cluster_master_authorized_networks_config_cidr_block.dart';
 class ClusterMasterAuthorizedNetworksConfig {
   /// External networks that can access the
   /// Kubernetes cluster master through HTTPS.
-  final pulumi.Input<List<ClusterMasterAuthorizedNetworksConfigCidrBlock>>? cidrBlocks;
+  final pulumi.Input<List<ClusterMasterAuthorizedNetworksConfigCidrBlock>?>? cidrBlocks;
   /// Whether Kubernetes master is
   /// accessible via Google Compute Engine Public IPs.
-  final pulumi.Input<bool>? gcpPublicCidrsAccessEnabled;
+  final pulumi.Input<bool?>? gcpPublicCidrsAccessEnabled;
   /// Whether authorized networks is enforced on the private endpoint or not.
-  final pulumi.Input<bool>? privateEndpointEnforcementEnabled;
+  final pulumi.Input<bool?>? privateEndpointEnforcementEnabled;
 
   /// Creates a new [ClusterMasterAuthorizedNetworksConfig].
   /// [cidrBlocks] External networks that can access the

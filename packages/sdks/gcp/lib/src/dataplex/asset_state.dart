@@ -10,53 +10,53 @@ import 'asset_security_status.dart';
 /// Input properties used for looking up and filtering Asset resources.
 class AssetState {
   /// Output only. The time when the asset was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The zone for the resource
-  final pulumi.Input<String>? dataplexZone;
+  final pulumi.Input<String?>? dataplexZone;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Description of the asset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
-  final pulumi.Input<AssetDiscoverySpec>? discoverySpec;
+  final pulumi.Input<AssetDiscoverySpec?>? discoverySpec;
   /// Output only. Status of the discovery feature applied to data referenced by this asset.
-  final pulumi.Input<List<AssetDiscoveryStatus>>? discoveryStatuses;
+  final pulumi.Input<List<AssetDiscoveryStatus>?>? discoveryStatuses;
   /// Optional. User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Optional. User defined labels for the asset.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The lake for the resource
-  final pulumi.Input<String>? lake;
+  final pulumi.Input<String?>? lake;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the asset.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Required. Immutable. Specification of the resource that is referenced by this asset.
-  final pulumi.Input<AssetResourceSpec>? resourceSpec;
+  final pulumi.Input<AssetResourceSpec?>? resourceSpec;
   /// Output only. Status of the resource referenced by this asset.
-  final pulumi.Input<List<AssetResourceStatus>>? resourceStatuses;
+  final pulumi.Input<List<AssetResourceStatus>?>? resourceStatuses;
   /// Output only. Status of the security policy applied to resource referenced by this asset.
-  final pulumi.Input<List<AssetSecurityStatus>>? securityStatuses;
+  final pulumi.Input<List<AssetSecurityStatus>?>? securityStatuses;
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. The time when the asset was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AssetState].
   /// [createTime] Output only. The time when the asset was created.

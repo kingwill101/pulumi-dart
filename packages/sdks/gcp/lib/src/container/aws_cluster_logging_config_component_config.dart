@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterLoggingConfigComponentConfig {
   /// Components of the logging configuration to be enabled.
-  final pulumi.Input<List<String>>? enableComponents;
+  final pulumi.Input<List<String>?>? enableComponents;
 
   /// Creates a new [AwsClusterLoggingConfigComponentConfig].
   /// [enableComponents] Components of the logging configuration to be enabled.

@@ -9,67 +9,67 @@ class ExadbVmClusterState {
   /// The name of the backup OdbSubnet associated with the ExadbVmCluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  final pulumi.Input<String>? backupOdbSubnet;
+  final pulumi.Input<String?>? backupOdbSubnet;
   /// The date and time that the ExadbVmCluster was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// The display name for the ExadbVmCluster. The name does not have to
   /// be unique within your project. The name must be 1-255 characters long and
   /// can only contain alphanumeric characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The ID of the subscription entitlement associated with the ExadbVmCluster.
-  final pulumi.Input<String>? entitlementId;
+  final pulumi.Input<String?>? entitlementId;
   /// The ID of the ExadbVmCluster to create. This value is
   /// restricted to (^a-z?$) and must be a maximum of
   /// 63 characters in length. The value must start with a letter and end with a
   /// letter or a number.
-  final pulumi.Input<String>? exadbVmClusterId;
+  final pulumi.Input<String?>? exadbVmClusterId;
   /// The GCP Oracle zone where Oracle ExadbVmCluster is hosted.
   /// Example: us-east4-b-r2.
   /// During creation, the system will pick the zone assigned to the
   /// ExascaleDbStorageVault.
-  final pulumi.Input<String>? gcpOracleZone;
+  final pulumi.Input<String?>? gcpOracleZone;
   /// The identity connector details which will allow OCI to securely access
   /// the resources in the customer project.
   /// Structure is documented below.
-  final pulumi.Input<List<ExadbVmClusterIdentityConnector>>? identityConnectors;
+  final pulumi.Input<List<ExadbVmClusterIdentityConnector>?>? identityConnectors;
   /// The labels or tags associated with the ExadbVmCluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The name of the ExadbVmCluster resource in the following format:
   /// projects/{project}/locations/{region}/exadbVmClusters/{exadb_vm_cluster}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the OdbNetwork associated with the ExadbVmCluster.
   /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the OdbSubnet.
-  final pulumi.Input<String>? odbNetwork;
+  final pulumi.Input<String?>? odbNetwork;
   /// The name of the OdbSubnet associated with the ExadbVmCluster for IP
   /// allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  final pulumi.Input<String>? odbSubnet;
+  final pulumi.Input<String?>? odbSubnet;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The properties of an ExadbVmCluster.
   /// Structure is documented below.
-  final pulumi.Input<ExadbVmClusterProperties>? properties;
+  final pulumi.Input<ExadbVmClusterProperties?>? properties;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
 
   /// Creates a new [ExadbVmClusterState].
   /// [backupOdbSubnet] The name of the backup OdbSubnet associated with the ExadbVmCluster.

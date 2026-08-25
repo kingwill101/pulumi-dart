@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asset_args.dart';
 import 'asset_discovery_spec.dart';
+import 'asset_discovery_status.dart';
 import 'asset_resource_spec.dart';
+import 'asset_resource_status.dart';
+import 'asset_security_status.dart';
 import 'asset_state.dart';
 
 /// The Dataplex Asset resource
@@ -465,7 +468,7 @@ class Asset extends pulumi.CustomResource {
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
   late final pulumi.Output<AssetDiscoverySpec> discoverySpec;
   /// Output only. Status of the discovery feature applied to data referenced by this asset.
-  late final pulumi.Output<List<Map<String, dynamic>>> discoveryStatuses;
+  late final pulumi.Output<List<AssetDiscoveryStatus>> discoveryStatuses;
   /// Optional. User friendly display name.
   late final pulumi.Output<String?> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -488,9 +491,9 @@ class Asset extends pulumi.CustomResource {
   /// Required. Immutable. Specification of the resource that is referenced by this asset.
   late final pulumi.Output<AssetResourceSpec> resourceSpec;
   /// Output only. Status of the resource referenced by this asset.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceStatuses;
+  late final pulumi.Output<List<AssetResourceStatus>> resourceStatuses;
   /// Output only. Status of the security policy applied to resource referenced by this asset.
-  late final pulumi.Output<List<Map<String, dynamic>>> securityStatuses;
+  late final pulumi.Output<List<AssetSecurityStatus>> securityStatuses;
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   late final pulumi.Output<String> state;
   /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
@@ -510,25 +513,26 @@ class Asset extends pulumi.CustomResource {
           'gcp:dataplex/asset:Asset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     dataplexZone = registerOutput<String>('dataplexZone');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    discoveryStatuses = registerOutput<List<Map<String, dynamic>>>('discoveryStatuses');
+    discoveryStatuses = registerOutput<List<AssetDiscoveryStatus>>('discoveryStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetDiscoveryStatus>(guardedValue, (value) => AssetDiscoveryStatus.fromMap((value as Map).cast<String, dynamic>())); });
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
-    securityStatuses = registerOutput<List<Map<String, dynamic>>>('securityStatuses');
+    resourceStatuses = registerOutput<List<AssetResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetResourceStatus>(guardedValue, (value) => AssetResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    securityStatuses = registerOutput<List<AssetSecurityStatus>>('securityStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetSecurityStatus>(guardedValue, (value) => AssetSecurityStatus.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -539,11 +543,12 @@ class Asset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Asset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -562,19 +567,51 @@ class Asset extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    discoveryStatuses = registerOutput<List<Map<String, dynamic>>>('discoveryStatuses');
+    discoveryStatuses = registerOutput<List<AssetDiscoveryStatus>>('discoveryStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetDiscoveryStatus>(guardedValue, (value) => AssetDiscoveryStatus.fromMap((value as Map).cast<String, dynamic>())); });
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
-    securityStatuses = registerOutput<List<Map<String, dynamic>>>('securityStatuses');
+    resourceStatuses = registerOutput<List<AssetResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetResourceStatus>(guardedValue, (value) => AssetResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    securityStatuses = registerOutput<List<AssetSecurityStatus>>('securityStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetSecurityStatus>(guardedValue, (value) => AssetSecurityStatus.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Asset] resource.
+  Asset.reference(String urn)
+    : super(
+        'gcp:dataplex/asset:Asset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataplexZone = registerOutput<String>('dataplexZone');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    discoveryStatuses = registerOutput<List<AssetDiscoveryStatus>>('discoveryStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetDiscoveryStatus>(guardedValue, (value) => AssetDiscoveryStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lake = registerOutput<String>('lake');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStatuses = registerOutput<List<AssetResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetResourceStatus>(guardedValue, (value) => AssetResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    securityStatuses = registerOutput<List<AssetSecurityStatus>>('securityStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetSecurityStatus>(guardedValue, (value) => AssetSecurityStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

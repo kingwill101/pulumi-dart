@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_servicenetworking_get_peered_dns_domain_get_peered_dns_domain_args_doc}
 class GetPeeredDnsDomainArgs {
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   final pulumi.Input<String> name;
   final pulumi.Input<String> network;
   final pulumi.Input<String> project;

@@ -7,11 +7,11 @@ import 'delivery_pipeline_condition_targets_type_condition.dart';
 
 class DeliveryPipelineCondition {
   /// Details around the Pipeline's overall status.
-  final pulumi.Input<List<DeliveryPipelineConditionPipelineReadyCondition>>? pipelineReadyConditions;
+  final pulumi.Input<List<DeliveryPipelineConditionPipelineReadyCondition>?>? pipelineReadyConditions;
   /// Details around targets enumerated in the pipeline.
-  final pulumi.Input<List<DeliveryPipelineConditionTargetsPresentCondition>>? targetsPresentConditions;
+  final pulumi.Input<List<DeliveryPipelineConditionTargetsPresentCondition>?>? targetsPresentConditions;
   /// Details on the whether the targets enumerated in the pipeline are of the same type.
-  final pulumi.Input<List<DeliveryPipelineConditionTargetsTypeCondition>>? targetsTypeConditions;
+  final pulumi.Input<List<DeliveryPipelineConditionTargetsTypeCondition>?>? targetsTypeConditions;
 
   /// Creates a new [DeliveryPipelineCondition].
   /// [pipelineReadyConditions] Details around the Pipeline's overall status.

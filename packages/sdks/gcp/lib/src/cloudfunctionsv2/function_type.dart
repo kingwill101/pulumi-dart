@@ -7410,20 +7410,21 @@ class FunctionType extends pulumi.CustomResource {
           'gcp:cloudfunctionsv2/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     environment = registerOutput<String>('environment');
     eventTrigger = registerOutput<FunctionEventTrigger?>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceConfig = registerOutput<FunctionServiceConfig?>('serviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -7435,11 +7436,12 @@ class FunctionType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -7456,17 +7458,45 @@ class FunctionType extends pulumi.CustomResource {
     buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     environment = registerOutput<String>('environment');
     eventTrigger = registerOutput<FunctionEventTrigger?>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceConfig = registerOutput<FunctionServiceConfig?>('serviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [FunctionType] resource.
+  FunctionType.reference(String urn)
+    : super(
+        'gcp:cloudfunctionsv2/function:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    environment = registerOutput<String>('environment');
+    eventTrigger = registerOutput<FunctionEventTrigger?>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serviceConfig = registerOutput<FunctionServiceConfig?>('serviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
     url = registerOutput<String>('url');
   }

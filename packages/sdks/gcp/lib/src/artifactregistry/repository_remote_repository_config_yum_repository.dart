@@ -6,7 +6,7 @@ import 'repository_remote_repository_config_yum_repository_public_repository.dar
 class RepositoryRemoteRepositoryConfigYumRepository {
   /// One of the publicly available Yum repositories supported by Artifact Registry.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigYumRepository].
   /// [publicRepository] One of the publicly available Yum repositories supported by Artifact Registry.

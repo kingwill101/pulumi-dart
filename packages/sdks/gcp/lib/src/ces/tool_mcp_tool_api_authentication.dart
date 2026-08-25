@@ -10,24 +10,24 @@ class ToolMcpToolApiAuthentication {
   /// (Output)
   /// Configurations for authentication with API key.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolApiAuthenticationApiKeyConfig>>? apiKeyConfigs;
+  final pulumi.Input<List<ToolMcpToolApiAuthenticationApiKeyConfig>?>? apiKeyConfigs;
   /// (Output)
   /// Configurations for authentication with a bearer token.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolApiAuthenticationBearerTokenConfig>>? bearerTokenConfigs;
+  final pulumi.Input<List<ToolMcpToolApiAuthenticationBearerTokenConfig>?>? bearerTokenConfigs;
   /// (Output)
   /// Configurations for authentication with OAuth.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolApiAuthenticationOauthConfig>>? oauthConfigs;
+  final pulumi.Input<List<ToolMcpToolApiAuthenticationOauthConfig>?>? oauthConfigs;
   /// (Output)
   /// Configurations for authentication using a custom service account.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolApiAuthenticationServiceAccountAuthConfig>>? serviceAccountAuthConfigs;
+  final pulumi.Input<List<ToolMcpToolApiAuthenticationServiceAccountAuthConfig>?>? serviceAccountAuthConfigs;
   /// (Output)
   /// Configurations for authentication with [ID
   /// token](https://cloud.google.com/docs/authentication/token-types#id) generated
   /// from service agent.
-  final pulumi.Input<List<Map<String, dynamic>>>? serviceAgentIdTokenAuthConfigs;
+  final pulumi.Input<List<Map<String, dynamic>>?>? serviceAgentIdTokenAuthConfigs;
 
   /// Creates a new [ToolMcpToolApiAuthentication].
   /// [apiKeyConfigs] (Output)

@@ -28,31 +28,31 @@ class BareMetalAdminClusterState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// A human readable description of this Bare Metal Admin Cluster.
-  final pulumi.Input<String>? bareMetalVersion;
+  final pulumi.Input<String?>? bareMetalVersion;
   /// Specifies the Admin Cluster's observability infrastructure.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterClusterOperations>? clusterOperations;
+  final pulumi.Input<BareMetalAdminClusterClusterOperations?>? clusterOperations;
   /// Specifies the control plane configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterControlPlane>? controlPlane;
+  final pulumi.Input<BareMetalAdminClusterControlPlane?>? controlPlane;
   /// The time the cluster was created, in RFC3339 text format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The time the cluster was deleted, in RFC3339 text format.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// A human readable description of this Bare Metal Admin Cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// The IP address name of Bare Metal Admin Cluster's API server.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Fleet related configuration.
   /// Fleets are a Google Cloud concept for logically organizing clusters,
   /// letting you use and manage multi-cluster capabilities and apply
@@ -60,10 +60,10 @@ class BareMetalAdminClusterState {
   /// See [Anthos Fleets](https://cloud.google.com/anthos/multicluster-management/fleets) for
   /// more details on Anthos multi-cluster capabilities using Fleets.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterFleet>>? fleets;
+  final pulumi.Input<List<BareMetalAdminClusterFleet>?>? fleets;
   /// Specifies the load balancer configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterLoadBalancer>? loadBalancer;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancer?>? loadBalancer;
   /// The object name of the Bare Metal Admin Cluster custom resource on the
   /// associated admin cluster. This field is used to support conflicting
   /// names when enrolling existing clusters to the API. When used as a part of
@@ -74,51 +74,51 @@ class BareMetalAdminClusterState {
   /// All users should use this name to access their cluster using gkectl or
   /// kubectl and should expect to see the local name when viewing admin
   /// cluster controller logs.
-  final pulumi.Input<String>? localName;
+  final pulumi.Input<String?>? localName;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterMaintenanceConfig>? maintenanceConfig;
+  final pulumi.Input<BareMetalAdminClusterMaintenanceConfig?>? maintenanceConfig;
   /// The bare metal admin cluster name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNetworkConfig>? networkConfig;
+  final pulumi.Input<BareMetalAdminClusterNetworkConfig?>? networkConfig;
   /// Specifies the node access related settings for the bare metal user cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNodeAccessConfig>? nodeAccessConfig;
+  final pulumi.Input<BareMetalAdminClusterNodeAccessConfig?>? nodeAccessConfig;
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNodeConfig>? nodeConfig;
+  final pulumi.Input<BareMetalAdminClusterNodeConfig?>? nodeConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Specifies the cluster proxy configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterProxy>? proxy;
+  final pulumi.Input<BareMetalAdminClusterProxy?>? proxy;
   /// If set, there are currently changes in flight to the Bare Metal Admin Cluster.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Specifies the security related settings for the Bare Metal User Cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterSecurityConfig>? securityConfig;
+  final pulumi.Input<BareMetalAdminClusterSecurityConfig?>? securityConfig;
   /// (Output)
   /// The lifecycle state of the condition.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterStatus>>? statuses;
+  final pulumi.Input<List<BareMetalAdminClusterStatus>?>? statuses;
   /// Specifies the cluster storage configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterStorage>? storage;
+  final pulumi.Input<BareMetalAdminClusterStorage?>? storage;
   /// The unique identifier of the Bare Metal Admin Cluster.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The time the cluster was last updated, in RFC3339 text format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Specifies the security related settings for the Bare Metal Admin Cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterValidationCheck>>? validationChecks;
+  final pulumi.Input<List<BareMetalAdminClusterValidationCheck>?>? validationChecks;
 
   /// Creates a new [BareMetalAdminClusterState].
   /// [annotations] Annotations on the Bare Metal Admin Cluster.

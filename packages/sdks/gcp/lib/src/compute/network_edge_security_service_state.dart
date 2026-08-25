@@ -5,34 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkEdgeSecurityService resources.
 class NetworkEdgeSecurityServiceState {
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
   /// An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// Name of the resource. Provided by the client when the resource is created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the gateway security policy.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The resource URL for the network edge security service associated with this network edge security service.
-  final pulumi.Input<String>? securityPolicy;
+  final pulumi.Input<String?>? securityPolicy;
   /// Server-defined URL for the resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// Server-defined URL for this resource with the resource id.
-  final pulumi.Input<String>? selfLinkWithServiceId;
+  final pulumi.Input<String?>? selfLinkWithServiceId;
   /// The unique identifier for the resource. This identifier is defined by the server.
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
 
   /// Creates a new [NetworkEdgeSecurityServiceState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.

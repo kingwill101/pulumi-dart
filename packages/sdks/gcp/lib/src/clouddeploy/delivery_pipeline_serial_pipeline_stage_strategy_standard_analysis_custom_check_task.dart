@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_analysis_custo
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask {
   /// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer>? container;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainer?>? container;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask].
   /// [container] Optional. This task is represented by a container that is executed in the Cloud Build execution environment.

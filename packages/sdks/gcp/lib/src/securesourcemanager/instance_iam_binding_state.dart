@@ -5,13 +5,13 @@ import 'instance_iam_binding_condition.dart';
 
 /// Input properties used for looking up and filtering InstanceIamBinding resources.
 class InstanceIamBindingState {
-  final pulumi.Input<InstanceIamBindingCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? instanceId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<List<String>>? members;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? role;
+  final pulumi.Input<InstanceIamBindingCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? instanceId;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<List<String>?>? members;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [InstanceIamBindingState].
   /// [condition] Optional.

@@ -367,7 +367,7 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
           'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
@@ -381,11 +381,12 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiskResourcePolicyAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DiskResourcePolicyAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,6 +400,22 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disk = registerOutput<String>('disk');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [DiskResourcePolicyAttachment] resource.
+  DiskResourcePolicyAttachment.reference(String urn)
+    : super(
+        'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');

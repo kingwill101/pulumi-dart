@@ -1073,7 +1073,7 @@ class WorkstationConfigIamMember extends pulumi.CustomResource {
           'gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<WorkstationConfigIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -1090,11 +1090,12 @@ class WorkstationConfigIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkstationConfigIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkstationConfigIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1108,6 +1109,25 @@ class WorkstationConfigIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<WorkstationConfigIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationConfigId = registerOutput<String>('workstationConfigId');
+  }
+
+  /// Creates a typed reference to an existing [WorkstationConfigIamMember] resource.
+  WorkstationConfigIamMember.reference(String urn)
+    : super(
+        'gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<WorkstationConfigIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

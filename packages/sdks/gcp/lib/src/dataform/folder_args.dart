@@ -9,19 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderArgs {
   /// Optional. The containing Folder resource name.
   /// Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
-  final pulumi.Input<String>? containingFolder;
+  final pulumi.Input<String?>? containingFolder;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Required. The Folder's user-friendly name.
   final pulumi.Input<String> displayName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A reference to the region
   final pulumi.Input<String> region;
 

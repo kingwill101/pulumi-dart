@@ -171,6 +171,17 @@ Future<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPolicy(
   return GetAgentRegistryAgentIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPolicyOutput(
+  GetAgentRegistryAgentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getAgentRegistryAgentIamPolicy:getAgentRegistryAgentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentRegistryAgentIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for agentregistryendpoint
 ///
 ///
@@ -304,6 +315,17 @@ Future<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointIamPolic
   return GetAgentRegistryEndpointIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointIamPolicyOutput(
+  GetAgentRegistryEndpointIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getAgentRegistryEndpointIamPolicy:getAgentRegistryEndpointIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentRegistryEndpointIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for agentregistry
 ///
 ///
@@ -428,6 +450,17 @@ Future<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAgentRegistryIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicyOutput(
+  GetAgentRegistryIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getAgentRegistryIamPolicy:getAgentRegistryIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentRegistryIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for agentregistrymcpserver
@@ -563,6 +596,17 @@ Future<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServerIamPol
   return GetAgentRegistryMcpServerIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServerIamPolicyOutput(
+  GetAgentRegistryMcpServerIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getAgentRegistryMcpServerIamPolicy:getAgentRegistryMcpServerIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentRegistryMcpServerIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for appengineservice
 ///
 ///
@@ -694,6 +738,17 @@ Future<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppEngineServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicyOutput(
+  GetAppEngineServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppEngineServiceIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for appengineversion
@@ -836,6 +891,17 @@ Future<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicy(
   return GetAppEngineVersionIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicyOutput(
+  GetAppEngineVersionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppEngineVersionIamPolicyResult.fromMap);
+}
+
 /// Get information about a Identity-Aware Proxy Client.
 ///
 ///
@@ -963,6 +1029,17 @@ Future<GetClientResult> getClient(
   return GetClientResult.fromMap(result);
 }
 
+pulumi.Output<GetClientResult> getClientOutput(
+  GetClientArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getClient:getClient',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClientResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for locationweb
 ///
 ///
@@ -1087,6 +1164,17 @@ Future<GetLocationWebIamPolicyResult> getLocationWebIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationWebIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationWebIamPolicyResult> getLocationWebIamPolicyOutput(
+  GetLocationWebIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getLocationWebIamPolicy:getLocationWebIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationWebIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for tunneldestgroup
@@ -1222,6 +1310,17 @@ Future<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicy(
   return GetTunnelDestGroupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicyOutput(
+  GetTunnelDestGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTunnelDestGroupIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for tunnel
 ///
 ///
@@ -1339,6 +1438,17 @@ Future<GetTunnelIamPolicyResult> getTunnelIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTunnelIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTunnelIamPolicyResult> getTunnelIamPolicyOutput(
+  GetTunnelIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTunnelIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for tunnelinstance
@@ -1474,6 +1584,17 @@ Future<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicy(
   return GetTunnelInstanceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicyOutput(
+  GetTunnelInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTunnelInstanceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for webbackendservice
 ///
 ///
@@ -1598,6 +1719,17 @@ Future<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebBackendServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicyOutput(
+  GetWebBackendServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebBackendServiceIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for webcloudrunservice
@@ -1733,6 +1865,17 @@ Future<GetWebCloudRunServiceIamPolicyResult> getWebCloudRunServiceIamPolicy(
   return GetWebCloudRunServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWebCloudRunServiceIamPolicyResult> getWebCloudRunServiceIamPolicyOutput(
+  GetWebCloudRunServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebCloudRunServiceIamPolicy:getWebCloudRunServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebCloudRunServiceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for webforwardingruleservice
 ///
 ///
@@ -1859,6 +2002,17 @@ Future<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIa
   return GetWebForwardingRuleServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicyOutput(
+  GetWebForwardingRuleServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebForwardingRuleServiceIamPolicy:getWebForwardingRuleServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebForwardingRuleServiceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for web
 ///
 ///
@@ -1976,6 +2130,17 @@ Future<GetWebIamPolicyResult> getWebIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetWebIamPolicyResult> getWebIamPolicyOutput(
+  GetWebIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebIamPolicy:getWebIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for webregionbackendservice
@@ -2111,6 +2276,17 @@ Future<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamP
   return GetWebRegionBackendServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicyOutput(
+  GetWebRegionBackendServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebRegionBackendServiceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for webregionforwardingruleservice
 ///
 ///
@@ -2244,6 +2420,17 @@ Future<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingR
   return GetWebRegionForwardingRuleServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingRuleServiceIamPolicyOutput(
+  GetWebRegionForwardingRuleServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebRegionForwardingRuleServiceIamPolicy:getWebRegionForwardingRuleServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebRegionForwardingRuleServiceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for webtypeappengine
 ///
 ///
@@ -2370,6 +2557,17 @@ Future<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicy(
   return GetWebTypeAppEngineIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicyOutput(
+  GetWebTypeAppEngineIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebTypeAppEngineIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for webtypecompute
 ///
 ///
@@ -2487,4 +2685,15 @@ Future<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebTypeComputeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicyOutput(
+  GetWebTypeComputeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebTypeComputeIamPolicyResult.fromMap);
 }

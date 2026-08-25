@@ -10,51 +10,51 @@ class DeliveryPipelineState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Output only. Information around the state of the Delivery Pipeline.
-  final pulumi.Input<List<DeliveryPipelineCondition>>? conditions;
+  final pulumi.Input<List<DeliveryPipelineCondition>?>? conditions;
   /// Output only. Time at which the pipeline was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the `DeliveryPipeline`. Max length is 255 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the `DeliveryPipeline`. Format is `a-z?`.
   ///
   ///
   ///
   /// - - -
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
-  final pulumi.Input<DeliveryPipelineSerialPipeline>? serialPipeline;
+  final pulumi.Input<DeliveryPipelineSerialPipeline?>? serialPipeline;
   /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
-  final pulumi.Input<bool>? suspended;
+  final pulumi.Input<bool?>? suspended;
   /// Output only. Unique identifier of the `DeliveryPipeline`.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. Most recent time at which the pipeline was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DeliveryPipelineState].
   /// [annotations] User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

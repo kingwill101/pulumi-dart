@@ -25,7 +25,7 @@ class AuthzPolicyHttpRuleFromSourceIpBlock {
 
   factory AuthzPolicyHttpRuleFromSourceIpBlock.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromSourceIpBlock(
-      length: pulumi.Input.fromValue(map['length'] as int),
+      length: pulumi.Input.fromValue((map['length'] as num).toInt()),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }

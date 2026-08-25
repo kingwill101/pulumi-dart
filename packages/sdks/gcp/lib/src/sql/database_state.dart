@@ -9,31 +9,31 @@ class DatabaseState {
   /// and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
   /// for more details and supported values. Postgres databases only support
   /// a value of `UTF8` at creation time.
-  final pulumi.Input<String>? charset;
+  final pulumi.Input<String?>? charset;
   /// The collation value. See MySQL's
   /// [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
   /// and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
   /// for more details and supported values. Postgres databases only support
   /// a value of `en_US.UTF8` at creation time.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the Cloud SQL instance. This does not include the project
   /// ID.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The name of the database in the Cloud SQL instance.
   /// This does not include the project ID or instance name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
 
   /// Creates a new [DatabaseState].
   /// [charset] The charset value. See MySQL's

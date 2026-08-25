@@ -7,10 +7,10 @@ import 'grpc_route_rule_match_method.dart';
 class GrpcRouteRuleMatch {
   /// Specifies a list of HTTP request headers to match against.
   /// Structure is documented below.
-  final pulumi.Input<List<GrpcRouteRuleMatchHeader>>? headers;
+  final pulumi.Input<List<GrpcRouteRuleMatchHeader>?>? headers;
   /// A gRPC method to match against. If this field is empty or omitted, will match all methods.
   /// Structure is documented below.
-  final pulumi.Input<GrpcRouteRuleMatchMethod>? method;
+  final pulumi.Input<GrpcRouteRuleMatchMethod?>? method;
 
   /// Creates a new [GrpcRouteRuleMatch].
   /// [headers] Specifies a list of HTTP request headers to match against.

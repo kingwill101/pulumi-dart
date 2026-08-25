@@ -12,7 +12,7 @@ class SpokeGateway {
   final pulumi.Input<List<SpokeGatewayIpRangeReservation>> ipRangeReservations;
   /// (Output)
   /// Set of Cloud Routers that are attached to this NCC-GW
-  final pulumi.Input<List<String>>? routers;
+  final pulumi.Input<List<String>?>? routers;
 
   /// Creates a new [SpokeGateway].
   /// [capacity] the capacity of the gateway spoke, in Gbps.

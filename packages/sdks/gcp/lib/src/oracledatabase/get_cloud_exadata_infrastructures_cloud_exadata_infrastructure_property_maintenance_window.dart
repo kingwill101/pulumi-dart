@@ -82,11 +82,11 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanc
 
   factory GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow(
-      customActionTimeoutMins: pulumi.Input.fromValue(map['customActionTimeoutMins'] as int),
+      customActionTimeoutMins: pulumi.Input.fromValue((map['customActionTimeoutMins'] as num).toInt()),
       daysOfWeeks: pulumi.Input.fromValue((map['daysOfWeeks'] as List).cast<String>()),
       hoursOfDays: pulumi.Input.fromValue((map['hoursOfDays'] as List).cast<int>()),
       isCustomActionTimeoutEnabled: pulumi.Input.fromValue(map['isCustomActionTimeoutEnabled'] as bool),
-      leadTimeWeek: pulumi.Input.fromValue(map['leadTimeWeek'] as int),
+      leadTimeWeek: pulumi.Input.fromValue((map['leadTimeWeek'] as num).toInt()),
       months: pulumi.Input.fromValue((map['months'] as List).cast<String>()),
       patchingMode: pulumi.Input.fromValue(map['patchingMode'] as String),
       preference: pulumi.Input.fromValue(map['preference'] as String),

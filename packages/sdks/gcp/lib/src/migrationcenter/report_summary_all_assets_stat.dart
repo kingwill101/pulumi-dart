@@ -14,47 +14,47 @@ class ReportSummaryAllAssetsStat {
   /// A Histogram Chart shows a distribution of values into buckets, showing
   /// a count of values which fall into a bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatCoreCountHistogram>>? coreCountHistograms;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatCoreCountHistogram>?>? coreCountHistograms;
   /// (Output)
   /// A Histogram Chart shows a distribution of values into buckets, showing
   /// a count of values which fall into a bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatMemoryBytesHistogram>>? memoryBytesHistograms;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatMemoryBytesHistogram>?>? memoryBytesHistograms;
   /// (Output)
   /// Utilization Chart is a specific type of visualization which displays
   /// a metric classified into "Used" and "Free" buckets.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatMemoryUtilizationChart>>? memoryUtilizationCharts;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatMemoryUtilizationChart>?>? memoryUtilizationCharts;
   /// (Output)
   /// Describes a collection of data points rendered as a Chart.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatOperatingSystem>>? operatingSystems;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatOperatingSystem>?>? operatingSystems;
   /// (Output)
   /// Describes a collection of data points rendered as a Chart.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatSoftwareInstance>>? softwareInstances;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatSoftwareInstance>?>? softwareInstances;
   /// (Output)
   /// A Histogram Chart shows a distribution of values into buckets, showing
   /// a count of values which fall into a bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatStorageBytesHistogram>>? storageBytesHistograms;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatStorageBytesHistogram>?>? storageBytesHistograms;
   /// (Output)
   /// Utilization Chart is a specific type of visualization which displays
   /// a metric classified into "Used" and "Free" buckets.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatStorageUtilizationChart>>? storageUtilizationCharts;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatStorageUtilizationChart>?>? storageUtilizationCharts;
   /// (Output)
   /// Count of the number of unique assets in this collection.
-  final pulumi.Input<String>? totalAssets;
+  final pulumi.Input<String?>? totalAssets;
   /// (Output)
   /// Sum of the CPU core count of all the assets in this collection.
-  final pulumi.Input<String>? totalCores;
+  final pulumi.Input<String?>? totalCores;
   /// (Output)
   /// Sum of the memory in bytes of all the assets in this collection.
-  final pulumi.Input<String>? totalMemoryBytes;
+  final pulumi.Input<String?>? totalMemoryBytes;
   /// (Output)
   /// Sum of persistent storage in bytes of all the assets in this collection.
-  final pulumi.Input<String>? totalStorageBytes;
+  final pulumi.Input<String?>? totalStorageBytes;
 
   /// Creates a new [ReportSummaryAllAssetsStat].
   /// [coreCountHistograms] (Output)

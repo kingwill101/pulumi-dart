@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchRuntimeInfoCurrentUsage {
   /// (Output)
   /// Accelerator type being used, if any.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// (Output)
   /// Milli (one-thousandth) accelerator..
-  final pulumi.Input<String>? milliAccelerator;
+  final pulumi.Input<String?>? milliAccelerator;
   /// (Output)
   /// Milli (one-thousandth) Dataproc Compute Units (DCUs).
-  final pulumi.Input<String>? milliDcu;
+  final pulumi.Input<String?>? milliDcu;
   /// (Output)
   /// Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier.
-  final pulumi.Input<String>? milliDcuPremium;
+  final pulumi.Input<String?>? milliDcuPremium;
   /// (Output)
   /// Shuffle Storage in gigabytes (GB).
-  final pulumi.Input<String>? shuffleStorageGb;
+  final pulumi.Input<String?>? shuffleStorageGb;
   /// (Output)
   /// Shuffle Storage in gigabytes (GB) charged at premium tier.
-  final pulumi.Input<String>? shuffleStorageGbPremium;
+  final pulumi.Input<String?>? shuffleStorageGbPremium;
   /// (Output)
   /// The timestamp of the usage snapshot.
-  final pulumi.Input<String>? snapshotTime;
+  final pulumi.Input<String?>? snapshotTime;
 
   /// Creates a new [BatchRuntimeInfoCurrentUsage].
   /// [acceleratorType] (Output)

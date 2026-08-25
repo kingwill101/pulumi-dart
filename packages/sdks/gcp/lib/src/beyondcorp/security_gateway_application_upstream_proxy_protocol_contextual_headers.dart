@@ -8,16 +8,16 @@ import 'security_gateway_application_upstream_proxy_protocol_contextual_headers_
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
   /// Device info configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo>? deviceInfo;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo?>? deviceInfo;
   /// Group info configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo>? groupInfo;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo?>? groupInfo;
   /// Default output type for all enabled headers.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-  final pulumi.Input<String>? outputType;
+  final pulumi.Input<String?>? outputType;
   /// User info configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo>? userInfo;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo?>? userInfo;
 
   /// Creates a new [SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders].
   /// [deviceInfo] Device info configuration.

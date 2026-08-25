@@ -9,7 +9,7 @@ class RulesetSource {
   /// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
   ///
   /// - - -
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
 
   /// Creates a new [RulesetSource].
   /// [files] `File` set constituting the `Source` bundle.

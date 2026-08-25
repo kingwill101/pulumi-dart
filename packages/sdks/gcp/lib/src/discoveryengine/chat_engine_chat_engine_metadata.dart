@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChatEngineChatEngineMetadata {
   /// (Output)
   /// The resource name of a Dialogflow agent, that this Chat Engine refers to.
-  final pulumi.Input<String>? dialogflowAgent;
+  final pulumi.Input<String?>? dialogflowAgent;
 
   /// Creates a new [ChatEngineChatEngineMetadata].
   /// [dialogflowAgent] (Output)

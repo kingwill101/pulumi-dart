@@ -10,7 +10,7 @@ class CxPageAdvancedSettings {
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxPageAdvancedSettingsDtmfSettings>? dtmfSettings;
+  final pulumi.Input<CxPageAdvancedSettingsDtmfSettings?>? dtmfSettings;
 
   /// Creates a new [CxPageAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:

@@ -60,7 +60,7 @@ class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequ
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       contributions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution>(map['contributions']!, (value) => GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketContribution.fromMap((value as Map).cast<String, dynamic>()))),
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError>(map['errors']!, (value) => GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError.fromMap((value as Map).cast<String, dynamic>()))),
-      percentageIncrease: pulumi.Input.fromValue(map['percentageIncrease'] as double),
+      percentageIncrease: pulumi.Input.fromValue((map['percentageIncrease'] as num).toDouble()),
       throttledRequests: pulumi.Input.fromValue(map['throttledRequests'] as String),
       totalEgressBytes: pulumi.Input.fromValue(map['totalEgressBytes'] as String),
       totalOperationsCount: pulumi.Input.fromValue(map['totalOperationsCount'] as String),

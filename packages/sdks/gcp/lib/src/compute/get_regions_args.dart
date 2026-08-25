@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_regions_get_regions_args_doc}
 class GetRegionsArgs {
   /// Project from which to list available regions. Defaults to project declared in the provider.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
   /// Defaults to no filtering (all available regions - both `UP` and `DOWN`).
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [GetRegionsArgs].
   /// [project] Project from which to list available regions. Defaults to project declared in the provider.

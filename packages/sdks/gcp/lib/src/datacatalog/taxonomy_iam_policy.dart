@@ -928,7 +928,7 @@ class TaxonomyIamPolicy extends pulumi.CustomResource {
           'gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
@@ -942,11 +942,12 @@ class TaxonomyIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaxonomyIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TaxonomyIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -960,6 +961,22 @@ class TaxonomyIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    taxonomy = registerOutput<String>('taxonomy');
+  }
+
+  /// Creates a typed reference to an existing [TaxonomyIamPolicy] resource.
+  TaxonomyIamPolicy.reference(String urn)
+    : super(
+        'gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
     project = registerOutput<String>('project');

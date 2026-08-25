@@ -6,10 +6,10 @@ import 'index_dedicated_infrastructure_autoscaling_spec.dart';
 class IndexDedicatedInfrastructure {
   /// Autoscaling specification.
   /// Structure is documented below.
-  final pulumi.Input<IndexDedicatedInfrastructureAutoscalingSpec>? autoscalingSpec;
+  final pulumi.Input<IndexDedicatedInfrastructureAutoscalingSpec?>? autoscalingSpec;
   /// Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
   /// Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [IndexDedicatedInfrastructure].
   /// [autoscalingSpec] Autoscaling specification.

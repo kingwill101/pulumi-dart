@@ -830,7 +830,7 @@ class DeploymentType extends pulumi.CustomResource {
           'gcp:ces/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     appVersion = registerOutput<String>('appVersion');
@@ -850,11 +850,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -868,6 +869,28 @@ class DeploymentType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    app = registerOutput<String>('app');
+    appVersion = registerOutput<String>('appVersion');
+    channelProfile = registerOutput<DeploymentChannelProfile>('channelProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'gcp:ces/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     app = registerOutput<String>('app');
     appVersion = registerOutput<String>('appVersion');
     channelProfile = registerOutput<DeploymentChannelProfile>('channelProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });

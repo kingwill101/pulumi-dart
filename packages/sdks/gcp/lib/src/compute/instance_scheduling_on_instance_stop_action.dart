@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceSchedulingOnInstanceStopAction {
   /// Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.
-  final pulumi.Input<bool>? discardLocalSsd;
+  final pulumi.Input<bool?>? discardLocalSsd;
 
   /// Creates a new [InstanceSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] Whether to discard local SSDs attached to the VM while terminating using `maxRunDuration`. Only supports `true` at this point.

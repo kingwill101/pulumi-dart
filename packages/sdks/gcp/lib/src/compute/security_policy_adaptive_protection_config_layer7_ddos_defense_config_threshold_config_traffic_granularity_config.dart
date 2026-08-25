@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
   /// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
-  final pulumi.Input<bool>? enableEachUniqueValue;
+  final pulumi.Input<bool?>? enableEachUniqueValue;
   /// The type of this configuration, a granular traffic unit can be one of the following:
   /// * `HTTP_HEADER_HOST`
   /// * `HTTP_PATH`
   final pulumi.Input<String> type;
   /// Requests that match this value constitute a granular traffic unit.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig].
   /// [enableEachUniqueValue] If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.

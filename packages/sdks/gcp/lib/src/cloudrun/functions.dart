@@ -120,6 +120,17 @@ Future<GetLocationsResult> getLocations(
   return GetLocationsResult.fromMap(result);
 }
 
+pulumi.Output<GetLocationsResult> getLocationsOutput(
+  GetLocationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrun/getLocations:getLocations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationsResult.fromMap);
+}
+
 /// Get information about a Cloud Run Service.
 ///
 ///
@@ -247,6 +258,17 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrun/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for service
@@ -380,4 +402,15 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
+  GetServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyResult.fromMap);
 }

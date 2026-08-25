@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_bucket_config_args.dart';
 import 'organization_bucket_config_cmek_settings.dart';
+import 'organization_bucket_config_index_config.dart';
 import 'organization_bucket_config_state.dart';
 
 /// Manages a organization-level logging bucket config. For more information see
@@ -226,7 +227,7 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
   /// Describes this bucket.
   late final pulumi.Output<String> description;
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> indexConfigs;
+  late final pulumi.Output<List<OrganizationBucketConfigIndexConfig>> indexConfigs;
   /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
   late final pulumi.Output<String> lifecycleState;
   /// The location of the bucket. The supported locations are: "global" "us-central1"
@@ -250,13 +251,13 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
           'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    indexConfigs = registerOutput<List<OrganizationBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(guardedValue, (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -269,11 +270,12 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationBucketConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationBucketConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -291,7 +293,28 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    indexConfigs = registerOutput<List<OrganizationBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(guardedValue, (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    retentionDays = registerOutput<int?>('retentionDays');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationBucketConfig] resource.
+  OrganizationBucketConfig.reference(String urn)
+    : super(
+        'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucketId = registerOutput<String>('bucketId');
+    cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    indexConfigs = registerOutput<List<OrganizationBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(guardedValue, (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

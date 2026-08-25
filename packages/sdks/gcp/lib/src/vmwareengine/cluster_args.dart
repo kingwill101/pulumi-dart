@@ -12,26 +12,26 @@ import 'cluster_node_type_config.dart';
 class ClusterArgs {
   /// Configuration of the autoscaling applied to this cluster
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutoscalingSettings>? autoscalingSettings;
+  final pulumi.Input<ClusterAutoscalingSettings?>? autoscalingSettings;
   /// Optional. Configuration to mount a datastore.
   /// Mount can be done along with cluster create or during cluster update
   /// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
   /// for unmount remove 'datastore_mount_config' config from the update of cluster resource
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterDatastoreMountConfig>>? datastoreMountConfigs;
+  final pulumi.Input<List<ClusterDatastoreMountConfig>?>? datastoreMountConfigs;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID of the Cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The map of cluster node types in this cluster,
   /// where the key is canonical identifier of the node type (corresponds to the NodeType).
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterNodeTypeConfig>>? nodeTypeConfigs;
+  final pulumi.Input<List<ClusterNodeTypeConfig>?>? nodeTypeConfigs;
   /// The resource name of the private cloud to create a new cluster in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud

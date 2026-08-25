@@ -7,39 +7,39 @@ class GoldengateConnectionPropertiesMysqlConnectionProperties {
   /// An array of name-value pair attribute entries.
   /// Used as additional parameters in connection string.
   /// Structure is documented below.
-  final pulumi.Input<List<GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute>>? additionalAttributes;
+  final pulumi.Input<List<GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute>?>? additionalAttributes;
   /// The name of the database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The OCID of the database system being referenced.
-  final pulumi.Input<String>? dbSystemId;
+  final pulumi.Input<String?>? dbSystemId;
   /// The name or address of a host.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses to connect to MySQL.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The port of an endpoint usually specified for a connection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Security Type for MySQL.
   /// Possible values:
   /// PLAIN
   /// TLS
   /// MTLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// Database Certificate - The content of a .pem or .crt file
   /// containing the server public key (for 1 and 2-way SSL).
-  final pulumi.Input<String>? sslCaFile;
+  final pulumi.Input<String?>? sslCaFile;
   /// Client Certificate - The content of a .pem or .crt file
   /// containing the client public key (for 2-way SSL).
-  final pulumi.Input<String>? sslCertFile;
+  final pulumi.Input<String?>? sslCertFile;
   /// The list of certificates revoked by the trusted
   /// certificate authorities (Trusted CA).
-  final pulumi.Input<String>? sslCrlFile;
+  final pulumi.Input<String?>? sslCrlFile;
   /// Client Key - The content of a .pem or .crt file containing
   /// the client private key (for 2-way SSL).
-  final pulumi.Input<String>? sslKeyFile;
+  final pulumi.Input<String?>? sslKeyFile;
   /// SSL modes for MySQL.
   /// Possible values:
   /// DISABLED
@@ -47,12 +47,12 @@ class GoldengateConnectionPropertiesMysqlConnectionProperties {
   /// REQUIRED
   /// VERIFY_CA
   /// VERIFY_IDENTITY
-  final pulumi.Input<String>? sslMode;
+  final pulumi.Input<String?>? sslMode;
   /// The technology type of MysqlConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect the associated system of
   /// the given technology.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesMysqlConnectionProperties].
   /// [additionalAttributes] An array of name-value pair attribute entries.
@@ -116,7 +116,7 @@ class GoldengateConnectionPropertiesMysqlConnectionProperties {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordSecretVersion: (() { final guardedValue = map['passwordSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       securityProtocol: (() { final guardedValue = map['securityProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCaFile: (() { final guardedValue = map['sslCaFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCertFile: (() { final guardedValue = map['sslCertFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

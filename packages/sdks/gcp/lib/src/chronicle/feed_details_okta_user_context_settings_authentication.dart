@@ -6,7 +6,7 @@ import 'feed_details_okta_user_context_settings_authentication_header_key_value.
 class FeedDetailsOktaUserContextSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsOktaUserContextSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

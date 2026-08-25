@@ -7,10 +7,10 @@ import 'config_sms_region_config_allowlist_only.dart';
 class ConfigSmsRegionConfig {
   /// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
   /// Structure is documented below.
-  final pulumi.Input<ConfigSmsRegionConfigAllowByDefault>? allowByDefault;
+  final pulumi.Input<ConfigSmsRegionConfigAllowByDefault?>? allowByDefault;
   /// A policy of only allowing regions by explicitly adding them to an allowlist.
   /// Structure is documented below.
-  final pulumi.Input<ConfigSmsRegionConfigAllowlistOnly>? allowlistOnly;
+  final pulumi.Input<ConfigSmsRegionConfigAllowlistOnly?>? allowlistOnly;
 
   /// Creates a new [ConfigSmsRegionConfig].
   /// [allowByDefault] A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.

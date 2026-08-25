@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_args.dart';
+import 'instance_group_named_port.dart';
 import 'instance_group_state.dart';
 
 /// Creates a group of dissimilar Compute Engine virtual machine instances.
@@ -377,7 +378,7 @@ class InstanceGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The named port configuration. See the section below
   /// for details on configuration. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> namedPorts;
+  late final pulumi.Output<List<InstanceGroupNamedPort>?> namedPorts;
   /// The URL of the network the instance group is in. If
   /// this is different from the network where the instances are in, the creation
   /// fails. Defaults to the network where the instances are in (if neither
@@ -407,13 +408,13 @@ class InstanceGroup extends pulumi.CustomResource {
           'gcp:compute/instanceGroup:InstanceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    instances = registerOutput<List<String>>('instances');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
+    namedPorts = registerOutput<List<InstanceGroupNamedPort>?>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupNamedPort>(guardedValue, (value) => InstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>())); });
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
@@ -426,11 +427,12 @@ class InstanceGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -446,9 +448,30 @@ class InstanceGroup extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    instances = registerOutput<List<String>>('instances');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
+    namedPorts = registerOutput<List<InstanceGroupNamedPort>?>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupNamedPort>(guardedValue, (value) => InstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>())); });
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    size = registerOutput<int>('size');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstanceGroup] resource.
+  InstanceGroup.reference(String urn)
+    : super(
+        'gcp:compute/instanceGroup:InstanceGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    namedPorts = registerOutput<List<InstanceGroupNamedPort>?>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupNamedPort>(guardedValue, (value) => InstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>())); });
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');

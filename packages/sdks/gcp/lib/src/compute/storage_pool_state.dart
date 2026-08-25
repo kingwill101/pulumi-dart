@@ -9,35 +9,35 @@ import 'storage_pool_status.dart';
 class StoragePoolState {
   /// Provisioning type of the byte capacity of the pool.
   /// Possible values are: `STANDARD`, `ADVANCED`.
-  final pulumi.Input<String>? capacityProvisioningType;
+  final pulumi.Input<String?>? capacityProvisioningType;
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the StoragePool.
   /// When the field is set to true or unset in Terraform state, a `pulumi up`
   /// or `terraform destroy` that would delete the StoragePool will fail.
   /// When the field is set to false, deleting the StoragePool is allowed.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// A description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Type of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The fingerprint used for optimistic locking of this resource.
   /// Used internally during updates.
-  final pulumi.Input<String>? labelFingerprint;
+  final pulumi.Input<String?>? labelFingerprint;
   /// Labels to apply to this storage pool. These can be later modified by the setLabels method.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match
@@ -45,41 +45,41 @@ class StoragePoolState {
   /// which means the first character must be a lowercase letter,
   /// and all following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final pulumi.Input<StoragePoolParams>? params;
+  final pulumi.Input<StoragePoolParams?>? params;
   /// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
   /// Possible values are: `STANDARD`, `ADVANCED`.
-  final pulumi.Input<String>? performanceProvisioningType;
+  final pulumi.Input<String?>? performanceProvisioningType;
   /// Size, in GiB, of the storage pool. For more information about the size limits,
   /// see https://cloud.google.com/compute/docs/disks/storage-pools.
-  final pulumi.Input<String>? poolProvisionedCapacityGb;
+  final pulumi.Input<String?>? poolProvisionedCapacityGb;
   /// Provisioned IOPS of the storage pool.
   /// Only relevant if the storage pool type is `hyperdisk-balanced`.
-  final pulumi.Input<String>? poolProvisionedIops;
+  final pulumi.Input<String?>? poolProvisionedIops;
   /// Provisioned throughput, in MB/s, of the storage pool.
   /// Only relevant if the storage pool type is `hyperdisk-balanced` or `hyperdisk-throughput`.
-  final pulumi.Input<String>? poolProvisionedThroughput;
+  final pulumi.Input<String?>? poolProvisionedThroughput;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Status information for the storage pool resource.
   /// Structure is documented below.
-  final pulumi.Input<List<StoragePoolResourceStatus>>? resourceStatuses;
+  final pulumi.Input<List<StoragePoolResourceStatus>?>? resourceStatuses;
   /// Status information for the storage pool resource.
   /// Structure is documented below.
-  final pulumi.Input<List<StoragePoolStatus>>? statuses;
+  final pulumi.Input<List<StoragePoolStatus>?>? statuses;
   /// Type of the storage pool. For example, the
   /// following are valid values:
   /// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
   /// * `hyperdisk-throughput`
-  final pulumi.Input<String>? storagePoolType;
+  final pulumi.Input<String?>? storagePoolType;
   /// A reference to the zone where the storage pool resides.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [StoragePoolState].
   /// [capacityProvisioningType] Provisioning type of the byte capacity of the pool.

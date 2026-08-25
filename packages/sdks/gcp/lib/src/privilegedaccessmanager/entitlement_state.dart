@@ -11,52 +11,52 @@ import 'entitlement_requester_justification_config.dart';
 class EntitlementState {
   /// AdditionalNotificationTargets includes email addresses to be notified.
   /// Structure is documented below.
-  final pulumi.Input<EntitlementAdditionalNotificationTargets>? additionalNotificationTargets;
+  final pulumi.Input<EntitlementAdditionalNotificationTargets?>? additionalNotificationTargets;
   /// The approvals needed before access will be granted to a requester.
   /// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
   /// Structure is documented below.
-  final pulumi.Input<EntitlementApprovalWorkflow>? approvalWorkflow;
+  final pulumi.Input<EntitlementApprovalWorkflow?>? approvalWorkflow;
   /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Who can create Grants using Entitlement. This list should contain at most one entry
   /// Structure is documented below.
-  final pulumi.Input<List<EntitlementEligibleUser>>? eligibleUsers;
+  final pulumi.Input<List<EntitlementEligibleUser>?>? eligibleUsers;
   /// The ID to use for this Entitlement. This will become the last part of the resource name.
   /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
   /// This value should be unique among all other Entitlements under the specified `parent`.
-  final pulumi.Input<String>? entitlementId;
+  final pulumi.Input<String?>? entitlementId;
   /// For Resource freshness validation (https://google.aip.dev/154)
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The region of the Entitlement resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum amount of time for which access would be granted for a request.
   /// A requester can choose to ask for access for less than this duration but never more.
   /// Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
-  final pulumi.Input<String>? maxRequestDuration;
+  final pulumi.Input<String?>? maxRequestDuration;
   /// Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
   /// Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Privileged access that this service can be used to gate.
   /// Structure is documented below.
-  final pulumi.Input<EntitlementPrivilegedAccess>? privilegedAccess;
+  final pulumi.Input<EntitlementPrivilegedAccess?>? privilegedAccess;
   /// Defines the ways in which a requester should provide the justification while requesting for access.
   /// Structure is documented below.
-  final pulumi.Input<EntitlementRequesterJustificationConfig>? requesterJustificationConfig;
+  final pulumi.Input<EntitlementRequesterJustificationConfig?>? requesterJustificationConfig;
   /// Output only. The current state of the Entitlement.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [EntitlementState].
   /// [additionalNotificationTargets] AdditionalNotificationTargets includes email addresses to be notified.

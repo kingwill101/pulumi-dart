@@ -133,6 +133,17 @@ Future<GetDatabaseResult> getDatabase(
   return GetDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:spanner/getDatabase:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Spanner database.
 ///
 /// ## example
@@ -265,6 +276,17 @@ Future<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(
   return GetDatabaseIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicyOutput(
+  GetDatabaseIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseIamPolicyResult.fromMap);
+}
+
 /// Get a spanner instance from Google Cloud by its name.
 ///
 /// ## Example Usage
@@ -381,6 +403,17 @@ Future<GetInstanceResult> getInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:spanner/getInstance:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for a Spanner instance.
@@ -506,4 +539,15 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
 }

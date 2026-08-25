@@ -429,7 +429,7 @@ class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
           'gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     group = registerOutput<String>('group');
@@ -444,11 +444,12 @@ class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceGroupNamedPortState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceGroupNamedPortCompute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -462,6 +463,23 @@ class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    group = registerOutput<String>('group');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstanceGroupNamedPortCompute] resource.
+  InstanceGroupNamedPortCompute.reference(String urn)
+    : super(
+        'gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');

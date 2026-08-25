@@ -1233,7 +1233,7 @@ class NatAddress extends pulumi.CustomResource {
           'gcp:apigee/natAddress:NatAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     activate = registerOutput<bool?>('activate');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1248,11 +1248,12 @@ class NatAddress extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NatAddressState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NatAddress._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1272,5 +1273,22 @@ class NatAddress extends pulumi.CustomResource {
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [NatAddress] resource.
+  NatAddress.reference(String urn)
+    : super(
+        'gcp:apigee/natAddress:NatAddress',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activate = registerOutput<bool?>('activate');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instanceId = registerOutput<String>('instanceId');
+    ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String>('state');
   }
 }

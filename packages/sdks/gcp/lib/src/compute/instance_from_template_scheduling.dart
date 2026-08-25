@@ -10,43 +10,43 @@ import 'instance_from_template_scheduling_preemption_notice_duration.dart';
 
 class InstanceFromTemplateScheduling {
   /// Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
-  final pulumi.Input<bool>? automaticRestart;
+  final pulumi.Input<bool?>? automaticRestart;
   /// Specifies the availability domain, which this instance should be scheduled on.
-  final pulumi.Input<int>? availabilityDomain;
+  final pulumi.Input<int?>? availabilityDomain;
   /// Settings for the instance to perform a graceful shutdown.
-  final pulumi.Input<InstanceFromTemplateSchedulingGracefulShutdown>? gracefulShutdown;
+  final pulumi.Input<InstanceFromTemplateSchedulingGracefulShutdown?>? gracefulShutdown;
   /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
-  final pulumi.Input<int>? hostErrorTimeoutSeconds;
+  final pulumi.Input<int?>? hostErrorTimeoutSeconds;
   /// Specifies the action GCE should take when SPOT VM is preempted.
-  final pulumi.Input<String>? instanceTerminationAction;
+  final pulumi.Input<String?>? instanceTerminationAction;
   /// Specifies the maximum amount of time a Local Ssd Vm should wait while
   /// recovery of the Local Ssd state is attempted. Its value should be in
   /// between 0 and 168 hours with hour granularity and the default value being 1
   /// hour.
-  final pulumi.Input<InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout>? localSsdRecoveryTimeout;
+  final pulumi.Input<InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout?>? localSsdRecoveryTimeout;
   /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
-  final pulumi.Input<String>? maintenanceInterval;
+  final pulumi.Input<String?>? maintenanceInterval;
   /// The timeout for new network connections to hosts.
-  final pulumi.Input<InstanceFromTemplateSchedulingMaxRunDuration>? maxRunDuration;
-  final pulumi.Input<int>? minNodeCpus;
+  final pulumi.Input<InstanceFromTemplateSchedulingMaxRunDuration?>? maxRunDuration;
+  final pulumi.Input<int?>? minNodeCpus;
   /// Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
-  final pulumi.Input<List<InstanceFromTemplateSchedulingNodeAffinity>>? nodeAffinities;
+  final pulumi.Input<List<InstanceFromTemplateSchedulingNodeAffinity>?>? nodeAffinities;
   /// Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
-  final pulumi.Input<String>? onHostMaintenance;
+  final pulumi.Input<String?>? onHostMaintenance;
   /// Defines the behaviour for instances with the instance_termination_action.
-  final pulumi.Input<InstanceFromTemplateSchedulingOnInstanceStopAction>? onInstanceStopAction;
+  final pulumi.Input<InstanceFromTemplateSchedulingOnInstanceStopAction?>? onInstanceStopAction;
   /// Whether the instance is preemptible.
-  final pulumi.Input<bool>? preemptible;
+  final pulumi.Input<bool?>? preemptible;
   /// The duration of the notice that the instance will receive before it is preempted.
-  final pulumi.Input<InstanceFromTemplateSchedulingPreemptionNoticeDuration>? preemptionNoticeDuration;
+  final pulumi.Input<InstanceFromTemplateSchedulingPreemptionNoticeDuration?>? preemptionNoticeDuration;
   /// Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
-  final pulumi.Input<String>? provisioningModel;
+  final pulumi.Input<String?>? provisioningModel;
   /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
-  final pulumi.Input<bool>? skipGuestOsShutdown;
+  final pulumi.Input<bool?>? skipGuestOsShutdown;
   /// Specifies the timestamp, when the instance will be terminated,
   /// in RFC3339 text format. If specified, the instance termination action
   /// will be performed at the termination time.
-  final pulumi.Input<String>? terminationTime;
+  final pulumi.Input<String?>? terminationTime;
 
   /// Creates a new [InstanceFromTemplateScheduling].
   /// [automaticRestart] Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
@@ -111,14 +111,14 @@ class InstanceFromTemplateScheduling {
   factory InstanceFromTemplateScheduling.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateScheduling(
       automaticRestart: (() { final guardedValue = map['automaticRestart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      availabilityDomain: (() { final guardedValue = map['availabilityDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      availabilityDomain: (() { final guardedValue = map['availabilityDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       gracefulShutdown: (() { final guardedValue = map['gracefulShutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromTemplateSchedulingGracefulShutdown.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      hostErrorTimeoutSeconds: (() { final guardedValue = map['hostErrorTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hostErrorTimeoutSeconds: (() { final guardedValue = map['hostErrorTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceTerminationAction: (() { final guardedValue = map['instanceTerminationAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localSsdRecoveryTimeout: (() { final guardedValue = map['localSsdRecoveryTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maintenanceInterval: (() { final guardedValue = map['maintenanceInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxRunDuration: (() { final guardedValue = map['maxRunDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromTemplateSchedulingMaxRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeAffinities: (() { final guardedValue = map['nodeAffinities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceFromTemplateSchedulingNodeAffinity>(guardedValue, (value) => InstanceFromTemplateSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))); })(),
       onHostMaintenance: (() { final guardedValue = map['onHostMaintenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onInstanceStopAction: (() { final guardedValue = map['onInstanceStopAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromTemplateSchedulingOnInstanceStopAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

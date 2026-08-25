@@ -15,7 +15,7 @@ class GetCloudExadataInfrastructureArgs {
   final pulumi.Input<String> location;
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCloudExadataInfrastructureArgs].
   /// [cloudExadataInfrastructureId] The ID of the ExadataInfrastructure.

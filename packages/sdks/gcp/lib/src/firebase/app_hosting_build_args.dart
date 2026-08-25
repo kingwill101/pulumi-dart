@@ -13,23 +13,23 @@ class AppHostingBuildArgs {
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The ID of the Backend that this Build applies to
   final pulumi.Input<String> backend;
   /// The user-specified ID of the build being created.
   final pulumi.Input<String> buildId;
   /// Human-readable name. 63 character limit.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the Backend that this Build applies to
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The source for the build.
   /// Structure is documented below.
   final pulumi.Input<AppHostingBuildSource> source;

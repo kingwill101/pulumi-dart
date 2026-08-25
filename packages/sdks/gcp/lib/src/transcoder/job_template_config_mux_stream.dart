@@ -5,18 +5,18 @@ import 'job_template_config_mux_stream_segment_settings.dart';
 
 class JobTemplateConfigMuxStream {
   /// The container format. The default is `mp4`.
-  final pulumi.Input<String>? container;
+  final pulumi.Input<String?>? container;
   /// List of ElementaryStream.key values multiplexed in this stream.
-  final pulumi.Input<List<String>>? elementaryStreams;
+  final pulumi.Input<List<String>?>? elementaryStreams;
   /// Identifier of the encryption configuration to use.
-  final pulumi.Input<String>? encryptionId;
+  final pulumi.Input<String?>? encryptionId;
   /// The name of the generated file.
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// A unique key for this multiplexed stream.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Segment settings for ts, fmp4 and vtt.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigMuxStreamSegmentSettings>? segmentSettings;
+  final pulumi.Input<JobTemplateConfigMuxStreamSegmentSettings?>? segmentSettings;
 
   /// Creates a new [JobTemplateConfigMuxStream].
   /// [container] The container format. The default is `mp4`.

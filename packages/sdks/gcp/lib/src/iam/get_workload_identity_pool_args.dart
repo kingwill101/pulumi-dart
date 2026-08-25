@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkloadIdentityPoolArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The id of the pool which is the
   /// final component of the resource name.
   ///

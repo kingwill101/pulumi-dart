@@ -10,8 +10,8 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
   /// The name of the instance.
   final pulumi.Input<String> instance;
   /// The ID of the project in which the resource belongs.
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? sourceInstanceDeletionTime;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? sourceInstanceDeletionTime;
 
   /// Creates a new [GetDatabaseInstanceLatestRecoveryTimeArgs].
   /// [instance] The name of the instance.

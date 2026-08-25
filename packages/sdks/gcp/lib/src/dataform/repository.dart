@@ -547,18 +547,19 @@ class Repository extends pulumi.CustomResource {
           'gcp:dataform/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>('gitRemoteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGitRemoteSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     npmrcEnvironmentVariablesSecretVersion = registerOutput<String?>('npmrcEnvironmentVariablesSecretVersion');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     serviceAccount = registerOutput<String?>('serviceAccount');
     workspaceCompilationOverrides = registerOutput<RepositoryWorkspaceCompilationOverrides?>('workspaceCompilationOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkspaceCompilationOverrides.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -569,11 +570,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -589,14 +591,39 @@ class Repository extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>('gitRemoteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGitRemoteSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     npmrcEnvironmentVariablesSecretVersion = registerOutput<String?>('npmrcEnvironmentVariablesSecretVersion');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String?>('region');
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    workspaceCompilationOverrides = registerOutput<RepositoryWorkspaceCompilationOverrides?>('workspaceCompilationOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkspaceCompilationOverrides.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'gcp:dataform/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>('gitRemoteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGitRemoteSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    npmrcEnvironmentVariablesSecretVersion = registerOutput<String?>('npmrcEnvironmentVariablesSecretVersion');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     serviceAccount = registerOutput<String?>('serviceAccount');
     workspaceCompilationOverrides = registerOutput<RepositoryWorkspaceCompilationOverrides?>('workspaceCompilationOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkspaceCompilationOverrides.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadComplianceStatus {
   /// Number of current orgPolicy violations which are acknowledged.
-  final pulumi.Input<List<int>>? acknowledgedViolationCounts;
+  final pulumi.Input<List<int>?>? acknowledgedViolationCounts;
   /// Number of current orgPolicy violations which are not acknowledged.
-  final pulumi.Input<List<int>>? activeViolationCounts;
+  final pulumi.Input<List<int>?>? activeViolationCounts;
 
   /// Creates a new [WorkloadComplianceStatus].
   /// [acknowledgedViolationCounts] Number of current orgPolicy violations which are acknowledged.

@@ -14,21 +14,21 @@ class PreferenceSetArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the preference set.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-friendly display name. Maximum length is 63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String> location;
   /// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
   final pulumi.Input<String> preferenceSetId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
   /// Structure is documented below.
-  final pulumi.Input<PreferenceSetVirtualMachinePreferences>? virtualMachinePreferences;
+  final pulumi.Input<PreferenceSetVirtualMachinePreferences?>? virtualMachinePreferences;
 
   /// Creates a new [PreferenceSetArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

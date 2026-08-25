@@ -11,14 +11,14 @@ class ClientCloudKmsConfig {
   /// A key's version is represented by an integer, starting at 1. To decrypt data
   /// or verify a signature, you must use the same key version that was used to
   /// encrypt or sign the data.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// Location name of the key ring, e.g. "us-west1".
   final pulumi.Input<String> kmsLocation;
   /// The Google Cloud project id of the project where the kms key stored. If empty,
   /// the kms key is stored at the same project as customer's project and ecrypted
   /// with CMEK, otherwise, the kms key is stored in the tenant project and
   /// encrypted with GMEK.
-  final pulumi.Input<String>? kmsProjectId;
+  final pulumi.Input<String?>? kmsProjectId;
   /// A key ring organizes keys in a specific Google Cloud location and allows you to
   /// manage access control on groups of keys. A key ring's name does not need to be
   /// unique across a Google Cloud project, but must be unique within a given location.

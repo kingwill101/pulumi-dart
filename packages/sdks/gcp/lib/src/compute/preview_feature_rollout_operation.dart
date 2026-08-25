@@ -6,7 +6,7 @@ import 'preview_feature_rollout_operation_rollout_input.dart';
 class PreviewFeatureRolloutOperation {
   /// The input for the rollout operation.
   /// Structure is documented below.
-  final pulumi.Input<PreviewFeatureRolloutOperationRolloutInput>? rolloutInput;
+  final pulumi.Input<PreviewFeatureRolloutOperationRolloutInput?>? rolloutInput;
 
   /// Creates a new [PreviewFeatureRolloutOperation].
   /// [rolloutInput] The input for the rollout operation.

@@ -10,12 +10,12 @@ class GetClusterArgs {
   /// The location (zone or region) this cluster has been
   /// created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
   /// be specified.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the cluster.
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetClusterArgs].
   /// [location] The location (zone or region) this cluster has been

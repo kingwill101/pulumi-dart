@@ -13,23 +13,23 @@ class DomainMappingState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location of the cloud run instance. eg us-central1
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Metadata associated with this DomainMapping.
   /// Structure is documented below.
-  final pulumi.Input<DomainMappingMetadata>? metadata;
+  final pulumi.Input<DomainMappingMetadata?>? metadata;
   /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The spec for this DomainMapping.
   /// Structure is documented below.
-  final pulumi.Input<DomainMappingSpec>? spec;
+  final pulumi.Input<DomainMappingSpec?>? spec;
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
-  final pulumi.Input<List<DomainMappingStatus>>? statuses;
+  final pulumi.Input<List<DomainMappingStatus>?>? statuses;
 
   /// Creates a new [DomainMappingState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

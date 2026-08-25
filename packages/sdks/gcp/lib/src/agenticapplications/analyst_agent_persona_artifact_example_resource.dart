@@ -10,28 +10,28 @@ import 'analyst_agent_persona_artifact_example_resource_raw_file_resource.dart';
 class AnalystAgentPersonaArtifactExampleResource {
   /// Represents a BigQuery resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceBigqueryResource>? bigqueryResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceBigqueryResource?>? bigqueryResource;
   /// A user-friendly name for this resource. This can be shown to the user
   /// and used by the model.
-  final pulumi.Input<String>? displayLabel;
+  final pulumi.Input<String?>? displayLabel;
   /// - Represents an F1 resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceF1Resource>? f1Resource;
+  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceF1Resource?>? f1Resource;
   /// Represents a Google Cloud Storage resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceGoogleCloudStorageResource>? googleCloudStorageResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceGoogleCloudStorageResource?>? googleCloudStorageResource;
   /// Represents a Google Drive resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceGoogleDriveResource>? googleDriveResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceGoogleDriveResource?>? googleDriveResource;
   /// A description of the resource. The model may use this, it will not be
   /// shown to users.
-  final pulumi.Input<String>? modelDescription;
+  final pulumi.Input<String?>? modelDescription;
   /// Represents a raw file resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceRawFileResource>? rawFileResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactExampleResourceRawFileResource?>? rawFileResource;
   /// If true, use RAG to retrieve relevant information from the resources.
   /// Must only be set for file-based resources.
-  final pulumi.Input<bool>? useRag;
+  final pulumi.Input<bool?>? useRag;
 
   /// Creates a new [AnalystAgentPersonaArtifactExampleResource].
   /// [bigqueryResource] Represents a BigQuery resource.

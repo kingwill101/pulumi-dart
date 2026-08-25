@@ -7,35 +7,35 @@ class CatalogState {
   /// Output only. The creation time of the catalog. A timestamp in RFC3339 UTC
   /// "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Output only. The deletion time of the catalog. Only set after the catalog
   /// is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Output only. The time when this catalog is considered expired. Only set
   /// after the catalog is deleted. Only set after the catalog is deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// The geographic location where the Catalog should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Catalog. Format:
   /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. The last modification time of the catalog. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [CatalogState].
   /// [createTime] Output only. The creation time of the catalog. A timestamp in RFC3339 UTC

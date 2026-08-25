@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosting_custom_domain_args.dart';
+import 'hosting_custom_domain_cert.dart';
+import 'hosting_custom_domain_issue.dart';
+import 'hosting_custom_domain_required_dns_update.dart';
 import 'hosting_custom_domain_state.dart';
 
 /// Manages Custom Domains for Firebase Hosting. Custom Domains link your
@@ -746,7 +749,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
   /// a certificate, rather than an actual cert. Check the `state` field for
   /// more.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> certs;
+  late final pulumi.Output<List<HostingCustomDomainCert>> certs;
   /// The `CustomDomain`'s create time.
   late final pulumi.Output<String> createTime;
   /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
@@ -793,7 +796,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
   /// Hosting's ability to serve secure content for your domain name. Resolve
   /// these issues to ensure your `CustomDomain` behaves properly.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> issues;
+  late final pulumi.Output<List<HostingCustomDomainIssue>> issues;
   /// The fully-qualified name of the `CustomDomain`.
   late final pulumi.Output<String> name;
   /// The ownership state of your domain name. Ownership is determined at a
@@ -845,7 +848,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
   /// A set of updates you should make to the domain name's DNS records to
   /// let Hosting serve secure content on its behalf.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> requiredDnsUpdates;
+  late final pulumi.Output<List<HostingCustomDomainRequiredDnsUpdate>> requiredDnsUpdates;
   /// The ID of the site in which to create this custom domain association.
   late final pulumi.Output<String> siteId;
   /// The last time the `CustomDomain` was updated.
@@ -867,10 +870,10 @@ class HostingCustomDomain extends pulumi.CustomResource {
           'gcp:firebase/hostingCustomDomain:HostingCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     certPreference = registerOutput<String>('certPreference');
-    certs = registerOutput<List<Map<String, dynamic>>>('certs');
+    certs = registerOutput<List<HostingCustomDomainCert>>('certs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainCert>(guardedValue, (value) => HostingCustomDomainCert.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     customDomain = registerOutput<String>('customDomain');
     deleteTime = registerOutput<String>('deleteTime');
@@ -878,13 +881,13 @@ class HostingCustomDomain extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     hostState = registerOutput<String>('hostState');
-    issues = registerOutput<List<Map<String, dynamic>>>('issues');
+    issues = registerOutput<List<HostingCustomDomainIssue>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainIssue>(guardedValue, (value) => HostingCustomDomainIssue.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     ownershipState = registerOutput<String>('ownershipState');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     redirectTarget = registerOutput<String?>('redirectTarget');
-    requiredDnsUpdates = registerOutput<List<Map<String, dynamic>>>('requiredDnsUpdates');
+    requiredDnsUpdates = registerOutput<List<HostingCustomDomainRequiredDnsUpdate>>('requiredDnsUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdate>(guardedValue, (value) => HostingCustomDomainRequiredDnsUpdate.fromMap((value as Map).cast<String, dynamic>())); });
     siteId = registerOutput<String>('siteId');
     updateTime = registerOutput<String>('updateTime');
     waitDnsVerification = registerOutput<bool?>('waitDnsVerification');
@@ -895,11 +898,12 @@ class HostingCustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostingCustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostingCustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -914,7 +918,7 @@ class HostingCustomDomain extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     certPreference = registerOutput<String>('certPreference');
-    certs = registerOutput<List<Map<String, dynamic>>>('certs');
+    certs = registerOutput<List<HostingCustomDomainCert>>('certs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainCert>(guardedValue, (value) => HostingCustomDomainCert.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     customDomain = registerOutput<String>('customDomain');
     deleteTime = registerOutput<String>('deleteTime');
@@ -922,13 +926,43 @@ class HostingCustomDomain extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     hostState = registerOutput<String>('hostState');
-    issues = registerOutput<List<Map<String, dynamic>>>('issues');
+    issues = registerOutput<List<HostingCustomDomainIssue>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainIssue>(guardedValue, (value) => HostingCustomDomainIssue.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     ownershipState = registerOutput<String>('ownershipState');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     redirectTarget = registerOutput<String?>('redirectTarget');
-    requiredDnsUpdates = registerOutput<List<Map<String, dynamic>>>('requiredDnsUpdates');
+    requiredDnsUpdates = registerOutput<List<HostingCustomDomainRequiredDnsUpdate>>('requiredDnsUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdate>(guardedValue, (value) => HostingCustomDomainRequiredDnsUpdate.fromMap((value as Map).cast<String, dynamic>())); });
+    siteId = registerOutput<String>('siteId');
+    updateTime = registerOutput<String>('updateTime');
+    waitDnsVerification = registerOutput<bool?>('waitDnsVerification');
+  }
+
+  /// Creates a typed reference to an existing [HostingCustomDomain] resource.
+  HostingCustomDomain.reference(String urn)
+    : super(
+        'gcp:firebase/hostingCustomDomain:HostingCustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certPreference = registerOutput<String>('certPreference');
+    certs = registerOutput<List<HostingCustomDomainCert>>('certs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainCert>(guardedValue, (value) => HostingCustomDomainCert.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    customDomain = registerOutput<String>('customDomain');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    hostState = registerOutput<String>('hostState');
+    issues = registerOutput<List<HostingCustomDomainIssue>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainIssue>(guardedValue, (value) => HostingCustomDomainIssue.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    ownershipState = registerOutput<String>('ownershipState');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    redirectTarget = registerOutput<String?>('redirectTarget');
+    requiredDnsUpdates = registerOutput<List<HostingCustomDomainRequiredDnsUpdate>>('requiredDnsUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdate>(guardedValue, (value) => HostingCustomDomainRequiredDnsUpdate.fromMap((value as Map).cast<String, dynamic>())); });
     siteId = registerOutput<String>('siteId');
     updateTime = registerOutput<String>('updateTime');
     waitDnsVerification = registerOutput<bool?>('waitDnsVerification');

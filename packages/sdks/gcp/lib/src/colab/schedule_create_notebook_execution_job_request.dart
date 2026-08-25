@@ -9,9 +9,9 @@ class ScheduleCreateNotebookExecutionJobRequest {
   final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob> notebookExecutionJob;
   /// (Output)
   /// User specified ID for the NotebookExecutionJob.
-  final pulumi.Input<String>? notebookExecutionJobId;
+  final pulumi.Input<String?>? notebookExecutionJobId;
   /// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequest].
   /// [notebookExecutionJob] The NotebookExecutionJob to create.

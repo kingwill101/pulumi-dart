@@ -5,42 +5,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceReplicaConfiguration {
   /// PEM representation of the trusted CA's x509
   /// certificate.
-  final pulumi.Input<String>? caCertificate;
+  final pulumi.Input<String?>? caCertificate;
   /// Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
   ///
   /// &gt; **NOTE:** Only supported for SQL Server database.
-  final pulumi.Input<bool>? cascadableReplica;
+  final pulumi.Input<bool?>? cascadableReplica;
   /// PEM representation of the replica's x509
   /// certificate.
-  final pulumi.Input<String>? clientCertificate;
+  final pulumi.Input<String?>? clientCertificate;
   /// PEM representation of the replica's private key. The
   /// corresponding public key in encoded in the `clientCertificate`.
-  final pulumi.Input<String>? clientKey;
+  final pulumi.Input<String?>? clientKey;
   /// The number of seconds
   /// between connect retries. MySQL's default is 60 seconds.
-  final pulumi.Input<int>? connectRetryInterval;
+  final pulumi.Input<int?>? connectRetryInterval;
   /// Path to a SQL file in GCS from which replica
   /// instances are created. Format is `gs://bucket/filename`. Note, if the master
   /// instance is a source representation instance this field must be present.
-  final pulumi.Input<String>? dumpFilePath;
+  final pulumi.Input<String?>? dumpFilePath;
   /// Specifies if the replica is the failover target.
   /// If the field is set to true the replica will be designated as a failover replica.
   /// If the master instance fails, the replica instance will be promoted as
   /// the new master instance.
   /// &gt; **NOTE:** Not supported for Postgres database.
-  final pulumi.Input<bool>? failoverTarget;
+  final pulumi.Input<bool?>? failoverTarget;
   /// Time in ms between replication
   /// heartbeats.
-  final pulumi.Input<int>? masterHeartbeatPeriod;
+  final pulumi.Input<int?>? masterHeartbeatPeriod;
   /// Password for the replication connection.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Permissible ciphers for use in SSL encryption.
-  final pulumi.Input<String>? sslCipher;
+  final pulumi.Input<String?>? sslCipher;
   /// Username for replication connection.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
   /// True if the master's common name
   /// value is checked during the SSL handshake.
-  final pulumi.Input<bool>? verifyServerCertificate;
+  final pulumi.Input<bool?>? verifyServerCertificate;
 
   /// Creates a new [DatabaseInstanceReplicaConfiguration].
   /// [caCertificate] PEM representation of the trusted CA's x509
@@ -93,10 +93,10 @@ class DatabaseInstanceReplicaConfiguration {
       cascadableReplica: (() { final guardedValue = map['cascadableReplica']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       clientCertificate: (() { final guardedValue = map['clientCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientKey: (() { final guardedValue = map['clientKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectRetryInterval: (() { final guardedValue = map['connectRetryInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectRetryInterval: (() { final guardedValue = map['connectRetryInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dumpFilePath: (() { final guardedValue = map['dumpFilePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       failoverTarget: (() { final guardedValue = map['failoverTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      masterHeartbeatPeriod: (() { final guardedValue = map['masterHeartbeatPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      masterHeartbeatPeriod: (() { final guardedValue = map['masterHeartbeatPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCipher: (() { final guardedValue = map['sslCipher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
   /// The addresses that are part of this pool.
-  final pulumi.Input<List<String>>? addresses;
+  final pulumi.Input<List<String>?>? addresses;
   /// This avoids buggy consumer devices mistakenly
   /// dropping IPv4 traffic for those special IP addresses.
-  final pulumi.Input<bool>? avoidBuggyIps;
+  final pulumi.Input<bool?>? avoidBuggyIps;
   /// If true, prevent IP addresses from being automatically assigned.
-  final pulumi.Input<bool>? manualAssign;
+  final pulumi.Input<bool?>? manualAssign;
   /// (Optional)
-  final pulumi.Input<String>? pool;
+  final pulumi.Input<String?>? pool;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool].
   /// [addresses] The addresses that are part of this pool.

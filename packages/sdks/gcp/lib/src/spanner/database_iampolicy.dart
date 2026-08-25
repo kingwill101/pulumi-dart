@@ -2029,7 +2029,7 @@ class DatabaseIAMPolicy extends pulumi.CustomResource {
           'gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
@@ -2043,11 +2043,12 @@ class DatabaseIAMPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseIAMPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseIAMPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2061,6 +2062,22 @@ class DatabaseIAMPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    database = registerOutput<String>('database');
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseIAMPolicy] resource.
+  DatabaseIAMPolicy.reference(String urn)
+    : super(
+        'gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');

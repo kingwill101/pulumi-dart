@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthConfigDecryptedCredentialJwt {
   /// (Output)
   /// The token calculated by the header, payload and signature.
-  final pulumi.Input<String>? jwt;
+  final pulumi.Input<String?>? jwt;
   /// Identifies which algorithm is used to generate the signature.
-  final pulumi.Input<String>? jwtHeader;
+  final pulumi.Input<String?>? jwtHeader;
   /// Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
-  final pulumi.Input<String>? jwtPayload;
+  final pulumi.Input<String?>? jwtPayload;
   /// User's pre-shared secret to sign the token.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
 
   /// Creates a new [AuthConfigDecryptedCredentialJwt].
   /// [jwt] (Output)

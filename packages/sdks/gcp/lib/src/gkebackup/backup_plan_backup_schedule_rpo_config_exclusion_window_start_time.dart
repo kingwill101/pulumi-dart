@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
   /// Hours of day in 24 hour format.
-  final pulumi.Input<int>? hours;
+  final pulumi.Input<int?>? hours;
   /// Minutes of hour of day.
-  final pulumi.Input<int>? minutes;
+  final pulumi.Input<int?>? minutes;
   /// Fractions of seconds in nanoseconds.
-  final pulumi.Input<int>? nanos;
+  final pulumi.Input<int?>? nanos;
   /// Seconds of minutes of the time.
-  final pulumi.Input<int>? seconds;
+  final pulumi.Input<int?>? seconds;
 
   /// Creates a new [BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime].
   /// [hours] Hours of day in 24 hour format.
@@ -35,10 +35,10 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
 
   factory BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime(
-      hours: (() { final guardedValue = map['hours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hours: (() { final guardedValue = map['hours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

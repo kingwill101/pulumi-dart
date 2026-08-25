@@ -12,74 +12,74 @@ import 'managed_zone_service_directory_config.dart';
 class ManagedZoneState {
   /// Cloud logging configuration
   /// Structure is documented below.
-  final pulumi.Input<ManagedZoneCloudLoggingConfig>? cloudLoggingConfig;
+  final pulumi.Input<ManagedZoneCloudLoggingConfig?>? cloudLoggingConfig;
   /// The time that this resource was created on the server.
   /// This is in RFC3339 text format.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A textual description field. Defaults to 'Managed by Pulumi'.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The DNS name of this managed zone, for instance "example.com.".
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// DNSSEC configuration
   /// Structure is documented below.
-  final pulumi.Input<ManagedZoneDnssecConfig>? dnssecConfig;
+  final pulumi.Input<ManagedZoneDnssecConfig?>? dnssecConfig;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Set this true to delete all records in the zone.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The presence for this field indicates that outbound forwarding is enabled
   /// for this zone. The value of this field contains the set of destinations
   /// to forward to.
   /// Structure is documented below.
-  final pulumi.Input<ManagedZoneForwardingConfig>? forwardingConfig;
+  final pulumi.Input<ManagedZoneForwardingConfig?>? forwardingConfig;
   /// A set of key/value label pairs to assign to this ManagedZone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Unique identifier for the resource; defined by the server.
-  final pulumi.Input<String>? managedZoneId;
+  final pulumi.Input<String?>? managedZoneId;
   /// User assigned name for this resource.
   /// Must be unique within the project.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Delegate your managedZone to these virtual name servers;
   /// defined by the server
-  final pulumi.Input<List<String>>? nameServers;
+  final pulumi.Input<List<String>?>? nameServers;
   /// The presence of this field indicates that DNS Peering is enabled for this
   /// zone. The value of this field contains the network to peer with.
   /// Structure is documented below.
-  final pulumi.Input<ManagedZonePeeringConfig>? peeringConfig;
+  final pulumi.Input<ManagedZonePeeringConfig?>? peeringConfig;
   /// For privately visible zones, the set of Virtual Private Cloud
   /// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
   /// Structure is documented below.
-  final pulumi.Input<ManagedZonePrivateVisibilityConfig>? privateVisibilityConfig;
+  final pulumi.Input<ManagedZonePrivateVisibilityConfig?>? privateVisibilityConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// (Optional, Beta)
   /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
   /// lookup queries using automatically configured records for VPC resources. This only applies
   /// to networks listed under `privateVisibilityConfig`.
-  final pulumi.Input<bool>? reverseLookup;
+  final pulumi.Input<bool?>? reverseLookup;
   /// (Optional, Beta)
   /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
   /// Structure is documented below.
-  final pulumi.Input<ManagedZoneServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ManagedZoneServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// The zone's visibility: public zones are exposed to the Internet,
   /// while private zones are visible only to Virtual Private Cloud resources.
   /// Default value is `public`.
   /// Possible values are: `private`, `public`.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [ManagedZoneState].
   /// [cloudLoggingConfig] Cloud logging configuration
@@ -102,11 +102,11 @@ class ManagedZoneState {
   /// [reverseLookup] (Optional, Beta)
   /// [serviceDirectoryConfig] (Optional, Beta)
   /// [visibility] The zone's visibility: public zones are exposed to the Internet,
-  const ManagedZoneState({
+  ManagedZoneState({
     this.cloudLoggingConfig,
     this.creationTime,
     this.deletionPolicy,
-    this.description,
+    pulumi.Input<String?>? description,
     this.dnsName,
     this.dnssecConfig,
     this.effectiveLabels,
@@ -123,7 +123,7 @@ class ManagedZoneState {
     this.reverseLookup,
     this.serviceDirectoryConfig,
     this.visibility,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

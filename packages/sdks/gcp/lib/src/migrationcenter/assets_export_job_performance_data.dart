@@ -9,7 +9,7 @@ class AssetsExportJobPerformanceData {
   /// all available data is returned.
   /// The maximum value is 420; values above 420 will be coerced to 420.
   /// If unset (0 value) a default value of 40 will be used.
-  final pulumi.Input<int>? maxDays;
+  final pulumi.Input<int?>? maxDays;
 
   /// Creates a new [AssetsExportJobPerformanceData].
   /// [maxDays] When this value is set to a positive integer,
@@ -25,7 +25,7 @@ class AssetsExportJobPerformanceData {
 
   factory AssetsExportJobPerformanceData.fromMap(Map<String, dynamic> map) {
     return AssetsExportJobPerformanceData(
-      maxDays: (() { final guardedValue = map['maxDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDays: (() { final guardedValue = map['maxDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

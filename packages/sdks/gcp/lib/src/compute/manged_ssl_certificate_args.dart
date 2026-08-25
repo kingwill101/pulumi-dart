@@ -14,13 +14,13 @@ class MangedSslCertificateArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Properties relevant to a managed certificate.  These will be used if the
   /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
   /// Structure is documented below.
-  final pulumi.Input<MangedSslCertificateManaged>? managed;
+  final pulumi.Input<MangedSslCertificateManaged?>? managed;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -29,15 +29,15 @@ class MangedSslCertificateArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Enum field whose value is always `MANAGED` - used to signal to the API
   /// which type this is.
   /// Default value is `MANAGED`.
   /// Possible values are: `MANAGED`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [MangedSslCertificateArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

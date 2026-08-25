@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupScheduleWeeklyRecurrence {
   /// The day of week to run.
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-  final pulumi.Input<String>? day;
+  final pulumi.Input<String?>? day;
 
   /// Creates a new [BackupScheduleWeeklyRecurrence].
   /// [day] The day of week to run.

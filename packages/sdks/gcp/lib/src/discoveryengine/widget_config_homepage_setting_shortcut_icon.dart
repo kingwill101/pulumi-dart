@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WidgetConfigHomepageSettingShortcutIcon {
   /// Image URL.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [WidgetConfigHomepageSettingShortcutIcon].
   /// [url] Image URL.

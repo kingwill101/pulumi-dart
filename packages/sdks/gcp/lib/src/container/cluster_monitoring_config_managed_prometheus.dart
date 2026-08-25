@@ -5,7 +5,7 @@ import 'cluster_monitoring_config_managed_prometheus_auto_monitoring_config.dart
 
 class ClusterMonitoringConfigManagedPrometheus {
   /// Configuration options for GKE Auto-Monitoring.
-  final pulumi.Input<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig>? autoMonitoringConfig;
+  final pulumi.Input<ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig?>? autoMonitoringConfig;
   /// Whether or not the managed collection is enabled.
   final pulumi.Input<bool> enabled;
 

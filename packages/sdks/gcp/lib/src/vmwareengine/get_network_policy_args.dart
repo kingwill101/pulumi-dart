@@ -11,7 +11,7 @@ class GetNetworkPolicyArgs {
   final pulumi.Input<String> location;
   /// Name of the resource.
   final pulumi.Input<String> name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNetworkPolicyArgs].
   /// [location] Location of the resource.

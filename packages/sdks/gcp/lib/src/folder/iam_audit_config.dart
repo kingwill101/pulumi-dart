@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iam_audit_config_args.dart';
+import 'iam_audit_config_audit_log_config.dart';
 import 'iam_audit_config_state.dart';
 
 /// Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -1874,7 +1875,7 @@ import 'iam_audit_config_state.dart';
 /// to include the title of condition, e.g. `terraform import google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 class IamAuditConfig extends pulumi.CustomResource {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> auditLogConfigs;
+  late final pulumi.Output<List<IamAuditConfigAuditLogConfig>> auditLogConfigs;
   /// (Computed) The etag of the folder's IAM policy.
   late final pulumi.Output<String> etag;
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -1894,9 +1895,9 @@ class IamAuditConfig extends pulumi.CustomResource {
           'gcp:folder/iamAuditConfig:IamAuditConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>('auditLogConfigs');
+    auditLogConfigs = registerOutput<List<IamAuditConfigAuditLogConfig>>('auditLogConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(guardedValue, (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     folder = registerOutput<String>('folder');
     service = registerOutput<String>('service');
@@ -1907,11 +1908,12 @@ class IamAuditConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IamAuditConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IamAuditConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1925,7 +1927,22 @@ class IamAuditConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>('auditLogConfigs');
+    auditLogConfigs = registerOutput<List<IamAuditConfigAuditLogConfig>>('auditLogConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(guardedValue, (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [IamAuditConfig] resource.
+  IamAuditConfig.reference(String urn)
+    : super(
+        'gcp:folder/iamAuditConfig:IamAuditConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditLogConfigs = registerOutput<List<IamAuditConfigAuditLogConfig>>('auditLogConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(guardedValue, (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     folder = registerOutput<String>('folder');
     service = registerOutput<String>('service');

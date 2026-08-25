@@ -6,7 +6,7 @@ import 'gcp_user_access_binding_scoped_access_setting_scope_client_scope.dart';
 class GcpUserAccessBindingScopedAccessSettingScope {
   /// Optional. Client scope for this access scope.
   /// Structure is documented below.
-  final pulumi.Input<GcpUserAccessBindingScopedAccessSettingScopeClientScope>? clientScope;
+  final pulumi.Input<GcpUserAccessBindingScopedAccessSettingScopeClientScope?>? clientScope;
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingScope].
   /// [clientScope] Optional. Client scope for this access scope.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolOpenApiToolServiceDirectoryConfig {
   /// The name of Service Directory service.
   /// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ToolOpenApiToolServiceDirectoryConfig].
   /// [service] The name of Service Directory service.

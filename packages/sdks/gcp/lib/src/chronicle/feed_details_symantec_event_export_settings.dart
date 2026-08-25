@@ -6,7 +6,7 @@ import 'feed_details_symantec_event_export_settings_authentication.dart';
 class FeedDetailsSymantecEventExportSettings {
   /// OAuth 2.0 refresh token grant. See https://tools.ietf.org/html/rfc6749.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSymantecEventExportSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsSymantecEventExportSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsSymantecEventExportSettings].
   /// [authentication] OAuth 2.0 refresh token grant. See https://tools.ietf.org/html/rfc6749.

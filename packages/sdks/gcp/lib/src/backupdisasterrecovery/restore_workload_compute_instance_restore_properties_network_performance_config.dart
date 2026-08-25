@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
   /// Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
-  final pulumi.Input<String>? totalEgressBandwidthTier;
+  final pulumi.Input<String?>? totalEgressBandwidthTier;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.

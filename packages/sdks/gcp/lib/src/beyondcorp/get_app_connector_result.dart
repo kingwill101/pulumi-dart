@@ -5,74 +5,74 @@ import 'get_app_connector_principal_info.dart';
 
 /// Result data returned by getAppConnector.
 class GetAppConnectorResult {
-  final String deletionPolicy;
-  final String displayName;
-  final Map<String, String> effectiveLabels;
+  final String? deletionPolicy;
+  final String? displayName;
+  final Map<String, String>? effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
-  final String name;
-  final List<GetAppConnectorPrincipalInfo> principalInfos;
+  final String? id;
+  final Map<String, String>? labels;
+  final String? name;
+  final List<GetAppConnectorPrincipalInfo>? principalInfos;
   final String? project;
-  final Map<String, String> pulumiLabels;
+  final Map<String, String>? pulumiLabels;
   final String? region;
-  final String state;
+  final String? state;
 
   /// Creates a new [GetAppConnectorResult].
-  /// [deletionPolicy] Required.
-  /// [displayName] Required.
-  /// [effectiveLabels] Required.
+  /// [deletionPolicy] Optional.
+  /// [displayName] Optional.
+  /// [effectiveLabels] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
-  /// [name] Required.
-  /// [principalInfos] Required.
+  /// [labels] Optional.
+  /// [name] Optional.
+  /// [principalInfos] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
+  /// [pulumiLabels] Optional.
   /// [region] Optional.
-  /// [state] Required.
+  /// [state] Optional.
   const GetAppConnectorResult({
-    required this.deletionPolicy,
-    required this.displayName,
-    required this.effectiveLabels,
-    required this.id,
-    required this.labels,
-    required this.name,
-    required this.principalInfos,
+    this.deletionPolicy,
+    this.displayName,
+    this.effectiveLabels,
+    this.id,
+    this.labels,
+    this.name,
+    this.principalInfos,
     this.project,
-    required this.pulumiLabels,
+    this.pulumiLabels,
     this.region,
-    required this.state,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deletionPolicy': deletionPolicy,
-      'displayName': displayName,
-      'effectiveLabels': effectiveLabels,
-      'id': id,
-      'labels': labels,
-      'name': name,
-      'principalInfos': pulumi.Input.encodeList<GetAppConnectorPrincipalInfo, Map<String, dynamic>>(principalInfos, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
+      'displayName': ?displayName,
+      'effectiveLabels': ?effectiveLabels,
+      'id': ?id,
+      'labels': ?labels,
+      'name': ?name,
+      'principalInfos': ?(() { final guardedValue = principalInfos; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAppConnectorPrincipalInfo, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
+      'pulumiLabels': ?pulumiLabels,
       'region': ?region,
-      'state': state,
+      'state': ?state,
     };
   }
 
   factory GetAppConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAppConnectorResult(
-      deletionPolicy: map['deletionPolicy'] as String,
-      displayName: map['displayName'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      principalInfos: pulumi.Input.decodeList<GetAppConnectorPrincipalInfo>(map['principalInfos']!, (value) => GetAppConnectorPrincipalInfo.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      principalInfos: (() { final guardedValue = map['principalInfos']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAppConnectorPrincipalInfo>(guardedValue, (value) => GetAppConnectorPrincipalInfo.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      state: map['state'] as String,
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

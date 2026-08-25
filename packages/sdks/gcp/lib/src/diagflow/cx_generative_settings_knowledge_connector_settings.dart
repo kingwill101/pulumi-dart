@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxGenerativeSettingsKnowledgeConnectorSettings {
   /// Name of the virtual agent. Used for LLM prompt. Can be left empty.
-  final pulumi.Input<String>? agent;
+  final pulumi.Input<String?>? agent;
   /// Identity of the agent, e.g. "virtual agent", "AI assistant".
-  final pulumi.Input<String>? agentIdentity;
+  final pulumi.Input<String?>? agentIdentity;
   /// Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
-  final pulumi.Input<String>? agentScope;
+  final pulumi.Input<String?>? agentScope;
   /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
-  final pulumi.Input<String>? business;
+  final pulumi.Input<String?>? business;
   /// Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
-  final pulumi.Input<String>? businessDescription;
+  final pulumi.Input<String?>? businessDescription;
   /// Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
-  final pulumi.Input<bool>? disableDataStoreFallback;
+  final pulumi.Input<bool?>? disableDataStoreFallback;
 
   /// Creates a new [CxGenerativeSettingsKnowledgeConnectorSettings].
   /// [agent] Name of the virtual agent. Used for LLM prompt. Can be left empty.

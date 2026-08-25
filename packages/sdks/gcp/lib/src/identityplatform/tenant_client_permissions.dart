@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TenantClientPermissions {
   /// When true, end users cannot delete their account on the associated project through any of our API methods.
-  final pulumi.Input<bool>? disabledUserDeletion;
+  final pulumi.Input<bool?>? disabledUserDeletion;
   /// When true, end users cannot sign up for a new account on the associated project through any of our API methods.
-  final pulumi.Input<bool>? disabledUserSignup;
+  final pulumi.Input<bool?>? disabledUserSignup;
 
   /// Creates a new [TenantClientPermissions].
   /// [disabledUserDeletion] When true, end users cannot delete their account on the associated project through any of our API methods.

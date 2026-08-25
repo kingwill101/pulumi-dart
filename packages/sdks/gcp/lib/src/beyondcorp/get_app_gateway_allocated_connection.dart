@@ -25,7 +25,7 @@ class GetAppGatewayAllocatedConnection {
 
   factory GetAppGatewayAllocatedConnection.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayAllocatedConnection(
-      ingressPort: pulumi.Input.fromValue(map['ingressPort'] as int),
+      ingressPort: pulumi.Input.fromValue((map['ingressPort'] as num).toInt()),
       pscUri: pulumi.Input.fromValue(map['pscUri'] as String),
     );
   }

@@ -15,7 +15,7 @@ class TableIamPolicyArgs {
   final pulumi.Input<String> policyData;
   /// The project in which the table belongs. If it
   /// is not provided, this provider will use the provider default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name or relative resource id of the table to manage IAM policies for.
   ///
   /// For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:

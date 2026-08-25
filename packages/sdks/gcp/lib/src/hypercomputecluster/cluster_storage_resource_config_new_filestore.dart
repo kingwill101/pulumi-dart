@@ -5,7 +5,7 @@ import 'cluster_storage_resource_config_new_filestore_file_share.dart';
 
 class ClusterStorageResourceConfigNewFilestore {
   /// Description of the instance. Maximum of 2048 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// File system shares on the instance. Exactly one file share must be
   /// specified.
   /// Structure is documented below.
@@ -19,7 +19,7 @@ class ClusterStorageResourceConfigNewFilestore {
   /// NFSV3
   /// NFSV41
   /// Possible values are: `PROTOCOL_UNSPECIFIED`, `NFSV3`, `NFSV41`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Service tier to use for the instance.
   /// Possible values:
   /// ZONAL

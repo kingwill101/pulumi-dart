@@ -7,41 +7,41 @@ import 'prevention_job_trigger_trigger.dart';
 /// Input properties used for looking up and filtering PreventionJobTrigger resources.
 class PreventionJobTriggerState {
   /// The creation timestamp of an inspectTemplate. Set by the server.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the job trigger.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User set display name of the job trigger.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Controls what and how to inspect for findings.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJob>? inspectJob;
+  final pulumi.Input<PreventionJobTriggerInspectJob?>? inspectJob;
   /// The timestamp of the last time this trigger executed.
-  final pulumi.Input<String>? lastRunTime;
+  final pulumi.Input<String?>? lastRunTime;
   /// The resource name of the job trigger. Set by the server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of the trigger, either in the format `projects/{{project}}`
   /// or `projects/{{project}}/locations/{{location}}`
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Whether the trigger is currently active.
   /// Default value is `HEALTHY`.
   /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
   /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? triggerId;
+  final pulumi.Input<String?>? triggerId;
   /// What event needs to occur for a new job to be started.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionJobTriggerTrigger>>? triggers;
+  final pulumi.Input<List<PreventionJobTriggerTrigger>?>? triggers;
   /// The last update timestamp of an inspectTemplate. Set by the server.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PreventionJobTriggerState].
   /// [createTime] The creation timestamp of an inspectTemplate. Set by the server.

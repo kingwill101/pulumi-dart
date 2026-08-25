@@ -11,23 +11,23 @@ class RolloutPlanState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The location scope of the rollout plan.
   /// Possible values are: `LOCATION_SCOPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
-  final pulumi.Input<String>? locationScope;
+  final pulumi.Input<String?>? locationScope;
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The waves included in this rollout plan.
   /// Structure is documented below.
-  final pulumi.Input<List<RolloutPlanWave>>? waves;
+  final pulumi.Input<List<RolloutPlanWave>?>? waves;
 
   /// Creates a new [RolloutPlanState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

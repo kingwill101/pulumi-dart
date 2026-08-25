@@ -14,11 +14,11 @@ class ReportConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-friendly display name. Maximum length is 63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Collection of combinations of groups and preference sets.
   /// Structure is documented below.
   final pulumi.Input<List<ReportConfigGroupPreferencesetAssignment>> groupPreferencesetAssignments;
@@ -26,7 +26,7 @@ class ReportConfigArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// User specified ID for the report config. It will become the last component
   /// of the report config name. The ID must be unique within the project, must
   /// conform with RFC-1034, is restricted to lower-cased letters, and has a

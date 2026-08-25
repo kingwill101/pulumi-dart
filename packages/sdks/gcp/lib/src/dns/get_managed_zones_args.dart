@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dns_get_managed_zones_get_managed_zones_args_doc}
 class GetManagedZonesArgs {
   /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetManagedZonesArgs].
   /// [project] The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.

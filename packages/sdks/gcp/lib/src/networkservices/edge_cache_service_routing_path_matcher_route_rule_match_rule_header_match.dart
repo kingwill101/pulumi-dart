@@ -4,18 +4,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// The value of the header should exactly match contents of exactMatch.
-  final pulumi.Input<String>? exactMatch;
+  final pulumi.Input<String?>? exactMatch;
   /// The header name to match on.
   final pulumi.Input<String> headerName;
   /// If set to false (default), the headerMatch is considered a match if the match criteria above are met.
   /// If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
-  final pulumi.Input<bool>? invertMatch;
+  final pulumi.Input<bool?>? invertMatch;
   /// The value of the header must start with the contents of prefixMatch.
-  final pulumi.Input<String>? prefixMatch;
+  final pulumi.Input<String?>? prefixMatch;
   /// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
-  final pulumi.Input<bool>? presentMatch;
+  final pulumi.Input<bool?>? presentMatch;
   /// The value of the header must end with the contents of suffixMatch.
-  final pulumi.Input<String>? suffixMatch;
+  final pulumi.Input<String?>? suffixMatch;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch].
   /// [exactMatch] The value of the header should exactly match contents of exactMatch.

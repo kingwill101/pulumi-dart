@@ -7,6 +7,7 @@ import 'aws_cluster_fleet.dart';
 import 'aws_cluster_logging_config.dart';
 import 'aws_cluster_networking.dart';
 import 'aws_cluster_state.dart';
+import 'aws_cluster_workload_identity_config.dart';
 
 /// An Anthos cluster running on AWS.
 ///
@@ -1955,7 +1956,7 @@ class AwsCluster extends pulumi.CustomResource {
   /// Output only. The time at which this cluster was last updated.
   late final pulumi.Output<String> updateTime;
   /// Output only. Workload Identity settings.
-  late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityConfigs;
+  late final pulumi.Output<List<AwsClusterWorkloadIdentityConfig>> workloadIdentityConfigs;
 
   /// Creates a new [AwsCluster].
   /// [name] The Pulumi resource name.
@@ -1969,9 +1970,9 @@ class AwsCluster extends pulumi.CustomResource {
           'gcp:container/awsCluster:AwsCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AwsClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     awsRegion = registerOutput<String>('awsRegion');
     binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1979,7 +1980,7 @@ class AwsCluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleet = registerOutput<AwsClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1992,7 +1993,7 @@ class AwsCluster extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
+    workloadIdentityConfigs = registerOutput<List<AwsClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AwsClusterWorkloadIdentityConfig>(guardedValue, (value) => AwsClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AwsCluster] resource's state with the given [name] and [id].
@@ -2000,11 +2001,12 @@ class AwsCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AwsClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AwsCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2018,7 +2020,7 @@ class AwsCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AwsClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     awsRegion = registerOutput<String>('awsRegion');
     binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2026,7 +2028,7 @@ class AwsCluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleet = registerOutput<AwsClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2039,6 +2041,39 @@ class AwsCluster extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
+    workloadIdentityConfigs = registerOutput<List<AwsClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AwsClusterWorkloadIdentityConfig>(guardedValue, (value) => AwsClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AwsCluster] resource.
+  AwsCluster.reference(String urn)
+    : super(
+        'gcp:container/awsCluster:AwsCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authorization = registerOutput<AwsClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    awsRegion = registerOutput<String>('awsRegion');
+    binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    fleet = registerOutput<AwsClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<AwsClusterLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networking = registerOutput<AwsClusterNetworking>('networking', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterNetworking.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadIdentityConfigs = registerOutput<List<AwsClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AwsClusterWorkloadIdentityConfig>(guardedValue, (value) => AwsClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

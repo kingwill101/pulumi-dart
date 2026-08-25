@@ -493,14 +493,14 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
           'gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     details = registerOutput<PrincipalAccessBoundaryPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalAccessBoundaryPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -515,11 +515,12 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrincipalAccessBoundaryPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrincipalAccessBoundaryPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -533,12 +534,36 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     details = registerOutput<PrincipalAccessBoundaryPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalAccessBoundaryPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    principalAccessBoundaryPolicyId = registerOutput<String>('principalAccessBoundaryPolicyId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PrincipalAccessBoundaryPolicy] resource.
+  PrincipalAccessBoundaryPolicy.reference(String urn)
+    : super(
+        'gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    details = registerOutput<PrincipalAccessBoundaryPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalAccessBoundaryPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

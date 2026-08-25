@@ -294,7 +294,7 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
           'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     assetType = registerOutput<String?>('assetType');
     authorizationDirection = registerOutput<String?>('authorizationDirection');
@@ -302,7 +302,7 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
-    orgs = registerOutput<List<String>?>('orgs');
+    orgs = registerOutput<List<String>?>('orgs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parent = registerOutput<String>('parent');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -312,11 +312,12 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizedOrgsDescState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthorizedOrgsDesc._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,7 +337,27 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
-    orgs = registerOutput<List<String>?>('orgs');
+    orgs = registerOutput<List<String>?>('orgs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parent = registerOutput<String>('parent');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AuthorizedOrgsDesc] resource.
+  AuthorizedOrgsDesc.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetType = registerOutput<String?>('assetType');
+    authorizationDirection = registerOutput<String?>('authorizationDirection');
+    authorizationType = registerOutput<String?>('authorizationType');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    orgs = registerOutput<List<String>?>('orgs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parent = registerOutput<String>('parent');
     updateTime = registerOutput<String>('updateTime');
   }

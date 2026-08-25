@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FolderSettings resources.
 class FolderSettingsState {
   /// The default storage location for new resources, e.g. buckets. Only valid for global location.
-  final pulumi.Input<String>? defaultStorageLocation;
+  final pulumi.Input<String?>? defaultStorageLocation;
   /// The folder ID.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The default Cloud KMS key to use for new resources. Only valid for regional locations.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// The location of the settings.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the settings.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The service account used by Cloud Observability for this folder.
-  final pulumi.Input<String>? serviceAccountId;
+  final pulumi.Input<String?>? serviceAccountId;
 
   /// Creates a new [FolderSettingsState].
   /// [defaultStorageLocation] The default storage location for new resources, e.g. buckets. Only valid for global location.

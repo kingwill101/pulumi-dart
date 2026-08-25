@@ -8,7 +8,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfig {
   /// Possible values:
   /// ENABLED
   /// DISABLED
-  final pulumi.Input<String>? filterEnforcement;
+  final pulumi.Input<String?>? filterEnforcement;
 
   /// Creates a new [FloorsettingFilterConfigSdpSettingsBasicConfig].
   /// [filterEnforcement] Tells whether the Sensitive Data Protection basic config is enabled or

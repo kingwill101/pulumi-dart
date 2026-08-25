@@ -6,7 +6,7 @@ import 'future_reservation_aggregate_reservation_reserved_resource_accelerator.d
 class FutureReservationAggregateReservationReservedResource {
   /// Properties of accelerator resources in this reservation.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationAggregateReservationReservedResourceAccelerator>? accelerator;
+  final pulumi.Input<FutureReservationAggregateReservationReservedResourceAccelerator?>? accelerator;
 
   /// Creates a new [FutureReservationAggregateReservationReservedResource].
   /// [accelerator] Properties of accelerator resources in this reservation.

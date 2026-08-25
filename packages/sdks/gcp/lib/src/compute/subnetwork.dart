@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnetwork_args.dart';
 import 'subnetwork_log_config.dart';
 import 'subnetwork_params.dart';
+import 'subnetwork_secondary_ip_range.dart';
 import 'subnetwork_state.dart';
 
 /// A VPC network is a virtual version of the traditional physical networks
@@ -2640,7 +2641,7 @@ class Subnetwork extends pulumi.CustomResource {
   /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
   /// to either primary or secondary ranges.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> secondaryIpRanges;
+  late final pulumi.Output<List<SubnetworkSecondaryIpRange>> secondaryIpRanges;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   /// Controls the removal behavior of secondary_ip_range.
@@ -2674,7 +2675,7 @@ class Subnetwork extends pulumi.CustomResource {
           'gcp:compute/subnetwork:Subnetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowSubnetCidrRoutesOverlap = registerOutput<bool>('allowSubnetCidrRoutesOverlap');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -2701,7 +2702,7 @@ class Subnetwork extends pulumi.CustomResource {
     reservedInternalRange = registerOutput<String?>('reservedInternalRange');
     resolveSubnetMask = registerOutput<String?>('resolveSubnetMask');
     role = registerOutput<String?>('role');
-    secondaryIpRanges = registerOutput<List<Map<String, dynamic>>>('secondaryIpRanges');
+    secondaryIpRanges = registerOutput<List<SubnetworkSecondaryIpRange>>('secondaryIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetworkSecondaryIpRange>(guardedValue, (value) => SubnetworkSecondaryIpRange.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     sendSecondaryIpRangeIfEmpty = registerOutput<bool?>('sendSecondaryIpRangeIfEmpty');
     stackType = registerOutput<String>('stackType');
@@ -2714,11 +2715,12 @@ class Subnetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subnetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2757,11 +2759,53 @@ class Subnetwork extends pulumi.CustomResource {
     reservedInternalRange = registerOutput<String?>('reservedInternalRange');
     resolveSubnetMask = registerOutput<String?>('resolveSubnetMask');
     role = registerOutput<String?>('role');
-    secondaryIpRanges = registerOutput<List<Map<String, dynamic>>>('secondaryIpRanges');
+    secondaryIpRanges = registerOutput<List<SubnetworkSecondaryIpRange>>('secondaryIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetworkSecondaryIpRange>(guardedValue, (value) => SubnetworkSecondaryIpRange.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     sendSecondaryIpRangeIfEmpty = registerOutput<bool?>('sendSecondaryIpRangeIfEmpty');
     stackType = registerOutput<String>('stackType');
     this.state = registerOutput<String>('state');
+    subnetworkId = registerOutput<int>('subnetworkId');
+  }
+
+  /// Creates a typed reference to an existing [Subnetwork] resource.
+  Subnetwork.reference(String urn)
+    : super(
+        'gcp:compute/subnetwork:Subnetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowSubnetCidrRoutesOverlap = registerOutput<bool>('allowSubnetCidrRoutesOverlap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    externalIpv6Prefix = registerOutput<String>('externalIpv6Prefix');
+    fingerprint = registerOutput<String>('fingerprint');
+    gatewayAddress = registerOutput<String>('gatewayAddress');
+    internalIpv6Prefix = registerOutput<String>('internalIpv6Prefix');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipCollection = registerOutput<String?>('ipCollection');
+    ipv6AccessType = registerOutput<String?>('ipv6AccessType');
+    ipv6CidrRange = registerOutput<String>('ipv6CidrRange');
+    ipv6GceEndpoint = registerOutput<String>('ipv6GceEndpoint');
+    logConfig = registerOutput<SubnetworkLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetworkLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    params = registerOutput<SubnetworkParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetworkParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateIpGoogleAccess = registerOutput<bool>('privateIpGoogleAccess');
+    privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
+    project = registerOutput<String>('project');
+    purpose = registerOutput<String>('purpose');
+    region = registerOutput<String>('region');
+    reservedInternalRange = registerOutput<String?>('reservedInternalRange');
+    resolveSubnetMask = registerOutput<String?>('resolveSubnetMask');
+    role = registerOutput<String?>('role');
+    secondaryIpRanges = registerOutput<List<SubnetworkSecondaryIpRange>>('secondaryIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetworkSecondaryIpRange>(guardedValue, (value) => SubnetworkSecondaryIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    sendSecondaryIpRangeIfEmpty = registerOutput<bool?>('sendSecondaryIpRangeIfEmpty');
+    stackType = registerOutput<String>('stackType');
+    state = registerOutput<String>('state');
     subnetworkId = registerOutput<int>('subnetworkId');
   }
 }

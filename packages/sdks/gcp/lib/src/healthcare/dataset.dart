@@ -496,7 +496,7 @@ class Dataset extends pulumi.CustomResource {
           'gcp:healthcare/dataset:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -512,11 +512,12 @@ class Dataset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Dataset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -530,6 +531,24 @@ class Dataset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [Dataset] resource.
+  Dataset.reference(String urn)
+    : super(
+        'gcp:healthcare/dataset:Dataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

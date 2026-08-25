@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettings {
   /// (Optional)
-  final pulumi.Input<String>? countColumn;
+  final pulumi.Input<String?>? countColumn;
   /// (Optional)
-  final pulumi.Input<String>? latitudeColumn;
+  final pulumi.Input<String?>? latitudeColumn;
   /// (Optional)
-  final pulumi.Input<String>? longitudeColumn;
+  final pulumi.Input<String?>? longitudeColumn;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettings].
   /// [countColumn] (Optional)

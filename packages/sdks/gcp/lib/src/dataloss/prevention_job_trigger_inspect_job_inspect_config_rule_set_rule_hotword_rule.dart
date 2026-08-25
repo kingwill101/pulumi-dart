@@ -8,17 +8,17 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_hotword_
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule {
   /// Regular expression pattern defining what qualifies as a hotword.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex>? hotwordRegex;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex?>? hotwordRegex;
   /// Likelihood adjustment to apply to all matching findings.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment>? likelihoodAdjustment;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment?>? likelihoodAdjustment;
   /// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
   /// exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
   /// used to match substrings of the finding itself. For example, the certainty of a phone number regex
   /// `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
   /// office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity>? proximity;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity?>? proximity;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule].
   /// [hotwordRegex] Regular expression pattern defining what qualifies as a hotword.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterManagedServerCaCaCert {
   /// (Output)
   /// The certificates that form the CA chain, from leaf to root order
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<String>?>? certificates;
 
   /// Creates a new [ClusterManagedServerCaCaCert].
   /// [certificates] (Output)

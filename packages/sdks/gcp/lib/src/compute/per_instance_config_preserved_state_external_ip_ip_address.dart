@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PerInstanceConfigPreservedStateExternalIpIpAddress {
   /// The URL of the reservation for this IP address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [PerInstanceConfigPreservedStateExternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.

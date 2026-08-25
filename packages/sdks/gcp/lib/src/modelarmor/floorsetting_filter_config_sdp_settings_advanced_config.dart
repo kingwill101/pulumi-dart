@@ -11,7 +11,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// in inspect template.
   /// e.g.
   /// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
-  final pulumi.Input<String>? deidentifyTemplate;
+  final pulumi.Input<String?>? deidentifyTemplate;
   /// Sensitive Data Protection inspect template resource name
   /// If only inspect template is provided (de-identify template not provided),
   /// then Sensitive Data Protection InspectContent action is performed during
@@ -19,7 +19,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// inspection will be returned as SdpFinding in SdpInsepctionResult.
   /// e.g:-
   /// `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
-  final pulumi.Input<String>? inspectTemplate;
+  final pulumi.Input<String?>? inspectTemplate;
 
   /// Creates a new [FloorsettingFilterConfigSdpSettingsAdvancedConfig].
   /// [deidentifyTemplate] Optional Sensitive Data Protection Deidentify template resource name.

@@ -9,18 +9,18 @@ class ReservationResourceStatus {
   /// (Output)
   /// Health information for the reservation.
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationResourceStatusHealthInfo>>? healthInfos;
+  final pulumi.Input<List<ReservationResourceStatusHealthInfo>?>? healthInfos;
   /// (Output)
   /// The number of reservation blocks associated with this reservation.
-  final pulumi.Input<int>? reservationBlockCount;
+  final pulumi.Input<int?>? reservationBlockCount;
   /// (Output)
   /// Maintenance information for this reservation
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationResourceStatusReservationMaintenance>>? reservationMaintenances;
+  final pulumi.Input<List<ReservationResourceStatusReservationMaintenance>?>? reservationMaintenances;
   /// (Output)
   /// Allocation Properties of this reservation.
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationResourceStatusSpecificSkuAllocation>>? specificSkuAllocations;
+  final pulumi.Input<List<ReservationResourceStatusSpecificSkuAllocation>?>? specificSkuAllocations;
 
   /// Creates a new [ReservationResourceStatus].
   /// [healthInfos] (Output)
@@ -46,7 +46,7 @@ class ReservationResourceStatus {
   factory ReservationResourceStatus.fromMap(Map<String, dynamic> map) {
     return ReservationResourceStatus(
       healthInfos: (() { final guardedValue = map['healthInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReservationResourceStatusHealthInfo>(guardedValue, (value) => ReservationResourceStatusHealthInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      reservationBlockCount: (() { final guardedValue = map['reservationBlockCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      reservationBlockCount: (() { final guardedValue = map['reservationBlockCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       reservationMaintenances: (() { final guardedValue = map['reservationMaintenances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReservationResourceStatusReservationMaintenance>(guardedValue, (value) => ReservationResourceStatusReservationMaintenance.fromMap((value as Map).cast<String, dynamic>()))); })(),
       specificSkuAllocations: (() { final guardedValue = map['specificSkuAllocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReservationResourceStatusSpecificSkuAllocation>(guardedValue, (value) => ReservationResourceStatusSpecificSkuAllocation.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseKeyAndroidSettings {
   /// If set to true, it means allowedPackageNames will not be enforced.
-  final pulumi.Input<bool>? allowAllPackageNames;
+  final pulumi.Input<bool?>? allowAllPackageNames;
   /// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
-  final pulumi.Input<List<String>>? allowedPackageNames;
+  final pulumi.Input<List<String>?>? allowedPackageNames;
 
   /// Creates a new [EnterpriseKeyAndroidSettings].
   /// [allowAllPackageNames] If set to true, it means allowedPackageNames will not be enforced.

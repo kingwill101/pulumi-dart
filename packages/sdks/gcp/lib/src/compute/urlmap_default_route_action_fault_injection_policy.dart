@@ -7,10 +7,10 @@ import 'urlmap_default_route_action_fault_injection_policy_delay.dart';
 class URLMapDefaultRouteActionFaultInjectionPolicy {
   /// The specification for how client requests are aborted as part of fault injection.
   /// Structure is documented below.
-  final pulumi.Input<URLMapDefaultRouteActionFaultInjectionPolicyAbort>? abort;
+  final pulumi.Input<URLMapDefaultRouteActionFaultInjectionPolicyAbort?>? abort;
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   /// Structure is documented below.
-  final pulumi.Input<URLMapDefaultRouteActionFaultInjectionPolicyDelay>? delay;
+  final pulumi.Input<URLMapDefaultRouteActionFaultInjectionPolicyDelay?>? delay;
 
   /// Creates a new [URLMapDefaultRouteActionFaultInjectionPolicy].
   /// [abort] The specification for how client requests are aborted as part of fault injection.

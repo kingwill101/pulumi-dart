@@ -18,14 +18,14 @@ class ConnectionGitlabEnterpriseConfig {
   final pulumi.Input<ConnectionGitlabEnterpriseConfigReadAuthorizerCredential> readAuthorizerCredential;
   /// (Output)
   /// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGitlabEnterpriseConfigServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ConnectionGitlabEnterpriseConfigServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// Optional. SSL Certificate Authority certificate to use for requests to GitLab
   /// Enterprise instance.
-  final pulumi.Input<String>? sslCaCertificate;
+  final pulumi.Input<String?>? sslCaCertificate;
   /// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
   /// formatted as `projects/*/secrets/*/versions/*`. This is used to validate
   /// webhooks.

@@ -7,18 +7,18 @@ import 'billing_account_sink_exclusion.dart';
 /// Input properties used for looking up and filtering BillingAccountSink resources.
 class BillingAccountSinkState {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
-  final pulumi.Input<BillingAccountSinkBigqueryOptions>? bigqueryOptions;
+  final pulumi.Input<BillingAccountSinkBigqueryOptions?>? bigqueryOptions;
   /// The billing account exported to the sink.
-  final pulumi.Input<String>? billingAccount;
+  final pulumi.Input<String?>? billingAccount;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of this sink. The maximum length of the description is 8000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination of the sink (or, in other words, where logs are written to). Can be a
   /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
   ///
@@ -28,20 +28,20 @@ class BillingAccountSinkState {
   /// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
   ///
   /// The writer associated with the sink must have access to write to the above resource.
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// If set to True, then this sink is disabled and it does not export any log entries.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  final pulumi.Input<List<BillingAccountSinkExclusion>>? exclusions;
+  final pulumi.Input<List<BillingAccountSinkExclusion>?>? exclusions;
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The name of the logging sink.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The identity associated with this sink. This identity must be granted write access to the
   /// configured `destination`.
-  final pulumi.Input<String>? writerIdentity;
+  final pulumi.Input<String?>? writerIdentity;
 
   /// Creates a new [BillingAccountSinkState].
   /// [bigqueryOptions] Options that affect sinks exporting data to BigQuery. Structure documented below.

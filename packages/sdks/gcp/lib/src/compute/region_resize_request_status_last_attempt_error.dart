@@ -7,7 +7,7 @@ class RegionResizeRequestStatusLastAttemptError {
   /// (Output)
   /// The array of errors encountered while processing this operation.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionResizeRequestStatusLastAttemptErrorError>>? errors;
+  final pulumi.Input<List<RegionResizeRequestStatusLastAttemptErrorError>?>? errors;
 
   /// Creates a new [RegionResizeRequestStatusLastAttemptError].
   /// [errors] (Output)

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListingBigqueryDatasetEffectiveReplica {
   /// The name of the location this data exchange listing.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output-only. Indicates that this replica is the primary replica.
   /// Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
-  final pulumi.Input<String>? primaryState;
+  final pulumi.Input<String?>? primaryState;
   /// Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
   /// Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
-  final pulumi.Input<String>? replicaState;
+  final pulumi.Input<String?>? replicaState;
 
   /// Creates a new [ListingBigqueryDatasetEffectiveReplica].
   /// [location] The name of the location this data exchange listing.

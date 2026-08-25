@@ -48,9 +48,9 @@ class GetDatabaseInstanceSettingPasswordValidationPolicy {
       complexity: pulumi.Input.fromValue(map['complexity'] as String),
       disallowUsernameSubstring: pulumi.Input.fromValue(map['disallowUsernameSubstring'] as bool),
       enablePasswordPolicy: pulumi.Input.fromValue(map['enablePasswordPolicy'] as bool),
-      minLength: pulumi.Input.fromValue(map['minLength'] as int),
+      minLength: pulumi.Input.fromValue((map['minLength'] as num).toInt()),
       passwordChangeInterval: pulumi.Input.fromValue(map['passwordChangeInterval'] as String),
-      reuseInterval: pulumi.Input.fromValue(map['reuseInterval'] as int),
+      reuseInterval: pulumi.Input.fromValue((map['reuseInterval'] as num).toInt()),
     );
   }
 }

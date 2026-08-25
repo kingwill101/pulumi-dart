@@ -7,21 +7,21 @@ import 'restore_plan_restore_config_cluster_resource_restore_scope_selected_grou
 class RestorePlanRestoreConfigClusterResourceRestoreScope {
   /// If True, all valid cluster-scoped resources will be restored.
   /// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-  final pulumi.Input<bool>? allGroupKinds;
+  final pulumi.Input<bool?>? allGroupKinds;
   /// A list of cluster-scoped resource group kinds to NOT restore from the backup.
   /// If specified, all valid cluster-scoped resources will be restored except
   /// for those specified in the list.
   /// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
   /// Structure is documented below.
-  final pulumi.Input<List<RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind>>? excludedGroupKinds;
+  final pulumi.Input<List<RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind>?>? excludedGroupKinds;
   /// If True, no cluster-scoped resources will be restored.
   /// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
-  final pulumi.Input<bool>? noGroupKinds;
+  final pulumi.Input<bool?>? noGroupKinds;
   /// A list of cluster-scoped resource group kinds to restore from the backup.
   /// If specified, only the selected resources will be restored.
   /// Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
   /// Structure is documented below.
-  final pulumi.Input<List<RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind>>? selectedGroupKinds;
+  final pulumi.Input<List<RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind>?>? selectedGroupKinds;
 
   /// Creates a new [RestorePlanRestoreConfigClusterResourceRestoreScope].
   /// [allGroupKinds] If True, all valid cluster-scoped resources will be restored.

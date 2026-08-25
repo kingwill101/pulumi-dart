@@ -15,13 +15,13 @@ class AzureClientArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Azure Active Directory Tenant ID.
   ///
   ///

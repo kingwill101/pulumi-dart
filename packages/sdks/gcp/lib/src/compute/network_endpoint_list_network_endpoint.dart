@@ -6,16 +6,16 @@ class NetworkEndpointListNetworkEndpoint {
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORT.
   /// The instance must be in the same zone as the network endpoint group.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
   /// **Note** `ipAddress` is required unless the Network Endpoint Group is created with the type of `GCE_VM_IP_DEDICATED_BACKEND`
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [NetworkEndpointListNetworkEndpoint].
   /// [instance] The name for a specific VM instance that the IP address belongs to.
@@ -39,7 +39,7 @@ class NetworkEndpointListNetworkEndpoint {
     return NetworkEndpointListNetworkEndpoint(
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

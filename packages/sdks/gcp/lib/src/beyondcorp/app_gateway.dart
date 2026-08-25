@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'app_gateway_allocated_connection.dart';
 import 'app_gateway_args.dart';
 import 'app_gateway_state.dart';
 
@@ -322,7 +323,7 @@ import 'app_gateway_state.dart';
 class AppGateway extends pulumi.CustomResource {
   /// A list of connections allocated for the Gateway.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> allocatedConnections;
+  late final pulumi.Output<List<AppGatewayAllocatedConnection>> allocatedConnections;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -374,17 +375,18 @@ class AppGateway extends pulumi.CustomResource {
           'gcp:beyondcorp/appGateway:AppGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    allocatedConnections = registerOutput<List<Map<String, dynamic>>>('allocatedConnections');
+    allocatedConnections = registerOutput<List<AppGatewayAllocatedConnection>>('allocatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppGatewayAllocatedConnection>(guardedValue, (value) => AppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     hostType = registerOutput<String?>('hostType');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
@@ -396,11 +398,12 @@ class AppGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,17 +417,42 @@ class AppGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allocatedConnections = registerOutput<List<Map<String, dynamic>>>('allocatedConnections');
+    allocatedConnections = registerOutput<List<AppGatewayAllocatedConnection>>('allocatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppGatewayAllocatedConnection>(guardedValue, (value) => AppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     hostType = registerOutput<String?>('hostType');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     this.state = registerOutput<String>('state');
+    type = registerOutput<String?>('type');
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [AppGateway] resource.
+  AppGateway.reference(String urn)
+    : super(
+        'gcp:beyondcorp/appGateway:AppGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    allocatedConnections = registerOutput<List<AppGatewayAllocatedConnection>>('allocatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppGatewayAllocatedConnection>(guardedValue, (value) => AppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    hostType = registerOutput<String?>('hostType');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String?>('region');
+    state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
     uri = registerOutput<String>('uri');
   }

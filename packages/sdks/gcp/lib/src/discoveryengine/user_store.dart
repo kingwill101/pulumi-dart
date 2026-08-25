@@ -359,7 +359,7 @@ class UserStore extends pulumi.CustomResource {
           'gcp:discoveryengine/userStore:UserStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     defaultLicenseConfig = registerOutput<String?>('defaultLicenseConfig');
     enableExpiredLicenseAutoUpdate = registerOutput<bool?>('enableExpiredLicenseAutoUpdate');
@@ -375,11 +375,12 @@ class UserStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -393,6 +394,24 @@ class UserStore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    defaultLicenseConfig = registerOutput<String?>('defaultLicenseConfig');
+    enableExpiredLicenseAutoUpdate = registerOutput<bool?>('enableExpiredLicenseAutoUpdate');
+    enableLicenseAutoRegister = registerOutput<bool?>('enableLicenseAutoRegister');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    userStoreId = registerOutput<String?>('userStoreId');
+  }
+
+  /// Creates a typed reference to an existing [UserStore] resource.
+  UserStore.reference(String urn)
+    : super(
+        'gcp:discoveryengine/userStore:UserStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     defaultLicenseConfig = registerOutput<String?>('defaultLicenseConfig');
     enableExpiredLicenseAutoUpdate = registerOutput<bool?>('enableExpiredLicenseAutoUpdate');
     enableLicenseAutoRegister = registerOutput<bool?>('enableLicenseAutoRegister');

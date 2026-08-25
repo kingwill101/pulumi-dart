@@ -707,7 +707,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           'gcp:firebase/databaseInstance:DatabaseInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     databaseUrl = registerOutput<String>('databaseUrl');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -725,11 +725,12 @@ class DatabaseInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -751,6 +752,26 @@ class DatabaseInstance extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseInstance] resource.
+  DatabaseInstance.reference(String urn)
+    : super(
+        'gcp:firebase/databaseInstance:DatabaseInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    databaseUrl = registerOutput<String>('databaseUrl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    desiredState = registerOutput<String?>('desiredState');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
   }
 }

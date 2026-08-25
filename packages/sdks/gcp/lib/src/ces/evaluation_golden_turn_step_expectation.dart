@@ -11,24 +11,24 @@ import 'evaluation_golden_turn_step_expectation_updated_variables.dart';
 class EvaluationGoldenTurnStepExpectation {
   /// Expectation on agent response.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponse>? agentResponse;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponse?>? agentResponse;
   /// Expectation on agent transfer.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentTransfer>? agentTransfer;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentTransfer?>? agentTransfer;
   /// A mock response to provide if a tool is called.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationMockToolResponse>? mockToolResponse;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationMockToolResponse?>? mockToolResponse;
   /// A note describing the expectation.
-  final pulumi.Input<String>? note;
+  final pulumi.Input<String?>? note;
   /// Expectation on tool call.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationToolCall>? toolCall;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationToolCall?>? toolCall;
   /// Expectation on tool response.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationToolResponse>? toolResponse;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationToolResponse?>? toolResponse;
   /// Expectation on updated variables.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationUpdatedVariables>? updatedVariables;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationUpdatedVariables?>? updatedVariables;
 
   /// Creates a new [EvaluationGoldenTurnStepExpectation].
   /// [agentResponse] Expectation on agent response.

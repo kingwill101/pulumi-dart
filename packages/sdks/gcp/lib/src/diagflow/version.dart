@@ -407,7 +407,7 @@ class Version extends pulumi.CustomResource {
           'gcp:diagflow/version:Version',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -422,11 +422,12 @@ class Version extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Version._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -440,6 +441,23 @@ class Version extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    status = registerOutput<String>('status');
+    versionNumber = registerOutput<int>('versionNumber');
+  }
+
+  /// Creates a typed reference to an existing [Version] resource.
+  Version.reference(String urn)
+    : super(
+        'gcp:diagflow/version:Version',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

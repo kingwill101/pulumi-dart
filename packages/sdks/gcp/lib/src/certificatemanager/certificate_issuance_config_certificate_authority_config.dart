@@ -6,7 +6,7 @@ import 'certificate_issuance_config_certificate_authority_config_certificate_aut
 class CertificateIssuanceConfigCertificateAuthorityConfig {
   /// Defines a CertificateAuthorityServiceConfig.
   /// Structure is documented below.
-  final pulumi.Input<CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig>? certificateAuthorityServiceConfig;
+  final pulumi.Input<CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig?>? certificateAuthorityServiceConfig;
 
   /// Creates a new [CertificateIssuanceConfigCertificateAuthorityConfig].
   /// [certificateAuthorityServiceConfig] Defines a CertificateAuthorityServiceConfig.

@@ -5,10 +5,10 @@ import 'dashboard_chart_dashboard_chart_visualization_series_item_colors_color_v
 
 class DashboardChartDashboardChartVisualizationSeriesItemColorsColor {
   /// (Optional)
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesItemColorsColorValue>? value;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesItemColorsColorValue?>? value;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesItemColorsColor].
   /// [key] (Optional)

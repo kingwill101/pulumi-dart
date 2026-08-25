@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxToolDataStoreSpecDataStoreConnection {
   /// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
-  final pulumi.Input<String>? dataStore;
+  final pulumi.Input<String?>? dataStore;
   /// The type of the connected data store.
   /// See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
-  final pulumi.Input<String>? dataStoreType;
+  final pulumi.Input<String?>? dataStoreType;
   /// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
   /// See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
-  final pulumi.Input<String>? documentProcessingMode;
+  final pulumi.Input<String?>? documentProcessingMode;
 
   /// Creates a new [CxToolDataStoreSpecDataStoreConnection].
   /// [dataStore] The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}

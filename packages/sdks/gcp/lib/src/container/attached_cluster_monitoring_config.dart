@@ -6,7 +6,7 @@ import 'attached_cluster_monitoring_config_managed_prometheus_config.dart';
 class AttachedClusterMonitoringConfig {
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterMonitoringConfigManagedPrometheusConfig>? managedPrometheusConfig;
+  final pulumi.Input<AttachedClusterMonitoringConfigManagedPrometheusConfig?>? managedPrometheusConfig;
 
   /// Creates a new [AttachedClusterMonitoringConfig].
   /// [managedPrometheusConfig] Enable Google Cloud Managed Service for Prometheus in the cluster.

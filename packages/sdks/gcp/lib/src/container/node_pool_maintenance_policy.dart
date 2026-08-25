@@ -5,7 +5,7 @@ import 'node_pool_maintenance_policy_exclusion_until_end_of_support.dart';
 
 class NodePoolMaintenancePolicy {
   /// When enabled, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date. Structure is documented below.
-  final pulumi.Input<List<NodePoolMaintenancePolicyExclusionUntilEndOfSupport>>? exclusionUntilEndOfSupports;
+  final pulumi.Input<List<NodePoolMaintenancePolicyExclusionUntilEndOfSupport>?>? exclusionUntilEndOfSupports;
 
   /// Creates a new [NodePoolMaintenancePolicy].
   /// [exclusionUntilEndOfSupports] When enabled, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date. Structure is documented below.

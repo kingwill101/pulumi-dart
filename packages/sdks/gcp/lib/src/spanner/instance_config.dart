@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_config_args.dart';
+import 'instance_config_replica.dart';
 import 'instance_config_state.dart';
 
 /// A possible configuration for a Cloud Spanner instance. Configurations
@@ -65,7 +66,7 @@ class InstanceConfig extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The geographic placement of nodes in this instance configuration and their replication properties.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
+  late final pulumi.Output<List<InstanceConfigReplica>> replicas;
 
   /// Creates a new [InstanceConfig].
   /// [name] The Pulumi resource name.
@@ -79,18 +80,19 @@ class InstanceConfig extends pulumi.CustomResource {
           'gcp:spanner/instanceConfig:InstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     baseConfig = registerOutput<String>('baseConfig');
     configType = registerOutput<String>('configType');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replicas = registerOutput<List<InstanceConfigReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceConfigReplica>(guardedValue, (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [InstanceConfig] resource's state with the given [name] and [id].
@@ -98,11 +100,12 @@ class InstanceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -120,11 +123,33 @@ class InstanceConfig extends pulumi.CustomResource {
     configType = registerOutput<String>('configType');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replicas = registerOutput<List<InstanceConfigReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceConfigReplica>(guardedValue, (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [InstanceConfig] resource.
+  InstanceConfig.reference(String urn)
+    : super(
+        'gcp:spanner/instanceConfig:InstanceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    baseConfig = registerOutput<String>('baseConfig');
+    configType = registerOutput<String>('configType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replicas = registerOutput<List<InstanceConfigReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceConfigReplica>(guardedValue, (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

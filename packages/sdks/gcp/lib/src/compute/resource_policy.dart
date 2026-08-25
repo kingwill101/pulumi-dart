@@ -2204,7 +2204,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'gcp:compute/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -2224,11 +2224,12 @@ class ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2242,6 +2243,28 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    diskConsistencyGroupPolicy = registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>('diskConsistencyGroupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyDiskConsistencyGroupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicy?>('groupPlacementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyGroupPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceSchedulePolicy = registerOutput<ResourcePolicyInstanceSchedulePolicy?>('instanceSchedulePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyInstanceSchedulePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    snapshotSchedulePolicy = registerOutput<ResourcePolicySnapshotSchedulePolicy?>('snapshotSchedulePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicySnapshotSchedulePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadPolicy = registerOutput<ResourcePolicyWorkloadPolicy?>('workloadPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyWorkloadPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'gcp:compute/resourcePolicy:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskConsistencyGroupPolicy = registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>('diskConsistencyGroupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyDiskConsistencyGroupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

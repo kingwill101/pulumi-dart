@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_user_created_connections_args.dart';
+import 'cluster_user_created_connections_cluster_endpoint.dart';
 import 'cluster_user_created_connections_state.dart';
 
 /// Manages user created connections for Redis cluster
@@ -2104,7 +2105,7 @@ import 'cluster_user_created_connections_state.dart';
 class ClusterUserCreatedConnections extends pulumi.CustomResource {
   /// A list of cluster endpoints
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> clusterEndpoints;
+  late final pulumi.Output<List<ClusterUserCreatedConnectionsClusterEndpoint>?> clusterEndpoints;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -2132,9 +2133,9 @@ class ClusterUserCreatedConnections extends pulumi.CustomResource {
           'gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    clusterEndpoints = registerOutput<List<Map<String, dynamic>>?>('clusterEndpoints');
+    clusterEndpoints = registerOutput<List<ClusterUserCreatedConnectionsClusterEndpoint>?>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(guardedValue, (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -2146,11 +2147,12 @@ class ClusterUserCreatedConnections extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterUserCreatedConnectionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterUserCreatedConnections._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2164,7 +2166,23 @@ class ClusterUserCreatedConnections extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    clusterEndpoints = registerOutput<List<Map<String, dynamic>>?>('clusterEndpoints');
+    clusterEndpoints = registerOutput<List<ClusterUserCreatedConnectionsClusterEndpoint>?>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(guardedValue, (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ClusterUserCreatedConnections] resource.
+  ClusterUserCreatedConnections.reference(String urn)
+    : super(
+        'gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterEndpoints = registerOutput<List<ClusterUserCreatedConnectionsClusterEndpoint>?>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(guardedValue, (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

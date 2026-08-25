@@ -9,7 +9,7 @@ import 'instance_iam_binding_condition.dart';
 /// {@macro pulumi_bigtable_instance_iam_binding_instance_iam_binding_args_doc}
 class InstanceIamBindingArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
-  final pulumi.Input<InstanceIamBindingCondition>? condition;
+  final pulumi.Input<InstanceIamBindingCondition?>? condition;
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
@@ -25,7 +25,7 @@ class InstanceIamBindingArgs {
   final pulumi.Input<List<String>> members;
   /// The project in which the instance belongs. If it
   /// is not provided, Terraform will use the provider default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).

@@ -8,7 +8,7 @@ import 'policy_tag_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datacatalog_policy_tag_iam_binding_policy_tag_iam_binding_args_doc}
 class PolicyTagIamBindingArgs {
-  final pulumi.Input<PolicyTagIamBindingCondition>? condition;
+  final pulumi.Input<PolicyTagIamBindingCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

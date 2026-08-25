@@ -2140,7 +2140,7 @@ class StoragePoolIamPolicy extends pulumi.CustomResource {
           'gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -2154,11 +2154,12 @@ class StoragePoolIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StoragePoolIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StoragePoolIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2172,6 +2173,22 @@ class StoragePoolIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [StoragePoolIamPolicy] resource.
+  StoragePoolIamPolicy.reference(String urn)
+    : super(
+        'gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     policyData = registerOutput<String>('policyData');

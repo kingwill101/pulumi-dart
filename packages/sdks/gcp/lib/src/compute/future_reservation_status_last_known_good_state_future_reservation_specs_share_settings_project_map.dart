@@ -7,7 +7,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String> project;
   /// The project ID, should be same as the key of this project config in the parent map.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap].
   /// [project] The ID of the project in which the resource belongs.

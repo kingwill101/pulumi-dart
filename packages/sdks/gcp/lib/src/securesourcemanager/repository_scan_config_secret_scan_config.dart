@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryScanConfigSecretScanConfig {
   /// Enables secret scanning for the repository.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The DLP inspect template to use for secret scanning.
-  final pulumi.Input<String>? inspectTemplate;
+  final pulumi.Input<String?>? inspectTemplate;
 
   /// Creates a new [RepositoryScanConfigSecretScanConfig].
   /// [enabled] Enables secret scanning for the repository.

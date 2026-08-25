@@ -9,10 +9,10 @@ import 'bare_metal_admin_cluster_load_balancer_vip_config.dart';
 class BareMetalAdminClusterLoadBalancer {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterLoadBalancerBgpLbConfig>? bgpLbConfig;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancerBgpLbConfig?>? bgpLbConfig;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterLoadBalancerManualLbConfig>? manualLbConfig;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancerManualLbConfig?>? manualLbConfig;
   /// Specifies the load balancer ports.
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterLoadBalancerPortConfig> portConfig;

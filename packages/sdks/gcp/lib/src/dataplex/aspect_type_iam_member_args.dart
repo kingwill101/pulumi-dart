@@ -10,12 +10,12 @@ import 'aspect_type_iam_member_condition.dart';
 class AspectTypeIamMemberArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> aspectTypeId;
-  final pulumi.Input<AspectTypeIamMemberCondition>? condition;
+  final pulumi.Input<AspectTypeIamMemberCondition?>? condition;
   /// The location where aspect type will be created in.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -31,7 +31,7 @@ class AspectTypeIamMemberArgs {
   final pulumi.Input<String> member;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.dataplex.AspectTypeIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

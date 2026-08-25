@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mirroring_endpoint_group_association_args.dart';
+import 'mirroring_endpoint_group_association_location.dart';
+import 'mirroring_endpoint_group_association_locations_detail.dart';
 import 'mirroring_endpoint_group_association_state.dart';
 
 /// An endpoint group association represents a link between a network and an
@@ -362,13 +364,13 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
   /// The list of locations where the association is configured. This information
   /// is retrieved from the linked endpoint group.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> locations;
+  late final pulumi.Output<List<MirroringEndpointGroupAssociationLocation>> locations;
   /// (Deprecated)
   /// The list of locations where the association is present. This information
   /// is retrieved from the linked endpoint group, and not configured as part
   /// of the association itself.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> locationsDetails;
+  late final pulumi.Output<List<MirroringEndpointGroupAssociationLocationsDetail>> locationsDetails;
   /// The endpoint group that this association is connected to, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
@@ -419,21 +421,22 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
           'gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
-    locationsDetails = registerOutput<List<Map<String, dynamic>>>('locationsDetails');
+    locations = registerOutput<List<MirroringEndpointGroupAssociationLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringEndpointGroupAssociationLocation>(guardedValue, (value) => MirroringEndpointGroupAssociationLocation.fromMap((value as Map).cast<String, dynamic>())); });
+    locationsDetails = registerOutput<List<MirroringEndpointGroupAssociationLocationsDetail>>('locationsDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringEndpointGroupAssociationLocationsDetail>(guardedValue, (value) => MirroringEndpointGroupAssociationLocationsDetail.fromMap((value as Map).cast<String, dynamic>())); });
     mirroringEndpointGroup = registerOutput<String>('mirroringEndpointGroup');
     mirroringEndpointGroupAssociationId = registerOutput<String?>('mirroringEndpointGroupAssociationId');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -444,11 +447,12 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
     String name,
     pulumi.Input<String> id, {
     MirroringEndpointGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MirroringEndpointGroupAssociationNetworksecurity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -464,19 +468,47 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
-    locationsDetails = registerOutput<List<Map<String, dynamic>>>('locationsDetails');
+    locations = registerOutput<List<MirroringEndpointGroupAssociationLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringEndpointGroupAssociationLocation>(guardedValue, (value) => MirroringEndpointGroupAssociationLocation.fromMap((value as Map).cast<String, dynamic>())); });
+    locationsDetails = registerOutput<List<MirroringEndpointGroupAssociationLocationsDetail>>('locationsDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringEndpointGroupAssociationLocationsDetail>(guardedValue, (value) => MirroringEndpointGroupAssociationLocationsDetail.fromMap((value as Map).cast<String, dynamic>())); });
     mirroringEndpointGroup = registerOutput<String>('mirroringEndpointGroup');
     mirroringEndpointGroupAssociationId = registerOutput<String?>('mirroringEndpointGroupAssociationId');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MirroringEndpointGroupAssociationNetworksecurity] resource.
+  MirroringEndpointGroupAssociationNetworksecurity.reference(String urn)
+    : super(
+        'gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    locations = registerOutput<List<MirroringEndpointGroupAssociationLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringEndpointGroupAssociationLocation>(guardedValue, (value) => MirroringEndpointGroupAssociationLocation.fromMap((value as Map).cast<String, dynamic>())); });
+    locationsDetails = registerOutput<List<MirroringEndpointGroupAssociationLocationsDetail>>('locationsDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringEndpointGroupAssociationLocationsDetail>(guardedValue, (value) => MirroringEndpointGroupAssociationLocationsDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    mirroringEndpointGroup = registerOutput<String>('mirroringEndpointGroup');
+    mirroringEndpointGroupAssociationId = registerOutput<String?>('mirroringEndpointGroupAssociationId');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

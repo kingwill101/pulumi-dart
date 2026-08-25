@@ -1057,7 +1057,7 @@ class SearchEngineIamPolicy extends pulumi.CustomResource {
           'gcp:discoveryengine/searchEngineIamPolicy:SearchEngineIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     engineId = registerOutput<String>('engineId');
@@ -1072,11 +1072,12 @@ class SearchEngineIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SearchEngineIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SearchEngineIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1090,6 +1091,23 @@ class SearchEngineIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    collectionId = registerOutput<String>('collectionId');
+    engineId = registerOutput<String>('engineId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [SearchEngineIamPolicy] resource.
+  SearchEngineIamPolicy.reference(String urn)
+    : super(
+        'gcp:discoveryengine/searchEngineIamPolicy:SearchEngineIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     collectionId = registerOutput<String>('collectionId');
     engineId = registerOutput<String>('engineId');
     etag = registerOutput<String>('etag');

@@ -7,69 +7,69 @@ import 'get_environment_storage_config.dart';
 /// Result data returned by getEnvironment.
 class GetEnvironmentResult {
   /// Configuration parameters for the environment.
-  final List<GetEnvironmentConfig> configs;
-  final String deletionPolicy;
-  final Map<String, String> effectiveLabels;
+  final List<GetEnvironmentConfig>? configs;
+  final String? deletionPolicy;
+  final Map<String, String>? effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
-  final String name;
+  final String? id;
+  final Map<String, String>? labels;
+  final String? name;
   final String? project;
-  final Map<String, String> pulumiLabels;
+  final Map<String, String>? pulumiLabels;
   final String? region;
-  final List<GetEnvironmentStorageConfig> storageConfigs;
+  final List<GetEnvironmentStorageConfig>? storageConfigs;
 
   /// Creates a new [GetEnvironmentResult].
   /// [configs] Configuration parameters for the environment.
-  /// [deletionPolicy] Required.
-  /// [effectiveLabels] Required.
+  /// [deletionPolicy] Optional.
+  /// [effectiveLabels] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
-  /// [name] Required.
+  /// [labels] Optional.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
+  /// [pulumiLabels] Optional.
   /// [region] Optional.
-  /// [storageConfigs] Required.
+  /// [storageConfigs] Optional.
   const GetEnvironmentResult({
-    required this.configs,
-    required this.deletionPolicy,
-    required this.effectiveLabels,
-    required this.id,
-    required this.labels,
-    required this.name,
+    this.configs,
+    this.deletionPolicy,
+    this.effectiveLabels,
+    this.id,
+    this.labels,
+    this.name,
     this.project,
-    required this.pulumiLabels,
+    this.pulumiLabels,
     this.region,
-    required this.storageConfigs,
+    this.storageConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs': pulumi.Input.encodeList<GetEnvironmentConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'effectiveLabels': effectiveLabels,
-      'id': id,
-      'labels': labels,
-      'name': name,
+      'configs': ?(() { final guardedValue = configs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetEnvironmentConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'effectiveLabels': ?effectiveLabels,
+      'id': ?id,
+      'labels': ?labels,
+      'name': ?name,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
+      'pulumiLabels': ?pulumiLabels,
       'region': ?region,
-      'storageConfigs': pulumi.Input.encodeList<GetEnvironmentStorageConfig, Map<String, dynamic>>(storageConfigs, (value) => value.toMap()),
+      'storageConfigs': ?(() { final guardedValue = storageConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetEnvironmentStorageConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      configs: pulumi.Input.decodeList<GetEnvironmentConfig>(map['configs']!, (value) => GetEnvironmentConfig.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
+      configs: (() { final guardedValue = map['configs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetEnvironmentConfig>(guardedValue, (value) => GetEnvironmentConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      storageConfigs: pulumi.Input.decodeList<GetEnvironmentStorageConfig>(map['storageConfigs']!, (value) => GetEnvironmentStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
+      storageConfigs: (() { final guardedValue = map['storageConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetEnvironmentStorageConfig>(guardedValue, (value) => GetEnvironmentStorageConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

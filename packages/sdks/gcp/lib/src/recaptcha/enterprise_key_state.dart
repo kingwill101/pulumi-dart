@@ -10,43 +10,43 @@ import 'enterprise_key_web_settings.dart';
 /// Input properties used for looking up and filtering EnterpriseKey resources.
 class EnterpriseKeyState {
   /// Settings for keys that can be used by Android apps.
-  final pulumi.Input<EnterpriseKeyAndroidSettings>? androidSettings;
+  final pulumi.Input<EnterpriseKeyAndroidSettings?>? androidSettings;
   /// The timestamp corresponding to the creation of this Key.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human-readable display name of this key. Modifiable by user.
   ///
   ///
   ///
   /// - - -
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Settings for keys that can be used by iOS apps.
-  final pulumi.Input<EnterpriseKeyIosSettings>? iosSettings;
+  final pulumi.Input<EnterpriseKeyIosSettings?>? iosSettings;
   /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The resource id for the Key, which is the same as the Site Key itself.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Options for user acceptance testing.
-  final pulumi.Input<EnterpriseKeyTestingOptions>? testingOptions;
+  final pulumi.Input<EnterpriseKeyTestingOptions?>? testingOptions;
   /// Settings specific to keys that can be used for WAF (Web Application Firewall).
-  final pulumi.Input<EnterpriseKeyWafSettings>? wafSettings;
+  final pulumi.Input<EnterpriseKeyWafSettings?>? wafSettings;
   /// Settings for keys that can be used by websites.
-  final pulumi.Input<EnterpriseKeyWebSettings>? webSettings;
+  final pulumi.Input<EnterpriseKeyWebSettings?>? webSettings;
 
   /// Creates a new [EnterpriseKeyState].
   /// [androidSettings] Settings for keys that can be used by Android apps.

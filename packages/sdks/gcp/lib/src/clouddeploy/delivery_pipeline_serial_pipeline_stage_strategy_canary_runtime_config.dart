@@ -6,9 +6,9 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_runtime_config_k
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
   /// Cloud Run runtime configuration.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun>? cloudRun;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun?>? cloudRun;
   /// Kubernetes runtime configuration.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes>? kubernetes;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes?>? kubernetes;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig].
   /// [cloudRun] Cloud Run runtime configuration.

@@ -6,7 +6,7 @@ import 'connection_destination_config_destination.dart';
 class ConnectionDestinationConfig {
   /// The destinations for the key.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionDestinationConfigDestination>>? destinations;
+  final pulumi.Input<List<ConnectionDestinationConfigDestination>?>? destinations;
   /// The key is the destination identifier that is supported by the Connector.
   final pulumi.Input<String> key;
 

@@ -6,7 +6,7 @@ import 'stream_source_config_mongodb_source_config_include_objects_database.dart
 class StreamSourceConfigMongodbSourceConfigIncludeObjects {
   /// MongoDB databases in the cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase>>? databases;
+  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase>?>? databases;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigIncludeObjects].
   /// [databases] MongoDB databases in the cluster.

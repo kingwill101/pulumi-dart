@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMigrationSource {
   /// The host and port of the on-premises instance in host:port format
-  final pulumi.Input<String>? hostPort;
+  final pulumi.Input<String?>? hostPort;
   /// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
-  final pulumi.Input<String>? referenceId;
+  final pulumi.Input<String?>? referenceId;
   /// Type of migration source.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
 
   /// Creates a new [ClusterMigrationSource].
   /// [hostPort] The host and port of the on-premises instance in host:port format

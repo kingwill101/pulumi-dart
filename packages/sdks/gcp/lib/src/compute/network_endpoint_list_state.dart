@@ -11,19 +11,19 @@ class NetworkEndpointListState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The network endpoint group these endpoints are part of.
-  final pulumi.Input<String>? networkEndpointGroup;
+  final pulumi.Input<String?>? networkEndpointGroup;
   /// The network endpoints to be added to the enclosing network endpoint group
   /// (NEG). Each endpoint specifies an IP address and port, along with
   /// additional information depending on the NEG type.
   /// Structure is documented below.
-  final pulumi.Input<List<NetworkEndpointListNetworkEndpoint>>? networkEndpoints;
+  final pulumi.Input<List<NetworkEndpointListNetworkEndpoint>?>? networkEndpoints;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Zone where the containing network endpoint group is located.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [NetworkEndpointListState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

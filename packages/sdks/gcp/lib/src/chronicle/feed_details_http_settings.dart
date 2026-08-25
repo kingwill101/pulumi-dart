@@ -7,14 +7,14 @@ class FeedDetailsHttpSettings {
   /// SOURCE_DELETION_NEVER
   /// SOURCE_DELETION_ON_SUCCESS
   /// SOURCE_DELETION_ON_SUCCESS_FILES_ONLY
-  final pulumi.Input<String>? sourceDeletionOption;
+  final pulumi.Input<String?>? sourceDeletionOption;
   /// Possible values:
   /// FILES
   /// FOLDERS
   /// FOLDERS_RECURSIVE
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
   /// HTTP URI.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [FeedDetailsHttpSettings].
   /// [sourceDeletionOption] Possible values:

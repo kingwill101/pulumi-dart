@@ -16,63 +16,63 @@ class V2VmArgs {
   /// The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
   /// as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
   /// Structure is documented below.
-  final pulumi.Input<V2VmAcceleratorConfig>? acceleratorConfig;
+  final pulumi.Input<V2VmAcceleratorConfig?>? acceleratorConfig;
   /// TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
   /// `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
   /// be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
   /// block would be wasteful (a node can only consume one IP address). Errors will occur if the
   /// CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
   /// with any subnetworks in the user's provided network, or the provided network is peered with
   /// another network that is using that CIDR block.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// The additional data disks for the Node.
   /// Structure is documented below.
-  final pulumi.Input<List<V2VmDataDisk>>? dataDisks;
+  final pulumi.Input<List<V2VmDataDisk>?>? dataDisks;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Text description of the TPU.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The immutable name of the TPU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configurations for the TPU node.
   /// Structure is documented below.
-  final pulumi.Input<V2VmNetworkConfig>? networkConfig;
+  final pulumi.Input<V2VmNetworkConfig?>? networkConfig;
   /// Repeated network configurations for the TPU node. This field is used to specify multiple
   /// network configs for the TPU node.
   /// Structure is documented below.
-  final pulumi.Input<List<V2VmNetworkConfig>>? networkConfigs;
+  final pulumi.Input<List<V2VmNetworkConfig>?>? networkConfigs;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Runtime version for the TPU.
   final pulumi.Input<String> runtimeVersion;
   /// The scheduling options for this node.
   /// Structure is documented below.
-  final pulumi.Input<V2VmSchedulingConfig>? schedulingConfig;
+  final pulumi.Input<V2VmSchedulingConfig?>? schedulingConfig;
   /// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
   /// specified, the default compute service account will be used.
   /// Structure is documented below.
-  final pulumi.Input<V2VmServiceAccount>? serviceAccount;
+  final pulumi.Input<V2VmServiceAccount?>? serviceAccount;
   /// Shielded Instance options.
   /// Structure is documented below.
-  final pulumi.Input<V2VmShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<V2VmShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The GCP location for the TPU. If it is not provided, the provider zone is used.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [V2VmArgs].
   /// [acceleratorConfig] The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time

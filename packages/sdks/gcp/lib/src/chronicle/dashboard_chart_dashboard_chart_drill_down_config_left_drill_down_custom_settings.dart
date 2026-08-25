@@ -8,17 +8,17 @@ import 'dashboard_chart_dashboard_chart_drill_down_config_left_drill_down_custom
 class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettings {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLink>? externalLink;
+  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLink?>? externalLink;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilter>? filter;
+  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilter?>? filter;
   /// (Optional)
-  final pulumi.Input<String>? leftClickColumn;
+  final pulumi.Input<String?>? leftClickColumn;
   /// (Required)
   final pulumi.Input<bool> newTab;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQuery>? query;
+  final pulumi.Input<DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQuery?>? query;
 
   /// Creates a new [DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettings].
   /// [externalLink] A nested object resource.

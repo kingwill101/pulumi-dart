@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkerPoolTemplateContainerLivenessProbeTcpSocket {
   /// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [WorkerPoolTemplateContainerLivenessProbeTcpSocket].
   /// [port] Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -20,7 +20,7 @@ class WorkerPoolTemplateContainerLivenessProbeTcpSocket {
 
   factory WorkerPoolTemplateContainerLivenessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerLivenessProbeTcpSocket(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

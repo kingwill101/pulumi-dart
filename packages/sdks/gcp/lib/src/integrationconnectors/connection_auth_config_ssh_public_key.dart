@@ -6,13 +6,13 @@ import 'connection_auth_config_ssh_public_key_ssh_client_cert_pass.dart';
 
 class ConnectionAuthConfigSshPublicKey {
   /// Format of SSH Client cert.
-  final pulumi.Input<String>? certType;
+  final pulumi.Input<String?>? certType;
   /// SSH Client Cert. It should contain both public and private key.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigSshPublicKeySshClientCert>? sshClientCert;
+  final pulumi.Input<ConnectionAuthConfigSshPublicKeySshClientCert?>? sshClientCert;
   /// Password (passphrase) for ssh client certificate if it has one.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigSshPublicKeySshClientCertPass>? sshClientCertPass;
+  final pulumi.Input<ConnectionAuthConfigSshPublicKeySshClientCertPass?>? sshClientCertPass;
   /// The user account used to authenticate.
   final pulumi.Input<String> username;
 

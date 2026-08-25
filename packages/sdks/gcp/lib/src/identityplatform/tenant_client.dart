@@ -6,7 +6,7 @@ import 'tenant_client_permissions.dart';
 class TenantClient {
   /// Configuration related to restricting a user's ability to affect their account.
   /// Structure is documented below.
-  final pulumi.Input<TenantClientPermissions>? permissions;
+  final pulumi.Input<TenantClientPermissions?>? permissions;
 
   /// Creates a new [TenantClient].
   /// [permissions] Configuration related to restricting a user's ability to affect their account.

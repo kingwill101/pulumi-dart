@@ -6,7 +6,7 @@ import 'authz_policy_network_rule_to_operation.dart';
 class AuthzPolicyNetworkRuleTo {
   /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyNetworkRuleToOperation>>? operations;
+  final pulumi.Input<List<AuthzPolicyNetworkRuleToOperation>?>? operations;
 
   /// Creates a new [AuthzPolicyNetworkRuleTo].
   /// [operations] Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.

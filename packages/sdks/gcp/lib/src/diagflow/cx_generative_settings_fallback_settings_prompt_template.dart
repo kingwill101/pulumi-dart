@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxGenerativeSettingsFallbackSettingsPromptTemplate {
   /// Prompt name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// If the flag is true, the prompt is frozen and cannot be modified by users.
-  final pulumi.Input<bool>? frozen;
+  final pulumi.Input<bool?>? frozen;
   /// Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
-  final pulumi.Input<String>? promptText;
+  final pulumi.Input<String?>? promptText;
 
   /// Creates a new [CxGenerativeSettingsFallbackSettingsPromptTemplate].
   /// [displayName] Prompt name.

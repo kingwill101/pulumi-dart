@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securitycenter_instance_iam_policy_instance_iam_policy_args_doc}
 class InstanceIamPolicyArgs {
   /// The ID of the instance or a fully qualified identifier for the instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> policyData;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the Data Fusion instance.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [InstanceIamPolicyArgs].
   /// [name] The ID of the instance or a fully qualified identifier for the instance.

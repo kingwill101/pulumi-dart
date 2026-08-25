@@ -12,7 +12,7 @@ class FeedDetailsFoxItStixSettingsSsl {
   /// DEK-Info: DES-EDE3-CBC,F23074E02CF47304
   /// -----END RSA PRIVATE KEY-----
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? encodedPrivateKey;
+  final pulumi.Input<String?>? encodedPrivateKey;
   /// The encoded SSL certificate. The string should be an SSL certificate in
   /// PEM format, and should include the begin header and end footer lines. It
   /// may also include newlines.
@@ -20,7 +20,7 @@ class FeedDetailsFoxItStixSettingsSsl {
   /// -----BEGIN CERTIFICATE-----
   /// -----END CERTIFICATE-----
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? sslCertificate;
+  final pulumi.Input<String?>? sslCertificate;
 
   /// Creates a new [FeedDetailsFoxItStixSettingsSsl].
   /// [encodedPrivateKey] The encoded private key. The string should be a private key in PEM format,

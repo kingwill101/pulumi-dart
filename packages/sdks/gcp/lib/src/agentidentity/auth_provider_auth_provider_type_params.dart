@@ -8,17 +8,17 @@ import 'auth_provider_auth_provider_type_params_two_legged_oauth.dart';
 class AuthProviderAuthProviderTypeParams {
   /// Message describing ApiKeyParams object.
   /// Structure is documented below.
-  final pulumi.Input<AuthProviderAuthProviderTypeParamsApiKey>? apiKey;
+  final pulumi.Input<AuthProviderAuthProviderTypeParamsApiKey?>? apiKey;
   /// (Output)
   /// Message describing GeminiEnterpriseAuthProviderParams object.
   /// Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
-  final pulumi.Input<List<Map<String, dynamic>>>? geAuthProviders;
+  final pulumi.Input<List<Map<String, dynamic>>?>? geAuthProviders;
   /// Message describing ThreeLeggedOAuth object.
   /// Structure is documented below.
-  final pulumi.Input<AuthProviderAuthProviderTypeParamsThreeLeggedOauth>? threeLeggedOauth;
+  final pulumi.Input<AuthProviderAuthProviderTypeParamsThreeLeggedOauth?>? threeLeggedOauth;
   /// Message describing TwoLeggedOAuth object.
   /// Structure is documented below.
-  final pulumi.Input<AuthProviderAuthProviderTypeParamsTwoLeggedOauth>? twoLeggedOauth;
+  final pulumi.Input<AuthProviderAuthProviderTypeParamsTwoLeggedOauth?>? twoLeggedOauth;
 
   /// Creates a new [AuthProviderAuthProviderTypeParams].
   /// [apiKey] Message describing ApiKeyParams object.

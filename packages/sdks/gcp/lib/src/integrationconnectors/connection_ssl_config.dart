@@ -10,33 +10,33 @@ import 'connection_ssl_config_private_server_certificate.dart';
 class ConnectionSslConfig {
   /// Additional SSL related field values.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionSslConfigAdditionalVariable>>? additionalVariables;
+  final pulumi.Input<List<ConnectionSslConfigAdditionalVariable>?>? additionalVariables;
   /// Type of Client Cert (PEM/JKS/.. etc.)
   /// Possible values are: `PEM`.
-  final pulumi.Input<String>? clientCertType;
+  final pulumi.Input<String?>? clientCertType;
   /// Client Certificate
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSslConfigClientCertificate>? clientCertificate;
+  final pulumi.Input<ConnectionSslConfigClientCertificate?>? clientCertificate;
   /// Client Private Key
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSslConfigClientPrivateKey>? clientPrivateKey;
+  final pulumi.Input<ConnectionSslConfigClientPrivateKey?>? clientPrivateKey;
   /// Secret containing the passphrase protecting the Client Private Key
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSslConfigClientPrivateKeyPass>? clientPrivateKeyPass;
+  final pulumi.Input<ConnectionSslConfigClientPrivateKeyPass?>? clientPrivateKeyPass;
   /// Private Server Certificate. Needs to be specified if trust model is PRIVATE.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSslConfigPrivateServerCertificate>? privateServerCertificate;
+  final pulumi.Input<ConnectionSslConfigPrivateServerCertificate?>? privateServerCertificate;
   /// Type of Server Cert (PEM/JKS/.. etc.)
   /// Possible values are: `PEM`.
-  final pulumi.Input<String>? serverCertType;
+  final pulumi.Input<String?>? serverCertType;
   /// Enum for Trust Model
   /// Possible values are: `PUBLIC`, `PRIVATE`, `INSECURE`.
-  final pulumi.Input<String>? trustModel;
+  final pulumi.Input<String?>? trustModel;
   /// Enum for controlling the SSL Type (TLS/MTLS)
   /// Possible values are: `TLS`, `MTLS`.
   final pulumi.Input<String> type;
   /// Bool for enabling SSL
-  final pulumi.Input<bool>? useSsl;
+  final pulumi.Input<bool?>? useSsl;
 
   /// Creates a new [ConnectionSslConfig].
   /// [additionalVariables] Additional SSL related field values.

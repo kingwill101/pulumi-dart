@@ -6,7 +6,7 @@ class ClusterNetworkPolicy {
   /// Whether network policy is enabled on the cluster.
   final pulumi.Input<bool> enabled;
   /// The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
 
   /// Creates a new [ClusterNetworkPolicy].
   /// [enabled] Whether network policy is enabled on the cluster.

@@ -8,15 +8,15 @@ import 'prevention_discovery_config_target_cloud_sql_target_generation_cadence.d
 class PreventionDiscoveryConfigTargetCloudSqlTarget {
   /// In addition to matching the filter, these conditions must be true before a profile is generated.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetConditions>? conditions;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetConditions?>? conditions;
   /// Disable profiling for database resources that match this filter.
-  final pulumi.Input<Map<String, dynamic>>? disabled;
+  final pulumi.Input<Map<String, dynamic>?>? disabled;
   /// Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
   /// Structure is documented below.
   final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilter> filter;
   /// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence>? generationCadence;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence?>? generationCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTarget].
   /// [conditions] In addition to matching the filter, these conditions must be true before a profile is generated.

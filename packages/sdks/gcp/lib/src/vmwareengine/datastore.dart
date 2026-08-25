@@ -955,9 +955,9 @@ class Datastore extends pulumi.CustomResource {
           'gcp:vmwareengine/datastore:Datastore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    clusters = registerOutput<List<String>>('clusters');
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -975,11 +975,12 @@ class Datastore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatastoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Datastore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -993,7 +994,7 @@ class Datastore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    clusters = registerOutput<List<String>>('clusters');
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -1002,6 +1003,28 @@ class Datastore extends pulumi.CustomResource {
     nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreNfsDatastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Datastore] resource.
+  Datastore.reference(String urn)
+    : super(
+        'gcp:vmwareengine/datastore:Datastore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreNfsDatastore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

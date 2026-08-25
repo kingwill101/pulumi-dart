@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reservation_args.dart';
 import 'reservation_autoscale.dart';
+import 'reservation_replication_status.dart';
 import 'reservation_state.dart';
 
 /// A reservation is a mechanism used to guarantee BigQuery slots to users.
@@ -296,7 +297,7 @@ class Reservation extends pulumi.CustomResource {
   /// either not a DR reservation or the reservation is a DR secondary or that any replication
   /// operations on the reservation have succeeded.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicationStatuses;
+  late final pulumi.Output<List<ReservationReplicationStatus>> replicationStatuses;
   /// The reservation group that this reservation belongs to.
   late final pulumi.Output<String?> reservationGroup;
   /// (Optional, Beta)
@@ -355,23 +356,24 @@ class Reservation extends pulumi.CustomResource {
           'gcp:bigquery/reservation:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoscale = registerOutput<ReservationAutoscale?>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     concurrency = registerOutput<int?>('concurrency');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     edition = registerOutput<String>('edition');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     maxSlots = registerOutput<int?>('maxSlots');
     this.name = registerOutput<String>('name');
     originalPrimaryLocation = registerOutput<String>('originalPrimaryLocation');
     primaryLocation = registerOutput<String>('primaryLocation');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    replicationStatuses = registerOutput<List<Map<String, dynamic>>>('replicationStatuses');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replicationStatuses = registerOutput<List<ReservationReplicationStatus>>('replicationStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationReplicationStatus>(guardedValue, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>())); });
     reservationGroup = registerOutput<String?>('reservationGroup');
     scalingMode = registerOutput<String?>('scalingMode');
     secondaryLocation = registerOutput<String?>('secondaryLocation');
@@ -383,11 +385,12 @@ class Reservation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Reservation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -405,17 +408,48 @@ class Reservation extends pulumi.CustomResource {
     concurrency = registerOutput<int?>('concurrency');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     edition = registerOutput<String>('edition');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     maxSlots = registerOutput<int?>('maxSlots');
     this.name = registerOutput<String>('name');
     originalPrimaryLocation = registerOutput<String>('originalPrimaryLocation');
     primaryLocation = registerOutput<String>('primaryLocation');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    replicationStatuses = registerOutput<List<Map<String, dynamic>>>('replicationStatuses');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replicationStatuses = registerOutput<List<ReservationReplicationStatus>>('replicationStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationReplicationStatus>(guardedValue, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    reservationGroup = registerOutput<String?>('reservationGroup');
+    scalingMode = registerOutput<String?>('scalingMode');
+    secondaryLocation = registerOutput<String?>('secondaryLocation');
+    slotCapacity = registerOutput<int>('slotCapacity');
+  }
+
+  /// Creates a typed reference to an existing [Reservation] resource.
+  Reservation.reference(String urn)
+    : super(
+        'gcp:bigquery/reservation:Reservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    autoscale = registerOutput<ReservationAutoscale?>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    concurrency = registerOutput<int?>('concurrency');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    edition = registerOutput<String>('edition');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    maxSlots = registerOutput<int?>('maxSlots');
+    this.name = registerOutput<String>('name');
+    originalPrimaryLocation = registerOutput<String>('originalPrimaryLocation');
+    primaryLocation = registerOutput<String>('primaryLocation');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replicationStatuses = registerOutput<List<ReservationReplicationStatus>>('replicationStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationReplicationStatus>(guardedValue, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>())); });
     reservationGroup = registerOutput<String?>('reservationGroup');
     scalingMode = registerOutput<String?>('scalingMode');
     secondaryLocation = registerOutput<String?>('secondaryLocation');

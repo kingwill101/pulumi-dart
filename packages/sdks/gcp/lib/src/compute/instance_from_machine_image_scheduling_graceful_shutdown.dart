@@ -9,7 +9,7 @@ class InstanceFromMachineImageSchedulingGracefulShutdown {
   /// The time allotted for the instance to gracefully shut down.
   /// If the graceful shutdown isn't complete after this time, then the instance
   /// transitions to the STOPPING state.
-  final pulumi.Input<InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration>? maxDuration;
+  final pulumi.Input<InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration?>? maxDuration;
 
   /// Creates a new [InstanceFromMachineImageSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.

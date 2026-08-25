@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
   /// The state of enablement for the module at its level of the resource hierarchy.
   /// Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? moduleEnablementState;
+  final pulumi.Input<String?>? moduleEnablementState;
   /// The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
   final pulumi.Input<String> moduleName;
 

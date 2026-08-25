@@ -9,21 +9,21 @@ import 'authz_policy_http_rule_to_operation_path.dart';
 class AuthzPolicyHttpRuleToOperation {
   /// A list of headers to match against in http header.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleToOperationHeaderSet>? headerSet;
+  final pulumi.Input<AuthzPolicyHttpRuleToOperationHeaderSet?>? headerSet;
   /// A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
   /// Limited to 10 matches.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationHost>>? hosts;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationHost>?>? hosts;
   /// Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleToOperationMcp>? mcp;
+  final pulumi.Input<AuthzPolicyHttpRuleToOperationMcp?>? mcp;
   /// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
   /// Limited to 10 matches.
   /// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationPath>>? paths;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationPath>?>? paths;
 
   /// Creates a new [AuthzPolicyHttpRuleToOperation].
   /// [headerSet] A list of headers to match against in http header.

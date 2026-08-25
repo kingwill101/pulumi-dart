@@ -397,7 +397,7 @@ class Space extends pulumi.CustomResource {
           'gcp:apigee/space:Space',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -413,11 +413,12 @@ class Space extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Space._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -431,6 +432,24 @@ class Space extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    spaceId = registerOutput<String>('spaceId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Space] resource.
+  Space.reference(String urn)
+    : super(
+        'gcp:apigee/space:Space',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

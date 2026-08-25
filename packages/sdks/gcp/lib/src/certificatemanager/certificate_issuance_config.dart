@@ -630,20 +630,21 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
           'gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     certificateAuthorityConfig = registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>('certificateAuthorityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String>('lifetime');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotationWindowPercentage = registerOutput<int>('rotationWindowPercentage');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -653,11 +654,12 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateIssuanceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateIssuanceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -675,14 +677,40 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String>('lifetime');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    rotationWindowPercentage = registerOutput<int>('rotationWindowPercentage');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CertificateIssuanceConfig] resource.
+  CertificateIssuanceConfig.reference(String urn)
+    : super(
+        'gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    certificateAuthorityConfig = registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>('certificateAuthorityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifetime = registerOutput<String>('lifetime');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotationWindowPercentage = registerOutput<int>('rotationWindowPercentage');
     updateTime = registerOutput<String>('updateTime');
   }

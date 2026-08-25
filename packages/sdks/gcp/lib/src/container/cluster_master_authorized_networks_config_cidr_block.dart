@@ -7,7 +7,7 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock {
   /// Must be specified in CIDR notation.
   final pulumi.Input<String> cidrBlock;
   /// Field for users to identify CIDR blocks.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [ClusterMasterAuthorizedNetworksConfigCidrBlock].
   /// [cidrBlock] External network that can access Kubernetes master through HTTPS.

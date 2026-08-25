@@ -14,7 +14,7 @@ class GetMavenArtifactArgs {
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
   /// The ID of the project that owns the repository. If not provided, the provider-level project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the repository containing the Maven artifact.
   final pulumi.Input<String> repositoryId;
 

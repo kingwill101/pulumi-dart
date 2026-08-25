@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkPeeringRoutesConfig resources.
 class NetworkPeeringRoutesConfigState {
   /// Whether to export the custom routes to the peer network.
-  final pulumi.Input<bool>? exportCustomRoutes;
+  final pulumi.Input<bool?>? exportCustomRoutes;
   /// Whether subnet routes with public IP range are exported.
   /// IPv4 special-use ranges are always exported to peers and
   /// are not controlled by this field.
-  final pulumi.Input<bool>? exportSubnetRoutesWithPublicIp;
+  final pulumi.Input<bool?>? exportSubnetRoutesWithPublicIp;
   /// Whether to import the custom routes to the peer network.
-  final pulumi.Input<bool>? importCustomRoutes;
+  final pulumi.Input<bool?>? importCustomRoutes;
   /// Whether subnet routes with public IP range are imported.
   /// IPv4 special-use ranges are always imported from peers and
   /// are not controlled by this field.
-  final pulumi.Input<bool>? importSubnetRoutesWithPublicIp;
+  final pulumi.Input<bool?>? importSubnetRoutesWithPublicIp;
   /// The name of the primary network for the peering.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Name of the peering.
-  final pulumi.Input<String>? peering;
+  final pulumi.Input<String?>? peering;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [NetworkPeeringRoutesConfigState].
   /// [exportCustomRoutes] Whether to export the custom routes to the peer network.

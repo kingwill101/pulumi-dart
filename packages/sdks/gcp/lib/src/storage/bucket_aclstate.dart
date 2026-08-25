@@ -7,20 +7,20 @@ class BucketACLState {
   /// The name of the bucket it applies to.
   ///
   /// - - -
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Configure this ACL to be the default ACL.
-  final pulumi.Input<String>? defaultAcl;
+  final pulumi.Input<String?>? defaultAcl;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
-  final pulumi.Input<String>? predefinedAcl;
+  final pulumi.Input<String?>? predefinedAcl;
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
-  final pulumi.Input<List<String>>? roleEntities;
+  final pulumi.Input<List<String>?>? roleEntities;
 
   /// Creates a new [BucketACLState].
   /// [bucket] The name of the bucket it applies to.

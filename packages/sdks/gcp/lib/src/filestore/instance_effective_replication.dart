@@ -6,10 +6,10 @@ import 'instance_effective_replication_replica.dart';
 class InstanceEffectiveReplication {
   /// The replication role.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceEffectiveReplicationReplica>>? replicas;
+  final pulumi.Input<List<InstanceEffectiveReplicationReplica>?>? replicas;
   /// (Output)
   /// The replication role.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [InstanceEffectiveReplication].
   /// [replicas] The replication role.

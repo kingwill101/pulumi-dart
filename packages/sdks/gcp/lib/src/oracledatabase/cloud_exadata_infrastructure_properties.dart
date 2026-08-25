@@ -8,76 +8,76 @@ class CloudExadataInfrastructureProperties {
   /// (Output)
   /// The requested number of additional storage servers activated for the
   /// Exadata Infrastructure.
-  final pulumi.Input<int>? activatedStorageCount;
+  final pulumi.Input<int?>? activatedStorageCount;
   /// (Output)
   /// The requested number of additional storage servers for the Exadata
   /// Infrastructure.
-  final pulumi.Input<int>? additionalStorageCount;
+  final pulumi.Input<int?>? additionalStorageCount;
   /// (Output)
   /// The available storage can be allocated to the Exadata Infrastructure
   /// resource, in gigabytes (GB).
-  final pulumi.Input<int>? availableStorageSizeGb;
+  final pulumi.Input<int?>? availableStorageSizeGb;
   /// The number of compute servers for the Exadata Infrastructure.
-  final pulumi.Input<int>? computeCount;
+  final pulumi.Input<int?>? computeCount;
   /// (Output)
   /// The number of enabled CPU cores.
-  final pulumi.Input<int>? cpuCount;
+  final pulumi.Input<int?>? cpuCount;
   /// The list of customer contacts.
   /// Structure is documented below.
-  final pulumi.Input<List<CloudExadataInfrastructurePropertiesCustomerContact>>? customerContacts;
+  final pulumi.Input<List<CloudExadataInfrastructurePropertiesCustomerContact>?>? customerContacts;
   /// (Output)
   /// Size, in terabytes, of the DATA disk group.
-  final pulumi.Input<double>? dataStorageSizeTb;
+  final pulumi.Input<double?>? dataStorageSizeTb;
   /// (Output)
   /// The local node storage allocated in GBs.
-  final pulumi.Input<int>? dbNodeStorageSizeGb;
+  final pulumi.Input<int?>? dbNodeStorageSizeGb;
   /// (Output)
   /// The software version of the database servers (dom0) in the Exadata
   /// Infrastructure.
-  final pulumi.Input<String>? dbServerVersion;
+  final pulumi.Input<String?>? dbServerVersion;
   /// Maintenance window as defined by Oracle.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
   /// Structure is documented below.
-  final pulumi.Input<CloudExadataInfrastructurePropertiesMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<CloudExadataInfrastructurePropertiesMaintenanceWindow?>? maintenanceWindow;
   /// (Output)
   /// The total number of CPU cores available.
-  final pulumi.Input<int>? maxCpuCount;
+  final pulumi.Input<int?>? maxCpuCount;
   /// (Output)
   /// The total available DATA disk group size.
-  final pulumi.Input<double>? maxDataStorageTb;
+  final pulumi.Input<double?>? maxDataStorageTb;
   /// (Output)
   /// The total local node storage available in GBs.
-  final pulumi.Input<int>? maxDbNodeStorageSizeGb;
+  final pulumi.Input<int?>? maxDbNodeStorageSizeGb;
   /// (Output)
   /// The total memory available in GBs.
-  final pulumi.Input<int>? maxMemoryGb;
+  final pulumi.Input<int?>? maxMemoryGb;
   /// (Output)
   /// The memory allocated in GBs.
-  final pulumi.Input<int>? memorySizeGb;
+  final pulumi.Input<int?>? memorySizeGb;
   /// (Output)
   /// The monthly software version of the database servers (dom0)
   /// in the Exadata Infrastructure. Example: 20.1.15
-  final pulumi.Input<String>? monthlyDbServerVersion;
+  final pulumi.Input<String?>? monthlyDbServerVersion;
   /// (Output)
   /// The monthly software version of the storage servers (cells)
   /// in the Exadata Infrastructure. Example: 20.1.15
-  final pulumi.Input<String>? monthlyStorageServerVersion;
+  final pulumi.Input<String?>? monthlyStorageServerVersion;
   /// (Output)
   /// The OCID of the next maintenance run.
-  final pulumi.Input<String>? nextMaintenanceRunId;
+  final pulumi.Input<String?>? nextMaintenanceRunId;
   /// (Output)
   /// The time when the next maintenance run will occur.
-  final pulumi.Input<String>? nextMaintenanceRunTime;
+  final pulumi.Input<String?>? nextMaintenanceRunTime;
   /// (Output)
   /// The time when the next security maintenance run will occur.
-  final pulumi.Input<String>? nextSecurityMaintenanceRunTime;
+  final pulumi.Input<String?>? nextSecurityMaintenanceRunTime;
   /// (Output)
   /// Deep link to the OCI console to view this resource.
-  final pulumi.Input<String>? ociUrl;
+  final pulumi.Input<String?>? ociUrl;
   /// (Output)
   /// OCID of created infra.
   /// https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
-  final pulumi.Input<String>? ocid;
+  final pulumi.Input<String?>? ocid;
   /// The shape of the Exadata Infrastructure. The shape determines the
   /// amount of CPU, storage, and memory resources allocated to the instance.
   final pulumi.Input<String> shape;
@@ -92,16 +92,16 @@ class CloudExadataInfrastructureProperties {
   /// TERMINATED
   /// FAILED
   /// MAINTENANCE_IN_PROGRESS
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The number of Cloud Exadata storage servers for the Exadata Infrastructure.
-  final pulumi.Input<int>? storageCount;
+  final pulumi.Input<int?>? storageCount;
   /// (Output)
   /// The software version of the storage servers (cells) in the Exadata
   /// Infrastructure.
-  final pulumi.Input<String>? storageServerVersion;
+  final pulumi.Input<String?>? storageServerVersion;
   /// The total storage allocated to the Exadata Infrastructure
   /// resource, in gigabytes (GB).
-  final pulumi.Input<int>? totalStorageSizeGb;
+  final pulumi.Input<int?>? totalStorageSizeGb;
 
   /// Creates a new [CloudExadataInfrastructureProperties].
   /// [activatedStorageCount] (Output)
@@ -195,21 +195,21 @@ class CloudExadataInfrastructureProperties {
 
   factory CloudExadataInfrastructureProperties.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureProperties(
-      activatedStorageCount: (() { final guardedValue = map['activatedStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      additionalStorageCount: (() { final guardedValue = map['additionalStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      availableStorageSizeGb: (() { final guardedValue = map['availableStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      activatedStorageCount: (() { final guardedValue = map['activatedStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      additionalStorageCount: (() { final guardedValue = map['additionalStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      availableStorageSizeGb: (() { final guardedValue = map['availableStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customerContacts: (() { final guardedValue = map['customerContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudExadataInfrastructurePropertiesCustomerContact>(guardedValue, (value) => CloudExadataInfrastructurePropertiesCustomerContact.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dbServerVersion: (() { final guardedValue = map['dbServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudExadataInfrastructurePropertiesMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxCpuCount: (() { final guardedValue = map['maxCpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxDataStorageTb: (() { final guardedValue = map['maxDataStorageTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maxDbNodeStorageSizeGb: (() { final guardedValue = map['maxDbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxMemoryGb: (() { final guardedValue = map['maxMemoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxCpuCount: (() { final guardedValue = map['maxCpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDataStorageTb: (() { final guardedValue = map['maxDataStorageTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maxDbNodeStorageSizeGb: (() { final guardedValue = map['maxDbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxMemoryGb: (() { final guardedValue = map['maxMemoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       monthlyDbServerVersion: (() { final guardedValue = map['monthlyDbServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monthlyStorageServerVersion: (() { final guardedValue = map['monthlyStorageServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextMaintenanceRunId: (() { final guardedValue = map['nextMaintenanceRunId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -219,9 +219,9 @@ class CloudExadataInfrastructureProperties {
       ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shape: pulumi.Input.fromValue(map['shape'] as String),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageCount: (() { final guardedValue = map['storageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageCount: (() { final guardedValue = map['storageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageServerVersion: (() { final guardedValue = map['storageServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalStorageSizeGb: (() { final guardedValue = map['totalStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalStorageSizeGb: (() { final guardedValue = map['totalStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

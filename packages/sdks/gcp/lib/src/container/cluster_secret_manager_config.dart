@@ -7,7 +7,7 @@ class ClusterSecretManagerConfig {
   /// Enable the Secret Manager add-on for this cluster.
   final pulumi.Input<bool> enabled;
   /// config for secret manager auto rotation. Structure is documented below
-  final pulumi.Input<ClusterSecretManagerConfigRotationConfig>? rotationConfig;
+  final pulumi.Input<ClusterSecretManagerConfigRotationConfig?>? rotationConfig;
 
   /// Creates a new [ClusterSecretManagerConfig].
   /// [enabled] Enable the Secret Manager add-on for this cluster.

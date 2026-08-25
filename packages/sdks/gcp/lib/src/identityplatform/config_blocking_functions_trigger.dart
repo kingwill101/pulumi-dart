@@ -9,7 +9,7 @@ class ConfigBlockingFunctionsTrigger {
   final pulumi.Input<String> functionUri;
   /// (Output)
   /// When the trigger was changed.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ConfigBlockingFunctionsTrigger].
   /// [eventType] The identifier for this object. Format specified above.

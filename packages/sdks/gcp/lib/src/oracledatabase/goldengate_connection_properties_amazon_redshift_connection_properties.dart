@@ -6,21 +6,21 @@ class GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties {
   /// Connection URL.
   /// e.g.:
   /// 'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
-  final pulumi.Input<String>? connectionUrl;
+  final pulumi.Input<String?>? connectionUrl;
   /// Input only. The password Oracle Goldengate uses for Amazon Redshift connection
   /// in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for Amazon Redshift connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The technology type of AmazonS3Connection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect the associated system of
   /// the given technology.
   ///
   /// &lt;a name="nestedPropertiesAmazonS3ConnectionProperties"&gt;&lt;/a&gt;The `amazonS3ConnectionProperties` block supports:
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties].
   /// [connectionUrl] Connection URL.

@@ -1686,7 +1686,7 @@ class Slo extends pulumi.CustomResource {
           'gcp:monitoring/slo:Slo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     basicSli = registerOutput<SloBasicSli?>('basicSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloBasicSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     calendarPeriod = registerOutput<String?>('calendarPeriod');
@@ -1699,7 +1699,7 @@ class Slo extends pulumi.CustomResource {
     rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
     service = registerOutput<String>('service');
     sloId = registerOutput<String>('sloId');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloWindowsBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1708,11 +1708,12 @@ class Slo extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SloState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Slo._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1737,7 +1738,31 @@ class Slo extends pulumi.CustomResource {
     rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
     service = registerOutput<String>('service');
     sloId = registerOutput<String>('sloId');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloWindowsBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Slo] resource.
+  Slo.reference(String urn)
+    : super(
+        'gcp:monitoring/slo:Slo',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    basicSli = registerOutput<SloBasicSli?>('basicSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloBasicSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    calendarPeriod = registerOutput<String?>('calendarPeriod');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    goal = registerOutput<double>('goal');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestBasedSli = registerOutput<SloRequestBasedSli?>('requestBasedSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloRequestBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
+    service = registerOutput<String>('service');
+    sloId = registerOutput<String>('sloId');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloWindowsBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

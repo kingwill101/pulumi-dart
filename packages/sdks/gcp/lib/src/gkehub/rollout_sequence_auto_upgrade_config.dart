@@ -14,7 +14,7 @@ class RolloutSequenceAutoUpgradeConfig {
   /// end-of-support and outdated control plane patch enforcements).
   /// These policy enforcements cannot be disabled.
   /// Structure is documented below.
-  final pulumi.Input<RolloutSequenceAutoUpgradeConfigRolloutCreationScope>? rolloutCreationScope;
+  final pulumi.Input<RolloutSequenceAutoUpgradeConfigRolloutCreationScope?>? rolloutCreationScope;
 
   /// Creates a new [RolloutSequenceAutoUpgradeConfig].
   /// [rolloutCreationScope] Specifies the scope of automation for the creation of rollouts.

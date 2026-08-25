@@ -6,10 +6,10 @@ import 'v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile {
   /// A a file with this content.
   /// The size of the content is limited to 32KiB.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// A remote or local file.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile>? file;
+  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile?>? file;
   /// Required. The absolute path of the file within the VM.
   final pulumi.Input<String> path;
   /// Consists of three octal digits which represent, in
@@ -24,7 +24,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// read and execute: 5
   /// read and write: 6
   /// read only: 4
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
   /// Required. Desired state of the file.
   /// Possible values:
   /// DESIRED_STATE_UNSPECIFIED

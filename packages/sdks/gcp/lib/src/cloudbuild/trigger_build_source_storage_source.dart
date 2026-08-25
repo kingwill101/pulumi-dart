@@ -7,7 +7,7 @@ class TriggerBuildSourceStorageSource {
   final pulumi.Input<String> bucket;
   /// Google Cloud Storage generation for the object.
   /// If the generation is omitted, the latest generation will be used
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Google Cloud Storage object containing the source.
   /// This object must be a gzipped archive file (.tar.gz) containing source to build.
   final pulumi.Input<String> object_;

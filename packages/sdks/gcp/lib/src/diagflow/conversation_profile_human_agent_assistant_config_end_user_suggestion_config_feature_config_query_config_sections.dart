@@ -6,7 +6,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   /// The selected sections chosen to return when requesting a summary of a conversation
   /// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
   /// Each value may be one of: `SECTION_TYPE_UNSPECIFIED`, `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`.
-  final pulumi.Input<List<String>>? sectionTypes;
+  final pulumi.Input<List<String>?>? sectionTypes;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections].
   /// [sectionTypes] The selected sections chosen to return when requesting a summary of a conversation

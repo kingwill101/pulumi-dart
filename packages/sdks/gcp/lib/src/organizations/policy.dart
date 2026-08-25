@@ -652,7 +652,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:organizations/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     booleanPolicy = registerOutput<PolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
@@ -670,11 +670,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -688,6 +689,26 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    booleanPolicy = registerOutput<PolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    constraint = registerOutput<String>('constraint');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    listPolicy = registerOutput<PolicyListPolicy?>('listPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orgId = registerOutput<String>('orgId');
+    restorePolicy = registerOutput<PolicyRestorePolicy?>('restorePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'gcp:organizations/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     booleanPolicy = registerOutput<PolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
     deletionPolicy = registerOutput<String>('deletionPolicy');

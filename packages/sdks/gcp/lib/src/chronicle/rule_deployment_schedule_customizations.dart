@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleDeploymentScheduleCustomizations {
   /// Indicates whether to add additional delays and runs to rules to ensure
   /// enrichment completeness, with the trade-off of more late-arriving detections.
-  final pulumi.Input<bool>? ensureEnrichmentCompleteness;
+  final pulumi.Input<bool?>? ensureEnrichmentCompleteness;
   /// Delay the first rule execution run to account for late-arriving data.
-  final pulumi.Input<String>? lateArrivingDataAdjustment;
+  final pulumi.Input<String?>? lateArrivingDataAdjustment;
 
   /// Creates a new [RuleDeploymentScheduleCustomizations].
   /// [ensureEnrichmentCompleteness] Indicates whether to add additional delays and runs to rules to ensure

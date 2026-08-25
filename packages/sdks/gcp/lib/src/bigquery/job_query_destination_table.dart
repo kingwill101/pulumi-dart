@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobQueryDestinationTable {
   /// The ID of the dataset containing this table.
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
   /// The ID of the project containing this table.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
   final pulumi.Input<String> tableId;

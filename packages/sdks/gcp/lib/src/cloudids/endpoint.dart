@@ -351,7 +351,7 @@ class Endpoint extends pulumi.CustomResource {
           'gcp:cloudids/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -363,7 +363,7 @@ class Endpoint extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     severity = registerOutput<String>('severity');
-    threatExceptions = registerOutput<List<String>?>('threatExceptions');
+    threatExceptions = registerOutput<List<String>?>('threatExceptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -372,11 +372,12 @@ class Endpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Endpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -400,7 +401,30 @@ class Endpoint extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     severity = registerOutput<String>('severity');
-    threatExceptions = registerOutput<List<String>?>('threatExceptions');
+    threatExceptions = registerOutput<List<String>?>('threatExceptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Endpoint] resource.
+  Endpoint.reference(String urn)
+    : super(
+        'gcp:cloudids/endpoint:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    endpointForwardingRule = registerOutput<String>('endpointForwardingRule');
+    endpointIp = registerOutput<String>('endpointIp');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    severity = registerOutput<String>('severity');
+    threatExceptions = registerOutput<List<String>?>('threatExceptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

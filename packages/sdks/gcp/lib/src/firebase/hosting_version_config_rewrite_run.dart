@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HostingVersionConfigRewriteRun {
   /// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// User-defined ID of the Cloud Run service.
   final pulumi.Input<String> serviceId;
 

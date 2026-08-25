@@ -7,12 +7,12 @@ class CurationPluginInstanceAction {
   /// The action ID that is using the curation.
   /// This should map to one of the action IDs specified
   /// in action configs in the plugin.
-  final pulumi.Input<String>? actionId;
+  final pulumi.Input<String?>? actionId;
   /// (Output)
   /// Plugin instance that is using the curation.
   /// Format is
   /// `projects/{project}/locations/{locati on}/plugins/{plugin}/instances/{instance}`
-  final pulumi.Input<String>? pluginInstance;
+  final pulumi.Input<String?>? pluginInstance;
 
   /// Creates a new [CurationPluginInstanceAction].
   /// [actionId] (Output)

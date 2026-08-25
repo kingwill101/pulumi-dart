@@ -13,23 +13,23 @@ class ApiHubInstanceArgs {
   /// system generated id will be used.
   /// This value should be 4-40 characters, and valid characters
   /// are `/a-z[0-9]-_/`.
-  final pulumi.Input<String>? apiHubInstanceId;
+  final pulumi.Input<String?>? apiHubInstanceId;
   /// Available configurations to provision an ApiHub Instance.
   /// Structure is documented below.
   final pulumi.Input<ApiHubInstanceConfig> config;
   /// Optional. Description of the ApiHub instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Instance labels to represent user-provided metadata.
   /// Refer to cloud documentation on labels for more details.
   /// https://cloud.google.com/compute/docs/labeling-resources
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ApiHubInstanceArgs].
   /// [apiHubInstanceId] Optional. Identifier to assign to the Api Hub instance. Must be unique within

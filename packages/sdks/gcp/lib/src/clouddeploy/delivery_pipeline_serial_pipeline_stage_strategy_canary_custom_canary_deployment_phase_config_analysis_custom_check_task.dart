@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_de
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask {
   /// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer>? container;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainer?>? container;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTask].
   /// [container] Optional. This task is represented by a container that is executed in the Cloud Build execution environment.

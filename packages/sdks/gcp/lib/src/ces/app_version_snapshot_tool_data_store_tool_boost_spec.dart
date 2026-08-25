@@ -8,11 +8,11 @@ class AppVersionSnapshotToolDataStoreToolBoostSpec {
   /// The Data Store where the boosting configuration is applied. Full resource
   /// name of DataStore, such as
   /// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
-  final pulumi.Input<List<String>>? dataStores;
+  final pulumi.Input<List<String>?>? dataStores;
   /// (Output)
   /// A list of boosting specifications.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>>? specs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>?>? specs;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpec].
   /// [dataStores] (Output)

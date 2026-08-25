@@ -6,56 +6,56 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UllMirroringCollectorState {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The engine resource to which this collector points to, for example:
   /// `projects/123456789/locations/us-south1-d/ullMirroringEngines/my-engine`.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// The regional load balancer which the mirrored traffic should be forwarded
   /// to, for example:
   /// `projects/123456789/regions/us-south1/forwardingRules/my-fr`.
-  final pulumi.Input<String>? forwardingRule;
+  final pulumi.Input<String?>? forwardingRule;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The cloud location of the collector, e.g. `us-south1-d` or `us-south1-e`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of this collector, for example:
   /// `projects/123456789/locations/us-south1-d/ullMirroringCollectors/my-collector`.
   /// See https://google.aip.dev/122 for more details.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The current state of the resource does not match the user's intended state,
   /// and the system is working to reconcile them. This is part of the normal
   /// operation. See https://google.aip.dev/128.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// The current state of the collector.
   /// See https://google.aip.dev/216.
   /// Possible values:
   /// ACTIVE
   /// CREATING
   /// DELETING
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ID to use for the new collector, which will become the final
   /// component of the collector's resource name.
-  final pulumi.Input<String>? ullMirroringCollectorId;
+  final pulumi.Input<String?>? ullMirroringCollectorId;
   /// The timestamp when the resource was most recently updated.
   /// See https://google.aip.dev/148#timestamps.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [UllMirroringCollectorState].
   /// [createTime] The timestamp when the resource was created.

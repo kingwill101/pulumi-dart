@@ -58,7 +58,7 @@ class Flowhook extends pulumi.CustomResource {
           'gcp:apigee/flowhook:Flowhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     continueOnError = registerOutput<bool?>('continueOnError');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -74,11 +74,12 @@ class Flowhook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlowhookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Flowhook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -92,6 +93,24 @@ class Flowhook extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    continueOnError = registerOutput<bool?>('continueOnError');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    environment = registerOutput<String>('environment');
+    flowHookPoint = registerOutput<String>('flowHookPoint');
+    orgId = registerOutput<String>('orgId');
+    sharedflow = registerOutput<String>('sharedflow');
+  }
+
+  /// Creates a typed reference to an existing [Flowhook] resource.
+  Flowhook.reference(String urn)
+    : super(
+        'gcp:apigee/flowhook:Flowhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     continueOnError = registerOutput<bool?>('continueOnError');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_node_pool_args.dart';
 import 'bare_metal_node_pool_node_pool_config.dart';
 import 'bare_metal_node_pool_state.dart';
+import 'bare_metal_node_pool_status.dart';
 
 /// A Google Bare Metal Node Pool.
 ///
@@ -1540,7 +1541,7 @@ class BareMetalNodePool extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Specifies detailed node pool status.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<BareMetalNodePoolStatus>> statuses;
   /// The unique identifier of the Bare Metal Node Pool.
   late final pulumi.Output<String> uid;
   /// The time the cluster was last updated, in RFC3339 text format.
@@ -1558,15 +1559,15 @@ class BareMetalNodePool extends pulumi.CustomResource {
           'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bareMetalCluster = registerOutput<String>('bareMetalCluster');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -1574,7 +1575,7 @@ class BareMetalNodePool extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<BareMetalNodePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalNodePoolStatus>(guardedValue, (value) => BareMetalNodePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -1584,11 +1585,12 @@ class BareMetalNodePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BareMetalNodePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BareMetalNodePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1602,13 +1604,13 @@ class BareMetalNodePool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bareMetalCluster = registerOutput<String>('bareMetalCluster');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -1616,7 +1618,35 @@ class BareMetalNodePool extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<BareMetalNodePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalNodePoolStatus>(guardedValue, (value) => BareMetalNodePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BareMetalNodePool] resource.
+  BareMetalNodePool.reference(String urn)
+    : super(
+        'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    bareMetalCluster = registerOutput<String>('bareMetalCluster');
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodePoolConfig = registerOutput<BareMetalNodePoolNodePoolConfig>('nodePoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalNodePoolNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    statuses = registerOutput<List<BareMetalNodePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalNodePoolStatus>(guardedValue, (value) => BareMetalNodePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

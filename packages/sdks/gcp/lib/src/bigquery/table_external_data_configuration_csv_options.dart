@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableExternalDataConfigurationCsvOptions {
   /// Indicates if BigQuery should accept rows
   /// that are missing trailing optional columns.
-  final pulumi.Input<bool>? allowJaggedRows;
+  final pulumi.Input<bool?>? allowJaggedRows;
   /// Indicates if BigQuery should allow
   /// quoted data sections that contain newline characters in a CSV file.
   /// The default value is false.
-  final pulumi.Input<bool>? allowQuotedNewlines;
+  final pulumi.Input<bool?>? allowQuotedNewlines;
   /// The character encoding of the data. The supported
   /// values are UTF-8 or ISO-8859-1.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// The separator for fields in a CSV file.
-  final pulumi.Input<String>? fieldDelimiter;
+  final pulumi.Input<String?>? fieldDelimiter;
   /// The value that is used to quote data sections in a
   /// CSV file. If your data does not contain quoted sections, set the
   /// property value to an empty string. If your data contains quoted newline
@@ -25,14 +25,14 @@ class TableExternalDataConfigurationCsvOptions {
   final pulumi.Input<String> quote;
   /// The number of rows at the top of a CSV
   /// file that BigQuery will skip when reading the data.
-  final pulumi.Input<int>? skipLeadingRows;
+  final pulumi.Input<int?>? skipLeadingRows;
   /// Specifies how source columns are matched
   /// to the table schema. Valid values are `POSITION` (columns matched by position,
   /// assuming same ordering as the schema) or `NAME` (columns matched by name,
   /// reads the header row and reorders columns to align with schema field names).
   /// If not set, a default is chosen based on how the schema is provided: when
   /// autodetect is used, columns are matched by name; otherwise, by position.
-  final pulumi.Input<String>? sourceColumnMatch;
+  final pulumi.Input<String?>? sourceColumnMatch;
 
   /// Creates a new [TableExternalDataConfigurationCsvOptions].
   /// [allowJaggedRows] Indicates if BigQuery should accept rows
@@ -71,7 +71,7 @@ class TableExternalDataConfigurationCsvOptions {
       encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fieldDelimiter: (() { final guardedValue = map['fieldDelimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       quote: pulumi.Input.fromValue(map['quote'] as String),
-      skipLeadingRows: (() { final guardedValue = map['skipLeadingRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      skipLeadingRows: (() { final guardedValue = map['skipLeadingRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceColumnMatch: (() { final guardedValue = map['sourceColumnMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

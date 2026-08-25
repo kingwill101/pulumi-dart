@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsMimecastMailV2SettingsAuthCredentials {
   /// Client ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client Secret.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
 
   /// Creates a new [FeedDetailsMimecastMailV2SettingsAuthCredentials].
   /// [clientId] Client ID.

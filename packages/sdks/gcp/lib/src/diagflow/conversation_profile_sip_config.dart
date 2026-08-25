@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileSipConfig {
   /// Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.
-  final pulumi.Input<bool>? allowVirtualAgentInteraction;
+  final pulumi.Input<bool?>? allowVirtualAgentInteraction;
   /// List of inbound call leg headers to be copied to outbound call legs created later.
-  final pulumi.Input<List<String>>? copyInboundCallLegHeaders;
+  final pulumi.Input<List<String>?>? copyInboundCallLegHeaders;
   /// Asks Dialogflow Telephony to create the conversation provided in the SIP header on the fly when the call comes in.
-  final pulumi.Input<bool>? createConversationOnTheFly;
+  final pulumi.Input<bool?>? createConversationOnTheFly;
   /// Ignores any media direction in the reINVITE SDP offer. Reuse the previous media direction.
-  final pulumi.Input<bool>? ignoreReinviteMediaDirection;
+  final pulumi.Input<bool?>? ignoreReinviteMediaDirection;
   /// Starts the conversation with inactive SDP directives
-  final pulumi.Input<bool>? inactiveStart;
+  final pulumi.Input<bool?>? inactiveStart;
   /// Keeps the conversation running even if the call is disconnected.
-  final pulumi.Input<bool>? keepConversationRunning;
+  final pulumi.Input<bool?>? keepConversationRunning;
   /// Max duration for audio recording. Overrides the default value of 15 min. Max value is 8 hours.
-  final pulumi.Input<String>? maxAudioRecordingDuration;
+  final pulumi.Input<String?>? maxAudioRecordingDuration;
 
   /// Creates a new [ConversationProfileSipConfig].
   /// [allowVirtualAgentInteraction] Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.

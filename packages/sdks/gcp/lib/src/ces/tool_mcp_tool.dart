@@ -9,32 +9,32 @@ class ToolMcpTool {
   /// (Output)
   /// Authentication information required for API calls.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolApiAuthentication>>? apiAuthentications;
+  final pulumi.Input<List<ToolMcpToolApiAuthentication>?>? apiAuthentications;
   /// (Output)
   /// The custom headers to send in the request to the MCP server. The values must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be set in the session variables.
-  final pulumi.Input<Map<String, String>>? customHeaders;
+  final pulumi.Input<Map<String, String>?>? customHeaders;
   /// (Output)
   /// The description of the system tool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// The schema of the input arguments of the MCP tool. Represents a JSON object.
-  final pulumi.Input<String>? inputSchema;
+  final pulumi.Input<String?>? inputSchema;
   /// (Output)
   /// The name of the system tool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The name override of the MCP tool. This is populated if the name was overridden by a Toolset override.
-  final pulumi.Input<String>? nameOverride;
+  final pulumi.Input<String?>? nameOverride;
   /// (Output)
   /// The schema of the output arguments of the MCP tool. Represents a JSON object.
-  final pulumi.Input<String>? outputSchema;
+  final pulumi.Input<String?>? outputSchema;
   /// (Output)
   /// The server address of the MCP server, e.g., "https://example.com/mcp/". If the server is built with the MCP SDK, the url should be suffixed with "/mcp/". Only Streamable HTTP transport based servers are supported. This is the same as the serverAddress in the McpToolset.
-  final pulumi.Input<String>? serverAddress;
+  final pulumi.Input<String?>? serverAddress;
   /// (Output)
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolServiceDirectoryConfig>>? serviceDirectoryConfigs;
+  final pulumi.Input<List<ToolMcpToolServiceDirectoryConfig>?>? serviceDirectoryConfigs;
   /// (Output)
   /// The state of the MCP tool.
   /// Possible values:
@@ -42,11 +42,11 @@ class ToolMcpTool {
   /// ACTIVE
   /// INACTIVE
   /// STALE
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// The TLS configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolTlsConfig>>? tlsConfigs;
+  final pulumi.Input<List<ToolMcpToolTlsConfig>?>? tlsConfigs;
 
   /// Creates a new [ToolMcpTool].
   /// [apiAuthentications] (Output)

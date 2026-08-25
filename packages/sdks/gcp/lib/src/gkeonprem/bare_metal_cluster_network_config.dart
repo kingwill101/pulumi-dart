@@ -10,16 +10,16 @@ class BareMetalClusterNetworkConfig {
   /// Load Balancing with BGP or the egress NAT gateway.
   /// Setting configuration for advanced networking features will automatically
   /// set this flag.
-  final pulumi.Input<bool>? advancedNetworking;
+  final pulumi.Input<bool?>? advancedNetworking;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterNetworkConfigIslandModeCidr>? islandModeCidr;
+  final pulumi.Input<BareMetalClusterNetworkConfigIslandModeCidr?>? islandModeCidr;
   /// Configuration for multiple network interfaces.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig>? multipleNetworkInterfacesConfig;
+  final pulumi.Input<BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig?>? multipleNetworkInterfacesConfig;
   /// Configuration for SR-IOV.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterNetworkConfigSrIovConfig>? srIovConfig;
+  final pulumi.Input<BareMetalClusterNetworkConfigSrIovConfig?>? srIovConfig;
 
   /// Creates a new [BareMetalClusterNetworkConfig].
   /// [advancedNetworking] Enables the use of advanced Anthos networking features, such as Bundled

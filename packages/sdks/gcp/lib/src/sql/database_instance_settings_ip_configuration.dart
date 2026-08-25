@@ -6,32 +6,32 @@ import 'database_instance_settings_ip_configuration_psc_config.dart';
 
 class DatabaseInstanceSettingsIpConfiguration {
   /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
-  final pulumi.Input<String>? allocatedIpRange;
-  final pulumi.Input<List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>>? authorizedNetworks;
+  final pulumi.Input<String?>? allocatedIpRange;
+  final pulumi.Input<List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>?>? authorizedNetworks;
   /// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
-  final pulumi.Input<List<String>>? customSubjectAlternativeNames;
+  final pulumi.Input<List<String>?>? customSubjectAlternativeNames;
   /// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
-  final pulumi.Input<bool>? enablePrivatePathForGoogleCloudServices;
+  final pulumi.Input<bool?>? enablePrivatePathForGoogleCloudServices;
   /// Whether this Cloud SQL instance should be assigned
   /// a public IPV4 address. At least `ipv4Enabled` must be enabled or a
   /// `privateNetwork` must be configured.
-  final pulumi.Input<bool>? ipv4Enabled;
+  final pulumi.Input<bool?>? ipv4Enabled;
   /// The VPC network from which the Cloud SQL
   /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
   /// Specifying a network enables private IP.
   /// At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
   /// This setting can be updated, but it cannot be removed after it is set.
-  final pulumi.Input<String>? privateNetwork;
+  final pulumi.Input<String?>? privateNetwork;
   /// PSC settings for a Cloud SQL instance.
-  final pulumi.Input<List<DatabaseInstanceSettingsIpConfigurationPscConfig>>? pscConfigs;
+  final pulumi.Input<List<DatabaseInstanceSettingsIpConfigurationPscConfig>?>? pscConfigs;
   /// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA`, `GOOGLE_MANAGED_CAS_CA`, and `CUSTOMER_MANAGED_CAS_CA`.
-  final pulumi.Input<String>? serverCaMode;
+  final pulumi.Input<String?>? serverCaMode;
   /// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
-  final pulumi.Input<String>? serverCaPool;
+  final pulumi.Input<String?>? serverCaPool;
   /// Controls the automatic server certificate rotation feature. Supported values are `NO_AUTOMATIC_ROTATION`and `AUTOMATIC_ROTATION_DURING_MAINTENANCE`. `AUTOMATIC_ROTATION_DURING_MAINTENANCE` can only be set if `serverCaMode` is either `GOOGLE_MANAGED_CAS_CA` or `CUSTOMER_MANAGED_CAS_CA`. See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
-  final pulumi.Input<String>? serverCertificateRotationMode;
+  final pulumi.Input<String?>? serverCertificateRotationMode;
   /// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
-  final pulumi.Input<String>? sslMode;
+  final pulumi.Input<String?>? sslMode;
 
   /// Creates a new [DatabaseInstanceSettingsIpConfiguration].
   /// [allocatedIpRange] The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.

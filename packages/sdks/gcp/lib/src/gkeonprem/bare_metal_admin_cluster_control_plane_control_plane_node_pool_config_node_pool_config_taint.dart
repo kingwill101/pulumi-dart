@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
   /// Available taint effects.
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// (Optional)
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// (Optional)
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint].
   /// [effect] Available taint effects.

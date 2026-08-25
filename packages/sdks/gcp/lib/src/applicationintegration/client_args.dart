@@ -10,26 +10,26 @@ import 'client_cloud_kms_config.dart';
 class ClientArgs {
   /// Cloud KMS config for AuthModule to encrypt/decrypt credentials.
   /// Structure is documented below.
-  final pulumi.Input<ClientCloudKmsConfig>? cloudKmsConfig;
+  final pulumi.Input<ClientCloudKmsConfig?>? cloudKmsConfig;
   /// Indicates if sample integrations should be created along with provisioning.
-  final pulumi.Input<bool>? createSampleIntegrations;
+  final pulumi.Input<bool?>? createSampleIntegrations;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Location in which client needs to be provisioned.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// (Optional, Deprecated)
   /// User input run-as service account, if empty, will bring up a new default service account.
   ///
   /// &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-  final pulumi.Input<String>? runAsServiceAccount;
+  final pulumi.Input<String?>? runAsServiceAccount;
 
   /// Creates a new [ClientArgs].
   /// [cloudKmsConfig] Cloud KMS config for AuthModule to encrypt/decrypt credentials.

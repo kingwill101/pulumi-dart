@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig {
   /// Optional. Defines whether the instance should have confidential compute enabled.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Optional. Defines whether the instance should have confidential compute enabled.

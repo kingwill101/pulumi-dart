@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentConfigNodeConfigTrafficRoutingConfig {
   /// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
-  final pulumi.Input<String>? cloudRunFunctionsRouting;
+  final pulumi.Input<String?>? cloudRunFunctionsRouting;
 
   /// Creates a new [EnvironmentConfigNodeConfigTrafficRoutingConfig].
   /// [cloudRunFunctionsRouting] Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]

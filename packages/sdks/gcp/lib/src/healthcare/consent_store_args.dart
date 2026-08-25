@@ -12,16 +12,16 @@ class ConsentStoreArgs {
   final pulumi.Input<String> dataset;
   /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? defaultConsentTtl;
+  final pulumi.Input<String?>? defaultConsentTtl;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
-  final pulumi.Input<bool>? enableConsentCreateOnUpdate;
+  final pulumi.Input<bool?>? enableConsentCreateOnUpdate;
   /// User-supplied key-value pairs used to organize Consent stores.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
   /// conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}`
@@ -33,10 +33,10 @@ class ConsentStoreArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of this ConsentStore, for example:
   /// "consent1"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ConsentStoreArgs].
   /// [dataset] Identifies the dataset addressed by this request. Must be in the format

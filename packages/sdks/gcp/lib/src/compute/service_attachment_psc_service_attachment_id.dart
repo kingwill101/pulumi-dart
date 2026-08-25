@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAttachmentPscServiceAttachmentId {
   /// (Output)
   /// The high 64 bits of the PSC service attachment ID.
-  final pulumi.Input<String>? high;
+  final pulumi.Input<String?>? high;
   /// (Output)
   /// The low 64 bits of the PSC service attachment ID.
-  final pulumi.Input<String>? low;
+  final pulumi.Input<String?>? low;
 
   /// Creates a new [ServiceAttachmentPscServiceAttachmentId].
   /// [high] (Output)

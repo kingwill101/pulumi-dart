@@ -75,7 +75,7 @@ class GetInstanceGroupsInstanceGroup {
       network: pulumi.Input.fromValue(map['network'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }

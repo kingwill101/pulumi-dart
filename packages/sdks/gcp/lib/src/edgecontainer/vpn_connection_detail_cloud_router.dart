@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionDetailCloudRouter {
   /// The resource name of VPN connection
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VpnConnectionDetailCloudRouter].
   /// [name] The resource name of VPN connection

@@ -1266,18 +1266,19 @@ class VPNTunnel extends pulumi.CustomResource {
           'gcp:compute/vPNTunnel:VPNTunnel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels', 'sharedSecret', 'sharedSecretWo'],
         ) {
     cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     detailedStatus = registerOutput<String>('detailedStatus');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ikeVersion = registerOutput<int?>('ikeVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
-    localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<VPNTunnelParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerExternalGateway = registerOutput<String?>('peerExternalGateway');
@@ -1285,14 +1286,14 @@ class VPNTunnel extends pulumi.CustomResource {
     peerGcpGateway = registerOutput<String?>('peerGcpGateway');
     peerIp = registerOutput<String>('peerIp');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
-    remoteTrafficSelectors = registerOutput<List<String>>('remoteTrafficSelectors');
+    remoteTrafficSelectors = registerOutput<List<String>>('remoteTrafficSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     router = registerOutput<String?>('router');
     selfLink = registerOutput<String>('selfLink');
-    sharedSecret = registerOutput<String?>('sharedSecret');
+    sharedSecret = registerOutput<String?>('sharedSecret', isSecret: true);
     sharedSecretHash = registerOutput<String>('sharedSecretHash');
-    sharedSecretWo = registerOutput<String?>('sharedSecretWo');
+    sharedSecretWo = registerOutput<String?>('sharedSecretWo', isSecret: true);
     sharedSecretWoVersion = registerOutput<String?>('sharedSecretWoVersion');
     targetVpnGateway = registerOutput<String?>('targetVpnGateway');
     tunnelId = registerOutput<String>('tunnelId');
@@ -1305,11 +1306,12 @@ class VPNTunnel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VPNTunnelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VPNTunnel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1328,11 +1330,11 @@ class VPNTunnel extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     detailedStatus = registerOutput<String>('detailedStatus');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ikeVersion = registerOutput<int?>('ikeVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
-    localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<VPNTunnelParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerExternalGateway = registerOutput<String?>('peerExternalGateway');
@@ -1340,14 +1342,56 @@ class VPNTunnel extends pulumi.CustomResource {
     peerGcpGateway = registerOutput<String?>('peerGcpGateway');
     peerIp = registerOutput<String>('peerIp');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
-    remoteTrafficSelectors = registerOutput<List<String>>('remoteTrafficSelectors');
+    remoteTrafficSelectors = registerOutput<List<String>>('remoteTrafficSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     router = registerOutput<String?>('router');
     selfLink = registerOutput<String>('selfLink');
-    sharedSecret = registerOutput<String?>('sharedSecret');
+    sharedSecret = registerOutput<String?>('sharedSecret', isSecret: true);
     sharedSecretHash = registerOutput<String>('sharedSecretHash');
-    sharedSecretWo = registerOutput<String?>('sharedSecretWo');
+    sharedSecretWo = registerOutput<String?>('sharedSecretWo', isSecret: true);
+    sharedSecretWoVersion = registerOutput<String?>('sharedSecretWoVersion');
+    targetVpnGateway = registerOutput<String?>('targetVpnGateway');
+    tunnelId = registerOutput<String>('tunnelId');
+    vpnGateway = registerOutput<String?>('vpnGateway');
+    vpnGatewayInterface = registerOutput<int?>('vpnGatewayInterface');
+  }
+
+  /// Creates a typed reference to an existing [VPNTunnel] resource.
+  VPNTunnel.reference(String urn)
+    : super(
+        'gcp:compute/vPNTunnel:VPNTunnel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels', 'sharedSecret', 'sharedSecretWo'],
+        isResourceReference: true,
+      ) {
+    cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ikeVersion = registerOutput<int?>('ikeVersion');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    localTrafficSelectors = registerOutput<List<String>>('localTrafficSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<VPNTunnelParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peerExternalGateway = registerOutput<String?>('peerExternalGateway');
+    peerExternalGatewayInterface = registerOutput<int?>('peerExternalGatewayInterface');
+    peerGcpGateway = registerOutput<String?>('peerGcpGateway');
+    peerIp = registerOutput<String>('peerIp');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    remoteTrafficSelectors = registerOutput<List<String>>('remoteTrafficSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    router = registerOutput<String?>('router');
+    selfLink = registerOutput<String>('selfLink');
+    sharedSecret = registerOutput<String?>('sharedSecret', isSecret: true);
+    sharedSecretHash = registerOutput<String>('sharedSecretHash');
+    sharedSecretWo = registerOutput<String?>('sharedSecretWo', isSecret: true);
     sharedSecretWoVersion = registerOutput<String?>('sharedSecretWoVersion');
     targetVpnGateway = registerOutput<String?>('targetVpnGateway');
     tunnelId = registerOutput<String>('tunnelId');

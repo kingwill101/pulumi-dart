@@ -7,12 +7,12 @@ import 'posture_policy_set_policy_constraint.dart';
 class PosturePolicySetPolicy {
   /// Mapping for policy to security standards and controls.
   /// Structure is documented below.
-  final pulumi.Input<List<PosturePolicySetPolicyComplianceStandard>>? complianceStandards;
+  final pulumi.Input<List<PosturePolicySetPolicyComplianceStandard>?>? complianceStandards;
   /// Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
   /// Structure is documented below.
   final pulumi.Input<PosturePolicySetPolicyConstraint> constraint;
   /// Description of the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the policy.
   final pulumi.Input<String> policyId;
 

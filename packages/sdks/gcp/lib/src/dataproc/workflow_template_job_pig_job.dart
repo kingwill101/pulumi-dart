@@ -6,19 +6,19 @@ import 'workflow_template_job_pig_job_query_list.dart';
 
 class WorkflowTemplateJobPigJob {
   /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-  final pulumi.Input<bool>? continueOnFailure;
+  final pulumi.Input<bool?>? continueOnFailure;
   /// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
-  final pulumi.Input<List<String>>? jarFileUris;
+  final pulumi.Input<List<String>?>? jarFileUris;
   /// The runtime log config for job execution.
-  final pulumi.Input<WorkflowTemplateJobPigJobLoggingConfig>? loggingConfig;
+  final pulumi.Input<WorkflowTemplateJobPigJobLoggingConfig?>? loggingConfig;
   /// A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The HCFS URI of the script that contains the Pig queries.
-  final pulumi.Input<String>? queryFileUri;
+  final pulumi.Input<String?>? queryFileUri;
   /// A list of queries.
-  final pulumi.Input<WorkflowTemplateJobPigJobQueryList>? queryList;
+  final pulumi.Input<WorkflowTemplateJobPigJobQueryList?>? queryList;
   /// Mapping of query variable names to values (equivalent to the Pig command: `name=`).
-  final pulumi.Input<Map<String, String>>? scriptVariables;
+  final pulumi.Input<Map<String, String>?>? scriptVariables;
 
   /// Creates a new [WorkflowTemplateJobPigJob].
   /// [continueOnFailure] Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.

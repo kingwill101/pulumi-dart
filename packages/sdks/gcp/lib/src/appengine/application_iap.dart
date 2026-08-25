@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationIap {
   /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
   /// (default is false)
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// OAuth2 client ID to use for the authentication flow.
   final pulumi.Input<String> oauth2ClientId;
   /// OAuth2 client secret to use for the authentication flow.
   /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
   final pulumi.Input<String> oauth2ClientSecret;
   /// Hex-encoded SHA-256 hash of the client secret.
-  final pulumi.Input<String>? oauth2ClientSecretSha256;
+  final pulumi.Input<String?>? oauth2ClientSecretSha256;
 
   /// Creates a new [ApplicationIap].
   /// [enabled] (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.

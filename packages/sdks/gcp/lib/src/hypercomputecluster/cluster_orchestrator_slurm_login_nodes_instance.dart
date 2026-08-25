@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterOrchestratorSlurmLoginNodesInstance {
   /// Name of the VM instance, in the format
   /// 'projects/{project}/zones/{zone}/instances/{instance}'.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
 
   /// Creates a new [ClusterOrchestratorSlurmLoginNodesInstance].
   /// [instance] Name of the VM instance, in the format

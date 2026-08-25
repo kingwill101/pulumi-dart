@@ -5,16 +5,16 @@ import 'patch_deployment_patch_config_pre_step_windows_exec_step_config_gcs_obje
 
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
   /// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
-  final pulumi.Input<List<int>>? allowedSuccessCodes;
+  final pulumi.Input<List<int>?>? allowedSuccessCodes;
   /// A Cloud Storage object containing the executable.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject>? gcsObject;
+  final pulumi.Input<PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject?>? gcsObject;
   /// The script interpreter to use to run the script. If no interpreter is specified the script will
   /// be executed directly, which will likely only succeed for scripts with shebang lines.
   /// Possible values are: `SHELL`, `POWERSHELL`.
-  final pulumi.Input<String>? interpreter;
+  final pulumi.Input<String?>? interpreter;
   /// An absolute path to the executable on the VM.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
 
   /// Creates a new [PatchDeploymentPatchConfigPreStepWindowsExecStepConfig].
   /// [allowedSuccessCodes] Defaults to [0]. A list of possible return values that the execution can return to indicate a success.

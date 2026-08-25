@@ -9,30 +9,30 @@ import 'cluster_node_pool_node_config_linux_node_config_swap_config.dart';
 
 class ClusterNodePoolNodeConfigLinuxNodeConfig {
   /// Accurate time configuration for the node. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig>? accurateTimeConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig?>? accurateTimeConfig;
   /// Possible cgroup modes that can be used.
   /// Accepted values are:
   /// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
   /// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
   /// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
-  final pulumi.Input<String>? cgroupMode;
+  final pulumi.Input<String?>? cgroupMode;
   /// Custom node init settings. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit>? customNodeInit;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit?>? customNodeInit;
   /// Amounts for 2M and 1G hugepages. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig>? hugepagesConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig?>? hugepagesConfig;
   /// Settings for kernel module loading. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading>? nodeKernelModuleLoading;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading?>? nodeKernelModuleLoading;
   /// Swap configuration for the node. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig>? swapConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig?>? swapConfig;
   /// The Linux kernel parameters to be applied to the nodes
   /// and all pods running on the nodes. Specified as a map from the key, such as
   /// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
   /// Note that validations happen all server side. All attributes are optional.
-  final pulumi.Input<Map<String, String>>? sysctls;
+  final pulumi.Input<Map<String, String>?>? sysctls;
   /// The Linux kernel transparent hugepage defrag setting.
-  final pulumi.Input<String>? transparentHugepageDefrag;
+  final pulumi.Input<String?>? transparentHugepageDefrag;
   /// The Linux kernel transparent hugepage setting.
-  final pulumi.Input<String>? transparentHugepageEnabled;
+  final pulumi.Input<String?>? transparentHugepageEnabled;
 
   /// Creates a new [ClusterNodePoolNodeConfigLinuxNodeConfig].
   /// [accurateTimeConfig] Accurate time configuration for the node. Structure is documented below.

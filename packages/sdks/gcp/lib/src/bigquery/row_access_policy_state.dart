@@ -6,16 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RowAccessPolicyState {
   /// The time when this row access policy was created, in milliseconds since
   /// the epoch.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// The ID of the dataset containing this row access policy.
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
   /// SELECT query on a table.
@@ -25,7 +25,7 @@ class RowAccessPolicyState {
   /// dateField = CAST('2019-9-27' as DATE)
   /// nullableField is not NULL
   /// numericField BETWEEN 1.0 AND 5.0
-  final pulumi.Input<String>? filterPredicate;
+  final pulumi.Input<String?>? filterPredicate;
   /// Input only. The optional list of iamMember users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
   /// grantees types:
@@ -47,19 +47,19 @@ class RowAccessPolicyState {
   /// the internet, including authenticated and unauthenticated users. Because
   /// BigQuery requires authentication before a user can access the service,
   /// allUsers includes only authenticated users.
-  final pulumi.Input<List<String>>? grantees;
+  final pulumi.Input<List<String>?>? grantees;
   /// The time when this row access policy was last modified, in milliseconds
   /// since the epoch.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// The ID of the row access policy. The ID must contain only
   /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
   /// length is 256 characters.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the table containing this row access policy.
-  final pulumi.Input<String>? tableId;
+  final pulumi.Input<String?>? tableId;
 
   /// Creates a new [RowAccessPolicyState].
   /// [creationTime] The time when this row access policy was created, in milliseconds since

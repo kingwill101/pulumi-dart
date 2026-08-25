@@ -13,9 +13,9 @@ class FirewallPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The parent of the firewall policy.
   final pulumi.Input<String> parent;
   /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.

@@ -405,15 +405,16 @@ class Variable extends pulumi.CustomResource {
           'gcp:runtimeconfig/variable:Variable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['text', 'value'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     project = registerOutput<String>('project');
-    text = registerOutput<String?>('text');
+    text = registerOutput<String?>('text', isSecret: true);
     updateTime = registerOutput<String>('updateTime');
-    value = registerOutput<String?>('value');
+    value = registerOutput<String?>('value', isSecret: true);
   }
 
   /// Gets an existing [Variable] resource's state with the given [name] and [id].
@@ -421,11 +422,12 @@ class Variable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VariableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Variable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -443,8 +445,27 @@ class Variable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     project = registerOutput<String>('project');
-    text = registerOutput<String?>('text');
+    text = registerOutput<String?>('text', isSecret: true);
     updateTime = registerOutput<String>('updateTime');
-    value = registerOutput<String?>('value');
+    value = registerOutput<String?>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [Variable] resource.
+  Variable.reference(String urn)
+    : super(
+        'gcp:runtimeconfig/variable:Variable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['text', 'value'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    project = registerOutput<String>('project');
+    text = registerOutput<String?>('text', isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+    value = registerOutput<String?>('value', isSecret: true);
   }
 }

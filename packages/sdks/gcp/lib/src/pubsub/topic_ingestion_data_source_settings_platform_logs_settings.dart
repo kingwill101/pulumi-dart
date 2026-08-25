@@ -7,7 +7,7 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettings {
   /// no Platform Logs will be written.
   /// Default value is `SEVERITY_UNSPECIFIED`.
   /// Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
 
   /// Creates a new [TopicIngestionDataSourceSettingsPlatformLogsSettings].
   /// [severity] The minimum severity level of Platform Logs that will be written. If unspecified,

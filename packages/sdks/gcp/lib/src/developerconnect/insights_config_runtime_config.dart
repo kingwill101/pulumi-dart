@@ -7,17 +7,17 @@ import 'insights_config_runtime_config_gke_workload.dart';
 class InsightsConfigRuntimeConfig {
   /// AppHubWorkload represents the App Hub Workload.
   /// Structure is documented below.
-  final pulumi.Input<InsightsConfigRuntimeConfigAppHubWorkload>? appHubWorkload;
+  final pulumi.Input<InsightsConfigRuntimeConfigAppHubWorkload?>? appHubWorkload;
   /// GKEWorkload represents the Google Kubernetes Engine runtime.
   /// Structure is documented below.
-  final pulumi.Input<InsightsConfigRuntimeConfigGkeWorkload>? gkeWorkload;
+  final pulumi.Input<InsightsConfigRuntimeConfigGkeWorkload?>? gkeWorkload;
   /// (Output)
   /// The state of the Runtime.
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// LINKED
   /// UNLINKED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The URI of the runtime configuration.
   /// For GKE, this is the cluster name.
   /// For Cloud Run, this is the service name.

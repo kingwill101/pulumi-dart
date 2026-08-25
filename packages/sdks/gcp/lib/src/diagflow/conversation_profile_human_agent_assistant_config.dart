@@ -9,17 +9,17 @@ import 'conversation_profile_human_agent_assistant_config_notification_config.da
 class ConversationProfileHumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig>? endUserSuggestionConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig?>? endUserSuggestionConfig;
   /// Configuration for agent assistance of human agent participant.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig>? humanAgentSuggestionConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig?>? humanAgentSuggestionConfig;
   /// Configuration for analyzing conversation messages.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig>? messageAnalysisConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig?>? messageAnalysisConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;"
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigNotificationConfig>? notificationConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigNotificationConfig?>? notificationConfig;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfig].
   /// [endUserSuggestionConfig] Configuration for agent assistance of end user participant.

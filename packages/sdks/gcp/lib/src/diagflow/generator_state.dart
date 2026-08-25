@@ -12,29 +12,29 @@ class GeneratorState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Human readable description of the generator.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
-  final pulumi.Input<String>? generatorId;
+  final pulumi.Input<String?>? generatorId;
   /// Optional. Inference parameters for this generator.
   /// Structure is documented below.
-  final pulumi.Input<GeneratorInferenceParameter>? inferenceParameter;
+  final pulumi.Input<GeneratorInferenceParameter?>? inferenceParameter;
   /// desc
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the generator.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
-  final pulumi.Input<String>? publishedModel;
+  final pulumi.Input<String?>? publishedModel;
   /// Input of prebuilt Summarization feature.
   /// Structure is documented below.
-  final pulumi.Input<GeneratorSummarizationContext>? summarizationContext;
+  final pulumi.Input<GeneratorSummarizationContext?>? summarizationContext;
   /// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
   /// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
-  final pulumi.Input<String>? triggerEvent;
+  final pulumi.Input<String?>? triggerEvent;
 
   /// Creates a new [GeneratorState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

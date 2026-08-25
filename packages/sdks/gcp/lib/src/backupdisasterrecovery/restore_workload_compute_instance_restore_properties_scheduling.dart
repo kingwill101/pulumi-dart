@@ -7,27 +7,27 @@ import 'restore_workload_compute_instance_restore_properties_scheduling_node_aff
 
 class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
   /// (Optional)
-  final pulumi.Input<bool>? automaticRestart;
+  final pulumi.Input<bool?>? automaticRestart;
   /// Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
-  final pulumi.Input<String>? instanceTerminationAction;
+  final pulumi.Input<String?>? instanceTerminationAction;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout>? localSsdRecoveryTimeout;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout?>? localSsdRecoveryTimeout;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration>? maxRunDuration;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration?>? maxRunDuration;
   /// (Optional)
-  final pulumi.Input<int>? minNodeCpus;
+  final pulumi.Input<int?>? minNodeCpus;
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>>? nodeAffinities;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>?>? nodeAffinities;
   /// Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
-  final pulumi.Input<String>? onHostMaintenance;
+  final pulumi.Input<String?>? onHostMaintenance;
   /// (Optional)
-  final pulumi.Input<bool>? preemptible;
+  final pulumi.Input<bool?>? preemptible;
   /// Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
-  final pulumi.Input<String>? provisioningModel;
+  final pulumi.Input<String?>? provisioningModel;
   /// (Optional)
-  final pulumi.Input<String>? terminationTime;
+  final pulumi.Input<String?>? terminationTime;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesScheduling].
   /// [automaticRestart] (Optional)
@@ -74,7 +74,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
       instanceTerminationAction: (() { final guardedValue = map['instanceTerminationAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localSsdRecoveryTimeout: (() { final guardedValue = map['localSsdRecoveryTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxRunDuration: (() { final guardedValue = map['maxRunDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeAffinities: (() { final guardedValue = map['nodeAffinities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>(guardedValue, (value) => RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))); })(),
       onHostMaintenance: (() { final guardedValue = map['onHostMaintenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preemptible: (() { final guardedValue = map['preemptible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

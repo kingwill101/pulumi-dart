@@ -11,53 +11,53 @@ import 'patch_deployment_rollout.dart';
 class PatchDeploymentState {
   /// Time the patch deployment was created. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the patch deployment. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Duration of the patch. After the duration ends, the patch times out.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// VM instances to patch.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentInstanceFilter>? instanceFilter;
+  final pulumi.Input<PatchDeploymentInstanceFilter?>? instanceFilter;
   /// The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? lastExecuteTime;
+  final pulumi.Input<String?>? lastExecuteTime;
   /// Unique name for the patch deployment resource in a project.
   /// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Schedule a one-time execution.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentOneTimeSchedule>? oneTimeSchedule;
+  final pulumi.Input<PatchDeploymentOneTimeSchedule?>? oneTimeSchedule;
   /// Patch configuration that is applied.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfig>? patchConfig;
+  final pulumi.Input<PatchDeploymentPatchConfig?>? patchConfig;
   /// A name for the patch deployment in the project. When creating a name the following rules apply:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
-  final pulumi.Input<String>? patchDeploymentId;
+  final pulumi.Input<String?>? patchDeploymentId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Schedule recurring executions.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentRecurringSchedule>? recurringSchedule;
+  final pulumi.Input<PatchDeploymentRecurringSchedule?>? recurringSchedule;
   /// Rollout strategy of the patch job.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentRollout>? rollout;
+  final pulumi.Input<PatchDeploymentRollout?>? rollout;
   /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PatchDeploymentState].
   /// [createTime] Time the patch deployment was created. Timestamp is in RFC3339 text format.

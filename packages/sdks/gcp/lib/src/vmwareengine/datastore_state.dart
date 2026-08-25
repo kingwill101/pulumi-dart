@@ -6,20 +6,20 @@ import 'datastore_nfs_datastore.dart';
 /// Input properties used for looking up and filtering Datastore resources.
 class DatastoreState {
   /// Clusters to which the datastore is attached.
-  final pulumi.Input<List<String>>? clusters;
+  final pulumi.Input<List<String>?>? clusters;
   /// Creation time of this resource.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this datastore
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The user-provided identifier of the datastore to be created.
   /// This identifier must be unique among each `Datastore` within the parent
   /// and becomes the final token in the name URI.
@@ -30,13 +30,13 @@ class DatastoreState {
   /// * Not formatted as a UUID
   /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
   /// (section 3.5)
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NFS datastore configuration.
   /// Structure is documented below.
-  final pulumi.Input<DatastoreNfsDatastore>? nfsDatastore;
+  final pulumi.Input<DatastoreNfsDatastore?>? nfsDatastore;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The state of the Datastore.
   /// Possible values:
   /// CREATING
@@ -45,11 +45,11 @@ class DatastoreState {
   /// DELETING
   /// SOFT_DELETING
   /// SOFT_DELETED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// System-generated unique identifier for the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Last update time of this resource.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DatastoreState].
   /// [clusters] Clusters to which the datastore is attached.

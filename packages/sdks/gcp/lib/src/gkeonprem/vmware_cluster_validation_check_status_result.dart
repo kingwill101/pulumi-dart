@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareClusterValidationCheckStatusResult {
   /// (Output)
   /// The category of the validation.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// A human readable description of this VMware User Cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// Detailed failure information, which might be unformatted.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// (Output)
   /// Options used for the validation check.
-  final pulumi.Input<String>? options;
+  final pulumi.Input<String?>? options;
   /// (Output)
   /// Machine-readable message indicating details about last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [VMwareClusterValidationCheckStatusResult].
   /// [category] (Output)

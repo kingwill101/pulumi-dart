@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxGeneratorLlmModelSettings {
   /// The selected LLM model.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// The custom prompt to use.
-  final pulumi.Input<String>? promptText;
+  final pulumi.Input<String?>? promptText;
 
   /// Creates a new [CxGeneratorLlmModelSettings].
   /// [model] The selected LLM model.

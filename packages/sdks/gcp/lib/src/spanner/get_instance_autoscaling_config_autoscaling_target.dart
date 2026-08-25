@@ -37,9 +37,9 @@ class GetInstanceAutoscalingConfigAutoscalingTarget {
 
   factory GetInstanceAutoscalingConfigAutoscalingTarget.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAutoscalingTarget(
-      highPriorityCpuUtilizationPercent: pulumi.Input.fromValue(map['highPriorityCpuUtilizationPercent'] as int),
-      storageUtilizationPercent: pulumi.Input.fromValue(map['storageUtilizationPercent'] as int),
-      totalCpuUtilizationPercent: pulumi.Input.fromValue(map['totalCpuUtilizationPercent'] as int),
+      highPriorityCpuUtilizationPercent: pulumi.Input.fromValue((map['highPriorityCpuUtilizationPercent'] as num).toInt()),
+      storageUtilizationPercent: pulumi.Input.fromValue((map['storageUtilizationPercent'] as num).toInt()),
+      totalCpuUtilizationPercent: pulumi.Input.fromValue((map['totalCpuUtilizationPercent'] as num).toInt()),
     );
   }
 }

@@ -36,9 +36,9 @@ class GetClusterNodePoolNodeConfigBootDisk {
   factory GetClusterNodePoolNodeConfigBootDisk.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigBootDisk(
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
-      provisionedIops: pulumi.Input.fromValue(map['provisionedIops'] as int),
-      provisionedThroughput: pulumi.Input.fromValue(map['provisionedThroughput'] as int),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      provisionedIops: pulumi.Input.fromValue((map['provisionedIops'] as num).toInt()),
+      provisionedThroughput: pulumi.Input.fromValue((map['provisionedThroughput'] as num).toInt()),
+      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
     );
   }
 }

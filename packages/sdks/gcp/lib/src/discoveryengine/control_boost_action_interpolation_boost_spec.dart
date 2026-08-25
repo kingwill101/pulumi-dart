@@ -6,15 +6,15 @@ import 'control_boost_action_interpolation_boost_spec_control_point.dart';
 class ControlBoostActionInterpolationBoostSpec {
   /// The attribute type to be used to determine the boost amount.
   /// Possible values are: `NUMERICAL`, `FRESHNESS`.
-  final pulumi.Input<String>? attributeType;
+  final pulumi.Input<String?>? attributeType;
   /// The control points used to define the curve.
   /// Structure is documented below.
-  final pulumi.Input<ControlBoostActionInterpolationBoostSpecControlPoint>? controlPoint;
+  final pulumi.Input<ControlBoostActionInterpolationBoostSpecControlPoint?>? controlPoint;
   /// The name of the field whose value will be used to determine the boost amount.
-  final pulumi.Input<String>? fieldName;
+  final pulumi.Input<String?>? fieldName;
   /// The interpolation type to be applied to connect the control points.
   /// Possible values are: `LINEAR`.
-  final pulumi.Input<String>? interpolationType;
+  final pulumi.Input<String?>? interpolationType;
 
   /// Creates a new [ControlBoostActionInterpolationBoostSpec].
   /// [attributeType] The attribute type to be used to determine the boost amount.

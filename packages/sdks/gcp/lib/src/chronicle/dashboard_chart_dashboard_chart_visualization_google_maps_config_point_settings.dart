@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettings {
   /// (Optional)
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
   /// Possible values are: `POINT_SIZE_TYPE_UNSPECIFIED`, `POINT_SIZE_TYPE_FIXED`, `POINT_SIZE_TYPE_PROPORTIONAL_TO_SIZE`.
-  final pulumi.Input<String>? pointSizeType;
+  final pulumi.Input<String?>? pointSizeType;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettings].
   /// [color] (Optional)

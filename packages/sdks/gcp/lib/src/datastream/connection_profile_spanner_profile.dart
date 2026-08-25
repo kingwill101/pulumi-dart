@@ -8,7 +8,7 @@ class ConnectionProfileSpannerProfile {
   final pulumi.Input<String> database;
   /// The regional Spanner endpoint. Format:
   /// https://spanner.{region}.rep.googleapis.com.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
 
   /// Creates a new [ConnectionProfileSpannerProfile].
   /// [database] The full project and resource path for Spanner database. Format:

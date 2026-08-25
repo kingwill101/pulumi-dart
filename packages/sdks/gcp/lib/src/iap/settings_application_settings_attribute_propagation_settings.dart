@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SettingsApplicationSettingsAttributePropagationSettings {
   /// Whether the provided attribute propagation settings should be evaluated on user requests.
   /// If set to true, attributes returned from the expression will be propagated in the set output credentials.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
   /// be selected. Expressions can select different attribute types from attributes:
   /// attributes.saml_attributes, attributes.iap_attributes.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// Which output credentials attributes selected by the CEL expression should be propagated in.
   /// All attributes will be fully duplicated in each selected output credential.
   /// Possible values are:
@@ -19,7 +19,7 @@ class SettingsApplicationSettingsAttributePropagationSettings {
   /// * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
   /// additionalClaims": { "myAttribute": ["value1", "value2"] }
   /// Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
-  final pulumi.Input<List<String>>? outputCredentials;
+  final pulumi.Input<List<String>?>? outputCredentials;
 
   /// Creates a new [SettingsApplicationSettingsAttributePropagationSettings].
   /// [enable] Whether the provided attribute propagation settings should be evaluated on user requests.

@@ -9,15 +9,15 @@ class AppVersionSnapshotGuardrailAction {
   /// (Output)
   /// The agent will immediately respond with a generative answer.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailActionGenerativeAnswer>>? generativeAnswers;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailActionGenerativeAnswer>?>? generativeAnswers;
   /// (Output)
   /// The agent will immediately respond with a preconfigured response.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailActionRespondImmediately>>? respondImmediatelies;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailActionRespondImmediately>?>? respondImmediatelies;
   /// (Output)
   /// The agent will transfer the conversation to a different agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailActionTransferAgent>>? transferAgents;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailActionTransferAgent>?>? transferAgents;
 
   /// Creates a new [AppVersionSnapshotGuardrailAction].
   /// [generativeAnswers] (Output)

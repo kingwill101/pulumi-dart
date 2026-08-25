@@ -10,18 +10,18 @@ class VersionState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The developer-provided description of this version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The unique identifier of this agent version.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Flow to create an Version for.
   /// Format: projects/&lt;Project ID&gt;/agent.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The status of this version.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The sequential number of this version.
-  final pulumi.Input<int>? versionNumber;
+  final pulumi.Input<int?>? versionNumber;
 
   /// Creates a new [VersionState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -57,7 +57,7 @@ class VersionState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'stream_source_config_mongodb_source_config_include_objects_database_coll
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase {
   /// Collections in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection>>? collections;
+  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection>?>? collections;
   /// Database name.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase].
   /// [collections] Collections in the database.

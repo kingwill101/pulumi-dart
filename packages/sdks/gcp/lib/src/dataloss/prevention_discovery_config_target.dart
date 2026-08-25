@@ -9,18 +9,18 @@ import 'prevention_discovery_config_target_other_cloud_target.dart';
 class PreventionDiscoveryConfigTarget {
   /// BigQuery target for Discovery. The first target to match a table will be the one applied.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTarget>? bigQueryTarget;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTarget?>? bigQueryTarget;
   /// Cloud SQL target for Discovery. The first target to match a table will be the one applied.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTarget>? cloudSqlTarget;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTarget?>? cloudSqlTarget;
   /// Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTarget>? cloudStorageTarget;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTarget?>? cloudStorageTarget;
   /// Other clouds target for discovery. The first target to match a resource will be the one applied.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTarget>? otherCloudTarget;
+  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTarget?>? otherCloudTarget;
   /// Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
-  final pulumi.Input<Map<String, dynamic>>? secretsTarget;
+  final pulumi.Input<Map<String, dynamic>?>? secretsTarget;
 
   /// Creates a new [PreventionDiscoveryConfigTarget].
   /// [bigQueryTarget] BigQuery target for Discovery. The first target to match a table will be the one applied.

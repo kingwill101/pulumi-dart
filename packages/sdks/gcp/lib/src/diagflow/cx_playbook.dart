@@ -1181,7 +1181,7 @@ class CxPlaybook extends pulumi.CustomResource {
           'gcp:diagflow/cxPlaybook:CxPlaybook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1192,9 +1192,9 @@ class CxPlaybook extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     playbookType = registerOutput<String?>('playbookType');
-    referencedFlows = registerOutput<List<String>>('referencedFlows');
-    referencedPlaybooks = registerOutput<List<String>>('referencedPlaybooks');
-    referencedTools = registerOutput<List<String>?>('referencedTools');
+    referencedFlows = registerOutput<List<String>>('referencedFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencedPlaybooks = registerOutput<List<String>>('referencedPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencedTools = registerOutput<List<String>?>('referencedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tokenCount = registerOutput<String>('tokenCount');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -1204,11 +1204,12 @@ class CxPlaybook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxPlaybookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxPlaybook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1231,9 +1232,34 @@ class CxPlaybook extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     playbookType = registerOutput<String?>('playbookType');
-    referencedFlows = registerOutput<List<String>>('referencedFlows');
-    referencedPlaybooks = registerOutput<List<String>>('referencedPlaybooks');
-    referencedTools = registerOutput<List<String>?>('referencedTools');
+    referencedFlows = registerOutput<List<String>>('referencedFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencedPlaybooks = registerOutput<List<String>>('referencedPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencedTools = registerOutput<List<String>?>('referencedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tokenCount = registerOutput<String>('tokenCount');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CxPlaybook] resource.
+  CxPlaybook.reference(String urn)
+    : super(
+        'gcp:diagflow/cxPlaybook:CxPlaybook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    goal = registerOutput<String>('goal');
+    instruction = registerOutput<CxPlaybookInstruction?>('instruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookInstruction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    llmModelSettings = registerOutput<CxPlaybookLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    playbookType = registerOutput<String?>('playbookType');
+    referencedFlows = registerOutput<List<String>>('referencedFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencedPlaybooks = registerOutput<List<String>>('referencedPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencedTools = registerOutput<List<String>?>('referencedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tokenCount = registerOutput<String>('tokenCount');
     updateTime = registerOutput<String>('updateTime');
   }

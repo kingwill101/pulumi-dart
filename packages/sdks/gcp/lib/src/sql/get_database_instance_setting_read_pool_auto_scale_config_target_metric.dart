@@ -26,7 +26,7 @@ class GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric {
   factory GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric(
       metric: pulumi.Input.fromValue(map['metric'] as String),
-      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
+      targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }
 }

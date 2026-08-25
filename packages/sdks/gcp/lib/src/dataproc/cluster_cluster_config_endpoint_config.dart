@@ -8,7 +8,7 @@ class ClusterClusterConfigEndpointConfig {
   final pulumi.Input<bool> enableHttpPortAccess;
   /// The map of port descriptions to URLs. Will only be populated if
   /// `enableHttpPortAccess` is true.
-  final pulumi.Input<Map<String, String>>? httpPorts;
+  final pulumi.Input<Map<String, String>?>? httpPorts;
 
   /// Creates a new [ClusterClusterConfigEndpointConfig].
   /// [enableHttpPortAccess] The flag to enable http access to specific ports

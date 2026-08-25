@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolSystemTool {
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AppVersionSnapshotToolSystemTool].
   /// [description] The description of the app version.

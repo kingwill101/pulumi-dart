@@ -225,7 +225,7 @@ class MuteConfig extends pulumi.CustomResource {
           'gcp:securitycenter/muteConfig:MuteConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -245,11 +245,12 @@ class MuteConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MuteConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MuteConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,6 +264,28 @@ class MuteConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    expiryTime = registerOutput<String?>('expiryTime');
+    filter = registerOutput<String>('filter');
+    mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    muteConfigId = registerOutput<String>('muteConfigId');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MuteConfig] resource.
+  MuteConfig.reference(String urn)
+    : super(
+        'gcp:securitycenter/muteConfig:MuteConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

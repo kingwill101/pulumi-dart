@@ -7,7 +7,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMos
   /// prediction time. Positive integers only. The value translates to the
   /// last X days of events. Currently required for the `most-popular-items`
   /// engine.
-  final pulumi.Input<int>? timeWindowDays;
+  final pulumi.Input<int?>? timeWindowDays;
 
   /// Creates a new [RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig].
   /// [timeWindowDays] The time window of which the engine is queried at training and
@@ -23,7 +23,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMos
 
   factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig(
-      timeWindowDays: (() { final guardedValue = map['timeWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeWindowDays: (() { final guardedValue = map['timeWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

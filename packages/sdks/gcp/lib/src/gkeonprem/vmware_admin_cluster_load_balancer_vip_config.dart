@@ -6,7 +6,7 @@ class VmwareAdminClusterLoadBalancerVipConfig {
   /// The VIP to configure the load balancer for add-ons.
   ///
   /// &lt;a name="nestedLoadBalancerF5Config"&gt;&lt;/a&gt;The `f5Config` block supports:
-  final pulumi.Input<String>? addonsVip;
+  final pulumi.Input<String?>? addonsVip;
   /// The VIP which you previously set aside for the Kubernetes
   /// API of this VMware Admin Cluster.
   final pulumi.Input<String> controlPlaneVip;

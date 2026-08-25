@@ -13,9 +13,9 @@ class V2OrganizationMuteConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the mute config.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An expression that defines the filter to apply across create/update
   /// events of findings. While creating a filter string, be mindful of
   /// the scope in which the mute configuration is being created. E.g.,
@@ -23,7 +23,7 @@ class V2OrganizationMuteConfigArgs {
   /// project = Y scope, it might not match any findings.
   final pulumi.Input<String> filter;
   /// location Id is provided by organization. If not provided, Use global as default.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Unique identifier provided by the client within the parent scope.
   final pulumi.Input<String> muteConfigId;
   /// The organization whose Cloud Security Command Center the Mute

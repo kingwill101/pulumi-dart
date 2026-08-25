@@ -8,12 +8,12 @@ class TableTableConstraints {
   /// Present only if the table has a foreign key.
   /// The foreign key is not enforced.
   /// Structure is documented below.
-  final pulumi.Input<List<TableTableConstraintsForeignKey>>? foreignKeys;
+  final pulumi.Input<List<TableTableConstraintsForeignKey>?>? foreignKeys;
   /// Represents the primary key constraint
   /// on a table's columns. Present only if the table has a primary key.
   /// The primary key is not enforced.
   /// Structure is documented below.
-  final pulumi.Input<TableTableConstraintsPrimaryKey>? primaryKey;
+  final pulumi.Input<TableTableConstraintsPrimaryKey?>? primaryKey;
 
   /// Creates a new [TableTableConstraints].
   /// [foreignKeys] Present only if the table has a foreign key.

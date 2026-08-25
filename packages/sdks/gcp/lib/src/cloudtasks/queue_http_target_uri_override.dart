@@ -10,30 +10,30 @@ class QueueHttpTargetUriOverride {
   /// For example, if the task URL is "https://www.google.com", and host value
   /// is set to "example.net", the overridden URI will be changed to "https://example.net".
   /// Host value cannot be an empty string (INVALID_ARGUMENT).
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// URI path.
   /// When specified, replaces the existing path of the task URL.
   /// Setting the path value to an empty string clears the URI path segment.
   /// Structure is documented below.
-  final pulumi.Input<QueueHttpTargetUriOverridePathOverride>? pathOverride;
+  final pulumi.Input<QueueHttpTargetUriOverridePathOverride?>? pathOverride;
   /// Port override.
   /// When specified, replaces the port part of the task URI.
   /// For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
   /// Note that the port value must be a positive integer.
   /// Setting the port to 0 (Zero) clears the URI port.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// URI query.
   /// When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
   /// Structure is documented below.
-  final pulumi.Input<QueueHttpTargetUriOverrideQueryOverride>? queryOverride;
+  final pulumi.Input<QueueHttpTargetUriOverrideQueryOverride?>? queryOverride;
   /// Scheme override.
   /// When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
   /// Possible values are: `HTTP`, `HTTPS`.
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
   /// URI Override Enforce Mode
   /// When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
   /// Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
-  final pulumi.Input<String>? uriOverrideEnforceMode;
+  final pulumi.Input<String?>? uriOverrideEnforceMode;
 
   /// Creates a new [QueueHttpTargetUriOverride].
   /// [host] Host override.

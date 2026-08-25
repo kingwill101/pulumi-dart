@@ -998,7 +998,7 @@ class CxAgent extends pulumi.CustomResource {
           'gcp:diagflow/cxAgent:CxAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     advancedSettings = registerOutput<CxAgentAdvancedSettings>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     answerFeedbackSettings = registerOutput<CxAgentAnswerFeedbackSettings?>('answerFeedbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAnswerFeedbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1025,7 +1025,7 @@ class CxAgent extends pulumi.CustomResource {
     speechToTextSettings = registerOutput<CxAgentSpeechToTextSettings?>('speechToTextSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentSpeechToTextSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startFlow = registerOutput<String>('startFlow');
     startPlaybook = registerOutput<String?>('startPlaybook');
-    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes');
+    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     textToSpeechSettings = registerOutput<CxAgentTextToSpeechSettings?>('textToSpeechSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentTextToSpeechSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZone = registerOutput<String>('timeZone');
   }
@@ -1035,11 +1035,12 @@ class CxAgent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxAgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxAgent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1078,7 +1079,46 @@ class CxAgent extends pulumi.CustomResource {
     speechToTextSettings = registerOutput<CxAgentSpeechToTextSettings?>('speechToTextSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentSpeechToTextSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startFlow = registerOutput<String>('startFlow');
     startPlaybook = registerOutput<String?>('startPlaybook');
-    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes');
+    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    textToSpeechSettings = registerOutput<CxAgentTextToSpeechSettings?>('textToSpeechSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentTextToSpeechSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [CxAgent] resource.
+  CxAgent.reference(String urn)
+    : super(
+        'gcp:diagflow/cxAgent:CxAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedSettings = registerOutput<CxAgentAdvancedSettings>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    answerFeedbackSettings = registerOutput<CxAgentAnswerFeedbackSettings?>('answerFeedbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAnswerFeedbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    avatarUri = registerOutput<String?>('avatarUri');
+    clientCertificateSettings = registerOutput<CxAgentClientCertificateSettings?>('clientCertificateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentClientCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    deleteChatEngineOnDestroy = registerOutput<bool?>('deleteChatEngineOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enableMultiLanguageTraining = registerOutput<bool?>('enableMultiLanguageTraining');
+    enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');
+    enableStackdriverLogging = registerOutput<bool?>('enableStackdriverLogging');
+    genAppBuilderSettings = registerOutput<CxAgentGenAppBuilderSettings>('genAppBuilderSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentGenAppBuilderSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gitIntegrationSettings = registerOutput<CxAgentGitIntegrationSettings?>('gitIntegrationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentGitIntegrationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    locked = registerOutput<bool?>('locked');
+    this.name = registerOutput<String>('name');
+    personalizationSettings = registerOutput<CxAgentPersonalizationSettings?>('personalizationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentPersonalizationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    satisfiesPzi = registerOutput<bool>('satisfiesPzi');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    securitySettings = registerOutput<String?>('securitySettings');
+    speechToTextSettings = registerOutput<CxAgentSpeechToTextSettings?>('speechToTextSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentSpeechToTextSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startFlow = registerOutput<String>('startFlow');
+    startPlaybook = registerOutput<String?>('startPlaybook');
+    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     textToSpeechSettings = registerOutput<CxAgentTextToSpeechSettings?>('textToSpeechSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentTextToSpeechSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZone = registerOutput<String>('timeZone');
   }

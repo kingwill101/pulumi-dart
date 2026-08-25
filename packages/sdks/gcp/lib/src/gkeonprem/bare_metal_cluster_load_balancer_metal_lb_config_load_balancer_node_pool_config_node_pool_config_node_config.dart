@@ -13,10 +13,10 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   /// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
   /// An object containing a list of "key": value pairs.
   /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The default IPv4 address for SSH access and Kubernetes node.
   /// Example: 192.168.0.1
-  final pulumi.Input<String>? nodeIp;
+  final pulumi.Input<String?>? nodeIp;
 
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to

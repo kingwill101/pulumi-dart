@@ -16,7 +16,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// If the list is empty, this resource group will be applied to the target
   /// VM unconditionally.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter>>? inventoryFilters;
+  final pulumi.Input<List<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter>?>? inventoryFilters;
   /// List of resources configured for this resource group.
   /// The resources are executed in the exact order specified here.
   /// Structure is documented below.

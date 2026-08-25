@@ -238,7 +238,7 @@ class CustomService extends pulumi.CustomResource {
           'gcp:monitoring/customService:CustomService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
@@ -246,7 +246,7 @@ class CustomService extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
     telemetry = registerOutput<CustomServiceTelemetry?>('telemetry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomServiceTelemetry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CustomService] resource's state with the given [name] and [id].
@@ -254,11 +254,12 @@ class CustomService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -278,6 +279,24 @@ class CustomService extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
     telemetry = registerOutput<CustomServiceTelemetry?>('telemetry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomServiceTelemetry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CustomService] resource.
+  CustomService.reference(String urn)
+    : super(
+        'gcp:monitoring/customService:CustomService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    telemetry = registerOutput<CustomServiceTelemetry?>('telemetry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomServiceTelemetry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

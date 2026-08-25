@@ -382,7 +382,7 @@ class OrganizationSecurityPolicy extends pulumi.CustomResource {
           'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     advancedOptionsConfig = registerOutput<OrganizationSecurityPolicyAdvancedOptionsConfig?>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -400,11 +400,12 @@ class OrganizationSecurityPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationSecurityPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationSecurityPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -418,6 +419,26 @@ class OrganizationSecurityPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    advancedOptionsConfig = registerOutput<OrganizationSecurityPolicyAdvancedOptionsConfig?>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    fingerprint = registerOutput<String>('fingerprint');
+    parent = registerOutput<String>('parent');
+    policyId = registerOutput<String>('policyId');
+    shortName = registerOutput<String?>('shortName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationSecurityPolicy] resource.
+  OrganizationSecurityPolicy.reference(String urn)
+    : super(
+        'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     advancedOptionsConfig = registerOutput<OrganizationSecurityPolicyAdvancedOptionsConfig?>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

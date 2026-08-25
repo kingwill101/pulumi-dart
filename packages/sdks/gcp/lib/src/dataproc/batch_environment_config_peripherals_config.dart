@@ -5,10 +5,10 @@ import 'batch_environment_config_peripherals_config_spark_history_server_config.
 
 class BatchEnvironmentConfigPeripheralsConfig {
   /// Resource name of an existing Dataproc Metastore service.
-  final pulumi.Input<String>? metastoreService;
+  final pulumi.Input<String?>? metastoreService;
   /// The Spark History Server configuration for the workload.
   /// Structure is documented below.
-  final pulumi.Input<BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig>? sparkHistoryServerConfig;
+  final pulumi.Input<BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig?>? sparkHistoryServerConfig;
 
   /// Creates a new [BatchEnvironmentConfigPeripheralsConfig].
   /// [metastoreService] Resource name of an existing Dataproc Metastore service.

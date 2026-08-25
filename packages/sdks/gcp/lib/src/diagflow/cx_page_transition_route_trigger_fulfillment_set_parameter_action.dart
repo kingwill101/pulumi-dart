@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
   /// Display name of the parameter.
-  final pulumi.Input<String>? parameter;
+  final pulumi.Input<String?>? parameter;
   /// The new JSON-encoded value of the parameter. A null value clears the parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CxPageTransitionRouteTriggerFulfillmentSetParameterAction].
   /// [parameter] Display name of the parameter.

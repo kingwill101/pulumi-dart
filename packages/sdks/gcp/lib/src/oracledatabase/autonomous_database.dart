@@ -1397,7 +1397,8 @@ class AutonomousDatabase extends pulumi.CustomResource {
           'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminPassword = registerOutput<String?>('adminPassword');
     autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
@@ -1406,20 +1407,20 @@ class AutonomousDatabase extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations');
+    disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entitlementId = registerOutput<String>('entitlementId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     odbNetwork = registerOutput<String>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
-    peerAutonomousDatabases = registerOutput<List<String>>('peerAutonomousDatabases');
+    peerAutonomousDatabases = registerOutput<List<String>>('peerAutonomousDatabases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     properties = registerOutput<AutonomousDatabaseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1428,11 +1429,12 @@ class AutonomousDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutonomousDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutonomousDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1453,20 +1455,54 @@ class AutonomousDatabase extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations');
+    disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entitlementId = registerOutput<String>('entitlementId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     odbNetwork = registerOutput<String>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
-    peerAutonomousDatabases = registerOutput<List<String>>('peerAutonomousDatabases');
+    peerAutonomousDatabases = registerOutput<List<String>>('peerAutonomousDatabases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     properties = registerOutput<AutonomousDatabaseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AutonomousDatabase] resource.
+  AutonomousDatabase.reference(String urn)
+    : super(
+        'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    adminPassword = registerOutput<String?>('adminPassword');
+    autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
+    cidr = registerOutput<String?>('cidr');
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    disasterRecoverySupportedLocations = registerOutput<List<String>>('disasterRecoverySupportedLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    entitlementId = registerOutput<String>('entitlementId');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    odbNetwork = registerOutput<String>('odbNetwork');
+    odbSubnet = registerOutput<String>('odbSubnet');
+    peerAutonomousDatabases = registerOutput<List<String>>('peerAutonomousDatabases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    properties = registerOutput<AutonomousDatabaseProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

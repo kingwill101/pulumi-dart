@@ -260,3 +260,14 @@ Future<GetTokenResult> getToken(
   );
   return GetTokenResult.fromMap(result);
 }
+
+pulumi.Output<GetTokenResult> getTokenOutput(
+  GetTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:siteverification/getToken:getToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTokenResult.fromMap);
+}

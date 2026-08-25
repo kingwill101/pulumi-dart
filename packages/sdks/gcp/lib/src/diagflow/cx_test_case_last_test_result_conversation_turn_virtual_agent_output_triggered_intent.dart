@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent {
   /// (Output)
   /// The human-readable name of the intent, unique within the agent.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The unique identifier of the intent.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent].
   /// [displayName] (Output)

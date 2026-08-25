@@ -2069,11 +2069,11 @@ class WorkloadIdentityPoolIamBinding extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<WorkloadIdentityPoolIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
@@ -2084,11 +2084,12 @@ class WorkloadIdentityPoolIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkloadIdentityPoolIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkloadIdentityPoolIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2104,7 +2105,24 @@ class WorkloadIdentityPoolIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<WorkloadIdentityPoolIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadIdentityPoolIamBinding] resource.
+  WorkloadIdentityPoolIamBinding.reference(String urn)
+    : super(
+        'gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<WorkloadIdentityPoolIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');

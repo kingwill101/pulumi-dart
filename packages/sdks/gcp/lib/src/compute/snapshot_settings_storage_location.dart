@@ -8,7 +8,7 @@ class SnapshotSettingsStorageLocation {
   /// locations listed in this field. Keys are Cloud Storage bucket locations.
   /// Only one location can be specified.
   /// Structure is documented below.
-  final pulumi.Input<List<SnapshotSettingsStorageLocationLocation>>? locations;
+  final pulumi.Input<List<SnapshotSettingsStorageLocationLocation>?>? locations;
   /// The chosen location policy
   /// Possible values are: `NEAREST_MULTI_REGION`, `LOCAL_REGION`, `SPECIFIC_LOCATIONS`.
   final pulumi.Input<String> policy;

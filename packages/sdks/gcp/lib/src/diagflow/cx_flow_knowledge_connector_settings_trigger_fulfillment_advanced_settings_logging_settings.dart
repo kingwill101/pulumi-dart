@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
   /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
-  final pulumi.Input<bool>? enableConsentBasedRedaction;
+  final pulumi.Input<bool?>? enableConsentBasedRedaction;
   /// Enables DF Interaction logging.
-  final pulumi.Input<bool>? enableInteractionLogging;
+  final pulumi.Input<bool?>? enableInteractionLogging;
   /// Enables Google Cloud Logging.
-  final pulumi.Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool?>? enableStackdriverLogging;
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings].
   /// [enableConsentBasedRedaction] Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.

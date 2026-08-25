@@ -7,7 +7,7 @@ import 'posture_policy_set_policy_constraint_org_policy_constraint_custom_policy
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
   /// Organization policy custom constraint definition.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint>? customConstraint;
+  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint?>? customConstraint;
   /// Definition of policy rules
   /// Structure is documented below.
   final pulumi.Input<List<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule>> policyRules;

@@ -8,7 +8,7 @@ class AiFeatureGroupBigQuery {
   /// Structure is documented below.
   final pulumi.Input<AiFeatureGroupBigQueryBigQuerySource> bigQuerySource;
   /// Columns to construct entityId / row keys. If not provided defaults to entityId.
-  final pulumi.Input<List<String>>? entityIdColumns;
+  final pulumi.Input<List<String>?>? entityIdColumns;
 
   /// Creates a new [AiFeatureGroupBigQuery].
   /// [bigQuerySource] The BigQuery source URI that points to either a BigQuery Table or View.

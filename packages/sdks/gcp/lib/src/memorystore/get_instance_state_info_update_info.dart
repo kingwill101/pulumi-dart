@@ -37,8 +37,8 @@ class GetInstanceStateInfoUpdateInfo {
     return GetInstanceStateInfoUpdateInfo(
       targetEngineVersion: pulumi.Input.fromValue(map['targetEngineVersion'] as String),
       targetNodeType: pulumi.Input.fromValue(map['targetNodeType'] as String),
-      targetReplicaCount: pulumi.Input.fromValue(map['targetReplicaCount'] as int),
-      targetShardCount: pulumi.Input.fromValue(map['targetShardCount'] as int),
+      targetReplicaCount: pulumi.Input.fromValue((map['targetReplicaCount'] as num).toInt()),
+      targetShardCount: pulumi.Input.fromValue((map['targetShardCount'] as num).toInt()),
     );
   }
 }

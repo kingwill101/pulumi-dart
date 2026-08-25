@@ -7,10 +7,10 @@ import 'feature_spec_clusterupgrade_post_conditions.dart';
 class FeatureSpecClusterupgrade {
   /// Configuration overrides for individual upgrades.
   /// Structure is documented below.
-  final pulumi.Input<List<FeatureSpecClusterupgradeGkeUpgradeOverride>>? gkeUpgradeOverrides;
+  final pulumi.Input<List<FeatureSpecClusterupgradeGkeUpgradeOverride>?>? gkeUpgradeOverrides;
   /// Post conditions to override for the specified upgrade.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecClusterupgradePostConditions>? postConditions;
+  final pulumi.Input<FeatureSpecClusterupgradePostConditions?>? postConditions;
   /// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
   final pulumi.Input<List<String>> upstreamFleets;
 

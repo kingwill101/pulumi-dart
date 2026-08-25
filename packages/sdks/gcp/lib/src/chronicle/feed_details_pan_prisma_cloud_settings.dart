@@ -6,9 +6,9 @@ import 'feed_details_pan_prisma_cloud_settings_authentication.dart';
 class FeedDetailsPanPrismaCloudSettings {
   /// PAN Prisma Cloud auth.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsPanPrismaCloudSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsPanPrismaCloudSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsPanPrismaCloudSettings].
   /// [authentication] PAN Prisma Cloud auth.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionInstantSnapshotResourceStatus {
   /// (Output)
   /// The size of the storage used by the instant snapshot.
-  final pulumi.Input<int>? storageSizeBytes;
+  final pulumi.Input<int?>? storageSizeBytes;
 
   /// Creates a new [RegionInstantSnapshotResourceStatus].
   /// [storageSizeBytes] (Output)
@@ -21,7 +21,7 @@ class RegionInstantSnapshotResourceStatus {
 
   factory RegionInstantSnapshotResourceStatus.fromMap(Map<String, dynamic> map) {
     return RegionInstantSnapshotResourceStatus(
-      storageSizeBytes: (() { final guardedValue = map['storageSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageSizeBytes: (() { final guardedValue = map['storageSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

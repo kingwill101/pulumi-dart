@@ -10,19 +10,19 @@ import 'addons_config_addons_config_monetization_config.dart';
 class AddonsConfigAddonsConfig {
   /// Configuration for the Advanced API Ops add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigAdvancedApiOpsConfig>? advancedApiOpsConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigAdvancedApiOpsConfig?>? advancedApiOpsConfig;
   /// Configuration for the API Security add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigApiSecurityConfig>? apiSecurityConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigApiSecurityConfig?>? apiSecurityConfig;
   /// Configuration for the Monetization add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigConnectorsPlatformConfig>? connectorsPlatformConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigConnectorsPlatformConfig?>? connectorsPlatformConfig;
   /// Configuration for the Integration add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigIntegrationConfig>? integrationConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigIntegrationConfig?>? integrationConfig;
   /// Configuration for the Monetization add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigMonetizationConfig>? monetizationConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigMonetizationConfig?>? monetizationConfig;
 
   /// Creates a new [AddonsConfigAddonsConfig].
   /// [advancedApiOpsConfig] Configuration for the Advanced API Ops add-on.

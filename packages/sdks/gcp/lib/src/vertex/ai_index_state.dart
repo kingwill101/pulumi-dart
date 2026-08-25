@@ -9,58 +9,58 @@ import 'ai_index_metadata.dart';
 /// Input properties used for looking up and filtering AiIndex resources.
 class AiIndexState {
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
   /// Structure is documented below.
-  final pulumi.Input<List<AiIndexDeployedIndex>>? deployedIndexes;
+  final pulumi.Input<List<AiIndexDeployedIndex>?>? deployedIndexes;
   /// The description of the Index.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiIndexEncryptionSpec?>? encryptionSpec;
   /// Used to perform consistent read-modify-write updates.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Stats of the index resource.
   /// Structure is documented below.
-  final pulumi.Input<List<AiIndexIndexStat>>? indexStats;
+  final pulumi.Input<List<AiIndexIndexStat>?>? indexStats;
   /// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
   /// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
   /// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
-  final pulumi.Input<String>? indexUpdateMethod;
+  final pulumi.Input<String?>? indexUpdateMethod;
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Additional information about the Index.
   /// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
   /// Attempts to create an Index without this field will result in an API error.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexMetadata>? metadata;
+  final pulumi.Input<AiIndexMetadata?>? metadata;
   /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
-  final pulumi.Input<String>? metadataSchemaUri;
+  final pulumi.Input<String?>? metadataSchemaUri;
   /// The resource name of the Index.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The region of the index. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AiIndexState].
   /// [createTime] The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

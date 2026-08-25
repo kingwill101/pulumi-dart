@@ -13,19 +13,19 @@ class NetworkPeeringArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this network peering.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// True if custom routes are exported to the peered network; false otherwise.
-  final pulumi.Input<bool>? exportCustomRoutes;
+  final pulumi.Input<bool?>? exportCustomRoutes;
   /// True if all subnet routes with a public IP address range are exported; false otherwise.
-  final pulumi.Input<bool>? exportCustomRoutesWithPublicIp;
+  final pulumi.Input<bool?>? exportCustomRoutesWithPublicIp;
   /// True if custom routes are imported from the peered network; false otherwise.
-  final pulumi.Input<bool>? importCustomRoutes;
+  final pulumi.Input<bool?>? importCustomRoutes;
   /// True if custom routes are imported from the peered network; false otherwise.
-  final pulumi.Input<bool>? importCustomRoutesWithPublicIp;
+  final pulumi.Input<bool?>? importCustomRoutesWithPublicIp;
   /// The ID of the Network Peering.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The relative resource name of the network to peer with a standard VMware Engine network.
   /// The provided network can be a consumer VPC network or another standard VMware Engine network.
   final pulumi.Input<String> peerNetwork;
@@ -34,7 +34,7 @@ class NetworkPeeringArgs {
   final pulumi.Input<String> peerNetworkType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
   /// can either be a project number or a project ID.

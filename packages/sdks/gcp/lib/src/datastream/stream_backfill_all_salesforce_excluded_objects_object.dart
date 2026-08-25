@@ -6,9 +6,9 @@ import 'stream_backfill_all_salesforce_excluded_objects_object_field.dart';
 class StreamBackfillAllSalesforceExcludedObjectsObject {
   /// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllSalesforceExcludedObjectsObjectField>>? fields;
+  final pulumi.Input<List<StreamBackfillAllSalesforceExcludedObjectsObjectField>?>? fields;
   /// Name of object in Salesforce Org.
-  final pulumi.Input<String>? objectName;
+  final pulumi.Input<String?>? objectName;
 
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjectsObject].
   /// [fields] Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.

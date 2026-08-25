@@ -9,14 +9,14 @@ class TopicMessageTransform {
   /// requests built from the Pub/Sub message data and provided parameters will
   /// be sent to.
   /// Structure is documented below.
-  final pulumi.Input<TopicMessageTransformAiInference>? aiInference;
+  final pulumi.Input<TopicMessageTransformAiInference?>? aiInference;
   /// Controls whether or not to use this transform. If not set or `false`,
   /// the transform will be applied to messages. Default: `true`.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
   /// each one must have a unique `functionName`.
   /// Structure is documented below.
-  final pulumi.Input<TopicMessageTransformJavascriptUdf>? javascriptUdf;
+  final pulumi.Input<TopicMessageTransformJavascriptUdf?>? javascriptUdf;
 
   /// Creates a new [TopicMessageTransform].
   /// [aiInference] AI Inference. Specifies the Vertex AI endpoint that inference

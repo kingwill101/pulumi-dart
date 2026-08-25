@@ -12,29 +12,29 @@ class AlertPolicyCondition {
   /// A condition that checks that a time series
   /// continues to receive new data points.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionAbsent>? conditionAbsent;
+  final pulumi.Input<AlertPolicyConditionConditionAbsent?>? conditionAbsent;
   /// A condition that checks for log messages matching given constraints.
   /// If set, no other conditions can be present.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionMatchedLog>? conditionMatchedLog;
+  final pulumi.Input<AlertPolicyConditionConditionMatchedLog?>? conditionMatchedLog;
   /// A Monitoring Query Language query that outputs a boolean stream
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionMonitoringQueryLanguage>? conditionMonitoringQueryLanguage;
+  final pulumi.Input<AlertPolicyConditionConditionMonitoringQueryLanguage?>? conditionMonitoringQueryLanguage;
   /// A condition type that allows alert policies to be defined using
   /// Prometheus Query Language (PromQL).
   /// The PrometheusQueryLanguageCondition message contains information
   /// from a Prometheus alerting rule and its associated rule group.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionPrometheusQueryLanguage>? conditionPrometheusQueryLanguage;
+  final pulumi.Input<AlertPolicyConditionConditionPrometheusQueryLanguage?>? conditionPrometheusQueryLanguage;
   /// A condition that allows alerting policies to be defined using GoogleSQL.
   /// SQL conditions examine a sliding window of logs using GoogleSQL.
   /// Alert policies with SQL conditions may incur additional billing.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSql>? conditionSql;
+  final pulumi.Input<AlertPolicyConditionConditionSql?>? conditionSql;
   /// A condition that compares a time series against a
   /// threshold.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionThreshold>? conditionThreshold;
+  final pulumi.Input<AlertPolicyConditionConditionThreshold?>? conditionThreshold;
   /// A short name or phrase used to identify the
   /// condition in dashboards, notifications, and
   /// incidents. To avoid confusion, don't use the same
@@ -48,7 +48,7 @@ class AlertPolicyCondition {
   /// [CONDITION_ID] is assigned by Stackdriver Monitoring when
   /// the condition is created as part of a new or updated alerting
   /// policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AlertPolicyCondition].
   /// [conditionAbsent] A condition that checks that a time series

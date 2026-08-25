@@ -9,13 +9,13 @@ import 'project_config_platform_logs_config.dart';
 /// {@macro pulumi_artifactregistry_project_config_project_config_args_doc}
 class ProjectConfigArgs {
   /// The name of the location this config is located in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Configuration for platform logs.
   /// Structure is documented below.
-  final pulumi.Input<ProjectConfigPlatformLogsConfig>? platformLogsConfig;
+  final pulumi.Input<ProjectConfigPlatformLogsConfig?>? platformLogsConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ProjectConfigArgs].
   /// [location] The name of the location this config is located in.

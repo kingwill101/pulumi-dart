@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_args.dart';
+import 'api_meta_data.dart';
 import 'api_state.dart';
 
 /// To get more information about API proxies see, see:
@@ -43,7 +44,7 @@ class Api extends pulumi.CustomResource {
   late final pulumi.Output<String> md5hash;
   /// Metadata describing the API proxy.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> metaDatas;
+  late final pulumi.Output<List<ApiMetaData>> metaDatas;
   /// The ID of the API proxy.
   late final pulumi.Output<String> name;
   /// The Apigee Organization name associated with the Apigee instance.
@@ -63,17 +64,17 @@ class Api extends pulumi.CustomResource {
           'gcp:apigee/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     configBundle = registerOutput<String>('configBundle');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
-    metaDatas = registerOutput<List<Map<String, dynamic>>>('metaDatas');
+    metaDatas = registerOutput<List<ApiMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiMetaData>(guardedValue, (value) => ApiMetaData.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    revisions = registerOutput<List<String>>('revisions');
+    revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Api] resource's state with the given [name] and [id].
@@ -81,11 +82,12 @@ class Api extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Api._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -104,9 +106,29 @@ class Api extends pulumi.CustomResource {
     detectMd5hash = registerOutput<String>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
-    metaDatas = registerOutput<List<Map<String, dynamic>>>('metaDatas');
+    metaDatas = registerOutput<List<ApiMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiMetaData>(guardedValue, (value) => ApiMetaData.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    revisions = registerOutput<List<String>>('revisions');
+    revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Api] resource.
+  Api.reference(String urn)
+    : super(
+        'gcp:apigee/api:Api',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configBundle = registerOutput<String>('configBundle');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    detectMd5hash = registerOutput<String>('detectMd5hash');
+    latestRevisionId = registerOutput<String>('latestRevisionId');
+    md5hash = registerOutput<String>('md5hash');
+    metaDatas = registerOutput<List<ApiMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiMetaData>(guardedValue, (value) => ApiMetaData.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

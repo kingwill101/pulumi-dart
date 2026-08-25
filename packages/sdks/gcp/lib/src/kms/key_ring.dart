@@ -166,7 +166,7 @@ class KeyRing extends pulumi.CustomResource {
           'gcp:kms/keyRing:KeyRing',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -178,11 +178,12 @@ class KeyRing extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyRingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyRing._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -196,6 +197,20 @@ class KeyRing extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [KeyRing] resource.
+  KeyRing.reference(String urn)
+    : super(
+        'gcp:kms/keyRing:KeyRing',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -35,9 +35,9 @@ class GetServiceScaling {
 
   factory GetServiceScaling.fromMap(Map<String, dynamic> map) {
     return GetServiceScaling(
-      manualInstanceCount: pulumi.Input.fromValue(map['manualInstanceCount'] as int),
-      maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
-      minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
+      manualInstanceCount: pulumi.Input.fromValue((map['manualInstanceCount'] as num).toInt()),
+      maxInstanceCount: pulumi.Input.fromValue((map['maxInstanceCount'] as num).toInt()),
+      minInstanceCount: pulumi.Input.fromValue((map['minInstanceCount'] as num).toInt()),
       scalingMode: pulumi.Input.fromValue(map['scalingMode'] as String),
     );
   }

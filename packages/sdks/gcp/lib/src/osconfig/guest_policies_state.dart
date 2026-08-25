@@ -16,47 +16,47 @@ class GuestPoliciesState {
   /// For more information, see how the service
   /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesAssignment>? assignment;
+  final pulumi.Input<GuestPoliciesAssignment?>? assignment;
   /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The logical name of the guest policy in the project with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
-  final pulumi.Input<String>? guestPolicyId;
+  final pulumi.Input<String?>? guestPolicyId;
   /// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of package repositories to configure on the VM instance.
   /// This is done before any other configs are applied so they can use these repos.
   /// Package repositories are only configured if the corresponding package manager(s) are available.
   /// Structure is documented below.
-  final pulumi.Input<List<GuestPoliciesPackageRepository>>? packageRepositories;
+  final pulumi.Input<List<GuestPoliciesPackageRepository>?>? packageRepositories;
   /// The software packages to be managed by this policy.
   /// Structure is documented below.
-  final pulumi.Input<List<GuestPoliciesPackage>>? packages;
+  final pulumi.Input<List<GuestPoliciesPackage>?>? packages;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A list of Recipes to install on the VM instance.
   /// Structure is documented below.
-  final pulumi.Input<List<GuestPoliciesRecipe>>? recipes;
+  final pulumi.Input<List<GuestPoliciesRecipe>?>? recipes;
   /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GuestPoliciesState].
   /// [assignment] Specifies the VM instances that are assigned to this policy. This allows you to target sets

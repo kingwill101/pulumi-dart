@@ -7,7 +7,7 @@ class GroupMembershipRole {
   /// The MembershipRole expiry details, only supported for MEMBER role.
   /// Other roles cannot be accompanied with MEMBER role having expiry.
   /// Structure is documented below.
-  final pulumi.Input<GroupMembershipRoleExpiryDetail>? expiryDetail;
+  final pulumi.Input<GroupMembershipRoleExpiryDetail?>? expiryDetail;
   /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
   /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
   final pulumi.Input<String> name;

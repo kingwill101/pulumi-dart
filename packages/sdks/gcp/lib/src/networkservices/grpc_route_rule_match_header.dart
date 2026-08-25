@@ -8,7 +8,7 @@ class GrpcRouteRuleMatchHeader {
   /// The type of match.
   /// Default value is `EXACT`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Required. The value of the header.
   final pulumi.Input<String> value;
 

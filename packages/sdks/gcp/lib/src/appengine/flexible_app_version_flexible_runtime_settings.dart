@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionFlexibleRuntimeSettings {
   /// Operating System of the application runtime.
-  final pulumi.Input<String>? operatingSystem;
+  final pulumi.Input<String?>? operatingSystem;
   /// The runtime version of an App Engine flexible application.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [FlexibleAppVersionFlexibleRuntimeSettings].
   /// [operatingSystem] Operating System of the application runtime.

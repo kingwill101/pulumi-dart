@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_projects_get_ancestry_get_ancestry_args_doc}
 class GetAncestryArgs {
   /// The ID of the project. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAncestryArgs].
   /// [project] The ID of the project. If it is not provided, the provider project is used.

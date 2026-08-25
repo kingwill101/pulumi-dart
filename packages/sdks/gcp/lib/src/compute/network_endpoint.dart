@@ -504,7 +504,7 @@ class NetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/networkEndpoint:NetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String?>('instance');
@@ -520,11 +520,12 @@ class NetworkEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -538,6 +539,24 @@ class NetworkEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instance = registerOutput<String?>('instance');
+    ipAddress = registerOutput<String>('ipAddress');
+    networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
+    port = registerOutput<int?>('port');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [NetworkEndpoint] resource.
+  NetworkEndpoint.reference(String urn)
+    : super(
+        'gcp:compute/networkEndpoint:NetworkEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String?>('instance');
     ipAddress = registerOutput<String>('ipAddress');

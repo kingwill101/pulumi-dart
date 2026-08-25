@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeystoresAliasesSelfSignedCertSubject {
   /// Common name of the organization. Maximum length is 64 characters.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// Two-letter country code. Example, IN for India, US for United States of America.
-  final pulumi.Input<String>? countryCode;
+  final pulumi.Input<String?>? countryCode;
   /// Email address. Max 255 characters.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// City or town name. Maximum length is 128 characters.
-  final pulumi.Input<String>? locality;
+  final pulumi.Input<String?>? locality;
   /// Organization name. Maximum length is 64 characters.
-  final pulumi.Input<String>? org;
+  final pulumi.Input<String?>? org;
   /// Organization team name. Maximum length is 64 characters.
-  final pulumi.Input<String>? orgUnit;
+  final pulumi.Input<String?>? orgUnit;
   /// State or district name. Maximum length is 128 characters.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertSubject].
   /// [commonName] Common name of the organization. Maximum length is 64 characters.

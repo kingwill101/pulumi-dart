@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
   /// List of secondary ranges names within this subnetwork that can be used for pod IPs.
-  final pulumi.Input<List<String>>? podIpv4RangeNames;
+  final pulumi.Input<List<String>?>? podIpv4RangeNames;
   /// Status of the subnetwork. Additional subnet with DRAINING status will not be selected during new node pool creation
   /// Accepted values are:
   /// * `ACTIVE`: ACTIVE status indicates that the subnet is available for new node pool creation.
   /// * `DRAINING`: DRAINING status indicates that the subnet is not used for new node pool creation.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
   final pulumi.Input<String> subnetwork;
 

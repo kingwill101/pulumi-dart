@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromTemplateSchedulingOnInstanceStopAction {
   /// If true, the contents of any attached Local SSD disks will be discarded.
-  final pulumi.Input<bool>? discardLocalSsd;
+  final pulumi.Input<bool?>? discardLocalSsd;
 
   /// Creates a new [InstanceFromTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.

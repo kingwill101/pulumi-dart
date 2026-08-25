@@ -715,12 +715,12 @@ class Hl7StoreIamBinding extends pulumi.CustomResource {
           'gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<Hl7StoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 
@@ -729,11 +729,12 @@ class Hl7StoreIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Hl7StoreIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hl7StoreIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -750,7 +751,23 @@ class Hl7StoreIamBinding extends pulumi.CustomResource {
     condition = registerOutput<Hl7StoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [Hl7StoreIamBinding] resource.
+  Hl7StoreIamBinding.reference(String urn)
+    : super(
+        'gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<Hl7StoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 }

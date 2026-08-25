@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobStatusErrorResult {
   /// The geographic location of the job. The default value is US.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A human-readable description of the error.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// A short error code that summarizes the error.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [JobStatusErrorResult].
   /// [location] The geographic location of the job. The default value is US.

@@ -30,7 +30,7 @@ class GetReservationSpecificReservationInstancePropertyGuestAccelerator {
 
   factory GetReservationSpecificReservationInstancePropertyGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return GetReservationSpecificReservationInstancePropertyGuestAccelerator(
-      acceleratorCount: pulumi.Input.fromValue(map['acceleratorCount'] as int),
+      acceleratorCount: pulumi.Input.fromValue((map['acceleratorCount'] as num).toInt()),
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
     );
   }

@@ -917,7 +917,7 @@ class ClusterIAMMember extends pulumi.CustomResource {
           'gcp:dataproc/clusterIAMMember:ClusterIAMMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cluster = registerOutput<String>('cluster');
     condition = registerOutput<ClusterIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -933,11 +933,12 @@ class ClusterIAMMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterIAMMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterIAMMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -951,6 +952,24 @@ class ClusterIAMMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cluster = registerOutput<String>('cluster');
+    condition = registerOutput<ClusterIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ClusterIAMMember] resource.
+  ClusterIAMMember.reference(String urn)
+    : super(
+        'gcp:dataproc/clusterIAMMember:ClusterIAMMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cluster = registerOutput<String>('cluster');
     condition = registerOutput<ClusterIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

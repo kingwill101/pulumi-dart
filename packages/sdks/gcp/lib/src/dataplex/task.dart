@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_args.dart';
 import 'task_execution_spec.dart';
+import 'task_execution_status.dart';
 import 'task_notebook.dart';
 import 'task_spark.dart';
 import 'task_state.dart';
@@ -1423,7 +1424,7 @@ class Task extends pulumi.CustomResource {
   late final pulumi.Output<TaskExecutionSpec> executionSpec;
   /// Configuration for the cluster
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> executionStatuses;
+  late final pulumi.Output<List<TaskExecutionStatus>> executionStatuses;
   /// User-defined labels for the task.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1475,22 +1476,23 @@ class Task extends pulumi.CustomResource {
           'gcp:dataplex/task:Task',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     executionSpec = registerOutput<TaskExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    executionStatuses = registerOutput<List<Map<String, dynamic>>>('executionStatuses');
-    labels = registerOutput<Map<String, String>?>('labels');
+    executionStatuses = registerOutput<List<TaskExecutionStatus>>('executionStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskExecutionStatus>(guardedValue, (value) => TaskExecutionStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lake = registerOutput<String?>('lake');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     notebook = registerOutput<TaskNotebook?>('notebook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskNotebook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     spark = registerOutput<TaskSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     taskId = registerOutput<String?>('taskId');
@@ -1504,11 +1506,12 @@ class Task extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Task._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1526,18 +1529,50 @@ class Task extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     executionSpec = registerOutput<TaskExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    executionStatuses = registerOutput<List<Map<String, dynamic>>>('executionStatuses');
-    labels = registerOutput<Map<String, String>?>('labels');
+    executionStatuses = registerOutput<List<TaskExecutionStatus>>('executionStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskExecutionStatus>(guardedValue, (value) => TaskExecutionStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lake = registerOutput<String?>('lake');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     notebook = registerOutput<TaskNotebook?>('notebook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskNotebook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     spark = registerOutput<TaskSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    taskId = registerOutput<String?>('taskId');
+    triggerSpec = registerOutput<TaskTriggerSpec>('triggerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTriggerSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Task] resource.
+  Task.reference(String urn)
+    : super(
+        'gcp:dataplex/task:Task',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    executionSpec = registerOutput<TaskExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionStatuses = registerOutput<List<TaskExecutionStatus>>('executionStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskExecutionStatus>(guardedValue, (value) => TaskExecutionStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lake = registerOutput<String?>('lake');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    notebook = registerOutput<TaskNotebook?>('notebook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskNotebook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    spark = registerOutput<TaskSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     taskId = registerOutput<String?>('taskId');
     triggerSpec = registerOutput<TaskTriggerSpec>('triggerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTriggerSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');

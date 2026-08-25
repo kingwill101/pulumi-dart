@@ -6,7 +6,7 @@ class QaQuestionMetrics {
   /// (Output)
   /// Accuracy of the model. Measures the percentage of correct answers the
   /// model gave on the test set.
-  final pulumi.Input<double>? accuracy;
+  final pulumi.Input<double?>? accuracy;
 
   /// Creates a new [QaQuestionMetrics].
   /// [accuracy] (Output)
@@ -22,7 +22,7 @@ class QaQuestionMetrics {
 
   factory QaQuestionMetrics.fromMap(Map<String, dynamic> map) {
     return QaQuestionMetrics(
-      accuracy: (() { final guardedValue = map['accuracy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      accuracy: (() { final guardedValue = map['accuracy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_identity_pool_args.dart';
+import 'workload_identity_pool_attestation_rule.dart';
 import 'workload_identity_pool_inline_certificate_issuance_config.dart';
 import 'workload_identity_pool_inline_trust_config.dart';
 import 'workload_identity_pool_state.dart';
@@ -1191,7 +1192,7 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
   /// defined under a managed identity, matching workloads may receive that identity. A maximum of
   /// 50 AttestationRules can be set.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> attestationRules;
+  late final pulumi.Output<List<WorkloadIdentityPoolAttestationRule>?> attestationRules;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1276,9 +1277,9 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
+    attestationRules = registerOutput<List<WorkloadIdentityPoolAttestationRule>?>('attestationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolAttestationRule>(guardedValue, (value) => WorkloadIdentityPoolAttestationRule.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
@@ -1297,11 +1298,12 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkloadIdentityPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkloadIdentityPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1315,7 +1317,7 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
+    attestationRules = registerOutput<List<WorkloadIdentityPoolAttestationRule>?>('attestationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolAttestationRule>(guardedValue, (value) => WorkloadIdentityPoolAttestationRule.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
@@ -1326,6 +1328,29 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadIdentityPool] resource.
+  WorkloadIdentityPool.reference(String urn)
+    : super(
+        'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attestationRules = registerOutput<List<WorkloadIdentityPoolAttestationRule>?>('attestationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolAttestationRule>(guardedValue, (value) => WorkloadIdentityPoolAttestationRule.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String?>('displayName');
+    inlineCertificateIssuanceConfig = registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>('inlineCertificateIssuanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>('inlineTrustConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineTrustConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
   }
 }

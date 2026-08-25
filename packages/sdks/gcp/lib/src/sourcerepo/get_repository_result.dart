@@ -5,59 +5,59 @@ import 'get_repository_pubsub_config.dart';
 
 /// Result data returned by getRepository.
 class GetRepositoryResult {
-  final bool createIgnoreAlreadyExists;
-  final String deletionPolicy;
+  final bool? createIgnoreAlreadyExists;
+  final String? deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   final String? project;
-  final List<GetRepositoryPubsubConfig> pubsubConfigs;
-  final int size;
-  final String url;
+  final List<GetRepositoryPubsubConfig>? pubsubConfigs;
+  final int? size;
+  final String? url;
 
   /// Creates a new [GetRepositoryResult].
-  /// [createIgnoreAlreadyExists] Required.
-  /// [deletionPolicy] Required.
+  /// [createIgnoreAlreadyExists] Optional.
+  /// [deletionPolicy] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [pubsubConfigs] Required.
-  /// [size] Required.
-  /// [url] Required.
+  /// [pubsubConfigs] Optional.
+  /// [size] Optional.
+  /// [url] Optional.
   const GetRepositoryResult({
-    required this.createIgnoreAlreadyExists,
-    required this.deletionPolicy,
-    required this.id,
-    required this.name,
+    this.createIgnoreAlreadyExists,
+    this.deletionPolicy,
+    this.id,
+    this.name,
     this.project,
-    required this.pubsubConfigs,
-    required this.size,
-    required this.url,
+    this.pubsubConfigs,
+    this.size,
+    this.url,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createIgnoreAlreadyExists': createIgnoreAlreadyExists,
-      'deletionPolicy': deletionPolicy,
-      'id': id,
-      'name': name,
+      'createIgnoreAlreadyExists': ?createIgnoreAlreadyExists,
+      'deletionPolicy': ?deletionPolicy,
+      'id': ?id,
+      'name': ?name,
       'project': ?project,
-      'pubsubConfigs': pulumi.Input.encodeList<GetRepositoryPubsubConfig, Map<String, dynamic>>(pubsubConfigs, (value) => value.toMap()),
-      'size': size,
-      'url': url,
+      'pubsubConfigs': ?(() { final guardedValue = pubsubConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRepositoryPubsubConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'size': ?size,
+      'url': ?url,
     };
   }
 
   factory GetRepositoryResult.fromMap(Map<String, dynamic> map) {
     return GetRepositoryResult(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] as bool,
-      deletionPolicy: map['deletionPolicy'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      createIgnoreAlreadyExists: (() { final guardedValue = map['createIgnoreAlreadyExists']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pubsubConfigs: pulumi.Input.decodeList<GetRepositoryPubsubConfig>(map['pubsubConfigs']!, (value) => GetRepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>())),
-      size: map['size'] as int,
-      url: map['url'] as String,
+      pubsubConfigs: (() { final guardedValue = map['pubsubConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRepositoryPubsubConfig>(guardedValue, (value) => GetRepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'workforce_pool_provider_oidc_client_secret_value.dart';
 class WorkforcePoolProviderOidcClientSecret {
   /// The value of the client secret.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderOidcClientSecretValue>? value;
+  final pulumi.Input<WorkforcePoolProviderOidcClientSecretValue?>? value;
 
   /// Creates a new [WorkforcePoolProviderOidcClientSecret].
   /// [value] The value of the client secret.

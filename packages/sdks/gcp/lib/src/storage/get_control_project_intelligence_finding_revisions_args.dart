@@ -10,11 +10,11 @@ class GetControlProjectIntelligenceFindingRevisionsArgs {
   /// The ID of the intelligence finding.
   final pulumi.Input<String> findingId;
   /// The location of the intelligence finding. Currently default value is global and users cannot use for input for now.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum number of IntelligenceFindingRevision resources to return.
-  final pulumi.Input<int>? pageSize;
+  final pulumi.Input<int?>? pageSize;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetControlProjectIntelligenceFindingRevisionsArgs].
   /// [findingId] The ID of the intelligence finding.
@@ -41,7 +41,7 @@ class GetControlProjectIntelligenceFindingRevisionsArgs {
     return GetControlProjectIntelligenceFindingRevisionsArgs(
       findingId: pulumi.Input.fromValue(map['findingId'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

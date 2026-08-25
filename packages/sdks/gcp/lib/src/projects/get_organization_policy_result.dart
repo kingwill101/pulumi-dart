@@ -7,69 +7,69 @@ import 'get_organization_policy_restore_policy.dart';
 
 /// Result data returned by getOrganizationPolicy.
 class GetOrganizationPolicyResult {
-  final List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
-  final String constraint;
-  final String deletionPolicy;
-  final String etag;
+  final List<GetOrganizationPolicyBooleanPolicy>? booleanPolicies;
+  final String? constraint;
+  final String? deletionPolicy;
+  final String? etag;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetOrganizationPolicyListPolicy> listPolicies;
-  final String project;
-  final List<GetOrganizationPolicyRestorePolicy> restorePolicies;
-  final String updateTime;
-  final int version;
+  final String? id;
+  final List<GetOrganizationPolicyListPolicy>? listPolicies;
+  final String? project;
+  final List<GetOrganizationPolicyRestorePolicy>? restorePolicies;
+  final String? updateTime;
+  final int? version;
 
   /// Creates a new [GetOrganizationPolicyResult].
-  /// [booleanPolicies] Required.
-  /// [constraint] Required.
-  /// [deletionPolicy] Required.
-  /// [etag] Required.
+  /// [booleanPolicies] Optional.
+  /// [constraint] Optional.
+  /// [deletionPolicy] Optional.
+  /// [etag] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [listPolicies] Required.
-  /// [project] Required.
-  /// [restorePolicies] Required.
-  /// [updateTime] Required.
-  /// [version] Required.
+  /// [listPolicies] Optional.
+  /// [project] Optional.
+  /// [restorePolicies] Optional.
+  /// [updateTime] Optional.
+  /// [version] Optional.
   const GetOrganizationPolicyResult({
-    required this.booleanPolicies,
-    required this.constraint,
-    required this.deletionPolicy,
-    required this.etag,
-    required this.id,
-    required this.listPolicies,
-    required this.project,
-    required this.restorePolicies,
-    required this.updateTime,
-    required this.version,
+    this.booleanPolicies,
+    this.constraint,
+    this.deletionPolicy,
+    this.etag,
+    this.id,
+    this.listPolicies,
+    this.project,
+    this.restorePolicies,
+    this.updateTime,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'booleanPolicies': pulumi.Input.encodeList<GetOrganizationPolicyBooleanPolicy, Map<String, dynamic>>(booleanPolicies, (value) => value.toMap()),
-      'constraint': constraint,
-      'deletionPolicy': deletionPolicy,
-      'etag': etag,
-      'id': id,
-      'listPolicies': pulumi.Input.encodeList<GetOrganizationPolicyListPolicy, Map<String, dynamic>>(listPolicies, (value) => value.toMap()),
-      'project': project,
-      'restorePolicies': pulumi.Input.encodeList<GetOrganizationPolicyRestorePolicy, Map<String, dynamic>>(restorePolicies, (value) => value.toMap()),
-      'updateTime': updateTime,
-      'version': version,
+      'booleanPolicies': ?(() { final guardedValue = booleanPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetOrganizationPolicyBooleanPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'constraint': ?constraint,
+      'deletionPolicy': ?deletionPolicy,
+      'etag': ?etag,
+      'id': ?id,
+      'listPolicies': ?(() { final guardedValue = listPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetOrganizationPolicyListPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'project': ?project,
+      'restorePolicies': ?(() { final guardedValue = restorePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetOrganizationPolicyRestorePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'updateTime': ?updateTime,
+      'version': ?version,
     };
   }
 
   factory GetOrganizationPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyResult(
-      booleanPolicies: pulumi.Input.decodeList<GetOrganizationPolicyBooleanPolicy>(map['booleanPolicies']!, (value) => GetOrganizationPolicyBooleanPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      constraint: map['constraint'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      listPolicies: pulumi.Input.decodeList<GetOrganizationPolicyListPolicy>(map['listPolicies']!, (value) => GetOrganizationPolicyListPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] as String,
-      restorePolicies: pulumi.Input.decodeList<GetOrganizationPolicyRestorePolicy>(map['restorePolicies']!, (value) => GetOrganizationPolicyRestorePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] as String,
-      version: map['version'] as int,
+      booleanPolicies: (() { final guardedValue = map['booleanPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOrganizationPolicyBooleanPolicy>(guardedValue, (value) => GetOrganizationPolicyBooleanPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      constraint: (() { final guardedValue = map['constraint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      listPolicies: (() { final guardedValue = map['listPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOrganizationPolicyListPolicy>(guardedValue, (value) => GetOrganizationPolicyListPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      restorePolicies: (() { final guardedValue = map['restorePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOrganizationPolicyRestorePolicy>(guardedValue, (value) => GetOrganizationPolicyRestorePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
     );
   }
 }

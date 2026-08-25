@@ -6,7 +6,7 @@ import 'stream_backfill_all_mongodb_excluded_objects_database_collection.dart';
 class StreamBackfillAllMongodbExcludedObjectsDatabase {
   /// Collections in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>>? collections;
+  final pulumi.Input<List<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>?>? collections;
   /// Database name.
   final pulumi.Input<String> database;
 

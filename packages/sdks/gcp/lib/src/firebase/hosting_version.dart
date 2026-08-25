@@ -1863,7 +1863,7 @@ class HostingVersion extends pulumi.CustomResource {
           'gcp:firebase/hostingVersion:HostingVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     config = registerOutput<HostingVersionConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingVersionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -1876,11 +1876,12 @@ class HostingVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostingVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostingVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1894,6 +1895,21 @@ class HostingVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    config = registerOutput<HostingVersionConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingVersionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    siteId = registerOutput<String>('siteId');
+    versionId = registerOutput<String>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [HostingVersion] resource.
+  HostingVersion.reference(String urn)
+    : super(
+        'gcp:firebase/hostingVersion:HostingVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     config = registerOutput<HostingVersionConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingVersionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     siteId = registerOutput<String>('siteId');

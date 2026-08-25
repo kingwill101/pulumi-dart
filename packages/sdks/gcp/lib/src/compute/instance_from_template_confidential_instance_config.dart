@@ -7,9 +7,9 @@ class InstanceFromTemplateConfidentialInstanceConfig {
   /// SEV is an AMD feature. TDX is an Intel feature. One of the following
   /// values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
   /// "AMD Milan" is currently required.
-  final pulumi.Input<String>? confidentialInstanceType;
+  final pulumi.Input<String?>? confidentialInstanceType;
   /// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [InstanceFromTemplateConfidentialInstanceConfig].
   /// [confidentialInstanceType] The confidential computing technology the instance uses.

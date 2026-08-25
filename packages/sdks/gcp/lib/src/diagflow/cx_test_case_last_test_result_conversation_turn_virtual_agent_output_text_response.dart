@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse {
   /// A collection of text responses.
-  final pulumi.Input<List<String>>? texts;
+  final pulumi.Input<List<String>?>? texts;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse].
   /// [texts] A collection of text responses.

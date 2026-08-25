@@ -697,7 +697,7 @@ class ParserExtension extends pulumi.CustomResource {
           'gcp:chronicle/parserExtension:ParserExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cbnSnippet = registerOutput<String?>('cbnSnippet');
     createTime = registerOutput<String>('createTime');
@@ -724,11 +724,12 @@ class ParserExtension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParserExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ParserExtension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -757,6 +758,35 @@ class ParserExtension extends pulumi.CustomResource {
     parserextension = registerOutput<String>('parserextension');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    stateLastChangedTime = registerOutput<String>('stateLastChangedTime');
+    validationReport = registerOutput<String>('validationReport');
+    validationSkipped = registerOutput<bool?>('validationSkipped');
+  }
+
+  /// Creates a typed reference to an existing [ParserExtension] resource.
+  ParserExtension.reference(String urn)
+    : super(
+        'gcp:chronicle/parserExtension:ParserExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cbnSnippet = registerOutput<String?>('cbnSnippet');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dynamicParsing = registerOutput<ParserExtensionDynamicParsing?>('dynamicParsing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParserExtensionDynamicParsing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extensionValidationReport = registerOutput<String>('extensionValidationReport');
+    fieldExtractors = registerOutput<ParserExtensionFieldExtractors?>('fieldExtractors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParserExtensionFieldExtractors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instance = registerOutput<String>('instance');
+    lastLiveTime = registerOutput<String>('lastLiveTime');
+    location = registerOutput<String>('location');
+    log = registerOutput<String?>('log');
+    logType = registerOutput<String>('logType');
+    this.name = registerOutput<String>('name');
+    parserextension = registerOutput<String>('parserextension');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     stateLastChangedTime = registerOutput<String>('stateLastChangedTime');
     validationReport = registerOutput<String>('validationReport');
     validationSkipped = registerOutput<bool?>('validationSkipped');

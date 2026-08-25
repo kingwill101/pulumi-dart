@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_network_firewall_policy_with_rules_args.dart';
+import 'region_network_firewall_policy_with_rules_predefined_rule.dart';
+import 'region_network_firewall_policy_with_rules_rule.dart';
 import 'region_network_firewall_policy_with_rules_state.dart';
 
 /// The Compute NetworkFirewallPolicy with rules resource
@@ -1662,7 +1664,7 @@ class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource {
   late final pulumi.Output<String> policyType;
   /// A list of firewall policy pre-defined rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> predefinedRules;
+  late final pulumi.Output<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>> predefinedRules;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -1672,7 +1674,7 @@ class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource {
   late final pulumi.Output<int> ruleTupleCount;
   /// A list of firewall policy rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<RegionNetworkFirewallPolicyWithRulesRule>> rules;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Server-defined URL for this resource with the resource id.
@@ -1690,7 +1692,7 @@ class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource {
           'gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1699,11 +1701,11 @@ class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkFirewallPolicyId = registerOutput<String>('networkFirewallPolicyId');
     policyType = registerOutput<String>('policyType');
-    predefinedRules = registerOutput<List<Map<String, dynamic>>>('predefinedRules');
+    predefinedRules = registerOutput<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>>('predefinedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesPredefinedRule>(guardedValue, (value) => RegionNetworkFirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<RegionNetworkFirewallPolicyWithRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRule>(guardedValue, (value) => RegionNetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }
@@ -1713,11 +1715,12 @@ class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionNetworkFirewallPolicyWithRulesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionNetworkFirewallPolicyWithRules._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1738,11 +1741,36 @@ class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkFirewallPolicyId = registerOutput<String>('networkFirewallPolicyId');
     policyType = registerOutput<String>('policyType');
-    predefinedRules = registerOutput<List<Map<String, dynamic>>>('predefinedRules');
+    predefinedRules = registerOutput<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>>('predefinedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesPredefinedRule>(guardedValue, (value) => RegionNetworkFirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<RegionNetworkFirewallPolicyWithRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRule>(guardedValue, (value) => RegionNetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkFirewallPolicyWithRules] resource.
+  RegionNetworkFirewallPolicyWithRules.reference(String urn)
+    : super(
+        'gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    networkFirewallPolicyId = registerOutput<String>('networkFirewallPolicyId');
+    policyType = registerOutput<String>('policyType');
+    predefinedRules = registerOutput<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>>('predefinedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesPredefinedRule>(guardedValue, (value) => RegionNetworkFirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    rules = registerOutput<List<RegionNetworkFirewallPolicyWithRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyWithRulesRule>(guardedValue, (value) => RegionNetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }

@@ -1045,7 +1045,7 @@ class Runtime extends pulumi.CustomResource {
           'gcp:colab/runtime:Runtime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1068,11 +1068,12 @@ class Runtime extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuntimeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Runtime._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1100,5 +1101,30 @@ class Runtime extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     runtimeUser = registerOutput<String>('runtimeUser');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Runtime] resource.
+  Runtime.reference(String urn)
+    : super(
+        'gcp:colab/runtime:Runtime',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoUpgrade = registerOutput<bool?>('autoUpgrade');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    desiredState = registerOutput<String?>('desiredState');
+    displayName = registerOutput<String>('displayName');
+    expirationTime = registerOutput<String>('expirationTime');
+    isUpgradable = registerOutput<bool>('isUpgradable');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notebookRuntimeTemplateRef = registerOutput<RuntimeNotebookRuntimeTemplateRef?>('notebookRuntimeTemplateRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeNotebookRuntimeTemplateRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
+    project = registerOutput<String>('project');
+    runtimeUser = registerOutput<String>('runtimeUser');
+    state = registerOutput<String>('state');
   }
 }

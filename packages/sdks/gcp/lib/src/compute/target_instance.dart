@@ -1232,7 +1232,7 @@ class TargetInstance extends pulumi.CustomResource {
           'gcp:compute/targetInstance:TargetInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1252,11 +1252,12 @@ class TargetInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1270,6 +1271,28 @@ class TargetInstance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    natPolicy = registerOutput<String?>('natPolicy');
+    network = registerOutput<String?>('network');
+    project = registerOutput<String>('project');
+    securityPolicy = registerOutput<String?>('securityPolicy');
+    selfLink = registerOutput<String>('selfLink');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [TargetInstance] resource.
+  TargetInstance.reference(String urn)
+    : super(
+        'gcp:compute/targetInstance:TargetInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

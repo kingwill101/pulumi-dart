@@ -7,12 +7,12 @@ import 'data_object_vector_sparse.dart';
 class DataObjectVector {
   /// A dense vector.
   /// Structure is documented below.
-  final pulumi.Input<DataObjectVectorDense>? dense;
+  final pulumi.Input<DataObjectVectorDense?>? dense;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> fieldName;
   /// A sparse vector.
   /// Structure is documented below.
-  final pulumi.Input<DataObjectVectorSparse>? sparse;
+  final pulumi.Input<DataObjectVectorSparse?>? sparse;
 
   /// Creates a new [DataObjectVector].
   /// [dense] A dense vector.

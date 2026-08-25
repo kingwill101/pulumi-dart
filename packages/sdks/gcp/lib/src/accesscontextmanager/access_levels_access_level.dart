@@ -7,13 +7,13 @@ import 'access_levels_access_level_custom.dart';
 class AccessLevelsAccessLevel {
   /// A set of predefined conditions for the access level and a combining function.
   /// Structure is documented below.
-  final pulumi.Input<AccessLevelsAccessLevelBasic>? basic;
+  final pulumi.Input<AccessLevelsAccessLevelBasic?>? basic;
   /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
   /// See CEL spec at: https://github.com/google/cel-spec.
   /// Structure is documented below.
-  final pulumi.Input<AccessLevelsAccessLevelCustom>? custom;
+  final pulumi.Input<AccessLevelsAccessLevelCustom?>? custom;
   /// Description of the AccessLevel and its use. Does not affect behavior.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource name for the Access Level. The shortName component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}

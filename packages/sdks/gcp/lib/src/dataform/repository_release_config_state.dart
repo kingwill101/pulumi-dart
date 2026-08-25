@@ -8,34 +8,34 @@ import 'repository_release_config_recent_scheduled_release_record.dart';
 class RepositoryReleaseConfigState {
   /// Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryReleaseConfigCodeCompilationConfig>? codeCompilationConfig;
+  final pulumi.Input<RepositoryReleaseConfigCodeCompilationConfig?>? codeCompilationConfig;
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-  final pulumi.Input<String>? cronSchedule;
+  final pulumi.Input<String?>? cronSchedule;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Disables automatic creation of compilation results.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-  final pulumi.Input<String>? gitCommitish;
+  final pulumi.Input<String?>? gitCommitish;
   /// The release's name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
   /// Structure is documented below.
-  final pulumi.Input<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>? recentScheduledReleaseRecords;
+  final pulumi.Input<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>?>? recentScheduledReleaseRecords;
   /// A reference to the region
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A reference to the Dataform repository
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [RepositoryReleaseConfigState].
   /// [codeCompilationConfig] Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.

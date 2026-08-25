@@ -14,10 +14,10 @@ import 'routine_spark_options.dart';
 class RoutineArgs {
   /// Input/output argument of a function or a stored procedure.
   /// Structure is documented below.
-  final pulumi.Input<List<RoutineArgument>>? arguments;
+  final pulumi.Input<List<RoutineArgument>?>? arguments;
   /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
   /// Possible values are: `DATA_MASKING`.
-  final pulumi.Input<String>? dataGovernanceType;
+  final pulumi.Input<String?>? dataGovernanceType;
   /// The ID of the dataset containing this routine
   final pulumi.Input<String> datasetId;
   /// The body of the routine. For functions, this is the expression in the AS clause.
@@ -29,38 +29,38 @@ class RoutineArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the routine if defined.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The determinism level of the JavaScript UDF if defined.
   /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
-  final pulumi.Input<String>? determinismLevel;
+  final pulumi.Input<String?>? determinismLevel;
   /// (Optional, Beta)
   /// Options for the runtime of the external system.
   /// This field is only applicable for Python UDFs.
   /// Structure is documented below.
-  final pulumi.Input<RoutineExternalRuntimeOptions>? externalRuntimeOptions;
+  final pulumi.Input<RoutineExternalRuntimeOptions?>? externalRuntimeOptions;
   /// Optional. If language = "JAVASCRIPT", this field stores the path of the
   /// imported JAVASCRIPT libraries.
-  final pulumi.Input<List<String>>? importedLibraries;
+  final pulumi.Input<List<String>?>? importedLibraries;
   /// The language of the routine.
   /// Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// (Optional, Beta)
   /// Options for a user-defined Python function.
   /// Structure is documented below.
-  final pulumi.Input<RoutinePythonOptions>? pythonOptions;
+  final pulumi.Input<RoutinePythonOptions?>? pythonOptions;
   /// Remote function specific options.
   /// Structure is documented below.
-  final pulumi.Input<RoutineRemoteFunctionOptions>? remoteFunctionOptions;
+  final pulumi.Input<RoutineRemoteFunctionOptions?>? remoteFunctionOptions;
   /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
   /// If absent, the return table type is inferred from definitionBody at query time in each query
   /// that references this routine. If present, then the columns in the evaluated table result will
   /// be cast to match the column types specificed in return table type, at query time.
-  final pulumi.Input<String>? returnTableType;
+  final pulumi.Input<String?>? returnTableType;
   /// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
   /// If absent, the return type is inferred from definitionBody at query time in each query
   /// that references this routine. If present, then the evaluated result will be cast to
@@ -70,7 +70,7 @@ class RoutineArgs {
   /// d the order of values or replaced STRUCT field type with RECORD field type, we currently
   /// cannot suppress the recurring diff this causes. As a workaround, we recommend using
   /// the schema as returned by the API.
-  final pulumi.Input<String>? returnType;
+  final pulumi.Input<String?>? returnType;
   /// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
   final pulumi.Input<String> routineId;
   /// The type of routine.
@@ -78,10 +78,10 @@ class RoutineArgs {
   final pulumi.Input<String> routineType;
   /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
   /// Possible values are: `DEFINER`, `INVOKER`.
-  final pulumi.Input<String>? securityMode;
+  final pulumi.Input<String?>? securityMode;
   /// Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
   /// Structure is documented below.
-  final pulumi.Input<RoutineSparkOptions>? sparkOptions;
+  final pulumi.Input<RoutineSparkOptions?>? sparkOptions;
 
   /// Creates a new [RoutineArgs].
   /// [arguments] Input/output argument of a function or a stored procedure.

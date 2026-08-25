@@ -2242,12 +2242,12 @@ class AppEngineVersionIamBinding extends pulumi.CustomResource {
           'gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     condition = registerOutput<AppEngineVersionIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineVersionIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     service = registerOutput<String>('service');
@@ -2259,11 +2259,12 @@ class AppEngineVersionIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppEngineVersionIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppEngineVersionIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2280,7 +2281,26 @@ class AppEngineVersionIamBinding extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     condition = registerOutput<AppEngineVersionIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineVersionIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    service = registerOutput<String>('service');
+    versionId = registerOutput<String>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [AppEngineVersionIamBinding] resource.
+  AppEngineVersionIamBinding.reference(String urn)
+    : super(
+        'gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    condition = registerOutput<AppEngineVersionIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineVersionIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     service = registerOutput<String>('service');

@@ -983,7 +983,7 @@ class Router extends pulumi.CustomResource {
           'gcp:compute/router:Router',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bgp = registerOutput<RouterBgp?>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -1005,11 +1005,12 @@ class Router extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Router._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1023,6 +1024,30 @@ class Router extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bgp = registerOutput<RouterBgp?>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    encryptedInterconnectRouter = registerOutput<bool?>('encryptedInterconnectRouter');
+    md5AuthenticationKeys = registerOutput<RouterMd5AuthenticationKeys?>('md5AuthenticationKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterMd5AuthenticationKeys.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nccGateway = registerOutput<String?>('nccGateway');
+    network = registerOutput<String?>('network');
+    params = registerOutput<RouterParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [Router] resource.
+  Router.reference(String urn)
+    : super(
+        'gcp:compute/router:Router',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bgp = registerOutput<RouterBgp?>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

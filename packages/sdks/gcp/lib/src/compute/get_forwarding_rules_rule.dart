@@ -427,7 +427,7 @@ class GetForwardingRulesRule {
       deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
-      forwardingRuleId: pulumi.Input.fromValue(map['forwardingRuleId'] as int),
+      forwardingRuleId: pulumi.Input.fromValue((map['forwardingRuleId'] as num).toInt()),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       ipCollection: pulumi.Input.fromValue(map['ipCollection'] as String),
       ipProtocol: pulumi.Input.fromValue(map['ipProtocol'] as String),

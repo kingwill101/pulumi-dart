@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
+import 'instance_host_config.dart';
 import 'instance_private_config.dart';
 import 'instance_state.dart';
 import 'instance_workforce_identity_federation_config.dart';
@@ -4358,7 +4359,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// A list of hostnames for this instance.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> hostConfigs;
+  late final pulumi.Output<List<InstanceHostConfig>> hostConfigs;
   /// The name for the Instance.
   late final pulumi.Output<String> instanceId;
   /// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
@@ -4404,20 +4405,21 @@ class Instance extends pulumi.CustomResource {
           'gcp:securesourcemanager/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    hostConfigs = registerOutput<List<Map<String, dynamic>>>('hostConfigs');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    hostConfigs = registerOutput<List<InstanceHostConfig>>('hostConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceHostConfig>(guardedValue, (value) => InstanceHostConfig.fromMap((value as Map).cast<String, dynamic>())); });
     instanceId = registerOutput<String>('instanceId');
     kmsKey = registerOutput<String?>('kmsKey');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateConfig = registerOutput<InstancePrivateConfig?>('privateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePrivateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     stateNote = registerOutput<String>('stateNote');
     updateTime = registerOutput<String>('updateTime');
@@ -4429,11 +4431,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4449,17 +4452,45 @@ class Instance extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    hostConfigs = registerOutput<List<Map<String, dynamic>>>('hostConfigs');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    hostConfigs = registerOutput<List<InstanceHostConfig>>('hostConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceHostConfig>(guardedValue, (value) => InstanceHostConfig.fromMap((value as Map).cast<String, dynamic>())); });
     instanceId = registerOutput<String>('instanceId');
     kmsKey = registerOutput<String?>('kmsKey');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateConfig = registerOutput<InstancePrivateConfig?>('privateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePrivateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
+    stateNote = registerOutput<String>('stateNote');
+    updateTime = registerOutput<String>('updateTime');
+    workforceIdentityFederationConfig = registerOutput<InstanceWorkforceIdentityFederationConfig?>('workforceIdentityFederationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceWorkforceIdentityFederationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:securesourcemanager/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    hostConfigs = registerOutput<List<InstanceHostConfig>>('hostConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceHostConfig>(guardedValue, (value) => InstanceHostConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceId = registerOutput<String>('instanceId');
+    kmsKey = registerOutput<String?>('kmsKey');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateConfig = registerOutput<InstancePrivateConfig?>('privateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePrivateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
     stateNote = registerOutput<String>('stateNote');
     updateTime = registerOutput<String>('updateTime');
     workforceIdentityFederationConfig = registerOutput<InstanceWorkforceIdentityFederationConfig?>('workforceIdentityFederationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceWorkforceIdentityFederationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

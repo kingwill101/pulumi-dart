@@ -6,14 +6,14 @@ import 'report_summary_group_finding_preference_set_finding_vmware_engine_findin
 class ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation {
   /// (Output)
   /// Count of assets allocated to these nodes
-  final pulumi.Input<String>? allocatedAssetCount;
+  final pulumi.Input<String?>? allocatedAssetCount;
   /// (Output)
   /// Count of this node type to be provisioned
-  final pulumi.Input<String>? nodeCount;
+  final pulumi.Input<String?>? nodeCount;
   /// (Output)
   /// A VMWare Engine Node
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode>>? vmwareNodes;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocationVmwareNode>?>? vmwareNodes;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFindingNodeAllocation].
   /// [allocatedAssetCount] (Output)

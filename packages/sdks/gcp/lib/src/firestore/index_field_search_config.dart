@@ -7,10 +7,10 @@ import 'index_field_search_config_text_spec.dart';
 class IndexFieldSearchConfig {
   /// The specification for building a geo search index for a field.
   /// Structure is documented below.
-  final pulumi.Input<IndexFieldSearchConfigGeoSpec>? geoSpec;
+  final pulumi.Input<IndexFieldSearchConfigGeoSpec?>? geoSpec;
   /// The specification for building a text search index for a field.
   /// Structure is documented below.
-  final pulumi.Input<IndexFieldSearchConfigTextSpec>? textSpec;
+  final pulumi.Input<IndexFieldSearchConfigTextSpec?>? textSpec;
 
   /// Creates a new [IndexFieldSearchConfig].
   /// [geoSpec] The specification for building a geo search index for a field.

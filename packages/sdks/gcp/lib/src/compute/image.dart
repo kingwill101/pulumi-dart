@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_args.dart';
+import 'image_guest_os_feature.dart';
 import 'image_image_encryption_key.dart';
 import 'image_params.dart';
 import 'image_raw_disk.dart';
@@ -823,7 +824,7 @@ class Image extends pulumi.CustomResource {
   /// A list of features to enable on the guest operating system.
   /// Applicable only for bootable images.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> guestOsFeatures;
+  late final pulumi.Output<List<ImageGuestOsFeature>> guestOsFeatures;
   /// Encrypts the image using a customer-supplied encryption key.
   /// After you encrypt an image with a customer-supplied key, you must
   /// provide the same key if you use the image later (e.g. to create a
@@ -912,24 +913,25 @@ class Image extends pulumi.CustomResource {
           'gcp:compute/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     archiveSizeBytes = registerOutput<int>('archiveSizeBytes');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     family = registerOutput<String?>('family');
-    guestOsFeatures = registerOutput<List<Map<String, dynamic>>>('guestOsFeatures');
+    guestOsFeatures = registerOutput<List<ImageGuestOsFeature>>('guestOsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageGuestOsFeature>(guardedValue, (value) => ImageGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())); });
     imageEncryptionKey = registerOutput<ImageImageEncryptionKey?>('imageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
-    licenses = registerOutput<List<String>>('licenses');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<ImageParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rawDisk = registerOutput<ImageRawDisk?>('rawDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRawDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     shieldedInstanceInitialState = registerOutput<ImageShieldedInstanceInitialState>('shieldedInstanceInitialState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageShieldedInstanceInitialState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -939,7 +941,7 @@ class Image extends pulumi.CustomResource {
     sourceImageEncryptionKey = registerOutput<ImageSourceImageEncryptionKey?>('sourceImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageSourceImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceSnapshot = registerOutput<String?>('sourceSnapshot');
     sourceSnapshotEncryptionKey = registerOutput<ImageSourceSnapshotEncryptionKey?>('sourceSnapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageSourceSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageLocations = registerOutput<List<String>>('storageLocations');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
@@ -947,11 +949,12 @@ class Image extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Image._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -970,17 +973,17 @@ class Image extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     family = registerOutput<String?>('family');
-    guestOsFeatures = registerOutput<List<Map<String, dynamic>>>('guestOsFeatures');
+    guestOsFeatures = registerOutput<List<ImageGuestOsFeature>>('guestOsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageGuestOsFeature>(guardedValue, (value) => ImageGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())); });
     imageEncryptionKey = registerOutput<ImageImageEncryptionKey?>('imageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
-    licenses = registerOutput<List<String>>('licenses');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<ImageParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rawDisk = registerOutput<ImageRawDisk?>('rawDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRawDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     shieldedInstanceInitialState = registerOutput<ImageShieldedInstanceInitialState>('shieldedInstanceInitialState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageShieldedInstanceInitialState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -990,6 +993,44 @@ class Image extends pulumi.CustomResource {
     sourceImageEncryptionKey = registerOutput<ImageSourceImageEncryptionKey?>('sourceImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageSourceImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceSnapshot = registerOutput<String?>('sourceSnapshot');
     sourceSnapshotEncryptionKey = registerOutput<ImageSourceSnapshotEncryptionKey?>('sourceSnapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageSourceSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageLocations = registerOutput<List<String>>('storageLocations');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Image] resource.
+  Image.reference(String urn)
+    : super(
+        'gcp:compute/image:Image',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    archiveSizeBytes = registerOutput<int>('archiveSizeBytes');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    family = registerOutput<String?>('family');
+    guestOsFeatures = registerOutput<List<ImageGuestOsFeature>>('guestOsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageGuestOsFeature>(guardedValue, (value) => ImageGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())); });
+    imageEncryptionKey = registerOutput<ImageImageEncryptionKey?>('imageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<ImageParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    rawDisk = registerOutput<ImageRawDisk?>('rawDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRawDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    shieldedInstanceInitialState = registerOutput<ImageShieldedInstanceInitialState>('shieldedInstanceInitialState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageShieldedInstanceInitialState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceDisk = registerOutput<String?>('sourceDisk');
+    sourceDiskEncryptionKey = registerOutput<ImageSourceDiskEncryptionKey?>('sourceDiskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageSourceDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceImage = registerOutput<String?>('sourceImage');
+    sourceImageEncryptionKey = registerOutput<ImageSourceImageEncryptionKey?>('sourceImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageSourceImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceSnapshot = registerOutput<String?>('sourceSnapshot');
+    sourceSnapshotEncryptionKey = registerOutput<ImageSourceSnapshotEncryptionKey?>('sourceSnapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageSourceSnapshotEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

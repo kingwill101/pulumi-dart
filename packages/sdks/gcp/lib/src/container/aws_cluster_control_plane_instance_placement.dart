@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterControlPlaneInstancePlacement {
   /// The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
-  final pulumi.Input<String>? tenancy;
+  final pulumi.Input<String?>? tenancy;
 
   /// Creates a new [AwsClusterControlPlaneInstancePlacement].
   /// [tenancy] The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST

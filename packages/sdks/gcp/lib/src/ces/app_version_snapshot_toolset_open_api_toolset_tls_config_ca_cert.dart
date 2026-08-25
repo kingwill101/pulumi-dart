@@ -14,9 +14,9 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert {
   /// -signkey example.com.key \
   /// -out example.com.crt \
   /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// The display name of the app version.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert].
   /// [cert] (Output)

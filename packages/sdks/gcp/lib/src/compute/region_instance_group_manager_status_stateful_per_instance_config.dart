@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
   /// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
-  final pulumi.Input<bool>? allEffective;
+  final pulumi.Input<bool?>? allEffective;
 
   /// Creates a new [RegionInstanceGroupManagerStatusStatefulPerInstanceConfig].
   /// [allEffective] A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.

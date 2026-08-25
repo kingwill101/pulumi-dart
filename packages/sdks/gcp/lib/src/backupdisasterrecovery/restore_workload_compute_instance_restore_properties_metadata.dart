@@ -5,7 +5,7 @@ import 'restore_workload_compute_instance_restore_properties_metadata_item.dart'
 
 class RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem>>? items;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem>?>? items;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesMetadata].
   /// [items] Structure is documented below.

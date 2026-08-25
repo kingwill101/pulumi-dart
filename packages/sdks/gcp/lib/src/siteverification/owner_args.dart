@@ -15,7 +15,7 @@ class OwnerArgs {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The email of the user to be added as an owner.
   final pulumi.Input<String> email;
   /// The id of of the web resource to which the owner will be added, in the form `webResource/&lt;resource_id&gt;`,

@@ -7,30 +7,30 @@ import 'billing_account_bucket_config_index_config.dart';
 /// Input properties used for looking up and filtering BillingAccountBucketConfig resources.
 class BillingAccountBucketConfigState {
   /// The parent resource that contains the logging bucket.
-  final pulumi.Input<String>? billingAccount;
+  final pulumi.Input<String?>? billingAccount;
   /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-  final pulumi.Input<String>? bucketId;
+  final pulumi.Input<String?>? bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
-  final pulumi.Input<BillingAccountBucketConfigCmekSettings>? cmekSettings;
+  final pulumi.Input<BillingAccountBucketConfigCmekSettings?>? cmekSettings;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Describes this bucket.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  final pulumi.Input<List<BillingAccountBucketConfigIndexConfig>>? indexConfigs;
+  final pulumi.Input<List<BillingAccountBucketConfigIndexConfig>?>? indexConfigs;
   /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
-  final pulumi.Input<String>? lifecycleState;
+  final pulumi.Input<String?>? lifecycleState;
   /// The location of the bucket.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
 
   /// Creates a new [BillingAccountBucketConfigState].
   /// [billingAccount] The parent resource that contains the logging bucket.
@@ -82,7 +82,7 @@ class BillingAccountBucketConfigState {
       lifecycleState: (() { final guardedValue = map['lifecycleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -7,7 +7,7 @@ class AssetsExportJobRecentExecutionResultSignedUri {
   /// (Output)
   /// List of signed URIs.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultSignedUriSignedUri>>? signedUris;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultSignedUriSignedUri>?>? signedUris;
 
   /// Creates a new [AssetsExportJobRecentExecutionResultSignedUri].
   /// [signedUris] (Output)

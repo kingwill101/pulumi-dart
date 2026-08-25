@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'chat_engine_args.dart';
 import 'chat_engine_chat_engine_config.dart';
+import 'chat_engine_chat_engine_metadata.dart';
 import 'chat_engine_common_config.dart';
 import 'chat_engine_state.dart';
 
@@ -723,7 +724,7 @@ class ChatEngine extends pulumi.CustomResource {
   late final pulumi.Output<ChatEngineChatEngineConfig> chatEngineConfig;
   /// Additional information of the Chat Engine.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> chatEngineMetadatas;
+  late final pulumi.Output<List<ChatEngineChatEngineMetadata>> chatEngineMetadatas;
   /// The collection ID.
   late final pulumi.Output<String> collectionId;
   /// Common config spec that specifies the metadata of the engine.
@@ -773,14 +774,14 @@ class ChatEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/chatEngine:ChatEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineChatEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    chatEngineMetadatas = registerOutput<List<Map<String, dynamic>>>('chatEngineMetadatas');
+    chatEngineMetadatas = registerOutput<List<ChatEngineChatEngineMetadata>>('chatEngineMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChatEngineChatEngineMetadata>(guardedValue, (value) => ChatEngineChatEngineMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     collectionId = registerOutput<String>('collectionId');
     commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
@@ -796,11 +797,12 @@ class ChatEngine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChatEngineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChatEngine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -815,11 +817,36 @@ class ChatEngine extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineChatEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    chatEngineMetadatas = registerOutput<List<Map<String, dynamic>>>('chatEngineMetadatas');
+    chatEngineMetadatas = registerOutput<List<ChatEngineChatEngineMetadata>>('chatEngineMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChatEngineChatEngineMetadata>(guardedValue, (value) => ChatEngineChatEngineMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     collectionId = registerOutput<String>('collectionId');
     commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    engineId = registerOutput<String>('engineId');
+    industryVertical = registerOutput<String?>('industryVertical');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ChatEngine] resource.
+  ChatEngine.reference(String urn)
+    : super(
+        'gcp:discoveryengine/chatEngine:ChatEngine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineChatEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    chatEngineMetadatas = registerOutput<List<ChatEngineChatEngineMetadata>>('chatEngineMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChatEngineChatEngineMetadata>(guardedValue, (value) => ChatEngineChatEngineMetadata.fromMap((value as Map).cast<String, dynamic>())); });
+    collectionId = registerOutput<String>('collectionId');
+    commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');

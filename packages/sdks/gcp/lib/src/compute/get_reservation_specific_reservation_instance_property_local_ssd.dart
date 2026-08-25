@@ -25,7 +25,7 @@ class GetReservationSpecificReservationInstancePropertyLocalSsd {
 
   factory GetReservationSpecificReservationInstancePropertyLocalSsd.fromMap(Map<String, dynamic> map) {
     return GetReservationSpecificReservationInstancePropertyLocalSsd(
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
       interface: pulumi.Input.fromValue(map['interface'] as String),
     );
   }

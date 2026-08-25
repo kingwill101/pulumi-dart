@@ -1205,18 +1205,19 @@ class EnterpriseKey extends pulumi.CustomResource {
           'gcp:recaptcha/enterpriseKey:EnterpriseKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     testingOptions = registerOutput<EnterpriseKeyTestingOptions?>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyTestingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWafSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWebSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1227,11 +1228,12 @@ class EnterpriseKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnterpriseKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnterpriseKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1249,12 +1251,37 @@ class EnterpriseKey extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    testingOptions = registerOutput<EnterpriseKeyTestingOptions?>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyTestingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWafSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWebSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EnterpriseKey] resource.
+  EnterpriseKey.reference(String urn)
+    : super(
+        'gcp:recaptcha/enterpriseKey:EnterpriseKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     testingOptions = registerOutput<EnterpriseKeyTestingOptions?>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyTestingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWafSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyWebSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

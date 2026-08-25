@@ -6,10 +6,10 @@ import 'config_mfa_provider_config_totp_provider_config.dart';
 class ConfigMfaProviderConfig {
   /// Whether MultiFactor Authentication has been enabled for this project.
   /// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// TOTP MFA provider config for this project.
   /// Structure is documented below.
-  final pulumi.Input<ConfigMfaProviderConfigTotpProviderConfig>? totpProviderConfig;
+  final pulumi.Input<ConfigMfaProviderConfigTotpProviderConfig?>? totpProviderConfig;
 
   /// Creates a new [ConfigMfaProviderConfig].
   /// [state] Whether MultiFactor Authentication has been enabled for this project.

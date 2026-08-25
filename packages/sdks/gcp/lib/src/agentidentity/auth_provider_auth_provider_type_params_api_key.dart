@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthProviderAuthProviderTypeParamsApiKey {
   /// Input only. The API key for this auth_provider.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
 
   /// Creates a new [AuthProviderAuthProviderTypeParamsApiKey].
   /// [apiKey] Input only. The API key for this auth_provider.

@@ -477,10 +477,10 @@ class FolderFeed extends pulumi.CustomResource {
           'gcp:cloudasset/folderFeed:FolderFeed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    assetNames = registerOutput<List<String>?>('assetNames');
-    assetTypes = registerOutput<List<String>?>('assetTypes');
+    assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     billingProject = registerOutput<String>('billingProject');
     condition = registerOutput<FolderFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');
@@ -497,11 +497,12 @@ class FolderFeed extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderFeedState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FolderFeed._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -515,8 +516,30 @@ class FolderFeed extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assetNames = registerOutput<List<String>?>('assetNames');
-    assetTypes = registerOutput<List<String>?>('assetTypes');
+    assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    billingProject = registerOutput<String>('billingProject');
+    condition = registerOutput<FolderFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentType = registerOutput<String?>('contentType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    feedId = registerOutput<String>('feedId');
+    feedOutputConfig = registerOutput<FolderFeedFeedOutputConfig>('feedOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderFeedFeedOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    folder = registerOutput<String>('folder');
+    folderId = registerOutput<String>('folderId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [FolderFeed] resource.
+  FolderFeed.reference(String urn)
+    : super(
+        'gcp:cloudasset/folderFeed:FolderFeed',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     billingProject = registerOutput<String>('billingProject');
     condition = registerOutput<FolderFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');

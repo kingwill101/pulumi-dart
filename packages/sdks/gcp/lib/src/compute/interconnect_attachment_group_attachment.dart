@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectAttachmentGroupAttachment {
   /// (Optional)
-  final pulumi.Input<String>? attachment;
+  final pulumi.Input<String?>? attachment;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> name;
 

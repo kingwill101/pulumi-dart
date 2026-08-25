@@ -1315,18 +1315,19 @@ class CaPool extends pulumi.CustomResource {
           'gcp:certificateauthority/caPool:CaPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIssuancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     publishingOptions = registerOutput<CaPoolPublishingOptions?>('publishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     tier = registerOutput<String>('tier');
   }
 
@@ -1335,11 +1336,12 @@ class CaPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CaPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CaPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1354,15 +1356,38 @@ class CaPool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIssuancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     publishingOptions = registerOutput<CaPoolPublishingOptions?>('publishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tier = registerOutput<String>('tier');
+  }
+
+  /// Creates a typed reference to an existing [CaPool] resource.
+  CaPool.reference(String urn)
+    : super(
+        'gcp:certificateauthority/caPool:CaPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionSpec = registerOutput<CaPoolEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    issuancePolicy = registerOutput<CaPoolIssuancePolicy?>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolIssuancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    publishingOptions = registerOutput<CaPoolPublishingOptions?>('publishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaPoolPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     tier = registerOutput<String>('tier');
   }
 }

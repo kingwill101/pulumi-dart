@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SecretVersion resources.
 class SecretVersionState {
   /// The time at which the Secret was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
   /// disabled rather than deleted.
@@ -18,35 +18,35 @@ class SecretVersionState {
   /// * DISABLE
   /// * ABANDON
   /// * PREVENT
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
-  final pulumi.Input<String>? destroyTime;
+  final pulumi.Input<String?>? destroyTime;
   /// The current state of the SecretVersion.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
-  final pulumi.Input<bool>? isSecretDataBase64;
+  final pulumi.Input<bool?>? isSecretDataBase64;
   /// The resource name of the SecretVersion. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Secret Manager secret resource
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? secretData;
+  final pulumi.Input<String?>? secretData;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
-  final pulumi.Input<String>? secretDataWo;
+  final pulumi.Input<String?>? secretDataWo;
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<int>? secretDataWoVersion;
+  final pulumi.Input<int?>? secretDataWoVersion;
   /// The version of the Secret.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SecretVersionState].
   /// [createTime] The time at which the Secret was created.
@@ -105,7 +105,7 @@ class SecretVersionState {
       secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretData: (() { final guardedValue = map['secretData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretDataWo: (() { final guardedValue = map['secretDataWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secretDataWoVersion: (() { final guardedValue = map['secretDataWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      secretDataWoVersion: (() { final guardedValue = map['secretDataWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

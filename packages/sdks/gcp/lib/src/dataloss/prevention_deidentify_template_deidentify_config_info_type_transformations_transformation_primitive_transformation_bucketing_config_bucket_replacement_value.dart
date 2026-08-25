@@ -7,21 +7,21 @@ import 'prevention_deidentify_template_deidentify_config_info_type_transformatio
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue {
   /// Represents a whole or partial calendar date.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue>? dateValue;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue?>? dateValue;
   /// Represents a day of the week.
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-  final pulumi.Input<String>? dayOfWeekValue;
+  final pulumi.Input<String?>? dayOfWeekValue;
   /// A float value.
-  final pulumi.Input<double>? floatValue;
+  final pulumi.Input<double?>? floatValue;
   /// An integer value (int64 format)
-  final pulumi.Input<String>? integerValue;
+  final pulumi.Input<String?>? integerValue;
   /// A string value.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
   /// Represents a time of day.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue>? timeValue;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue?>? timeValue;
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? timestampValue;
+  final pulumi.Input<String?>? timestampValue;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue].
   /// [dateValue] Represents a whole or partial calendar date.
@@ -57,7 +57,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue(
       dateValue: (() { final guardedValue = map['dateValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dayOfWeekValue: (() { final guardedValue = map['dayOfWeekValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      floatValue: (() { final guardedValue = map['floatValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      floatValue: (() { final guardedValue = map['floatValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       integerValue: (() { final guardedValue = map['integerValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeValue: (() { final guardedValue = map['timeValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParserChangelogEntry {
   /// (Output)
   /// The changelog message.
-  final pulumi.Input<String>? changeMessage;
+  final pulumi.Input<String?>? changeMessage;
   /// (Output)
   /// Time at which changelog was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// (Output)
   /// Flag whether the entry is added or deleted.
   /// This will be true in case of rollback and false in case of upgrade.
-  final pulumi.Input<bool>? deleted;
+  final pulumi.Input<bool?>? deleted;
   /// (Output)
   /// The parser version for which the changelog is created.
-  final pulumi.Input<String>? parserVersion;
+  final pulumi.Input<String?>? parserVersion;
 
   /// Creates a new [ParserChangelogEntry].
   /// [changeMessage] (Output)

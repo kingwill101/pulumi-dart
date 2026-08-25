@@ -13,7 +13,7 @@ class GetBackupPlanAssociationArgs {
   final pulumi.Input<String> backupPlanAssociationId;
   /// The location in which the Backupplan association resource belongs.
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBackupPlanAssociationArgs].
   /// [backupPlanAssociationId] The id of Backupplan association resource.

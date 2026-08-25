@@ -7,10 +7,10 @@ class TaskExecutionStatus {
   /// (Output)
   /// latest job execution.
   /// Structure is documented below.
-  final pulumi.Input<List<TaskExecutionStatusLatestJob>>? latestJobs;
+  final pulumi.Input<List<TaskExecutionStatusLatestJob>?>? latestJobs;
   /// (Output)
   /// Last update time of the status.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [TaskExecutionStatus].
   /// [latestJobs] (Output)

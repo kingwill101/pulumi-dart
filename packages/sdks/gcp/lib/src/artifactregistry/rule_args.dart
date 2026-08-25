@@ -10,34 +10,34 @@ import 'rule_condition.dart';
 class RuleArgs {
   /// The action this rule takes.
   /// Possible values are: `ACTION_UNSPECIFIED`, `ALLOW`, `DENY`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Optional. A CEL expression for conditions that must be met in order for the
   /// rule to apply. If not provided, the rule matches all objects.
   /// Structure is documented below.
-  final pulumi.Input<RuleCondition>? condition;
+  final pulumi.Input<RuleCondition?>? condition;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the repository's location. In addition to specific regions,
   /// special values for multi-region locations are `asia`, `europe`, and `us`.
   /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
   /// or use the
   /// gcp.artifactregistry.getLocations
   /// data source for possible values.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The operation the rule applies to.
   /// Possible values are: `OPERATION_UNSPECIFIED`, `DOWNLOAD`.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// The package ID the rule applies to. If empty, this rule applies to all
   /// packages inside the repository.
-  final pulumi.Input<String>? packageId;
+  final pulumi.Input<String?>? packageId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The last part of the repository name, for example:
   /// "repo1"
   final pulumi.Input<String> repositoryId;

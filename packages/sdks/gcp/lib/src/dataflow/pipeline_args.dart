@@ -15,28 +15,28 @@ class PipelineArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// "The pipeline name. For example': 'projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID."
   /// "- PROJECT_ID can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see Identifying projects."
   /// "LOCATION_ID is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling google.cloud.location.Locations.ListLocations. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in App Engine regions."
   /// "PIPELINE_ID is the ID of the pipeline. Must be unique for the selected project and location."
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? pipelineSources;
+  final pulumi.Input<Map<String, String>?>? pipelineSources;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A reference to the region
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
   /// Structure is documented below.
-  final pulumi.Input<PipelineScheduleInfo>? scheduleInfo;
+  final pulumi.Input<PipelineScheduleInfo?>? scheduleInfo;
   /// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
-  final pulumi.Input<String>? schedulerServiceAccountEmail;
+  final pulumi.Input<String?>? schedulerServiceAccountEmail;
   /// The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
   /// Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
@@ -48,7 +48,7 @@ class PipelineArgs {
   /// Workload information for creating new jobs.
   /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
   /// Structure is documented below.
-  final pulumi.Input<PipelineWorkload>? workload;
+  final pulumi.Input<PipelineWorkload?>? workload;
 
   /// Creates a new [PipelineArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

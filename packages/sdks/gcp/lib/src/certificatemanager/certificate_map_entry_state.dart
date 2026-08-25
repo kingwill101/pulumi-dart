@@ -7,53 +7,53 @@ class CertificateMapEntryState {
   /// A set of Certificates defines for the given hostname.
   /// There can be defined up to fifteen certificates in each Certificate Map Entry.
   /// Each certificate must match pattern projects/*/locations/*/certificates/*.
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<String>?>? certificates;
   /// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
   /// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
   /// selecting a proper certificate.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Set of labels associated with a Certificate Map Entry.
   /// An object containing a list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A map entry that is inputted into the certificate map
-  final pulumi.Input<String>? map;
+  final pulumi.Input<String?>? map;
   /// A predefined matcher for particular cases, other than SNI selection
-  final pulumi.Input<String>? matcher;
+  final pulumi.Input<String?>? matcher;
   /// A user-defined name of the Certificate Map Entry. Certificate Map Entry
   /// names must be unique globally and match pattern
   /// 'projects/*/locations/*/certificateMaps/*/certificateMapEntries/*'
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// A serving state of this Certificate Map Entry.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [CertificateMapEntryState].
   /// [certificates] A set of Certificates defines for the given hostname.

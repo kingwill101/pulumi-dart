@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureMembershipConfigmanagementConfigSyncOci {
   /// The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
-  final pulumi.Input<String>? gcpServiceAccountEmail;
+  final pulumi.Input<String?>? gcpServiceAccountEmail;
   /// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
-  final pulumi.Input<String>? policyDir;
+  final pulumi.Input<String?>? policyDir;
   /// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
-  final pulumi.Input<String>? secretType;
+  final pulumi.Input<String?>? secretType;
   /// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
-  final pulumi.Input<String>? syncRepo;
+  final pulumi.Input<String?>? syncRepo;
   /// Period in seconds(int64 format) between consecutive syncs. Default: 15.
-  final pulumi.Input<String>? syncWaitSecs;
+  final pulumi.Input<String?>? syncWaitSecs;
 
   /// Creates a new [FeatureMembershipConfigmanagementConfigSyncOci].
   /// [gcpServiceAccountEmail] The GCP Service Account Email used for auth when secretType is gcpserviceaccount.

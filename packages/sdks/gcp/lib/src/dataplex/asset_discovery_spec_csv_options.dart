@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssetDiscoverySpecCsvOptions {
   /// Optional. The delimiter being used to separate values. This defaults to ','.
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
   /// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
-  final pulumi.Input<bool>? disableTypeInference;
+  final pulumi.Input<bool?>? disableTypeInference;
   /// Optional. The character encoding of the data. The default is UTF-8.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
-  final pulumi.Input<int>? headerRows;
+  final pulumi.Input<int?>? headerRows;
 
   /// Creates a new [AssetDiscoverySpecCsvOptions].
   /// [delimiter] Optional. The delimiter being used to separate values. This defaults to ','.
@@ -38,7 +38,7 @@ class AssetDiscoverySpecCsvOptions {
       delimiter: (() { final guardedValue = map['delimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableTypeInference: (() { final guardedValue = map['disableTypeInference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      headerRows: (() { final guardedValue = map['headerRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      headerRows: (() { final guardedValue = map['headerRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

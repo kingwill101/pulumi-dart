@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValue {
   /// Key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValue].
   /// [key] Key.

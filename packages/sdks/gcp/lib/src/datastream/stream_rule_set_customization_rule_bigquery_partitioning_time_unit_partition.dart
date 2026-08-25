@@ -7,7 +7,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition {
   final pulumi.Input<String> column;
   /// Partition granularity.
   /// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
-  final pulumi.Input<String>? partitioningTimeGranularity;
+  final pulumi.Input<String?>? partitioningTimeGranularity;
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition].
   /// [column] The partitioning column.

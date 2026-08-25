@@ -8,34 +8,34 @@ import 'dashboard_chart_dashboard_query.dart';
 /// Input properties used for looking up and filtering DashboardChart resources.
 class DashboardChartState {
   /// The unique identifier of the chart, automatically extracted from the full resource name.
-  final pulumi.Input<String>? chartId;
+  final pulumi.Input<String?>? chartId;
   /// The layout of this chart within the NativeDashboard.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartChartLayout>? chartLayout;
+  final pulumi.Input<DashboardChartChartLayout?>? chartLayout;
   /// Core configuration details for the DashboardChart.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChart>? dashboardChart;
+  final pulumi.Input<DashboardChartDashboardChart?>? dashboardChart;
   /// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardQuery>? dashboardQuery;
+  final pulumi.Input<DashboardChartDashboardQuery?>? dashboardQuery;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID of the Chronicle instance.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The location of the Chronicle instance.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The full resource name of the DashboardChart.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent NativeDashboard resource name, formatted as projects/{project}/locations/{location}/instances/{instance}/nativeDashboards/{dashboard_id}
-  final pulumi.Input<String>? nativeDashboard;
+  final pulumi.Input<String?>? nativeDashboard;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DashboardChartState].
   /// [chartId] The unique identifier of the chart, automatically extracted from the full resource name.

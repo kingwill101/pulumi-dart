@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeSnapshotPolicyMonthlySchedule {
   /// Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
-  final pulumi.Input<String>? daysOfMonth;
+  final pulumi.Input<String?>? daysOfMonth;
   /// Set the hour to create the snapshot (0-23), defaults to midnight (0).
-  final pulumi.Input<int>? hour;
+  final pulumi.Input<int?>? hour;
   /// Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
-  final pulumi.Input<int>? minute;
+  final pulumi.Input<int?>? minute;
   /// The maximum number of snapshots to keep for the monthly schedule
   final pulumi.Input<int> snapshotsToKeep;
 
@@ -36,9 +36,9 @@ class VolumeSnapshotPolicyMonthlySchedule {
   factory VolumeSnapshotPolicyMonthlySchedule.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotPolicyMonthlySchedule(
       daysOfMonth: (() { final guardedValue = map['daysOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      snapshotsToKeep: pulumi.Input.fromValue(map['snapshotsToKeep'] as int),
+      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      snapshotsToKeep: pulumi.Input.fromValue((map['snapshotsToKeep'] as num).toInt()),
     );
   }
 }

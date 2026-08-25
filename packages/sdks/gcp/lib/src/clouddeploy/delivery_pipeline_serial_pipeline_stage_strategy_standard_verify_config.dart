@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_verify_config_
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig {
   /// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
-  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask>>? tasks;
+  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask>?>? tasks;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig].
   /// [tasks] Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.

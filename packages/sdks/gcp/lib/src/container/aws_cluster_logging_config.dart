@@ -5,7 +5,7 @@ import 'aws_cluster_logging_config_component_config.dart';
 
 class AwsClusterLoggingConfig {
   /// Configuration of the logging components.
-  final pulumi.Input<AwsClusterLoggingConfigComponentConfig>? componentConfig;
+  final pulumi.Input<AwsClusterLoggingConfigComponentConfig?>? componentConfig;
 
   /// Creates a new [AwsClusterLoggingConfig].
   /// [componentConfig] Configuration of the logging components.

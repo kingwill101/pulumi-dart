@@ -10,19 +10,19 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>>? errorInfos;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>?>? errorInfos;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>>? helps;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>?>? helps;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>>? localizedMessages;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>?>? localizedMessages;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>>? quotaInfos;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>?>? quotaInfos;
 
   /// Creates a new [ResizeRequestStatusLastAttemptErrorErrorErrorDetail].
   /// [errorInfos] (Output)

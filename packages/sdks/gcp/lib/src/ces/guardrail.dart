@@ -2836,7 +2836,7 @@ class Guardrail extends pulumi.CustomResource {
           'gcp:ces/guardrail:Guardrail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<GuardrailAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
@@ -2863,11 +2863,12 @@ class Guardrail extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GuardrailState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Guardrail._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2881,6 +2882,35 @@ class Guardrail extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<GuardrailAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    app = registerOutput<String>('app');
+    codeCallback = registerOutput<GuardrailCodeCallback?>('codeCallback', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailCodeCallback.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentFilter = registerOutput<GuardrailContentFilter?>('contentFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContentFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    etag = registerOutput<String>('etag');
+    guardrailId = registerOutput<String>('guardrailId');
+    llmPolicy = registerOutput<GuardrailLlmPolicy?>('llmPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailLlmPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    llmPromptSecurity = registerOutput<GuardrailLlmPromptSecurity?>('llmPromptSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailLlmPromptSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    modelSafety = registerOutput<GuardrailModelSafety?>('modelSafety', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailModelSafety.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Guardrail] resource.
+  Guardrail.reference(String urn)
+    : super(
+        'gcp:ces/guardrail:Guardrail',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<GuardrailAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
     codeCallback = registerOutput<GuardrailCodeCallback?>('codeCallback', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailCodeCallback.fromMap((guardedValue as Map).cast<String, dynamic>()); });

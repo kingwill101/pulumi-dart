@@ -961,7 +961,7 @@ class MachineImage extends pulumi.CustomResource {
           'gcp:compute/machineImage:MachineImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -972,7 +972,7 @@ class MachineImage extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
     sourceInstance = registerOutput<String>('sourceInstance');
-    storageLocations = registerOutput<List<String>>('storageLocations');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [MachineImage] resource's state with the given [name] and [id].
@@ -980,11 +980,12 @@ class MachineImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MachineImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MachineImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1007,6 +1008,27 @@ class MachineImage extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
     sourceInstance = registerOutput<String>('sourceInstance');
-    storageLocations = registerOutput<List<String>>('storageLocations');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [MachineImage] resource.
+  MachineImage.reference(String urn)
+    : super(
+        'gcp:compute/machineImage:MachineImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    guestFlush = registerOutput<bool?>('guestFlush');
+    machineImageEncryptionKey = registerOutput<MachineImageMachineImageEncryptionKey?>('machineImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineImageMachineImageEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<MachineImageParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineImageParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sourceInstance = registerOutput<String>('sourceInstance');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

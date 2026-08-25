@@ -225,7 +225,7 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');
@@ -240,11 +240,12 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalNetworkEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalNetworkEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,6 +259,23 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    fqdn = registerOutput<String?>('fqdn');
+    globalNetworkEndpointGroup = registerOutput<String>('globalNetworkEndpointGroup');
+    ipAddress = registerOutput<String?>('ipAddress');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [GlobalNetworkEndpoint] resource.
+  GlobalNetworkEndpoint.reference(String urn)
+    : super(
+        'gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');
     globalNetworkEndpointGroup = registerOutput<String>('globalNetworkEndpointGroup');

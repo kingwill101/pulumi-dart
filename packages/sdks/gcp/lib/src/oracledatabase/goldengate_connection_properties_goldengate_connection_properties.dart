@@ -7,21 +7,21 @@ class GoldengateConnectionPropertiesGoldengateConnectionProperties {
   /// GoldengateConnection.
   /// Format:
   /// projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
-  final pulumi.Input<String>? goldengateDeploymentId;
+  final pulumi.Input<String?>? goldengateDeploymentId;
   /// The host of the GoldengateConnection.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Input only. The password used to connect to the Oracle Goldengate in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password used to connect to the Oracle Goldengate.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The port of the GoldengateConnection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The technology type.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username credential.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesGoldengateConnectionProperties].
   /// [goldengateDeploymentId] The name of the GoldengateDeployment associated with the
@@ -59,7 +59,7 @@ class GoldengateConnectionPropertiesGoldengateConnectionProperties {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordSecretVersion: (() { final guardedValue = map['passwordSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       technologyType: (() { final guardedValue = map['technologyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

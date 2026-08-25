@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitoring_get_notification_channel_get_notification_channel_args_doc}
 class GetNotificationChannelArgs {
   /// The display name for this notification channel.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Labels (corresponding to the
   /// NotificationChannelDescriptor schema) to filter the notification channels by.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The type of the notification channel.
   ///
   /// - - -
   ///
   /// Other optional fields include:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// User-provided key-value labels to filter by.
-  final pulumi.Input<Map<String, String>>? userLabels;
+  final pulumi.Input<Map<String, String>?>? userLabels;
 
   /// Creates a new [GetNotificationChannelArgs].
   /// [displayName] The display name for this notification channel.

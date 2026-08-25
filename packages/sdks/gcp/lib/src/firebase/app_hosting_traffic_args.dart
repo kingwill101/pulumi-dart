@@ -15,15 +15,15 @@ class AppHostingTrafficArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The policy for how builds and rollouts are triggered and rolled out.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingTrafficRolloutPolicy>? rolloutPolicy;
+  final pulumi.Input<AppHostingTrafficRolloutPolicy?>? rolloutPolicy;
   /// Set to manually control the desired traffic for the backend. This will
   /// cause current to eventually match this value. The percentages must add
   /// up to 100.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingTrafficTarget>? target;
+  final pulumi.Input<AppHostingTrafficTarget?>? target;
 
   /// Creates a new [AppHostingTrafficArgs].
   /// [backend] Id of the backend that this Traffic config applies to

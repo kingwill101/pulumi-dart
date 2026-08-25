@@ -6,7 +6,7 @@ class UserCredsResourceIdentity {
   /// (Output)
   /// The principal identifier string.
   /// See https://cloud.google.com/iam/docs/principal-identifiers.
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
 
   /// Creates a new [UserCredsResourceIdentity].
   /// [principal] (Output)

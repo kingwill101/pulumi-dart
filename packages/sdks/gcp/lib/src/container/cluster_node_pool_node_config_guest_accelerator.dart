@@ -8,11 +8,11 @@ class ClusterNodePoolNodeConfigGuestAccelerator {
   /// The number of the guest accelerator cards exposed to this instance.
   final pulumi.Input<int> count;
   /// Configuration for auto installation of GPU driver. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>? gpuDriverInstallationConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig?>? gpuDriverInstallationConfig;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-  final pulumi.Input<String>? gpuPartitionSize;
+  final pulumi.Input<String?>? gpuPartitionSize;
   /// Configuration for GPU sharing. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>? gpuSharingConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig?>? gpuSharingConfig;
   /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
   final pulumi.Input<String> type;
 
@@ -42,7 +42,7 @@ class ClusterNodePoolNodeConfigGuestAccelerator {
 
   factory ClusterNodePoolNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigGuestAccelerator(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       gpuDriverInstallationConfig: (() { final guardedValue = map['gpuDriverInstallationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gpuPartitionSize: (() { final guardedValue = map['gpuPartitionSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gpuSharingConfig: (() { final guardedValue = map['gpuSharingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

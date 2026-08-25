@@ -7,10 +7,10 @@ import 'template_filter_config_sdp_settings_basic_config.dart';
 class TemplateFilterConfigSdpSettings {
   /// Sensitive Data Protection Advanced configuration.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigSdpSettingsAdvancedConfig>? advancedConfig;
+  final pulumi.Input<TemplateFilterConfigSdpSettingsAdvancedConfig?>? advancedConfig;
   /// Sensitive Data Protection basic configuration.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigSdpSettingsBasicConfig>? basicConfig;
+  final pulumi.Input<TemplateFilterConfigSdpSettingsBasicConfig?>? basicConfig;
 
   /// Creates a new [TemplateFilterConfigSdpSettings].
   /// [advancedConfig] Sensitive Data Protection Advanced configuration.

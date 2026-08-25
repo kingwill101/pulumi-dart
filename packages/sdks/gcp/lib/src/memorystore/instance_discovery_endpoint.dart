@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceDiscoveryEndpoint {
   /// (Output)
   /// Output only. IP address of the exposed endpoint clients connect to.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// (Output)
   /// Output only. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// (Output)
   /// Output only. Ports of the exposed endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [InstanceDiscoveryEndpoint].
   /// [address] (Output)
@@ -36,7 +36,7 @@ class InstanceDiscoveryEndpoint {
     return InstanceDiscoveryEndpoint(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

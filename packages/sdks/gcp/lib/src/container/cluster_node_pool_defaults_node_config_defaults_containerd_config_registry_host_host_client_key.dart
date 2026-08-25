@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey {
   /// URI for the Secret Manager secret that hosts the private key.
-  final pulumi.Input<String>? gcpSecretManagerSecretUri;
+  final pulumi.Input<String?>? gcpSecretManagerSecretUri;
 
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the private key.

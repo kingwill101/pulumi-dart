@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerBitbucketServerTriggerConfigPush {
   /// Regex of branches to match.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
-  final pulumi.Input<bool>? invertRegex;
+  final pulumi.Input<bool?>? invertRegex;
   /// Regex of tags to match.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [TriggerBitbucketServerTriggerConfigPush].
   /// [branch] Regex of branches to match.

@@ -9,52 +9,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntentArgs {
   /// The name of the action associated with the intent.
   /// Note: The action name must not contain whitespaces.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
   /// (i.e. default platform).
   /// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
-  final pulumi.Input<List<String>>? defaultResponsePlatforms;
+  final pulumi.Input<List<String>?>? defaultResponsePlatforms;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of this intent to be displayed on the console.
   final pulumi.Input<String> displayName;
   /// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
   /// the contexts must be present in the active user session for an event to trigger this intent. See the
   /// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-  final pulumi.Input<List<String>>? events;
+  final pulumi.Input<List<String>?>? events;
   /// The list of context names required for this intent to be triggered.
   /// Format: projects/&lt;Project ID&gt;/agent/sessions/-/contexts/&lt;Context ID&gt;.
-  final pulumi.Input<List<String>>? inputContextNames;
+  final pulumi.Input<List<String>?>? inputContextNames;
   /// Indicates whether this is a fallback intent.
-  final pulumi.Input<bool>? isFallback;
+  final pulumi.Input<bool?>? isFallback;
   /// Indicates whether Machine Learning is disabled for the intent.
   /// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
   /// ONLY match mode. Also, auto-markup in the UI is turned off.
-  final pulumi.Input<bool>? mlDisabled;
+  final pulumi.Input<bool?>? mlDisabled;
   /// The unique identifier of the parent intent in the chain of followup intents.
   /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
-  final pulumi.Input<String>? parentFollowupIntentName;
+  final pulumi.Input<String?>? parentFollowupIntentName;
   /// The priority of this intent. Higher numbers represent higher priorities.
   /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
   /// to the Normal priority in the console.
   /// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Indicates whether to delete all contexts in the current session when this intent is matched.
-  final pulumi.Input<bool>? resetContexts;
+  final pulumi.Input<bool?>? resetContexts;
   /// Indicates whether webhooks are enabled for the intent.
   /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
   /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
   /// filling prompt is forwarded to the webhook.
   /// Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
-  final pulumi.Input<String>? webhookState;
+  final pulumi.Input<String?>? webhookState;
 
   /// Creates a new [IntentArgs].
   /// [action] The name of the action associated with the intent.
@@ -115,7 +115,7 @@ class IntentArgs {
       isFallback: (() { final guardedValue = map['isFallback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mlDisabled: (() { final guardedValue = map['mlDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       parentFollowupIntentName: (() { final guardedValue = map['parentFollowupIntentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resetContexts: (() { final guardedValue = map['resetContexts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       webhookState: (() { final guardedValue = map['webhookState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

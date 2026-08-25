@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginInstanceActionHubInstanceActionLastExecution {
   /// The last execution end time of the plugin instance.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Error message describing the failure, if any, during Create, Delete or
   /// ApplyConfig operation corresponding to the plugin instance.This field will
   /// only be populated if the plugin instance is in the ERROR or FAILED state.
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// The result of the last execution of the plugin instance.
   /// Possible values:
   /// RESULT_UNSPECIFIED
   /// SUCCEEDED
   /// FAILED
-  final pulumi.Input<String>? result;
+  final pulumi.Input<String?>? result;
   /// The last execution start time of the plugin instance.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [PluginInstanceActionHubInstanceActionLastExecution].
   /// [endTime] The last execution end time of the plugin instance.

@@ -23,15 +23,15 @@ class SubscriptionPushConfig {
   /// The possible values for this attribute are:
   /// - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
   /// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
   /// When set, the payload to the push endpoint is not wrapped.Sets the
   /// `data` field as the HTTP body for delivery.
   /// Structure is documented below.
-  final pulumi.Input<SubscriptionPushConfigNoWrapper>? noWrapper;
+  final pulumi.Input<SubscriptionPushConfigNoWrapper?>? noWrapper;
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as
   /// an Authorization header in the HTTP request for every pushed message.
   /// Structure is documented below.
-  final pulumi.Input<SubscriptionPushConfigOidcToken>? oidcToken;
+  final pulumi.Input<SubscriptionPushConfigOidcToken?>? oidcToken;
   /// A URL locating the endpoint to which messages should be pushed.
   /// For example, a Webhook endpoint might use
   /// "https://example.com/push".

@@ -9,15 +9,15 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   final pulumi.Input<String> component;
   /// Container resource requirements.
   /// Structure is documented below.
-  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources>? containerResources;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources?>? containerResources;
   /// Pod affinity configuration.
   /// Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
-  final pulumi.Input<String>? podAffinity;
+  final pulumi.Input<String?>? podAffinity;
   /// Pod tolerations of node taints.
   /// Structure is documented below.
-  final pulumi.Input<List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>>? podTolerations;
+  final pulumi.Input<List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>?>? podTolerations;
   /// Pod replica count.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig].
   /// [component] The identifier for this object. Format specified above.
@@ -49,7 +49,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
       containerResources: (() { final guardedValue = map['containerResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       podAffinity: (() { final guardedValue = map['podAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       podTolerations: (() { final guardedValue = map['podTolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(guardedValue, (value) => FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

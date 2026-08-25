@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotAppTimeZoneSetting {
   /// (Output)
   /// The time zone of the app from the time zone database, e.g., America/Los_Angeles, Europe/Paris.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [AppVersionSnapshotAppTimeZoneSetting].
   /// [timeZone] (Output)

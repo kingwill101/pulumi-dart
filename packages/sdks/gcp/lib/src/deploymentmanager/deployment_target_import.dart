@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentTargetImport {
   /// The full contents of the template that you want to import.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The name of the template to import, as declared in the YAML
   /// configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DeploymentTargetImport].
   /// [content] The full contents of the template that you want to import.

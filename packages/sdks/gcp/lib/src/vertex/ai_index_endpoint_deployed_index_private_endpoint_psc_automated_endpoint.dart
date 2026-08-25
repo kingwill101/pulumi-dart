@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
   /// (Output)
   /// ip Address created by the automated forwarding rule.
-  final pulumi.Input<String>? matchAddress;
+  final pulumi.Input<String?>? matchAddress;
   /// (Output)
   /// Corresponding network in pscAutomationConfigs.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// (Output)
   /// Corresponding projectId in pscAutomationConfigs
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint].
   /// [matchAddress] (Output)

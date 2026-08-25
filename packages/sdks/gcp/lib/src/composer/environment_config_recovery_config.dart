@@ -5,7 +5,7 @@ import 'environment_config_recovery_config_scheduled_snapshots_config.dart';
 
 class EnvironmentConfigRecoveryConfig {
   /// The configuration settings for scheduled snapshots.
-  final pulumi.Input<EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig>? scheduledSnapshotsConfig;
+  final pulumi.Input<EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig?>? scheduledSnapshotsConfig;
 
   /// Creates a new [EnvironmentConfigRecoveryConfig].
   /// [scheduledSnapshotsConfig] The configuration settings for scheduled snapshots.

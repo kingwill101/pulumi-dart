@@ -11,10 +11,10 @@ class SubscriptionMessageTransformAiInference {
   final pulumi.Input<String> endpoint;
   /// The service account to use to make prediction requests against
   /// endpoints.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// Configuration for making inferences using arbitrary JSON payloads.
   /// Structure is documented below.
-  final pulumi.Input<SubscriptionMessageTransformAiInferenceUnstructuredInference>? unstructuredInference;
+  final pulumi.Input<SubscriptionMessageTransformAiInferenceUnstructuredInference?>? unstructuredInference;
 
   /// Creates a new [SubscriptionMessageTransformAiInference].
   /// [endpoint] The endpoint to a Vertex AI model of the form

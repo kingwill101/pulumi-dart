@@ -8,7 +8,7 @@ class AuthorizedOrgsDescState {
   /// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
   /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
   /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
-  final pulumi.Input<String>? assetType;
+  final pulumi.Input<String?>? assetType;
   /// The direction of the authorization relationship between this organization
   /// and the organizations listed in the "orgs" field. The valid values for this
   /// field include the following:
@@ -24,33 +24,33 @@ class AuthorizedOrgsDescState {
   /// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
   /// "AuthorizedOrgsDesc" resource.
   /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
-  final pulumi.Input<String>? authorizationDirection;
+  final pulumi.Input<String?>? authorizationDirection;
   /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
   /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
-  final pulumi.Input<String>? authorizationType;
+  final pulumi.Input<String?>? authorizationType;
   /// Time the AuthorizedOrgsDesc was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorizedOrgsDesc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The list of organization ids in this AuthorizedOrgsDesc.
   /// Format: `organizations/&lt;org_number&gt;`
   /// Example: `organizations/123456`
-  final pulumi.Input<List<String>>? orgs;
+  final pulumi.Input<List<String>?>? orgs;
   /// Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Time the AuthorizedOrgsDesc was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AuthorizedOrgsDescState].
   /// [assetType] The type of entities that need to use the authorization relationship during

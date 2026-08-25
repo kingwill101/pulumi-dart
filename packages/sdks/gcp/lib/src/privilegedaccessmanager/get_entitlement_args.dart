@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_privilegedaccessmanager_get_entitlement_get_entitlement_args_doc}
 class GetEntitlementArgs {
   /// ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
-  final pulumi.Input<String>? entitlementId;
+  final pulumi.Input<String?>? entitlementId;
   /// The region of the Entitlement resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [GetEntitlementArgs].
   /// [entitlementId] ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.

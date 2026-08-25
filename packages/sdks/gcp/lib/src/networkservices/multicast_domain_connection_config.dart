@@ -12,7 +12,7 @@ class MulticastDomainConnectionConfig {
   /// [NCC](https://cloud.google.com/network-connectivity-center) hub.
   /// Use the following format:
   /// `projects/{project}/locations/global/hubs/{hub}`.
-  final pulumi.Input<String>? nccHub;
+  final pulumi.Input<String?>? nccHub;
 
   /// Creates a new [MulticastDomainConnectionConfig].
   /// [connectionType] The VPC connection type.

@@ -12,55 +12,55 @@ import 'control_synonyms_action.dart';
 class ControlState {
   /// Changes the returned order of results.
   /// Structure is documented below.
-  final pulumi.Input<ControlBoostAction>? boostAction;
+  final pulumi.Input<ControlBoostAction?>? boostAction;
   /// The collection ID. Currently only accepts "defaultCollection".
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   /// The conditions under which the control is active.
   /// Structure is documented below.
-  final pulumi.Input<List<ControlCondition>>? conditions;
+  final pulumi.Input<List<ControlCondition>?>? conditions;
   /// The unique id of the control.
-  final pulumi.Input<String>? controlId;
+  final pulumi.Input<String?>? controlId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the control. This field must be a UTF-8 encoded
   /// string with a length limit of 128 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The engine to add the control to.
-  final pulumi.Input<String>? engineId;
+  final pulumi.Input<String?>? engineId;
   /// Removes entries from returned results.
   /// Structure is documented below.
-  final pulumi.Input<ControlFilterAction>? filterAction;
+  final pulumi.Input<ControlFilterAction?>? filterAction;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique full resource name of the control. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/controls/{control_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Promotes a specified link for a query.
   /// Structure is documented below.
-  final pulumi.Input<ControlPromoteAction>? promoteAction;
+  final pulumi.Input<ControlPromoteAction?>? promoteAction;
   /// Redirects to a specified URI.
   /// Structure is documented below.
-  final pulumi.Input<ControlRedirectAction>? redirectAction;
+  final pulumi.Input<ControlRedirectAction?>? redirectAction;
   /// The solution type that the control belongs to.
   /// Possible values are: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
-  final pulumi.Input<String>? solutionType;
+  final pulumi.Input<String?>? solutionType;
   /// Associates queries with each other.
   /// Structure is documented below.
-  final pulumi.Input<ControlSynonymsAction>? synonymsAction;
+  final pulumi.Input<ControlSynonymsAction?>? synonymsAction;
   /// The use cases that the control is used for.
   /// Each value may be one of: `SEARCH_USE_CASE_SEARCH`, `SEARCH_USE_CASE_BROWSE`.
-  final pulumi.Input<List<String>>? useCases;
+  final pulumi.Input<List<String>?>? useCases;
 
   /// Creates a new [ControlState].
   /// [boostAction] Changes the returned order of results.

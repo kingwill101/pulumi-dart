@@ -13,15 +13,15 @@ class DatabaseInstanceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The intended database state. Possible values: ACTIVE, DISABLED.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// The globally unique identifier of the Firebase Realtime Database instance.
   /// Instance IDs cannot be reused after deletion.
   final pulumi.Input<String> instanceId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A reference to the region where the Firebase Realtime database resides.
   /// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
   final pulumi.Input<String> region;
@@ -31,7 +31,7 @@ class DatabaseInstanceArgs {
   /// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
   /// Default value is `USER_DATABASE`.
   /// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DatabaseInstanceArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

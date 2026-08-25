@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigNodeImageConfig {
   /// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
-  final pulumi.Input<String>? imageProject;
+  final pulumi.Input<String?>? imageProject;
 
   /// Creates a new [NodePoolNodeConfigNodeImageConfig].
   /// [image] The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.

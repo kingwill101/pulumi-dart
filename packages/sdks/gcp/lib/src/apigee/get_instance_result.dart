@@ -5,99 +5,99 @@ import 'get_instance_access_logging_config.dart';
 
 /// Result data returned by getInstance.
 class GetInstanceResult {
-  final List<GetInstanceAccessLoggingConfig> accessLoggingConfigs;
-  final List<String> consumerAcceptLists;
-  final String deletionPolicy;
-  final String description;
-  final String diskEncryptionKeyName;
-  final String displayName;
+  final List<GetInstanceAccessLoggingConfig>? accessLoggingConfigs;
+  final List<String>? consumerAcceptLists;
+  final String? deletionPolicy;
+  final String? description;
+  final String? diskEncryptionKeyName;
+  final String? displayName;
   /// The hostname or IP address of the exposed Apigee endpoint. [3]
-  final String host;
+  final String? host;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The IP range used by the instance. [3]
-  final String ipRange;
+  final String? ipRange;
   /// The GCP region where the instance resides. [3]
-  final String location;
-  final String name;
-  final String orgId;
-  final String peeringCidrRange;
+  final String? location;
+  final String? name;
+  final String? orgId;
+  final String? peeringCidrRange;
   /// The port number of the exposed Apigee endpoint. [3]
-  final String port;
+  final String? port;
   /// The PSC service attachment for the instance. [3]
-  final String serviceAttachment;
+  final String? serviceAttachment;
 
   /// Creates a new [GetInstanceResult].
-  /// [accessLoggingConfigs] Required.
-  /// [consumerAcceptLists] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [diskEncryptionKeyName] Required.
-  /// [displayName] Required.
+  /// [accessLoggingConfigs] Optional.
+  /// [consumerAcceptLists] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [diskEncryptionKeyName] Optional.
+  /// [displayName] Optional.
   /// [host] The hostname or IP address of the exposed Apigee endpoint. [3]
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipRange] The IP range used by the instance. [3]
   /// [location] The GCP region where the instance resides. [3]
-  /// [name] Required.
-  /// [orgId] Required.
-  /// [peeringCidrRange] Required.
+  /// [name] Optional.
+  /// [orgId] Optional.
+  /// [peeringCidrRange] Optional.
   /// [port] The port number of the exposed Apigee endpoint. [3]
   /// [serviceAttachment] The PSC service attachment for the instance. [3]
   const GetInstanceResult({
-    required this.accessLoggingConfigs,
-    required this.consumerAcceptLists,
-    required this.deletionPolicy,
-    required this.description,
-    required this.diskEncryptionKeyName,
-    required this.displayName,
-    required this.host,
-    required this.id,
-    required this.ipRange,
-    required this.location,
-    required this.name,
-    required this.orgId,
-    required this.peeringCidrRange,
-    required this.port,
-    required this.serviceAttachment,
+    this.accessLoggingConfigs,
+    this.consumerAcceptLists,
+    this.deletionPolicy,
+    this.description,
+    this.diskEncryptionKeyName,
+    this.displayName,
+    this.host,
+    this.id,
+    this.ipRange,
+    this.location,
+    this.name,
+    this.orgId,
+    this.peeringCidrRange,
+    this.port,
+    this.serviceAttachment,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLoggingConfigs': pulumi.Input.encodeList<GetInstanceAccessLoggingConfig, Map<String, dynamic>>(accessLoggingConfigs, (value) => value.toMap()),
-      'consumerAcceptLists': consumerAcceptLists,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'diskEncryptionKeyName': diskEncryptionKeyName,
-      'displayName': displayName,
-      'host': host,
-      'id': id,
-      'ipRange': ipRange,
-      'location': location,
-      'name': name,
-      'orgId': orgId,
-      'peeringCidrRange': peeringCidrRange,
-      'port': port,
-      'serviceAttachment': serviceAttachment,
+      'accessLoggingConfigs': ?(() { final guardedValue = accessLoggingConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceAccessLoggingConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'consumerAcceptLists': ?consumerAcceptLists,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'diskEncryptionKeyName': ?diskEncryptionKeyName,
+      'displayName': ?displayName,
+      'host': ?host,
+      'id': ?id,
+      'ipRange': ?ipRange,
+      'location': ?location,
+      'name': ?name,
+      'orgId': ?orgId,
+      'peeringCidrRange': ?peeringCidrRange,
+      'port': ?port,
+      'serviceAttachment': ?serviceAttachment,
     };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      accessLoggingConfigs: pulumi.Input.decodeList<GetInstanceAccessLoggingConfig>(map['accessLoggingConfigs']!, (value) => GetInstanceAccessLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      consumerAcceptLists: (map['consumerAcceptLists'] as List).cast<String>(),
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      diskEncryptionKeyName: map['diskEncryptionKeyName'] as String,
-      displayName: map['displayName'] as String,
-      host: map['host'] as String,
-      id: map['id'] as String,
-      ipRange: map['ipRange'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      orgId: map['orgId'] as String,
-      peeringCidrRange: map['peeringCidrRange'] as String,
-      port: map['port'] as String,
-      serviceAttachment: map['serviceAttachment'] as String,
+      accessLoggingConfigs: (() { final guardedValue = map['accessLoggingConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceAccessLoggingConfig>(guardedValue, (value) => GetInstanceAccessLoggingConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      consumerAcceptLists: (() { final guardedValue = map['consumerAcceptLists']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diskEncryptionKeyName: (() { final guardedValue = map['diskEncryptionKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipRange: (() { final guardedValue = map['ipRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peeringCidrRange: (() { final guardedValue = map['peeringCidrRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAttachment: (() { final guardedValue = map['serviceAttachment']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

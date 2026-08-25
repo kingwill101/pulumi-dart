@@ -8,18 +8,18 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
   /// path.to.agent. If not specified, defaults to "agent".
   /// The project root will be added to Python sys.path, allowing
   /// imports to be specified relative to the root.
-  final pulumi.Input<String>? entrypointModule;
+  final pulumi.Input<String?>? entrypointModule;
   /// Optional. The name of the callable object within the
   /// entrypointModule to use as the application If not specified,
   /// defaults to "rootAgent".
-  final pulumi.Input<String>? entrypointObject;
+  final pulumi.Input<String?>? entrypointObject;
   /// Optional. The path to the requirements file, relative to the
   /// source root. If not specified, defaults to "requirements.txt".
-  final pulumi.Input<String>? requirementsFile;
+  final pulumi.Input<String?>? requirementsFile;
   /// Optional. The version of Python to use. Support version
   /// includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
   /// default value is 3.10.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpecPythonSpec].
   /// [entrypointModule] Optional. The Python module to load as the entrypoint,

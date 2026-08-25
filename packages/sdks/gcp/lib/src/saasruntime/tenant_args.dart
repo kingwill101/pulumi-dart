@@ -13,29 +13,29 @@ class TenantArgs {
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// A reference to the consumer resource this SaaS Tenant is representing.
   /// The relationship with a consumer resource can be used by App Lifecycle Manager for
   /// retrieving consumer-defined settings and policies such as maintenance
   /// policies (using Unified Maintenance Policy API).
-  final pulumi.Input<String>? consumerResource;
+  final pulumi.Input<String?>? consumerResource;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A reference to the Saas that defines the product (managed service) that
   /// the producer wants to manage with App Lifecycle Manager. Part of the
   /// App Lifecycle Manager common data model.

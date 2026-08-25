@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering TargetIamPolicy resources.
 class TargetIamPolicyState {
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? policyData;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? policyData;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [TargetIamPolicyState].
   /// [etag] Optional.

@@ -6,14 +6,14 @@ class DataConnectorActionConfig {
   /// Params needed to configure the actions in the format of
   /// String-to-String (Key, Value) pairs. Contains connection
   /// credentials and configuration for the action connector.
-  final pulumi.Input<Map<String, String>>? actionParams;
+  final pulumi.Input<Map<String, String>?>? actionParams;
   /// Whether to create a BAP (Business Application Platform) connection
   /// for this action connector.
-  final pulumi.Input<bool>? createBapConnection;
+  final pulumi.Input<bool?>? createBapConnection;
   /// (Output)
   /// Whether the action connector is fully configured. Set by the system
   /// after the action configuration is validated.
-  final pulumi.Input<bool>? isActionConfigured;
+  final pulumi.Input<bool?>? isActionConfigured;
 
   /// Creates a new [DataConnectorActionConfig].
   /// [actionParams] Params needed to configure the actions in the format of

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EntryTypeRequiredAspect {
   /// Required aspect type for the entry type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EntryTypeRequiredAspect].
   /// [type] Required aspect type for the entry type.

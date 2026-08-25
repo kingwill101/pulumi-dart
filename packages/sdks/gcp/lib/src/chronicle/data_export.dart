@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_export_args.dart';
+import 'data_export_data_export_status.dart';
+import 'data_export_ingestion_label.dart';
 import 'data_export_state.dart';
 
 /// DataExport resource represents a request to export data from Chronicle to a GCS bucket.
@@ -545,7 +547,7 @@ class DataExport extends pulumi.CustomResource {
   late final pulumi.Output<String> dataExportId;
   /// Status of the current export.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dataExportStatuses;
+  late final pulumi.Output<List<DataExportDataExportStatus>> dataExportStatuses;
   /// Last, exclusive time from the range.
   late final pulumi.Output<String> endTime;
   /// The estimated export volume in bytes.
@@ -558,7 +560,7 @@ class DataExport extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> includeLogTypes;
   /// The ingestion labels used to filter the export.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ingestionLabels;
+  late final pulumi.Output<List<DataExportIngestionLabel>?> ingestionLabels;
   /// The unique identifier for the Chronicle instance.
   late final pulumi.Output<String> instance;
   /// The location of the resource.
@@ -587,21 +589,21 @@ class DataExport extends pulumi.CustomResource {
           'gcp:chronicle/dataExport:DataExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataExportId = registerOutput<String>('dataExportId');
-    dataExportStatuses = registerOutput<List<Map<String, dynamic>>>('dataExportStatuses');
+    dataExportStatuses = registerOutput<List<DataExportDataExportStatus>>('dataExportStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExportDataExportStatus>(guardedValue, (value) => DataExportDataExportStatus.fromMap((value as Map).cast<String, dynamic>())); });
     endTime = registerOutput<String>('endTime');
     estimatedVolume = registerOutput<int>('estimatedVolume');
     exportedVolume = registerOutput<int>('exportedVolume');
     gcsBucket = registerOutput<String>('gcsBucket');
-    includeLogTypes = registerOutput<List<String>>('includeLogTypes');
-    ingestionLabels = registerOutput<List<Map<String, dynamic>>?>('ingestionLabels');
+    includeLogTypes = registerOutput<List<String>>('includeLogTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ingestionLabels = registerOutput<List<DataExportIngestionLabel>?>('ingestionLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExportIngestionLabel>(guardedValue, (value) => DataExportIngestionLabel.fromMap((value as Map).cast<String, dynamic>())); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    namespaces = registerOutput<List<String>?>('namespaces');
+    namespaces = registerOutput<List<String>?>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');
     updateTime = registerOutput<String>('updateTime');
@@ -612,11 +614,12 @@ class DataExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -632,17 +635,44 @@ class DataExport extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dataExportId = registerOutput<String>('dataExportId');
-    dataExportStatuses = registerOutput<List<Map<String, dynamic>>>('dataExportStatuses');
+    dataExportStatuses = registerOutput<List<DataExportDataExportStatus>>('dataExportStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExportDataExportStatus>(guardedValue, (value) => DataExportDataExportStatus.fromMap((value as Map).cast<String, dynamic>())); });
     endTime = registerOutput<String>('endTime');
     estimatedVolume = registerOutput<int>('estimatedVolume');
     exportedVolume = registerOutput<int>('exportedVolume');
     gcsBucket = registerOutput<String>('gcsBucket');
-    includeLogTypes = registerOutput<List<String>>('includeLogTypes');
-    ingestionLabels = registerOutput<List<Map<String, dynamic>>?>('ingestionLabels');
+    includeLogTypes = registerOutput<List<String>>('includeLogTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ingestionLabels = registerOutput<List<DataExportIngestionLabel>?>('ingestionLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExportIngestionLabel>(guardedValue, (value) => DataExportIngestionLabel.fromMap((value as Map).cast<String, dynamic>())); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    namespaces = registerOutput<List<String>?>('namespaces');
+    namespaces = registerOutput<List<String>?>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataExport] resource.
+  DataExport.reference(String urn)
+    : super(
+        'gcp:chronicle/dataExport:DataExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataExportId = registerOutput<String>('dataExportId');
+    dataExportStatuses = registerOutput<List<DataExportDataExportStatus>>('dataExportStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExportDataExportStatus>(guardedValue, (value) => DataExportDataExportStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    endTime = registerOutput<String>('endTime');
+    estimatedVolume = registerOutput<int>('estimatedVolume');
+    exportedVolume = registerOutput<int>('exportedVolume');
+    gcsBucket = registerOutput<String>('gcsBucket');
+    includeLogTypes = registerOutput<List<String>>('includeLogTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ingestionLabels = registerOutput<List<DataExportIngestionLabel>?>('ingestionLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExportIngestionLabel>(guardedValue, (value) => DataExportIngestionLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    namespaces = registerOutput<List<String>?>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');
     updateTime = registerOutput<String>('updateTime');

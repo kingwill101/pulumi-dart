@@ -147,6 +147,17 @@ Future<GetActiveFolderResult> getActiveFolder(
   return GetActiveFolderResult.fromMap(result);
 }
 
+pulumi.Output<GetActiveFolderResult> getActiveFolderOutput(
+  GetActiveFolderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getActiveFolder:getActiveFolder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActiveFolderResult.fromMap);
+}
+
 /// Use this data source to get information about a Google Billing Account.
 ///
 ///
@@ -323,6 +334,17 @@ Future<GetBillingAccountResult> getBillingAccount(
   return GetBillingAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingAccountResult> getBillingAccountOutput(
+  GetBillingAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getBillingAccount:getBillingAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountResult.fromMap);
+}
+
 /// Use this data source to access the configuration of the Google Cloud provider.
 ///
 /// &gt; **Warning**: This resource persists a sensitive credential in the remote state used by Terraform.
@@ -478,6 +500,17 @@ Future<GetClientConfigResult> getClientConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetClientConfigResult> getClientConfigOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getClientConfig:getClientConfig',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientConfigResult.fromMap);
 }
 
 /// Get OpenID userinfo about the credentials used with the Google provider,
@@ -686,6 +719,17 @@ Future<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(
   return GetClientOpenIdUserInfoResult.fromMap(result);
 }
 
+pulumi.Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientOpenIdUserInfoResult.fromMap);
+}
+
 /// Use this data source to get information about a Google Cloud Folder.
 ///
 ///
@@ -859,6 +903,17 @@ Future<GetFolderResult> getFolder(
   return GetFolderResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderResult> getFolderOutput(
+  GetFolderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getFolder:getFolder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderResult.fromMap);
+}
+
 /// Retrieve information about a set of folders based on a parent ID. See the
 /// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
 /// for more details.
@@ -1011,6 +1066,17 @@ Future<GetFoldersResult> getFolders(
   return GetFoldersResult.fromMap(result);
 }
 
+pulumi.Output<GetFoldersResult> getFoldersOutput(
+  GetFoldersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getFolders:getFolders',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFoldersResult.fromMap);
+}
+
 /// Generates an IAM policy document that may be referenced by and applied to
 /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
 ///
@@ -1028,6 +1094,17 @@ Future<GetIAMPolicyResult> getIAMPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIAMPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetIAMPolicyResult> getIAMPolicyOutput(
+  GetIAMPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getIAMPolicy:getIAMPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIAMPolicyResult.fromMap);
 }
 
 /// Get information about a Google Cloud Organization IAM Custom Role. Note that you must have the `roles/iam.organizationRoleViewer` role (or equivalent permissions) at the organization level to use this datasource.
@@ -1199,6 +1276,17 @@ Future<GetIamCustomRoleResult> getIamCustomRole(
   return GetIamCustomRoleResult.fromMap(result);
 }
 
+pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
+  GetIamCustomRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getIamCustomRole:getIamCustomRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamCustomRoleResult.fromMap);
+}
+
 /// Get information about a Google Cloud Organization IAM Custom Roles.
 /// Note that you must have the `roles/iam.organizationRoleViewer`.
 /// See [the official documentation](https://cloud.google.com/iam/docs/creating-custom-roles)
@@ -1330,6 +1418,17 @@ Future<GetIamCustomRolesResult> getIamCustomRoles(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamCustomRolesResult.fromMap(result);
+}
+
+pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
+  GetIamCustomRolesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getIamCustomRoles:getIamCustomRoles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamCustomRolesResult.fromMap);
 }
 
 /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
@@ -1486,6 +1585,17 @@ Future<GetOrganizationResult> getOrganization(
   return GetOrganizationResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationResult> getOrganizationOutput(
+  GetOrganizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getOrganization:getOrganization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationResult.fromMap);
+}
+
 /// Use this data source to get project details.
 /// For more information see
 /// [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
@@ -1610,6 +1720,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getProject:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Gets a list of all organizations.
 /// See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
 /// and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
@@ -1728,4 +1849,15 @@ Future<GetSResult> getS(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSResult.fromMap(result);
+}
+
+pulumi.Output<GetSResult> getSOutput(
+  GetSArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:organizations/getS:getS',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSResult.fromMap);
 }

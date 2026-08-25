@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'dataset_access.dart';
 import 'dataset_args.dart';
 import 'dataset_default_encryption_configuration.dart';
 import 'dataset_external_catalog_dataset_options.dart';
@@ -1710,7 +1711,7 @@ import 'dataset_state.dart';
 class Dataset extends pulumi.CustomResource {
   /// An array of objects that define dataset access for one or more entities.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> accesses;
+  late final pulumi.Output<List<DatasetAccess>> accesses;
   /// The time when this dataset was created, in milliseconds since the
   /// epoch.
   late final pulumi.Output<int> creationTime;
@@ -1841,9 +1842,10 @@ class Dataset extends pulumi.CustomResource {
           'gcp:bigquery/dataset:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    accesses = registerOutput<List<Map<String, dynamic>>>('accesses');
+    accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
     defaultCollation = registerOutput<String>('defaultCollation');
@@ -1853,19 +1855,19 @@ class Dataset extends pulumi.CustomResource {
     deleteContentsOnDestroy = registerOutput<bool?>('deleteContentsOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     externalCatalogDatasetOptions = registerOutput<DatasetExternalCatalogDatasetOptions?>('externalCatalogDatasetOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetExternalCatalogDatasetOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalDatasetReference = registerOutput<DatasetExternalDatasetReference?>('externalDatasetReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetExternalDatasetReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String?>('friendlyName');
     isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifiedTime = registerOutput<int>('lastModifiedTime');
     location = registerOutput<String?>('location');
     maxTimeTravelHours = registerOutput<String>('maxTimeTravelHours');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     selfLink = registerOutput<String>('selfLink');
     storageBillingModel = registerOutput<String>('storageBillingModel');
   }
@@ -1875,11 +1877,12 @@ class Dataset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Dataset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1893,7 +1896,7 @@ class Dataset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accesses = registerOutput<List<Map<String, dynamic>>>('accesses');
+    accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
     defaultCollation = registerOutput<String>('defaultCollation');
@@ -1903,19 +1906,56 @@ class Dataset extends pulumi.CustomResource {
     deleteContentsOnDestroy = registerOutput<bool?>('deleteContentsOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     externalCatalogDatasetOptions = registerOutput<DatasetExternalCatalogDatasetOptions?>('externalCatalogDatasetOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetExternalCatalogDatasetOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalDatasetReference = registerOutput<DatasetExternalDatasetReference?>('externalDatasetReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetExternalDatasetReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String?>('friendlyName');
     isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifiedTime = registerOutput<int>('lastModifiedTime');
     location = registerOutput<String?>('location');
     maxTimeTravelHours = registerOutput<String>('maxTimeTravelHours');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    selfLink = registerOutput<String>('selfLink');
+    storageBillingModel = registerOutput<String>('storageBillingModel');
+  }
+
+  /// Creates a typed reference to an existing [Dataset] resource.
+  Dataset.reference(String urn)
+    : super(
+        'gcp:bigquery/dataset:Dataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<int>('creationTime');
+    datasetId = registerOutput<String>('datasetId');
+    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultEncryptionConfiguration = registerOutput<DatasetDefaultEncryptionConfiguration?>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
+    defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');
+    deleteContentsOnDestroy = registerOutput<bool?>('deleteContentsOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    externalCatalogDatasetOptions = registerOutput<DatasetExternalCatalogDatasetOptions?>('externalCatalogDatasetOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetExternalCatalogDatasetOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    externalDatasetReference = registerOutput<DatasetExternalDatasetReference?>('externalDatasetReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetExternalDatasetReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String?>('friendlyName');
+    isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifiedTime = registerOutput<int>('lastModifiedTime');
+    location = registerOutput<String?>('location');
+    maxTimeTravelHours = registerOutput<String>('maxTimeTravelHours');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     selfLink = registerOutput<String>('selfLink');
     storageBillingModel = registerOutput<String>('storageBillingModel');
   }

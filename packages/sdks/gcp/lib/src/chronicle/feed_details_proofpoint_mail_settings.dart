@@ -6,7 +6,7 @@ import 'feed_details_proofpoint_mail_settings_authentication.dart';
 class FeedDetailsProofpointMailSettings {
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsProofpointMailSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsProofpointMailSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsProofpointMailSettings].
   /// [authentication] Info for username and secret based authentication.

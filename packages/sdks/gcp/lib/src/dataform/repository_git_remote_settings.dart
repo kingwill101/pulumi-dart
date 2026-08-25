@@ -5,17 +5,17 @@ import 'repository_git_remote_settings_ssh_authentication_config.dart';
 
 class RepositoryGitRemoteSettings {
   /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*/secrets/*/versions/*.
-  final pulumi.Input<String>? authenticationTokenSecretVersion;
+  final pulumi.Input<String?>? authenticationTokenSecretVersion;
   /// The Git remote's default branch name.
   final pulumi.Input<String> defaultBranch;
   /// The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
-  final pulumi.Input<String>? gitRepositoryLink;
+  final pulumi.Input<String?>? gitRepositoryLink;
   /// Authentication fields for remote uris using SSH protocol.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryGitRemoteSettingsSshAuthenticationConfig>? sshAuthenticationConfig;
+  final pulumi.Input<RepositoryGitRemoteSettingsSshAuthenticationConfig?>? sshAuthenticationConfig;
   /// (Output)
   /// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
-  final pulumi.Input<String>? tokenStatus;
+  final pulumi.Input<String?>? tokenStatus;
   /// The Git remote's URL.
   final pulumi.Input<String> url;
 

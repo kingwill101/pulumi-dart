@@ -6,7 +6,7 @@ import 'feed_details_proofpoint_on_demand_settings_authentication_header_key_val
 class FeedDetailsProofpointOnDemandSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsProofpointOnDemandSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

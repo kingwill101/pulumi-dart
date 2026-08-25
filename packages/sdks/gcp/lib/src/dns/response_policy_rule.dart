@@ -404,7 +404,7 @@ class ResponsePolicyRule extends pulumi.CustomResource {
           'gcp:dns/responsePolicyRule:ResponsePolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     behavior = registerOutput<String?>('behavior');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -420,11 +420,12 @@ class ResponsePolicyRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResponsePolicyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResponsePolicyRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -438,6 +439,24 @@ class ResponsePolicyRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    behavior = registerOutput<String?>('behavior');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dnsName = registerOutput<String>('dnsName');
+    localData = registerOutput<ResponsePolicyRuleLocalData?>('localData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponsePolicyRuleLocalData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    responsePolicy = registerOutput<String>('responsePolicy');
+    ruleName = registerOutput<String>('ruleName');
+  }
+
+  /// Creates a typed reference to an existing [ResponsePolicyRule] resource.
+  ResponsePolicyRule.reference(String urn)
+    : super(
+        'gcp:dns/responsePolicyRule:ResponsePolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     behavior = registerOutput<String?>('behavior');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsName = registerOutput<String>('dnsName');

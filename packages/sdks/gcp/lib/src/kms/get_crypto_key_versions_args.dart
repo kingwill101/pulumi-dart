@@ -18,7 +18,7 @@ class GetCryptoKeyVersionsArgs {
   /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring/cryptoKeys/my-key-1/cryptoKeyVersions/my-version-1"` will only retrieve a key with that exact name.
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [GetCryptoKeyVersionsArgs].
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the

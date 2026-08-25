@@ -5,54 +5,54 @@ import 'get_config_ingestion.dart';
 
 /// Result data returned by getConfig.
 class GetConfigResult {
-  final String deletionPolicy;
-  final String etag;
+  final String? deletionPolicy;
+  final String? etag;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetConfigIngestion> ingestions;
-  final String location;
-  final String name;
-  final String parent;
+  final String? id;
+  final List<GetConfigIngestion>? ingestions;
+  final String? location;
+  final String? name;
+  final String? parent;
 
   /// Creates a new [GetConfigResult].
-  /// [deletionPolicy] Required.
-  /// [etag] Required.
+  /// [deletionPolicy] Optional.
+  /// [etag] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ingestions] Required.
-  /// [location] Required.
-  /// [name] Required.
-  /// [parent] Required.
+  /// [ingestions] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [parent] Optional.
   const GetConfigResult({
-    required this.deletionPolicy,
-    required this.etag,
-    required this.id,
-    required this.ingestions,
-    required this.location,
-    required this.name,
-    required this.parent,
+    this.deletionPolicy,
+    this.etag,
+    this.id,
+    this.ingestions,
+    this.location,
+    this.name,
+    this.parent,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deletionPolicy': deletionPolicy,
-      'etag': etag,
-      'id': id,
-      'ingestions': pulumi.Input.encodeList<GetConfigIngestion, Map<String, dynamic>>(ingestions, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'parent': parent,
+      'deletionPolicy': ?deletionPolicy,
+      'etag': ?etag,
+      'id': ?id,
+      'ingestions': ?(() { final guardedValue = ingestions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConfigIngestion, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'parent': ?parent,
     };
   }
 
   factory GetConfigResult.fromMap(Map<String, dynamic> map) {
     return GetConfigResult(
-      deletionPolicy: map['deletionPolicy'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      ingestions: pulumi.Input.decodeList<GetConfigIngestion>(map['ingestions']!, (value) => GetConfigIngestion.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      parent: map['parent'] as String,
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ingestions: (() { final guardedValue = map['ingestions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConfigIngestion>(guardedValue, (value) => GetConfigIngestion.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

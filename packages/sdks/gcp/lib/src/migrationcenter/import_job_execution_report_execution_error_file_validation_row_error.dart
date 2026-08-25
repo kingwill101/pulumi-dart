@@ -10,31 +10,31 @@ class ImportJobExecutionReportExecutionErrorFileValidationRowError {
   /// (Output)
   /// Error details for an archive file.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError>>? archiveErrors;
+  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorArchiveError>?>? archiveErrors;
   /// (Output)
   /// The asset title.
-  final pulumi.Input<String>? assetTitle;
+  final pulumi.Input<String?>? assetTitle;
   /// (Output)
   /// Error details for a CSV file.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError>>? csvErrors;
+  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError>?>? csvErrors;
   /// (Output)
   /// The list of errors detected in the row.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorError>>? errors;
+  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorError>?>? errors;
   /// (Output)
   /// The row number where the error was detected.
-  final pulumi.Input<int>? rowNumber;
+  final pulumi.Input<int?>? rowNumber;
   /// (Output)
   /// The name of the VM in the row.
-  final pulumi.Input<String>? vmName;
+  final pulumi.Input<String?>? vmName;
   /// (Output)
   /// The VM UUID.
-  final pulumi.Input<String>? vmUuid;
+  final pulumi.Input<String?>? vmUuid;
   /// (Output)
   /// Error details for an XLSX file.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError>>? xlsxErrors;
+  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError>?>? xlsxErrors;
 
   /// Creates a new [ImportJobExecutionReportExecutionErrorFileValidationRowError].
   /// [archiveErrors] (Output)
@@ -75,7 +75,7 @@ class ImportJobExecutionReportExecutionErrorFileValidationRowError {
       assetTitle: (() { final guardedValue = map['assetTitle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       csvErrors: (() { final guardedValue = map['csvErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError>(guardedValue, (value) => ImportJobExecutionReportExecutionErrorFileValidationRowErrorCsvError.fromMap((value as Map).cast<String, dynamic>()))); })(),
       errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ImportJobExecutionReportExecutionErrorFileValidationRowErrorError>(guardedValue, (value) => ImportJobExecutionReportExecutionErrorFileValidationRowErrorError.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       vmName: (() { final guardedValue = map['vmName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmUuid: (() { final guardedValue = map['vmUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       xlsxErrors: (() { final guardedValue = map['xlsxErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError>(guardedValue, (value) => ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError.fromMap((value as Map).cast<String, dynamic>()))); })(),

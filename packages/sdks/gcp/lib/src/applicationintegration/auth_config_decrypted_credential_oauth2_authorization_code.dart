@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthConfigDecryptedCredentialOauth2AuthorizationCode {
   /// The auth url endpoint to send the auth code request to.
-  final pulumi.Input<String>? authEndpoint;
+  final pulumi.Input<String?>? authEndpoint;
   /// The client's id.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client's secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// A space-delimited list of requested scope permissions.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The token url endpoint to send the token request to.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2AuthorizationCode].
   /// [authEndpoint] The auth url endpoint to send the auth code request to.

@@ -8,9 +8,9 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
   /// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
   /// specified in another InfoTypeLimit.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType>? infoType;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType?>? infoType;
   /// Max findings limit for the given infoType.
-  final pulumi.Input<int>? maxFindings;
+  final pulumi.Input<int?>? maxFindings;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType].
   /// [infoType] Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
@@ -30,7 +30,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
   factory PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(
       infoType: (() { final guardedValue = map['infoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxFindings: (() { final guardedValue = map['maxFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxFindings: (() { final guardedValue = map['maxFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

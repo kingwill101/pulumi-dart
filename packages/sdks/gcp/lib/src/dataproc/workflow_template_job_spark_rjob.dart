@@ -5,17 +5,17 @@ import 'workflow_template_job_spark_rjob_logging_config.dart';
 
 class WorkflowTemplateJobSparkRJob {
   /// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-  final pulumi.Input<List<String>>? archiveUris;
+  final pulumi.Input<List<String>?>? archiveUris;
   /// The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-  final pulumi.Input<List<String>>? fileUris;
+  final pulumi.Input<List<String>?>? fileUris;
   /// The runtime log config for job execution.
-  final pulumi.Input<WorkflowTemplateJobSparkRJobLoggingConfig>? loggingConfig;
+  final pulumi.Input<WorkflowTemplateJobSparkRJobLoggingConfig?>? loggingConfig;
   /// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
   final pulumi.Input<String> mainRFileUri;
   /// A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [WorkflowTemplateJobSparkRJob].
   /// [archiveUris] HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.

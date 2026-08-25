@@ -11,25 +11,25 @@ class CxFlowAdvancedSettings {
   /// * Agent level
   /// * Flow level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowAdvancedSettingsAudioExportGcsDestination>? audioExportGcsDestination;
+  final pulumi.Input<CxFlowAdvancedSettingsAudioExportGcsDestination?>? audioExportGcsDestination;
   /// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowAdvancedSettingsDtmfSettings>? dtmfSettings;
+  final pulumi.Input<CxFlowAdvancedSettingsDtmfSettings?>? dtmfSettings;
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// * Agent level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowAdvancedSettingsLoggingSettings>? loggingSettings;
+  final pulumi.Input<CxFlowAdvancedSettingsLoggingSettings?>? loggingSettings;
   /// Settings for speech to text detection. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowAdvancedSettingsSpeechSettings>? speechSettings;
+  final pulumi.Input<CxFlowAdvancedSettingsSpeechSettings?>? speechSettings;
 
   /// Creates a new [CxFlowAdvancedSettings].
   /// [audioExportGcsDestination] If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:

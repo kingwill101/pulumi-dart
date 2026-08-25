@@ -10,12 +10,12 @@ import 'license_config_start_date.dart';
 /// {@macro pulumi_discoveryengine_license_config_license_config_args_doc}
 class LicenseConfigArgs {
   /// Whether the license config should be auto renewed when it reaches the end date.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// The planned end date.
   /// Structure is documented below.
-  final pulumi.Input<LicenseConfigEndDate>? endDate;
+  final pulumi.Input<LicenseConfigEndDate?>? endDate;
   /// Whether the license config is for free trial.
-  final pulumi.Input<bool>? freeTrial;
+  final pulumi.Input<bool?>? freeTrial;
   /// The unique id of the license config.
   final pulumi.Input<String> licenseConfigId;
   /// Number of licenses purchased.
@@ -25,7 +25,7 @@ class LicenseConfigArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The start date.
   /// Structure is documented below.
   final pulumi.Input<LicenseConfigStartDate> startDate;
@@ -81,7 +81,7 @@ class LicenseConfigArgs {
       endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       freeTrial: (() { final guardedValue = map['freeTrial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       licenseConfigId: pulumi.Input.fromValue(map['licenseConfigId'] as String),
-      licenseCount: pulumi.Input.fromValue(map['licenseCount'] as int),
+      licenseCount: pulumi.Input.fromValue((map['licenseCount'] as num).toInt()),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startDate: pulumi.Input.fromValue(LicenseConfigStartDate.fromMap((map['startDate']! as Map).cast<String, dynamic>())),

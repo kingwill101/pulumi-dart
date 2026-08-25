@@ -8,7 +8,7 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3Ic
   /// The bucket of Amazon S3.
   final pulumi.Input<String> bucket;
   /// The endpoint of Amazon S3.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The region of Amazon S3.
   final pulumi.Input<String> region;
   /// The scheme type of Amazon S3.
@@ -17,7 +17,7 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3Ic
   /// S3A
   final pulumi.Input<String> schemeType;
   /// The secret access key of Amazon S3.
-  final pulumi.Input<String>? secretAccessKeySecret;
+  final pulumi.Input<String?>? secretAccessKeySecret;
 
   /// Creates a new [GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage].
   /// [accessKeyId] The access key ID of Amazon S3.

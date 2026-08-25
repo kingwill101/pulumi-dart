@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotebookExecutionCustomEnvironmentSpecMachineSpec {
   /// The number of accelerators used by the runtime.
-  final pulumi.Input<int>? acceleratorCount;
+  final pulumi.Input<int?>? acceleratorCount;
   /// The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// The Compute Engine machine type selected for the runtime.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
 
   /// Creates a new [NotebookExecutionCustomEnvironmentSpecMachineSpec].
   /// [acceleratorCount] The number of accelerators used by the runtime.
@@ -30,7 +30,7 @@ class NotebookExecutionCustomEnvironmentSpecMachineSpec {
 
   factory NotebookExecutionCustomEnvironmentSpecMachineSpec.fromMap(Map<String, dynamic> map) {
     return NotebookExecutionCustomEnvironmentSpecMachineSpec(
-      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

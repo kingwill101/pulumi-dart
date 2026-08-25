@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_rule_args.dart';
 import 'firewall_policy_rule_match.dart';
 import 'firewall_policy_rule_state.dart';
+import 'firewall_policy_rule_target_secure_tag.dart';
 
 /// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 ///
@@ -2148,7 +2149,7 @@ class FirewallPolicyRule extends pulumi.CustomResource {
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetSecureTags;
+  late final pulumi.Output<List<FirewallPolicyRuleTargetSecureTag>?> targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
   late final pulumi.Output<List<String>?> targetServiceAccounts;
   /// Boolean flag indicating if the traffic should be TLS decrypted.
@@ -2167,7 +2168,7 @@ class FirewallPolicyRule extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyRule:FirewallPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -2182,9 +2183,9 @@ class FirewallPolicyRule extends pulumi.CustomResource {
     priority = registerOutput<int>('priority');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
-    targetResources = registerOutput<List<String>?>('targetResources');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetResources = registerOutput<List<String>?>('targetResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetSecureTags = registerOutput<List<FirewallPolicyRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => FirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 
@@ -2193,11 +2194,12 @@ class FirewallPolicyRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicyRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2224,9 +2226,37 @@ class FirewallPolicyRule extends pulumi.CustomResource {
     priority = registerOutput<int>('priority');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
-    targetResources = registerOutput<List<String>?>('targetResources');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetResources = registerOutput<List<String>?>('targetResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetSecureTags = registerOutput<List<FirewallPolicyRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => FirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tlsInspect = registerOutput<bool?>('tlsInspect');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyRule] resource.
+  FirewallPolicyRule.reference(String urn)
+    : super(
+        'gcp:compute/firewallPolicyRule:FirewallPolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    direction = registerOutput<String>('direction');
+    disabled = registerOutput<bool?>('disabled');
+    enableLogging = registerOutput<bool?>('enableLogging');
+    firewallPolicy = registerOutput<String>('firewallPolicy');
+    kind = registerOutput<String>('kind');
+    match = registerOutput<FirewallPolicyRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int>('priority');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    securityProfileGroup = registerOutput<String?>('securityProfileGroup');
+    targetResources = registerOutput<List<String>?>('targetResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetSecureTags = registerOutput<List<FirewallPolicyRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => FirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 }

@@ -217,7 +217,7 @@ class ProjectInfo extends pulumi.CustomResource {
           'gcp:billing/projectInfo:ProjectInfo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -229,11 +229,12 @@ class ProjectInfo extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectInfoState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectInfo._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -247,6 +248,20 @@ class ProjectInfo extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    billingAccount = registerOutput<String>('billingAccount');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ProjectInfo] resource.
+  ProjectInfo.reference(String urn)
+    : super(
+        'gcp:billing/projectInfo:ProjectInfo',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     billingAccount = registerOutput<String>('billingAccount');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');

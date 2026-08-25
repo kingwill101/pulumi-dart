@@ -6,14 +6,14 @@ import 'feed_details_workspace_users_settings_authentication.dart';
 class FeedDetailsWorkspaceUsersSettings {
   /// OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceUsersSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsWorkspaceUsersSettingsAuthentication?>? authentication;
   /// Projection Type.
   /// Possible values:
   /// BASIC_PROJECTION
   /// FULL_PROJECTION
-  final pulumi.Input<String>? projectionType;
+  final pulumi.Input<String?>? projectionType;
   /// Customer ID.
-  final pulumi.Input<String>? workspaceCustomerId;
+  final pulumi.Input<String?>? workspaceCustomerId;
 
   /// Creates a new [FeedDetailsWorkspaceUsersSettings].
   /// [authentication] OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519

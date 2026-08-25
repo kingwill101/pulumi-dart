@@ -6,7 +6,7 @@ import 'feature_spec_fleetobservability_logging_config.dart';
 class FeatureSpecFleetobservability {
   /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecFleetobservabilityLoggingConfig>? loggingConfig;
+  final pulumi.Input<FeatureSpecFleetobservabilityLoggingConfig?>? loggingConfig;
 
   /// Creates a new [FeatureSpecFleetobservability].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.

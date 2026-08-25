@@ -15,11 +15,11 @@ class RegionSecurityPolicyRule {
   /// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
   final pulumi.Input<String> action;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A match condition that incoming traffic is evaluated against.
   /// If it evaluates to true, the corresponding 'action' is enforced.
   /// Structure is documented below.
-  final pulumi.Input<RegionSecurityPolicyRuleMatch>? match;
+  final pulumi.Input<RegionSecurityPolicyRuleMatch?>? match;
   /// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
   /// The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
   /// Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
@@ -29,20 +29,20 @@ class RegionSecurityPolicyRule {
   /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
   /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
   /// Structure is documented below.
-  final pulumi.Input<RegionSecurityPolicyRuleNetworkMatch>? networkMatch;
+  final pulumi.Input<RegionSecurityPolicyRuleNetworkMatch?>? networkMatch;
   /// Preconfigured WAF configuration to be applied for the rule.
   /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
   /// Structure is documented below.
-  final pulumi.Input<RegionSecurityPolicyRulePreconfiguredWafConfig>? preconfiguredWafConfig;
+  final pulumi.Input<RegionSecurityPolicyRulePreconfiguredWafConfig?>? preconfiguredWafConfig;
   /// If set to true, the specified action is not enforced.
-  final pulumi.Input<bool>? preview;
+  final pulumi.Input<bool?>? preview;
   /// An integer indicating the priority of a rule in the list.
   /// The priority must be a positive value between 0 and 2147483647.
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
   final pulumi.Input<int> priority;
   /// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// Structure is documented below.
-  final pulumi.Input<RegionSecurityPolicyRuleRateLimitOptions>? rateLimitOptions;
+  final pulumi.Input<RegionSecurityPolicyRuleRateLimitOptions?>? rateLimitOptions;
 
   /// Creates a new [RegionSecurityPolicyRule].
   /// [action] The Action to perform when the rule is matched. The following are the valid actions:
@@ -85,7 +85,7 @@ class RegionSecurityPolicyRule {
       networkMatch: (() { final guardedValue = map['networkMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyRuleNetworkMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preconfiguredWafConfig: (() { final guardedValue = map['preconfiguredWafConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       rateLimitOptions: (() { final guardedValue = map['rateLimitOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyRuleRateLimitOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

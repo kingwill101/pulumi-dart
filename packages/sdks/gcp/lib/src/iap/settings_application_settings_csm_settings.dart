@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsApplicationSettingsCsmSettings {
   /// Audience claim set in the generated RCToken. This value is not validated by IAP.
-  final pulumi.Input<String>? rctokenAud;
+  final pulumi.Input<String?>? rctokenAud;
 
   /// Creates a new [SettingsApplicationSettingsCsmSettings].
   /// [rctokenAud] Audience claim set in the generated RCToken. This value is not validated by IAP.

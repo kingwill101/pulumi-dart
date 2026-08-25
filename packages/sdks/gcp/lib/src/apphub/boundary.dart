@@ -172,7 +172,7 @@ class Boundary extends pulumi.CustomResource {
           'gcp:apphub/boundary:Boundary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     crmNode = registerOutput<String?>('crmNode');
@@ -188,11 +188,12 @@ class Boundary extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BoundaryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Boundary._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -206,6 +207,24 @@ class Boundary extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    crmNode = registerOutput<String?>('crmNode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Boundary] resource.
+  Boundary.reference(String urn)
+    : super(
+        'gcp:apphub/boundary:Boundary',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     crmNode = registerOutput<String?>('crmNode');
     location = registerOutput<String>('location');

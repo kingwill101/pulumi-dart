@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AiCacheConfig resources.
 class AiCacheConfigState {
   /// If set to true, disables GenAI caching. Otherwise caching is enabled.
-  final pulumi.Input<bool>? disableCache;
+  final pulumi.Input<bool?>? disableCache;
   /// Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [AiCacheConfigState].
   /// [disableCache] If set to true, disables GenAI caching. Otherwise caching is enabled.

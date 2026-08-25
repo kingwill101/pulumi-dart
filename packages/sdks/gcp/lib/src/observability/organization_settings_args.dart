@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_observability_organization_settings_organization_settings_args_doc}
 class OrganizationSettingsArgs {
   /// The default storage location for new resources, e.g. buckets. Only valid for global location.
-  final pulumi.Input<String>? defaultStorageLocation;
+  final pulumi.Input<String?>? defaultStorageLocation;
   /// The default Cloud KMS key to use for new resources. Only valid for regional locations.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// The location of the settings.
   final pulumi.Input<String> location;
   /// The organization ID.

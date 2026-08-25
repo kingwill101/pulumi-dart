@@ -21,7 +21,7 @@ class AlertPolicyConditionConditionSqlMinutes {
 
   factory AlertPolicyConditionConditionSqlMinutes.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlMinutes(
-      periodicity: pulumi.Input.fromValue(map['periodicity'] as int),
+      periodicity: pulumi.Input.fromValue((map['periodicity'] as num).toInt()),
     );
   }
 }

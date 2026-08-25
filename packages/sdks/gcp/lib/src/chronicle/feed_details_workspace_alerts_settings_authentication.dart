@@ -7,12 +7,12 @@ import 'feed_details_workspace_alerts_settings_authentication_rs_credentials.dar
 class FeedDetailsWorkspaceAlertsSettingsAuthentication {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceAlertsSettingsAuthenticationClaims>? claims;
+  final pulumi.Input<FeedDetailsWorkspaceAlertsSettingsAuthenticationClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsWorkspaceAlertsSettingsAuthentication].
   /// [claims] Claims identifying a specific customer.

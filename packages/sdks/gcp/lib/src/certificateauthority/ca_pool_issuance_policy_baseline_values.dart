@@ -10,10 +10,10 @@ import 'ca_pool_issuance_policy_baseline_values_policy_id.dart';
 class CaPoolIssuancePolicyBaselineValues {
   /// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
   /// Structure is documented below.
-  final pulumi.Input<List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension>>? additionalExtensions;
+  final pulumi.Input<List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension>?>? additionalExtensions;
   /// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
   /// "Authority Information Access" extension in the certificate.
-  final pulumi.Input<List<String>>? aiaOcspServers;
+  final pulumi.Input<List<String>?>? aiaOcspServers;
   /// Describes values that are relevant in a CA certificate.
   /// Structure is documented below.
   final pulumi.Input<CaPoolIssuancePolicyBaselineValuesCaOptions> caOptions;
@@ -22,10 +22,10 @@ class CaPoolIssuancePolicyBaselineValues {
   final pulumi.Input<CaPoolIssuancePolicyBaselineValuesKeyUsage> keyUsage;
   /// Describes the X.509 name constraints extension.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicyBaselineValuesNameConstraints>? nameConstraints;
+  final pulumi.Input<CaPoolIssuancePolicyBaselineValuesNameConstraints?>? nameConstraints;
   /// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   /// Structure is documented below.
-  final pulumi.Input<List<CaPoolIssuancePolicyBaselineValuesPolicyId>>? policyIds;
+  final pulumi.Input<List<CaPoolIssuancePolicyBaselineValuesPolicyId>?>? policyIds;
 
   /// Creates a new [CaPoolIssuancePolicyBaselineValues].
   /// [additionalExtensions] Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.

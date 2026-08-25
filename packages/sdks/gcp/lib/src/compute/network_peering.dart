@@ -297,7 +297,7 @@ class NetworkPeering extends pulumi.CustomResource {
           'gcp:compute/networkPeering:NetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
@@ -318,11 +318,12 @@ class NetworkPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,6 +347,29 @@ class NetworkPeering extends pulumi.CustomResource {
     peerNetwork = registerOutput<String>('peerNetwork');
     stackType = registerOutput<String?>('stackType');
     this.state = registerOutput<String>('state');
+    stateDetails = registerOutput<String>('stateDetails');
+    updateStrategy = registerOutput<String?>('updateStrategy');
+  }
+
+  /// Creates a typed reference to an existing [NetworkPeering] resource.
+  NetworkPeering.reference(String urn)
+    : super(
+        'gcp:compute/networkPeering:NetworkPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
+    exportSubnetRoutesWithPublicIp = registerOutput<bool?>('exportSubnetRoutesWithPublicIp');
+    importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
+    importSubnetRoutesWithPublicIp = registerOutput<bool?>('importSubnetRoutesWithPublicIp');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    peerNetwork = registerOutput<String>('peerNetwork');
+    stackType = registerOutput<String?>('stackType');
+    state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
     updateStrategy = registerOutput<String?>('updateStrategy');
   }

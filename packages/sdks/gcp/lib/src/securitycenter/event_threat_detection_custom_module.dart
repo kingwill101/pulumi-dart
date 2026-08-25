@@ -289,7 +289,7 @@ class EventThreatDetectionCustomModule extends pulumi.CustomResource {
           'gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     config = registerOutput<String>('config');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -307,11 +307,12 @@ class EventThreatDetectionCustomModule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventThreatDetectionCustomModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventThreatDetectionCustomModule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,6 +326,26 @@ class EventThreatDetectionCustomModule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    config = registerOutput<String>('config');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    enablementState = registerOutput<String>('enablementState');
+    lastEditor = registerOutput<String>('lastEditor');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [EventThreatDetectionCustomModule] resource.
+  EventThreatDetectionCustomModule.reference(String urn)
+    : super(
+        'gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     config = registerOutput<String>('config');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');

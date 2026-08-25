@@ -110,9 +110,10 @@ class RegionSslCertificate extends pulumi.CustomResource {
           'gcp:compute/regionSslCertificate:RegionSslCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['certificate', 'privateKey', 'privateKeyWo'],
         ) {
-    certificate = registerOutput<String>('certificate');
+    certificate = registerOutput<String>('certificate', isSecret: true);
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -120,8 +121,8 @@ class RegionSslCertificate extends pulumi.CustomResource {
     expireTime = registerOutput<String>('expireTime');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    privateKey = registerOutput<String?>('privateKey');
-    privateKeyWo = registerOutput<String?>('privateKeyWo');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
     privateKeyWoVersion = registerOutput<String?>('privateKeyWoVersion');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -133,11 +134,12 @@ class RegionSslCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionSslCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionSslCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -151,7 +153,7 @@ class RegionSslCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    certificate = registerOutput<String>('certificate');
+    certificate = registerOutput<String>('certificate', isSecret: true);
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -159,8 +161,34 @@ class RegionSslCertificate extends pulumi.CustomResource {
     expireTime = registerOutput<String>('expireTime');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    privateKey = registerOutput<String?>('privateKey');
-    privateKeyWo = registerOutput<String?>('privateKeyWo');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
+    privateKeyWoVersion = registerOutput<String?>('privateKeyWoVersion');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [RegionSslCertificate] resource.
+  RegionSslCertificate.reference(String urn)
+    : super(
+        'gcp:compute/regionSslCertificate:RegionSslCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['certificate', 'privateKey', 'privateKeyWo'],
+        isResourceReference: true,
+      ) {
+    certificate = registerOutput<String>('certificate', isSecret: true);
+    certificateId = registerOutput<int>('certificateId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
     privateKeyWoVersion = registerOutput<String?>('privateKeyWoVersion');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

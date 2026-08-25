@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_template_args.dart';
+import 'tag_template_field.dart';
 import 'tag_template_state.dart';
 
 /// &gt; **Warning:** `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
@@ -408,7 +409,7 @@ class TagTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> fields;
+  late final pulumi.Output<List<TagTemplateField>> fields;
   /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
   late final pulumi.Output<bool?> forceDelete;
   /// The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
@@ -433,11 +434,11 @@ class TagTemplate extends pulumi.CustomResource {
           'gcp:datacatalog/tagTemplate:TagTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<TagTemplateField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagTemplateField>(guardedValue, (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>())); });
     forceDelete = registerOutput<bool?>('forceDelete');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -450,11 +451,12 @@ class TagTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -470,7 +472,26 @@ class TagTemplate extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<TagTemplateField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagTemplateField>(guardedValue, (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>())); });
+    forceDelete = registerOutput<bool?>('forceDelete');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    tagTemplateId = registerOutput<String>('tagTemplateId');
+  }
+
+  /// Creates a typed reference to an existing [TagTemplate] resource.
+  TagTemplate.reference(String urn)
+    : super(
+        'gcp:datacatalog/tagTemplate:TagTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    fields = registerOutput<List<TagTemplateField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagTemplateField>(guardedValue, (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>())); });
     forceDelete = registerOutput<bool?>('forceDelete');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

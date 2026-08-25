@@ -25,8 +25,8 @@ class JobScheduling {
 
   factory JobScheduling.fromMap(Map<String, dynamic> map) {
     return JobScheduling(
-      maxFailuresPerHour: pulumi.Input.fromValue(map['maxFailuresPerHour'] as int),
-      maxFailuresTotal: pulumi.Input.fromValue(map['maxFailuresTotal'] as int),
+      maxFailuresPerHour: pulumi.Input.fromValue((map['maxFailuresPerHour'] as num).toInt()),
+      maxFailuresTotal: pulumi.Input.fromValue((map['maxFailuresTotal'] as num).toInt()),
     );
   }
 }

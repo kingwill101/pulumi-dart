@@ -10,7 +10,7 @@ class BareMetalClusterControlPlane {
   /// documentation below to know the exact format:
   /// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalClusterControlPlaneApiServerArg>>? apiServerArgs;
+  final pulumi.Input<List<BareMetalClusterControlPlaneApiServerArg>?>? apiServerArgs;
   /// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterControlPlaneControlPlaneNodePoolConfig> controlPlaneNodePoolConfig;

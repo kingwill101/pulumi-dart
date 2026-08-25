@@ -1430,7 +1430,7 @@ class Job extends pulumi.CustomResource {
           'gcp:cloudscheduler/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     attemptDeadline = registerOutput<String?>('attemptDeadline');
@@ -1453,11 +1453,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1484,6 +1485,31 @@ class Job extends pulumi.CustomResource {
     retryConfig = registerOutput<JobRetryConfig?>('retryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schedule = registerOutput<String?>('schedule');
     this.state = registerOutput<String>('state');
+    timeZone = registerOutput<String?>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'gcp:cloudscheduler/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    attemptDeadline = registerOutput<String?>('attemptDeadline');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    httpTarget = registerOutput<JobHttpTarget?>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    paused = registerOutput<bool>('paused');
+    project = registerOutput<String>('project');
+    pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPubsubTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    retryConfig = registerOutput<JobRetryConfig?>('retryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<String?>('schedule');
+    state = registerOutput<String>('state');
     timeZone = registerOutput<String?>('timeZone');
   }
 }

@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceObservabilityConfig {
   /// Whether assistive experiences are enabled for this AlloyDB instance.
-  final pulumi.Input<bool>? assistiveExperiencesEnabled;
+  final pulumi.Input<bool?>? assistiveExperiencesEnabled;
   /// Observability feature status for an instance.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
-  final pulumi.Input<int>? maxQueryStringLength;
+  final pulumi.Input<int?>? maxQueryStringLength;
   /// Preserve comments in the query string.
-  final pulumi.Input<bool>? preserveComments;
+  final pulumi.Input<bool?>? preserveComments;
   /// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 200 is considered valid.
-  final pulumi.Input<int>? queryPlansPerMinute;
+  final pulumi.Input<int?>? queryPlansPerMinute;
   /// Record application tags for an instance. This flag is turned "on" by default.
-  final pulumi.Input<bool>? recordApplicationTags;
+  final pulumi.Input<bool?>? recordApplicationTags;
   /// Track actively running queries. If not set, default value is "off".
-  final pulumi.Input<bool>? trackActiveQueries;
+  final pulumi.Input<bool?>? trackActiveQueries;
   /// Track client address for an instance. If not set, default value is "off".
-  final pulumi.Input<bool>? trackClientAddress;
+  final pulumi.Input<bool?>? trackClientAddress;
   /// Record wait event types during query execution for an instance.
-  final pulumi.Input<bool>? trackWaitEventTypes;
+  final pulumi.Input<bool?>? trackWaitEventTypes;
   /// Record wait events during query execution for an instance.
-  final pulumi.Input<bool>? trackWaitEvents;
+  final pulumi.Input<bool?>? trackWaitEvents;
 
   /// Creates a new [InstanceObservabilityConfig].
   /// [assistiveExperiencesEnabled] Whether assistive experiences are enabled for this AlloyDB instance.
@@ -67,9 +67,9 @@ class InstanceObservabilityConfig {
     return InstanceObservabilityConfig(
       assistiveExperiencesEnabled: (() { final guardedValue = map['assistiveExperiencesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxQueryStringLength: (() { final guardedValue = map['maxQueryStringLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxQueryStringLength: (() { final guardedValue = map['maxQueryStringLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       preserveComments: (() { final guardedValue = map['preserveComments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      queryPlansPerMinute: (() { final guardedValue = map['queryPlansPerMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queryPlansPerMinute: (() { final guardedValue = map['queryPlansPerMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       recordApplicationTags: (() { final guardedValue = map['recordApplicationTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trackActiveQueries: (() { final guardedValue = map['trackActiveQueries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trackClientAddress: (() { final guardedValue = map['trackClientAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

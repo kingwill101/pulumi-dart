@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_certificatemanager_get_certificates_get_certificates_args_doc}
 class GetCertificatesArgs {
   /// Filter expression to restrict the certificates returned.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetCertificatesArgs].
   /// [filter] Filter expression to restrict the certificates returned.

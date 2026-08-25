@@ -14,9 +14,9 @@ class LbEdgeExtensionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A set of ordered extension chains that contain the match conditions and extensions to execute.
   /// Match conditions for each extension chain are evaluated in sequence for a given request.
   /// The first extension chain that has a condition that matches the request is executed.
@@ -29,17 +29,17 @@ class LbEdgeExtensionArgs {
   /// Set of labels associated with the LbEdgeExtension resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// All forwarding rules referenced by this extension must share the same load balancing scheme.
   /// Possible values are: `EXTERNAL_MANAGED`.
   final pulumi.Input<String> loadBalancingScheme;
   /// The location of the edge extension
   final pulumi.Input<String> location;
   /// Name of the LbEdgeExtension resource in the following format: projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [LbEdgeExtensionArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceMaintenanceEvent {
   /// (Output)
   /// The end time of the maintenance event provided in RFC 3339 format.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// (Output)
   /// The start time of the maintenance event provided in RFC 3339 format.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// (Output)
   /// The state of the maintenance event.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [InstanceMaintenanceEvent].
   /// [endTime] (Output)

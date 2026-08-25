@@ -1,11 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_vm_accelerator_config.dart';
 import 'v2_vm_args.dart';
+import 'v2_vm_data_disk.dart';
 import 'v2_vm_network_config.dart';
+import 'v2_vm_network_endpoint.dart';
 import 'v2_vm_scheduling_config.dart';
 import 'v2_vm_service_account.dart';
 import 'v2_vm_shielded_instance_config.dart';
 import 'v2_vm_state.dart';
+import 'v2_vm_symptom.dart';
 
 /// A Cloud TPU VM instance.
 ///
@@ -873,7 +876,7 @@ class V2Vm extends pulumi.CustomResource {
   late final pulumi.Output<String> cidrBlock;
   /// The additional data disks for the Node.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+  late final pulumi.Output<List<V2VmDataDisk>?> dataDisks;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -905,11 +908,11 @@ class V2Vm extends pulumi.CustomResource {
   /// Repeated network configurations for the TPU node. This field is used to specify multiple
   /// network configs for the TPU node.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkConfigs;
+  late final pulumi.Output<List<V2VmNetworkConfig>?> networkConfigs;
   /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that
   /// runtime clients of the node reach out to the 0th entry in this map first.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkEndpoints;
+  late final pulumi.Output<List<V2VmNetworkEndpoint>> networkEndpoints;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -934,7 +937,7 @@ class V2Vm extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// The Symptoms that have occurred to the TPU Node.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> symptoms;
+  late final pulumi.Output<List<V2VmSymptom>> symptoms;
   /// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
   late final pulumi.Output<List<String>?> tags;
   /// The GCP location for the TPU. If it is not provided, the provider zone is used.
@@ -952,35 +955,36 @@ class V2Vm extends pulumi.CustomResource {
           'gcp:tpu/v2Vm:V2Vm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     acceleratorConfig = registerOutput<V2VmAcceleratorConfig>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acceleratorType = registerOutput<String>('acceleratorType');
     apiVersion = registerOutput<String>('apiVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    dataDisks = registerOutput<List<V2VmDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmDataDisk>(guardedValue, (value) => V2VmDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     health = registerOutput<String>('health');
     healthDescription = registerOutput<String>('healthDescription');
-    labels = registerOutput<Map<String, String>?>('labels');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     multisliceNode = registerOutput<bool>('multisliceNode');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<V2VmNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    networkConfigs = registerOutput<List<Map<String, dynamic>>?>('networkConfigs');
-    networkEndpoints = registerOutput<List<Map<String, dynamic>>>('networkEndpoints');
+    networkConfigs = registerOutput<List<V2VmNetworkConfig>?>('networkConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmNetworkConfig>(guardedValue, (value) => V2VmNetworkConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    networkEndpoints = registerOutput<List<V2VmNetworkEndpoint>>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmNetworkEndpoint>(guardedValue, (value) => V2VmNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     queuedResource = registerOutput<String>('queuedResource');
     runtimeVersion = registerOutput<String>('runtimeVersion');
     schedulingConfig = registerOutput<V2VmSchedulingConfig?>('schedulingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmSchedulingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<V2VmServiceAccount>('serviceAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmServiceAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shieldedInstanceConfig = registerOutput<V2VmShieldedInstanceConfig?>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');
-    tags = registerOutput<List<String>?>('tags');
+    symptoms = registerOutput<List<V2VmSymptom>>('symptoms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmSymptom>(guardedValue, (value) => V2VmSymptom.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     zone = registerOutput<String>('zone');
   }
 
@@ -989,11 +993,12 @@ class V2Vm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2VmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2Vm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1011,29 +1016,69 @@ class V2Vm extends pulumi.CustomResource {
     acceleratorType = registerOutput<String>('acceleratorType');
     apiVersion = registerOutput<String>('apiVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    dataDisks = registerOutput<List<V2VmDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmDataDisk>(guardedValue, (value) => V2VmDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     health = registerOutput<String>('health');
     healthDescription = registerOutput<String>('healthDescription');
-    labels = registerOutput<Map<String, String>?>('labels');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     multisliceNode = registerOutput<bool>('multisliceNode');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<V2VmNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    networkConfigs = registerOutput<List<Map<String, dynamic>>?>('networkConfigs');
-    networkEndpoints = registerOutput<List<Map<String, dynamic>>>('networkEndpoints');
+    networkConfigs = registerOutput<List<V2VmNetworkConfig>?>('networkConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmNetworkConfig>(guardedValue, (value) => V2VmNetworkConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    networkEndpoints = registerOutput<List<V2VmNetworkEndpoint>>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmNetworkEndpoint>(guardedValue, (value) => V2VmNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     queuedResource = registerOutput<String>('queuedResource');
     runtimeVersion = registerOutput<String>('runtimeVersion');
     schedulingConfig = registerOutput<V2VmSchedulingConfig?>('schedulingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmSchedulingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<V2VmServiceAccount>('serviceAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmServiceAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shieldedInstanceConfig = registerOutput<V2VmShieldedInstanceConfig?>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
-    symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');
-    tags = registerOutput<List<String>?>('tags');
+    symptoms = registerOutput<List<V2VmSymptom>>('symptoms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmSymptom>(guardedValue, (value) => V2VmSymptom.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [V2Vm] resource.
+  V2Vm.reference(String urn)
+    : super(
+        'gcp:tpu/v2Vm:V2Vm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    acceleratorConfig = registerOutput<V2VmAcceleratorConfig>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    acceleratorType = registerOutput<String>('acceleratorType');
+    apiVersion = registerOutput<String>('apiVersion');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    dataDisks = registerOutput<List<V2VmDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmDataDisk>(guardedValue, (value) => V2VmDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    health = registerOutput<String>('health');
+    healthDescription = registerOutput<String>('healthDescription');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    multisliceNode = registerOutput<bool>('multisliceNode');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<V2VmNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkConfigs = registerOutput<List<V2VmNetworkConfig>?>('networkConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmNetworkConfig>(guardedValue, (value) => V2VmNetworkConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    networkEndpoints = registerOutput<List<V2VmNetworkEndpoint>>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmNetworkEndpoint>(guardedValue, (value) => V2VmNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    queuedResource = registerOutput<String>('queuedResource');
+    runtimeVersion = registerOutput<String>('runtimeVersion');
+    schedulingConfig = registerOutput<V2VmSchedulingConfig?>('schedulingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmSchedulingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<V2VmServiceAccount>('serviceAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmServiceAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shieldedInstanceConfig = registerOutput<V2VmShieldedInstanceConfig?>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    symptoms = registerOutput<List<V2VmSymptom>>('symptoms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2VmSymptom>(guardedValue, (value) => V2VmSymptom.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     zone = registerOutput<String>('zone');
   }
 }

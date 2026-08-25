@@ -479,7 +479,7 @@ class Agent extends pulumi.CustomResource {
           'gcp:diagflow/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiVersion = registerOutput<String>('apiVersion');
     avatarUri = registerOutput<String?>('avatarUri');
@@ -492,7 +492,7 @@ class Agent extends pulumi.CustomResource {
     enableLogging = registerOutput<bool?>('enableLogging');
     matchMode = registerOutput<String>('matchMode');
     project = registerOutput<String>('project');
-    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes');
+    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tier = registerOutput<String?>('tier');
     timeZone = registerOutput<String>('timeZone');
   }
@@ -502,11 +502,12 @@ class Agent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Agent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -531,7 +532,32 @@ class Agent extends pulumi.CustomResource {
     enableLogging = registerOutput<bool?>('enableLogging');
     matchMode = registerOutput<String>('matchMode');
     project = registerOutput<String>('project');
-    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes');
+    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tier = registerOutput<String?>('tier');
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [Agent] resource.
+  Agent.reference(String urn)
+    : super(
+        'gcp:diagflow/agent:Agent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    avatarUri = registerOutput<String?>('avatarUri');
+    avatarUriBackend = registerOutput<String>('avatarUriBackend');
+    classificationThreshold = registerOutput<double?>('classificationThreshold');
+    defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enableLogging = registerOutput<bool?>('enableLogging');
+    matchMode = registerOutput<String>('matchMode');
+    project = registerOutput<String>('project');
+    supportedLanguageCodes = registerOutput<List<String>?>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tier = registerOutput<String?>('tier');
     timeZone = registerOutput<String>('timeZone');
   }

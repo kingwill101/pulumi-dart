@@ -11,47 +11,47 @@ import 'prevention_discovery_config_target.dart';
 class PreventionDiscoveryConfigState {
   /// Actions to execute at the completion of scanning
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDiscoveryConfigAction>>? actions;
+  final pulumi.Input<List<PreventionDiscoveryConfigAction>?>? actions;
   /// Output only. The creation timestamp of a DiscoveryConfig.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Display Name (max 1000 Chars)
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDiscoveryConfigError>>? errors;
+  final pulumi.Input<List<PreventionDiscoveryConfigError>?>? errors;
   /// Detection logic for profile generation
-  final pulumi.Input<List<String>>? inspectTemplates;
+  final pulumi.Input<List<String>?>? inspectTemplates;
   /// Output only. The timestamp of the last time this config was executed
-  final pulumi.Input<String>? lastRunTime;
+  final pulumi.Input<String?>? lastRunTime;
   /// Location to create the discovery config in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigOrgConfig>? orgConfig;
+  final pulumi.Input<PreventionDiscoveryConfigOrgConfig?>? orgConfig;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigOtherCloudStartingLocation>? otherCloudStartingLocation;
+  final pulumi.Input<PreventionDiscoveryConfigOtherCloudStartingLocation?>? otherCloudStartingLocation;
   /// The parent of the discovery config in any of the following formats:
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Required. A status for this configuration
   /// Possible values are: `RUNNING`, `PAUSED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Target to match against for determining what to scan and how frequently
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDiscoveryConfigTarget>>? targets;
+  final pulumi.Input<List<PreventionDiscoveryConfigTarget>?>? targets;
   /// Output only. The last update timestamp of a DiscoveryConfig.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PreventionDiscoveryConfigState].
   /// [actions] Actions to execute at the completion of scanning

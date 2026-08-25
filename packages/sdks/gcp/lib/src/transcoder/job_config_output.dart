@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobConfigOutput {
   /// URI for the output file(s). For example, gs://my-bucket/outputs/.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [JobConfigOutput].
   /// [uri] URI for the output file(s). For example, gs://my-bucket/outputs/.

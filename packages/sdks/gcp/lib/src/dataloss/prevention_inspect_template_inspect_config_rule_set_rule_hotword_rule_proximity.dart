@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
   /// Number of characters after the finding to consider.
-  final pulumi.Input<int>? windowAfter;
+  final pulumi.Input<int?>? windowAfter;
   /// Number of characters before the finding to consider.
-  final pulumi.Input<int>? windowBefore;
+  final pulumi.Input<int?>? windowBefore;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity].
   /// [windowAfter] Number of characters after the finding to consider.
@@ -25,8 +25,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
 
   factory PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(
-      windowAfter: (() { final guardedValue = map['windowAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      windowBefore: (() { final guardedValue = map['windowBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      windowAfter: (() { final guardedValue = map['windowAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      windowBefore: (() { final guardedValue = map['windowBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -7,13 +7,13 @@ import 'feed_details_amazon_sqs_settings_authentication_sqs_access_key_secret_au
 class FeedDetailsAmazonSqsSettingsAuthentication {
   /// Additional S3 access key secret auth.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuth>? additionalS3AccessKeySecretAuth;
+  final pulumi.Input<FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuth?>? additionalS3AccessKeySecretAuth;
   /// Amazon SQS access key and secret auth.
   /// Structure is documented below.
   ///
   ///
   /// &lt;a name="nestedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuth"&gt;&lt;/a&gt;The `additionalS3AccessKeySecretAuth` block supports:
-  final pulumi.Input<FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuth>? sqsAccessKeySecretAuth;
+  final pulumi.Input<FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuth?>? sqsAccessKeySecretAuth;
 
   /// Creates a new [FeedDetailsAmazonSqsSettingsAuthentication].
   /// [additionalS3AccessKeySecretAuth] Additional S3 access key secret auth.

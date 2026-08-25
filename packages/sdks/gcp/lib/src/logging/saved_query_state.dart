@@ -7,36 +7,36 @@ import 'saved_query_ops_analytics_query.dart';
 /// Input properties used for looking up and filtering SavedQuery resources.
 class SavedQueryState {
   /// Output only. The creation timestamp of the saved query.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the saved query.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-visible display name of the saved query.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location of the resource see
   /// [supported regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The contents of the saved query.
   /// Structure is documented below.
-  final pulumi.Input<SavedQueryLoggingQuery>? loggingQuery;
+  final pulumi.Input<SavedQueryLoggingQuery?>? loggingQuery;
   /// The name of the saved query. For example: `my-saved-query`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The contents of the saved query.
   /// Structure is documented below.
-  final pulumi.Input<SavedQueryOpsAnalyticsQuery>? opsAnalyticsQuery;
+  final pulumi.Input<SavedQueryOpsAnalyticsQuery?>? opsAnalyticsQuery;
   /// The parent of the resource.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Output only. The last update timestamp of the saved query.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The visibility of the saved query.
   /// Possible values are: `SHARED`, `PRIVATE`.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [SavedQueryState].
   /// [createTime] Output only. The creation timestamp of the saved query.

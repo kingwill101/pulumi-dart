@@ -7,27 +7,27 @@ import 'service_perimeter_dry_run_egress_policy_egress_to.dart';
 /// Input properties used for looking up and filtering ServicePerimeterDryRunEgressPolicy resources.
 class ServicePerimeterDryRunEgressPolicyState {
   /// The name of the Access Policy this resource belongs to.
-  final pulumi.Input<String>? accessPolicyId;
+  final pulumi.Input<String?>? accessPolicyId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterDryRunEgressPolicyEgressFrom>? egressFrom;
+  final pulumi.Input<ServicePerimeterDryRunEgressPolicyEgressFrom?>? egressFrom;
   /// Defines the conditions on the `ApiOperation` and destination resources that
   /// cause this `EgressPolicy` to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterDryRunEgressPolicyEgressTo>? egressTo;
+  final pulumi.Input<ServicePerimeterDryRunEgressPolicyEgressTo?>? egressTo;
   /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the Service Perimeter to add this resource to.
-  final pulumi.Input<String>? perimeter;
+  final pulumi.Input<String?>? perimeter;
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [ServicePerimeterDryRunEgressPolicyState].
   /// [accessPolicyId] The name of the Access Policy this resource belongs to.

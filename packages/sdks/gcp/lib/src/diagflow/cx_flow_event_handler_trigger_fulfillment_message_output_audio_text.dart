@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
   /// (Output)
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-  final pulumi.Input<bool>? allowPlaybackInterruption;
+  final pulumi.Input<bool?>? allowPlaybackInterruption;
   /// The SSML text to be synthesized. For more information, see SSML.
   /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-  final pulumi.Input<String>? ssml;
+  final pulumi.Input<String?>? ssml;
   /// The raw text to be synthesized.
   /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText].
   /// [allowPlaybackInterruption] (Output)

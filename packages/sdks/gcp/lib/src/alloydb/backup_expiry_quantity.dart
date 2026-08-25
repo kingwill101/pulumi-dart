@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupExpiryQuantity {
   /// (Output)
   /// Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
-  final pulumi.Input<int>? retentionCount;
+  final pulumi.Input<int?>? retentionCount;
   /// (Output)
   /// Output only. The length of the quantity-based queue, specified by the backup's retention policy.
-  final pulumi.Input<int>? totalRetentionCount;
+  final pulumi.Input<int?>? totalRetentionCount;
 
   /// Creates a new [BackupExpiryQuantity].
   /// [retentionCount] (Output)
@@ -27,8 +27,8 @@ class BackupExpiryQuantity {
 
   factory BackupExpiryQuantity.fromMap(Map<String, dynamic> map) {
     return BackupExpiryQuantity(
-      retentionCount: (() { final guardedValue = map['retentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalRetentionCount: (() { final guardedValue = map['totalRetentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionCount: (() { final guardedValue = map['retentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalRetentionCount: (() { final guardedValue = map['totalRetentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

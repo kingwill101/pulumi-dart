@@ -10,35 +10,35 @@ import 'private_connection_vpc_peering_config.dart';
 /// {@macro pulumi_databasemigrationservice_private_connection_private_connection_args_doc}
 class PrivateConnectionArgs {
   /// If set to true, will skip validations.
-  final pulumi.Input<bool>? createWithoutValidation;
+  final pulumi.Input<bool?>? createWithoutValidation;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the location this private connection is located in.
   final pulumi.Input<String> location;
   /// The private connectivity identifier.
   final pulumi.Input<String> privateConnectionId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The PSC Interface configuration is used to create PSC Interface
   /// between DMS's internal VPC and the consumer's PSC.
   /// Structure is documented below.
-  final pulumi.Input<PrivateConnectionPscInterfaceConfig>? pscInterfaceConfig;
+  final pulumi.Input<PrivateConnectionPscInterfaceConfig?>? pscInterfaceConfig;
   /// The VPC Peering configuration is used to create VPC peering
   /// between databasemigrationservice and the consumer's VPC.
   /// Structure is documented below.
-  final pulumi.Input<PrivateConnectionVpcPeeringConfig>? vpcPeeringConfig;
+  final pulumi.Input<PrivateConnectionVpcPeeringConfig?>? vpcPeeringConfig;
 
   /// Creates a new [PrivateConnectionArgs].
   /// [createWithoutValidation] If set to true, will skip validations.

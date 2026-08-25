@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceEncryptionConfig {
   /// Name of the customer managed encryption key (CMEK) in KMS.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// (Output)
   /// Full name and version of the CMEK key currently in use to encrypt Looker data.
-  final pulumi.Input<String>? kmsKeyNameVersion;
+  final pulumi.Input<String?>? kmsKeyNameVersion;
   /// (Output)
   /// Status of the customer managed encryption key (CMEK) in KMS.
-  final pulumi.Input<String>? kmsKeyState;
+  final pulumi.Input<String?>? kmsKeyState;
 
   /// Creates a new [InstanceEncryptionConfig].
   /// [kmsKeyName] Name of the customer managed encryption key (CMEK) in KMS.

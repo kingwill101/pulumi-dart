@@ -10,7 +10,7 @@ class StoragePoolParams {
   /// The field is immutable and causes resource replacement when mutated. This field is only
   /// set at create time and modifying this field after creation will trigger recreation.
   /// To apply tags to an existing resource, see the gcp.tags.TagBinding resource.
-  final pulumi.Input<Map<String, String>>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>?>? resourceManagerTags;
 
   /// Creates a new [StoragePoolParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the storage pool. Tag keys and values have the

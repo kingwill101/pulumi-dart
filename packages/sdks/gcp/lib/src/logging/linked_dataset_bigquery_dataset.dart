@@ -8,7 +8,7 @@ class LinkedDatasetBigqueryDataset {
   /// of the link, so the link must match the naming restrictions of BigQuery datasets
   /// (alphanumeric characters and underscores only). The dataset will have a resource path of
   /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
 
   /// Creates a new [LinkedDatasetBigqueryDataset].
   /// [datasetId] (Output)

@@ -6,7 +6,7 @@ import 'cx_agent_git_integration_settings_github_settings.dart';
 class CxAgentGitIntegrationSettings {
   /// Settings of integration with GitHub.
   /// Structure is documented below.
-  final pulumi.Input<CxAgentGitIntegrationSettingsGithubSettings>? githubSettings;
+  final pulumi.Input<CxAgentGitIntegrationSettingsGithubSettings?>? githubSettings;
 
   /// Creates a new [CxAgentGitIntegrationSettings].
   /// [githubSettings] Settings of integration with GitHub.

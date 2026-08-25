@@ -10,11 +10,11 @@ import 'table_column_family.dart';
 /// {@macro pulumi_bigtable_table_table_args_doc}
 class TableArgs {
   /// Defines an automated backup policy for a table, specified by `retentionPeriod` and `frequency`. To create a table with automated backup disabled, either omit the `automatedBackupPolicy` argument or set both `retentionPeriod` and `frequency` to "0". To disable automated backup on an existing table that has automated backup enabled, set both `retentionPeriod` and `frequency` to "0". When updating an existing table, change the `retentionPeriod` or `frequency` by setting the respective property to a non-zero value. The policy also accepts an optional `locations` list to specify backup storage locations; if `locations` is omitted, the policy defaults to all clusters in the instance. If the `automatedBackupPolicy` argument is not provided on update, the resource's automated backup policy will not be modified.
-  final pulumi.Input<TableAutomatedBackupPolicy>? automatedBackupPolicy;
+  final pulumi.Input<TableAutomatedBackupPolicy?>? automatedBackupPolicy;
   /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-  final pulumi.Input<String>? changeStreamRetention;
+  final pulumi.Input<String?>? changeStreamRetention;
   /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-  final pulumi.Input<List<TableColumnFamily>>? columnFamilies;
+  final pulumi.Input<List<TableColumnFamily>?>? columnFamilies;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -23,27 +23,27 @@ class TableArgs {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// -----
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-  final pulumi.Input<String>? deletionProtection;
+  final pulumi.Input<String?>? deletionProtection;
   /// The name of the Bigtable instance.
   final pulumi.Input<String> instanceName;
   /// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
   /// Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
   /// To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
   ///
   /// The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
   /// the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
-  final pulumi.Input<String>? rowKeySchema;
+  final pulumi.Input<String?>? rowKeySchema;
   /// A list of predefined keys to split the table on.
   /// &gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
   /// to delete/recreate the entire `gcp.bigtable.Table` resource.
-  final pulumi.Input<List<String>>? splitKeys;
+  final pulumi.Input<List<String>?>? splitKeys;
 
   /// Creates a new [TableArgs].
   /// [automatedBackupPolicy] Defines an automated backup policy for a table, specified by `retentionPeriod` and `frequency`. To create a table with automated backup disabled, either omit the `automatedBackupPolicy` argument or set both `retentionPeriod` and `frequency` to "0". To disable automated backup on an existing table that has automated backup enabled, set both `retentionPeriod` and `frequency` to "0". When updating an existing table, change the `retentionPeriod` or `frequency` by setting the respective property to a non-zero value. The policy also accepts an optional `locations` list to specify backup storage locations; if `locations` is omitted, the policy defaults to all clusters in the instance. If the `automatedBackupPolicy` argument is not provided on update, the resource's automated backup policy will not be modified.

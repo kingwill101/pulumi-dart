@@ -8,50 +8,50 @@ import 'external_access_rule_source_ip_range.dart';
 class ExternalAccessRuleState {
   /// The action that the external access rule performs.
   /// Possible values are: `ALLOW`, `DENY`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Creation time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for the external access rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If destination ranges are specified, the external access rule applies only to
   /// traffic that has a destination IP address in these ranges.
   /// Structure is documented below.
-  final pulumi.Input<List<ExternalAccessRuleDestinationIpRange>>? destinationIpRanges;
+  final pulumi.Input<List<ExternalAccessRuleDestinationIpRange>?>? destinationIpRanges;
   /// A list of destination ports to which the external access rule applies.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// The IP protocol to which the external access rule applies.
-  final pulumi.Input<String>? ipProtocol;
+  final pulumi.Input<String?>? ipProtocol;
   /// The ID of the external access rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource name of the network policy.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// External access rule priority, which determines the external access rule to use when multiple rules apply.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// If source ranges are specified, the external access rule applies only to
   /// traffic that has a source IP address in these ranges.
   /// Structure is documented below.
-  final pulumi.Input<List<ExternalAccessRuleSourceIpRange>>? sourceIpRanges;
+  final pulumi.Input<List<ExternalAccessRuleSourceIpRange>?>? sourceIpRanges;
   /// A list of source ports to which the external access rule applies.
-  final pulumi.Input<List<String>>? sourcePorts;
+  final pulumi.Input<List<String>?>? sourcePorts;
   /// State of the Cluster.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// System-generated unique identifier for the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ExternalAccessRuleState].
   /// [action] The action that the external access rule performs.
@@ -118,7 +118,7 @@ class ExternalAccessRuleState {
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceIpRanges: (() { final guardedValue = map['sourceIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(guardedValue, (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sourcePorts: (() { final guardedValue = map['sourcePorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

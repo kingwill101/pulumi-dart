@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QaQuestionTuningMetadata {
   /// A list of any applicable data validation warnings about the question's
   /// feedback labels.
-  final pulumi.Input<List<String>>? datasetValidationWarnings;
+  final pulumi.Input<List<String>?>? datasetValidationWarnings;
   /// Total number of valid labels provided for the question at the time of
   /// tuining.
-  final pulumi.Input<String>? totalValidLabelCount;
+  final pulumi.Input<String?>? totalValidLabelCount;
   /// Error status of the tuning operation for the question. Will only be set
   /// if the tuning operation failed.
-  final pulumi.Input<String>? tuningError;
+  final pulumi.Input<String?>? tuningError;
 
   /// Creates a new [QaQuestionTuningMetadata].
   /// [datasetValidationWarnings] A list of any applicable data validation warnings about the question's

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValue {
   /// (Optional)
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
   /// (Optional)
-  final pulumi.Input<int>? value;
+  final pulumi.Input<int?>? value;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValue].
   /// [color] (Optional)
@@ -26,7 +26,7 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValue {
   factory DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValue.fromMap(Map<String, dynamic> map) {
     return DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValue(
       color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

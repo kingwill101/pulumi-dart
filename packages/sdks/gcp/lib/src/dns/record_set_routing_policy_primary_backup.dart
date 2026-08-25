@@ -9,12 +9,12 @@ class RecordSetRoutingPolicyPrimaryBackup {
   /// Structure is document above.
   final pulumi.Input<List<RecordSetRoutingPolicyPrimaryBackupBackupGeo>> backupGeos;
   /// Specifies whether to enable fencing for backup geo queries.
-  final pulumi.Input<bool>? enableGeoFencingForBackups;
+  final pulumi.Input<bool?>? enableGeoFencingForBackups;
   /// The list of global primary targets to be health checked.
   /// Structure is documented below.
   final pulumi.Input<RecordSetRoutingPolicyPrimaryBackupPrimary> primary;
   /// Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
-  final pulumi.Input<double>? trickleRatio;
+  final pulumi.Input<double?>? trickleRatio;
 
   /// Creates a new [RecordSetRoutingPolicyPrimaryBackup].
   /// [backupGeos] The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
@@ -42,7 +42,7 @@ class RecordSetRoutingPolicyPrimaryBackup {
       backupGeos: pulumi.Input.fromValue(pulumi.Input.decodeList<RecordSetRoutingPolicyPrimaryBackupBackupGeo>(map['backupGeos']!, (value) => RecordSetRoutingPolicyPrimaryBackupBackupGeo.fromMap((value as Map).cast<String, dynamic>()))),
       enableGeoFencingForBackups: (() { final guardedValue = map['enableGeoFencingForBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       primary: pulumi.Input.fromValue(RecordSetRoutingPolicyPrimaryBackupPrimary.fromMap((map['primary']! as Map).cast<String, dynamic>())),
-      trickleRatio: (() { final guardedValue = map['trickleRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      trickleRatio: (() { final guardedValue = map['trickleRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

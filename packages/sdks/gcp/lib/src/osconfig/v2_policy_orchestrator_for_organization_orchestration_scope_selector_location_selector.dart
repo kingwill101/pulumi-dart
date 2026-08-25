@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector {
   /// Optional. Names of the locations in scope.
   /// Format: `us-central1-a`
-  final pulumi.Input<List<String>>? includedLocations;
+  final pulumi.Input<List<String>?>? includedLocations;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector].
   /// [includedLocations] Optional. Names of the locations in scope.

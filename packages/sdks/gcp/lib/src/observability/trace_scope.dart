@@ -304,7 +304,7 @@ class TraceScope extends pulumi.CustomResource {
           'gcp:observability/traceScope:TraceScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -312,7 +312,7 @@ class TraceScope extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    resourceNames = registerOutput<List<String>>('resourceNames');
+    resourceNames = registerOutput<List<String>>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     traceScopeId = registerOutput<String>('traceScopeId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -322,11 +322,12 @@ class TraceScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TraceScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TraceScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,7 +347,27 @@ class TraceScope extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    resourceNames = registerOutput<List<String>>('resourceNames');
+    resourceNames = registerOutput<List<String>>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    traceScopeId = registerOutput<String>('traceScopeId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TraceScope] resource.
+  TraceScope.reference(String urn)
+    : super(
+        'gcp:observability/traceScope:TraceScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resourceNames = registerOutput<List<String>>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     traceScopeId = registerOutput<String>('traceScopeId');
     updateTime = registerOutput<String>('updateTime');
   }

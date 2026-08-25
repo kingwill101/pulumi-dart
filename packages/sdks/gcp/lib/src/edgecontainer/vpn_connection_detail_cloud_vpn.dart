@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnConnectionDetailCloudVpn {
   /// (Output)
   /// The created Cloud VPN gateway name.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
 
   /// Creates a new [VpnConnectionDetailCloudVpn].
   /// [gateway] (Output)

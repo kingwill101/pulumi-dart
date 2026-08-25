@@ -6,7 +6,7 @@ import 'stream_backfill_all_sql_server_excluded_objects_schema_table_column.dart
 class StreamBackfillAllSqlServerExcludedObjectsSchemaTable {
   /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn>>? columns;
+  final pulumi.Input<List<StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn>?>? columns;
   /// Table name.
   final pulumi.Input<String> table;
 

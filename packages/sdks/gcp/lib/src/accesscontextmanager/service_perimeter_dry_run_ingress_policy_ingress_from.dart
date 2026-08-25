@@ -9,15 +9,15 @@ class ServicePerimeterDryRunIngressPolicyIngressFrom {
   /// are supported and other identity types are not supported.The v1 identities
   /// that have the prefix user, group and serviceAccount in
   /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
-  final pulumi.Input<List<String>>? identities;
+  final pulumi.Input<List<String>?>? identities;
   /// Specifies the type of identities that are allowed access from outside the
   /// perimeter. If left unspecified, then members of `identities` field will be
   /// allowed access.
   /// Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// Sources that this `IngressPolicy` authorizes access from.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterDryRunIngressPolicyIngressFromSource>>? sources;
+  final pulumi.Input<List<ServicePerimeterDryRunIngressPolicyIngressFromSource>?>? sources;
 
   /// Creates a new [ServicePerimeterDryRunIngressPolicyIngressFrom].
   /// [identities] Identities can be an individual user, service account, Google group,

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
-  final pulumi.Input<String>? namespaceId;
+  final pulumi.Input<String?>? namespaceId;
   /// The ID of the project to which the entities belong.
   final pulumi.Input<String> projectId;
 

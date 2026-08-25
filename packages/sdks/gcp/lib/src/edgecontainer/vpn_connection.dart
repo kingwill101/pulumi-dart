@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_connection_args.dart';
+import 'vpn_connection_detail.dart';
 import 'vpn_connection_state.dart';
 import 'vpn_connection_vpc_project.dart';
 
@@ -474,7 +475,7 @@ class VpnConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// A nested object resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> details;
+  late final pulumi.Output<List<VpnConnectionDetail>> details;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -518,20 +519,21 @@ class VpnConnection extends pulumi.CustomResource {
           'gcp:edgecontainer/vpnConnection:VpnConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cluster = registerOutput<String>('cluster');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    details = registerOutput<List<Map<String, dynamic>>>('details');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    details = registerOutput<List<VpnConnectionDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionDetail>(guardedValue, (value) => VpnConnectionDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableHighAvailability = registerOutput<bool>('enableHighAvailability');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     natGatewayIp = registerOutput<String?>('natGatewayIp');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     router = registerOutput<String?>('router');
     updateTime = registerOutput<String>('updateTime');
     vpc = registerOutput<String?>('vpc');
@@ -543,11 +545,12 @@ class VpnConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -564,15 +567,43 @@ class VpnConnection extends pulumi.CustomResource {
     cluster = registerOutput<String>('cluster');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    details = registerOutput<List<Map<String, dynamic>>>('details');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    details = registerOutput<List<VpnConnectionDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionDetail>(guardedValue, (value) => VpnConnectionDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableHighAvailability = registerOutput<bool>('enableHighAvailability');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     natGatewayIp = registerOutput<String?>('natGatewayIp');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    router = registerOutput<String?>('router');
+    updateTime = registerOutput<String>('updateTime');
+    vpc = registerOutput<String?>('vpc');
+    vpcProject = registerOutput<VpnConnectionVpcProject?>('vpcProject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnConnectionVpcProject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VpnConnection] resource.
+  VpnConnection.reference(String urn)
+    : super(
+        'gcp:edgecontainer/vpnConnection:VpnConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    cluster = registerOutput<String>('cluster');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    details = registerOutput<List<VpnConnectionDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionDetail>(guardedValue, (value) => VpnConnectionDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    enableHighAvailability = registerOutput<bool>('enableHighAvailability');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    natGatewayIp = registerOutput<String?>('natGatewayIp');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     router = registerOutput<String?>('router');
     updateTime = registerOutput<String>('updateTime');
     vpc = registerOutput<String?>('vpc');

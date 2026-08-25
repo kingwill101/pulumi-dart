@@ -8,12 +8,12 @@ class InterconnectGroupPhysicalStructureMetro {
   /// Facilities used to explain this blocker in more detail.
   /// Like physicalStructure.metros.facilities.facility, this is a numeric
   /// string like "5467".
-  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacility>>? facilities;
+  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacility>?>? facilities;
   /// (Output)
   /// The name of the metro, as a three-letter lowercase string
   /// like "iad". This is the first component of the location of
   /// Interconnects underneath this.
-  final pulumi.Input<String>? metro;
+  final pulumi.Input<String?>? metro;
 
   /// Creates a new [InterconnectGroupPhysicalStructureMetro].
   /// [facilities] (Output)

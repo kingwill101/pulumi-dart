@@ -11,11 +11,11 @@ class CloudVmClusterArgs {
   /// The name of the backup OdbSubnet associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  final pulumi.Input<String>? backupOdbSubnet;
+  final pulumi.Input<String?>? backupOdbSubnet;
   /// CIDR range of the backup subnet.
-  final pulumi.Input<String>? backupSubnetCidr;
+  final pulumi.Input<String?>? backupSubnetCidr;
   /// Network settings. CIDR to use for cluster IP allocation.
-  final pulumi.Input<String>? cidr;
+  final pulumi.Input<String?>? cidr;
   /// The ID of the VM Cluster to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
@@ -27,11 +27,11 @@ class CloudVmClusterArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// User friendly name for this resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the Exadata Infrastructure resource on which VM cluster
   /// resource is created, in the following format:
   /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
@@ -39,32 +39,32 @@ class CloudVmClusterArgs {
   /// The name of ExascaleDbStorageVault associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
-  final pulumi.Input<String>? exascaleDbStorageVault;
+  final pulumi.Input<String?>? exascaleDbStorageVault;
   /// Labels or tags associated with the VM Cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
   final pulumi.Input<String> location;
   /// The name of the VPC network.
   /// Format: projects/{project}/global/networks/{network}
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The name of the OdbNetwork associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the odbSubnet and backup_odb_subnet.
-  final pulumi.Input<String>? odbNetwork;
+  final pulumi.Input<String?>? odbNetwork;
   /// The name of the OdbSubnet associated with the VM Cluster for
   /// IP allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  final pulumi.Input<String>? odbSubnet;
+  final pulumi.Input<String?>? odbSubnet;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Various properties and settings associated with Exadata VM cluster.
   /// Structure is documented below.
-  final pulumi.Input<CloudVmClusterProperties>? properties;
+  final pulumi.Input<CloudVmClusterProperties?>? properties;
 
   /// Creates a new [CloudVmClusterArgs].
   /// [backupOdbSubnet] The name of the backup OdbSubnet associated with the VM Cluster.

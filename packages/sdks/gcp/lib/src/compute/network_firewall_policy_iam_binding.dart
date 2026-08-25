@@ -980,11 +980,11 @@ class NetworkFirewallPolicyIamBinding extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<NetworkFirewallPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkFirewallPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
@@ -995,11 +995,12 @@ class NetworkFirewallPolicyIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkFirewallPolicyIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkFirewallPolicyIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1015,7 +1016,24 @@ class NetworkFirewallPolicyIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<NetworkFirewallPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkFirewallPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [NetworkFirewallPolicyIamBinding] resource.
+  NetworkFirewallPolicyIamBinding.reference(String urn)
+    : super(
+        'gcp:compute/networkFirewallPolicyIamBinding:NetworkFirewallPolicyIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<NetworkFirewallPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkFirewallPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');

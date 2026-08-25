@@ -6,20 +6,20 @@ import 'posture_policy_set_policy_constraint_org_policy_constraint_policy_rule_v
 
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule {
   /// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
-  final pulumi.Input<bool>? allowAll;
+  final pulumi.Input<bool?>? allowAll;
   /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
   /// This page details the objects and attributes that are used to the build the CEL expressions for
   /// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition>? condition;
+  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition?>? condition;
   /// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
-  final pulumi.Input<bool>? denyAll;
+  final pulumi.Input<bool?>? denyAll;
   /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
   /// This field can be set only in policies for boolean constraints.
-  final pulumi.Input<bool>? enforce;
+  final pulumi.Input<bool?>? enforce;
   /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues>? values;
+  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues?>? values;
 
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule].
   /// [allowAll] Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regional_secret_version_args.dart';
+import 'regional_secret_version_customer_managed_encryption.dart';
 import 'regional_secret_version_state.dart';
 
 /// A regional secret version resource.
@@ -829,7 +830,7 @@ class RegionalSecretVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The customer-managed encryption configuration of the regional secret.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> customerManagedEncryptions;
+  late final pulumi.Output<List<RegionalSecretVersionCustomerManagedEncryption>> customerManagedEncryptions;
   /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
   /// disabled rather than deleted.
@@ -874,10 +875,11 @@ class RegionalSecretVersion extends pulumi.CustomResource {
           'gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['secretData'],
         ) {
     createTime = registerOutput<String>('createTime');
-    customerManagedEncryptions = registerOutput<List<Map<String, dynamic>>>('customerManagedEncryptions');
+    customerManagedEncryptions = registerOutput<List<RegionalSecretVersionCustomerManagedEncryption>>('customerManagedEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(guardedValue, (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyTime = registerOutput<String>('destroyTime');
     enabled = registerOutput<bool?>('enabled');
@@ -885,7 +887,7 @@ class RegionalSecretVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     secret = registerOutput<String>('secret');
-    secretData = registerOutput<String>('secretData');
+    secretData = registerOutput<String>('secretData', isSecret: true);
     version = registerOutput<String>('version');
   }
 
@@ -894,11 +896,12 @@ class RegionalSecretVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionalSecretVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionalSecretVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -913,7 +916,7 @@ class RegionalSecretVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
-    customerManagedEncryptions = registerOutput<List<Map<String, dynamic>>>('customerManagedEncryptions');
+    customerManagedEncryptions = registerOutput<List<RegionalSecretVersionCustomerManagedEncryption>>('customerManagedEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(guardedValue, (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyTime = registerOutput<String>('destroyTime');
     enabled = registerOutput<bool?>('enabled');
@@ -921,7 +924,30 @@ class RegionalSecretVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     secret = registerOutput<String>('secret');
-    secretData = registerOutput<String>('secretData');
+    secretData = registerOutput<String>('secretData', isSecret: true);
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [RegionalSecretVersion] resource.
+  RegionalSecretVersion.reference(String urn)
+    : super(
+        'gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretData'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    customerManagedEncryptions = registerOutput<List<RegionalSecretVersionCustomerManagedEncryption>>('customerManagedEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(guardedValue, (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destroyTime = registerOutput<String>('destroyTime');
+    enabled = registerOutput<bool?>('enabled');
+    isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    secret = registerOutput<String>('secret');
+    secretData = registerOutput<String>('secretData', isSecret: true);
     version = registerOutput<String>('version');
   }
 }

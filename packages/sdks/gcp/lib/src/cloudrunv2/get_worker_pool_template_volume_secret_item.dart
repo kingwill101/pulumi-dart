@@ -30,7 +30,7 @@ class GetWorkerPoolTemplateVolumeSecretItem {
 
   factory GetWorkerPoolTemplateVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateVolumeSecretItem(
-      mode: pulumi.Input.fromValue(map['mode'] as int),
+      mode: pulumi.Input.fromValue((map['mode'] as num).toInt()),
       path: pulumi.Input.fromValue(map['path'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );

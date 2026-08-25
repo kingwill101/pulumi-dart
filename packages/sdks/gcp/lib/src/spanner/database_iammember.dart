@@ -2043,7 +2043,7 @@ class DatabaseIAMMember extends pulumi.CustomResource {
           'gcp:spanner/databaseIAMMember:DatabaseIAMMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<DatabaseIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
@@ -2059,11 +2059,12 @@ class DatabaseIAMMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseIAMMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseIAMMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2077,6 +2078,24 @@ class DatabaseIAMMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<DatabaseIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    database = registerOutput<String>('database');
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseIAMMember] resource.
+  DatabaseIAMMember.reference(String urn)
+    : super(
+        'gcp:spanner/databaseIAMMember:DatabaseIAMMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<DatabaseIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');

@@ -87,7 +87,7 @@ class ConsumersIamMember extends pulumi.CustomResource {
           'gcp:endpoints/consumersIamMember:ConsumersIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<ConsumersIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumersIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerProject = registerOutput<String>('consumerProject');
@@ -102,11 +102,12 @@ class ConsumersIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConsumersIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConsumersIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -120,6 +121,23 @@ class ConsumersIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<ConsumersIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumersIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consumerProject = registerOutput<String>('consumerProject');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+    serviceName = registerOutput<String>('serviceName');
+  }
+
+  /// Creates a typed reference to an existing [ConsumersIamMember] resource.
+  ConsumersIamMember.reference(String urn)
+    : super(
+        'gcp:endpoints/consumersIamMember:ConsumersIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<ConsumersIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumersIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');

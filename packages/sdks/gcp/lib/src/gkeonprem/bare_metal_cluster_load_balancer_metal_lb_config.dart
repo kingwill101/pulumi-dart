@@ -12,7 +12,7 @@ class BareMetalClusterLoadBalancerMetalLbConfig {
   final pulumi.Input<List<BareMetalClusterLoadBalancerMetalLbConfigAddressPool>> addressPools;
   /// Specifies the load balancer's node pool configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig>? loadBalancerNodePoolConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig?>? loadBalancerNodePoolConfig;
 
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfig].
   /// [addressPools] AddressPools is a list of non-overlapping IP pools used by load balancer

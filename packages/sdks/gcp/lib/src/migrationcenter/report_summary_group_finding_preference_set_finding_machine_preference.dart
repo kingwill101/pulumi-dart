@@ -18,35 +18,35 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreference {
   /// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
   /// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
   /// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
-  final pulumi.Input<String>? commitmentPlan;
+  final pulumi.Input<String?>? commitmentPlan;
   /// (Output)
   /// The user preferences relating to Compute Engine target platform.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference>>? computeEnginePreferences;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference>?>? computeEnginePreferences;
   /// (Output)
   /// The user preferences relating to target regions.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference>>? regionPreferences;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceRegionPreference>?>? regionPreferences;
   /// (Output)
   /// Possible values:
   /// SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
   /// SIZING_OPTIMIZATION_STRATEGY_MODERATE
   /// SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE
-  final pulumi.Input<String>? sizingOptimizationStrategy;
+  final pulumi.Input<String?>? sizingOptimizationStrategy;
   /// (Output)
   /// Preferences concerning Sole Tenancy nodes and VMs.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference>>? soleTenancyPreferences;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference>?>? soleTenancyPreferences;
   /// (Output)
   /// Possible values:
   /// COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
   /// COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE
   /// COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY
-  final pulumi.Input<String>? targetProduct;
+  final pulumi.Input<String?>? targetProduct;
   /// (Output)
   /// The user preferences relating to Google Cloud VMware Engine target platform.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference>>? vmwareEnginePreferences;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference>?>? vmwareEnginePreferences;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingMachinePreference].
   /// [commitmentPlan] (Output)

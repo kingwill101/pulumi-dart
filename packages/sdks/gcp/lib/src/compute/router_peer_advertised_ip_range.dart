@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouterPeerAdvertisedIpRange {
   /// User-specified description for the IP range.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP range to advertise. The value must be a
   /// CIDR-formatted string.
   final pulumi.Input<String> range;

@@ -10,7 +10,7 @@ class AuthorityConfigSubjectConfig {
   final pulumi.Input<AuthorityConfigSubjectConfigSubject> subject;
   /// The subject alternative name fields.
   /// Structure is documented below.
-  final pulumi.Input<AuthorityConfigSubjectConfigSubjectAltName>? subjectAltName;
+  final pulumi.Input<AuthorityConfigSubjectConfigSubjectAltName?>? subjectAltName;
 
   /// Creates a new [AuthorityConfigSubjectConfig].
   /// [subject] Contains distinguished name fields such as the location and organization.

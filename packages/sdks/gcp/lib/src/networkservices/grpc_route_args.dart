@@ -14,26 +14,26 @@ class GrpcRouteArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-  final pulumi.Input<List<String>>? gateways;
+  final pulumi.Input<List<String>?>? gateways;
   /// Required. Service hostnames with an optional port for which this route describes traffic.
   final pulumi.Input<List<String>> hostnames;
   /// Set of label tags associated with the GrpcRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-  final pulumi.Input<List<String>>? meshes;
+  final pulumi.Input<List<String>?>? meshes;
   /// Name of the GrpcRoute resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
   final pulumi.Input<List<GrpcRouteRule>> rules;

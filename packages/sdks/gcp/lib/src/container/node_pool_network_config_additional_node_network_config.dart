@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNetworkConfigAdditionalNodeNetworkConfig {
   /// Name of the VPC where the additional interface belongs.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Name of the subnetwork where the additional interface belongs.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [NodePoolNetworkConfigAdditionalNodeNetworkConfig].
   /// [network] Name of the VPC where the additional interface belongs.

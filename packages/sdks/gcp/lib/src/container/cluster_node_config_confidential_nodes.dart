@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeConfigConfidentialNodes {
   /// Defines the type of technology used
   /// by the confidential node.
-  final pulumi.Input<String>? confidentialInstanceType;
+  final pulumi.Input<String?>? confidentialInstanceType;
   /// Enable Confidential GKE Nodes for this cluster, to
   /// enforce encryption of data in-use.
   final pulumi.Input<bool> enabled;

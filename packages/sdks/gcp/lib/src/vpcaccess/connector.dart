@@ -419,9 +419,9 @@ class Connector extends pulumi.CustomResource {
           'gcp:vpcaccess/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    connectedProjects = registerOutput<List<String>>('connectedProjects');
+    connectedProjects = registerOutput<List<String>>('connectedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     ipCidrRange = registerOutput<String?>('ipCidrRange');
     machineType = registerOutput<String?>('machineType');
@@ -443,11 +443,12 @@ class Connector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -461,7 +462,7 @@ class Connector extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connectedProjects = registerOutput<List<String>>('connectedProjects');
+    connectedProjects = registerOutput<List<String>>('connectedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     ipCidrRange = registerOutput<String?>('ipCidrRange');
     machineType = registerOutput<String?>('machineType');
@@ -475,6 +476,32 @@ class Connector extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     this.state = registerOutput<String>('state');
+    subnet = registerOutput<ConnectorSubnet?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'gcp:vpcaccess/connector:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectedProjects = registerOutput<List<String>>('connectedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    ipCidrRange = registerOutput<String?>('ipCidrRange');
+    machineType = registerOutput<String?>('machineType');
+    maxInstances = registerOutput<int>('maxInstances');
+    maxThroughput = registerOutput<int>('maxThroughput');
+    minInstances = registerOutput<int>('minInstances');
+    minThroughput = registerOutput<int>('minThroughput');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    state = registerOutput<String>('state');
     subnet = registerOutput<ConnectorSubnet?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

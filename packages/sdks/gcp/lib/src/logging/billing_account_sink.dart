@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_account_sink_args.dart';
 import 'billing_account_sink_bigquery_options.dart';
+import 'billing_account_sink_exclusion.dart';
 import 'billing_account_sink_state.dart';
 
 /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
@@ -266,7 +267,7 @@ class BillingAccountSink extends pulumi.CustomResource {
   /// If set to True, then this sink is disabled and it does not export any log entries.
   late final pulumi.Output<bool?> disabled;
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> exclusions;
+  late final pulumi.Output<List<BillingAccountSinkExclusion>?> exclusions;
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
@@ -289,7 +290,7 @@ class BillingAccountSink extends pulumi.CustomResource {
           'gcp:logging/billingAccountSink:BillingAccountSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     billingAccount = registerOutput<String>('billingAccount');
@@ -297,7 +298,7 @@ class BillingAccountSink extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
-    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    exclusions = registerOutput<List<BillingAccountSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingAccountSinkExclusion>(guardedValue, (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String?>('filter');
     this.name = registerOutput<String>('name');
     writerIdentity = registerOutput<String>('writerIdentity');
@@ -308,11 +309,12 @@ class BillingAccountSink extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BillingAccountSinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BillingAccountSink._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,7 +334,28 @@ class BillingAccountSink extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
-    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    exclusions = registerOutput<List<BillingAccountSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingAccountSinkExclusion>(guardedValue, (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
+    filter = registerOutput<String?>('filter');
+    this.name = registerOutput<String>('name');
+    writerIdentity = registerOutput<String>('writerIdentity');
+  }
+
+  /// Creates a typed reference to an existing [BillingAccountSink] resource.
+  BillingAccountSink.reference(String urn)
+    : super(
+        'gcp:logging/billingAccountSink:BillingAccountSink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billingAccount = registerOutput<String>('billingAccount');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<String>('destination');
+    disabled = registerOutput<bool?>('disabled');
+    exclusions = registerOutput<List<BillingAccountSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingAccountSinkExclusion>(guardedValue, (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String?>('filter');
     this.name = registerOutput<String>('name');
     writerIdentity = registerOutput<String>('writerIdentity');

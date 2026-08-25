@@ -8,7 +8,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   final pulumi.Input<String> agent;
   /// The Dialogflow assist configuration for human agent.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig>? humanAgentSideConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig?>? humanAgentSideConfig;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource].
   /// [agent] The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.

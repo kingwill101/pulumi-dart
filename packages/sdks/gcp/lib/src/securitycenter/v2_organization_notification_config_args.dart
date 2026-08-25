@@ -16,11 +16,11 @@ class V2OrganizationNotificationConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// location Id is provided by organization. If not provided, Use global as default.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The organization whose Cloud Security Command Center the Notification
   /// Config lives in.
   final pulumi.Input<String> organization;

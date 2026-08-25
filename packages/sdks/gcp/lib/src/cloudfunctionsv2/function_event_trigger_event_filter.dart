@@ -12,7 +12,7 @@ class FunctionEventTriggerEventFilter {
   /// pair specified in the filter are matched.
   /// The only allowed value is `match-path-pattern`.
   /// [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Required. The value for the attribute.
   /// If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
   final pulumi.Input<String> value;

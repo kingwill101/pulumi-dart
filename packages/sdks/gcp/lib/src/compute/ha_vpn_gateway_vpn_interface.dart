@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HaVpnGatewayVpnInterface {
   /// The numeric ID of this VPN gateway interface.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// URL of the interconnect attachment resource. When the value
   /// of this field is present, the VPN Gateway will be used for
   /// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
   /// traffic for this VPN Gateway interface will go through the
   /// specified interconnect attachment resource.
   /// Not currently available publicly.
-  final pulumi.Input<String>? interconnectAttachment;
+  final pulumi.Input<String?>? interconnectAttachment;
   /// (Output)
   /// The external IP address for this VPN gateway interface.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [HaVpnGatewayVpnInterface].
   /// [id] The numeric ID of this VPN gateway interface.
@@ -36,7 +36,7 @@ class HaVpnGatewayVpnInterface {
 
   factory HaVpnGatewayVpnInterface.fromMap(Map<String, dynamic> map) {
     return HaVpnGatewayVpnInterface(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       interconnectAttachment: (() { final guardedValue = map['interconnectAttachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

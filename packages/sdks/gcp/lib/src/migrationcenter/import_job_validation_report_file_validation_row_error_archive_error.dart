@@ -7,10 +7,10 @@ class ImportJobValidationReportFileValidationRowErrorArchiveError {
   /// (Output)
   /// Error details for a CSV file.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError>>? csvErrors;
+  final pulumi.Input<List<ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError>?>? csvErrors;
   /// (Output)
   /// The file path inside the archive where the error was detected.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
 
   /// Creates a new [ImportJobValidationReportFileValidationRowErrorArchiveError].
   /// [csvErrors] (Output)

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_application_aware_interconnect.dart';
 import 'interconnect_args.dart';
+import 'interconnect_circuit_info.dart';
+import 'interconnect_expected_outage.dart';
 import 'interconnect_macsec.dart';
 import 'interconnect_params.dart';
 import 'interconnect_state.dart';
@@ -216,7 +218,7 @@ class Interconnect extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> availableFeatures;
   /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> circuitInfos;
+  late final pulumi.Output<List<InterconnectCircuitInfo>> circuitInfos;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// Customer name, to put in the Letter of Authorization as the party authorized to request a
@@ -239,7 +241,7 @@ class Interconnect extends pulumi.CustomResource {
   late final pulumi.Output<String> effectiveLocation;
   /// A list of outages expected for this Interconnect.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> expectedOutages;
+  late final pulumi.Output<List<InterconnectExpectedOutage>> expectedOutages;
   /// IP address configured on the Google side of the Interconnect link.
   /// This can be used only for ping tests.
   late final pulumi.Output<String> googleIpAddress;
@@ -360,27 +362,28 @@ class Interconnect extends pulumi.CustomResource {
           'gcp:compute/interconnect:Interconnect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aaiEnabled = registerOutput<bool?>('aaiEnabled');
     adminEnabled = registerOutput<bool?>('adminEnabled');
     applicationAwareInterconnect = registerOutput<InterconnectApplicationAwareInterconnect?>('applicationAwareInterconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectApplicationAwareInterconnect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    availableFeatures = registerOutput<List<String>>('availableFeatures');
-    circuitInfos = registerOutput<List<Map<String, dynamic>>>('circuitInfos');
+    availableFeatures = registerOutput<List<String>>('availableFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    circuitInfos = registerOutput<List<InterconnectCircuitInfo>>('circuitInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectCircuitInfo>(guardedValue, (value) => InterconnectCircuitInfo.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerName = registerOutput<String?>('customerName');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveLocation = registerOutput<String>('effectiveLocation');
-    expectedOutages = registerOutput<List<Map<String, dynamic>>>('expectedOutages');
+    expectedOutages = registerOutput<List<InterconnectExpectedOutage>>('expectedOutages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectExpectedOutage>(guardedValue, (value) => InterconnectExpectedOutage.fromMap((value as Map).cast<String, dynamic>())); });
     googleIpAddress = registerOutput<String>('googleIpAddress');
     googleReferenceId = registerOutput<String>('googleReferenceId');
-    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments');
-    interconnectGroups = registerOutput<List<String>>('interconnectGroups');
+    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    interconnectGroups = registerOutput<List<String>>('interconnectGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     interconnectType = registerOutput<String>('interconnectType');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     linkType = registerOutput<String>('linkType');
     location = registerOutput<String>('location');
     macsec = registerOutput<InterconnectMacsec?>('macsec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectMacsec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -392,13 +395,13 @@ class Interconnect extends pulumi.CustomResource {
     peerIpAddress = registerOutput<String>('peerIpAddress');
     project = registerOutput<String>('project');
     provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     remoteLocation = registerOutput<String?>('remoteLocation');
-    requestedFeatures = registerOutput<List<String>?>('requestedFeatures');
+    requestedFeatures = registerOutput<List<String>?>('requestedFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestedLinkCount = registerOutput<int>('requestedLinkCount');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     state = registerOutput<String>('state');
-    wireGroups = registerOutput<List<String>>('wireGroups');
+    wireGroups = registerOutput<List<String>>('wireGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Interconnect] resource's state with the given [name] and [id].
@@ -406,11 +409,12 @@ class Interconnect extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InterconnectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Interconnect._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -427,22 +431,22 @@ class Interconnect extends pulumi.CustomResource {
     aaiEnabled = registerOutput<bool?>('aaiEnabled');
     adminEnabled = registerOutput<bool?>('adminEnabled');
     applicationAwareInterconnect = registerOutput<InterconnectApplicationAwareInterconnect?>('applicationAwareInterconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectApplicationAwareInterconnect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    availableFeatures = registerOutput<List<String>>('availableFeatures');
-    circuitInfos = registerOutput<List<Map<String, dynamic>>>('circuitInfos');
+    availableFeatures = registerOutput<List<String>>('availableFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    circuitInfos = registerOutput<List<InterconnectCircuitInfo>>('circuitInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectCircuitInfo>(guardedValue, (value) => InterconnectCircuitInfo.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerName = registerOutput<String?>('customerName');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveLocation = registerOutput<String>('effectiveLocation');
-    expectedOutages = registerOutput<List<Map<String, dynamic>>>('expectedOutages');
+    expectedOutages = registerOutput<List<InterconnectExpectedOutage>>('expectedOutages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectExpectedOutage>(guardedValue, (value) => InterconnectExpectedOutage.fromMap((value as Map).cast<String, dynamic>())); });
     googleIpAddress = registerOutput<String>('googleIpAddress');
     googleReferenceId = registerOutput<String>('googleReferenceId');
-    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments');
-    interconnectGroups = registerOutput<List<String>>('interconnectGroups');
+    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    interconnectGroups = registerOutput<List<String>>('interconnectGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     interconnectType = registerOutput<String>('interconnectType');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     linkType = registerOutput<String>('linkType');
     location = registerOutput<String>('location');
     macsec = registerOutput<InterconnectMacsec?>('macsec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectMacsec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -454,12 +458,61 @@ class Interconnect extends pulumi.CustomResource {
     peerIpAddress = registerOutput<String>('peerIpAddress');
     project = registerOutput<String>('project');
     provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     remoteLocation = registerOutput<String?>('remoteLocation');
-    requestedFeatures = registerOutput<List<String>?>('requestedFeatures');
+    requestedFeatures = registerOutput<List<String>?>('requestedFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestedLinkCount = registerOutput<int>('requestedLinkCount');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     this.state = registerOutput<String>('state');
-    wireGroups = registerOutput<List<String>>('wireGroups');
+    wireGroups = registerOutput<List<String>>('wireGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Interconnect] resource.
+  Interconnect.reference(String urn)
+    : super(
+        'gcp:compute/interconnect:Interconnect',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    aaiEnabled = registerOutput<bool?>('aaiEnabled');
+    adminEnabled = registerOutput<bool?>('adminEnabled');
+    applicationAwareInterconnect = registerOutput<InterconnectApplicationAwareInterconnect?>('applicationAwareInterconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectApplicationAwareInterconnect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availableFeatures = registerOutput<List<String>>('availableFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    circuitInfos = registerOutput<List<InterconnectCircuitInfo>>('circuitInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectCircuitInfo>(guardedValue, (value) => InterconnectCircuitInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customerName = registerOutput<String?>('customerName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveLocation = registerOutput<String>('effectiveLocation');
+    expectedOutages = registerOutput<List<InterconnectExpectedOutage>>('expectedOutages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectExpectedOutage>(guardedValue, (value) => InterconnectExpectedOutage.fromMap((value as Map).cast<String, dynamic>())); });
+    googleIpAddress = registerOutput<String>('googleIpAddress');
+    googleReferenceId = registerOutput<String>('googleReferenceId');
+    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    interconnectGroups = registerOutput<List<String>>('interconnectGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    interconnectType = registerOutput<String>('interconnectType');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    linkType = registerOutput<String>('linkType');
+    location = registerOutput<String>('location');
+    macsec = registerOutput<InterconnectMacsec?>('macsec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectMacsec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    macsecEnabled = registerOutput<bool?>('macsecEnabled');
+    this.name = registerOutput<String>('name');
+    nocContactEmail = registerOutput<String?>('nocContactEmail');
+    operationalStatus = registerOutput<String>('operationalStatus');
+    params = registerOutput<InterconnectParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peerIpAddress = registerOutput<String>('peerIpAddress');
+    project = registerOutput<String>('project');
+    provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    remoteLocation = registerOutput<String?>('remoteLocation');
+    requestedFeatures = registerOutput<List<String>?>('requestedFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requestedLinkCount = registerOutput<int>('requestedLinkCount');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    state = registerOutput<String>('state');
+    wireGroups = registerOutput<List<String>>('wireGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

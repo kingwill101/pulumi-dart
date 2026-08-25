@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_projects_get_iam_custom_role_get_iam_custom_role_args_doc}
 class GetIamCustomRoleArgs {
   /// The project were the custom role has been created in. Defaults to the provider project configuration.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role id that has been used for this role.
   final pulumi.Input<String> roleId;
 

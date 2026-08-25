@@ -381,6 +381,17 @@ Future<GetResourcesSearchAllCloudassetResult> getResourcesSearchAll(
   return GetResourcesSearchAllCloudassetResult.fromMap(result);
 }
 
+pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput(
+  GetResourcesSearchAllArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcesSearchAllCloudassetResult.fromMap);
+}
+
 /// Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. See the
 /// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources)
 /// for more details.
@@ -753,4 +764,15 @@ Future<GetSearchAllResourcesCloudassetResult> getSearchAllResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSearchAllResourcesCloudassetResult.fromMap(result);
+}
+
+pulumi.Output<GetSearchAllResourcesCloudassetResult> getSearchAllResourcesOutput(
+  GetSearchAllResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudasset/getSearchAllResources:getSearchAllResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSearchAllResourcesCloudassetResult.fromMap);
 }

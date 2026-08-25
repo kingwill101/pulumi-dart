@@ -34,7 +34,7 @@ class GetInstanceDiscoveryEndpoint {
     return GetInstanceDiscoveryEndpoint(
       address: pulumi.Input.fromValue(map['address'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

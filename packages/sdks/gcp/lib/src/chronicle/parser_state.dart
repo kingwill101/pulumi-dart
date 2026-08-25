@@ -11,43 +11,43 @@ class ParserState {
   /// if the parser is built using config
   /// documentation:
   /// https://cloud.google.com/chronicle/docs/preview/parser-extensions/parsing-overview
-  final pulumi.Input<String>? cbn;
+  final pulumi.Input<String?>? cbn;
   /// Changelogs of a parser.
   /// Structure is documented below.
-  final pulumi.Input<List<ParserChangelog>>? changelogs;
+  final pulumi.Input<List<ParserChangelog>?>? changelogs;
   /// (Output)
   /// Time at which changelog was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Information about the creator of the parser.
   /// Structure is documented below.
-  final pulumi.Input<List<ParserCreator>>? creators;
+  final pulumi.Input<List<ParserCreator>?>? creators;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Dynamic parsing config applied over the parser, if any.
-  final pulumi.Input<String>? dynamicParsingConfig;
+  final pulumi.Input<String?>? dynamicParsingConfig;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? logtype;
+  final pulumi.Input<String?>? logtype;
   /// Message to represent LowCodeParser.
   /// Structure is documented below.
-  final pulumi.Input<ParserLowCode>? lowCode;
+  final pulumi.Input<ParserLowCode?>? lowCode;
   /// name of the parser resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Output only. The server-generated ID of the parser.
-  final pulumi.Input<String>? parser;
+  final pulumi.Input<String?>? parser;
   /// Extension applied over the parser, if any.
-  final pulumi.Input<String>? parserExtension;
+  final pulumi.Input<String?>? parserExtension;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The release stage of the parser
   /// After internal validations the prebuilt parser will directly start as
   /// Release Candidate. The releaseStage of prebuilt parsers are changed
@@ -70,27 +70,27 @@ class ParserState {
   /// ARCHIVED
   /// FAULTY
   /// ARCHIVED_IN_USE
-  final pulumi.Input<String>? releaseStage;
+  final pulumi.Input<String?>? releaseStage;
   /// The state of the parser
   /// Possible values:
   /// ACTIVE
   /// INACTIVE
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The type of the parser
   /// Possible values:
   /// CUSTOM
   /// PREBUILT
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Flag to bypass parser validation when no logs are found.
   /// If enabled, the parser won't be be rejected during the validation
   /// phase when no logs are found.
-  final pulumi.Input<bool>? validatedOnEmptyLogs;
+  final pulumi.Input<bool?>? validatedOnEmptyLogs;
   /// The Validation report generated during parser validation.
-  final pulumi.Input<String>? validationReport;
+  final pulumi.Input<String?>? validationReport;
   /// If true, bypasses parser validation.
   /// If enabled, the parser won't be rejected during the validation
   /// phase and validation will be skipped.
-  final pulumi.Input<bool>? validationSkipped;
+  final pulumi.Input<bool?>? validationSkipped;
   /// The validation stage of the parser
   /// When a customer submits a new parser for validation, it starts with a
   /// new stage.
@@ -107,11 +107,11 @@ class ParserState {
   /// DELETE_CANDIDATE
   /// INTERNAL_ERROR
   /// VALIDATION_SKIPPED
-  final pulumi.Input<String>? validationStage;
+  final pulumi.Input<String?>? validationStage;
   /// ParserVersionInfo gives the version information of the parser and related
   /// properties like pinned etc.
   /// Structure is documented below.
-  final pulumi.Input<ParserVersionInfo>? versionInfo;
+  final pulumi.Input<ParserVersionInfo?>? versionInfo;
 
   /// Creates a new [ParserState].
   /// [cbn] if the parser is built using config

@@ -9,10 +9,10 @@ class InterconnectAttachmentGroupLogicalStructureRegion {
   /// These are three-letter lowercase strings like "iad". This will be set
   /// for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does
   /// not apply to others.
-  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegionMetro>>? metros;
+  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegionMetro>?>? metros;
   /// (Output)
   /// The name of a region, like "us-central1".
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegion].
   /// [metros] (Output)

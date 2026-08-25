@@ -26,8 +26,8 @@ class GetBackupPlanBackupRuleStandardScheduleBackupWindow {
 
   factory GetBackupPlanBackupRuleStandardScheduleBackupWindow.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanBackupRuleStandardScheduleBackupWindow(
-      endHourOfDay: pulumi.Input.fromValue(map['endHourOfDay'] as int),
-      startHourOfDay: pulumi.Input.fromValue(map['startHourOfDay'] as int),
+      endHourOfDay: pulumi.Input.fromValue((map['endHourOfDay'] as num).toInt()),
+      startHourOfDay: pulumi.Input.fromValue((map['startHourOfDay'] as num).toInt()),
     );
   }
 }

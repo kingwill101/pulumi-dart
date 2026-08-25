@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_test_case_args.dart';
+import 'cx_test_case_last_test_result.dart';
 import 'cx_test_case_state.dart';
+import 'cx_test_case_test_case_conversation_turn.dart';
 import 'cx_test_case_test_config.dart';
 
 /// You can use the built-in test feature to uncover bugs and prevent regressions. A test execution verifies that agent responses have not changed for end-user inputs defined in the test case.
@@ -1147,7 +1149,7 @@ class CxTestCase extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// The latest test result.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> lastTestResults;
+  late final pulumi.Output<List<CxTestCaseLastTestResult>> lastTestResults;
   /// The unique identifier of the page.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
   late final pulumi.Output<String> name;
@@ -1161,7 +1163,7 @@ class CxTestCase extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> tags;
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> testCaseConversationTurns;
+  late final pulumi.Output<List<CxTestCaseTestCaseConversationTurn>?> testCaseConversationTurns;
   /// Config for the test case.
   /// Structure is documented below.
   late final pulumi.Output<CxTestCaseTestConfig?> testConfig;
@@ -1178,17 +1180,17 @@ class CxTestCase extends pulumi.CustomResource {
           'gcp:diagflow/cxTestCase:CxTestCase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    lastTestResults = registerOutput<List<Map<String, dynamic>>>('lastTestResults');
+    lastTestResults = registerOutput<List<CxTestCaseLastTestResult>>('lastTestResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxTestCaseLastTestResult>(guardedValue, (value) => CxTestCaseLastTestResult.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
     parent = registerOutput<String?>('parent');
-    tags = registerOutput<List<String>?>('tags');
-    testCaseConversationTurns = registerOutput<List<Map<String, dynamic>>?>('testCaseConversationTurns');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    testCaseConversationTurns = registerOutput<List<CxTestCaseTestCaseConversationTurn>?>('testCaseConversationTurns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurn>(guardedValue, (value) => CxTestCaseTestCaseConversationTurn.fromMap((value as Map).cast<String, dynamic>())); });
     testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxTestCaseTestConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1197,11 +1199,12 @@ class CxTestCase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxTestCaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxTestCase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1218,12 +1221,33 @@ class CxTestCase extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    lastTestResults = registerOutput<List<Map<String, dynamic>>>('lastTestResults');
+    lastTestResults = registerOutput<List<CxTestCaseLastTestResult>>('lastTestResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxTestCaseLastTestResult>(guardedValue, (value) => CxTestCaseLastTestResult.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
     parent = registerOutput<String?>('parent');
-    tags = registerOutput<List<String>?>('tags');
-    testCaseConversationTurns = registerOutput<List<Map<String, dynamic>>?>('testCaseConversationTurns');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    testCaseConversationTurns = registerOutput<List<CxTestCaseTestCaseConversationTurn>?>('testCaseConversationTurns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurn>(guardedValue, (value) => CxTestCaseTestCaseConversationTurn.fromMap((value as Map).cast<String, dynamic>())); });
+    testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxTestCaseTestConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CxTestCase] resource.
+  CxTestCase.reference(String urn)
+    : super(
+        'gcp:diagflow/cxTestCase:CxTestCase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTime = registerOutput<String>('creationTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    lastTestResults = registerOutput<List<CxTestCaseLastTestResult>>('lastTestResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxTestCaseLastTestResult>(guardedValue, (value) => CxTestCaseLastTestResult.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    parent = registerOutput<String?>('parent');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    testCaseConversationTurns = registerOutput<List<CxTestCaseTestCaseConversationTurn>?>('testCaseConversationTurns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurn>(guardedValue, (value) => CxTestCaseTestCaseConversationTurn.fromMap((value as Map).cast<String, dynamic>())); });
     testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxTestCaseTestConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -6,7 +6,7 @@ import 'management_project_security_health_analytics_custom_module_custom_config
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final pulumi.Input<List<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>>? properties;
+  final pulumi.Input<List<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>?>? properties;
 
   /// Creates a new [ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.

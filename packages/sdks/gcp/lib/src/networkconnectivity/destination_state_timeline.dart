@@ -7,7 +7,7 @@ class DestinationStateTimeline {
   /// (Output)
   /// The state and activation time details of the resource state.
   /// Structure is documented below.
-  final pulumi.Input<List<DestinationStateTimelineState>>? states;
+  final pulumi.Input<List<DestinationStateTimelineState>?>? states;
 
   /// Creates a new [DestinationStateTimeline].
   /// [states] (Output)

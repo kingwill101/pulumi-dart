@@ -3,6 +3,7 @@ import 'region_network_policy_traffic_classification_rule_action.dart';
 import 'region_network_policy_traffic_classification_rule_args.dart';
 import 'region_network_policy_traffic_classification_rule_match.dart';
 import 'region_network_policy_traffic_classification_rule_state.dart';
+import 'region_network_policy_traffic_classification_rule_target_secure_tag.dart';
 
 /// Represents a traffic classification rule that describes one or more match conditions along with the action to be taken when traffic matches this condition.
 ///
@@ -363,7 +364,7 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
   /// If targetSecureTag are specified, then the traffic classification rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetSecureTags;
+  late final pulumi.Output<List<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>?> targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
   late final pulumi.Output<List<String>?> targetServiceAccounts;
 
@@ -379,7 +380,7 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
           'gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<RegionNetworkPolicyTrafficClassificationRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkPolicyTrafficClassificationRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -394,8 +395,8 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
     region = registerOutput<String>('region');
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetSecureTags = registerOutput<List<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [RegionNetworkPolicyTrafficClassificationRule] resource's state with the given [name] and [id].
@@ -403,11 +404,12 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
     String name,
     pulumi.Input<String> id, {
     RegionNetworkPolicyTrafficClassificationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionNetworkPolicyTrafficClassificationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,7 +436,33 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
     region = registerOutput<String>('region');
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetSecureTags = registerOutput<List<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkPolicyTrafficClassificationRule] resource.
+  RegionNetworkPolicyTrafficClassificationRule.reference(String urn)
+    : super(
+        'gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<RegionNetworkPolicyTrafficClassificationRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkPolicyTrafficClassificationRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    kind = registerOutput<String>('kind');
+    match = registerOutput<RegionNetworkPolicyTrafficClassificationRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkPolicyTrafficClassificationRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkPolicy = registerOutput<String>('networkPolicy');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    ruleName = registerOutput<String?>('ruleName');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    targetSecureTags = registerOutput<List<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

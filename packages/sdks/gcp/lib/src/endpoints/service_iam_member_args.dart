@@ -8,7 +8,7 @@ import 'service_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_endpoints_service_iam_member_service_iam_member_args_doc}
 class ServiceIamMemberArgs {
-  final pulumi.Input<ServiceIamMemberCondition>? condition;
+  final pulumi.Input<ServiceIamMemberCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

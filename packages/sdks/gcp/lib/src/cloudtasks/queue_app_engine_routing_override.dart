@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueueAppEngineRoutingOverride {
   /// (Output)
   /// The host that the task is sent to.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// App instance.
   /// By default, the task is sent to an instance which is available when the task is attempted.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// App service.
   /// By default, the task is sent to the service which is the default service when the task is attempted.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// App version.
   /// By default, the task is sent to the version which is the default version when the task is attempted.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [QueueAppEngineRoutingOverride].
   /// [host] (Output)

@@ -26,7 +26,7 @@ class GetMachineTypesMachineTypeBundledLocalSsd {
   factory GetMachineTypesMachineTypeBundledLocalSsd.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeBundledLocalSsd(
       defaultInterface: pulumi.Input.fromValue(map['defaultInterface'] as String),
-      partitionCount: pulumi.Input.fromValue(map['partitionCount'] as int),
+      partitionCount: pulumi.Input.fromValue((map['partitionCount'] as num).toInt()),
     );
   }
 }

@@ -6,44 +6,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2OrganizationMuteConfigState {
   /// The time at which the mute config was created. This field is set by
   /// the server and will be ignored if provided on config creation.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the mute config.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An expression that defines the filter to apply across create/update
   /// events of findings. While creating a filter string, be mindful of
   /// the scope in which the mute configuration is being created. E.g.,
   /// If a filter contains project = X but is created under the
   /// project = Y scope, it might not match any findings.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// location Id is provided by organization. If not provided, Use global as default.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Email address of the user who last edited the mute config. This
   /// field is set by the server and will be ignored if provided on
   /// config creation or update.
-  final pulumi.Input<String>? mostRecentEditor;
+  final pulumi.Input<String?>? mostRecentEditor;
   /// Unique identifier provided by the client within the parent scope.
-  final pulumi.Input<String>? muteConfigId;
+  final pulumi.Input<String?>? muteConfigId;
   /// Name of the mute config. Its format is
   /// organizations/{organization}/locations/global/muteConfigs/{configId},
   /// folders/{folder}/locations/global/muteConfigs/{configId},
   /// or projects/{project}/locations/global/muteConfigs/{configId}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The organization whose Cloud Security Command Center the Mute
   /// Config lives in.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// The type of the mute config.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Output only. The most recent time at which the mute config was
   /// updated. This field is set by the server and will be ignored if
   /// provided on config creation or update.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [V2OrganizationMuteConfigState].
   /// [createTime] The time at which the mute config was created. This field is set by

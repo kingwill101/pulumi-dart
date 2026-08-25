@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterLoadBalancerVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this cluster.
-  final pulumi.Input<String>? controlPlaneVip;
+  final pulumi.Input<String?>? controlPlaneVip;
   /// The VIP which you previously set aside for ingress traffic into this cluster.
   ///
   /// &lt;a name="nestedLoadBalancerF5Config"&gt;&lt;/a&gt;The `f5Config` block supports:
-  final pulumi.Input<String>? ingressVip;
+  final pulumi.Input<String?>? ingressVip;
 
   /// Creates a new [VMwareClusterLoadBalancerVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this cluster.

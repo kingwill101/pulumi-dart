@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutonomousDatabasePropertiesConnectionStringAllConnectionString {
   /// The database service provides the highest level of resources to each SQL
   /// statement.
-  final pulumi.Input<String>? high;
+  final pulumi.Input<String?>? high;
   /// The database service provides the least level of resources to each SQL
   /// statement.
-  final pulumi.Input<String>? low;
+  final pulumi.Input<String?>? low;
   /// The database service provides a lower level of resources to each SQL
   /// statement.
-  final pulumi.Input<String>? medium;
+  final pulumi.Input<String?>? medium;
 
   /// Creates a new [AutonomousDatabasePropertiesConnectionStringAllConnectionString].
   /// [high] The database service provides the highest level of resources to each SQL

@@ -330,18 +330,19 @@ class Transport extends pulumi.CustomResource {
           'gcp:networkconnectivity/transport:Transport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');
-    advertisedRoutes = registerOutput<List<String>?>('advertisedRoutes');
+    advertisedRoutes = registerOutput<List<String>?>('advertisedRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoAccept = registerOutput<bool?>('autoAccept');
     bandwidth = registerOutput<String>('bandwidth');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     generatedActivationKey = registerOutput<String>('generatedActivationKey');
     hub = registerOutput<String?>('hub');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     mtuLimit = registerOutput<int?>('mtuLimit');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
@@ -349,7 +350,7 @@ class Transport extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providedActivationKey = registerOutput<String?>('providedActivationKey');
     pscRoutingEnabled = registerOutput<bool?>('pscRoutingEnabled');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     remoteAccountId = registerOutput<String?>('remoteAccountId');
     remoteProfile = registerOutput<String>('remoteProfile');
@@ -362,11 +363,12 @@ class Transport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Transport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -381,15 +383,15 @@ class Transport extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');
-    advertisedRoutes = registerOutput<List<String>?>('advertisedRoutes');
+    advertisedRoutes = registerOutput<List<String>?>('advertisedRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoAccept = registerOutput<bool?>('autoAccept');
     bandwidth = registerOutput<String>('bandwidth');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     generatedActivationKey = registerOutput<String>('generatedActivationKey');
     hub = registerOutput<String?>('hub');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     mtuLimit = registerOutput<int?>('mtuLimit');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
@@ -397,11 +399,46 @@ class Transport extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providedActivationKey = registerOutput<String?>('providedActivationKey');
     pscRoutingEnabled = registerOutput<bool?>('pscRoutingEnabled');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     remoteAccountId = registerOutput<String?>('remoteAccountId');
     remoteProfile = registerOutput<String>('remoteProfile');
     stackType = registerOutput<String>('stackType');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Transport] resource.
+  Transport.reference(String urn)
+    : super(
+        'gcp:networkconnectivity/transport:Transport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    adminEnabled = registerOutput<bool?>('adminEnabled');
+    advertisedRoutes = registerOutput<List<String>?>('advertisedRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autoAccept = registerOutput<bool?>('autoAccept');
+    bandwidth = registerOutput<String>('bandwidth');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    generatedActivationKey = registerOutput<String>('generatedActivationKey');
+    hub = registerOutput<String?>('hub');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mtuLimit = registerOutput<int?>('mtuLimit');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    peeringNetwork = registerOutput<String>('peeringNetwork');
+    project = registerOutput<String>('project');
+    providedActivationKey = registerOutput<String?>('providedActivationKey');
+    pscRoutingEnabled = registerOutput<bool?>('pscRoutingEnabled');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    remoteAccountId = registerOutput<String?>('remoteAccountId');
+    remoteProfile = registerOutput<String>('remoteProfile');
+    stackType = registerOutput<String>('stackType');
+    state = registerOutput<String>('state');
   }
 }

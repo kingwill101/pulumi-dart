@@ -11,7 +11,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
   /// `projects/{project}/locations/{location}/caPools/{ca_pool}`
   /// * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
   /// same region. Also the CA pool region (in value) must match the workload's region (key).
-  final pulumi.Input<Map<String, String>>? caPools;
+  final pulumi.Input<Map<String, String>?>? caPools;
   /// Key algorithm to use when generating the key pair. This key pair will be used to create
   /// the certificate. If unspecified, this will default to `ECDSA_P256`.
   /// * `RSA_2048`: Specifies RSA with a 2048-bit modulus.
@@ -20,23 +20,23 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
   /// * `ECDSA_P256`: Specifies ECDSA with curve P256.
   /// * `ECDSA_P384`: Specifies ECDSA with curve P384.
   /// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
-  final pulumi.Input<String>? keyAlgorithm;
+  final pulumi.Input<String?>? keyAlgorithm;
   /// Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
   /// `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
   /// and is preceded by the number of seconds. If unspecified, this will be defaulted to
   /// `86400s` (24 hours).
-  final pulumi.Input<String>? lifetime;
+  final pulumi.Input<String?>? lifetime;
   /// Rotation window percentage indicating when certificate rotation should be initiated based
   /// on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
   /// to `50`.
-  final pulumi.Input<int>? rotationWindowPercentage;
+  final pulumi.Input<int?>? rotationWindowPercentage;
   /// If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
   /// CA in the same region as the workload will be selected to issue the certificate. Enabling
   /// this will clear any existing `caPools` configuration to provision the certificates.
   /// &gt; **Note** This field is mutually exclusive with `caPools`. If this flag is enabled,
   /// certificates will be automatically provisioned from the default shared CAs. This flag should
   /// not be set if you want to use your own CA pools to provision the certificates.
-  final pulumi.Input<bool>? useDefaultSharedCa;
+  final pulumi.Input<bool?>? useDefaultSharedCa;
 
   /// Creates a new [WorkloadIdentityPoolInlineCertificateIssuanceConfig].
   /// [caPools] A required mapping of a cloud region to the CA pool resource located in that region used
@@ -67,7 +67,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
       caPools: (() { final guardedValue = map['caPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       keyAlgorithm: (() { final guardedValue = map['keyAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lifetime: (() { final guardedValue = map['lifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rotationWindowPercentage: (() { final guardedValue = map['rotationWindowPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rotationWindowPercentage: (() { final guardedValue = map['rotationWindowPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       useDefaultSharedCa: (() { final guardedValue = map['useDefaultSharedCa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPosition {
   /// (Optional)
-  final pulumi.Input<bool>? fitData;
+  final pulumi.Input<bool?>? fitData;
   /// (Optional)
-  final pulumi.Input<double>? latitudeValue;
+  final pulumi.Input<double?>? latitudeValue;
   /// (Optional)
-  final pulumi.Input<double>? longitudeValue;
+  final pulumi.Input<double?>? longitudeValue;
   /// (Optional)
-  final pulumi.Input<double>? zoomScaleValue;
+  final pulumi.Input<double?>? zoomScaleValue;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPosition].
   /// [fitData] (Optional)
@@ -36,9 +36,9 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPosition {
   factory DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPosition.fromMap(Map<String, dynamic> map) {
     return DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPosition(
       fitData: (() { final guardedValue = map['fitData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      latitudeValue: (() { final guardedValue = map['latitudeValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      longitudeValue: (() { final guardedValue = map['longitudeValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      zoomScaleValue: (() { final guardedValue = map['zoomScaleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      latitudeValue: (() { final guardedValue = map['latitudeValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      longitudeValue: (() { final guardedValue = map['longitudeValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      zoomScaleValue: (() { final guardedValue = map['zoomScaleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

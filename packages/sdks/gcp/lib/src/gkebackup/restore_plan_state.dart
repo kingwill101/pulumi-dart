@@ -7,46 +7,46 @@ import 'restore_plan_restore_config.dart';
 class RestorePlanState {
   /// A reference to the BackupPlan from which Backups may be used
   /// as the source for Restores created via this RestorePlan.
-  final pulumi.Input<String>? backupPlan;
+  final pulumi.Input<String?>? backupPlan;
   /// The name of the target cluster to which you want to Restore via this RestorePlan.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User specified descriptive string for this RestorePlan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Description: A set of custom labels supplied by the user.
   /// A list of key-&gt;value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The region of the Restore Plan.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The full name of the BackupPlan Resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Defines the configuration of Restores created via this RestorePlan.
   /// Structure is documented below.
-  final pulumi.Input<RestorePlanRestoreConfig>? restoreConfig;
+  final pulumi.Input<RestorePlanRestoreConfig?>? restoreConfig;
   /// The State of the RestorePlan.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Detailed description of why RestorePlan is in its current state.
-  final pulumi.Input<String>? stateReason;
+  final pulumi.Input<String?>? stateReason;
   /// Server generated, unique identifier of UUID format.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [RestorePlanState].
   /// [backupPlan] A reference to the BackupPlan from which Backups may be used

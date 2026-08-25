@@ -8,7 +8,7 @@ class AppHostingBackendManagedResource {
   /// A managed Cloud Run
   /// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingBackendManagedResourceRunService>>? runServices;
+  final pulumi.Input<List<AppHostingBackendManagedResourceRunService>?>? runServices;
 
   /// Creates a new [AppHostingBackendManagedResource].
   /// [runServices] (Output)

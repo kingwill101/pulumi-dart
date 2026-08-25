@@ -7,12 +7,12 @@ class TriggerBuildArtifactsObjectsTiming {
   ///
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
   /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Start of time span.
   ///
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
   /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [TriggerBuildArtifactsObjectsTiming].
   /// [endTime] End of time span.

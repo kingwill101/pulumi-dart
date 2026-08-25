@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_commitment_args.dart';
 import 'region_commitment_license_resource.dart';
 import 'region_commitment_params.dart';
+import 'region_commitment_resource.dart';
 import 'region_commitment_state.dart';
 
 /// Represents a regional Commitment resource.
@@ -594,7 +595,7 @@ class RegionCommitment extends pulumi.CustomResource {
   /// A list of commitment amounts for particular resources.
   /// Note that VCPU and MEMORY resource commitments must occur together.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
+  late final pulumi.Output<List<RegionCommitmentResource>?> resources;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   /// Commitment start time in RFC3339 text format.
@@ -623,7 +624,7 @@ class RegionCommitment extends pulumi.CustomResource {
           'gcp:compute/regionCommitment:RegionCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoRenew = registerOutput<bool>('autoRenew');
     category = registerOutput<String>('category');
@@ -638,7 +639,7 @@ class RegionCommitment extends pulumi.CustomResource {
     plan = registerOutput<String>('plan');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
+    resources = registerOutput<List<RegionCommitmentResource>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionCommitmentResource>(guardedValue, (value) => RegionCommitmentResource.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     startTimestamp = registerOutput<String>('startTimestamp');
     status = registerOutput<String>('status');
@@ -651,11 +652,12 @@ class RegionCommitment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionCommitmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionCommitment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -682,7 +684,37 @@ class RegionCommitment extends pulumi.CustomResource {
     plan = registerOutput<String>('plan');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
+    resources = registerOutput<List<RegionCommitmentResource>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionCommitmentResource>(guardedValue, (value) => RegionCommitmentResource.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    startTimestamp = registerOutput<String>('startTimestamp');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RegionCommitment] resource.
+  RegionCommitment.reference(String urn)
+    : super(
+        'gcp:compute/regionCommitment:RegionCommitment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoRenew = registerOutput<bool>('autoRenew');
+    category = registerOutput<String>('category');
+    commitmentId = registerOutput<int>('commitmentId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    endTimestamp = registerOutput<String>('endTimestamp');
+    existingReservations = registerOutput<String?>('existingReservations');
+    licenseResource = registerOutput<RegionCommitmentLicenseResource?>('licenseResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionCommitmentLicenseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<RegionCommitmentParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionCommitmentParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    plan = registerOutput<String>('plan');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    resources = registerOutput<List<RegionCommitmentResource>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionCommitmentResource>(guardedValue, (value) => RegionCommitmentResource.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     startTimestamp = registerOutput<String>('startTimestamp');
     status = registerOutput<String>('status');

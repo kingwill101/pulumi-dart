@@ -6,7 +6,7 @@ import 'membership_endpoint_gke_cluster.dart';
 class MembershipEndpoint {
   /// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
   /// Structure is documented below.
-  final pulumi.Input<MembershipEndpointGkeCluster>? gkeCluster;
+  final pulumi.Input<MembershipEndpointGkeCluster?>? gkeCluster;
 
   /// Creates a new [MembershipEndpoint].
   /// [gkeCluster] If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.

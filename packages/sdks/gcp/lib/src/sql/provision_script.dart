@@ -441,7 +441,7 @@ class ProvisionScript extends pulumi.CustomResource {
           'gcp:sql/provisionScript:ProvisionScript',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
@@ -458,11 +458,12 @@ class ProvisionScript extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProvisionScriptState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProvisionScript._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -476,6 +477,25 @@ class ProvisionScript extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    instance = registerOutput<String>('instance');
+    passwordSecretVersion = registerOutput<String?>('passwordSecretVersion');
+    project = registerOutput<String>('project');
+    script = registerOutput<String>('script');
+    user = registerOutput<String?>('user');
+  }
+
+  /// Creates a typed reference to an existing [ProvisionScript] resource.
+  ProvisionScript.reference(String urn)
+    : super(
+        'gcp:sql/provisionScript:ProvisionScript',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     description = registerOutput<String?>('description');

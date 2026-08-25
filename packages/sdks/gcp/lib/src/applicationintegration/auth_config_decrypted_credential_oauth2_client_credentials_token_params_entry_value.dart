@@ -6,7 +6,7 @@ import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params_
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue {
   /// Passing a literal value
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue>? literalValue;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue?>? literalValue;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue].
   /// [literalValue] Passing a literal value

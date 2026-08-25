@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vertex_get_ai_reasoning_engine_query_get_ai_reasoning_engine_query_args_doc}
 class GetAiReasoningEngineQueryArgs {
   /// Class method to be used for the query. It is optional and defaults to "query" if unspecified.
-  final pulumi.Input<String>? classMethod;
+  final pulumi.Input<String?>? classMethod;
   /// Input content provided by users in JSON object format. Examples include text query, function calling parameters, media bytes, etc..
-  final pulumi.Input<String>? input;
+  final pulumi.Input<String?>? input;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider default project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the Vertex AI Reasoning Engine to query.
   ///
   /// - - -

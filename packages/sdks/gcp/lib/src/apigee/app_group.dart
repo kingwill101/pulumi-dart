@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_group_args.dart';
+import 'app_group_attribute.dart';
 import 'app_group_state.dart';
 
 /// An `AppGroup` in Apigee.
@@ -951,7 +952,7 @@ class AppGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> appGroupId;
   /// A list of attributes
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
+  late final pulumi.Output<List<AppGroupAttribute>?> attributes;
   /// Channel identifier identifies the owner maintaining this grouping.
   late final pulumi.Output<String?> channelId;
   /// A reference to the associated storefront/marketplace.
@@ -992,10 +993,10 @@ class AppGroup extends pulumi.CustomResource {
           'gcp:apigee/appGroup:AppGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appGroupId = registerOutput<String>('appGroupId');
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<AppGroupAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppGroupAttribute>(guardedValue, (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     channelId = registerOutput<String?>('channelId');
     channelUri = registerOutput<String?>('channelUri');
     createdAt = registerOutput<String>('createdAt');
@@ -1013,11 +1014,12 @@ class AppGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1032,7 +1034,30 @@ class AppGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appGroupId = registerOutput<String>('appGroupId');
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<AppGroupAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppGroupAttribute>(guardedValue, (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    channelId = registerOutput<String?>('channelId');
+    channelUri = registerOutput<String?>('channelUri');
+    createdAt = registerOutput<String>('createdAt');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    organization = registerOutput<String>('organization');
+    status = registerOutput<String?>('status');
+  }
+
+  /// Creates a typed reference to an existing [AppGroup] resource.
+  AppGroup.reference(String urn)
+    : super(
+        'gcp:apigee/appGroup:AppGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appGroupId = registerOutput<String>('appGroupId');
+    attributes = registerOutput<List<AppGroupAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppGroupAttribute>(guardedValue, (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     channelId = registerOutput<String?>('channelId');
     channelUri = registerOutput<String?>('channelUri');
     createdAt = registerOutput<String>('createdAt');

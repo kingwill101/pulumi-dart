@@ -6,7 +6,7 @@ import 'restore_workload_target_resource_gcp_resource.dart';
 class RestoreWorkloadTargetResource {
   /// Output only. Details of the native Google Cloud resource created as part of restore.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadTargetResourceGcpResource>? gcpResource;
+  final pulumi.Input<RestoreWorkloadTargetResourceGcpResource?>? gcpResource;
 
   /// Creates a new [RestoreWorkloadTargetResource].
   /// [gcpResource] Output only. Details of the native Google Cloud resource created as part of restore.

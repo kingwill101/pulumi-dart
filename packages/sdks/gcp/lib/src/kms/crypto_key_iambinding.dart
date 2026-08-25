@@ -1027,12 +1027,12 @@ class CryptoKeyIAMBinding extends pulumi.CustomResource {
           'gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<CryptoKeyIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 
@@ -1041,11 +1041,12 @@ class CryptoKeyIAMBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CryptoKeyIAMBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CryptoKeyIAMBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1062,7 +1063,23 @@ class CryptoKeyIAMBinding extends pulumi.CustomResource {
     condition = registerOutput<CryptoKeyIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [CryptoKeyIAMBinding] resource.
+  CryptoKeyIAMBinding.reference(String urn)
+    : super(
+        'gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<CryptoKeyIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 }

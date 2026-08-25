@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProductGraphqlOperationGroupOperationConfigOperation {
   /// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// Required. GraphQL operation types. Valid values include query or mutation.
   /// Note: Apigee does not currently support subscription types.
-  final pulumi.Input<List<String>>? operationTypes;
+  final pulumi.Input<List<String>?>? operationTypes;
 
   /// Creates a new [ApiProductGraphqlOperationGroupOperationConfigOperation].
   /// [operation] GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.

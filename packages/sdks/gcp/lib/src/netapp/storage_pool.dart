@@ -548,7 +548,8 @@ class StoragePool extends pulumi.CustomResource {
           'gcp:netapp/storagePool:StoragePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     activeDirectory = registerOutput<String?>('activeDirectory');
     allowAutoTiering = registerOutput<bool?>('allowAutoTiering');
@@ -558,20 +559,20 @@ class StoragePool extends pulumi.CustomResource {
     customPerformanceEnabled = registerOutput<bool>('customPerformanceEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableHotTierAutoResize = registerOutput<bool?>('enableHotTierAutoResize');
     encryptionType = registerOutput<String>('encryptionType');
     hotTierSizeGib = registerOutput<String?>('hotTierSizeGib');
     hotTierSizeUsedGib = registerOutput<String>('hotTierSizeUsedGib');
     kmsConfig = registerOutput<String?>('kmsConfig');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ldapEnabled = registerOutput<bool?>('ldapEnabled');
     location = registerOutput<String>('location');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
     scaleTier = registerOutput<String>('scaleTier');
@@ -590,11 +591,12 @@ class StoragePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StoragePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StoragePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -616,20 +618,65 @@ class StoragePool extends pulumi.CustomResource {
     customPerformanceEnabled = registerOutput<bool>('customPerformanceEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableHotTierAutoResize = registerOutput<bool?>('enableHotTierAutoResize');
     encryptionType = registerOutput<String>('encryptionType');
     hotTierSizeGib = registerOutput<String?>('hotTierSizeGib');
     hotTierSizeUsedGib = registerOutput<String>('hotTierSizeUsedGib');
     kmsConfig = registerOutput<String?>('kmsConfig');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ldapEnabled = registerOutput<bool?>('ldapEnabled');
     location = registerOutput<String>('location');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    qosType = registerOutput<String>('qosType');
+    replicaZone = registerOutput<String?>('replicaZone');
+    scaleTier = registerOutput<String>('scaleTier');
+    scaleType = registerOutput<String>('scaleType');
+    serviceLevel = registerOutput<String>('serviceLevel');
+    totalIops = registerOutput<String>('totalIops');
+    totalThroughputMibps = registerOutput<String>('totalThroughputMibps');
+    type = registerOutput<String>('type');
+    volumeCapacityGib = registerOutput<String>('volumeCapacityGib');
+    volumeCount = registerOutput<int>('volumeCount');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [StoragePool] resource.
+  StoragePool.reference(String urn)
+    : super(
+        'gcp:netapp/storagePool:StoragePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    activeDirectory = registerOutput<String?>('activeDirectory');
+    allowAutoTiering = registerOutput<bool?>('allowAutoTiering');
+    availableThroughputMibps = registerOutput<double>('availableThroughputMibps');
+    capacityGib = registerOutput<String>('capacityGib');
+    coldTierSizeUsedGib = registerOutput<String>('coldTierSizeUsedGib');
+    customPerformanceEnabled = registerOutput<bool>('customPerformanceEnabled');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    enableHotTierAutoResize = registerOutput<bool?>('enableHotTierAutoResize');
+    encryptionType = registerOutput<String>('encryptionType');
+    hotTierSizeGib = registerOutput<String?>('hotTierSizeGib');
+    hotTierSizeUsedGib = registerOutput<String>('hotTierSizeUsedGib');
+    kmsConfig = registerOutput<String?>('kmsConfig');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ldapEnabled = registerOutput<bool?>('ldapEnabled');
+    location = registerOutput<String>('location');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
     scaleTier = registerOutput<String>('scaleTier');

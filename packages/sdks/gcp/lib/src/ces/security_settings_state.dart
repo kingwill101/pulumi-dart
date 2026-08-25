@@ -6,22 +6,22 @@ import 'security_settings_endpoint_control_policy.dart';
 /// Input properties used for looking up and filtering SecuritySettings resources.
 class SecuritySettingsState {
   /// Output only. Timestamp when the security settings were created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Optional. Endpoint control related settings.
   /// Structure is documented below.
-  final pulumi.Input<SecuritySettingsEndpointControlPolicy>? endpointControlPolicy;
+  final pulumi.Input<SecuritySettingsEndpointControlPolicy?>? endpointControlPolicy;
   /// Output only. Etag of the resource.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location of the security settings.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The unique identifier of the security settings.
   /// Format: projects/{project}/locations/{location}/securitySettings
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. Timestamp when the security settings were last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [SecuritySettingsState].
   /// [createTime] Output only. Timestamp when the security settings were created.

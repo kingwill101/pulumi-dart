@@ -68,7 +68,7 @@ class EndpointAttachment extends pulumi.CustomResource {
           'gcp:apigee/endpointAttachment:EndpointAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -85,11 +85,12 @@ class EndpointAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -103,6 +104,25 @@ class EndpointAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    connectionState = registerOutput<String>('connectionState');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    endpointAttachmentId = registerOutput<String>('endpointAttachmentId');
+    host = registerOutput<String>('host');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    serviceAttachment = registerOutput<String>('serviceAttachment');
+  }
+
+  /// Creates a typed reference to an existing [EndpointAttachment] resource.
+  EndpointAttachment.reference(String urn)
+    : super(
+        'gcp:apigee/endpointAttachment:EndpointAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionState = registerOutput<String>('connectionState');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     endpointAttachmentId = registerOutput<String>('endpointAttachmentId');

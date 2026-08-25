@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConversationProfileSttConfig {
   /// Audio encoding of the audio content to process.
   /// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
-  final pulumi.Input<String>? audioEncoding;
+  final pulumi.Input<String?>? audioEncoding;
   /// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
-  final pulumi.Input<bool>? enableWordInfo;
+  final pulumi.Input<bool?>? enableWordInfo;
   /// The language of the supplied audio.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// Which Speech model to select.
   /// Leave this field unspecified to use Agent Speech settings for model selection.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Sample rate (in Hertz) of the audio content sent in the query.
-  final pulumi.Input<int>? sampleRateHertz;
+  final pulumi.Input<int?>? sampleRateHertz;
   /// The speech model used in speech to text.
   /// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
-  final pulumi.Input<String>? speechModelVariant;
+  final pulumi.Input<String?>? speechModelVariant;
   /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
-  final pulumi.Input<bool>? useTimeoutBasedEndpointing;
+  final pulumi.Input<bool?>? useTimeoutBasedEndpointing;
 
   /// Creates a new [ConversationProfileSttConfig].
   /// [audioEncoding] Audio encoding of the audio content to process.
@@ -57,7 +57,7 @@ class ConversationProfileSttConfig {
       enableWordInfo: (() { final guardedValue = map['enableWordInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sampleRateHertz: (() { final guardedValue = map['sampleRateHertz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sampleRateHertz: (() { final guardedValue = map['sampleRateHertz']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       speechModelVariant: (() { final guardedValue = map['speechModelVariant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       useTimeoutBasedEndpointing: (() { final guardedValue = map['useTimeoutBasedEndpointing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

@@ -8,62 +8,62 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_netapp_active_directory_active_directory_args_doc}
 class ActiveDirectoryArgs {
   /// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
-  final pulumi.Input<List<String>>? administrators;
+  final pulumi.Input<List<String>?>? administrators;
   /// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
-  final pulumi.Input<bool>? aesEncryption;
+  final pulumi.Input<bool?>? aesEncryption;
   /// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
-  final pulumi.Input<List<String>>? backupOperators;
+  final pulumi.Input<List<String>?>? backupOperators;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Comma separated list of DNS server IP addresses for the Active Directory domain.
   final pulumi.Input<String> dns;
   /// Fully qualified domain name for the Active Directory domain.
   final pulumi.Input<String> domain;
   /// If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
-  final pulumi.Input<bool>? encryptDcConnections;
+  final pulumi.Input<bool?>? encryptDcConnections;
   /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
-  final pulumi.Input<String>? kdcHostname;
+  final pulumi.Input<String?>? kdcHostname;
   /// IP address of the Active Directory server used as Kerberos Key Distribution Center.
-  final pulumi.Input<String>? kdcIp;
+  final pulumi.Input<String?>? kdcIp;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Specifies whether or not the LDAP traffic needs to be signed.
-  final pulumi.Input<bool>? ldapSigning;
+  final pulumi.Input<bool?>? ldapSigning;
   /// Name of the region for the policy to apply to.
   final pulumi.Input<String> location;
   /// The resource name of the Active Directory pool. Needs to be unique per location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// NetBIOS name prefix of the server to be created.
   /// A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
   /// `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
   final pulumi.Input<String> netBiosPrefix;
   /// Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
   /// This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
-  final pulumi.Input<bool>? nfsUsersWithLdap;
+  final pulumi.Input<bool?>? nfsUsersWithLdap;
   /// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
   /// Defaults to `CN=Computers` if left empty.
-  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String?>? organizationalUnit;
   /// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> password;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
-  final pulumi.Input<List<String>>? securityOperators;
+  final pulumi.Input<List<String>?>? securityOperators;
   /// Specifies an Active Directory site to manage domain controller selection.
   /// Use when Active Directory domain controllers in multiple regions are configured. Defaults to `Default-First-Site-Name` if left empty.
-  final pulumi.Input<String>? site;
+  final pulumi.Input<String?>? site;
   /// Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
   final pulumi.Input<String> username;
 

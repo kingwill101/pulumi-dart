@@ -7,16 +7,16 @@ import 'acl_config_idp_config.dart';
 class AclConfigState {
   /// Identity provider config.
   /// Structure is documented below.
-  final pulumi.Input<AclConfigIdpConfig>? idpConfig;
+  final pulumi.Input<AclConfigIdpConfig?>? idpConfig;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique full resource name of the aclConfig. Values are of the format
   /// `projects/{project}/locations/{location}/aclConfig`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [AclConfigState].
   /// [idpConfig] Identity provider config.

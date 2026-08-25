@@ -13,7 +13,7 @@ class ConnectionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE" or any other value, deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Name of VPC network connected with service producers using VPC peering.
   final pulumi.Input<String> network;
   /// Named IP address range(s) of PEERING type reserved for
@@ -25,7 +25,7 @@ class ConnectionArgs {
   /// 'servicenetworking.googleapis.com'.
   final pulumi.Input<String> service;
   /// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
-  final pulumi.Input<bool>? updateOnCreationFail;
+  final pulumi.Input<bool?>? updateOnCreationFail;
 
   /// Creates a new [ConnectionArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

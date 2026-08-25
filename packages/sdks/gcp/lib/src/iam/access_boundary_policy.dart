@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_boundary_policy_args.dart';
+import 'access_boundary_policy_rule.dart';
 import 'access_boundary_policy_state.dart';
 
 /// Represents a collection of access boundary policies to apply to a given resource.
@@ -551,7 +552,7 @@ class AccessBoundaryPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> parent;
   /// Rules to be applied.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<AccessBoundaryPolicyRule>> rules;
 
   /// Creates a new [AccessBoundaryPolicy].
   /// [name] The Pulumi resource name.
@@ -565,14 +566,14 @@ class AccessBoundaryPolicy extends pulumi.CustomResource {
           'gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<AccessBoundaryPolicyRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBoundaryPolicyRule>(guardedValue, (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AccessBoundaryPolicy] resource's state with the given [name] and [id].
@@ -580,11 +581,12 @@ class AccessBoundaryPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessBoundaryPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessBoundaryPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -603,6 +605,23 @@ class AccessBoundaryPolicy extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<AccessBoundaryPolicyRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBoundaryPolicyRule>(guardedValue, (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AccessBoundaryPolicy] resource.
+  AccessBoundaryPolicy.reference(String urn)
+    : super(
+        'gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    rules = registerOutput<List<AccessBoundaryPolicyRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBoundaryPolicyRule>(guardedValue, (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

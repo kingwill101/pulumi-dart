@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IcebergTableSchemaField {
   /// A description of the field.
-  final pulumi.Input<String>? doc;
+  final pulumi.Input<String?>? doc;
   /// The unique identifier of the field.
   final pulumi.Input<int> id;
   /// The name of the partition field.
@@ -41,7 +41,7 @@ class IcebergTableSchemaField {
   factory IcebergTableSchemaField.fromMap(Map<String, dynamic> map) {
     return IcebergTableSchemaField(
       doc: (() { final guardedValue = map['doc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
       required: pulumi.Input.fromValue(map['required'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),

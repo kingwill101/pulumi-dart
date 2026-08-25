@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering InstanceIamPolicy resources.
 class InstanceIamPolicyState {
   /// (Computed) The etag of the instances's IAM policy.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-  final pulumi.Input<String>? instance;
-  final pulumi.Input<String>? policyData;
+  final pulumi.Input<String?>? instance;
+  final pulumi.Input<String?>? policyData;
   /// The project in which the instance belongs. If it
   /// is not provided, Terraform will use the provider default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InstanceIamPolicyState].
   /// [etag] (Computed) The etag of the instances's IAM policy.

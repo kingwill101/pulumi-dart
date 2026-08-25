@@ -8,43 +8,43 @@ import 'connect_cluster_gcp_config.dart';
 class ConnectClusterState {
   /// A capacity configuration of a Kafka cluster.
   /// Structure is documented below.
-  final pulumi.Input<ConnectClusterCapacityConfig>? capacityConfig;
+  final pulumi.Input<ConnectClusterCapacityConfig?>? capacityConfig;
   /// The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
-  final pulumi.Input<String>? connectClusterId;
+  final pulumi.Input<String?>? connectClusterId;
   /// The time when the cluster was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
-  final pulumi.Input<ConnectClusterGcpConfig>? gcpConfig;
+  final pulumi.Input<ConnectClusterGcpConfig?>? gcpConfig;
   /// The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-  final pulumi.Input<String>? kafkaCluster;
+  final pulumi.Input<String?>? kafkaCluster;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The time when the cluster was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ConnectClusterState].
   /// [capacityConfig] A capacity configuration of a Kafka cluster.

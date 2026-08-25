@@ -6,7 +6,7 @@ import 'bare_metal_admin_cluster_security_config_authorization.dart';
 class BareMetalAdminClusterSecurityConfig {
   /// Configures user access to the Bare Metal User cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterSecurityConfigAuthorization>? authorization;
+  final pulumi.Input<BareMetalAdminClusterSecurityConfigAuthorization?>? authorization;
 
   /// Creates a new [BareMetalAdminClusterSecurityConfig].
   /// [authorization] Configures user access to the Bare Metal User cluster.

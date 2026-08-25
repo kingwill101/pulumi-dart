@@ -1025,12 +1025,12 @@ class RoutineIamBinding extends pulumi.CustomResource {
           'gcp:bigquery/routineIamBinding:RoutineIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<RoutineIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     routineId = registerOutput<String>('routineId');
@@ -1041,11 +1041,12 @@ class RoutineIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoutineIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoutineIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1062,7 +1063,25 @@ class RoutineIamBinding extends pulumi.CustomResource {
     condition = registerOutput<RoutineIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    routineId = registerOutput<String>('routineId');
+  }
+
+  /// Creates a typed reference to an existing [RoutineIamBinding] resource.
+  RoutineIamBinding.reference(String urn)
+    : super(
+        'gcp:bigquery/routineIamBinding:RoutineIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<RoutineIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     routineId = registerOutput<String>('routineId');

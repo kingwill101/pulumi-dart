@@ -8,10 +8,10 @@ class FeedDetailsTrellixHxBulkAcqsSettingsAuthentication {
   /// Info for MssoAuthentication using a username, password, and login api
   /// endpoint.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMsso>? msso;
+  final pulumi.Input<FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMsso?>? msso;
   /// Settings for TrellixIAMAuthentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIam>? trellixIam;
+  final pulumi.Input<FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIam?>? trellixIam;
 
   /// Creates a new [FeedDetailsTrellixHxBulkAcqsSettingsAuthentication].
   /// [msso] Info for MssoAuthentication using a username, password, and login api

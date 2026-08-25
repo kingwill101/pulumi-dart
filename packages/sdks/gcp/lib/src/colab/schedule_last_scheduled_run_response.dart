@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleLastScheduledRunResponse {
   /// (Output)
   /// The response of the scheduled run.
-  final pulumi.Input<String>? runResponse;
+  final pulumi.Input<String?>? runResponse;
   /// (Output)
   /// The scheduled run time based on the user-specified schedule.
-  final pulumi.Input<String>? scheduledRunTime;
+  final pulumi.Input<String?>? scheduledRunTime;
 
   /// Creates a new [ScheduleLastScheduledRunResponse].
   /// [runResponse] (Output)

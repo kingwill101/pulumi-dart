@@ -6,7 +6,7 @@ class AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal {
   /// The input string must match exactly the string specified here.
   /// Examples:
   /// * abc only matches the value abc.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
 
   /// Creates a new [AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal].
   /// [exact] The input string must match exactly the string specified here.

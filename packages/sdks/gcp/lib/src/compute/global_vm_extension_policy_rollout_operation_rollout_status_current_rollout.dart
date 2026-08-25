@@ -5,13 +5,13 @@ import 'global_vm_extension_policy_rollout_operation_rollout_status_current_roll
 
 class GlobalVmExtensionPolicyRolloutOperationRolloutStatusCurrentRollout {
   /// The rollout status for each location.
-  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatusCurrentRolloutLocationRolloutStatus>>? locationRolloutStatuses;
+  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatusCurrentRolloutLocationRolloutStatus>?>? locationRolloutStatuses;
   /// The name of the rollout.
-  final pulumi.Input<String>? rollout;
+  final pulumi.Input<String?>? rollout;
   /// The name of the rollout plan.
-  final pulumi.Input<String>? rolloutPlan;
+  final pulumi.Input<String?>? rolloutPlan;
   /// The overall state of the rollout.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [GlobalVmExtensionPolicyRolloutOperationRolloutStatusCurrentRollout].
   /// [locationRolloutStatuses] The rollout status for each location.

@@ -12,27 +12,27 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError>>? errors;
+  final pulumi.Input<List<V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError>?>? errors;
   /// (Output)
   /// Number of orchestration actions which failed so far. For more details,
   /// query the Cloud Logs.
-  final pulumi.Input<String>? failedActions;
+  final pulumi.Input<String?>? failedActions;
   /// (Output)
   /// Finish time of the wave iteration.
-  final pulumi.Input<String>? finishTime;
+  final pulumi.Input<String?>? finishTime;
   /// (Output)
   /// Overall number of actions done by the orchestrator so far.
-  final pulumi.Input<String>? performedActions;
+  final pulumi.Input<String?>? performedActions;
   /// (Output)
   /// An estimated percentage of the progress. Number between 0 and 100.
-  final pulumi.Input<double>? progress;
+  final pulumi.Input<double?>? progress;
   /// (Output)
   /// Handle to the Progressive Rollouts API rollout resource, which contains
   /// detailed information about a particular orchestration iteration.
-  final pulumi.Input<String>? rolloutResource;
+  final pulumi.Input<String?>? rolloutResource;
   /// (Output)
   /// Start time of the wave iteration.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -40,7 +40,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState {
   /// Note: There might be more states added in the future. We use string here
   /// instead of an enum, to avoid the need of propagating new states to all the
   /// client code.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState].
   /// [errors] (Output)
@@ -81,7 +81,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState {
       failedActions: (() { final guardedValue = map['failedActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       finishTime: (() { final guardedValue = map['finishTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performedActions: (() { final guardedValue = map['performedActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      progress: (() { final guardedValue = map['progress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      progress: (() { final guardedValue = map['progress']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       rolloutResource: (() { final guardedValue = map['rolloutResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

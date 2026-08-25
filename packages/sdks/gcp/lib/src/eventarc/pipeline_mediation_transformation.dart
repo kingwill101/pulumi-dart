@@ -79,7 +79,7 @@ class PipelineMediationTransformation {
   /// - The result is a CEL map that corresponds to the JSON
   /// representation of the CloudEvent. To convert that data to a JSON
   /// string it can be chained with the toJsonString function.
-  final pulumi.Input<String>? transformationTemplate;
+  final pulumi.Input<String?>? transformationTemplate;
 
   /// Creates a new [PipelineMediationTransformation].
   /// [transformationTemplate] The CEL expression template to apply to transform messages.

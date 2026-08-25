@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_networks_get_networks_args_doc}
 class GetNetworksArgs {
   /// The name of the project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNetworksArgs].
   /// [project] The name of the project.

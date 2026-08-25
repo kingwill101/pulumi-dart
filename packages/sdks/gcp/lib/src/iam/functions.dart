@@ -144,6 +144,17 @@ Future<GetRuleResult> getRule(
   return GetRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetRuleResult> getRuleOutput(
+  GetRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getRule:getRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuleResult.fromMap);
+}
+
 /// Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
 ///
 /// ## Example Usage
@@ -288,6 +299,17 @@ Future<GetTestablePermissionsResult> getTestablePermissions(
   return GetTestablePermissionsResult.fromMap(result);
 }
 
+pulumi.Output<GetTestablePermissionsResult> getTestablePermissionsOutput(
+  GetTestablePermissionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getTestablePermissions:getTestablePermissions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestablePermissionsResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for workforcepool
 ///
 ///
@@ -414,6 +436,17 @@ Future<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicy(
   return GetWorkforcePoolIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicyOutput(
+  GetWorkforcePoolIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getWorkforcePoolIamPolicy:getWorkforcePoolIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkforcePoolIamPolicyResult.fromMap);
+}
+
 /// Get a IAM workload identity pool from Google Cloud by its id.
 ///
 /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -535,6 +568,17 @@ Future<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadIdentityPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadIdentityPoolResult> getWorkloadIdentityPoolOutput(
+  GetWorkloadIdentityPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadIdentityPoolResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for workloadidentitypool
@@ -663,6 +707,17 @@ Future<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicy(
   return GetWorkloadIdentityPoolIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicyOutput(
+  GetWorkloadIdentityPoolIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadIdentityPoolIamPolicyResult.fromMap);
+}
+
 /// Get the OpenID provider configuration (`/.well-known/openid-configuration`) for an Agent Workload Identity Pool from Google Cloud.
 ///
 /// ## Example Usage
@@ -779,6 +834,17 @@ Future<GetWorkloadIdentityPoolOpenidConfigResult> getWorkloadIdentityPoolOpenidC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadIdentityPoolOpenidConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadIdentityPoolOpenidConfigResult> getWorkloadIdentityPoolOpenidConfigOutput(
+  GetWorkloadIdentityPoolOpenidConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getWorkloadIdentityPoolOpenidConfig:getWorkloadIdentityPoolOpenidConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadIdentityPoolOpenidConfigResult.fromMap);
 }
 
 /// Get a IAM workload identity provider from Google Cloud by its id.
@@ -907,4 +973,15 @@ Future<GetWorkloadIdentityPoolProviderResult> getWorkloadIdentityPoolProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadIdentityPoolProviderResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadIdentityPoolProviderResult> getWorkloadIdentityPoolProviderOutput(
+  GetWorkloadIdentityPoolProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadIdentityPoolProviderResult.fromMap);
 }

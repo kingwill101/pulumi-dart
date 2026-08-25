@@ -30,7 +30,7 @@ class GetDatabaseInstancesInstanceRestoreBackupContext {
 
   factory GetDatabaseInstancesInstanceRestoreBackupContext.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceRestoreBackupContext(
-      backupRunId: pulumi.Input.fromValue(map['backupRunId'] as int),
+      backupRunId: pulumi.Input.fromValue((map['backupRunId'] as num).toInt()),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
     );

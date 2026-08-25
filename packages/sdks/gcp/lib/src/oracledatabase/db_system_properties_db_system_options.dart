@@ -7,7 +7,7 @@ class DbSystemPropertiesDbSystemOptions {
   /// Possible values:
   /// ASM
   /// LVM
-  final pulumi.Input<String>? storageManagement;
+  final pulumi.Input<String?>? storageManagement;
 
   /// Creates a new [DbSystemPropertiesDbSystemOptions].
   /// [storageManagement] The storage option used in DB system.

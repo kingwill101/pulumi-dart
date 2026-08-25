@@ -10,28 +10,28 @@ import 'analyst_agent_persona_artifacts_config_slide_generation_options_slide_ex
 class AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResource {
   /// Represents a BigQuery resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceBigqueryResource>? bigqueryResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceBigqueryResource?>? bigqueryResource;
   /// A user-friendly name for this resource. This can be shown to the user
   /// and used by the model.
-  final pulumi.Input<String>? displayLabel;
+  final pulumi.Input<String?>? displayLabel;
   /// - Represents an F1 resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceF1Resource>? f1Resource;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceF1Resource?>? f1Resource;
   /// Represents a Google Cloud Storage resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleCloudStorageResource>? googleCloudStorageResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleCloudStorageResource?>? googleCloudStorageResource;
   /// Represents a Google Drive resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleDriveResource>? googleDriveResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleDriveResource?>? googleDriveResource;
   /// A description of the resource. The model may use this, it will not be
   /// shown to users.
-  final pulumi.Input<String>? modelDescription;
+  final pulumi.Input<String?>? modelDescription;
   /// Represents a raw file resource.
   /// Structure is documented below.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceRawFileResource>? rawFileResource;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceRawFileResource?>? rawFileResource;
   /// If true, use RAG to retrieve relevant information from the resources.
   /// Must only be set for file-based resources.
-  final pulumi.Input<bool>? useRag;
+  final pulumi.Input<bool?>? useRag;
 
   /// Creates a new [AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResource].
   /// [bigqueryResource] Represents a BigQuery resource.

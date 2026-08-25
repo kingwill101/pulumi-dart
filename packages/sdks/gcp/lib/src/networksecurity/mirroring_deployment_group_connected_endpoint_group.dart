@@ -7,7 +7,7 @@ class MirroringDeploymentGroupConnectedEndpointGroup {
   /// The connected endpoint group's resource name, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MirroringDeploymentGroupConnectedEndpointGroup].
   /// [name] (Output)

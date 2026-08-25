@@ -21,22 +21,22 @@ class RuleArgs {
   /// When set to "DELETE", the command will behave as if set to "DEFAULT".
   ///
   /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The etag for this rule.
   /// If this is provided on update, the request will succeed if and only if it
   /// matches the server-computed value, and will fail with an ABORTED error
   /// otherwise.
   /// Populated in BASIC view and FULL view.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Rule Id is the ID of the Rule.
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// Resource name of the DataAccessScope bound to this rule.
   /// Populated in BASIC view and FULL view.
   /// If reference lists are used in the rule, validations will be performed
@@ -44,10 +44,10 @@ class RuleArgs {
   /// both the user's and the rule's scopes.
   /// The scope should be in the format:
   /// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The YARA-L content of the rule.
   /// Populated in FULL view.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [RuleArgs].
   /// [deletionPolicy] Policy to determine if the rule should be deleted forcefully.

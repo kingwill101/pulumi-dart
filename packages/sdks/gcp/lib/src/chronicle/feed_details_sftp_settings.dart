@@ -6,19 +6,19 @@ import 'feed_details_sftp_settings_authentication.dart';
 class FeedDetailsSftpSettings {
   /// SFTP Auth.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSftpSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsSftpSettingsAuthentication?>? authentication;
   /// Possible values:
   /// SOURCE_DELETION_NEVER
   /// SOURCE_DELETION_ON_SUCCESS
   /// SOURCE_DELETION_ON_SUCCESS_FILES_ONLY
-  final pulumi.Input<String>? sourceDeletionOption;
+  final pulumi.Input<String?>? sourceDeletionOption;
   /// Possible values:
   /// FILES
   /// FOLDERS
   /// FOLDERS_RECURSIVE
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
   /// SFTP URI.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [FeedDetailsSftpSettings].
   /// [authentication] SFTP Auth.

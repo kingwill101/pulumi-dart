@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IcebergTablePartitionSpecField {
   /// (Output)
   /// The unique identifier of the partition field.
-  final pulumi.Input<int>? fieldId;
+  final pulumi.Input<int?>? fieldId;
   /// The name of the partition field.
   final pulumi.Input<String> name;
   /// The source field ID for the sort field.
@@ -36,9 +36,9 @@ class IcebergTablePartitionSpecField {
 
   factory IcebergTablePartitionSpecField.fromMap(Map<String, dynamic> map) {
     return IcebergTablePartitionSpecField(
-      fieldId: (() { final guardedValue = map['fieldId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fieldId: (() { final guardedValue = map['fieldId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      sourceId: pulumi.Input.fromValue(map['sourceId'] as int),
+      sourceId: pulumi.Input.fromValue((map['sourceId'] as num).toInt()),
       transform: pulumi.Input.fromValue(map['transform'] as String),
     );
   }

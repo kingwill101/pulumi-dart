@@ -8,10 +8,10 @@ class V2PolicyOrchestratorForOrganizationOrchestrationState {
   /// (Output)
   /// Describes the state of a single iteration of the orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState>>? currentIterationStates;
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState>?>? currentIterationStates;
   /// Describes the state of a single iteration of the orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState>? previousIterationState;
+  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState?>? previousIterationState;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationState].
   /// [currentIterationStates] (Output)

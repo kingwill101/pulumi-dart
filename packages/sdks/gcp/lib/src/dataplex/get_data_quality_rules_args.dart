@@ -10,9 +10,9 @@ class GetDataQualityRulesArgs {
   /// The ID of the data profile scan which the generation of quality rules will be basing on.
   final pulumi.Input<String> dataScanId;
   /// The location where the referenced data profile scan resides.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the datascan belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDataQualityRulesArgs].
   /// [dataScanId] The ID of the data profile scan which the generation of quality rules will be basing on.

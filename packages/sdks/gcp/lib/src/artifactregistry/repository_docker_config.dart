@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryDockerConfig {
   /// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
-  final pulumi.Input<bool>? immutableTags;
+  final pulumi.Input<bool?>? immutableTags;
 
   /// Creates a new [RepositoryDockerConfig].
   /// [immutableTags] The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.

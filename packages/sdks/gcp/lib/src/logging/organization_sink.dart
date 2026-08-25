@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_sink_args.dart';
 import 'organization_sink_bigquery_options.dart';
+import 'organization_sink_exclusion.dart';
 import 'organization_sink_state.dart';
 
 /// Manages an organization-level logging sink. For more information see:
@@ -261,7 +262,7 @@ class OrganizationSink extends pulumi.CustomResource {
   /// If set to True, then this sink is disabled and it does not export any log entries.
   late final pulumi.Output<bool?> disabled;
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> exclusions;
+  late final pulumi.Output<List<OrganizationSinkExclusion>?> exclusions;
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
@@ -292,14 +293,14 @@ class OrganizationSink extends pulumi.CustomResource {
           'gcp:logging/organizationSink:OrganizationSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bigqueryOptions = registerOutput<OrganizationSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
-    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    exclusions = registerOutput<List<OrganizationSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationSinkExclusion>(guardedValue, (value) => OrganizationSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String?>('filter');
     includeChildren = registerOutput<bool?>('includeChildren');
     interceptChildren = registerOutput<bool?>('interceptChildren');
@@ -313,11 +314,12 @@ class OrganizationSink extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationSinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationSink._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,7 +338,30 @@ class OrganizationSink extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
-    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    exclusions = registerOutput<List<OrganizationSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationSinkExclusion>(guardedValue, (value) => OrganizationSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
+    filter = registerOutput<String?>('filter');
+    includeChildren = registerOutput<bool?>('includeChildren');
+    interceptChildren = registerOutput<bool?>('interceptChildren');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    writerIdentity = registerOutput<String>('writerIdentity');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationSink] resource.
+  OrganizationSink.reference(String urn)
+    : super(
+        'gcp:logging/organizationSink:OrganizationSink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryOptions = registerOutput<OrganizationSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<String>('destination');
+    disabled = registerOutput<bool?>('disabled');
+    exclusions = registerOutput<List<OrganizationSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationSinkExclusion>(guardedValue, (value) => OrganizationSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String?>('filter');
     includeChildren = registerOutput<bool?>('includeChildren');
     interceptChildren = registerOutput<bool?>('interceptChildren');

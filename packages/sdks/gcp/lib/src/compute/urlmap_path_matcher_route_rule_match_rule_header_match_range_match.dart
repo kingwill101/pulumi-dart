@@ -25,8 +25,8 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
 
   factory URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch(
-      rangeEnd: pulumi.Input.fromValue(map['rangeEnd'] as int),
-      rangeStart: pulumi.Input.fromValue(map['rangeStart'] as int),
+      rangeEnd: pulumi.Input.fromValue((map['rangeEnd'] as num).toInt()),
+      rangeStart: pulumi.Input.fromValue((map['rangeStart'] as num).toInt()),
     );
   }
 }

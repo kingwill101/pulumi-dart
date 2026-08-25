@@ -882,7 +882,7 @@ class KeyHandle extends pulumi.CustomResource {
           'gcp:kms/keyHandle:KeyHandle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     kmsKey = registerOutput<String>('kmsKey');
     location = registerOutput<String>('location');
@@ -896,11 +896,12 @@ class KeyHandle extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyHandleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyHandle._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -914,6 +915,22 @@ class KeyHandle extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    kmsKey = registerOutput<String>('kmsKey');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resourceTypeSelector = registerOutput<String>('resourceTypeSelector');
+  }
+
+  /// Creates a typed reference to an existing [KeyHandle] resource.
+  KeyHandle.reference(String urn)
+    : super(
+        'gcp:kms/keyHandle:KeyHandle',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     kmsKey = registerOutput<String>('kmsKey');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

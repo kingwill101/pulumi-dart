@@ -8,10 +8,10 @@ class PluginInstanceActionCurationConfig {
   /// CURATION_TYPE_UNSPECIFIED
   /// DEFAULT_CURATION_FOR_API_METADATA
   /// CUSTOM_CURATION_FOR_API_METADATA
-  final pulumi.Input<String>? curationType;
+  final pulumi.Input<String?>? curationType;
   /// Custom curation information for this plugin instance.
   /// Structure is documented below.
-  final pulumi.Input<PluginInstanceActionCurationConfigCustomCuration>? customCuration;
+  final pulumi.Input<PluginInstanceActionCurationConfigCustomCuration?>? customCuration;
 
   /// Creates a new [PluginInstanceActionCurationConfig].
   /// [curationType] Possible values:

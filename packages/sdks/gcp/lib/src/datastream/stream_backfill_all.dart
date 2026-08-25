@@ -12,25 +12,25 @@ import 'stream_backfill_all_sql_server_excluded_objects.dart';
 class StreamBackfillAll {
   /// MongoDB data source objects to avoid backfilling.
   /// Structure is documented below.
-  final pulumi.Input<StreamBackfillAllMongodbExcludedObjects>? mongodbExcludedObjects;
+  final pulumi.Input<StreamBackfillAllMongodbExcludedObjects?>? mongodbExcludedObjects;
   /// MySQL data source objects to avoid backfilling.
   /// Structure is documented below.
-  final pulumi.Input<StreamBackfillAllMysqlExcludedObjects>? mysqlExcludedObjects;
+  final pulumi.Input<StreamBackfillAllMysqlExcludedObjects?>? mysqlExcludedObjects;
   /// PostgreSQL data source objects to avoid backfilling.
   /// Structure is documented below.
-  final pulumi.Input<StreamBackfillAllOracleExcludedObjects>? oracleExcludedObjects;
+  final pulumi.Input<StreamBackfillAllOracleExcludedObjects?>? oracleExcludedObjects;
   /// PostgreSQL data source objects to avoid backfilling.
   /// Structure is documented below.
-  final pulumi.Input<StreamBackfillAllPostgresqlExcludedObjects>? postgresqlExcludedObjects;
+  final pulumi.Input<StreamBackfillAllPostgresqlExcludedObjects?>? postgresqlExcludedObjects;
   /// Salesforce objects to avoid backfilling.
   /// Structure is documented below.
-  final pulumi.Input<StreamBackfillAllSalesforceExcludedObjects>? salesforceExcludedObjects;
+  final pulumi.Input<StreamBackfillAllSalesforceExcludedObjects?>? salesforceExcludedObjects;
   /// Spanner objects to avoid backfilling.
   /// Structure is documented below.
-  final pulumi.Input<StreamBackfillAllSpannerExcludedObjects>? spannerExcludedObjects;
+  final pulumi.Input<StreamBackfillAllSpannerExcludedObjects?>? spannerExcludedObjects;
   /// SQL Server data source objects to avoid backfilling.
   /// Structure is documented below.
-  final pulumi.Input<StreamBackfillAllSqlServerExcludedObjects>? sqlServerExcludedObjects;
+  final pulumi.Input<StreamBackfillAllSqlServerExcludedObjects?>? sqlServerExcludedObjects;
 
   /// Creates a new [StreamBackfillAll].
   /// [mongodbExcludedObjects] MongoDB data source objects to avoid backfilling.

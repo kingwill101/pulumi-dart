@@ -6,7 +6,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions {
   /// List of possible enum values.
   final pulumi.Input<List<String>> possibleValues;
   /// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-  final pulumi.Input<bool>? validationCheckDisabled;
+  final pulumi.Input<bool?>? validationCheckDisabled;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions].
   /// [possibleValues] List of possible enum values.

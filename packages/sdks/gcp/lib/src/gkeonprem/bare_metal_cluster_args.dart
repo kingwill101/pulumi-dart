@@ -34,15 +34,15 @@ class BareMetalClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// A human readable description of this Bare Metal User Cluster.
   final pulumi.Input<String> bareMetalVersion;
   /// Binary Authorization related configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterBinaryAuthorization>? binaryAuthorization;
+  final pulumi.Input<BareMetalClusterBinaryAuthorization?>? binaryAuthorization;
   /// Specifies the User Cluster's observability infrastructure.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterClusterOperations>? clusterOperations;
+  final pulumi.Input<BareMetalClusterClusterOperations?>? clusterOperations;
   /// Specifies the control plane configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterControlPlane> controlPlane;
@@ -52,9 +52,9 @@ class BareMetalClusterArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human readable description of this Bare Metal User Cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the load balancer configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterLoadBalancer> loadBalancer;
@@ -62,36 +62,36 @@ class BareMetalClusterArgs {
   final pulumi.Input<String> location;
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterMaintenanceConfig>? maintenanceConfig;
+  final pulumi.Input<BareMetalClusterMaintenanceConfig?>? maintenanceConfig;
   /// The bare metal cluster name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterNetworkConfig> networkConfig;
   /// Specifies the node access related settings for the bare metal user cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterNodeAccessConfig>? nodeAccessConfig;
+  final pulumi.Input<BareMetalClusterNodeAccessConfig?>? nodeAccessConfig;
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterNodeConfig>? nodeConfig;
+  final pulumi.Input<BareMetalClusterNodeConfig?>? nodeConfig;
   /// OS environment related configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterOsEnvironmentConfig>? osEnvironmentConfig;
+  final pulumi.Input<BareMetalClusterOsEnvironmentConfig?>? osEnvironmentConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Specifies the cluster proxy configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterProxy>? proxy;
+  final pulumi.Input<BareMetalClusterProxy?>? proxy;
   /// Specifies the security related settings for the Bare Metal User Cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterSecurityConfig>? securityConfig;
+  final pulumi.Input<BareMetalClusterSecurityConfig?>? securityConfig;
   /// Specifies the cluster storage configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterStorage> storage;
   /// The cluster upgrade policy.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterUpgradePolicy>? upgradePolicy;
+  final pulumi.Input<BareMetalClusterUpgradePolicy?>? upgradePolicy;
 
   /// Creates a new [BareMetalClusterArgs].
   /// [adminClusterMembership] The Admin Cluster this Bare Metal User Cluster belongs to.

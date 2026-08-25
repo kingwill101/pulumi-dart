@@ -18,14 +18,14 @@ class ConnectionBitbucketDataCenterConfig {
   final pulumi.Input<ConnectionBitbucketDataCenterConfigReadAuthorizerCredential> readAuthorizerCredential;
   /// (Output)
   /// Output only. Version of the Bitbucket Data Center server running on the `hostUri`.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionBitbucketDataCenterConfigServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ConnectionBitbucketDataCenterConfigServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// Optional. SSL certificate authority to trust when making requests to Bitbucket Data
   /// Center.
-  final pulumi.Input<String>? sslCaCertificate;
+  final pulumi.Input<String?>? sslCaCertificate;
   /// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
   /// events, formatted as `projects/*/secrets/*/versions/*`. This is used to
   /// validate webhooks.

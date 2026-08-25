@@ -7,10 +7,10 @@ import 'registration_dns_settings_glue_record.dart';
 class RegistrationDnsSettings {
   /// Configuration for an arbitrary DNS provider.
   /// Structure is documented below.
-  final pulumi.Input<RegistrationDnsSettingsCustomDns>? customDns;
+  final pulumi.Input<RegistrationDnsSettingsCustomDns?>? customDns;
   /// The list of glue records for this Registration. Commonly empty.
   /// Structure is documented below.
-  final pulumi.Input<List<RegistrationDnsSettingsGlueRecord>>? glueRecords;
+  final pulumi.Input<List<RegistrationDnsSettingsGlueRecord>?>? glueRecords;
 
   /// Creates a new [RegistrationDnsSettings].
   /// [customDns] Configuration for an arbitrary DNS provider.

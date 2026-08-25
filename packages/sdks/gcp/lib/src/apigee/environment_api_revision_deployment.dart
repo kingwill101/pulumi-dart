@@ -210,10 +210,10 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
           'gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     api = registerOutput<String>('api');
-    basepaths = registerOutput<List<String>>('basepaths');
+    basepaths = registerOutput<List<String>>('basepaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployStartTime = registerOutput<String>('deployStartTime');
     environment = registerOutput<String>('environment');
@@ -230,11 +230,12 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentApiRevisionDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentApiRevisionDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,7 +250,7 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     api = registerOutput<String>('api');
-    basepaths = registerOutput<List<String>>('basepaths');
+    basepaths = registerOutput<List<String>>('basepaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployStartTime = registerOutput<String>('deployStartTime');
     environment = registerOutput<String>('environment');
@@ -259,5 +260,27 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
     sequencedRollout = registerOutput<bool?>('sequencedRollout');
     serviceAccount = registerOutput<String?>('serviceAccount');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentApiRevisionDeployment] resource.
+  EnvironmentApiRevisionDeployment.reference(String urn)
+    : super(
+        'gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    api = registerOutput<String>('api');
+    basepaths = registerOutput<List<String>>('basepaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deployStartTime = registerOutput<String>('deployStartTime');
+    environment = registerOutput<String>('environment');
+    orgId = registerOutput<String>('orgId');
+    override = registerOutput<bool?>('override');
+    revision = registerOutput<int>('revision');
+    sequencedRollout = registerOutput<bool?>('sequencedRollout');
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    state = registerOutput<String>('state');
   }
 }

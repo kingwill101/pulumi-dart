@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'multicloud_data_transfer_config_args.dart';
+import 'multicloud_data_transfer_config_service.dart';
 import 'multicloud_data_transfer_config_state.dart';
 
 /// 'Manage Multicloud Data Transfer Configs'
@@ -260,7 +261,7 @@ class MulticloudDataTransferConfig extends pulumi.CustomResource {
   /// Maps services to their current or planned states. Service names are keys,
   /// and the associated values describe the state of the service.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> services;
+  late final pulumi.Output<List<MulticloudDataTransferConfigService>?> services;
   /// The Google-generated unique ID for the MulticloudDataTransferConfig
   /// resource. This value is unique across all MulticloudDataTransferConfig
   /// resources. If a resource is deleted and another with the same name is
@@ -281,21 +282,22 @@ class MulticloudDataTransferConfig extends pulumi.CustomResource {
           'gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationsActiveCount = registerOutput<int>('destinationsActiveCount');
     destinationsCount = registerOutput<int>('destinationsCount');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    services = registerOutput<List<Map<String, dynamic>>?>('services');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    services = registerOutput<List<MulticloudDataTransferConfigService>?>('services', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticloudDataTransferConfigService>(guardedValue, (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -305,11 +307,12 @@ class MulticloudDataTransferConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticloudDataTransferConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticloudDataTransferConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -328,14 +331,41 @@ class MulticloudDataTransferConfig extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destinationsActiveCount = registerOutput<int>('destinationsActiveCount');
     destinationsCount = registerOutput<int>('destinationsCount');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    services = registerOutput<List<Map<String, dynamic>>?>('services');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    services = registerOutput<List<MulticloudDataTransferConfigService>?>('services', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticloudDataTransferConfigService>(guardedValue, (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MulticloudDataTransferConfig] resource.
+  MulticloudDataTransferConfig.reference(String urn)
+    : super(
+        'gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    destinationsActiveCount = registerOutput<int>('destinationsActiveCount');
+    destinationsCount = registerOutput<int>('destinationsCount');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    services = registerOutput<List<MulticloudDataTransferConfigService>?>('services', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticloudDataTransferConfigService>(guardedValue, (value) => MulticloudDataTransferConfigService.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

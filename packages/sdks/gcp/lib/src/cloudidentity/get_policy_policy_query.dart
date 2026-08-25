@@ -38,7 +38,7 @@ class GetPolicyPolicyQuery {
       group: pulumi.Input.fromValue(map['group'] as String),
       orgUnit: pulumi.Input.fromValue(map['orgUnit'] as String),
       query: pulumi.Input.fromValue(map['query'] as String),
-      sortOrder: pulumi.Input.fromValue(map['sortOrder'] as double),
+      sortOrder: pulumi.Input.fromValue((map['sortOrder'] as num).toDouble()),
     );
   }
 }

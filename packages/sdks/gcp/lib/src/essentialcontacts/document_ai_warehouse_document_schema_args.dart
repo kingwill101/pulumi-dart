@@ -14,11 +14,11 @@ class DocumentAiWarehouseDocumentSchemaArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Name of the schema given by the user.
   final pulumi.Input<String> displayName;
   /// Tells whether the document is a folder or a typical document.
-  final pulumi.Input<bool>? documentIsFolder;
+  final pulumi.Input<bool?>? documentIsFolder;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// The unique identifier of the project.

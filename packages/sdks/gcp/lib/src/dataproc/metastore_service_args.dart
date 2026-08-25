@@ -18,73 +18,73 @@ class MetastoreServiceArgs {
   /// The database type that the Metastore service stores its data.
   /// Default value is `MYSQL`.
   /// Possible values are: `MYSQL`, `SPANNER`.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<String?>? databaseType;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Indicates if the dataproc metastore should be protected against accidental deletions.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// Information used to configure the Dataproc Metastore service to encrypt
   /// customer data at rest.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<MetastoreServiceEncryptionConfig?>? encryptionConfig;
   /// Configuration information specific to running Hive metastore software as the metastore service.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceHiveMetastoreConfig>? hiveMetastoreConfig;
+  final pulumi.Input<MetastoreServiceHiveMetastoreConfig?>? hiveMetastoreConfig;
   /// User-defined labels for the metastore service.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the metastore service should reside.
   /// The default value is `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The one hour maintenance window of the metastore service.
   /// This specifies when the service can be restarted for maintenance purposes in UTC time.
   /// Maintenance window is not needed for services with the `SPANNER` database type.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<MetastoreServiceMaintenanceWindow?>? maintenanceWindow;
   /// The setting that defines how metastore metadata should be integrated with external services and systems.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceMetadataIntegration>? metadataIntegration;
+  final pulumi.Input<MetastoreServiceMetadataIntegration?>? metadataIntegration;
   /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
   /// "projects/{projectNumber}/global/networks/{network_id}".
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The configuration specifying the network settings for the Dataproc Metastore service.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceNetworkConfig>? networkConfig;
+  final pulumi.Input<MetastoreServiceNetworkConfig?>? networkConfig;
   /// The TCP port at which the metastore service is reached. Default: 9083.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The release channel of the service. If unspecified, defaults to `STABLE`.
   /// Default value is `STABLE`.
   /// Possible values are: `CANARY`, `STABLE`.
-  final pulumi.Input<String>? releaseChannel;
+  final pulumi.Input<String?>? releaseChannel;
   /// Represents the scaling configuration of a metastore service.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceScalingConfig>? scalingConfig;
+  final pulumi.Input<MetastoreServiceScalingConfig?>? scalingConfig;
   /// The configuration of scheduled backup for the metastore service.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceScheduledBackup>? scheduledBackup;
+  final pulumi.Input<MetastoreServiceScheduledBackup?>? scheduledBackup;
   /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
   /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
   /// 3 and 63 characters.
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceTelemetryConfig>? telemetryConfig;
+  final pulumi.Input<MetastoreServiceTelemetryConfig?>? telemetryConfig;
   /// The tier of the service.
   /// Possible values are: `DEVELOPER`, `ENTERPRISE`.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [MetastoreServiceArgs].
   /// [databaseType] The database type that the Metastore service stores its data.
@@ -168,7 +168,7 @@ class MetastoreServiceArgs {
       metadataIntegration: (() { final guardedValue = map['metadataIntegration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceMetadataIntegration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseChannel: (() { final guardedValue = map['releaseChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scalingConfig: (() { final guardedValue = map['scalingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

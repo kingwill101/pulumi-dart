@@ -8,11 +8,11 @@ class NodePoolNodeConfigGuestAccelerator {
   /// The number of the accelerator cards exposed to an instance.
   final pulumi.Input<int> count;
   /// Configuration for auto installation of GPU driver.
-  final pulumi.Input<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>? gpuDriverInstallationConfig;
+  final pulumi.Input<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig?>? gpuDriverInstallationConfig;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
-  final pulumi.Input<String>? gpuPartitionSize;
+  final pulumi.Input<String?>? gpuPartitionSize;
   /// Configuration for GPU sharing.
-  final pulumi.Input<NodePoolNodeConfigGuestAcceleratorGpuSharingConfig>? gpuSharingConfig;
+  final pulumi.Input<NodePoolNodeConfigGuestAcceleratorGpuSharingConfig?>? gpuSharingConfig;
   /// The accelerator type resource name.
   final pulumi.Input<String> type;
 
@@ -42,7 +42,7 @@ class NodePoolNodeConfigGuestAccelerator {
 
   factory NodePoolNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGuestAccelerator(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       gpuDriverInstallationConfig: (() { final guardedValue = map['gpuDriverInstallationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gpuPartitionSize: (() { final guardedValue = map['gpuPartitionSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gpuSharingConfig: (() { final guardedValue = map['gpuSharingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

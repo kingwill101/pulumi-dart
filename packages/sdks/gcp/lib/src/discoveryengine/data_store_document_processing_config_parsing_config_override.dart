@@ -6,15 +6,15 @@ import 'data_store_document_processing_config_parsing_config_override_ocr_parsin
 
 class DataStoreDocumentProcessingConfigParsingConfigOverride {
   /// Configurations applied to digital parser.
-  final pulumi.Input<Map<String, dynamic>>? digitalParsingConfig;
+  final pulumi.Input<Map<String, dynamic>?>? digitalParsingConfig;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> fileType;
   /// Configurations applied to layout parser.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig>? layoutParsingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig?>? layoutParsingConfig;
   /// Configurations applied to OCR parser. Currently it only applies to PDFs.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig>? ocrParsingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig?>? ocrParsingConfig;
 
   /// Creates a new [DataStoreDocumentProcessingConfigParsingConfigOverride].
   /// [digitalParsingConfig] Configurations applied to digital parser.

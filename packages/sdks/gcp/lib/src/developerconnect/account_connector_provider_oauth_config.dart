@@ -16,7 +16,7 @@ class AccountConnectorProviderOauthConfig {
   /// NEW_RELIC
   /// DATASTAX
   /// DYNATRACE
-  final pulumi.Input<String>? systemProviderId;
+  final pulumi.Input<String?>? systemProviderId;
 
   /// Creates a new [AccountConnectorProviderOauthConfig].
   /// [scopes] User selected scopes to apply to the Oauth config

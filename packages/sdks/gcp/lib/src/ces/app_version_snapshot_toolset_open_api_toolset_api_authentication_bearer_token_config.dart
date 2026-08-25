@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
   /// (Output)
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig].
   /// [token] (Output)

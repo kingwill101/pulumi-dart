@@ -235,7 +235,7 @@ class GetDatabaseInstancesInstance {
       maintenanceVersion: pulumi.Input.fromValue(map['maintenanceVersion'] as String),
       masterInstanceName: pulumi.Input.fromValue(map['masterInstanceName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       pointInTimeRestoreContexts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstancePointInTimeRestoreContext>(map['pointInTimeRestoreContexts']!, (value) => GetDatabaseInstancesInstancePointInTimeRestoreContext.fromMap((value as Map).cast<String, dynamic>()))),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),

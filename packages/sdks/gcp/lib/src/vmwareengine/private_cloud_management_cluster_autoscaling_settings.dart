@@ -21,13 +21,13 @@ class PrivateCloudManagementClusterAutoscalingSettings {
   /// Minimum cool down period is 30m.
   /// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
   /// Mandatory for successful addition of autoscaling settings in cluster.
-  final pulumi.Input<String>? coolDownPeriod;
+  final pulumi.Input<String?>? coolDownPeriod;
   /// Maximum number of nodes of any type in a cluster.
   /// Mandatory for successful addition of autoscaling settings in cluster.
-  final pulumi.Input<int>? maxClusterNodeCount;
+  final pulumi.Input<int?>? maxClusterNodeCount;
   /// Minimum number of nodes of any type in a cluster.
   /// Mandatory for successful addition of autoscaling settings in cluster.
-  final pulumi.Input<int>? minClusterNodeCount;
+  final pulumi.Input<int?>? minClusterNodeCount;
 
   /// Creates a new [PrivateCloudManagementClusterAutoscalingSettings].
   /// [autoscalingPolicies] The map with autoscaling policies applied to the cluster.
@@ -54,8 +54,8 @@ class PrivateCloudManagementClusterAutoscalingSettings {
     return PrivateCloudManagementClusterAutoscalingSettings(
       autoscalingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy>(map['autoscalingPolicies']!, (value) => PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       coolDownPeriod: (() { final guardedValue = map['coolDownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxClusterNodeCount: (() { final guardedValue = map['maxClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minClusterNodeCount: (() { final guardedValue = map['minClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxClusterNodeCount: (() { final guardedValue = map['maxClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minClusterNodeCount: (() { final guardedValue = map['minClusterNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

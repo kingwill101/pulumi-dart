@@ -5,15 +5,15 @@ import 'connection_auth_config_oauth2_auth_code_flow_client_secret.dart';
 
 class ConnectionAuthConfigOauth2AuthCodeFlow {
   /// Auth URL for Authorization Code Flow.
-  final pulumi.Input<String>? authUri;
+  final pulumi.Input<String?>? authUri;
   /// Client ID for user-provided OAuth app.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client secret for user-provided OAuth app.
-  final pulumi.Input<ConnectionAuthConfigOauth2AuthCodeFlowClientSecret>? clientSecret;
+  final pulumi.Input<ConnectionAuthConfigOauth2AuthCodeFlowClientSecret?>? clientSecret;
   /// Whether to enable PKCE when the user performs the auth code flow.
-  final pulumi.Input<bool>? enablePkce;
+  final pulumi.Input<bool?>? enablePkce;
   /// Scopes the connection will request when the user performs the auth code flow.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [ConnectionAuthConfigOauth2AuthCodeFlow].
   /// [authUri] Auth URL for Authorization Code Flow.

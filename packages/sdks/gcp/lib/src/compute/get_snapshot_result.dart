@@ -7,154 +7,154 @@ import 'get_snapshot_source_disk_encryption_key.dart';
 
 /// Result data returned by getSnapshot.
 class GetSnapshotResult {
-  final String chainName;
-  final String creationTimestamp;
-  final String deletionPolicy;
-  final String description;
-  final int diskSizeGb;
-  final Map<String, String> effectiveLabels;
+  final String? chainName;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
+  final String? description;
+  final int? diskSizeGb;
+  final Map<String, String>? effectiveLabels;
   final String? filter;
-  final bool guestFlush;
+  final bool? guestFlush;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String labelFingerprint;
-  final Map<String, String> labels;
-  final List<String> licenses;
+  final String? id;
+  final String? labelFingerprint;
+  final Map<String, String>? labels;
+  final List<String>? licenses;
   final bool? mostRecent;
   final String? name;
-  final List<GetSnapshotParam> params;
+  final List<GetSnapshotParam>? params;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final String selfLink;
-  final List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys;
-  final int snapshotId;
-  final String snapshotType;
-  final String sourceDisk;
-  final List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
-  final String sourceInstantSnapshot;
-  final int storageBytes;
-  final List<String> storageLocations;
-  final String zone;
+  final Map<String, String>? pulumiLabels;
+  final String? selfLink;
+  final List<GetSnapshotSnapshotEncryptionKey>? snapshotEncryptionKeys;
+  final int? snapshotId;
+  final String? snapshotType;
+  final String? sourceDisk;
+  final List<GetSnapshotSourceDiskEncryptionKey>? sourceDiskEncryptionKeys;
+  final String? sourceInstantSnapshot;
+  final int? storageBytes;
+  final List<String>? storageLocations;
+  final String? zone;
 
   /// Creates a new [GetSnapshotResult].
-  /// [chainName] Required.
-  /// [creationTimestamp] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [diskSizeGb] Required.
-  /// [effectiveLabels] Required.
+  /// [chainName] Optional.
+  /// [creationTimestamp] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [diskSizeGb] Optional.
+  /// [effectiveLabels] Optional.
   /// [filter] Optional.
-  /// [guestFlush] Required.
+  /// [guestFlush] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labelFingerprint] Required.
-  /// [labels] Required.
-  /// [licenses] Required.
+  /// [labelFingerprint] Optional.
+  /// [labels] Optional.
+  /// [licenses] Optional.
   /// [mostRecent] Optional.
   /// [name] Optional.
-  /// [params] Required.
+  /// [params] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [selfLink] Required.
-  /// [snapshotEncryptionKeys] Required.
-  /// [snapshotId] Required.
-  /// [snapshotType] Required.
-  /// [sourceDisk] Required.
-  /// [sourceDiskEncryptionKeys] Required.
-  /// [sourceInstantSnapshot] Required.
-  /// [storageBytes] Required.
-  /// [storageLocations] Required.
-  /// [zone] Required.
+  /// [pulumiLabels] Optional.
+  /// [selfLink] Optional.
+  /// [snapshotEncryptionKeys] Optional.
+  /// [snapshotId] Optional.
+  /// [snapshotType] Optional.
+  /// [sourceDisk] Optional.
+  /// [sourceDiskEncryptionKeys] Optional.
+  /// [sourceInstantSnapshot] Optional.
+  /// [storageBytes] Optional.
+  /// [storageLocations] Optional.
+  /// [zone] Optional.
   const GetSnapshotResult({
-    required this.chainName,
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.diskSizeGb,
-    required this.effectiveLabels,
+    this.chainName,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.diskSizeGb,
+    this.effectiveLabels,
     this.filter,
-    required this.guestFlush,
-    required this.id,
-    required this.labelFingerprint,
-    required this.labels,
-    required this.licenses,
+    this.guestFlush,
+    this.id,
+    this.labelFingerprint,
+    this.labels,
+    this.licenses,
     this.mostRecent,
     this.name,
-    required this.params,
+    this.params,
     this.project,
-    required this.pulumiLabels,
-    required this.selfLink,
-    required this.snapshotEncryptionKeys,
-    required this.snapshotId,
-    required this.snapshotType,
-    required this.sourceDisk,
-    required this.sourceDiskEncryptionKeys,
-    required this.sourceInstantSnapshot,
-    required this.storageBytes,
-    required this.storageLocations,
-    required this.zone,
+    this.pulumiLabels,
+    this.selfLink,
+    this.snapshotEncryptionKeys,
+    this.snapshotId,
+    this.snapshotType,
+    this.sourceDisk,
+    this.sourceDiskEncryptionKeys,
+    this.sourceInstantSnapshot,
+    this.storageBytes,
+    this.storageLocations,
+    this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chainName': chainName,
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'diskSizeGb': diskSizeGb,
-      'effectiveLabels': effectiveLabels,
+      'chainName': ?chainName,
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'diskSizeGb': ?diskSizeGb,
+      'effectiveLabels': ?effectiveLabels,
       'filter': ?filter,
-      'guestFlush': guestFlush,
-      'id': id,
-      'labelFingerprint': labelFingerprint,
-      'labels': labels,
-      'licenses': licenses,
+      'guestFlush': ?guestFlush,
+      'id': ?id,
+      'labelFingerprint': ?labelFingerprint,
+      'labels': ?labels,
+      'licenses': ?licenses,
       'mostRecent': ?mostRecent,
       'name': ?name,
-      'params': pulumi.Input.encodeList<GetSnapshotParam, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'params': ?(() { final guardedValue = params; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSnapshotParam, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'selfLink': selfLink,
-      'snapshotEncryptionKeys': pulumi.Input.encodeList<GetSnapshotSnapshotEncryptionKey, Map<String, dynamic>>(snapshotEncryptionKeys, (value) => value.toMap()),
-      'snapshotId': snapshotId,
-      'snapshotType': snapshotType,
-      'sourceDisk': sourceDisk,
-      'sourceDiskEncryptionKeys': pulumi.Input.encodeList<GetSnapshotSourceDiskEncryptionKey, Map<String, dynamic>>(sourceDiskEncryptionKeys, (value) => value.toMap()),
-      'sourceInstantSnapshot': sourceInstantSnapshot,
-      'storageBytes': storageBytes,
-      'storageLocations': storageLocations,
-      'zone': zone,
+      'pulumiLabels': ?pulumiLabels,
+      'selfLink': ?selfLink,
+      'snapshotEncryptionKeys': ?(() { final guardedValue = snapshotEncryptionKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSnapshotSnapshotEncryptionKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'snapshotId': ?snapshotId,
+      'snapshotType': ?snapshotType,
+      'sourceDisk': ?sourceDisk,
+      'sourceDiskEncryptionKeys': ?(() { final guardedValue = sourceDiskEncryptionKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSnapshotSourceDiskEncryptionKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sourceInstantSnapshot': ?sourceInstantSnapshot,
+      'storageBytes': ?storageBytes,
+      'storageLocations': ?storageLocations,
+      'zone': ?zone,
     };
   }
 
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
-      chainName: map['chainName'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      diskSizeGb: map['diskSizeGb'] as int,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
+      chainName: (() { final guardedValue = map['chainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      guestFlush: map['guestFlush'] as bool,
-      id: map['id'] as String,
-      labelFingerprint: map['labelFingerprint'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      licenses: (map['licenses'] as List).cast<String>(),
+      guestFlush: (() { final guardedValue = map['guestFlush']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      licenses: (() { final guardedValue = map['licenses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      params: pulumi.Input.decodeList<GetSnapshotParam>(map['params']!, (value) => GetSnapshotParam.fromMap((value as Map).cast<String, dynamic>())),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSnapshotParam>(guardedValue, (value) => GetSnapshotParam.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      selfLink: map['selfLink'] as String,
-      snapshotEncryptionKeys: pulumi.Input.decodeList<GetSnapshotSnapshotEncryptionKey>(map['snapshotEncryptionKeys']!, (value) => GetSnapshotSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      snapshotId: map['snapshotId'] as int,
-      snapshotType: map['snapshotType'] as String,
-      sourceDisk: map['sourceDisk'] as String,
-      sourceDiskEncryptionKeys: pulumi.Input.decodeList<GetSnapshotSourceDiskEncryptionKey>(map['sourceDiskEncryptionKeys']!, (value) => GetSnapshotSourceDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      sourceInstantSnapshot: map['sourceInstantSnapshot'] as String,
-      storageBytes: map['storageBytes'] as int,
-      storageLocations: (map['storageLocations'] as List).cast<String>(),
-      zone: map['zone'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshotEncryptionKeys: (() { final guardedValue = map['snapshotEncryptionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSnapshotSnapshotEncryptionKey>(guardedValue, (value) => GetSnapshotSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceDisk: (() { final guardedValue = map['sourceDisk']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceDiskEncryptionKeys: (() { final guardedValue = map['sourceDiskEncryptionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSnapshotSourceDiskEncryptionKey>(guardedValue, (value) => GetSnapshotSourceDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sourceInstantSnapshot: (() { final guardedValue = map['sourceInstantSnapshot']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageBytes: (() { final guardedValue = map['storageBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      storageLocations: (() { final guardedValue = map['storageLocations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

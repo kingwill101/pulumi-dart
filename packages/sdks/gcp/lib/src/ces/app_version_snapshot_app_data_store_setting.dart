@@ -7,7 +7,7 @@ class AppVersionSnapshotAppDataStoreSetting {
   /// (Output)
   /// The engines for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppDataStoreSettingEngine>>? engines;
+  final pulumi.Input<List<AppVersionSnapshotAppDataStoreSettingEngine>?>? engines;
 
   /// Creates a new [AppVersionSnapshotAppDataStoreSetting].
   /// [engines] (Output)

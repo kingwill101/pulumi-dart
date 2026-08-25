@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'posture_args.dart';
+import 'posture_policy_set.dart';
 import 'posture_state.dart';
 
 /// A Posture represents a collection of policy set including its name, state, description
@@ -1008,7 +1009,7 @@ class Posture extends pulumi.CustomResource {
   late final pulumi.Output<String> parent;
   /// List of policy sets for the posture.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> policySets;
+  late final pulumi.Output<List<PosturePolicySet>> policySets;
   /// Id of the posture. It is an immutable field.
   late final pulumi.Output<String> postureId;
   /// If set, there are currently changes in flight to the posture.
@@ -1034,7 +1035,7 @@ class Posture extends pulumi.CustomResource {
           'gcp:securityposture/posture:Posture',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1043,7 +1044,7 @@ class Posture extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    policySets = registerOutput<List<Map<String, dynamic>>>('policySets');
+    policySets = registerOutput<List<PosturePolicySet>>('policySets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PosturePolicySet>(guardedValue, (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>())); });
     postureId = registerOutput<String>('postureId');
     reconciling = registerOutput<bool>('reconciling');
     revisionId = registerOutput<String>('revisionId');
@@ -1056,11 +1057,12 @@ class Posture extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PostureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Posture._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1081,11 +1083,35 @@ class Posture extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    policySets = registerOutput<List<Map<String, dynamic>>>('policySets');
+    policySets = registerOutput<List<PosturePolicySet>>('policySets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PosturePolicySet>(guardedValue, (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>())); });
     postureId = registerOutput<String>('postureId');
     reconciling = registerOutput<bool>('reconciling');
     revisionId = registerOutput<String>('revisionId');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Posture] resource.
+  Posture.reference(String urn)
+    : super(
+        'gcp:securityposture/posture:Posture',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    policySets = registerOutput<List<PosturePolicySet>>('policySets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PosturePolicySet>(guardedValue, (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>())); });
+    postureId = registerOutput<String>('postureId');
+    reconciling = registerOutput<bool>('reconciling');
+    revisionId = registerOutput<String>('revisionId');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

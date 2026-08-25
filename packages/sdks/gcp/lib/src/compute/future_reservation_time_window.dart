@@ -6,9 +6,9 @@ import 'future_reservation_time_window_duration.dart';
 class FutureReservationTimeWindow {
   /// Duration of the future reservation
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationTimeWindowDuration>? duration;
+  final pulumi.Input<FutureReservationTimeWindowDuration?>? duration;
   /// End time of the future reservation in RFC3339 format.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Start time of the future reservation in RFC3339 format.
   final pulumi.Input<String> startTime;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionSparkMetastoreServiceConfig {
   /// Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
-  final pulumi.Input<String>? metastoreService;
+  final pulumi.Input<String?>? metastoreService;
 
   /// Creates a new [ConnectionSparkMetastoreServiceConfig].
   /// [metastoreService] Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].

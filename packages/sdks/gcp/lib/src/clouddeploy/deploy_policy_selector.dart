@@ -7,10 +7,10 @@ import 'deploy_policy_selector_target.dart';
 class DeployPolicySelector {
   /// Contains attributes about a delivery pipeline.
   /// Structure is documented below.
-  final pulumi.Input<DeployPolicySelectorDeliveryPipeline>? deliveryPipeline;
+  final pulumi.Input<DeployPolicySelectorDeliveryPipeline?>? deliveryPipeline;
   /// Contains attributes about a target.
   /// Structure is documented below.
-  final pulumi.Input<DeployPolicySelectorTarget>? target;
+  final pulumi.Input<DeployPolicySelectorTarget?>? target;
 
   /// Creates a new [DeployPolicySelector].
   /// [deliveryPipeline] Contains attributes about a delivery pipeline.

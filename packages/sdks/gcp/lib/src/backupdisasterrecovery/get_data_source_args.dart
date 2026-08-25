@@ -14,7 +14,7 @@ class GetDataSourceArgs {
   /// The location in which the Data Source belongs.
   final pulumi.Input<String> location;
   /// The Google Cloud Project in which the Data Source belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDataSourceArgs].
   /// [backupVaultId] The ID of the Backup Vault in which the Data Source belongs.

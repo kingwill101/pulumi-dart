@@ -8,7 +8,7 @@ class AppHostingBackendManagedResourceRunService {
   /// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
   /// in the format:
   /// projects/{project}/locations/{location}/services/{serviceId}
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [AppHostingBackendManagedResourceRunService].
   /// [service] (Output)

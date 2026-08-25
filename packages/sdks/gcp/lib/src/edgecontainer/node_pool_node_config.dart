@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfig {
   /// "The Kubernetes node labels"
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [NodePoolNodeConfig].
   /// [labels] "The Kubernetes node labels"

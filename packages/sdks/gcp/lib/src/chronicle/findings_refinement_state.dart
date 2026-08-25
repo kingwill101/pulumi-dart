@@ -6,37 +6,37 @@ import 'findings_refinement_outcome_filter.dart';
 /// Input properties used for looking up and filtering FindingsRefinement resources.
 class FindingsRefinementState {
   /// The timestamp of when the findings refinement was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Display name of the findings refinement.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Full resource name for the findings refinement.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/findingsRefinements/{findings_refinement}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The outcome filters for the findings refinement. These allow you to specify
   /// filters that are applied to the outcome variables in the detection.
   /// All filters must be true for a detection to match the findings refinement.
   /// Structure is documented below.
-  final pulumi.Input<List<FindingsRefinementOutcomeFilter>>? outcomeFilters;
+  final pulumi.Input<List<FindingsRefinementOutcomeFilter>?>? outcomeFilters;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The query for the findings refinement. Works in conjunction with the type
   /// field to determine the findings refinement behavior. The syntax of this
   /// query is the same as a UDM search string. See the following for more
   /// information:
   /// https://cloud.google.com/chronicle/docs/investigation/udm-search
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// DETECTION_EXCLUSION is the only supported type of findings refinement.
   /// Possible values:
   /// DETECTION_EXCLUSION
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The timestamp of when the findings refinement was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [FindingsRefinementState].
   /// [createTime] The timestamp of when the findings refinement was created.

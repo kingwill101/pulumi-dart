@@ -11,7 +11,7 @@ class InterconnectMacsecPreSharedKey {
   /// if the MKA session cannot be established with your router.
   ///
   /// &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
-  final pulumi.Input<bool>? failOpen;
+  final pulumi.Input<bool?>? failOpen;
   /// A name for this pre-shared key. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match
   /// the regular expression `a-z?` which means the first character
@@ -23,7 +23,7 @@ class InterconnectMacsecPreSharedKey {
   /// has multiple keys, startTime is mandatory for each key. The start times of keys must
   /// be in increasing order. The start times of two consecutive keys must be at least 6
   /// hours apart.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [InterconnectMacsecPreSharedKey].
   /// [failOpen] (Optional, Deprecated)

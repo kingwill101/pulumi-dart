@@ -8,7 +8,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd 
   /// The value of the header to add.
   final pulumi.Input<String> headerValue;
   /// Whether to replace all existing headers with the same name.
-  final pulumi.Input<bool>? replace;
+  final pulumi.Input<bool?>? replace;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd].
   /// [headerName] The name of the header to add.

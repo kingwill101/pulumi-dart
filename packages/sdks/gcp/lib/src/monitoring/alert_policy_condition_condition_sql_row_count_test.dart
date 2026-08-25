@@ -39,7 +39,7 @@ class AlertPolicyConditionConditionSqlRowCountTest {
   factory AlertPolicyConditionConditionSqlRowCountTest.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlRowCountTest(
       comparison: pulumi.Input.fromValue(map['comparison'] as String),
-      threshold: pulumi.Input.fromValue(map['threshold'] as int),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toInt()),
     );
   }
 }

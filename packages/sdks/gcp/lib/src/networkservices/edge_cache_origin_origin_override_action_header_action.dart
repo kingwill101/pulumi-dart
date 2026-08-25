@@ -7,7 +7,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
   /// Describes a header to add.
   /// You may add a maximum of 25 request headers.
   /// Structure is documented below.
-  final pulumi.Input<List<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>>? requestHeadersToAdds;
+  final pulumi.Input<List<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>?>? requestHeadersToAdds;
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionHeaderAction].
   /// [requestHeadersToAdds] Describes a header to add.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EvaluationGoldenTurnStepExpectationUpdatedVariables {
   /// Dummy property.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
 
   /// Creates a new [EvaluationGoldenTurnStepExpectationUpdatedVariables].
   /// [notes] Dummy property.

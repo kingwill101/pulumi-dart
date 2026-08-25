@@ -5,13 +5,13 @@ import 'job_template_template_vpc_access_network_interface.dart';
 
 class JobTemplateTemplateVpcAccess {
   /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
-  final pulumi.Input<String>? connector;
+  final pulumi.Input<String?>? connector;
   /// Traffic VPC egress settings.
   /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-  final pulumi.Input<String>? egress;
+  final pulumi.Input<String?>? egress;
   /// Direct VPC egress settings. Currently only single network interface is supported.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateTemplateVpcAccessNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<JobTemplateTemplateVpcAccessNetworkInterface>?>? networkInterfaces;
 
   /// Creates a new [JobTemplateTemplateVpcAccess].
   /// [connector] VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.

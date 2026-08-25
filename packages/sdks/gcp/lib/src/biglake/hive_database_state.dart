@@ -5,30 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HiveDatabase resources.
 class HiveDatabaseState {
   /// Hive catalog where the database to create is located.
-  final pulumi.Input<String>? catalog;
+  final pulumi.Input<String?>? catalog;
   /// Output only. The creation time of the database.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the database.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Cloud Storage location path where the database exists. If unspecified, the database will be stored in the catalog location.
   /// Format: gs://bucket/path/to/database
-  final pulumi.Input<String>? locationUri;
+  final pulumi.Input<String?>? locationUri;
   /// Database to create.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional parameters associated with the database.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. The update time of the database.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [HiveDatabaseState].
   /// [catalog] Hive catalog where the database to create is located.

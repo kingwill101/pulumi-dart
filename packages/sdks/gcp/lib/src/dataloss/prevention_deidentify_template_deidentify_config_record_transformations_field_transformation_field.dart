@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField {
   /// Name describing the field.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField].
   /// [name] Name describing the field.

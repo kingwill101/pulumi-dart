@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigMfaProviderConfigTotpProviderConfig {
   /// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
-  final pulumi.Input<int>? adjacentIntervals;
+  final pulumi.Input<int?>? adjacentIntervals;
 
   /// Creates a new [ConfigMfaProviderConfigTotpProviderConfig].
   /// [adjacentIntervals] The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
@@ -20,7 +20,7 @@ class ConfigMfaProviderConfigTotpProviderConfig {
 
   factory ConfigMfaProviderConfigTotpProviderConfig.fromMap(Map<String, dynamic> map) {
     return ConfigMfaProviderConfigTotpProviderConfig(
-      adjacentIntervals: (() { final guardedValue = map['adjacentIntervals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      adjacentIntervals: (() { final guardedValue = map['adjacentIntervals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

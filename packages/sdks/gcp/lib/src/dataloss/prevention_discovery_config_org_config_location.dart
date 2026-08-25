@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigOrgConfigLocation {
   /// The ID for the folder within an organization to scan
-  final pulumi.Input<String>? folderId;
+  final pulumi.Input<String?>? folderId;
   /// The ID of an organization to scan
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
 
   /// Creates a new [PreventionDiscoveryConfigOrgConfigLocation].
   /// [folderId] The ID for the folder within an organization to scan

@@ -9,10 +9,10 @@ class ControlBoostAction {
   /// The filter to apply to the search results.
   final pulumi.Input<String> filter;
   /// The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
-  final pulumi.Input<double>? fixedBoost;
+  final pulumi.Input<double?>? fixedBoost;
   /// The interpolation boost specification to apply to the search results.
   /// Structure is documented below.
-  final pulumi.Input<ControlBoostActionInterpolationBoostSpec>? interpolationBoostSpec;
+  final pulumi.Input<ControlBoostActionInterpolationBoostSpec?>? interpolationBoostSpec;
 
   /// Creates a new [ControlBoostAction].
   /// [dataStore] The data store to boost.
@@ -39,7 +39,7 @@ class ControlBoostAction {
     return ControlBoostAction(
       dataStore: pulumi.Input.fromValue(map['dataStore'] as String),
       filter: pulumi.Input.fromValue(map['filter'] as String),
-      fixedBoost: (() { final guardedValue = map['fixedBoost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      fixedBoost: (() { final guardedValue = map['fixedBoost']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       interpolationBoostSpec: (() { final guardedValue = map['interpolationBoostSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControlBoostActionInterpolationBoostSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

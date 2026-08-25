@@ -13,7 +13,7 @@ class MulticloudDataTransferConfigService {
   ///
   ///
   /// &lt;a name="nestedServicesStates"&gt;&lt;/a&gt;The `states` block contains:
-  final pulumi.Input<List<MulticloudDataTransferConfigServiceState>>? states;
+  final pulumi.Input<List<MulticloudDataTransferConfigServiceState>?>? states;
 
   /// Creates a new [MulticloudDataTransferConfigService].
   /// [serviceName] The name of the service, like "big-query" or "cloud-storage".

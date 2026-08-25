@@ -21,7 +21,7 @@ class VMwareClusterState {
   /// This is the full resource name of the admin cluster's hub membership.
   /// In the future, references to other resource types might be allowed if
   /// admin clusters are modeled as their own resources.
-  final pulumi.Input<String>? adminClusterMembership;
+  final pulumi.Input<String?>? adminClusterMembership;
   /// Annotations on the VMware User Cluster.
   /// This field has the same restrictions as Kubernetes annotations.
   /// The total size of all keys and values combined is limited to 256k.
@@ -33,58 +33,58 @@ class VMwareClusterState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
   /// least three physical hosts in the datacenter.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterAntiAffinityGroups>? antiAffinityGroups;
+  final pulumi.Input<VMwareClusterAntiAffinityGroups?>? antiAffinityGroups;
   /// RBAC policy that will be applied and managed by GKE On-Prem.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterAuthorization>? authorization;
+  final pulumi.Input<VMwareClusterAuthorization?>? authorization;
   /// Configuration for auto repairing.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterAutoRepairConfig>? autoRepairConfig;
+  final pulumi.Input<VMwareClusterAutoRepairConfig?>? autoRepairConfig;
   /// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterControlPlaneNode>? controlPlaneNode;
+  final pulumi.Input<VMwareClusterControlPlaneNode?>? controlPlaneNode;
   /// The time at which VMware User Cluster was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterDataplaneV2>? dataplaneV2;
+  final pulumi.Input<VMwareClusterDataplaneV2?>? dataplaneV2;
   /// The time at which VMware User Cluster was deleted.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human readable description of this VMware User Cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Disable bundled ingress.
-  final pulumi.Input<bool>? disableBundledIngress;
+  final pulumi.Input<bool?>? disableBundledIngress;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// Enable advanced cluster. Default to false.
-  final pulumi.Input<bool>? enableAdvancedCluster;
+  final pulumi.Input<bool?>? enableAdvancedCluster;
   /// Enable control plane V2. Default to false.
-  final pulumi.Input<bool>? enableControlPlaneV2;
+  final pulumi.Input<bool?>? enableControlPlaneV2;
   /// The DNS name of VMware User Cluster's API server.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Fleet configuration for the cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareClusterFleet>>? fleets;
+  final pulumi.Input<List<VMwareClusterFleet>?>? fleets;
   /// Load Balancer configuration.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterLoadBalancer>? loadBalancer;
+  final pulumi.Input<VMwareClusterLoadBalancer?>? loadBalancer;
   /// The object name of the VMware OnPremUserCluster custom resource on the
   /// associated admin cluster. This field is used to support conflicting
   /// names when enrolling existing clusters to the API. When used as a part of
@@ -95,50 +95,50 @@ class VMwareClusterState {
   /// All users should use this name to access their cluster using gkectl or
   /// kubectl and should expect to see the local name when viewing admin
   /// cluster controller logs.
-  final pulumi.Input<String>? localName;
+  final pulumi.Input<String?>? localName;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The VMware cluster name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The VMware User Cluster network configuration.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterNetworkConfig>? networkConfig;
+  final pulumi.Input<VMwareClusterNetworkConfig?>? networkConfig;
   /// The Anthos clusters on the VMware version for your user cluster.
-  final pulumi.Input<String>? onPremVersion;
+  final pulumi.Input<String?>? onPremVersion;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// If set, there are currently changes in flight to the VMware User Cluster.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// A list of validations to skip during preflight checks.
   /// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
-  final pulumi.Input<List<String>>? skipValidations;
+  final pulumi.Input<List<String>?>? skipValidations;
   /// (Output)
   /// The lifecycle state of the condition.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareClusterStatus>>? statuses;
+  final pulumi.Input<List<VMwareClusterStatus>?>? statuses;
   /// Storage configuration.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterStorage>? storage;
+  final pulumi.Input<VMwareClusterStorage?>? storage;
   /// The unique identifier of the VMware User Cluster.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The time at which VMware User Cluster was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Specifies upgrade policy for the cluster.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterUpgradePolicy>? upgradePolicy;
+  final pulumi.Input<VMwareClusterUpgradePolicy?>? upgradePolicy;
   /// ValidationCheck represents the result of the preflight check job.
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareClusterValidationCheck>>? validationChecks;
+  final pulumi.Input<List<VMwareClusterValidationCheck>?>? validationChecks;
   /// VmwareVCenterConfig specifies vCenter config for the user cluster.
   /// Inherited from the admin cluster.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterVcenter>? vcenter;
+  final pulumi.Input<VMwareClusterVcenter?>? vcenter;
   /// Enable VM tracking.
-  final pulumi.Input<bool>? vmTrackingEnabled;
+  final pulumi.Input<bool?>? vmTrackingEnabled;
 
   /// Creates a new [VMwareClusterState].
   /// [adminClusterMembership] The admin cluster this VMware User Cluster belongs to.

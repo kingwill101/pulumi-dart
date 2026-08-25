@@ -149,6 +149,17 @@ Future<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(
   return GetAutoscalingPolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicyOutput(
+  GetAutoscalingPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoscalingPolicyIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Dataproc cluster.
 ///
 /// ## example
@@ -274,6 +285,17 @@ Future<GetClusterIamPolicyResult> getClusterIamPolicy(
   return GetClusterIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterIamPolicyResult> getClusterIamPolicyOutput(
+  GetClusterIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Dataproc job.
 ///
 /// ## example
@@ -397,6 +419,17 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
+  GetJobIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getJobIamPolicy:getJobIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for database
@@ -539,6 +572,17 @@ Future<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy(
   return GetMetastoreDatabaseIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicyOutput(
+  GetMetastoreDatabaseIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getMetastoreDatabaseIamPolicy:getMetastoreDatabaseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetastoreDatabaseIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for federation
 ///
 ///
@@ -672,6 +716,17 @@ Future<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicy(
   return GetMetastoreFederationIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicyOutput(
+  GetMetastoreFederationIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetastoreFederationIamPolicyResult.fromMap);
+}
+
 /// Get a Dataproc Metastore service from Google Cloud by its id and location.
 ///
 /// ## Example Usage
@@ -795,6 +850,17 @@ Future<GetMetastoreServiceResult> getMetastoreService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetastoreServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetMetastoreServiceResult> getMetastoreServiceOutput(
+  GetMetastoreServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getMetastoreService:getMetastoreService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetastoreServiceResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for service
@@ -928,6 +994,17 @@ Future<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetastoreServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicyOutput(
+  GetMetastoreServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetastoreServiceIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for table
@@ -1075,4 +1152,15 @@ Future<GetMetastoreTableIamPolicyResult> getMetastoreTableIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetastoreTableIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetMetastoreTableIamPolicyResult> getMetastoreTableIamPolicyOutput(
+  GetMetastoreTableIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataproc/getMetastoreTableIamPolicy:getMetastoreTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetastoreTableIamPolicyResult.fromMap);
 }

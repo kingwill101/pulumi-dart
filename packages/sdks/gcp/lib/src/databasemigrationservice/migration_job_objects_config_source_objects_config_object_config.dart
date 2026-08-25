@@ -6,7 +6,7 @@ import 'migration_job_objects_config_source_objects_config_object_config_object_
 class MigrationJobObjectsConfigSourceObjectsConfigObjectConfig {
   /// The identifier of the migration job object.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier>? objectIdentifier;
+  final pulumi.Input<MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier?>? objectIdentifier;
 
   /// Creates a new [MigrationJobObjectsConfigSourceObjectsConfigObjectConfig].
   /// [objectIdentifier] The identifier of the migration job object.

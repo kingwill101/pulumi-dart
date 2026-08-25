@@ -14,37 +14,37 @@ class OccurenceState {
   /// know the authority and artifact to be verified) and intent (for
   /// which authority this attestation was intended to sign.
   /// Structure is documented below.
-  final pulumi.Input<OccurenceAttestation>? attestation;
+  final pulumi.Input<OccurenceAttestation?>? attestation;
   /// The time when the repository was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The note kind which explicitly denotes which of the occurrence
   /// details are specified. This field can be used as a filter in list
   /// requests.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name of the occurrence.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The analysis note associated with this occurrence, in the form of
   /// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
   /// filter in list requests.
-  final pulumi.Input<String>? noteName;
+  final pulumi.Input<String?>? noteName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A description of actions that can be taken to remedy the note.
-  final pulumi.Input<String>? remediation;
+  final pulumi.Input<String?>? remediation;
   /// Required. Immutable. A URI that represents the resource for which
   /// the occurrence applies. For example,
   /// https://gcr.io/project/image@sha256:123abc for a Docker image.
-  final pulumi.Input<String>? resourceUri;
+  final pulumi.Input<String?>? resourceUri;
   /// The time when the repository was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [OccurenceState].
   /// [attestation] Occurrence that represents a single "attestation". The authenticity

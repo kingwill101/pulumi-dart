@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeTemplateDisk {
   /// Specifies the number of such disks.
-  final pulumi.Input<int>? diskCount;
+  final pulumi.Input<int?>? diskCount;
   /// Specifies the size of the disk in base-2 GB.
-  final pulumi.Input<int>? diskSizeGb;
+  final pulumi.Input<int?>? diskSizeGb;
   /// Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
 
   /// Creates a new [NodeTemplateDisk].
   /// [diskCount] Specifies the number of such disks.
@@ -30,8 +30,8 @@ class NodeTemplateDisk {
 
   factory NodeTemplateDisk.fromMap(Map<String, dynamic> map) {
     return NodeTemplateDisk(
-      diskCount: (() { final guardedValue = map['diskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskCount: (() { final guardedValue = map['diskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

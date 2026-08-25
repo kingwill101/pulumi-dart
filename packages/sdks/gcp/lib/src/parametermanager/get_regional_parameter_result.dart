@@ -5,89 +5,89 @@ import 'get_regional_parameter_policy_member.dart';
 
 /// Result data returned by getRegionalParameter.
 class GetRegionalParameterResult {
-  final String createTime;
-  final String deletionPolicy;
-  final Map<String, String> effectiveLabels;
-  final String format;
+  final String? createTime;
+  final String? deletionPolicy;
+  final Map<String, String>? effectiveLabels;
+  final String? format;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String kmsKey;
-  final Map<String, String> labels;
-  final String location;
-  final String name;
-  final String parameterId;
-  final List<GetRegionalParameterPolicyMember> policyMembers;
+  final String? id;
+  final String? kmsKey;
+  final Map<String, String>? labels;
+  final String? location;
+  final String? name;
+  final String? parameterId;
+  final List<GetRegionalParameterPolicyMember>? policyMembers;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final String updateTime;
+  final Map<String, String>? pulumiLabels;
+  final String? updateTime;
 
   /// Creates a new [GetRegionalParameterResult].
-  /// [createTime] Required.
-  /// [deletionPolicy] Required.
-  /// [effectiveLabels] Required.
-  /// [format] Required.
+  /// [createTime] Optional.
+  /// [deletionPolicy] Optional.
+  /// [effectiveLabels] Optional.
+  /// [format] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKey] Required.
-  /// [labels] Required.
-  /// [location] Required.
-  /// [name] Required.
-  /// [parameterId] Required.
-  /// [policyMembers] Required.
+  /// [kmsKey] Optional.
+  /// [labels] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [parameterId] Optional.
+  /// [policyMembers] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [updateTime] Required.
+  /// [pulumiLabels] Optional.
+  /// [updateTime] Optional.
   const GetRegionalParameterResult({
-    required this.createTime,
-    required this.deletionPolicy,
-    required this.effectiveLabels,
-    required this.format,
-    required this.id,
-    required this.kmsKey,
-    required this.labels,
-    required this.location,
-    required this.name,
-    required this.parameterId,
-    required this.policyMembers,
+    this.createTime,
+    this.deletionPolicy,
+    this.effectiveLabels,
+    this.format,
+    this.id,
+    this.kmsKey,
+    this.labels,
+    this.location,
+    this.name,
+    this.parameterId,
+    this.policyMembers,
     this.project,
-    required this.pulumiLabels,
-    required this.updateTime,
+    this.pulumiLabels,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deletionPolicy': deletionPolicy,
-      'effectiveLabels': effectiveLabels,
-      'format': format,
-      'id': id,
-      'kmsKey': kmsKey,
-      'labels': labels,
-      'location': location,
-      'name': name,
-      'parameterId': parameterId,
-      'policyMembers': pulumi.Input.encodeList<GetRegionalParameterPolicyMember, Map<String, dynamic>>(policyMembers, (value) => value.toMap()),
+      'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
+      'effectiveLabels': ?effectiveLabels,
+      'format': ?format,
+      'id': ?id,
+      'kmsKey': ?kmsKey,
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
+      'parameterId': ?parameterId,
+      'policyMembers': ?(() { final guardedValue = policyMembers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionalParameterPolicyMember, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'updateTime': updateTime,
+      'pulumiLabels': ?pulumiLabels,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetRegionalParameterResult.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterResult(
-      createTime: map['createTime'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      format: map['format'] as String,
-      id: map['id'] as String,
-      kmsKey: map['kmsKey'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      parameterId: map['parameterId'] as String,
-      policyMembers: pulumi.Input.decodeList<GetRegionalParameterPolicyMember>(map['policyMembers']!, (value) => GetRegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parameterId: (() { final guardedValue = map['parameterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionalParameterPolicyMember>(guardedValue, (value) => GetRegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      updateTime: map['updateTime'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

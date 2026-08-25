@@ -9,7 +9,7 @@ class OrganizationAccessPolicyDetailsRuleOperation {
   /// subject to the policy effect.
   /// The excluded permissions can be specified using the same syntax as
   /// `permissions`.
-  final pulumi.Input<List<String>>? excludedPermissions;
+  final pulumi.Input<List<String>?>? excludedPermissions;
   /// The permissions that are explicitly affected by this rule. Each
   /// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
   /// `{service_fqdn}` is the fully qualified domain name for the service.

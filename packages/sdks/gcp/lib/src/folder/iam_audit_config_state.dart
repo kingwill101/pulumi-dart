@@ -6,13 +6,13 @@ import 'iam_audit_config_audit_log_config.dart';
 /// Input properties used for looking up and filtering IamAuditConfig resources.
 class IamAuditConfigState {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  final pulumi.Input<List<IamAuditConfigAuditLogConfig>>? auditLogConfigs;
+  final pulumi.Input<List<IamAuditConfigAuditLogConfig>?>? auditLogConfigs;
   /// (Computed) The etag of the folder's IAM policy.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [IamAuditConfigState].
   /// [auditLogConfigs] The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.

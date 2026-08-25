@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigWindowsNodeConfig {
   /// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
-  final pulumi.Input<String>? osversion;
+  final pulumi.Input<String?>? osversion;
 
   /// Creates a new [NodePoolNodeConfigWindowsNodeConfig].
   /// [osversion] The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022

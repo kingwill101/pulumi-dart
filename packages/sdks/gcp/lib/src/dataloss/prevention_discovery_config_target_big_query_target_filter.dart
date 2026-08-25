@@ -6,13 +6,13 @@ import 'prevention_discovery_config_target_big_query_target_filter_tables.dart';
 
 class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
   /// Catch-all. This should always be the last filter in the list because anything above it will apply first.
-  final pulumi.Input<Map<String, dynamic>>? otherTables;
+  final pulumi.Input<Map<String, dynamic>?>? otherTables;
   /// The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference>? tableReference;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference?>? tableReference;
   /// A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetFilterTables>? tables;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetFilterTables?>? tables;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilter].
   /// [otherTables] Catch-all. This should always be the last filter in the list because anything above it will apply first.

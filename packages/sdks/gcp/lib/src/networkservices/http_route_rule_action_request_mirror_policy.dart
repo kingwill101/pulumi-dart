@@ -6,7 +6,7 @@ import 'http_route_rule_action_request_mirror_policy_destination.dart';
 class HttpRouteRuleActionRequestMirrorPolicy {
   /// The destination the requests will be mirrored to.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionRequestMirrorPolicyDestination>? destination;
+  final pulumi.Input<HttpRouteRuleActionRequestMirrorPolicyDestination?>? destination;
 
   /// Creates a new [HttpRouteRuleActionRequestMirrorPolicy].
   /// [destination] The destination the requests will be mirrored to.

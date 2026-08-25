@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateCertificateDescriptionSubjectKeyId {
   /// The value of the KeyId in lowercase hexadecimal.
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.

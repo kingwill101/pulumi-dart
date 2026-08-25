@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiIndexIndexStat {
   /// (Output)
   /// The number of shards in the Index.
-  final pulumi.Input<int>? shardsCount;
+  final pulumi.Input<int?>? shardsCount;
   /// (Output)
   /// The number of vectors in the Index.
-  final pulumi.Input<String>? vectorsCount;
+  final pulumi.Input<String?>? vectorsCount;
 
   /// Creates a new [AiIndexIndexStat].
   /// [shardsCount] (Output)
@@ -27,7 +27,7 @@ class AiIndexIndexStat {
 
   factory AiIndexIndexStat.fromMap(Map<String, dynamic> map) {
     return AiIndexIndexStat(
-      shardsCount: (() { final guardedValue = map['shardsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shardsCount: (() { final guardedValue = map['shardsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       vectorsCount: (() { final guardedValue = map['vectorsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

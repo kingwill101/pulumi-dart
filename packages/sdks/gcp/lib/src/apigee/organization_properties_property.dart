@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationPropertiesProperty {
   /// Name of the property.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the property.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [OrganizationPropertiesProperty].
   /// [name] Name of the property.

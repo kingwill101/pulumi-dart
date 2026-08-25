@@ -8,20 +8,20 @@ class BatchRuntimeInfo {
   /// (Output)
   /// Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
   /// Structure is documented below.
-  final pulumi.Input<List<BatchRuntimeInfoApproximateUsage>>? approximateUsages;
+  final pulumi.Input<List<BatchRuntimeInfoApproximateUsage>?>? approximateUsages;
   /// (Output)
   /// Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
   /// Structure is documented below.
-  final pulumi.Input<List<BatchRuntimeInfoCurrentUsage>>? currentUsages;
+  final pulumi.Input<List<BatchRuntimeInfoCurrentUsage>?>? currentUsages;
   /// (Output)
   /// A URI pointing to the location of the diagnostics tarball.
-  final pulumi.Input<String>? diagnosticOutputUri;
+  final pulumi.Input<String?>? diagnosticOutputUri;
   /// (Output)
   /// Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
-  final pulumi.Input<Map<String, String>>? endpoints;
+  final pulumi.Input<Map<String, String>?>? endpoints;
   /// (Output)
   /// A URI pointing to the location of the stdout and stderr of the workload.
-  final pulumi.Input<String>? outputUri;
+  final pulumi.Input<String?>? outputUri;
 
   /// Creates a new [BatchRuntimeInfo].
   /// [approximateUsages] (Output)

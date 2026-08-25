@@ -6,21 +6,21 @@ class AuthzPolicyHttpRuleToOperationPath {
   /// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value xyz.abc.def
-  final pulumi.Input<String>? contains;
+  final pulumi.Input<String?>? contains;
   /// The input string must match exactly the string specified here.
   /// Examples:
   /// * abc only matches the value abc.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value abc.xyz
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value xyz.abc
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [AuthzPolicyHttpRuleToOperationPath].
   /// [contains] The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.

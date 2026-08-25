@@ -123,6 +123,17 @@ Future<GetSourceIamPolicyResult> getSourceIamPolicy(
   return GetSourceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSourceIamPolicyResult> getSourceIamPolicyOutput(
+  GetSourceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for organizationsource
 ///
 ///
@@ -240,4 +251,15 @@ Future<GetV2OrganizationSourceIamPolicyResult> getV2OrganizationSourceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetV2OrganizationSourceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetV2OrganizationSourceIamPolicyResult> getV2OrganizationSourceIamPolicyOutput(
+  GetV2OrganizationSourceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV2OrganizationSourceIamPolicyResult.fromMap);
 }

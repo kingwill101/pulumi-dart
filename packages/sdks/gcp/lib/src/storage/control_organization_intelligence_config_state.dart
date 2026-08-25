@@ -8,20 +8,20 @@ import 'control_organization_intelligence_config_trial_config.dart';
 /// Input properties used for looking up and filtering ControlOrganizationIntelligenceConfig resources.
 class ControlOrganizationIntelligenceConfigState {
   /// Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
-  final pulumi.Input<String>? editionConfig;
+  final pulumi.Input<String?>? editionConfig;
   /// The Intelligence config that is effective for the resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>>? effectiveIntelligenceConfigs;
+  final pulumi.Input<List<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>?>? effectiveIntelligenceConfigs;
   /// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlOrganizationIntelligenceConfigFilter>? filter;
+  final pulumi.Input<ControlOrganizationIntelligenceConfigFilter?>? filter;
   /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The trial configuration of the Storage Intelligence resource.
   /// Structure is documented below.
-  final pulumi.Input<List<ControlOrganizationIntelligenceConfigTrialConfig>>? trialConfigs;
+  final pulumi.Input<List<ControlOrganizationIntelligenceConfigTrialConfig>?>? trialConfigs;
   /// The time at which the Storage Intelligence Config resource is last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ControlOrganizationIntelligenceConfigState].
   /// [editionConfig] Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.

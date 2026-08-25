@@ -11,14 +11,14 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
   /// Defines a distribution TimeSeries filter and thresholds used for
   /// measuring good service and total service.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut>? distributionCut;
+  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut?>? distributionCut;
   /// A means to compute a ratio of `goodService` to `totalService`.
   /// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
   /// Must specify exactly two of good, bad, and total service filters.
   /// The relationship goodService + badService = totalService
   /// will be assumed.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio>? goodTotalRatio;
+  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio?>? goodTotalRatio;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformance].
   /// [distributionCut] Used when goodService is defined by a count of values aggregated in a

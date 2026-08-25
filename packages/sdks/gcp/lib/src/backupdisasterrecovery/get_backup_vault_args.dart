@@ -15,7 +15,7 @@ class GetBackupVaultArgs {
   final pulumi.Input<String> location;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBackupVaultArgs].
   /// [backupVaultId] The id of Backup Vault resource.

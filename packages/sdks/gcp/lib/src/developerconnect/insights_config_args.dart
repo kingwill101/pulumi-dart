@@ -13,35 +13,35 @@ class InsightsConfigArgs {
   /// for more details such as format and size limitations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The name of the App Hub Application.
   /// Format:
   /// projects/{project}/locations/{location}/applications/{application}
-  final pulumi.Input<String>? appHubApplication;
+  final pulumi.Input<String?>? appHubApplication;
   /// The artifact configurations of the artifacts that are deployed.
   /// Structure is documented below.
-  final pulumi.Input<List<InsightsConfigArtifactConfig>>? artifactConfigs;
+  final pulumi.Input<List<InsightsConfigArtifactConfig>?>? artifactConfigs;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// ID of the requesting InsightsConfig.
   final pulumi.Input<String> insightsConfigId;
   /// Set of labels associated with an InsightsConfig.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The projects to track with the InsightsConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsConfigTargetProjects>? targetProjects;
+  final pulumi.Input<InsightsConfigTargetProjects?>? targetProjects;
 
   /// Creates a new [InsightsConfigArgs].
   /// [annotations] User specified annotations. See https://google.aip.dev/148#annotations

@@ -6,10 +6,10 @@ import 'repository_remote_repository_config_npm_repository_custom_repository.dar
 class RepositoryRemoteRepositoryConfigNpmRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository>? customRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository?>? customRepository;
   /// Address of the remote repository.
   /// Possible values are: `NPMJS`.
-  final pulumi.Input<String>? publicRepository;
+  final pulumi.Input<String?>? publicRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigNpmRepository].
   /// [customRepository] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.

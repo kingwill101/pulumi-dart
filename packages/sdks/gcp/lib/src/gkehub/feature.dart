@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_args.dart';
 import 'feature_fleet_default_member_config.dart';
 import 'feature_gkehub_state.dart';
+import 'feature_resource_state.dart';
 import 'feature_spec.dart';
+import 'feature_state.dart';
 
 /// Feature represents the settings and status of any Hub Feature.
 ///
@@ -3000,14 +3002,14 @@ class Feature extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// State of the Feature resource itself.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceStates;
+  late final pulumi.Output<List<FeatureResourceState>> resourceStates;
   /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   /// Structure is documented below.
   late final pulumi.Output<FeatureSpec?> spec;
   /// (Output)
   /// Output only. The "running state" of the Feature in this Hub.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<FeatureState>> states;
   /// (Output)
   /// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> updateTime;
@@ -3024,21 +3026,22 @@ class Feature extends pulumi.CustomResource {
           'gcp:gkehub/feature:Feature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     fleetDefaultMemberConfig = registerOutput<FeatureFleetDefaultMemberConfig?>('fleetDefaultMemberConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureFleetDefaultMemberConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceStates = registerOutput<List<Map<String, dynamic>>>('resourceStates');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceStates = registerOutput<List<FeatureResourceState>>('resourceStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureResourceState>(guardedValue, (value) => FeatureResourceState.fromMap((value as Map).cast<String, dynamic>())); });
     spec = registerOutput<FeatureSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<FeatureState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureState>(guardedValue, (value) => FeatureState.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -3047,11 +3050,12 @@ class Feature extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FeatureGkehubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Feature._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3068,16 +3072,42 @@ class Feature extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     fleetDefaultMemberConfig = registerOutput<FeatureFleetDefaultMemberConfig?>('fleetDefaultMemberConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureFleetDefaultMemberConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceStates = registerOutput<List<Map<String, dynamic>>>('resourceStates');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceStates = registerOutput<List<FeatureResourceState>>('resourceStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureResourceState>(guardedValue, (value) => FeatureResourceState.fromMap((value as Map).cast<String, dynamic>())); });
     spec = registerOutput<FeatureSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<FeatureState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureState>(guardedValue, (value) => FeatureState.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Feature] resource.
+  Feature.reference(String urn)
+    : super(
+        'gcp:gkehub/feature:Feature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    fleetDefaultMemberConfig = registerOutput<FeatureFleetDefaultMemberConfig?>('fleetDefaultMemberConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureFleetDefaultMemberConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceStates = registerOutput<List<FeatureResourceState>>('resourceStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureResourceState>(guardedValue, (value) => FeatureResourceState.fromMap((value as Map).cast<String, dynamic>())); });
+    spec = registerOutput<FeatureSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    states = registerOutput<List<FeatureState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureState>(guardedValue, (value) => FeatureState.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

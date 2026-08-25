@@ -7,40 +7,40 @@ import 'data_export_ingestion_label.dart';
 /// Input properties used for looking up and filtering DataExport resources.
 class DataExportState {
   /// Timestamp indicating when the DataExport resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The unique identifier for the data export.
-  final pulumi.Input<String>? dataExportId;
+  final pulumi.Input<String?>? dataExportId;
   /// Status of the current export.
   /// Structure is documented below.
-  final pulumi.Input<List<DataExportDataExportStatus>>? dataExportStatuses;
+  final pulumi.Input<List<DataExportDataExportStatus>?>? dataExportStatuses;
   /// Last, exclusive time from the range.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The estimated export volume in bytes.
-  final pulumi.Input<int>? estimatedVolume;
+  final pulumi.Input<int?>? estimatedVolume;
   /// Actual volume of data exported.
-  final pulumi.Input<int>? exportedVolume;
+  final pulumi.Input<int?>? exportedVolume;
   /// Link to the destination Cloud Storage bucket.
-  final pulumi.Input<String>? gcsBucket;
+  final pulumi.Input<String?>? gcsBucket;
   /// The specific log types to include in the Data Export request.
-  final pulumi.Input<List<String>>? includeLogTypes;
+  final pulumi.Input<List<String>?>? includeLogTypes;
   /// The ingestion labels used to filter the export.
   /// Structure is documented below.
-  final pulumi.Input<List<DataExportIngestionLabel>>? ingestionLabels;
+  final pulumi.Input<List<DataExportIngestionLabel>?>? ingestionLabels;
   /// The unique identifier for the Chronicle instance.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the data export.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The namespaces used to filter the export.
-  final pulumi.Input<List<String>>? namespaces;
+  final pulumi.Input<List<String>?>? namespaces;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Start, inclusive time from the range.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Timestamp indicating the last time the DataExport resource was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DataExportState].
   /// [createTime] Timestamp indicating when the DataExport resource was created.
@@ -105,8 +105,8 @@ class DataExportState {
       dataExportId: (() { final guardedValue = map['dataExportId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataExportStatuses: (() { final guardedValue = map['dataExportStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataExportDataExportStatus>(guardedValue, (value) => DataExportDataExportStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      estimatedVolume: (() { final guardedValue = map['estimatedVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      exportedVolume: (() { final guardedValue = map['exportedVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      estimatedVolume: (() { final guardedValue = map['estimatedVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      exportedVolume: (() { final guardedValue = map['exportedVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       gcsBucket: (() { final guardedValue = map['gcsBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       includeLogTypes: (() { final guardedValue = map['includeLogTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ingestionLabels: (() { final guardedValue = map['ingestionLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataExportIngestionLabel>(guardedValue, (value) => DataExportIngestionLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),

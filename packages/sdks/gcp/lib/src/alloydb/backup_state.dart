@@ -12,79 +12,79 @@ class BackupState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The ID of the alloydb backup.
-  final pulumi.Input<String>? backupId;
+  final pulumi.Input<String?>? backupId;
   /// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Output only. The system-generated UID of the cluster which was used to create this resource.
-  final pulumi.Input<String>? clusterUid;
+  final pulumi.Input<String?>? clusterUid;
   /// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description of the backup.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-settable and human-readable display name for the Backup.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
   /// Structure is documented below.
-  final pulumi.Input<BackupEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<BackupEncryptionConfig?>? encryptionConfig;
   /// EncryptionInfo describes the encryption information of a cluster or a backup.
   /// Structure is documented below.
-  final pulumi.Input<List<BackupEncryptionInfo>>? encryptionInfos;
+  final pulumi.Input<List<BackupEncryptionInfo>?>? encryptionInfos;
   /// For Resource freshness validation (https://google.aip.dev/154)
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
   /// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
   /// Structure is documented below.
-  final pulumi.Input<List<BackupExpiryQuantity>>? expiryQuantities;
+  final pulumi.Input<List<BackupExpiryQuantity>?>? expiryQuantities;
   /// Output only. The time at which after the backup is eligible to be garbage collected.
   /// It is the duration specified by the backup's retention policy, added to the backup's createTime.
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the alloydb backup should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
   /// This can happen due to user-triggered updates or system actions like failover or maintenance.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Output only. The size of the backup in bytes.
-  final pulumi.Input<String>? sizeBytes;
+  final pulumi.Input<String?>? sizeBytes;
   /// Output only. The current state of the backup.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The backup type, which suggests the trigger for the backup.
   /// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BackupState].
   /// [annotations] Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'delivery_pipeline_args.dart';
+import 'delivery_pipeline_condition.dart';
 import 'delivery_pipeline_serial_pipeline.dart';
 import 'delivery_pipeline_state.dart';
 
@@ -1645,7 +1646,7 @@ class DeliveryPipeline extends pulumi.CustomResource {
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Output only. Information around the state of the Delivery Pipeline.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<DeliveryPipelineCondition>> conditions;
   /// Output only. Time at which the pipeline was created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -1701,21 +1702,22 @@ class DeliveryPipeline extends pulumi.CustomResource {
           'gcp:clouddeploy/deliveryPipeline:DeliveryPipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<DeliveryPipelineCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeliveryPipelineCondition>(guardedValue, (value) => DeliveryPipelineCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serialPipeline = registerOutput<DeliveryPipelineSerialPipeline?>('serialPipeline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryPipelineSerialPipeline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');
@@ -1727,11 +1729,12 @@ class DeliveryPipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeliveryPipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeliveryPipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1745,19 +1748,48 @@ class DeliveryPipeline extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<DeliveryPipelineCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeliveryPipelineCondition>(guardedValue, (value) => DeliveryPipelineCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serialPipeline = registerOutput<DeliveryPipelineSerialPipeline?>('serialPipeline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryPipelineSerialPipeline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    suspended = registerOutput<bool?>('suspended');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DeliveryPipeline] resource.
+  DeliveryPipeline.reference(String urn)
+    : super(
+        'gcp:clouddeploy/deliveryPipeline:DeliveryPipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<DeliveryPipelineCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeliveryPipelineCondition>(guardedValue, (value) => DeliveryPipelineCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serialPipeline = registerOutput<DeliveryPipelineSerialPipeline?>('serialPipeline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryPipelineSerialPipeline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');

@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ParameterVersion resources.
 class ParameterVersionState {
   /// The time at which the Parameter Version was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
-  final pulumi.Input<String>? kmsKeyVersion;
+  final pulumi.Input<String?>? kmsKeyVersion;
   /// The resource name of the Parameter Version. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Parameter Manager Parameter resource.
-  final pulumi.Input<String>? parameter;
+  final pulumi.Input<String?>? parameter;
   /// The Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? parameterData;
+  final pulumi.Input<String?>? parameterData;
   /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-  final pulumi.Input<String>? parameterVersionId;
+  final pulumi.Input<String?>? parameterVersionId;
   /// The time at which the Parameter Version was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ParameterVersionState].
   /// [createTime] The time at which the Parameter Version was created.

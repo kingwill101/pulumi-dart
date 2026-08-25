@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteConfigRemoteConfigParameterGroupParameterDefaultValue {
   /// If true, the parameter is omitted from the parameter values returned
   /// to a client.
-  final pulumi.Input<bool>? useInAppDefault;
+  final pulumi.Input<bool?>? useInAppDefault;
   /// The string value that the parameter is set to.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [RemoteConfigRemoteConfigParameterGroupParameterDefaultValue].
   /// [useInAppDefault] If true, the parameter is omitted from the parameter values returned

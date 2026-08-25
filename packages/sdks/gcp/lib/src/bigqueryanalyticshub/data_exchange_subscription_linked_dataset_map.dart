@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataExchangeSubscriptionLinkedDatasetMap {
   /// (Output)
   /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
-  final pulumi.Input<String>? linkedDataset;
+  final pulumi.Input<String?>? linkedDataset;
   /// (Output)
   /// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
-  final pulumi.Input<String>? linkedPubsubSubscription;
+  final pulumi.Input<String?>? linkedPubsubSubscription;
   /// (Output)
   /// Output only. Listing for which linked resource is created.
-  final pulumi.Input<String>? listing;
+  final pulumi.Input<String?>? listing;
   /// (Required) The identifier for this object. Format specified above.
   final pulumi.Input<String> resourceName;
 

@@ -5,7 +5,7 @@ import 'cluster_node_pool_defaults_node_config_defaults.dart';
 
 class ClusterNodePoolDefaults {
   /// Subset of NodeConfig message that has defaults.
-  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaults>? nodeConfigDefaults;
+  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaults?>? nodeConfigDefaults;
 
   /// Creates a new [ClusterNodePoolDefaults].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.

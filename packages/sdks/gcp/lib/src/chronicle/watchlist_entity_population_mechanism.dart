@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WatchlistEntityPopulationMechanism {
   /// Entities are added manually.
-  final pulumi.Input<Map<String, dynamic>>? manual;
+  final pulumi.Input<Map<String, dynamic>?>? manual;
 
   /// Creates a new [WatchlistEntityPopulationMechanism].
   /// [manual] Entities are added manually.

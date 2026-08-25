@@ -5,10 +5,10 @@ import 'v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce {
   /// Optional arguments to pass to the source during execution.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// A remote or local file.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile>? file;
+  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile?>? file;
   /// Required. The script interpreter to use.
   /// Possible values:
   /// INTERPRETER_UNSPECIFIED
@@ -22,10 +22,10 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// successful run. Absence or failure to read this file will result in
   /// this ExecResource being non-compliant. Output file size is limited to
   /// 500K bytes.
-  final pulumi.Input<String>? outputFilePath;
+  final pulumi.Input<String?>? outputFilePath;
   /// An inline script.
   /// The size of the script is limited to 32KiB.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce].
   /// [args] Optional arguments to pass to the source during execution.

@@ -8,13 +8,13 @@ import 'cloud_control_parameter_spec_validation_regexp_pattern.dart';
 class CloudControlParameterSpecValidation {
   /// Allowed set of values for the parameter.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecValidationAllowedValues>? allowedValues;
+  final pulumi.Input<CloudControlParameterSpecValidationAllowedValues?>? allowedValues;
   /// Number range for number parameters.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecValidationIntRange>? intRange;
+  final pulumi.Input<CloudControlParameterSpecValidationIntRange?>? intRange;
   /// Regular Expression Validator for parameter values.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecValidationRegexpPattern>? regexpPattern;
+  final pulumi.Input<CloudControlParameterSpecValidationRegexpPattern?>? regexpPattern;
 
   /// Creates a new [CloudControlParameterSpecValidation].
   /// [allowedValues] Allowed set of values for the parameter.

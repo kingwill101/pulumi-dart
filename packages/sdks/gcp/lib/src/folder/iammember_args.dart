@@ -10,7 +10,7 @@ import 'iammember_condition.dart';
 class IAMMemberArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<IAMMemberCondition>? condition;
+  final pulumi.Input<IAMMemberCondition?>? condition;
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   final pulumi.Input<String> folder;
   /// Identities that will be granted the privilege in `role`.

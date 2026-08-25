@@ -13,7 +13,7 @@ class FrameworkCloudControlDetail {
   /// specification of these parameters will be present in cloudcontrol.Eg: {
   /// "name": "location","value": "us-west-1"}.
   /// Structure is documented below.
-  final pulumi.Input<List<FrameworkCloudControlDetailParameter>>? parameters;
+  final pulumi.Input<List<FrameworkCloudControlDetailParameter>?>? parameters;
 
   /// Creates a new [FrameworkCloudControlDetail].
   /// [majorRevisionId] Major revision of cloudcontrol

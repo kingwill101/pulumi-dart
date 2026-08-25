@@ -5,36 +5,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DataTableRow resources.
 class DataTableRowState {
   /// DataTableRow create time
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The ID of the parent DataTable.
-  final pulumi.Input<String>? dataTableId;
+  final pulumi.Input<String?>? dataTableId;
   /// The ID of the DataTable Row.
-  final pulumi.Input<String>? dataTableRow;
+  final pulumi.Input<String?>? dataTableRow;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The Chronicle instance ID.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The GCP location of the Chronicle instance.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the data table row.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/dataTables/{data_table_id}/dataTableRows/{data_table_row}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// User-provided TTL of the data table row.
-  final pulumi.Input<String>? rowTimeToLive;
+  final pulumi.Input<String?>? rowTimeToLive;
   /// DataTableRow update time
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// All column values for a single row. The values should be in the same order
   /// as the columns of the data tables.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [DataTableRowState].
   /// [createTime] DataTableRow create time

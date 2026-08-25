@@ -6,7 +6,7 @@ import 'config_monitoring_request_logging.dart';
 class ConfigMonitoring {
   /// Configuration for logging requests made to this project to Stackdriver Logging
   /// Structure is documented below.
-  final pulumi.Input<ConfigMonitoringRequestLogging>? requestLogging;
+  final pulumi.Input<ConfigMonitoringRequestLogging?>? requestLogging;
 
   /// Creates a new [ConfigMonitoring].
   /// [requestLogging] Configuration for logging requests made to this project to Stackdriver Logging

@@ -17,31 +17,31 @@ class CertificateMapEntryArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
   /// for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
   /// selecting a proper certificate.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Set of labels associated with a Certificate Map Entry.
   /// An object containing a list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A map entry that is inputted into the certificate map
   final pulumi.Input<String> map;
   /// A predefined matcher for particular cases, other than SNI selection
-  final pulumi.Input<String>? matcher;
+  final pulumi.Input<String?>? matcher;
   /// A user-defined name of the Certificate Map Entry. Certificate Map Entry
   /// names must be unique globally and match pattern
   /// 'projects/*/locations/*/certificateMaps/*/certificateMapEntries/*'
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [CertificateMapEntryArgs].
   /// [certificates] A set of Certificates defines for the given hostname.

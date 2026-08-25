@@ -15,19 +15,19 @@ class EnvironmentApiRevisionDeploymentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Apigee environment name.
   final pulumi.Input<String> environment;
   /// Apigee organization ID.
   final pulumi.Input<String> orgId;
   /// If true, replaces other deployed revisions of this proxy in the environment.
-  final pulumi.Input<bool>? override;
+  final pulumi.Input<bool?>? override;
   /// API proxy revision number to deploy.
   final pulumi.Input<int> revision;
   /// If true, enables sequenced rollout for safe traffic switching.
-  final pulumi.Input<bool>? sequencedRollout;
+  final pulumi.Input<bool?>? sequencedRollout;
   /// Optional service account the deployed proxy runs as.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [EnvironmentApiRevisionDeploymentArgs].
   /// [api] Apigee API proxy name.
@@ -69,7 +69,7 @@ class EnvironmentApiRevisionDeploymentArgs {
       environment: pulumi.Input.fromValue(map['environment'] as String),
       orgId: pulumi.Input.fromValue(map['orgId'] as String),
       override: (() { final guardedValue = map['override']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue((map['revision'] as num).toInt()),
       sequencedRollout: (() { final guardedValue = map['sequencedRollout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -7,75 +7,75 @@ import 'autonomous_database_source_config.dart';
 /// Input properties used for looking up and filtering AutonomousDatabase resources.
 class AutonomousDatabaseState {
   /// The password for the default ADMIN user.
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// The ID of the Autonomous Database to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
-  final pulumi.Input<String>? autonomousDatabaseId;
+  final pulumi.Input<String?>? autonomousDatabaseId;
   /// The subnet CIDR range for the Autonmous Database.
-  final pulumi.Input<String>? cidr;
+  final pulumi.Input<String?>? cidr;
   /// The date and time that the Autonomous Database was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The name of the Autonomous Database. The database name must be unique in
   /// the project. The name must begin with a letter and can
   /// contain a maximum of 30 alphanumeric characters.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
-  final pulumi.Input<List<String>>? disasterRecoverySupportedLocations;
+  final pulumi.Input<List<String>?>? disasterRecoverySupportedLocations;
   /// The display name for the Autonomous Database. The name does not have to
   /// be unique within your project.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The ID of the subscription entitlement associated with the Autonomous
   /// Database.
-  final pulumi.Input<String>? entitlementId;
+  final pulumi.Input<String?>? entitlementId;
   /// The labels or tags associated with the Autonomous Database.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The name of the Autonomous Database resource in the following format:
   /// projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the VPC network used by the Autonomous Database.
   /// Format: projects/{project}/global/networks/{network}
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The name of the OdbNetwork associated with the Autonomous Database.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the odbSubnet and backup_odb_subnet.
-  final pulumi.Input<String>? odbNetwork;
+  final pulumi.Input<String?>? odbNetwork;
   /// The name of the OdbSubnet associated with the Autonomous Database for
   /// IP allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  final pulumi.Input<String>? odbSubnet;
+  final pulumi.Input<String?>? odbSubnet;
   /// The peer Autonomous Database names of the given Autonomous Database.
-  final pulumi.Input<List<String>>? peerAutonomousDatabases;
+  final pulumi.Input<List<String>?>? peerAutonomousDatabases;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The properties of an Autonomous Database.
   /// Structure is documented below.
-  final pulumi.Input<AutonomousDatabaseProperties>? properties;
+  final pulumi.Input<AutonomousDatabaseProperties?>? properties;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The source Autonomous Database configuration for the standby Autonomous Database.
   /// Structure is documented below.
-  final pulumi.Input<AutonomousDatabaseSourceConfig>? sourceConfig;
+  final pulumi.Input<AutonomousDatabaseSourceConfig?>? sourceConfig;
 
   /// Creates a new [AutonomousDatabaseState].
   /// [adminPassword] The password for the default ADMIN user.

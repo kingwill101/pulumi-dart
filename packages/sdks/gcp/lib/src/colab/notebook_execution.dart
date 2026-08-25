@@ -3752,7 +3752,7 @@ class NotebookExecution extends pulumi.CustomResource {
           'gcp:colab/notebookExecution:NotebookExecution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3776,11 +3776,12 @@ class NotebookExecution extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotebookExecutionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotebookExecution._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3794,6 +3795,32 @@ class NotebookExecution extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    directNotebookSource = registerOutput<NotebookExecutionDirectNotebookSource?>('directNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDirectNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    executionTimeout = registerOutput<String?>('executionTimeout');
+    executionUser = registerOutput<String?>('executionUser');
+    gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>('gcsNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionGcsNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcsOutputUri = registerOutput<String>('gcsOutputUri');
+    location = registerOutput<String>('location');
+    notebookExecutionJobId = registerOutput<String>('notebookExecutionJobId');
+    notebookRuntimeTemplateResourceName = registerOutput<String?>('notebookRuntimeTemplateResourceName');
+    project = registerOutput<String>('project');
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    workbenchRuntime = registerOutput<NotebookExecutionWorkbenchRuntime?>('workbenchRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionWorkbenchRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NotebookExecution] resource.
+  NotebookExecution.reference(String urn)
+    : super(
+        'gcp:colab/notebookExecution:NotebookExecution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

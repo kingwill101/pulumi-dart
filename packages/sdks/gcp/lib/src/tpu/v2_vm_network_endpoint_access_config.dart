@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2VmNetworkEndpointAccessConfig {
   /// (Output)
   /// An external IP address associated with the TPU worker.
-  final pulumi.Input<String>? externalIp;
+  final pulumi.Input<String?>? externalIp;
 
   /// Creates a new [V2VmNetworkEndpointAccessConfig].
   /// [externalIp] (Output)

@@ -12,43 +12,43 @@ import 'backup_plan_retention_policy.dart';
 class BackupPlanArgs {
   /// Defines the configuration of Backups created via this BackupPlan.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupConfig>? backupConfig;
+  final pulumi.Input<BackupPlanBackupConfig?>? backupConfig;
   /// Defines a schedule for automatic Backup creation via this BackupPlan.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupSchedule>? backupSchedule;
+  final pulumi.Input<BackupPlanBackupSchedule?>? backupSchedule;
   /// The source cluster from which Backups will be created via this BackupPlan.
   final pulumi.Input<String> cluster;
   /// This flag indicates whether this BackupPlan has been deactivated.
   /// Setting this field to True locks the BackupPlan such that no further updates will be allowed
   /// (except deletes), including the deactivated field itself. It also prevents any new Backups
   /// from being created via this BackupPlan (including scheduled Backups).
-  final pulumi.Input<bool>? deactivated;
+  final pulumi.Input<bool?>? deactivated;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User specified descriptive string for this BackupPlan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Description: A set of custom labels supplied by the user.
   /// A list of key-&gt;value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The region of the Backup Plan.
   final pulumi.Input<String> location;
   /// The full name of the BackupPlan Resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// RetentionPolicy governs lifecycle of Backups created under this plan.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<BackupPlanRetentionPolicy?>? retentionPolicy;
 
   /// Creates a new [BackupPlanArgs].
   /// [backupConfig] Defines the configuration of Backups created via this BackupPlan.

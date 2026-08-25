@@ -7,28 +7,28 @@ class VolumeReplicationTransferStat {
   /// The elapsed time since the creation of the snapshot on the source volume that was last replicated
   /// to the destination volume. Lag time represents the difference in age of the destination volume
   /// data in relation to the source volume data.
-  final pulumi.Input<String>? lagDuration;
+  final pulumi.Input<String?>? lagDuration;
   /// (Output)
   /// Size of last completed transfer in bytes.
-  final pulumi.Input<String>? lastTransferBytes;
+  final pulumi.Input<String?>? lastTransferBytes;
   /// (Output)
   /// Time taken during last completed transfer.
-  final pulumi.Input<String>? lastTransferDuration;
+  final pulumi.Input<String?>? lastTransferDuration;
   /// (Output)
   /// Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  final pulumi.Input<String>? lastTransferEndTime;
+  final pulumi.Input<String?>? lastTransferEndTime;
   /// (Output)
   /// A message describing the cause of the last transfer failure.
-  final pulumi.Input<String>? lastTransferError;
+  final pulumi.Input<String?>? lastTransferError;
   /// (Output)
   /// Cumulative time taken across all transfers for the replication relationship.
-  final pulumi.Input<String>? totalTransferDuration;
+  final pulumi.Input<String?>? totalTransferDuration;
   /// (Output)
   /// Cumulative bytes transferred so far for the replication relationship.
-  final pulumi.Input<String>? transferBytes;
+  final pulumi.Input<String?>? transferBytes;
   /// (Output)
   /// Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [VolumeReplicationTransferStat].
   /// [lagDuration] (Output)

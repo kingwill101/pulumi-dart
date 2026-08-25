@@ -22,7 +22,7 @@ class AutoscalerAutoscalingPolicyLoadBalancingUtilization {
 
   factory AutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicyLoadBalancingUtilization(
-      target: pulumi.Input.fromValue(map['target'] as double),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
     );
   }
 }

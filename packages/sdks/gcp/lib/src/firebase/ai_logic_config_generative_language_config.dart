@@ -9,7 +9,7 @@ class AiLogicConfigGenerativeLanguageConfig {
   /// the Google Cloud console.
   /// Do **not** add this Gemini API key into your app's codebase
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The value of the API key. The API key must have
@@ -20,9 +20,9 @@ class AiLogicConfigGenerativeLanguageConfig {
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.
-  final pulumi.Input<String>? apiKeyWo;
+  final pulumi.Input<String?>? apiKeyWo;
   /// Triggers update of `apiKeyWo` write-only. Increment this value when an update to `apiKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<String>? apiKeyWoVersion;
+  final pulumi.Input<String?>? apiKeyWoVersion;
 
   /// Creates a new [AiLogicConfigGenerativeLanguageConfig].
   /// [apiKey] The value of the API key. The API key must have

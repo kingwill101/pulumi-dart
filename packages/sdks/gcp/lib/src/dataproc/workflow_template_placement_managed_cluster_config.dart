@@ -17,37 +17,37 @@ import 'workflow_template_placement_managed_cluster_config_worker_config.dart';
 
 class WorkflowTemplatePlacementManagedClusterConfig {
   /// Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig>? autoscalingConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig?>? autoscalingConfig;
   /// Encryption settings for the cluster.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig?>? encryptionConfig;
   /// Port/endpoint configuration for this cluster
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigEndpointConfig>? endpointConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigEndpointConfig?>? endpointConfig;
   /// The shared Compute Engine config settings for all instances in a cluster.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig>? gceClusterConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig?>? gceClusterConfig;
   /// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig>? gkeClusterConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig?>? gkeClusterConfig;
   /// Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
-  final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction>>? initializationActions;
+  final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction>?>? initializationActions;
   /// Lifecycle setting for the cluster.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig>? lifecycleConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig?>? lifecycleConfig;
   /// The Compute Engine config settings for additional worker instances in a cluster.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMasterConfig>? masterConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMasterConfig?>? masterConfig;
   /// Metastore configuration.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig>? metastoreConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig?>? metastoreConfig;
   /// The Compute Engine config settings for additional worker instances in a cluster.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig>? secondaryWorkerConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig?>? secondaryWorkerConfig;
   /// Security settings for the cluster.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecurityConfig>? securityConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecurityConfig?>? securityConfig;
   /// The config settings for software inside the cluster.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig>? softwareConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig?>? softwareConfig;
   /// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
-  final pulumi.Input<String>? stagingBucket;
+  final pulumi.Input<String?>? stagingBucket;
   /// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-  final pulumi.Input<String>? tempBucket;
+  final pulumi.Input<String?>? tempBucket;
   /// The Compute Engine config settings for additional worker instances in a cluster.
   ///
   /// - - -
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigWorkerConfig>? workerConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigWorkerConfig?>? workerConfig;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfig].
   /// [autoscalingConfig] Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.

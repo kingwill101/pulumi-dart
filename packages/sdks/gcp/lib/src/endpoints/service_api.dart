@@ -5,13 +5,13 @@ import 'service_api_method.dart';
 
 class ServiceApi {
   /// A list of Method objects; structure is documented below.
-  final pulumi.Input<List<ServiceApiMethod>>? methods;
+  final pulumi.Input<List<ServiceApiMethod>?>? methods;
   /// The simple name of the endpoint as described in the config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
-  final pulumi.Input<String>? syntax;
+  final pulumi.Input<String?>? syntax;
   /// A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ServiceApi].
   /// [methods] A list of Method objects; structure is documented below.

@@ -13,15 +13,15 @@ class DomainTrustArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
   final pulumi.Input<String> domain;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-  final pulumi.Input<bool>? selectiveAuthentication;
+  final pulumi.Input<bool?>? selectiveAuthentication;
   /// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
   final pulumi.Input<List<String>> targetDnsIpAddresses;
   /// The fully qualified target domain name which will be in trust with the current domain.

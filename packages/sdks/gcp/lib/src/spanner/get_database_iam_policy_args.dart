@@ -13,7 +13,7 @@ class GetDatabaseIamPolicyArgs {
   final pulumi.Input<String> instance;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDatabaseIamPolicyArgs].
   /// [database] The name of the Spanner database.

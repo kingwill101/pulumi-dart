@@ -2,11 +2,7 @@
 
 All notable changes to this package will be documented in this file.
 
-## 9.35.0+1
-
-- Add provider documentation and a runnable example.
-
-## 9.35.0
+## 9.35.1+1
 
 - Initial generated release.
 

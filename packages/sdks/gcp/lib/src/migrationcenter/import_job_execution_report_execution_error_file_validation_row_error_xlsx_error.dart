@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError {
   /// (Output)
   /// The row number where the error was detected.
-  final pulumi.Input<int>? rowNumber;
+  final pulumi.Input<int?>? rowNumber;
   /// (Output)
   /// The name of the sheet where the error was detected.
-  final pulumi.Input<String>? sheet;
+  final pulumi.Input<String?>? sheet;
 
   /// Creates a new [ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError].
   /// [rowNumber] (Output)
@@ -27,7 +27,7 @@ class ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError {
 
   factory ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError.fromMap(Map<String, dynamic> map) {
     return ImportJobExecutionReportExecutionErrorFileValidationRowErrorXlsxError(
-      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sheet: (() { final guardedValue = map['sheet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

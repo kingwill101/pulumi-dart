@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit {
   /// Relative path from the repository root to the Skaffold file.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Git ref the package should be cloned from.
-  final pulumi.Input<String>? ref;
+  final pulumi.Input<String?>? ref;
   /// Git repository the package should be cloned from.
   final pulumi.Input<String> repo;
 

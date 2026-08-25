@@ -6,14 +6,14 @@ import 'bare_metal_cluster_validation_check_status.dart';
 class BareMetalClusterValidationCheck {
   /// (Output)
   /// Options used for the validation check.
-  final pulumi.Input<String>? options;
+  final pulumi.Input<String?>? options;
   /// (Output)
   /// The scenario when the preflight checks were run..
-  final pulumi.Input<String>? scenario;
+  final pulumi.Input<String?>? scenario;
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalClusterValidationCheckStatus>>? statuses;
+  final pulumi.Input<List<BareMetalClusterValidationCheckStatus>?>? statuses;
 
   /// Creates a new [BareMetalClusterValidationCheck].
   /// [options] (Output)

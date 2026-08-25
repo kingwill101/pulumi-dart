@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
   /// (Optional)
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType].
   /// [dataSource] (Optional)

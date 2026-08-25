@@ -15,36 +15,36 @@ class RepositoryState {
   /// Map keys are policy IDs supplied by users during policy creation. They must
   /// unique within a repository and be under 128 characters in length.
   /// Structure is documented below.
-  final pulumi.Input<List<RepositoryCleanupPolicy>>? cleanupPolicies;
+  final pulumi.Input<List<RepositoryCleanupPolicy>?>? cleanupPolicies;
   /// If true, the cleanup pipeline is prevented from deleting versions in this
   /// repository.
-  final pulumi.Input<bool>? cleanupPolicyDryRun;
+  final pulumi.Input<bool?>? cleanupPolicyDryRun;
   /// The time when the repository was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The user-provided description of the repository.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Docker repository config contains repository level configuration for the repositories of docker type.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryDockerConfig>? dockerConfig;
+  final pulumi.Input<RepositoryDockerConfig?>? dockerConfig;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The format of packages that are stored in the repository. Supported formats
   /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
   /// You can only create alpha formats if you are a member of the
   /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The Cloud KMS resource name of the customer managed encryption key that’s
   /// used to encrypt the contents of the Repository. Has the form:
   /// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
   /// This value may not be changed after the Repository has been created.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Labels with user-defined metadata.
   /// This field may contain up to 64 entries. Label keys and values may be no
   /// longer than 63 characters. Label keys must begin with a lowercase letter
@@ -53,48 +53,48 @@ class RepositoryState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the repository's location. In addition to specific regions,
   /// special values for multi-region locations are `asia`, `europe`, and `us`.
   /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
   /// or use the
   /// gcp.artifactregistry.getLocations
   /// data source for possible values.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// MavenRepositoryConfig is maven related repository details.
   /// Provides additional configuration details for repositories of the maven
   /// format type.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryMavenConfig>? mavenConfig;
+  final pulumi.Input<RepositoryMavenConfig?>? mavenConfig;
   /// The mode configures the repository to serve artifacts from different sources.
   /// Default value is `STANDARD_REPOSITORY`.
   /// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the repository, for example:
   /// "repo1"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
-  final pulumi.Input<String>? registryUri;
+  final pulumi.Input<String?>? registryUri;
   /// Configuration specific for a Remote Repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfig>? remoteRepositoryConfig;
+  final pulumi.Input<RepositoryRemoteRepositoryConfig?>? remoteRepositoryConfig;
   /// The last part of the repository name, for example:
   /// "repo1"
-  final pulumi.Input<String>? repositoryId;
+  final pulumi.Input<String?>? repositoryId;
   /// The time when the repository was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Configuration specific for a Virtual Repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryVirtualRepositoryConfig>? virtualRepositoryConfig;
+  final pulumi.Input<RepositoryVirtualRepositoryConfig?>? virtualRepositoryConfig;
   /// Configuration for vulnerability scanning of artifacts stored in this repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryVulnerabilityScanningConfig>? vulnerabilityScanningConfig;
+  final pulumi.Input<RepositoryVulnerabilityScanningConfig?>? vulnerabilityScanningConfig;
 
   /// Creates a new [RepositoryState].
   /// [cleanupPolicies] Cleanup policies for this repository. Cleanup policies indicate when

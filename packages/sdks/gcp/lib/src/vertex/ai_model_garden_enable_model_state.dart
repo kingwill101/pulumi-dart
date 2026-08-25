@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AiModelGardenEnableModel resources.
 class AiModelGardenEnableModelState {
   /// Output only. The result of the model enablement.
-  final pulumi.Input<String>? enablementState;
+  final pulumi.Input<String?>? enablementState;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. The publisher endpoint that the project is enabled for.
   /// Format:
   /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{publisher_model}`.
-  final pulumi.Input<String>? publisherEndpoint;
+  final pulumi.Input<String?>? publisherEndpoint;
   /// The resource name of the Model Garden publisher model to enable.
   /// Format: `publishers/{publisher}/models/{publisher_model}`, optionally
   /// with a version suffix, for example
   /// `publishers/google/models/paligemma@paligemma-224-float32`.
-  final pulumi.Input<String>? publisherModelName;
+  final pulumi.Input<String?>? publisherModelName;
 
   /// Creates a new [AiModelGardenEnableModelState].
   /// [enablementState] Output only. The result of the model enablement.

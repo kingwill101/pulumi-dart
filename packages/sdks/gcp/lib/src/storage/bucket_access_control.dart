@@ -241,7 +241,7 @@ class BucketAccessControl extends pulumi.CustomResource {
           'gcp:storage/bucketAccessControl:BucketAccessControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -256,11 +256,12 @@ class BucketAccessControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketAccessControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketAccessControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,6 +275,23 @@ class BucketAccessControl extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    domain = registerOutput<String>('domain');
+    email = registerOutput<String>('email');
+    entity = registerOutput<String>('entity');
+    role = registerOutput<String?>('role');
+  }
+
+  /// Creates a typed reference to an existing [BucketAccessControl] resource.
+  BucketAccessControl.reference(String urn)
+    : super(
+        'gcp:storage/bucketAccessControl:BucketAccessControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_args.dart';
+import 'subnet_dhcp_address_range.dart';
 import 'subnet_state.dart';
 
 /// Subnet in a private cloud. A Private Cloud contains two types of subnets: `management` subnets (such as vMotion) that
@@ -328,7 +329,7 @@ class Subnet extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// DHCP address ranges.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dhcpAddressRanges;
+  late final pulumi.Output<List<SubnetDhcpAddressRange>> dhcpAddressRanges;
   /// The canonical identifier of the logical router that this subnet is attached to.
   late final pulumi.Output<String> gatewayId;
   /// The IP address of the gateway of this subnet. Must fall within the IP prefix defined above.
@@ -370,10 +371,10 @@ class Subnet extends pulumi.CustomResource {
           'gcp:vmwareengine/subnet:Subnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
-    dhcpAddressRanges = registerOutput<List<Map<String, dynamic>>>('dhcpAddressRanges');
+    dhcpAddressRanges = registerOutput<List<SubnetDhcpAddressRange>>('dhcpAddressRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetDhcpAddressRange>(guardedValue, (value) => SubnetDhcpAddressRange.fromMap((value as Map).cast<String, dynamic>())); });
     gatewayId = registerOutput<String>('gatewayId');
     gatewayIp = registerOutput<String>('gatewayIp');
     ipCidrRange = registerOutput<String>('ipCidrRange');
@@ -392,11 +393,12 @@ class Subnet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subnet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -411,7 +413,7 @@ class Subnet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
-    dhcpAddressRanges = registerOutput<List<Map<String, dynamic>>>('dhcpAddressRanges');
+    dhcpAddressRanges = registerOutput<List<SubnetDhcpAddressRange>>('dhcpAddressRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetDhcpAddressRange>(guardedValue, (value) => SubnetDhcpAddressRange.fromMap((value as Map).cast<String, dynamic>())); });
     gatewayId = registerOutput<String>('gatewayId');
     gatewayIp = registerOutput<String>('gatewayIp');
     ipCidrRange = registerOutput<String>('ipCidrRange');
@@ -419,6 +421,30 @@ class Subnet extends pulumi.CustomResource {
     parent = registerOutput<String>('parent');
     standardConfig = registerOutput<bool>('standardConfig');
     this.state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vlanId = registerOutput<int>('vlanId');
+  }
+
+  /// Creates a typed reference to an existing [Subnet] resource.
+  Subnet.reference(String urn)
+    : super(
+        'gcp:vmwareengine/subnet:Subnet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dhcpAddressRanges = registerOutput<List<SubnetDhcpAddressRange>>('dhcpAddressRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetDhcpAddressRange>(guardedValue, (value) => SubnetDhcpAddressRange.fromMap((value as Map).cast<String, dynamic>())); });
+    gatewayId = registerOutput<String>('gatewayId');
+    gatewayIp = registerOutput<String>('gatewayIp');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    standardConfig = registerOutput<bool>('standardConfig');
+    state = registerOutput<String>('state');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

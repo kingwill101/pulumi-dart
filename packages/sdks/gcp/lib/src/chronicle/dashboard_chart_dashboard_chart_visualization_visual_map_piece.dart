@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationVisualMapPiece {
   /// (Optional)
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
   /// (Optional)
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// (Optional)
-  final pulumi.Input<int>? max;
+  final pulumi.Input<int?>? max;
   /// (Optional)
-  final pulumi.Input<int>? min;
+  final pulumi.Input<int?>? min;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationVisualMapPiece].
   /// [color] (Optional)
@@ -37,8 +37,8 @@ class DashboardChartDashboardChartVisualizationVisualMapPiece {
     return DashboardChartDashboardChartVisualizationVisualMapPiece(
       color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

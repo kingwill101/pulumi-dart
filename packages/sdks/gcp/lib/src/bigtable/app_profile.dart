@@ -1178,7 +1178,7 @@ class AppProfile extends pulumi.CustomResource {
           'gcp:bigtable/appProfile:AppProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appProfileId = registerOutput<String>('appProfileId');
     dataBoostIsolationReadOnly = registerOutput<AppProfileDataBoostIsolationReadOnly?>('dataBoostIsolationReadOnly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppProfileDataBoostIsolationReadOnly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1186,7 +1186,7 @@ class AppProfile extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instance = registerOutput<String?>('instance');
-    multiClusterRoutingClusterIds = registerOutput<List<String>?>('multiClusterRoutingClusterIds');
+    multiClusterRoutingClusterIds = registerOutput<List<String>?>('multiClusterRoutingClusterIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     multiClusterRoutingUseAny = registerOutput<bool?>('multiClusterRoutingUseAny');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1200,11 +1200,12 @@ class AppProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1224,7 +1225,31 @@ class AppProfile extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instance = registerOutput<String?>('instance');
-    multiClusterRoutingClusterIds = registerOutput<List<String>?>('multiClusterRoutingClusterIds');
+    multiClusterRoutingClusterIds = registerOutput<List<String>?>('multiClusterRoutingClusterIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    multiClusterRoutingUseAny = registerOutput<bool?>('multiClusterRoutingUseAny');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rowAffinity = registerOutput<bool?>('rowAffinity');
+    singleClusterRouting = registerOutput<AppProfileSingleClusterRouting?>('singleClusterRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppProfileSingleClusterRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    standardIsolation = registerOutput<AppProfileStandardIsolation>('standardIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppProfileStandardIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AppProfile] resource.
+  AppProfile.reference(String urn)
+    : super(
+        'gcp:bigtable/appProfile:AppProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appProfileId = registerOutput<String>('appProfileId');
+    dataBoostIsolationReadOnly = registerOutput<AppProfileDataBoostIsolationReadOnly?>('dataBoostIsolationReadOnly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppProfileDataBoostIsolationReadOnly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    instance = registerOutput<String?>('instance');
+    multiClusterRoutingClusterIds = registerOutput<List<String>?>('multiClusterRoutingClusterIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     multiClusterRoutingUseAny = registerOutput<bool?>('multiClusterRoutingUseAny');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

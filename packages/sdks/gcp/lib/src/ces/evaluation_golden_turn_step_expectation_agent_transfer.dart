@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EvaluationGoldenTurnStepExpectationAgentTransfer {
   /// (Output)
   /// Display name of the agent.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The agent to which the conversation is being transferred.
-  final pulumi.Input<String>? targetAgent;
+  final pulumi.Input<String?>? targetAgent;
 
   /// Creates a new [EvaluationGoldenTurnStepExpectationAgentTransfer].
   /// [displayName] (Output)

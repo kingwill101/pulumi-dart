@@ -6,7 +6,7 @@ import 'global_vm_extension_policy_instance_selector_label_selector.dart';
 class GlobalVmExtensionPolicyInstanceSelector {
   /// LabelSelector matches VM labels.
   /// Structure is documented below.
-  final pulumi.Input<GlobalVmExtensionPolicyInstanceSelectorLabelSelector>? labelSelector;
+  final pulumi.Input<GlobalVmExtensionPolicyInstanceSelectorLabelSelector?>? labelSelector;
 
   /// Creates a new [GlobalVmExtensionPolicyInstanceSelector].
   /// [labelSelector] LabelSelector matches VM labels.

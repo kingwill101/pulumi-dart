@@ -1071,7 +1071,7 @@ class MetastoreDatabaseIamMember extends pulumi.CustomResource {
           'gcp:dataproc/metastoreDatabaseIamMember:MetastoreDatabaseIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<MetastoreDatabaseIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreDatabaseIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
@@ -1088,11 +1088,12 @@ class MetastoreDatabaseIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetastoreDatabaseIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetastoreDatabaseIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1106,6 +1107,25 @@ class MetastoreDatabaseIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<MetastoreDatabaseIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreDatabaseIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    database = registerOutput<String>('database');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    serviceId = registerOutput<String>('serviceId');
+  }
+
+  /// Creates a typed reference to an existing [MetastoreDatabaseIamMember] resource.
+  MetastoreDatabaseIamMember.reference(String urn)
+    : super(
+        'gcp:dataproc/metastoreDatabaseIamMember:MetastoreDatabaseIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<MetastoreDatabaseIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreDatabaseIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');

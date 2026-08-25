@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_network_endpoint_groups_get_network_endpoint_groups_args_doc}
 class GetNetworkEndpointGroupsArgs {
   /// A filter expression that filters Network Endpoint Groups listed in the response.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The ID of the project to list Network Endpoint Groups in. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The zone to list Network Endpoint Groups for. If `zone` is not specified, the provider-level zone must be set and is used
   /// instead.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetNetworkEndpointGroupsArgs].
   /// [filter] A filter expression that filters Network Endpoint Groups listed in the response.

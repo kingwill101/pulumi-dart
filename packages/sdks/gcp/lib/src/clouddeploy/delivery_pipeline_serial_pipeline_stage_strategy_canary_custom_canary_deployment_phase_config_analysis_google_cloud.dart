@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_de
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud {
   /// Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
-  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck>>? alertPolicyChecks;
+  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheck>?>? alertPolicyChecks;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloud].
   /// [alertPolicyChecks] Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.

@@ -14,10 +14,10 @@ class RouteArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination range of outgoing packets that this route applies to.
   /// Only IPv4 is supported.
   final pulumi.Input<String> destRange;
@@ -28,7 +28,7 @@ class RouteArgs {
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network that this route applies to.
   final pulumi.Input<String> network;
   /// URL to a gateway that should handle matching packets.
@@ -38,7 +38,7 @@ class RouteArgs {
   /// * `projects/project/global/gateways/default-internet-gateway`
   /// * `global/gateways/default-internet-gateway`
   /// * The string `default-internet-gateway`.
-  final pulumi.Input<String>? nextHopGateway;
+  final pulumi.Input<String?>? nextHopGateway;
   /// The IP address or URL to a forwarding rule of type
   /// loadBalancingScheme=INTERNAL that should handle matching
   /// packets.
@@ -52,37 +52,37 @@ class RouteArgs {
   /// of a forwarding rule from the same VPC or any peered VPC.
   /// Note that this can only be used when the destinationRange is
   /// a public (non-RFC 1918) IP CIDR range.
-  final pulumi.Input<String>? nextHopIlb;
+  final pulumi.Input<String?>? nextHopIlb;
   /// URL to an instance that should handle matching packets.
   /// You can specify this as a full or partial URL. For example:
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
   /// * `projects/project/zones/zone/instances/instance`
   /// * `zones/zone/instances/instance`
   /// * Just the instance name, with the zone in `nextHopInstanceZone`.
-  final pulumi.Input<String>? nextHopInstance;
+  final pulumi.Input<String?>? nextHopInstance;
   /// (Optional when `nextHopInstance` is
   /// specified)  The zone of the instance specified in
   /// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
   /// a URL.
-  final pulumi.Input<String>? nextHopInstanceZone;
+  final pulumi.Input<String?>? nextHopInstanceZone;
   /// Network IP address of an instance that should handle matching packets.
-  final pulumi.Input<String>? nextHopIp;
+  final pulumi.Input<String?>? nextHopIp;
   /// URL to a VpnTunnel that should handle matching packets.
-  final pulumi.Input<String>? nextHopVpnTunnel;
+  final pulumi.Input<String?>? nextHopVpnTunnel;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final pulumi.Input<RouteParams>? params;
+  final pulumi.Input<RouteParams?>? params;
   /// The priority of this route. Priority is used to break ties in cases
   /// where there is more than one matching route of equal prefix length.
   /// In the case of two routes with equal prefix length, the one with the
   /// lowest-numbered priority value wins.
   /// Default value is 1000. Valid range is 0 through 65535.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A list of instance tags to which this route applies.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [RouteArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -152,7 +152,7 @@ class RouteArgs {
       nextHopIp: (() { final guardedValue = map['nextHopIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextHopVpnTunnel: (() { final guardedValue = map['nextHopVpnTunnel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

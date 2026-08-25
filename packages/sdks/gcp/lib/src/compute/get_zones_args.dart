@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_zones_get_zones_args_doc}
 class GetZonesArgs {
   /// Project from which to list available zones. Defaults to project declared in the provider.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region from which to list available zones. Defaults to region declared in the provider.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
   /// Defaults to no filtering (all available zones - both `UP` and `DOWN`).
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [GetZonesArgs].
   /// [project] Project from which to list available zones. Defaults to project declared in the provider.

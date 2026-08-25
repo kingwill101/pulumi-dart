@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationYAxis {
   /// Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
-  final pulumi.Input<String>? axisType;
+  final pulumi.Input<String?>? axisType;
   /// (Optional)
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Optional)
-  final pulumi.Input<int>? max;
+  final pulumi.Input<int?>? max;
   /// (Optional)
-  final pulumi.Input<int>? min;
+  final pulumi.Input<int?>? min;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationYAxis].
   /// [axisType] Possible values are: `VALUE`, `CATEGORY`, `TIME`, `LOG`.
@@ -37,8 +37,8 @@ class DashboardChartDashboardChartVisualizationYAxis {
     return DashboardChartDashboardChartVisualizationYAxis(
       axisType: (() { final guardedValue = map['axisType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

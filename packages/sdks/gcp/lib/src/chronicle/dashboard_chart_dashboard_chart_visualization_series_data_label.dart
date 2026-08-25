@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationSeriesDataLabel {
   /// Whether to show data label.
-  final pulumi.Input<bool>? show;
+  final pulumi.Input<bool?>? show;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesDataLabel].
   /// [show] Whether to show data label.

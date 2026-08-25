@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterEnterpriseConfig {
   /// The effective tier of the cluster.
-  final pulumi.Input<String>? clusterTier;
+  final pulumi.Input<String?>? clusterTier;
   /// (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
-  final pulumi.Input<String>? desiredTier;
+  final pulumi.Input<String?>? desiredTier;
 
   /// Creates a new [ClusterEnterpriseConfig].
   /// [clusterTier] The effective tier of the cluster.

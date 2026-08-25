@@ -15,33 +15,33 @@ class AiIndexEndpointArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the Index.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
   /// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexEndpointEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiIndexEndpointEncryptionSpec?>? encryptionSpec;
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
   /// Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
   /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
   /// Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexEndpointPrivateServiceConnectConfig>? privateServiceConnectConfig;
+  final pulumi.Input<AiIndexEndpointPrivateServiceConnectConfig?>? privateServiceConnectConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// If true, the deployed index will be accessible through public endpoint.
-  final pulumi.Input<bool>? publicEndpointEnabled;
+  final pulumi.Input<bool?>? publicEndpointEnabled;
   /// The region of the index endpoint. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AiIndexEndpointArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

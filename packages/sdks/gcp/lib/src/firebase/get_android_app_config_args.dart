@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_firebase_get_android_app_config_get_android_app_config_args_doc}
 class GetAndroidAppConfigArgs {
   final pulumi.Input<String> appId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAndroidAppConfigArgs].
   /// [appId] Required.

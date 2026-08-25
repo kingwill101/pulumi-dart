@@ -648,7 +648,7 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
           'gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');
@@ -661,11 +661,12 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentKeyvaluemapsEntriesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentKeyvaluemapsEntries._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -679,6 +680,21 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');
+    this.name = registerOutput<String>('name');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentKeyvaluemapsEntries] resource.
+  EnvironmentKeyvaluemapsEntries.reference(String urn)
+    : super(
+        'gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');
     this.name = registerOutput<String>('name');

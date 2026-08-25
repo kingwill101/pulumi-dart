@@ -6,7 +6,7 @@ import 'stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgr
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
   /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>>? postgresqlColumns;
+  final pulumi.Input<List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>?>? postgresqlColumns;
   /// Table name.
   final pulumi.Input<String> table;
 

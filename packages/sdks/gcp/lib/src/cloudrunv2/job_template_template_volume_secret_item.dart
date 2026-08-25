@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateTemplateVolumeSecretItem {
   /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-  final pulumi.Input<int>? mode;
+  final pulumi.Input<int?>? mode;
   /// The relative path of the secret in the container.
   final pulumi.Input<String> path;
   /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
@@ -30,7 +30,7 @@ class JobTemplateTemplateVolumeSecretItem {
 
   factory JobTemplateTemplateVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateVolumeSecretItem(
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       path: pulumi.Input.fromValue(map['path'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );

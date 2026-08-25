@@ -67,8 +67,8 @@ class GetKeysZoneSigningKey {
       digests: pulumi.Input.fromValue(pulumi.Input.decodeList<GetKeysZoneSigningKeyDigest>(map['digests']!, (value) => GetKeysZoneSigningKeyDigest.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
       isActive: pulumi.Input.fromValue(map['isActive'] as bool),
-      keyLength: pulumi.Input.fromValue(map['keyLength'] as int),
-      keyTag: pulumi.Input.fromValue(map['keyTag'] as int),
+      keyLength: pulumi.Input.fromValue((map['keyLength'] as num).toInt()),
+      keyTag: pulumi.Input.fromValue((map['keyTag'] as num).toInt()),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }

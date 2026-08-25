@@ -6,7 +6,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> bundle;
   /// The set of namespaces to be exempted from the bundle.
-  final pulumi.Input<List<String>>? exemptedNamespaces;
+  final pulumi.Input<List<String>?>? exemptedNamespaces;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle].
   /// [bundle] The identifier for this object. Format specified above.

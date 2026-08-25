@@ -8,21 +8,21 @@ class IndexField {
   /// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
   /// `vectorConfig` can be specified.
   /// Possible values are: `CONTAINS`.
-  final pulumi.Input<String>? arrayConfig;
+  final pulumi.Input<String?>? arrayConfig;
   /// Name of the field.
-  final pulumi.Input<String>? fieldPath;
+  final pulumi.Input<String?>? fieldPath;
   /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
   /// Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
   /// Possible values are: `ASCENDING`, `DESCENDING`.
-  final pulumi.Input<String>? order;
+  final pulumi.Input<String?>? order;
   /// Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
   /// `vectorConfig` can be specified.
   /// Structure is documented below.
-  final pulumi.Input<IndexFieldSearchConfig>? searchConfig;
+  final pulumi.Input<IndexFieldSearchConfig?>? searchConfig;
   /// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
   /// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
   /// Structure is documented below.
-  final pulumi.Input<IndexFieldVectorConfig>? vectorConfig;
+  final pulumi.Input<IndexFieldVectorConfig?>? vectorConfig;
 
   /// Creates a new [IndexField].
   /// [arrayConfig] Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and

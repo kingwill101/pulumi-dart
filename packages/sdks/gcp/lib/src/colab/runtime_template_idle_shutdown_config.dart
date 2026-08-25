@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeTemplateIdleShutdownConfig {
   /// The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
-  final pulumi.Input<String>? idleTimeout;
+  final pulumi.Input<String?>? idleTimeout;
 
   /// Creates a new [RuntimeTemplateIdleShutdownConfig].
   /// [idleTimeout] The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].

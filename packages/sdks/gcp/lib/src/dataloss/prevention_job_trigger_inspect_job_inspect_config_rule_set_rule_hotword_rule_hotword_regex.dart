@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
   /// The index of the submatch to extract as findings. When not specified,
   /// the entire match is returned. No more than 3 may be included.
-  final pulumi.Input<List<int>>? groupIndexes;
+  final pulumi.Input<List<int>?>? groupIndexes;
   /// Pattern defining the regular expression. Its syntax
   /// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-  final pulumi.Input<String>? pattern;
+  final pulumi.Input<String?>? pattern;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex].
   /// [groupIndexes] The index of the submatch to extract as findings. When not specified,

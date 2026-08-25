@@ -5,12 +5,12 @@ import 'backend_service_consistent_hash_http_cookie_ttl.dart';
 
 class BackendServiceConsistentHashHttpCookie {
   /// Name of the cookie.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path to set for the cookie.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Lifetime of the cookie.
   /// Structure is documented below.
-  final pulumi.Input<BackendServiceConsistentHashHttpCookieTtl>? ttl;
+  final pulumi.Input<BackendServiceConsistentHashHttpCookieTtl?>? ttl;
 
   /// Creates a new [BackendServiceConsistentHashHttpCookie].
   /// [name] Name of the cookie.

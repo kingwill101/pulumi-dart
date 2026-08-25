@@ -10,24 +10,24 @@ import 'cx_generative_settings_llm_model_settings.dart';
 class CxGenerativeSettingsState {
   /// Settings for Generative Fallback.
   /// Structure is documented below.
-  final pulumi.Input<CxGenerativeSettingsFallbackSettings>? fallbackSettings;
+  final pulumi.Input<CxGenerativeSettingsFallbackSettings?>? fallbackSettings;
   /// Settings for Generative Safety.
   /// Structure is documented below.
-  final pulumi.Input<CxGenerativeSettingsGenerativeSafetySettings>? generativeSafetySettings;
+  final pulumi.Input<CxGenerativeSettingsGenerativeSafetySettings?>? generativeSafetySettings;
   /// Settings for knowledge connector.
   /// Structure is documented below.
-  final pulumi.Input<CxGenerativeSettingsKnowledgeConnectorSettings>? knowledgeConnectorSettings;
+  final pulumi.Input<CxGenerativeSettingsKnowledgeConnectorSettings?>? knowledgeConnectorSettings;
   /// Language for this settings.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// LLM model settings.
   /// Structure is documented below.
-  final pulumi.Input<CxGenerativeSettingsLlmModelSettings>? llmModelSettings;
+  final pulumi.Input<CxGenerativeSettingsLlmModelSettings?>? llmModelSettings;
   /// The unique identifier of the generativeSettings.
   /// Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/generativeSettings.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The agent to create a flow for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [CxGenerativeSettingsState].
   /// [fallbackSettings] Settings for Generative Fallback.

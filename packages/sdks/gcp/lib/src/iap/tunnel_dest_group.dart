@@ -205,11 +205,11 @@ class TunnelDestGroup extends pulumi.CustomResource {
           'gcp:iap/tunnelDestGroup:TunnelDestGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    cidrs = registerOutput<List<String>?>('cidrs');
+    cidrs = registerOutput<List<String>?>('cidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -221,11 +221,12 @@ class TunnelDestGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TunnelDestGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TunnelDestGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,9 +240,27 @@ class TunnelDestGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    cidrs = registerOutput<List<String>?>('cidrs');
+    cidrs = registerOutput<List<String>?>('cidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    groupName = registerOutput<String>('groupName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [TunnelDestGroup] resource.
+  TunnelDestGroup.reference(String urn)
+    : super(
+        'gcp:iap/tunnelDestGroup:TunnelDestGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cidrs = registerOutput<List<String>?>('cidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

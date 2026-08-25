@@ -13,7 +13,7 @@ class GetConfigArgs {
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConfigArgs].
   /// [name] The name of the Runtime Configurator configuration.

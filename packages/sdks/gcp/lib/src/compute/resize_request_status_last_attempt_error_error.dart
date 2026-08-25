@@ -6,17 +6,17 @@ import 'resize_request_status_last_attempt_error_error_error_detail.dart';
 class ResizeRequestStatusLastAttemptErrorError {
   /// (Output)
   /// The error type identifier for this error.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// (Output)
   /// An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetail>>? errorDetails;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorErrorErrorDetail>?>? errorDetails;
   /// (Output)
   /// Indicates the field in the request that caused the error. This property is optional.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// (Output)
   /// The localized error message in the above locale.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ResizeRequestStatusLastAttemptErrorError].
   /// [code] (Output)

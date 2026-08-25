@@ -8,39 +8,39 @@ import 'app_hosting_traffic_target.dart';
 /// Input properties used for looking up and filtering AppHostingTraffic resources.
 class AppHostingTrafficState {
   /// Id of the backend that this Traffic config applies to
-  final pulumi.Input<String>? backend;
+  final pulumi.Input<String?>? backend;
   /// Time at which the backend was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Current state of traffic allocation for the backend.
   /// When setting `target`, this field may differ for some time until the desired state is reached.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingTrafficCurrent>>? currents;
+  final pulumi.Input<List<AppHostingTrafficCurrent>?>? currents;
   /// Time at which the backend was deleted.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location the Backend that this Traffic config applies to
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the backend traffic config
   /// Format:
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The policy for how builds and rollouts are triggered and rolled out.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingTrafficRolloutPolicy>? rolloutPolicy;
+  final pulumi.Input<AppHostingTrafficRolloutPolicy?>? rolloutPolicy;
   /// Set to manually control the desired traffic for the backend. This will
   /// cause current to eventually match this value. The percentages must add
   /// up to 100.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingTrafficTarget>? target;
+  final pulumi.Input<AppHostingTrafficTarget?>? target;
   /// System-assigned, unique identifier.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Time at which the backend was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AppHostingTrafficState].
   /// [backend] Id of the backend that this Traffic config applies to

@@ -1014,7 +1014,7 @@ class CryptoKeyIAMPolicy extends pulumi.CustomResource {
           'gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
     etag = registerOutput<String>('etag');
@@ -1026,11 +1026,12 @@ class CryptoKeyIAMPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CryptoKeyIAMPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CryptoKeyIAMPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1044,6 +1045,20 @@ class CryptoKeyIAMPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [CryptoKeyIAMPolicy] resource.
+  CryptoKeyIAMPolicy.reference(String urn)
+    : super(
+        'gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

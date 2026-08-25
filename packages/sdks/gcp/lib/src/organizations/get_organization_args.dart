@@ -10,9 +10,9 @@ class GetOrganizationArgs {
   /// The domain name of the Organization.
   ///
   /// &gt; **NOTE:** One of `organization` or `domain` must be specified.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// The Organization's numeric ID, including an optional `organizations/` prefix.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
 
   /// Creates a new [GetOrganizationArgs].
   /// [domain] The domain name of the Organization.

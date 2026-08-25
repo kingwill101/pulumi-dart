@@ -56,13 +56,13 @@ class GetReservationResourceStatusReservationMaintenance {
 
   factory GetReservationResourceStatusReservationMaintenance.fromMap(Map<String, dynamic> map) {
     return GetReservationResourceStatusReservationMaintenance(
-      instanceMaintenanceOngoingCount: pulumi.Input.fromValue(map['instanceMaintenanceOngoingCount'] as int),
-      instanceMaintenancePendingCount: pulumi.Input.fromValue(map['instanceMaintenancePendingCount'] as int),
-      maintenanceOngoingCount: pulumi.Input.fromValue(map['maintenanceOngoingCount'] as int),
-      maintenancePendingCount: pulumi.Input.fromValue(map['maintenancePendingCount'] as int),
+      instanceMaintenanceOngoingCount: pulumi.Input.fromValue((map['instanceMaintenanceOngoingCount'] as num).toInt()),
+      instanceMaintenancePendingCount: pulumi.Input.fromValue((map['instanceMaintenancePendingCount'] as num).toInt()),
+      maintenanceOngoingCount: pulumi.Input.fromValue((map['maintenanceOngoingCount'] as num).toInt()),
+      maintenancePendingCount: pulumi.Input.fromValue((map['maintenancePendingCount'] as num).toInt()),
       schedulingType: pulumi.Input.fromValue(map['schedulingType'] as String),
-      subblockInfraMaintenanceOngoingCount: pulumi.Input.fromValue(map['subblockInfraMaintenanceOngoingCount'] as int),
-      subblockInfraMaintenancePendingCount: pulumi.Input.fromValue(map['subblockInfraMaintenancePendingCount'] as int),
+      subblockInfraMaintenanceOngoingCount: pulumi.Input.fromValue((map['subblockInfraMaintenanceOngoingCount'] as num).toInt()),
+      subblockInfraMaintenancePendingCount: pulumi.Input.fromValue((map['subblockInfraMaintenancePendingCount'] as num).toInt()),
       upcomingGroupMaintenances: pulumi.Input.fromValue(pulumi.Input.decodeList<GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance>(map['upcomingGroupMaintenances']!, (value) => GetReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

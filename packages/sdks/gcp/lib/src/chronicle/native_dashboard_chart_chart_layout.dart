@@ -8,9 +8,9 @@ class NativeDashboardChartChartLayout {
   /// The number of rows the chart spans.
   final pulumi.Input<int> spanY;
   /// The starting X coordinate.
-  final pulumi.Input<int>? startX;
+  final pulumi.Input<int?>? startX;
   /// The starting Y coordinate.
-  final pulumi.Input<int>? startY;
+  final pulumi.Input<int?>? startY;
 
   /// Creates a new [NativeDashboardChartChartLayout].
   /// [spanX] The number of columns the chart spans.
@@ -35,10 +35,10 @@ class NativeDashboardChartChartLayout {
 
   factory NativeDashboardChartChartLayout.fromMap(Map<String, dynamic> map) {
     return NativeDashboardChartChartLayout(
-      spanX: pulumi.Input.fromValue(map['spanX'] as int),
-      spanY: pulumi.Input.fromValue(map['spanY'] as int),
-      startX: (() { final guardedValue = map['startX']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      startY: (() { final guardedValue = map['startY']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      spanX: pulumi.Input.fromValue((map['spanX'] as num).toInt()),
+      spanY: pulumi.Input.fromValue((map['spanY'] as num).toInt()),
+      startX: (() { final guardedValue = map['startX']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startY: (() { final guardedValue = map['startY']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBinaryAuthorization {
   /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
   /// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
-  final pulumi.Input<String>? evaluationMode;
+  final pulumi.Input<String?>? evaluationMode;
 
   /// Creates a new [ClusterBinaryAuthorization].
   /// [enabled] Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.

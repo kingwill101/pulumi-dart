@@ -6,13 +6,13 @@ class SettingsAccessSettingsGcipSettings {
   /// Login page URI associated with the GCIP tenants. Typically, all resources within
   /// the same project share the same login page, though it could be overridden at the
   /// sub resource level.
-  final pulumi.Input<String>? loginPageUri;
+  final pulumi.Input<String?>? loginPageUri;
   /// GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
   /// beginning with a number character to indicate authenticating with GCIP tenant flow,
   /// or in the format of _ to indicate authenticating with GCIP agent flow. If agent flow
   /// is used, tenantIds should only contain one single element, while for tenant flow,
   /// tenantIds can contain multiple elements.
-  final pulumi.Input<List<String>>? tenantIds;
+  final pulumi.Input<List<String>?>? tenantIds;
 
   /// Creates a new [SettingsAccessSettingsGcipSettings].
   /// [loginPageUri] Login page URI associated with the GCIP tenants. Typically, all resources within

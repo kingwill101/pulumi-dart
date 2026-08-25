@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecuritySettingsEndpointControlPolicy {
   /// Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.
-  final pulumi.Input<List<String>>? allowedOrigins;
+  final pulumi.Input<List<String>?>? allowedOrigins;
   /// Optional. The scope in which this policy's allowedOrigins list is enforced.
   /// Possible values are: `ENFORCEMENT_SCOPE_UNSPECIFIED`, `VPCSC_ONLY`, `ALWAYS`.
-  final pulumi.Input<String>? enforcementScope;
+  final pulumi.Input<String?>? enforcementScope;
 
   /// Creates a new [SecuritySettingsEndpointControlPolicy].
   /// [allowedOrigins] Optional. The allowed HTTP(s) origins that tools in the App are able to directly call.

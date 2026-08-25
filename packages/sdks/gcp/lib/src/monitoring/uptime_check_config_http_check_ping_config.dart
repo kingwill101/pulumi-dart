@@ -20,7 +20,7 @@ class UptimeCheckConfigHttpCheckPingConfig {
 
   factory UptimeCheckConfigHttpCheckPingConfig.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigHttpCheckPingConfig(
-      pingsCount: pulumi.Input.fromValue(map['pingsCount'] as int),
+      pingsCount: pulumi.Input.fromValue((map['pingsCount'] as num).toInt()),
     );
   }
 }

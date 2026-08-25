@@ -6,7 +6,7 @@ class MigrationJobPostgresHomogeneousConfig {
   /// Whether the migration uses native logical replication.
   final pulumi.Input<bool> isNativeLogical;
   /// Maximum number of additional subscriptions to use for the migration job.
-  final pulumi.Input<int>? maxAdditionalSubscriptions;
+  final pulumi.Input<int?>? maxAdditionalSubscriptions;
 
   /// Creates a new [MigrationJobPostgresHomogeneousConfig].
   /// [isNativeLogical] Whether the migration uses native logical replication.
@@ -26,7 +26,7 @@ class MigrationJobPostgresHomogeneousConfig {
   factory MigrationJobPostgresHomogeneousConfig.fromMap(Map<String, dynamic> map) {
     return MigrationJobPostgresHomogeneousConfig(
       isNativeLogical: pulumi.Input.fromValue(map['isNativeLogical'] as bool),
-      maxAdditionalSubscriptions: (() { final guardedValue = map['maxAdditionalSubscriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAdditionalSubscriptions: (() { final guardedValue = map['maxAdditionalSubscriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

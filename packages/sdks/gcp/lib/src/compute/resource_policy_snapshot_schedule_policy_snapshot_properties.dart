@@ -6,14 +6,14 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
   /// Creates the new snapshot in the snapshot chain labeled with the
   /// specified name. The chain name must be 1-63 characters long and comply
   /// with RFC1035.
-  final pulumi.Input<String>? chainName;
+  final pulumi.Input<String?>? chainName;
   /// Whether to perform a 'guest aware' snapshot.
-  final pulumi.Input<bool>? guestFlush;
+  final pulumi.Input<bool?>? guestFlush;
   /// A set of key-value pairs.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Cloud Storage bucket location to store the auto snapshot
   /// (regional or multi-regional)
-  final pulumi.Input<String>? storageLocations;
+  final pulumi.Input<String?>? storageLocations;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicySnapshotProperties].
   /// [chainName] Creates the new snapshot in the snapshot chain labeled with the

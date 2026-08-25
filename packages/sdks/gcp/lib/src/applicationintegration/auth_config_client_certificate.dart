@@ -7,7 +7,7 @@ class AuthConfigClientCertificate {
   final pulumi.Input<String> encryptedPrivateKey;
   /// 'passphrase' should be left unset if private key is not encrypted.
   /// Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
-  final pulumi.Input<String>? passphrase;
+  final pulumi.Input<String?>? passphrase;
   /// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
   final pulumi.Input<String> sslCertificate;
 

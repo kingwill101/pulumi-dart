@@ -1,9 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'worker_pool_args.dart';
 import 'worker_pool_binary_authorization.dart';
+import 'worker_pool_condition.dart';
+import 'worker_pool_instance_split.dart';
+import 'worker_pool_instance_split_status.dart';
 import 'worker_pool_scaling.dart';
 import 'worker_pool_state.dart';
 import 'worker_pool_template.dart';
+import 'worker_pool_terminal_condition.dart';
 
 /// WorkerPool acts as a top-level container that manages a set of configurations and revision templates which implement a pull-based workload. WorkerPool exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
 ///
@@ -4051,7 +4055,7 @@ class WorkerPool extends pulumi.CustomResource {
   late final pulumi.Output<String?> clientVersion;
   /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the WorkerPool does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<WorkerPoolCondition>> conditions;
   /// The creation time.
   late final pulumi.Output<String> createTime;
   /// Email address of the authenticated creator.
@@ -4092,10 +4096,10 @@ class WorkerPool extends pulumi.CustomResource {
   late final pulumi.Output<String> generation;
   /// Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> instanceSplitStatuses;
+  late final pulumi.Output<List<WorkerPoolInstanceSplitStatus>> instanceSplitStatuses;
   /// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> instanceSplits;
+  late final pulumi.Output<List<WorkerPoolInstanceSplit>> instanceSplits;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
   /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -4139,7 +4143,7 @@ class WorkerPool extends pulumi.CustomResource {
   late final pulumi.Output<WorkerPoolTemplate> template;
   /// The Condition of this WorkerPool, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> terminalConditions;
+  late final pulumi.Output<List<WorkerPoolTerminalCondition>> terminalConditions;
   /// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   late final pulumi.Output<String> uid;
   /// The last-modified time.
@@ -4157,28 +4161,29 @@ class WorkerPool extends pulumi.CustomResource {
           'gcp:cloudrunv2/workerPool:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<WorkerPoolBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences');
+    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
-    instanceSplitStatuses = registerOutput<List<Map<String, dynamic>>>('instanceSplitStatuses');
-    instanceSplits = registerOutput<List<Map<String, dynamic>>>('instanceSplits');
-    labels = registerOutput<Map<String, String>?>('labels');
+    instanceSplitStatuses = registerOutput<List<WorkerPoolInstanceSplitStatus>>('instanceSplitStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolInstanceSplitStatus>(guardedValue, (value) => WorkerPoolInstanceSplitStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceSplits = registerOutput<List<WorkerPoolInstanceSplit>>('instanceSplits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolInstanceSplit>(guardedValue, (value) => WorkerPoolInstanceSplit.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
     latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
     latestReadyRevision = registerOutput<String>('latestReadyRevision');
@@ -4187,11 +4192,11 @@ class WorkerPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<WorkerPoolScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     template = registerOutput<WorkerPoolTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
+    terminalConditions = registerOutput<List<WorkerPoolTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolTerminalCondition>(guardedValue, (value) => WorkerPoolTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -4201,11 +4206,12 @@ class WorkerPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkerPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkerPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4219,26 +4225,26 @@ class WorkerPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<WorkerPoolBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences');
+    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
-    instanceSplitStatuses = registerOutput<List<Map<String, dynamic>>>('instanceSplitStatuses');
-    instanceSplits = registerOutput<List<Map<String, dynamic>>>('instanceSplits');
-    labels = registerOutput<Map<String, String>?>('labels');
+    instanceSplitStatuses = registerOutput<List<WorkerPoolInstanceSplitStatus>>('instanceSplitStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolInstanceSplitStatus>(guardedValue, (value) => WorkerPoolInstanceSplitStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceSplits = registerOutput<List<WorkerPoolInstanceSplit>>('instanceSplits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolInstanceSplit>(guardedValue, (value) => WorkerPoolInstanceSplit.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
     latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
     latestReadyRevision = registerOutput<String>('latestReadyRevision');
@@ -4247,11 +4253,58 @@ class WorkerPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<WorkerPoolScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     template = registerOutput<WorkerPoolTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
+    terminalConditions = registerOutput<List<WorkerPoolTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolTerminalCondition>(guardedValue, (value) => WorkerPoolTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [WorkerPool] resource.
+  WorkerPool.reference(String urn)
+    : super(
+        'gcp:cloudrunv2/workerPool:WorkerPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    binaryAuthorization = registerOutput<WorkerPoolBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    client = registerOutput<String?>('client');
+    clientVersion = registerOutput<String?>('clientVersion');
+    conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    generation = registerOutput<String>('generation');
+    instanceSplitStatuses = registerOutput<List<WorkerPoolInstanceSplitStatus>>('instanceSplitStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolInstanceSplitStatus>(guardedValue, (value) => WorkerPoolInstanceSplitStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceSplits = registerOutput<List<WorkerPoolInstanceSplit>>('instanceSplits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolInstanceSplit>(guardedValue, (value) => WorkerPoolInstanceSplit.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifier = registerOutput<String>('lastModifier');
+    latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
+    latestReadyRevision = registerOutput<String>('latestReadyRevision');
+    launchStage = registerOutput<String>('launchStage');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    observedGeneration = registerOutput<String>('observedGeneration');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    scaling = registerOutput<WorkerPoolScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    template = registerOutput<WorkerPoolTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPoolTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terminalConditions = registerOutput<List<WorkerPoolTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolTerminalCondition>(guardedValue, (value) => WorkerPoolTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

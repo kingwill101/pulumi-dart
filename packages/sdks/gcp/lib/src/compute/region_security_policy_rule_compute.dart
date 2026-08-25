@@ -1962,7 +1962,7 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
           'gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1983,11 +1983,12 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionSecurityPolicyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionSecurityPolicyRuleCompute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2001,6 +2002,29 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    match = registerOutput<RegionSecurityPolicyRuleMatch?>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkMatch = registerOutput<RegionSecurityPolicyRuleNetworkMatch?>('networkMatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRuleNetworkMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preconfiguredWafConfig = registerOutput<RegionSecurityPolicyRulePreconfiguredWafConfig?>('preconfiguredWafConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preview = registerOutput<bool?>('preview');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    rateLimitOptions = registerOutput<RegionSecurityPolicyRuleRateLimitOptions?>('rateLimitOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionSecurityPolicyRuleRateLimitOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    securityPolicy = registerOutput<String>('securityPolicy');
+  }
+
+  /// Creates a typed reference to an existing [RegionSecurityPolicyRuleCompute] resource.
+  RegionSecurityPolicyRuleCompute.reference(String urn)
+    : super(
+        'gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

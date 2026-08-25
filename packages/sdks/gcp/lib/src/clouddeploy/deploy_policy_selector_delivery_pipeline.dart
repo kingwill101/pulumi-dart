@@ -6,9 +6,9 @@ class DeployPolicySelectorDeliveryPipeline {
   /// ID of the DeliveryPipeline. The value of this field could be one of the following:
   /// - The last segment of a pipeline name
   /// - "*", all delivery pipelines in a location
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// DeliveryPipeline labels.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [DeployPolicySelectorDeliveryPipeline].
   /// [id] ID of the DeliveryPipeline. The value of this field could be one of the following:

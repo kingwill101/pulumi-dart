@@ -13,19 +13,19 @@ class DataExportArgs {
   /// Link to the destination Cloud Storage bucket.
   final pulumi.Input<String> gcsBucket;
   /// The specific log types to include in the Data Export request.
-  final pulumi.Input<List<String>>? includeLogTypes;
+  final pulumi.Input<List<String>?>? includeLogTypes;
   /// The ingestion labels used to filter the export.
   /// Structure is documented below.
-  final pulumi.Input<List<DataExportIngestionLabel>>? ingestionLabels;
+  final pulumi.Input<List<DataExportIngestionLabel>?>? ingestionLabels;
   /// The unique identifier for the Chronicle instance.
   final pulumi.Input<String> instance;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// The namespaces used to filter the export.
-  final pulumi.Input<List<String>>? namespaces;
+  final pulumi.Input<List<String>?>? namespaces;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Start, inclusive time from the range.
   final pulumi.Input<String> startTime;
 

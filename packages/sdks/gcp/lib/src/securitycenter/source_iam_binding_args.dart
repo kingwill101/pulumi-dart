@@ -8,7 +8,7 @@ import 'source_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_securitycenter_source_iam_binding_source_iam_binding_args_doc}
 class SourceIamBindingArgs {
-  final pulumi.Input<SourceIamBindingCondition>? condition;
+  final pulumi.Input<SourceIamBindingCondition?>? condition;
   final pulumi.Input<List<String>> members;
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.

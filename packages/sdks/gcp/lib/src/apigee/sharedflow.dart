@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sharedflow_args.dart';
+import 'sharedflow_meta_data.dart';
 import 'sharedflow_state.dart';
 
 /// You can combine policies and resources into a shared flow that you can consume from multiple API proxies, and even from other shared flows. Although it's like a proxy, a shared flow has no endpoint. It can be used only from an API proxy or shared flow that's in the same organization as the shared flow itself.
@@ -48,7 +49,7 @@ class Sharedflow extends pulumi.CustomResource {
   late final pulumi.Output<String> md5hash;
   /// Metadata describing the shared flow.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> metaDatas;
+  late final pulumi.Output<List<SharedflowMetaData>> metaDatas;
   /// The ID of the shared flow.
   late final pulumi.Output<String> name;
   /// The Apigee Organization name associated with the Apigee instance.
@@ -68,17 +69,17 @@ class Sharedflow extends pulumi.CustomResource {
           'gcp:apigee/sharedflow:Sharedflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     configBundle = registerOutput<String>('configBundle');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
-    metaDatas = registerOutput<List<Map<String, dynamic>>>('metaDatas');
+    metaDatas = registerOutput<List<SharedflowMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedflowMetaData>(guardedValue, (value) => SharedflowMetaData.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    revisions = registerOutput<List<String>>('revisions');
+    revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Sharedflow] resource's state with the given [name] and [id].
@@ -86,11 +87,12 @@ class Sharedflow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedflowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Sharedflow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -109,9 +111,29 @@ class Sharedflow extends pulumi.CustomResource {
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     latestRevisionId = registerOutput<String>('latestRevisionId');
     md5hash = registerOutput<String>('md5hash');
-    metaDatas = registerOutput<List<Map<String, dynamic>>>('metaDatas');
+    metaDatas = registerOutput<List<SharedflowMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedflowMetaData>(guardedValue, (value) => SharedflowMetaData.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    revisions = registerOutput<List<String>>('revisions');
+    revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Sharedflow] resource.
+  Sharedflow.reference(String urn)
+    : super(
+        'gcp:apigee/sharedflow:Sharedflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configBundle = registerOutput<String>('configBundle');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    detectMd5hash = registerOutput<String?>('detectMd5hash');
+    latestRevisionId = registerOutput<String>('latestRevisionId');
+    md5hash = registerOutput<String>('md5hash');
+    metaDatas = registerOutput<List<SharedflowMetaData>>('metaDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedflowMetaData>(guardedValue, (value) => SharedflowMetaData.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    revisions = registerOutput<List<String>>('revisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

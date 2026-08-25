@@ -5,104 +5,104 @@ import 'get_instance_autoscaling_config.dart';
 
 /// Result data returned by getInstance.
 class GetInstanceResult {
-  final List<GetInstanceAutoscalingConfig> autoscalingConfigs;
+  final List<GetInstanceAutoscalingConfig>? autoscalingConfigs;
   final String? config;
-  final String defaultBackupScheduleType;
-  final String deletionPolicy;
+  final String? defaultBackupScheduleType;
+  final String? deletionPolicy;
   final String? displayName;
-  final String edition;
-  final Map<String, String> effectiveLabels;
-  final bool forceDestroy;
+  final String? edition;
+  final Map<String, String>? effectiveLabels;
+  final bool? forceDestroy;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String instanceType;
-  final Map<String, String> labels;
-  final String name;
-  final int numNodes;
-  final int processingUnits;
+  final String? id;
+  final String? instanceType;
+  final Map<String, String>? labels;
+  final String? name;
+  final int? numNodes;
+  final int? processingUnits;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final String state;
+  final Map<String, String>? pulumiLabels;
+  final String? state;
 
   /// Creates a new [GetInstanceResult].
-  /// [autoscalingConfigs] Required.
+  /// [autoscalingConfigs] Optional.
   /// [config] Optional.
-  /// [defaultBackupScheduleType] Required.
-  /// [deletionPolicy] Required.
+  /// [defaultBackupScheduleType] Optional.
+  /// [deletionPolicy] Optional.
   /// [displayName] Optional.
-  /// [edition] Required.
-  /// [effectiveLabels] Required.
-  /// [forceDestroy] Required.
+  /// [edition] Optional.
+  /// [effectiveLabels] Optional.
+  /// [forceDestroy] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instanceType] Required.
-  /// [labels] Required.
-  /// [name] Required.
-  /// [numNodes] Required.
-  /// [processingUnits] Required.
+  /// [instanceType] Optional.
+  /// [labels] Optional.
+  /// [name] Optional.
+  /// [numNodes] Optional.
+  /// [processingUnits] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [state] Required.
+  /// [pulumiLabels] Optional.
+  /// [state] Optional.
   const GetInstanceResult({
-    required this.autoscalingConfigs,
+    this.autoscalingConfigs,
     this.config,
-    required this.defaultBackupScheduleType,
-    required this.deletionPolicy,
+    this.defaultBackupScheduleType,
+    this.deletionPolicy,
     this.displayName,
-    required this.edition,
-    required this.effectiveLabels,
-    required this.forceDestroy,
-    required this.id,
-    required this.instanceType,
-    required this.labels,
-    required this.name,
-    required this.numNodes,
-    required this.processingUnits,
+    this.edition,
+    this.effectiveLabels,
+    this.forceDestroy,
+    this.id,
+    this.instanceType,
+    this.labels,
+    this.name,
+    this.numNodes,
+    this.processingUnits,
     this.project,
-    required this.pulumiLabels,
-    required this.state,
+    this.pulumiLabels,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingConfigs': pulumi.Input.encodeList<GetInstanceAutoscalingConfig, Map<String, dynamic>>(autoscalingConfigs, (value) => value.toMap()),
+      'autoscalingConfigs': ?(() { final guardedValue = autoscalingConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceAutoscalingConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'config': ?config,
-      'defaultBackupScheduleType': defaultBackupScheduleType,
-      'deletionPolicy': deletionPolicy,
+      'defaultBackupScheduleType': ?defaultBackupScheduleType,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
-      'edition': edition,
-      'effectiveLabels': effectiveLabels,
-      'forceDestroy': forceDestroy,
-      'id': id,
-      'instanceType': instanceType,
-      'labels': labels,
-      'name': name,
-      'numNodes': numNodes,
-      'processingUnits': processingUnits,
+      'edition': ?edition,
+      'effectiveLabels': ?effectiveLabels,
+      'forceDestroy': ?forceDestroy,
+      'id': ?id,
+      'instanceType': ?instanceType,
+      'labels': ?labels,
+      'name': ?name,
+      'numNodes': ?numNodes,
+      'processingUnits': ?processingUnits,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'state': state,
+      'pulumiLabels': ?pulumiLabels,
+      'state': ?state,
     };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      autoscalingConfigs: pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(map['autoscalingConfigs']!, (value) => GetInstanceAutoscalingConfig.fromMap((value as Map).cast<String, dynamic>())),
+      autoscalingConfigs: (() { final guardedValue = map['autoscalingConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(guardedValue, (value) => GetInstanceAutoscalingConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      defaultBackupScheduleType: map['defaultBackupScheduleType'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
+      defaultBackupScheduleType: (() { final guardedValue = map['defaultBackupScheduleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      edition: map['edition'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      forceDestroy: map['forceDestroy'] as bool,
-      id: map['id'] as String,
-      instanceType: map['instanceType'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      numNodes: map['numNodes'] as int,
-      processingUnits: map['processingUnits'] as int,
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numNodes: (() { final guardedValue = map['numNodes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      processingUnits: (() { final guardedValue = map['processingUnits']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      state: map['state'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

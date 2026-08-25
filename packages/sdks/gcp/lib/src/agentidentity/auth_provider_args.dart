@@ -14,7 +14,7 @@ class AuthProviderArgs {
   /// Scopes appearing in `blockedScopes` are disallowed even if they appear in
   /// `allowedScopes`.
   /// The number of allowed scopes is limited to 200.
-  final pulumi.Input<List<String>>? allowedScopes;
+  final pulumi.Input<List<String>?>? allowedScopes;
   /// The ID to use for the AuthProvider, which will become the final segment
   /// of the AuthProvider's resource name.
   /// This value should be 1-63 characters, and valid characters
@@ -30,30 +30,30 @@ class AuthProviderArgs {
   /// even if it also appears in `allowedScopes`. `blockedScopes` takes
   /// precedence over `allowedScopes`. The number of blocked scopes is limited
   /// to 200.
-  final pulumi.Input<List<String>>? blockedScopes;
+  final pulumi.Input<List<String>?>? blockedScopes;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the resource.
   /// Must be less than 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Input only. Represents the workload identity in IAM `principal://` format of the
   /// agent(s) that will use this AuthProvider. Example:
   /// `principal://agents.global.org-${ORG_ID}.system.id.goog/resources/aiplatform/projects/{PROJECT_ID}/locations/{LOCATIONS}/reasoningEngines/{ID}`
-  final pulumi.Input<List<String>>? workloadIds;
+  final pulumi.Input<List<String>?>? workloadIds;
 
   /// Creates a new [AuthProviderArgs].
   /// [allowedScopes] List of scopes that are allowed to be requested for this auth_provider.

@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccessPolicy resources.
 class AccessPolicyState {
   /// Time the AccessPolicy was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Resource name of the AccessPolicy. Format: '{{policy_id}}'
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// Format: 'organizations/{{organization_id}}'
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Folder or project on which this policy is applicable.
   /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
-  final pulumi.Input<String>? scopes;
+  final pulumi.Input<String?>? scopes;
   /// Human readable title. Does not affect behavior.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// Time the AccessPolicy was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AccessPolicyState].
   /// [createTime] Time the AccessPolicy was created in UTC.

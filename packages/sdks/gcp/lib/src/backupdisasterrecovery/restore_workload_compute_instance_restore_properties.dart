@@ -21,74 +21,74 @@ import 'restore_workload_compute_instance_restore_properties_tags.dart';
 class RestoreWorkloadComputeInstanceRestoreProperties {
   /// Optional. Controls for advanced machine-related behavior features.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures>? advancedMachineFeatures;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures?>? advancedMachineFeatures;
   /// Optional. Specifies the reservations that this instance can consume from.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity>? allocationAffinity;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity?>? allocationAffinity;
   /// Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
-  final pulumi.Input<bool>? canIpForward;
+  final pulumi.Input<bool?>? canIpForward;
   /// Optional. Controls Confidential compute options on the instance.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig>? confidentialInstanceConfig;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig?>? confidentialInstanceConfig;
   /// Optional. Whether the resource should be protected against deletion.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// Optional. An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Array of disks associated with this instance.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesDisk>>? disks;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesDisk>?>? disks;
   /// Optional. Enables display device for the instance.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice>? displayDevice;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice?>? displayDevice;
   /// Optional. A list of the type and count of accelerator cards attached to the instance.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator>?>? guestAccelerators;
   /// Optional. Specifies the hostname of the instance.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey>? instanceEncryptionKey;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey?>? instanceEncryptionKey;
   /// Optional. KeyRevocationActionType of the instance.
   /// Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
-  final pulumi.Input<String>? keyRevocationActionType;
+  final pulumi.Input<String?>? keyRevocationActionType;
   /// Optional. Labels to apply to this instance.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesLabel>>? labels;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesLabel>?>? labels;
   /// Optional. Full or partial URL of the machine type resource to use for this instance.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Optional. This includes custom metadata and predefined keys.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesMetadata>? metadata;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesMetadata?>? metadata;
   /// Optional. Minimum CPU platform to use for this instance.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// Required. Name of the compute instance.
   final pulumi.Input<String> name;
   /// Optional. An array of network configurations for this instance.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface>?>? networkInterfaces;
   /// Optional. Configure network performance such as egress bandwidth tier.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig>? networkPerformanceConfig;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig?>? networkPerformanceConfig;
   /// Input only. Additional params passed with the request.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesParams>? params;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesParams?>? params;
   /// Optional. The private IPv6 google access type for the VM.
   /// Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
-  final pulumi.Input<String>? privateIpv6GoogleAccess;
+  final pulumi.Input<String?>? privateIpv6GoogleAccess;
   /// Optional. Resource policies applied to this instance.
-  final pulumi.Input<List<String>>? resourcePolicies;
+  final pulumi.Input<List<String>?>? resourcePolicies;
   /// Optional. Sets the scheduling options for this instance.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesScheduling>? scheduling;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesScheduling?>? scheduling;
   /// Optional. A list of service accounts, with their specified scopes, authorized for this instance.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount>>? serviceAccounts;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount>?>? serviceAccounts;
   /// Optional. Controls Shielded compute options on the instance.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Optional. Tags to apply to this instance.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesTags>? tags;
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestorePropertiesTags?>? tags;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestoreProperties].
   /// [advancedMachineFeatures] Optional. Controls for advanced machine-related behavior features.

@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_project_service_account_get_project_service_account_args_doc}
 class GetProjectServiceAccountArgs {
   /// The project the unique service account was created for. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The project the lookup originates from. This field is used if you are making the request
   /// from a different account than the one you are finding the service account for.
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetProjectServiceAccountArgs].
   /// [project] The project the unique service account was created for. If it is not provided, the provider project is used.

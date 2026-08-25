@@ -9,10 +9,10 @@ class ConnectionProfileAlloydbSettings {
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileAlloydbSettingsInitialUser> initialUser;
   /// Labels for the AlloyDB cluster created by DMS.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Settings for the cluster's primary instance
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileAlloydbSettingsPrimaryInstanceSettings>? primaryInstanceSettings;
+  final pulumi.Input<ConnectionProfileAlloydbSettingsPrimaryInstanceSettings?>? primaryInstanceSettings;
   /// Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
   /// It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
   final pulumi.Input<String> vpcNetwork;

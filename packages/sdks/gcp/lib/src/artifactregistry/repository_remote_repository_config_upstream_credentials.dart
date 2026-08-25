@@ -6,7 +6,7 @@ import 'repository_remote_repository_config_upstream_credentials_username_passwo
 class RepositoryRemoteRepositoryConfigUpstreamCredentials {
   /// Use username and password to access the remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials>? usernamePasswordCredentials;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials?>? usernamePasswordCredentials;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigUpstreamCredentials].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.

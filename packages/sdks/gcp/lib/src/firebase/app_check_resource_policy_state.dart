@@ -10,7 +10,7 @@ class AppCheckResourcePolicyState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
   /// Valid values are:
   /// (Unset)
@@ -38,24 +38,24 @@ class AppCheckResourcePolicyState {
   /// If your app has not launched yet, you should enable enforcement immediately, since there are no outdated
   /// clients in use.
   /// Possible values are: `UNENFORCED`, `ENFORCED`.
-  final pulumi.Input<String>? enforcementMode;
+  final pulumi.Input<String?>? enforcementMode;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The server-generated UID for the Resource Policy.
-  final pulumi.Input<String>? resourcePolicyId;
+  final pulumi.Input<String?>? resourcePolicyId;
   /// The identifier of the service to configure a Resource Policy for.
   /// Currently, the following service IDs are supported:
   /// * `oauth2.googleapis.com` (Google Identity for iOS)
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
   /// Service specific name of the resource object to which this policy applies, in the format:
   /// * iOS OAuth clients (Google Identity for iOS):
   /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
-  final pulumi.Input<String>? targetResource;
+  final pulumi.Input<String?>? targetResource;
   /// Output only. Timestamp when this resource policy configuration object was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AppCheckResourcePolicyState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiLogicConfigTrafficFilter {
   /// Only allows users to use AI Logic via prompt templates for this project.
   /// If true, only calls using server templates are permitted.
-  final pulumi.Input<bool>? templateOnly;
+  final pulumi.Input<bool?>? templateOnly;
 
   /// Creates a new [AiLogicConfigTrafficFilter].
   /// [templateOnly] Only allows users to use AI Logic via prompt templates for this project.

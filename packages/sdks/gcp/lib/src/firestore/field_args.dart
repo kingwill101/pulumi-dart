@@ -12,14 +12,14 @@ class FieldArgs {
   /// The id of the collection group to configure.
   final pulumi.Input<String> collection;
   /// The Firestore database id. Defaults to `"(default)"`.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The id of the field to configure.
   final pulumi.Input<String> field;
   /// The single field index configuration for this field.
@@ -27,15 +27,15 @@ class FieldArgs {
   /// indexes specified. Configuring the index configuration with an empty block disables all indexes on
   /// the field.
   /// Structure is documented below.
-  final pulumi.Input<FieldIndexConfig>? indexConfig;
+  final pulumi.Input<FieldIndexConfig?>? indexConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Whether to skip waiting for the field operation to complete.
-  final pulumi.Input<bool>? skipWait;
+  final pulumi.Input<bool?>? skipWait;
   /// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
   /// Structure is documented below.
-  final pulumi.Input<FieldTtlConfig>? ttlConfig;
+  final pulumi.Input<FieldTtlConfig?>? ttlConfig;
 
   /// Creates a new [FieldArgs].
   /// [collection] The id of the collection group to configure.

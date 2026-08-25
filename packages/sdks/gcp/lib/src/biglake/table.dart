@@ -622,7 +622,7 @@ class Table extends pulumi.CustomResource {
           'gcp:biglake/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');
@@ -641,11 +641,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -659,6 +660,27 @@ class Table extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String?>('database');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableHiveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'gcp:biglake/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');
     deleteTime = registerOutput<String>('deleteTime');

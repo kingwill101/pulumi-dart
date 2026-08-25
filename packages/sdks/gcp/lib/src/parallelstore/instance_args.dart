@@ -15,15 +15,15 @@ class InstanceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Parallelstore Instance deployment type.
   /// Possible values:
   /// DEPLOYMENT_TYPE_UNSPECIFIED
   /// SCRATCH
   /// PERSISTENT
-  final pulumi.Input<String>? deploymentType;
+  final pulumi.Input<String?>? deploymentType;
   /// The description of the instance. 2048 characters or less.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Stripe level for directories.
   /// MIN when directory has a small number of files.
   /// MAX when directory has a large number of files.
@@ -32,7 +32,7 @@ class InstanceArgs {
   /// DIRECTORY_STRIPE_LEVEL_MIN
   /// DIRECTORY_STRIPE_LEVEL_BALANCED
   /// DIRECTORY_STRIPE_LEVEL_MAX
-  final pulumi.Input<String>? directoryStripeLevel;
+  final pulumi.Input<String?>? directoryStripeLevel;
   /// Stripe level for files.
   /// MIN better suited for small size files.
   /// MAX higher throughput performance for larger files.
@@ -41,7 +41,7 @@ class InstanceArgs {
   /// FILE_STRIPE_LEVEL_MIN
   /// FILE_STRIPE_LEVEL_BALANCED
   /// FILE_STRIPE_LEVEL_MAX
-  final pulumi.Input<String>? fileStripeLevel;
+  final pulumi.Input<String?>? fileStripeLevel;
   /// The logical name of the Parallelstore instance in the user project with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -70,20 +70,20 @@ class InstanceArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String> location;
   /// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
   /// to which the instance is connected.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Immutable. Contains the id of the allocated IP address range
   /// associated with the private service access connection for example, \"test-default\"
   /// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
   /// be considered.
-  final pulumi.Input<String>? reservedIpRange;
+  final pulumi.Input<String?>? reservedIpRange;
 
   /// Creates a new [InstanceArgs].
   /// [capacityGib] Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).

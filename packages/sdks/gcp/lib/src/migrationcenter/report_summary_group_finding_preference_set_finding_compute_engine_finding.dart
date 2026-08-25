@@ -6,17 +6,17 @@ import 'report_summary_group_finding_preference_set_finding_compute_engine_findi
 class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding {
   /// (Output)
   /// Count of assets allocated to these nodes
-  final pulumi.Input<String>? allocatedAssetCount;
+  final pulumi.Input<String?>? allocatedAssetCount;
   /// (Output)
   /// Set of disk types allocated to assets.
-  final pulumi.Input<List<String>>? allocatedDiskTypes;
+  final pulumi.Input<List<String>?>? allocatedDiskTypes;
   /// (Output)
   /// Set of regions in which the assets were allocated
-  final pulumi.Input<List<String>>? allocatedRegions;
+  final pulumi.Input<List<String>?>? allocatedRegions;
   /// (Output)
   /// Distribution of assets based on the Machine Series.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation>>? machineSeriesAllocations;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation>?>? machineSeriesAllocations;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding].
   /// [allocatedAssetCount] (Output)

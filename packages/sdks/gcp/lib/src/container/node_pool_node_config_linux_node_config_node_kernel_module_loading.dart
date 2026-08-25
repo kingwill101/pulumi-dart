@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
   /// The policy for kernel module loading.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading].
   /// [policy] The policy for kernel module loading.

@@ -5,18 +5,18 @@ import 'environment_text_to_speech_settings_synthesize_speech_config_voice.dart'
 
 class EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig {
   /// An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
-  final pulumi.Input<List<String>>? effectsProfileIds;
+  final pulumi.Input<List<String>?>? effectsProfileIds;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> language;
   /// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
-  final pulumi.Input<double>? pitch;
+  final pulumi.Input<double?>? pitch;
   /// Speaking rate/speed, in the range [0.25, 4.0].
-  final pulumi.Input<double>? speakingRate;
+  final pulumi.Input<double?>? speakingRate;
   /// The desired voice of the synthesized audio.
   /// Structure is documented below.
-  final pulumi.Input<EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice>? voice;
+  final pulumi.Input<EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice?>? voice;
   /// Volume gain (in dB) of the normal native volume supported by the specific voice.
-  final pulumi.Input<double>? volumeGainDb;
+  final pulumi.Input<double?>? volumeGainDb;
 
   /// Creates a new [EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig].
   /// [effectsProfileIds] An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
@@ -49,10 +49,10 @@ class EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig {
     return EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig(
       effectsProfileIds: (() { final guardedValue = map['effectsProfileIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       language: pulumi.Input.fromValue(map['language'] as String),
-      pitch: (() { final guardedValue = map['pitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      speakingRate: (() { final guardedValue = map['speakingRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      pitch: (() { final guardedValue = map['pitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      speakingRate: (() { final guardedValue = map['speakingRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       voice: (() { final guardedValue = map['voice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      volumeGainDb: (() { final guardedValue = map['volumeGainDb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      volumeGainDb: (() { final guardedValue = map['volumeGainDb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

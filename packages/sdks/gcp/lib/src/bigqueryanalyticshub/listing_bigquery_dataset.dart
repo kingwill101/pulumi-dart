@@ -11,12 +11,12 @@ class ListingBigqueryDataset {
   /// Server owned effective state of replicas. Contains both primary and secondary replicas.
   /// Each replica includes a system-computed (output-only) state and primary designation.
   /// Structure is documented below.
-  final pulumi.Input<List<ListingBigqueryDatasetEffectiveReplica>>? effectiveReplicas;
+  final pulumi.Input<List<ListingBigqueryDatasetEffectiveReplica>?>? effectiveReplicas;
   /// A list of regions where the publisher has created shared dataset replicas.
-  final pulumi.Input<List<String>>? replicaLocations;
+  final pulumi.Input<List<String>?>? replicaLocations;
   /// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
   /// Structure is documented below.
-  final pulumi.Input<List<ListingBigqueryDatasetSelectedResource>>? selectedResources;
+  final pulumi.Input<List<ListingBigqueryDatasetSelectedResource>?>? selectedResources;
 
   /// Creates a new [ListingBigqueryDataset].
   /// [dataset] Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123

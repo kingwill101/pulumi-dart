@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_level_condition_args.dart';
 import 'access_level_condition_device_policy.dart';
 import 'access_level_condition_state.dart';
+import 'access_level_condition_vpc_network_source.dart';
 
 /// Allows configuring a single access level condition to be appended to an access level's conditions.
 /// This resource is intended to be used in cases where it is not possible to compile a full list
@@ -551,7 +552,7 @@ class AccessLevelCondition extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> requiredAccessLevels;
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> vpcNetworkSources;
+  late final pulumi.Output<List<AccessLevelConditionVpcNetworkSource>?> vpcNetworkSources;
 
   /// Creates a new [AccessLevelCondition].
   /// [name] The Pulumi resource name.
@@ -565,18 +566,18 @@ class AccessLevelCondition extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessLevel = registerOutput<String>('accessLevel');
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
-    members = registerOutput<List<String>?>('members');
+    ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     negate = registerOutput<bool?>('negate');
-    regions = registerOutput<List<String>?>('regions');
-    requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels');
-    vpcNetworkSources = registerOutput<List<Map<String, dynamic>>?>('vpcNetworkSources');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcNetworkSources = registerOutput<List<AccessLevelConditionVpcNetworkSource>?>('vpcNetworkSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessLevelConditionVpcNetworkSource>(guardedValue, (value) => AccessLevelConditionVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AccessLevelCondition] resource's state with the given [name] and [id].
@@ -584,11 +585,12 @@ class AccessLevelCondition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessLevelConditionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessLevelCondition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -606,11 +608,32 @@ class AccessLevelCondition extends pulumi.CustomResource {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
-    members = registerOutput<List<String>?>('members');
+    ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     negate = registerOutput<bool?>('negate');
-    regions = registerOutput<List<String>?>('regions');
-    requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels');
-    vpcNetworkSources = registerOutput<List<Map<String, dynamic>>?>('vpcNetworkSources');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcNetworkSources = registerOutput<List<AccessLevelConditionVpcNetworkSource>?>('vpcNetworkSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessLevelConditionVpcNetworkSource>(guardedValue, (value) => AccessLevelConditionVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AccessLevelCondition] resource.
+  AccessLevelCondition.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLevel = registerOutput<String>('accessLevel');
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    negate = registerOutput<bool?>('negate');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcNetworkSources = registerOutput<List<AccessLevelConditionVpcNetworkSource>?>('vpcNetworkSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessLevelConditionVpcNetworkSource>(guardedValue, (value) => AccessLevelConditionVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

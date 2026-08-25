@@ -341,7 +341,7 @@ class UrlList extends pulumi.CustomResource {
           'gcp:networksecurity/urlList:UrlList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -350,7 +350,7 @@ class UrlList extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [UrlList] resource's state with the given [name] and [id].
@@ -358,11 +358,12 @@ class UrlList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UrlListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UrlList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -383,6 +384,25 @@ class UrlList extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [UrlList] resource.
+  UrlList.reference(String urn)
+    : super(
+        'gcp:networksecurity/urlList:UrlList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

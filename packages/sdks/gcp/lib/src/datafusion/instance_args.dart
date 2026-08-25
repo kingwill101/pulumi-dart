@@ -16,64 +16,64 @@ class InstanceArgs {
   /// If accelerators are enabled it is possible a permadiff will be created with the Options field.
   /// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceAccelerator>>? accelerators;
+  final pulumi.Input<List<InstanceAccelerator>?>? accelerators;
   /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
   /// Structure is documented below.
-  final pulumi.Input<InstanceCryptoKeyConfig>? cryptoKeyConfig;
+  final pulumi.Input<InstanceCryptoKeyConfig?>? cryptoKeyConfig;
   /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
-  final pulumi.Input<String>? dataprocServiceAccount;
+  final pulumi.Input<String?>? dataprocServiceAccount;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of the instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name for an instance.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Option to enable granular role-based access control.
-  final pulumi.Input<bool>? enableRbac;
+  final pulumi.Input<bool?>? enableRbac;
   /// Option to enable Stackdriver Logging.
-  final pulumi.Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool?>? enableStackdriverLogging;
   /// Option to enable Stackdriver Monitoring.
-  final pulumi.Input<bool>? enableStackdriverMonitoring;
+  final pulumi.Input<bool?>? enableStackdriverMonitoring;
   /// Option to enable and pass metadata for event publishing.
   /// Structure is documented below.
-  final pulumi.Input<InstanceEventPublishConfig>? eventPublishConfig;
+  final pulumi.Input<InstanceEventPublishConfig?>? eventPublishConfig;
   /// The resource labels for instance to use to annotate any related underlying resources,
   /// such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Configure the maintenance policy for this instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMaintenancePolicy>? maintenancePolicy;
+  final pulumi.Input<InstanceMaintenancePolicy?>? maintenancePolicy;
   /// The ID of the instance or a fully qualified identifier for the instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration options. These are required when a private Data Fusion instance is to be created.
   /// Structure is documented below.
-  final pulumi.Input<InstanceNetworkConfig>? networkConfig;
+  final pulumi.Input<InstanceNetworkConfig?>? networkConfig;
   /// Map of additional options used to configure the behavior of Data Fusion instance.
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
   /// Current patch revision of the Data Fusion.
-  final pulumi.Input<String>? patchRevision;
+  final pulumi.Input<String?>? patchRevision;
   /// Specifies whether the Data Fusion instance should be private. If set to
   /// true, all Data Fusion nodes will have private IP addresses and will not be
   /// able to access the public internet.
-  final pulumi.Input<bool>? privateInstance;
+  final pulumi.Input<bool?>? privateInstance;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the Data Fusion instance.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
   /// The field is ignored (both PUT & PATCH) when empty.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Represents the type of Data Fusion instance. Each type is configured with
   /// the default settings for processing and memory.
   /// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -87,9 +87,9 @@ class InstanceArgs {
   /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
   final pulumi.Input<String> type;
   /// Current version of the Data Fusion.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceArgs].
   /// [accelerators] List of accelerators enabled for this CDF instance.

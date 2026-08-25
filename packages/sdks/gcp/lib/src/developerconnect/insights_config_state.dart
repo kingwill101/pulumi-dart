@@ -12,72 +12,72 @@ class InsightsConfigState {
   /// for more details such as format and size limitations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The name of the App Hub Application.
   /// Format:
   /// projects/{project}/locations/{location}/applications/{application}
-  final pulumi.Input<String>? appHubApplication;
+  final pulumi.Input<String?>? appHubApplication;
   /// The artifact configurations of the artifacts that are deployed.
   /// Structure is documented below.
-  final pulumi.Input<List<InsightsConfigArtifactConfig>>? artifactConfigs;
+  final pulumi.Input<List<InsightsConfigArtifactConfig>?>? artifactConfigs;
   /// [Output only] Create timestamp
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Any errors that occurred while setting up the InsightsConfig.
   /// Each error will be in the format: `field_name: errorMessage`, e.g.
   /// GetAppHubApplication: Permission denied while getting App Hub
   /// application. Please grant permissions to the P4SA.
   /// Structure is documented below.
-  final pulumi.Input<List<InsightsConfigError>>? errors;
+  final pulumi.Input<List<InsightsConfigError>?>? errors;
   /// ID of the requesting InsightsConfig.
-  final pulumi.Input<String>? insightsConfigId;
+  final pulumi.Input<String?>? insightsConfigId;
   /// Set of labels associated with an InsightsConfig.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The name of the InsightsConfig.
   /// Format:
   /// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Reconciling (https://google.aip.dev/128#reconciliation).
   /// Set to true if the current state of InsightsConfig does not match the
   /// user's intended state, and the service is actively updating the resource to
   /// reconcile them. This can happen due to user-triggered updates or
   /// system actions like failover or maintenance.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// The runtime configurations where the application is deployed.
   /// Structure is documented below.
-  final pulumi.Input<List<InsightsConfigRuntimeConfig>>? runtimeConfigs;
+  final pulumi.Input<List<InsightsConfigRuntimeConfig>?>? runtimeConfigs;
   /// (Output)
   /// The state of the Runtime.
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// LINKED
   /// UNLINKED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The projects to track with the InsightsConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsConfigTargetProjects>? targetProjects;
+  final pulumi.Input<InsightsConfigTargetProjects?>? targetProjects;
   /// [Output only] Update timestamp
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [InsightsConfigState].
   /// [annotations] User specified annotations. See https://google.aip.dev/148#annotations

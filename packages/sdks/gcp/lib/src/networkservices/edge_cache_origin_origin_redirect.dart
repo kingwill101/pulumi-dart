@@ -7,7 +7,7 @@ class EdgeCacheOriginOriginRedirect {
   /// follows. Values of
   /// [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
   /// are accepted.
-  final pulumi.Input<List<String>>? redirectConditions;
+  final pulumi.Input<List<String>?>? redirectConditions;
 
   /// Creates a new [EdgeCacheOriginOriginRedirect].
   /// [redirectConditions] The set of redirect response codes that the CDN

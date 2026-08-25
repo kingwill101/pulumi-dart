@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HttpRouteRuleActionRetryPolicy {
   /// Specifies the allowed number of retries.
-  final pulumi.Input<int>? numRetries;
+  final pulumi.Input<int?>? numRetries;
   /// Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? perTryTimeout;
+  final pulumi.Input<String?>? perTryTimeout;
   /// Specifies one or more conditions when this retry policy applies.
-  final pulumi.Input<List<String>>? retryConditions;
+  final pulumi.Input<List<String>?>? retryConditions;
 
   /// Creates a new [HttpRouteRuleActionRetryPolicy].
   /// [numRetries] Specifies the allowed number of retries.
@@ -30,7 +30,7 @@ class HttpRouteRuleActionRetryPolicy {
 
   factory HttpRouteRuleActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleActionRetryPolicy(
-      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       perTryTimeout: (() { final guardedValue = map['perTryTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retryConditions: (() { final guardedValue = map['retryConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

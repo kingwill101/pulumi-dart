@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_container_get_registry_image_get_registry_image_args_doc}
 class GetRegistryImageArgs {
   /// The image digest to fetch, if any.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// The image name.
   final pulumi.Input<String> name;
   /// The project ID that this image is attached to.  If not provider, provider project will be used instead.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The tag to fetch, if any.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [GetRegistryImageArgs].
   /// [digest] The image digest to fetch, if any.

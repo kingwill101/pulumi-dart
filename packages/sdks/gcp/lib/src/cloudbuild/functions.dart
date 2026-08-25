@@ -137,3 +137,14 @@ Future<GetTriggerResult> getTrigger(
   );
   return GetTriggerResult.fromMap(result);
 }
+
+pulumi.Output<GetTriggerResult> getTriggerOutput(
+  GetTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudbuild/getTrigger:getTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTriggerResult.fromMap);
+}

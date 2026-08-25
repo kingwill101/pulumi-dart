@@ -8,13 +8,13 @@ import 'transfer_job_replication_spec_transfer_options.dart';
 
 class TransferJobReplicationSpec {
   /// A Google Cloud Storage data sink. Structure documented below.
-  final pulumi.Input<TransferJobReplicationSpecGcsDataSink>? gcsDataSink;
+  final pulumi.Input<TransferJobReplicationSpecGcsDataSink?>? gcsDataSink;
   /// A Google Cloud Storage data source. Structure documented below.
-  final pulumi.Input<TransferJobReplicationSpecGcsDataSource>? gcsDataSource;
+  final pulumi.Input<TransferJobReplicationSpecGcsDataSource?>? gcsDataSource;
   /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
-  final pulumi.Input<TransferJobReplicationSpecObjectConditions>? objectConditions;
+  final pulumi.Input<TransferJobReplicationSpecObjectConditions?>? objectConditions;
   /// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-  final pulumi.Input<TransferJobReplicationSpecTransferOptions>? transferOptions;
+  final pulumi.Input<TransferJobReplicationSpecTransferOptions?>? transferOptions;
 
   /// Creates a new [TransferJobReplicationSpec].
   /// [gcsDataSink] A Google Cloud Storage data sink. Structure documented below.

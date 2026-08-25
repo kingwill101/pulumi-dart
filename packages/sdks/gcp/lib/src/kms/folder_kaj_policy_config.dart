@@ -512,7 +512,7 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
           'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     defaultKeyAccessJustificationPolicy = registerOutput<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     folder = registerOutput<String>('folder');
@@ -523,11 +523,12 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderKajPolicyConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FolderKajPolicyConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -541,6 +542,19 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    defaultKeyAccessJustificationPolicy = registerOutput<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    folder = registerOutput<String>('folder');
+  }
+
+  /// Creates a typed reference to an existing [FolderKajPolicyConfig] resource.
+  FolderKajPolicyConfig.reference(String urn)
+    : super(
+        'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     defaultKeyAccessJustificationPolicy = registerOutput<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     folder = registerOutput<String>('folder');
   }

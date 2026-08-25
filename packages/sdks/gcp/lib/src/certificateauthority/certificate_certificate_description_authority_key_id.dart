@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateCertificateDescriptionAuthorityKeyId {
   /// (Output)
   /// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
 
   /// Creates a new [CertificateCertificateDescriptionAuthorityKeyId].
   /// [keyId] (Output)

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
-  final pulumi.Input<bool>? enableIntegrityMonitoring;
+  final pulumi.Input<bool?>? enableIntegrityMonitoring;
   /// Defines whether the instance has Secure Boot enabled.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
 
   /// Creates a new [NodePoolNodeConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.

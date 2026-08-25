@@ -6,74 +6,74 @@ import 'get_membership_endpoint.dart';
 
 /// Result data returned by getMembership.
 class GetMembershipResult {
-  final List<GetMembershipAuthority> authorities;
-  final String deletionPolicy;
-  final Map<String, String> effectiveLabels;
-  final List<GetMembershipEndpoint> endpoints;
+  final List<GetMembershipAuthority>? authorities;
+  final String? deletionPolicy;
+  final Map<String, String>? effectiveLabels;
+  final List<GetMembershipEndpoint>? endpoints;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
-  final String location;
-  final String membershipId;
-  final String name;
+  final String? id;
+  final Map<String, String>? labels;
+  final String? location;
+  final String? membershipId;
+  final String? name;
   final String? project;
-  final Map<String, String> pulumiLabels;
+  final Map<String, String>? pulumiLabels;
 
   /// Creates a new [GetMembershipResult].
-  /// [authorities] Required.
-  /// [deletionPolicy] Required.
-  /// [effectiveLabels] Required.
-  /// [endpoints] Required.
+  /// [authorities] Optional.
+  /// [deletionPolicy] Optional.
+  /// [effectiveLabels] Optional.
+  /// [endpoints] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
-  /// [location] Required.
-  /// [membershipId] Required.
-  /// [name] Required.
+  /// [labels] Optional.
+  /// [location] Optional.
+  /// [membershipId] Optional.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
+  /// [pulumiLabels] Optional.
   const GetMembershipResult({
-    required this.authorities,
-    required this.deletionPolicy,
-    required this.effectiveLabels,
-    required this.endpoints,
-    required this.id,
-    required this.labels,
-    required this.location,
-    required this.membershipId,
-    required this.name,
+    this.authorities,
+    this.deletionPolicy,
+    this.effectiveLabels,
+    this.endpoints,
+    this.id,
+    this.labels,
+    this.location,
+    this.membershipId,
+    this.name,
     this.project,
-    required this.pulumiLabels,
+    this.pulumiLabels,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorities': pulumi.Input.encodeList<GetMembershipAuthority, Map<String, dynamic>>(authorities, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'effectiveLabels': effectiveLabels,
-      'endpoints': pulumi.Input.encodeList<GetMembershipEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
-      'id': id,
-      'labels': labels,
-      'location': location,
-      'membershipId': membershipId,
-      'name': name,
+      'authorities': ?(() { final guardedValue = authorities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMembershipAuthority, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'effectiveLabels': ?effectiveLabels,
+      'endpoints': ?(() { final guardedValue = endpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMembershipEndpoint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'labels': ?labels,
+      'location': ?location,
+      'membershipId': ?membershipId,
+      'name': ?name,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
+      'pulumiLabels': ?pulumiLabels,
     };
   }
 
   factory GetMembershipResult.fromMap(Map<String, dynamic> map) {
     return GetMembershipResult(
-      authorities: pulumi.Input.decodeList<GetMembershipAuthority>(map['authorities']!, (value) => GetMembershipAuthority.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      endpoints: pulumi.Input.decodeList<GetMembershipEndpoint>(map['endpoints']!, (value) => GetMembershipEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      membershipId: map['membershipId'] as String,
-      name: map['name'] as String,
+      authorities: (() { final guardedValue = map['authorities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMembershipAuthority>(guardedValue, (value) => GetMembershipAuthority.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMembershipEndpoint>(guardedValue, (value) => GetMembershipEndpoint.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      membershipId: (() { final guardedValue = map['membershipId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

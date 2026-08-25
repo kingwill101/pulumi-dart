@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError {
   /// (Output)
   /// The row number where the error was detected.
-  final pulumi.Input<int>? rowNumber;
+  final pulumi.Input<int?>? rowNumber;
 
   /// Creates a new [ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError].
   /// [rowNumber] (Output)
@@ -21,7 +21,7 @@ class ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError {
 
   factory ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError.fromMap(Map<String, dynamic> map) {
     return ImportJobValidationReportFileValidationRowErrorArchiveErrorCsvError(
-      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rowNumber: (() { final guardedValue = map['rowNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

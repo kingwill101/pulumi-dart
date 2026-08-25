@@ -22,7 +22,7 @@ class AzureNodePoolMaxPodsConstraint {
 
   factory AzureNodePoolMaxPodsConstraint.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolMaxPodsConstraint(
-      maxPodsPerNode: pulumi.Input.fromValue(map['maxPodsPerNode'] as int),
+      maxPodsPerNode: pulumi.Input.fromValue((map['maxPodsPerNode'] as num).toInt()),
     );
   }
 }

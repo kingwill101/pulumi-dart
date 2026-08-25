@@ -483,7 +483,7 @@ class AndroidApp extends pulumi.CustomResource {
           'gcp:firebase/androidApp:AndroidApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
@@ -493,8 +493,8 @@ class AndroidApp extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     packageName = registerOutput<String>('packageName');
     project = registerOutput<String>('project');
-    sha1Hashes = registerOutput<List<String>?>('sha1Hashes');
-    sha256Hashes = registerOutput<List<String>?>('sha256Hashes');
+    sha1Hashes = registerOutput<List<String>?>('sha1Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sha256Hashes = registerOutput<List<String>?>('sha256Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AndroidApp] resource's state with the given [name] and [id].
@@ -502,11 +502,12 @@ class AndroidApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AndroidAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AndroidApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -528,7 +529,28 @@ class AndroidApp extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     packageName = registerOutput<String>('packageName');
     project = registerOutput<String>('project');
-    sha1Hashes = registerOutput<List<String>?>('sha1Hashes');
-    sha256Hashes = registerOutput<List<String>?>('sha256Hashes');
+    sha1Hashes = registerOutput<List<String>?>('sha1Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sha256Hashes = registerOutput<List<String>?>('sha256Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AndroidApp] resource.
+  AndroidApp.reference(String urn)
+    : super(
+        'gcp:firebase/androidApp:AndroidApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKeyId = registerOutput<String>('apiKeyId');
+    appId = registerOutput<String>('appId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    packageName = registerOutput<String>('packageName');
+    project = registerOutput<String>('project');
+    sha1Hashes = registerOutput<List<String>?>('sha1Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sha256Hashes = registerOutput<List<String>?>('sha256Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

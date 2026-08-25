@@ -8,17 +8,17 @@ import 'settings_application_settings.dart';
 class SettingsState {
   /// Top level wrapper for all access related setting in IAP.
   /// Structure is documented below.
-  final pulumi.Input<SettingsAccessSettings>? accessSettings;
+  final pulumi.Input<SettingsAccessSettings?>? accessSettings;
   /// Top level wrapper for all application related settings in IAP.
   /// Structure is documented below.
-  final pulumi.Input<SettingsApplicationSettings>? applicationSettings;
+  final pulumi.Input<SettingsApplicationSettings?>? applicationSettings;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The resource name of the IAP protected resource. Name can have below resources:
   /// * organizations/{organization_id}
   /// * folders/{folder_id}
@@ -31,7 +31,7 @@ class SettingsState {
   /// * projects/{project_id}/iap_web/appengine-{app_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SettingsState].
   /// [accessSettings] Top level wrapper for all access related setting in IAP.

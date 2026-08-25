@@ -11,24 +11,24 @@ class SecurityPolicyRule {
   /// Action to take when `match` matches the request. Valid values:
   final pulumi.Input<String> action;
   /// An optional description of this rule. Max size is 64.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Additional actions that are performed on headers. Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleHeaderAction>? headerAction;
+  final pulumi.Input<SecurityPolicyRuleHeaderAction?>? headerAction;
   /// A match condition that incoming traffic is evaluated against.
   /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
   final pulumi.Input<SecurityPolicyRuleMatch> match;
   /// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
-  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfig>? preconfiguredWafConfig;
+  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfig?>? preconfiguredWafConfig;
   /// When set to true, the `action` specified above is not enforced.
   /// Stackdriver logs for requests that trigger a preview action are annotated as such.
-  final pulumi.Input<bool>? preview;
+  final pulumi.Input<bool?>? preview;
   /// An unique positive integer indicating the priority of evaluation for a rule.
   /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
   final pulumi.Input<int> priority;
   /// Must be specified if the `action` is `rateBasedBan` or `throttle`. Cannot be specified for other actions. Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleRateLimitOptions>? rateLimitOptions;
+  final pulumi.Input<SecurityPolicyRuleRateLimitOptions?>? rateLimitOptions;
   /// Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleRedirectOptions>? redirectOptions;
+  final pulumi.Input<SecurityPolicyRuleRedirectOptions?>? redirectOptions;
 
   /// Creates a new [SecurityPolicyRule].
   /// [action] Action to take when `match` matches the request. Valid values:
@@ -74,7 +74,7 @@ class SecurityPolicyRule {
       match: pulumi.Input.fromValue(SecurityPolicyRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
       preconfiguredWafConfig: (() { final guardedValue = map['preconfiguredWafConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRulePreconfiguredWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       rateLimitOptions: (() { final guardedValue = map['rateLimitOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleRateLimitOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redirectOptions: (() { final guardedValue = map['redirectOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleRedirectOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

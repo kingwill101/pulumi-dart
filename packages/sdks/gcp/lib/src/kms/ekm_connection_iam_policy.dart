@@ -2141,7 +2141,7 @@ class EkmConnectionIamPolicy extends pulumi.CustomResource {
           'gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -2155,11 +2155,12 @@ class EkmConnectionIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EkmConnectionIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EkmConnectionIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2173,6 +2174,22 @@ class EkmConnectionIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [EkmConnectionIamPolicy] resource.
+  EkmConnectionIamPolicy.reference(String urn)
+    : super(
+        'gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

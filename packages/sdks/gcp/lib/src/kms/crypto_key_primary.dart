@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CryptoKeyPrimary {
   /// The resource name for the CryptoKey.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The current state of the CryptoKeyVersion.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CryptoKeyPrimary].
   /// [name] The resource name for the CryptoKey.

@@ -9,7 +9,7 @@ class RegionBackendServiceBackend {
   /// for an explanation of load balancing modes.
   /// Default value is `UTILIZATION`.
   /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
-  final pulumi.Input<String>? balancingMode;
+  final pulumi.Input<String?>? balancingMode;
   /// A multiplier applied to the group's maximum servicing capacity
   /// (based on UTILIZATION, RATE or CONNECTION).
   /// ~&gt;**NOTE**: This field cannot be set for
@@ -18,16 +18,16 @@ class RegionBackendServiceBackend {
   /// capacityScaler for all backends must be non-zero.
   /// A setting of 0 means the group is completely drained, offering
   /// 0% of its available Capacity. Valid range is [0.0,1.0].
-  final pulumi.Input<double>? capacityScaler;
+  final pulumi.Input<double?>? capacityScaler;
   /// The set of custom metrics that are used for &lt;code&gt;CUSTOM_METRICS&lt;/code&gt; BalancingMode.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionBackendServiceBackendCustomMetric>>? customMetrics;
+  final pulumi.Input<List<RegionBackendServiceBackendCustomMetric>?>? customMetrics;
   /// An optional description of this resource.
   /// Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This field designates whether this is a failover backend. More
   /// than one failover backend can be configured for a given RegionBackendService.
-  final pulumi.Input<bool>? failover;
+  final pulumi.Input<bool?>? failover;
   /// The fully-qualified URL of an Instance Group or Network Endpoint
   /// Group resource. In case of instance group this defines the list
   /// of instances that serve traffic. Member virtual machine
@@ -51,7 +51,7 @@ class RegionBackendServiceBackend {
   /// For CONNECTION mode, either maxConnections or one
   /// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
   /// as appropriate for group type, must be set.
-  final pulumi.Input<int>? maxConnections;
+  final pulumi.Input<int?>? maxConnections;
   /// The max number of simultaneous connections that a single backend
   /// network endpoint can handle. Cannot be set
   /// for INTERNAL backend services.
@@ -59,7 +59,7 @@ class RegionBackendServiceBackend {
   /// used in either CONNECTION or UTILIZATION balancing modes. For
   /// CONNECTION mode, either maxConnections or
   /// maxConnectionsPerEndpoint must be set.
-  final pulumi.Input<int>? maxConnectionsPerEndpoint;
+  final pulumi.Input<int?>? maxConnectionsPerEndpoint;
   /// The max number of simultaneous connections that a single
   /// backend instance can handle. Cannot be set for INTERNAL backend
   /// services.
@@ -67,50 +67,50 @@ class RegionBackendServiceBackend {
   /// Can be used in either CONNECTION or UTILIZATION balancing modes.
   /// For CONNECTION mode, either maxConnections or
   /// maxConnectionsPerInstance must be set.
-  final pulumi.Input<int>? maxConnectionsPerInstance;
+  final pulumi.Input<int?>? maxConnectionsPerInstance;
   /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for the whole NEG
   /// or instance group. Not available if backend's balancingMode is RATE
   /// or CONNECTION.
-  final pulumi.Input<int>? maxInFlightRequests;
+  final pulumi.Input<int?>? maxInFlightRequests;
   /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for a single endpoint.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
-  final pulumi.Input<int>? maxInFlightRequestsPerEndpoint;
+  final pulumi.Input<int?>? maxInFlightRequestsPerEndpoint;
   /// (Optional, Beta)
   /// Defines a maximum number of in-flight requests for a single VM.
   /// Not available if backend's balancingMode is RATE or CONNECTION.
-  final pulumi.Input<int>? maxInFlightRequestsPerInstance;
+  final pulumi.Input<int?>? maxInFlightRequestsPerInstance;
   /// The max requests per second (RPS) of the group. Cannot be set
   /// for INTERNAL backend services.
   /// Can be used with either RATE or UTILIZATION balancing modes,
   /// but required if RATE mode. Either maxRate or one
   /// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
   /// group type, must be set.
-  final pulumi.Input<int>? maxRate;
+  final pulumi.Input<int?>? maxRate;
   /// The max requests per second (RPS) that a single backend network
   /// endpoint can handle. This is used to calculate the capacity of
   /// the group. Can be used in either balancing mode. For RATE mode,
   /// either maxRate or maxRatePerEndpoint must be set. Cannot be set
   /// for INTERNAL backend services.
-  final pulumi.Input<double>? maxRatePerEndpoint;
+  final pulumi.Input<double?>? maxRatePerEndpoint;
   /// The max requests per second (RPS) that a single backend
   /// instance can handle. This is used to calculate the capacity of
   /// the group. Can be used in either balancing mode. For RATE mode,
   /// either maxRate or maxRatePerInstance must be set. Cannot be set
   /// for INTERNAL backend services.
-  final pulumi.Input<double>? maxRatePerInstance;
+  final pulumi.Input<double?>? maxRatePerInstance;
   /// Used when balancingMode is UTILIZATION. This ratio defines the
   /// CPU utilization target for the group. Valid range is [0.0, 1.0].
   /// Cannot be set for INTERNAL backend services.
-  final pulumi.Input<double>? maxUtilization;
+  final pulumi.Input<double?>? maxUtilization;
   /// (Optional, Beta)
   /// This field specifies how long a connection should be kept alive for:
   /// - LONG: Most of the requests are expected to take more than multiple
   /// seconds to finish.
   /// - SHORT: Most requests are expected to finish with a sub-second latency.
   /// Possible values are: `LONG`, `SHORT`.
-  final pulumi.Input<String>? trafficDuration;
+  final pulumi.Input<String?>? trafficDuration;
 
   /// Creates a new [RegionBackendServiceBackend].
   /// [balancingMode] Specifies the balancing mode for this backend.
@@ -175,21 +175,21 @@ class RegionBackendServiceBackend {
   factory RegionBackendServiceBackend.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceBackend(
       balancingMode: (() { final guardedValue = map['balancingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      capacityScaler: (() { final guardedValue = map['capacityScaler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      capacityScaler: (() { final guardedValue = map['capacityScaler']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       customMetrics: (() { final guardedValue = map['customMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionBackendServiceBackendCustomMetric>(guardedValue, (value) => RegionBackendServiceBackendCustomMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       failover: (() { final guardedValue = map['failover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       group: pulumi.Input.fromValue(map['group'] as String),
-      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConnectionsPerEndpoint: (() { final guardedValue = map['maxConnectionsPerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConnectionsPerInstance: (() { final guardedValue = map['maxConnectionsPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxInFlightRequests: (() { final guardedValue = map['maxInFlightRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxInFlightRequestsPerEndpoint: (() { final guardedValue = map['maxInFlightRequestsPerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxInFlightRequestsPerInstance: (() { final guardedValue = map['maxInFlightRequestsPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxRate: (() { final guardedValue = map['maxRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxRatePerEndpoint: (() { final guardedValue = map['maxRatePerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maxRatePerInstance: (() { final guardedValue = map['maxRatePerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maxUtilization: (() { final guardedValue = map['maxUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConnectionsPerEndpoint: (() { final guardedValue = map['maxConnectionsPerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConnectionsPerInstance: (() { final guardedValue = map['maxConnectionsPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxInFlightRequests: (() { final guardedValue = map['maxInFlightRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxInFlightRequestsPerEndpoint: (() { final guardedValue = map['maxInFlightRequestsPerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxInFlightRequestsPerInstance: (() { final guardedValue = map['maxInFlightRequestsPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRate: (() { final guardedValue = map['maxRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRatePerEndpoint: (() { final guardedValue = map['maxRatePerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maxRatePerInstance: (() { final guardedValue = map['maxRatePerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maxUtilization: (() { final guardedValue = map['maxUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       trafficDuration: (() { final guardedValue = map['trafficDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

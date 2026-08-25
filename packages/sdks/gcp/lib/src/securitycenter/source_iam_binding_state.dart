@@ -5,14 +5,14 @@ import 'source_iam_binding_condition.dart';
 
 /// Input properties used for looking up and filtering SourceIamBinding resources.
 class SourceIamBindingState {
-  final pulumi.Input<SourceIamBindingCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<List<String>>? members;
+  final pulumi.Input<SourceIamBindingCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<List<String>?>? members;
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
-  final pulumi.Input<String>? organization;
-  final pulumi.Input<String>? role;
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? organization;
+  final pulumi.Input<String?>? role;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [SourceIamBindingState].
   /// [condition] Optional.

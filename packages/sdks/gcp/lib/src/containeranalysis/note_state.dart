@@ -16,36 +16,36 @@ class NoteState {
   /// Attestation Occurrences, even if they don't all live in the same
   /// project.
   /// Structure is documented below.
-  final pulumi.Input<NoteAttestationAuthority>? attestationAuthority;
+  final pulumi.Input<NoteAttestationAuthority?>? attestationAuthority;
   /// The time this note was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Time of expiration for this note. Leave empty if note does not expire.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// The type of analysis this note describes
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// A detailed description of the note
-  final pulumi.Input<String>? longDescription;
+  final pulumi.Input<String?>? longDescription;
   /// The name of the note.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Names of other notes related to this note.
-  final pulumi.Input<List<String>>? relatedNoteNames;
+  final pulumi.Input<List<String>?>? relatedNoteNames;
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
-  final pulumi.Input<List<NoteRelatedUrl>>? relatedUrls;
+  final pulumi.Input<List<NoteRelatedUrl>?>? relatedUrls;
   /// A one sentence description of the note.
-  final pulumi.Input<String>? shortDescription;
+  final pulumi.Input<String?>? shortDescription;
   /// The time this note was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [NoteState].
   /// [attestationAuthority] Note kind that represents a logical attestation "role" or "authority".

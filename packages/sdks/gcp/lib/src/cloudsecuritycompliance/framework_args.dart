@@ -11,18 +11,18 @@ class FrameworkArgs {
   /// The details of the cloud controls directly added without any grouping in
   /// the framework.
   /// Structure is documented below.
-  final pulumi.Input<List<FrameworkCloudControlDetail>>? cloudControlDetails;
+  final pulumi.Input<List<FrameworkCloudControlDetail>?>? cloudControlDetails;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the framework. The maximum length is 2000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the framework. The maximum length is 200 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// ID of the framework.
   /// This is not the full name of the framework.
   /// This is the last part of the full name of the framework.
@@ -33,12 +33,12 @@ class FrameworkArgs {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   ///
   /// &gt; **Warning:** Use `parent` instead.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// The parent resource in which to create the resource.
   /// Must be in one of the following formats:
   /// * `projects/{{project}}`
   /// * `organizations/{{organization}}`
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [FrameworkArgs].
   /// [cloudControlDetails] The details of the cloud controls directly added without any grouping in

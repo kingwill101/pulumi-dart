@@ -7,24 +7,24 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// (Output)
   /// The connector config for the data store connection.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>>? connectorConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>?>? connectorConfigs;
   /// (Output)
   /// Timestamp when the toolset was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The display name of the app version.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// The document processing mode for the data store connection.
   /// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
   /// Possible values:
   /// DOCUMENTS
   /// CHUNKS
-  final pulumi.Input<String>? documentProcessingMode;
+  final pulumi.Input<String?>? documentProcessingMode;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The type of the data store. This field is readonly and populated by the
   /// server.
@@ -33,7 +33,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// UNSTRUCTURED
   /// FAQ
   /// CONNECTOR
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore].
   /// [connectorConfigs] (Output)

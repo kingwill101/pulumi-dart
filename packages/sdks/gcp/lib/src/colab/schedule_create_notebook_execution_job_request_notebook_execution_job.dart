@@ -9,49 +9,49 @@ import 'schedule_create_notebook_execution_job_request_notebook_execution_job_gc
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
   /// (Output)
   /// Timestamp when this NotebookExecutionJob was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Compute configuration to use for an execution job.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec>? customEnvironmentSpec;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec?>? customEnvironmentSpec;
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource>? dataformRepositorySource;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource?>? dataformRepositorySource;
   /// Required. The display name of the Notebook Execution.
   final pulumi.Input<String> displayName;
   /// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec?>? encryptionSpec;
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
-  final pulumi.Input<String>? executionTimeout;
+  final pulumi.Input<String?>? executionTimeout;
   /// The user email to run the execution as.
-  final pulumi.Input<String>? executionUser;
+  final pulumi.Input<String?>? executionUser;
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource>? gcsNotebookSource;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource?>? gcsNotebookSource;
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
   final pulumi.Input<String> gcsOutputUri;
   /// (Output)
   /// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
-  final pulumi.Input<String>? jobState;
+  final pulumi.Input<String?>? jobState;
   /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
-  final pulumi.Input<String>? kernelName;
+  final pulumi.Input<String?>? kernelName;
   /// The labels with user-defined metadata to organize NotebookExecutionJobs.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// (Output)
   /// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NotebookRuntimeTemplate to source compute configuration from.
-  final pulumi.Input<String>? notebookRuntimeTemplateResourceName;
+  final pulumi.Input<String?>? notebookRuntimeTemplateResourceName;
   /// (Output)
   /// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-  final pulumi.Input<String>? scheduleResourceName;
+  final pulumi.Input<String?>? scheduleResourceName;
   /// The service account to run the execution as.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// (Output)
   /// Timestamp when this NotebookExecutionJob was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Configuration for a Workbench Instances-based environment.
-  final pulumi.Input<Map<String, dynamic>>? workbenchRuntime;
+  final pulumi.Input<Map<String, dynamic>?>? workbenchRuntime;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob].
   /// [createTime] (Output)

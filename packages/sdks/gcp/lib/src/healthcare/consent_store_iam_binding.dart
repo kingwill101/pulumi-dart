@@ -981,13 +981,13 @@ class ConsentStoreIamBinding extends pulumi.CustomResource {
           'gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<ConsentStoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsentStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consentStoreId = registerOutput<String>('consentStoreId');
     dataset = registerOutput<String>('dataset');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 
@@ -996,11 +996,12 @@ class ConsentStoreIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConsentStoreIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConsentStoreIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1018,7 +1019,24 @@ class ConsentStoreIamBinding extends pulumi.CustomResource {
     consentStoreId = registerOutput<String>('consentStoreId');
     dataset = registerOutput<String>('dataset');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ConsentStoreIamBinding] resource.
+  ConsentStoreIamBinding.reference(String urn)
+    : super(
+        'gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<ConsentStoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsentStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consentStoreId = registerOutput<String>('consentStoreId');
+    dataset = registerOutput<String>('dataset');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 }

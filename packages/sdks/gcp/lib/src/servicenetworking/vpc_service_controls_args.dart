@@ -13,7 +13,7 @@ class VpcServiceControlsArgs {
   /// The network that the consumer is using to connect with services.
   final pulumi.Input<String> network;
   /// The id of the Google Cloud project containing the consumer network.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The service that is managing peering connectivity for a service
   /// producer's organization. For Google services that support this
   /// functionality, this value is `servicenetworking.googleapis.com`.

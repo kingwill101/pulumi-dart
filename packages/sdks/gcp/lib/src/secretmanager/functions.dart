@@ -145,6 +145,17 @@ Future<GetRegionalSecretResult> getRegionalSecret(
   return GetRegionalSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionalSecretResult> getRegionalSecretOutput(
+  GetRegionalSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getRegionalSecret:getRegionalSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalSecretResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for regionalsecret
 ///
 ///
@@ -278,6 +289,17 @@ Future<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicy(
   return GetRegionalSecretIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionalSecretIamPolicyResult> getRegionalSecretIamPolicyOutput(
+  GetRegionalSecretIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalSecretIamPolicyResult.fromMap);
+}
+
 /// subcategory: "Secret Manager"
 /// description: |-
 /// Get a Secret Manager regional secret's version.
@@ -406,6 +428,17 @@ Future<GetRegionalSecretVersionResult> getRegionalSecretVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionalSecretVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionalSecretVersionResult> getRegionalSecretVersionOutput(
+  GetRegionalSecretVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalSecretVersionResult.fromMap);
 }
 
 /// subcategory: "Secret Manager"
@@ -539,6 +572,17 @@ Future<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccess(
   return GetRegionalSecretVersionAccessResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccessOutput(
+  GetRegionalSecretVersionAccessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalSecretVersionAccessResult.fromMap);
+}
+
 /// subcategory: "Secret Manager"
 /// description: |-
 /// List the Secret Manager Regional Secrets.
@@ -662,6 +706,17 @@ Future<GetRegionalSecretsResult> getRegionalSecrets(
   return GetRegionalSecretsResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionalSecretsResult> getRegionalSecretsOutput(
+  GetRegionalSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getRegionalSecrets:getRegionalSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalSecretsResult.fromMap);
+}
+
 /// Use this data source to get information about a Secret Manager Secret
 ///
 /// ## Example Usage
@@ -778,6 +833,17 @@ Future<GetSecretResult> getSecret(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getSecret:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for secret
@@ -906,6 +972,17 @@ Future<GetSecretIamPolicyResult> getSecretIamPolicy(
   return GetSecretIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretIamPolicyResult> getSecretIamPolicyOutput(
+  GetSecretIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretIamPolicyResult.fromMap);
+}
+
 /// Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the gcp.secretmanager.getSecretVersionAccess datasource.
 ///
 /// ## Example Usage
@@ -1022,6 +1099,17 @@ Future<GetSecretVersionResult> getSecretVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
+  GetSecretVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getSecretVersion:getSecretVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretVersionResult.fromMap);
 }
 
 /// Get the value from a Secret Manager secret version. This is similar to the gcp.secretmanager.SecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
@@ -1142,6 +1230,17 @@ Future<GetSecretVersionAccessResult> getSecretVersionAccess(
   return GetSecretVersionAccessResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretVersionAccessResult> getSecretVersionAccessOutput(
+  GetSecretVersionAccessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretVersionAccessResult.fromMap);
+}
+
 /// Use this data source to list the Secret Manager Secrets
 ///
 /// ## Example Usage
@@ -1248,4 +1347,15 @@ Future<GetSecretsResult> getSecrets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretsResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretsResult> getSecretsOutput(
+  GetSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:secretmanager/getSecrets:getSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretsResult.fromMap);
 }

@@ -4,44 +4,44 @@
 /// Result data returned by getActiveFolder.
 class GetActiveFolderResult {
   final String? apiMethod;
-  final String displayName;
+  final String? displayName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The resource name of the Folder. This uniquely identifies the folder.
-  final String name;
-  final String parent;
+  final String? name;
+  final String? parent;
 
   /// Creates a new [GetActiveFolderResult].
   /// [apiMethod] Optional.
-  /// [displayName] Required.
+  /// [displayName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The resource name of the Folder. This uniquely identifies the folder.
-  /// [parent] Required.
+  /// [parent] Optional.
   const GetActiveFolderResult({
     this.apiMethod,
-    required this.displayName,
-    required this.id,
-    required this.name,
-    required this.parent,
+    this.displayName,
+    this.id,
+    this.name,
+    this.parent,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiMethod': ?apiMethod,
-      'displayName': displayName,
-      'id': id,
-      'name': name,
-      'parent': parent,
+      'displayName': ?displayName,
+      'id': ?id,
+      'name': ?name,
+      'parent': ?parent,
     };
   }
 
   factory GetActiveFolderResult.fromMap(Map<String, dynamic> map) {
     return GetActiveFolderResult(
       apiMethod: (() { final guardedValue = map['apiMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      parent: map['parent'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

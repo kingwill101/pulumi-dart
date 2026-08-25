@@ -5,7 +5,7 @@ import 'cluster_node_pool_maintenance_policy_exclusion_until_end_of_support.dart
 
 class ClusterNodePoolMaintenancePolicy {
   /// Maintenance exclusion until the end of support.
-  final pulumi.Input<List<ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport>>? exclusionUntilEndOfSupports;
+  final pulumi.Input<List<ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport>?>? exclusionUntilEndOfSupports;
 
   /// Creates a new [ClusterNodePoolMaintenancePolicy].
   /// [exclusionUntilEndOfSupports] Maintenance exclusion until the end of support.

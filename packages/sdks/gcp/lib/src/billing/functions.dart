@@ -119,3 +119,14 @@ Future<GetAccountIamPolicyResult> getAccountIamPolicy(
   );
   return GetAccountIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetAccountIamPolicyResult> getAccountIamPolicyOutput(
+  GetAccountIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:billing/getAccountIamPolicy:getAccountIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountIamPolicyResult.fromMap);
+}

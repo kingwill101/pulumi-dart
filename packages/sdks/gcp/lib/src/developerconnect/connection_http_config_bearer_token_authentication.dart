@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionHttpConfigBearerTokenAuthentication {
   /// The token SecretManager secret version to authenticate as.
-  final pulumi.Input<String>? tokenSecretVersion;
+  final pulumi.Input<String?>? tokenSecretVersion;
 
   /// Creates a new [ConnectionHttpConfigBearerTokenAuthentication].
   /// [tokenSecretVersion] The token SecretManager secret version to authenticate as.

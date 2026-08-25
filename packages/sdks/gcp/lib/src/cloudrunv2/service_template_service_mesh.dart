@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTemplateServiceMesh {
   /// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-  final pulumi.Input<String>? mesh;
+  final pulumi.Input<String?>? mesh;
 
   /// Creates a new [ServiceTemplateServiceMesh].
   /// [mesh] The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.

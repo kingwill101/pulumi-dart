@@ -6,7 +6,7 @@ import 'analysis_rule_annotator_selector_qa_config_scorecard_list.dart';
 class AnalysisRuleAnnotatorSelectorQaConfig {
   /// Container for a list of scorecards.
   /// Structure is documented below.
-  final pulumi.Input<AnalysisRuleAnnotatorSelectorQaConfigScorecardList>? scorecardList;
+  final pulumi.Input<AnalysisRuleAnnotatorSelectorQaConfigScorecardList?>? scorecardList;
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorQaConfig].
   /// [scorecardList] Container for a list of scorecards.

@@ -9,19 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionalSecretVersionAccessArgs {
   /// If set to 'true', the secret data is
   /// expected to be base64-encoded string.
-  final pulumi.Input<bool>? isSecretDataBase64;
+  final pulumi.Input<bool?>? isSecretDataBase64;
   /// Location of Secret Manager regional secret resource.
   /// It must be provided when the `secret` field provided consists of only the name of the regional secret.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The project to get the secret version for. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The regional secret to get the secret version for.
   /// This can be either the reference of the regional secret as in `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}` or only the name of the regional secret as in `{{secret_id}}`. If only the name of the regional secret is provided, the location must also be provided.
   final pulumi.Input<String> secret;
   /// The version of the regional secret to get. If it
   /// is not provided, the latest version is retrieved.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GetRegionalSecretVersionAccessArgs].
   /// [isSecretDataBase64] If set to 'true', the secret data is

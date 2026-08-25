@@ -7,31 +7,31 @@ class DbSystemPropertiesDbHomeDatabase {
   /// The password for the default ADMIN user.
   final pulumi.Input<String> adminPassword;
   /// The character set for the database. The default is AL32UTF8.
-  final pulumi.Input<String>? characterSet;
+  final pulumi.Input<String?>? characterSet;
   /// (Output)
   /// The date and time that the Database was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The database ID of the Database.
   final pulumi.Input<String> databaseId;
   /// The name of the DbHome resource associated with the Database.
-  final pulumi.Input<String>? dbHomeName;
+  final pulumi.Input<String?>? dbHomeName;
   /// The database name. The name must begin with an alphabetic character and can
   /// contain a maximum of eight alphanumeric characters. Special characters are
   /// not permitted.
-  final pulumi.Input<String>? dbName;
+  final pulumi.Input<String?>? dbName;
   /// The DB_UNIQUE_NAME of the Oracle Database being backed up.
-  final pulumi.Input<String>? dbUniqueName;
+  final pulumi.Input<String?>? dbUniqueName;
   /// The GCP Oracle zone where the Database is created.
-  final pulumi.Input<String>? gcpOracleZone;
+  final pulumi.Input<String?>? gcpOracleZone;
   /// (Output)
   /// Identifier. The name of the Database resource in the following format:
   /// projects/{project}/locations/{region}/databases/{database}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The national character set for the database. The default is AL16UTF16.
-  final pulumi.Input<String>? ncharacterSet;
+  final pulumi.Input<String?>? ncharacterSet;
   /// (Output)
   /// HTTPS link to OCI resources exposed to Customer via UI Interface.
-  final pulumi.Input<String>? ociUrl;
+  final pulumi.Input<String?>? ociUrl;
   /// (Output)
   /// The Status of Operations Insights for this Database.
   /// Possible values:
@@ -41,16 +41,16 @@ class DbSystemPropertiesDbHomeDatabase {
   /// NOT_ENABLED
   /// FAILED_ENABLING
   /// FAILED_DISABLING
-  final pulumi.Input<String>? opsInsightsStatus;
+  final pulumi.Input<String?>? opsInsightsStatus;
   /// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
-  final pulumi.Input<String>? pluggableDatabaseId;
+  final pulumi.Input<String?>? pluggableDatabaseId;
   /// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
-  final pulumi.Input<String>? pluggableDatabaseName;
+  final pulumi.Input<String?>? pluggableDatabaseName;
   /// The properties of a Database.
   /// Structure is documented below.
-  final pulumi.Input<DbSystemPropertiesDbHomeDatabaseProperties>? properties;
+  final pulumi.Input<DbSystemPropertiesDbHomeDatabaseProperties?>? properties;
   /// The TDE wallet password for the database.
-  final pulumi.Input<String>? tdeWalletPassword;
+  final pulumi.Input<String?>? tdeWalletPassword;
 
   /// Creates a new [DbSystemPropertiesDbHomeDatabase].
   /// [adminPassword] The password for the default ADMIN user.

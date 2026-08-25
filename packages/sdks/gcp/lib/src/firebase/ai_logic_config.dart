@@ -953,7 +953,7 @@ class AiLogicConfig extends pulumi.CustomResource {
           'gcp:firebase/aiLogicConfig:AiLogicConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigGenerativeLanguageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -969,11 +969,12 @@ class AiLogicConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiLogicConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiLogicConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -987,6 +988,24 @@ class AiLogicConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigGenerativeLanguageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigTelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficFilter = registerOutput<AiLogicConfigTrafficFilter>('trafficFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigTrafficFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AiLogicConfig] resource.
+  AiLogicConfig.reference(String urn)
+    : super(
+        'gcp:firebase/aiLogicConfig:AiLogicConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigGenerativeLanguageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');

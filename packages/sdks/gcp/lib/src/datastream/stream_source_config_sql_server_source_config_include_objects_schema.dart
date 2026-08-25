@@ -8,7 +8,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
   final pulumi.Input<String> schema;
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable>>? tables;
+  final pulumi.Input<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable>?>? tables;
 
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema].
   /// [schema] Schema name.

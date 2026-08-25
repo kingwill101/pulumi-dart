@@ -6,7 +6,7 @@ class AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet {
   /// Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
   final pulumi.Input<String> path;
   /// Optional. Specifies the port number on the container to which the request is sent.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet].
   /// [path] Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
@@ -26,7 +26,7 @@ class AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet {
   factory AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet(
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

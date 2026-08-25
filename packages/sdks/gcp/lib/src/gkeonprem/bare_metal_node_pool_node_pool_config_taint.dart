@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalNodePoolNodePoolConfigTaint {
   /// Specifies the nodes operating system (default: LINUX).
   /// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// Key associated with the effect.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value associated with the effect.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [BareMetalNodePoolNodePoolConfigTaint].
   /// [effect] Specifies the nodes operating system (default: LINUX).

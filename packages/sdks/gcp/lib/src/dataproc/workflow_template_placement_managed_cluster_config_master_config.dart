@@ -7,25 +7,25 @@ import 'workflow_template_placement_managed_cluster_config_master_config_managed
 
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
   /// The Compute Engine accelerator configuration for these instances.
-  final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator>>? accelerators;
+  final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator>?>? accelerators;
   /// Disk option config settings.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig>? diskConfig;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig?>? diskConfig;
   /// The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
-  final pulumi.Input<List<String>>? instanceNames;
+  final pulumi.Input<List<String>?>? instanceNames;
   /// Output only. Specifies that this instance group contains preemptible instances.
-  final pulumi.Input<bool>? isPreemptible;
+  final pulumi.Input<bool?>? isPreemptible;
   /// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-  final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>>? managedGroupConfigs;
+  final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>?>? managedGroupConfigs;
   /// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// The number of VM instances in the instance group. For master instance groups, must be set to 1.
-  final pulumi.Input<int>? numInstances;
+  final pulumi.Input<int?>? numInstances;
   /// Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
-  final pulumi.Input<String>? preemptibility;
+  final pulumi.Input<String?>? preemptibility;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigMasterConfig].
   /// [accelerators] The Compute Engine accelerator configuration for these instances.
@@ -76,7 +76,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedGroupConfigs: (() { final guardedValue = map['managedGroupConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>(guardedValue, (value) => WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       preemptibility: (() { final guardedValue = map['preemptibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

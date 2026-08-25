@@ -1102,7 +1102,7 @@ class WorkstationIamPolicy extends pulumi.CustomResource {
           'gcp:workstations/workstationIamPolicy:WorkstationIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -1118,11 +1118,12 @@ class WorkstationIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkstationIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkstationIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1136,6 +1137,24 @@ class WorkstationIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationConfigId = registerOutput<String>('workstationConfigId');
+    workstationId = registerOutput<String>('workstationId');
+  }
+
+  /// Creates a typed reference to an existing [WorkstationIamPolicy] resource.
+  WorkstationIamPolicy.reference(String urn)
+    : super(
+        'gcp:workstations/workstationIamPolicy:WorkstationIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     policyData = registerOutput<String>('policyData');

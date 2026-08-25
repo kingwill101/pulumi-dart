@@ -8,11 +8,11 @@ import 'custom_target_type_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_clouddeploy_custom_target_type_iam_member_custom_target_type_iam_member_args_doc}
 class CustomTargetTypeIamMemberArgs {
-  final pulumi.Input<CustomTargetTypeIamMemberCondition>? condition;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<CustomTargetTypeIamMemberCondition?>? condition;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<String> member;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> role;
 
   /// Creates a new [CustomTargetTypeIamMemberArgs].

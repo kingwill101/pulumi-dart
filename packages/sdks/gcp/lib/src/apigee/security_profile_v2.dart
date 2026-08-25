@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_profile_v2_args.dart';
+import 'security_profile_v2_profile_assessment_config.dart';
 import 'security_profile_v2_state.dart';
 
 /// Security profile for risk assessment version 2 in Apigee.
@@ -562,7 +563,7 @@ class SecurityProfileV2 extends pulumi.CustomResource {
   late final pulumi.Output<String> orgId;
   /// A map of the assessment name and the assessment config.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> profileAssessmentConfigs;
+  late final pulumi.Output<List<SecurityProfileV2ProfileAssessmentConfig>> profileAssessmentConfigs;
   /// Resource ID of the security profile.
   late final pulumi.Output<String> profileId;
   /// The timestamp at which this profile was most recently updated.
@@ -580,14 +581,14 @@ class SecurityProfileV2 extends pulumi.CustomResource {
           'gcp:apigee/securityProfileV2:SecurityProfileV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    profileAssessmentConfigs = registerOutput<List<Map<String, dynamic>>>('profileAssessmentConfigs');
+    profileAssessmentConfigs = registerOutput<List<SecurityProfileV2ProfileAssessmentConfig>>('profileAssessmentConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(guardedValue, (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>())); });
     profileId = registerOutput<String>('profileId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -597,11 +598,12 @@ class SecurityProfileV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityProfileV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityProfileV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -620,7 +622,26 @@ class SecurityProfileV2 extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    profileAssessmentConfigs = registerOutput<List<Map<String, dynamic>>>('profileAssessmentConfigs');
+    profileAssessmentConfigs = registerOutput<List<SecurityProfileV2ProfileAssessmentConfig>>('profileAssessmentConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(guardedValue, (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    profileId = registerOutput<String>('profileId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SecurityProfileV2] resource.
+  SecurityProfileV2.reference(String urn)
+    : super(
+        'gcp:apigee/securityProfileV2:SecurityProfileV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    profileAssessmentConfigs = registerOutput<List<SecurityProfileV2ProfileAssessmentConfig>>('profileAssessmentConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(guardedValue, (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>())); });
     profileId = registerOutput<String>('profileId');
     updateTime = registerOutput<String>('updateTime');
   }

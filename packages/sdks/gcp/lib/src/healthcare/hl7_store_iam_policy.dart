@@ -703,7 +703,7 @@ class Hl7StoreIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
@@ -715,11 +715,12 @@ class Hl7StoreIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Hl7StoreIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hl7StoreIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -733,6 +734,20 @@ class Hl7StoreIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [Hl7StoreIamPolicy] resource.
+  Hl7StoreIamPolicy.reference(String urn)
+    : super(
+        'gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
     policyData = registerOutput<String>('policyData');

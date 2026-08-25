@@ -1355,7 +1355,7 @@ class DashboardChart extends pulumi.CustomResource {
           'gcp:chronicle/dashboardChart:DashboardChart',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     chartId = registerOutput<String>('chartId');
     chartLayout = registerOutput<DashboardChartChartLayout?>('chartLayout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartChartLayout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1374,11 +1374,12 @@ class DashboardChart extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DashboardChartState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DashboardChart._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1392,6 +1393,27 @@ class DashboardChart extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    chartId = registerOutput<String>('chartId');
+    chartLayout = registerOutput<DashboardChartChartLayout?>('chartLayout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartChartLayout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dashboardChart = registerOutput<DashboardChartDashboardChart>('dashboardChart', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartDashboardChart.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dashboardQuery = registerOutput<DashboardChartDashboardQuery?>('dashboardQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartDashboardQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nativeDashboard = registerOutput<String?>('nativeDashboard');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [DashboardChart] resource.
+  DashboardChart.reference(String urn)
+    : super(
+        'gcp:chronicle/dashboardChart:DashboardChart',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     chartId = registerOutput<String>('chartId');
     chartLayout = registerOutput<DashboardChartChartLayout?>('chartLayout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartChartLayout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dashboardChart = registerOutput<DashboardChartDashboardChart>('dashboardChart', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartDashboardChart.fromMap((guardedValue as Map).cast<String, dynamic>()); });

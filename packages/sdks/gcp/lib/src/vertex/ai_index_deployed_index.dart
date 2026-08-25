@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiIndexDeployedIndex {
   /// (Output)
   /// The ID of the DeployedIndex in the above IndexEndpoint.
-  final pulumi.Input<String>? deployedIndexId;
+  final pulumi.Input<String?>? deployedIndexId;
   /// (Output)
   /// A resource name of the IndexEndpoint.
-  final pulumi.Input<String>? indexEndpoint;
+  final pulumi.Input<String?>? indexEndpoint;
 
   /// Creates a new [AiIndexDeployedIndex].
   /// [deployedIndexId] (Output)

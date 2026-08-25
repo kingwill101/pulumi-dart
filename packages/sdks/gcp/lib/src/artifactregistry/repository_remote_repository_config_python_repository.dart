@@ -6,10 +6,10 @@ import 'repository_remote_repository_config_python_repository_custom_repository.
 class RepositoryRemoteRepositoryConfigPythonRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>? customRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository?>? customRepository;
   /// Address of the remote repository.
   /// Possible values are: `PYPI`.
-  final pulumi.Input<String>? publicRepository;
+  final pulumi.Input<String?>? publicRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigPythonRepository].
   /// [customRepository] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterControlPlaneRemote {
   /// Name of the Google Distributed Cloud Edge zones where this node pool
   /// will be created. For example: `us-central1-edge-customer-a`.
-  final pulumi.Input<String>? nodeLocation;
+  final pulumi.Input<String?>? nodeLocation;
 
   /// Creates a new [ClusterControlPlaneRemote].
   /// [nodeLocation] Name of the Google Distributed Cloud Edge zones where this node pool

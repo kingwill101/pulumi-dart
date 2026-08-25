@@ -6,16 +6,16 @@ import 'project_config_platform_logs_config.dart';
 /// Input properties used for looking up and filtering ProjectConfig resources.
 class ProjectConfigState {
   /// The name of the location this config is located in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the project's config.
   /// Always of the form: projects/{project}/locations/{location}/projectConfig
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for platform logs.
   /// Structure is documented below.
-  final pulumi.Input<ProjectConfigPlatformLogsConfig>? platformLogsConfig;
+  final pulumi.Input<ProjectConfigPlatformLogsConfig?>? platformLogsConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ProjectConfigState].
   /// [location] The name of the location this config is located in.

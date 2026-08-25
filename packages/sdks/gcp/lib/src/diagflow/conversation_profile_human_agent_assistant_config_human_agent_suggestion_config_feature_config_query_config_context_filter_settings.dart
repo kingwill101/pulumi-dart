@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings {
   /// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
-  final pulumi.Input<bool>? dropHandoffMessages;
+  final pulumi.Input<bool?>? dropHandoffMessages;
   /// If set to true, all messages from ivr stage are dropped.
-  final pulumi.Input<bool>? dropIvrMessages;
+  final pulumi.Input<bool?>? dropIvrMessages;
   /// If set to true, all messages from virtual agent are dropped.
-  final pulumi.Input<bool>? dropVirtualAgentMessages;
+  final pulumi.Input<bool?>? dropVirtualAgentMessages;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigContextFilterSettings].
   /// [dropHandoffMessages] If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.

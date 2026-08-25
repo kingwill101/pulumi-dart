@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionAutomaticScalingDiskUtilization {
   /// Target bytes read per second.
-  final pulumi.Input<int>? targetReadBytesPerSecond;
+  final pulumi.Input<int?>? targetReadBytesPerSecond;
   /// Target ops read per seconds.
-  final pulumi.Input<int>? targetReadOpsPerSecond;
+  final pulumi.Input<int?>? targetReadOpsPerSecond;
   /// Target bytes written per second.
-  final pulumi.Input<int>? targetWriteBytesPerSecond;
+  final pulumi.Input<int?>? targetWriteBytesPerSecond;
   /// Target ops written per second.
-  final pulumi.Input<int>? targetWriteOpsPerSecond;
+  final pulumi.Input<int?>? targetWriteOpsPerSecond;
 
   /// Creates a new [FlexibleAppVersionAutomaticScalingDiskUtilization].
   /// [targetReadBytesPerSecond] Target bytes read per second.
@@ -35,10 +35,10 @@ class FlexibleAppVersionAutomaticScalingDiskUtilization {
 
   factory FlexibleAppVersionAutomaticScalingDiskUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingDiskUtilization(
-      targetReadBytesPerSecond: (() { final guardedValue = map['targetReadBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetReadOpsPerSecond: (() { final guardedValue = map['targetReadOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetWriteBytesPerSecond: (() { final guardedValue = map['targetWriteBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetWriteOpsPerSecond: (() { final guardedValue = map['targetWriteOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetReadBytesPerSecond: (() { final guardedValue = map['targetReadBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetReadOpsPerSecond: (() { final guardedValue = map['targetReadOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetWriteBytesPerSecond: (() { final guardedValue = map['targetWriteBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetWriteOpsPerSecond: (() { final guardedValue = map['targetWriteOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

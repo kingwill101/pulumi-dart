@@ -10,13 +10,13 @@ class RegionPerInstanceConfigPreservedStateDisk {
   /// deleted from the instance group.
   /// Default value is `NEVER`.
   /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
-  final pulumi.Input<String>? deleteRule;
+  final pulumi.Input<String?>? deleteRule;
   /// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
   final pulumi.Input<String> deviceName;
   /// The mode of the disk.
   /// Default value is `READ_WRITE`.
   /// Possible values are: `READ_ONLY`, `READ_WRITE`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The URI of an existing persistent disk to attach under the specified device-name in the format
   /// `projects/project-id/zones/zone/disks/disk-name`.
   final pulumi.Input<String> source;

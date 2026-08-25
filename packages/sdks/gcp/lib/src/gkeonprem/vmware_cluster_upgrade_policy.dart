@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterUpgradePolicy {
   /// Controls whether the upgrade applies to the control plane only.
-  final pulumi.Input<bool>? controlPlaneOnly;
+  final pulumi.Input<bool?>? controlPlaneOnly;
 
   /// Creates a new [VMwareClusterUpgradePolicy].
   /// [controlPlaneOnly] Controls whether the upgrade applies to the control plane only.

@@ -24,7 +24,7 @@ class ReferenceListArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Required. The ID to use for the reference list. This is also the display name for
   /// the reference list. It must satisfy the following requirements:
   /// - Starts with letter.
@@ -34,7 +34,7 @@ class ReferenceListArgs {
   final pulumi.Input<String> referenceListId;
   /// ScopeInfo specifies the scope info of the reference list.
   /// Structure is documented below.
-  final pulumi.Input<List<ReferenceListScopeInfo>>? scopeInfos;
+  final pulumi.Input<List<ReferenceListScopeInfo>?>? scopeInfos;
   /// Possible values:
   /// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
   /// REFERENCE_LIST_SYNTAX_TYPE_REGEX

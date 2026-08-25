@@ -2140,7 +2140,7 @@ class WebRegionBackendServiceIamPolicy extends pulumi.CustomResource {
           'gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
@@ -2154,11 +2154,12 @@ class WebRegionBackendServiceIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebRegionBackendServiceIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebRegionBackendServiceIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2172,6 +2173,22 @@ class WebRegionBackendServiceIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    webRegionBackendService = registerOutput<String>('webRegionBackendService');
+  }
+
+  /// Creates a typed reference to an existing [WebRegionBackendServiceIamPolicy] resource.
+  WebRegionBackendServiceIamPolicy.reference(String urn)
+    : super(
+        'gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
     project = registerOutput<String>('project');

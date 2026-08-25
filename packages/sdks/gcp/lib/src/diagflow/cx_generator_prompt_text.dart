@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxGeneratorPromptText {
   /// Text input which can be used for prompt or banned phrases.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [CxGeneratorPromptText].
   /// [text] Text input which can be used for prompt or banned phrases.

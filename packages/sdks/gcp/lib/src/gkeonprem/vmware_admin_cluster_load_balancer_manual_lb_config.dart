@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterLoadBalancerManualLbConfig {
   /// NodePort for add-ons server in the admin cluster.
-  final pulumi.Input<int>? addonsNodePort;
+  final pulumi.Input<int?>? addonsNodePort;
   /// NodePort for control plane service. The Kubernetes API server in the admin
   /// cluster is implemented as a Service of type NodePort (ex. 30968).
-  final pulumi.Input<int>? controlPlaneNodePort;
+  final pulumi.Input<int?>? controlPlaneNodePort;
   /// NodePort for ingress service's http. The ingress service in the admin
   /// cluster is implemented as a Service of type NodePort (ex. 32527).
-  final pulumi.Input<int>? ingressHttpNodePort;
+  final pulumi.Input<int?>? ingressHttpNodePort;
   /// NodePort for ingress service's https. The ingress service in the admin
   /// cluster is implemented as a Service of type NodePort (ex. 30139).
-  final pulumi.Input<int>? ingressHttpsNodePort;
+  final pulumi.Input<int?>? ingressHttpsNodePort;
   /// NodePort for konnectivity server service running as a sidecar in each
   /// kube-apiserver pod (ex. 30564).
-  final pulumi.Input<int>? konnectivityServerNodePort;
+  final pulumi.Input<int?>? konnectivityServerNodePort;
 
   /// Creates a new [VmwareAdminClusterLoadBalancerManualLbConfig].
   /// [addonsNodePort] NodePort for add-ons server in the admin cluster.
@@ -44,11 +44,11 @@ class VmwareAdminClusterLoadBalancerManualLbConfig {
 
   factory VmwareAdminClusterLoadBalancerManualLbConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterLoadBalancerManualLbConfig(
-      addonsNodePort: (() { final guardedValue = map['addonsNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      controlPlaneNodePort: (() { final guardedValue = map['controlPlaneNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ingressHttpNodePort: (() { final guardedValue = map['ingressHttpNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ingressHttpsNodePort: (() { final guardedValue = map['ingressHttpsNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      konnectivityServerNodePort: (() { final guardedValue = map['konnectivityServerNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      addonsNodePort: (() { final guardedValue = map['addonsNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      controlPlaneNodePort: (() { final guardedValue = map['controlPlaneNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ingressHttpNodePort: (() { final guardedValue = map['ingressHttpNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ingressHttpsNodePort: (() { final guardedValue = map['ingressHttpsNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      konnectivityServerNodePort: (() { final guardedValue = map['konnectivityServerNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

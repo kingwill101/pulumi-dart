@@ -9,7 +9,7 @@ class WorkforcePoolProviderOidc {
   final pulumi.Input<String> clientId;
   /// The optional client secret. Required to enable Authorization Code flow for web sign-in.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderOidcClientSecret>? clientSecret;
+  final pulumi.Input<WorkforcePoolProviderOidcClientSecret?>? clientSecret;
   /// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
   final pulumi.Input<String> issuerUri;
   /// OIDC JWKs in JSON String format. For details on definition of a
@@ -35,10 +35,10 @@ class WorkforcePoolProviderOidc {
   /// ]
   /// }
   /// ```
-  final pulumi.Input<String>? jwksJson;
+  final pulumi.Input<String?>? jwksJson;
   /// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderOidcWebSsoConfig>? webSsoConfig;
+  final pulumi.Input<WorkforcePoolProviderOidcWebSsoConfig?>? webSsoConfig;
 
   /// Creates a new [WorkforcePoolProviderOidc].
   /// [clientId] The client ID. Must match the audience claim of the JWT issued by the identity provider.

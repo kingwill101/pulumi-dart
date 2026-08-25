@@ -7,10 +7,10 @@ class ClusterMaintenancePolicyWindowRecurringWindow {
   /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
   /// this window recurs. They go on for the span of time between the start and
   /// end time.
-  final pulumi.Input<String>? recurrence;
+  final pulumi.Input<String?>? recurrence;
   /// Represents an arbitrary window of time.
   /// Structure is documented below.
-  final pulumi.Input<ClusterMaintenancePolicyWindowRecurringWindowWindow>? window;
+  final pulumi.Input<ClusterMaintenancePolicyWindowRecurringWindowWindow?>? window;
 
   /// Creates a new [ClusterMaintenancePolicyWindowRecurringWindow].
   /// [recurrence] An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how

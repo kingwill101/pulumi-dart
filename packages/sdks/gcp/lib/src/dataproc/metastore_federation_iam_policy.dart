@@ -1012,7 +1012,7 @@ class MetastoreFederationIamPolicy extends pulumi.CustomResource {
           'gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     federationId = registerOutput<String>('federationId');
@@ -1026,11 +1026,12 @@ class MetastoreFederationIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetastoreFederationIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetastoreFederationIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1044,6 +1045,22 @@ class MetastoreFederationIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    federationId = registerOutput<String>('federationId');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [MetastoreFederationIamPolicy] resource.
+  MetastoreFederationIamPolicy.reference(String urn)
+    : super(
+        'gcp:dataproc/metastoreFederationIamPolicy:MetastoreFederationIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     federationId = registerOutput<String>('federationId');
     location = registerOutput<String>('location');

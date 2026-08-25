@@ -13,12 +13,12 @@ class RuntimeProjectAttachmentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
   /// As input, project name with either project id or number are accepted.
   /// As output, this field will contain project number.

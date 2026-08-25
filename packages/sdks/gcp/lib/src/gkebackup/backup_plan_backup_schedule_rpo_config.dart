@@ -12,7 +12,7 @@ class BackupPlanBackupScheduleRpoConfig {
   /// only allow &lt;=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
   /// restriction on number of single occurrence windows.
   /// Structure is documented below.
-  final pulumi.Input<List<BackupPlanBackupScheduleRpoConfigExclusionWindow>>? exclusionWindows;
+  final pulumi.Input<List<BackupPlanBackupScheduleRpoConfigExclusionWindow>?>? exclusionWindows;
   /// Defines the target RPO for the BackupPlan in minutes, which means the target
   /// maximum data loss in time that is acceptable for this BackupPlan. This must be
   /// at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
@@ -36,7 +36,7 @@ class BackupPlanBackupScheduleRpoConfig {
   factory BackupPlanBackupScheduleRpoConfig.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfig(
       exclusionWindows: (() { final guardedValue = map['exclusionWindows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackupPlanBackupScheduleRpoConfigExclusionWindow>(guardedValue, (value) => BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetRpoMinutes: pulumi.Input.fromValue(map['targetRpoMinutes'] as int),
+      targetRpoMinutes: pulumi.Input.fromValue((map['targetRpoMinutes'] as num).toInt()),
     );
   }
 }

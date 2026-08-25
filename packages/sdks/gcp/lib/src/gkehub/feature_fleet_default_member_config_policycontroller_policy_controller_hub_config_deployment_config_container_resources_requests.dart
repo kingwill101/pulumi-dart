@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
   /// CPU requirement expressed in Kubernetes resource units.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// Memory requirement expressed in Kubernetes resource units.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests].
   /// [cpu] CPU requirement expressed in Kubernetes resource units.

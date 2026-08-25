@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_network_firewall_policy_rule_args.dart';
 import 'region_network_firewall_policy_rule_match.dart';
 import 'region_network_firewall_policy_rule_state.dart';
+import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 
 /// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 ///
@@ -2120,7 +2121,7 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetSecureTags;
+  late final pulumi.Output<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?> targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
   late final pulumi.Output<List<String>?> targetServiceAccounts;
   /// Target types of the firewall policy rule.
@@ -2144,7 +2145,7 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
           'gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -2162,9 +2163,9 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
-    targetForwardingRules = registerOutput<List<String>?>('targetForwardingRules');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetForwardingRules = registerOutput<List<String>?>('targetForwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetSecureTags = registerOutput<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkFirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetType = registerOutput<String>('targetType');
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }
@@ -2174,11 +2175,12 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionNetworkFirewallPolicyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionNetworkFirewallPolicyRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2208,9 +2210,41 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
-    targetForwardingRules = registerOutput<List<String>?>('targetForwardingRules');
-    targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetForwardingRules = registerOutput<List<String>?>('targetForwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetSecureTags = registerOutput<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkFirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetType = registerOutput<String>('targetType');
+    tlsInspect = registerOutput<bool?>('tlsInspect');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkFirewallPolicyRule] resource.
+  RegionNetworkFirewallPolicyRule.reference(String urn)
+    : super(
+        'gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    direction = registerOutput<String>('direction');
+    disabled = registerOutput<bool?>('disabled');
+    enableLogging = registerOutput<bool?>('enableLogging');
+    firewallPolicy = registerOutput<String>('firewallPolicy');
+    kind = registerOutput<String>('kind');
+    match = registerOutput<RegionNetworkFirewallPolicyRuleMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkFirewallPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    ruleName = registerOutput<String?>('ruleName');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    securityProfileGroup = registerOutput<String?>('securityProfileGroup');
+    targetForwardingRules = registerOutput<List<String>?>('targetForwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetSecureTags = registerOutput<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>('targetSecureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkFirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetType = registerOutput<String>('targetType');
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }

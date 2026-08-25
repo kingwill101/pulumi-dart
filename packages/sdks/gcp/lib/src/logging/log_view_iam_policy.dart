@@ -2224,7 +2224,7 @@ class LogViewIamPolicy extends pulumi.CustomResource {
           'gcp:logging/logViewIamPolicy:LogViewIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     etag = registerOutput<String>('etag');
@@ -2239,11 +2239,12 @@ class LogViewIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogViewIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogViewIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2257,6 +2258,23 @@ class LogViewIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [LogViewIamPolicy] resource.
+  LogViewIamPolicy.reference(String urn)
+    : super(
+        'gcp:logging/logViewIamPolicy:LogViewIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

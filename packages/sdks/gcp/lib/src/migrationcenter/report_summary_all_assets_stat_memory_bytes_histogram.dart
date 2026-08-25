@@ -11,7 +11,7 @@ class ReportSummaryAllAssetsStatMemoryBytesHistogram {
   /// Subsequent buckets will be between one bound and the next.
   /// The final bucket will be from the final bound to infinity.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatMemoryBytesHistogramBucket>>? buckets;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatMemoryBytesHistogramBucket>?>? buckets;
 
   /// Creates a new [ReportSummaryAllAssetsStatMemoryBytesHistogram].
   /// [buckets] (Output)

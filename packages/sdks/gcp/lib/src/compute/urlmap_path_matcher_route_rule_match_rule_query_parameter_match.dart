@@ -6,19 +6,19 @@ class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
   /// The queryParameterMatch matches if the value of the parameter exactly matches
   /// the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
   /// must be set.
-  final pulumi.Input<String>? exactMatch;
+  final pulumi.Input<String?>? exactMatch;
   /// The name of the query parameter to match. The query parameter must exist in the
   /// request, in the absence of which the request match fails.
   final pulumi.Input<String> name;
   /// Specifies that the queryParameterMatch matches if the request contains the query
   /// parameter, irrespective of whether the parameter has a value or not. Only one of
   /// presentMatch, exactMatch and regexMatch must be set.
-  final pulumi.Input<bool>? presentMatch;
+  final pulumi.Input<bool?>? presentMatch;
   /// The queryParameterMatch matches if the value of the parameter matches the
   /// regular expression specified by regexMatch. For the regular expression grammar,
   /// please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
   /// exactMatch and regexMatch must be set.
-  final pulumi.Input<String>? regexMatch;
+  final pulumi.Input<String?>? regexMatch;
 
   /// Creates a new [URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch].
   /// [exactMatch] The queryParameterMatch matches if the value of the parameter exactly matches

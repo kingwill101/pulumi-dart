@@ -7,16 +7,16 @@ class TriggerBuildArtifactsObjects {
   /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
   /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
   /// this location as a prefix.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Path globs used to match files in the build's workspace.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
   /// (Output)
   /// Output only. Stores timing information for pushing all artifact objects.
   /// Structure is documented below.
   ///
   ///
   /// &lt;a name="nestedBuildArtifactsObjectsTiming"&gt;&lt;/a&gt;The `timing` block contains:
-  final pulumi.Input<List<TriggerBuildArtifactsObjectsTiming>>? timings;
+  final pulumi.Input<List<TriggerBuildArtifactsObjectsTiming>?>? timings;
 
   /// Creates a new [TriggerBuildArtifactsObjects].
   /// [location] Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".

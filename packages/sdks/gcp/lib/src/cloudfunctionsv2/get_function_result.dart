@@ -7,104 +7,104 @@ import 'get_function_service_config.dart';
 
 /// Result data returned by getFunction.
 class GetFunctionResult {
-  final List<GetFunctionBuildConfig> buildConfigs;
-  final String deletionPolicy;
-  final String description;
-  final Map<String, String> effectiveLabels;
-  final String environment;
-  final List<GetFunctionEventTrigger> eventTriggers;
+  final List<GetFunctionBuildConfig>? buildConfigs;
+  final String? deletionPolicy;
+  final String? description;
+  final Map<String, String>? effectiveLabels;
+  final String? environment;
+  final List<GetFunctionEventTrigger>? eventTriggers;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String kmsKeyName;
-  final Map<String, String> labels;
-  final String location;
-  final String name;
+  final String? id;
+  final String? kmsKeyName;
+  final Map<String, String>? labels;
+  final String? location;
+  final String? name;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final List<GetFunctionServiceConfig> serviceConfigs;
-  final String state;
-  final String updateTime;
-  final String url;
+  final Map<String, String>? pulumiLabels;
+  final List<GetFunctionServiceConfig>? serviceConfigs;
+  final String? state;
+  final String? updateTime;
+  final String? url;
 
   /// Creates a new [GetFunctionResult].
-  /// [buildConfigs] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [effectiveLabels] Required.
-  /// [environment] Required.
-  /// [eventTriggers] Required.
+  /// [buildConfigs] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [effectiveLabels] Optional.
+  /// [environment] Optional.
+  /// [eventTriggers] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKeyName] Required.
-  /// [labels] Required.
-  /// [location] Required.
-  /// [name] Required.
+  /// [kmsKeyName] Optional.
+  /// [labels] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [serviceConfigs] Required.
-  /// [state] Required.
-  /// [updateTime] Required.
-  /// [url] Required.
+  /// [pulumiLabels] Optional.
+  /// [serviceConfigs] Optional.
+  /// [state] Optional.
+  /// [updateTime] Optional.
+  /// [url] Optional.
   const GetFunctionResult({
-    required this.buildConfigs,
-    required this.deletionPolicy,
-    required this.description,
-    required this.effectiveLabels,
-    required this.environment,
-    required this.eventTriggers,
-    required this.id,
-    required this.kmsKeyName,
-    required this.labels,
-    required this.location,
-    required this.name,
+    this.buildConfigs,
+    this.deletionPolicy,
+    this.description,
+    this.effectiveLabels,
+    this.environment,
+    this.eventTriggers,
+    this.id,
+    this.kmsKeyName,
+    this.labels,
+    this.location,
+    this.name,
     this.project,
-    required this.pulumiLabels,
-    required this.serviceConfigs,
-    required this.state,
-    required this.updateTime,
-    required this.url,
+    this.pulumiLabels,
+    this.serviceConfigs,
+    this.state,
+    this.updateTime,
+    this.url,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildConfigs': pulumi.Input.encodeList<GetFunctionBuildConfig, Map<String, dynamic>>(buildConfigs, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'effectiveLabels': effectiveLabels,
-      'environment': environment,
-      'eventTriggers': pulumi.Input.encodeList<GetFunctionEventTrigger, Map<String, dynamic>>(eventTriggers, (value) => value.toMap()),
-      'id': id,
-      'kmsKeyName': kmsKeyName,
-      'labels': labels,
-      'location': location,
-      'name': name,
+      'buildConfigs': ?(() { final guardedValue = buildConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFunctionBuildConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'effectiveLabels': ?effectiveLabels,
+      'environment': ?environment,
+      'eventTriggers': ?(() { final guardedValue = eventTriggers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFunctionEventTrigger, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'kmsKeyName': ?kmsKeyName,
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'serviceConfigs': pulumi.Input.encodeList<GetFunctionServiceConfig, Map<String, dynamic>>(serviceConfigs, (value) => value.toMap()),
-      'state': state,
-      'updateTime': updateTime,
-      'url': url,
+      'pulumiLabels': ?pulumiLabels,
+      'serviceConfigs': ?(() { final guardedValue = serviceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFunctionServiceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'url': ?url,
     };
   }
 
   factory GetFunctionResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionResult(
-      buildConfigs: pulumi.Input.decodeList<GetFunctionBuildConfig>(map['buildConfigs']!, (value) => GetFunctionBuildConfig.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      environment: map['environment'] as String,
-      eventTriggers: pulumi.Input.decodeList<GetFunctionEventTrigger>(map['eventTriggers']!, (value) => GetFunctionEventTrigger.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      kmsKeyName: map['kmsKeyName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      buildConfigs: (() { final guardedValue = map['buildConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFunctionBuildConfig>(guardedValue, (value) => GetFunctionBuildConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eventTriggers: (() { final guardedValue = map['eventTriggers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFunctionEventTrigger>(guardedValue, (value) => GetFunctionEventTrigger.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      serviceConfigs: pulumi.Input.decodeList<GetFunctionServiceConfig>(map['serviceConfigs']!, (value) => GetFunctionServiceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
-      url: map['url'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      serviceConfigs: (() { final guardedValue = map['serviceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFunctionServiceConfig>(guardedValue, (value) => GetFunctionServiceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

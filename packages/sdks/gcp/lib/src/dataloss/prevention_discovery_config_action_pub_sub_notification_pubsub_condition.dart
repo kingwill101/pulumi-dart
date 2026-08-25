@@ -6,7 +6,7 @@ import 'prevention_discovery_config_action_pub_sub_notification_pubsub_condition
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
   /// An expression
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions>? expressions;
+  final pulumi.Input<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions?>? expressions;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition].
   /// [expressions] An expression

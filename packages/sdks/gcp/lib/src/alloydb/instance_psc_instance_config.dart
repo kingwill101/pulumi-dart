@@ -7,23 +7,23 @@ import 'instance_psc_instance_config_psc_interface_config.dart';
 class InstancePscInstanceConfig {
   /// List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
   /// These should be specified as project numbers only.
-  final pulumi.Input<List<String>>? allowedConsumerProjects;
+  final pulumi.Input<List<String>?>? allowedConsumerProjects;
   /// Configurations for setting up PSC service automation.
   /// Structure is documented below.
-  final pulumi.Input<List<InstancePscInstanceConfigPscAutoConnection>>? pscAutoConnections;
+  final pulumi.Input<List<InstancePscInstanceConfigPscAutoConnection>?>? pscAutoConnections;
   /// (Output)
   /// The DNS name of the instance for PSC connectivity.
   /// Name convention: &lt;uid&gt;.&lt;uid&gt;.&lt;region&gt;.alloydb-psc.goog
-  final pulumi.Input<String>? pscDnsName;
+  final pulumi.Input<String?>? pscDnsName;
   /// Configurations for setting up PSC interfaces attached to the instance
   /// which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.
   /// Structure is documented below.
-  final pulumi.Input<List<InstancePscInstanceConfigPscInterfaceConfig>>? pscInterfaceConfigs;
+  final pulumi.Input<List<InstancePscInstanceConfigPscInterfaceConfig>?>? pscInterfaceConfigs;
   /// (Output)
   /// The service attachment created when Private Service Connect (PSC) is enabled for the instance.
   /// The name of the resource will be in the format of
   /// `projects/&lt;alloydb-tenant-project-number&gt;/regions/&lt;region-name&gt;/serviceAttachments/&lt;service-attachment-name&gt;`
-  final pulumi.Input<String>? serviceAttachmentLink;
+  final pulumi.Input<String?>? serviceAttachmentLink;
 
   /// Creates a new [InstancePscInstanceConfig].
   /// [allowedConsumerProjects] List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.

@@ -9,16 +9,16 @@ import 'control_project_intelligence_config_filter_included_cloud_storage_locati
 class ControlProjectIntelligenceConfigFilter {
   /// Buckets to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets>? excludedCloudStorageBuckets;
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets?>? excludedCloudStorageBuckets;
   /// Locations to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations>? excludedCloudStorageLocations;
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations?>? excludedCloudStorageLocations;
   /// Buckets to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets>? includedCloudStorageBuckets;
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets?>? includedCloudStorageBuckets;
   /// Locations to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations>? includedCloudStorageLocations;
+  final pulumi.Input<ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations?>? includedCloudStorageLocations;
 
   /// Creates a new [ControlProjectIntelligenceConfigFilter].
   /// [excludedCloudStorageBuckets] Buckets to exclude from the Storage Intelligence plan.

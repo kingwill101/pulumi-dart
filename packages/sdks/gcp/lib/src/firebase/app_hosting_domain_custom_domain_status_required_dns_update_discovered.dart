@@ -13,14 +13,14 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>>? checkErrors;
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>?>? checkErrors;
   /// (Output)
   /// The domain the record pertains to, e.g. `foo.bar.com.`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// (Output)
   /// Records on the domain.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>>? records;
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>?>? records;
 
   /// Creates a new [AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered].
   /// [checkErrors] (Output)

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsNodePoolUpdateSettingsSurgeSettings {
   /// Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
-  final pulumi.Input<int>? maxSurge;
+  final pulumi.Input<int?>? maxSurge;
   /// Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
-  final pulumi.Input<int>? maxUnavailable;
+  final pulumi.Input<int?>? maxUnavailable;
 
   /// Creates a new [AwsNodePoolUpdateSettingsSurgeSettings].
   /// [maxSurge] Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
@@ -25,8 +25,8 @@ class AwsNodePoolUpdateSettingsSurgeSettings {
 
   factory AwsNodePoolUpdateSettingsSurgeSettings.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolUpdateSettingsSurgeSettings(
-      maxSurge: (() { final guardedValue = map['maxSurge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxSurge: (() { final guardedValue = map['maxSurge']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

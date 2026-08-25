@@ -562,7 +562,7 @@ class AuthorizedView extends pulumi.CustomResource {
           'gcp:bigtable/authorizedView:AuthorizedView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
@@ -578,11 +578,12 @@ class AuthorizedView extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizedViewState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthorizedView._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -596,6 +597,24 @@ class AuthorizedView extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<String>('deletionProtection');
+    instanceName = registerOutput<String>('instanceName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizedViewSubsetView.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableName = registerOutput<String>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [AuthorizedView] resource.
+  AuthorizedView.reference(String urn)
+    : super(
+        'gcp:bigtable/authorizedView:AuthorizedView',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
     instanceName = registerOutput<String>('instanceName');

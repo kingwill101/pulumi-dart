@@ -7,12 +7,12 @@ import 'encryption_spec_encryption_spec.dart';
 class EncryptionSpecState {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<EncryptionSpecEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<EncryptionSpecEncryptionSpec?>? encryptionSpec;
   /// The location in which the encryptionSpec is to be initialized.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EncryptionSpecState].
   /// [encryptionSpec] A nested object resource.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BlockchainNodesEthereumDetailsAdditionalEndpoint {
   /// The assigned URL for the node's Beacon API endpoint.
-  final pulumi.Input<String>? beaconApiEndpoint;
+  final pulumi.Input<String?>? beaconApiEndpoint;
   /// The assigned URL for the node's Beacon Prometheus metrics endpoint.
-  final pulumi.Input<String>? beaconPrometheusMetricsApiEndpoint;
+  final pulumi.Input<String?>? beaconPrometheusMetricsApiEndpoint;
   /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
-  final pulumi.Input<String>? executionClientPrometheusMetricsApiEndpoint;
+  final pulumi.Input<String?>? executionClientPrometheusMetricsApiEndpoint;
 
   /// Creates a new [BlockchainNodesEthereumDetailsAdditionalEndpoint].
   /// [beaconApiEndpoint] The assigned URL for the node's Beacon API endpoint.

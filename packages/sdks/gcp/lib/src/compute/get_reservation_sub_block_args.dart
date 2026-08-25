@@ -11,7 +11,7 @@ class GetReservationSubBlockArgs {
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the parent reservation.
   ///
   /// - - -
@@ -19,7 +19,7 @@ class GetReservationSubBlockArgs {
   /// The name of the parent reservation block.
   final pulumi.Input<String> reservationBlock;
   /// The zone where the reservation sub-block resides.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetReservationSubBlockArgs].
   /// [name] The name of the reservation sub-block.

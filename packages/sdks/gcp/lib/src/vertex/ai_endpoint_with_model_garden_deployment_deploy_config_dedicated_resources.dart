@@ -23,7 +23,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
   /// autoscaling_metric_specs.target to `80`.
   /// Structure is documented below.
-  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>>? autoscalingMetricSpecs;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>?>? autoscalingMetricSpecs;
   /// Specification of a single machine.
   /// Structure is documented below.
   final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec> machineSpec;
@@ -38,7 +38,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// quotas. Specifically, you will be charged for (max_replica_count *
   /// number of cores in the selected machine type) and (max_replica_count *
   /// number of GPUs per replica in the selected machine type).
-  final pulumi.Input<int>? maxReplicaCount;
+  final pulumi.Input<int?>? maxReplicaCount;
   /// The minimum number of machine replicas that will be always deployed on.
   /// This value must be greater than or equal to 1.
   /// If traffic increases, it may dynamically be deployed onto more replicas,
@@ -50,10 +50,10 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// availableReplicaCount reaches required_replica_count, and the rest of
   /// the replicas will be retried. If not set, the default
   /// requiredReplicaCount will be min_replica_count.
-  final pulumi.Input<int>? requiredReplicaCount;
+  final pulumi.Input<int?>? requiredReplicaCount;
   /// If true, schedule the deployment workload on [spot
   /// VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
-  final pulumi.Input<bool>? spot;
+  final pulumi.Input<bool?>? spot;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources].
   /// [autoscalingMetricSpecs] The metric specifications that overrides a resource
@@ -86,9 +86,9 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(
       autoscalingMetricSpecs: (() { final guardedValue = map['autoscalingMetricSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>(guardedValue, (value) => AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
       machineSpec: pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())),
-      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minReplicaCount: pulumi.Input.fromValue(map['minReplicaCount'] as int),
-      requiredReplicaCount: (() { final guardedValue = map['requiredReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minReplicaCount: pulumi.Input.fromValue((map['minReplicaCount'] as num).toInt()),
+      requiredReplicaCount: (() { final guardedValue = map['requiredReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       spot: (() { final guardedValue = map['spot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueHttpTargetUriOverrideQueryOverride {
   /// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-  final pulumi.Input<String>? queryParams;
+  final pulumi.Input<String?>? queryParams;
 
   /// Creates a new [QueueHttpTargetUriOverrideQueryOverride].
   /// [queryParams] The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.

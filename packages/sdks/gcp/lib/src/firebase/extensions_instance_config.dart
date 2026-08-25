@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionsInstanceConfig {
   /// List of extension events selected by consumer that extension is allowed to
   /// emit, identified by their types.
-  final pulumi.Input<List<String>>? allowedEventTypes;
+  final pulumi.Input<List<String>?>? allowedEventTypes;
   /// (Output)
   /// The time at which the Extension Instance Config was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Fully qualified Eventarc resource name that consumers should use for event triggers.
-  final pulumi.Input<String>? eventarcChannel;
+  final pulumi.Input<String?>? eventarcChannel;
   /// The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
   final pulumi.Input<String> extensionRef;
   /// The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
-  final pulumi.Input<String>? extensionVersion;
+  final pulumi.Input<String?>? extensionVersion;
   /// (Output)
   /// The unique identifier for this configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Environment variables that may be configured for the Extension
   final pulumi.Input<Map<String, String>> params;
   /// (Output)
@@ -26,12 +26,12 @@ class ExtensionsInstanceConfig {
   /// with actual values. These strings include: ${param:FOO},
   /// ${function:myFunc.url},
   /// ${function:myFunc.name}, and ${function:myFunc.location}
-  final pulumi.Input<String>? populatedPostinstallContent;
+  final pulumi.Input<String?>? populatedPostinstallContent;
   /// Params whose values are only available at deployment time.
   /// Unlike other params, these will not be set as environment variables on
   /// functions. See a full list of system parameters at
   /// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
-  final pulumi.Input<Map<String, String>>? systemParams;
+  final pulumi.Input<Map<String, String>?>? systemParams;
 
   /// Creates a new [ExtensionsInstanceConfig].
   /// [allowedEventTypes] List of extension events selected by consumer that extension is allowed to

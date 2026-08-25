@@ -7,23 +7,23 @@ import 'cluster_cluster_config_auxiliary_node_group_node_group_node_group_config
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
   /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
   /// multiple times.
-  final pulumi.Input<List<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator>>? accelerators;
+  final pulumi.Input<List<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator>?>? accelerators;
   /// Disk Config
-  final pulumi.Input<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig>? diskConfig;
+  final pulumi.Input<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig?>? diskConfig;
   /// List of auxiliary node group instance names which have been assigned to the cluster.
-  final pulumi.Input<List<String>>? instanceNames;
+  final pulumi.Input<List<String>?>? instanceNames;
   /// The name of a Google Compute Engine machine type
   /// to create for the node group. If not specified, GCP will default to a predetermined
   /// computed value (currently `n1-standard-4`).
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The name of a minimum generation of CPU family
   /// for the node group. If not specified, GCP will default to a predetermined computed value
   /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
   /// for details about which CPU families are available (and defaulted) for each zone.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// Specifies the number of master nodes to create.
   /// Please set a number greater than 0. Node Group must have at least 1 instance.
-  final pulumi.Input<int>? numInstances;
+  final pulumi.Input<int?>? numInstances;
 
   /// Creates a new [ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig].
   /// [accelerators] The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
@@ -59,7 +59,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
       instanceNames: (() { final guardedValue = map['instanceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

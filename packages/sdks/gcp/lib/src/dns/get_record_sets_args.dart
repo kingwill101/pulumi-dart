@@ -10,11 +10,11 @@ class GetRecordSetsArgs {
   /// The name of the managed zone to fetch the record sets from.
   final pulumi.Input<String> managedZone;
   /// The name of the record set to filter by.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The type of the record set to filter by.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetRecordSetsArgs].
   /// [managedZone] The name of the managed zone to fetch the record sets from.

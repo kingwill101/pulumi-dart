@@ -7,10 +7,10 @@ import 'v2_policy_orchestrator_for_folder_orchestration_scope_selector_resource_
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelector {
   /// Selector containing locations in scope.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector>? locationSelector;
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector?>? locationSelector;
   /// Selector containing Cloud Resource Manager resource hierarchy nodes.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector>? resourceHierarchySelector;
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector?>? resourceHierarchySelector;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationScopeSelector].
   /// [locationSelector] Selector containing locations in scope.

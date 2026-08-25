@@ -137,6 +137,17 @@ Future<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(
   return GetDataExchangeIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicyOutput(
+  GetDataExchangeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExchangeIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for listing
 ///
 ///
@@ -275,4 +286,15 @@ Future<GetListingIamPolicyResult> getListingIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetListingIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetListingIamPolicyResult> getListingIamPolicyOutput(
+  GetListingIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetListingIamPolicyResult.fromMap);
 }

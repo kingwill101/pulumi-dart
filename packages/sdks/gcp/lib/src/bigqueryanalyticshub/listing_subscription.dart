@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listing_subscription_args.dart';
+import 'listing_subscription_commercial_info.dart';
 import 'listing_subscription_destination_dataset.dart';
+import 'listing_subscription_linked_dataset_map.dart';
+import 'listing_subscription_linked_resource.dart';
 import 'listing_subscription_state.dart';
 
 /// A Bigquery Analytics Hub listing subscription
@@ -731,7 +734,7 @@ import 'listing_subscription_state.dart';
 class ListingSubscription extends pulumi.CustomResource {
   /// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> commercialInfos;
+  late final pulumi.Output<List<ListingSubscriptionCommercialInfo>> commercialInfos;
   /// Timestamp when the subscription was created.
   late final pulumi.Output<String> creationTime;
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -751,10 +754,10 @@ class ListingSubscription extends pulumi.CustomResource {
   /// Output only. Map of listing resource names to associated linked resource,
   /// e.g. projects/123/locations/US/dataExchanges/456/listings/789 &gt; projects/123/datasets/my_dataset
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> linkedDatasetMaps;
+  late final pulumi.Output<List<ListingSubscriptionLinkedDatasetMap>> linkedDatasetMaps;
   /// Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> linkedResources;
+  late final pulumi.Output<List<ListingSubscriptionLinkedResource>> linkedResources;
   /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   late final pulumi.Output<String> listingId;
   /// The name of the location of the data exchange. Distinct from the location of the destination data set.
@@ -791,16 +794,16 @@ class ListingSubscription extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    commercialInfos = registerOutput<List<Map<String, dynamic>>>('commercialInfos');
+    commercialInfos = registerOutput<List<ListingSubscriptionCommercialInfo>>('commercialInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionCommercialInfo>(guardedValue, (value) => ListingSubscriptionCommercialInfo.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
-    linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');
-    linkedResources = registerOutput<List<Map<String, dynamic>>>('linkedResources');
+    linkedDatasetMaps = registerOutput<List<ListingSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedResources = registerOutput<List<ListingSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedResource>(guardedValue, (value) => ListingSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
     listingId = registerOutput<String>('listingId');
     location = registerOutput<String>('location');
     logLinkedDatasetQueryUserEmail = registerOutput<bool>('logLinkedDatasetQueryUserEmail');
@@ -819,11 +822,12 @@ class ListingSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ListingSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ListingSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -837,14 +841,14 @@ class ListingSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    commercialInfos = registerOutput<List<Map<String, dynamic>>>('commercialInfos');
+    commercialInfos = registerOutput<List<ListingSubscriptionCommercialInfo>>('commercialInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionCommercialInfo>(guardedValue, (value) => ListingSubscriptionCommercialInfo.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
-    linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');
-    linkedResources = registerOutput<List<Map<String, dynamic>>>('linkedResources');
+    linkedDatasetMaps = registerOutput<List<ListingSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedResources = registerOutput<List<ListingSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedResource>(guardedValue, (value) => ListingSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
     listingId = registerOutput<String>('listingId');
     location = registerOutput<String>('location');
     logLinkedDatasetQueryUserEmail = registerOutput<bool>('logLinkedDatasetQueryUserEmail');
@@ -854,6 +858,36 @@ class ListingSubscription extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     resourceType = registerOutput<String>('resourceType');
     this.state = registerOutput<String>('state');
+    subscriberContact = registerOutput<String>('subscriberContact');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [ListingSubscription] resource.
+  ListingSubscription.reference(String urn)
+    : super(
+        'gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    commercialInfos = registerOutput<List<ListingSubscriptionCommercialInfo>>('commercialInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionCommercialInfo>(guardedValue, (value) => ListingSubscriptionCommercialInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<String>('creationTime');
+    dataExchangeId = registerOutput<String>('dataExchangeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifyTime = registerOutput<String>('lastModifyTime');
+    linkedDatasetMaps = registerOutput<List<ListingSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedResources = registerOutput<List<ListingSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedResource>(guardedValue, (value) => ListingSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
+    listingId = registerOutput<String>('listingId');
+    location = registerOutput<String>('location');
+    logLinkedDatasetQueryUserEmail = registerOutput<bool>('logLinkedDatasetQueryUserEmail');
+    this.name = registerOutput<String>('name');
+    organizationDisplayName = registerOutput<String>('organizationDisplayName');
+    organizationId = registerOutput<String>('organizationId');
+    project = registerOutput<String>('project');
+    resourceType = registerOutput<String>('resourceType');
+    state = registerOutput<String>('state');
     subscriberContact = registerOutput<String>('subscriberContact');
     subscriptionId = registerOutput<String>('subscriptionId');
   }

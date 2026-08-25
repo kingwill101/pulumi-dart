@@ -653,7 +653,7 @@ class OrganizationPolicy extends pulumi.CustomResource {
           'gcp:folder/organizationPolicy:OrganizationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
@@ -671,11 +671,12 @@ class OrganizationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -689,6 +690,26 @@ class OrganizationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    constraint = registerOutput<String>('constraint');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    listPolicy = registerOutput<OrganizationPolicyListPolicy?>('listPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restorePolicy = registerOutput<OrganizationPolicyRestorePolicy?>('restorePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationPolicy] resource.
+  OrganizationPolicy.reference(String urn)
+    : super(
+        'gcp:folder/organizationPolicy:OrganizationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
     deletionPolicy = registerOutput<String>('deletionPolicy');

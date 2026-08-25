@@ -19,60 +19,60 @@ import 'conversation_profile_tts_config.dart';
 class ConversationProfileArgs {
   /// Configuration for an automated agent to use with this profile
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileAutomatedAgentConfig>? automatedAgentConfig;
+  final pulumi.Input<ConversationProfileAutomatedAgentConfig?>? automatedAgentConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Required. Human readable name for this profile. Max length 1024 bytes.
   final pulumi.Input<String> displayName;
   /// Configuration for connecting to a live agent
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfig>? humanAgentAssistantConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfig?>? humanAgentAssistantConfig;
   /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentHandoffConfig>? humanAgentHandoffConfig;
+  final pulumi.Input<ConversationProfileHumanAgentHandoffConfig?>? humanAgentHandoffConfig;
   /// Language code for the conversation profile. This should be a BCP-47 language tag.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The location of the conversation profile.
   final pulumi.Input<String> location;
   /// Defines logging behavior for conversation lifecycle events.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileLoggingConfig>? loggingConfig;
+  final pulumi.Input<ConversationProfileLoggingConfig?>? loggingConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;"
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileNewMessageEventNotificationConfig>? newMessageEventNotificationConfig;
+  final pulumi.Input<ConversationProfileNewMessageEventNotificationConfig?>? newMessageEventNotificationConfig;
   /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileNewRecognitionResultNotificationConfig>? newRecognitionResultNotificationConfig;
+  final pulumi.Input<ConversationProfileNewRecognitionResultNotificationConfig?>? newRecognitionResultNotificationConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;"
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileNotificationConfig>? notificationConfig;
+  final pulumi.Input<ConversationProfileNotificationConfig?>? notificationConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Name of the CX SecuritySettings reference for the agent.
-  final pulumi.Input<String>? securitySettings;
+  final pulumi.Input<String?>? securitySettings;
   /// (Optional, Beta)
   /// Configuration for SIP.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileSipConfig>? sipConfig;
+  final pulumi.Input<ConversationProfileSipConfig?>? sipConfig;
   /// Settings for speech transcription.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileSttConfig>? sttConfig;
+  final pulumi.Input<ConversationProfileSttConfig?>? sttConfig;
   /// The time zone of this conversational profile.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileTtsConfig>? ttsConfig;
+  final pulumi.Input<ConversationProfileTtsConfig?>? ttsConfig;
   /// (Optional, Beta)
   /// Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
-  final pulumi.Input<bool>? useBidiStreaming;
+  final pulumi.Input<bool?>? useBidiStreaming;
 
   /// Creates a new [ConversationProfileArgs].
   /// [automatedAgentConfig] Configuration for an automated agent to use with this profile

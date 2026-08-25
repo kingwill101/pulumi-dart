@@ -7,15 +7,15 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
   /// (Output)
   /// Contains additional subject alternative name values.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>>? customSans;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan>?>? customSans;
   /// Contains only valid, fully-qualified host names.
-  final pulumi.Input<List<String>>? dnsNames;
+  final pulumi.Input<List<String>?>? dnsNames;
   /// Contains only valid RFC 2822 E-mail addresses.
-  final pulumi.Input<List<String>>? emailAddresses;
+  final pulumi.Input<List<String>?>? emailAddresses;
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// Contains only valid RFC 3986 URIs.
-  final pulumi.Input<List<String>>? uris;
+  final pulumi.Input<List<String>?>? uris;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectDescriptionSubjectAltName].
   /// [customSans] (Output)

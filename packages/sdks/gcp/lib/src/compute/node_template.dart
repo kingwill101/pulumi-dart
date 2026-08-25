@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'node_template_accelerator.dart';
 import 'node_template_args.dart';
+import 'node_template_disk.dart';
 import 'node_template_node_type_flexibility.dart';
 import 'node_template_server_binding.dart';
 import 'node_template_state.dart';
@@ -717,7 +719,7 @@ class NodeTemplate extends pulumi.CustomResource {
   /// List of the type and count of accelerator cards attached to the
   /// node template
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> accelerators;
+  late final pulumi.Output<List<NodeTemplateAccelerator>?> accelerators;
   /// CPU overcommit.
   /// Default value is `NONE`.
   /// Possible values are: `ENABLED`, `NONE`.
@@ -736,7 +738,7 @@ class NodeTemplate extends pulumi.CustomResource {
   /// List of the type, size and count of disks attached to the
   /// node template
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> disks;
+  late final pulumi.Output<List<NodeTemplateDisk>?> disks;
   /// Name of the resource.
   late final pulumi.Output<String> name;
   /// Labels to use for node affinity, which will be used in
@@ -776,16 +778,16 @@ class NodeTemplate extends pulumi.CustomResource {
           'gcp:compute/nodeTemplate:NodeTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    accelerators = registerOutput<List<Map<String, dynamic>>?>('accelerators');
+    accelerators = registerOutput<List<NodeTemplateAccelerator>?>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeTemplateAccelerator>(guardedValue, (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>())); });
     cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    disks = registerOutput<List<Map<String, dynamic>>?>('disks');
+    disks = registerOutput<List<NodeTemplateDisk>?>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeTemplateDisk>(guardedValue, (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    nodeAffinityLabels = registerOutput<Map<String, String>?>('nodeAffinityLabels');
+    nodeAffinityLabels = registerOutput<Map<String, String>?>('nodeAffinityLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     nodeType = registerOutput<String?>('nodeType');
     nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>('nodeTypeFlexibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTemplateNodeTypeFlexibility.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
@@ -799,11 +801,12 @@ class NodeTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NodeTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NodeTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -817,14 +820,39 @@ class NodeTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accelerators = registerOutput<List<Map<String, dynamic>>?>('accelerators');
+    accelerators = registerOutput<List<NodeTemplateAccelerator>?>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeTemplateAccelerator>(guardedValue, (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>())); });
     cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    disks = registerOutput<List<Map<String, dynamic>>?>('disks');
+    disks = registerOutput<List<NodeTemplateDisk>?>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeTemplateDisk>(guardedValue, (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    nodeAffinityLabels = registerOutput<Map<String, String>?>('nodeAffinityLabels');
+    nodeAffinityLabels = registerOutput<Map<String, String>?>('nodeAffinityLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    nodeType = registerOutput<String?>('nodeType');
+    nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>('nodeTypeFlexibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTemplateNodeTypeFlexibility.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serverBinding = registerOutput<NodeTemplateServerBinding>('serverBinding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTemplateServerBinding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NodeTemplate] resource.
+  NodeTemplate.reference(String urn)
+    : super(
+        'gcp:compute/nodeTemplate:NodeTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accelerators = registerOutput<List<NodeTemplateAccelerator>?>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeTemplateAccelerator>(guardedValue, (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>())); });
+    cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disks = registerOutput<List<NodeTemplateDisk>?>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeTemplateDisk>(guardedValue, (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    nodeAffinityLabels = registerOutput<Map<String, String>?>('nodeAffinityLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     nodeType = registerOutput<String?>('nodeType');
     nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>('nodeTypeFlexibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTemplateNodeTypeFlexibility.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SearchEngineKnowledgeGraphConfigFeatureConfig {
   /// Whether to disable the private KG auto complete for the engine.
-  final pulumi.Input<bool>? disablePrivateKgAutoComplete;
+  final pulumi.Input<bool?>? disablePrivateKgAutoComplete;
   /// Whether to disable the private KG enrichment for the engine.
-  final pulumi.Input<bool>? disablePrivateKgEnrichment;
+  final pulumi.Input<bool?>? disablePrivateKgEnrichment;
   /// Whether to disable the private KG for query UI chips.
-  final pulumi.Input<bool>? disablePrivateKgQueryUiChips;
+  final pulumi.Input<bool?>? disablePrivateKgQueryUiChips;
   /// Whether to disable the private KG query understanding for the engine.
-  final pulumi.Input<bool>? disablePrivateKgQueryUnderstanding;
+  final pulumi.Input<bool?>? disablePrivateKgQueryUnderstanding;
 
   /// Creates a new [SearchEngineKnowledgeGraphConfigFeatureConfig].
   /// [disablePrivateKgAutoComplete] Whether to disable the private KG auto complete for the engine.

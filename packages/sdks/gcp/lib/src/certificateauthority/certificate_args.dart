@@ -12,44 +12,44 @@ class CertificateArgs {
   /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
   /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
   /// should be set to `my-ca`.
-  final pulumi.Input<String>? certificateAuthority;
+  final pulumi.Input<String?>? certificateAuthority;
   /// The resource name for a CertificateTemplate used to issue this certificate,
   /// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
   /// the caller must have the necessary permission to use this template. If this is
   /// omitted, no template will be used. This template must be in the same location
   /// as the Certificate.
-  final pulumi.Input<String>? certificateTemplate;
+  final pulumi.Input<String?>? certificateTemplate;
   /// The config used to create a self-signed X.509 certificate or CSR.
   /// Structure is documented below.
-  final pulumi.Input<CertificateConfig>? config;
+  final pulumi.Input<CertificateConfig?>? config;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
   /// fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? lifetime;
+  final pulumi.Input<String?>? lifetime;
   /// Location of the Certificate. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
   final pulumi.Input<String> location;
   /// The name for this Certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-  final pulumi.Input<String>? pemCsr;
+  final pulumi.Input<String?>? pemCsr;
   /// The name of the CaPool this Certificate belongs to.
   final pulumi.Input<String> pool;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [CertificateArgs].
   /// [certificateAuthority] The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from

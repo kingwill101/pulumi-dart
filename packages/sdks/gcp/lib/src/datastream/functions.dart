@@ -141,3 +141,14 @@ Future<GetStaticIpsResult> getStaticIps(
   );
   return GetStaticIpsResult.fromMap(result);
 }
+
+pulumi.Output<GetStaticIpsResult> getStaticIpsOutput(
+  GetStaticIpsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:datastream/getStaticIps:getStaticIps',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticIpsResult.fromMap);
+}

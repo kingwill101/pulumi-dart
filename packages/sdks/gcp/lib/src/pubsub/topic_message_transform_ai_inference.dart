@@ -11,10 +11,10 @@ class TopicMessageTransformAiInference {
   final pulumi.Input<String> endpoint;
   /// The service account to use to make prediction requests against
   /// endpoints.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// Configuration for making inferences using arbitrary JSON payloads.
   /// Structure is documented below.
-  final pulumi.Input<TopicMessageTransformAiInferenceUnstructuredInference>? unstructuredInference;
+  final pulumi.Input<TopicMessageTransformAiInferenceUnstructuredInference?>? unstructuredInference;
 
   /// Creates a new [TopicMessageTransformAiInference].
   /// [endpoint] The endpoint to a Vertex AI model of the form

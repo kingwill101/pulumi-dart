@@ -12,7 +12,7 @@ class GetDatabaseArgs {
   /// The name of the database.
   final pulumi.Input<String> name;
   /// The ID of the project in which the instance belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDatabaseArgs].
   /// [instance] The name of the Cloud SQL database instance in which the database belongs.

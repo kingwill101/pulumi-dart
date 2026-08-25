@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaPoolEncryptionSpec {
   /// The resource name for an existing Cloud KMS key in the format
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  final pulumi.Input<String>? cloudKmsKey;
+  final pulumi.Input<String?>? cloudKmsKey;
 
   /// Creates a new [CaPoolEncryptionSpec].
   /// [cloudKmsKey] The resource name for an existing Cloud KMS key in the format

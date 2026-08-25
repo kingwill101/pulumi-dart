@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_persistent_resource_args.dart';
 import 'ai_persistent_resource_encryption_spec.dart';
+import 'ai_persistent_resource_error.dart';
 import 'ai_persistent_resource_psc_interface_config.dart';
+import 'ai_persistent_resource_resource_pool.dart';
+import 'ai_persistent_resource_resource_runtime.dart';
 import 'ai_persistent_resource_resource_runtime_spec.dart';
 import 'ai_persistent_resource_state.dart';
 
@@ -1460,7 +1463,7 @@ class AiPersistentResource extends pulumi.CustomResource {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<AiPersistentResourceError>> errors;
   /// The labels with user-defined metadata to organize PersistentResource.
   /// Label keys and values can be no longer than 64 characters
   /// (Unicode codepoints), can only contain lowercase letters, numeric
@@ -1508,13 +1511,13 @@ class AiPersistentResource extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> reservedIpRanges;
   /// The spec of the pools of different resources.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourcePools;
+  late final pulumi.Output<List<AiPersistentResourceResourcePool>> resourcePools;
   /// Configuration for the runtime on a PersistentResource instance.
   /// Structure is documented below.
   late final pulumi.Output<AiPersistentResourceResourceRuntimeSpec?> resourceRuntimeSpec;
   /// Persistent Cluster runtime information as output
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceRuntimes;
+  late final pulumi.Output<List<AiPersistentResourceResourceRuntime>> resourceRuntimes;
   /// Reserved for future use.
   late final pulumi.Output<bool> satisfiesPzi;
   /// Reserved for future use.
@@ -1546,25 +1549,26 @@ class AiPersistentResource extends pulumi.CustomResource {
           'gcp:vertex/aiPersistentResource:AiPersistentResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiPersistentResourceEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourceEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    errors = registerOutput<List<AiPersistentResourceError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceError>(guardedValue, (value) => AiPersistentResourceError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<AiPersistentResourcePscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourcePscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
-    resourcePools = registerOutput<List<Map<String, dynamic>>>('resourcePools');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourcePools = registerOutput<List<AiPersistentResourceResourcePool>>('resourcePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceResourcePool>(guardedValue, (value) => AiPersistentResourceResourcePool.fromMap((value as Map).cast<String, dynamic>())); });
     resourceRuntimeSpec = registerOutput<AiPersistentResourceResourceRuntimeSpec?>('resourceRuntimeSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourceResourceRuntimeSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceRuntimes = registerOutput<List<Map<String, dynamic>>>('resourceRuntimes');
+    resourceRuntimes = registerOutput<List<AiPersistentResourceResourceRuntime>>('resourceRuntimes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceResourceRuntime>(guardedValue, (value) => AiPersistentResourceResourceRuntime.fromMap((value as Map).cast<String, dynamic>())); });
     satisfiesPzi = registerOutput<bool>('satisfiesPzi');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     startTime = registerOutput<String>('startTime');
@@ -1577,11 +1581,12 @@ class AiPersistentResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiPersistentResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiPersistentResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1598,24 +1603,58 @@ class AiPersistentResource extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiPersistentResourceEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourceEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    errors = registerOutput<List<AiPersistentResourceError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceError>(guardedValue, (value) => AiPersistentResourceError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<AiPersistentResourcePscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourcePscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
-    resourcePools = registerOutput<List<Map<String, dynamic>>>('resourcePools');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourcePools = registerOutput<List<AiPersistentResourceResourcePool>>('resourcePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceResourcePool>(guardedValue, (value) => AiPersistentResourceResourcePool.fromMap((value as Map).cast<String, dynamic>())); });
     resourceRuntimeSpec = registerOutput<AiPersistentResourceResourceRuntimeSpec?>('resourceRuntimeSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourceResourceRuntimeSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceRuntimes = registerOutput<List<Map<String, dynamic>>>('resourceRuntimes');
+    resourceRuntimes = registerOutput<List<AiPersistentResourceResourceRuntime>>('resourceRuntimes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceResourceRuntime>(guardedValue, (value) => AiPersistentResourceResourceRuntime.fromMap((value as Map).cast<String, dynamic>())); });
     satisfiesPzi = registerOutput<bool>('satisfiesPzi');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     startTime = registerOutput<String>('startTime');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AiPersistentResource] resource.
+  AiPersistentResource.reference(String urn)
+    : super(
+        'gcp:vertex/aiPersistentResource:AiPersistentResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionSpec = registerOutput<AiPersistentResourceEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourceEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    errors = registerOutput<List<AiPersistentResourceError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceError>(guardedValue, (value) => AiPersistentResourceError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    project = registerOutput<String>('project');
+    pscInterfaceConfig = registerOutput<AiPersistentResourcePscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourcePscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourcePools = registerOutput<List<AiPersistentResourceResourcePool>>('resourcePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceResourcePool>(guardedValue, (value) => AiPersistentResourceResourcePool.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceRuntimeSpec = registerOutput<AiPersistentResourceResourceRuntimeSpec?>('resourceRuntimeSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiPersistentResourceResourceRuntimeSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceRuntimes = registerOutput<List<AiPersistentResourceResourceRuntime>>('resourceRuntimes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiPersistentResourceResourceRuntime>(guardedValue, (value) => AiPersistentResourceResourceRuntime.fromMap((value as Map).cast<String, dynamic>())); });
+    satisfiesPzi = registerOutput<bool>('satisfiesPzi');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

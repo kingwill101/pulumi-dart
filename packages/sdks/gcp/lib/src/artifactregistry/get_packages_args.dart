@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_artifactregistry_get_packages_get_packages_args_doc}
 class GetPackagesArgs {
   /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `annotations`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages/list#query-parameters).
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
 

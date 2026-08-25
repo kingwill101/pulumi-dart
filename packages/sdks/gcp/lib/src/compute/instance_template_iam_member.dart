@@ -2069,7 +2069,7 @@ class InstanceTemplateIamMember extends pulumi.CustomResource {
           'gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<InstanceTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -2084,11 +2084,12 @@ class InstanceTemplateIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceTemplateIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceTemplateIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2102,6 +2103,23 @@ class InstanceTemplateIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<InstanceTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [InstanceTemplateIamMember] resource.
+  InstanceTemplateIamMember.reference(String urn)
+    : super(
+        'gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<InstanceTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

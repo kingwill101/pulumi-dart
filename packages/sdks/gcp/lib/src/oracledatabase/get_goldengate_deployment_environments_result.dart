@@ -5,38 +5,38 @@ import 'get_goldengate_deployment_environments_goldengate_deployment_environment
 
 /// Result data returned by getGoldengateDeploymentEnvironments.
 class GetGoldengateDeploymentEnvironmentsResult {
-  final List<GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment> goldengateDeploymentEnvironments;
+  final List<GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment>? goldengateDeploymentEnvironments;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   final String? project;
 
   /// Creates a new [GetGoldengateDeploymentEnvironmentsResult].
-  /// [goldengateDeploymentEnvironments] Required.
+  /// [goldengateDeploymentEnvironments] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [project] Optional.
   const GetGoldengateDeploymentEnvironmentsResult({
-    required this.goldengateDeploymentEnvironments,
-    required this.id,
-    required this.location,
+    this.goldengateDeploymentEnvironments,
+    this.id,
+    this.location,
     this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'goldengateDeploymentEnvironments': pulumi.Input.encodeList<GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment, Map<String, dynamic>>(goldengateDeploymentEnvironments, (value) => value.toMap()),
-      'id': id,
-      'location': location,
+      'goldengateDeploymentEnvironments': ?(() { final guardedValue = goldengateDeploymentEnvironments; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'location': ?location,
       'project': ?project,
     };
   }
 
   factory GetGoldengateDeploymentEnvironmentsResult.fromMap(Map<String, dynamic> map) {
     return GetGoldengateDeploymentEnvironmentsResult(
-      goldengateDeploymentEnvironments: pulumi.Input.decodeList<GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment>(map['goldengateDeploymentEnvironments']!, (value) => GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      goldengateDeploymentEnvironments: (() { final guardedValue = map['goldengateDeploymentEnvironments']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment>(guardedValue, (value) => GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

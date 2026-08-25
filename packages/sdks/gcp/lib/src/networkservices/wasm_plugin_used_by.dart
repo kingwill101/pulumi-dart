@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WasmPluginUsedBy {
   /// Identifier. Name of the WasmPlugin resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [WasmPluginUsedBy].
   /// [name] Identifier. Name of the WasmPlugin resource.

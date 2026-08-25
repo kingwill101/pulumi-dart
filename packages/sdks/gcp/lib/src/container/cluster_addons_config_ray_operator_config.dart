@@ -7,9 +7,9 @@ import 'cluster_addons_config_ray_operator_config_ray_cluster_monitoring_config.
 class ClusterAddonsConfigRayOperatorConfig {
   final pulumi.Input<bool> enabled;
   /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
-  final pulumi.Input<ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig>? rayClusterLoggingConfig;
+  final pulumi.Input<ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig?>? rayClusterLoggingConfig;
   /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
-  final pulumi.Input<ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig>? rayClusterMonitoringConfig;
+  final pulumi.Input<ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig?>? rayClusterMonitoringConfig;
 
   /// Creates a new [ClusterAddonsConfigRayOperatorConfig].
   /// [enabled] Required.

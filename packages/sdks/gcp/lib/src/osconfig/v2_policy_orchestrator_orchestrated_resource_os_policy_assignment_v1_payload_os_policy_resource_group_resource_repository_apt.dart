@@ -16,7 +16,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   final pulumi.Input<String> distribution;
   /// URI of the key file for this repository. The agent maintains a
   /// keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
-  final pulumi.Input<String>? gpgKey;
+  final pulumi.Input<String?>? gpgKey;
   /// Required. URI for this repository.
   final pulumi.Input<String> uri;
 

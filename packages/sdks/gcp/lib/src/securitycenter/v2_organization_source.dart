@@ -177,7 +177,7 @@ class V2OrganizationSource extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationSource:V2OrganizationSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -190,11 +190,12 @@ class V2OrganizationSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2OrganizationSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2OrganizationSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,6 +209,21 @@ class V2OrganizationSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+  }
+
+  /// Creates a typed reference to an existing [V2OrganizationSource] resource.
+  V2OrganizationSource.reference(String urn)
+    : super(
+        'gcp:securitycenter/v2OrganizationSource:V2OrganizationSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

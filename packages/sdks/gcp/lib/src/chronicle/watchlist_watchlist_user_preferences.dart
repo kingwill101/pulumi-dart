@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WatchlistWatchlistUserPreferences {
   /// Optional. Whether the watchlist is pinned on the dashboard.
-  final pulumi.Input<bool>? pinned;
+  final pulumi.Input<bool?>? pinned;
 
   /// Creates a new [WatchlistWatchlistUserPreferences].
   /// [pinned] Optional. Whether the watchlist is pinned on the dashboard.

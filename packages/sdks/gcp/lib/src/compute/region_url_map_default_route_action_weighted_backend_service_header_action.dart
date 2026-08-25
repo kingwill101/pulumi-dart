@@ -7,14 +7,14 @@ import 'region_url_map_default_route_action_weighted_backend_service_header_acti
 class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction {
   /// Headers to add to a matching request before forwarding the request to the backendService.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>>? requestHeadersToAdds;
+  final pulumi.Input<List<RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>?>? requestHeadersToAdds;
   /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-  final pulumi.Input<List<String>>? requestHeadersToRemoves;
+  final pulumi.Input<List<String>?>? requestHeadersToRemoves;
   /// Headers to add the response before sending the response back to the client.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>>? responseHeadersToAdds;
+  final pulumi.Input<List<RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>?>? responseHeadersToAdds;
   /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
-  final pulumi.Input<List<String>>? responseHeadersToRemoves;
+  final pulumi.Input<List<String>?>? responseHeadersToRemoves;
 
   /// Creates a new [RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction].
   /// [requestHeadersToAdds] Headers to add to a matching request before forwarding the request to the backendService.

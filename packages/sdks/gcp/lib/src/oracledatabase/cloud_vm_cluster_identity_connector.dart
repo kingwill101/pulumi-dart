@@ -11,10 +11,10 @@ class CloudVmClusterIdentityConnector {
   /// PARTIALLY_CONNECTED
   /// DISCONNECTED
   /// UNKNOWN
-  final pulumi.Input<String>? connectionState;
+  final pulumi.Input<String?>? connectionState;
   /// (Output)
   /// A google managed service account on which customers can grant roles to access resources in the customer project.
-  final pulumi.Input<String>? serviceAgentEmail;
+  final pulumi.Input<String?>? serviceAgentEmail;
 
   /// Creates a new [CloudVmClusterIdentityConnector].
   /// [connectionState] (Output)

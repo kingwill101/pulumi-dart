@@ -11,28 +11,28 @@ class RouterNamedSetState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of the Named Set.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// CEL expressions that are comparable to constructs of this set's type.
   /// Structure is documented below.
-  final pulumi.Input<List<RouterNamedSetElement>>? elements;
+  final pulumi.Input<List<RouterNamedSetElement>?>? elements;
   /// The fingerprint used for optimistic locking of this resource. Used
   /// internally during updates.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// The name of the Named Set, which must be a resource ID segment and unique
   /// within all named sets owned by the Router.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region where the router resides.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the Cloud Router in which this Named Set will be configured.
-  final pulumi.Input<String>? router;
+  final pulumi.Input<String?>? router;
   /// The type of the Named Set.
   /// Possible values are: `NAMED_SET_TYPE_PREFIX`, `NAMED_SET_TYPE_COMMUNITY`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RouterNamedSetState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

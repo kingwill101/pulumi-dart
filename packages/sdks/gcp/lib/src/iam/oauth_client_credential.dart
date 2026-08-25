@@ -298,9 +298,10 @@ class OauthClientCredential extends pulumi.CustomResource {
           'gcp:iam/oauthClientCredential:OauthClientCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['clientSecret'],
         ) {
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
@@ -316,11 +317,12 @@ class OauthClientCredential extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OauthClientCredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OauthClientCredential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -334,7 +336,28 @@ class OauthClientCredential extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    oauthClientCredentialId = registerOutput<String>('oauthClientCredentialId');
+    oauthclient = registerOutput<String>('oauthclient');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [OauthClientCredential] resource.
+  OauthClientCredential.reference(String urn)
+    : super(
+        'gcp:iam/oauthClientCredential:OauthClientCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret'],
+        isResourceReference: true,
+      ) {
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');

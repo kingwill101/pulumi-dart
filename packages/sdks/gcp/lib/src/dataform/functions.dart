@@ -134,3 +134,14 @@ Future<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(
   );
   return GetRepositoryIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicyOutput(
+  GetRepositoryIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryIamPolicyResult.fromMap);
+}

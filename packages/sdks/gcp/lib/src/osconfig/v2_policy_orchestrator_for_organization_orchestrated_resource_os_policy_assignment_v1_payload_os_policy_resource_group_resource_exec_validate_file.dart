@@ -9,15 +9,15 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// based on the file type:
   /// Remote: A checksum must be specified.
   /// Cloud Storage: An object generation number must be specified.
-  final pulumi.Input<bool>? allowInsecure;
+  final pulumi.Input<bool?>? allowInsecure;
   /// Specifies a file available as a Cloud Storage Object.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs>? gcs;
+  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs?>? gcs;
   /// A local path within the VM to use.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// Specifies a file available via some URI.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote>? remote;
+  final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote?>? remote;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile].
   /// [allowInsecure] Defaults to false. When false, files are subject to validations

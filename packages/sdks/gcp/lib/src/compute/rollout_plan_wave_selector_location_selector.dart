@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RolloutPlanWaveSelectorLocationSelector {
   /// Example: "us-central1-a"
-  final pulumi.Input<List<String>>? includedLocations;
+  final pulumi.Input<List<String>?>? includedLocations;
 
   /// Creates a new [RolloutPlanWaveSelectorLocationSelector].
   /// [includedLocations] Example: "us-central1-a"

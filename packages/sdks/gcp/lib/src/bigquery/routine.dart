@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routine_args.dart';
+import 'routine_argument.dart';
 import 'routine_external_runtime_options.dart';
 import 'routine_python_options.dart';
 import 'routine_remote_function_options.dart';
@@ -2667,7 +2668,7 @@ import 'routine_state.dart';
 class Routine extends pulumi.CustomResource {
   /// Input/output argument of a function or a stored procedure.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> arguments;
+  late final pulumi.Output<List<RoutineArgument>?> arguments;
   /// The time when this routine was created, in milliseconds since the
   /// epoch.
   late final pulumi.Output<int> creationTime;
@@ -2754,9 +2755,9 @@ class Routine extends pulumi.CustomResource {
           'gcp:bigquery/routine:Routine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    arguments = registerOutput<List<Map<String, dynamic>>?>('arguments');
+    arguments = registerOutput<List<RoutineArgument>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     dataGovernanceType = registerOutput<String?>('dataGovernanceType');
     datasetId = registerOutput<String>('datasetId');
@@ -2765,7 +2766,7 @@ class Routine extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     determinismLevel = registerOutput<String?>('determinismLevel');
     externalRuntimeOptions = registerOutput<RoutineExternalRuntimeOptions?>('externalRuntimeOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    importedLibraries = registerOutput<List<String>?>('importedLibraries');
+    importedLibraries = registerOutput<List<String>?>('importedLibraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     language = registerOutput<String?>('language');
     lastModifiedTime = registerOutput<int>('lastModifiedTime');
     project = registerOutput<String>('project');
@@ -2784,11 +2785,12 @@ class Routine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoutineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Routine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2802,7 +2804,7 @@ class Routine extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    arguments = registerOutput<List<Map<String, dynamic>>?>('arguments');
+    arguments = registerOutput<List<RoutineArgument>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     dataGovernanceType = registerOutput<String?>('dataGovernanceType');
     datasetId = registerOutput<String>('datasetId');
@@ -2811,7 +2813,39 @@ class Routine extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     determinismLevel = registerOutput<String?>('determinismLevel');
     externalRuntimeOptions = registerOutput<RoutineExternalRuntimeOptions?>('externalRuntimeOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    importedLibraries = registerOutput<List<String>?>('importedLibraries');
+    importedLibraries = registerOutput<List<String>?>('importedLibraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    language = registerOutput<String?>('language');
+    lastModifiedTime = registerOutput<int>('lastModifiedTime');
+    project = registerOutput<String>('project');
+    pythonOptions = registerOutput<RoutinePythonOptions?>('pythonOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutinePythonOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteFunctionOptions = registerOutput<RoutineRemoteFunctionOptions?>('remoteFunctionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineRemoteFunctionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    returnTableType = registerOutput<String?>('returnTableType');
+    returnType = registerOutput<String?>('returnType');
+    routineId = registerOutput<String>('routineId');
+    routineType = registerOutput<String>('routineType');
+    securityMode = registerOutput<String?>('securityMode');
+    sparkOptions = registerOutput<RoutineSparkOptions?>('sparkOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineSparkOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Routine] resource.
+  Routine.reference(String urn)
+    : super(
+        'gcp:bigquery/routine:Routine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arguments = registerOutput<List<RoutineArgument>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<int>('creationTime');
+    dataGovernanceType = registerOutput<String?>('dataGovernanceType');
+    datasetId = registerOutput<String>('datasetId');
+    definitionBody = registerOutput<String>('definitionBody');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    determinismLevel = registerOutput<String?>('determinismLevel');
+    externalRuntimeOptions = registerOutput<RoutineExternalRuntimeOptions?>('externalRuntimeOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    importedLibraries = registerOutput<List<String>?>('importedLibraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     language = registerOutput<String?>('language');
     lastModifiedTime = registerOutput<int>('lastModifiedTime');
     project = registerOutput<String>('project');

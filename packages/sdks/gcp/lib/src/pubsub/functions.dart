@@ -136,6 +136,17 @@ Future<GetSchemaIamPolicyResult> getSchemaIamPolicy(
   return GetSchemaIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSchemaIamPolicyResult> getSchemaIamPolicyOutput(
+  GetSchemaIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:pubsub/getSchemaIamPolicy:getSchemaIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaIamPolicyResult.fromMap);
+}
+
 /// Get information about a Google Cloud Pub/Sub Subscription. For more information see
 /// the [official documentation](https://cloud.google.com/pubsub/docs/)
 /// and [API](https://cloud.google.com/pubsub/docs/apis).
@@ -256,6 +267,17 @@ Future<GetSubscriptionResult> getSubscription(
   return GetSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
+  GetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:pubsub/getSubscription:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Pubsub subscription.
 ///
 /// ## example
@@ -372,6 +394,17 @@ Future<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicyOutput(
+  GetSubscriptionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionIamPolicyResult.fromMap);
 }
 
 /// Get information about a Google Cloud Pub/Sub Topic. For more information see
@@ -492,6 +525,17 @@ Future<GetTopicResult> getTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:pubsub/getTopic:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for topic
@@ -618,4 +662,15 @@ Future<GetTopicIamPolicyResult> getTopicIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicIamPolicyResult> getTopicIamPolicyOutput(
+  GetTopicIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicIamPolicyResult.fromMap);
 }

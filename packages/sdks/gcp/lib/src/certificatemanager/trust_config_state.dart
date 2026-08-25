@@ -9,44 +9,44 @@ class TrustConfigState {
   /// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
   /// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
   /// Structure is documented below.
-  final pulumi.Input<List<TrustConfigAllowlistedCertificate>>? allowlistedCertificates;
+  final pulumi.Input<List<TrustConfigAllowlistedCertificate>?>? allowlistedCertificates;
   /// The creation timestamp of a TrustConfig.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// One or more paragraphs of text description of a trust config.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Set of label tags associated with the trust config.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The trust config location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A user-defined name of the trust config. Trust config names must be unique globally.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Set of trust stores to perform validation against.
   /// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
   /// Structure is documented below.
-  final pulumi.Input<List<TrustConfigTrustStore>>? trustStores;
+  final pulumi.Input<List<TrustConfigTrustStore>?>? trustStores;
   /// The last update timestamp of a TrustConfig.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [TrustConfigState].
   /// [allowlistedCertificates] Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as

@@ -607,7 +607,7 @@ class V2QueuedResource extends pulumi.CustomResource {
           'gcp:tpu/v2QueuedResource:V2QueuedResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
@@ -621,11 +621,12 @@ class V2QueuedResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2QueuedResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2QueuedResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -639,6 +640,22 @@ class V2QueuedResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tpu = registerOutput<V2QueuedResourceTpu?>('tpu', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2QueuedResourceTpu.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [V2QueuedResource] resource.
+  V2QueuedResource.reference(String urn)
+    : super(
+        'gcp:tpu/v2QueuedResource:V2QueuedResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

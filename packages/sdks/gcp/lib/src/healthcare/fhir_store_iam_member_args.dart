@@ -8,7 +8,7 @@ import 'fhir_store_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_healthcare_fhir_store_iam_member_fhir_store_iam_member_args_doc}
 class FhirStoreIamMemberArgs {
-  final pulumi.Input<FhirStoreIamMemberCondition>? condition;
+  final pulumi.Input<FhirStoreIamMemberCondition?>? condition;
   /// The FHIR store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
   /// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's

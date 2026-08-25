@@ -8,45 +8,45 @@ import 'certificate_template_predefined_values.dart';
 /// Input properties used for looking up and filtering CertificateTemplate resources.
 class CertificateTemplateState {
   /// Output only. The time at which this CertificateTemplate was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. A human-readable description of scenarios this template is intended for.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplateIdentityConstraints>? identityConstraints;
+  final pulumi.Input<CertificateTemplateIdentityConstraints?>? identityConstraints;
   /// Optional. Labels with user-defined metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
-  final pulumi.Input<String>? maximumLifetime;
+  final pulumi.Input<String?>? maximumLifetime;
   /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePassthroughExtensions>? passthroughExtensions;
+  final pulumi.Input<CertificateTemplatePassthroughExtensions?>? passthroughExtensions;
   /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePredefinedValues>? predefinedValues;
+  final pulumi.Input<CertificateTemplatePredefinedValues?>? predefinedValues;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Output only. The time at which this CertificateTemplate was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [CertificateTemplateState].
   /// [createTime] Output only. The time at which this CertificateTemplate was created.

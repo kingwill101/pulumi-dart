@@ -19,26 +19,26 @@ class HiveTableArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the table.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional parameters associated with the table.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Partition keys of the table.
   /// Structure is documented below.
-  final pulumi.Input<List<HiveTablePartitionKey>>? partitionKeys;
+  final pulumi.Input<List<HiveTablePartitionKey>?>? partitionKeys;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Storage descriptor of the table.
   /// Structure is documented below.
   final pulumi.Input<HiveTableStorageDescriptor> storageDescriptor;
   /// Expanded view text for Hive views. Empty for non-view.
-  final pulumi.Input<String>? viewExpandedText;
+  final pulumi.Input<String?>? viewExpandedText;
   /// Original view text for Hive views. Empty for non-view.
-  final pulumi.Input<String>? viewOriginalText;
+  final pulumi.Input<String?>? viewOriginalText;
 
   /// Creates a new [HiveTableArgs].
   /// [catalog] The Hive catalog where the table is located.

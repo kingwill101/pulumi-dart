@@ -6,15 +6,15 @@ import 'cluster_master_auth_client_certificate_config.dart';
 class ClusterMasterAuth {
   /// Base64 encoded public certificate
   /// used by clients to authenticate to the cluster endpoint.
-  final pulumi.Input<String>? clientCertificate;
+  final pulumi.Input<String?>? clientCertificate;
   /// Whether client certificate authorization is enabled for this cluster.  For example:
   final pulumi.Input<ClusterMasterAuthClientCertificateConfig> clientCertificateConfig;
   /// Base64 encoded private key used by clients
   /// to authenticate to the cluster endpoint.
-  final pulumi.Input<String>? clientKey;
+  final pulumi.Input<String?>? clientKey;
   /// Base64 encoded public certificate
   /// that is the root certificate of the cluster.
-  final pulumi.Input<String>? clusterCaCertificate;
+  final pulumi.Input<String?>? clusterCaCertificate;
 
   /// Creates a new [ClusterMasterAuth].
   /// [clientCertificate] Base64 encoded public certificate

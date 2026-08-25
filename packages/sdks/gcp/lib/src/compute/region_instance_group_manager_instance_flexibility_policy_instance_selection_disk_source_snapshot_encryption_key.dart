@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey {
   /// , The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
   /// - - -
-  final pulumi.Input<String>? kmsKeySelfLink;
+  final pulumi.Input<String?>? kmsKeySelfLink;
   /// , The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-  final pulumi.Input<String>? kmsKeyServiceAccount;
+  final pulumi.Input<String?>? kmsKeyServiceAccount;
   /// , Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
-  final pulumi.Input<String>? rawKey;
+  final pulumi.Input<String?>? rawKey;
   /// , Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
-  final pulumi.Input<String>? rsaEncryptedKey;
+  final pulumi.Input<String?>? rsaEncryptedKey;
 
   /// Creates a new [RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey].
   /// [kmsKeySelfLink] , The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.

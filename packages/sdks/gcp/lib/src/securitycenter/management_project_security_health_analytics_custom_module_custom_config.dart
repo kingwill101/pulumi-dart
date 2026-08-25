@@ -8,11 +8,11 @@ import 'management_project_security_health_analytics_custom_module_custom_config
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig {
   /// Custom output properties.
   /// Structure is documented below.
-  final pulumi.Input<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput>? customOutput;
+  final pulumi.Input<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput?>? customOutput;
   /// Text that describes the vulnerability or misconfiguration that the custom
   /// module detects. This explanation is returned with each finding instance to
   /// help investigators understand the detected issue. The text must be enclosed in quotation marks.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The CEL expression to evaluate to produce findings. When the expression evaluates
   /// to true against a resource, a finding is generated.
   /// Structure is documented below.

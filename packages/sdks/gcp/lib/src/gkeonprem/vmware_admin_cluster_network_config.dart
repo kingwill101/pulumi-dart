@@ -9,13 +9,13 @@ import 'vmware_admin_cluster_network_config_static_ip_config.dart';
 class VmwareAdminClusterNetworkConfig {
   /// Configuration settings for a DHCP IP configuration.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterNetworkConfigDhcpIpConfig>? dhcpIpConfig;
+  final pulumi.Input<VmwareAdminClusterNetworkConfigDhcpIpConfig?>? dhcpIpConfig;
   /// Configuration for HA admin cluster control plane.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterNetworkConfigHaControlPlaneConfig>? haControlPlaneConfig;
+  final pulumi.Input<VmwareAdminClusterNetworkConfigHaControlPlaneConfig?>? haControlPlaneConfig;
   /// Represents common network settings irrespective of the host's IP address.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterNetworkConfigHostConfig>? hostConfig;
+  final pulumi.Input<VmwareAdminClusterNetworkConfigHostConfig?>? hostConfig;
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
   /// Only a single range is supported. This field cannot be changed after creation.
   final pulumi.Input<List<String>> podAddressCidrBlocks;
@@ -25,9 +25,9 @@ class VmwareAdminClusterNetworkConfig {
   final pulumi.Input<List<String>> serviceAddressCidrBlocks;
   /// Configuration settings for a static IP configuration.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterNetworkConfigStaticIpConfig>? staticIpConfig;
+  final pulumi.Input<VmwareAdminClusterNetworkConfigStaticIpConfig?>? staticIpConfig;
   /// vcenter_network specifies vCenter network name.
-  final pulumi.Input<String>? vcenterNetwork;
+  final pulumi.Input<String?>? vcenterNetwork;
 
   /// Creates a new [VmwareAdminClusterNetworkConfig].
   /// [dhcpIpConfig] Configuration settings for a DHCP IP configuration.

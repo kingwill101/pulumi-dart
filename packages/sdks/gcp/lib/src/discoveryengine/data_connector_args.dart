@@ -14,14 +14,14 @@ class DataConnectorArgs {
   /// Action configuration for the data connector. Configures action
   /// capabilities for connectors that support the ACTIONS connector mode.
   /// Structure is documented below.
-  final pulumi.Input<DataConnectorActionConfig>? actionConfig;
+  final pulumi.Input<DataConnectorActionConfig?>? actionConfig;
   /// Indicates whether full syncs are paused for this connector
-  final pulumi.Input<bool>? autoRunDisabled;
+  final pulumi.Input<bool?>? autoRunDisabled;
   /// BAP (Business Application Platform) configuration for the data
   /// connector. Controls which actions are enabled for connectors
   /// using the ACTIONS connector mode.
   /// Structure is documented below.
-  final pulumi.Input<DataConnectorBapConfig>? bapConfig;
+  final pulumi.Input<DataConnectorBapConfig?>? bapConfig;
   /// The display name of the Collection.
   /// Should be human readable, used to display collections in the Console
   /// Dashboard. UTF-8 encoded string with limit of 1024 characters.
@@ -37,7 +37,7 @@ class DataConnectorArgs {
   /// The modes enabled for this connector. The possible value can be:
   /// 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
   /// 'EUA', 'FEDERATED_AND_EUA'.
-  final pulumi.Input<List<String>>? connectorModes;
+  final pulumi.Input<List<String>?>? connectorModes;
   /// The identifier for the data source.
   /// This is a partial list of supported connectors. Please refer to the
   /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
@@ -45,46 +45,46 @@ class DataConnectorArgs {
   /// Supported first-party connectors include:
   final pulumi.Input<String> dataSource;
   /// The version of the data source. For example, `3` for Jira v3.
-  final pulumi.Input<int>? dataSourceVersion;
+  final pulumi.Input<int?>? dataSourceVersion;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Destination connector configurations for the data connector,
   /// used to configure where data is served.
   /// Structure is documented below.
-  final pulumi.Input<List<DataConnectorDestinationConfig>>? destinationConfigs;
+  final pulumi.Input<List<DataConnectorDestinationConfig>?>? destinationConfigs;
   /// List of entities from the connected data source to ingest.
   /// Structure is documented below.
-  final pulumi.Input<List<DataConnectorEntity>>? entities;
+  final pulumi.Input<List<DataConnectorEntity>?>? entities;
   /// The refresh interval specifically for incremental data syncs. If unset,
   /// incremental syncs will use the default from env, set to 3hrs.
   /// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
   /// connectors. When the refresh interval is
   /// set to the same value as the incremental refresh interval, incremental
   /// sync will be disabled.
-  final pulumi.Input<String>? incrementalRefreshInterval;
+  final pulumi.Input<String?>? incrementalRefreshInterval;
   /// Indicates whether incremental syncs are paused for this connector.
-  final pulumi.Input<bool>? incrementalSyncDisabled;
+  final pulumi.Input<bool?>? incrementalSyncDisabled;
   /// Params needed to access the source in the format of json string.
-  final pulumi.Input<String>? jsonParams;
+  final pulumi.Input<String?>? jsonParams;
   /// The KMS key to be used to protect the DataStores managed by this connector.
   /// Must be set for requests that need to comply with CMEK Org Policy
   /// protections.
   /// If this field is set and processed successfully, the DataStores created by
   /// this connector will be protected by the KMS key.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
   /// Params needed to access the source in the format of String-to-String (Key, Value) pairs.
-  final pulumi.Input<Map<String, String>>? params;
+  final pulumi.Input<Map<String, String>?>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The refresh interval for data sync. If duration is set to 0, the data will
   /// be synced in real time. The streaming feature is not supported yet. The
   /// minimum is 30 minutes and maximum is 7 days. When the refresh interval is
@@ -92,10 +92,10 @@ class DataConnectorArgs {
   /// sync will be disabled.
   final pulumi.Input<String> refreshInterval;
   /// Whether customer has enabled static IP addresses for this connector.
-  final pulumi.Input<bool>? staticIpEnabled;
+  final pulumi.Input<bool?>? staticIpEnabled;
   /// The data synchronization mode supported by the data connector. The possible value can be:
   /// 'PERIODIC', 'STREAMING'.
-  final pulumi.Input<String>? syncMode;
+  final pulumi.Input<String?>? syncMode;
 
   /// Creates a new [DataConnectorArgs].
   /// [actionConfig] Action configuration for the data connector. Configures action
@@ -178,7 +178,7 @@ class DataConnectorArgs {
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
       connectorModes: (() { final guardedValue = map['connectorModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
-      dataSourceVersion: (() { final guardedValue = map['dataSourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataSourceVersion: (() { final guardedValue = map['dataSourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationConfigs: (() { final guardedValue = map['destinationConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorDestinationConfig>(guardedValue, (value) => DataConnectorDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       entities: (() { final guardedValue = map['entities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataConnectorEntity>(guardedValue, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>()))); })(),

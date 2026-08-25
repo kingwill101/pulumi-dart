@@ -8,7 +8,7 @@ import 'repository_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_artifactregistry_repository_iam_member_repository_iam_member_args_doc}
 class RepositoryIamMemberArgs {
-  final pulumi.Input<RepositoryIamMemberCondition>? condition;
+  final pulumi.Input<RepositoryIamMemberCondition?>? condition;
   /// The name of the repository's location. In addition to specific regions,
   /// special values for multi-region locations are `asia`, `europe`, and `us`.
   /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
@@ -17,7 +17,7 @@ class RepositoryIamMemberArgs {
   /// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -33,7 +33,7 @@ class RepositoryIamMemberArgs {
   final pulumi.Input<String> member;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> repository;
   /// The role that should be applied. Only one

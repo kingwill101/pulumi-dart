@@ -384,7 +384,7 @@ class VpcServiceControls extends pulumi.CustomResource {
           'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     network = registerOutput<String>('network');
@@ -397,11 +397,12 @@ class VpcServiceControls extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcServiceControlsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcServiceControls._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -415,6 +416,21 @@ class VpcServiceControls extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enabled = registerOutput<bool>('enabled');
+    network = registerOutput<String>('network');
+    project = registerOutput<String?>('project');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [VpcServiceControls] resource.
+  VpcServiceControls.reference(String urn)
+    : super(
+        'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enabled = registerOutput<bool>('enabled');
     network = registerOutput<String>('network');
     project = registerOutput<String?>('project');

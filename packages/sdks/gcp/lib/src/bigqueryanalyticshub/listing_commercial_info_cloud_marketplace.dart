@@ -6,10 +6,10 @@ class ListingCommercialInfoCloudMarketplace {
   /// (Output)
   /// Commercial state of the Marketplace Data Product.
   /// Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
-  final pulumi.Input<String>? commercialState;
+  final pulumi.Input<String?>? commercialState;
   /// (Output)
   /// Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ListingCommercialInfoCloudMarketplace].
   /// [commercialState] (Output)

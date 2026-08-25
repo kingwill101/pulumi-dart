@@ -8,49 +8,49 @@ class GdcApplicationEnvironmentState {
   /// The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The id of the application environment
-  final pulumi.Input<String>? applicationEnvironmentId;
+  final pulumi.Input<String?>? applicationEnvironmentId;
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided human-readable name to be used in user interfaces.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the application environment
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The name of the application environment. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/applicationEnvironments/{application_environment_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the namespace in which to create this ApplicationEnvironment. This namespace must already exist in the cluster
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The id of the service instance to which this application environment belongs.
-  final pulumi.Input<String>? serviceinstance;
+  final pulumi.Input<String?>? serviceinstance;
   /// Represents the SparkApplicationEnvironmentConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>? sparkApplicationEnvironmentConfig;
+  final pulumi.Input<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?>? sparkApplicationEnvironmentConfig;
   /// System generated unique identifier for this application environment, formatted as UUID4.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The timestamp when the resource was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GdcApplicationEnvironmentState].
   /// [annotations] The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.

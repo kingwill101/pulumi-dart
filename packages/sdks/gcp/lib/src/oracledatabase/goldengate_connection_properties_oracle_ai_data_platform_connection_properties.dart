@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties {
   /// Connection URL. It must start with 'jdbc:spark://'
-  final pulumi.Input<String>? connectionUrl;
+  final pulumi.Input<String?>? connectionUrl;
   /// The content of the private key file (PEM file)
   /// corresponding to the API key of the fingerprint.
-  final pulumi.Input<String>? privateKeyFile;
+  final pulumi.Input<String?>? privateKeyFile;
   /// The passphrase of the private key.
-  final pulumi.Input<String>? privateKeyPassphraseSecret;
+  final pulumi.Input<String?>? privateKeyPassphraseSecret;
   /// The fingerprint of the API Key of the user specified by the user_id.
-  final pulumi.Input<String>? publicKeyFingerprint;
+  final pulumi.Input<String?>? publicKeyFingerprint;
   /// The name of the region. e.g.: us-ashburn-1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The technology type of OracleAiDataPlatformConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The OCID of the related OCI tenancy.
-  final pulumi.Input<String>? tenancyId;
+  final pulumi.Input<String?>? tenancyId;
   /// Specifies that the user intends to authenticate to the instance using a
   /// resource principal.
-  final pulumi.Input<bool>? useResourcePrincipal;
+  final pulumi.Input<bool?>? useResourcePrincipal;
   /// The OCID of the OCI user who will access.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
 
   /// Creates a new [GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties].
   /// [connectionUrl] Connection URL. It must start with 'jdbc:spark://'

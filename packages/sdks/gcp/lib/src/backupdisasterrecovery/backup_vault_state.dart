@@ -8,83 +8,83 @@ class BackupVaultState {
   /// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
   /// Default value is `WITHIN_ORGANIZATION`.
   /// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
-  final pulumi.Input<String>? accessRestriction;
+  final pulumi.Input<String?>? accessRestriction;
   /// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
-  final pulumi.Input<bool>? allowMissing;
+  final pulumi.Input<bool?>? allowMissing;
   /// Optional. User annotations. See https://google.aip.dev/128#annotations
   /// Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Output only. The number of backups in this backup vault.
-  final pulumi.Input<String>? backupCount;
+  final pulumi.Input<String?>? backupCount;
   /// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
-  final pulumi.Input<String>? backupMinimumEnforcedRetentionDuration;
+  final pulumi.Input<String?>? backupMinimumEnforcedRetentionDuration;
   /// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
   /// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
-  final pulumi.Input<String>? backupRetentionInheritance;
+  final pulumi.Input<String?>? backupRetentionInheritance;
   /// Required. ID of the requesting object.
-  final pulumi.Input<String>? backupVaultId;
+  final pulumi.Input<String?>? backupVaultId;
   /// Output only. The time when the instance was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Output only. Set to true when there are no backups nested under this resource.
-  final pulumi.Input<bool>? deletable;
+  final pulumi.Input<bool?>? deletable;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. The description of the BackupVault instance (2048 characters or less).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Optional. Time after which the BackupVault resource is locked.
-  final pulumi.Input<String>? effectiveTime;
+  final pulumi.Input<String?>? effectiveTime;
   /// Encryption configuration for the backup vault.
   /// Structure is documented below.
-  final pulumi.Input<BackupVaultEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<BackupVaultEncryptionConfig?>? encryptionConfig;
   /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// (Optional, Deprecated)
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
   ///
   /// &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
-  final pulumi.Input<bool>? forceDelete;
+  final pulumi.Input<bool?>? forceDelete;
   /// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
   /// the restriction against conflicting retention periods. This conflict may occur when the
   /// expiration schedule defined by the associated backup plan is shorter than the minimum
   /// retention set by the backup vault.
-  final pulumi.Input<bool>? forceUpdate;
+  final pulumi.Input<bool?>? forceUpdate;
   /// If set to true, we will force update access restriction even if some non compliant data sources are present.
-  final pulumi.Input<bool>? forceUpdateAccessRestriction;
+  final pulumi.Input<bool?>? forceUpdateAccessRestriction;
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
-  final pulumi.Input<bool>? ignoreBackupPlanReferences;
+  final pulumi.Input<bool?>? ignoreBackupPlanReferences;
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
-  final pulumi.Input<bool>? ignoreInactiveDatasources;
+  final pulumi.Input<bool?>? ignoreInactiveDatasources;
   /// Optional. Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The GCP location for the backup vault.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output only. Identifier. The resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Output only. Service account used by the BackupVault Service for this BackupVault.  The user should grant this account permissions in their workload project to enable the service to run backups and restores there.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Output only. The BackupVault resource instance state.
   /// Possible values:
   /// STATE_UNSPECIFIED
@@ -93,13 +93,13 @@ class BackupVaultState {
   /// DELETING
   /// ERROR
   /// UPDATING
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. Total size of the storage used by all backup resources.
-  final pulumi.Input<String>? totalStoredBytes;
+  final pulumi.Input<String?>? totalStoredBytes;
   /// Output only. Output only Immutable after resource creation until resource deletion.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. The time when the instance was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BackupVaultState].
   /// [accessRestriction] Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.

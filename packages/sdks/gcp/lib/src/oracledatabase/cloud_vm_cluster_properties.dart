@@ -6,43 +6,43 @@ import 'cloud_vm_cluster_properties_time_zone.dart';
 
 class CloudVmClusterProperties {
   /// OCI Cluster name.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// (Output)
   /// Compartment ID of cluster.
-  final pulumi.Input<String>? compartmentId;
+  final pulumi.Input<String?>? compartmentId;
   /// Number of enabled CPU cores.
   final pulumi.Input<int> cpuCoreCount;
   /// The data disk group size to be allocated in TBs.
-  final pulumi.Input<double>? dataStorageSizeTb;
+  final pulumi.Input<double?>? dataStorageSizeTb;
   /// Local storage per VM
-  final pulumi.Input<int>? dbNodeStorageSizeGb;
+  final pulumi.Input<int?>? dbNodeStorageSizeGb;
   /// OCID of database servers.
-  final pulumi.Input<List<String>>? dbServerOcids;
+  final pulumi.Input<List<String>?>? dbServerOcids;
   /// Data collection options for diagnostics.
   /// Structure is documented below.
-  final pulumi.Input<CloudVmClusterPropertiesDiagnosticsDataCollectionOptions>? diagnosticsDataCollectionOptions;
+  final pulumi.Input<CloudVmClusterPropertiesDiagnosticsDataCollectionOptions?>? diagnosticsDataCollectionOptions;
   /// The type of redundancy.
   /// Possible values:
   /// DISK_REDUNDANCY_UNSPECIFIED
   /// HIGH
   /// NORMAL
-  final pulumi.Input<String>? diskRedundancy;
+  final pulumi.Input<String?>? diskRedundancy;
   /// (Output)
   /// DNS listener IP.
-  final pulumi.Input<String>? dnsListenerIp;
+  final pulumi.Input<String?>? dnsListenerIp;
   /// (Output)
   /// Parent DNS domain where SCAN DNS and hosts names are qualified.
   /// ex: ocispdelegated.ocisp10jvnet.oraclevcn.com
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Grid Infrastructure Version.
-  final pulumi.Input<String>? giVersion;
+  final pulumi.Input<String?>? giVersion;
   /// (Output)
   /// host name without domain.
   /// format: "-" with some suffix.
   /// ex: sp2-yi0xq where "sp2" is the hostname_prefix.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Prefix for VM cluster host names.
-  final pulumi.Input<String>? hostnamePrefix;
+  final pulumi.Input<String?>? hostnamePrefix;
   /// License type of VM Cluster.
   /// Possible values:
   /// LICENSE_TYPE_UNSPECIFIED
@@ -50,42 +50,42 @@ class CloudVmClusterProperties {
   /// BRING_YOUR_OWN_LICENSE
   final pulumi.Input<String> licenseType;
   /// Use local backup.
-  final pulumi.Input<bool>? localBackupEnabled;
+  final pulumi.Input<bool?>? localBackupEnabled;
   /// Memory allocated in GBs.
-  final pulumi.Input<int>? memorySizeGb;
+  final pulumi.Input<int?>? memorySizeGb;
   /// Number of database servers.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// (Output)
   /// Deep link to the OCI console to view this resource.
-  final pulumi.Input<String>? ociUrl;
+  final pulumi.Input<String?>? ociUrl;
   /// (Output)
   /// Oracle Cloud Infrastructure ID of VM Cluster.
-  final pulumi.Input<String>? ocid;
+  final pulumi.Input<String?>? ocid;
   /// OCPU count per VM. Minimum is 0.1.
-  final pulumi.Input<double>? ocpuCount;
+  final pulumi.Input<double?>? ocpuCount;
   /// (Output)
   /// SCAN DNS name.
   /// ex: sp2-yi0xq-scan.ocispdelegated.ocisp10jvnet.oraclevcn.com
-  final pulumi.Input<String>? scanDns;
+  final pulumi.Input<String?>? scanDns;
   /// (Output)
   /// OCID of scan DNS record.
-  final pulumi.Input<String>? scanDnsRecordId;
+  final pulumi.Input<String?>? scanDnsRecordId;
   /// (Output)
   /// OCIDs of scan IPs.
-  final pulumi.Input<List<String>>? scanIpIds;
+  final pulumi.Input<List<String>?>? scanIpIds;
   /// (Output)
   /// SCAN listener port - TCP
-  final pulumi.Input<int>? scanListenerPortTcp;
+  final pulumi.Input<int?>? scanListenerPortTcp;
   /// (Output)
   /// SCAN listener port - TLS
-  final pulumi.Input<int>? scanListenerPortTcpSsl;
+  final pulumi.Input<int?>? scanListenerPortTcpSsl;
   /// (Output)
   /// Shape of VM Cluster.
-  final pulumi.Input<String>? shape;
+  final pulumi.Input<String?>? shape;
   /// Use exadata sparse snapshots.
-  final pulumi.Input<bool>? sparseDiskgroupEnabled;
+  final pulumi.Input<bool?>? sparseDiskgroupEnabled;
   /// SSH public keys to be stored with cluster.
-  final pulumi.Input<List<String>>? sshPublicKeys;
+  final pulumi.Input<List<String>?>? sshPublicKeys;
   /// (Output)
   /// State of the cluster.
   /// Possible values:
@@ -97,24 +97,24 @@ class CloudVmClusterProperties {
   /// TERMINATED
   /// FAILED
   /// MAINTENANCE_IN_PROGRESS
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// The storage management type of the VM Cluster.
   /// Possible values:
   /// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
   /// ASM
   /// EXASCALE
-  final pulumi.Input<String>? storageManagementType;
+  final pulumi.Input<String?>? storageManagementType;
   /// (Output)
   /// The storage allocation for the disk group, in gigabytes (GB).
-  final pulumi.Input<int>? storageSizeGb;
+  final pulumi.Input<int?>? storageSizeGb;
   /// (Output)
   /// Operating system version of the image.
-  final pulumi.Input<String>? systemVersion;
+  final pulumi.Input<String?>? systemVersion;
   /// Represents a time zone from the
   /// [IANA Time Zone Database](https://www.iana.org/time-zones).
   /// Structure is documented below.
-  final pulumi.Input<CloudVmClusterPropertiesTimeZone>? timeZone;
+  final pulumi.Input<CloudVmClusterPropertiesTimeZone?>? timeZone;
 
   /// Creates a new [CloudVmClusterProperties].
   /// [clusterName] OCI Cluster name.
@@ -228,9 +228,9 @@ class CloudVmClusterProperties {
     return CloudVmClusterProperties(
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       compartmentId: (() { final guardedValue = map['compartmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuCoreCount: pulumi.Input.fromValue(map['cpuCoreCount'] as int),
-      dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpuCoreCount: pulumi.Input.fromValue((map['cpuCoreCount'] as num).toInt()),
+      dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dbServerOcids: (() { final guardedValue = map['dbServerOcids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       diagnosticsDataCollectionOptions: (() { final guardedValue = map['diagnosticsDataCollectionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudVmClusterPropertiesDiagnosticsDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diskRedundancy: (() { final guardedValue = map['diskRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -241,22 +241,22 @@ class CloudVmClusterProperties {
       hostnamePrefix: (() { final guardedValue = map['hostnamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
       localBackupEnabled: (() { final guardedValue = map['localBackupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ociUrl: (() { final guardedValue = map['ociUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ocpuCount: (() { final guardedValue = map['ocpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ocpuCount: (() { final guardedValue = map['ocpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       scanDns: (() { final guardedValue = map['scanDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scanDnsRecordId: (() { final guardedValue = map['scanDnsRecordId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scanIpIds: (() { final guardedValue = map['scanIpIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      scanListenerPortTcpSsl: (() { final guardedValue = map['scanListenerPortTcpSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scanListenerPortTcpSsl: (() { final guardedValue = map['scanListenerPortTcpSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       shape: (() { final guardedValue = map['shape']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sparseDiskgroupEnabled: (() { final guardedValue = map['sparseDiskgroupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sshPublicKeys: (() { final guardedValue = map['sshPublicKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageManagementType: (() { final guardedValue = map['storageManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageSizeGb: (() { final guardedValue = map['storageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageSizeGb: (() { final guardedValue = map['storageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       systemVersion: (() { final guardedValue = map['systemVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudVmClusterPropertiesTimeZone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

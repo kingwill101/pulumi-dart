@@ -18,15 +18,15 @@ class AutoscalerAutoscalingPolicy {
   /// numerous factors. We recommend that you test how long an
   /// instance may take to initialize. To do this, create an instance
   /// and time the startup process.
-  final pulumi.Input<int>? cooldownPeriod;
+  final pulumi.Input<int?>? cooldownPeriod;
   /// Defines the CPU utilization policy that allows the autoscaler to
   /// scale based on the average CPU utilization of a managed instance
   /// group.
   /// Structure is documented below.
-  final pulumi.Input<AutoscalerAutoscalingPolicyCpuUtilization>? cpuUtilization;
+  final pulumi.Input<AutoscalerAutoscalingPolicyCpuUtilization?>? cpuUtilization;
   /// Configuration parameters of autoscaling based on a load balancer.
   /// Structure is documented below.
-  final pulumi.Input<AutoscalerAutoscalingPolicyLoadBalancingUtilization>? loadBalancingUtilization;
+  final pulumi.Input<AutoscalerAutoscalingPolicyLoadBalancingUtilization?>? loadBalancingUtilization;
   /// The maximum number of instances that the autoscaler can scale up
   /// to. This is required when creating or updating an autoscaler. The
   /// maximum number of replicas should not be lower than minimal number
@@ -34,32 +34,32 @@ class AutoscalerAutoscalingPolicy {
   final pulumi.Input<int> maxReplicas;
   /// Configuration parameters of autoscaling based on a custom metric.
   /// Structure is documented below.
-  final pulumi.Input<List<AutoscalerAutoscalingPolicyMetric>>? metrics;
+  final pulumi.Input<List<AutoscalerAutoscalingPolicyMetric>?>? metrics;
   /// The minimum number of replicas that the autoscaler can scale down
   /// to. This cannot be less than 0. If not provided, autoscaler will
   /// choose a default value depending on maximum number of instances
   /// allowed.
   final pulumi.Input<int> minReplicas;
   /// Defines operating mode for this policy.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// (Optional, Beta)
   /// Defines scale down controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
-  final pulumi.Input<AutoscalerAutoscalingPolicyScaleDownControl>? scaleDownControl;
+  final pulumi.Input<AutoscalerAutoscalingPolicyScaleDownControl?>? scaleDownControl;
   /// Defines scale in controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
-  final pulumi.Input<AutoscalerAutoscalingPolicyScaleInControl>? scaleInControl;
+  final pulumi.Input<AutoscalerAutoscalingPolicyScaleInControl?>? scaleInControl;
   /// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
   /// Structure is documented below.
-  final pulumi.Input<List<AutoscalerAutoscalingPolicyScalingSchedule>>? scalingSchedules;
+  final pulumi.Input<List<AutoscalerAutoscalingPolicyScalingSchedule>?>? scalingSchedules;
   /// The number of seconds that the autoscaler waits for load stabilization
   /// before making scale-in decisions.
   /// This might appear as a delay in scaling in but it is an important mechanism
   /// for your application to not have fluctuating size due to short term load
   /// fluctuations.
-  final pulumi.Input<int>? stabilizationPeriod;
+  final pulumi.Input<int?>? stabilizationPeriod;
 
   /// Creates a new [AutoscalerAutoscalingPolicy].
   /// [cooldownPeriod] The number of seconds that the autoscaler should wait before it
@@ -105,17 +105,17 @@ class AutoscalerAutoscalingPolicy {
 
   factory AutoscalerAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicy(
-      cooldownPeriod: (() { final guardedValue = map['cooldownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cooldownPeriod: (() { final guardedValue = map['cooldownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       cpuUtilization: (() { final guardedValue = map['cpuUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyCpuUtilization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       loadBalancingUtilization: (() { final guardedValue = map['loadBalancingUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxReplicas: pulumi.Input.fromValue(map['maxReplicas'] as int),
+      maxReplicas: pulumi.Input.fromValue((map['maxReplicas'] as num).toInt()),
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutoscalerAutoscalingPolicyMetric>(guardedValue, (value) => AutoscalerAutoscalingPolicyMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      minReplicas: pulumi.Input.fromValue(map['minReplicas'] as int),
+      minReplicas: pulumi.Input.fromValue((map['minReplicas'] as num).toInt()),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleDownControl: (() { final guardedValue = map['scaleDownControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyScaleDownControl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scaleInControl: (() { final guardedValue = map['scaleInControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyScaleInControl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scalingSchedules: (() { final guardedValue = map['scalingSchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutoscalerAutoscalingPolicyScalingSchedule>(guardedValue, (value) => AutoscalerAutoscalingPolicyScalingSchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      stabilizationPeriod: (() { final guardedValue = map['stabilizationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      stabilizationPeriod: (() { final guardedValue = map['stabilizationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

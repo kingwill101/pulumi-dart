@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServiceIdentity resources.
 class ServiceIdentityState {
   /// The email address of the Google managed service account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
-  final pulumi.Input<String>? member;
+  final pulumi.Input<String?>? member;
   /// The organization in which the resource belongs.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// The service to generate identity for.
   ///
   /// - - -
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ServiceIdentityState].
   /// [email] The email address of the Google managed service account.

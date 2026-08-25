@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
   /// The OAuth client ID of the application.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The name of the application. Example: "Cloud Console"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication].
   /// [clientId] The OAuth client ID of the application.

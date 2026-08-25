@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HttpRouteRuleMatchQueryParameter {
   /// The value of the query parameter must exactly match the contents of exactMatch.
-  final pulumi.Input<String>? exactMatch;
+  final pulumi.Input<String?>? exactMatch;
   /// Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
-  final pulumi.Input<bool>? presentMatch;
+  final pulumi.Input<bool?>? presentMatch;
   /// The name of the query parameter to match.
-  final pulumi.Input<String>? queryParameter;
+  final pulumi.Input<String?>? queryParameter;
   /// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
-  final pulumi.Input<String>? regexMatch;
+  final pulumi.Input<String?>? regexMatch;
 
   /// Creates a new [HttpRouteRuleMatchQueryParameter].
   /// [exactMatch] The value of the query parameter must exactly match the contents of exactMatch.

@@ -8,7 +8,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
   /// Structure is documented below.
   final pulumi.Input<List<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup>> featureGroups;
   /// The project number of the parent project of the feature Groups.
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewFeatureRegistrySource].
   /// [featureGroups] List of features that need to be synced to Online Store.

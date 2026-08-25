@@ -243,14 +243,14 @@ class GetDatabaseInstanceSetting {
       connectorEnforcement: pulumi.Input.fromValue(map['connectorEnforcement'] as String),
       dataApiAccess: pulumi.Input.fromValue(map['dataApiAccess'] as String),
       dataCacheConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingDataCacheConfig>(map['dataCacheConfigs']!, (value) => GetDatabaseInstanceSettingDataCacheConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      dataDiskProvisionedIops: pulumi.Input.fromValue(map['dataDiskProvisionedIops'] as int),
-      dataDiskProvisionedThroughput: pulumi.Input.fromValue(map['dataDiskProvisionedThroughput'] as int),
+      dataDiskProvisionedIops: pulumi.Input.fromValue((map['dataDiskProvisionedIops'] as num).toInt()),
+      dataDiskProvisionedThroughput: pulumi.Input.fromValue((map['dataDiskProvisionedThroughput'] as num).toInt()),
       databaseFlags: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingDatabaseFlag>(map['databaseFlags']!, (value) => GetDatabaseInstanceSettingDatabaseFlag.fromMap((value as Map).cast<String, dynamic>()))),
       deletionProtectionEnabled: pulumi.Input.fromValue(map['deletionProtectionEnabled'] as bool),
       denyMaintenancePeriods: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingDenyMaintenancePeriod>(map['denyMaintenancePeriods']!, (value) => GetDatabaseInstanceSettingDenyMaintenancePeriod.fromMap((value as Map).cast<String, dynamic>()))),
       diskAutoresize: pulumi.Input.fromValue(map['diskAutoresize'] as bool),
-      diskAutoresizeLimit: pulumi.Input.fromValue(map['diskAutoresizeLimit'] as int),
-      diskSize: pulumi.Input.fromValue(map['diskSize'] as int),
+      diskAutoresizeLimit: pulumi.Input.fromValue((map['diskAutoresizeLimit'] as num).toInt()),
+      diskSize: pulumi.Input.fromValue((map['diskSize'] as num).toInt()),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       edition: pulumi.Input.fromValue(map['edition'] as String),
       effectiveAvailabilityType: pulumi.Input.fromValue(map['effectiveAvailabilityType'] as String),
@@ -271,7 +271,7 @@ class GetDatabaseInstanceSetting {
       tier: pulumi.Input.fromValue(map['tier'] as String),
       timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
       userLabels: pulumi.Input.fromValue((map['userLabels'] as Map).cast<String, String>()),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
     );
   }
 }

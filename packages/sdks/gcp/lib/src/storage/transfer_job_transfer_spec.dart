@@ -16,33 +16,33 @@ import 'transfer_job_transfer_spec_transfer_options.dart';
 
 class TransferJobTransferSpec {
   /// An AWS S3 Compatible data source. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecAwsS3CompatibleDataSource>? awsS3CompatibleDataSource;
+  final pulumi.Input<TransferJobTransferSpecAwsS3CompatibleDataSource?>? awsS3CompatibleDataSource;
   /// An AWS S3 data source. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecAwsS3DataSource>? awsS3DataSource;
+  final pulumi.Input<TransferJobTransferSpecAwsS3DataSource?>? awsS3DataSource;
   /// An Azure Blob Storage data source. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSource>? azureBlobStorageDataSource;
+  final pulumi.Input<TransferJobTransferSpecAzureBlobStorageDataSource?>? azureBlobStorageDataSource;
   /// A Google Cloud Storage data sink. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecGcsDataSink>? gcsDataSink;
+  final pulumi.Input<TransferJobTransferSpecGcsDataSink?>? gcsDataSink;
   /// A Google Cloud Storage data source. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecGcsDataSource>? gcsDataSource;
+  final pulumi.Input<TransferJobTransferSpecGcsDataSource?>? gcsDataSource;
   /// An HDFS data source. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecHdfsDataSource>? hdfsDataSource;
+  final pulumi.Input<TransferJobTransferSpecHdfsDataSource?>? hdfsDataSource;
   /// A HTTP URL data source. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecHttpDataSource>? httpDataSource;
+  final pulumi.Input<TransferJobTransferSpecHttpDataSource?>? httpDataSource;
   /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecObjectConditions>? objectConditions;
+  final pulumi.Input<TransferJobTransferSpecObjectConditions?>? objectConditions;
   /// A POSIX data sink. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecPosixDataSink>? posixDataSink;
+  final pulumi.Input<TransferJobTransferSpecPosixDataSink?>? posixDataSink;
   /// A POSIX filesystem data source. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecPosixDataSource>? posixDataSource;
+  final pulumi.Input<TransferJobTransferSpecPosixDataSource?>? posixDataSource;
   /// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
-  final pulumi.Input<String>? sinkAgentPoolName;
+  final pulumi.Input<String?>? sinkAgentPoolName;
   /// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
-  final pulumi.Input<String>? sourceAgentPoolName;
+  final pulumi.Input<String?>? sourceAgentPoolName;
   /// Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecTransferManifest>? transferManifest;
+  final pulumi.Input<TransferJobTransferSpecTransferManifest?>? transferManifest;
   /// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecTransferOptions>? transferOptions;
+  final pulumi.Input<TransferJobTransferSpecTransferOptions?>? transferOptions;
 
   /// Creates a new [TransferJobTransferSpec].
   /// [awsS3CompatibleDataSource] An AWS S3 Compatible data source. Structure documented below.

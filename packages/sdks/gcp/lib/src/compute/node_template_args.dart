@@ -14,48 +14,48 @@ class NodeTemplateArgs {
   /// List of the type and count of accelerator cards attached to the
   /// node template
   /// Structure is documented below.
-  final pulumi.Input<List<NodeTemplateAccelerator>>? accelerators;
+  final pulumi.Input<List<NodeTemplateAccelerator>?>? accelerators;
   /// CPU overcommit.
   /// Default value is `NONE`.
   /// Possible values are: `ENABLED`, `NONE`.
-  final pulumi.Input<String>? cpuOvercommitType;
+  final pulumi.Input<String?>? cpuOvercommitType;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional textual description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of the type, size and count of disks attached to the
   /// node template
   /// Structure is documented below.
-  final pulumi.Input<List<NodeTemplateDisk>>? disks;
+  final pulumi.Input<List<NodeTemplateDisk>?>? disks;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Labels to use for node affinity, which will be used in
   /// instance scheduling.
-  final pulumi.Input<Map<String, String>>? nodeAffinityLabels;
+  final pulumi.Input<Map<String, String>?>? nodeAffinityLabels;
   /// Node type to use for nodes group that are created from this template.
   /// Only one of nodeTypeFlexibility and nodeType can be specified.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// Flexible properties for the desired node type. Node groups that
   /// use this node template will create nodes of a type that matches
   /// these properties. Only one of nodeTypeFlexibility and nodeType can
   /// be specified.
   /// Structure is documented below.
-  final pulumi.Input<NodeTemplateNodeTypeFlexibility>? nodeTypeFlexibility;
+  final pulumi.Input<NodeTemplateNodeTypeFlexibility?>? nodeTypeFlexibility;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region where nodes using the node template will be created.
   /// If it is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The server binding policy for nodes using this template. Determines
   /// where the nodes should restart following a maintenance event.
   /// Structure is documented below.
-  final pulumi.Input<NodeTemplateServerBinding>? serverBinding;
+  final pulumi.Input<NodeTemplateServerBinding?>? serverBinding;
 
   /// Creates a new [NodeTemplateArgs].
   /// [accelerators] List of the type and count of accelerator cards attached to the

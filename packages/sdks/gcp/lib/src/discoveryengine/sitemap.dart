@@ -266,7 +266,7 @@ class Sitemap extends pulumi.CustomResource {
           'gcp:discoveryengine/sitemap:Sitemap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
@@ -283,11 +283,12 @@ class Sitemap extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SitemapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Sitemap._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -301,6 +302,25 @@ class Sitemap extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sitemapId = registerOutput<String>('sitemapId');
+    uri = registerOutput<String?>('uri');
+  }
+
+  /// Creates a typed reference to an existing [Sitemap] resource.
+  Sitemap.reference(String urn)
+    : super(
+        'gcp:discoveryengine/sitemap:Sitemap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

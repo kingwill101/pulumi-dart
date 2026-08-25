@@ -7,12 +7,12 @@ import 'feed_details_workspace_mobile_settings_authentication_rs_credentials.dar
 class FeedDetailsWorkspaceMobileSettingsAuthentication {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceMobileSettingsAuthenticationClaims>? claims;
+  final pulumi.Input<FeedDetailsWorkspaceMobileSettingsAuthenticationClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsWorkspaceMobileSettingsAuthentication].
   /// [claims] Claims identifying a specific customer.

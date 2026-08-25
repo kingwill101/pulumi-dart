@@ -25,7 +25,7 @@ class GetBackupPlanAssociationRulesConfigInfoLastBackupError {
 
   factory GetBackupPlanAssociationRulesConfigInfoLastBackupError.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationRulesConfigInfoLastBackupError(
-      code: pulumi.Input.fromValue(map['code'] as double),
+      code: pulumi.Input.fromValue((map['code'] as num).toDouble()),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }

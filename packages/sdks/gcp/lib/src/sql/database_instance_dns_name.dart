@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceDnsName {
   /// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// The scope that the DNS name applies to.
-  final pulumi.Input<String>? dnsScope;
+  final pulumi.Input<String?>? dnsScope;
   /// The name of the instance. If the name is left
   /// blank, the provider will randomly generate one when the instance is first
   /// created. This is done because after a name is used, it cannot be reused for
   /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatabaseInstanceDnsName].
   /// [connectionType] The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.

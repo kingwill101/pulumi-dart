@@ -13,12 +13,12 @@ class ServiceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Metadata for the service. This data can be consumed
   /// by service clients. The entire metadata dictionary may contain
   /// up to 2000 characters, spread across all key-value pairs.
   /// Metadata that goes beyond any these limits will be rejected.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The resource name of the namespace this service will belong to.
   final pulumi.Input<String> namespace;
   /// The Resource ID must be 1-63 characters long, including digits,

@@ -598,7 +598,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule extends pulumi.Custom
           'gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -617,11 +617,12 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule extends pulumi.Custom
     String name,
     pulumi.Input<String> id, {
     ManagementProjectSecurityHealthAnalyticsCustomModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagementProjectSecurityHealthAnalyticsCustomModule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -635,6 +636,27 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule extends pulumi.Custom
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ancestorModule = registerOutput<String>('ancestorModule');
+    customConfig = registerOutput<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    enablementState = registerOutput<String?>('enablementState');
+    lastEditor = registerOutput<String>('lastEditor');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ManagementProjectSecurityHealthAnalyticsCustomModule] resource.
+  ManagementProjectSecurityHealthAnalyticsCustomModule.reference(String urn)
+    : super(
+        'gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

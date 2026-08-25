@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDiscoveryConfigTargetCloudSqlTargetConditions {
   /// Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
   /// Each value may be one of: `ALL_SUPPORTED_DATABASE_ENGINES`, `MYSQL`, `POSTGRES`.
-  final pulumi.Input<List<String>>? databaseEngines;
+  final pulumi.Input<List<String>?>? databaseEngines;
   /// Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
   /// Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
-  final pulumi.Input<List<String>>? types;
+  final pulumi.Input<List<String>?>? types;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetConditions].
   /// [databaseEngines] Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.

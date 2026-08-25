@@ -9,21 +9,21 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
   /// (Output)
   /// Grounding configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig>>? groundingConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig>?>? groundingConfigs;
   /// (Output)
   /// The modality type.
   /// Possible values:
   /// TEXT
   /// AUDIO
-  final pulumi.Input<String>? modalityType;
+  final pulumi.Input<String?>? modalityType;
   /// (Output)
   /// Rewriter configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig>>? rewriterConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig>?>? rewriterConfigs;
   /// (Output)
   /// Summarization configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig>>? summarizationConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig>?>? summarizationConfigs;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolModalityConfig].
   /// [groundingConfigs] (Output)

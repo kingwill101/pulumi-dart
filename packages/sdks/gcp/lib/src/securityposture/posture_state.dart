@@ -6,39 +6,39 @@ import 'posture_policy_set.dart';
 /// Input properties used for looking up and filtering Posture resources.
 class PostureState {
   /// Time the Posture was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the posture.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// For Resource freshness validation (https://google.aip.dev/154)
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Location of the resource, eg: global.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the posture.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// List of policy sets for the posture.
   /// Structure is documented below.
-  final pulumi.Input<List<PosturePolicySet>>? policySets;
+  final pulumi.Input<List<PosturePolicySet>?>? policySets;
   /// Id of the posture. It is an immutable field.
-  final pulumi.Input<String>? postureId;
+  final pulumi.Input<String?>? postureId;
   /// If set, there are currently changes in flight to the posture.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Revision_id of the posture.
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
   /// State of the posture. Update to state field should not be triggered along with
   /// with other field updates.
   /// Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Time the Posture was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PostureState].
   /// [createTime] Time the Posture was created in UTC.

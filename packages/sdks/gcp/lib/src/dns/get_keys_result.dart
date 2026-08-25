@@ -7,45 +7,45 @@ import 'get_keys_zone_signing_key.dart';
 /// Result data returned by getKeys.
 class GetKeysResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
-  final List<GetKeysKeySigningKey> keySigningKeys;
-  final String managedZone;
-  final String project;
+  final List<GetKeysKeySigningKey>? keySigningKeys;
+  final String? managedZone;
+  final String? project;
   /// A list of Zone-signing key (ZSK) records. Structure is documented below.
-  final List<GetKeysZoneSigningKey> zoneSigningKeys;
+  final List<GetKeysZoneSigningKey>? zoneSigningKeys;
 
   /// Creates a new [GetKeysResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keySigningKeys] A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
-  /// [managedZone] Required.
-  /// [project] Required.
+  /// [managedZone] Optional.
+  /// [project] Optional.
   /// [zoneSigningKeys] A list of Zone-signing key (ZSK) records. Structure is documented below.
   const GetKeysResult({
-    required this.id,
-    required this.keySigningKeys,
-    required this.managedZone,
-    required this.project,
-    required this.zoneSigningKeys,
+    this.id,
+    this.keySigningKeys,
+    this.managedZone,
+    this.project,
+    this.zoneSigningKeys,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'keySigningKeys': pulumi.Input.encodeList<GetKeysKeySigningKey, Map<String, dynamic>>(keySigningKeys, (value) => value.toMap()),
-      'managedZone': managedZone,
-      'project': project,
-      'zoneSigningKeys': pulumi.Input.encodeList<GetKeysZoneSigningKey, Map<String, dynamic>>(zoneSigningKeys, (value) => value.toMap()),
+      'id': ?id,
+      'keySigningKeys': ?(() { final guardedValue = keySigningKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKeysKeySigningKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'managedZone': ?managedZone,
+      'project': ?project,
+      'zoneSigningKeys': ?(() { final guardedValue = zoneSigningKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKeysZoneSigningKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetKeysResult.fromMap(Map<String, dynamic> map) {
     return GetKeysResult(
-      id: map['id'] as String,
-      keySigningKeys: pulumi.Input.decodeList<GetKeysKeySigningKey>(map['keySigningKeys']!, (value) => GetKeysKeySigningKey.fromMap((value as Map).cast<String, dynamic>())),
-      managedZone: map['managedZone'] as String,
-      project: map['project'] as String,
-      zoneSigningKeys: pulumi.Input.decodeList<GetKeysZoneSigningKey>(map['zoneSigningKeys']!, (value) => GetKeysZoneSigningKey.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keySigningKeys: (() { final guardedValue = map['keySigningKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKeysKeySigningKey>(guardedValue, (value) => GetKeysKeySigningKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      managedZone: (() { final guardedValue = map['managedZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zoneSigningKeys: (() { final guardedValue = map['zoneSigningKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKeysZoneSigningKey>(guardedValue, (value) => GetKeysZoneSigningKey.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

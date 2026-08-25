@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extensions_instance_args.dart';
 import 'extensions_instance_config.dart';
+import 'extensions_instance_error_status.dart';
+import 'extensions_instance_runtime_data.dart';
 import 'extensions_instance_state.dart';
 
 /// An Instance is an installation of an Extension into a user's project.
@@ -399,7 +401,7 @@ class ExtensionsInstance extends pulumi.CustomResource {
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errorStatuses;
+  late final pulumi.Output<List<ExtensionsInstanceErrorStatus>> errorStatuses;
   /// A weak etag that is computed by the server based on other configuration
   /// values and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
@@ -419,7 +421,7 @@ class ExtensionsInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Data set by the extension instance at runtime.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> runtimeDatas;
+  late final pulumi.Output<List<ExtensionsInstanceRuntimeData>> runtimeDatas;
   /// The email of the service account to be used at runtime by compute resources
   /// created for the operation of the Extension instance.
   late final pulumi.Output<String> serviceAccountEmail;
@@ -440,19 +442,19 @@ class ExtensionsInstance extends pulumi.CustomResource {
           'gcp:firebase/extensionsInstance:ExtensionsInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
+    errorStatuses = registerOutput<List<ExtensionsInstanceErrorStatus>>('errorStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(guardedValue, (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');
     lastOperationName = registerOutput<String>('lastOperationName');
     lastOperationType = registerOutput<String>('lastOperationType');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    runtimeDatas = registerOutput<List<Map<String, dynamic>>>('runtimeDatas');
+    runtimeDatas = registerOutput<List<ExtensionsInstanceRuntimeData>>('runtimeDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(guardedValue, (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>())); });
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -463,11 +465,12 @@ class ExtensionsInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExtensionsInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExtensionsInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -484,16 +487,41 @@ class ExtensionsInstance extends pulumi.CustomResource {
     config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
+    errorStatuses = registerOutput<List<ExtensionsInstanceErrorStatus>>('errorStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(guardedValue, (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');
     lastOperationName = registerOutput<String>('lastOperationName');
     lastOperationType = registerOutput<String>('lastOperationType');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    runtimeDatas = registerOutput<List<Map<String, dynamic>>>('runtimeDatas');
+    runtimeDatas = registerOutput<List<ExtensionsInstanceRuntimeData>>('runtimeDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(guardedValue, (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>())); });
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ExtensionsInstance] resource.
+  ExtensionsInstance.reference(String urn)
+    : super(
+        'gcp:firebase/extensionsInstance:ExtensionsInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    errorStatuses = registerOutput<List<ExtensionsInstanceErrorStatus>>('errorStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(guardedValue, (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    instanceId = registerOutput<String>('instanceId');
+    lastOperationName = registerOutput<String>('lastOperationName');
+    lastOperationType = registerOutput<String>('lastOperationType');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    runtimeDatas = registerOutput<List<ExtensionsInstanceRuntimeData>>('runtimeDatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(guardedValue, (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

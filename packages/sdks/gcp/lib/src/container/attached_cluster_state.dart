@@ -23,19 +23,19 @@ class AttachedClusterState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterAuthorization>? authorization;
+  final pulumi.Input<AttachedClusterAuthorization?>? authorization;
   /// Binary Authorization configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterBinaryAuthorization>? binaryAuthorization;
+  final pulumi.Input<AttachedClusterBinaryAuthorization?>? binaryAuthorization;
   /// Output only. The region where this cluster runs.
   /// For EKS clusters, this is an AWS region. For AKS clusters,
   /// this is an Azure region.
-  final pulumi.Input<String>? clusterRegion;
+  final pulumi.Input<String?>? clusterRegion;
   /// Output only. The time at which this cluster was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Policy to determine what flags to send on delete.
   ///
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -44,34 +44,34 @@ class AttachedClusterState {
   /// management without updating or deleting the resource in the API.
   ///
   /// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Kubernetes distribution of the underlying attached cluster. Supported values:
   /// "eks", "aks", "generic". The generic distribution provides the ability to register
   /// or migrate any CNCF conformant cluster.
-  final pulumi.Input<String>? distribution;
+  final pulumi.Input<String?>? distribution;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// A set of errors found in the cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<AttachedClusterError>>? errors;
+  final pulumi.Input<List<AttachedClusterError>?>? errors;
   /// Fleet configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterFleet>? fleet;
+  final pulumi.Input<AttachedClusterFleet?>? fleet;
   /// The Kubernetes version of the cluster.
-  final pulumi.Input<String>? kubernetesVersion;
+  final pulumi.Input<String?>? kubernetesVersion;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Logging configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterLoggingConfig>? loggingConfig;
+  final pulumi.Input<AttachedClusterLoggingConfig?>? loggingConfig;
   /// Monitoring configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterMonitoringConfig>? monitoringConfig;
+  final pulumi.Input<AttachedClusterMonitoringConfig?>? monitoringConfig;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OIDC discovery information of the target cluster.
   /// Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
   /// API server. This fields indicates how GCP services
@@ -82,34 +82,34 @@ class AttachedClusterState {
   /// while clusters with private issuers need to provide both
   /// `issuerUrl` and `jwks`.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterOidcConfig>? oidcConfig;
+  final pulumi.Input<AttachedClusterOidcConfig?>? oidcConfig;
   /// The platform version for the cluster (e.g. `1.23.0-gke.1`).
-  final pulumi.Input<String>? platformVersion;
+  final pulumi.Input<String?>? platformVersion;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Support for proxy configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterProxyConfig>? proxyConfig;
+  final pulumi.Input<AttachedClusterProxyConfig?>? proxyConfig;
   /// If set, there are currently changes in flight to the cluster.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// (Optional, Deprecated)
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
-  final pulumi.Input<AttachedClusterSecurityPostureConfig>? securityPostureConfig;
+  final pulumi.Input<AttachedClusterSecurityPostureConfig?>? securityPostureConfig;
   /// The current state of the cluster. Possible values:
   /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
   /// DEGRADED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A globally unique identifier for the cluster.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The time at which this cluster was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Workload Identity settings.
   /// Structure is documented below.
-  final pulumi.Input<List<AttachedClusterWorkloadIdentityConfig>>? workloadIdentityConfigs;
+  final pulumi.Input<List<AttachedClusterWorkloadIdentityConfig>?>? workloadIdentityConfigs;
 
   /// Creates a new [AttachedClusterState].
   /// [annotations] Optional. Annotations on the cluster. This field has the same

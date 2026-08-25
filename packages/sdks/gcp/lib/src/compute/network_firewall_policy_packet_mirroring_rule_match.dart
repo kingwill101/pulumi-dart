@@ -5,7 +5,7 @@ import 'network_firewall_policy_packet_mirroring_rule_match_layer4_config.dart';
 
 class NetworkFirewallPolicyPacketMirroringRuleMatch {
   /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-  final pulumi.Input<List<String>>? destIpRanges;
+  final pulumi.Input<List<String>?>? destIpRanges;
   /// Pairs of IP protocols and ports that the rule should match.
   /// Structure is documented below.
   ///
@@ -13,7 +13,7 @@ class NetworkFirewallPolicyPacketMirroringRuleMatch {
   /// &lt;a name="nestedMatchLayer4Configs"&gt;&lt;/a&gt;The `layer4Configs` block supports:
   final pulumi.Input<List<NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config>> layer4Configs;
   /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
 
   /// Creates a new [NetworkFirewallPolicyPacketMirroringRuleMatch].
   /// [destIpRanges] CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.

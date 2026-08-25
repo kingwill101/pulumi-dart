@@ -5,16 +5,16 @@ import 'dashboard_chart_dashboard_chart_visualization_button_properties.dart';
 
 class DashboardChartDashboardChartVisualizationButton {
   /// (Optional)
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Required)
   final pulumi.Input<String> hyperlink;
   /// (Required)
   final pulumi.Input<String> label;
   /// (Optional)
-  final pulumi.Input<bool>? newTab;
+  final pulumi.Input<bool?>? newTab;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationButtonProperties>? properties;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationButtonProperties?>? properties;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationButton].
   /// [description] (Optional)

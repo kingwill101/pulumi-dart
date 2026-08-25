@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TagField {
   /// Holds the value for a tag field with boolean type.
-  final pulumi.Input<bool>? boolValue;
+  final pulumi.Input<bool?>? boolValue;
   /// (Output)
   /// The display name of this field
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Holds the value for a tag field with double type.
-  final pulumi.Input<double>? doubleValue;
+  final pulumi.Input<double?>? doubleValue;
   /// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-  final pulumi.Input<String>? enumValue;
+  final pulumi.Input<String?>? enumValue;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> fieldName;
   /// (Output)
   /// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
   /// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
   /// within a tag do not have to be sequential.
-  final pulumi.Input<int>? order;
+  final pulumi.Input<int?>? order;
   /// Holds the value for a tag field with string type.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
   /// Holds the value for a tag field with timestamp type.
-  final pulumi.Input<String>? timestampValue;
+  final pulumi.Input<String?>? timestampValue;
 
   /// Creates a new [TagField].
   /// [boolValue] Holds the value for a tag field with boolean type.
@@ -61,10 +61,10 @@ class TagField {
     return TagField(
       boolValue: (() { final guardedValue = map['boolValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      doubleValue: (() { final guardedValue = map['doubleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      doubleValue: (() { final guardedValue = map['doubleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       enumValue: (() { final guardedValue = map['enumValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fieldName: pulumi.Input.fromValue(map['fieldName'] as String),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timestampValue: (() { final guardedValue = map['timestampValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

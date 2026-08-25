@@ -9,7 +9,7 @@ import 'tool_data_store_tool_modality_config_summarization_config.dart';
 class ToolDataStoreToolModalityConfig {
   /// Grounding configuration.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreToolModalityConfigGroundingConfig>? groundingConfig;
+  final pulumi.Input<ToolDataStoreToolModalityConfigGroundingConfig?>? groundingConfig;
   /// The modality type.
   /// Possible values:
   /// TEXT
@@ -17,13 +17,13 @@ class ToolDataStoreToolModalityConfig {
   final pulumi.Input<String> modalityType;
   /// Rewriter configuration.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreToolModalityConfigRewriterConfig>? rewriterConfig;
+  final pulumi.Input<ToolDataStoreToolModalityConfigRewriterConfig?>? rewriterConfig;
   /// Snippets configuration.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreToolModalityConfigSnippetsConfig>? snippetsConfig;
+  final pulumi.Input<ToolDataStoreToolModalityConfigSnippetsConfig?>? snippetsConfig;
   /// Summarization configuration.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreToolModalityConfigSummarizationConfig>? summarizationConfig;
+  final pulumi.Input<ToolDataStoreToolModalityConfigSummarizationConfig?>? summarizationConfig;
 
   /// Creates a new [ToolDataStoreToolModalityConfig].
   /// [groundingConfig] Grounding configuration.

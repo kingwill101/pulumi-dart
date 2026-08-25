@@ -6,33 +6,33 @@ class JobTemplateConfigElementaryStreamVideoStreamH264 {
   /// The video bitrate in bits per second.
   final pulumi.Input<int> bitrateBps;
   /// Target CRF level. The default is '21'.
-  final pulumi.Input<int>? crfLevel;
+  final pulumi.Input<int?>? crfLevel;
   /// The entropy coder to use. The default is 'cabac'.
-  final pulumi.Input<String>? entropyCoder;
+  final pulumi.Input<String?>? entropyCoder;
   /// The target video frame rate in frames per second (FPS).
   final pulumi.Input<int> frameRate;
   /// Select the GOP size based on the specified duration. The default is '3s'.
-  final pulumi.Input<String>? gopDuration;
+  final pulumi.Input<String?>? gopDuration;
   /// The height of the video in pixels.
-  final pulumi.Input<int>? heightPixels;
+  final pulumi.Input<int?>? heightPixels;
   /// HLG color format setting for H264.
-  final pulumi.Input<Map<String, dynamic>>? hlg;
+  final pulumi.Input<Map<String, dynamic>?>? hlg;
   /// Pixel format to use. The default is 'yuv420p'.
-  final pulumi.Input<String>? pixelFormat;
+  final pulumi.Input<String?>? pixelFormat;
   /// Enforces the specified codec preset. The default is 'veryfast'.
-  final pulumi.Input<String>? preset;
+  final pulumi.Input<String?>? preset;
   /// Enforces the specified codec profile.
-  final pulumi.Input<String>? profile;
+  final pulumi.Input<String?>? profile;
   /// Specify the mode. The default is 'vbr'.
-  final pulumi.Input<String>? rateControlMode;
+  final pulumi.Input<String?>? rateControlMode;
   /// SDR color format setting for H264.
-  final pulumi.Input<Map<String, dynamic>>? sdr;
+  final pulumi.Input<Map<String, dynamic>?>? sdr;
   /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
-  final pulumi.Input<int>? vbvFullnessBits;
+  final pulumi.Input<int?>? vbvFullnessBits;
   /// Size of the Video Buffering Verifier (VBV) buffer in bits.
-  final pulumi.Input<int>? vbvSizeBits;
+  final pulumi.Input<int?>? vbvSizeBits;
   /// The width of the video in pixels.
-  final pulumi.Input<int>? widthPixels;
+  final pulumi.Input<int?>? widthPixels;
 
   /// Creates a new [JobTemplateConfigElementaryStreamVideoStreamH264].
   /// [bitrateBps] The video bitrate in bits per second.
@@ -90,21 +90,21 @@ class JobTemplateConfigElementaryStreamVideoStreamH264 {
 
   factory JobTemplateConfigElementaryStreamVideoStreamH264.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigElementaryStreamVideoStreamH264(
-      bitrateBps: pulumi.Input.fromValue(map['bitrateBps'] as int),
-      crfLevel: (() { final guardedValue = map['crfLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bitrateBps: pulumi.Input.fromValue((map['bitrateBps'] as num).toInt()),
+      crfLevel: (() { final guardedValue = map['crfLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       entropyCoder: (() { final guardedValue = map['entropyCoder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      frameRate: pulumi.Input.fromValue(map['frameRate'] as int),
+      frameRate: pulumi.Input.fromValue((map['frameRate'] as num).toInt()),
       gopDuration: (() { final guardedValue = map['gopDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      heightPixels: (() { final guardedValue = map['heightPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      heightPixels: (() { final guardedValue = map['heightPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       hlg: (() { final guardedValue = map['hlg']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       pixelFormat: (() { final guardedValue = map['pixelFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preset: (() { final guardedValue = map['preset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rateControlMode: (() { final guardedValue = map['rateControlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sdr: (() { final guardedValue = map['sdr']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
-      vbvFullnessBits: (() { final guardedValue = map['vbvFullnessBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      vbvSizeBits: (() { final guardedValue = map['vbvSizeBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      widthPixels: (() { final guardedValue = map['widthPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vbvFullnessBits: (() { final guardedValue = map['vbvFullnessBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vbvSizeBits: (() { final guardedValue = map['vbvSizeBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      widthPixels: (() { final guardedValue = map['widthPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

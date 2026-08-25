@@ -85,20 +85,20 @@ class GetDatabaseInstanceSettingPerformanceCaptureConfig {
 
   factory GetDatabaseInstanceSettingPerformanceCaptureConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingPerformanceCaptureConfig(
-      cpuUtilizationThresholdPercent: pulumi.Input.fromValue(map['cpuUtilizationThresholdPercent'] as int),
+      cpuUtilizationThresholdPercent: pulumi.Input.fromValue((map['cpuUtilizationThresholdPercent'] as num).toInt()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      historyListLengthThresholdCount: pulumi.Input.fromValue(map['historyListLengthThresholdCount'] as int),
-      memoryUsageThresholdPercent: pulumi.Input.fromValue(map['memoryUsageThresholdPercent'] as int),
-      probeThreshold: pulumi.Input.fromValue(map['probeThreshold'] as int),
-      probingIntervalSeconds: pulumi.Input.fromValue(map['probingIntervalSeconds'] as int),
-      runningThreadsThreshold: pulumi.Input.fromValue(map['runningThreadsThreshold'] as int),
-      secondsBehindSourceThreshold: pulumi.Input.fromValue(map['secondsBehindSourceThreshold'] as int),
-      semaphoreWaitThresholdCount: pulumi.Input.fromValue(map['semaphoreWaitThresholdCount'] as int),
-      transactionDurationThreshold: pulumi.Input.fromValue(map['transactionDurationThreshold'] as int),
+      historyListLengthThresholdCount: pulumi.Input.fromValue((map['historyListLengthThresholdCount'] as num).toInt()),
+      memoryUsageThresholdPercent: pulumi.Input.fromValue((map['memoryUsageThresholdPercent'] as num).toInt()),
+      probeThreshold: pulumi.Input.fromValue((map['probeThreshold'] as num).toInt()),
+      probingIntervalSeconds: pulumi.Input.fromValue((map['probingIntervalSeconds'] as num).toInt()),
+      runningThreadsThreshold: pulumi.Input.fromValue((map['runningThreadsThreshold'] as num).toInt()),
+      secondsBehindSourceThreshold: pulumi.Input.fromValue((map['secondsBehindSourceThreshold'] as num).toInt()),
+      semaphoreWaitThresholdCount: pulumi.Input.fromValue((map['semaphoreWaitThresholdCount'] as num).toInt()),
+      transactionDurationThreshold: pulumi.Input.fromValue((map['transactionDurationThreshold'] as num).toInt()),
       transactionKillExcludedUserHosts: pulumi.Input.fromValue((map['transactionKillExcludedUserHosts'] as List).cast<String>()),
-      transactionKillThresholdSeconds: pulumi.Input.fromValue(map['transactionKillThresholdSeconds'] as int),
+      transactionKillThresholdSeconds: pulumi.Input.fromValue((map['transactionKillThresholdSeconds'] as num).toInt()),
       transactionKillType: pulumi.Input.fromValue(map['transactionKillType'] as String),
-      transactionLockWaitThresholdCount: pulumi.Input.fromValue(map['transactionLockWaitThresholdCount'] as int),
+      transactionLockWaitThresholdCount: pulumi.Input.fromValue((map['transactionLockWaitThresholdCount'] as num).toInt()),
     );
   }
 }

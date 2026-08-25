@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobHttpTargetOidcToken {
   /// Audience to be used when generating OIDC token. If not specified,
   /// the URI specified in target will be used.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Service account email to be used for generating OAuth token.
   /// The service account must be within the same project as the job.
   final pulumi.Input<String> serviceAccountEmail;

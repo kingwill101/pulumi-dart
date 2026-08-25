@@ -6,13 +6,13 @@ class HealthCheckHttpHealthCheck {
   /// The value of the host header in the HTTP health check request.
   /// If left empty (default value), the public IP on behalf of which this health
   /// check is performed will be used.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The TCP port number for the HTTP health check request.
   /// The default value is 80.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// portName are defined, port takes precedence.
-  final pulumi.Input<String>? portName;
+  final pulumi.Input<String?>? portName;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
@@ -24,19 +24,19 @@ class HealthCheckHttpHealthCheck {
   /// If not specified, HTTP health check follows behavior specified in `port` and
   /// `portName` fields.
   /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
-  final pulumi.Input<String>? portSpecification;
+  final pulumi.Input<String?>? portSpecification;
   /// Specifies the type of proxy header to append before sending data to the
   /// backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
-  final pulumi.Input<String>? proxyHeader;
+  final pulumi.Input<String?>? proxyHeader;
   /// The request path of the HTTP health check request.
   /// The default value is /.
-  final pulumi.Input<String>? requestPath;
+  final pulumi.Input<String?>? requestPath;
   /// The bytes to match against the beginning of the response data. If left empty
   /// (the default value), any response will indicate health. The response data
   /// can only be ASCII.
-  final pulumi.Input<String>? response;
+  final pulumi.Input<String?>? response;
 
   /// Creates a new [HealthCheckHttpHealthCheck].
   /// [host] The value of the host header in the HTTP health check request.
@@ -71,7 +71,7 @@ class HealthCheckHttpHealthCheck {
   factory HealthCheckHttpHealthCheck.fromMap(Map<String, dynamic> map) {
     return HealthCheckHttpHealthCheck(
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       portName: (() { final guardedValue = map['portName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       portSpecification: (() { final guardedValue = map['portSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyHeader: (() { final guardedValue = map['proxyHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

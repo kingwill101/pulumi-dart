@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MirroringEndpointGroupAssociationLocationsDetail {
   /// The cloud location of the association, currently restricted to `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// ACTIVE
   /// OUT_OF_SYNC
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [MirroringEndpointGroupAssociationLocationsDetail].
   /// [location] The cloud location of the association, currently restricted to `global`.

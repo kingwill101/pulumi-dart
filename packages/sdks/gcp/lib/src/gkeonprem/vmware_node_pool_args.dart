@@ -20,7 +20,7 @@ class VMwareNodePoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The node configuration of the node pool.
   /// Structure is documented below.
   final pulumi.Input<VMwareNodePoolConfig> config;
@@ -30,21 +30,21 @@ class VMwareNodePoolArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name for the node pool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// The vmware node pool name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Node Pool autoscaling config for the node pool.
   /// Structure is documented below.
-  final pulumi.Input<VMwareNodePoolNodePoolAutoscaling>? nodePoolAutoscaling;
+  final pulumi.Input<VMwareNodePoolNodePoolAutoscaling?>? nodePoolAutoscaling;
   /// Anthos version for the node pool. Defaults to the user cluster version.
-  final pulumi.Input<String>? onPremVersion;
+  final pulumi.Input<String?>? onPremVersion;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The cluster this node pool belongs to.
   final pulumi.Input<String> vmwareCluster;
 

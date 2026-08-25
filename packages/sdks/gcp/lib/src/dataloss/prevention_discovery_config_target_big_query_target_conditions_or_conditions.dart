@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions {
   /// Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
-  final pulumi.Input<String>? minAge;
+  final pulumi.Input<String?>? minAge;
   /// Minimum number of rows that should be present before Cloud DLP profiles as a table.
-  final pulumi.Input<int>? minRowCount;
+  final pulumi.Input<int?>? minRowCount;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions].
   /// [minAge] Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
@@ -26,7 +26,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions {
   factory PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions(
       minAge: (() { final guardedValue = map['minAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minRowCount: (() { final guardedValue = map['minRowCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minRowCount: (() { final guardedValue = map['minRowCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

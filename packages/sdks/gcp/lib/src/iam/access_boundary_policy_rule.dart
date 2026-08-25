@@ -6,9 +6,9 @@ import 'access_boundary_policy_rule_access_boundary_rule.dart';
 class AccessBoundaryPolicyRule {
   /// An access boundary rule in an IAM policy.
   /// Structure is documented below.
-  final pulumi.Input<AccessBoundaryPolicyRuleAccessBoundaryRule>? accessBoundaryRule;
+  final pulumi.Input<AccessBoundaryPolicyRuleAccessBoundaryRule?>? accessBoundaryRule;
   /// The description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [AccessBoundaryPolicyRule].
   /// [accessBoundaryRule] An access boundary rule in an IAM policy.

@@ -394,6 +394,17 @@ Future<GetAddressResult> getAddress(
   return GetAddressResult.fromMap(result);
 }
 
+pulumi.Output<GetAddressResult> getAddressOutput(
+  GetAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getAddress:getAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressResult.fromMap);
+}
+
 /// List IP addresses in a project. For more information see
 /// the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
 /// [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
@@ -596,6 +607,17 @@ Future<GetAddressesResult> getAddresses(
   return GetAddressesResult.fromMap(result);
 }
 
+pulumi.Output<GetAddressesResult> getAddressesOutput(
+  GetAddressesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getAddresses:getAddresses',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressesResult.fromMap);
+}
+
 /// Get information about a BackendBucket.
 ///
 /// ## Example Usage
@@ -712,6 +734,17 @@ Future<GetBackendBucketResult> getBackendBucket(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendBucketResult.fromMap(result);
+}
+
+pulumi.Output<GetBackendBucketResult> getBackendBucketOutput(
+  GetBackendBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getBackendBucket:getBackendBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for backendbucket
@@ -840,6 +873,17 @@ Future<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendBucketIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyOutput(
+  GetBackendBucketIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketIamPolicyResult.fromMap);
 }
 
 /// Provide access to a Backend Service's attribute. For more information
@@ -1000,6 +1044,17 @@ Future<GetBackendServiceResult> getBackendService(
   return GetBackendServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetBackendServiceResult> getBackendServiceOutput(
+  GetBackendServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getBackendService:getBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for backendservice
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -1126,6 +1181,17 @@ Future<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyOutput(
+  GetBackendServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceIamPolicyResult.fromMap);
 }
 
 /// Get info about a Google Compute SSL Certificate from its name.
@@ -1278,6 +1344,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Use this data source to retrieve default service account for this project
 ///
 /// ## Example Usage
@@ -1398,6 +1475,17 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDefaultServiceAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
+  GetDefaultServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultServiceAccountResult.fromMap);
 }
 
 /// Get information about a Google Compute Persistent disks.
@@ -1577,6 +1665,17 @@ Future<GetDiskResult> getDisk(
   return GetDiskResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskResult> getDiskOutput(
+  GetDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getDisk:getDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for disk
 ///
 ///
@@ -1710,6 +1809,17 @@ Future<GetDiskIamPolicyResult> getDiskIamPolicy(
   return GetDiskIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskIamPolicyResult> getDiskIamPolicyOutput(
+  GetDiskIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getDiskIamPolicy:getDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for firewallpolicy
 ///
 ///
@@ -1829,6 +1939,17 @@ Future<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicy(
   return GetFirewallPolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyOutput(
+  GetFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getFirewallPolicyIamPolicy:getFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyIamPolicyResult.fromMap);
+}
+
 /// Get a forwarding rule within GCE from its name.
 ///
 /// ## Example Usage
@@ -1945,6 +2066,17 @@ Future<GetForwardingRuleResult> getForwardingRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetForwardingRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetForwardingRuleResult> getForwardingRuleOutput(
+  GetForwardingRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getForwardingRule:getForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetForwardingRuleResult.fromMap);
 }
 
 /// List all networks in a specified Google Cloud project.
@@ -2070,6 +2202,17 @@ Future<GetForwardingRulesResult> getForwardingRules(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetForwardingRulesResult.fromMap(result);
+}
+
+pulumi.Output<GetForwardingRulesResult> getForwardingRulesOutput(
+  GetForwardingRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getForwardingRules:getForwardingRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetForwardingRulesResult.fromMap);
 }
 
 /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
@@ -2297,6 +2440,17 @@ Future<GetGlobalAddressResult> getGlobalAddress(
   return GetGlobalAddressResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalAddressResult> getGlobalAddressOutput(
+  GetGlobalAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getGlobalAddress:getGlobalAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalAddressResult.fromMap);
+}
+
 /// Get a global forwarding rule within GCE from its name.
 ///
 /// ## Example Usage
@@ -2413,6 +2567,17 @@ Future<GetGlobalForwardingRuleResult> getGlobalForwardingRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalForwardingRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalForwardingRuleResult> getGlobalForwardingRuleOutput(
+  GetGlobalForwardingRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalForwardingRuleResult.fromMap);
 }
 
 /// Get a HA VPN Gateway within GCE from its name.
@@ -2533,6 +2698,17 @@ Future<GetHcVpnGatewayResult> getHcVpnGateway(
   return GetHcVpnGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetHcVpnGatewayResult> getHcVpnGatewayOutput(
+  GetHcVpnGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getHcVpnGateway:getHcVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHcVpnGatewayResult.fromMap);
+}
+
 /// Get information about a HealthCheck.
 ///
 /// ## Example Usage
@@ -2649,6 +2825,17 @@ Future<GetHealthCheckResult> getHealthCheck(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHealthCheckResult.fromMap(result);
+}
+
+pulumi.Output<GetHealthCheckResult> getHealthCheckOutput(
+  GetHealthCheckArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getHealthCheck:getHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHealthCheckResult.fromMap);
 }
 
 /// Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
@@ -2835,6 +3022,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for image
 ///
 ///
@@ -2959,6 +3157,17 @@ Future<GetImageIamPolicyResult> getImageIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetImageIamPolicyResult> getImageIamPolicyOutput(
+  GetImageIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getImageIamPolicy:getImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageIamPolicyResult.fromMap);
 }
 
 /// Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
@@ -3189,6 +3398,17 @@ Future<GetImagesResult> getImages(
   return GetImagesResult.fromMap(result);
 }
 
+pulumi.Output<GetImagesResult> getImagesOutput(
+  GetImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getImages:getImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagesResult.fromMap);
+}
+
 /// Get information about a VM instance resource within GCE. For more information see
 /// [the official documentation](https://cloud.google.com/compute/docs/instances)
 /// and
@@ -3318,6 +3538,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstance:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Get a Compute Instance Group within GCE.
 /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
@@ -3441,6 +3672,17 @@ Future<GetInstanceGroupResult> getInstanceGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceGroupResult> getInstanceGroupOutput(
+  GetInstanceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceGroup:getInstanceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupResult.fromMap);
 }
 
 /// Get a Compute Instance Group Manager within GCE.
@@ -3597,6 +3839,17 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
   return GetInstanceGroupManagerResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceGroupManagerResult> getInstanceGroupManagerOutput(
+  GetInstanceGroupManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceGroupManager:getInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupManagerResult.fromMap);
+}
+
 /// Get a list of Instance Groups within GCE. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups).
 ///
@@ -3714,6 +3967,17 @@ Future<GetInstanceGroupsResult> getInstanceGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
+  GetInstanceGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceGroups:getInstanceGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupsResult.fromMap);
 }
 
 /// Get information about a VM instance resource within GCE. For more information see
@@ -3974,6 +4238,17 @@ Future<GetInstanceGuestAttributesResult> getInstanceGuestAttributes(
   return GetInstanceGuestAttributesResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceGuestAttributesResult> getInstanceGuestAttributesOutput(
+  GetInstanceGuestAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGuestAttributesResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for instance
 ///
 ///
@@ -4105,6 +4380,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
 }
 
 /// Get the serial port output from a Compute Instance. For more information see
@@ -4633,6 +4919,17 @@ Future<GetInstanceSerialPortResult> getInstanceSerialPort(
   return GetInstanceSerialPortResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceSerialPortResult> getInstanceSerialPortOutput(
+  GetInstanceSerialPortArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceSerialPort:getInstanceSerialPort',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceSerialPortResult.fromMap);
+}
+
 /// &gt; **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
 ///
 /// Get information about a VM instance template resource within GCE. For more information see
@@ -4652,6 +4949,17 @@ Future<GetInstanceTemplateResult> getInstanceTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceTemplateResult> getInstanceTemplateOutput(
+  GetInstanceTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceTemplate:getInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for instancetemplate
@@ -4778,6 +5086,17 @@ Future<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceTemplateIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyOutput(
+  GetInstanceTemplateIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for instantsnapshot
@@ -4911,6 +5230,17 @@ Future<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstantSnapshotIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyOutput(
+  GetInstantSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInstantSnapshotIamPolicy:getInstantSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstantSnapshotIamPolicyResult.fromMap);
 }
 
 /// Get the details of a single interconnect location. For more information see
@@ -5078,6 +5408,17 @@ Future<GetInterconnectLocationResult> getInterconnectLocation(
   return GetInterconnectLocationResult.fromMap(result);
 }
 
+pulumi.Output<GetInterconnectLocationResult> getInterconnectLocationOutput(
+  GetInterconnectLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInterconnectLocation:getInterconnectLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectLocationResult.fromMap);
+}
+
 /// Get a list of interconnect locations. For more information see
 /// the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
 ///
@@ -5199,6 +5540,17 @@ Future<GetInterconnectLocationsResult> getInterconnectLocations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInterconnectLocationsResult.fromMap(result);
+}
+
+pulumi.Output<GetInterconnectLocationsResult> getInterconnectLocationsOutput(
+  GetInterconnectLocationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getInterconnectLocations:getInterconnectLocations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectLocationsResult.fromMap);
 }
 
 /// Use this data source to access IP ranges in your firewall rules.
@@ -5413,6 +5765,17 @@ Future<GetLBIPRangesResult> getLBIPRanges(
   return GetLBIPRangesResult.fromMap(result);
 }
 
+pulumi.Output<GetLBIPRangesResult> getLBIPRangesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getLBIPRanges:getLBIPRanges',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetLBIPRangesResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for machineimage
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -5539,6 +5902,17 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineImageIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
+  GetMachineImageIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineImageIamPolicyResult.fromMap);
 }
 
 /// Provides access to available Google Compute machine types in a zone for a given project.
@@ -5942,6 +6316,17 @@ Future<GetMachineTypesResult> getMachineTypes(
   return GetMachineTypesResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
+  GetMachineTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getMachineTypes:getMachineTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineTypesResult.fromMap);
+}
+
 /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
 ///
 /// ## Example Usage
@@ -6305,6 +6690,17 @@ Future<GetNetblockIPRangesResult> getNetblockIPRanges(
   return GetNetblockIPRangesResult.fromMap(result);
 }
 
+pulumi.Output<GetNetblockIPRangesResult> getNetblockIPRangesOutput(
+  GetNetblockIPRangesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetblockIPRanges:getNetblockIPRanges',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetblockIPRangesResult.fromMap);
+}
+
 /// Get a network within GCE from its name.
 ///
 /// ## Example Usage
@@ -6421,6 +6817,17 @@ Future<GetNetworkResult> getNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetwork:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
 }
 
 /// Get a specific network attachment within a region. For more information see
@@ -6555,6 +6962,17 @@ Future<GetNetworkAttachmentResult> getNetworkAttachment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkAttachmentResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkAttachmentResult> getNetworkAttachmentOutput(
+  GetNetworkAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetworkAttachment:getNetworkAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkAttachmentResult.fromMap);
 }
 
 /// Use this data source to access a Network Endpoint Group's attributes.
@@ -6711,6 +7129,17 @@ Future<GetNetworkEndpointGroupResult> getNetworkEndpointGroup(
   return GetNetworkEndpointGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkEndpointGroupResult> getNetworkEndpointGroupOutput(
+  GetNetworkEndpointGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEndpointGroupResult.fromMap);
+}
+
 /// Use this data source to fetch a list of Network Endpoint Groups available in a
 /// project and zone.
 ///
@@ -6837,6 +7266,17 @@ Future<GetNetworkEndpointGroupsResult> getNetworkEndpointGroups(
   return GetNetworkEndpointGroupsResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsOutput(
+  GetNetworkEndpointGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetworkEndpointGroups:getNetworkEndpointGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEndpointGroupsResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for networkfirewallpolicy
 ///
 ///
@@ -6961,6 +7401,17 @@ Future<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkFirewallPolicyIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicyOutput(
+  GetNetworkFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetworkFirewallPolicyIamPolicy:getNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallPolicyIamPolicyResult.fromMap);
 }
 
 /// Get information of a specified compute network peering. For more information see
@@ -7244,6 +7695,17 @@ Future<GetNetworkPeeringResult> getNetworkPeering(
   return GetNetworkPeeringResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
+  GetNetworkPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetworkPeering:getNetworkPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkPeeringResult.fromMap);
+}
+
 /// List all networks in a specified Google Cloud project.
 ///
 /// ## Example Usage
@@ -7360,6 +7822,17 @@ Future<GetNetworksResult> getNetworks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworksResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworksResult> getNetworksOutput(
+  GetNetworksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNetworks:getNetworks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworksResult.fromMap);
 }
 
 /// Provides available node types for Compute Engine sole-tenant nodes in a zone
@@ -7526,6 +7999,17 @@ Future<GetNodeTypesResult> getNodeTypes(
   return GetNodeTypesResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeTypesResult> getNodeTypesOutput(
+  GetNodeTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getNodeTypes:getNodeTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTypesResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for regionbackendbucket
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -7661,6 +8145,17 @@ Future<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicy(
   return GetRegionBackendBucketIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPolicyOutput(
+  GetRegionBackendBucketIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionBackendBucketIamPolicy:getRegionBackendBucketIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendBucketIamPolicyResult.fromMap);
+}
+
 /// Get information about a Regional Backend Service. For more information see
 /// [the official documentation](https://docs.cloud.google.com/load-balancing/docs/internal) and
 /// [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
@@ -7786,6 +8281,17 @@ Future<GetRegionBackendServiceResult> getRegionBackendService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionBackendServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionBackendServiceResult> getRegionBackendServiceOutput(
+  GetRegionBackendServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionBackendService:getRegionBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for regionbackendservice
@@ -7923,6 +8429,17 @@ Future<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicy(
   return GetRegionBackendServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicyOutput(
+  GetRegionBackendServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceIamPolicyResult.fromMap);
+}
+
 /// Get information about a Google Compute Regional Persistent disks.
 ///
 /// [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
@@ -7988,6 +8505,17 @@ Future<GetRegionDiskResult> getRegionDisk(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionDiskResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionDiskResult> getRegionDiskOutput(
+  GetRegionDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionDisk:getRegionDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for regiondisk
@@ -8123,6 +8651,17 @@ Future<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicy(
   return GetRegionDiskIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyOutput(
+  GetRegionDiskIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskIamPolicyResult.fromMap);
+}
+
 /// Get a Compute Region Instance Group within GCE.
 /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
 ///
@@ -8241,6 +8780,17 @@ Future<GetRegionInstanceGroupResult> getRegionInstanceGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstanceGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstanceGroupResult> getRegionInstanceGroupOutput(
+  GetRegionInstanceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceGroupResult.fromMap);
 }
 
 /// Get a Compute Region Instance Group Manager within GCE.
@@ -8368,6 +8918,17 @@ Future<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstanceGroupManagerResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManagerOutput(
+  GetRegionInstanceGroupManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceGroupManagerResult.fromMap);
 }
 
 /// Get information about a VM instance template resource within GCE. For more information see
@@ -8540,6 +9101,17 @@ Future<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(
   return GetRegionInstanceTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplateOutput(
+  GetRegionInstanceTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceTemplateResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for regioninstantsnapshot
 ///
 ///
@@ -8671,6 +9243,17 @@ Future<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstantSnapshotIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicyOutput(
+  GetRegionInstantSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionInstantSnapshotIamPolicy:getRegionInstantSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstantSnapshotIamPolicyResult.fromMap);
 }
 
 /// Use this data source to access a Region Network Endpoint Group's attributes.
@@ -8827,6 +9410,17 @@ Future<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup(
   return GetRegionNetworkEndpointGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupOutput(
+  GetRegionNetworkEndpointGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkEndpointGroupResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for regionnetworkfirewallpolicy
 ///
 ///
@@ -8960,6 +9554,17 @@ Future<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPo
   return GetRegionNetworkFirewallPolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicyOutput(
+  GetRegionNetworkFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionNetworkFirewallPolicyIamPolicy:getRegionNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkFirewallPolicyIamPolicyResult.fromMap);
+}
+
 /// Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
 /// For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
 ///
@@ -9077,6 +9682,17 @@ Future<GetRegionSSLPolicyResult> getRegionSSLPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionSSLPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionSSLPolicyResult> getRegionSSLPolicyOutput(
+  GetRegionSSLPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSSLPolicyResult.fromMap);
 }
 
 /// Use this data source to get information about a Compute Region Security Policy. For more details, see the [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies).
@@ -9202,6 +9818,17 @@ Future<GetRegionSecurityPolicyResult> getRegionSecurityPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionSecurityPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicyOutput(
+  GetRegionSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSecurityPolicyResult.fromMap);
 }
 
 /// Get info about a Region Google Compute SSL Certificate from its name.
@@ -9354,6 +9981,17 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
   return GetRegionSslCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionSslCertificateResult> getRegionSslCertificateOutput(
+  GetRegionSslCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionSslCertificate:getRegionSslCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSslCertificateResult.fromMap);
+}
+
 /// Get information about a Compute Engine RegionTargetHttpProxy.
 ///
 ///
@@ -9476,6 +10114,17 @@ Future<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxy(
   return GetRegionTargetHttpProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyOutput(
+  GetRegionTargetHttpProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionTargetHttpProxy:getRegionTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpProxyResult.fromMap);
+}
+
 /// Get information about a Compute Engine RegionTargetHttpsProxy.
 ///
 ///
@@ -9596,6 +10245,17 @@ Future<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionTargetHttpsProxyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
+  GetRegionTargetHttpsProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegionTargetHttpsProxy:getRegionTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpsProxyResult.fromMap);
 }
 
 /// Provides access to available Google Compute regions for a given project.
@@ -9774,6 +10434,17 @@ Future<GetRegionsResult> getRegions(
   return GetRegionsResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionsResult> getRegionsOutput(
+  GetRegionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRegions:getRegions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionsResult.fromMap);
+}
+
 /// Provides access to available Google Compute Reservation Resources for a given project.
 /// See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
 ///
@@ -9896,6 +10567,17 @@ Future<GetReservationResult> getReservation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationResult.fromMap(result);
+}
+
+pulumi.Output<GetReservationResult> getReservationOutput(
+  GetReservationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getReservation:getReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationResult.fromMap);
 }
 
 /// Get information about a Google Compute Engine Reservation Block. Reservation blocks are automatically created by Google Cloud within reservations and represent a physical grouping of resources.
@@ -10054,6 +10736,17 @@ Future<GetReservationBlockResult> getReservationBlock(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationBlockResult.fromMap(result);
+}
+
+pulumi.Output<GetReservationBlockResult> getReservationBlockOutput(
+  GetReservationBlockArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getReservationBlock:getReservationBlock',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationBlockResult.fromMap);
 }
 
 /// Get information about a Google Compute Engine Reservation Sub-Block. Reservation sub-blocks are automatically created by Google Cloud within reservation blocks and represent a finer-grained physical grouping of resources.
@@ -10221,6 +10914,17 @@ Future<GetReservationSubBlockResult> getReservationSubBlock(
   return GetReservationSubBlockResult.fromMap(result);
 }
 
+pulumi.Output<GetReservationSubBlockResult> getReservationSubBlockOutput(
+  GetReservationSubBlockArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getReservationSubBlock:getReservationSubBlock',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationSubBlockResult.fromMap);
+}
+
 /// Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
 ///
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -10347,6 +11051,17 @@ Future<GetResourcePolicyResult> getResourcePolicy(
   return GetResourcePolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
+  GetResourcePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getResourcePolicy:getResourcePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyResult.fromMap);
+}
+
 /// Get a router within GCE from its name and VPC.
 ///
 /// ## Example Usage
@@ -10470,6 +11185,17 @@ Future<GetRouterResult> getRouter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouterResult.fromMap(result);
+}
+
+pulumi.Output<GetRouterResult> getRouterOutput(
+  GetRouterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRouter:getRouter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouterResult.fromMap);
 }
 
 /// To get more information about RouterNat, see:
@@ -10601,6 +11327,17 @@ Future<GetRouterNatResult> getRouterNat(
   return GetRouterNatResult.fromMap(result);
 }
 
+pulumi.Output<GetRouterNatResult> getRouterNatOutput(
+  GetRouterNatArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRouterNat:getRouterNat',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouterNatResult.fromMap);
+}
+
 /// Get a Cloud Router's status within GCE from its name and region. This data source exposes the
 /// routes learned by a Cloud Router via BGP peers.
 ///
@@ -10722,6 +11459,17 @@ Future<GetRouterStatusResult> getRouterStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouterStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetRouterStatusResult> getRouterStatusOutput(
+  GetRouterStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRouterStatus:getRouterStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouterStatusResult.fromMap);
 }
 
 /// Get a list of routers. For more information see
@@ -10850,6 +11598,17 @@ Future<GetRoutersResult> getRouters(
   return GetRoutersResult.fromMap(result);
 }
 
+pulumi.Output<GetRoutersResult> getRoutersOutput(
+  GetRoutersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getRouters:getRouters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutersResult.fromMap);
+}
+
 /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
 /// For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
 ///
@@ -10967,6 +11726,17 @@ Future<GetSSLPolicyResult> getSSLPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSSLPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSSLPolicyResult> getSSLPolicyOutput(
+  GetSSLPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getSSLPolicy:getSSLPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSSLPolicyResult.fromMap);
 }
 
 /// To get more information about Google Compute Security Policy, see:
@@ -11125,6 +11895,17 @@ Future<GetSecurityPolicyResult> getSecurityPolicy(
   return GetSecurityPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityPolicyResult> getSecurityPolicyOutput(
+  GetSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getSecurityPolicy:getSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityPolicyResult.fromMap);
+}
+
 /// Get a specific [service attachment](https://cloud.google.com/vpc/docs/configure-private-service-connect-services) within a region. For more information see the
 /// [official documentation](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
 /// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/get).
@@ -11257,6 +12038,17 @@ Future<GetServiceAttachmentResult> getServiceAttachment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceAttachmentResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
+  GetServiceAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getServiceAttachment:getServiceAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentResult.fromMap);
 }
 
 /// To get more information about Snapshot, see:
@@ -11430,6 +12222,17 @@ Future<GetSnapshotResult> getSnapshot(
   return GetSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getSnapshot:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for snapshot
 ///
 ///
@@ -11554,6 +12357,17 @@ Future<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicyOutput(
+  GetSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotIamPolicyResult.fromMap);
 }
 
 /// Provides access to available Google Compute Storage Pool resources for a given project and zone.
@@ -11710,6 +12524,17 @@ Future<GetStoragePoolResult> getStoragePool(
   return GetStoragePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetStoragePoolResult> getStoragePoolOutput(
+  GetStoragePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getStoragePool:getStoragePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStoragePoolResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for storagepool
 ///
 ///
@@ -11843,6 +12668,17 @@ Future<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicy(
   return GetStoragePoolIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicyOutput(
+  GetStoragePoolIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getStoragePoolIamPolicy:getStoragePoolIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStoragePoolIamPolicyResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_storage_pool_types_get_storage_pool_types_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetStoragePoolTypesResult> getStoragePoolTypes(
@@ -11856,6 +12692,17 @@ Future<GetStoragePoolTypesResult> getStoragePoolTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStoragePoolTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetStoragePoolTypesResult> getStoragePoolTypesOutput(
+  GetStoragePoolTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getStoragePoolTypes:getStoragePoolTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStoragePoolTypesResult.fromMap);
 }
 
 /// Get a subnetwork within GCE from its name and region.
@@ -11981,6 +12828,17 @@ Future<GetSubnetworkResult> getSubnetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetSubnetworkResult> getSubnetworkOutput(
+  GetSubnetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getSubnetwork:getSubnetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for subnetwork
@@ -12114,6 +12972,17 @@ Future<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetworkIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyOutput(
+  GetSubnetworkIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkIamPolicyResult.fromMap);
 }
 
 /// Get subnetworks within GCE.
@@ -12250,6 +13119,17 @@ Future<GetSubnetworksResult> getSubnetworks(
   return GetSubnetworksResult.fromMap(result);
 }
 
+pulumi.Output<GetSubnetworksResult> getSubnetworksOutput(
+  GetSubnetworksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getSubnetworks:getSubnetworks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworksResult.fromMap);
+}
+
 /// Get information about a Compute Engine TargetHttpProxy.
 ///
 ///
@@ -12370,6 +13250,17 @@ Future<GetTargetHttpProxyResult> getTargetHttpProxy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetHttpProxyResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetHttpProxyResult> getTargetHttpProxyOutput(
+  GetTargetHttpProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getTargetHttpProxy:getTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpProxyResult.fromMap);
 }
 
 /// Get information about a Compute Engine TargetHttpsProxy.
@@ -12494,6 +13385,17 @@ Future<GetTargetHttpsProxyResult> getTargetHttpsProxy(
   return GetTargetHttpsProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetHttpsProxyResult> getTargetHttpsProxyOutput(
+  GetTargetHttpsProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getTargetHttpsProxy:getTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpsProxyResult.fromMap);
+}
+
 /// Get a VPN gateway within GCE from its name.
 ///
 /// ## Example Usage
@@ -12610,6 +13512,17 @@ Future<GetVPNGatewayResult> getVPNGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVPNGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
+  GetVPNGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getVPNGateway:getVPNGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVPNGatewayResult.fromMap);
 }
 
 /// Provides access to available Google Compute zones in a region for a given project.
@@ -12794,6 +13707,17 @@ Future<GetZonesResult> getZones(
   return GetZonesResult.fromMap(result);
 }
 
+pulumi.Output<GetZonesResult> getZonesOutput(
+  GetZonesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getZones:getZones',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZonesResult.fromMap);
+}
+
 /// Get a Cloud Router's status within GCE from its name and region. This data source exposes the
 /// routes learned by a Cloud Router via BGP peers.
 ///
@@ -12915,4 +13839,15 @@ Future<RouterStatusResult> routerStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return RouterStatusResult.fromMap(result);
+}
+
+pulumi.Output<RouterStatusResult> routerStatusOutput(
+  RouterStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/routerStatus:RouterStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(RouterStatusResult.fromMap);
 }

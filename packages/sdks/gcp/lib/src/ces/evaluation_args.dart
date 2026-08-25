@@ -17,9 +17,9 @@ class EvaluationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-defined description of the evaluation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined display name of the evaluation.
   final pulumi.Input<String> displayName;
   /// The ID to use for the evaluation, which will become the final component of
@@ -28,17 +28,17 @@ class EvaluationArgs {
   final pulumi.Input<String> evaluationId;
   /// Golden input.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGolden>? golden;
+  final pulumi.Input<EvaluationGolden?>? golden;
   /// (Required)
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Scenario input.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationScenario>? scenario;
+  final pulumi.Input<EvaluationScenario?>? scenario;
   /// User defined tags to categorize the evaluation.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [EvaluationArgs].
   /// [app] (Required)

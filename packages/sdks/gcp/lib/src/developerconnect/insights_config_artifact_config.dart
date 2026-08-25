@@ -7,15 +7,15 @@ import 'insights_config_artifact_config_google_artifact_registry.dart';
 class InsightsConfigArtifactConfig {
   /// Google Artifact Analysis configurations.
   /// Structure is documented below.
-  final pulumi.Input<InsightsConfigArtifactConfigGoogleArtifactAnalysis>? googleArtifactAnalysis;
+  final pulumi.Input<InsightsConfigArtifactConfigGoogleArtifactAnalysis?>? googleArtifactAnalysis;
   /// Google Artifact Registry configurations.
   /// Structure is documented below.
-  final pulumi.Input<InsightsConfigArtifactConfigGoogleArtifactRegistry>? googleArtifactRegistry;
+  final pulumi.Input<InsightsConfigArtifactConfigGoogleArtifactRegistry?>? googleArtifactRegistry;
   /// The URI of the artifact that is deployed.
   /// e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
   /// The URI does not include the tag / digest because it captures a lineage of
   /// artifacts.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [InsightsConfigArtifactConfig].
   /// [googleArtifactAnalysis] Google Artifact Analysis configurations.

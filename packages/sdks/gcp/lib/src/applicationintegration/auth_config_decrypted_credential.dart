@@ -12,27 +12,27 @@ import 'auth_config_decrypted_credential_username_and_password.dart';
 class AuthConfigDecryptedCredential {
   /// Auth token credential.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialAuthToken>? authToken;
+  final pulumi.Input<AuthConfigDecryptedCredentialAuthToken?>? authToken;
   /// Credential type associated with auth configs.
   final pulumi.Input<String> credentialType;
   /// JWT credential.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialJwt>? jwt;
+  final pulumi.Input<AuthConfigDecryptedCredentialJwt?>? jwt;
   /// OAuth2 authorization code credential.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2AuthorizationCode>? oauth2AuthorizationCode;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2AuthorizationCode?>? oauth2AuthorizationCode;
   /// OAuth2 client credentials.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentials>? oauth2ClientCredentials;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentials?>? oauth2ClientCredentials;
   /// Google OIDC ID Token.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOidcToken>? oidcToken;
+  final pulumi.Input<AuthConfigDecryptedCredentialOidcToken?>? oidcToken;
   /// Service account credential.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialServiceAccountCredentials>? serviceAccountCredentials;
+  final pulumi.Input<AuthConfigDecryptedCredentialServiceAccountCredentials?>? serviceAccountCredentials;
   /// Username and password credential.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialUsernameAndPassword>? usernameAndPassword;
+  final pulumi.Input<AuthConfigDecryptedCredentialUsernameAndPassword?>? usernameAndPassword;
 
   /// Creates a new [AuthConfigDecryptedCredential].
   /// [authToken] Auth token credential.

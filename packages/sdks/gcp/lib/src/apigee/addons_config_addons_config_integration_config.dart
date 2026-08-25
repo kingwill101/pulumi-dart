@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AddonsConfigAddonsConfigIntegrationConfig {
   /// Flag that specifies whether the Integration add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AddonsConfigAddonsConfigIntegrationConfig].
   /// [enabled] Flag that specifies whether the Integration add-on is enabled.

@@ -5,9 +5,9 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_predeploy_task
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
   /// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
-  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask>>? tasks;
+  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTask>?>? tasks;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy].
   /// [actions] Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.

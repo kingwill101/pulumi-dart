@@ -153,6 +153,17 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
   return GetConnectionIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionIamPolicyResult> getConnectionIamPolicyOutput(
+  GetConnectionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for datapolicy
 ///
 ///
@@ -286,6 +297,17 @@ Future<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPol
   return GetDatapolicyv2DataPolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPolicyOutput(
+  GetDatapolicyv2DataPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatapolicyv2DataPolicyIamPolicyResult.fromMap);
+}
+
 /// Get information about a BigQuery dataset. For more information see
 /// the [official documentation](https://cloud.google.com/bigquery/docs)
 /// and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
@@ -413,6 +435,17 @@ Future<GetDatasetResult> getDataset(
   return GetDatasetResult.fromMap(result);
 }
 
+pulumi.Output<GetDatasetResult> getDatasetOutput(
+  GetDatasetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getDataset:getDataset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a BigQuery dataset.
 ///
 /// ## example
@@ -529,6 +562,17 @@ Future<GetDatasetIamPolicyResult> getDatasetIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatasetIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
+  GetDatasetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetIamPolicyResult.fromMap);
 }
 
 /// Get a list of datasets in a GCP project. For more information see
@@ -649,6 +693,17 @@ Future<GetDatasetsResult> getDatasets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatasetsResult.fromMap(result);
+}
+
+pulumi.Output<GetDatasetsResult> getDatasetsOutput(
+  GetDatasetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getDatasets:getDatasets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetsResult.fromMap);
 }
 
 /// Get the email address of a project's unique BigQuery service account.
@@ -814,6 +869,17 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
   return GetDefaultServiceAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
+  GetDefaultServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultServiceAccountResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for routine
 ///
 ///
@@ -945,6 +1011,17 @@ Future<GetRoutineIamPolicyResult> getRoutineIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoutineIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRoutineIamPolicyResult> getRoutineIamPolicyOutput(
+  GetRoutineIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getRoutineIamPolicy:getRoutineIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutineIamPolicyResult.fromMap);
 }
 
 /// Get a specific table in a BigQuery dataset. For more information see
@@ -1081,6 +1158,17 @@ Future<GetTableResult> getTable(
   return GetTableResult.fromMap(result);
 }
 
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getTable:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for table
 ///
 ///
@@ -1214,6 +1302,17 @@ Future<GetTableIamPolicyResult> getTableIamPolicy(
   return GetTableIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetTableIamPolicyResult> getTableIamPolicyOutput(
+  GetTableIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getTableIamPolicy:getTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableIamPolicyResult.fromMap);
+}
+
 /// Get a list of tables in a BigQuery dataset. For more information see
 /// the [official documentation](https://cloud.google.com/bigquery/docs)
 /// and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
@@ -1339,4 +1438,15 @@ Future<GetTablesResult> getTables(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTablesResult.fromMap(result);
+}
+
+pulumi.Output<GetTablesResult> getTablesOutput(
+  GetTablesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquery/getTables:getTables',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTablesResult.fromMap);
 }

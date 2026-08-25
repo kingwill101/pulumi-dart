@@ -363,7 +363,7 @@ class FirewallRule extends pulumi.CustomResource {
           'gcp:appengine/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -378,11 +378,12 @@ class FirewallRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,6 +397,23 @@ class FirewallRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    priority = registerOutput<int?>('priority');
+    project = registerOutput<String>('project');
+    sourceRange = registerOutput<String>('sourceRange');
+  }
+
+  /// Creates a typed reference to an existing [FirewallRule] resource.
+  FirewallRule.reference(String urn)
+    : super(
+        'gcp:appengine/firewallRule:FirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

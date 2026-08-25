@@ -535,7 +535,7 @@ class Rule extends pulumi.CustomResource {
           'gcp:artifactregistry/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<RuleCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -554,11 +554,12 @@ class Rule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -572,6 +573,27 @@ class Rule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String?>('action');
+    condition = registerOutput<RuleCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    operation = registerOutput<String?>('operation');
+    packageId = registerOutput<String?>('packageId');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    ruleId = registerOutput<String>('ruleId');
+  }
+
+  /// Creates a typed reference to an existing [Rule] resource.
+  Rule.reference(String urn)
+    : super(
+        'gcp:artifactregistry/rule:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<RuleCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

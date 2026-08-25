@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServiceConfig resources.
 class ServiceConfigState {
   /// The location in which the Service config is to be initialized.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The resource type to which the default service config will be applied.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [ServiceConfigState].
   /// [location] The location in which the Service config is to be initialized.

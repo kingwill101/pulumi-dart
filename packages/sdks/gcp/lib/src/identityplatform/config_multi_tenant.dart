@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigMultiTenant {
   /// Whether this project can have tenants or not.
-  final pulumi.Input<bool>? allowTenants;
+  final pulumi.Input<bool?>? allowTenants;
   /// The default cloud parent org or folder that the tenant project should be created under.
   /// The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
   /// If the value is not set, the tenant will be created under the same organization or folder as the agent project.
-  final pulumi.Input<String>? defaultTenantLocation;
+  final pulumi.Input<String?>? defaultTenantLocation;
 
   /// Creates a new [ConfigMultiTenant].
   /// [allowTenants] Whether this project can have tenants or not.

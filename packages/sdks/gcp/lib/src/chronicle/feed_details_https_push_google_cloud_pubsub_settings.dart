@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsHttpsPushGoogleCloudPubsubSettings {
   /// Delimiter to split on for the feed.
-  final pulumi.Input<String>? splitDelimiter;
+  final pulumi.Input<String?>? splitDelimiter;
 
   /// Creates a new [FeedDetailsHttpsPushGoogleCloudPubsubSettings].
   /// [splitDelimiter] Delimiter to split on for the feed.

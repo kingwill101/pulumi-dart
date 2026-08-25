@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_generator_args.dart';
 import 'cx_generator_llm_model_settings.dart';
 import 'cx_generator_model_parameter.dart';
+import 'cx_generator_placeholder.dart';
 import 'cx_generator_prompt_text.dart';
 import 'cx_generator_state.dart';
 
@@ -336,7 +337,7 @@ class CxGenerator extends pulumi.CustomResource {
   late final pulumi.Output<String?> parent;
   /// List of custom placeholders in the prompt text.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> placeholders;
+  late final pulumi.Output<List<CxGeneratorPlaceholder>?> placeholders;
   /// Prompt for the LLM model.
   /// Structure is documented below.
   late final pulumi.Output<CxGeneratorPromptText> promptText;
@@ -353,7 +354,7 @@ class CxGenerator extends pulumi.CustomResource {
           'gcp:diagflow/cxGenerator:CxGenerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
@@ -362,7 +363,7 @@ class CxGenerator extends pulumi.CustomResource {
     modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorModelParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
-    placeholders = registerOutput<List<Map<String, dynamic>>?>('placeholders');
+    placeholders = registerOutput<List<CxGeneratorPlaceholder>?>('placeholders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxGeneratorPlaceholder>(guardedValue, (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>())); });
     promptText = registerOutput<CxGeneratorPromptText>('promptText', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorPromptText.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -371,11 +372,12 @@ class CxGenerator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxGeneratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxGenerator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,7 +398,27 @@ class CxGenerator extends pulumi.CustomResource {
     modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorModelParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
-    placeholders = registerOutput<List<Map<String, dynamic>>?>('placeholders');
+    placeholders = registerOutput<List<CxGeneratorPlaceholder>?>('placeholders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxGeneratorPlaceholder>(guardedValue, (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>())); });
+    promptText = registerOutput<CxGeneratorPromptText>('promptText', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorPromptText.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CxGenerator] resource.
+  CxGenerator.reference(String urn)
+    : super(
+        'gcp:diagflow/cxGenerator:CxGenerator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    languageCode = registerOutput<String?>('languageCode');
+    llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modelParameter = registerOutput<CxGeneratorModelParameter?>('modelParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorModelParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    placeholders = registerOutput<List<CxGeneratorPlaceholder>?>('placeholders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxGeneratorPlaceholder>(guardedValue, (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>())); });
     promptText = registerOutput<CxGeneratorPromptText>('promptText', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorPromptText.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,6 +5,7 @@ import 'job_extract.dart';
 import 'job_load.dart';
 import 'job_query.dart';
 import 'job_state.dart';
+import 'job_status.dart';
 
 /// Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
 /// Once a BigQuery job is created, it cannot be changed or deleted.
@@ -3123,7 +3124,7 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String?> reservation;
   /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<JobStatus>> statuses;
   /// Email address of the user who ran the job.
   late final pulumi.Output<String> userEmail;
 
@@ -3139,22 +3140,23 @@ class Job extends pulumi.CustomResource {
           'gcp:bigquery/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     copy = registerOutput<JobCopy?>('copy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     extract = registerOutput<JobExtract?>('extract', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExtract.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobId = registerOutput<String>('jobId');
     jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
     jobType = registerOutput<String>('jobType');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     load = registerOutput<JobLoad?>('load', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobLoad.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     query = registerOutput<JobQuery?>('query', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reservation = registerOutput<String?>('reservation');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<JobStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatus>(guardedValue, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>())); });
     userEmail = registerOutput<String>('userEmail');
   }
 
@@ -3163,11 +3165,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3182,19 +3185,46 @@ class Job extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     copy = registerOutput<JobCopy?>('copy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     extract = registerOutput<JobExtract?>('extract', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExtract.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobId = registerOutput<String>('jobId');
     jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
     jobType = registerOutput<String>('jobType');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     load = registerOutput<JobLoad?>('load', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobLoad.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     query = registerOutput<JobQuery?>('query', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reservation = registerOutput<String?>('reservation');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<JobStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatus>(guardedValue, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    userEmail = registerOutput<String>('userEmail');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'gcp:bigquery/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    copy = registerOutput<JobCopy?>('copy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    extract = registerOutput<JobExtract?>('extract', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExtract.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobId = registerOutput<String>('jobId');
+    jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
+    jobType = registerOutput<String>('jobType');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    load = registerOutput<JobLoad?>('load', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobLoad.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    query = registerOutput<JobQuery?>('query', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reservation = registerOutput<String?>('reservation');
+    statuses = registerOutput<List<JobStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatus>(guardedValue, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>())); });
     userEmail = registerOutput<String>('userEmail');
   }
 }

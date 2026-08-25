@@ -6,34 +6,34 @@ import 'datastore_datastore_config.dart';
 /// Input properties used for looking up and filtering Datastore resources.
 class DatastoreState {
   /// The time at which the datastore was created in milliseconds since the epoch.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Configuration of the datastore target.
   /// Structure is documented below.
-  final pulumi.Input<DatastoreDatastoreConfig>? datastoreConfig;
+  final pulumi.Input<DatastoreDatastoreConfig?>? datastoreConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name for the datastore.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The time at which the datastore was last updated in milliseconds since the epoch.
-  final pulumi.Input<String>? lastUpdateTime;
+  final pulumi.Input<String?>? lastUpdateTime;
   /// The server-assigned UUID identifier for the datastore. Extracted
   /// from the `self` field in the API response.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee organization name.
-  final pulumi.Input<String>? org;
+  final pulumi.Input<String?>? org;
   /// The Apigee Organization associated with the Apigee datastore,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// The resource link for the datastore, including the full API path.
-  final pulumi.Input<String>? self;
+  final pulumi.Input<String?>? self;
   /// The type of target for the datastore. Must be `gcs` for Google
   /// Cloud Storage or `bigquery` for BigQuery.
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<String?>? targetType;
 
   /// Creates a new [DatastoreState].
   /// [createTime] The time at which the datastore was created in milliseconds since the epoch.

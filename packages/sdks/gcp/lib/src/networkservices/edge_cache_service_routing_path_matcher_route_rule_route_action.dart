@@ -8,17 +8,17 @@ import 'edge_cache_service_routing_path_matcher_route_rule_route_action_url_rewr
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
   /// The policy to use for defining caching and signed request behaviour for requests that match this route.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy>? cdnPolicy;
+  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy?>? cdnPolicy;
   /// Setting the compression mode to automatic enables dynamic compression for every eligible response.
   /// When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
   /// Possible values are: `DISABLED`, `AUTOMATIC`.
-  final pulumi.Input<String>? compressionMode;
+  final pulumi.Input<String?>? compressionMode;
   /// CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy>? corsPolicy;
+  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy?>? corsPolicy;
   /// The URL rewrite configuration for requests that match this route.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite>? urlRewrite;
+  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite?>? urlRewrite;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction].
   /// [cdnPolicy] The policy to use for defining caching and signed request behaviour for requests that match this route.

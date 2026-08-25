@@ -3,6 +3,7 @@ import 'repository_args.dart';
 import 'repository_initial_config.dart';
 import 'repository_scan_config.dart';
 import 'repository_state.dart';
+import 'repository_uri.dart';
 
 /// Repositories store source code. It supports all Git SCM client commands and has built-in pull requests and issue tracking. Both HTTPS and SSH authentication are supported.
 ///
@@ -1251,7 +1252,7 @@ class Repository extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// URIs for the repository.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> uris;
+  late final pulumi.Output<List<RepositoryUri>> uris;
 
   /// Creates a new [Repository].
   /// [name] The Pulumi resource name.
@@ -1265,7 +1266,7 @@ class Repository extends pulumi.CustomResource {
           'gcp:securesourcemanager/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1280,7 +1281,7 @@ class Repository extends pulumi.CustomResource {
     serviceAccount = registerOutput<String?>('serviceAccount');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    uris = registerOutput<List<Map<String, dynamic>>>('uris');
+    uris = registerOutput<List<RepositoryUri>>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryUri>(guardedValue, (value) => RepositoryUri.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Repository] resource's state with the given [name] and [id].
@@ -1288,11 +1289,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1319,6 +1321,31 @@ class Repository extends pulumi.CustomResource {
     serviceAccount = registerOutput<String?>('serviceAccount');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    uris = registerOutput<List<Map<String, dynamic>>>('uris');
+    uris = registerOutput<List<RepositoryUri>>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryUri>(guardedValue, (value) => RepositoryUri.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'gcp:securesourcemanager/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryInitialConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    scanConfig = registerOutput<RepositoryScanConfig?>('scanConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryScanConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    uris = registerOutput<List<RepositoryUri>>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryUri>(guardedValue, (value) => RepositoryUri.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

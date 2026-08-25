@@ -1071,12 +1071,12 @@ class IcebergTableIamBinding extends pulumi.CustomResource {
           'gcp:biglake/icebergTableIamBinding:IcebergTableIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<IcebergTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     project = registerOutput<String>('project');
@@ -1088,11 +1088,12 @@ class IcebergTableIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IcebergTableIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IcebergTableIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1109,7 +1110,26 @@ class IcebergTableIamBinding extends pulumi.CustomResource {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<IcebergTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String>('namespace');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [IcebergTableIamBinding] resource.
+  IcebergTableIamBinding.reference(String urn)
+    : super(
+        'gcp:biglake/icebergTableIamBinding:IcebergTableIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalog = registerOutput<String>('catalog');
+    condition = registerOutput<IcebergTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     project = registerOutput<String>('project');

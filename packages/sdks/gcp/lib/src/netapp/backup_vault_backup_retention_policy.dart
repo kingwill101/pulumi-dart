@@ -6,13 +6,13 @@ class BackupVaultBackupRetentionPolicy {
   /// Minimum retention duration in days for backups in the backup vault.
   final pulumi.Input<int> backupMinimumEnforcedRetentionDays;
   /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
-  final pulumi.Input<bool>? dailyBackupImmutable;
+  final pulumi.Input<bool?>? dailyBackupImmutable;
   /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
-  final pulumi.Input<bool>? manualBackupImmutable;
+  final pulumi.Input<bool?>? manualBackupImmutable;
   /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
-  final pulumi.Input<bool>? monthlyBackupImmutable;
+  final pulumi.Input<bool?>? monthlyBackupImmutable;
   /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthlyBackupImmutable and manualBackupImmutable must be true.
-  final pulumi.Input<bool>? weeklyBackupImmutable;
+  final pulumi.Input<bool?>? weeklyBackupImmutable;
 
   /// Creates a new [BackupVaultBackupRetentionPolicy].
   /// [backupMinimumEnforcedRetentionDays] Minimum retention duration in days for backups in the backup vault.
@@ -40,7 +40,7 @@ class BackupVaultBackupRetentionPolicy {
 
   factory BackupVaultBackupRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupVaultBackupRetentionPolicy(
-      backupMinimumEnforcedRetentionDays: pulumi.Input.fromValue(map['backupMinimumEnforcedRetentionDays'] as int),
+      backupMinimumEnforcedRetentionDays: pulumi.Input.fromValue((map['backupMinimumEnforcedRetentionDays'] as num).toInt()),
       dailyBackupImmutable: (() { final guardedValue = map['dailyBackupImmutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       manualBackupImmutable: (() { final guardedValue = map['manualBackupImmutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       monthlyBackupImmutable: (() { final guardedValue = map['monthlyBackupImmutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

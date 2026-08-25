@@ -12,16 +12,16 @@ class ConnectionConfiguration {
   final pulumi.Input<ConnectionConfigurationAsset> asset;
   /// Authentication configuration for the connector.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionConfigurationAuthentication>? authentication;
+  final pulumi.Input<ConnectionConfigurationAuthentication?>? authentication;
   /// The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
   /// `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
   final pulumi.Input<String> connectorId;
   /// Endpoint configuration for the connector.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionConfigurationEndpoint>? endpoint;
+  final pulumi.Input<ConnectionConfigurationEndpoint?>? endpoint;
   /// Network configuration for the connector.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionConfigurationNetwork>? network;
+  final pulumi.Input<ConnectionConfigurationNetwork?>? network;
 
   /// Creates a new [ConnectionConfiguration].
   /// [asset] Asset configuration for the connector.

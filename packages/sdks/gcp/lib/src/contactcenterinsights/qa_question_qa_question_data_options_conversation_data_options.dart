@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QaQuestionQaQuestionDataOptionsConversationDataOptions {
   /// Whether to include the per turn Dialogflow interaction data in conversation
   /// transcript.
-  final pulumi.Input<bool>? includeDialogflowInteractionData;
+  final pulumi.Input<bool?>? includeDialogflowInteractionData;
 
   /// Creates a new [QaQuestionQaQuestionDataOptionsConversationDataOptions].
   /// [includeDialogflowInteractionData] Whether to include the per turn Dialogflow interaction data in conversation

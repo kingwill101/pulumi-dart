@@ -9,7 +9,7 @@ class SubscriptionPushConfigOidcToken {
   /// for the audience field is not supported. More info about the OIDC JWT
   /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
   /// Note: if not specified, the Push endpoint URL will be used.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Service account email to be used for generating the OIDC token.
   /// The caller (for subscriptions.create, subscriptions.patch, and
   /// subscriptions.modifyPushConfig RPCs) must have the

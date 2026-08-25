@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineJobMappingPipelineJobFhirStreamingSource {
   /// Describes the streaming FHIR data source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
   final pulumi.Input<String> fhirStore;
 

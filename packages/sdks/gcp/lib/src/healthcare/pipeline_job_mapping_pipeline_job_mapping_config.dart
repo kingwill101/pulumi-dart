@@ -5,10 +5,10 @@ import 'pipeline_job_mapping_pipeline_job_mapping_config_whistle_config_source.d
 
 class PipelineJobMappingPipelineJobMappingConfig {
   /// Describes the mapping configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the path to the mapping configuration for harmonization pipeline.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource>? whistleConfigSource;
+  final pulumi.Input<PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource?>? whistleConfigSource;
 
   /// Creates a new [PipelineJobMappingPipelineJobMappingConfig].
   /// [description] Describes the mapping configuration.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeTemplateDataPersistentDiskSpec {
   /// The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
-  final pulumi.Input<String>? diskSizeGb;
+  final pulumi.Input<String?>? diskSizeGb;
   /// The type of the persistent disk.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
 
   /// Creates a new [RuntimeTemplateDataPersistentDiskSpec].
   /// [diskSizeGb] The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.

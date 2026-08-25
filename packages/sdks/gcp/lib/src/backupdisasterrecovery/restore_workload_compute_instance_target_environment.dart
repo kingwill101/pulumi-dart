@@ -6,7 +6,7 @@ class RestoreWorkloadComputeInstanceTargetEnvironment {
   /// Required. Target project for the Compute Engine instance.
   final pulumi.Input<String> project;
   /// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
-  final pulumi.Input<bool>? useProjectServiceAccount;
+  final pulumi.Input<bool?>? useProjectServiceAccount;
   /// Required. The zone of the Compute Engine instance.
   final pulumi.Input<String> zone;
 

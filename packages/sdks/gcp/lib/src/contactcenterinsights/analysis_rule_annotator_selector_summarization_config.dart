@@ -6,14 +6,14 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig {
   /// Resource name of the Dialogflow conversation profile.
   /// Format:
   /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
-  final pulumi.Input<String>? conversationProfile;
+  final pulumi.Input<String?>? conversationProfile;
   /// Default summarization model to be used.
   /// Possible values:
   /// SUMMARIZATION_MODEL_UNSPECIFIED
   /// BASELINE_MODEL
   /// BASELINE_MODEL_V2_0
   /// Possible values are: `BASELINE_MODEL`, `BASELINE_MODEL_V2_0`.
-  final pulumi.Input<String>? summarizationModel;
+  final pulumi.Input<String?>? summarizationModel;
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorSummarizationConfig].
   /// [conversationProfile] Resource name of the Dialogflow conversation profile.

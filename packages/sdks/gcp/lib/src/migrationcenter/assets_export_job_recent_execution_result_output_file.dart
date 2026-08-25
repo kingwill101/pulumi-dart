@@ -7,7 +7,7 @@ class AssetsExportJobRecentExecutionResultOutputFile {
   /// (Output)
   /// List of output files.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntry>>? entries;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntry>?>? entries;
 
   /// Creates a new [AssetsExportJobRecentExecutionResultOutputFile].
   /// [entries] (Output)

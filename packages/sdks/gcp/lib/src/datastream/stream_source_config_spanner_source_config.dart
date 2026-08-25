@@ -6,24 +6,24 @@ import 'stream_source_config_spanner_source_config_include_objects.dart';
 
 class StreamSourceConfigSpannerSourceConfig {
   /// Whether to use DataBoost for backfill queries.
-  final pulumi.Input<bool>? backfillDataBoostEnabled;
+  final pulumi.Input<bool?>? backfillDataBoostEnabled;
   /// The Spanner change stream name to use.
-  final pulumi.Input<String>? changeStreamName;
+  final pulumi.Input<String?>? changeStreamName;
   /// Spanner objects to retrieve from the source.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSpannerSourceConfigExcludeObjects>? excludeObjects;
+  final pulumi.Input<StreamSourceConfigSpannerSourceConfigExcludeObjects?>? excludeObjects;
   /// The FGAC role to use for Spanner queries.
-  final pulumi.Input<String>? fgacRole;
+  final pulumi.Input<String?>? fgacRole;
   /// Spanner objects to retrieve from the source.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSpannerSourceConfigIncludeObjects>? includeObjects;
+  final pulumi.Input<StreamSourceConfigSpannerSourceConfigIncludeObjects?>? includeObjects;
   /// Max concurrent backfill tasks.
-  final pulumi.Input<int>? maxConcurrentBackfillTasks;
+  final pulumi.Input<int?>? maxConcurrentBackfillTasks;
   /// Max concurrent CDC tasks.
-  final pulumi.Input<int>? maxConcurrentCdcTasks;
+  final pulumi.Input<int?>? maxConcurrentCdcTasks;
   /// The RPC priority to use for Spanner queries.
   /// Possible values are: `LOW`, `MEDIUM`, `HIGH`.
-  final pulumi.Input<String>? spannerRpcPriority;
+  final pulumi.Input<String?>? spannerRpcPriority;
 
   /// Creates a new [StreamSourceConfigSpannerSourceConfig].
   /// [backfillDataBoostEnabled] Whether to use DataBoost for backfill queries.
@@ -65,8 +65,8 @@ class StreamSourceConfigSpannerSourceConfig {
       excludeObjects: (() { final guardedValue = map['excludeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigSpannerSourceConfigExcludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fgacRole: (() { final guardedValue = map['fgacRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       includeObjects: (() { final guardedValue = map['includeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigSpannerSourceConfigIncludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       spannerRpcPriority: (() { final guardedValue = map['spannerRpcPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

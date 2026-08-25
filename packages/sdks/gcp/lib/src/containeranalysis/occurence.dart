@@ -573,7 +573,7 @@ class Occurence extends pulumi.CustomResource {
           'gcp:containeranalysis/occurence:Occurence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attestation = registerOutput<OccurenceAttestation>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -592,11 +592,12 @@ class Occurence extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OccurenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Occurence._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -610,6 +611,27 @@ class Occurence extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attestation = registerOutput<OccurenceAttestation>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    noteName = registerOutput<String>('noteName');
+    project = registerOutput<String>('project');
+    remediation = registerOutput<String?>('remediation');
+    resourceUri = registerOutput<String>('resourceUri');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Occurence] resource.
+  Occurence.reference(String urn)
+    : super(
+        'gcp:containeranalysis/occurence:Occurence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestation = registerOutput<OccurenceAttestation>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

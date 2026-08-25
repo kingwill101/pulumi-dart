@@ -11,22 +11,22 @@ class AppVersionSnapshotGuardrailCodeCallback {
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback>>? afterAgentCallbacks;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback>?>? afterAgentCallbacks;
   /// (Output)
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback>>? afterModelCallbacks;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback>?>? afterModelCallbacks;
   /// (Output)
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback>>? beforeAgentCallbacks;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback>?>? beforeAgentCallbacks;
   /// (Output)
   /// A callback defines the custom logic to be executed at various stages of
   /// agent interaction.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback>>? beforeModelCallbacks;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback>?>? beforeModelCallbacks;
 
   /// Creates a new [AppVersionSnapshotGuardrailCodeCallback].
   /// [afterAgentCallbacks] (Output)

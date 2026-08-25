@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet {
   /// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
   /// Limited to 5 matches.
-  final pulumi.Input<List<String>>? ids;
+  final pulumi.Input<List<String>?>? ids;
 
   /// Creates a new [AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet].
   /// [ids] A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.

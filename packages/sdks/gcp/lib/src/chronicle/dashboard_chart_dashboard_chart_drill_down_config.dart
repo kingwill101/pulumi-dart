@@ -6,9 +6,9 @@ import 'dashboard_chart_dashboard_chart_drill_down_config_right_drill_down.dart'
 
 class DashboardChartDashboardChartDrillDownConfig {
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartDrillDownConfigLeftDrillDown>>? leftDrillDowns;
+  final pulumi.Input<List<DashboardChartDashboardChartDrillDownConfigLeftDrillDown>?>? leftDrillDowns;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartDrillDownConfigRightDrillDown>>? rightDrillDowns;
+  final pulumi.Input<List<DashboardChartDashboardChartDrillDownConfigRightDrillDown>?>? rightDrillDowns;
 
   /// Creates a new [DashboardChartDashboardChartDrillDownConfig].
   /// [leftDrillDowns] Structure is documented below.

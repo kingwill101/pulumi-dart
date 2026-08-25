@@ -8,7 +8,7 @@ import 'dataset_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_healthcare_dataset_iam_member_dataset_iam_member_args_doc}
 class DatasetIamMemberArgs {
-  final pulumi.Input<DatasetIamMemberCondition>? condition;
+  final pulumi.Input<DatasetIamMemberCondition?>? condition;
   /// The dataset ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}` or
   /// `{location_name}/{dataset_name}`. In the second form, the provider's

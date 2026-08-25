@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChatEngineCommonConfig {
   /// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
-  final pulumi.Input<String>? companyName;
+  final pulumi.Input<String?>? companyName;
 
   /// Creates a new [ChatEngineCommonConfig].
   /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.

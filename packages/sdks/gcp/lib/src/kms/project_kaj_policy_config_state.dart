@@ -9,10 +9,10 @@ class ProjectKajPolicyConfigState {
   /// created in this project. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final pulumi.Input<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy;
+  final pulumi.Input<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>? defaultKeyAccessJustificationPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ProjectKajPolicyConfigState].
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is

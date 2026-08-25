@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
   /// The schema name.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// The table name.
   final pulumi.Input<String> table;
 

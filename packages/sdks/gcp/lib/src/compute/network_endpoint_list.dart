@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_endpoint_list_args.dart';
+import 'network_endpoint_list_network_endpoint.dart';
 import 'network_endpoint_list_state.dart';
 
 /// A set of network endpoints belonging to a network endpoint group (NEG). A
@@ -652,7 +653,7 @@ class NetworkEndpointList extends pulumi.CustomResource {
   /// (NEG). Each endpoint specifies an IP address and port, along with
   /// additional information depending on the NEG type.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkEndpoints;
+  late final pulumi.Output<List<NetworkEndpointListNetworkEndpoint>?> networkEndpoints;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -671,11 +672,11 @@ class NetworkEndpointList extends pulumi.CustomResource {
           'gcp:compute/networkEndpointList:NetworkEndpointList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
-    networkEndpoints = registerOutput<List<Map<String, dynamic>>?>('networkEndpoints');
+    networkEndpoints = registerOutput<List<NetworkEndpointListNetworkEndpoint>?>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(guardedValue, (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }
@@ -685,11 +686,12 @@ class NetworkEndpointList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkEndpointListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkEndpointList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -705,7 +707,23 @@ class NetworkEndpointList extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
-    networkEndpoints = registerOutput<List<Map<String, dynamic>>?>('networkEndpoints');
+    networkEndpoints = registerOutput<List<NetworkEndpointListNetworkEndpoint>?>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(guardedValue, (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [NetworkEndpointList] resource.
+  NetworkEndpointList.reference(String urn)
+    : super(
+        'gcp:compute/networkEndpointList:NetworkEndpointList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
+    networkEndpoints = registerOutput<List<NetworkEndpointListNetworkEndpoint>?>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(guardedValue, (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }

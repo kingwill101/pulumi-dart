@@ -6,7 +6,7 @@ import 'connection_auth_config_user_password_password.dart';
 class ConnectionAuthConfigUserPassword {
   /// Password for Authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigUserPasswordPassword>? password;
+  final pulumi.Input<ConnectionAuthConfigUserPasswordPassword?>? password;
   /// Username for Authentication.
   final pulumi.Input<String> username;
 

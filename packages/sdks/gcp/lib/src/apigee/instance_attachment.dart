@@ -55,7 +55,7 @@ class InstanceAttachment extends pulumi.CustomResource {
           'gcp:apigee/instanceAttachment:InstanceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
@@ -68,11 +68,12 @@ class InstanceAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -86,6 +87,21 @@ class InstanceAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    environment = registerOutput<String>('environment');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [InstanceAttachment] resource.
+  InstanceAttachment.reference(String urn)
+    : super(
+        'gcp:apigee/instanceAttachment:InstanceAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     instanceId = registerOutput<String>('instanceId');

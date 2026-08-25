@@ -7,7 +7,7 @@ class AutoscalingPolicyBasicAlgorithm {
   /// Duration between scaling events. A scaling period starts after the
   /// update operation from the previous event has completed.
   /// Bounds: [2m, 1d]. Default: 2m.
-  final pulumi.Input<String>? cooldownPeriod;
+  final pulumi.Input<String?>? cooldownPeriod;
   /// YARN autoscaling configuration.
   /// Structure is documented below.
   final pulumi.Input<AutoscalingPolicyBasicAlgorithmYarnConfig> yarnConfig;

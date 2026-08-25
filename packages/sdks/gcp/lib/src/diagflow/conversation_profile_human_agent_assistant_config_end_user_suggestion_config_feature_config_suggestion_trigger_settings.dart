@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings {
   /// Do not trigger if last utterance is small talk.
-  final pulumi.Input<bool>? noSmallTalk;
+  final pulumi.Input<bool?>? noSmallTalk;
   /// Only trigger suggestion if participant role of last utterance is END_USER.
-  final pulumi.Input<bool>? onlyEndUser;
+  final pulumi.Input<bool?>? onlyEndUser;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings].
   /// [noSmallTalk] Do not trigger if last utterance is small talk.

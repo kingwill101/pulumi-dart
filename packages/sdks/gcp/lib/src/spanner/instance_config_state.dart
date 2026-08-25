@@ -8,38 +8,38 @@ class InstanceConfigState {
   /// Base configuration name, e.g. nam3, based on which this configuration is created.
   /// Only set for user managed configurations.
   /// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
-  final pulumi.Input<String>? baseConfig;
+  final pulumi.Input<String?>? baseConfig;
   /// Output only. Whether this instance config is a Google or User Managed Configuration.
-  final pulumi.Input<String>? configType;
+  final pulumi.Input<String?>? configType;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of this instance configuration as it appears in UIs.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// An object containing a list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A unique identifier for the instance configuration. Values are of the
   /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The geographic placement of nodes in this instance configuration and their replication properties.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceConfigReplica>>? replicas;
+  final pulumi.Input<List<InstanceConfigReplica>?>? replicas;
 
   /// Creates a new [InstanceConfigState].
   /// [baseConfig] Base configuration name, e.g. nam3, based on which this configuration is created.

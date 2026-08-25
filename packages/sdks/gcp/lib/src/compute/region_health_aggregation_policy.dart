@@ -253,7 +253,7 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
           'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -273,11 +273,12 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionHealthAggregationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionHealthAggregationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -291,6 +292,28 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    healthyPercentThreshold = registerOutput<int?>('healthyPercentThreshold');
+    minHealthyThreshold = registerOutput<int?>('minHealthyThreshold');
+    this.name = registerOutput<String>('name');
+    policyType = registerOutput<String?>('policyType');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+  }
+
+  /// Creates a typed reference to an existing [RegionHealthAggregationPolicy] resource.
+  RegionHealthAggregationPolicy.reference(String urn)
+    : super(
+        'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

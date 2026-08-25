@@ -778,7 +778,7 @@ class PacketMirroring extends pulumi.CustomResource {
           'gcp:compute/packetMirroring:PacketMirroring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringCollectorIlb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -798,11 +798,12 @@ class PacketMirroring extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PacketMirroringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PacketMirroring._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -816,6 +817,28 @@ class PacketMirroring extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringCollectorIlb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    enable = registerOutput<String>('enable');
+    filter = registerOutput<PacketMirroringFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mirroredResources = registerOutput<PacketMirroringMirroredResources>('mirroredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringMirroredResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<PacketMirroringNetwork>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [PacketMirroring] resource.
+  PacketMirroring.reference(String urn)
+    : super(
+        'gcp:compute/packetMirroring:PacketMirroring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringCollectorIlb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

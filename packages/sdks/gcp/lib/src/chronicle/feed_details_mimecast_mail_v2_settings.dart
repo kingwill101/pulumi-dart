@@ -6,7 +6,7 @@ import 'feed_details_mimecast_mail_v2_settings_auth_credentials.dart';
 class FeedDetailsMimecastMailV2Settings {
   /// OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
   /// NEXT TAG: 3
-  final pulumi.Input<FeedDetailsMimecastMailV2SettingsAuthCredentials>? authCredentials;
+  final pulumi.Input<FeedDetailsMimecastMailV2SettingsAuthCredentials?>? authCredentials;
 
   /// Creates a new [FeedDetailsMimecastMailV2Settings].
   /// [authCredentials] OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.

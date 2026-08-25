@@ -15,7 +15,7 @@ class GetVariableArgs {
   final pulumi.Input<String> parent;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetVariableArgs].
   /// [name] The name of the Runtime Configurator configuration.

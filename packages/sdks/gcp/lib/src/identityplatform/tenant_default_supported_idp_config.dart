@@ -233,7 +233,7 @@ class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
           'gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
@@ -250,11 +250,12 @@ class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TenantDefaultSupportedIdpConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TenantDefaultSupportedIdpConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,6 +269,25 @@ class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    enabled = registerOutput<bool?>('enabled');
+    idpId = registerOutput<String>('idpId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tenant = registerOutput<String>('tenant');
+  }
+
+  /// Creates a typed reference to an existing [TenantDefaultSupportedIdpConfig] resource.
+  TenantDefaultSupportedIdpConfig.reference(String urn)
+    : super(
+        'gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
     deletionPolicy = registerOutput<String>('deletionPolicy');

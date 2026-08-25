@@ -7,10 +7,10 @@ import 'feed_details_amazon_s3_v2_settings_authentication_aws_iam_role_auth.dart
 class FeedDetailsAmazonS3V2SettingsAuthentication {
   /// S3 V2 access key and secret auth.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuth>? accessKeySecretAuth;
+  final pulumi.Input<FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuth?>? accessKeySecretAuth;
   /// AWS IAM Role Auth for SQS V2.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuth>? awsIamRoleAuth;
+  final pulumi.Input<FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuth?>? awsIamRoleAuth;
 
   /// Creates a new [FeedDetailsAmazonS3V2SettingsAuthentication].
   /// [accessKeySecretAuth] S3 V2 access key and secret auth.

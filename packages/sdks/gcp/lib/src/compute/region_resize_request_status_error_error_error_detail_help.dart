@@ -7,7 +7,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetailHelp {
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailHelpLink>>? links;
+  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailHelpLink>?>? links;
 
   /// Creates a new [RegionResizeRequestStatusErrorErrorErrorDetailHelp].
   /// [links] (Output)

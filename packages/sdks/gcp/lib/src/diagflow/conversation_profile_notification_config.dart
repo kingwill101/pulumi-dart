@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConversationProfileNotificationConfig {
   /// Format of the message
   /// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
-  final pulumi.Input<String>? messageFormat;
+  final pulumi.Input<String?>? messageFormat;
   /// Name of the Pub/Sub topic to publish conversation events
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [ConversationProfileNotificationConfig].
   /// [messageFormat] Format of the message

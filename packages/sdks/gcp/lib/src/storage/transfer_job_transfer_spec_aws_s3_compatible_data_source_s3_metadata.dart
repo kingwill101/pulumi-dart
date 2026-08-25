@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
   /// Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
-  final pulumi.Input<String>? authMethod;
+  final pulumi.Input<String?>? authMethod;
   /// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
-  final pulumi.Input<String>? listApi;
+  final pulumi.Input<String?>? listApi;
   /// The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
-  final pulumi.Input<String>? requestModel;
+  final pulumi.Input<String?>? requestModel;
 
   /// Creates a new [TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata].
   /// [authMethod] Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.

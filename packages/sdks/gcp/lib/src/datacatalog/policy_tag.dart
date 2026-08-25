@@ -519,9 +519,9 @@ class PolicyTag extends pulumi.CustomResource {
           'gcp:datacatalog/policyTag:PolicyTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    childPolicyTags = registerOutput<List<String>>('childPolicyTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -535,11 +535,12 @@ class PolicyTag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyTagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyTag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -553,7 +554,25 @@ class PolicyTag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    childPolicyTags = registerOutput<List<String>>('childPolicyTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    parentPolicyTag = registerOutput<String?>('parentPolicyTag');
+    taxonomy = registerOutput<String>('taxonomy');
+  }
+
+  /// Creates a typed reference to an existing [PolicyTag] resource.
+  PolicyTag.reference(String urn)
+    : super(
+        'gcp:datacatalog/policyTag:PolicyTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    childPolicyTags = registerOutput<List<String>>('childPolicyTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectivityTestSourceCloudFunction {
   /// A Cloud Function name.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ConnectivityTestSourceCloudFunction].
   /// [uri] A Cloud Function name.

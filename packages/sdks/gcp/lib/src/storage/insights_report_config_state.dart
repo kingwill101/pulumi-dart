@@ -9,34 +9,34 @@ import 'insights_report_config_object_metadata_report_options.dart';
 class InsightsReportConfigState {
   /// Options for configuring the format of the inventory report CSV file.
   /// Structure is documented below.
-  final pulumi.Input<InsightsReportConfigCsvOptions>? csvOptions;
+  final pulumi.Input<InsightsReportConfigCsvOptions?>? csvOptions;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// If set, all the inventory report details associated with this report configuration are deleted.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Options for configuring how inventory reports are generated.
   /// Structure is documented below.
-  final pulumi.Input<InsightsReportConfigFrequencyOptions>? frequencyOptions;
+  final pulumi.Input<InsightsReportConfigFrequencyOptions?>? frequencyOptions;
   /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
   /// must be in the same location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The UUID of the inventory report configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Options for including metadata in an inventory report.
   /// Structure is documented below.
-  final pulumi.Input<InsightsReportConfigObjectMetadataReportOptions>? objectMetadataReportOptions;
+  final pulumi.Input<InsightsReportConfigObjectMetadataReportOptions?>? objectMetadataReportOptions;
   /// An option for outputting inventory reports as parquet files.
-  final pulumi.Input<Map<String, dynamic>>? parquetOptions;
+  final pulumi.Input<Map<String, dynamic>?>? parquetOptions;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InsightsReportConfigState].
   /// [csvOptions] Options for configuring the format of the inventory report CSV file.

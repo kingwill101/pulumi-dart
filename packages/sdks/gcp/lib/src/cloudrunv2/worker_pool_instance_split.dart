@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkerPoolInstanceSplit {
   /// Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
-  final pulumi.Input<int>? percent;
+  final pulumi.Input<int?>? percent;
   /// Revision to which to assign this portion of instances, if split allocation is by revision.
-  final pulumi.Input<String>? revision;
+  final pulumi.Input<String?>? revision;
   /// The allocation type for this instance split.
   /// Possible values are: `INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST`, `INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WorkerPoolInstanceSplit].
   /// [percent] Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
@@ -31,7 +31,7 @@ class WorkerPoolInstanceSplit {
 
   factory WorkerPoolInstanceSplit.fromMap(Map<String, dynamic> map) {
     return WorkerPoolInstanceSplit(
-      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

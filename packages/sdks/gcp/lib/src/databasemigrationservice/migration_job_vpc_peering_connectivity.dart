@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrationJobVpcPeeringConnectivity {
   /// The name of the VPC network to peer with the Cloud SQL private network.
-  final pulumi.Input<String>? vpc;
+  final pulumi.Input<String?>? vpc;
 
   /// Creates a new [MigrationJobVpcPeeringConnectivity].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.

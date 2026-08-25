@@ -7,13 +7,13 @@ import 'transfer_job_schedule_start_time_of_day.dart';
 
 class TransferJobSchedule {
   /// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? repeatInterval;
+  final pulumi.Input<String?>? repeatInterval;
   /// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
-  final pulumi.Input<TransferJobScheduleScheduleEndDate>? scheduleEndDate;
+  final pulumi.Input<TransferJobScheduleScheduleEndDate?>? scheduleEndDate;
   /// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
   final pulumi.Input<TransferJobScheduleScheduleStartDate> scheduleStartDate;
   /// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
-  final pulumi.Input<TransferJobScheduleStartTimeOfDay>? startTimeOfDay;
+  final pulumi.Input<TransferJobScheduleStartTimeOfDay?>? startTimeOfDay;
 
   /// Creates a new [TransferJobSchedule].
   /// [repeatInterval] Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".

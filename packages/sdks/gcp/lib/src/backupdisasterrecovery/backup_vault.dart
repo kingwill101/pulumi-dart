@@ -633,11 +633,12 @@ class BackupVault extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupVault:BackupVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessRestriction = registerOutput<String?>('accessRestriction');
     allowMissing = registerOutput<bool?>('allowMissing');
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     backupCount = registerOutput<String>('backupCount');
     backupMinimumEnforcedRetentionDuration = registerOutput<String>('backupMinimumEnforcedRetentionDuration');
     backupRetentionInheritance = registerOutput<String?>('backupRetentionInheritance');
@@ -646,8 +647,8 @@ class BackupVault extends pulumi.CustomResource {
     deletable = registerOutput<bool>('deletable');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveTime = registerOutput<String?>('effectiveTime');
     encryptionConfig = registerOutput<BackupVaultEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -656,11 +657,11 @@ class BackupVault extends pulumi.CustomResource {
     forceUpdateAccessRestriction = registerOutput<bool?>('forceUpdateAccessRestriction');
     ignoreBackupPlanReferences = registerOutput<bool?>('ignoreBackupPlanReferences');
     ignoreInactiveDatasources = registerOutput<bool?>('ignoreInactiveDatasources');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceAccount = registerOutput<String>('serviceAccount');
     state = registerOutput<String>('state');
     totalStoredBytes = registerOutput<String>('totalStoredBytes');
@@ -673,11 +674,12 @@ class BackupVault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupVaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupVault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -693,7 +695,7 @@ class BackupVault extends pulumi.CustomResource {
         ) {
     accessRestriction = registerOutput<String?>('accessRestriction');
     allowMissing = registerOutput<bool?>('allowMissing');
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     backupCount = registerOutput<String>('backupCount');
     backupMinimumEnforcedRetentionDuration = registerOutput<String>('backupMinimumEnforcedRetentionDuration');
     backupRetentionInheritance = registerOutput<String?>('backupRetentionInheritance');
@@ -702,8 +704,8 @@ class BackupVault extends pulumi.CustomResource {
     deletable = registerOutput<bool>('deletable');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveTime = registerOutput<String?>('effectiveTime');
     encryptionConfig = registerOutput<BackupVaultEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -712,13 +714,56 @@ class BackupVault extends pulumi.CustomResource {
     forceUpdateAccessRestriction = registerOutput<bool?>('forceUpdateAccessRestriction');
     ignoreBackupPlanReferences = registerOutput<bool?>('ignoreBackupPlanReferences');
     ignoreInactiveDatasources = registerOutput<bool?>('ignoreInactiveDatasources');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceAccount = registerOutput<String>('serviceAccount');
     this.state = registerOutput<String>('state');
+    totalStoredBytes = registerOutput<String>('totalStoredBytes');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BackupVault] resource.
+  BackupVault.reference(String urn)
+    : super(
+        'gcp:backupdisasterrecovery/backupVault:BackupVault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    accessRestriction = registerOutput<String?>('accessRestriction');
+    allowMissing = registerOutput<bool?>('allowMissing');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backupCount = registerOutput<String>('backupCount');
+    backupMinimumEnforcedRetentionDuration = registerOutput<String>('backupMinimumEnforcedRetentionDuration');
+    backupRetentionInheritance = registerOutput<String?>('backupRetentionInheritance');
+    backupVaultId = registerOutput<String>('backupVaultId');
+    createTime = registerOutput<String>('createTime');
+    deletable = registerOutput<bool>('deletable');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveTime = registerOutput<String?>('effectiveTime');
+    encryptionConfig = registerOutput<BackupVaultEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    forceUpdateAccessRestriction = registerOutput<bool?>('forceUpdateAccessRestriction');
+    ignoreBackupPlanReferences = registerOutput<bool?>('ignoreBackupPlanReferences');
+    ignoreInactiveDatasources = registerOutput<bool?>('ignoreInactiveDatasources');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serviceAccount = registerOutput<String>('serviceAccount');
+    state = registerOutput<String>('state');
     totalStoredBytes = registerOutput<String>('totalStoredBytes');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

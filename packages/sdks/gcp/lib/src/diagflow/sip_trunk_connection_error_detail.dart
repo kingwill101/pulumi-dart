@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SipTrunkConnectionErrorDetail {
   /// (Output)
   /// Output only. The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// (Output)
   /// Output only. The error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [SipTrunkConnectionErrorDetail].
   /// [code] (Output)

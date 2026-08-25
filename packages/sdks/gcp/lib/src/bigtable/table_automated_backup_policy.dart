@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableAutomatedBackupPolicy {
   /// How frequently automated backups should occur.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format projects/{project}/locations/{zone}. This field can only be set for tables in Enterprise Plus instances.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// How long the automated backups should be retained.
-  final pulumi.Input<String>? retentionPeriod;
+  final pulumi.Input<String?>? retentionPeriod;
 
   /// Creates a new [TableAutomatedBackupPolicy].
   /// [frequency] How frequently automated backups should occur.

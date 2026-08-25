@@ -7,15 +7,15 @@ import 'preview_feature_rollout_operation.dart';
 class PreviewFeatureState {
   /// The activation status of the preview feature.
   /// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
-  final pulumi.Input<String>? activationStatus;
+  final pulumi.Input<String?>? activationStatus;
   /// The name of the preview feature.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The rollout operation of the feature.
   /// Structure is documented below.
-  final pulumi.Input<PreviewFeatureRolloutOperation>? rolloutOperation;
+  final pulumi.Input<PreviewFeatureRolloutOperation?>? rolloutOperation;
 
   /// Creates a new [PreviewFeatureState].
   /// [activationStatus] The activation status of the preview feature.

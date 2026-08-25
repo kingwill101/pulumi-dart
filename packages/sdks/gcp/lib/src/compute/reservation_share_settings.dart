@@ -6,13 +6,13 @@ import 'reservation_share_settings_project_map.dart';
 class ReservationShareSettings {
   /// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationShareSettingsProjectMap>>? projectMaps;
+  final pulumi.Input<List<ReservationShareSettingsProjectMap>?>? projectMaps;
   /// (Optional, Beta)
   /// List of project IDs with which the reservation is shared.
-  final pulumi.Input<List<String>>? projects;
+  final pulumi.Input<List<String>?>? projects;
   /// Type of sharing for this shared-reservation
   /// Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
-  final pulumi.Input<String>? shareType;
+  final pulumi.Input<String?>? shareType;
 
   /// Creates a new [ReservationShareSettings].
   /// [projectMaps] A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.

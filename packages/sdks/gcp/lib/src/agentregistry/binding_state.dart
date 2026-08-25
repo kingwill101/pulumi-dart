@@ -9,37 +9,37 @@ import 'binding_target.dart';
 class BindingState {
   /// The auth provider of the Binding.
   /// Structure is documented below.
-  final pulumi.Input<BindingAuthProviderBinding>? authProviderBinding;
+  final pulumi.Input<BindingAuthProviderBinding?>? authProviderBinding;
   /// The name of the Binding.
-  final pulumi.Input<String>? bindingId;
+  final pulumi.Input<String?>? bindingId;
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the Binding.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined display name for the Binding.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the Binding.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The source of the Binding.
   /// Structure is documented below.
-  final pulumi.Input<BindingSource>? source;
+  final pulumi.Input<BindingSource?>? source;
   /// The target of the Binding.
   /// Structure is documented below.
-  final pulumi.Input<BindingTarget>? target;
+  final pulumi.Input<BindingTarget?>? target;
   /// The timestamp when the resource was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BindingState].
   /// [authProviderBinding] The auth provider of the Binding.

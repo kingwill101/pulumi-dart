@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxPageEntryFulfillmentMessageLiveAgentHandoff {
   /// Custom metadata. Dialogflow doesn't impose any structure on this.
-  final pulumi.Input<String>? metadata;
+  final pulumi.Input<String?>? metadata;
 
   /// Creates a new [CxPageEntryFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.

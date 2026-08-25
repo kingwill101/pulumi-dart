@@ -10,7 +10,7 @@ class TagBindingCollectionArgs {
   /// The full resource name of the resource to which the tags are bound. E.g. //cloudresourcemanager.googleapis.com/projects/123
   final pulumi.Input<String> fullResourceName;
   /// The location of the TagBindingCollection.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A map of tag keys to values directly bound to this resource, specified in namespaced format.
   /// For example:
   /// "123/environment": "production"

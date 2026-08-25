@@ -11,27 +11,27 @@ import 'connection_auth_config_user_password.dart';
 class ConnectionAuthConfig {
   /// List containing additional auth configs.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionAuthConfigAdditionalVariable>>? additionalVariables;
+  final pulumi.Input<List<ConnectionAuthConfigAdditionalVariable>?>? additionalVariables;
   /// The type of authentication configured.
-  final pulumi.Input<String>? authKey;
+  final pulumi.Input<String?>? authKey;
   /// authType of the Connection
   /// Possible values are: `USER_PASSWORD`.
   final pulumi.Input<String> authType;
   /// Parameters to support Oauth 2.0 Auth Code Grant Authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigOauth2AuthCodeFlow>? oauth2AuthCodeFlow;
+  final pulumi.Input<ConnectionAuthConfigOauth2AuthCodeFlow?>? oauth2AuthCodeFlow;
   /// OAuth3 Client Credentials for Authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigOauth2ClientCredentials>? oauth2ClientCredentials;
+  final pulumi.Input<ConnectionAuthConfigOauth2ClientCredentials?>? oauth2ClientCredentials;
   /// OAuth2 JWT Bearer for Authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigOauth2JwtBearer>? oauth2JwtBearer;
+  final pulumi.Input<ConnectionAuthConfigOauth2JwtBearer?>? oauth2JwtBearer;
   /// SSH Public Key for Authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigSshPublicKey>? sshPublicKey;
+  final pulumi.Input<ConnectionAuthConfigSshPublicKey?>? sshPublicKey;
   /// User password for Authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfigUserPassword>? userPassword;
+  final pulumi.Input<ConnectionAuthConfigUserPassword?>? userPassword;
 
   /// Creates a new [ConnectionAuthConfig].
   /// [additionalVariables] List containing additional auth configs.

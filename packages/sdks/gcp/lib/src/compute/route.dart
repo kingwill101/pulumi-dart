@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_args.dart';
+import 'route_as_path.dart';
 import 'route_params.dart';
 import 'route_state.dart';
+import 'route_warning.dart';
 
 /// Represents a Route resource.
 ///
@@ -1227,7 +1229,7 @@ import 'route_state.dart';
 /// ```
 class Route extends pulumi.CustomResource {
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> asPaths;
+  late final pulumi.Output<List<RouteAsPath>> asPaths;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1331,7 +1333,7 @@ class Route extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> tags;
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<RouteWarning>> warnings;
 
   /// Creates a new [Route].
   /// [name] The Pulumi resource name.
@@ -1345,9 +1347,9 @@ class Route extends pulumi.CustomResource {
           'gcp:compute/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    asPaths = registerOutput<List<Map<String, dynamic>>>('asPaths');
+    asPaths = registerOutput<List<RouteAsPath>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPath>(guardedValue, (value) => RouteAsPath.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -1372,8 +1374,8 @@ class Route extends pulumi.CustomResource {
     routeStatus = registerOutput<String>('routeStatus');
     routeType = registerOutput<String>('routeType');
     selfLink = registerOutput<String>('selfLink');
-    tags = registerOutput<List<String>?>('tags');
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    warnings = registerOutput<List<RouteWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteWarning>(guardedValue, (value) => RouteWarning.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Route] resource's state with the given [name] and [id].
@@ -1381,11 +1383,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1399,7 +1402,7 @@ class Route extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    asPaths = registerOutput<List<Map<String, dynamic>>>('asPaths');
+    asPaths = registerOutput<List<RouteAsPath>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPath>(guardedValue, (value) => RouteAsPath.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -1424,7 +1427,45 @@ class Route extends pulumi.CustomResource {
     routeStatus = registerOutput<String>('routeStatus');
     routeType = registerOutput<String>('routeType');
     selfLink = registerOutput<String>('selfLink');
-    tags = registerOutput<List<String>?>('tags');
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    warnings = registerOutput<List<RouteWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteWarning>(guardedValue, (value) => RouteWarning.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'gcp:compute/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    asPaths = registerOutput<List<RouteAsPath>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPath>(guardedValue, (value) => RouteAsPath.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    destRange = registerOutput<String>('destRange');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    nextHopGateway = registerOutput<String?>('nextHopGateway');
+    nextHopHub = registerOutput<String>('nextHopHub');
+    nextHopIlb = registerOutput<String?>('nextHopIlb');
+    nextHopInstance = registerOutput<String?>('nextHopInstance');
+    nextHopInstanceZone = registerOutput<String>('nextHopInstanceZone');
+    nextHopInterRegionCost = registerOutput<String>('nextHopInterRegionCost');
+    nextHopIp = registerOutput<String>('nextHopIp');
+    nextHopMed = registerOutput<String>('nextHopMed');
+    nextHopNetwork = registerOutput<String>('nextHopNetwork');
+    nextHopOrigin = registerOutput<String>('nextHopOrigin');
+    nextHopPeering = registerOutput<String>('nextHopPeering');
+    nextHopVpnTunnel = registerOutput<String?>('nextHopVpnTunnel');
+    params = registerOutput<RouteParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int?>('priority');
+    project = registerOutput<String>('project');
+    routeStatus = registerOutput<String>('routeStatus');
+    routeType = registerOutput<String>('routeType');
+    selfLink = registerOutput<String>('selfLink');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    warnings = registerOutput<List<RouteWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteWarning>(guardedValue, (value) => RouteWarning.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

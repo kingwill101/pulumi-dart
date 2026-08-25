@@ -8,13 +8,13 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations.
 class PreventionDeidentifyTemplateDeidentifyConfig {
   /// Treat the dataset as an image and redact.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformations>? imageTransformations;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformations?>? imageTransformations;
   /// Treat the dataset as free-form text and apply the same free text transformation everywhere
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations>? infoTypeTransformations;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations?>? infoTypeTransformations;
   /// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations>? recordTransformations;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations?>? recordTransformations;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfig].
   /// [imageTransformations] Treat the dataset as an image and redact.

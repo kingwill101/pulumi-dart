@@ -8,46 +8,46 @@ import 'workload_workload_reference.dart';
 /// Input properties used for looking up and filtering Workload resources.
 class WorkloadState {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Consumer provided attributes.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadAttributes>? attributes;
+  final pulumi.Input<WorkloadAttributes?>? attributes;
   /// Output only. Create time.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-defined description of a Workload.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Immutable. The resource name of the original discovered workload.
-  final pulumi.Input<String>? discoveredWorkload;
+  final pulumi.Input<String?>? discoveredWorkload;
   /// User-defined name for the Workload.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the Workload. Format:"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. Workload state. Possible values:  STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. Update time.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The Workload identifier.
-  final pulumi.Input<String>? workloadId;
+  final pulumi.Input<String?>? workloadId;
   /// Properties of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadWorkloadProperty>>? workloadProperties;
+  final pulumi.Input<List<WorkloadWorkloadProperty>?>? workloadProperties;
   /// Reference of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadWorkloadReference>>? workloadReferences;
+  final pulumi.Input<List<WorkloadWorkloadReference>?>? workloadReferences;
 
   /// Creates a new [WorkloadState].
   /// [applicationId] Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}

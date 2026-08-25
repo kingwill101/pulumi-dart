@@ -20,7 +20,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
 
   factory AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

@@ -8,11 +8,11 @@ import 'ai_endpoint_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vertex_ai_endpoint_iam_member_ai_endpoint_iam_member_args_doc}
 class AiEndpointIamMemberArgs {
-  final pulumi.Input<AiEndpointIamMemberCondition>? condition;
+  final pulumi.Input<AiEndpointIamMemberCondition?>? condition;
   final pulumi.Input<String> endpoint;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<String> member;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> role;
 
   /// Creates a new [AiEndpointIamMemberArgs].

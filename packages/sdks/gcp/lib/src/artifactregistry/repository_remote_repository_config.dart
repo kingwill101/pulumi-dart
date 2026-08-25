@@ -13,35 +13,35 @@ import 'repository_remote_repository_config_yum_repository.dart';
 class RepositoryRemoteRepositoryConfig {
   /// Specific settings for an Apt remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigAptRepository>? aptRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigAptRepository?>? aptRepository;
   /// Specific settings for an Artifact Registory remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigCommonRepository>? commonRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigCommonRepository?>? commonRepository;
   /// The description of the remote source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If true, the remote repository upstream and upstream credentials will
   /// not be validated.
-  final pulumi.Input<bool>? disableUpstreamValidation;
+  final pulumi.Input<bool?>? disableUpstreamValidation;
   /// Specific settings for a Docker remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigDockerRepository>? dockerRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigDockerRepository?>? dockerRepository;
   /// Specific settings for a Maven remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigMavenRepository>? mavenRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigMavenRepository?>? mavenRepository;
   /// The repository will act as a non-caching proxy (connector mode).
-  final pulumi.Input<Map<String, dynamic>>? noCache;
+  final pulumi.Input<Map<String, dynamic>?>? noCache;
   /// Specific settings for an Npm remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigNpmRepository>? npmRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigNpmRepository?>? npmRepository;
   /// Specific settings for a Python remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigPythonRepository>? pythonRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigPythonRepository?>? pythonRepository;
   /// The credentials used to access the remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigUpstreamCredentials>? upstreamCredentials;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigUpstreamCredentials?>? upstreamCredentials;
   /// Specific settings for an Yum remote repository.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigYumRepository>? yumRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigYumRepository?>? yumRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfig].
   /// [aptRepository] Specific settings for an Apt remote repository.

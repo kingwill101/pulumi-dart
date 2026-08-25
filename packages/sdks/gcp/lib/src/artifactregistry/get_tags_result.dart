@@ -7,53 +7,53 @@ import 'get_tags_tag.dart';
 class GetTagsResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
-  final String packageName;
+  final String? id;
+  final String? location;
+  final String? packageName;
   final String? project;
-  final String repositoryId;
+  final String? repositoryId;
   /// A list of all retrieved Artifact Registry tags. Structure is defined below.
-  final List<GetTagsTag> tags;
+  final List<GetTagsTag>? tags;
 
   /// Creates a new [GetTagsResult].
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
-  /// [packageName] Required.
+  /// [location] Optional.
+  /// [packageName] Optional.
   /// [project] Optional.
-  /// [repositoryId] Required.
+  /// [repositoryId] Optional.
   /// [tags] A list of all retrieved Artifact Registry tags. Structure is defined below.
   const GetTagsResult({
     this.filter,
-    required this.id,
-    required this.location,
-    required this.packageName,
+    this.id,
+    this.location,
+    this.packageName,
     this.project,
-    required this.repositoryId,
-    required this.tags,
+    this.repositoryId,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'id': id,
-      'location': location,
-      'packageName': packageName,
+      'id': ?id,
+      'location': ?location,
+      'packageName': ?packageName,
       'project': ?project,
-      'repositoryId': repositoryId,
-      'tags': pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'repositoryId': ?repositoryId,
+      'tags': ?(() { final guardedValue = tags; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetTagsResult.fromMap(Map<String, dynamic> map) {
     return GetTagsResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      packageName: map['packageName'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      packageName: (() { final guardedValue = map['packageName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      repositoryId: map['repositoryId'] as String,
-      tags: pulumi.Input.decodeList<GetTagsTag>(map['tags']!, (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),
+      repositoryId: (() { final guardedValue = map['repositoryId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTagsTag>(guardedValue, (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'datascan_execution_spec_trigger.dart';
 
 class DatascanExecutionSpec {
   /// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// Spec related to how often and when a scan should be triggered.
   /// Structure is documented below.
   final pulumi.Input<DatascanExecutionSpecTrigger> trigger;

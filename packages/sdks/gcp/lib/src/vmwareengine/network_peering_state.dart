@@ -7,54 +7,54 @@ class NetworkPeeringState {
   /// Creation time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this network peering.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// True if custom routes are exported to the peered network; false otherwise.
-  final pulumi.Input<bool>? exportCustomRoutes;
+  final pulumi.Input<bool?>? exportCustomRoutes;
   /// True if all subnet routes with a public IP address range are exported; false otherwise.
-  final pulumi.Input<bool>? exportCustomRoutesWithPublicIp;
+  final pulumi.Input<bool?>? exportCustomRoutesWithPublicIp;
   /// True if custom routes are imported from the peered network; false otherwise.
-  final pulumi.Input<bool>? importCustomRoutes;
+  final pulumi.Input<bool?>? importCustomRoutes;
   /// True if custom routes are imported from the peered network; false otherwise.
-  final pulumi.Input<bool>? importCustomRoutesWithPublicIp;
+  final pulumi.Input<bool?>? importCustomRoutesWithPublicIp;
   /// The ID of the Network Peering.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The relative resource name of the network to peer with a standard VMware Engine network.
   /// The provided network can be a consumer VPC network or another standard VMware Engine network.
-  final pulumi.Input<String>? peerNetwork;
+  final pulumi.Input<String?>? peerNetwork;
   /// The type of the network to peer with the VMware Engine network.
   /// Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
-  final pulumi.Input<String>? peerNetworkType;
+  final pulumi.Input<String?>? peerNetworkType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// State of the network peering.
   /// This field has a value of 'ACTIVE' when there's a matching configuration in the peer network.
   /// New values may be added to this enum when appropriate.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Details about the current state of the network peering.
-  final pulumi.Input<String>? stateDetails;
+  final pulumi.Input<String?>? stateDetails;
   /// System-generated unique identifier for the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
   /// can either be a project number or a project ID.
-  final pulumi.Input<String>? vmwareEngineNetwork;
+  final pulumi.Input<String?>? vmwareEngineNetwork;
   /// The canonical name of the VMware Engine network in the form:
   /// projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
-  final pulumi.Input<String>? vmwareEngineNetworkCanonical;
+  final pulumi.Input<String?>? vmwareEngineNetworkCanonical;
 
   /// Creates a new [NetworkPeeringState].
   /// [createTime] Creation time of this resource.

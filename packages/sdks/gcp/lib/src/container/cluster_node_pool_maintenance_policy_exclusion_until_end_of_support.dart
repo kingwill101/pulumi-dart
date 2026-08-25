@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport {
   /// Whether to enable the maintenance exclusion until the end of support for this NodePool.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// End time of the maintenance exclusion.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Start time of the maintenance exclusion.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport].
   /// [enabled] Whether to enable the maintenance exclusion until the end of support for this NodePool.

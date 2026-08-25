@@ -26,7 +26,7 @@ class GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
   factory GetClusterNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigGuestAcceleratorGpuSharingConfig(
       gpuSharingStrategy: pulumi.Input.fromValue(map['gpuSharingStrategy'] as String),
-      maxSharedClientsPerGpu: pulumi.Input.fromValue(map['maxSharedClientsPerGpu'] as int),
+      maxSharedClientsPerGpu: pulumi.Input.fromValue((map['maxSharedClientsPerGpu'] as num).toInt()),
     );
   }
 }

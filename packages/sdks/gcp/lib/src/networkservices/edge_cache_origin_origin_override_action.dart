@@ -8,11 +8,11 @@ class EdgeCacheOriginOriginOverrideAction {
   /// The header actions, including adding and removing
   /// headers, for request handled by this origin.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheOriginOriginOverrideActionHeaderAction>? headerAction;
+  final pulumi.Input<EdgeCacheOriginOriginOverrideActionHeaderAction?>? headerAction;
   /// The URL rewrite configuration for request that are
   /// handled by this origin.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheOriginOriginOverrideActionUrlRewrite>? urlRewrite;
+  final pulumi.Input<EdgeCacheOriginOriginOverrideActionUrlRewrite?>? urlRewrite;
 
   /// Creates a new [EdgeCacheOriginOriginOverrideAction].
   /// [headerAction] The header actions, including adding and removing

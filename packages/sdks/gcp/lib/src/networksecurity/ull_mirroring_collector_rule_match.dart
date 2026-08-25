@@ -7,15 +7,15 @@ class UllMirroringCollectorRuleMatch {
   /// Possible values:
   /// INGRESS: Traffic inbound to the capture point.
   /// EGRESS: Traffic outbound from the capture point.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Destination IP ranges to match. When unset, matches any destination IP
   /// range.
-  final pulumi.Input<List<String>>? dstIpRanges;
+  final pulumi.Input<List<String>?>? dstIpRanges;
   /// IP protocols to match. When unset, matches any IP protocol.
   /// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
-  final pulumi.Input<List<String>>? ipProtocols;
+  final pulumi.Input<List<String>?>? ipProtocols;
   /// Source IP ranges to match. When unset, matches any source IP range.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
 
   /// Creates a new [UllMirroringCollectorRuleMatch].
   /// [direction] Direction of traffic to match. When unset, matches any direction.

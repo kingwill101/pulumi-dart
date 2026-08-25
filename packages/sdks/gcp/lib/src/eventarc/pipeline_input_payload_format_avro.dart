@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineInputPayloadFormatAvro {
   /// The entire schema definition is stored in this field.
-  final pulumi.Input<String>? schemaDefinition;
+  final pulumi.Input<String?>? schemaDefinition;
 
   /// Creates a new [PipelineInputPayloadFormatAvro].
   /// [schemaDefinition] The entire schema definition is stored in this field.

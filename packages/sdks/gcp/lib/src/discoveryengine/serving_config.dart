@@ -65,19 +65,19 @@ class ServingConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/servingConfig:ServingConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    boostControlIds = registerOutput<List<String>?>('boostControlIds');
+    boostControlIds = registerOutput<List<String>?>('boostControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     collectionId = registerOutput<String?>('collectionId');
     engineId = registerOutput<String>('engineId');
-    filterControlIds = registerOutput<List<String>?>('filterControlIds');
+    filterControlIds = registerOutput<List<String>?>('filterControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    promoteControlIds = registerOutput<List<String>?>('promoteControlIds');
-    redirectControlIds = registerOutput<List<String>?>('redirectControlIds');
+    promoteControlIds = registerOutput<List<String>?>('promoteControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    redirectControlIds = registerOutput<List<String>?>('redirectControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     servingConfigId = registerOutput<String?>('servingConfigId');
-    synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds');
+    synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ServingConfig] resource's state with the given [name] and [id].
@@ -85,11 +85,12 @@ class ServingConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServingConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServingConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -103,16 +104,38 @@ class ServingConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    boostControlIds = registerOutput<List<String>?>('boostControlIds');
+    boostControlIds = registerOutput<List<String>?>('boostControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     collectionId = registerOutput<String?>('collectionId');
     engineId = registerOutput<String>('engineId');
-    filterControlIds = registerOutput<List<String>?>('filterControlIds');
+    filterControlIds = registerOutput<List<String>?>('filterControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    promoteControlIds = registerOutput<List<String>?>('promoteControlIds');
-    redirectControlIds = registerOutput<List<String>?>('redirectControlIds');
+    promoteControlIds = registerOutput<List<String>?>('promoteControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    redirectControlIds = registerOutput<List<String>?>('redirectControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     servingConfigId = registerOutput<String?>('servingConfigId');
-    synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds');
+    synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ServingConfig] resource.
+  ServingConfig.reference(String urn)
+    : super(
+        'gcp:discoveryengine/servingConfig:ServingConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    boostControlIds = registerOutput<List<String>?>('boostControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    collectionId = registerOutput<String?>('collectionId');
+    engineId = registerOutput<String>('engineId');
+    filterControlIds = registerOutput<List<String>?>('filterControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    promoteControlIds = registerOutput<List<String>?>('promoteControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    redirectControlIds = registerOutput<List<String>?>('redirectControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    servingConfigId = registerOutput<String?>('servingConfigId');
+    synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -5,35 +5,35 @@ import 'get_project_project.dart';
 
 /// Result data returned by getProject.
 class GetProjectResult {
-  final String filter;
+  final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of projects matching the provided filter. Structure is defined below.
-  final List<GetProjectProject> projects;
+  final List<GetProjectProject>? projects;
 
   /// Creates a new [GetProjectResult].
-  /// [filter] Required.
+  /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [projects] A list of projects matching the provided filter. Structure is defined below.
   const GetProjectResult({
-    required this.filter,
-    required this.id,
-    required this.projects,
+    this.filter,
+    this.id,
+    this.projects,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': filter,
-      'id': id,
-      'projects': pulumi.Input.encodeList<GetProjectProject, Map<String, dynamic>>(projects, (value) => value.toMap()),
+      'filter': ?filter,
+      'id': ?id,
+      'projects': ?(() { final guardedValue = projects; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetProjectProject, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetProjectResult.fromMap(Map<String, dynamic> map) {
     return GetProjectResult(
-      filter: map['filter'] as String,
-      id: map['id'] as String,
-      projects: pulumi.Input.decodeList<GetProjectProject>(map['projects']!, (value) => GetProjectProject.fromMap((value as Map).cast<String, dynamic>())),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      projects: (() { final guardedValue = map['projects']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetProjectProject>(guardedValue, (value) => GetProjectProject.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

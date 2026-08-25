@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_canary_deploymen
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig {
   /// Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
-  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask>>? tasks;
+  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTask>?>? tasks;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig].
   /// [tasks] Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.

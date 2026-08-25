@@ -11,35 +11,35 @@ import 'big_query_export_udm_events_settings.dart';
 class BigQueryExportState {
   /// The BigQueryExportPackage entitled for the Chronicle instance.
   /// Possible values are: `BIG_QUERY_EXPORT_PACKAGE_BYOBQ`, `BIG_QUERY_EXPORT_PACKAGE_ADVANCED`.
-  final pulumi.Input<String>? bigQueryExportPackage;
+  final pulumi.Input<String?>? bigQueryExportPackage;
   /// The export settings for a data source.
   /// Structure is documented below.
-  final pulumi.Input<BigQueryExportEntityGraphSettings>? entityGraphSettings;
+  final pulumi.Input<BigQueryExportEntityGraphSettings?>? entityGraphSettings;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The export settings for a data source.
   /// Structure is documented below.
-  final pulumi.Input<BigQueryExportIocMatchesSettings>? iocMatchesSettings;
+  final pulumi.Input<BigQueryExportIocMatchesSettings?>? iocMatchesSettings;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the BigQueryExport.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/bigQueryExport
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Whether the BigQueryExport has been provisioned for the Chronicle instance.
-  final pulumi.Input<bool>? provisioned;
+  final pulumi.Input<bool?>? provisioned;
   /// The export settings for a data source.
   /// Structure is documented below.
-  final pulumi.Input<BigQueryExportRuleDetectionsSettings>? ruleDetectionsSettings;
+  final pulumi.Input<BigQueryExportRuleDetectionsSettings?>? ruleDetectionsSettings;
   /// The export settings for a data source.
   /// Structure is documented below.
-  final pulumi.Input<BigQueryExportUdmEventsAggregatesSettings>? udmEventsAggregatesSettings;
+  final pulumi.Input<BigQueryExportUdmEventsAggregatesSettings?>? udmEventsAggregatesSettings;
   /// The export settings for a data source.
   /// Structure is documented below.
-  final pulumi.Input<BigQueryExportUdmEventsSettings>? udmEventsSettings;
+  final pulumi.Input<BigQueryExportUdmEventsSettings?>? udmEventsSettings;
 
   /// Creates a new [BigQueryExportState].
   /// [bigQueryExportPackage] The BigQueryExportPackage entitled for the Chronicle instance.

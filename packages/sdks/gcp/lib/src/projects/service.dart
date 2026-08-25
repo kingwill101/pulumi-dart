@@ -188,7 +188,7 @@ class Service extends pulumi.CustomResource {
           'gcp:projects/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     checkIfServiceHasUsageOnDestroy = registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -203,11 +203,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -221,6 +222,23 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    checkIfServiceHasUsageOnDestroy = registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disableDependentServices = registerOutput<bool?>('disableDependentServices');
+    disableOnDestroy = registerOutput<bool?>('disableOnDestroy');
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'gcp:projects/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     checkIfServiceHasUsageOnDestroy = registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableDependentServices = registerOutput<bool?>('disableDependentServices');

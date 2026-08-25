@@ -7,12 +7,12 @@ import 'cluster_storage_resource_config_new_bucket_hierarchical_namespace.dart';
 class ClusterStorageResourceConfigNewBucket {
   /// Message describing Google Cloud Storage autoclass configuration
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigNewBucketAutoclass>? autoclass;
+  final pulumi.Input<ClusterStorageResourceConfigNewBucketAutoclass?>? autoclass;
   /// Name of the Cloud Storage bucket to create.
   final pulumi.Input<String> bucket;
   /// Message describing Google Cloud Storage hierarchical namespace configuration
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigNewBucketHierarchicalNamespace>? hierarchicalNamespace;
+  final pulumi.Input<ClusterStorageResourceConfigNewBucketHierarchicalNamespace?>? hierarchicalNamespace;
   /// If set, uses the provided storage class as the bucket's default storage
   /// class.
   /// Possible values:
@@ -20,7 +20,7 @@ class ClusterStorageResourceConfigNewBucket {
   /// NEARLINE
   /// COLDLINE
   /// ARCHIVE
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
 
   /// Creates a new [ClusterStorageResourceConfigNewBucket].
   /// [autoclass] Message describing Google Cloud Storage autoclass configuration

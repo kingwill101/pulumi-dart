@@ -10,7 +10,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRec
   /// `context-events` in addition to `view-item`, `media-play`, and
   /// `media-complete`. Currently supported for the `recommended-for-you`
   /// engine. Currently supported values: `view-home-page`, `generic`.
-  final pulumi.Input<String>? contextEventType;
+  final pulumi.Input<String?>? contextEventType;
 
   /// Creates a new [RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig].
   /// [contextEventType] The type of event with which the engine is queried at prediction time.

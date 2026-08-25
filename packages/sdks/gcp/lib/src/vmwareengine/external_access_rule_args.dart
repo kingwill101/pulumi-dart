@@ -18,9 +18,9 @@ class ExternalAccessRuleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for the external access rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If destination ranges are specified, the external access rule applies only to
   /// traffic that has a destination IP address in these ranges.
   /// Structure is documented below.
@@ -30,7 +30,7 @@ class ExternalAccessRuleArgs {
   /// The IP protocol to which the external access rule applies.
   final pulumi.Input<String> ipProtocol;
   /// The ID of the external access rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource name of the network policy.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
@@ -96,7 +96,7 @@ class ExternalAccessRuleArgs {
       ipProtocol: pulumi.Input.fromValue(map['ipProtocol'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       sourceIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges']!, (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))),
       sourcePorts: pulumi.Input.fromValue((map['sourcePorts'] as List).cast<String>()),
     );

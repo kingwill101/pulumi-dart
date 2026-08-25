@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolWidgetToolTextResponseConfig {
   /// Optional. The static text response to return when type is STATIC.
-  final pulumi.Input<String>? staticText;
+  final pulumi.Input<String?>? staticText;
   /// Optional. Instruction for the LLM on how to generate the text response. Used as
   /// the description for the text response parameter if type is LLM_GENERATED.
-  final pulumi.Input<String>? textResponseInstruction;
+  final pulumi.Input<String?>? textResponseInstruction;
   /// Optional. The strategy for providing the text response.
   /// Possible values:
   /// TYPE_UNSPECIFIED
@@ -15,7 +15,7 @@ class ToolWidgetToolTextResponseConfig {
   /// LLM_GENERATED
   /// STATIC
   /// Possible values are: `TYPE_UNSPECIFIED`, `NONE`, `LLM_GENERATED`, `STATIC`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ToolWidgetToolTextResponseConfig].
   /// [staticText] Optional. The static text response to return when type is STATIC.

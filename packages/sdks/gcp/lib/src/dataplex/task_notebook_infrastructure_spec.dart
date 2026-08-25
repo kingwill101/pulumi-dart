@@ -8,13 +8,13 @@ import 'task_notebook_infrastructure_spec_vpc_network.dart';
 class TaskNotebookInfrastructureSpec {
   /// Compute resources needed for a Task when using Dataproc Serverless.
   /// Structure is documented below.
-  final pulumi.Input<TaskNotebookInfrastructureSpecBatch>? batch;
+  final pulumi.Input<TaskNotebookInfrastructureSpecBatch?>? batch;
   /// Container Image Runtime Configuration.
   /// Structure is documented below.
-  final pulumi.Input<TaskNotebookInfrastructureSpecContainerImage>? containerImage;
+  final pulumi.Input<TaskNotebookInfrastructureSpecContainerImage?>? containerImage;
   /// Vpc network.
   /// Structure is documented below.
-  final pulumi.Input<TaskNotebookInfrastructureSpecVpcNetwork>? vpcNetwork;
+  final pulumi.Input<TaskNotebookInfrastructureSpecVpcNetwork?>? vpcNetwork;
 
   /// Creates a new [TaskNotebookInfrastructureSpec].
   /// [batch] Compute resources needed for a Task when using Dataproc Serverless.

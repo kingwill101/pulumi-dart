@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAutomatedBackupPolicyQuantityBasedRetention {
   /// The number of backups to retain.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
 
   /// Creates a new [ClusterAutomatedBackupPolicyQuantityBasedRetention].
   /// [count] The number of backups to retain.
@@ -20,7 +20,7 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetention {
 
   factory ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicyQuantityBasedRetention(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

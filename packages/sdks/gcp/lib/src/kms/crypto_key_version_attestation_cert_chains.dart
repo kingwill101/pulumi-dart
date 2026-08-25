@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CryptoKeyVersionAttestationCertChains {
   /// Cavium certificate chain corresponding to the attestation.
-  final pulumi.Input<List<String>>? caviumCerts;
+  final pulumi.Input<List<String>?>? caviumCerts;
   /// Google card certificate chain corresponding to the attestation.
-  final pulumi.Input<List<String>>? googleCardCerts;
+  final pulumi.Input<List<String>?>? googleCardCerts;
   /// Google partition certificate chain corresponding to the attestation.
-  final pulumi.Input<List<String>>? googlePartitionCerts;
+  final pulumi.Input<List<String>?>? googlePartitionCerts;
 
   /// Creates a new [CryptoKeyVersionAttestationCertChains].
   /// [caviumCerts] Cavium certificate chain corresponding to the attestation.

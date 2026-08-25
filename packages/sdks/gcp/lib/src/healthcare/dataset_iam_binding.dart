@@ -710,12 +710,12 @@ class DatasetIamBinding extends pulumi.CustomResource {
           'gcp:healthcare/datasetIamBinding:DatasetIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<DatasetIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 
@@ -724,11 +724,12 @@ class DatasetIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -745,7 +746,23 @@ class DatasetIamBinding extends pulumi.CustomResource {
     condition = registerOutput<DatasetIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [DatasetIamBinding] resource.
+  DatasetIamBinding.reference(String urn)
+    : super(
+        'gcp:healthcare/datasetIamBinding:DatasetIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<DatasetIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 }

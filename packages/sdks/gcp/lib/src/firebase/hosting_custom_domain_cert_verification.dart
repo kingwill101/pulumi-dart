@@ -8,11 +8,11 @@ class HostingCustomDomainCertVerification {
   /// A `TXT` record to add to your DNS records that confirms your intent to
   /// let Hosting create an SSL cert for your domain name.
   /// Structure is documented below.
-  final pulumi.Input<HostingCustomDomainCertVerificationDns>? dns;
+  final pulumi.Input<HostingCustomDomainCertVerificationDns?>? dns;
   /// A file to add to your existing, non-Hosting hosting service that confirms
   /// your intent to let Hosting create an SSL cert for your domain name.
   /// Structure is documented below.
-  final pulumi.Input<HostingCustomDomainCertVerificationHttp>? http;
+  final pulumi.Input<HostingCustomDomainCertVerificationHttp?>? http;
 
   /// Creates a new [HostingCustomDomainCertVerification].
   /// [dns] A `TXT` record to add to your DNS records that confirms your intent to

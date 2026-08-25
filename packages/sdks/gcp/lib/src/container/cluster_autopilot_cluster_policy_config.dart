@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAutopilotClusterPolicyConfig {
   /// Whether to block non autopilot managed node pools in the cluster.
-  final pulumi.Input<bool>? noStandardNodePools;
+  final pulumi.Input<bool?>? noStandardNodePools;
   /// Whether to block impersonation of system accounts in the cluster.
-  final pulumi.Input<bool>? noSystemImpersonation;
+  final pulumi.Input<bool?>? noSystemImpersonation;
   /// Whether to block mutation of resources in system namespaces and non-namespaced system resources.
-  final pulumi.Input<bool>? noSystemMutation;
+  final pulumi.Input<bool?>? noSystemMutation;
   /// Whether to block unsafe webhooks in the cluster.
-  final pulumi.Input<bool>? noUnsafeWebhooks;
+  final pulumi.Input<bool?>? noUnsafeWebhooks;
 
   /// Creates a new [ClusterAutopilotClusterPolicyConfig].
   /// [noStandardNodePools] Whether to block non autopilot managed node pools in the cluster.

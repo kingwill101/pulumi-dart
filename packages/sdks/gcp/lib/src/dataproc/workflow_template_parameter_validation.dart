@@ -6,9 +6,9 @@ import 'workflow_template_parameter_validation_values.dart';
 
 class WorkflowTemplateParameterValidation {
   /// Validation based on regular expressions.
-  final pulumi.Input<WorkflowTemplateParameterValidationRegex>? regex;
+  final pulumi.Input<WorkflowTemplateParameterValidationRegex?>? regex;
   /// Validation based on a list of allowed values.
-  final pulumi.Input<WorkflowTemplateParameterValidationValues>? values;
+  final pulumi.Input<WorkflowTemplateParameterValidationValues?>? values;
 
   /// Creates a new [WorkflowTemplateParameterValidation].
   /// [regex] Validation based on regular expressions.

@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateDeploymentPropertiesOggDataGroupRolesMapping {
   /// (Output)
   /// The administrator group id.
-  final pulumi.Input<String>? administratorGroupId;
+  final pulumi.Input<String?>? administratorGroupId;
   /// (Output)
   /// The operator group id.
-  final pulumi.Input<String>? operatorGroupId;
+  final pulumi.Input<String?>? operatorGroupId;
   /// (Output)
   /// The security group id.
-  final pulumi.Input<String>? securityGroupId;
+  final pulumi.Input<String?>? securityGroupId;
   /// (Output)
   /// The user group id.
   ///
   /// &lt;a name="nestedPropertiesPlacements"&gt;&lt;/a&gt;The `placements` block contains:
-  final pulumi.Input<String>? userGroupId;
+  final pulumi.Input<String?>? userGroupId;
 
   /// Creates a new [GoldengateDeploymentPropertiesOggDataGroupRolesMapping].
   /// [administratorGroupId] (Output)

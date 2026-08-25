@@ -6,7 +6,7 @@ class ServiceTemplateSandboxesTemplateEnv {
   /// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
   final pulumi.Input<String> name;
   /// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ServiceTemplateSandboxesTemplateEnv].
   /// [name] Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.

@@ -5,68 +5,68 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Job resources.
 class JobState {
   /// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
-  final pulumi.Input<List<String>>? additionalExperiments;
+  final pulumi.Input<List<String>?>? additionalExperiments;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
-  final pulumi.Input<bool>? enableStreamingEngine;
+  final pulumi.Input<bool?>? enableStreamingEngine;
   /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
-  final pulumi.Input<String>? ipConfiguration;
+  final pulumi.Input<String?>? ipConfiguration;
   /// The unique ID of this job.
-  final pulumi.Input<String>? jobId;
+  final pulumi.Input<String?>? jobId;
   /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// User labels to be specified for the job. Keys and values should follow the restrictions
   /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The machine type to use for the job.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
-  final pulumi.Input<int>? maxWorkers;
+  final pulumi.Input<int?>? maxWorkers;
   /// A unique name for the resource, required by Dataflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network to which VMs will be assigned. If it is not provided, "default" will be used.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
-  final pulumi.Input<String>? onDelete;
+  final pulumi.Input<String?>? onDelete;
   /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
   /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
   /// **Note**: do not configure Dataflow options here in parameters.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The region in which the created job should run.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
-  final pulumi.Input<bool>? skipWaitOnJobTermination;
+  final pulumi.Input<bool?>? skipWaitOnJobTermination;
   /// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
   /// A writeable location on GCS for the Dataflow job to dump its temporary data.
   ///
   /// - - -
-  final pulumi.Input<String>? tempGcsLocation;
+  final pulumi.Input<String?>? tempGcsLocation;
   /// The GCS path to the Dataflow job template.
-  final pulumi.Input<String>? templateGcsPath;
+  final pulumi.Input<String?>? templateGcsPath;
   /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
-  final pulumi.Input<Map<String, String>>? transformNameMapping;
+  final pulumi.Input<Map<String, String>?>? transformNameMapping;
   /// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The zone in which the created job should run. If it is not provided, the provider zone is used.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [JobState].
   /// [additionalExperiments] List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
@@ -166,7 +166,7 @@ class JobState {
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxWorkers: (() { final guardedValue = map['maxWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxWorkers: (() { final guardedValue = map['maxWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onDelete: (() { final guardedValue = map['onDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

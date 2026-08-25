@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionSecurityPolicyRuleRateLimitOptionsBanThreshold {
   /// Number of HTTP(S) requests for calculating the threshold.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Interval over which the threshold is computed.
-  final pulumi.Input<int>? intervalSec;
+  final pulumi.Input<int?>? intervalSec;
 
   /// Creates a new [RegionSecurityPolicyRuleRateLimitOptionsBanThreshold].
   /// [count] Number of HTTP(S) requests for calculating the threshold.
@@ -25,8 +25,8 @@ class RegionSecurityPolicyRuleRateLimitOptionsBanThreshold {
 
   factory RegionSecurityPolicyRuleRateLimitOptionsBanThreshold.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleRateLimitOptionsBanThreshold(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      intervalSec: (() { final guardedValue = map['intervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      intervalSec: (() { final guardedValue = map['intervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -12,21 +12,21 @@ class URLMapPathMatcherPathRuleRouteActionCachePolicyCacheKeyPolicy {
   /// error. For routes that point to a Backend Bucket, use
   /// includedQueryParameters to define which parameters should be part of
   /// the cache key.
-  final pulumi.Input<List<String>>? excludedQueryParameters;
+  final pulumi.Input<List<String>?>? excludedQueryParameters;
   /// If true, requests to different hosts will be cached separately. Note:
   /// This setting is only applicable to routes that use a Backend Service.
   /// It does not affect requests served by a Backend Bucket, as the host is
   /// never included in a Backend Bucket's cache key. Attempting to set it on
   /// a route that points exclusively to Backend Buckets will result in a
   /// configuration error.
-  final pulumi.Input<bool>? includeHost;
+  final pulumi.Input<bool?>? includeHost;
   /// If true, http and https requests will be cached separately. Note: This
   /// setting is only applicable to routes that use a Backend Service. It
   /// does not affect requests served by a Backend Bucket, as the protocol is
   /// never included in a Backend Bucket's cache key. Attempting to set on a
   /// route that points exclusively to Backend Buckets will result in a
   /// configuration error.
-  final pulumi.Input<bool>? includeProtocol;
+  final pulumi.Input<bool?>? includeProtocol;
   /// If true, include query string parameters in the cache key according to
   /// includedQueryParameters and excludedQueryParameters. If neither is
   /// set, the entire query string will be included. If false, the query
@@ -36,7 +36,7 @@ class URLMapPathMatcherPathRuleRouteActionCachePolicyCacheKeyPolicy {
   /// configuration error. For routes that point to a Backend Bucket, use
   /// includedQueryParameters to define which parameters should be part of
   /// the cache key.
-  final pulumi.Input<bool>? includeQueryString;
+  final pulumi.Input<bool?>? includeQueryString;
   /// Allows HTTP cookies (by name) to be used in the cache key. The
   /// name=value pair will be used in the cache key Cloud CDN generates.
   /// Note: This setting is only applicable to routes that use a Backend
@@ -44,14 +44,14 @@ class URLMapPathMatcherPathRuleRouteActionCachePolicyCacheKeyPolicy {
   /// Attempting to set it on a route that points exclusively to Backend
   /// Buckets will result in a configuration error. Up to 5 cookie names can
   /// be specified.
-  final pulumi.Input<List<String>>? includedCookieNames;
+  final pulumi.Input<List<String>?>? includedCookieNames;
   /// Allows HTTP request headers (by name) to be used in the cache key.
-  final pulumi.Input<List<String>>? includedHeaderNames;
+  final pulumi.Input<List<String>?>? includedHeaderNames;
   /// Names of query string parameters to include in cache keys. All other
   /// parameters will be excluded. Either specify includedQueryParameters
   /// or excludedQueryParameters, not both. '&' and '=' will be percent
   /// encoded and not treated as delimiters.
-  final pulumi.Input<List<String>>? includedQueryParameters;
+  final pulumi.Input<List<String>?>? includedQueryParameters;
 
   /// Creates a new [URLMapPathMatcherPathRuleRouteActionCachePolicyCacheKeyPolicy].
   /// [excludedQueryParameters] Names of query string parameters to exclude in cache keys. All other

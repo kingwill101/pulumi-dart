@@ -26,7 +26,7 @@ class SecurityGatewayApplicationUpstreamExternalEndpoint {
   factory SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamExternalEndpoint(
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

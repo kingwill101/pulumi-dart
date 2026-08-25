@@ -6,7 +6,7 @@ import 'stream_source_config_oracle_source_config_exclude_objects_oracle_schema_
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>>? oracleTables;
+  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>?>? oracleTables;
   /// Schema name.
   final pulumi.Input<String> schema;
 

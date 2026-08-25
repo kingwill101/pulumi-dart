@@ -492,7 +492,7 @@ class GatewaySecurityPolicyRule extends pulumi.CustomResource {
           'gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     applicationMatcher = registerOutput<String?>('applicationMatcher');
     basicProfile = registerOutput<String>('basicProfile');
@@ -516,11 +516,12 @@ class GatewaySecurityPolicyRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewaySecurityPolicyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewaySecurityPolicyRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -534,6 +535,32 @@ class GatewaySecurityPolicyRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationMatcher = registerOutput<String?>('applicationMatcher');
+    basicProfile = registerOutput<String>('basicProfile');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    gatewaySecurityPolicy = registerOutput<String>('gatewaySecurityPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sessionMatcher = registerOutput<String>('sessionMatcher');
+    tlsInspectionEnabled = registerOutput<bool?>('tlsInspectionEnabled');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GatewaySecurityPolicyRule] resource.
+  GatewaySecurityPolicyRule.reference(String urn)
+    : super(
+        'gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationMatcher = registerOutput<String?>('applicationMatcher');
     basicProfile = registerOutput<String>('basicProfile');
     createTime = registerOutput<String>('createTime');

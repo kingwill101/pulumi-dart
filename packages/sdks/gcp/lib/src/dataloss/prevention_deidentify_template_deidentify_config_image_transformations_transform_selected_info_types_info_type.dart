@@ -8,9 +8,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
   final pulumi.Input<String> name;
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore>? sensitivityScore;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore?>? sensitivityScore;
   /// Version name for this InfoType.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType].
   /// [name] Name of the information type.

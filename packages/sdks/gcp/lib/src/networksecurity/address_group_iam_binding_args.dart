@@ -8,12 +8,12 @@ import 'address_group_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networksecurity_address_group_iam_binding_address_group_iam_binding_args_doc}
 class AddressGroupIamBindingArgs {
-  final pulumi.Input<AddressGroupIamBindingCondition>? condition;
+  final pulumi.Input<AddressGroupIamBindingCondition?>? condition;
   /// The location of the gateway security policy.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -28,10 +28,10 @@ class AddressGroupIamBindingArgs {
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<List<String>> members;
   /// Used to find the parent resource to bind the IAM policy to
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.networksecurity.AddressGroupIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

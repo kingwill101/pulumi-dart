@@ -10,14 +10,14 @@ import 'access_levels_access_level.dart';
 class AccessLevelsArgs {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
-  final pulumi.Input<List<AccessLevelsAccessLevel>>? accessLevels;
+  final pulumi.Input<List<AccessLevelsAccessLevel>?>? accessLevels;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   final pulumi.Input<String> parent;

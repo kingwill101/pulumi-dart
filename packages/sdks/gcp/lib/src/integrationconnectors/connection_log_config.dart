@@ -7,7 +7,7 @@ class ConnectionLogConfig {
   final pulumi.Input<bool> enabled;
   /// Log configuration level.
   /// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `ERROR`, `INFO`, `DEBUG`.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
 
   /// Creates a new [ConnectionLogConfig].
   /// [enabled] Enabled represents whether logging is enabled or not for a connection.

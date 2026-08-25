@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRule {
   /// Fully qualified proto attribute path (in dot notation).
   /// Example: rules[0].cel_expression.resource_types_values
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
 
   /// Creates a new [CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRule].
   /// [attribute] Fully qualified proto attribute path (in dot notation).

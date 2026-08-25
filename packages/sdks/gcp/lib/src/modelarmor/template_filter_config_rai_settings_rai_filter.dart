@@ -7,7 +7,7 @@ class TemplateFilterConfigRaiSettingsRaiFilter {
   /// LOW_AND_ABOVE
   /// MEDIUM_AND_ABOVE
   /// HIGH
-  final pulumi.Input<String>? confidenceLevel;
+  final pulumi.Input<String?>? confidenceLevel;
   /// Possible values:
   /// SEXUALLY_EXPLICIT
   /// HATE_SPEECH

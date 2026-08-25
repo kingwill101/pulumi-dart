@@ -139,6 +139,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apphub/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Get information about a discovered service from its uri.
 ///
 ///
@@ -265,6 +276,17 @@ Future<GetDiscoveredServiceResult> getDiscoveredService(
   return GetDiscoveredServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetDiscoveredServiceResult> getDiscoveredServiceOutput(
+  GetDiscoveredServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apphub/getDiscoveredService:getDiscoveredService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoveredServiceResult.fromMap);
+}
+
 /// Get information about a discovered workload from its uri.
 ///
 ///
@@ -389,4 +411,15 @@ Future<GetDiscoveredWorkloadResult> getDiscoveredWorkload(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiscoveredWorkloadResult.fromMap(result);
+}
+
+pulumi.Output<GetDiscoveredWorkloadResult> getDiscoveredWorkloadOutput(
+  GetDiscoveredWorkloadArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoveredWorkloadResult.fromMap);
 }

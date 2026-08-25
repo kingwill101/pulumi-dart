@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadWorkloadPropertyFunctionalType {
   /// (Output)
   /// Output only. The functional type of a service or workload.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WorkloadWorkloadPropertyFunctionalType].
   /// [type] (Output)

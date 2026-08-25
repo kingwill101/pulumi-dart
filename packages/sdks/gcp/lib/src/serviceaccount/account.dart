@@ -175,7 +175,7 @@ class Account extends pulumi.CustomResource {
           'gcp:serviceaccount/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
@@ -195,11 +195,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,6 +214,28 @@ class Account extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String?>('displayName');
+    email = registerOutput<String>('email');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    uniqueId = registerOutput<String>('uniqueId');
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'gcp:serviceaccount/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     deletionPolicy = registerOutput<String>('deletionPolicy');

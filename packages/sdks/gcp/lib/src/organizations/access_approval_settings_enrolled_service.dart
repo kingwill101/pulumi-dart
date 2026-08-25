@@ -18,7 +18,7 @@ class AccessApprovalSettingsEnrolledService {
   /// The enrollment level of the service.
   /// Default value is `BLOCK_ALL`.
   /// Possible values are: `BLOCK_ALL`.
-  final pulumi.Input<String>? enrollmentLevel;
+  final pulumi.Input<String?>? enrollmentLevel;
 
   /// Creates a new [AccessApprovalSettingsEnrolledService].
   /// [cloudProduct] The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):

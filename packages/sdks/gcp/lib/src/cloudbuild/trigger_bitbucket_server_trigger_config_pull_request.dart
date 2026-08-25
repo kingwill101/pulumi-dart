@@ -7,9 +7,9 @@ class TriggerBitbucketServerTriggerConfigPullRequest {
   final pulumi.Input<String> branch;
   /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
   /// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
-  final pulumi.Input<String>? commentControl;
+  final pulumi.Input<String?>? commentControl;
   /// If true, branches that do NOT match the gitRef will trigger a build.
-  final pulumi.Input<bool>? invertRegex;
+  final pulumi.Input<bool?>? invertRegex;
 
   /// Creates a new [TriggerBitbucketServerTriggerConfigPullRequest].
   /// [branch] Regex of branches to match.

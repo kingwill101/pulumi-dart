@@ -7,7 +7,7 @@ class VMwareClusterValidationCheckStatus {
   /// (Output)
   /// Individual checks which failed as part of the Preflight check execution.
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareClusterValidationCheckStatusResult>>? results;
+  final pulumi.Input<List<VMwareClusterValidationCheckStatusResult>?>? results;
 
   /// Creates a new [VMwareClusterValidationCheckStatus].
   /// [results] (Output)

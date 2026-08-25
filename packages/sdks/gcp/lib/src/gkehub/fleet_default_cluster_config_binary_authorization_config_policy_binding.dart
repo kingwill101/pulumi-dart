@@ -6,7 +6,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
   /// The relative resource name of the binauthz platform policy to audit. GKE
   /// platform policies have the following format:
   /// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding].
   /// [name] The relative resource name of the binauthz platform policy to audit. GKE

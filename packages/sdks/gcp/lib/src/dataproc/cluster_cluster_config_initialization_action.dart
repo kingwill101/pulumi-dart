@@ -11,7 +11,7 @@ class ClusterClusterConfigInitializationAction {
   /// computed value if not set (currently 300).
   ///
   /// - - -
-  final pulumi.Input<int>? timeoutSec;
+  final pulumi.Input<int?>? timeoutSec;
 
   /// Creates a new [ClusterClusterConfigInitializationAction].
   /// [script] The script to be executed during initialization of the cluster.
@@ -31,7 +31,7 @@ class ClusterClusterConfigInitializationAction {
   factory ClusterClusterConfigInitializationAction.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigInitializationAction(
       script: pulumi.Input.fromValue(map['script'] as String),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

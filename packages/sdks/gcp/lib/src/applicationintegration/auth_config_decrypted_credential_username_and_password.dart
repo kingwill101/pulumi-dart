@@ -6,9 +6,9 @@ class AuthConfigDecryptedCredentialUsernameAndPassword {
   /// Password to be used.
   ///
   /// &lt;a name="nestedDecryptedCredentialOauth2AuthorizationCode"&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username to be used.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [AuthConfigDecryptedCredentialUsernameAndPassword].
   /// [password] Password to be used.

@@ -9,13 +9,13 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig 
   /// An object containing a list of key/value pairs.
   /// Example:
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>>? nodeConfigs;
+  final pulumi.Input<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>?>? nodeConfigs;
   /// The available Operating Systems to be run in a Node.
-  final pulumi.Input<String>? operatingSystem;
+  final pulumi.Input<String?>? operatingSystem;
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>>? taints;
+  final pulumi.Input<List<BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>?>? taints;
 
   /// Creates a new [BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig].
   /// [labels] The labels assigned to nodes of this node pool.

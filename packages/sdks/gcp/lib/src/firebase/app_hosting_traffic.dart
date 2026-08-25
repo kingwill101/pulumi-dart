@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_hosting_traffic_args.dart';
+import 'app_hosting_traffic_current.dart';
 import 'app_hosting_traffic_rollout_policy.dart';
 import 'app_hosting_traffic_state.dart';
 import 'app_hosting_traffic_target.dart';
@@ -1243,7 +1244,7 @@ class AppHostingTraffic extends pulumi.CustomResource {
   /// Current state of traffic allocation for the backend.
   /// When setting `target`, this field may differ for some time until the desired state is reached.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> currents;
+  late final pulumi.Output<List<AppHostingTrafficCurrent>> currents;
   /// Time at which the backend was deleted.
   late final pulumi.Output<String> deleteTime;
   /// Server-computed checksum based on other values; may be sent
@@ -1283,11 +1284,11 @@ class AppHostingTraffic extends pulumi.CustomResource {
           'gcp:firebase/appHostingTraffic:AppHostingTraffic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');
-    currents = registerOutput<List<Map<String, dynamic>>>('currents');
+    currents = registerOutput<List<AppHostingTrafficCurrent>>('currents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppHostingTrafficCurrent>(guardedValue, (value) => AppHostingTrafficCurrent.fromMap((value as Map).cast<String, dynamic>())); });
     deleteTime = registerOutput<String>('deleteTime');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -1304,11 +1305,12 @@ class AppHostingTraffic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppHostingTrafficState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppHostingTraffic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1324,7 +1326,30 @@ class AppHostingTraffic extends pulumi.CustomResource {
         ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');
-    currents = registerOutput<List<Map<String, dynamic>>>('currents');
+    currents = registerOutput<List<AppHostingTrafficCurrent>>('currents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppHostingTrafficCurrent>(guardedValue, (value) => AppHostingTrafficCurrent.fromMap((value as Map).cast<String, dynamic>())); });
+    deleteTime = registerOutput<String>('deleteTime');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rolloutPolicy = registerOutput<AppHostingTrafficRolloutPolicy?>('rolloutPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppHostingTrafficRolloutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    target = registerOutput<AppHostingTrafficTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppHostingTrafficTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AppHostingTraffic] resource.
+  AppHostingTraffic.reference(String urn)
+    : super(
+        'gcp:firebase/appHostingTraffic:AppHostingTraffic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backend = registerOutput<String>('backend');
+    createTime = registerOutput<String>('createTime');
+    currents = registerOutput<List<AppHostingTrafficCurrent>>('currents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppHostingTrafficCurrent>(guardedValue, (value) => AppHostingTrafficCurrent.fromMap((value as Map).cast<String, dynamic>())); });
     deleteTime = registerOutput<String>('deleteTime');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

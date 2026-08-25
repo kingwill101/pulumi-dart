@@ -8,11 +8,11 @@ import 'workforce_pool_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_iam_workforce_pool_iam_binding_workforce_pool_iam_binding_args_doc}
 class WorkforcePoolIamBindingArgs {
-  final pulumi.Input<WorkforcePoolIamBindingCondition>? condition;
+  final pulumi.Input<WorkforcePoolIamBindingCondition?>? condition;
   /// The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

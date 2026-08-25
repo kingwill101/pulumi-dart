@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
   /// When set network_config.advanced_networking is automatically
   /// set to true.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig].
   /// [enabled] When set network_config.advanced_networking is automatically

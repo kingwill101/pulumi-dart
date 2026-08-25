@@ -8,7 +8,7 @@ class V2QueuedResourceTpuNodeSpec {
   /// Structure is documented below.
   final pulumi.Input<V2QueuedResourceTpuNodeSpecNode> node;
   /// Unqualified node identifier used to identify the node in the project once provisioned.
-  final pulumi.Input<String>? nodeId;
+  final pulumi.Input<String?>? nodeId;
   /// The parent resource name.
   final pulumi.Input<String> parent;
 

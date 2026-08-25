@@ -505,7 +505,7 @@ class Schema extends pulumi.CustomResource {
           'gcp:pubsub/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     definition = registerOutput<String?>('definition');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -520,11 +520,12 @@ class Schema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -538,6 +539,23 @@ class Schema extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    definition = registerOutput<String?>('definition');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    revisionId = registerOutput<String>('revisionId');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'gcp:pubsub/schema:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     definition = registerOutput<String?>('definition');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');

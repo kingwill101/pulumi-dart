@@ -10,7 +10,7 @@ class SecurityProfileThreatPreventionProfileThreatOverride {
   final pulumi.Input<String> threatId;
   /// (Output)
   /// Type of threat.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SecurityProfileThreatPreventionProfileThreatOverride].
   /// [action] Threat action.

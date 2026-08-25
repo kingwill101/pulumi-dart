@@ -5,7 +5,7 @@ import 'posture_policy_set_policy.dart';
 
 class PosturePolicySet {
   /// Description of the policy set.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of security policy
   /// Structure is documented below.
   final pulumi.Input<List<PosturePolicySetPolicy>> policies;

@@ -5,11 +5,11 @@ import 'organization_custom_module_custom_config_custom_output_property_value_ex
 
 class OrganizationCustomModuleCustomConfigCustomOutputProperty {
   /// Name of the property for the custom output.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The CEL expression for the custom output. A resource property can be specified
   /// to return the value of the property or a text string enclosed in quotation marks.
   /// Structure is documented below.
-  final pulumi.Input<OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression>? valueExpression;
+  final pulumi.Input<OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression?>? valueExpression;
 
   /// Creates a new [OrganizationCustomModuleCustomConfigCustomOutputProperty].
   /// [name] Name of the property for the custom output.

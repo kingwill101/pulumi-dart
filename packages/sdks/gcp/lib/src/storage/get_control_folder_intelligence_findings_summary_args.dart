@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_control_folder_intelligence_findings_summary_get_control_folder_intelligence_findings_summary_args_doc}
 class GetControlFolderIntelligenceFindingsSummaryArgs {
   /// The filter expression. Supports filtering by FindingType.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The ID of the Google Cloud Folder.
   final pulumi.Input<String> folder;
   /// The location of the intelligence findings summary. Currently default value is global and users cannot use for input for now.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Determines the granularity of the findings when the parent is an organization or folder. Only supported when parent is an organization or folder. Possible values are PARENT and PROJECT. Default value is PARENT.
-  final pulumi.Input<String>? resourceScope;
+  final pulumi.Input<String?>? resourceScope;
 
   /// Creates a new [GetControlFolderIntelligenceFindingsSummaryArgs].
   /// [filter] The filter expression. Supports filtering by FindingType.

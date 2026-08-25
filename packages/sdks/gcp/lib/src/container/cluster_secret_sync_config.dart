@@ -7,7 +7,7 @@ class ClusterSecretSyncConfig {
   /// Enable the Sync as K8s secret feature for this cluster.
   final pulumi.Input<bool> enabled;
   /// config for secret sync auto rotation. Structure is docuemented below
-  final pulumi.Input<ClusterSecretSyncConfigRotationConfig>? rotationConfig;
+  final pulumi.Input<ClusterSecretSyncConfigRotationConfig?>? rotationConfig;
 
   /// Creates a new [ClusterSecretSyncConfig].
   /// [enabled] Enable the Sync as K8s secret feature for this cluster.

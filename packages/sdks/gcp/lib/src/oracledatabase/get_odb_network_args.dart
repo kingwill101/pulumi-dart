@@ -13,7 +13,7 @@ class GetOdbNetworkArgs {
   final pulumi.Input<String> odbNetworkId;
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetOdbNetworkArgs].
   /// [location] The location of the resource.

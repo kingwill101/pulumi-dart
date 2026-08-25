@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertPolicyCreationRecord {
   /// (Output)
   /// When the change occurred.
-  final pulumi.Input<String>? mutateTime;
+  final pulumi.Input<String?>? mutateTime;
   /// (Output)
   /// The email address of the user making the change.
-  final pulumi.Input<String>? mutatedBy;
+  final pulumi.Input<String?>? mutatedBy;
 
   /// Creates a new [AlertPolicyCreationRecord].
   /// [mutateTime] (Output)

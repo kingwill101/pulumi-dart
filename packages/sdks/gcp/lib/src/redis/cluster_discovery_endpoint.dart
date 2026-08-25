@@ -5,13 +5,13 @@ import 'cluster_discovery_endpoint_psc_config.dart';
 
 class ClusterDiscoveryEndpoint {
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Output only. The port number of the exposed Redis endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Output only. Customer configuration for where the endpoint
   /// is created and accessed from.
   /// Structure is documented below.
-  final pulumi.Input<ClusterDiscoveryEndpointPscConfig>? pscConfig;
+  final pulumi.Input<ClusterDiscoveryEndpointPscConfig?>? pscConfig;
 
   /// Creates a new [ClusterDiscoveryEndpoint].
   /// [address] Output only. The IP allocated on the consumer network for the PSC forwarding rule.
@@ -34,7 +34,7 @@ class ClusterDiscoveryEndpoint {
   factory ClusterDiscoveryEndpoint.fromMap(Map<String, dynamic> map) {
     return ClusterDiscoveryEndpoint(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pscConfig: (() { final guardedValue = map['pscConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDiscoveryEndpointPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

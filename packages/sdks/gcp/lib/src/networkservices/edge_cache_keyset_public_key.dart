@@ -8,11 +8,11 @@ class EdgeCacheKeysetPublicKey {
   /// which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
   final pulumi.Input<String> id;
   /// Set to true to have the CDN automatically manage this public key value.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
   /// The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
   /// Representations or encodings of the public key other than this will be rejected with an error.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EdgeCacheKeysetPublicKey].
   /// [id] The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.

@@ -276,7 +276,7 @@ class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResource {
           'gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cloudExadataInfrastructure = registerOutput<String>('cloudExadataInfrastructure');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -290,11 +290,12 @@ class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CloudExadataInfrastructureExascaleConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CloudExadataInfrastructureExascaleConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,6 +309,22 @@ class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudExadataInfrastructure = registerOutput<String>('cloudExadataInfrastructure');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    totalStorageSizeGb = registerOutput<int>('totalStorageSizeGb');
+  }
+
+  /// Creates a typed reference to an existing [CloudExadataInfrastructureExascaleConfig] resource.
+  CloudExadataInfrastructureExascaleConfig.reference(String urn)
+    : super(
+        'gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudExadataInfrastructure = registerOutput<String>('cloudExadataInfrastructure');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');

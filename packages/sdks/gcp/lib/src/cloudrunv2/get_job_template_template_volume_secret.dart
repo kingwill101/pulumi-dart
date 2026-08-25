@@ -31,7 +31,7 @@ class GetJobTemplateTemplateVolumeSecret {
 
   factory GetJobTemplateTemplateVolumeSecret.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateVolumeSecret(
-      defaultMode: pulumi.Input.fromValue(map['defaultMode'] as int),
+      defaultMode: pulumi.Input.fromValue((map['defaultMode'] as num).toInt()),
       items: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplateVolumeSecretItem>(map['items']!, (value) => GetJobTemplateTemplateVolumeSecretItem.fromMap((value as Map).cast<String, dynamic>()))),
       secret: pulumi.Input.fromValue(map['secret'] as String),
     );

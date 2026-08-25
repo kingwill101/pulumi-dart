@@ -936,11 +936,11 @@ class NamespaceIamBinding extends pulumi.CustomResource {
           'gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<NamespaceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     role = registerOutput<String>('role');
   }
@@ -950,11 +950,12 @@ class NamespaceIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamespaceIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -970,7 +971,23 @@ class NamespaceIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<NamespaceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [NamespaceIamBinding] resource.
+  NamespaceIamBinding.reference(String urn)
+    : super(
+        'gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<NamespaceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     role = registerOutput<String>('role');
   }

@@ -580,7 +580,7 @@ class RuntimeProjectAttachment extends pulumi.CustomResource {
           'gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -596,11 +596,12 @@ class RuntimeProjectAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuntimeProjectAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuntimeProjectAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -614,6 +615,24 @@ class RuntimeProjectAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    runtimeProject = registerOutput<String>('runtimeProject');
+    runtimeProjectAttachmentId = registerOutput<String>('runtimeProjectAttachmentId');
+  }
+
+  /// Creates a typed reference to an existing [RuntimeProjectAttachment] resource.
+  RuntimeProjectAttachment.reference(String urn)
+    : super(
+        'gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');

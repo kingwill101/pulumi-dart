@@ -9,7 +9,7 @@ class InstanceAccessLoggingConfig {
   /// The statusCode is the only expected/supported filter field. (Ex: statusCode)
   /// The filter will parse it to the Common Expression Language semantics for expression
   /// evaluation to build the filter condition. (Ex: "filter": statusCode &gt;= 200 && statusCode &lt; 300 )
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [InstanceAccessLoggingConfig].
   /// [enabled] Boolean flag that specifies whether the customer access log feature is enabled.

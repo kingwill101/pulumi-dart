@@ -7,9 +7,9 @@ class AuthorizedViewSubsetView {
   /// A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
   ///
   /// -----
-  final pulumi.Input<List<AuthorizedViewSubsetViewFamilySubset>>? familySubsets;
+  final pulumi.Input<List<AuthorizedViewSubsetViewFamilySubset>?>? familySubsets;
   /// A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
-  final pulumi.Input<List<String>>? rowPrefixes;
+  final pulumi.Input<List<String>?>? rowPrefixes;
 
   /// Creates a new [AuthorizedViewSubsetView].
   /// [familySubsets] A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.

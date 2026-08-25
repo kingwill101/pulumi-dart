@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegionTargetHttpProxy resources.
 class RegionTargetHttpProxyState {
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies how long to keep a connection open, after completing a response,
   /// while there is no matching traffic (in seconds). If an HTTP keepalive is
   /// not specified, a default value (600 seconds) will be used. For Regional
   /// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
   /// maximum allowed value is 600 seconds.
-  final pulumi.Input<int>? httpKeepAliveTimeoutSec;
+  final pulumi.Input<int?>? httpKeepAliveTimeoutSec;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -28,20 +28,20 @@ class RegionTargetHttpProxyState {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The unique identifier for the resource.
-  final pulumi.Input<int>? proxyId;
+  final pulumi.Input<int?>? proxyId;
   /// The Region in which the created target https proxy should reside.
   /// If it is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// A reference to the RegionUrlMap resource that defines the mapping from URL
   /// to the BackendService.
-  final pulumi.Input<String>? urlMap;
+  final pulumi.Input<String?>? urlMap;
 
   /// Creates a new [RegionTargetHttpProxyState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
@@ -87,10 +87,10 @@ class RegionTargetHttpProxyState {
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      httpKeepAliveTimeoutSec: (() { final guardedValue = map['httpKeepAliveTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpKeepAliveTimeoutSec: (() { final guardedValue = map['httpKeepAliveTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       urlMap: (() { final guardedValue = map['urlMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

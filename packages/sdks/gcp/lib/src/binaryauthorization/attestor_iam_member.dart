@@ -980,7 +980,7 @@ class AttestorIamMember extends pulumi.CustomResource {
           'gcp:binaryauthorization/attestorIamMember:AttestorIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attestor = registerOutput<String>('attestor');
     condition = registerOutput<AttestorIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -995,11 +995,12 @@ class AttestorIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttestorIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AttestorIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1013,6 +1014,23 @@ class AttestorIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attestor = registerOutput<String>('attestor');
+    condition = registerOutput<AttestorIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AttestorIamMember] resource.
+  AttestorIamMember.reference(String urn)
+    : super(
+        'gcp:binaryauthorization/attestorIamMember:AttestorIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestor = registerOutput<String>('attestor');
     condition = registerOutput<AttestorIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

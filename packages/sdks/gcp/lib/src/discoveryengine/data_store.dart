@@ -868,7 +868,7 @@ class DataStore extends pulumi.CustomResource {
           'gcp:discoveryengine/dataStore:DataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     aclEnabled = registerOutput<bool?>('aclEnabled');
     advancedSiteSearchConfig = registerOutput<DataStoreAdvancedSiteSearchConfig>('advancedSiteSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -886,7 +886,7 @@ class DataStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     skipDefaultSchemaCreation = registerOutput<bool?>('skipDefaultSchemaCreation');
-    solutionTypes = registerOutput<List<String>?>('solutionTypes');
+    solutionTypes = registerOutput<List<String>?>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [DataStore] resource's state with the given [name] and [id].
@@ -894,11 +894,12 @@ class DataStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -928,6 +929,34 @@ class DataStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     skipDefaultSchemaCreation = registerOutput<bool?>('skipDefaultSchemaCreation');
-    solutionTypes = registerOutput<List<String>?>('solutionTypes');
+    solutionTypes = registerOutput<List<String>?>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataStore] resource.
+  DataStore.reference(String urn)
+    : super(
+        'gcp:discoveryengine/dataStore:DataStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aclEnabled = registerOutput<bool?>('aclEnabled');
+    advancedSiteSearchConfig = registerOutput<DataStoreAdvancedSiteSearchConfig>('advancedSiteSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentConfig = registerOutput<String?>('contentConfig');
+    createAdvancedSiteSearch = registerOutput<bool?>('createAdvancedSiteSearch');
+    createTime = registerOutput<String>('createTime');
+    dataStoreId = registerOutput<String>('dataStoreId');
+    defaultSchemaId = registerOutput<String>('defaultSchemaId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    documentProcessingConfig = registerOutput<DataStoreDocumentProcessingConfig?>('documentProcessingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreDocumentProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    industryVertical = registerOutput<String>('industryVertical');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    skipDefaultSchemaCreation = registerOutput<bool?>('skipDefaultSchemaCreation');
+    solutionTypes = registerOutput<List<String>?>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

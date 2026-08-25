@@ -8,10 +8,10 @@ class TemplateTemplateMetadataFilterVersionSelector {
   /// Possible values:
   /// FILTER_VERSION_ALIAS_STABLE
   /// FILTER_VERSION_ALIAS_LATEST
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Pins the template to a specific, immutable filter version. Expected
   /// format is a case-sensitive string such as 'v1' or 'v2'.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [TemplateTemplateMetadataFilterVersionSelector].
   /// [alias] A predefined filter version alias. The template automatically follows the

@@ -282,7 +282,7 @@ class EntryGroup extends pulumi.CustomResource {
           'gcp:datacatalog/entryGroup:EntryGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -298,11 +298,12 @@ class EntryGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntryGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EntryGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -316,6 +317,24 @@ class EntryGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    entryGroupId = registerOutput<String>('entryGroupId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EntryGroup] resource.
+  EntryGroup.reference(String urn)
+    : super(
+        'gcp:datacatalog/entryGroup:EntryGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

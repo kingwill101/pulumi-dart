@@ -6,7 +6,7 @@ import 'security_policy_rule_header_action_request_headers_to_add.dart';
 class SecurityPolicyRuleHeaderAction {
   /// The list of request headers to add or overwrite if they're already present.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd>>? requestHeadersToAdds;
+  final pulumi.Input<List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd>?>? requestHeadersToAdds;
 
   /// Creates a new [SecurityPolicyRuleHeaderAction].
   /// [requestHeadersToAdds] The list of request headers to add or overwrite if they're already present.

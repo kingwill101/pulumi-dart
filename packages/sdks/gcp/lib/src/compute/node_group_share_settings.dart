@@ -6,7 +6,7 @@ import 'node_group_share_settings_project_map.dart';
 class NodeGroupShareSettings {
   /// A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// Structure is documented below.
-  final pulumi.Input<List<NodeGroupShareSettingsProjectMap>>? projectMaps;
+  final pulumi.Input<List<NodeGroupShareSettingsProjectMap>?>? projectMaps;
   /// Node group sharing type.
   /// Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
   final pulumi.Input<String> shareType;

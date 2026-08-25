@@ -335,7 +335,7 @@ class Group extends pulumi.CustomResource {
           'gcp:monitoring/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
@@ -351,11 +351,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -369,6 +370,24 @@ class Group extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    filter = registerOutput<String>('filter');
+    isCluster = registerOutput<bool?>('isCluster');
+    this.name = registerOutput<String>('name');
+    parentName = registerOutput<String?>('parentName');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'gcp:monitoring/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     filter = registerOutput<String>('filter');

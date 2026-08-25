@@ -13,16 +13,16 @@ class MaterializedViewArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Set to true to make the MaterializedView protected against deletion.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// The name of the instance to create the materialized view within.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   final pulumi.Input<String> materializedViewId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The materialized view's select query.
   final pulumi.Input<String> query;
 

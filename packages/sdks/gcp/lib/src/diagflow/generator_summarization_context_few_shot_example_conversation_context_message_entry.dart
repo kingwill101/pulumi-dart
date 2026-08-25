@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry {
   /// Optional. Create time of the message entry.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Optional. The language of the text.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// Optional. Participant role of the message.
   /// Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Optional. Transcript content of the message.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry].
   /// [createTime] Optional. Create time of the message entry.

@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UnitDependent {
   /// (Output)
   /// Alias for the name of the dependency.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// (Output)
   /// A reference to the Unit object.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [UnitDependent].
   /// [alias] (Output)

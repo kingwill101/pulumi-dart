@@ -38,7 +38,7 @@ class GetServiceTemplateSpecVolumeSecretItem {
   factory GetServiceTemplateSpecVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecVolumeSecretItem(
       key: pulumi.Input.fromValue(map['key'] as String),
-      mode: pulumi.Input.fromValue(map['mode'] as int),
+      mode: pulumi.Input.fromValue((map['mode'] as num).toInt()),
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }

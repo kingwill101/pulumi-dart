@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'access_levels_access_level.dart';
 import 'access_levels_args.dart';
 import 'access_levels_state.dart';
 
@@ -476,7 +477,7 @@ import 'access_levels_state.dart';
 class AccessLevels extends pulumi.CustomResource {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> accessLevels;
+  late final pulumi.Output<List<AccessLevelsAccessLevel>?> accessLevels;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -500,9 +501,9 @@ class AccessLevels extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessLevels:AccessLevels',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
+    accessLevels = registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessLevelsAccessLevel>(guardedValue, (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
   }
@@ -512,11 +513,12 @@ class AccessLevels extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessLevelsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessLevels._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -530,7 +532,21 @@ class AccessLevels extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
+    accessLevels = registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessLevelsAccessLevel>(guardedValue, (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    parent = registerOutput<String>('parent');
+  }
+
+  /// Creates a typed reference to an existing [AccessLevels] resource.
+  AccessLevels.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/accessLevels:AccessLevels',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLevels = registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessLevelsAccessLevel>(guardedValue, (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
   }

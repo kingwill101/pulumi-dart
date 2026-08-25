@@ -11,41 +11,41 @@ class WorkloadIdentityPoolNamespaceState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the namespace. Cannot exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
   /// identities within this namespace, however existing credentials will still be accepted until
   /// they expire.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The resource name of the namespace as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Defines the owner that is allowed to mutate this resource. If present, this resource can only
   /// be mutated by the owner.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadIdentityPoolNamespaceOwnerService>>? ownerServices;
+  final pulumi.Input<List<WorkloadIdentityPoolNamespaceOwnerService>?>? ownerServices;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The current state of the namespace.
   /// * `ACTIVE`: The namespace is active.
   /// * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
   /// after approximately 30 days. You can restore a soft-deleted namespace using
   /// UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
   /// until it is permanently deleted.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  final pulumi.Input<String>? workloadIdentityPoolId;
+  final pulumi.Input<String?>? workloadIdentityPoolId;
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
   /// The prefix `gcp-` will be reserved for future uses.
-  final pulumi.Input<String>? workloadIdentityPoolNamespaceId;
+  final pulumi.Input<String?>? workloadIdentityPoolNamespaceId;
 
   /// Creates a new [WorkloadIdentityPoolNamespaceState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

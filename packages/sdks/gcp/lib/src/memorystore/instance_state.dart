@@ -25,51 +25,51 @@ class InstanceState {
   /// AUTH_DISABLED
   /// IAM_AUTH.
   /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
-  final pulumi.Input<String>? authorizationMode;
+  final pulumi.Input<String?>? authorizationMode;
   /// The automated backup config for a instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceAutomatedBackupConfig>? automatedBackupConfig;
+  final pulumi.Input<InstanceAutomatedBackupConfig?>? automatedBackupConfig;
   /// This field is used to determine the available maintenance versions for the self service update.
-  final pulumi.Input<List<String>>? availableMaintenanceVersions;
+  final pulumi.Input<List<String>?>? availableMaintenanceVersions;
   /// The backup collection full resource name.
   /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
-  final pulumi.Input<String>? backupCollection;
+  final pulumi.Input<String?>? backupCollection;
   /// Output only. Creation timestamp of the instance.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Cross instance replication config
   /// Structure is documented below.
-  final pulumi.Input<InstanceCrossInstanceReplicationConfig>? crossInstanceReplicationConfig;
+  final pulumi.Input<InstanceCrossInstanceReplicationConfig?>? crossInstanceReplicationConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. If set to true deletion of the instance will fail.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Immutable. User inputs for the auto-created endpoints connections.
-  final pulumi.Input<List<InstanceDesiredAutoCreatedEndpoint>>? desiredAutoCreatedEndpoints;
+  final pulumi.Input<List<InstanceDesiredAutoCreatedEndpoint>?>? desiredAutoCreatedEndpoints;
   /// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
-  final pulumi.Input<List<InstanceDesiredPscAutoConnection>>? desiredPscAutoConnections;
+  final pulumi.Input<List<InstanceDesiredPscAutoConnection>?>? desiredPscAutoConnections;
   /// (Deprecated)
   /// Deprecated. Output only. Endpoints clients can connect to the instance through.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceDiscoveryEndpoint>>? discoveryEndpoints;
+  final pulumi.Input<List<InstanceDiscoveryEndpoint>?>? discoveryEndpoints;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// This field represents the actual maintenance version of the cluster.
-  final pulumi.Input<String>? effectiveMaintenanceVersion;
+  final pulumi.Input<String?>? effectiveMaintenanceVersion;
   /// Endpoints for the instance.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceEndpoint>>? endpoints;
+  final pulumi.Input<List<InstanceEndpoint>?>? endpoints;
   /// Optional. User-provided engine configurations for the instance.
-  final pulumi.Input<Map<String, String>>? engineConfigs;
+  final pulumi.Input<Map<String, String>?>? engineConfigs;
   /// Optional. Engine version of the instance.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// GCS source for the instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGcsSource>? gcsSource;
+  final pulumi.Input<InstanceGcsSource?>? gcsSource;
   /// Required. The ID to use for the instance, which will become the final component of
   /// the instance's resource name.
   /// This value is subject to the following restrictions:
@@ -78,42 +78,42 @@ class InstanceState {
   /// * Must contain only lowercase letters, digits, and hyphens
   /// * Must not end with a hyphen
   /// * Must be unique within a location
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// The KMS key used to encrypt the at-rest data of the cluster
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Optional. Labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maintenance policy for a cluster
   /// Structure is documented below.
-  final pulumi.Input<InstanceMaintenancePolicy>? maintenancePolicy;
+  final pulumi.Input<InstanceMaintenancePolicy?>? maintenancePolicy;
   /// Upcoming maintenance schedule.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceMaintenanceSchedule>>? maintenanceSchedules;
+  final pulumi.Input<List<InstanceMaintenanceSchedule>?>? maintenanceSchedules;
   /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
-  final pulumi.Input<String>? maintenanceVersion;
+  final pulumi.Input<String?>? maintenanceVersion;
   /// Managed backup source for the instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceManagedBackupSource>? managedBackupSource;
+  final pulumi.Input<InstanceManagedBackupSource?>? managedBackupSource;
   /// Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceManagedServerCa>>? managedServerCas;
+  final pulumi.Input<List<InstanceManagedServerCa>?>? managedServerCas;
   /// Optional. cluster or cluster-disabled.
   /// Possible values:
   /// CLUSTER
   /// CLUSTER_DISABLED
   /// Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Identifier. Unique name of the instance.
   /// Format: projects/{project}/locations/{location}/instances/{instance}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Represents configuration for nodes of the instance.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceNodeConfig>>? nodeConfigs;
+  final pulumi.Input<List<InstanceNodeConfig>?>? nodeConfigs;
   /// Optional. Machine type for individual nodes of the instance.
   /// Possible values:
   /// SHARED_CORE_NANO
@@ -126,57 +126,57 @@ class InstanceState {
   /// STANDARD_SMALL
   /// STANDARD_LARGE
   /// HIGHMEM_2XLARGE
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// Represents persistence configuration for a instance.
   /// Structure is documented below.
-  final pulumi.Input<InstancePersistenceConfig>? persistenceConfig;
+  final pulumi.Input<InstancePersistenceConfig?>? persistenceConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration of a service attachment of the cluster, for creating PSC connections.
   /// Structure is documented below.
-  final pulumi.Input<List<InstancePscAttachmentDetail>>? pscAttachmentDetails;
+  final pulumi.Input<List<InstancePscAttachmentDetail>?>? pscAttachmentDetails;
   /// (Deprecated)
   /// Output only. User inputs and resource details of the auto-created PSC connections.
   /// Structure is documented below.
-  final pulumi.Input<List<InstancePscAutoConnection>>? pscAutoConnections;
+  final pulumi.Input<List<InstancePscAutoConnection>?>? pscAutoConnections;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
   /// The serverCaMode for the TLS enabled Memorystore instance.
   /// If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
   /// Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
-  final pulumi.Input<String>? serverCaMode;
+  final pulumi.Input<String?>? serverCaMode;
   /// The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
   /// as the server_ca_mode.
   /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
-  final pulumi.Input<String>? serverCaPool;
+  final pulumi.Input<String?>? serverCaPool;
   /// Required. Number of shards for the instance.
-  final pulumi.Input<int>? shardCount;
+  final pulumi.Input<int?>? shardCount;
   /// Output only. Current state of the instance.
   /// Possible values:
   /// CREATING
   /// ACTIVE
   /// UPDATING
   /// DELETING
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Additional information about the state of the instance.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceStateInfo>>? stateInfos;
+  final pulumi.Input<List<InstanceStateInfo>?>? stateInfos;
   /// Optional. Immutable. In-transit encryption mode of the instance.
   /// Possible values:
   /// TRANSIT_ENCRYPTION_DISABLED
   /// SERVER_AUTHENTICATION
-  final pulumi.Input<String>? transitEncryptionMode;
+  final pulumi.Input<String?>? transitEncryptionMode;
   /// Output only. System assigned, unique identifier for the instance.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. Latest update timestamp of the instance.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Zone distribution configuration for allocation of instance resources.
   /// Structure is documented below.
-  final pulumi.Input<InstanceZoneDistributionConfig>? zoneDistributionConfig;
+  final pulumi.Input<InstanceZoneDistributionConfig?>? zoneDistributionConfig;
 
   /// Creates a new [InstanceState].
   /// [authorizationMode] Optional. Immutable. Authorization mode of the instance. Possible values:
@@ -359,10 +359,10 @@ class InstanceState {
       pscAttachmentDetails: (() { final guardedValue = map['pscAttachmentDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstancePscAttachmentDetail>(guardedValue, (value) => InstancePscAttachmentDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pscAutoConnections: (() { final guardedValue = map['pscAutoConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstancePscAutoConnection>(guardedValue, (value) => InstancePscAutoConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serverCaMode: (() { final guardedValue = map['serverCaMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverCaPool: (() { final guardedValue = map['serverCaPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stateInfos: (() { final guardedValue = map['stateInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceStateInfo>(guardedValue, (value) => InstanceStateInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       transitEncryptionMode: (() { final guardedValue = map['transitEncryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

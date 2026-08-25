@@ -10,25 +10,25 @@ class TenantOauthIdpConfigArgs {
   /// The client id of an OAuth client.
   final pulumi.Input<String> clientId;
   /// The client secret of the OAuth client, to enable OIDC code flow.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human friendly display name.
   final pulumi.Input<String> displayName;
   /// If this config allows users to sign in with the provider.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// For OIDC Idps, the issuer identifier.
   final pulumi.Input<String> issuer;
   /// The name of the OauthIdpConfig. Must start with `oidc.`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the tenant where this OIDC IDP configuration resource exists
   final pulumi.Input<String> tenant;
 

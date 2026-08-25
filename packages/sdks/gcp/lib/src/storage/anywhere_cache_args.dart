@@ -14,7 +14,7 @@ class AnywhereCacheArgs {
   /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
   ///
   /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
-  final pulumi.Input<String>? admissionPolicy;
+  final pulumi.Input<String?>? admissionPolicy;
   /// A reference to Bucket resource
   final pulumi.Input<String> bucket;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -23,11 +23,11 @@ class AnywhereCacheArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not the cache ingests data as the data is written to the bucket.
-  final pulumi.Input<bool>? ingestOnWrite;
+  final pulumi.Input<bool?>? ingestOnWrite;
   /// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
   /// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
   final pulumi.Input<String> zone;
 

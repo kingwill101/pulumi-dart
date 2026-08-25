@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SettingsAccessSettingsCorsSettings {
   /// Configuration to allow HTTP OPTIONS calls to skip authorization.
   /// If undefined, IAP will not apply any special logic to OPTIONS requests.
-  final pulumi.Input<bool>? allowHttpOptions;
+  final pulumi.Input<bool?>? allowHttpOptions;
 
   /// Creates a new [SettingsAccessSettingsCorsSettings].
   /// [allowHttpOptions] Configuration to allow HTTP OPTIONS calls to skip authorization.

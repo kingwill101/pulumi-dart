@@ -9,7 +9,7 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef {
   /// The Cloud Secret Manager secret version. Can be 'latest'
   /// for the latest version, an integer for a specific
   /// version, or a version alias.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef].
   /// [secret] The name of the secret in Cloud Secret Manager.

@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataExportDataExportStatus {
   /// (Output)
   /// Indicates whether the data export is filtered by RBAC.
-  final pulumi.Input<bool>? dataRbacFiltered;
+  final pulumi.Input<bool?>? dataRbacFiltered;
   /// (Output)
   /// The error message if the stage is FINISHED_FAILURE.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// (Output)
   /// List of exported glob patterns.
-  final pulumi.Input<List<String>>? exportedGlobPatterns;
+  final pulumi.Input<List<String>?>? exportedGlobPatterns;
   /// (Output)
   /// The stage/status of a given data export request.
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
 
   /// Creates a new [DataExportDataExportStatus].
   /// [dataRbacFiltered] (Output)

@@ -8,11 +8,11 @@ class ImportJobValidationReport {
   /// (Output)
   /// List of errors found in files.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobValidationReportFileValidation>>? fileValidations;
+  final pulumi.Input<List<ImportJobValidationReportFileValidation>?>? fileValidations;
   /// (Output)
   /// List of job level errors.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobValidationReportJobError>>? jobErrors;
+  final pulumi.Input<List<ImportJobValidationReportJobError>?>? jobErrors;
 
   /// Creates a new [ImportJobValidationReport].
   /// [fileValidations] (Output)

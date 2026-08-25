@@ -18,15 +18,15 @@ class CustomConstraintArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-friendly description of the constraint to display as an error message when the policy is violated.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A human-friendly name for the constraint.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
   final pulumi.Input<List<String>> methodTypes;
   /// Immutable. The name of the custom constraint. This is unique within the organization.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   final pulumi.Input<String> parent;
   /// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.

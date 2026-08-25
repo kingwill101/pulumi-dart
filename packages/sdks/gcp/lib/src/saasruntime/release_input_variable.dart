@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReleaseInputVariable {
   /// Name of a supported variable type. Supported types are STRING, INT, BOOL.
   /// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// String encoded value for the variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Name of the variable from actuation configs.
   final pulumi.Input<String> variable;
 

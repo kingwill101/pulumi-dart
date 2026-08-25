@@ -173,7 +173,7 @@ class OrganizationExclusion extends pulumi.CustomResource {
           'gcp:logging/organizationExclusion:OrganizationExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
@@ -187,11 +187,12 @@ class OrganizationExclusion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationExclusionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationExclusion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -205,6 +206,22 @@ class OrganizationExclusion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    filter = registerOutput<String>('filter');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationExclusion] resource.
+  OrganizationExclusion.reference(String urn)
+    : super(
+        'gcp:logging/organizationExclusion:OrganizationExclusion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     filter = registerOutput<String>('filter');

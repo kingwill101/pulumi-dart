@@ -972,7 +972,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:iap/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -985,11 +985,12 @@ class Settings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Settings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1003,6 +1004,21 @@ class Settings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Settings] resource.
+  Settings.reference(String urn)
+    : super(
+        'gcp:iap/settings:Settings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

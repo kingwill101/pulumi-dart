@@ -9,23 +9,23 @@ import 'assets_export_job_signed_uri_destination.dart';
 /// Input properties used for looking up and filtering AssetsExportJob resources.
 class AssetsExportJobState {
   /// The ID to use for the asset export job.
-  final pulumi.Input<String>? assetsExportJobId;
+  final pulumi.Input<String?>? assetsExportJobId;
   /// Conditions for selecting assets to export.
   /// Structure is documented below.
-  final pulumi.Input<AssetsExportJobCondition>? condition;
+  final pulumi.Input<AssetsExportJobCondition?>? condition;
   /// Resource creation time.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Configuration for asset inventory details exports.
-  final pulumi.Input<List<Map<String, dynamic>>>? inventories;
+  final pulumi.Input<List<Map<String, dynamic>>?>? inventories;
   /// Labels as key value pairs.
   /// Labels must meet the following constraints:
   /// * Keys and values can contain only lowercase letters, numeric characters,
@@ -37,33 +37,33 @@ class AssetsExportJobState {
   /// Both keys and values are additionally constrained to be &lt;= 128 bytes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for network dependencies exports.
-  final pulumi.Input<List<Map<String, dynamic>>>? networkDependencies;
+  final pulumi.Input<List<Map<String, dynamic>>?>? networkDependencies;
   /// Configuration for performance data exports.
   /// Structure is documented below.
-  final pulumi.Input<AssetsExportJobPerformanceData>? performanceData;
+  final pulumi.Input<AssetsExportJobPerformanceData?>? performanceData;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Recent non expired executions of the job.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecution>>? recentExecutions;
+  final pulumi.Input<List<AssetsExportJobRecentExecution>?>? recentExecutions;
   /// When this value is set to 'true' the response will include all assets,
   /// including those that are hidden.
-  final pulumi.Input<bool>? showHidden;
+  final pulumi.Input<bool?>? showHidden;
   /// Signed URI destination configuration.
   /// Structure is documented below.
-  final pulumi.Input<AssetsExportJobSignedUriDestination>? signedUriDestination;
+  final pulumi.Input<AssetsExportJobSignedUriDestination?>? signedUriDestination;
   /// Resource update time.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AssetsExportJobState].
   /// [assetsExportJobId] The ID to use for the asset export job.

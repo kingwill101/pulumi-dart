@@ -16,17 +16,17 @@ class V2ProjectNotificationConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Location ID for the parent project. Defaults to `global` if location is not provided.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[projectId]/topics/[topic]".
-  final pulumi.Input<String>? pubsubTopic;
+  final pulumi.Input<String?>? pubsubTopic;
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
   final pulumi.Input<V2ProjectNotificationConfigStreamingConfig> streamingConfig;

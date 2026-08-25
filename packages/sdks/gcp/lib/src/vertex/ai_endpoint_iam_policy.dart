@@ -21,7 +21,7 @@ class AiEndpointIamPolicy extends pulumi.CustomResource {
           'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
@@ -35,11 +35,12 @@ class AiEndpointIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiEndpointIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiEndpointIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -53,6 +54,22 @@ class AiEndpointIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [AiEndpointIamPolicy] resource.
+  AiEndpointIamPolicy.reference(String urn)
+    : super(
+        'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

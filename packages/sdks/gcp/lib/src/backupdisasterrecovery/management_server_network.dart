@@ -8,7 +8,7 @@ class ManagementServerNetwork {
   /// Type of Network peeringMode
   /// Default value is `PRIVATE_SERVICE_ACCESS`.
   /// Possible values are: `PRIVATE_SERVICE_ACCESS`.
-  final pulumi.Input<String>? peeringMode;
+  final pulumi.Input<String?>? peeringMode;
 
   /// Creates a new [ManagementServerNetwork].
   /// [network] Network with format `projects/{{project_id}}/global/networks/{{network_id}}`

@@ -6,7 +6,7 @@ import 'feed_details_rh_isac_ioc_settings_authentication.dart';
 class FeedDetailsRhIsacIocSettings {
   /// OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsRhIsacIocSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsRhIsacIocSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsRhIsacIocSettings].
   /// [authentication] OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.

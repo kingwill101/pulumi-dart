@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_policy_orchestrator_for_organization_args.dart';
 import 'v2_policy_orchestrator_for_organization_orchestrated_resource.dart';
 import 'v2_policy_orchestrator_for_organization_orchestration_scope.dart';
+import 'v2_policy_orchestrator_for_organization_orchestration_state.dart';
 import 'v2_policy_orchestrator_for_organization_state.dart';
 
 /// PolicyOrchestrator helps managing project+zone level policy resources (e.g.
@@ -516,7 +517,7 @@ class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
   late final pulumi.Output<V2PolicyOrchestratorForOrganizationOrchestrationScope?> orchestrationScope;
   /// Describes the state of the orchestration process.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> orchestrationStates;
+  late final pulumi.Output<List<V2PolicyOrchestratorForOrganizationOrchestrationState>> orchestrationStates;
   /// Part of `parent`. Required. The parent resource name in the form of:
   /// * `organizations/{organization_id}/locations/global`
   /// * `folders/{folder_id}/locations/global`
@@ -559,22 +560,23 @@ class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
           'gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     orchestratedResource = registerOutput<V2PolicyOrchestratorForOrganizationOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorForOrganizationOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orchestrationScope = registerOutput<V2PolicyOrchestratorForOrganizationOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorForOrganizationOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    orchestrationStates = registerOutput<List<Map<String, dynamic>>>('orchestrationStates');
+    orchestrationStates = registerOutput<List<V2PolicyOrchestratorForOrganizationOrchestrationState>>('orchestrationStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationState>(guardedValue, (value) => V2PolicyOrchestratorForOrganizationOrchestrationState.fromMap((value as Map).cast<String, dynamic>())); });
     organizationId = registerOutput<String>('organizationId');
     policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String?>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -585,11 +587,12 @@ class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2PolicyOrchestratorForOrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2PolicyOrchestratorForOrganization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -607,18 +610,47 @@ class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     orchestratedResource = registerOutput<V2PolicyOrchestratorForOrganizationOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorForOrganizationOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orchestrationScope = registerOutput<V2PolicyOrchestratorForOrganizationOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorForOrganizationOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    orchestrationStates = registerOutput<List<Map<String, dynamic>>>('orchestrationStates');
+    orchestrationStates = registerOutput<List<V2PolicyOrchestratorForOrganizationOrchestrationState>>('orchestrationStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationState>(guardedValue, (value) => V2PolicyOrchestratorForOrganizationOrchestrationState.fromMap((value as Map).cast<String, dynamic>())); });
     organizationId = registerOutput<String>('organizationId');
     policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String?>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [V2PolicyOrchestratorForOrganization] resource.
+  V2PolicyOrchestratorForOrganization.reference(String urn)
+    : super(
+        'gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    orchestratedResource = registerOutput<V2PolicyOrchestratorForOrganizationOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorForOrganizationOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationScope = registerOutput<V2PolicyOrchestratorForOrganizationOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorForOrganizationOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationStates = registerOutput<List<V2PolicyOrchestratorForOrganizationOrchestrationState>>('orchestrationStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestrationState>(guardedValue, (value) => V2PolicyOrchestratorForOrganizationOrchestrationState.fromMap((value as Map).cast<String, dynamic>())); });
+    organizationId = registerOutput<String>('organizationId');
+    policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String?>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

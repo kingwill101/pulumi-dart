@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterPrivateRegistryConfig {
   /// The registry address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// The CA certificate public key for private registry.
-  final pulumi.Input<String>? caCert;
+  final pulumi.Input<String?>? caCert;
 
   /// Creates a new [VmwareAdminClusterPrivateRegistryConfig].
   /// [address] The registry address.

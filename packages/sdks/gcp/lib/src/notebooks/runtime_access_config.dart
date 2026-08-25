@@ -6,13 +6,13 @@ class RuntimeAccessConfig {
   /// The type of access mode this instance. For valid values, see
   /// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
   /// rest/v1/projects.locations.runtimes#RuntimeAccessType`.
-  final pulumi.Input<String>? accessType;
+  final pulumi.Input<String?>? accessType;
   /// (Output)
   /// The proxy endpoint that is used to access the runtime.
-  final pulumi.Input<String>? proxyUri;
+  final pulumi.Input<String?>? proxyUri;
   /// The owner of this runtime after creation. Format: `alias@example.com`.
   /// Currently supports one owner only.
-  final pulumi.Input<String>? runtimeOwner;
+  final pulumi.Input<String?>? runtimeOwner;
 
   /// Creates a new [RuntimeAccessConfig].
   /// [accessType] The type of access mode this instance. For valid values, see

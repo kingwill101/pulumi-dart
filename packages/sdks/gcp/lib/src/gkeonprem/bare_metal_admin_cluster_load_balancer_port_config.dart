@@ -20,7 +20,7 @@ class BareMetalAdminClusterLoadBalancerPortConfig {
 
   factory BareMetalAdminClusterLoadBalancerPortConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerPortConfig(
-      controlPlaneLoadBalancerPort: pulumi.Input.fromValue(map['controlPlaneLoadBalancerPort'] as int),
+      controlPlaneLoadBalancerPort: pulumi.Input.fromValue((map['controlPlaneLoadBalancerPort'] as num).toInt()),
     );
   }
 }

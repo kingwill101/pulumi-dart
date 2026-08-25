@@ -5867,7 +5867,7 @@ class Trigger extends pulumi.CustomResource {
           'gcp:cloudbuild/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     approvalConfig = registerOutput<TriggerApprovalConfig>('approvalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bitbucketServerTriggerConfig = registerOutput<TriggerBitbucketServerTriggerConfig?>('bitbucketServerTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerBitbucketServerTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -5881,9 +5881,9 @@ class Trigger extends pulumi.CustomResource {
     filter = registerOutput<String?>('filter');
     gitFileSource = registerOutput<TriggerGitFileSource?>('gitFileSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerGitFileSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     github = registerOutput<TriggerGithub?>('github', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerGithub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ignoredFiles = registerOutput<List<String>?>('ignoredFiles');
+    ignoredFiles = registerOutput<List<String>?>('ignoredFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     includeBuildLogs = registerOutput<String?>('includeBuildLogs');
-    includedFiles = registerOutput<List<String>?>('includedFiles');
+    includedFiles = registerOutput<List<String>?>('includedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -5891,8 +5891,8 @@ class Trigger extends pulumi.CustomResource {
     repositoryEventConfig = registerOutput<TriggerRepositoryEventConfig?>('repositoryEventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRepositoryEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String?>('serviceAccount');
     sourceToBuild = registerOutput<TriggerSourceToBuild?>('sourceToBuild', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerSourceToBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    substitutions = registerOutput<Map<String, String>?>('substitutions');
-    tags = registerOutput<List<String>?>('tags');
+    substitutions = registerOutput<Map<String, String>?>('substitutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     triggerId = registerOutput<String>('triggerId');
     triggerTemplate = registerOutput<TriggerTriggerTemplate?>('triggerTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTriggerTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webhookConfig = registerOutput<TriggerWebhookConfig?>('webhookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerWebhookConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -5903,11 +5903,12 @@ class Trigger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Trigger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -5933,9 +5934,9 @@ class Trigger extends pulumi.CustomResource {
     filter = registerOutput<String?>('filter');
     gitFileSource = registerOutput<TriggerGitFileSource?>('gitFileSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerGitFileSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     github = registerOutput<TriggerGithub?>('github', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerGithub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ignoredFiles = registerOutput<List<String>?>('ignoredFiles');
+    ignoredFiles = registerOutput<List<String>?>('ignoredFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     includeBuildLogs = registerOutput<String?>('includeBuildLogs');
-    includedFiles = registerOutput<List<String>?>('includedFiles');
+    includedFiles = registerOutput<List<String>?>('includedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -5943,8 +5944,46 @@ class Trigger extends pulumi.CustomResource {
     repositoryEventConfig = registerOutput<TriggerRepositoryEventConfig?>('repositoryEventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRepositoryEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String?>('serviceAccount');
     sourceToBuild = registerOutput<TriggerSourceToBuild?>('sourceToBuild', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerSourceToBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    substitutions = registerOutput<Map<String, String>?>('substitutions');
-    tags = registerOutput<List<String>?>('tags');
+    substitutions = registerOutput<Map<String, String>?>('substitutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    triggerId = registerOutput<String>('triggerId');
+    triggerTemplate = registerOutput<TriggerTriggerTemplate?>('triggerTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTriggerTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webhookConfig = registerOutput<TriggerWebhookConfig?>('webhookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerWebhookConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Trigger] resource.
+  Trigger.reference(String urn)
+    : super(
+        'gcp:cloudbuild/trigger:Trigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvalConfig = registerOutput<TriggerApprovalConfig>('approvalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bitbucketServerTriggerConfig = registerOutput<TriggerBitbucketServerTriggerConfig?>('bitbucketServerTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerBitbucketServerTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    build = registerOutput<TriggerBuild?>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    developerConnectEventConfig = registerOutput<TriggerDeveloperConnectEventConfig?>('developerConnectEventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerDeveloperConnectEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disabled = registerOutput<bool?>('disabled');
+    filename = registerOutput<String?>('filename');
+    filter = registerOutput<String?>('filter');
+    gitFileSource = registerOutput<TriggerGitFileSource?>('gitFileSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerGitFileSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    github = registerOutput<TriggerGithub?>('github', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerGithub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ignoredFiles = registerOutput<List<String>?>('ignoredFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    includeBuildLogs = registerOutput<String?>('includeBuildLogs');
+    includedFiles = registerOutput<List<String>?>('includedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pubsubConfig = registerOutput<TriggerPubsubConfig?>('pubsubConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerPubsubConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repositoryEventConfig = registerOutput<TriggerRepositoryEventConfig?>('repositoryEventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRepositoryEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    sourceToBuild = registerOutput<TriggerSourceToBuild?>('sourceToBuild', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerSourceToBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    substitutions = registerOutput<Map<String, String>?>('substitutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     triggerId = registerOutput<String>('triggerId');
     triggerTemplate = registerOutput<TriggerTriggerTemplate?>('triggerTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTriggerTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webhookConfig = registerOutput<TriggerWebhookConfig?>('webhookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerWebhookConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -6,11 +6,11 @@ class AlertPolicyConditionConditionThresholdTrigger {
   /// The absolute number of time series
   /// that must fail the predicate for the
   /// condition to be triggered.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// The percentage of time series that
   /// must fail the predicate for the
   /// condition to be triggered.
-  final pulumi.Input<double>? percent;
+  final pulumi.Input<double?>? percent;
 
   /// Creates a new [AlertPolicyConditionConditionThresholdTrigger].
   /// [count] The absolute number of time series
@@ -29,8 +29,8 @@ class AlertPolicyConditionConditionThresholdTrigger {
 
   factory AlertPolicyConditionConditionThresholdTrigger.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThresholdTrigger(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

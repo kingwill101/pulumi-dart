@@ -5,10 +5,10 @@ import 'framework_deployment_cloud_control_metadata_cloud_control_details_parame
 
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue {
   /// The name of the parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the parameter.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue>? parameterValue;
+  final pulumi.Input<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue?>? parameterValue;
 
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue].
   /// [name] The name of the parameter.

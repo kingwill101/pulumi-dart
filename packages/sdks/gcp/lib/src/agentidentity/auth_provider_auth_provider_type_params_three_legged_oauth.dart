@@ -6,34 +6,34 @@ class AuthProviderAuthProviderTypeParamsThreeLeggedOauth {
   /// The authorization endpoint to send users to for consenting to delegate
   /// to the agent.
   /// eg. "https://auth.atlassian.com/authorize"
-  final pulumi.Input<String>? authorizationUrl;
+  final pulumi.Input<String?>? authorizationUrl;
   /// The client ID of the OAuth client.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Input only. The client secret of the OAuth client.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// Input only. The client secret of the OAuth client.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `clientSecret` or `clientSecretWo` can only be set.
-  final pulumi.Input<String>? clientSecretWo;
+  final pulumi.Input<String?>? clientSecretWo;
   /// Triggers update of `clientSecretWo` write-only. Increment this value when an update to `clientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<String>? clientSecretWoVersion;
+  final pulumi.Input<String?>? clientSecretWoVersion;
   /// The default continue URI for 3LO flow and it will be used when no continue
   /// URI is provided in the RetrieveCredentials request.
-  final pulumi.Input<String>? defaultContinueUri;
+  final pulumi.Input<String?>? defaultContinueUri;
   /// Enables Proof Key for Code Exchange (PKCE) for the OAuth flow to prevent
   /// authorization code interception attacks.
-  final pulumi.Input<bool>? enablePkce;
+  final pulumi.Input<bool?>? enablePkce;
   /// (Output)
   /// The redirect URL this authProvider uses for the OAuth exchange.
   /// This is deterministic based on the name of the auth_provider.
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
   /// The token endpoint for requesting tokens on behalf of an end user.
   /// eg. "https://auth.atlassian.com/oauth/token"
-  final pulumi.Input<String>? tokenUrl;
+  final pulumi.Input<String?>? tokenUrl;
 
   /// Creates a new [AuthProviderAuthProviderTypeParamsThreeLeggedOauth].
   /// [authorizationUrl] The authorization endpoint to send users to for consenting to delegate

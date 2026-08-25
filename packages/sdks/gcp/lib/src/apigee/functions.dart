@@ -130,6 +130,17 @@ Future<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicy(
   return GetEnvironmentIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicyOutput(
+  GetEnvironmentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentIamPolicyResult.fromMap);
+}
+
 /// Get information about a Google Apigee Instance.
 ///
 /// ## Example Usage
@@ -253,4 +264,15 @@ Future<GetInstanceResult> getInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apigee/getInstance:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
 }

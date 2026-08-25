@@ -29,7 +29,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
   factory RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(
       fixedDelay: pulumi.Input.fromValue(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay']! as Map).cast<String, dynamic>())),
-      percentage: pulumi.Input.fromValue(map['percentage'] as double),
+      percentage: pulumi.Input.fromValue((map['percentage'] as num).toDouble()),
     );
   }
 }

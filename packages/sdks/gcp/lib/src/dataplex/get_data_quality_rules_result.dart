@@ -5,45 +5,45 @@ import 'get_data_quality_rules_rule.dart';
 
 /// Result data returned by getDataQualityRules.
 class GetDataQualityRulesResult {
-  final String dataScanId;
+  final String? dataScanId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? location;
   final String? project;
   /// (Computed) The list of generated data quality rules. For more details, please see the datascan page.
-  final List<GetDataQualityRulesRule> rules;
+  final List<GetDataQualityRulesRule>? rules;
 
   /// Creates a new [GetDataQualityRulesResult].
-  /// [dataScanId] Required.
+  /// [dataScanId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Optional.
   /// [project] Optional.
   /// [rules] (Computed) The list of generated data quality rules. For more details, please see the datascan page.
   const GetDataQualityRulesResult({
-    required this.dataScanId,
-    required this.id,
+    this.dataScanId,
+    this.id,
     this.location,
     this.project,
-    required this.rules,
+    this.rules,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataScanId': dataScanId,
-      'id': id,
+      'dataScanId': ?dataScanId,
+      'id': ?id,
       'location': ?location,
       'project': ?project,
-      'rules': pulumi.Input.encodeList<GetDataQualityRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataQualityRulesRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetDataQualityRulesResult.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesResult(
-      dataScanId: map['dataScanId'] as String,
-      id: map['id'] as String,
+      dataScanId: (() { final guardedValue = map['dataScanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      rules: pulumi.Input.decodeList<GetDataQualityRulesRule>(map['rules']!, (value) => GetDataQualityRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataQualityRulesRule>(guardedValue, (value) => GetDataQualityRulesRule.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

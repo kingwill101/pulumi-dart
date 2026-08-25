@@ -7,13 +7,13 @@ class ConfigClient {
   /// (Output)
   /// API key that can be used when making requests for this project.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// (Output)
   /// Firebase subdomain.
-  final pulumi.Input<String>? firebaseSubdomain;
+  final pulumi.Input<String?>? firebaseSubdomain;
   /// Configuration related to restricting a user's ability to affect their account.
   /// Structure is documented below.
-  final pulumi.Input<ConfigClientPermissions>? permissions;
+  final pulumi.Input<ConfigClientPermissions?>? permissions;
 
   /// Creates a new [ConfigClient].
   /// [apiKey] (Output)

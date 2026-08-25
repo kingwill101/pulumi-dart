@@ -6,7 +6,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesLabel {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> key;
   /// (Optional)
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesLabel].
   /// [key] The identifier for this object. Format specified above.

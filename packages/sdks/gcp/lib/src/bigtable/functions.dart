@@ -122,6 +122,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
   return GetInstanceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigtable/getInstanceIamPolicy:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Bigtable Table.
 ///
 /// ## example
@@ -245,4 +256,15 @@ Future<GetTableIamPolicyResult> getTableIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTableIamPolicyResult> getTableIamPolicyOutput(
+  GetTableIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigtable/getTableIamPolicy:getTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableIamPolicyResult.fromMap);
 }

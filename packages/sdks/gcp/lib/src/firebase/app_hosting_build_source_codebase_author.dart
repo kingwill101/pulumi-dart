@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppHostingBuildSourceCodebaseAuthor {
   /// Human-readable name. 63 character limit.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The 'email' field in a Git user's git.config, if available.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The URI of an image file associated with the user's account in an
   /// external source control provider, if available.
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
 
   /// Creates a new [AppHostingBuildSourceCodebaseAuthor].
   /// [displayName] Human-readable name. 63 character limit.

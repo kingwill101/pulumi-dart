@@ -6,13 +6,13 @@ import 'prevention_job_trigger_inspect_job_storage_config_cloud_storage_options_
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet {
   /// The regex-filtered set of files to scan.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet>? regexFileSet;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet?>? regexFileSet;
   /// The Cloud Storage url of the file(s) to scan, in the format `gs://&lt;bucket&gt;/&lt;path&gt;`. Trailing wildcard
   /// in the path is allowed.
   /// If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned
   /// non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is
   /// equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet].
   /// [regexFileSet] The regex-filtered set of files to scan.

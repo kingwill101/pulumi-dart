@@ -8,16 +8,16 @@ import 'cx_tool_version_tool_open_api_spec_tls_config.dart';
 class CxToolVersionToolOpenApiSpec {
   /// Optional. Authentication information required by the API.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolOpenApiSpecAuthentication>? authentication;
+  final pulumi.Input<CxToolVersionToolOpenApiSpecAuthentication?>? authentication;
   /// Optional. Service Directory configuration.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolOpenApiSpecServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<CxToolVersionToolOpenApiSpecServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// The OpenAPI schema specified as a text.
   /// This field is part of a union field `schema`: only one of `textSchema` may be set.
   final pulumi.Input<String> textSchema;
   /// Optional. TLS configuration for the HTTPS verification.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolOpenApiSpecTlsConfig>? tlsConfig;
+  final pulumi.Input<CxToolVersionToolOpenApiSpecTlsConfig?>? tlsConfig;
 
   /// Creates a new [CxToolVersionToolOpenApiSpec].
   /// [authentication] Optional. Authentication information required by the API.

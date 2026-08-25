@@ -6,11 +6,11 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
   /// Conditions to apply to the expression.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions>? conditions;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions?>? conditions;
   /// The operator to apply to the result of conditions. Default and currently only supported value is AND.
   /// Default value is `AND`.
   /// Possible values are: `AND`.
-  final pulumi.Input<String>? logicalOperator;
+  final pulumi.Input<String?>? logicalOperator;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions].
   /// [conditions] Conditions to apply to the expression.

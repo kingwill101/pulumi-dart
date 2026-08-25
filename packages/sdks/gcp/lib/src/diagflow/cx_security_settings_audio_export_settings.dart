@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxSecuritySettingsAudioExportSettings {
   /// Filename pattern for exported audio.
-  final pulumi.Input<String>? audioExportPattern;
+  final pulumi.Input<String?>? audioExportPattern;
   /// File format for exported audio file. Currently only in telephony recordings.
   /// * MULAW: G.711 mu-law PCM with 8kHz sample rate.
   /// * MP3: MP3 file format.
   /// * OGG: OGG Vorbis.
   /// Possible values are: `MULAW`, `MP3`, `OGG`.
-  final pulumi.Input<String>? audioFormat;
+  final pulumi.Input<String?>? audioFormat;
   /// Enable audio redaction if it is true.
-  final pulumi.Input<bool>? enableAudioRedaction;
+  final pulumi.Input<bool?>? enableAudioRedaction;
   /// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
-  final pulumi.Input<String>? gcsBucket;
+  final pulumi.Input<String?>? gcsBucket;
 
   /// Creates a new [CxSecuritySettingsAudioExportSettings].
   /// [audioExportPattern] Filename pattern for exported audio.

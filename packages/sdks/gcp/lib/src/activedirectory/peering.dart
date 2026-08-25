@@ -432,17 +432,18 @@ class Peering extends pulumi.CustomResource {
           'gcp:activedirectory/peering:Peering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     domainResource = registerOutput<String>('domainResource');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     peeringId = registerOutput<String>('peeringId');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     status = registerOutput<String?>('status');
     statusMessage = registerOutput<String?>('statusMessage');
   }
@@ -452,11 +453,12 @@ class Peering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Peering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -473,12 +475,35 @@ class Peering extends pulumi.CustomResource {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     domainResource = registerOutput<String>('domainResource');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     peeringId = registerOutput<String>('peeringId');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    status = registerOutput<String?>('status');
+    statusMessage = registerOutput<String?>('statusMessage');
+  }
+
+  /// Creates a typed reference to an existing [Peering] resource.
+  Peering.reference(String urn)
+    : super(
+        'gcp:activedirectory/peering:Peering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    domainResource = registerOutput<String>('domainResource');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    peeringId = registerOutput<String>('peeringId');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     status = registerOutput<String?>('status');
     statusMessage = registerOutput<String?>('statusMessage');
   }

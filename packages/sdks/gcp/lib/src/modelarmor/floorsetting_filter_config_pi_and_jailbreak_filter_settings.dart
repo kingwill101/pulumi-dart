@@ -7,13 +7,13 @@ class FloorsettingFilterConfigPiAndJailbreakFilterSettings {
   /// LOW_AND_ABOVE
   /// MEDIUM_AND_ABOVE
   /// HIGH
-  final pulumi.Input<String>? confidenceLevel;
+  final pulumi.Input<String?>? confidenceLevel;
   /// Tells whether Prompt injection and Jailbreak filter is enabled or
   /// disabled.
   /// Possible values:
   /// ENABLED
   /// DISABLED
-  final pulumi.Input<String>? filterEnforcement;
+  final pulumi.Input<String?>? filterEnforcement;
 
   /// Creates a new [FloorsettingFilterConfigPiAndJailbreakFilterSettings].
   /// [confidenceLevel] Possible values:

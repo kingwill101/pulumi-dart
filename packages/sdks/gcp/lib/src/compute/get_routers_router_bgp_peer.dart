@@ -56,14 +56,14 @@ class GetRoutersRouterBgpPeer {
   factory GetRoutersRouterBgpPeer.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterBgpPeer(
       advertiseMode: pulumi.Input.fromValue(map['advertiseMode'] as String),
-      advertisedRoutePriority: pulumi.Input.fromValue(map['advertisedRoutePriority'] as int),
+      advertisedRoutePriority: pulumi.Input.fromValue((map['advertisedRoutePriority'] as num).toInt()),
       enable: pulumi.Input.fromValue(map['enable'] as String),
       enableIpv6: pulumi.Input.fromValue(map['enableIpv6'] as bool),
       interfaceName: pulumi.Input.fromValue(map['interfaceName'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       managementType: pulumi.Input.fromValue(map['managementType'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      peerAsn: pulumi.Input.fromValue(map['peerAsn'] as int),
+      peerAsn: pulumi.Input.fromValue((map['peerAsn'] as num).toInt()),
       peerIpAddress: pulumi.Input.fromValue(map['peerIpAddress'] as String),
     );
   }

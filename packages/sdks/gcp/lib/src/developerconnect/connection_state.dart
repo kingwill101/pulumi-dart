@@ -16,86 +16,86 @@ class ConnectionState {
   /// Optional. Allows clients to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Configuration for connections to an instance of Bitbucket Cloud.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionBitbucketCloudConfig>? bitbucketCloudConfig;
+  final pulumi.Input<ConnectionBitbucketCloudConfig?>? bitbucketCloudConfig;
   /// Configuration for connections to an instance of Bitbucket Data Center.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionBitbucketDataCenterConfig>? bitbucketDataCenterConfig;
+  final pulumi.Input<ConnectionBitbucketDataCenterConfig?>? bitbucketDataCenterConfig;
   /// Required. Id of the requesting object
   /// If auto-generating Id server-side, remove this field and
   /// connectionId from the methodSignature of Create RPC
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// Output only. [Output only] Create timestamp
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The crypto key configuration. This field is used by the Customer-managed
   /// encryption keys (CMEK) feature.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionCryptoKeyConfig>? cryptoKeyConfig;
+  final pulumi.Input<ConnectionCryptoKeyConfig?>? cryptoKeyConfig;
   /// Output only. [Output only] Delete timestamp
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. If disabled is set to true, functionality is disabled for this connection.
   /// Repository based API methods and webhooks processing for repositories in
   /// this connection will be disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Optional. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Configuration for connections to github.com.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGithubConfig>? githubConfig;
+  final pulumi.Input<ConnectionGithubConfig?>? githubConfig;
   /// Configuration for connections to an instance of GitHub Enterprise.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGithubEnterpriseConfig>? githubEnterpriseConfig;
+  final pulumi.Input<ConnectionGithubEnterpriseConfig?>? githubEnterpriseConfig;
   /// Configuration for connections to gitlab.com.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGitlabConfig>? gitlabConfig;
+  final pulumi.Input<ConnectionGitlabConfig?>? gitlabConfig;
   /// Configuration for connections to an instance of GitLab Enterprise.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGitlabEnterpriseConfig>? gitlabEnterpriseConfig;
+  final pulumi.Input<ConnectionGitlabEnterpriseConfig?>? gitlabEnterpriseConfig;
   /// Configuration for connections to an HTTP service provider.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionHttpConfig>? httpConfig;
+  final pulumi.Input<ConnectionHttpConfig?>? httpConfig;
   /// Describes stage and necessary actions to be taken by the
   /// user to complete the installation. Used for GitHub and GitHub Enterprise
   /// based connections.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionInstallationState>>? installationStates;
+  final pulumi.Input<List<ConnectionInstallationState>?>? installationStates;
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the connection, in the format
   /// `projects/{project}/locations/{location}/connections/{connection_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Output only. Set to true when the connection is being set up or updated in the
   /// background.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Output only. A system-assigned unique identifier for a the GitRepositoryLink.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. [Output only] Update timestamp
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ConnectionState].
   /// [annotations] Optional. Allows clients to store small amounts of arbitrary data.

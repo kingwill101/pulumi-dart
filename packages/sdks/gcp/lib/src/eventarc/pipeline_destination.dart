@@ -9,31 +9,31 @@ import 'pipeline_destination_output_payload_format.dart';
 class PipelineDestination {
   /// Represents a config used to authenticate message requests.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationAuthenticationConfig>? authenticationConfig;
+  final pulumi.Input<PipelineDestinationAuthenticationConfig?>? authenticationConfig;
   /// Represents a HTTP endpoint destination.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationHttpEndpoint>? httpEndpoint;
+  final pulumi.Input<PipelineDestinationHttpEndpoint?>? httpEndpoint;
   /// The resource name of the Message Bus to which events should be
   /// published. The Message Bus resource should exist in the same project as
   /// the Pipeline. Format:
   /// `projects/{project}/locations/{location}/messageBuses/{message_bus}`
-  final pulumi.Input<String>? messageBus;
+  final pulumi.Input<String?>? messageBus;
   /// Represents a network config to be used for destination resolution and
   /// connectivity.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationNetworkConfig>? networkConfig;
+  final pulumi.Input<PipelineDestinationNetworkConfig?>? networkConfig;
   /// Represents the format of message data.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationOutputPayloadFormat>? outputPayloadFormat;
+  final pulumi.Input<PipelineDestinationOutputPayloadFormat?>? outputPayloadFormat;
   /// The resource name of the Pub/Sub topic to which events should be
   /// published. Format:
   /// `projects/{project}/locations/{location}/topics/{topic}`
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
   /// The resource name of the Workflow whose Executions are triggered by
   /// the events. The Workflow resource should be deployed in the same
   /// project as the Pipeline. Format:
   /// `projects/{project}/locations/{location}/workflows/{workflow}`
-  final pulumi.Input<String>? workflow;
+  final pulumi.Input<String?>? workflow;
 
   /// Creates a new [PipelineDestination].
   /// [authenticationConfig] Represents a config used to authenticate message requests.

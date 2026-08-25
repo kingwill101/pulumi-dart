@@ -7,10 +7,10 @@ import 'dashboard_chart_dashboard_query_input_time_window.dart';
 class DashboardChartDashboardQueryInput {
   /// Relative time range.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardQueryInputRelativeTime>? relativeTime;
+  final pulumi.Input<DashboardChartDashboardQueryInputRelativeTime?>? relativeTime;
   /// Specific start and end times.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardQueryInputTimeWindow>? timeWindow;
+  final pulumi.Input<DashboardChartDashboardQueryInputTimeWindow?>? timeWindow;
 
   /// Creates a new [DashboardChartDashboardQueryInput].
   /// [relativeTime] Relative time range.

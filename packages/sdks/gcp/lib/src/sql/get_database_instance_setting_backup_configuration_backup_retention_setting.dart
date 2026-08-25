@@ -25,7 +25,7 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
 
   factory GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting(
-      retainedBackups: pulumi.Input.fromValue(map['retainedBackups'] as int),
+      retainedBackups: pulumi.Input.fromValue((map['retainedBackups'] as num).toInt()),
       retentionUnit: pulumi.Input.fromValue(map['retentionUnit'] as String),
     );
   }

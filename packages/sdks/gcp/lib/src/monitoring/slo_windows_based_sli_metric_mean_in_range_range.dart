@@ -6,11 +6,11 @@ class SloWindowsBasedSliMetricMeanInRangeRange {
   /// max value for the range (inclusive). If not given,
   /// will be set to "infinity", defining an open range
   /// "&gt;= range.min"
-  final pulumi.Input<double>? max;
+  final pulumi.Input<double?>? max;
   /// Min value for the range (inclusive). If not given,
   /// will be set to "-infinity", defining an open range
   /// "&lt; range.max"
-  final pulumi.Input<double>? min;
+  final pulumi.Input<double?>? min;
 
   /// Creates a new [SloWindowsBasedSliMetricMeanInRangeRange].
   /// [max] max value for the range (inclusive). If not given,
@@ -29,8 +29,8 @@ class SloWindowsBasedSliMetricMeanInRangeRange {
 
   factory SloWindowsBasedSliMetricMeanInRangeRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricMeanInRangeRange(
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

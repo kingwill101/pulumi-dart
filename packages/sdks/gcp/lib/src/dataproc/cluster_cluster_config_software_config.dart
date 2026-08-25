@@ -8,19 +8,19 @@ class ClusterClusterConfigSoftwareConfig {
   /// installed onto the nodes when you create clusters. If not specified, defaults to the
   /// latest version. For a list of valid versions see
   /// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-  final pulumi.Input<String>? imageVersion;
+  final pulumi.Input<String?>? imageVersion;
   /// The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
   ///
   /// - - -
-  final pulumi.Input<List<String>>? optionalComponents;
+  final pulumi.Input<List<String>?>? optionalComponents;
   /// A list of override and additional properties (key/value pairs)
   /// used to modify various aspects of the common configuration files used when creating
   /// a cluster. For a list of valid properties please see
   /// [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
-  final pulumi.Input<Map<String, String>>? overrideProperties;
+  final pulumi.Input<Map<String, String>?>? overrideProperties;
   /// A list of the properties used to set the daemon config files.
   /// This will include any values supplied by the user via `cluster_config.software_config.override_properties`
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [ClusterClusterConfigSoftwareConfig].
   /// [imageVersion] The Cloud Dataproc image version to use

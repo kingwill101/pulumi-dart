@@ -8,12 +8,12 @@ import 'dashboard_chart_dashboard_chart_visualization_series_gauge_config_thresh
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfig {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValue>? baseValue;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValue?>? baseValue;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValue>? limitValue;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValue?>? limitValue;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValue>>? thresholdValues;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValue>?>? thresholdValues;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesGaugeConfig].
   /// [baseValue] A nested object resource.

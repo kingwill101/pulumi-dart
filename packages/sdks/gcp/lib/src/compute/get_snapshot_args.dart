@@ -11,16 +11,16 @@ class GetSnapshotArgs {
   /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots/list#body.QUERY_PARAMETERS.filter) for reference.
   /// If multiple compute snapshot match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
   /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*/data-disk$).*'`
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
   ///
   /// - - -
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// The name of the compute snapshot. One of `name` or `filter` must be provided.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetSnapshotArgs].
   /// [filter] A filter to retrieve the compute snapshot.

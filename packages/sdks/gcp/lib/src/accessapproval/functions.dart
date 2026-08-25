@@ -176,6 +176,17 @@ Future<GetFolderServiceAccountResult> getFolderServiceAccount(
   return GetFolderServiceAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderServiceAccountResult> getFolderServiceAccountOutput(
+  GetFolderServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderServiceAccountResult.fromMap);
+}
+
 /// Get the email address of an organization's Access Approval service account.
 ///
 /// Each Google Cloud organization has a unique service account used by Access Approval.
@@ -346,6 +357,17 @@ Future<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(
   return GetOrganizationServiceAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationServiceAccountResult> getOrganizationServiceAccountOutput(
+  GetOrganizationServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationServiceAccountResult.fromMap);
+}
+
 /// Get the email address of a project's Access Approval service account.
 ///
 /// Each Google Cloud project has a unique service account used by Access Approval.
@@ -514,4 +536,15 @@ Future<GetProjectServiceAccountResult> getProjectServiceAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectServiceAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectServiceAccountResult> getProjectServiceAccountOutput(
+  GetProjectServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectServiceAccountResult.fromMap);
 }

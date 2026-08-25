@@ -7,12 +7,12 @@ import 'feed_details_workspace_groups_settings_authentication_rs_credentials.dar
 class FeedDetailsWorkspaceGroupsSettingsAuthentication {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceGroupsSettingsAuthenticationClaims>? claims;
+  final pulumi.Input<FeedDetailsWorkspaceGroupsSettingsAuthenticationClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsWorkspaceGroupsSettingsAuthentication].
   /// [claims] Claims identifying a specific customer.

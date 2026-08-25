@@ -8,7 +8,7 @@ class AppVersionSnapshotGuardrailActionTransferAgent {
   /// in the same app as the current agent.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final pulumi.Input<String>? agent;
+  final pulumi.Input<String?>? agent;
 
   /// Creates a new [AppVersionSnapshotGuardrailActionTransferAgent].
   /// [agent] (Output)

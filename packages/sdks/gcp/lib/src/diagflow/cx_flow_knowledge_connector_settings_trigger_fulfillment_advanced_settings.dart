@@ -12,18 +12,18 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings>? dtmfSettings;
+  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings?>? dtmfSettings;
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// * Agent level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings>? loggingSettings;
+  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings?>? loggingSettings;
   /// Settings for speech to text detection. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
   /// * Page level
   /// * Parameter level
   /// Structure is documented below.
-  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings>? speechSettings;
+  final pulumi.Input<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings?>? speechSettings;
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:

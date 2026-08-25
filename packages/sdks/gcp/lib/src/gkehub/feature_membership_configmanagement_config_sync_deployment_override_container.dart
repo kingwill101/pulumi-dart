@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
   /// The name of the container.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// The CPU limit of the container.
-  final pulumi.Input<String>? cpuLimit;
+  final pulumi.Input<String?>? cpuLimit;
   /// The CPU request of the container.
-  final pulumi.Input<String>? cpuRequest;
+  final pulumi.Input<String?>? cpuRequest;
   /// The memory limit of the container.
-  final pulumi.Input<String>? memoryLimit;
+  final pulumi.Input<String?>? memoryLimit;
   /// The memory request of the container.
-  final pulumi.Input<String>? memoryRequest;
+  final pulumi.Input<String?>? memoryRequest;
 
   /// Creates a new [FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer].
   /// [containerName] The name of the container.

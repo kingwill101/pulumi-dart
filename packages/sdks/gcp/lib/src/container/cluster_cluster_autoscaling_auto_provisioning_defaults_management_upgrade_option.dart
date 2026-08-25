@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
   /// This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
-  final pulumi.Input<String>? autoUpgradeStartTime;
+  final pulumi.Input<String?>? autoUpgradeStartTime;
   /// Description of the cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption].
   /// [autoUpgradeStartTime] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.

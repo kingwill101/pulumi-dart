@@ -36,10 +36,10 @@ class GetServiceTemplateScaling {
 
   factory GetServiceTemplateScaling.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateScaling(
-      concurrencyUtilization: pulumi.Input.fromValue(map['concurrencyUtilization'] as double),
-      cpuUtilization: pulumi.Input.fromValue(map['cpuUtilization'] as double),
-      maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
-      minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
+      concurrencyUtilization: pulumi.Input.fromValue((map['concurrencyUtilization'] as num).toDouble()),
+      cpuUtilization: pulumi.Input.fromValue((map['cpuUtilization'] as num).toDouble()),
+      maxInstanceCount: pulumi.Input.fromValue((map['maxInstanceCount'] as num).toInt()),
+      minInstanceCount: pulumi.Input.fromValue((map['minInstanceCount'] as num).toInt()),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
   /// The name of the header to set.
-  final pulumi.Input<String>? headerName;
+  final pulumi.Input<String?>? headerName;
   /// The value to set the named header to.
-  final pulumi.Input<String>? headerValue;
+  final pulumi.Input<String?>? headerValue;
 
   /// Creates a new [SecurityPolicyRuleHeaderActionRequestHeadersToAdd].
   /// [headerName] The name of the header to set.

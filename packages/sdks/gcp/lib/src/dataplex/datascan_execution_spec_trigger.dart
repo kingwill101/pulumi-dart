@@ -6,13 +6,13 @@ import 'datascan_execution_spec_trigger_schedule.dart';
 
 class DatascanExecutionSpecTrigger {
   /// The scan runs once via dataScans.run API.
-  final pulumi.Input<Map<String, dynamic>>? onDemand;
+  final pulumi.Input<Map<String, dynamic>?>? onDemand;
   /// The scan runs once upon DataScan creation.
   /// Structure is documented below.
-  final pulumi.Input<DatascanExecutionSpecTriggerOneTime>? oneTime;
+  final pulumi.Input<DatascanExecutionSpecTriggerOneTime?>? oneTime;
   /// The scan is scheduled to run periodically.
   /// Structure is documented below.
-  final pulumi.Input<DatascanExecutionSpecTriggerSchedule>? schedule;
+  final pulumi.Input<DatascanExecutionSpecTriggerSchedule?>? schedule;
 
   /// Creates a new [DatascanExecutionSpecTrigger].
   /// [onDemand] The scan runs once via dataScans.run API.

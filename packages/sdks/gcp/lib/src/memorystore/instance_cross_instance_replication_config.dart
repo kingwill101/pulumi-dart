@@ -12,20 +12,20 @@ class InstanceCrossInstanceReplicationConfig {
   /// 3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
   /// 4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
   /// Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
-  final pulumi.Input<String>? instanceRole;
+  final pulumi.Input<String?>? instanceRole;
   /// (Output)
   /// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembership>>? memberships;
+  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembership>?>? memberships;
   /// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
   /// Structure is documented below.
-  final pulumi.Input<InstanceCrossInstanceReplicationConfigPrimaryInstance>? primaryInstance;
+  final pulumi.Input<InstanceCrossInstanceReplicationConfigPrimaryInstance?>? primaryInstance;
   /// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigSecondaryInstance>>? secondaryInstances;
+  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigSecondaryInstance>?>? secondaryInstances;
   /// (Output)
   /// The last time cross instance replication config was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [InstanceCrossInstanceReplicationConfig].
   /// [instanceRole] The instance role supports the following values:

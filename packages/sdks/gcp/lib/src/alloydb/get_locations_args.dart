@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_alloydb_get_locations_get_locations_args_doc}
 class GetLocationsArgs {
   /// The ID of the project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetLocationsArgs].
   /// [project] The ID of the project.

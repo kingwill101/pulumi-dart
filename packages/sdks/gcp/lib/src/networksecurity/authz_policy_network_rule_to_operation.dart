@@ -5,7 +5,7 @@ import 'authz_policy_network_rule_to_operation_sni.dart';
 
 class AuthzPolicyNetworkRuleToOperation {
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyNetworkRuleToOperationSni>>? snis;
+  final pulumi.Input<List<AuthzPolicyNetworkRuleToOperationSni>?>? snis;
 
   /// Creates a new [AuthzPolicyNetworkRuleToOperation].
   /// [snis] Structure is documented below.

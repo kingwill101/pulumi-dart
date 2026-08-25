@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_resize_request_args.dart';
 import 'region_resize_request_requested_run_duration.dart';
 import 'region_resize_request_state.dart';
+import 'region_resize_request_status.dart';
 
 /// Represents a Regional Managed Instance Group Resize Request
 ///
@@ -732,7 +733,7 @@ class RegionResizeRequest extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Status of the request.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<RegionResizeRequestStatus>> statuses;
 
   /// Creates a new [RegionResizeRequest].
   /// [name] The Pulumi resource name.
@@ -746,7 +747,7 @@ class RegionResizeRequest extends pulumi.CustomResource {
           'gcp:compute/regionResizeRequest:RegionResizeRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -758,7 +759,7 @@ class RegionResizeRequest extends pulumi.CustomResource {
     requestedRunDuration = registerOutput<RegionResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resizeBy = registerOutput<int>('resizeBy');
     state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<RegionResizeRequestStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionResizeRequestStatus>(guardedValue, (value) => RegionResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RegionResizeRequest] resource's state with the given [name] and [id].
@@ -766,11 +767,12 @@ class RegionResizeRequest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionResizeRequestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionResizeRequest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -794,6 +796,28 @@ class RegionResizeRequest extends pulumi.CustomResource {
     requestedRunDuration = registerOutput<RegionResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resizeBy = registerOutput<int>('resizeBy');
     this.state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<RegionResizeRequestStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionResizeRequestStatus>(guardedValue, (value) => RegionResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegionResizeRequest] resource.
+  RegionResizeRequest.reference(String urn)
+    : super(
+        'gcp:compute/regionResizeRequest:RegionResizeRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestedRunDuration = registerOutput<RegionResizeRequestRequestedRunDuration?>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionResizeRequestRequestedRunDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resizeBy = registerOutput<int>('resizeBy');
+    state = registerOutput<String>('state');
+    statuses = registerOutput<List<RegionResizeRequestStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionResizeRequestStatus>(guardedValue, (value) => RegionResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

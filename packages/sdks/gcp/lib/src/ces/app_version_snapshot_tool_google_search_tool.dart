@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolGoogleSearchTool {
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// List of domains to be excluded from the search results.
   /// Example: "example.com".
   /// A maximum of 2000 domains can be excluded.
-  final pulumi.Input<List<String>>? excludeDomains;
+  final pulumi.Input<List<String>?>? excludeDomains;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AppVersionSnapshotToolGoogleSearchTool].
   /// [description] The description of the app version.

@@ -10,7 +10,7 @@ import 'cx_page_transition_route_trigger_fulfillment_message_text.dart';
 
 class CxPageTransitionRouteTriggerFulfillmentMessage {
   /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-  final pulumi.Input<String>? channel;
+  final pulumi.Input<String?>? channel;
   /// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
   /// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
   /// You may set this, for example:
@@ -18,7 +18,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage {
   /// * In a webhook response when you determine that you handled the customer issue.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess>? conversationSuccess;
+  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess?>? conversationSuccess;
   /// Indicates that the conversation should be handed off to a live agent.
   /// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
   /// You may set this, for example:
@@ -26,26 +26,26 @@ class CxPageTransitionRouteTriggerFulfillmentMessage {
   /// * In a webhook response when you determine that the customer issue can only be handled by a human.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff>? liveAgentHandoff;
+  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff?>? liveAgentHandoff;
   /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText>? outputAudioText;
+  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText?>? outputAudioText;
   /// Returns a response containing a custom, platform-specific payload.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
-  final pulumi.Input<String>? payload;
+  final pulumi.Input<String?>? payload;
   /// Specifies an audio clip to be played by the client as part of the response.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio>? playAudio;
+  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio?>? playAudio;
   /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall>? telephonyTransferCall;
+  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall?>? telephonyTransferCall;
   /// The text response message.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageText>? text;
+  final pulumi.Input<CxPageTransitionRouteTriggerFulfillmentMessageText?>? text;
 
   /// Creates a new [CxPageTransitionRouteTriggerFulfillmentMessage].
   /// [channel] The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.

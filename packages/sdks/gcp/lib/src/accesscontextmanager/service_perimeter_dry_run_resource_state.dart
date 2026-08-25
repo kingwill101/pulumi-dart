@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServicePerimeterDryRunResource resources.
 class ServicePerimeterDryRunResourceState {
   /// The name of the Access Policy this resource belongs to.
-  final pulumi.Input<String>? accessPolicyId;
+  final pulumi.Input<String?>? accessPolicyId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the Service Perimeter to add this resource to.
-  final pulumi.Input<String>? perimeterName;
+  final pulumi.Input<String?>? perimeterName;
   /// A GCP resource that is inside of the service perimeter.
   /// Currently only projects are allowed.
   /// Format: projects/{project_number}
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ServicePerimeterDryRunResourceState].
   /// [accessPolicyId] The name of the Access Policy this resource belongs to.

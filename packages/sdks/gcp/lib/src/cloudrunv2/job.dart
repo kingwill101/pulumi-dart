@@ -1,8 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_args.dart';
 import 'job_binary_authorization.dart';
+import 'job_condition.dart';
+import 'job_latest_created_execution.dart';
 import 'job_state.dart';
 import 'job_template.dart';
+import 'job_terminal_condition.dart';
 
 /// A Cloud Run Job resource that references a container image which is run to completion.
 ///
@@ -3513,7 +3516,7 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String?> clientVersion;
   /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<JobCondition>> conditions;
   /// (Output)
   /// Creation timestamp of the execution.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -3559,7 +3562,7 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String> lastModifier;
   /// Name of the last created execution.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> latestCreatedExecutions;
+  late final pulumi.Output<List<JobLatestCreatedExecution>> latestCreatedExecutions;
   /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
   /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
   /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
@@ -3597,7 +3600,7 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<JobTemplate> template;
   /// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> terminalConditions;
+  late final pulumi.Output<List<JobTerminalCondition>> terminalConditions;
   /// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   late final pulumi.Output<String> uid;
   /// The last-modified time.
@@ -3615,39 +3618,40 @@ class Job extends pulumi.CustomResource {
           'gcp:cloudrunv2/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<JobBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<JobCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobCondition>(guardedValue, (value) => JobCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     executionCount = registerOutput<int>('executionCount');
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
-    latestCreatedExecutions = registerOutput<List<Map<String, dynamic>>>('latestCreatedExecutions');
+    latestCreatedExecutions = registerOutput<List<JobLatestCreatedExecution>>('latestCreatedExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobLatestCreatedExecution>(guardedValue, (value) => JobLatestCreatedExecution.fromMap((value as Map).cast<String, dynamic>())); });
     launchStage = registerOutput<String>('launchStage');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     runExecutionToken = registerOutput<String?>('runExecutionToken');
     startExecutionToken = registerOutput<String?>('startExecutionToken');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<JobTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
+    terminalConditions = registerOutput<List<JobTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTerminalCondition>(guardedValue, (value) => JobTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -3657,11 +3661,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3675,37 +3680,82 @@ class Job extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<JobBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<JobCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobCondition>(guardedValue, (value) => JobCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     executionCount = registerOutput<int>('executionCount');
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
-    latestCreatedExecutions = registerOutput<List<Map<String, dynamic>>>('latestCreatedExecutions');
+    latestCreatedExecutions = registerOutput<List<JobLatestCreatedExecution>>('latestCreatedExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobLatestCreatedExecution>(guardedValue, (value) => JobLatestCreatedExecution.fromMap((value as Map).cast<String, dynamic>())); });
     launchStage = registerOutput<String>('launchStage');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     runExecutionToken = registerOutput<String?>('runExecutionToken');
     startExecutionToken = registerOutput<String?>('startExecutionToken');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<JobTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
+    terminalConditions = registerOutput<List<JobTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTerminalCondition>(guardedValue, (value) => JobTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'gcp:cloudrunv2/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    binaryAuthorization = registerOutput<JobBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    client = registerOutput<String?>('client');
+    clientVersion = registerOutput<String?>('clientVersion');
+    conditions = registerOutput<List<JobCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobCondition>(guardedValue, (value) => JobCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    executionCount = registerOutput<int>('executionCount');
+    expireTime = registerOutput<String>('expireTime');
+    generation = registerOutput<String>('generation');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifier = registerOutput<String>('lastModifier');
+    latestCreatedExecutions = registerOutput<List<JobLatestCreatedExecution>>('latestCreatedExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobLatestCreatedExecution>(guardedValue, (value) => JobLatestCreatedExecution.fromMap((value as Map).cast<String, dynamic>())); });
+    launchStage = registerOutput<String>('launchStage');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    observedGeneration = registerOutput<String>('observedGeneration');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    runExecutionToken = registerOutput<String?>('runExecutionToken');
+    startExecutionToken = registerOutput<String?>('startExecutionToken');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    template = registerOutput<JobTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terminalConditions = registerOutput<List<JobTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTerminalCondition>(guardedValue, (value) => JobTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

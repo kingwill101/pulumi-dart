@@ -1115,13 +1115,13 @@ class MetastoreTableIamBinding extends pulumi.CustomResource {
           'gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<MetastoreTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     serviceId = registerOutput<String>('serviceId');
@@ -1133,11 +1133,12 @@ class MetastoreTableIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetastoreTableIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetastoreTableIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1155,7 +1156,27 @@ class MetastoreTableIamBinding extends pulumi.CustomResource {
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    serviceId = registerOutput<String>('serviceId');
+    table = registerOutput<String>('table');
+  }
+
+  /// Creates a typed reference to an existing [MetastoreTableIamBinding] resource.
+  MetastoreTableIamBinding.reference(String urn)
+    : super(
+        'gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<MetastoreTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseId = registerOutput<String>('databaseId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     serviceId = registerOutput<String>('serviceId');

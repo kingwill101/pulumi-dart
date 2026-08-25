@@ -7,7 +7,7 @@ class ConversationProfileAutomatedAgentConfig {
   /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/environments/&lt;EnvironmentID&gt;"
   final pulumi.Input<String> agent;
   /// Configure lifetime of the Dialogflow session.
-  final pulumi.Input<String>? sessionTtl;
+  final pulumi.Input<String?>? sessionTtl;
 
   /// Creates a new [ConversationProfileAutomatedAgentConfig].
   /// [agent] ID of the Dialogflow agent environment to use.

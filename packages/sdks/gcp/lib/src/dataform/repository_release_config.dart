@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_release_config_args.dart';
 import 'repository_release_config_code_compilation_config.dart';
+import 'repository_release_config_recent_scheduled_release_record.dart';
 import 'repository_release_config_state.dart';
 
 /// A resource represents a Dataform release configuration
@@ -885,7 +886,7 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentScheduledReleaseRecords;
+  late final pulumi.Output<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>> recentScheduledReleaseRecords;
   /// A reference to the region
   late final pulumi.Output<String?> region;
   /// A reference to the Dataform repository
@@ -905,7 +906,7 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
           'gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     codeCompilationConfig = registerOutput<RepositoryReleaseConfigCodeCompilationConfig?>('codeCompilationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryReleaseConfigCodeCompilationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cronSchedule = registerOutput<String?>('cronSchedule');
@@ -914,7 +915,7 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
     gitCommitish = registerOutput<String>('gitCommitish');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledReleaseRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledReleaseRecords');
+    recentScheduledReleaseRecords = registerOutput<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>('recentScheduledReleaseRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecord>(guardedValue, (value) => RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String?>('region');
     repository = registerOutput<String?>('repository');
     timeZone = registerOutput<String?>('timeZone');
@@ -925,11 +926,12 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryReleaseConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryReleaseConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -950,7 +952,29 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
     gitCommitish = registerOutput<String>('gitCommitish');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledReleaseRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledReleaseRecords');
+    recentScheduledReleaseRecords = registerOutput<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>('recentScheduledReleaseRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecord>(guardedValue, (value) => RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String?>('region');
+    repository = registerOutput<String?>('repository');
+    timeZone = registerOutput<String?>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryReleaseConfig] resource.
+  RepositoryReleaseConfig.reference(String urn)
+    : super(
+        'gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    codeCompilationConfig = registerOutput<RepositoryReleaseConfigCodeCompilationConfig?>('codeCompilationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryReleaseConfigCodeCompilationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cronSchedule = registerOutput<String?>('cronSchedule');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    gitCommitish = registerOutput<String>('gitCommitish');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recentScheduledReleaseRecords = registerOutput<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>('recentScheduledReleaseRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecord>(guardedValue, (value) => RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String?>('region');
     repository = registerOutput<String?>('repository');
     timeZone = registerOutput<String?>('timeZone');

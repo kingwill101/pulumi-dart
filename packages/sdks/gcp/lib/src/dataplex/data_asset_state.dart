@@ -7,36 +7,36 @@ import 'data_asset_access_group_config.dart';
 class DataAssetState {
   /// Access groups configurations.
   /// Structure is documented below.
-  final pulumi.Input<List<DataAssetAccessGroupConfig>>? accessGroupConfigs;
+  final pulumi.Input<List<DataAssetAccessGroupConfig>?>? accessGroupConfigs;
   /// The ID of the data asset.
-  final pulumi.Input<String>? dataAssetId;
+  final pulumi.Input<String?>? dataAssetId;
   /// The ID of the parent data product.
-  final pulumi.Input<String>? dataProductId;
+  final pulumi.Input<String?>? dataProductId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the data asset.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Full resource name of the cloud resource.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// System generated unique ID.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [DataAssetState].
   /// [accessGroupConfigs] Access groups configurations.

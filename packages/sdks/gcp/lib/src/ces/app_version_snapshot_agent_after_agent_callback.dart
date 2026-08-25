@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotAgentAfterAgentCallback {
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// Whether summarization is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// (Output)
   /// The Python code to execute for the tool.
-  final pulumi.Input<String>? pythonCode;
+  final pulumi.Input<String?>? pythonCode;
 
   /// Creates a new [AppVersionSnapshotAgentAfterAgentCallback].
   /// [description] The description of the app version.

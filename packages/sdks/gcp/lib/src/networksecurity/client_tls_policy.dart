@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_tls_policy_args.dart';
 import 'client_tls_policy_client_certificate.dart';
+import 'client_tls_policy_server_validation_ca.dart';
 import 'client_tls_policy_state.dart';
 
 /// ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
@@ -409,7 +410,7 @@ class ClientTlsPolicy extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> serverValidationCas;
+  late final pulumi.Output<List<ClientTlsPolicyServerValidationCa>?> serverValidationCas;
   /// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   late final pulumi.Output<String?> sni;
   /// Time the ClientTlsPolicy was updated in UTC.
@@ -427,19 +428,20 @@ class ClientTlsPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientTlsPolicyClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serverValidationCas = registerOutput<List<Map<String, dynamic>>?>('serverValidationCas');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serverValidationCas = registerOutput<List<ClientTlsPolicyServerValidationCa>?>('serverValidationCas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClientTlsPolicyServerValidationCa>(guardedValue, (value) => ClientTlsPolicyServerValidationCa.fromMap((value as Map).cast<String, dynamic>())); });
     sni = registerOutput<String?>('sni');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -449,11 +451,12 @@ class ClientTlsPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClientTlsPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClientTlsPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -471,13 +474,38 @@ class ClientTlsPolicy extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serverValidationCas = registerOutput<List<Map<String, dynamic>>?>('serverValidationCas');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serverValidationCas = registerOutput<List<ClientTlsPolicyServerValidationCa>?>('serverValidationCas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClientTlsPolicyServerValidationCa>(guardedValue, (value) => ClientTlsPolicyServerValidationCa.fromMap((value as Map).cast<String, dynamic>())); });
+    sni = registerOutput<String?>('sni');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ClientTlsPolicy] resource.
+  ClientTlsPolicy.reference(String urn)
+    : super(
+        'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientTlsPolicyClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serverValidationCas = registerOutput<List<ClientTlsPolicyServerValidationCa>?>('serverValidationCas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClientTlsPolicyServerValidationCa>(guardedValue, (value) => ClientTlsPolicyServerValidationCa.fromMap((value as Map).cast<String, dynamic>())); });
     sni = registerOutput<String?>('sni');
     updateTime = registerOutput<String>('updateTime');
   }

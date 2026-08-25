@@ -7,42 +7,42 @@ import 'membership_rbac_role_binding_state.dart';
 /// Input properties used for looking up and filtering MembershipRbacRoleBinding resources.
 class MembershipRbacRoleBindingGkehubState {
   /// Time the RBAC Role Binding was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Time the RBAC Role Binding was deleted in UTC.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Location of the Membership
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Id of the membership
-  final pulumi.Input<String>? membershipId;
+  final pulumi.Input<String?>? membershipId;
   /// The client-provided identifier of the RBAC Role Binding.
-  final pulumi.Input<String>? membershipRbacRoleBindingId;
+  final pulumi.Input<String?>? membershipRbacRoleBindingId;
   /// The resource name for the RBAC Role Binding
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Role to bind to the principal.
   /// Structure is documented below.
-  final pulumi.Input<MembershipRbacRoleBindingRole>? role;
+  final pulumi.Input<MembershipRbacRoleBindingRole?>? role;
   /// State of the RBAC Role Binding resource.
   /// Structure is documented below.
-  final pulumi.Input<List<MembershipRbacRoleBindingState>>? states;
+  final pulumi.Input<List<MembershipRbacRoleBindingState>?>? states;
   /// Google-generated UUID for this resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Time the RBAC Role Binding was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// user is the name of the user as seen by the kubernetes cluster, example
   /// "alice" or "alice@domain.tld"
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [MembershipRbacRoleBindingGkehubState].
   /// [createTime] Time the RBAC Role Binding was created in UTC.

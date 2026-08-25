@@ -6,33 +6,33 @@ import 'v2_organization_notification_config_streaming_config.dart';
 /// Input properties used for looking up and filtering V2OrganizationNotificationConfig resources.
 class V2OrganizationNotificationConfigState {
   /// This must be unique within the organization.
-  final pulumi.Input<String>? configId;
+  final pulumi.Input<String?>? configId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// location Id is provided by organization. If not provided, Use global as default.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of this notification config, in the format
   /// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The organization whose Cloud Security Command Center the Notification
   /// Config lives in.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[projectId]/topics/[topic]".
-  final pulumi.Input<String>? pubsubTopic;
+  final pulumi.Input<String?>? pubsubTopic;
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  final pulumi.Input<V2OrganizationNotificationConfigStreamingConfig>? streamingConfig;
+  final pulumi.Input<V2OrganizationNotificationConfigStreamingConfig?>? streamingConfig;
 
   /// Creates a new [V2OrganizationNotificationConfigState].
   /// [configId] This must be unique within the organization.

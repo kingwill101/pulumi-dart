@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateConnectionError {
   /// A list of messages that carry the error details.
-  final pulumi.Input<Map<String, String>>? details;
+  final pulumi.Input<Map<String, String>?>? details;
   /// A message containing more information about the error that occurred.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [PrivateConnectionError].
   /// [details] A list of messages that carry the error details.

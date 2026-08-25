@@ -13,25 +13,25 @@ class CxEntityTypeArgs {
   /// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
   /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
   /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
-  final pulumi.Input<String>? autoExpansionMode;
+  final pulumi.Input<String?>? autoExpansionMode;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The human-readable name of the entity type, unique within the agent.
   final pulumi.Input<String> displayName;
   /// Enables fuzzy entity extraction during classification.
-  final pulumi.Input<bool>? enableFuzzyExtraction;
+  final pulumi.Input<bool?>? enableFuzzyExtraction;
   /// The collection of entity entries associated with the entity type.
   /// Structure is documented below.
   final pulumi.Input<List<CxEntityTypeEntity>> entities;
   /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
   /// If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
   /// Structure is documented below.
-  final pulumi.Input<List<CxEntityTypeExcludedPhrase>>? excludedPhrases;
+  final pulumi.Input<List<CxEntityTypeExcludedPhrase>?>? excludedPhrases;
   /// Indicates whether the entity type can be automatically expanded.
   /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
   /// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
@@ -43,12 +43,12 @@ class CxEntityTypeArgs {
   /// EntityType.entities.synonyms
   /// EntityType.excluded_phrases.value
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The agent to create a entity type for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
-  final pulumi.Input<bool>? redact;
+  final pulumi.Input<bool?>? redact;
 
   /// Creates a new [CxEntityTypeArgs].
   /// [autoExpansionMode] Represents kinds of entities.

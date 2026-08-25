@@ -20,7 +20,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
 
   factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(
-      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
+      cpuCount: pulumi.Input.fromValue((map['cpuCount'] as num).toInt()),
     );
   }
 }

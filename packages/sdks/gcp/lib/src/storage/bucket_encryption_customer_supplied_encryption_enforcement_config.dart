@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
   /// Time from which the config was effective.
-  final pulumi.Input<String>? effectiveTime;
+  final pulumi.Input<String?>? effectiveTime;
   /// Whether Customer Supplied Encryption (CSEK) is restricted for new objects within the bucket. If FullyRestricted, new objects can't be created using CSEK encryption. If NotRestricted or unset, creation of new objects with CSEK encryption is allowed.
   final pulumi.Input<String> restrictionMode;
 

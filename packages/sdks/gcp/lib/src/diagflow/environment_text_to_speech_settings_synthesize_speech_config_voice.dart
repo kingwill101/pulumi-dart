@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice {
   /// The name of the voice.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The preferred gender of the voice.
   /// Possible values are: `SSML_VOICE_GENDER_UNSPECIFIED`, `SSML_VOICE_GENDER_MALE`, `SSML_VOICE_GENDER_FEMALE`, `SSML_VOICE_GENDER_NEUTRAL`.
-  final pulumi.Input<String>? ssmlGender;
+  final pulumi.Input<String?>? ssmlGender;
 
   /// Creates a new [EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice].
   /// [name] The name of the voice.

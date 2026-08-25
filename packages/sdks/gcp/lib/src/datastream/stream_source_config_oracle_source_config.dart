@@ -6,21 +6,21 @@ import 'stream_source_config_oracle_source_config_include_objects.dart';
 
 class StreamSourceConfigOracleSourceConfig {
   /// Configuration to drop large object values.
-  final pulumi.Input<Map<String, dynamic>>? dropLargeObjects;
+  final pulumi.Input<Map<String, dynamic>?>? dropLargeObjects;
   /// Oracle objects to exclude from the stream.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigOracleSourceConfigExcludeObjects>? excludeObjects;
+  final pulumi.Input<StreamSourceConfigOracleSourceConfigExcludeObjects?>? excludeObjects;
   /// Oracle objects to retrieve from the source.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigOracleSourceConfigIncludeObjects>? includeObjects;
+  final pulumi.Input<StreamSourceConfigOracleSourceConfigIncludeObjects?>? includeObjects;
   /// Maximum number of concurrent backfill tasks. The number should be non negative.
   /// If not set (or set to 0), the system's default value will be used.
-  final pulumi.Input<int>? maxConcurrentBackfillTasks;
+  final pulumi.Input<int?>? maxConcurrentBackfillTasks;
   /// Maximum number of concurrent CDC tasks. The number should be non negative.
   /// If not set (or set to 0), the system's default value will be used.
-  final pulumi.Input<int>? maxConcurrentCdcTasks;
+  final pulumi.Input<int?>? maxConcurrentCdcTasks;
   /// Configuration to drop large object values.
-  final pulumi.Input<Map<String, dynamic>>? streamLargeObjects;
+  final pulumi.Input<Map<String, dynamic>?>? streamLargeObjects;
 
   /// Creates a new [StreamSourceConfigOracleSourceConfig].
   /// [dropLargeObjects] Configuration to drop large object values.
@@ -54,8 +54,8 @@ class StreamSourceConfigOracleSourceConfig {
       dropLargeObjects: (() { final guardedValue = map['dropLargeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       excludeObjects: (() { final guardedValue = map['excludeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigOracleSourceConfigExcludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       includeObjects: (() { final guardedValue = map['includeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigOracleSourceConfigIncludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       streamLargeObjects: (() { final guardedValue = map['streamLargeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

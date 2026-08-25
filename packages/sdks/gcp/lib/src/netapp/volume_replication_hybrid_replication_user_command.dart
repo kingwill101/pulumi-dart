@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeReplicationHybridReplicationUserCommand {
   /// (Output)
   /// List of commands to be executed by the customer.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
 
   /// Creates a new [VolumeReplicationHybridReplicationUserCommand].
   /// [commands] (Output)

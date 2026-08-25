@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_args.dart';
 import 'bucket_autoclass.dart';
+import 'bucket_cor.dart';
 import 'bucket_custom_placement_config.dart';
 import 'bucket_encryption.dart';
 import 'bucket_hierarchical_namespace.dart';
 import 'bucket_ip_filter.dart';
+import 'bucket_lifecycle_rule.dart';
 import 'bucket_logging.dart';
 import 'bucket_retention_policy.dart';
 import 'bucket_soft_delete_policy.dart';
@@ -1782,7 +1784,7 @@ class Bucket extends pulumi.CustomResource {
   /// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
   late final pulumi.Output<BucketAutoclass?> autoclass;
   /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cors;
+  late final pulumi.Output<List<BucketCor>?> cors;
   /// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
   late final pulumi.Output<BucketCustomPlacementConfig?> customPlacementConfig;
   /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
@@ -1809,7 +1811,7 @@ class Bucket extends pulumi.CustomResource {
   /// A map of key/value label pairs to assign to the bucket.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lifecycleRules;
+  late final pulumi.Output<List<BucketLifecycleRule>?> lifecycleRules;
   /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
   ///
   /// - - -
@@ -1864,28 +1866,29 @@ class Bucket extends pulumi.CustomResource {
           'gcp:storage/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoclass = registerOutput<BucketAutoclass?>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclass.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cors = registerOutput<List<Map<String, dynamic>>?>('cors');
+    cors = registerOutput<List<BucketCor>?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCor>(guardedValue, (value) => BucketCor.fromMap((value as Map).cast<String, dynamic>())); });
     customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
     encryption = registerOutput<BucketEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>('hierarchicalNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketHierarchicalNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipFilter = registerOutput<BucketIpFilter?>('ipFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIpFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifecycleRules = registerOutput<List<BucketLifecycleRule>?>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleRule>(guardedValue, (value) => BucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     logging = registerOutput<BucketLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     projectNumber = registerOutput<int>('projectNumber');
     publicAccessPrevention = registerOutput<String>('publicAccessPrevention');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     requesterPays = registerOutput<bool?>('requesterPays');
     retentionPolicy = registerOutput<BucketRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rpo = registerOutput<String>('rpo');
@@ -1905,11 +1908,12 @@ class Bucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Bucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1924,25 +1928,69 @@ class Bucket extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoclass = registerOutput<BucketAutoclass?>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclass.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cors = registerOutput<List<Map<String, dynamic>>?>('cors');
+    cors = registerOutput<List<BucketCor>?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCor>(guardedValue, (value) => BucketCor.fromMap((value as Map).cast<String, dynamic>())); });
     customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
     encryption = registerOutput<BucketEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>('hierarchicalNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketHierarchicalNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipFilter = registerOutput<BucketIpFilter?>('ipFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIpFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifecycleRules = registerOutput<List<BucketLifecycleRule>?>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleRule>(guardedValue, (value) => BucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     logging = registerOutput<BucketLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     projectNumber = registerOutput<int>('projectNumber');
     publicAccessPrevention = registerOutput<String>('publicAccessPrevention');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    requesterPays = registerOutput<bool?>('requesterPays');
+    retentionPolicy = registerOutput<BucketRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rpo = registerOutput<String>('rpo');
+    selfLink = registerOutput<String>('selfLink');
+    softDeletePolicy = registerOutput<BucketSoftDeletePolicy>('softDeletePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketSoftDeletePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageClass = registerOutput<String?>('storageClass');
+    timeCreated = registerOutput<String>('timeCreated');
+    uniformBucketLevelAccess = registerOutput<bool>('uniformBucketLevelAccess');
+    updated = registerOutput<String>('updated');
+    url = registerOutput<String>('url');
+    versioning = registerOutput<BucketVersioning>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    website = registerOutput<BucketWebsite>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Bucket] resource.
+  Bucket.reference(String urn)
+    : super(
+        'gcp:storage/bucket:Bucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    autoclass = registerOutput<BucketAutoclass?>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclass.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cors = registerOutput<List<BucketCor>?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCor>(guardedValue, (value) => BucketCor.fromMap((value as Map).cast<String, dynamic>())); });
+    customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
+    encryption = registerOutput<BucketEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>('hierarchicalNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketHierarchicalNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipFilter = registerOutput<BucketIpFilter?>('ipFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIpFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifecycleRules = registerOutput<List<BucketLifecycleRule>?>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLifecycleRule>(guardedValue, (value) => BucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    logging = registerOutput<BucketLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    projectNumber = registerOutput<int>('projectNumber');
+    publicAccessPrevention = registerOutput<String>('publicAccessPrevention');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     requesterPays = registerOutput<bool?>('requesterPays');
     retentionPolicy = registerOutput<BucketRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rpo = registerOutput<String>('rpo');

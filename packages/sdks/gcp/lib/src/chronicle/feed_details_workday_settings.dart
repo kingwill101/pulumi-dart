@@ -6,11 +6,11 @@ import 'feed_details_workday_settings_authentication.dart';
 class FeedDetailsWorkdaySettings {
   /// Authentication for Workday.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkdaySettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsWorkdaySettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FeedDetailsWorkdaySettings].
   /// [authentication] Authentication for Workday.

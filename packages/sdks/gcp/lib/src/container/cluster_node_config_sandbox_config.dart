@@ -7,12 +7,12 @@ class ClusterNodeConfigSandboxConfig {
   /// Accepted values are:
   ///
   /// * `"gvisor"`: Pods run within a gVisor sandbox.
-  final pulumi.Input<String>? sandboxType;
+  final pulumi.Input<String?>? sandboxType;
   /// Which sandbox to use for pods in the node pool.
   /// Accepted values are:
   ///
   /// * `"GVISOR"`: Pods run within a gVisor sandbox.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ClusterNodeConfigSandboxConfig].
   /// [sandboxType] Which sandbox to use for pods in the node pool. `sandbox_config.sandbox_type` is deprecated and will be removed in a future major release. Use `sandbox_config.type` instead.

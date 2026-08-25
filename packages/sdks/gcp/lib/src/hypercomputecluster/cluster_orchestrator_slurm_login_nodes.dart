@@ -9,23 +9,23 @@ class ClusterOrchestratorSlurmLoginNodes {
   /// A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
   /// boot disk for a Compute Engine VM instance.
   /// Structure is documented below.
-  final pulumi.Input<ClusterOrchestratorSlurmLoginNodesBootDisk>? bootDisk;
+  final pulumi.Input<ClusterOrchestratorSlurmLoginNodesBootDisk?>? bootDisk;
   /// Number of login node instances to create.
   final pulumi.Input<String> count;
   /// Whether [OS Login](https://cloud.google.com/compute/docs/oslogin) should be
   /// enabled on login node instances.
-  final pulumi.Input<bool>? enableOsLogin;
+  final pulumi.Input<bool?>? enableOsLogin;
   /// Whether login node instances should be assigned [external IP
   /// addresses](https://cloud.google.com/compute/docs/ip-addresses#externaladdresses).
-  final pulumi.Input<bool>? enablePublicIps;
+  final pulumi.Input<bool?>? enablePublicIps;
   /// (Output)
   /// Information about the login node instances that were created in Compute
   /// Engine.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterOrchestratorSlurmLoginNodesInstance>>? instances;
+  final pulumi.Input<List<ClusterOrchestratorSlurmLoginNodesInstance>?>? instances;
   /// [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
   /// should be applied to each login node instance.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Compute Engine [machine
   /// type](https://cloud.google.com/compute/docs/machine-resource) to use for
   /// login nodes, e.g. `n2-standard-2`.
@@ -36,11 +36,11 @@ class ClusterOrchestratorSlurmLoginNodes {
   /// The script must complete within the system-defined default timeout of 5
   /// minutes. For tasks that require more time, consider running them in the
   /// background using methods such as `&` or `nohup`.
-  final pulumi.Input<String>? startupScript;
+  final pulumi.Input<String?>? startupScript;
   /// How storage resources should be mounted on each login
   /// node.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterOrchestratorSlurmLoginNodesStorageConfig>>? storageConfigs;
+  final pulumi.Input<List<ClusterOrchestratorSlurmLoginNodesStorageConfig>?>? storageConfigs;
   /// Name of the zone in which login nodes should run, e.g., `us-central1-a`.
   /// Must be in the same region as the cluster, and must match the zone of any
   /// other resources specified in the cluster.

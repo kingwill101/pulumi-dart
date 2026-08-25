@@ -15,33 +15,33 @@ class ServicePerimeterStatus {
   /// origins within the perimeter. For Service Perimeter Bridge, must
   /// be empty.
   /// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
-  final pulumi.Input<List<String>>? accessLevels;
+  final pulumi.Input<List<String>?>? accessLevels;
   /// List of EgressPolicies to apply to the perimeter. A perimeter may
   /// have multiple EgressPolicies, each of which is evaluated separately.
   /// Access is granted if any EgressPolicy grants it. Must be empty for
   /// a perimeter bridge.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterStatusEgressPolicy>>? egressPolicies;
+  final pulumi.Input<List<ServicePerimeterStatusEgressPolicy>?>? egressPolicies;
   /// List of `IngressPolicies` to apply to the perimeter. A perimeter may
   /// have multiple `IngressPolicies`, each of which is evaluated
   /// separately. Access is granted if any `Ingress Policy` grants it.
   /// Must be empty for a perimeter bridge.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterStatusIngressPolicy>>? ingressPolicies;
+  final pulumi.Input<List<ServicePerimeterStatusIngressPolicy>?>? ingressPolicies;
   /// A list of GCP resources that are inside of the service perimeter.
   /// Currently only projects are allowed.
   /// Format: projects/{project_number}
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
   /// GCP services that are subject to the Service Perimeter
   /// restrictions. Must contain a list of services. For example, if
   /// `storage.googleapis.com` is specified, access to the storage
   /// buckets inside the perimeter must meet the perimeter's access
   /// restrictions.
-  final pulumi.Input<List<String>>? restrictedServices;
+  final pulumi.Input<List<String>?>? restrictedServices;
   /// Specifies how APIs are allowed to communicate within the Service
   /// Perimeter.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterStatusVpcAccessibleServices>? vpcAccessibleServices;
+  final pulumi.Input<ServicePerimeterStatusVpcAccessibleServices?>? vpcAccessibleServices;
 
   /// Creates a new [ServicePerimeterStatus].
   /// [accessLevels] A list of AccessLevel resource names that allow resources within

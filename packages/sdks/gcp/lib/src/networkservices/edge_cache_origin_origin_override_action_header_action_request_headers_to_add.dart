@@ -13,7 +13,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
   /// same field names. The added values are
   /// separated by commas.
   /// To overwrite existing values, set `replace` to `true`.
-  final pulumi.Input<bool>? replace;
+  final pulumi.Input<bool?>? replace;
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd].
   /// [headerName] The name of the header to add.

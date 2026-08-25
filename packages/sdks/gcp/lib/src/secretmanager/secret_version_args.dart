@@ -19,28 +19,28 @@ class SecretVersionArgs {
   /// * DISABLE
   /// * ABANDON
   /// * PREVENT
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The current state of the SecretVersion.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
-  final pulumi.Input<bool>? isSecretDataBase64;
+  final pulumi.Input<bool?>? isSecretDataBase64;
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Secret Manager secret resource
   final pulumi.Input<String> secret;
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? secretData;
+  final pulumi.Input<String?>? secretData;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
-  final pulumi.Input<String>? secretDataWo;
+  final pulumi.Input<String?>? secretDataWo;
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<int>? secretDataWoVersion;
+  final pulumi.Input<int?>? secretDataWoVersion;
 
   /// Creates a new [SecretVersionArgs].
   /// [deletionPolicy] The deletion policy for the secret version. Setting `ABANDON` allows the resource
@@ -84,7 +84,7 @@ class SecretVersionArgs {
       secret: pulumi.Input.fromValue(map['secret'] as String),
       secretData: (() { final guardedValue = map['secretData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretDataWo: (() { final guardedValue = map['secretDataWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secretDataWoVersion: (() { final guardedValue = map['secretDataWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      secretDataWoVersion: (() { final guardedValue = map['secretDataWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'wire_group_topology_endpoint.dart';
 class WireGroupTopology {
   /// Endpoints grouped by location, each mapping to interconnect configurations.
   /// Structure is documented below.
-  final pulumi.Input<List<WireGroupTopologyEndpoint>>? endpoints;
+  final pulumi.Input<List<WireGroupTopologyEndpoint>?>? endpoints;
 
   /// Creates a new [WireGroupTopology].
   /// [endpoints] Endpoints grouped by location, each mapping to interconnect configurations.

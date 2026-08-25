@@ -209,13 +209,13 @@ class EnvironmentGroup extends pulumi.CustomResource {
           'gcp:chronicle/environmentGroup:EnvironmentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     environmentGroupId = registerOutput<String>('environmentGroupId');
-    environmentsIds = registerOutput<List<String>>('environmentsIds');
+    environmentsIds = registerOutput<List<String>>('environmentsIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -227,11 +227,12 @@ class EnvironmentGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,7 +250,27 @@ class EnvironmentGroup extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     environmentGroupId = registerOutput<String>('environmentGroupId');
-    environmentsIds = registerOutput<List<String>>('environmentsIds');
+    environmentsIds = registerOutput<List<String>>('environmentsIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentGroup] resource.
+  EnvironmentGroup.reference(String urn)
+    : super(
+        'gcp:chronicle/environmentGroup:EnvironmentGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    environmentGroupId = registerOutput<String>('environmentGroupId');
+    environmentsIds = registerOutput<List<String>>('environmentsIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

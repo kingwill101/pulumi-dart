@@ -278,7 +278,7 @@ class Capability extends pulumi.CustomResource {
           'gcp:resourcemanager/capability:Capability',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     capabilityName = registerOutput<String>('capabilityName');
     parent = registerOutput<String>('parent');
@@ -290,11 +290,12 @@ class Capability extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CapabilityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Capability._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,6 +309,20 @@ class Capability extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    capabilityName = registerOutput<String>('capabilityName');
+    parent = registerOutput<String>('parent');
+    value = registerOutput<bool>('value');
+  }
+
+  /// Creates a typed reference to an existing [Capability] resource.
+  Capability.reference(String urn)
+    : super(
+        'gcp:resourcemanager/capability:Capability',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     capabilityName = registerOutput<String>('capabilityName');
     parent = registerOutput<String>('parent');
     value = registerOutput<bool>('value');

@@ -7,38 +7,38 @@ import 'network_firewall_policy_with_rules_predefined_rule_match_src_secure_tag.
 class NetworkFirewallPolicyWithRulesPredefinedRuleMatch {
   /// Address groups which should be matched against the traffic destination.
   /// Maximum number of destination address groups is 10.
-  final pulumi.Input<List<String>>? destAddressGroups;
+  final pulumi.Input<List<String>?>? destAddressGroups;
   /// Fully Qualified Domain Name (FQDN) which should be matched against
   /// traffic destination. Maximum number of destination fqdn allowed is 100.
-  final pulumi.Input<List<String>>? destFqdns;
+  final pulumi.Input<List<String>?>? destFqdns;
   /// Destination IP address range in CIDR format. Required for
   /// EGRESS rules.
-  final pulumi.Input<List<String>>? destIpRanges;
+  final pulumi.Input<List<String>?>? destIpRanges;
   /// Region codes whose IP addresses will be used to match for destination
   /// of traffic. Should be specified as 2 letter country code defined as per
   /// ISO 3166 alpha-2 country codes. ex."US"
   /// Maximum number of destination region codes allowed is 5000.
-  final pulumi.Input<List<String>>? destRegionCodes;
+  final pulumi.Input<List<String>?>? destRegionCodes;
   /// Names of Network Threat Intelligence lists.
   /// The IPs in these lists will be matched against traffic destination.
-  final pulumi.Input<List<String>>? destThreatIntelligences;
+  final pulumi.Input<List<String>?>? destThreatIntelligences;
   /// Pairs of IP protocols and ports that the rule should match.
   /// Structure is documented below.
-  final pulumi.Input<List<NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config>>? layer4Configs;
+  final pulumi.Input<List<NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config>?>? layer4Configs;
   /// Address groups which should be matched against the traffic source.
   /// Maximum number of source address groups is 10.
-  final pulumi.Input<List<String>>? srcAddressGroups;
+  final pulumi.Input<List<String>?>? srcAddressGroups;
   /// Fully Qualified Domain Name (FQDN) which should be matched against
   /// traffic source. Maximum number of source fqdn allowed is 100.
-  final pulumi.Input<List<String>>? srcFqdns;
+  final pulumi.Input<List<String>?>? srcFqdns;
   /// Source IP address range in CIDR format. Required for
   /// INGRESS rules.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
   /// Region codes whose IP addresses will be used to match for source
   /// of traffic. Should be specified as 2 letter country code defined as per
   /// ISO 3166 alpha-2 country codes. ex."US"
   /// Maximum number of source region codes allowed is 5000.
-  final pulumi.Input<List<String>>? srcRegionCodes;
+  final pulumi.Input<List<String>?>? srcRegionCodes;
   /// List of secure tag values, which should be matched at the source
   /// of the traffic.
   /// For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE,
@@ -48,10 +48,10 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatch {
   ///
   ///
   /// &lt;a name="nestedRuleMatchLayer4Config"&gt;&lt;/a&gt;The `layer4Config` block supports:
-  final pulumi.Input<List<NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>>? srcSecureTags;
+  final pulumi.Input<List<NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>?>? srcSecureTags;
   /// Names of Network Threat Intelligence lists.
   /// The IPs in these lists will be matched against traffic source.
-  final pulumi.Input<List<String>>? srcThreatIntelligences;
+  final pulumi.Input<List<String>?>? srcThreatIntelligences;
 
   /// Creates a new [NetworkFirewallPolicyWithRulesPredefinedRuleMatch].
   /// [destAddressGroups] Address groups which should be matched against the traffic destination.

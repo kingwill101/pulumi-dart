@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entitlement_additional_notification_targets.dart';
 import 'entitlement_approval_workflow.dart';
 import 'entitlement_args.dart';
+import 'entitlement_eligible_user.dart';
 import 'entitlement_privileged_access.dart';
 import 'entitlement_requester_justification_config.dart';
 import 'entitlement_state.dart';
@@ -456,7 +457,7 @@ class Entitlement extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// Who can create Grants using Entitlement. This list should contain at most one entry
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> eligibleUsers;
+  late final pulumi.Output<List<EntitlementEligibleUser>> eligibleUsers;
   /// The ID to use for this Entitlement. This will become the last part of the resource name.
   /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
   /// This value should be unique among all other Entitlements under the specified `parent`.
@@ -498,13 +499,13 @@ class Entitlement extends pulumi.CustomResource {
           'gcp:privilegedaccessmanager/entitlement:entitlement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     additionalNotificationTargets = registerOutput<EntitlementAdditionalNotificationTargets?>('additionalNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    eligibleUsers = registerOutput<List<Map<String, dynamic>>>('eligibleUsers');
+    eligibleUsers = registerOutput<List<EntitlementEligibleUser>>('eligibleUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntitlementEligibleUser>(guardedValue, (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>())); });
     entitlementId = registerOutput<String>('entitlementId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -522,11 +523,12 @@ class Entitlement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntitlementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Entitlement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -544,7 +546,7 @@ class Entitlement extends pulumi.CustomResource {
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    eligibleUsers = registerOutput<List<Map<String, dynamic>>>('eligibleUsers');
+    eligibleUsers = registerOutput<List<EntitlementEligibleUser>>('eligibleUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntitlementEligibleUser>(guardedValue, (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>())); });
     entitlementId = registerOutput<String>('entitlementId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -554,6 +556,32 @@ class Entitlement extends pulumi.CustomResource {
     privilegedAccess = registerOutput<EntitlementPrivilegedAccess>('privilegedAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementPrivilegedAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requesterJustificationConfig = registerOutput<EntitlementRequesterJustificationConfig>('requesterJustificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementRequesterJustificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Entitlement] resource.
+  Entitlement.reference(String urn)
+    : super(
+        'gcp:privilegedaccessmanager/entitlement:entitlement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalNotificationTargets = registerOutput<EntitlementAdditionalNotificationTargets?>('additionalNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    eligibleUsers = registerOutput<List<EntitlementEligibleUser>>('eligibleUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntitlementEligibleUser>(guardedValue, (value) => EntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>())); });
+    entitlementId = registerOutput<String>('entitlementId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    maxRequestDuration = registerOutput<String>('maxRequestDuration');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    privilegedAccess = registerOutput<EntitlementPrivilegedAccess>('privilegedAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementPrivilegedAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requesterJustificationConfig = registerOutput<EntitlementRequesterJustificationConfig>('requesterJustificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementRequesterJustificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

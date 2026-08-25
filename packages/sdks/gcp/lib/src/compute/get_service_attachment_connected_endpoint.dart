@@ -51,7 +51,7 @@ class GetServiceAttachmentConnectedEndpoint {
       consumerNetwork: pulumi.Input.fromValue(map['consumerNetwork'] as String),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       natIps: pulumi.Input.fromValue((map['natIps'] as List).cast<String>()),
-      propagatedConnectionCount: pulumi.Input.fromValue(map['propagatedConnectionCount'] as int),
+      propagatedConnectionCount: pulumi.Input.fromValue((map['propagatedConnectionCount'] as num).toInt()),
       pscConnectionId: pulumi.Input.fromValue(map['pscConnectionId'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );

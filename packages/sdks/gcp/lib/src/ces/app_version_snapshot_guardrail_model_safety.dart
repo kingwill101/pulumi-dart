@@ -7,7 +7,7 @@ class AppVersionSnapshotGuardrailModelSafety {
   /// (Output)
   /// List of safety settings.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailModelSafetySafetySetting>>? safetySettings;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailModelSafetySafetySetting>?>? safetySettings;
 
   /// Creates a new [AppVersionSnapshotGuardrailModelSafety].
   /// [safetySettings] (Output)

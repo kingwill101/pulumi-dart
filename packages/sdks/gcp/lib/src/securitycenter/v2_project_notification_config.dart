@@ -248,7 +248,7 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
           'gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     configId = registerOutput<String>('configId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -266,11 +266,12 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2ProjectNotificationConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2ProjectNotificationConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,6 +285,26 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pubsubTopic = registerOutput<String?>('pubsubTopic');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    streamingConfig = registerOutput<V2ProjectNotificationConfigStreamingConfig>('streamingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2ProjectNotificationConfigStreamingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [V2ProjectNotificationConfig] resource.
+  V2ProjectNotificationConfig.reference(String urn)
+    : super(
+        'gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configId = registerOutput<String>('configId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

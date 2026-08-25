@@ -9,16 +9,16 @@ import 'control_organization_intelligence_config_filter_included_cloud_storage_l
 class ControlOrganizationIntelligenceConfigFilter {
   /// Buckets to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets>? excludedCloudStorageBuckets;
+  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets?>? excludedCloudStorageBuckets;
   /// Locations to exclude from the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations>? excludedCloudStorageLocations;
+  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations?>? excludedCloudStorageLocations;
   /// Buckets to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets>? includedCloudStorageBuckets;
+  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets?>? includedCloudStorageBuckets;
   /// Locations to include in the Storage Intelligence plan.
   /// Structure is documented below.
-  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations>? includedCloudStorageLocations;
+  final pulumi.Input<ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations?>? includedCloudStorageLocations;
 
   /// Creates a new [ControlOrganizationIntelligenceConfigFilter].
   /// [excludedCloudStorageBuckets] Buckets to exclude from the Storage Intelligence plan.

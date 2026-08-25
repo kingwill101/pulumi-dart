@@ -2128,7 +2128,7 @@ class CxTool extends pulumi.CustomResource {
           'gcp:diagflow/cxTool:CxTool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolConnectorSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolDataStoreSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2147,11 +2147,12 @@ class CxTool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxToolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxTool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2165,6 +2166,27 @@ class CxTool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolConnectorSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolDataStoreSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolFunctionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolOpenApiSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parent = registerOutput<String?>('parent');
+    toolType = registerOutput<String>('toolType');
+  }
+
+  /// Creates a typed reference to an existing [CxTool] resource.
+  CxTool.reference(String urn)
+    : super(
+        'gcp:diagflow/cxTool:CxTool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolConnectorSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolDataStoreSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

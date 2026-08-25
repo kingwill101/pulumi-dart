@@ -9,7 +9,7 @@ import 'findings_refinement_outcome_filter.dart';
 /// {@macro pulumi_chronicle_findings_refinement_findings_refinement_args_doc}
 class FindingsRefinementArgs {
   /// Display name of the findings refinement.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -18,20 +18,20 @@ class FindingsRefinementArgs {
   /// filters that are applied to the outcome variables in the detection.
   /// All filters must be true for a detection to match the findings refinement.
   /// Structure is documented below.
-  final pulumi.Input<List<FindingsRefinementOutcomeFilter>>? outcomeFilters;
+  final pulumi.Input<List<FindingsRefinementOutcomeFilter>?>? outcomeFilters;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The query for the findings refinement. Works in conjunction with the type
   /// field to determine the findings refinement behavior. The syntax of this
   /// query is the same as a UDM search string. See the following for more
   /// information:
   /// https://cloud.google.com/chronicle/docs/investigation/udm-search
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// DETECTION_EXCLUSION is the only supported type of findings refinement.
   /// Possible values:
   /// DETECTION_EXCLUSION
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [FindingsRefinementArgs].
   /// [displayName] Display name of the findings refinement.

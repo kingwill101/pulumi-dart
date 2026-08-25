@@ -1115,7 +1115,7 @@ class MetastoreTableIamMember extends pulumi.CustomResource {
           'gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<MetastoreTableIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreTableIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseId = registerOutput<String>('databaseId');
@@ -1133,11 +1133,12 @@ class MetastoreTableIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetastoreTableIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetastoreTableIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1151,6 +1152,26 @@ class MetastoreTableIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<MetastoreTableIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreTableIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseId = registerOutput<String>('databaseId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    serviceId = registerOutput<String>('serviceId');
+    table = registerOutput<String>('table');
+  }
+
+  /// Creates a typed reference to an existing [MetastoreTableIamMember] resource.
+  MetastoreTableIamMember.reference(String urn)
+    : super(
+        'gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<MetastoreTableIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreTableIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');

@@ -6,33 +6,33 @@ class AppVariableDeclarationSchema {
   /// Optional. Defines the schema for additional properties allowed in an object.
   /// The value must be a valid JSON string representing the Schema object.
   /// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-  final pulumi.Input<String>? additionalProperties;
+  final pulumi.Input<String?>? additionalProperties;
   /// Optional. The instance value should be valid against at least one of the schemas in this list.
-  final pulumi.Input<String>? anyOf;
+  final pulumi.Input<String?>? anyOf;
   /// Optional. Default value of the data. Represents a dynamically typed value
   /// which can be either null, a number, a string, a boolean, a struct,
   /// or a list of values. The provided default value must be encoded as a JSON string.
   /// Use `jsonencode` in Terraform HCL to encode the default value.
-  final pulumi.Input<String>? default_;
+  final pulumi.Input<String?>? default_;
   /// A map of definitions for use by ref. Only allowed at the root of the schema.
-  final pulumi.Input<String>? defs;
+  final pulumi.Input<String?>? defs;
   /// The description of the data.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Possible values of the element of primitive type with enum format.
   /// Examples:
   /// 1. We can define direction as :
   /// {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
   /// 2. We can define apartment number as :
   /// {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-  final pulumi.Input<List<String>>? enums;
+  final pulumi.Input<List<String>?>? enums;
   /// Schema of the elements of Type.ARRAY.
-  final pulumi.Input<String>? items;
+  final pulumi.Input<String?>? items;
   /// Indicates if the value may be null.
-  final pulumi.Input<bool>? nullable;
+  final pulumi.Input<bool?>? nullable;
   /// Optional. Schemas of initial elements of Type.ARRAY.
-  final pulumi.Input<String>? prefixItems;
+  final pulumi.Input<String?>? prefixItems;
   /// Properties of Type.OBJECT.
-  final pulumi.Input<String>? properties;
+  final pulumi.Input<String?>? properties;
   /// Allows indirect references between schema nodes. The value should be a
   /// valid reference to a child of the root `defs`.
   /// For example, the following schema defines a reference to a schema node
@@ -51,11 +51,11 @@ class AppVariableDeclarationSchema {
   /// named "Pet".
   /// See details in
   /// https://json-schema.org/understanding-json-schema/structuring.
-  final pulumi.Input<String>? ref;
+  final pulumi.Input<String?>? ref;
   /// Required properties of Type.OBJECT.
-  final pulumi.Input<List<String>>? requireds;
+  final pulumi.Input<List<String>?>? requireds;
   /// The title of the schema.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// The type of the data.
   /// Possible values:
   /// STRING
@@ -66,7 +66,7 @@ class AppVariableDeclarationSchema {
   /// ARRAY
   final pulumi.Input<String> type;
   /// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-  final pulumi.Input<bool>? uniqueItems;
+  final pulumi.Input<bool?>? uniqueItems;
 
   /// Creates a new [AppVariableDeclarationSchema].
   /// [additionalProperties] Optional. Defines the schema for additional properties allowed in an object.

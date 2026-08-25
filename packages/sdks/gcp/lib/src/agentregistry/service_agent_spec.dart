@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceAgentSpec {
   /// The content of the Agent spec in the JSON format. This payload is validated against the schema for the specified type.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The type of the Agent spec content.
   /// Possible values are: `NO_SPEC`, `A2A_AGENT_CARD`.
   final pulumi.Input<String> type;

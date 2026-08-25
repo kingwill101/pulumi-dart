@@ -15,7 +15,7 @@ class CxToolConnectorSpec {
   /// the ConnectorTool creation will fail.
   /// See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
   /// Structure is documented below.
-  final pulumi.Input<CxToolConnectorSpecEndUserAuthConfig>? endUserAuthConfig;
+  final pulumi.Input<CxToolConnectorSpecEndUserAuthConfig?>? endUserAuthConfig;
   /// The full resource name of the referenced Integration Connectors Connection.
   /// Format: projects/*/locations/*/connections/*
   final pulumi.Input<String> name;

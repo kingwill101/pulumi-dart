@@ -19,65 +19,65 @@ class MigrationJobArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
   /// Possible values are: `NOT_STARTED`, `RUNNING`.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
   final pulumi.Input<String> destination;
   /// The migration job display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The initial dump flags.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobDumpFlags>? dumpFlags;
+  final pulumi.Input<MigrationJobDumpFlags?>? dumpFlags;
   /// The path to the dump file in Google Cloud Storage,
   /// in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
   /// This field and the "dumpFlags" field are mutually exclusive.
-  final pulumi.Input<String>? dumpPath;
+  final pulumi.Input<String?>? dumpPath;
   /// The type of the data dump. Supported for MySQL to CloudSQL for MySQL
   /// migrations only.
   /// Possible values are: `LOGICAL`, `PHYSICAL`.
-  final pulumi.Input<String>? dumpType;
+  final pulumi.Input<String?>? dumpType;
   /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the migration job should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the migration job.
   final pulumi.Input<String> migrationJobId;
   /// The objects that need to be migrated. If unset, the default is to migrate
   /// all objects available on the source.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobObjectsConfig>? objectsConfig;
+  final pulumi.Input<MigrationJobObjectsConfig?>? objectsConfig;
   /// Data dump parallelism settings used by the migration.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobPerformanceConfig>? performanceConfig;
+  final pulumi.Input<MigrationJobPerformanceConfig?>? performanceConfig;
   /// PostgreSQL to PostgreSQL configuration.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobPostgresHomogeneousConfig>? postgresHomogeneousConfig;
+  final pulumi.Input<MigrationJobPostgresHomogeneousConfig?>? postgresHomogeneousConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The details of the VPC network that the source database is located in.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobReverseSshConnectivity>? reverseSshConnectivity;
+  final pulumi.Input<MigrationJobReverseSshConnectivity?>? reverseSshConnectivity;
   /// The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
   final pulumi.Input<String> source;
   /// If set to an empty object (`{}`), the source database will allow incoming
   /// connections from the public IP of the destination database.
   /// You can retrieve the public IP of the Cloud SQL instance from the
   /// Cloud SQL console or using Cloud SQL APIs.
-  final pulumi.Input<Map<String, dynamic>>? staticIpConnectivity;
+  final pulumi.Input<Map<String, dynamic>?>? staticIpConnectivity;
   /// If set to true, will stop the pulumi up if there are validation warnings.
-  final pulumi.Input<bool>? stopOnWarnings;
+  final pulumi.Input<bool?>? stopOnWarnings;
   /// The type of the migration job.
   /// Possible values are: `ONE_TIME`, `CONTINUOUS`.
   final pulumi.Input<String> type;
   /// The details of the VPC network that the source database is located in.
   /// Structure is documented below.
-  final pulumi.Input<MigrationJobVpcPeeringConnectivity>? vpcPeeringConnectivity;
+  final pulumi.Input<MigrationJobVpcPeeringConnectivity?>? vpcPeeringConnectivity;
 
   /// Creates a new [MigrationJobArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

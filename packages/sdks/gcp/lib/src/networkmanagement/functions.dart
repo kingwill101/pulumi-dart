@@ -522,6 +522,17 @@ Future<GetConnectivityTestRunResult> getConnectivityTestRun(
   return GetConnectivityTestRunResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectivityTestRunResult> getConnectivityTestRunOutput(
+  GetConnectivityTestRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectivityTestRunResult.fromMap);
+}
+
 /// A connectivity test is a static analysis of your resource configurations
 /// that enables you to evaluate connectivity to and from Google Cloud
 /// resources in your Virtual Private Cloud (VPC) network. This data source allows
@@ -647,4 +658,15 @@ Future<GetConnectivityTestsResult> getConnectivityTests(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectivityTestsResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectivityTestsResult> getConnectivityTestsOutput(
+  GetConnectivityTestsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:networkmanagement/getConnectivityTests:getConnectivityTests',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectivityTestsResult.fromMap);
 }

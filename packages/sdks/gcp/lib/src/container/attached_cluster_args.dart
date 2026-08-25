@@ -24,13 +24,13 @@ class AttachedClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Configuration related to the cluster RBAC settings.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterAuthorization>? authorization;
+  final pulumi.Input<AttachedClusterAuthorization?>? authorization;
   /// Binary Authorization configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterBinaryAuthorization>? binaryAuthorization;
+  final pulumi.Input<AttachedClusterBinaryAuthorization?>? binaryAuthorization;
   /// Policy to determine what flags to send on delete.
   ///
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -39,10 +39,10 @@ class AttachedClusterArgs {
   /// management without updating or deleting the resource in the API.
   ///
   /// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human readable description of this attached cluster. Cannot be longer
   /// than 255 UTF-8 encoded bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Kubernetes distribution of the underlying attached cluster. Supported values:
   /// "eks", "aks", "generic". The generic distribution provides the ability to register
   /// or migrate any CNCF conformant cluster.
@@ -54,12 +54,12 @@ class AttachedClusterArgs {
   final pulumi.Input<String> location;
   /// Logging configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterLoggingConfig>? loggingConfig;
+  final pulumi.Input<AttachedClusterLoggingConfig?>? loggingConfig;
   /// Monitoring configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterMonitoringConfig>? monitoringConfig;
+  final pulumi.Input<AttachedClusterMonitoringConfig?>? monitoringConfig;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OIDC discovery information of the target cluster.
   /// Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
   /// API server. This fields indicates how GCP services
@@ -75,16 +75,16 @@ class AttachedClusterArgs {
   final pulumi.Input<String> platformVersion;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Support for proxy configuration.
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterProxyConfig>? proxyConfig;
+  final pulumi.Input<AttachedClusterProxyConfig?>? proxyConfig;
   /// (Optional, Deprecated)
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
-  final pulumi.Input<AttachedClusterSecurityPostureConfig>? securityPostureConfig;
+  final pulumi.Input<AttachedClusterSecurityPostureConfig?>? securityPostureConfig;
 
   /// Creates a new [AttachedClusterArgs].
   /// [annotations] Optional. Annotations on the cluster. This field has the same

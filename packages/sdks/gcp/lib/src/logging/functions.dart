@@ -139,6 +139,17 @@ Future<GetFolderSettingsResult> getFolderSettings(
   return GetFolderSettingsResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderSettingsResult> getFolderSettingsOutput(
+  GetFolderSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:logging/getFolderSettings:getFolderSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderSettingsResult.fromMap);
+}
+
 /// Get information about a Google Cloud Logging Log View. For more information, see the
 /// [official documentation](https://cloud.google.com/logging/docs/apis)
 /// and [API](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views).
@@ -278,6 +289,17 @@ Future<GetLogViewResult> getLogView(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogViewResult.fromMap(result);
+}
+
+pulumi.Output<GetLogViewResult> getLogViewOutput(
+  GetLogViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:logging/getLogView:getLogView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogViewResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for logview
@@ -420,6 +442,17 @@ Future<GetLogViewIamPolicyResult> getLogViewIamPolicy(
   return GetLogViewIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetLogViewIamPolicyResult> getLogViewIamPolicyOutput(
+  GetLogViewIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogViewIamPolicyResult.fromMap);
+}
+
 /// Describes the settings associated with a organization.
 ///
 /// To get more information about LoggingOrganizationSettings, see:
@@ -543,6 +576,17 @@ Future<GetOrganizationSettingsResult> getOrganizationSettings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationSettingsResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationSettingsResult> getOrganizationSettingsOutput(
+  GetOrganizationSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:logging/getOrganizationSettings:getOrganizationSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationSettingsResult.fromMap);
 }
 
 /// Describes the customer-managed encryption key (CMEK) settings associated with a project.
@@ -671,6 +715,17 @@ Future<GetProjectCmekSettingsResult> getProjectCmekSettings(
   return GetProjectCmekSettingsResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectCmekSettingsResult> getProjectCmekSettingsOutput(
+  GetProjectCmekSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:logging/getProjectCmekSettings:getProjectCmekSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectCmekSettingsResult.fromMap);
+}
+
 /// Describes the settings associated with a project.
 ///
 /// To get more information about LoggingProjectSettings, see:
@@ -796,6 +851,17 @@ Future<GetProjectSettingsResult> getProjectSettings(
   return GetProjectSettingsResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectSettingsResult> getProjectSettingsOutput(
+  GetProjectSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:logging/getProjectSettings:getProjectSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectSettingsResult.fromMap);
+}
+
 /// Use this data source to get a project, folder, organization or billing account logging sink details.
 /// To get more information about Service, see:
 ///
@@ -918,4 +984,15 @@ Future<GetSinkResult> getSink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSinkResult.fromMap(result);
+}
+
+pulumi.Output<GetSinkResult> getSinkOutput(
+  GetSinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:logging/getSink:getSink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSinkResult.fromMap);
 }

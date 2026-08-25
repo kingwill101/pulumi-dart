@@ -30,8 +30,8 @@ class GetClusterClusterAutoscalingResourceLimit {
 
   factory GetClusterClusterAutoscalingResourceLimit.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterAutoscalingResourceLimit(
-      maximum: pulumi.Input.fromValue(map['maximum'] as int),
-      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      maximum: pulumi.Input.fromValue((map['maximum'] as num).toInt()),
+      minimum: pulumi.Input.fromValue((map['minimum'] as num).toInt()),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }

@@ -7,12 +7,12 @@ class MirroringEndpointGroupConnectedDeploymentGroup {
   /// (Output)
   /// The list of locations where the deployment group is present.
   /// Structure is documented below.
-  final pulumi.Input<List<MirroringEndpointGroupConnectedDeploymentGroupLocation>>? locations;
+  final pulumi.Input<List<MirroringEndpointGroupConnectedDeploymentGroupLocation>?>? locations;
   /// (Output)
   /// The connected deployment group's resource name, for example:
   /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MirroringEndpointGroupConnectedDeploymentGroup].
   /// [locations] (Output)

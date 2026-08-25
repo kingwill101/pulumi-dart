@@ -170,7 +170,7 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
           'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     effectiveContainer = registerOutput<String>('effectiveContainer');
     effectiveEnablement = registerOutput<String>('effectiveEnablement');
@@ -185,11 +185,12 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SQuotaAdjusterSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SQuotaAdjusterSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -203,6 +204,23 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    effectiveContainer = registerOutput<String>('effectiveContainer');
+    effectiveEnablement = registerOutput<String>('effectiveEnablement');
+    enablement = registerOutput<String>('enablement');
+    inherited = registerOutput<bool>('inherited');
+    inheritedFrom = registerOutput<String>('inheritedFrom');
+    parent = registerOutput<String>('parent');
+  }
+
+  /// Creates a typed reference to an existing [SQuotaAdjusterSettings] resource.
+  SQuotaAdjusterSettings.reference(String urn)
+    : super(
+        'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     effectiveContainer = registerOutput<String>('effectiveContainer');
     effectiveEnablement = registerOutput<String>('effectiveEnablement');
     enablement = registerOutput<String>('enablement');

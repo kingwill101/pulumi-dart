@@ -10,7 +10,7 @@ class AiPersistentResourceResourceRuntime {
   /// "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
   /// "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
   /// }
-  final pulumi.Input<Map<String, String>>? accessUris;
+  final pulumi.Input<Map<String, String>?>? accessUris;
 
   /// Creates a new [AiPersistentResourceResourceRuntime].
   /// [accessUris] (Output)

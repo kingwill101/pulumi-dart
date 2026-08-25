@@ -6,20 +6,20 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 
 class FutureReservationStatusLastKnownGoodState {
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Represents the matching usage for the future reservation before an amendment was requested.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo>? existingMatchingUsageInfo;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo?>? existingMatchingUsageInfo;
   /// The previous instance-related properties of the Future Reservation.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecs>? futureReservationSpecs;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecs?>? futureReservationSpecs;
   /// The lock time of the FutureReservation before an amendment was requested.
-  final pulumi.Input<String>? lockTime;
+  final pulumi.Input<String?>? lockTime;
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// The status of the last known good state for the Future Reservation
   /// Possible values are: .
-  final pulumi.Input<String>? procurementStatus;
+  final pulumi.Input<String?>? procurementStatus;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodState].
   /// [description] An optional description of this resource.

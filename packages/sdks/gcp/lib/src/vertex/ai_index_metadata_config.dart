@@ -6,12 +6,12 @@ import 'ai_index_metadata_config_algorithm_config.dart';
 class AiIndexMetadataConfig {
   /// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexMetadataConfigAlgorithmConfig>? algorithmConfig;
+  final pulumi.Input<AiIndexMetadataConfigAlgorithmConfig?>? algorithmConfig;
   /// The default number of neighbors to find via approximate search before exact reordering is
   /// performed. Exact reordering is a procedure where results returned by an
   /// approximate search algorithm are reordered via a more expensive distance computation.
   /// Required if tree-AH algorithm is used.
-  final pulumi.Input<int>? approximateNeighborsCount;
+  final pulumi.Input<int?>? approximateNeighborsCount;
   /// The number of dimensions of the input vectors.
   final pulumi.Input<int> dimensions;
   /// The distance measure used in nearest neighbor search. The value must be one of the followings:
@@ -19,17 +19,17 @@ class AiIndexMetadataConfig {
   /// * L1_DISTANCE: Manhattan (L_1) Distance
   /// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
   /// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
-  final pulumi.Input<String>? distanceMeasureType;
+  final pulumi.Input<String?>? distanceMeasureType;
   /// Type of normalization to be carried out on each vector. The value must be one of the followings:
   /// * UNIT_L2_NORM: Unit L2 normalization type
   /// * NONE: No normalization type is specified.
-  final pulumi.Input<String>? featureNormType;
+  final pulumi.Input<String?>? featureNormType;
   /// Index data is split into equal parts to be processed. These are called "shards".
   /// The shard size must be specified when creating an index. The value must be one of the followings:
   /// * SHARD_SIZE_SMALL: Small (2GB)
   /// * SHARD_SIZE_MEDIUM: Medium (20GB)
   /// * SHARD_SIZE_LARGE: Large (50GB)
-  final pulumi.Input<String>? shardSize;
+  final pulumi.Input<String?>? shardSize;
 
   /// Creates a new [AiIndexMetadataConfig].
   /// [algorithmConfig] The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
@@ -61,8 +61,8 @@ class AiIndexMetadataConfig {
   factory AiIndexMetadataConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadataConfig(
       algorithmConfig: (() { final guardedValue = map['algorithmConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiIndexMetadataConfigAlgorithmConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      approximateNeighborsCount: (() { final guardedValue = map['approximateNeighborsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      dimensions: pulumi.Input.fromValue(map['dimensions'] as int),
+      approximateNeighborsCount: (() { final guardedValue = map['approximateNeighborsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dimensions: pulumi.Input.fromValue((map['dimensions'] as num).toInt()),
       distanceMeasureType: (() { final guardedValue = map['distanceMeasureType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       featureNormType: (() { final guardedValue = map['featureNormType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shardSize: (() { final guardedValue = map['shardSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

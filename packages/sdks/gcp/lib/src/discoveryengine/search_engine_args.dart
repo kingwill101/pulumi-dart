@@ -12,12 +12,12 @@ import 'search_engine_search_engine_config.dart';
 class SearchEngineArgs {
   /// This is the application type this engine resource represents.
   /// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
-  final pulumi.Input<String>? appType;
+  final pulumi.Input<String?>? appType;
   /// The collection ID.
   final pulumi.Input<String> collectionId;
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
-  final pulumi.Input<SearchEngineCommonConfig>? commonConfig;
+  final pulumi.Input<SearchEngineCommonConfig?>? commonConfig;
   /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
   final pulumi.Input<List<String>> dataStoreIds;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -26,33 +26,33 @@ class SearchEngineArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether to disable analytics for searches performed on this engine.
-  final pulumi.Input<bool>? disableAnalytics;
+  final pulumi.Input<bool?>? disableAnalytics;
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   final pulumi.Input<String> displayName;
   /// Unique ID to use for Search Engine App.
   final pulumi.Input<String> engineId;
   /// A map of the feature config for the engine to opt in or opt out of features.
-  final pulumi.Input<Map<String, String>>? features;
+  final pulumi.Input<Map<String, String>?>? features;
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
-  final pulumi.Input<String>? industryVertical;
+  final pulumi.Input<String?>? industryVertical;
   /// The KMS key to be used to protect this Engine at creation time.
   /// Must be set for requests that need to comply with CMEK Org Policy
   /// protections.
   /// If this field is set and processed successfully, the Engine will be
   /// protected by the KMS key, as indicated in the cmekConfig field.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Configurations for the Knowledge Graph.
   /// Structure is documented below.
-  final pulumi.Input<SearchEngineKnowledgeGraphConfig>? knowledgeGraphConfig;
+  final pulumi.Input<SearchEngineKnowledgeGraphConfig?>? knowledgeGraphConfig;
   /// Location.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configurations for a Search Engine.
   /// Structure is documented below.
   final pulumi.Input<SearchEngineSearchEngineConfig> searchEngineConfig;

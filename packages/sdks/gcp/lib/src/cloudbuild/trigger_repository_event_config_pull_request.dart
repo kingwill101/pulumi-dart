@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerRepositoryEventConfigPullRequest {
   /// Regex of branches to match.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
   /// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
-  final pulumi.Input<String>? commentControl;
+  final pulumi.Input<String?>? commentControl;
   /// If true, branches that do NOT match the gitRef will trigger a build.
-  final pulumi.Input<bool>? invertRegex;
+  final pulumi.Input<bool?>? invertRegex;
 
   /// Creates a new [TriggerRepositoryEventConfigPullRequest].
   /// [branch] Regex of branches to match.

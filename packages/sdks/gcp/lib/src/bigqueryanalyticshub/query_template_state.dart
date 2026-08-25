@@ -6,47 +6,47 @@ import 'query_template_routine.dart';
 /// Input properties used for looking up and filtering QueryTemplate resources.
 class QueryTemplateState {
   /// Timestamp when the QueryTemplate was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  final pulumi.Input<String>? dataExchangeId;
+  final pulumi.Input<String?>? dataExchangeId;
   /// Sets the policy for deleting the QueryTemplate. Defaults to `DELETE_IF_DRAFTED`.
   /// * `ABANDON`: Untracks the resource from Terraform state but leaves it intact in BigQuery.
   /// * `DELETE`: Deletes the QueryTemplate from BigQuery.
   /// * `DELETE_IF_DRAFTED`: Deletes the QueryTemplate only if it is in a `DRAFTED` state; otherwise, it abandons it.
   /// * `PREVENT`: Prevents deletion of the QueryTemplate.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Short description of the QueryTemplate. The description must not contain
   /// Unicode non-characters and C0 and C1 control codes except tabs,
   /// new lines, carriage returns, and page breaks.
   /// Default value is an empty string. Max length: 2000 bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Human-readable display name of the QueryTemplate. The display name must
   /// contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
   /// spaces ( ), ampersands (&) and can't start or end with spaces. Default
   /// value is an empty string.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Documentation describing the QueryTemplate.
-  final pulumi.Input<String>? documentation;
+  final pulumi.Input<String?>? documentation;
   /// The name of the location this data exchange query template.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Email or URL of the primary point of contact of the QueryTemplate.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Unique QueryTemplate ID.
-  final pulumi.Input<String>? queryTemplateId;
+  final pulumi.Input<String?>? queryTemplateId;
   /// The routine associated with the QueryTemplate.
   /// Structure is documented below.
-  final pulumi.Input<QueryTemplateRoutine>? routine;
+  final pulumi.Input<QueryTemplateRoutine?>? routine;
   /// The QueryTemplate lifecycle state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// If set to `true`, the QueryTemplate will be submitted for approval and cannot be updated afterwards. This is a one-time action.
-  final pulumi.Input<bool>? submit;
+  final pulumi.Input<bool?>? submit;
   /// Timestamp when the QueryTemplate was last modified.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [QueryTemplateState].
   /// [createTime] Timestamp when the QueryTemplate was created.

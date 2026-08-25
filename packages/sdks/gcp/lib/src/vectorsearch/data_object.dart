@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_object_args.dart';
 import 'data_object_state.dart';
+import 'data_object_vector.dart';
 
 /// A DataObject is a single item of data (with optional vectors) stored in a
 /// Vector Search Collection. Each DataObject conforms to the parent
@@ -1178,7 +1179,7 @@ class DataObject extends pulumi.CustomResource {
   /// from the corresponding text in `data` and the field should be
   /// omitted here.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vectors;
+  late final pulumi.Output<List<DataObjectVector>> vectors;
 
   /// Creates a new [DataObject].
   /// [name] The Pulumi resource name.
@@ -1192,7 +1193,7 @@ class DataObject extends pulumi.CustomResource {
           'gcp:vectorsearch/dataObject:DataObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     createTime = registerOutput<String>('createTime');
@@ -1204,7 +1205,7 @@ class DataObject extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
-    vectors = registerOutput<List<Map<String, dynamic>>>('vectors');
+    vectors = registerOutput<List<DataObjectVector>>('vectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataObjectVector>(guardedValue, (value) => DataObjectVector.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DataObject] resource's state with the given [name] and [id].
@@ -1212,11 +1213,12 @@ class DataObject extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataObjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataObject._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1240,6 +1242,28 @@ class DataObject extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
-    vectors = registerOutput<List<Map<String, dynamic>>>('vectors');
+    vectors = registerOutput<List<DataObjectVector>>('vectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataObjectVector>(guardedValue, (value) => DataObjectVector.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DataObject] resource.
+  DataObject.reference(String urn)
+    : super(
+        'gcp:vectorsearch/dataObject:DataObject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collectionId = registerOutput<String>('collectionId');
+    createTime = registerOutput<String>('createTime');
+    data = registerOutput<String?>('data');
+    dataObjectId = registerOutput<String>('dataObjectId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    vectors = registerOutput<List<DataObjectVector>>('vectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataObjectVector>(guardedValue, (value) => DataObjectVector.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

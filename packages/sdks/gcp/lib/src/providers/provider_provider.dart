@@ -228,11 +228,12 @@ class ProviderProvider extends pulumi.ProviderResource {
           'gcp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['accessToken'],
         ) {
     accessApprovalCustomEndpoint = registerOutput<String?>('accessApprovalCustomEndpoint');
     accessContextManagerCustomEndpoint = registerOutput<String?>('accessContextManagerCustomEndpoint');
-    accessToken = registerOutput<String?>('accessToken');
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
     activeDirectoryCustomEndpoint = registerOutput<String?>('activeDirectoryCustomEndpoint');
     agentIdentityCustomEndpoint = registerOutput<String?>('agentIdentityCustomEndpoint');
     agentRegistryCustomEndpoint = registerOutput<String?>('agentRegistryCustomEndpoint');

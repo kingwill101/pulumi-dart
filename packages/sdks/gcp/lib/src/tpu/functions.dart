@@ -276,6 +276,17 @@ Future<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(
   return GetV2AcceleratorTypesResult.fromMap(result);
 }
 
+pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
+  GetV2AcceleratorTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV2AcceleratorTypesResult.fromMap);
+}
+
 /// Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
 ///
 /// ## Example Usage
@@ -521,4 +532,15 @@ Future<GetV2RuntimeVersionsResult> getV2RuntimeVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetV2RuntimeVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetV2RuntimeVersionsResult> getV2RuntimeVersionsOutput(
+  GetV2RuntimeVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV2RuntimeVersionsResult.fromMap);
 }

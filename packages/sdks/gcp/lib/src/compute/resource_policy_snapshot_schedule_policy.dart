@@ -8,13 +8,13 @@ import 'resource_policy_snapshot_schedule_policy_snapshot_properties.dart';
 class ResourcePolicySnapshotSchedulePolicy {
   /// Retention policy applied to snapshots created by this resource policy.
   /// Structure is documented below.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicy?>? retentionPolicy;
   /// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
   /// Structure is documented below.
   final pulumi.Input<ResourcePolicySnapshotSchedulePolicySchedule> schedule;
   /// Properties with which the snapshots are created, such as labels.
   /// Structure is documented below.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicySnapshotProperties>? snapshotProperties;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicySnapshotProperties?>? snapshotProperties;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicy].
   /// [retentionPolicy] Retention policy applied to snapshots created by this resource policy.

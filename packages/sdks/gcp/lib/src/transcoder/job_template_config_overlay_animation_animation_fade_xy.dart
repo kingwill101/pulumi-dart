@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigOverlayAnimationAnimationFadeXy {
   /// Normalized x coordinate.
-  final pulumi.Input<double>? x;
+  final pulumi.Input<double?>? x;
   /// Normalized y coordinate.
-  final pulumi.Input<double>? y;
+  final pulumi.Input<double?>? y;
 
   /// Creates a new [JobTemplateConfigOverlayAnimationAnimationFadeXy].
   /// [x] Normalized x coordinate.
@@ -25,8 +25,8 @@ class JobTemplateConfigOverlayAnimationAnimationFadeXy {
 
   factory JobTemplateConfigOverlayAnimationAnimationFadeXy.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigOverlayAnimationAnimationFadeXy(
-      x: (() { final guardedValue = map['x']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      y: (() { final guardedValue = map['y']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      x: (() { final guardedValue = map['x']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      y: (() { final guardedValue = map['y']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

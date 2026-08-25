@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppProfileSingleClusterRouting {
   /// If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
   /// It is unsafe to send these requests to the same table/row/column in multiple clusters.
-  final pulumi.Input<bool>? allowTransactionalWrites;
+  final pulumi.Input<bool?>? allowTransactionalWrites;
   /// The cluster to which read/write requests should be routed.
   final pulumi.Input<String> clusterId;
 

@@ -7,7 +7,7 @@ class KeystoresAliasesPkcs12CertsInfo {
   /// (Output)
   /// List of all properties in the object.
   /// Structure is documented below.
-  final pulumi.Input<List<KeystoresAliasesPkcs12CertsInfoCertInfo>>? certInfos;
+  final pulumi.Input<List<KeystoresAliasesPkcs12CertsInfoCertInfo>?>? certInfos;
 
   /// Creates a new [KeystoresAliasesPkcs12CertsInfo].
   /// [certInfos] (Output)

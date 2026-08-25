@@ -8,18 +8,18 @@ import 'connection_http_config_service_directory_config.dart';
 class ConnectionHttpConfig {
   /// Basic authentication with username and password.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionHttpConfigBasicAuthentication>? basicAuthentication;
+  final pulumi.Input<ConnectionHttpConfigBasicAuthentication?>? basicAuthentication;
   /// Bearer token authentication with a token.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionHttpConfigBearerTokenAuthentication>? bearerTokenAuthentication;
+  final pulumi.Input<ConnectionHttpConfigBearerTokenAuthentication?>? bearerTokenAuthentication;
   /// The service provider's https endpoint.
   final pulumi.Input<String> hostUri;
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionHttpConfigServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ConnectionHttpConfigServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// The SSL certificate to use for requests to the HTTP service provider.
-  final pulumi.Input<String>? sslCaCertificate;
+  final pulumi.Input<String?>? sslCaCertificate;
 
   /// Creates a new [ConnectionHttpConfig].
   /// [basicAuthentication] Basic authentication with username and password.

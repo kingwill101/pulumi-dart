@@ -13,9 +13,9 @@ class PostureDeploymentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the posture deployment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The location of the resource, eg. global`.
   final pulumi.Input<String> location;
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.

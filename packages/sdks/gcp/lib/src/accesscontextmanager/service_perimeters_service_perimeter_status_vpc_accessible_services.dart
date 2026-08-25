@@ -7,16 +7,16 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
   /// Specifies which Google services are allowed to be accessed from
   /// VPC networks in the service perimeter.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern>>? allowedServicePatterns;
+  final pulumi.Input<List<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern>?>? allowedServicePatterns;
   /// The list of APIs usable within the Service Perimeter.
   /// Must be empty unless `enableRestriction` is True.
-  final pulumi.Input<List<String>>? allowedServices;
+  final pulumi.Input<List<String>?>? allowedServices;
   /// Whether to restrict API calls within the Service Perimeter to the
   /// list of APIs specified in 'allowedServices'.
-  final pulumi.Input<bool>? enableRestriction;
+  final pulumi.Input<bool?>? enableRestriction;
   /// Defines the enforcement scopes of service patterns.
   /// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
-  final pulumi.Input<List<String>>? servicePatternsEnforcementScopes;
+  final pulumi.Input<List<String>?>? servicePatternsEnforcementScopes;
 
   /// Creates a new [ServicePerimetersServicePerimeterStatusVpcAccessibleServices].
   /// [allowedServicePatterns] Specifies which Google services are allowed to be accessed from

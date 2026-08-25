@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxAgentAdvancedSettingsDtmfSettings {
   /// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The digit that terminates a DTMF digit sequence.
-  final pulumi.Input<String>? finishDigit;
+  final pulumi.Input<String?>? finishDigit;
   /// Max length of DTMF digits.
-  final pulumi.Input<int>? maxDigits;
+  final pulumi.Input<int?>? maxDigits;
 
   /// Creates a new [CxAgentAdvancedSettingsDtmfSettings].
   /// [enabled] If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
@@ -32,7 +32,7 @@ class CxAgentAdvancedSettingsDtmfSettings {
     return CxAgentAdvancedSettingsDtmfSettings(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       finishDigit: (() { final guardedValue = map['finishDigit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDigits: (() { final guardedValue = map['maxDigits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDigits: (() { final guardedValue = map['maxDigits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

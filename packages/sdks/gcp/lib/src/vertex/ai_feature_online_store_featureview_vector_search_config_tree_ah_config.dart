@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
   /// Number of embeddings on each leaf node. The default value is 1000 if not set.
-  final pulumi.Input<String>? leafNodeEmbeddingCount;
+  final pulumi.Input<String?>? leafNodeEmbeddingCount;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig].
   /// [leafNodeEmbeddingCount] Number of embeddings on each leaf node. The default value is 1000 if not set.

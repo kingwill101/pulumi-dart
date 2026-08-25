@@ -32,7 +32,7 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeature {
     return GetClusterNodePoolNodeConfigAdvancedMachineFeature(
       enableNestedVirtualization: pulumi.Input.fromValue(map['enableNestedVirtualization'] as bool),
       performanceMonitoringUnit: pulumi.Input.fromValue(map['performanceMonitoringUnit'] as String),
-      threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
+      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
     );
   }
 }

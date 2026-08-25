@@ -7,7 +7,7 @@ class ClusterStorageResourceConfigNewLustre {
   /// between 18000 and 7632000.
   final pulumi.Input<String> capacityGb;
   /// Description of the Managed Lustre instance. Maximum of 2048 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Filesystem name for this instance. This name is used by client-side tools,
   /// including when mounting the instance. Must be 8 characters or less and can
   /// only contain letters and numbers.
@@ -22,7 +22,7 @@ class ClusterStorageResourceConfigNewLustre {
   /// for more information.
   ///
   /// &lt;a name="nestedStorageResourcesFilestore"&gt;&lt;/a&gt;The `filestore` block contains:
-  final pulumi.Input<String>? perUnitStorageThroughput;
+  final pulumi.Input<String?>? perUnitStorageThroughput;
 
   /// Creates a new [ClusterStorageResourceConfigNewLustre].
   /// [capacityGb] Storage capacity of the instance in gibibytes (GiB). Allowed values are

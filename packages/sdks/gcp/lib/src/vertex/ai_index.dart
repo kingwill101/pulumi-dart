@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_index_args.dart';
+import 'ai_index_deployed_index.dart';
 import 'ai_index_encryption_spec.dart';
+import 'ai_index_index_stat.dart';
 import 'ai_index_metadata.dart';
 import 'ai_index_state.dart';
 
@@ -873,7 +875,7 @@ class AiIndex extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> deployedIndexes;
+  late final pulumi.Output<List<AiIndexDeployedIndex>> deployedIndexes;
   /// The description of the Index.
   late final pulumi.Output<String?> description;
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -887,7 +889,7 @@ class AiIndex extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Stats of the index resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> indexStats;
+  late final pulumi.Output<List<AiIndexIndexStat>> indexStats;
   /// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
   /// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
   /// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
@@ -928,24 +930,25 @@ class AiIndex extends pulumi.CustomResource {
           'gcp:vertex/aiIndex:AiIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployedIndexes = registerOutput<List<Map<String, dynamic>>>('deployedIndexes');
+    deployedIndexes = registerOutput<List<AiIndexDeployedIndex>>('deployedIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexDeployedIndex>(guardedValue, (value) => AiIndexDeployedIndex.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiIndexEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    indexStats = registerOutput<List<Map<String, dynamic>>>('indexStats');
+    indexStats = registerOutput<List<AiIndexIndexStat>>('indexStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexIndexStat>(guardedValue, (value) => AiIndexIndexStat.fromMap((value as Map).cast<String, dynamic>())); });
     indexUpdateMethod = registerOutput<String?>('indexUpdateMethod');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metadata = registerOutput<AiIndexMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -955,11 +958,12 @@ class AiIndex extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiIndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiIndex._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -975,20 +979,50 @@ class AiIndex extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployedIndexes = registerOutput<List<Map<String, dynamic>>>('deployedIndexes');
+    deployedIndexes = registerOutput<List<AiIndexDeployedIndex>>('deployedIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexDeployedIndex>(guardedValue, (value) => AiIndexDeployedIndex.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiIndexEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    indexStats = registerOutput<List<Map<String, dynamic>>>('indexStats');
+    indexStats = registerOutput<List<AiIndexIndexStat>>('indexStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexIndexStat>(guardedValue, (value) => AiIndexIndexStat.fromMap((value as Map).cast<String, dynamic>())); });
     indexUpdateMethod = registerOutput<String?>('indexUpdateMethod');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metadata = registerOutput<AiIndexMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String?>('region');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AiIndex] resource.
+  AiIndex.reference(String urn)
+    : super(
+        'gcp:vertex/aiIndex:AiIndex',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deployedIndexes = registerOutput<List<AiIndexDeployedIndex>>('deployedIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexDeployedIndex>(guardedValue, (value) => AiIndexDeployedIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionSpec = registerOutput<AiIndexEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    indexStats = registerOutput<List<AiIndexIndexStat>>('indexStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiIndexIndexStat>(guardedValue, (value) => AiIndexIndexStat.fromMap((value as Map).cast<String, dynamic>())); });
+    indexUpdateMethod = registerOutput<String?>('indexUpdateMethod');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metadata = registerOutput<AiIndexMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     updateTime = registerOutput<String>('updateTime');
   }

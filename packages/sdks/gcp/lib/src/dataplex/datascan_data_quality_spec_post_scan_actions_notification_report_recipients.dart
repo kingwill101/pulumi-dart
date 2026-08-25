@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
   /// The email recipients who will receive the DataQualityScan results report.
-  final pulumi.Input<List<String>>? emails;
+  final pulumi.Input<List<String>?>? emails;
 
   /// Creates a new [DatascanDataQualitySpecPostScanActionsNotificationReportRecipients].
   /// [emails] The email recipients who will receive the DataQualityScan results report.

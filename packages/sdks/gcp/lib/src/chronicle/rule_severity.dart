@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleSeverity {
   /// The display name of the severity level. Extracted from the meta section of
   /// the rule text.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [RuleSeverity].
   /// [displayName] The display name of the severity level. Extracted from the meta section of

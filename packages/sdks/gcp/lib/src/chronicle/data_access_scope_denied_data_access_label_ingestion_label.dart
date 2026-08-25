@@ -8,7 +8,7 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabel {
   /// Optional. The value of the ingestion label. Optional. An object
   /// with no provided value and some key provided would match
   /// against the given key and ANY value.
-  final pulumi.Input<String>? ingestionLabelValue;
+  final pulumi.Input<String?>? ingestionLabelValue;
 
   /// Creates a new [DataAccessScopeDeniedDataAccessLabelIngestionLabel].
   /// [ingestionLabelKey] Required. The key of the ingestion label. Always required.

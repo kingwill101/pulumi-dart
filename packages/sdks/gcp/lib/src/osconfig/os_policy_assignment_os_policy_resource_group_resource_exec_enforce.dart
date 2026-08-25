@@ -6,10 +6,10 @@ import 'os_policy_assignment_os_policy_resource_group_resource_exec_enforce_file
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
   /// Optional arguments to pass to the source during
   /// execution.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// A remote or local file. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile>? file;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile?>? file;
   /// The script interpreter to use. Possible values
   /// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
   final pulumi.Input<String> interpreter;
@@ -18,10 +18,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
   /// OSPolicyResourceCompliance after a successful run. Absence or failure to
   /// read this file will result in this ExecResource being non-compliant. Output
   /// file size is limited to 100K bytes.
-  final pulumi.Input<String>? outputFilePath;
+  final pulumi.Input<String?>? outputFilePath;
   /// An inline script. The size of the script is limited to
   /// 1024 characters.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce].
   /// [args] Optional arguments to pass to the source during

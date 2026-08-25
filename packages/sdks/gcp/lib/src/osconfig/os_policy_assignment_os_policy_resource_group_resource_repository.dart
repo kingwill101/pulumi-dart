@@ -9,16 +9,16 @@ import 'os_policy_assignment_os_policy_resource_group_resource_repository_zypper
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
   /// An Apt Repository. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt>? apt;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt?>? apt;
   /// A Goo Repository. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo>? goo;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo?>? goo;
   /// A Yum Repository. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum>? yum;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum?>? yum;
   /// A Zypper Repository. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper>? zypper;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper?>? zypper;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceRepository].
   /// [apt] An Apt Repository. Structure is

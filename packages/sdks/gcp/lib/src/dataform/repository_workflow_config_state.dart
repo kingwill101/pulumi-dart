@@ -7,35 +7,35 @@ import 'repository_workflow_config_recent_scheduled_execution_record.dart';
 /// Input properties used for looking up and filtering RepositoryWorkflowConfig resources.
 class RepositoryWorkflowConfigState {
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-  final pulumi.Input<String>? cronSchedule;
+  final pulumi.Input<String?>? cronSchedule;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Disables automatic creation of workflow invocations.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Optional. If left unset, a default InvocationConfig will be used.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryWorkflowConfigInvocationConfig>? invocationConfig;
+  final pulumi.Input<RepositoryWorkflowConfigInvocationConfig?>? invocationConfig;
   /// The workflow's name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
   /// Structure is documented below.
-  final pulumi.Input<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>? recentScheduledExecutionRecords;
+  final pulumi.Input<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>?>? recentScheduledExecutionRecords;
   /// A reference to the region
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-  final pulumi.Input<String>? releaseConfig;
+  final pulumi.Input<String?>? releaseConfig;
   /// A reference to the Dataform repository
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [RepositoryWorkflowConfigState].
   /// [cronSchedule] Optional. Optional schedule (in cron format) for automatic creation of compilation results.

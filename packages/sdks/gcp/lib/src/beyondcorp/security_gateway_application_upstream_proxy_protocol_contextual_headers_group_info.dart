@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo {
   /// The output type of the delegated group info.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-  final pulumi.Input<String>? outputType;
+  final pulumi.Input<String?>? outputType;
 
   /// Creates a new [SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo].
   /// [outputType] The output type of the delegated group info.

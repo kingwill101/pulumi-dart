@@ -12,25 +12,25 @@ class WorkloadArgs {
   final pulumi.Input<String> applicationId;
   /// Consumer provided attributes.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadAttributes>? attributes;
+  final pulumi.Input<WorkloadAttributes?>? attributes;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-defined description of a Workload.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Immutable. The resource name of the original discovered workload.
   final pulumi.Input<String> discoveredWorkload;
   /// User-defined name for the Workload.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Workload identifier.
   final pulumi.Input<String> workloadId;
 

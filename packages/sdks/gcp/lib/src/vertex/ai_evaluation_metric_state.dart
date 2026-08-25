@@ -7,56 +7,56 @@ import 'ai_evaluation_metric_encryption_spec.dart';
 class AiEvaluationMetricState {
   /// The timestamp of when the EvaluationMetric was created in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the EvaluationMetric.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-friendly display name for the EvaluationMetric.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Customer-managed encryption key spec for this EvaluationMetric. If set,
   /// this EvaluationMetric will be secured by this key.
   /// Structure is documented below.
-  final pulumi.Input<AiEvaluationMetricEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiEvaluationMetricEncryptionSpec?>? encryptionSpec;
   /// The ID to use for the EvaluationMetric, which will become the final
   /// component of the resource name. This value should be 1-63 characters,
   /// and valid characters are /[a-z][0-9]-/. The first character must be
   /// a lowercase letter, and the last character must be a lowercase letter
   /// or number. If not provided, the server will generate a unique ID.
-  final pulumi.Input<String>? evaluationMetricId;
+  final pulumi.Input<String?>? evaluationMetricId;
   /// The Google Cloud Storage URI that stores the metric specification.
-  final pulumi.Input<String>? gcsUri;
+  final pulumi.Input<String?>? gcsUri;
   /// Labels for the EvaluationMetric.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The metric configuration as a JSON string. Uses camelCase field names
   /// to match the API format. Supports LLM-based metrics and custom code
   /// execution metrics.
   /// See the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)
   /// for the full schema.
-  final pulumi.Input<String>? metric;
+  final pulumi.Input<String?>? metric;
   /// The short name of the EvaluationMetric (the final component of the resource name).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The region of the EvaluationMetric. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The timestamp of when the EvaluationMetric was last updated in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AiEvaluationMetricState].
   /// [createTime] The timestamp of when the EvaluationMetric was created in RFC3339 UTC "Zulu" format,

@@ -6,16 +6,16 @@ import 'evaluation_scenario_scenario_expectation_agent_response_chunk_tool_respo
 class EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse {
   /// (Output)
   /// Display name of the tool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The matching ID of the tool call the response is for.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The tool execution result in JSON object format.
-  final pulumi.Input<Map<String, String>>? response;
+  final pulumi.Input<Map<String, String>?>? response;
   /// The resource name of the tool.
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
   /// A tool that is created from a toolset.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool>? toolsetTool;
+  final pulumi.Input<EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetTool?>? toolsetTool;
 
   /// Creates a new [EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponse].
   /// [displayName] (Output)

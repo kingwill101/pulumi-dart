@@ -8,7 +8,7 @@ class EntryBigqueryTableSpecTableSpec {
   /// Data Catalog resource name of the date sharded grouped entry, for example,
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
   /// Otherwise, groupedEntry is empty.
-  final pulumi.Input<String>? groupedEntry;
+  final pulumi.Input<String?>? groupedEntry;
 
   /// Creates a new [EntryBigqueryTableSpecTableSpec].
   /// [groupedEntry] (Output)

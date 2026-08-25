@@ -6,19 +6,19 @@ import 'workflow_template_job_presto_job_query_list.dart';
 
 class WorkflowTemplateJobPrestoJob {
   /// Presto client tags to attach to this query
-  final pulumi.Input<List<String>>? clientTags;
+  final pulumi.Input<List<String>?>? clientTags;
   /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-  final pulumi.Input<bool>? continueOnFailure;
+  final pulumi.Input<bool?>? continueOnFailure;
   /// The runtime log config for job execution.
-  final pulumi.Input<WorkflowTemplateJobPrestoJobLoggingConfig>? loggingConfig;
+  final pulumi.Input<WorkflowTemplateJobPrestoJobLoggingConfig?>? loggingConfig;
   /// The format in which query output will be displayed. See the Presto documentation for supported output formats
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The HCFS URI of the script that contains SQL queries.
-  final pulumi.Input<String>? queryFileUri;
+  final pulumi.Input<String?>? queryFileUri;
   /// A list of queries.
-  final pulumi.Input<WorkflowTemplateJobPrestoJobQueryList>? queryList;
+  final pulumi.Input<WorkflowTemplateJobPrestoJobQueryList?>? queryList;
 
   /// Creates a new [WorkflowTemplateJobPrestoJob].
   /// [clientTags] Presto client tags to attach to this query

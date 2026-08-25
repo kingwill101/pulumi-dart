@@ -13,9 +13,9 @@ class TagValueArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-assigned description of the TagValue. Must not exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
   final pulumi.Input<String> parent;
   /// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.

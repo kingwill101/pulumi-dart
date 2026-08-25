@@ -9,19 +9,19 @@ import 'volume_snapshot_policy_weekly_schedule.dart';
 class VolumeSnapshotPolicy {
   /// Daily schedule policy.
   /// Structure is documented below.
-  final pulumi.Input<VolumeSnapshotPolicyDailySchedule>? dailySchedule;
+  final pulumi.Input<VolumeSnapshotPolicyDailySchedule?>? dailySchedule;
   /// Enables automated snapshot creation according to defined schedule. Default is false.
   /// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Hourly schedule policy.
   /// Structure is documented below.
-  final pulumi.Input<VolumeSnapshotPolicyHourlySchedule>? hourlySchedule;
+  final pulumi.Input<VolumeSnapshotPolicyHourlySchedule?>? hourlySchedule;
   /// Monthly schedule policy.
   /// Structure is documented below.
-  final pulumi.Input<VolumeSnapshotPolicyMonthlySchedule>? monthlySchedule;
+  final pulumi.Input<VolumeSnapshotPolicyMonthlySchedule?>? monthlySchedule;
   /// Weekly schedule policy.
   /// Structure is documented below.
-  final pulumi.Input<VolumeSnapshotPolicyWeeklySchedule>? weeklySchedule;
+  final pulumi.Input<VolumeSnapshotPolicyWeeklySchedule?>? weeklySchedule;
 
   /// Creates a new [VolumeSnapshotPolicy].
   /// [dailySchedule] Daily schedule policy.

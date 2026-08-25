@@ -7,11 +7,11 @@ import 'snapshot_settings_storage_location.dart';
 class SnapshotSettingsState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Policy of which storage location is going to be resolved, and additional data
   /// that particularizes how the policy is going to be carried out
   /// Structure is documented below.
-  final pulumi.Input<SnapshotSettingsStorageLocation>? storageLocation;
+  final pulumi.Input<SnapshotSettingsStorageLocation?>? storageLocation;
 
   /// Creates a new [SnapshotSettingsState].
   /// [project] The ID of the project in which the resource belongs.

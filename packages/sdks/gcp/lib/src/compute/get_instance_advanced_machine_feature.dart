@@ -48,9 +48,9 @@ class GetInstanceAdvancedMachineFeature {
       enableNestedVirtualization: pulumi.Input.fromValue(map['enableNestedVirtualization'] as bool),
       enableUefiNetworking: pulumi.Input.fromValue(map['enableUefiNetworking'] as bool),
       performanceMonitoringUnit: pulumi.Input.fromValue(map['performanceMonitoringUnit'] as String),
-      threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
+      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
       turboMode: pulumi.Input.fromValue(map['turboMode'] as String),
-      visibleCoreCount: pulumi.Input.fromValue(map['visibleCoreCount'] as int),
+      visibleCoreCount: pulumi.Input.fromValue((map['visibleCoreCount'] as num).toInt()),
     );
   }
 }

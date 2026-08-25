@@ -30,10 +30,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// reasons of consistency and being explicit, exit codes `100` and `101`
   /// were chosen.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec>? exec;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec?>? exec;
   /// A resource that manages the state of a file.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile>? file;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile?>? file;
   /// Required. The id of the resource with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -43,10 +43,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   final pulumi.Input<String> id;
   /// A resource that manages a system package.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg>? pkg;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg?>? pkg;
   /// A resource that manages a package repository.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository>? repository;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository?>? repository;
 
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource].
   /// [exec] A resource that allows executing scripts on the VM.

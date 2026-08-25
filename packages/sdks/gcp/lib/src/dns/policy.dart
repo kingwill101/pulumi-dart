@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_alternative_name_server_config.dart';
 import 'policy_args.dart';
 import 'policy_dns64_config.dart';
+import 'policy_network.dart';
 import 'policy_state.dart';
 
 /// A policy is a collection of DNS rules applied to one or more Virtual
@@ -376,7 +377,7 @@ class Policy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// List of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+  late final pulumi.Output<List<PolicyNetwork>?> networks;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -393,7 +394,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:dns/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfig?>('alternativeNameServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAlternativeNameServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -402,7 +403,7 @@ class Policy extends pulumi.CustomResource {
     enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');
     enableLogging = registerOutput<bool?>('enableLogging');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    networks = registerOutput<List<PolicyNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyNetwork>(guardedValue, (value) => PolicyNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 
@@ -411,11 +412,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -436,7 +438,27 @@ class Policy extends pulumi.CustomResource {
     enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');
     enableLogging = registerOutput<bool?>('enableLogging');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    networks = registerOutput<List<PolicyNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyNetwork>(guardedValue, (value) => PolicyNetwork.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'gcp:dns/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfig?>('alternativeNameServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAlternativeNameServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dns64Config = registerOutput<PolicyDns64Config>('dns64Config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDns64Config.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');
+    enableLogging = registerOutput<bool?>('enableLogging');
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<PolicyNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyNetwork>(guardedValue, (value) => PolicyNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 }

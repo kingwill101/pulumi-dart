@@ -6,7 +6,7 @@ import 'security_gateway_service_discovery_api_gateway_resource_override.dart';
 class SecurityGatewayServiceDiscoveryApiGateway {
   /// Enables fetching resource model updates to alter service behavior per Chrome profile.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayServiceDiscoveryApiGatewayResourceOverride>? resourceOverride;
+  final pulumi.Input<SecurityGatewayServiceDiscoveryApiGatewayResourceOverride?>? resourceOverride;
 
   /// Creates a new [SecurityGatewayServiceDiscoveryApiGateway].
   /// [resourceOverride] Enables fetching resource model updates to alter service behavior per Chrome profile.

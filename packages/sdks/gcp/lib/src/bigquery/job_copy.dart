@@ -12,13 +12,13 @@ class JobCopy {
   /// Creation, truncation and append actions occur as one atomic update upon job completion
   /// Default value is `CREATE_IF_NEEDED`.
   /// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
-  final pulumi.Input<String>? createDisposition;
+  final pulumi.Input<String?>? createDisposition;
   /// Custom encryption configuration (e.g., Cloud KMS keys)
   /// Structure is documented below.
-  final pulumi.Input<JobCopyDestinationEncryptionConfiguration>? destinationEncryptionConfiguration;
+  final pulumi.Input<JobCopyDestinationEncryptionConfiguration?>? destinationEncryptionConfiguration;
   /// The destination table.
   /// Structure is documented below.
-  final pulumi.Input<JobCopyDestinationTable>? destinationTable;
+  final pulumi.Input<JobCopyDestinationTable?>? destinationTable;
   /// Source tables to copy.
   /// Structure is documented below.
   final pulumi.Input<List<JobCopySourceTable>> sourceTables;
@@ -30,7 +30,7 @@ class JobCopy {
   /// Creation, truncation and append actions occur as one atomic update upon job completion.
   /// Default value is `WRITE_EMPTY`.
   /// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
-  final pulumi.Input<String>? writeDisposition;
+  final pulumi.Input<String?>? writeDisposition;
 
   /// Creates a new [JobCopy].
   /// [createDisposition] Specifies whether the job is allowed to create new tables. The following values are supported:

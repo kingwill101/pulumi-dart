@@ -67,9 +67,9 @@ class GetInstanceObservabilityConfig {
     return GetInstanceObservabilityConfig(
       assistiveExperiencesEnabled: pulumi.Input.fromValue(map['assistiveExperiencesEnabled'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      maxQueryStringLength: pulumi.Input.fromValue(map['maxQueryStringLength'] as int),
+      maxQueryStringLength: pulumi.Input.fromValue((map['maxQueryStringLength'] as num).toInt()),
       preserveComments: pulumi.Input.fromValue(map['preserveComments'] as bool),
-      queryPlansPerMinute: pulumi.Input.fromValue(map['queryPlansPerMinute'] as int),
+      queryPlansPerMinute: pulumi.Input.fromValue((map['queryPlansPerMinute'] as num).toInt()),
       recordApplicationTags: pulumi.Input.fromValue(map['recordApplicationTags'] as bool),
       trackActiveQueries: pulumi.Input.fromValue(map['trackActiveQueries'] as bool),
       trackClientAddress: pulumi.Input.fromValue(map['trackClientAddress'] as bool),

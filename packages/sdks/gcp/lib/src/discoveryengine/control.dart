@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'control_args.dart';
 import 'control_boost_action.dart';
+import 'control_condition.dart';
 import 'control_filter_action.dart';
 import 'control_promote_action.dart';
 import 'control_redirect_action.dart';
@@ -391,7 +392,7 @@ class Control extends pulumi.CustomResource {
   late final pulumi.Output<String?> collectionId;
   /// The conditions under which the control is active.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
+  late final pulumi.Output<List<ControlCondition>?> conditions;
   /// The unique id of the control.
   late final pulumi.Output<String> controlId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -448,11 +449,11 @@ class Control extends pulumi.CustomResource {
           'gcp:discoveryengine/control:Control',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    conditions = registerOutput<List<ControlCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlCondition>(guardedValue, (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>())); });
     controlId = registerOutput<String>('controlId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
@@ -465,7 +466,7 @@ class Control extends pulumi.CustomResource {
     redirectAction = registerOutput<ControlRedirectAction?>('redirectAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlRedirectAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     solutionType = registerOutput<String>('solutionType');
     synonymsAction = registerOutput<ControlSynonymsAction?>('synonymsAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlSynonymsAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    useCases = registerOutput<List<String>?>('useCases');
+    useCases = registerOutput<List<String>?>('useCases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Control] resource's state with the given [name] and [id].
@@ -473,11 +474,12 @@ class Control extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Control._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -493,7 +495,7 @@ class Control extends pulumi.CustomResource {
         ) {
     boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    conditions = registerOutput<List<ControlCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlCondition>(guardedValue, (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>())); });
     controlId = registerOutput<String>('controlId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
@@ -506,6 +508,33 @@ class Control extends pulumi.CustomResource {
     redirectAction = registerOutput<ControlRedirectAction?>('redirectAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlRedirectAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     solutionType = registerOutput<String>('solutionType');
     synonymsAction = registerOutput<ControlSynonymsAction?>('synonymsAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlSynonymsAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    useCases = registerOutput<List<String>?>('useCases');
+    useCases = registerOutput<List<String>?>('useCases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Control] resource.
+  Control.reference(String urn)
+    : super(
+        'gcp:discoveryengine/control:Control',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    collectionId = registerOutput<String?>('collectionId');
+    conditions = registerOutput<List<ControlCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlCondition>(guardedValue, (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    controlId = registerOutput<String>('controlId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    engineId = registerOutput<String>('engineId');
+    filterAction = registerOutput<ControlFilterAction?>('filterAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlFilterAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    promoteAction = registerOutput<ControlPromoteAction?>('promoteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlPromoteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectAction = registerOutput<ControlRedirectAction?>('redirectAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlRedirectAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    solutionType = registerOutput<String>('solutionType');
+    synonymsAction = registerOutput<ControlSynonymsAction?>('synonymsAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlSynonymsAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useCases = registerOutput<List<String>?>('useCases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

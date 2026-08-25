@@ -1129,7 +1129,7 @@ class RegionTargetTcpProxy extends pulumi.CustomResource {
           'gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     backendService = registerOutput<String?>('backendService');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -1150,11 +1150,12 @@ class RegionTargetTcpProxy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionTargetTcpProxyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionTargetTcpProxy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1168,6 +1169,29 @@ class RegionTargetTcpProxy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backendService = registerOutput<String?>('backendService');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    proxyHeader = registerOutput<String?>('proxyHeader');
+    proxyId = registerOutput<int>('proxyId');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [RegionTargetTcpProxy] resource.
+  RegionTargetTcpProxy.reference(String urn)
+    : super(
+        'gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backendService = registerOutput<String?>('backendService');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -3827,10 +3827,10 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProvider:WorkforcePoolProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
-    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
+    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     detailedAuditLogging = registerOutput<bool?>('detailedAuditLogging');
@@ -3853,11 +3853,12 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkforcePoolProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkforcePoolProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3872,7 +3873,7 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
-    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
+    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     detailedAuditLogging = registerOutput<bool?>('detailedAuditLogging');
@@ -3887,6 +3888,34 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
     saml = registerOutput<WorkforcePoolProviderSaml?>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderSaml.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scimUsage = registerOutput<String?>('scimUsage');
     this.state = registerOutput<String>('state');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePoolProvider] resource.
+  WorkforcePoolProvider.reference(String urn)
+    : super(
+        'gcp:iam/workforcePoolProvider:WorkforcePoolProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributeCondition = registerOutput<String?>('attributeCondition');
+    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    detailedAuditLogging = registerOutput<bool?>('detailedAuditLogging');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String?>('displayName');
+    extendedAttributesOauth2Client = registerOutput<WorkforcePoolProviderExtendedAttributesOauth2Client?>('extendedAttributesOauth2Client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extraAttributesOauth2Client = registerOutput<WorkforcePoolProviderExtraAttributesOauth2Client?>('extraAttributesOauth2Client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderExtraAttributesOauth2Client.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    oidc = registerOutput<WorkforcePoolProviderOidc?>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    providerId = registerOutput<String>('providerId');
+    saml = registerOutput<WorkforcePoolProviderSaml?>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderSaml.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scimUsage = registerOutput<String?>('scimUsage');
+    state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

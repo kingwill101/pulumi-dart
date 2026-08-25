@@ -7,7 +7,7 @@ class RegionResizeRequestStatusError {
   /// (Output)
   /// The array of errors encountered while processing this operation.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionResizeRequestStatusErrorError>>? errors;
+  final pulumi.Input<List<RegionResizeRequestStatusErrorError>?>? errors;
 
   /// Creates a new [RegionResizeRequestStatusError].
   /// [errors] (Output)

@@ -7,37 +7,37 @@ import 'backend_bucket_params.dart';
 /// Input properties used for looking up and filtering BackendBucket resources.
 class BackendBucketState {
   /// Cloud Storage bucket name.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// Cloud CDN configuration for this Backend Bucket.
   /// Structure is documented below.
-  final pulumi.Input<BackendBucketCdnPolicy>? cdnPolicy;
+  final pulumi.Input<BackendBucketCdnPolicy?>? cdnPolicy;
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
   /// Possible values are: `AUTOMATIC`, `DISABLED`.
-  final pulumi.Input<String>? compressionMode;
+  final pulumi.Input<String?>? compressionMode;
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Headers that the HTTP/S load balancer should add to proxied responses.
-  final pulumi.Input<List<String>>? customResponseHeaders;
+  final pulumi.Input<List<String>?>? customResponseHeaders;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional textual description of the resource; provided by the
   /// client when the resource is created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The security policy associated with this backend bucket.
-  final pulumi.Input<String>? edgeSecurityPolicy;
+  final pulumi.Input<String?>? edgeSecurityPolicy;
   /// If true, enable Cloud CDN for this BackendBucket.
   /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
-  final pulumi.Input<bool>? enableCdn;
+  final pulumi.Input<bool?>? enableCdn;
   /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
   /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
   /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
   /// Possible values are: `INTERNAL_MANAGED`.
-  final pulumi.Input<String>? loadBalancingScheme;
+  final pulumi.Input<String?>? loadBalancingScheme;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -45,15 +45,15 @@ class BackendBucketState {
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final pulumi.Input<BackendBucketParams>? params;
+  final pulumi.Input<BackendBucketParams?>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
 
   /// Creates a new [BackendBucketState].
   /// [bucketName] Cloud Storage bucket name.

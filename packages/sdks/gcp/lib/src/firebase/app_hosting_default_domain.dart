@@ -799,7 +799,7 @@ class AppHostingDefaultDomain extends pulumi.CustomResource {
           'gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');
@@ -818,11 +818,12 @@ class AppHostingDefaultDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppHostingDefaultDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppHostingDefaultDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -836,6 +837,27 @@ class AppHostingDefaultDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backend = registerOutput<String>('backend');
+    createTime = registerOutput<String>('createTime');
+    disabled = registerOutput<bool>('disabled');
+    domainId = registerOutput<String>('domainId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AppHostingDefaultDomain] resource.
+  AppHostingDefaultDomain.reference(String urn)
+    : super(
+        'gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backend = registerOutput<String>('backend');
     createTime = registerOutput<String>('createTime');
     disabled = registerOutput<bool>('disabled');

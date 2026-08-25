@@ -13,7 +13,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
   /// headerAction specified here take effect before headerAction in the enclosing
   /// HttpRouteRule, PathMatcher and UrlMap.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction>? headerAction;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction?>? headerAction;
   /// Specifies the fraction of traffic sent to backendService, computed as
   /// weight / (sum of all weightedBackendService weights in routeAction) .
   /// The selection of a backend service is determined only for new traffic. Once a user's request
@@ -44,7 +44,7 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
     return URLMapPathMatcherPathRuleRouteActionWeightedBackendService(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
       headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

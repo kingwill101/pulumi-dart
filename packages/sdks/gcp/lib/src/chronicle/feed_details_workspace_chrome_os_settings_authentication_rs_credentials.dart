@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentials {
   /// Private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
 
   /// Creates a new [FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentials].
   /// [privateKey] Private key in PEM format.

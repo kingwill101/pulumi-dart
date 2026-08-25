@@ -1099,7 +1099,7 @@ class AssetIamPolicy extends pulumi.CustomResource {
           'gcp:dataplex/assetIamPolicy:AssetIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     asset = registerOutput<String>('asset');
     dataplexZone = registerOutput<String>('dataplexZone');
@@ -1115,11 +1115,12 @@ class AssetIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssetIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssetIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1133,6 +1134,24 @@ class AssetIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    asset = registerOutput<String>('asset');
+    dataplexZone = registerOutput<String>('dataplexZone');
+    etag = registerOutput<String>('etag');
+    lake = registerOutput<String>('lake');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [AssetIamPolicy] resource.
+  AssetIamPolicy.reference(String urn)
+    : super(
+        'gcp:dataplex/assetIamPolicy:AssetIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     asset = registerOutput<String>('asset');
     dataplexZone = registerOutput<String>('dataplexZone');
     etag = registerOutput<String>('etag');

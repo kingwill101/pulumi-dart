@@ -7,12 +7,12 @@ import 'hosting_custom_domain_cert_verification_dns_discovered.dart';
 class HostingCustomDomainCertVerificationDns {
   /// (Output)
   /// The last time Hosting checked your CustomDomain's DNS records.
-  final pulumi.Input<String>? checkTime;
+  final pulumi.Input<String?>? checkTime;
   /// A text string to serve at the path.
-  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDesired>>? desireds;
+  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDesired>?>? desireds;
   /// Whether Hosting was able to find the required file contents on the
   /// specified path during its last check.
-  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDiscovered>>? discovereds;
+  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDiscovered>?>? discovereds;
 
   /// Creates a new [HostingCustomDomainCertVerificationDns].
   /// [checkTime] (Output)

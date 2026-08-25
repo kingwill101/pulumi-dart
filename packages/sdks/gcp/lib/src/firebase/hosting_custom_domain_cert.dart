@@ -9,16 +9,16 @@ class HostingCustomDomainCert {
   /// state is `PROPAGATING` and Hosting had an active cert for the domain name
   /// before, that formerly-active cert provides SSL coverage for the domain name
   /// until the current cert propagates.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The record's type, which determines what data the record contains.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// A set of ACME challenges you can add to your DNS records or existing,
   /// non-Hosting hosting provider to allow Hosting to create an SSL certificate
   /// for your domain name before you point traffic toward hosting. You can use
   /// thse challenges as part of a zero downtime transition from your old
   /// provider to Hosting.
   /// Structure is documented below.
-  final pulumi.Input<HostingCustomDomainCertVerification>? verification;
+  final pulumi.Input<HostingCustomDomainCertVerification?>? verification;
 
   /// Creates a new [HostingCustomDomainCert].
   /// [state] The state of the certificate. Only the `CERT_ACTIVE` and

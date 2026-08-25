@@ -14,7 +14,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage {
   final pulumi.Input<CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage> extendedKeyUsage;
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
   /// Structure is documented below.
-  final pulumi.Input<List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>>? unknownExtendedKeyUsages;
+  final pulumi.Input<List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>?>? unknownExtendedKeyUsages;
 
   /// Creates a new [CaPoolIssuancePolicyBaselineValuesKeyUsage].
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.

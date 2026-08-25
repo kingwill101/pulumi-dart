@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerStatusAllInstancesConfig {
   /// Current all-instances configuration revision. This value is in RFC3339 text format.
-  final pulumi.Input<String>? currentRevision;
+  final pulumi.Input<String?>? currentRevision;
   /// A bit indicating whether this configuration has been applied to all managed instances in the group.
-  final pulumi.Input<bool>? effective;
+  final pulumi.Input<bool?>? effective;
 
   /// Creates a new [InstanceGroupManagerStatusAllInstancesConfig].
   /// [currentRevision] Current all-instances configuration revision. This value is in RFC3339 text format.

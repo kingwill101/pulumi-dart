@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationLegend {
   /// (Optional)
-  final pulumi.Input<int>? bottom;
+  final pulumi.Input<int?>? bottom;
   /// (Optional)
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// (Optional)
-  final pulumi.Input<int>? left;
+  final pulumi.Input<int?>? left;
   /// Possible values are: `AUTO`, `LEFT`, `RIGHT`.
-  final pulumi.Input<String>? legendAlign;
+  final pulumi.Input<String?>? legendAlign;
   /// Possible values are: `VERTICAL`, `HORIZONTAL`.
-  final pulumi.Input<String>? legendOrient;
+  final pulumi.Input<String?>? legendOrient;
   /// (Optional)
-  final pulumi.Input<List<int>>? paddings;
+  final pulumi.Input<List<int>?>? paddings;
   /// (Optional)
-  final pulumi.Input<int>? right;
+  final pulumi.Input<int?>? right;
   /// (Optional)
-  final pulumi.Input<bool>? show;
+  final pulumi.Input<bool?>? show;
   /// (Optional)
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
   /// (Optional)
-  final pulumi.Input<int>? z;
+  final pulumi.Input<int?>? z;
   /// (Optional)
-  final pulumi.Input<int>? zLevel;
+  final pulumi.Input<int?>? zLevel;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationLegend].
   /// [bottom] (Optional)
@@ -70,17 +70,17 @@ class DashboardChartDashboardChartVisualizationLegend {
 
   factory DashboardChartDashboardChartVisualizationLegend.fromMap(Map<String, dynamic> map) {
     return DashboardChartDashboardChartVisualizationLegend(
-      bottom: (() { final guardedValue = map['bottom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bottom: (() { final guardedValue = map['bottom']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      left: (() { final guardedValue = map['left']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      left: (() { final guardedValue = map['left']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       legendAlign: (() { final guardedValue = map['legendAlign']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       legendOrient: (() { final guardedValue = map['legendOrient']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       paddings: (() { final guardedValue = map['paddings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      right: (() { final guardedValue = map['right']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      right: (() { final guardedValue = map['right']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       show: (() { final guardedValue = map['show']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      z: (() { final guardedValue = map['z']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      zLevel: (() { final guardedValue = map['zLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      z: (() { final guardedValue = map['z']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      zLevel: (() { final guardedValue = map['zLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

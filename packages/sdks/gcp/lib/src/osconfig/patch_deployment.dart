@@ -1986,7 +1986,7 @@ class PatchDeployment extends pulumi.CustomResource {
           'gcp:osconfig/patchDeployment:PatchDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -2009,11 +2009,12 @@ class PatchDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PatchDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PatchDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2027,6 +2028,31 @@ class PatchDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<String?>('duration');
+    instanceFilter = registerOutput<PatchDeploymentInstanceFilter>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastExecuteTime = registerOutput<String>('lastExecuteTime');
+    this.name = registerOutput<String>('name');
+    oneTimeSchedule = registerOutput<PatchDeploymentOneTimeSchedule?>('oneTimeSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentOneTimeSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    patchConfig = registerOutput<PatchDeploymentPatchConfig?>('patchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentPatchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    patchDeploymentId = registerOutput<String>('patchDeploymentId');
+    project = registerOutput<String>('project');
+    recurringSchedule = registerOutput<PatchDeploymentRecurringSchedule?>('recurringSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentRecurringSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollout = registerOutput<PatchDeploymentRollout?>('rollout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentRollout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PatchDeployment] resource.
+  PatchDeployment.reference(String urn)
+    : super(
+        'gcp:osconfig/patchDeployment:PatchDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

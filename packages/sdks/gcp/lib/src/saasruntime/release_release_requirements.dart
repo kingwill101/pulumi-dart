@@ -7,7 +7,7 @@ class ReleaseReleaseRequirements {
   /// (optional). If left empty no constraints will be applied. When provided,
   /// unit upgrade requests to this release will check and enforce this
   /// constraint.
-  final pulumi.Input<List<String>>? upgradeableFromReleases;
+  final pulumi.Input<List<String>?>? upgradeableFromReleases;
 
   /// Creates a new [ReleaseReleaseRequirements].
   /// [upgradeableFromReleases] A list of releases from which a unit can be upgraded to this one

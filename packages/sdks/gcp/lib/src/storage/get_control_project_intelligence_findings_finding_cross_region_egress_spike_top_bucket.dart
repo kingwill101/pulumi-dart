@@ -60,7 +60,7 @@ class GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpikeTopBucke
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       contributions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpikeTopBucketContribution>(map['contributions']!, (value) => GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpikeTopBucketContribution.fromMap((value as Map).cast<String, dynamic>()))),
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpikeTopBucketError>(map['errors']!, (value) => GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpikeTopBucketError.fromMap((value as Map).cast<String, dynamic>()))),
-      percentageIncrease: pulumi.Input.fromValue(map['percentageIncrease'] as double),
+      percentageIncrease: pulumi.Input.fromValue((map['percentageIncrease'] as num).toDouble()),
       throttledRequests: pulumi.Input.fromValue(map['throttledRequests'] as String),
       totalEgressBytes: pulumi.Input.fromValue(map['totalEgressBytes'] as String),
       totalOperationsCount: pulumi.Input.fromValue(map['totalOperationsCount'] as String),

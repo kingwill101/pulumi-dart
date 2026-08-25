@@ -359,6 +359,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:serviceaccount/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
 ///
 /// For more information see
@@ -693,6 +704,17 @@ Future<GetAccountAccessTokenResult> getAccountAccessToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccountAccessTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
+  GetAccountAccessTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountAccessTokenResult.fromMap);
 }
 
 /// This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
@@ -1041,6 +1063,17 @@ Future<GetAccountIdTokenResult> getAccountIdToken(
   return GetAccountIdTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountIdTokenResult> getAccountIdTokenOutput(
+  GetAccountIdTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:serviceaccount/getAccountIdToken:getAccountIdToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountIdTokenResult.fromMap);
+}
+
 /// This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
 ///
 /// ## Example Usage
@@ -1222,6 +1255,17 @@ Future<GetAccountJwtResult> getAccountJwt(
   return GetAccountJwtResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountJwtResult> getAccountJwtOutput(
+  GetAccountJwtArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:serviceaccount/getAccountJwt:getAccountJwt',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountJwtResult.fromMap);
+}
+
 /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
 ///
 /// ## Example Usage
@@ -1399,6 +1443,17 @@ Future<GetAccountKeyResult> getAccountKey(
   return GetAccountKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountKeyResult> getAccountKeyOutput(
+  GetAccountKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:serviceaccount/getAccountKey:getAccountKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountKeyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a service account.
 ///
 /// ## example
@@ -1515,6 +1570,17 @@ Future<GetIamPolicyResult> getIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
+  GetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:serviceaccount/getIamPolicy:getIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamPolicyResult.fromMap);
 }
 
 /// Gets a list of all service accounts from a project.
@@ -1953,4 +2019,15 @@ Future<GetSResult> getS(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSResult.fromMap(result);
+}
+
+pulumi.Output<GetSResult> getSOutput(
+  GetSArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:serviceaccount/getS:getS',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSResult.fromMap);
 }

@@ -771,7 +771,7 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
           'gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dataGovernanceTag = registerOutput<Datapolicyv2DataPolicyDataGovernanceTag?>('dataGovernanceTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataGovernanceTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataMaskingPolicy = registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -779,7 +779,7 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
     dataPolicyType = registerOutput<String>('dataPolicyType');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
-    grantees = registerOutput<List<String>>('grantees');
+    grantees = registerOutput<List<String>>('grantees', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     policyTag = registerOutput<String>('policyTag');
@@ -792,11 +792,12 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Datapolicyv2DataPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Datapolicyv2DataPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -816,7 +817,30 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
     dataPolicyType = registerOutput<String>('dataPolicyType');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
-    grantees = registerOutput<List<String>>('grantees');
+    grantees = registerOutput<List<String>>('grantees', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    policyTag = registerOutput<String>('policyTag');
+    project = registerOutput<String>('project');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Datapolicyv2DataPolicy] resource.
+  Datapolicyv2DataPolicy.reference(String urn)
+    : super(
+        'gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataGovernanceTag = registerOutput<Datapolicyv2DataPolicyDataGovernanceTag?>('dataGovernanceTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataGovernanceTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataMaskingPolicy = registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataPolicyId = registerOutput<String>('dataPolicyId');
+    dataPolicyType = registerOutput<String>('dataPolicyType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    grantees = registerOutput<List<String>>('grantees', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     policyTag = registerOutput<String>('policyTag');

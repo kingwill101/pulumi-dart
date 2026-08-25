@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workstation_cluster_args.dart';
+import 'workstation_cluster_condition.dart';
 import 'workstation_cluster_domain_config.dart';
 import 'workstation_cluster_private_cluster_config.dart';
 import 'workstation_cluster_state.dart';
@@ -1524,7 +1525,7 @@ class WorkstationCluster extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Status conditions describing the current resource state.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<WorkstationClusterCondition>> conditions;
   /// The private IP address of the control plane for this workstation cluster.
   /// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
   late final pulumi.Output<String> controlPlaneIp;
@@ -1603,28 +1604,29 @@ class WorkstationCluster extends pulumi.CustomResource {
           'gcp:workstations/workstationCluster:WorkstationCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<WorkstationClusterCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationClusterCondition>(guardedValue, (value) => WorkstationClusterCondition.fromMap((value as Map).cast<String, dynamic>())); });
     controlPlaneIp = registerOutput<String>('controlPlaneIp');
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     domainConfig = registerOutput<WorkstationClusterDomainConfig?>('domainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterDomainConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     privateClusterConfig = registerOutput<WorkstationClusterPrivateClusterConfig?>('privateClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterPrivateClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     subnetwork = registerOutput<String>('subnetwork');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uid = registerOutput<String>('uid');
     workstationAuthorizationUrl = registerOutput<String>('workstationAuthorizationUrl');
     workstationClusterId = registerOutput<String>('workstationClusterId');
@@ -1636,11 +1638,12 @@ class WorkstationCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkstationClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkstationCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1654,26 +1657,62 @@ class WorkstationCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<WorkstationClusterCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationClusterCondition>(guardedValue, (value) => WorkstationClusterCondition.fromMap((value as Map).cast<String, dynamic>())); });
     controlPlaneIp = registerOutput<String>('controlPlaneIp');
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     domainConfig = registerOutput<WorkstationClusterDomainConfig?>('domainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterDomainConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     privateClusterConfig = registerOutput<WorkstationClusterPrivateClusterConfig?>('privateClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterPrivateClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     subnetwork = registerOutput<String>('subnetwork');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uid = registerOutput<String>('uid');
+    workstationAuthorizationUrl = registerOutput<String>('workstationAuthorizationUrl');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationLaunchUrl = registerOutput<String?>('workstationLaunchUrl');
+  }
+
+  /// Creates a typed reference to an existing [WorkstationCluster] resource.
+  WorkstationCluster.reference(String urn)
+    : super(
+        'gcp:workstations/workstationCluster:WorkstationCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<WorkstationClusterCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationClusterCondition>(guardedValue, (value) => WorkstationClusterCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    controlPlaneIp = registerOutput<String>('controlPlaneIp');
+    createTime = registerOutput<String>('createTime');
+    degraded = registerOutput<bool>('degraded');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    domainConfig = registerOutput<WorkstationClusterDomainConfig?>('domainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterDomainConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    privateClusterConfig = registerOutput<WorkstationClusterPrivateClusterConfig?>('privateClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationClusterPrivateClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    subnetwork = registerOutput<String>('subnetwork');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uid = registerOutput<String>('uid');
     workstationAuthorizationUrl = registerOutput<String>('workstationAuthorizationUrl');
     workstationClusterId = registerOutput<String>('workstationClusterId');

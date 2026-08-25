@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
   /// Display name of the parameter.
-  final pulumi.Input<String>? parameter;
+  final pulumi.Input<String?>? parameter;
   /// The new JSON-encoded value of the parameter. A null value clears the parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction].
   /// [parameter] Display name of the parameter.

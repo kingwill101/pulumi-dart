@@ -1027,13 +1027,13 @@ class Datapolicyv2DataPolicyIamBinding extends pulumi.CustomResource {
           'gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<Datapolicyv2DataPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }
@@ -1043,11 +1043,12 @@ class Datapolicyv2DataPolicyIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Datapolicyv2DataPolicyIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Datapolicyv2DataPolicyIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1065,7 +1066,25 @@ class Datapolicyv2DataPolicyIamBinding extends pulumi.CustomResource {
     dataPolicyId = registerOutput<String>('dataPolicyId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [Datapolicyv2DataPolicyIamBinding] resource.
+  Datapolicyv2DataPolicyIamBinding.reference(String urn)
+    : super(
+        'gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<Datapolicyv2DataPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataPolicyId = registerOutput<String>('dataPolicyId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }

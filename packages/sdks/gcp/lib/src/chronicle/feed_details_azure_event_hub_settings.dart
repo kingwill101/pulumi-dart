@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeedDetailsAzureEventHubSettings {
   /// SAS token
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? azureSasToken;
+  final pulumi.Input<String?>? azureSasToken;
   /// Blob store connection string for authentication.
-  final pulumi.Input<String>? azureStorageConnectionString;
+  final pulumi.Input<String?>? azureStorageConnectionString;
   /// Blob storage container name.
-  final pulumi.Input<String>? azureStorageContainer;
+  final pulumi.Input<String?>? azureStorageContainer;
   /// Event hub consumer group to read from.
   final pulumi.Input<String> consumerGroup;
   /// Event hub connection string for authentication.
   final pulumi.Input<String> eventHubConnectionString;
   /// (Output)
   /// Event hub namespace
-  final pulumi.Input<String>? eventHubNamespace;
+  final pulumi.Input<String?>? eventHubNamespace;
   /// Event hub to read from.
   final pulumi.Input<String> name;
 

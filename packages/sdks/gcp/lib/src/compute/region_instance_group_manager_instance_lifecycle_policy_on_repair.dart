@@ -7,7 +7,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
   ///
   /// - - -
   /// &lt;a name="nestedInstanceFlexibilityPolicy"&gt;&lt;/a&gt;The `instanceFlexibilityPolicy` block supports:
-  final pulumi.Input<String>? allowChangingZone;
+  final pulumi.Input<String?>? allowChangingZone;
 
   /// Creates a new [RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair].
   /// [allowChangingZone] , Specifies whether the MIG can change a VM's zone during a repair. If "YES", MIG can select a different zone for the VM during a repair. Else if "NO", MIG cannot change a VM's zone during a repair. The default value of allowChangingZone is "NO".

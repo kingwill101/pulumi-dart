@@ -6,7 +6,7 @@ import 'instance_directory_services_ldap.dart';
 class InstanceDirectoryServices {
   /// Configuration for LDAP servers.
   /// Structure is documented below.
-  final pulumi.Input<InstanceDirectoryServicesLdap>? ldap;
+  final pulumi.Input<InstanceDirectoryServicesLdap?>? ldap;
 
   /// Creates a new [InstanceDirectoryServices].
   /// [ldap] Configuration for LDAP servers.

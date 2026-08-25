@@ -6,9 +6,9 @@ import 'service_template_spec_container_env_from_config_map_ref_local_object_ref
 class ServiceTemplateSpecContainerEnvFromConfigMapRef {
   /// The ConfigMap to select from.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference>? localObjectReference;
+  final pulumi.Input<ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference?>? localObjectReference;
   /// Specify whether the ConfigMap must be defined
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [ServiceTemplateSpecContainerEnvFromConfigMapRef].
   /// [localObjectReference] The ConfigMap to select from.

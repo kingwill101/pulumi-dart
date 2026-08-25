@@ -335,7 +335,7 @@ class LiteSubscription extends pulumi.CustomResource {
           'gcp:pubsub/liteSubscription:LiteSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteSubscriptionDeliveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -351,11 +351,12 @@ class LiteSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LiteSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LiteSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -369,6 +370,24 @@ class LiteSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteSubscriptionDeliveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    topic = registerOutput<String>('topic');
+    zone = registerOutput<String?>('zone');
+  }
+
+  /// Creates a typed reference to an existing [LiteSubscription] resource.
+  LiteSubscription.reference(String urn)
+    : super(
+        'gcp:pubsub/liteSubscription:LiteSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteSubscriptionDeliveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

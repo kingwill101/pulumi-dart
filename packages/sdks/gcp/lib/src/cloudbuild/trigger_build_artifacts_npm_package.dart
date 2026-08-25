@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerBuildArtifactsNpmPackage {
   /// Path to the package.json. e.g. workspace/path/to/package
-  final pulumi.Input<String>? packagePath;
+  final pulumi.Input<String?>? packagePath;
   /// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
   /// Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
 
   /// Creates a new [TriggerBuildArtifactsNpmPackage].
   /// [packagePath] Path to the package.json. e.g. workspace/path/to/package

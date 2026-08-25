@@ -338,7 +338,7 @@ class GoogleChannelConfig extends pulumi.CustomResource {
           'gcp:eventarc/googleChannelConfig:GoogleChannelConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     location = registerOutput<String>('location');
@@ -352,11 +352,12 @@ class GoogleChannelConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GoogleChannelConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GoogleChannelConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -370,6 +371,22 @@ class GoogleChannelConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GoogleChannelConfig] resource.
+  GoogleChannelConfig.reference(String urn)
+    : super(
+        'gcp:eventarc/googleChannelConfig:GoogleChannelConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

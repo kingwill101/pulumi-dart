@@ -11,19 +11,19 @@ class AiReasoningEngineSpecSourceCodeSpec {
   /// (Optional, Beta)
   /// Optional. Specification for the deploying from agent config.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecAgentConfigSource>? agentConfigSource;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecAgentConfigSource?>? agentConfigSource;
   /// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource>? developerConnectSource;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource?>? developerConnectSource;
   /// Configuration for building an image with custom config file.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecImageSpec>? imageSpec;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecImageSpec?>? imageSpec;
   /// Source code is provided directly in the request.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecInlineSource>? inlineSource;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecInlineSource?>? inlineSource;
   /// Specification for running a Python application from source.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecPythonSpec>? pythonSpec;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpecPythonSpec?>? pythonSpec;
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpec].
   /// [agentConfigSource] (Optional, Beta)

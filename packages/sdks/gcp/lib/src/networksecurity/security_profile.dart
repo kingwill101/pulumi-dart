@@ -1621,20 +1621,21 @@ class SecurityProfile extends pulumi.CustomResource {
           'gcp:networksecurity/securityProfile:SecurityProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     customInterceptProfile = registerOutput<SecurityProfileCustomInterceptProfile?>('customInterceptProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomInterceptProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customMirroringProfile = registerOutput<SecurityProfileCustomMirroringProfile?>('customMirroringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     threatPreventionProfile = registerOutput<SecurityProfileThreatPreventionProfile?>('threatPreventionProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileThreatPreventionProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
@@ -1647,11 +1648,12 @@ class SecurityProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1670,13 +1672,42 @@ class SecurityProfile extends pulumi.CustomResource {
     customMirroringProfile = registerOutput<SecurityProfileCustomMirroringProfile?>('customMirroringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    selfLink = registerOutput<String>('selfLink');
+    threatPreventionProfile = registerOutput<SecurityProfileThreatPreventionProfile?>('threatPreventionProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileThreatPreventionProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+    urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>('urlFilteringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SecurityProfile] resource.
+  SecurityProfile.reference(String urn)
+    : super(
+        'gcp:networksecurity/securityProfile:SecurityProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    customInterceptProfile = registerOutput<SecurityProfileCustomInterceptProfile?>('customInterceptProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomInterceptProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customMirroringProfile = registerOutput<SecurityProfileCustomMirroringProfile?>('customMirroringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     threatPreventionProfile = registerOutput<SecurityProfileThreatPreventionProfile?>('threatPreventionProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileThreatPreventionProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

@@ -9,16 +9,16 @@ import 'automation_rule_timed_promote_release_rule.dart';
 class AutomationRule {
   /// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
   /// Structure is documented below.
-  final pulumi.Input<AutomationRuleAdvanceRolloutRule>? advanceRolloutRule;
+  final pulumi.Input<AutomationRuleAdvanceRolloutRule?>? advanceRolloutRule;
   /// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
   /// Structure is documented below.
-  final pulumi.Input<AutomationRulePromoteReleaseRule>? promoteReleaseRule;
+  final pulumi.Input<AutomationRulePromoteReleaseRule?>? promoteReleaseRule;
   /// Optional. The RepairRolloutRule will automatically repair a failed rollout.
   /// Structure is documented below.
-  final pulumi.Input<AutomationRuleRepairRolloutRule>? repairRolloutRule;
+  final pulumi.Input<AutomationRuleRepairRolloutRule?>? repairRolloutRule;
   /// Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
   /// Structure is documented below.
-  final pulumi.Input<AutomationRuleTimedPromoteReleaseRule>? timedPromoteReleaseRule;
+  final pulumi.Input<AutomationRuleTimedPromoteReleaseRule?>? timedPromoteReleaseRule;
 
   /// Creates a new [AutomationRule].
   /// [advanceRolloutRule] Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.

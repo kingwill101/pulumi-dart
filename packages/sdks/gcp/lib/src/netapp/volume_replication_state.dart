@@ -9,7 +9,7 @@ import 'volume_replication_transfer_stat.dart';
 /// Input properties used for looking up and filtering VolumeReplication resources.
 class VolumeReplicationState {
   /// Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// A destination volume is created as part of replication creation. The destination volume will not became
   /// under Terraform management unless you import it manually. If you delete the replication, this volume
   /// will remain.
@@ -17,87 +17,87 @@ class VolumeReplicationState {
   /// replication. If you reversed the replication direction, this will be your former source volume!
   /// For production use, it is recommended to keep this parameter false to avoid accidental volume
   /// deletion. Handle with care. Default is false.
-  final pulumi.Input<bool>? deleteDestinationVolume;
+  final pulumi.Input<bool?>? deleteDestinationVolume;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
-  final pulumi.Input<String>? destinationVolume;
+  final pulumi.Input<String?>? destinationVolume;
   /// Destination volume parameters.
   /// Structure is documented below.
-  final pulumi.Input<VolumeReplicationDestinationVolumeParameters>? destinationVolumeParameters;
+  final pulumi.Input<VolumeReplicationDestinationVolumeParameters?>? destinationVolumeParameters;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
   /// currently receives an update and stopping the update might be undesirable. Set this parameter to true
   /// to stop anyway. All data transferred to the destination will be discarded and content of destination
   /// volume will remain at the state of the last successful update. Default is false.
-  final pulumi.Input<bool>? forceStopping;
+  final pulumi.Input<bool?>? forceStopping;
   /// Condition of the relationship. Can be one of the following:
   /// - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
   /// - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
-  final pulumi.Input<bool>? healthy;
+  final pulumi.Input<bool?>? healthy;
   /// HybridPeeringDetails contains details about the hybrid peering.
   /// Structure is documented below.
-  final pulumi.Input<List<VolumeReplicationHybridPeeringDetail>>? hybridPeeringDetails;
+  final pulumi.Input<List<VolumeReplicationHybridPeeringDetail>?>? hybridPeeringDetails;
   /// Hybrid replication type.
-  final pulumi.Input<String>? hybridReplicationType;
+  final pulumi.Input<String?>? hybridReplicationType;
   /// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
   /// Structure is documented below.
-  final pulumi.Input<List<VolumeReplicationHybridReplicationUserCommand>>? hybridReplicationUserCommands;
+  final pulumi.Input<List<VolumeReplicationHybridReplicationUserCommand>?>? hybridReplicationUserCommands;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of region for this resource. The resource needs to be created in the region of the destination volume.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Indicates the state of the mirror between source and destination volumes. Depending on the amount of data
   /// in your source volume, PREPARING phase can take hours or days. mirrorState = MIRRORED indicates your baseline
   /// transfer ended and destination volume became accessible read-only. TRANSFERRING means a MIRRORED volume
   /// currently receives an update. Updated every 5 minutes.
-  final pulumi.Input<String>? mirrorState;
+  final pulumi.Input<String?>? mirrorState;
   /// The name of the replication. Needs to be unique per location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
   /// and act independently from the source volume.
   /// Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
   /// done to the destination volume with the content of the source volume.
-  final pulumi.Input<bool>? replicationEnabled;
+  final pulumi.Input<bool?>? replicationEnabled;
   /// Specifies the replication interval.
   /// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
-  final pulumi.Input<String>? replicationSchedule;
+  final pulumi.Input<String?>? replicationSchedule;
   /// Reverting a replication can swap source and destination volume roles. This field indicates if the `location` hosts
   /// the source or destination volume. For resume and revert and resume operations it is critical to understand
   /// which volume is the source volume, since it will overwrite changes done to the destination volume.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Full resource name of source volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
-  final pulumi.Input<String>? sourceVolume;
+  final pulumi.Input<String?>? sourceVolume;
   /// Indicates the state of replication resource. State of the mirror itself is indicated in mirrorState.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// State details of the replication resource.
-  final pulumi.Input<String>? stateDetails;
+  final pulumi.Input<String?>? stateDetails;
   /// Replication transfer statistics. All statistics are updated every 5 minutes.
   /// Structure is documented below.
-  final pulumi.Input<List<VolumeReplicationTransferStat>>? transferStats;
+  final pulumi.Input<List<VolumeReplicationTransferStat>?>? transferStats;
   /// The name of the existing source volume.
-  final pulumi.Input<String>? volumeName;
+  final pulumi.Input<String?>? volumeName;
   /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
   /// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
   /// create/stop/resume operations, set this parameter to true. Default is false.
-  final pulumi.Input<bool>? waitForMirror;
+  final pulumi.Input<bool?>? waitForMirror;
 
   /// Creates a new [VolumeReplicationState].
   /// [createTime] Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".

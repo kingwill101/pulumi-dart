@@ -5,9 +5,9 @@ import 'record_set_routing_policy_primary_backup_primary_internal_load_balancer.
 
 class RecordSetRoutingPolicyPrimaryBackupPrimary {
   /// The Internet IP addresses to be health checked.
-  final pulumi.Input<List<String>>? externalEndpoints;
+  final pulumi.Input<List<String>?>? externalEndpoints;
   /// The list of internal load balancers to health check.
-  final pulumi.Input<List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>>? internalLoadBalancers;
+  final pulumi.Input<List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>?>? internalLoadBalancers;
 
   /// Creates a new [RecordSetRoutingPolicyPrimaryBackupPrimary].
   /// [externalEndpoints] The Internet IP addresses to be health checked.

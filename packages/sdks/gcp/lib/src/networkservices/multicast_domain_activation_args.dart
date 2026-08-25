@@ -14,17 +14,17 @@ class MulticastDomainActivationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional text description of the multicast domain activation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Option to allow disabling placement policy for multicast infrastructure.
   /// Only applicable if the activation is for a domain associating with a
   /// multicast domain group.
-  final pulumi.Input<bool>? disablePlacementPolicy;
+  final pulumi.Input<bool?>? disablePlacementPolicy;
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The resource name of the multicast domain to activate.
@@ -38,11 +38,11 @@ class MulticastDomainActivationArgs {
   final pulumi.Input<String> multicastDomainActivationId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Specifies the traffic volume and multicast group scale parameters that are
   /// used to set up multicast infrastructure for a multicast domain in a zone.
   /// Structure is documented below.
-  final pulumi.Input<MulticastDomainActivationTrafficSpec>? trafficSpec;
+  final pulumi.Input<MulticastDomainActivationTrafficSpec?>? trafficSpec;
 
   /// Creates a new [MulticastDomainActivationArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

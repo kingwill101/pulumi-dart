@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Datapolicyv2DataPolicyDataGovernanceTag {
   /// Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Tag value is expected to be the short name.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Datapolicyv2DataPolicyDataGovernanceTag].
   /// [key] Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.

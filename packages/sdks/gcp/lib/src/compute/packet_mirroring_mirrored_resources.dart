@@ -7,12 +7,12 @@ import 'packet_mirroring_mirrored_resources_subnetwork.dart';
 class PacketMirroringMirroredResources {
   /// All the listed instances will be mirrored.  Specify at most 50.
   /// Structure is documented below.
-  final pulumi.Input<List<PacketMirroringMirroredResourcesInstance>>? instances;
+  final pulumi.Input<List<PacketMirroringMirroredResourcesInstance>?>? instances;
   /// All instances in one of these subnetworks will be mirrored.
   /// Structure is documented below.
-  final pulumi.Input<List<PacketMirroringMirroredResourcesSubnetwork>>? subnetworks;
+  final pulumi.Input<List<PacketMirroringMirroredResourcesSubnetwork>?>? subnetworks;
   /// All instances with these tags will be mirrored.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [PacketMirroringMirroredResources].
   /// [instances] All the listed instances will be mirrored.  Specify at most 50.

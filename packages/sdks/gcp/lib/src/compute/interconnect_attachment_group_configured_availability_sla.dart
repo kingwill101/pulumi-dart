@@ -7,13 +7,13 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySla {
   /// (Output)
   /// Which SLA this group supports. Options are the same as the
   /// intent.
-  final pulumi.Input<String>? effectiveSla;
+  final pulumi.Input<String?>? effectiveSla;
   /// (Output)
   /// Reasons why configuration.availabilitySLA.sla differs from
   /// intent.availabilitySLA. This list is empty if and only if those are the
   /// same.
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker>>? intendedSlaBlockers;
+  final pulumi.Input<List<InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker>?>? intendedSlaBlockers;
 
   /// Creates a new [InterconnectAttachmentGroupConfiguredAvailabilitySla].
   /// [effectiveSla] (Output)

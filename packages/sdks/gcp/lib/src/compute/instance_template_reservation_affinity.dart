@@ -6,7 +6,7 @@ import 'instance_template_reservation_affinity_specific_reservation.dart';
 class InstanceTemplateReservationAffinity {
   /// Specifies the label selector for the reservation to use..
   /// Structure is documented below.
-  final pulumi.Input<InstanceTemplateReservationAffinitySpecificReservation>? specificReservation;
+  final pulumi.Input<InstanceTemplateReservationAffinitySpecificReservation?>? specificReservation;
   /// The type of reservation from which this instance can consume resources.
   final pulumi.Input<String> type;
 

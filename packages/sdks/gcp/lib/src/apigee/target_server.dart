@@ -717,7 +717,7 @@ class TargetServer extends pulumi.CustomResource {
           'gcp:apigee/targetServer:TargetServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -735,11 +735,12 @@ class TargetServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -753,6 +754,26 @@ class TargetServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    envId = registerOutput<String>('envId');
+    host = registerOutput<String>('host');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    protocol = registerOutput<String>('protocol');
+    sSlInfo = registerOutput<TargetServerSSlInfo?>('sSlInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetServerSSlInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TargetServer] resource.
+  TargetServer.reference(String urn)
+    : super(
+        'gcp:apigee/targetServer:TargetServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');

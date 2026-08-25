@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGceSetupServiceAccount {
   /// Optional. Email address of the service account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// (Output)
   /// Output only. The list of scopes to be made available for this
   /// service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [InstanceGceSetupServiceAccount].
   /// [email] Optional. Email address of the service account.

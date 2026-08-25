@@ -11,56 +11,56 @@ class OsPolicyAssignmentState {
   /// rolled out in this zone and new VMs will be assigned OS policies from this
   /// revision. For a given OS policy assignment, there is only one revision with
   /// a value of `true` for this field.
-  final pulumi.Input<bool>? baseline;
+  final pulumi.Input<bool?>? baseline;
   /// Output only. Indicates that this revision deletes the OS policy
   /// assignment.
-  final pulumi.Input<bool>? deleted;
+  final pulumi.Input<bool?>? deleted;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The etag for this OS policy assignment. If this is provided on
   /// update, it must match the server's etag.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Filter to select VMs. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentInstanceFilter>? instanceFilter;
+  final pulumi.Input<OsPolicyAssignmentInstanceFilter?>? instanceFilter;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of OS policies to be applied to the VMs.
   /// Structure is documented below.
-  final pulumi.Input<List<OsPolicyAssignmentOsPolicy>>? osPolicies;
+  final pulumi.Input<List<OsPolicyAssignmentOsPolicy>?>? osPolicies;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. Indicates that reconciliation is in progress
   /// for the revision. This value is `true` when the `rolloutState` is one of:
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Output only. The timestamp that the revision was
   /// created.
-  final pulumi.Input<String>? revisionCreateTime;
+  final pulumi.Input<String?>? revisionCreateTime;
   /// Output only. The assignment revision ID A new revision is
   /// committed whenever a rollout is triggered for a OS policy assignment
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
   /// Rollout to deploy the OS policy assignment. A rollout
   /// is triggered in the following situations: 1) OSPolicyAssignment is created.
   /// 2) OSPolicyAssignment is updated and the update contains changes to one of
   /// the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
   /// is deleted. Structure is documented below.
-  final pulumi.Input<OsPolicyAssignmentRollout>? rollout;
+  final pulumi.Input<OsPolicyAssignmentRollout?>? rollout;
   /// Output only. OS policy assignment rollout state
-  final pulumi.Input<String>? rolloutState;
+  final pulumi.Input<String?>? rolloutState;
   /// Set to true to skip awaiting rollout during resource creation and update.
-  final pulumi.Input<bool>? skipAwaitRollout;
+  final pulumi.Input<bool?>? skipAwaitRollout;
   /// Output only. Server generated unique id for the OS policy assignment
   /// resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [OsPolicyAssignmentState].
   /// [baseline] Output only. Indicates that this revision has been successfully

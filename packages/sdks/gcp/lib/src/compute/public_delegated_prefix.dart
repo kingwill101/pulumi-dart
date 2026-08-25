@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_delegated_prefix_args.dart';
+import 'public_delegated_prefix_public_delegated_sub_prefix.dart';
 import 'public_delegated_prefix_state.dart';
 
 /// Represents a PublicDelegatedPrefix for use with bring your own IP addresses (BYOIP).
@@ -1043,7 +1044,7 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
   /// Each item in this array represents a sub prefix that can be
   /// used to create addresses or further allocations.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> publicDelegatedSubPrefixs;
+  late final pulumi.Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>> publicDelegatedSubPrefixs;
   /// A region where the prefix will reside.
   late final pulumi.Output<String> region;
   /// The URI of the created resource.
@@ -1061,7 +1062,7 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
           'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1074,7 +1075,7 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parentPrefix = registerOutput<String>('parentPrefix');
     project = registerOutput<String>('project');
-    publicDelegatedSubPrefixs = registerOutput<List<Map<String, dynamic>>>('publicDelegatedSubPrefixs');
+    publicDelegatedSubPrefixs = registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>('publicDelegatedSubPrefixs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(guardedValue, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
   }
@@ -1084,11 +1085,12 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicDelegatedPrefixState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublicDelegatedPrefix._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1113,7 +1115,32 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parentPrefix = registerOutput<String>('parentPrefix');
     project = registerOutput<String>('project');
-    publicDelegatedSubPrefixs = registerOutput<List<Map<String, dynamic>>>('publicDelegatedSubPrefixs');
+    publicDelegatedSubPrefixs = registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>('publicDelegatedSubPrefixs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(guardedValue, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [PublicDelegatedPrefix] resource.
+  PublicDelegatedPrefix.reference(String urn)
+    : super(
+        'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    enableEnhancedIpv4Allocation = registerOutput<bool>('enableEnhancedIpv4Allocation');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    isLiveMigration = registerOutput<bool?>('isLiveMigration');
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    parentPrefix = registerOutput<String>('parentPrefix');
+    project = registerOutput<String>('project');
+    publicDelegatedSubPrefixs = registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>('publicDelegatedSubPrefixs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefix>(guardedValue, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
   }

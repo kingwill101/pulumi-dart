@@ -7,12 +7,12 @@ import 'extensions_instance_runtime_data_processing_state.dart';
 class ExtensionsInstanceRuntimeData {
   /// The fatal error state for the extension instance
   /// Structure is documented below.
-  final pulumi.Input<ExtensionsInstanceRuntimeDataFatalError>? fatalError;
+  final pulumi.Input<ExtensionsInstanceRuntimeDataFatalError?>? fatalError;
   /// The processing state for the extension instance
   /// Structure is documented below.
-  final pulumi.Input<ExtensionsInstanceRuntimeDataProcessingState>? processingState;
+  final pulumi.Input<ExtensionsInstanceRuntimeDataProcessingState?>? processingState;
   /// The time of the last state update.
-  final pulumi.Input<String>? stateUpdateTime;
+  final pulumi.Input<String?>? stateUpdateTime;
 
   /// Creates a new [ExtensionsInstanceRuntimeData].
   /// [fatalError] The fatal error state for the extension instance

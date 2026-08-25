@@ -9,16 +9,16 @@ import 'posture_policy_set_policy_constraint_security_health_analytics_module.da
 class PosturePolicySetPolicyConstraint {
   /// Organization policy canned constraint definition.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraint>? orgPolicyConstraint;
+  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraint?>? orgPolicyConstraint;
   /// Organization policy custom constraint policy definition.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom>? orgPolicyConstraintCustom;
+  final pulumi.Input<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom?>? orgPolicyConstraintCustom;
   /// Definition of Security Health Analytics Custom Module.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule>? securityHealthAnalyticsCustomModule;
+  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule?>? securityHealthAnalyticsCustomModule;
   /// Security Health Analytics built-in detector definition.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule>? securityHealthAnalyticsModule;
+  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule?>? securityHealthAnalyticsModule;
 
   /// Creates a new [PosturePolicySetPolicyConstraint].
   /// [orgPolicyConstraint] Organization policy canned constraint definition.

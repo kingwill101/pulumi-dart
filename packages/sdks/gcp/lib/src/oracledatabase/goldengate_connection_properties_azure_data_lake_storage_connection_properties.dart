@@ -4,36 +4,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties {
   /// Sets the Azure storage account name.
-  final pulumi.Input<String>? account;
+  final pulumi.Input<String?>? account;
   /// Azure storage account key. This property is required when
   /// 'authentication_type' is set to 'SHARED_KEY'.
-  final pulumi.Input<String>? accountKeySecret;
+  final pulumi.Input<String?>? accountKeySecret;
   /// Authentication mechanism to access Azure Data Lake Storage.
   /// Possible values:
   /// SHARED_KEY
   /// SHARED_ACCESS_SIGNATURE
   /// AZURE_ACTIVE_DIRECTORY
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The endpoint used for authentication with Microsoft Entra ID (formerly
   /// Azure Active Directory). Default value:
   /// https://login.microsoftonline.com
-  final pulumi.Input<String>? azureAuthorityHost;
+  final pulumi.Input<String?>? azureAuthorityHost;
   /// Azure tenant ID of the application. This property is required when
   /// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
-  final pulumi.Input<String>? azureTenantId;
+  final pulumi.Input<String?>? azureTenantId;
   /// Azure client ID of the application. This property is required when
   /// 'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Azure client secret (aka application password) for authentication.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Azure Storage service endpoint.
   /// e.g: https://test.blob.core.windows.net
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Credential that uses a shared access signature (SAS) to authenticate to
   /// an Azure Service.
-  final pulumi.Input<String>? sasTokenSecret;
+  final pulumi.Input<String?>? sasTokenSecret;
   /// The technology type of AzureDataLakeStorageConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties].
   /// [account] Sets the Azure storage account name.

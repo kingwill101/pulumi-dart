@@ -6,16 +6,16 @@ import 'code_tools_setting_enabled_tool_config.dart';
 class CodeToolsSettingEnabledTool {
   /// Link to the Dev Connect Account Connector that holds the user credentials.
   /// projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
-  final pulumi.Input<String>? accountConnector;
+  final pulumi.Input<String?>? accountConnector;
   /// Configuration parameters for the tool.
   /// Structure is documented below.
-  final pulumi.Input<List<CodeToolsSettingEnabledToolConfig>>? configs;
+  final pulumi.Input<List<CodeToolsSettingEnabledToolConfig>?>? configs;
   /// Handle used to invoke the tool.
   final pulumi.Input<String> handle;
   /// Link to the Tool
   final pulumi.Input<String> tool;
   /// Overridden URI, if allowed by Tool.
-  final pulumi.Input<String>? uriOverride;
+  final pulumi.Input<String?>? uriOverride;
 
   /// Creates a new [CodeToolsSettingEnabledTool].
   /// [accountConnector] Link to the Dev Connect Account Connector that holds the user credentials.

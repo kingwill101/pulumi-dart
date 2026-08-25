@@ -6,11 +6,11 @@ class TopicSchemaSettings {
   /// The encoding of messages validated against schema.
   /// Default value is `ENCODING_UNSPECIFIED`.
   /// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// The minimum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against lastRevision or any revision created before.
-  final pulumi.Input<String>? firstRevisionId;
+  final pulumi.Input<String?>? firstRevisionId;
   /// The maximum (inclusive) revision allowed for validating messages. If empty or not present, allow any revision to be validated against firstRevision or any revision created after.
-  final pulumi.Input<String>? lastRevisionId;
+  final pulumi.Input<String?>? lastRevisionId;
   /// The name of the schema that messages published should be
   /// validated against. Format is projects/{project}/schemas/{schema}.
   /// The value of this field will be _deleted-schema_

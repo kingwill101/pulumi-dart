@@ -7,21 +7,21 @@ import 'parser_low_code_field_extractors_preprocess_config.dart';
 class ParserLowCodeFieldExtractors {
   /// Whether to append repeated fields or not.
   /// When false, repeated fields will be replaced.
-  final pulumi.Input<bool>? appendRepeatedFields;
+  final pulumi.Input<bool?>? appendRepeatedFields;
   /// List of FieldExtractors.
   /// Structure is documented below.
-  final pulumi.Input<List<ParserLowCodeFieldExtractorsExtractor>>? extractors;
+  final pulumi.Input<List<ParserLowCodeFieldExtractorsExtractor>?>? extractors;
   /// Possible values:
   /// JSON
   /// CSV
   /// XML
-  final pulumi.Input<String>? logFormat;
+  final pulumi.Input<String?>? logFormat;
   /// PreProcessConfig holds the GROK expression to extract the syslog header.
   /// Structure is documented below.
-  final pulumi.Input<ParserLowCodeFieldExtractorsPreprocessConfig>? preprocessConfig;
+  final pulumi.Input<ParserLowCodeFieldExtractorsPreprocessConfig?>? preprocessConfig;
   /// (Output)
   /// CBN snippet generated from field extractors.
-  final pulumi.Input<String>? transformedCbnSnippet;
+  final pulumi.Input<String?>? transformedCbnSnippet;
 
   /// Creates a new [ParserLowCodeFieldExtractors].
   /// [appendRepeatedFields] Whether to append repeated fields or not.

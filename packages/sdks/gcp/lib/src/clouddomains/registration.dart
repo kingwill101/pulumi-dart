@@ -640,26 +640,27 @@ class Registration extends pulumi.CustomResource {
           'gcp:clouddomains/registration:Registration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    contactNotices = registerOutput<List<String>?>('contactNotices');
+    contactNotices = registerOutput<List<String>?>('contactNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     contactSettings = registerOutput<RegistrationContactSettings>('contactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationContactSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dnsSettings = registerOutput<RegistrationDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
-    domainNotices = registerOutput<List<String>?>('domainNotices');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    domainNotices = registerOutput<List<String>?>('domainNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     expireTime = registerOutput<String>('expireTime');
-    issues = registerOutput<List<String>>('issues');
-    labels = registerOutput<Map<String, String>?>('labels');
+    issues = registerOutput<List<String>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managementSettings = registerOutput<RegistrationManagementSettings>('managementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationManagementSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     registerFailureReason = registerOutput<String>('registerFailureReason');
     state = registerOutput<String>('state');
-    supportedPrivacies = registerOutput<List<String>>('supportedPrivacies');
+    supportedPrivacies = registerOutput<List<String>>('supportedPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     yearlyPrice = registerOutput<RegistrationYearlyPrice>('yearlyPrice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationYearlyPrice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -668,11 +669,12 @@ class Registration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Registration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -686,24 +688,55 @@ class Registration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    contactNotices = registerOutput<List<String>?>('contactNotices');
+    contactNotices = registerOutput<List<String>?>('contactNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     contactSettings = registerOutput<RegistrationContactSettings>('contactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationContactSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dnsSettings = registerOutput<RegistrationDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
-    domainNotices = registerOutput<List<String>?>('domainNotices');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    domainNotices = registerOutput<List<String>?>('domainNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     expireTime = registerOutput<String>('expireTime');
-    issues = registerOutput<List<String>>('issues');
-    labels = registerOutput<Map<String, String>?>('labels');
+    issues = registerOutput<List<String>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managementSettings = registerOutput<RegistrationManagementSettings>('managementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationManagementSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     registerFailureReason = registerOutput<String>('registerFailureReason');
     this.state = registerOutput<String>('state');
-    supportedPrivacies = registerOutput<List<String>>('supportedPrivacies');
+    supportedPrivacies = registerOutput<List<String>>('supportedPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    yearlyPrice = registerOutput<RegistrationYearlyPrice>('yearlyPrice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationYearlyPrice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Registration] resource.
+  Registration.reference(String urn)
+    : super(
+        'gcp:clouddomains/registration:Registration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    contactNotices = registerOutput<List<String>?>('contactNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    contactSettings = registerOutput<RegistrationContactSettings>('contactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationContactSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dnsSettings = registerOutput<RegistrationDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    domainNotices = registerOutput<List<String>?>('domainNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    expireTime = registerOutput<String>('expireTime');
+    issues = registerOutput<List<String>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managementSettings = registerOutput<RegistrationManagementSettings>('managementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationManagementSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    registerFailureReason = registerOutput<String>('registerFailureReason');
+    state = registerOutput<String>('state');
+    supportedPrivacies = registerOutput<List<String>>('supportedPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     yearlyPrice = registerOutput<RegistrationYearlyPrice>('yearlyPrice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistrationYearlyPrice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

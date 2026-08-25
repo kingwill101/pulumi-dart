@@ -20,7 +20,7 @@ class GetInstanceReadPoolConfig {
 
   factory GetInstanceReadPoolConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceReadPoolConfig(
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
     );
   }
 }

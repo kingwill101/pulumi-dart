@@ -6,7 +6,7 @@ import 'cluster_maintenance_update_policy_maintenance_window.dart';
 class ClusterMaintenanceUpdatePolicy {
   /// Preferred windows to perform maintenance. Currently limited to 1.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterMaintenanceUpdatePolicyMaintenanceWindow>>? maintenanceWindows;
+  final pulumi.Input<List<ClusterMaintenanceUpdatePolicyMaintenanceWindow>?>? maintenanceWindows;
 
   /// Creates a new [ClusterMaintenanceUpdatePolicy].
   /// [maintenanceWindows] Preferred windows to perform maintenance. Currently limited to 1.

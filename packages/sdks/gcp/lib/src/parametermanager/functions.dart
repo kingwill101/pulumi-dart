@@ -134,6 +134,17 @@ Future<GetParameterResult> getParameter(
   return GetParameterResult.fromMap(result);
 }
 
+pulumi.Output<GetParameterResult> getParameterOutput(
+  GetParameterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getParameter:getParameter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParameterResult.fromMap);
+}
+
 /// Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
 ///
 /// ## Example Usage
@@ -257,6 +268,17 @@ Future<GetParameterVersionResult> getParameterVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetParameterVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetParameterVersionResult> getParameterVersionOutput(
+  GetParameterVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getParameterVersion:getParameterVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParameterVersionResult.fromMap);
 }
 
 /// Get the value and metadata from a Parameter Manager Parameter version with render payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
@@ -385,6 +407,17 @@ Future<GetParameterVersionRenderResult> getParameterVersionRender(
   return GetParameterVersionRenderResult.fromMap(result);
 }
 
+pulumi.Output<GetParameterVersionRenderResult> getParameterVersionRenderOutput(
+  GetParameterVersionRenderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getParameterVersionRender:getParameterVersionRender',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParameterVersionRenderResult.fromMap);
+}
+
 /// Use this data source to list the Parameter Manager Parameters.
 ///
 /// ## Example Usage
@@ -491,6 +524,17 @@ Future<GetParametersResult> getParameters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetParametersResult.fromMap(result);
+}
+
+pulumi.Output<GetParametersResult> getParametersOutput(
+  GetParametersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getParameters:getParameters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParametersResult.fromMap);
 }
 
 /// Use this data source to get information about a Parameter Manager Regional Parameter.
@@ -616,6 +660,17 @@ Future<GetRegionalParameterResult> getRegionalParameter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionalParameterResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionalParameterResult> getRegionalParameterOutput(
+  GetRegionalParameterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getRegionalParameter:getRegionalParameter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalParameterResult.fromMap);
 }
 
 /// Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
@@ -748,6 +803,17 @@ Future<GetRegionalParameterVersionResult> getRegionalParameterVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionalParameterVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionalParameterVersionResult> getRegionalParameterVersionOutput(
+  GetRegionalParameterVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalParameterVersionResult.fromMap);
 }
 
 /// Get the value and metadata from a Parameter Manager Regional Parameter version with rendered payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
@@ -884,6 +950,17 @@ Future<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRende
   return GetRegionalParameterVersionRenderResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersionRenderOutput(
+  GetRegionalParameterVersionRenderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalParameterVersionRenderResult.fromMap);
+}
+
 /// Use this data source to list the Parameter Manager Regional Parameters.
 ///
 /// ## Example Usage
@@ -1000,4 +1077,15 @@ Future<GetRegionalParametersResult> getRegionalParameters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionalParametersResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionalParametersResult> getRegionalParametersOutput(
+  GetRegionalParametersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:parametermanager/getRegionalParameters:getRegionalParameters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionalParametersResult.fromMap);
 }

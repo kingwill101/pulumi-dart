@@ -10,7 +10,7 @@ class GetParameterArgs {
   /// The name of the parameter.
   final pulumi.Input<String> parameterId;
   /// The ID of the project in which the resource belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetParameterArgs].
   /// [parameterId] The name of the parameter.

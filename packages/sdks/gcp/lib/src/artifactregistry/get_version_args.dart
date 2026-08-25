@@ -12,13 +12,13 @@ class GetVersionArgs {
   /// The name of the package.
   final pulumi.Input<String> packageName;
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
   /// The name of the version.
   final pulumi.Input<String> versionName;
   /// The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetVersionArgs].
   /// [location] The location of the artifact registry.

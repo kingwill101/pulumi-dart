@@ -16,29 +16,29 @@ import 'future_reservation_time_window.dart';
 class FutureReservationArgs {
   /// Aggregate reservation details for the future reservation.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationAggregateReservation>? aggregateReservation;
+  final pulumi.Input<FutureReservationAggregateReservation?>? aggregateReservation;
   /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
-  final pulumi.Input<String>? autoCreatedReservationsDeleteTime;
+  final pulumi.Input<String?>? autoCreatedReservationsDeleteTime;
   /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationAutoCreatedReservationsDuration>? autoCreatedReservationsDuration;
+  final pulumi.Input<FutureReservationAutoCreatedReservationsDuration?>? autoCreatedReservationsDuration;
   /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
-  final pulumi.Input<bool>? autoDeleteAutoCreatedReservations;
+  final pulumi.Input<bool?>? autoDeleteAutoCreatedReservations;
   /// If not present, then FR will not deliver a new commitment or update an existing commitment.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationCommitmentInfo>? commitmentInfo;
+  final pulumi.Input<FutureReservationCommitmentInfo?>? commitmentInfo;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Type of the deployment requested as part of future reservation.
   /// Possible values are: `DENSE`, `FLEXIBLE`.
-  final pulumi.Input<String>? deploymentType;
+  final pulumi.Input<String?>? deploymentType;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -46,39 +46,39 @@ class FutureReservationArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationParams>? params;
+  final pulumi.Input<FutureReservationParams?>? params;
   /// Planning state before being submitted for evaluation
   /// Possible values are: `DRAFT`, `SUBMITTED`.
-  final pulumi.Input<String>? planningStatus;
+  final pulumi.Input<String?>? planningStatus;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The reservation mode which determines reservation-termination behavior and expected pricing.
   /// Possible values are: `CALENDAR`, `DEFAULT`.
-  final pulumi.Input<String>? reservationMode;
+  final pulumi.Input<String?>? reservationMode;
   /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
-  final pulumi.Input<String>? reservationName;
+  final pulumi.Input<String?>? reservationName;
   /// Maintenance information for this reservation
   /// Possible values are: `GROUPED`, `INDEPENDENT`.
-  final pulumi.Input<String>? schedulingType;
+  final pulumi.Input<String?>? schedulingType;
   /// Settings for sharing the future reservation
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationShareSettings>? shareSettings;
+  final pulumi.Input<FutureReservationShareSettings?>? shareSettings;
   /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
-  final pulumi.Input<bool>? specificReservationRequired;
+  final pulumi.Input<bool?>? specificReservationRequired;
   /// Future Reservation configuration to indicate instance properties and total count.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationSpecificSkuProperties>? specificSkuProperties;
+  final pulumi.Input<FutureReservationSpecificSkuProperties?>? specificSkuProperties;
   /// Time window for this Future Reservation.
   /// Structure is documented below.
   final pulumi.Input<FutureReservationTimeWindow> timeWindow;
   /// The zone where the future reservation is located.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [FutureReservationArgs].
   /// [aggregateReservation] Aggregate reservation details for the future reservation.

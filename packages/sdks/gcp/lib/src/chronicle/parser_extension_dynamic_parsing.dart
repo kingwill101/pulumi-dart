@@ -6,7 +6,7 @@ import 'parser_extension_dynamic_parsing_opted_field.dart';
 class ParserExtensionDynamicParsing {
   /// List of fields to be parsed.
   /// Structure is documented below.
-  final pulumi.Input<List<ParserExtensionDynamicParsingOptedField>>? optedFields;
+  final pulumi.Input<List<ParserExtensionDynamicParsingOptedField>?>? optedFields;
 
   /// Creates a new [ParserExtensionDynamicParsing].
   /// [optedFields] List of fields to be parsed.

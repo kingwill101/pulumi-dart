@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforcePoolAccessRestrictionsAllowedService {
   /// Domain name of the service.
   /// Example: console.cloud.google
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
 
   /// Creates a new [WorkforcePoolAccessRestrictionsAllowedService].
   /// [domain] Domain name of the service.

@@ -6,9 +6,9 @@ import 'example_message_chunk.dart';
 class ExampleMessage {
   /// Content of the message as a series of chunks.
   /// Structure is documented below.
-  final pulumi.Input<List<ExampleMessageChunk>>? chunks;
+  final pulumi.Input<List<ExampleMessageChunk>?>? chunks;
   /// The role within the conversation, e.g., user, agent.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [ExampleMessage].
   /// [chunks] Content of the message as a series of chunks.

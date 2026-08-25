@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstancePscConfigServiceAttachment {
   /// (Output)
   /// Status of the service attachment connection.
-  final pulumi.Input<String>? connectionStatus;
+  final pulumi.Input<String?>? connectionStatus;
   /// Fully qualified domain name that will be used in the private DNS record created for the service attachment.
-  final pulumi.Input<String>? localFqdn;
+  final pulumi.Input<String?>? localFqdn;
   /// URI of the service attachment to connect to.
-  final pulumi.Input<String>? targetServiceAttachmentUri;
+  final pulumi.Input<String?>? targetServiceAttachmentUri;
 
   /// Creates a new [InstancePscConfigServiceAttachment].
   /// [connectionStatus] (Output)

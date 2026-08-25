@@ -442,17 +442,17 @@ class EnvironmentDebugmask extends pulumi.CustomResource {
           'gcp:apigee/environmentDebugmask:EnvironmentDebugmask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     envId = registerOutput<String>('envId');
-    faultXPaths = registerOutput<List<String>?>('faultXPaths');
+    faultXPaths = registerOutput<List<String>?>('faultXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    namespaces = registerOutput<Map<String, String>?>('namespaces');
-    requestJsonPaths = registerOutput<List<String>?>('requestJsonPaths');
-    requestXPaths = registerOutput<List<String>?>('requestXPaths');
-    responseJsonPaths = registerOutput<List<String>?>('responseJsonPaths');
-    responseXPaths = registerOutput<List<String>?>('responseXPaths');
-    variables = registerOutput<List<String>?>('variables');
+    namespaces = registerOutput<Map<String, String>?>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestJsonPaths = registerOutput<List<String>?>('requestJsonPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requestXPaths = registerOutput<List<String>?>('requestXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    responseJsonPaths = registerOutput<List<String>?>('responseJsonPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    responseXPaths = registerOutput<List<String>?>('responseXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    variables = registerOutput<List<String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [EnvironmentDebugmask] resource's state with the given [name] and [id].
@@ -460,11 +460,12 @@ class EnvironmentDebugmask extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentDebugmaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentDebugmask._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -479,13 +480,33 @@ class EnvironmentDebugmask extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     envId = registerOutput<String>('envId');
-    faultXPaths = registerOutput<List<String>?>('faultXPaths');
+    faultXPaths = registerOutput<List<String>?>('faultXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    namespaces = registerOutput<Map<String, String>?>('namespaces');
-    requestJsonPaths = registerOutput<List<String>?>('requestJsonPaths');
-    requestXPaths = registerOutput<List<String>?>('requestXPaths');
-    responseJsonPaths = registerOutput<List<String>?>('responseJsonPaths');
-    responseXPaths = registerOutput<List<String>?>('responseXPaths');
-    variables = registerOutput<List<String>?>('variables');
+    namespaces = registerOutput<Map<String, String>?>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestJsonPaths = registerOutput<List<String>?>('requestJsonPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requestXPaths = registerOutput<List<String>?>('requestXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    responseJsonPaths = registerOutput<List<String>?>('responseJsonPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    responseXPaths = registerOutput<List<String>?>('responseXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    variables = registerOutput<List<String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentDebugmask] resource.
+  EnvironmentDebugmask.reference(String urn)
+    : super(
+        'gcp:apigee/environmentDebugmask:EnvironmentDebugmask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    envId = registerOutput<String>('envId');
+    faultXPaths = registerOutput<List<String>?>('faultXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    namespaces = registerOutput<Map<String, String>?>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestJsonPaths = registerOutput<List<String>?>('requestJsonPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requestXPaths = registerOutput<List<String>?>('requestXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    responseJsonPaths = registerOutput<List<String>?>('responseJsonPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    responseXPaths = registerOutput<List<String>?>('responseXPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    variables = registerOutput<List<String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

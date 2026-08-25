@@ -7,10 +7,10 @@ import 'function_build_config_source_storage_source.dart';
 class FunctionBuildConfigSource {
   /// If provided, get the source from this location in a Cloud Source Repository.
   /// Structure is documented below.
-  final pulumi.Input<FunctionBuildConfigSourceRepoSource>? repoSource;
+  final pulumi.Input<FunctionBuildConfigSourceRepoSource?>? repoSource;
   /// If provided, get the source from this location in Google Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<FunctionBuildConfigSourceStorageSource>? storageSource;
+  final pulumi.Input<FunctionBuildConfigSourceStorageSource?>? storageSource;
 
   /// Creates a new [FunctionBuildConfigSource].
   /// [repoSource] If provided, get the source from this location in a Cloud Source Repository.

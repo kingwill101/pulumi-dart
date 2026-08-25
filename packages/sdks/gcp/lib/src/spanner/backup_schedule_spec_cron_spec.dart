@@ -14,7 +14,7 @@ class BackupScheduleSpecCronSpec {
   /// 0 2 * * *    : once a day at 2 past midnight in UTC.
   /// 0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
   /// 0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [BackupScheduleSpecCronSpec].
   /// [text] Textual representation of the crontab. User can customize the

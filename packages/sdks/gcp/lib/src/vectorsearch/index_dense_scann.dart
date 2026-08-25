@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndexDenseScann {
   /// Feature norm type for the ScaNN index.
   /// Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
-  final pulumi.Input<String>? featureNormType;
+  final pulumi.Input<String?>? featureNormType;
 
   /// Creates a new [IndexDenseScann].
   /// [featureNormType] Feature norm type for the ScaNN index.

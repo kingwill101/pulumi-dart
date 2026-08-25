@@ -18,7 +18,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResource {
   ///
   ///
   /// &lt;a name="nestedOrchestratedResourceOsPolicyAssignmentV1Payload"&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// OS policy assignment is an API resource that is used to
   /// apply a set of OS policies to a dynamically targeted group of Compute Engine
   /// VM instances.
@@ -31,7 +31,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResource {
   /// [OS policy and OS policy
   /// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload>? osPolicyAssignmentV1Payload;
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload?>? osPolicyAssignmentV1Payload;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResource].
   /// [id] ID of the resource to be used while generating set of affected resources.

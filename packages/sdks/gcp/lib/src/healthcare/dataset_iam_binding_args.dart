@@ -8,7 +8,7 @@ import 'dataset_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_healthcare_dataset_iam_binding_dataset_iam_binding_args_doc}
 class DatasetIamBindingArgs {
-  final pulumi.Input<DatasetIamBindingCondition>? condition;
+  final pulumi.Input<DatasetIamBindingCondition?>? condition;
   /// The dataset ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}` or
   /// `{location_name}/{dataset_name}`. In the second form, the provider's

@@ -8,13 +8,13 @@ import 'prevention_discovery_config_target_big_query_target_cadence_table_modifi
 class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
   /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence>? inspectTemplateModifiedCadence;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence?>? inspectTemplateModifiedCadence;
   /// Governs when to update data profiles when a schema is modified
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence>? schemaModifiedCadence;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence?>? schemaModifiedCadence;
   /// Governs when to update profile when a table is modified.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence>? tableModifiedCadence;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence?>? tableModifiedCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetCadence].
   /// [inspectTemplateModifiedCadence] Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.

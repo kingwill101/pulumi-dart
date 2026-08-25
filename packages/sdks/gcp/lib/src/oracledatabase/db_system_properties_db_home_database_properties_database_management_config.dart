@@ -14,13 +14,13 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   /// FAILED_ENABLING
   /// FAILED_DISABLING
   /// FAILED_UPDATING
-  final pulumi.Input<String>? managementState;
+  final pulumi.Input<String?>? managementState;
   /// (Output)
   /// The Database Management type.
   /// Possible values:
   /// BASIC
   /// ADVANCED
-  final pulumi.Input<String>? managementType;
+  final pulumi.Input<String?>? managementType;
 
   /// Creates a new [DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig].
   /// [managementState] (Output)

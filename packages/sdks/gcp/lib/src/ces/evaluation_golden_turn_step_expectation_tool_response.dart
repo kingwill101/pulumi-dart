@@ -6,16 +6,16 @@ import 'evaluation_golden_turn_step_expectation_tool_response_toolset_tool.dart'
 class EvaluationGoldenTurnStepExpectationToolResponse {
   /// (Output)
   /// Display name of the tool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The matching ID of the tool call the response is for.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The tool execution result in JSON object format.
-  final pulumi.Input<Map<String, String>>? response;
+  final pulumi.Input<Map<String, String>?>? response;
   /// The resource name of the tool.
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
   /// A tool that is created from a toolset.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationToolResponseToolsetTool>? toolsetTool;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationToolResponseToolsetTool?>? toolsetTool;
 
   /// Creates a new [EvaluationGoldenTurnStepExpectationToolResponse].
   /// [displayName] (Output)

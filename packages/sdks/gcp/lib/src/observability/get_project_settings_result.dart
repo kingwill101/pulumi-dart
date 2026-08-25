@@ -3,54 +3,54 @@
 
 /// Result data returned by getProjectSettings.
 class GetProjectSettingsResult {
-  final String defaultStorageLocation;
+  final String? defaultStorageLocation;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String kmsKeyName;
-  final String location;
-  final String name;
-  final String project;
-  final String serviceAccountId;
+  final String? id;
+  final String? kmsKeyName;
+  final String? location;
+  final String? name;
+  final String? project;
+  final String? serviceAccountId;
 
   /// Creates a new [GetProjectSettingsResult].
-  /// [defaultStorageLocation] Required.
+  /// [defaultStorageLocation] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKeyName] Required.
-  /// [location] Required.
-  /// [name] Required.
-  /// [project] Required.
-  /// [serviceAccountId] Required.
+  /// [kmsKeyName] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [project] Optional.
+  /// [serviceAccountId] Optional.
   const GetProjectSettingsResult({
-    required this.defaultStorageLocation,
-    required this.id,
-    required this.kmsKeyName,
-    required this.location,
-    required this.name,
-    required this.project,
-    required this.serviceAccountId,
+    this.defaultStorageLocation,
+    this.id,
+    this.kmsKeyName,
+    this.location,
+    this.name,
+    this.project,
+    this.serviceAccountId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultStorageLocation': defaultStorageLocation,
-      'id': id,
-      'kmsKeyName': kmsKeyName,
-      'location': location,
-      'name': name,
-      'project': project,
-      'serviceAccountId': serviceAccountId,
+      'defaultStorageLocation': ?defaultStorageLocation,
+      'id': ?id,
+      'kmsKeyName': ?kmsKeyName,
+      'location': ?location,
+      'name': ?name,
+      'project': ?project,
+      'serviceAccountId': ?serviceAccountId,
     };
   }
 
   factory GetProjectSettingsResult.fromMap(Map<String, dynamic> map) {
     return GetProjectSettingsResult(
-      defaultStorageLocation: map['defaultStorageLocation'] as String,
-      id: map['id'] as String,
-      kmsKeyName: map['kmsKeyName'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      project: map['project'] as String,
-      serviceAccountId: map['serviceAccountId'] as String,
+      defaultStorageLocation: (() { final guardedValue = map['defaultStorageLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccountId: (() { final guardedValue = map['serviceAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

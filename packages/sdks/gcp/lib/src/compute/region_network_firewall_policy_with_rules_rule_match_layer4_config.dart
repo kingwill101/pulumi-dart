@@ -17,7 +17,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config {
   /// applies to connections through any port.
   /// Example inputs include: ["22"], ["80","443"], and
   /// ["12345-12349"].
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config].
   /// [ipProtocol] (Output)

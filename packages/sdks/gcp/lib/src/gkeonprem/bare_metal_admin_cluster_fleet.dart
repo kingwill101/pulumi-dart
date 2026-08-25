@@ -7,7 +7,7 @@ class BareMetalAdminClusterFleet {
   /// The name of the managed Hub Membership resource associated to this cluster.
   /// Membership names are formatted as
   /// `projects/&lt;project-number&gt;/locations/&lt;location&gt;/memberships/&lt;cluster-id&gt;`.
-  final pulumi.Input<String>? membership;
+  final pulumi.Input<String?>? membership;
 
   /// Creates a new [BareMetalAdminClusterFleet].
   /// [membership] (Output)

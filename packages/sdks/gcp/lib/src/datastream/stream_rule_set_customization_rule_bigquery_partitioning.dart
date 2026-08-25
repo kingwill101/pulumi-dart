@@ -8,15 +8,15 @@ import 'stream_rule_set_customization_rule_bigquery_partitioning_time_unit_parti
 class StreamRuleSetCustomizationRuleBigqueryPartitioning {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition>? ingestionTimePartition;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition?>? ingestionTimePartition;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition>? integerRangePartition;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition?>? integerRangePartition;
   /// If true, queries over the table require a partition filter.
-  final pulumi.Input<bool>? requirePartitionFilter;
+  final pulumi.Input<bool?>? requirePartitionFilter;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition>? timeUnitPartition;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition?>? timeUnitPartition;
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryPartitioning].
   /// [ingestionTimePartition] A nested object resource.

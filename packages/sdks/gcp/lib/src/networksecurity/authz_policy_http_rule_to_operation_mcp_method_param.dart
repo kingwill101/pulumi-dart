@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthzPolicyHttpRuleToOperationMcpMethodParam {
   /// A substring match on the MCP method parameter name.
-  final pulumi.Input<String>? contains;
+  final pulumi.Input<String?>? contains;
   /// An exact match on the MCP method parameter name.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Specifies that the string match should be case insensitive.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// A prefix match on the MCP method parameter name.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// A suffix match on the MCP method parameter name.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [AuthzPolicyHttpRuleToOperationMcpMethodParam].
   /// [contains] A substring match on the MCP method parameter name.

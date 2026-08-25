@@ -9,15 +9,15 @@ import 'environment_config_workloads_config_worker.dart';
 
 class EnvironmentConfigWorkloadsConfig {
   /// Configuration for resources used by DAG processor.
-  final pulumi.Input<EnvironmentConfigWorkloadsConfigDagProcessor>? dagProcessor;
+  final pulumi.Input<EnvironmentConfigWorkloadsConfigDagProcessor?>? dagProcessor;
   /// Configuration for resources used by Airflow schedulers.
-  final pulumi.Input<EnvironmentConfigWorkloadsConfigScheduler>? scheduler;
+  final pulumi.Input<EnvironmentConfigWorkloadsConfigScheduler?>? scheduler;
   /// Configuration for resources used by Airflow triggerers.
-  final pulumi.Input<EnvironmentConfigWorkloadsConfigTriggerer>? triggerer;
+  final pulumi.Input<EnvironmentConfigWorkloadsConfigTriggerer?>? triggerer;
   /// Configuration for resources used by Airflow web server.
-  final pulumi.Input<EnvironmentConfigWorkloadsConfigWebServer>? webServer;
+  final pulumi.Input<EnvironmentConfigWorkloadsConfigWebServer?>? webServer;
   /// Configuration for resources used by Airflow workers.
-  final pulumi.Input<EnvironmentConfigWorkloadsConfigWorker>? worker;
+  final pulumi.Input<EnvironmentConfigWorkloadsConfigWorker?>? worker;
 
   /// Creates a new [EnvironmentConfigWorkloadsConfig].
   /// [dagProcessor] Configuration for resources used by DAG processor.

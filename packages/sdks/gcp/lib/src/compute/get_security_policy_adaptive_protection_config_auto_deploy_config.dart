@@ -35,10 +35,10 @@ class GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
 
   factory GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(
-      confidenceThreshold: pulumi.Input.fromValue(map['confidenceThreshold'] as double),
-      expirationSec: pulumi.Input.fromValue(map['expirationSec'] as int),
-      impactedBaselineThreshold: pulumi.Input.fromValue(map['impactedBaselineThreshold'] as double),
-      loadThreshold: pulumi.Input.fromValue(map['loadThreshold'] as double),
+      confidenceThreshold: pulumi.Input.fromValue((map['confidenceThreshold'] as num).toDouble()),
+      expirationSec: pulumi.Input.fromValue((map['expirationSec'] as num).toInt()),
+      impactedBaselineThreshold: pulumi.Input.fromValue((map['impactedBaselineThreshold'] as num).toDouble()),
+      loadThreshold: pulumi.Input.fromValue((map['loadThreshold'] as num).toDouble()),
     );
   }
 }

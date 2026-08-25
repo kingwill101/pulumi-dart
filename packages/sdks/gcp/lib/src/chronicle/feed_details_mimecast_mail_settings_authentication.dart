@@ -6,7 +6,7 @@ import 'feed_details_mimecast_mail_settings_authentication_header_key_value.dart
 class FeedDetailsMimecastMailSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsMimecastMailSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

@@ -6,12 +6,12 @@ import 'instance_access_rules_options_access_rule.dart';
 class InstanceAccessRulesOptions {
   /// The access rules for the instance.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceAccessRulesOptionsAccessRule>>? accessRules;
+  final pulumi.Input<List<InstanceAccessRulesOptionsAccessRule>?>? accessRules;
   /// The user squash GID for the default access rule.
   /// This user squash GID applies to all root users connecting from clients
   /// that are not matched by any of the access rules. If not set, the default
   /// is 0 (no GID squash).
-  final pulumi.Input<int>? defaultSquashGid;
+  final pulumi.Input<int?>? defaultSquashGid;
   /// The squash mode for the default access rule.
   /// Possible values:
   /// NO_SQUASH
@@ -21,7 +21,7 @@ class InstanceAccessRulesOptions {
   /// This user squash UID applies to all root users connecting from clients
   /// that are not matched by any of the access rules. If not set, the default
   /// is 0 (no UID squash).
-  final pulumi.Input<int>? defaultSquashUid;
+  final pulumi.Input<int?>? defaultSquashUid;
 
   /// Creates a new [InstanceAccessRulesOptions].
   /// [accessRules] The access rules for the instance.
@@ -47,9 +47,9 @@ class InstanceAccessRulesOptions {
   factory InstanceAccessRulesOptions.fromMap(Map<String, dynamic> map) {
     return InstanceAccessRulesOptions(
       accessRules: (() { final guardedValue = map['accessRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceAccessRulesOptionsAccessRule>(guardedValue, (value) => InstanceAccessRulesOptionsAccessRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      defaultSquashGid: (() { final guardedValue = map['defaultSquashGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultSquashGid: (() { final guardedValue = map['defaultSquashGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       defaultSquashMode: pulumi.Input.fromValue(map['defaultSquashMode'] as String),
-      defaultSquashUid: (() { final guardedValue = map['defaultSquashUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultSquashUid: (() { final guardedValue = map['defaultSquashUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -1,7 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_args.dart';
+import 'workload_compliance_status.dart';
+import 'workload_ekm_provisioning_response.dart';
 import 'workload_kms_settings.dart';
 import 'workload_partner_permissions.dart';
+import 'workload_resource.dart';
+import 'workload_resource_setting.dart';
+import 'workload_saa_enrollment_response.dart';
 import 'workload_state.dart';
 import 'workload_workload_options.dart';
 
@@ -878,7 +883,7 @@ class Workload extends pulumi.CustomResource {
   /// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT, IRS_1075
   late final pulumi.Output<String> complianceRegime;
   /// Output only. Count of active Violations in the Workload.
-  late final pulumi.Output<List<Map<String, dynamic>>> complianceStatuses;
+  late final pulumi.Output<List<WorkloadComplianceStatus>> complianceStatuses;
   /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
   late final pulumi.Output<List<String>> compliantButDisallowedServices;
   /// Output only. Immutable. The Workload creation timestamp.
@@ -895,7 +900,7 @@ class Workload extends pulumi.CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Optional. Represents the Ekm Provisioning State of the given workload.
-  late final pulumi.Output<List<Map<String, dynamic>>> ekmProvisioningResponses;
+  late final pulumi.Output<List<WorkloadEkmProvisioningResponse>> ekmProvisioningResponses;
   /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
   late final pulumi.Output<bool> enableSovereignControls;
   /// Output only. Represents the KAJ enrollment state of the given workload. Possible values: KAJ_ENROLLMENT_STATE_UNSPECIFIED, KAJ_ENROLLMENT_STATE_PENDING, KAJ_ENROLLMENT_STATE_COMPLETE
@@ -928,11 +933,11 @@ class Workload extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceSettings;
+  late final pulumi.Output<List<WorkloadResourceSetting>?> resourceSettings;
   /// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+  late final pulumi.Output<List<WorkloadResource>> resources;
   /// Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
-  late final pulumi.Output<List<Map<String, dynamic>>> saaEnrollmentResponses;
+  late final pulumi.Output<List<WorkloadSaaEnrollmentResponse>> saaEnrollmentResponses;
   /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
   late final pulumi.Output<bool> violationNotificationsEnabled;
   /// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
@@ -950,21 +955,22 @@ class Workload extends pulumi.CustomResource {
           'gcp:assuredworkloads/workload:Workload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     billingAccount = registerOutput<String?>('billingAccount');
     complianceRegime = registerOutput<String>('complianceRegime');
-    complianceStatuses = registerOutput<List<Map<String, dynamic>>>('complianceStatuses');
-    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices');
+    complianceStatuses = registerOutput<List<WorkloadComplianceStatus>>('complianceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadComplianceStatus>(guardedValue, (value) => WorkloadComplianceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    ekmProvisioningResponses = registerOutput<List<Map<String, dynamic>>>('ekmProvisioningResponses');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ekmProvisioningResponses = registerOutput<List<WorkloadEkmProvisioningResponse>>('ekmProvisioningResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadEkmProvisioningResponse>(guardedValue, (value) => WorkloadEkmProvisioningResponse.fromMap((value as Map).cast<String, dynamic>())); });
     enableSovereignControls = registerOutput<bool>('enableSovereignControls');
     kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
     kmsSettings = registerOutput<WorkloadKmsSettings?>('kmsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadKmsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
@@ -972,10 +978,10 @@ class Workload extends pulumi.CustomResource {
     partnerPermissions = registerOutput<WorkloadPartnerPermissions?>('partnerPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadPartnerPermissions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     partnerServicesBillingAccount = registerOutput<String?>('partnerServicesBillingAccount');
     provisionedResourcesParent = registerOutput<String?>('provisionedResourcesParent');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceSettings = registerOutput<List<Map<String, dynamic>>?>('resourceSettings');
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    saaEnrollmentResponses = registerOutput<List<Map<String, dynamic>>>('saaEnrollmentResponses');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceSettings = registerOutput<List<WorkloadResourceSetting>?>('resourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadResourceSetting>(guardedValue, (value) => WorkloadResourceSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    resources = registerOutput<List<WorkloadResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadResource>(guardedValue, (value) => WorkloadResource.fromMap((value as Map).cast<String, dynamic>())); });
+    saaEnrollmentResponses = registerOutput<List<WorkloadSaaEnrollmentResponse>>('saaEnrollmentResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadSaaEnrollmentResponse>(guardedValue, (value) => WorkloadSaaEnrollmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     violationNotificationsEnabled = registerOutput<bool>('violationNotificationsEnabled');
     workloadOptions = registerOutput<WorkloadWorkloadOptions?>('workloadOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadWorkloadOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -985,11 +991,12 @@ class Workload extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkloadState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workload._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1005,17 +1012,17 @@ class Workload extends pulumi.CustomResource {
         ) {
     billingAccount = registerOutput<String?>('billingAccount');
     complianceRegime = registerOutput<String>('complianceRegime');
-    complianceStatuses = registerOutput<List<Map<String, dynamic>>>('complianceStatuses');
-    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices');
+    complianceStatuses = registerOutput<List<WorkloadComplianceStatus>>('complianceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadComplianceStatus>(guardedValue, (value) => WorkloadComplianceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    ekmProvisioningResponses = registerOutput<List<Map<String, dynamic>>>('ekmProvisioningResponses');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ekmProvisioningResponses = registerOutput<List<WorkloadEkmProvisioningResponse>>('ekmProvisioningResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadEkmProvisioningResponse>(guardedValue, (value) => WorkloadEkmProvisioningResponse.fromMap((value as Map).cast<String, dynamic>())); });
     enableSovereignControls = registerOutput<bool>('enableSovereignControls');
     kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
     kmsSettings = registerOutput<WorkloadKmsSettings?>('kmsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadKmsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
@@ -1023,10 +1030,48 @@ class Workload extends pulumi.CustomResource {
     partnerPermissions = registerOutput<WorkloadPartnerPermissions?>('partnerPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadPartnerPermissions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     partnerServicesBillingAccount = registerOutput<String?>('partnerServicesBillingAccount');
     provisionedResourcesParent = registerOutput<String?>('provisionedResourcesParent');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceSettings = registerOutput<List<Map<String, dynamic>>?>('resourceSettings');
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    saaEnrollmentResponses = registerOutput<List<Map<String, dynamic>>>('saaEnrollmentResponses');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceSettings = registerOutput<List<WorkloadResourceSetting>?>('resourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadResourceSetting>(guardedValue, (value) => WorkloadResourceSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    resources = registerOutput<List<WorkloadResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadResource>(guardedValue, (value) => WorkloadResource.fromMap((value as Map).cast<String, dynamic>())); });
+    saaEnrollmentResponses = registerOutput<List<WorkloadSaaEnrollmentResponse>>('saaEnrollmentResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadSaaEnrollmentResponse>(guardedValue, (value) => WorkloadSaaEnrollmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    violationNotificationsEnabled = registerOutput<bool>('violationNotificationsEnabled');
+    workloadOptions = registerOutput<WorkloadWorkloadOptions?>('workloadOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadWorkloadOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Workload] resource.
+  Workload.reference(String urn)
+    : super(
+        'gcp:assuredworkloads/workload:Workload',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    billingAccount = registerOutput<String?>('billingAccount');
+    complianceRegime = registerOutput<String>('complianceRegime');
+    complianceStatuses = registerOutput<List<WorkloadComplianceStatus>>('complianceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadComplianceStatus>(guardedValue, (value) => WorkloadComplianceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ekmProvisioningResponses = registerOutput<List<WorkloadEkmProvisioningResponse>>('ekmProvisioningResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadEkmProvisioningResponse>(guardedValue, (value) => WorkloadEkmProvisioningResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    enableSovereignControls = registerOutput<bool>('enableSovereignControls');
+    kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
+    kmsSettings = registerOutput<WorkloadKmsSettings?>('kmsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadKmsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    partner = registerOutput<String?>('partner');
+    partnerPermissions = registerOutput<WorkloadPartnerPermissions?>('partnerPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadPartnerPermissions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    partnerServicesBillingAccount = registerOutput<String?>('partnerServicesBillingAccount');
+    provisionedResourcesParent = registerOutput<String?>('provisionedResourcesParent');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceSettings = registerOutput<List<WorkloadResourceSetting>?>('resourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadResourceSetting>(guardedValue, (value) => WorkloadResourceSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    resources = registerOutput<List<WorkloadResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadResource>(guardedValue, (value) => WorkloadResource.fromMap((value as Map).cast<String, dynamic>())); });
+    saaEnrollmentResponses = registerOutput<List<WorkloadSaaEnrollmentResponse>>('saaEnrollmentResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadSaaEnrollmentResponse>(guardedValue, (value) => WorkloadSaaEnrollmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     violationNotificationsEnabled = registerOutput<bool>('violationNotificationsEnabled');
     workloadOptions = registerOutput<WorkloadWorkloadOptions?>('workloadOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadWorkloadOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -18,14 +18,14 @@ class KeystoresAliasesKeyCertFileArgs {
   /// Environment associated with the alias
   final pulumi.Input<String> environment;
   /// Private Key content, omit if uploading to truststore
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Keystore Name
   final pulumi.Input<String> keystore;
   /// Organization ID associated with the alias, without organization/ prefix
   final pulumi.Input<String> orgId;
   /// Password for the Private Key if it's encrypted
-  final pulumi.Input<String>? password;
-  final pulumi.Input<KeystoresAliasesKeyCertFileTimeouts>? timeouts;
+  final pulumi.Input<String?>? password;
+  final pulumi.Input<KeystoresAliasesKeyCertFileTimeouts?>? timeouts;
 
   /// Creates a new [KeystoresAliasesKeyCertFileArgs].
   /// [alias] Alias Name

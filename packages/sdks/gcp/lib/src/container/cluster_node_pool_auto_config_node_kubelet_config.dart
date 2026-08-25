@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolAutoConfigNodeKubeletConfig {
   /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
-  final pulumi.Input<String>? insecureKubeletReadonlyPortEnabled;
+  final pulumi.Input<String?>? insecureKubeletReadonlyPortEnabled;
 
   /// Creates a new [ClusterNodePoolAutoConfigNodeKubeletConfig].
   /// [insecureKubeletReadonlyPortEnabled] Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.

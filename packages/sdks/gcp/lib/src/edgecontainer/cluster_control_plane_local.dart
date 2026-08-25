@@ -6,16 +6,16 @@ class ClusterControlPlaneLocal {
   /// Only machines matching this filter will be allowed to host control
   /// plane nodes. The filtering language accepts strings like "name=&lt;name&gt;",
   /// and is documented here: [AIP-160](https://google.aip.dev/160).
-  final pulumi.Input<String>? machineFilter;
+  final pulumi.Input<String?>? machineFilter;
   /// The number of nodes to serve as replicas of the Control Plane.
   /// Only 1 and 3 are supported.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// Name of the Google Distributed Cloud Edge zones where this node pool
   /// will be created. For example: `us-central1-edge-customer-a`.
-  final pulumi.Input<String>? nodeLocation;
+  final pulumi.Input<String?>? nodeLocation;
   /// Policy configuration about how user applications are deployed.
   /// Possible values are: `SHARED_DEPLOYMENT_POLICY_UNSPECIFIED`, `ALLOWED`, `DISALLOWED`.
-  final pulumi.Input<String>? sharedDeploymentPolicy;
+  final pulumi.Input<String?>? sharedDeploymentPolicy;
 
   /// Creates a new [ClusterControlPlaneLocal].
   /// [machineFilter] Only machines matching this filter will be allowed to host control
@@ -41,7 +41,7 @@ class ClusterControlPlaneLocal {
   factory ClusterControlPlaneLocal.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneLocal(
       machineFilter: (() { final guardedValue = map['machineFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeLocation: (() { final guardedValue = map['nodeLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sharedDeploymentPolicy: (() { final guardedValue = map['sharedDeploymentPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

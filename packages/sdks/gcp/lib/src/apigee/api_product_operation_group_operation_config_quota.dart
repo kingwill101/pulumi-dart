@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProductOperationGroupOperationConfigQuota {
   /// Required. Time interval over which the number of request messages is calculated.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
-  final pulumi.Input<String>? limit;
+  final pulumi.Input<String?>? limit;
   /// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
-  final pulumi.Input<String>? timeUnit;
+  final pulumi.Input<String?>? timeUnit;
 
   /// Creates a new [ApiProductOperationGroupOperationConfigQuota].
   /// [interval] Required. Time interval over which the number of request messages is calculated.

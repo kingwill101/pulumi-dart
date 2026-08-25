@@ -8,20 +8,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_workforce_pool_provider_scim_tenant_workforce_pool_provider_scim_tenant_args_doc}
 class WorkforcePoolProviderScimTenantArgs {
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
-  final pulumi.Input<Map<String, String>>? claimMapping;
+  final pulumi.Input<Map<String, String>?>? claimMapping;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-specified description of the provider. Cannot exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Deletes the SCIM tenant immediately. This operation cannot be undone.
-  final pulumi.Input<bool>? hardDelete;
+  final pulumi.Input<bool?>? hardDelete;
   /// The location for the resource.
   final pulumi.Input<String> location;
   /// The ID of the provider.

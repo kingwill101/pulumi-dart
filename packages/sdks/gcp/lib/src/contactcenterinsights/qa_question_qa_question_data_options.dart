@@ -7,7 +7,7 @@ class QaQuestionQaQuestionDataOptions {
   /// Options for configuring what metadata is included in the conversation data
   /// used in QAI and Discovery Engine.
   /// Structure is documented below.
-  final pulumi.Input<QaQuestionQaQuestionDataOptionsConversationDataOptions>? conversationDataOptions;
+  final pulumi.Input<QaQuestionQaQuestionDataOptionsConversationDataOptions?>? conversationDataOptions;
 
   /// Creates a new [QaQuestionQaQuestionDataOptions].
   /// [conversationDataOptions] Options for configuring what metadata is included in the conversation data

@@ -25,7 +25,7 @@ class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
 
   factory EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.fromMap(Map<String, dynamic> map) {
     return EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm(
-      ipHeaderIndex: pulumi.Input.fromValue(map['ipHeaderIndex'] as int),
+      ipHeaderIndex: pulumi.Input.fromValue((map['ipHeaderIndex'] as num).toInt()),
       ipHeaderName: pulumi.Input.fromValue(map['ipHeaderName'] as String),
     );
   }

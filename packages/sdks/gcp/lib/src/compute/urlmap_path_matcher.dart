@@ -18,29 +18,29 @@ class URLMapPathMatcher {
   /// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
   /// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherDefaultCustomErrorResponsePolicy>? defaultCustomErrorResponsePolicy;
+  final pulumi.Input<URLMapPathMatcherDefaultCustomErrorResponsePolicy?>? defaultCustomErrorResponsePolicy;
   /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
   /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
   /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
   /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherDefaultRouteAction>? defaultRouteAction;
+  final pulumi.Input<URLMapPathMatcherDefaultRouteAction?>? defaultRouteAction;
   /// The backend service or backend bucket to use when none of the given paths match.
-  final pulumi.Input<String>? defaultService;
+  final pulumi.Input<String?>? defaultService;
   /// When none of the specified hostRules match, the request is redirected to a URL specified
   /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherDefaultUrlRedirect>? defaultUrlRedirect;
+  final pulumi.Input<URLMapPathMatcherDefaultUrlRedirect?>? defaultUrlRedirect;
   /// An optional description of this resource. Provide this property when you create
   /// the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService. HeaderAction specified here are applied after the
   /// matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherHeaderAction>? headerAction;
+  final pulumi.Input<URLMapPathMatcherHeaderAction?>? headerAction;
   /// The name to which this PathMatcher is referred by the HostRule.
   final pulumi.Input<String> name;
   /// The list of path rules. Use this list instead of routeRules when routing based
@@ -50,7 +50,7 @@ class URLMapPathMatcher {
   /// irrespective of the order in which those paths appear in this list. Within a
   /// given pathMatcher, only one of pathRules or routeRules must be set.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherPathRule>>? pathRules;
+  final pulumi.Input<List<URLMapPathMatcherPathRule>?>? pathRules;
   /// The list of ordered HTTP route rules. Use this list instead of pathRules when
   /// advanced route matching and routing actions are desired. The order of specifying
   /// routeRules matters: the first rule that matches will cause its specified routing
@@ -58,7 +58,7 @@ class URLMapPathMatcher {
   /// routeRules must be set. routeRules are not supported in UrlMaps intended for
   /// External load balancers.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherRouteRule>>? routeRules;
+  final pulumi.Input<List<URLMapPathMatcherRouteRule>?>? routeRules;
 
   /// Creates a new [URLMapPathMatcher].
   /// [defaultCustomErrorResponsePolicy] defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.

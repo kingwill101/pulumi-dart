@@ -8,7 +8,7 @@ import 'fhir_store_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_healthcare_fhir_store_iam_binding_fhir_store_iam_binding_args_doc}
 class FhirStoreIamBindingArgs {
-  final pulumi.Input<FhirStoreIamBindingCondition>? condition;
+  final pulumi.Input<FhirStoreIamBindingCondition?>? condition;
   /// The FHIR store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
   /// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's

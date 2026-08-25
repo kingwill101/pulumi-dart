@@ -248,11 +248,11 @@ class SQuotaPreference extends pulumi.CustomResource {
           'gcp:cloudquota/sQuotaPreference:SQuotaPreference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     contactEmail = registerOutput<String?>('contactEmail');
     createTime = registerOutput<String>('createTime');
-    dimensions = registerOutput<Map<String, String>>('dimensions');
+    dimensions = registerOutput<Map<String, String>>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     ignoreSafetyChecks = registerOutput<String?>('ignoreSafetyChecks');
     justification = registerOutput<String?>('justification');
@@ -270,11 +270,12 @@ class SQuotaPreference extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SQuotaPreferenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SQuotaPreference._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,7 +291,31 @@ class SQuotaPreference extends pulumi.CustomResource {
         ) {
     contactEmail = registerOutput<String?>('contactEmail');
     createTime = registerOutput<String>('createTime');
-    dimensions = registerOutput<Map<String, String>>('dimensions');
+    dimensions = registerOutput<Map<String, String>>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    etag = registerOutput<String>('etag');
+    ignoreSafetyChecks = registerOutput<String?>('ignoreSafetyChecks');
+    justification = registerOutput<String?>('justification');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    quotaConfig = registerOutput<SQuotaPreferenceQuotaConfig>('quotaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SQuotaPreferenceQuotaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    quotaId = registerOutput<String>('quotaId');
+    reconciling = registerOutput<bool>('reconciling');
+    service = registerOutput<String>('service');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SQuotaPreference] resource.
+  SQuotaPreference.reference(String urn)
+    : super(
+        'gcp:cloudquota/sQuotaPreference:SQuotaPreference',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contactEmail = registerOutput<String?>('contactEmail');
+    createTime = registerOutput<String>('createTime');
+    dimensions = registerOutput<Map<String, String>>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     ignoreSafetyChecks = registerOutput<String?>('ignoreSafetyChecks');
     justification = registerOutput<String?>('justification');

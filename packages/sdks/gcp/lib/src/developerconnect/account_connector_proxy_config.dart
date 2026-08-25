@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountConnectorProxyConfig {
   /// Setting this to true allows the git and http proxies to perform actions on
   /// behalf of the user configured under the account connector.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AccountConnectorProxyConfig].
   /// [enabled] Setting this to true allows the git and http proxies to perform actions on

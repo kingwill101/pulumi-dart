@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobConfigPubsubDestination {
   /// The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [JobConfigPubsubDestination].
   /// [topic] The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.

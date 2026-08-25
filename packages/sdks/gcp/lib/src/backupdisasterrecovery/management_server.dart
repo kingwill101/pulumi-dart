@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_server_args.dart';
+import 'management_server_management_uri.dart';
+import 'management_server_network.dart';
 import 'management_server_state.dart';
 
 /// A Backup and DR Management Server (Also referred as Management Console)
@@ -313,12 +315,12 @@ class ManagementServer extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The management console URI
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> managementUris;
+  late final pulumi.Output<List<ManagementServerManagementUri>> managementUris;
   /// The name of management server (management console)
   late final pulumi.Output<String> name;
   /// Network details to create management server (management console).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+  late final pulumi.Output<List<ManagementServerNetwork>?> networks;
   /// The oauth2ClientId of management console.
   late final pulumi.Output<String> oauth2ClientId;
   /// The ID of the project in which the resource belongs.
@@ -341,13 +343,13 @@ class ManagementServer extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/managementServer:ManagementServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
-    managementUris = registerOutput<List<Map<String, dynamic>>>('managementUris');
+    managementUris = registerOutput<List<ManagementServerManagementUri>>('managementUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementServerManagementUri>(guardedValue, (value) => ManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    networks = registerOutput<List<ManagementServerNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementServerNetwork>(guardedValue, (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     oauth2ClientId = registerOutput<String>('oauth2ClientId');
     project = registerOutput<String>('project');
     type = registerOutput<String?>('type');
@@ -358,11 +360,12 @@ class ManagementServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagementServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagementServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -378,9 +381,28 @@ class ManagementServer extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
-    managementUris = registerOutput<List<Map<String, dynamic>>>('managementUris');
+    managementUris = registerOutput<List<ManagementServerManagementUri>>('managementUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementServerManagementUri>(guardedValue, (value) => ManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    networks = registerOutput<List<ManagementServerNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementServerNetwork>(guardedValue, (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>())); });
+    oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    project = registerOutput<String>('project');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [ManagementServer] resource.
+  ManagementServer.reference(String urn)
+    : super(
+        'gcp:backupdisasterrecovery/managementServer:ManagementServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    managementUris = registerOutput<List<ManagementServerManagementUri>>('managementUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementServerManagementUri>(guardedValue, (value) => ManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<ManagementServerNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementServerNetwork>(guardedValue, (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     oauth2ClientId = registerOutput<String>('oauth2ClientId');
     project = registerOutput<String>('project');
     type = registerOutput<String?>('type');

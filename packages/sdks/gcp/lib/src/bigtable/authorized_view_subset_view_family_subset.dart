@@ -7,9 +7,9 @@ class AuthorizedViewSubsetViewFamilySubset {
   final pulumi.Input<String> familyName;
   /// A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
   /// Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
-  final pulumi.Input<List<String>>? qualifierPrefixes;
+  final pulumi.Input<List<String>?>? qualifierPrefixes;
   /// A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
-  final pulumi.Input<List<String>>? qualifiers;
+  final pulumi.Input<List<String>?>? qualifiers;
 
   /// Creates a new [AuthorizedViewSubsetViewFamilySubset].
   /// [familyName] Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.

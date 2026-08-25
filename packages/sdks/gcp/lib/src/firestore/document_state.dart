@@ -5,32 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Document resources.
 class DocumentState {
   /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
-  final pulumi.Input<String>? collection;
+  final pulumi.Input<String?>? collection;
   /// Creation timestamp in RFC3339 format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The Firestore database id. Defaults to `"(default)"`.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The client-assigned document ID to use for this document during creation.
-  final pulumi.Input<String>? documentId;
+  final pulumi.Input<String?>? documentId;
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
-  final pulumi.Input<String>? fields;
+  final pulumi.Input<String?>? fields;
   /// A server defined name for this document. Format:
   /// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A relative path to the collection this document exists within
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Last update timestamp in RFC3339 format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DocumentState].
   /// [collection] The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.

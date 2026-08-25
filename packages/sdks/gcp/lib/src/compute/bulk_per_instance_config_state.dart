@@ -11,17 +11,17 @@ class BulkPerInstanceConfigState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The instance group manager this instance config is part of.
-  final pulumi.Input<String>? instanceGroupManager;
+  final pulumi.Input<String?>? instanceGroupManager;
   /// The list of per-instance configs.
   /// Structure is documented below.
-  final pulumi.Input<List<BulkPerInstanceConfigInstance>>? instances;
+  final pulumi.Input<List<BulkPerInstanceConfigInstance>?>? instances;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Zone where the containing instance group manager is located
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [BulkPerInstanceConfigState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

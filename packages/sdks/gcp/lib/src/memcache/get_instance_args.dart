@@ -12,10 +12,10 @@ class GetInstanceArgs {
   final pulumi.Input<String> name;
   /// (optional)
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// (optional)
   /// The canonical id of the region. If it is not provided, the provider project is used. For example: us-east1.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetInstanceArgs].
   /// [name] The ID of the memcache instance.

@@ -5,12 +5,12 @@ import 'ai_reasoning_engine_context_spec_memory_bank_config_ttl_config_granular_
 
 class AiReasoningEngineContextSpecMemoryBankConfigTtlConfig {
   /// The default TTL duration of the memories in the Memory Bank.
-  final pulumi.Input<String>? defaultTtl;
+  final pulumi.Input<String?>? defaultTtl;
   /// The granular TTL configuration of the memories in the Memory Bank.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig>? granularTtlConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig?>? granularTtlConfig;
   /// The default TTL duration of the memory revisions in the Memory Bank.
-  final pulumi.Input<String>? memoryRevisionDefaultTtl;
+  final pulumi.Input<String?>? memoryRevisionDefaultTtl;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigTtlConfig].
   /// [defaultTtl] The default TTL duration of the memories in the Memory Bank.

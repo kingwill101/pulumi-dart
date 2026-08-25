@@ -8,7 +8,7 @@ class AlertPolicyConditionConditionSqlDaily {
   /// unspecified, the server picks an arbitrary time of day and runs
   /// the query at the same time each day.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSqlDailyExecutionTime>? executionTime;
+  final pulumi.Input<AlertPolicyConditionConditionSqlDailyExecutionTime?>? executionTime;
   /// The number of days between runs. Must be greater than or equal
   /// to 1 day and less than or equal to 30 days.
   final pulumi.Input<int> periodicity;
@@ -31,7 +31,7 @@ class AlertPolicyConditionConditionSqlDaily {
   factory AlertPolicyConditionConditionSqlDaily.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlDaily(
       executionTime: (() { final guardedValue = map['executionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertPolicyConditionConditionSqlDailyExecutionTime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      periodicity: pulumi.Input.fromValue(map['periodicity'] as int),
+      periodicity: pulumi.Input.fromValue((map['periodicity'] as num).toInt()),
     );
   }
 }

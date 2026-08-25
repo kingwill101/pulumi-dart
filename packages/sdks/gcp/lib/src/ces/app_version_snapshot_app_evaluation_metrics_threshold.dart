@@ -7,7 +7,7 @@ class AppVersionSnapshotAppEvaluationMetricsThreshold {
   /// (Output)
   /// Settings for golden evaluations.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>>? goldenEvaluationMetricsThresholds;
+  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>?>? goldenEvaluationMetricsThresholds;
 
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThreshold].
   /// [goldenEvaluationMetricsThresholds] (Output)

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceConnectionPolicyPscConnectionErrorInfo {
   /// The logical grouping to which the "reason" belongs.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Additional structured details about this error.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The reason of the error.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [ServiceConnectionPolicyPscConnectionErrorInfo].
   /// [domain] The logical grouping to which the "reason" belongs.

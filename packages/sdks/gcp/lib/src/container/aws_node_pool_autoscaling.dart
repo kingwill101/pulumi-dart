@@ -25,8 +25,8 @@ class AwsNodePoolAutoscaling {
 
   factory AwsNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolAutoscaling(
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
+      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
+      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
     );
   }
 }

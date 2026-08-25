@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SavedQueryLoggingQuerySummaryField {
   /// The field from the LogEntry to include in the summary line.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
 
   /// Creates a new [SavedQueryLoggingQuerySummaryField].
   /// [field] The field from the LogEntry to include in the summary line.

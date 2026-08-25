@@ -10,39 +10,39 @@ class PrincipalAccessBoundaryPolicyState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Output only. The time when the principal access boundary policy was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Principal access boundary policy details
   /// Structure is documented below.
-  final pulumi.Input<PrincipalAccessBoundaryPolicyDetails>? details;
+  final pulumi.Input<PrincipalAccessBoundaryPolicyDetails?>? details;
   /// The description of the principal access boundary policy. Must be less than or equal to 63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location the principal access boundary policy is in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the principal access boundary policy.  The following format is supported:
   /// `organizations/{organization_id}/locations/{location}/principalAccessBoundaryPolicies/{policy_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent organization of the principal access boundary policy.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// The ID to use to create the principal access boundary policy.
   /// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-  final pulumi.Input<String>? principalAccessBoundaryPolicyId;
+  final pulumi.Input<String?>? principalAccessBoundaryPolicyId;
   /// Output only. The globally unique ID of the principal access boundary policy.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. The time when the principal access boundary policy was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PrincipalAccessBoundaryPolicyState].
   /// [annotations] User defined annotations. See https://google.aip.dev/148#annotations

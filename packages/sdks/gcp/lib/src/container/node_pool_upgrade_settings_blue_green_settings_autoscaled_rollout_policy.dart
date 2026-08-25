@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
   /// Time in seconds to wait after cordoning the blue pool before draining the nodes.
-  final pulumi.Input<String>? waitForDrainDuration;
+  final pulumi.Input<String?>? waitForDrainDuration;
 
   /// Creates a new [NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy].
   /// [waitForDrainDuration] Time in seconds to wait after cordoning the blue pool before draining the nodes.

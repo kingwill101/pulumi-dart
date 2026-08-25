@@ -9,7 +9,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
   final pulumi.Input<Map<String, String>> componentVersion;
   /// The properties to set on daemon config files. Property keys are specified in prefix:property format,
   /// for example spark:spark.kubernetes.container.image.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig].
   /// [componentVersion] The components that should be installed in this Dataproc cluster. The key must be a string from the

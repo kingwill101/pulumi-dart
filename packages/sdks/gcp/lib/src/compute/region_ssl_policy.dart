@@ -363,13 +363,13 @@ class RegionSslPolicy extends pulumi.CustomResource {
           'gcp:compute/regionSslPolicy:RegionSslPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customFeatures = registerOutput<List<String>?>('customFeatures');
+    customFeatures = registerOutput<List<String>?>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
@@ -385,11 +385,12 @@ class RegionSslPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionSslPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionSslPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -404,10 +405,34 @@ class RegionSslPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customFeatures = registerOutput<List<String>?>('customFeatures');
+    customFeatures = registerOutput<List<String>?>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fingerprint = registerOutput<String>('fingerprint');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    postQuantumKeyExchange = registerOutput<String?>('postQuantumKeyExchange');
+    profile = registerOutput<String?>('profile');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [RegionSslPolicy] resource.
+  RegionSslPolicy.reference(String urn)
+    : super(
+        'gcp:compute/regionSslPolicy:RegionSslPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customFeatures = registerOutput<List<String>?>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');

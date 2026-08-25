@@ -11,10 +11,10 @@ class ClusterNetworking {
   /// assigned an IPv6 address from these blocks alongside from an IPv4
   /// address. Only a single block is supported. This field cannot be changed
   /// after creation.
-  final pulumi.Input<List<String>>? clusterIpv6CidrBlocks;
+  final pulumi.Input<List<String>?>? clusterIpv6CidrBlocks;
   /// (Output)
   /// IP addressing type of this cluster i.e. SINGLESTACK_V4 vs DUALSTACK_V4_V6.
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// All services in the cluster are assigned an RFC1918 IPv4 address from these
   /// blocks. Only a single block is supported. This field cannot be changed
   /// after creation.
@@ -23,7 +23,7 @@ class ClusterNetworking {
   /// assigned an IPv6 address from these blocks alongside from an IPv4
   /// address. Only a single block is supported. This field cannot be changed
   /// after creation.
-  final pulumi.Input<List<String>>? servicesIpv6CidrBlocks;
+  final pulumi.Input<List<String>?>? servicesIpv6CidrBlocks;
 
   /// Creates a new [ClusterNetworking].
   /// [clusterIpv4CidrBlocks] All pods in the cluster are assigned an RFC1918 IPv4 address from these

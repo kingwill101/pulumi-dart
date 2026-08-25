@@ -236,7 +236,7 @@ class Source extends pulumi.CustomResource {
           'gcp:migrationcenter/source:Source',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -260,11 +260,12 @@ class Source extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Source._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -291,6 +292,32 @@ class Source extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     sourceId = registerOutput<String>('sourceId');
     this.state = registerOutput<String>('state');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Source] resource.
+  Source.reference(String urn)
+    : super(
+        'gcp:migrationcenter/source:Source',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    errorFrameCount = registerOutput<int>('errorFrameCount');
+    location = registerOutput<String>('location');
+    managed = registerOutput<bool?>('managed');
+    this.name = registerOutput<String>('name');
+    pendingFrameCount = registerOutput<int>('pendingFrameCount');
+    priority = registerOutput<int?>('priority');
+    project = registerOutput<String>('project');
+    sourceId = registerOutput<String>('sourceId');
+    state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
   }

@@ -6,13 +6,13 @@ class ClusterMaintenancePolicyDisruptionBudget {
   /// The last disruption time of the control plane.
   ///
   /// Examples:
-  final pulumi.Input<String>? lastDisruptionTime;
+  final pulumi.Input<String?>? lastDisruptionTime;
   /// The last minor version disruption time of the control plane.
-  final pulumi.Input<String>? lastMinorVersionDisruptionTime;
+  final pulumi.Input<String?>? lastMinorVersionDisruptionTime;
   /// The minimum duration between two minor version upgrades of the control plane.
-  final pulumi.Input<String>? minorVersionDisruptionInterval;
+  final pulumi.Input<String?>? minorVersionDisruptionInterval;
   /// The minimum duration between two patch version upgrades of the control plane.
-  final pulumi.Input<String>? patchVersionDisruptionInterval;
+  final pulumi.Input<String?>? patchVersionDisruptionInterval;
 
   /// Creates a new [ClusterMaintenancePolicyDisruptionBudget].
   /// [lastDisruptionTime] The last disruption time of the control plane.

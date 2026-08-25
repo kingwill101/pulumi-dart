@@ -7,18 +7,18 @@ class ServicePerimeterStatusEgressPolicyEgressFrom {
   /// A list of identities that are allowed access through this `EgressPolicy`.
   /// Should be in the format of email address. The email address should
   /// represent individual user or service account only.
-  final pulumi.Input<List<String>>? identities;
+  final pulumi.Input<List<String>?>? identities;
   /// Specifies the type of identities that are allowed access to outside the
   /// perimeter. If left unspecified, then members of `identities` field will
   /// be allowed access.
   /// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   /// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-  final pulumi.Input<String>? sourceRestriction;
+  final pulumi.Input<String?>? sourceRestriction;
   /// Sources that this EgressPolicy authorizes access from.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterStatusEgressPolicyEgressFromSource>>? sources;
+  final pulumi.Input<List<ServicePerimeterStatusEgressPolicyEgressFromSource>?>? sources;
 
   /// Creates a new [ServicePerimeterStatusEgressPolicyEgressFrom].
   /// [identities] A list of identities that are allowed access through this `EgressPolicy`.

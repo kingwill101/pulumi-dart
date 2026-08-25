@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateConnectionPropertiesGooglePubsubConnectionProperties {
   /// The content of the service account key file containing the
   /// credentials required to use Google Pub/Sub.
-  final pulumi.Input<String>? serviceAccountKeyFile;
+  final pulumi.Input<String?>? serviceAccountKeyFile;
   /// The technology type of GooglePubsubConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesGooglePubsubConnectionProperties].
   /// [serviceAccountKeyFile] The content of the service account key file containing the

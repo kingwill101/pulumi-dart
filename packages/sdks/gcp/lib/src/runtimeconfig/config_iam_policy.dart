@@ -968,7 +968,7 @@ class ConfigIamPolicy extends pulumi.CustomResource {
           'gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     config = registerOutput<String>('config');
     etag = registerOutput<String>('etag');
@@ -981,11 +981,12 @@ class ConfigIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -999,6 +1000,21 @@ class ConfigIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    config = registerOutput<String>('config');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ConfigIamPolicy] resource.
+  ConfigIamPolicy.reference(String urn)
+    : super(
+        'gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     config = registerOutput<String>('config');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

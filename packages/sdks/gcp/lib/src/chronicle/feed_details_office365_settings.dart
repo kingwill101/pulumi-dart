@@ -5,9 +5,9 @@ import 'feed_details_office365_settings_authentication.dart';
 
 class FeedDetailsOffice365Settings {
   /// API Auth Endpoint.
-  final pulumi.Input<String>? authEndpoint;
+  final pulumi.Input<String?>? authEndpoint;
   /// Microsoft OAuth 2.0 client credentials grant.
-  final pulumi.Input<FeedDetailsOffice365SettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsOffice365SettingsAuthentication?>? authentication;
   /// Supported office 365 content type.
   /// Possible values:
   /// AUDIT_AZURE_ACTIVE_DIRECTORY
@@ -15,11 +15,11 @@ class FeedDetailsOffice365Settings {
   /// AUDIT_SHARE_POINT
   /// AUDIT_GENERAL
   /// DLP_ALL
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FeedDetailsOffice365Settings].
   /// [authEndpoint] API Auth Endpoint.

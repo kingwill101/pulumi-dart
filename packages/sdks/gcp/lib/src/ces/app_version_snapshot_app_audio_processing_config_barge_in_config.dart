@@ -8,7 +8,7 @@ class AppVersionSnapshotAppAudioProcessingConfigBargeInConfig {
   /// that the user hasn't heard the full preceding agent message.
   /// This should not be used in scenarios where agent responses are displayed
   /// visually.
-  final pulumi.Input<bool>? bargeInAwareness;
+  final pulumi.Input<bool?>? bargeInAwareness;
 
   /// Creates a new [AppVersionSnapshotAppAudioProcessingConfigBargeInConfig].
   /// [bargeInAwareness] (Output)

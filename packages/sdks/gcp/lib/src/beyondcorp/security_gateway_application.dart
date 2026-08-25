@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_gateway_application_args.dart';
+import 'security_gateway_application_endpoint_matcher.dart';
 import 'security_gateway_application_state.dart';
+import 'security_gateway_application_upstream.dart';
 
 /// Specifies application endpoint(s) to protect behind a Security Gateway.
 ///
@@ -1276,7 +1278,7 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
   /// Hostname - ("*.abc.com"), ("xyz.abc.com")
   /// Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> endpointMatchers;
+  late final pulumi.Output<List<SecurityGatewayApplicationEndpointMatcher>?> endpointMatchers;
   /// Identifier. Name of the resource.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -1291,7 +1293,7 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// Optional. List of which upstream resource(s) to forward traffic to.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> upstreams;
+  late final pulumi.Output<List<SecurityGatewayApplicationUpstream>?> upstreams;
 
   /// Creates a new [SecurityGatewayApplication].
   /// [name] The Pulumi resource name.
@@ -1305,19 +1307,19 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    endpointMatchers = registerOutput<List<Map<String, dynamic>>?>('endpointMatchers');
+    endpointMatchers = registerOutput<List<SecurityGatewayApplicationEndpointMatcher>?>('endpointMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayApplicationEndpointMatcher>(guardedValue, (value) => SecurityGatewayApplicationEndpointMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     schema = registerOutput<String?>('schema');
     securityGatewayId = registerOutput<String>('securityGatewayId');
     updateTime = registerOutput<String>('updateTime');
-    upstreams = registerOutput<List<Map<String, dynamic>>?>('upstreams');
+    upstreams = registerOutput<List<SecurityGatewayApplicationUpstream>?>('upstreams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayApplicationUpstream>(guardedValue, (value) => SecurityGatewayApplicationUpstream.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [SecurityGatewayApplication] resource's state with the given [name] and [id].
@@ -1325,11 +1327,12 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGatewayApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGatewayApplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1347,12 +1350,34 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    endpointMatchers = registerOutput<List<Map<String, dynamic>>?>('endpointMatchers');
+    endpointMatchers = registerOutput<List<SecurityGatewayApplicationEndpointMatcher>?>('endpointMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayApplicationEndpointMatcher>(guardedValue, (value) => SecurityGatewayApplicationEndpointMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     schema = registerOutput<String?>('schema');
     securityGatewayId = registerOutput<String>('securityGatewayId');
     updateTime = registerOutput<String>('updateTime');
-    upstreams = registerOutput<List<Map<String, dynamic>>?>('upstreams');
+    upstreams = registerOutput<List<SecurityGatewayApplicationUpstream>?>('upstreams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayApplicationUpstream>(guardedValue, (value) => SecurityGatewayApplicationUpstream.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SecurityGatewayApplication] resource.
+  SecurityGatewayApplication.reference(String urn)
+    : super(
+        'gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    endpointMatchers = registerOutput<List<SecurityGatewayApplicationEndpointMatcher>?>('endpointMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayApplicationEndpointMatcher>(guardedValue, (value) => SecurityGatewayApplicationEndpointMatcher.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schema = registerOutput<String?>('schema');
+    securityGatewayId = registerOutput<String>('securityGatewayId');
+    updateTime = registerOutput<String>('updateTime');
+    upstreams = registerOutput<List<SecurityGatewayApplicationUpstream>?>('upstreams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayApplicationUpstream>(guardedValue, (value) => SecurityGatewayApplicationUpstream.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

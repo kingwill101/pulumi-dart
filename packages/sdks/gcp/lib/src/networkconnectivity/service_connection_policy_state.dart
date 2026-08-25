@@ -7,51 +7,51 @@ import 'service_connection_policy_psc_connection.dart';
 /// Input properties used for looking up and filtering ServiceConnectionPolicy resources.
 class ServiceConnectionPolicyState {
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The type of underlying resources used to create the connection.
-  final pulumi.Input<String>? infrastructure;
+  final pulumi.Input<String?>? infrastructure;
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the ServiceConnectionPolicy.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   /// Structure is documented below.
-  final pulumi.Input<ServiceConnectionPolicyPscConfig>? pscConfig;
+  final pulumi.Input<ServiceConnectionPolicyPscConfig?>? pscConfig;
   /// Information about each Private Service Connect connection.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceConnectionPolicyPscConnection>>? pscConnections;
+  final pulumi.Input<List<ServiceConnectionPolicyPscConnection>?>? pscConnections;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
   /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, google-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
   /// For a list of supported services, see [Supported Services](https://docs.cloud.google.com/vpc/docs/about-service-connectivity-automation#supported-services).
-  final pulumi.Input<String>? serviceClass;
+  final pulumi.Input<String?>? serviceClass;
   /// The timestamp when the resource was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ServiceConnectionPolicyState].
   /// [createTime] The timestamp when the resource was created.

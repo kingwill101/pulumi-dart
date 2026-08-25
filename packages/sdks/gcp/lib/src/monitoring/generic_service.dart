@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'generic_service_args.dart';
 import 'generic_service_basic_service.dart';
 import 'generic_service_state.dart';
+import 'generic_service_telemetry.dart';
 
 /// A Service is a discrete, autonomous, and network-accessible unit,
 /// designed to solve an individual concern. In Cloud Monitoring,
@@ -242,7 +243,7 @@ class GenericService extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceId;
   /// Configuration for how to query telemetry on a Service.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> telemetries;
+  late final pulumi.Output<List<GenericServiceTelemetry>> telemetries;
   /// Labels which have been used to annotate the service. Label keys must start
   /// with a letter. Label keys and values may contain lowercase letters,
   /// numbers, underscores, and dashes. Label keys and values have a maximum
@@ -263,7 +264,7 @@ class GenericService extends pulumi.CustomResource {
           'gcp:monitoring/genericService:GenericService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     basicService = registerOutput<GenericServiceBasicService?>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenericServiceBasicService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -271,8 +272,8 @@ class GenericService extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    telemetries = registerOutput<List<Map<String, dynamic>>>('telemetries');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    telemetries = registerOutput<List<GenericServiceTelemetry>>('telemetries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GenericServiceTelemetry>(guardedValue, (value) => GenericServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())); });
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [GenericService] resource's state with the given [name] and [id].
@@ -280,11 +281,12 @@ class GenericService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GenericServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GenericService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,7 +306,26 @@ class GenericService extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    telemetries = registerOutput<List<Map<String, dynamic>>>('telemetries');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    telemetries = registerOutput<List<GenericServiceTelemetry>>('telemetries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GenericServiceTelemetry>(guardedValue, (value) => GenericServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())); });
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GenericService] resource.
+  GenericService.reference(String urn)
+    : super(
+        'gcp:monitoring/genericService:GenericService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    basicService = registerOutput<GenericServiceBasicService?>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenericServiceBasicService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    telemetries = registerOutput<List<GenericServiceTelemetry>>('telemetries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GenericServiceTelemetry>(guardedValue, (value) => GenericServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())); });
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

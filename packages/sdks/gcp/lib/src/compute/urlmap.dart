@@ -4,7 +4,10 @@ import 'urlmap_default_custom_error_response_policy.dart';
 import 'urlmap_default_route_action.dart';
 import 'urlmap_default_url_redirect.dart';
 import 'urlmap_header_action.dart';
+import 'urlmap_host_rule.dart';
+import 'urlmap_path_matcher.dart';
 import 'urlmap_state.dart';
+import 'urlmap_test.dart';
 
 /// UrlMaps are used to route requests to a backend service based on rules
 /// that you define for the host and path of an incoming URL.
@@ -12079,7 +12082,7 @@ class URLMap extends pulumi.CustomResource {
   late final pulumi.Output<URLMapHeaderAction?> headerAction;
   /// The list of HostRules to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hostRules;
+  late final pulumi.Output<List<URLMapHostRule>?> hostRules;
   /// The unique identifier for the resource.
   late final pulumi.Output<int> mapId;
   /// Name of the resource. Provided by the client when the resource is created. The
@@ -12091,7 +12094,7 @@ class URLMap extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The list of named PathMatchers to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> pathMatchers;
+  late final pulumi.Output<List<URLMapPathMatcher>?> pathMatchers;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -12101,7 +12104,7 @@ class URLMap extends pulumi.CustomResource {
   /// succeed only if all of the test cases pass. You can specify a maximum of 100
   /// tests per UrlMap.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tests;
+  late final pulumi.Output<List<URLMapTest>?> tests;
 
   /// Creates a new [URLMap].
   /// [name] The Pulumi resource name.
@@ -12115,7 +12118,7 @@ class URLMap extends pulumi.CustomResource {
           'gcp:compute/uRLMap:URLMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultCustomErrorResponsePolicy = registerOutput<URLMapDefaultCustomErrorResponsePolicy?>('defaultCustomErrorResponsePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapDefaultCustomErrorResponsePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -12126,13 +12129,13 @@ class URLMap extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<URLMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    hostRules = registerOutput<List<URLMapHostRule>?>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapHostRule>(guardedValue, (value) => URLMapHostRule.fromMap((value as Map).cast<String, dynamic>())); });
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    pathMatchers = registerOutput<List<URLMapPathMatcher>?>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapPathMatcher>(guardedValue, (value) => URLMapPathMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
+    tests = registerOutput<List<URLMapTest>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapTest>(guardedValue, (value) => URLMapTest.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [URLMap] resource's state with the given [name] and [id].
@@ -12140,11 +12143,12 @@ class URLMap extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     URLMapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return URLMap._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -12167,12 +12171,39 @@ class URLMap extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<URLMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    hostRules = registerOutput<List<URLMapHostRule>?>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapHostRule>(guardedValue, (value) => URLMapHostRule.fromMap((value as Map).cast<String, dynamic>())); });
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    pathMatchers = registerOutput<List<URLMapPathMatcher>?>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapPathMatcher>(guardedValue, (value) => URLMapPathMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
+    tests = registerOutput<List<URLMapTest>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapTest>(guardedValue, (value) => URLMapTest.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [URLMap] resource.
+  URLMap.reference(String urn)
+    : super(
+        'gcp:compute/uRLMap:URLMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultCustomErrorResponsePolicy = registerOutput<URLMapDefaultCustomErrorResponsePolicy?>('defaultCustomErrorResponsePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapDefaultCustomErrorResponsePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultRouteAction = registerOutput<URLMapDefaultRouteAction?>('defaultRouteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapDefaultRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultService = registerOutput<String?>('defaultService');
+    defaultUrlRedirect = registerOutput<URLMapDefaultUrlRedirect?>('defaultUrlRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapDefaultUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    headerAction = registerOutput<URLMapHeaderAction?>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostRules = registerOutput<List<URLMapHostRule>?>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapHostRule>(guardedValue, (value) => URLMapHostRule.fromMap((value as Map).cast<String, dynamic>())); });
+    mapId = registerOutput<int>('mapId');
+    this.name = registerOutput<String>('name');
+    pathMatchers = registerOutput<List<URLMapPathMatcher>?>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapPathMatcher>(guardedValue, (value) => URLMapPathMatcher.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    tests = registerOutput<List<URLMapTest>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<URLMapTest>(guardedValue, (value) => URLMapTest.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

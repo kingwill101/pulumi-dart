@@ -10,21 +10,21 @@ import 'certificate_template_predefined_values_policy_id.dart';
 class CertificateTemplatePredefinedValues {
   /// Optional. Describes custom X.509 extensions.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateTemplatePredefinedValuesAdditionalExtension>>? additionalExtensions;
+  final pulumi.Input<List<CertificateTemplatePredefinedValuesAdditionalExtension>?>? additionalExtensions;
   /// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
-  final pulumi.Input<List<String>>? aiaOcspServers;
+  final pulumi.Input<List<String>?>? aiaOcspServers;
   /// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePredefinedValuesCaOptions>? caOptions;
+  final pulumi.Input<CertificateTemplatePredefinedValuesCaOptions?>? caOptions;
   /// Optional. Indicates the intended use for keys that correspond to a certificate.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePredefinedValuesKeyUsage>? keyUsage;
+  final pulumi.Input<CertificateTemplatePredefinedValuesKeyUsage?>? keyUsage;
   /// Describes the X.509 name constraints extension.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePredefinedValuesNameConstraints>? nameConstraints;
+  final pulumi.Input<CertificateTemplatePredefinedValuesNameConstraints?>? nameConstraints;
   /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateTemplatePredefinedValuesPolicyId>>? policyIds;
+  final pulumi.Input<List<CertificateTemplatePredefinedValuesPolicyId>?>? policyIds;
 
   /// Creates a new [CertificateTemplatePredefinedValues].
   /// [additionalExtensions] Optional. Describes custom X.509 extensions.

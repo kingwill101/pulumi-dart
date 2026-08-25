@@ -6,7 +6,7 @@ import 'prevention_discovery_config_other_cloud_starting_location_aws_location.d
 class PreventionDiscoveryConfigOtherCloudStartingLocation {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation>? awsLocation;
+  final pulumi.Input<PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation?>? awsLocation;
 
   /// Creates a new [PreventionDiscoveryConfigOtherCloudStartingLocation].
   /// [awsLocation] A nested object resource.

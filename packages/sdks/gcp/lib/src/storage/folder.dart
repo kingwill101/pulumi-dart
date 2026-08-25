@@ -279,7 +279,7 @@ class Folder extends pulumi.CustomResource {
           'gcp:storage/folder:Folder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
@@ -296,11 +296,12 @@ class Folder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Folder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,6 +315,25 @@ class Folder extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    metageneration = registerOutput<String>('metageneration');
+    this.name = registerOutput<String>('name');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Folder] resource.
+  Folder.reference(String urn)
+    : super(
+        'gcp:storage/folder:Folder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GcpUserAccessBindingScopedAccessSettingDryRunSettings {
   /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-  final pulumi.Input<String>? accessLevels;
+  final pulumi.Input<String?>? accessLevels;
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingDryRunSettings].
   /// [accessLevels] Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"

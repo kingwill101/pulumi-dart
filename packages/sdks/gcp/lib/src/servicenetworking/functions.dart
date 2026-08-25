@@ -16,3 +16,14 @@ Future<GetPeeredDnsDomainResult> getPeeredDnsDomain(
   );
   return GetPeeredDnsDomainResult.fromMap(result);
 }
+
+pulumi.Output<GetPeeredDnsDomainResult> getPeeredDnsDomainOutput(
+  GetPeeredDnsDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeredDnsDomainResult.fromMap);
+}

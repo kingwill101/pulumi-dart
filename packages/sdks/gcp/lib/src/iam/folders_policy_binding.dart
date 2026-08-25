@@ -442,14 +442,14 @@ class FoldersPolicyBinding extends pulumi.CustomResource {
           'gcp:iam/foldersPolicyBinding:FoldersPolicyBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     condition = registerOutput<FoldersPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FoldersPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     folder = registerOutput<String>('folder');
     location = registerOutput<String>('location');
@@ -468,11 +468,12 @@ class FoldersPolicyBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FoldersPolicyBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FoldersPolicyBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -486,12 +487,40 @@ class FoldersPolicyBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     condition = registerOutput<FoldersPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FoldersPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<String>('policy');
+    policyBindingId = registerOutput<String>('policyBindingId');
+    policyKind = registerOutput<String?>('policyKind');
+    policyUid = registerOutput<String>('policyUid');
+    target = registerOutput<FoldersPolicyBindingTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FoldersPolicyBindingTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FoldersPolicyBinding] resource.
+  FoldersPolicyBinding.reference(String urn)
+    : super(
+        'gcp:iam/foldersPolicyBinding:FoldersPolicyBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    condition = registerOutput<FoldersPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FoldersPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     folder = registerOutput<String>('folder');
     location = registerOutput<String>('location');

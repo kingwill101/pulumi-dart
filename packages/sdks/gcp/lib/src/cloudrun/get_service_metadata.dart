@@ -106,7 +106,7 @@ class GetServiceMetadata {
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
       effectiveAnnotations: pulumi.Input.fromValue((map['effectiveAnnotations'] as Map).cast<String, String>()),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
-      generation: pulumi.Input.fromValue(map['generation'] as int),
+      generation: pulumi.Input.fromValue((map['generation'] as num).toInt()),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       namespace: pulumi.Input.fromValue(map['namespace'] as String),
       pulumiLabels: pulumi.Input.fromValue((map['pulumiLabels'] as Map).cast<String, String>()),

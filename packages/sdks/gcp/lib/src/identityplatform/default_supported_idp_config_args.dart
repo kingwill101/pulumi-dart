@@ -17,9 +17,9 @@ class DefaultSupportedIdpConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If this IDP allows the user to sign in
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// ID of the IDP. Possible values include:
   /// * `apple.com`
   /// * `facebook.com`
@@ -34,7 +34,7 @@ class DefaultSupportedIdpConfigArgs {
   final pulumi.Input<String> idpId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DefaultSupportedIdpConfigArgs].
   /// [clientId] OAuth client ID

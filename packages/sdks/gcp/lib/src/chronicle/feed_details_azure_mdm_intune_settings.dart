@@ -5,14 +5,14 @@ import 'feed_details_azure_mdm_intune_settings_authentication.dart';
 
 class FeedDetailsAzureMdmIntuneSettings {
   /// API Auth Endpoint.
-  final pulumi.Input<String>? authEndpoint;
+  final pulumi.Input<String?>? authEndpoint;
   /// Microsoft OAuth 2.0 client credentials grant.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureMdmIntuneSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAzureMdmIntuneSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FeedDetailsAzureMdmIntuneSettings].
   /// [authEndpoint] API Auth Endpoint.

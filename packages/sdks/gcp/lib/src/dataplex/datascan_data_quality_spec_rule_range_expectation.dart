@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanDataQualitySpecRuleRangeExpectation {
   /// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
-  final pulumi.Input<String>? maxValue;
+  final pulumi.Input<String?>? maxValue;
   /// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
-  final pulumi.Input<String>? minValue;
+  final pulumi.Input<String?>? minValue;
   /// Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.
   /// Only relevant if a maxValue has been defined. Default = false.
-  final pulumi.Input<bool>? strictMaxEnabled;
+  final pulumi.Input<bool?>? strictMaxEnabled;
   /// Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.
   /// Only relevant if a minValue has been defined. Default = false.
-  final pulumi.Input<bool>? strictMinEnabled;
+  final pulumi.Input<bool?>? strictMinEnabled;
 
   /// Creates a new [DatascanDataQualitySpecRuleRangeExpectation].
   /// [maxValue] The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.

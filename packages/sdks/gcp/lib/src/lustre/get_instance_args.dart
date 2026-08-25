@@ -10,9 +10,9 @@ class GetInstanceArgs {
   /// The instance id of the Lustre instance.
   final pulumi.Input<String> instanceId;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the zone in which the resource belongs. If it is not provided, the provider zone is used.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetInstanceArgs].
   /// [instanceId] The instance id of the Lustre instance.

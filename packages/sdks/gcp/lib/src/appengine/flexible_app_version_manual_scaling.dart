@@ -22,7 +22,7 @@ class FlexibleAppVersionManualScaling {
 
   factory FlexibleAppVersionManualScaling.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionManualScaling(
-      instances: pulumi.Input.fromValue(map['instances'] as int),
+      instances: pulumi.Input.fromValue((map['instances'] as num).toInt()),
     );
   }
 }

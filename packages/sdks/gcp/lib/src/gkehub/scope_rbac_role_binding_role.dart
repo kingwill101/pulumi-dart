@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScopeRbacRoleBindingRole {
   /// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-  final pulumi.Input<String>? customRole;
+  final pulumi.Input<String?>? customRole;
   /// PredefinedRole is an ENUM representation of the default Kubernetes Roles
   /// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-  final pulumi.Input<String>? predefinedRole;
+  final pulumi.Input<String?>? predefinedRole;
 
   /// Creates a new [ScopeRbacRoleBindingRole].
   /// [customRole] CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.

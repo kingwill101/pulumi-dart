@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectivityTestSourceAppEngineVersion {
   /// An App Engine service version name.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ConnectivityTestSourceAppEngineVersion].
   /// [uri] An App Engine service version name.

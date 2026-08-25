@@ -5,10 +5,10 @@ import 'instance_client_connection_config_ssl_config.dart';
 
 class InstanceClientConnectionConfig {
   /// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
-  final pulumi.Input<bool>? requireConnectors;
+  final pulumi.Input<bool?>? requireConnectors;
   /// SSL config option for this instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceClientConnectionConfigSslConfig>? sslConfig;
+  final pulumi.Input<InstanceClientConnectionConfigSslConfig?>? sslConfig;
 
   /// Creates a new [InstanceClientConnectionConfig].
   /// [requireConnectors] Configuration to enforce connectors only (ex: AuthProxy) connections to the database.

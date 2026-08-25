@@ -8,18 +8,18 @@ import 'bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig>? kubeletConfig;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig?>? kubeletConfig;
   /// The labels assigned to nodes of this node pool.
   /// An object containing a list of key/value pairs.
   /// Example:
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>>? nodeConfigs;
+  final pulumi.Input<List<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>?>? nodeConfigs;
   /// The available Operating Systems to be run in a Node.
-  final pulumi.Input<String>? operatingSystem;
+  final pulumi.Input<String?>? operatingSystem;
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>>? taints;
+  final pulumi.Input<List<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>?>? taints;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig].
   /// [kubeletConfig] A nested object resource.

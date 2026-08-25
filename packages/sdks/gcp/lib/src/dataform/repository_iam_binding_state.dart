@@ -5,13 +5,13 @@ import 'repository_iam_binding_condition.dart';
 
 /// Input properties used for looking up and filtering RepositoryIamBinding resources.
 class RepositoryIamBindingState {
-  final pulumi.Input<RepositoryIamBindingCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<List<String>>? members;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? repository;
-  final pulumi.Input<String>? role;
+  final pulumi.Input<RepositoryIamBindingCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<List<String>?>? members;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? repository;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [RepositoryIamBindingState].
   /// [condition] Optional.

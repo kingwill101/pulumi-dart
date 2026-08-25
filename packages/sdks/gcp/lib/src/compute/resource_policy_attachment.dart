@@ -405,7 +405,7 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
           'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
@@ -419,11 +419,12 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicyAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -437,6 +438,22 @@ class ResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicyAttachment] resource.
+  ResourcePolicyAttachment.reference(String urn)
+    : super(
+        'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');

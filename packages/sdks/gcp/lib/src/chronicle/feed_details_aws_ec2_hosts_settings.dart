@@ -5,7 +5,7 @@ import 'feed_details_aws_ec2_hosts_settings_authentication.dart';
 
 class FeedDetailsAwsEc2HostsSettings {
   /// Info for username and secret based authentication.
-  final pulumi.Input<FeedDetailsAwsEc2HostsSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAwsEc2HostsSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsAwsEc2HostsSettings].
   /// [authentication] Info for username and secret based authentication.

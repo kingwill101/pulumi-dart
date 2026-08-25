@@ -1996,7 +1996,7 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
           'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2016,11 +2016,12 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiEndpointWithModelGardenDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiEndpointWithModelGardenDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2034,6 +2035,28 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
+    deployedModelId = registerOutput<String>('deployedModelId');
+    endpoint = registerOutput<String>('endpoint');
+    endpointConfig = registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>('endpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    huggingFaceModelId = registerOutput<String?>('huggingFaceModelId');
+    location = registerOutput<String>('location');
+    modelConfig = registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>('modelConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentModelConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    publisherModelName = registerOutput<String?>('publisherModelName');
+  }
+
+  /// Creates a typed reference to an existing [AiEndpointWithModelGardenDeployment] resource.
+  AiEndpointWithModelGardenDeployment.reference(String urn)
+    : super(
+        'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');

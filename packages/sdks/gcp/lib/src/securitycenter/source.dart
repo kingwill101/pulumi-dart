@@ -177,7 +177,7 @@ class Source extends pulumi.CustomResource {
           'gcp:securitycenter/source:Source',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -190,11 +190,12 @@ class Source extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Source._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,6 +209,21 @@ class Source extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+  }
+
+  /// Creates a typed reference to an existing [Source] resource.
+  Source.reference(String urn)
+    : super(
+        'gcp:securitycenter/source:Source',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

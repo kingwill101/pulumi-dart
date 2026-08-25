@@ -2164,11 +2164,11 @@ class RegionBackendServiceIamBinding extends pulumi.CustomResource {
           'gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<RegionBackendServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -2180,11 +2180,12 @@ class RegionBackendServiceIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionBackendServiceIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionBackendServiceIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2200,7 +2201,25 @@ class RegionBackendServiceIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<RegionBackendServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [RegionBackendServiceIamBinding] resource.
+  RegionBackendServiceIamBinding.reference(String urn)
+    : super(
+        'gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<RegionBackendServiceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

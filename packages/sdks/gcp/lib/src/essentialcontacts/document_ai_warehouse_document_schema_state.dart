@@ -11,20 +11,20 @@ class DocumentAiWarehouseDocumentSchemaState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Name of the schema given by the user.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Tells whether the document is a folder or a typical document.
-  final pulumi.Input<bool>? documentIsFolder;
+  final pulumi.Input<bool?>? documentIsFolder;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the document schema.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The unique identifier of the project.
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
   /// Defines the metadata for a schema property.
   /// Structure is documented below.
-  final pulumi.Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>? propertyDefinitions;
+  final pulumi.Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>?>? propertyDefinitions;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

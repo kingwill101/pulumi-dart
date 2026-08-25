@@ -15,14 +15,14 @@ class ServicePerimeterArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource name for the ServicePerimeter. The shortName component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
   final pulumi.Input<String> parent;
@@ -42,18 +42,18 @@ class ServicePerimeterArgs {
   /// themselves.
   /// Default value is `PERIMETER_TYPE_REGULAR`.
   /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-  final pulumi.Input<String>? perimeterType;
+  final pulumi.Input<String?>? perimeterType;
   /// Proposed (or dry run) ServicePerimeter configuration.
   /// This configuration allows to specify and test ServicePerimeter configuration
   /// without enforcing actual access restrictions. Only allowed to be set when
   /// the `useExplicitDryRunSpec` flag is set.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterSpec>? spec;
+  final pulumi.Input<ServicePerimeterSpec?>? spec;
   /// ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine
   /// perimeter content and boundaries.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterStatus>? status;
+  final pulumi.Input<ServicePerimeterStatus?>? status;
   /// Human readable title. Must be unique within the Policy.
   final pulumi.Input<String> title;
   /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
@@ -65,7 +65,7 @@ class ServicePerimeterArgs {
   /// actually enforcing them. This testing is done through analyzing the differences
   /// between currently enforced and suggested restrictions. useExplicitDryRunSpec must
   /// bet set to True if any of the fields in the spec are set to non-default values.
-  final pulumi.Input<bool>? useExplicitDryRunSpec;
+  final pulumi.Input<bool?>? useExplicitDryRunSpec;
 
   /// Creates a new [ServicePerimeterArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

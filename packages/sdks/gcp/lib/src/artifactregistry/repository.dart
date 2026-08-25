@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_args.dart';
+import 'repository_cleanup_policy.dart';
 import 'repository_docker_config.dart';
 import 'repository_maven_config.dart';
 import 'repository_remote_repository_config.dart';
@@ -5412,7 +5413,7 @@ class Repository extends pulumi.CustomResource {
   /// Map keys are policy IDs supplied by users during policy creation. They must
   /// unique within a repository and be under 128 characters in length.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cleanupPolicies;
+  late final pulumi.Output<List<RepositoryCleanupPolicy>?> cleanupPolicies;
   /// If true, the cleanup pipeline is prevented from deleting versions in this
   /// repository.
   late final pulumi.Output<bool?> cleanupPolicyDryRun;
@@ -5505,24 +5506,25 @@ class Repository extends pulumi.CustomResource {
           'gcp:artifactregistry/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    cleanupPolicies = registerOutput<List<Map<String, dynamic>>?>('cleanupPolicies');
+    cleanupPolicies = registerOutput<List<RepositoryCleanupPolicy>?>('cleanupPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCleanupPolicy>(guardedValue, (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     cleanupPolicyDryRun = registerOutput<bool?>('cleanupPolicyDryRun');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     format = registerOutput<String>('format');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mavenConfig = registerOutput<RepositoryMavenConfig?>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryMavenConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     registryUri = registerOutput<String>('registryUri');
     remoteRepositoryConfig = registerOutput<RepositoryRemoteRepositoryConfig?>('remoteRepositoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryRemoteRepositoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
@@ -5536,11 +5538,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -5554,22 +5557,56 @@ class Repository extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    cleanupPolicies = registerOutput<List<Map<String, dynamic>>?>('cleanupPolicies');
+    cleanupPolicies = registerOutput<List<RepositoryCleanupPolicy>?>('cleanupPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCleanupPolicy>(guardedValue, (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     cleanupPolicyDryRun = registerOutput<bool?>('cleanupPolicyDryRun');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     format = registerOutput<String>('format');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mavenConfig = registerOutput<RepositoryMavenConfig?>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryMavenConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    registryUri = registerOutput<String>('registryUri');
+    remoteRepositoryConfig = registerOutput<RepositoryRemoteRepositoryConfig?>('remoteRepositoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryRemoteRepositoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repositoryId = registerOutput<String>('repositoryId');
+    updateTime = registerOutput<String>('updateTime');
+    virtualRepositoryConfig = registerOutput<RepositoryVirtualRepositoryConfig?>('virtualRepositoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryVirtualRepositoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vulnerabilityScanningConfig = registerOutput<RepositoryVulnerabilityScanningConfig>('vulnerabilityScanningConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryVulnerabilityScanningConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'gcp:artifactregistry/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    cleanupPolicies = registerOutput<List<RepositoryCleanupPolicy>?>('cleanupPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCleanupPolicy>(guardedValue, (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    cleanupPolicyDryRun = registerOutput<bool?>('cleanupPolicyDryRun');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    format = registerOutput<String>('format');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mavenConfig = registerOutput<RepositoryMavenConfig?>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryMavenConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     registryUri = registerOutput<String>('registryUri');
     remoteRepositoryConfig = registerOutput<RepositoryRemoteRepositoryConfig?>('remoteRepositoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryRemoteRepositoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');

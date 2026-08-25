@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationColumnDef {
   /// (Optional)
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// (Optional)
-  final pulumi.Input<String>? header;
+  final pulumi.Input<String?>? header;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationColumnDef].
   /// [field] (Optional)

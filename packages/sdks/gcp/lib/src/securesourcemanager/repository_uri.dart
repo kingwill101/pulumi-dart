@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryUri {
   /// (Output)
   /// API is the URI for API access.
-  final pulumi.Input<String>? api;
+  final pulumi.Input<String?>? api;
   /// (Output)
   /// gitHttps is the git HTTPS URI for git operations.
-  final pulumi.Input<String>? gitHttps;
+  final pulumi.Input<String?>? gitHttps;
   /// (Output)
   /// HTML is the URI for the user to view the repository in a browser.
-  final pulumi.Input<String>? html;
+  final pulumi.Input<String?>? html;
 
   /// Creates a new [RepositoryUri].
   /// [api] (Output)

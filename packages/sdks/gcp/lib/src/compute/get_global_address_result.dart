@@ -4,86 +4,86 @@
 /// Result data returned by getGlobalAddress.
 class GetGlobalAddressResult {
   /// The IP of the created resource.
-  final String address;
-  final String addressType;
+  final String? address;
+  final String? addressType;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String network;
-  final String networkTier;
-  final int prefixLength;
-  final String project;
-  final String purpose;
+  final String? id;
+  final String? name;
+  final String? network;
+  final String? networkTier;
+  final int? prefixLength;
+  final String? project;
+  final String? purpose;
   /// The URI of the created resource.
-  final String selfLink;
+  final String? selfLink;
   /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
-  final String status;
-  final String subnetwork;
-  final String users;
+  final String? status;
+  final String? subnetwork;
+  final String? users;
 
   /// Creates a new [GetGlobalAddressResult].
   /// [address] The IP of the created resource.
-  /// [addressType] Required.
+  /// [addressType] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [network] Required.
-  /// [networkTier] Required.
-  /// [prefixLength] Required.
-  /// [project] Required.
-  /// [purpose] Required.
+  /// [name] Optional.
+  /// [network] Optional.
+  /// [networkTier] Optional.
+  /// [prefixLength] Optional.
+  /// [project] Optional.
+  /// [purpose] Optional.
   /// [selfLink] The URI of the created resource.
   /// [status] Indicates if the address is used. Possible values are: RESERVED or IN_USE.
-  /// [subnetwork] Required.
-  /// [users] Required.
+  /// [subnetwork] Optional.
+  /// [users] Optional.
   const GetGlobalAddressResult({
-    required this.address,
-    required this.addressType,
-    required this.id,
-    required this.name,
-    required this.network,
-    required this.networkTier,
-    required this.prefixLength,
-    required this.project,
-    required this.purpose,
-    required this.selfLink,
-    required this.status,
-    required this.subnetwork,
-    required this.users,
+    this.address,
+    this.addressType,
+    this.id,
+    this.name,
+    this.network,
+    this.networkTier,
+    this.prefixLength,
+    this.project,
+    this.purpose,
+    this.selfLink,
+    this.status,
+    this.subnetwork,
+    this.users,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'address': address,
-      'addressType': addressType,
-      'id': id,
-      'name': name,
-      'network': network,
-      'networkTier': networkTier,
-      'prefixLength': prefixLength,
-      'project': project,
-      'purpose': purpose,
-      'selfLink': selfLink,
-      'status': status,
-      'subnetwork': subnetwork,
-      'users': users,
+      'address': ?address,
+      'addressType': ?addressType,
+      'id': ?id,
+      'name': ?name,
+      'network': ?network,
+      'networkTier': ?networkTier,
+      'prefixLength': ?prefixLength,
+      'project': ?project,
+      'purpose': ?purpose,
+      'selfLink': ?selfLink,
+      'status': ?status,
+      'subnetwork': ?subnetwork,
+      'users': ?users,
     };
   }
 
   factory GetGlobalAddressResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalAddressResult(
-      address: map['address'] as String,
-      addressType: map['addressType'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkTier: map['networkTier'] as String,
-      prefixLength: map['prefixLength'] as int,
-      project: map['project'] as String,
-      purpose: map['purpose'] as String,
-      selfLink: map['selfLink'] as String,
-      status: map['status'] as String,
-      subnetwork: map['subnetwork'] as String,
-      users: map['users'] as String,
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      addressType: (() { final guardedValue = map['addressType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkTier: (() { final guardedValue = map['networkTier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateDeploymentPropertiesPlacement {
   /// The availability domain.
-  final pulumi.Input<String>? availabilityDomain;
+  final pulumi.Input<String?>? availabilityDomain;
   /// The fault domain.
-  final pulumi.Input<String>? faultDomain;
+  final pulumi.Input<String?>? faultDomain;
 
   /// Creates a new [GoldengateDeploymentPropertiesPlacement].
   /// [availabilityDomain] The availability domain.

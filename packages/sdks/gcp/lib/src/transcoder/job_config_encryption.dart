@@ -7,20 +7,20 @@ import 'job_config_encryption_secret_manager_key_source.dart';
 
 class JobConfigEncryption {
   /// Configuration for AES-128 encryption.
-  final pulumi.Input<Map<String, dynamic>>? aes128;
+  final pulumi.Input<Map<String, dynamic>?>? aes128;
   /// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
   /// Structure is documented below.
-  final pulumi.Input<JobConfigEncryptionDrmSystems>? drmSystems;
+  final pulumi.Input<JobConfigEncryptionDrmSystems?>? drmSystems;
   /// Identifier for this set of encryption options.
   final pulumi.Input<String> id;
   /// Configuration for MPEG Common Encryption (MPEG-CENC).
   /// Structure is documented below.
-  final pulumi.Input<JobConfigEncryptionMpegCenc>? mpegCenc;
+  final pulumi.Input<JobConfigEncryptionMpegCenc?>? mpegCenc;
   /// Configuration for SAMPLE-AES encryption.
-  final pulumi.Input<Map<String, dynamic>>? sampleAes;
+  final pulumi.Input<Map<String, dynamic>?>? sampleAes;
   /// Configuration for secrets stored in Google Secret Manager.
   /// Structure is documented below.
-  final pulumi.Input<JobConfigEncryptionSecretManagerKeySource>? secretManagerKeySource;
+  final pulumi.Input<JobConfigEncryptionSecretManagerKeySource?>? secretManagerKeySource;
 
   /// Creates a new [JobConfigEncryption].
   /// [aes128] Configuration for AES-128 encryption.

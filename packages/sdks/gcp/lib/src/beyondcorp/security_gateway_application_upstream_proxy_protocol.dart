@@ -5,21 +5,21 @@ import 'security_gateway_application_upstream_proxy_protocol_contextual_headers.
 
 class SecurityGatewayApplicationUpstreamProxyProtocol {
   /// The configuration for the proxy.
-  final pulumi.Input<List<String>>? allowedClientHeaders;
+  final pulumi.Input<List<String>?>? allowedClientHeaders;
   /// Client IP configuration. The client IP address is included if true.
-  final pulumi.Input<bool>? clientIp;
+  final pulumi.Input<bool?>? clientIp;
   /// Configuration for the contextual headers.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders>? contextualHeaders;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders?>? contextualHeaders;
   /// Gateway identity configuration.
   /// Possible values are: `RESOURCE_NAME`.
-  final pulumi.Input<String>? gatewayIdentity;
+  final pulumi.Input<String?>? gatewayIdentity;
   /// Custom resource specific headers along with the values.
   /// The names should conform to RFC 9110:
   /// &gt; Field names SHOULD constrain themselves to alphanumeric characters, "-",
   /// and ".", and SHOULD begin with a letter.
   /// &gt; Field values SHOULD contain only ASCII printable characters and tab.
-  final pulumi.Input<Map<String, String>>? metadataHeaders;
+  final pulumi.Input<Map<String, String>?>? metadataHeaders;
 
   /// Creates a new [SecurityGatewayApplicationUpstreamProxyProtocol].
   /// [allowedClientHeaders] The configuration for the proxy.

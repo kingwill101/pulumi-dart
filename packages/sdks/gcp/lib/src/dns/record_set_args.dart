@@ -14,7 +14,7 @@ class RecordSetArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the zone in which this record set will
   /// reside.
   final pulumi.Input<String> managedZone;
@@ -22,16 +22,16 @@ class RecordSetArgs {
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The configuration for steering traffic based on query.
   /// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
   /// Structure is documented below.
-  final pulumi.Input<RecordSetRoutingPolicy>? routingPolicy;
+  final pulumi.Input<RecordSetRoutingPolicy?>? routingPolicy;
   /// The string data for the records in this record set
   /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
-  final pulumi.Input<List<String>>? rrdatas;
+  final pulumi.Input<List<String>?>? rrdatas;
   /// The time-to-live of this record set (seconds).
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// The DNS record set type.
   ///
   /// - - -
@@ -78,7 +78,7 @@ class RecordSetArgs {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routingPolicy: (() { final guardedValue = map['routingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordSetRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rrdatas: (() { final guardedValue = map['rrdatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

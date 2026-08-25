@@ -19,99 +19,99 @@ import 'flexible_app_version_vpc_access_connector.dart';
 class FlexibleAppVersionState {
   /// Serving configuration for Google Cloud Endpoints.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionApiConfig>? apiConfig;
+  final pulumi.Input<FlexibleAppVersionApiConfig?>? apiConfig;
   /// Automatic scaling is based on request rate, response latencies, and other application metrics.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionAutomaticScaling>? automaticScaling;
+  final pulumi.Input<FlexibleAppVersionAutomaticScaling?>? automaticScaling;
   /// Metadata settings that are supplied to this version to enable beta runtime features.
-  final pulumi.Input<Map<String, String>>? betaSettings;
+  final pulumi.Input<Map<String, String>?>? betaSettings;
   /// Duration that static files should be cached by web proxies and browsers.
   /// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
-  final pulumi.Input<String>? defaultExpiration;
+  final pulumi.Input<String?>? defaultExpiration;
   /// If set to `true`, the service will be deleted if it is the last version.
-  final pulumi.Input<bool>? deleteServiceOnDestroy;
+  final pulumi.Input<bool?>? deleteServiceOnDestroy;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionDeployment>? deployment;
+  final pulumi.Input<FlexibleAppVersionDeployment?>? deployment;
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionEndpointsApiService>? endpointsApiService;
+  final pulumi.Input<FlexibleAppVersionEndpointsApiService?>? endpointsApiService;
   /// The entrypoint for the application.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionEntrypoint>? entrypoint;
+  final pulumi.Input<FlexibleAppVersionEntrypoint?>? entrypoint;
   /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-  final pulumi.Input<Map<String, String>>? envVariables;
+  final pulumi.Input<Map<String, String>?>? envVariables;
   /// Runtime settings for App Engine flexible environment.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionFlexibleRuntimeSettings>? flexibleRuntimeSettings;
+  final pulumi.Input<FlexibleAppVersionFlexibleRuntimeSettings?>? flexibleRuntimeSettings;
   /// An ordered list of URL-matching patterns that should be applied to incoming requests.
   /// The first matching URL handles the request and other request handlers are not attempted.
   /// Structure is documented below.
-  final pulumi.Input<List<FlexibleAppVersionHandler>>? handlers;
+  final pulumi.Input<List<FlexibleAppVersionHandler>?>? handlers;
   /// A list of the types of messages that this application is able to receive.
   /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
-  final pulumi.Input<List<String>>? inboundServices;
+  final pulumi.Input<List<String>?>? inboundServices;
   /// Instance class that is used to run this version. Valid values are
   /// AutomaticScaling: F1, F2, F4, F4_1G
   /// ManualScaling: B1, B2, B4, B8, B4_1G
   /// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-  final pulumi.Input<String>? instanceClass;
+  final pulumi.Input<String?>? instanceClass;
   /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionLivenessCheck>? livenessCheck;
+  final pulumi.Input<FlexibleAppVersionLivenessCheck?>? livenessCheck;
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionManualScaling>? manualScaling;
+  final pulumi.Input<FlexibleAppVersionManualScaling?>? manualScaling;
   /// Full path to the Version resource in the API. Example, "v1".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Extra network settings
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionNetwork>? network;
+  final pulumi.Input<FlexibleAppVersionNetwork?>? network;
   /// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
-  final pulumi.Input<String>? nobuildFilesRegex;
+  final pulumi.Input<String?>? nobuildFilesRegex;
   /// If set to `true`, the application version will not be deleted.
-  final pulumi.Input<bool>? noopOnDestroy;
+  final pulumi.Input<bool?>? noopOnDestroy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionReadinessCheck>? readinessCheck;
+  final pulumi.Input<FlexibleAppVersionReadinessCheck?>? readinessCheck;
   /// Machine resources for a version.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionResources>? resources;
+  final pulumi.Input<FlexibleAppVersionResources?>? resources;
   /// Desired runtime. Example python27.
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<String?>? runtime;
   /// The version of the API in the given runtime environment.
   /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
   /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
-  final pulumi.Input<String>? runtimeApiVersion;
+  final pulumi.Input<String?>? runtimeApiVersion;
   /// The channel of the runtime to use. Only available for some runtimes.
-  final pulumi.Input<String>? runtimeChannel;
+  final pulumi.Input<String?>? runtimeChannel;
   /// The path or name of the app's main executable.
-  final pulumi.Input<String>? runtimeMainExecutablePath;
+  final pulumi.Input<String?>? runtimeMainExecutablePath;
   /// AppEngine service resource. Can contain numbers, letters, and hyphens.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
   /// default if this field is neither provided in app.yaml file nor through CLI flag.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
   /// Default value is `SERVING`.
   /// Possible values are: `SERVING`, `STOPPED`.
-  final pulumi.Input<String>? servingStatus;
+  final pulumi.Input<String?>? servingStatus;
   /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
   /// Reserved names,"default", "latest", and any name with the prefix "ah-".
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
   /// Enables VPC connectivity for standard apps.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionVpcAccessConnector>? vpcAccessConnector;
+  final pulumi.Input<FlexibleAppVersionVpcAccessConnector?>? vpcAccessConnector;
 
   /// Creates a new [FlexibleAppVersionState].
   /// [apiConfig] Serving configuration for Google Cloud Endpoints.

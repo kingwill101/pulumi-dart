@@ -479,7 +479,7 @@ class Assistant extends pulumi.CustomResource {
           'gcp:discoveryengine/assistant:Assistant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
@@ -500,11 +500,12 @@ class Assistant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssistantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Assistant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -518,6 +519,29 @@ class Assistant extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assistantId = registerOutput<String>('assistantId');
+    collectionId = registerOutput<String>('collectionId');
+    customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    engineId = registerOutput<String>('engineId');
+    generationConfig = registerOutput<AssistantGenerationConfig?>('generationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantGenerationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    webGroundingType = registerOutput<String?>('webGroundingType');
+  }
+
+  /// Creates a typed reference to an existing [Assistant] resource.
+  Assistant.reference(String urn)
+    : super(
+        'gcp:discoveryengine/assistant:Assistant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
     customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

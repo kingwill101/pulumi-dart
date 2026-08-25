@@ -6,11 +6,11 @@ import 'feed_details_cortex_xdr_settings_authentication.dart';
 class FeedDetailsCortexXdrSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsCortexXdrSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsCortexXdrSettingsAuthentication?>? authentication;
   /// API Endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsCortexXdrSettings].
   /// [authentication] HTTP header based authentication.

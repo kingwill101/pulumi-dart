@@ -105,9 +105,10 @@ class SSLCertificate extends pulumi.CustomResource {
           'gcp:compute/sSLCertificate:SSLCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['certificate', 'privateKey', 'privateKeyWo'],
         ) {
-    certificate = registerOutput<String>('certificate');
+    certificate = registerOutput<String>('certificate', isSecret: true);
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -115,8 +116,8 @@ class SSLCertificate extends pulumi.CustomResource {
     expireTime = registerOutput<String>('expireTime');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    privateKey = registerOutput<String?>('privateKey');
-    privateKeyWo = registerOutput<String?>('privateKeyWo');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
     privateKeyWoVersion = registerOutput<String?>('privateKeyWoVersion');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
@@ -127,11 +128,12 @@ class SSLCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SSLCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SSLCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -145,7 +147,7 @@ class SSLCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    certificate = registerOutput<String>('certificate');
+    certificate = registerOutput<String>('certificate', isSecret: true);
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -153,8 +155,33 @@ class SSLCertificate extends pulumi.CustomResource {
     expireTime = registerOutput<String>('expireTime');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    privateKey = registerOutput<String?>('privateKey');
-    privateKeyWo = registerOutput<String?>('privateKeyWo');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
+    privateKeyWoVersion = registerOutput<String?>('privateKeyWoVersion');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [SSLCertificate] resource.
+  SSLCertificate.reference(String urn)
+    : super(
+        'gcp:compute/sSLCertificate:SSLCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['certificate', 'privateKey', 'privateKeyWo'],
+        isResourceReference: true,
+      ) {
+    certificate = registerOutput<String>('certificate', isSecret: true);
+    certificateId = registerOutput<int>('certificateId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
     privateKeyWoVersion = registerOutput<String?>('privateKeyWoVersion');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');

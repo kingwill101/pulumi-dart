@@ -58,7 +58,7 @@ class SharedflowDeployment extends pulumi.CustomResource {
           'gcp:apigee/sharedflowDeployment:SharedflowDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
@@ -73,11 +73,12 @@ class SharedflowDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedflowDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedflowDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -91,6 +92,23 @@ class SharedflowDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    environment = registerOutput<String>('environment');
+    orgId = registerOutput<String>('orgId');
+    revision = registerOutput<String>('revision');
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    sharedflowId = registerOutput<String>('sharedflowId');
+  }
+
+  /// Creates a typed reference to an existing [SharedflowDeployment] resource.
+  SharedflowDeployment.reference(String urn)
+    : super(
+        'gcp:apigee/sharedflowDeployment:SharedflowDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');

@@ -857,9 +857,10 @@ class Instance extends pulumi.CustomResource {
           'gcp:parallelstore/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    accessPoints = registerOutput<List<String>>('accessPoints');
+    accessPoints = registerOutput<List<String>>('accessPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
     daosVersion = registerOutput<String>('daosVersion');
@@ -867,16 +868,16 @@ class Instance extends pulumi.CustomResource {
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
     directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
     fileStripeLevel = registerOutput<String?>('fileStripeLevel');
     instanceId = registerOutput<String>('instanceId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reservedIpRange = registerOutput<String?>('reservedIpRange');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -887,11 +888,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -905,7 +907,7 @@ class Instance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessPoints = registerOutput<List<String>>('accessPoints');
+    accessPoints = registerOutput<List<String>>('accessPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
     daosVersion = registerOutput<String>('daosVersion');
@@ -913,18 +915,51 @@ class Instance extends pulumi.CustomResource {
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
     directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
     fileStripeLevel = registerOutput<String?>('fileStripeLevel');
     instanceId = registerOutput<String>('instanceId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reservedIpRange = registerOutput<String?>('reservedIpRange');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:parallelstore/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    accessPoints = registerOutput<List<String>>('accessPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    capacityGib = registerOutput<String>('capacityGib');
+    createTime = registerOutput<String>('createTime');
+    daosVersion = registerOutput<String>('daosVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deploymentType = registerOutput<String?>('deploymentType');
+    description = registerOutput<String?>('description');
+    directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
+    fileStripeLevel = registerOutput<String?>('fileStripeLevel');
+    instanceId = registerOutput<String>('instanceId');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reservedIpRange = registerOutput<String?>('reservedIpRange');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

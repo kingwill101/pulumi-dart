@@ -5,11 +5,11 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_th
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
   /// If set to true, enables CAAP for L7 DDoS detection.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
-  final pulumi.Input<String>? ruleVisibility;
+  final pulumi.Input<String?>? ruleVisibility;
   /// Configuration options for layer7 adaptive protection for various customizable thresholds.
-  final pulumi.Input<List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>>? thresholdConfigs;
+  final pulumi.Input<List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>?>? thresholdConfigs;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig].
   /// [enable] If set to true, enables CAAP for L7 DDoS detection.

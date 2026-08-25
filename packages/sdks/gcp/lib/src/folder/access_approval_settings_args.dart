@@ -11,14 +11,14 @@ class AccessApprovalSettingsArgs {
   /// The asymmetric crypto key version to use for signing approval requests.
   /// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
   /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
-  final pulumi.Input<String>? activeKeyVersion;
+  final pulumi.Input<String?>? activeKeyVersion;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
   /// Access requests for the resource given by name against any of these services contained here will be required
   /// to have explicit approval. Enrollment can only be done on an all or nothing basis.
@@ -30,7 +30,7 @@ class AccessApprovalSettingsArgs {
   /// A list of email addresses to which notifications relating to approval requests should be sent.
   /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
   /// resources of that resource. A maximum of 50 email addresses are allowed.
-  final pulumi.Input<List<String>>? notificationEmails;
+  final pulumi.Input<List<String>?>? notificationEmails;
 
   /// Creates a new [AccessApprovalSettingsArgs].
   /// [activeKeyVersion] The asymmetric crypto key version to use for signing approval requests.

@@ -5,38 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateConnectionPropertiesMongodbConnectionProperties {
   /// MongoDB connection string.
   /// e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// The OCID of the Oracle Autonomous Json Database.
-  final pulumi.Input<String>? databaseId;
+  final pulumi.Input<String?>? databaseId;
   /// Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
   /// plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses to connect the Mongodb connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// Security Type for MongoDB.
   /// Possible values:
   /// PLAIN
   /// TLS
   /// MTLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// The technology type of MongodbConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// Database Certificate - The content of a .pem file,
   /// containing the server public key (for 1 and 2-way SSL).
-  final pulumi.Input<String>? tlsCaFile;
+  final pulumi.Input<String?>? tlsCaFile;
   /// Client Certificate - The content of a .pem file, containing
   /// the client public key (for 2-way SSL).
-  final pulumi.Input<String>? tlsCertificateKeyFile;
+  final pulumi.Input<String?>? tlsCertificateKeyFile;
   /// Input only. The Client Certificate key file password in plain text.
-  final pulumi.Input<String>? tlsCertificateKeyFilePassword;
+  final pulumi.Input<String?>? tlsCertificateKeyFilePassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the Client Certificate key file password in Secret Manager.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? tlsCertificateKeyFilePasswordSecretVersion;
+  final pulumi.Input<String?>? tlsCertificateKeyFilePasswordSecretVersion;
   /// The username Oracle Goldengate uses to connect to the database.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesMongodbConnectionProperties].
   /// [connectionString] MongoDB connection string.

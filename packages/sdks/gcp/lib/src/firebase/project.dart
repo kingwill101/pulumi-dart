@@ -225,7 +225,7 @@ class Project extends pulumi.CustomResource {
           'gcp:firebase/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
@@ -237,11 +237,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,6 +256,20 @@ class Project extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    displayName = registerOutput<String>('displayName');
+    project = registerOutput<String>('project');
+    projectNumber = registerOutput<String>('projectNumber');
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'gcp:firebase/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
     projectNumber = registerOutput<String>('projectNumber');

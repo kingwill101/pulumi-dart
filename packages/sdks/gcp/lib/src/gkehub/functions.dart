@@ -137,6 +137,17 @@ Future<GetFeatureResult> getFeature(
   return GetFeatureResult.fromMap(result);
 }
 
+pulumi.Output<GetFeatureResult> getFeatureOutput(
+  GetFeatureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkehub/getFeature:getFeature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for feature
 ///
 ///
@@ -270,6 +281,17 @@ Future<GetFeatureIamPolicyResult> getFeatureIamPolicy(
   return GetFeatureIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFeatureIamPolicyResult> getFeatureIamPolicyOutput(
+  GetFeatureIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureIamPolicyResult.fromMap);
+}
+
 /// Retrieves the details of a specific GKE Hub Membership. Use this data source to retrieve the membership's configuration and state.
 ///
 /// ## Example Usage
@@ -400,6 +422,17 @@ Future<GetMembershipResult> getMembership(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMembershipResult.fromMap(result);
+}
+
+pulumi.Output<GetMembershipResult> getMembershipOutput(
+  GetMembershipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkehub/getMembership:getMembership',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipResult.fromMap);
 }
 
 /// Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
@@ -543,6 +576,17 @@ Future<GetMembershipBindingResult> getMembershipBinding(
   return GetMembershipBindingResult.fromMap(result);
 }
 
+pulumi.Output<GetMembershipBindingResult> getMembershipBindingOutput(
+  GetMembershipBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkehub/getMembershipBinding:getMembershipBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipBindingResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for membership
 ///
 ///
@@ -676,6 +720,17 @@ Future<GetMembershipIamPolicyResult> getMembershipIamPolicy(
   return GetMembershipIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetMembershipIamPolicyResult> getMembershipIamPolicyOutput(
+  GetMembershipIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for scope
 ///
 ///
@@ -800,4 +855,15 @@ Future<GetScopeIamPolicyResult> getScopeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeIamPolicyResult> getScopeIamPolicyOutput(
+  GetScopeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeIamPolicyResult.fromMap);
 }

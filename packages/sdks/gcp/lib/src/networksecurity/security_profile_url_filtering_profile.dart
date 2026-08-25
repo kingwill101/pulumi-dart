@@ -8,7 +8,7 @@ class SecurityProfileUrlFilteringProfile {
   /// A domain name would be checked for matching filters through the list in order of highest to lowest priority,
   /// and the first filter that a domain name matches with is the one whose actions gets applied.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityProfileUrlFilteringProfileUrlFilter>>? urlFilters;
+  final pulumi.Input<List<SecurityProfileUrlFilteringProfileUrlFilter>?>? urlFilters;
 
   /// Creates a new [SecurityProfileUrlFilteringProfile].
   /// [urlFilters] The configuration for action to take based on domain name match.

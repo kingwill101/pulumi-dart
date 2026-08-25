@@ -13,7 +13,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetails {
   /// specification of these parameters will be present in cloudcontrol.Eg: {
   /// "name": "location","value": "us-west-1"}.
   /// Structure is documented below.
-  final pulumi.Input<List<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>>? parameters;
+  final pulumi.Input<List<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>?>? parameters;
 
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetails].
   /// [majorRevisionId] Major revision of cloudcontrol

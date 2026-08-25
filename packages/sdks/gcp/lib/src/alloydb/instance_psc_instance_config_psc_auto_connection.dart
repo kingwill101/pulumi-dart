@@ -8,20 +8,20 @@ class InstancePscInstanceConfigPscAutoConnection {
   /// The consumer network might be hosted a different project than the
   /// consumer project. The API expects the consumer project specified to be
   /// the project ID (and not the project number)
-  final pulumi.Input<String>? consumerNetwork;
+  final pulumi.Input<String?>? consumerNetwork;
   /// (Output)
   /// The status of the service connection policy.
-  final pulumi.Input<String>? consumerNetworkStatus;
+  final pulumi.Input<String?>? consumerNetworkStatus;
   /// The consumer project to which the PSC service automation endpoint will
   /// be created. The API expects the consumer project to be the project ID(
   /// and not the project number).
-  final pulumi.Input<String>? consumerProject;
+  final pulumi.Input<String?>? consumerProject;
   /// (Output)
   /// The IP address of the PSC service automation endpoint.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// (Output)
   /// The status of the PSC service automation connection.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [InstancePscInstanceConfigPscAutoConnection].
   /// [consumerNetwork] The consumer network for the PSC service automation, example:

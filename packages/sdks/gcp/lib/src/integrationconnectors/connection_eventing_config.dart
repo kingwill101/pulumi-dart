@@ -8,12 +8,12 @@ import 'connection_eventing_config_registration_destination_config.dart';
 class ConnectionEventingConfig {
   /// List containing additional auth configs.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionEventingConfigAdditionalVariable>>? additionalVariables;
+  final pulumi.Input<List<ConnectionEventingConfigAdditionalVariable>?>? additionalVariables;
   /// authConfig for Eventing Configuration.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionEventingConfigAuthConfig>? authConfig;
+  final pulumi.Input<ConnectionEventingConfigAuthConfig?>? authConfig;
   /// Enrichment Enabled.
-  final pulumi.Input<bool>? enrichmentEnabled;
+  final pulumi.Input<bool?>? enrichmentEnabled;
   /// registrationDestinationConfig
   /// Structure is documented below.
   final pulumi.Input<ConnectionEventingConfigRegistrationDestinationConfig> registrationDestinationConfig;

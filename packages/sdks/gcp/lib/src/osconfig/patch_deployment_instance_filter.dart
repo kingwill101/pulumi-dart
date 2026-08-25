@@ -5,19 +5,19 @@ import 'patch_deployment_instance_filter_group_label.dart';
 
 class PatchDeploymentInstanceFilter {
   /// Target all VM instances in the project. If true, no other criteria is permitted.
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
   /// Structure is documented below.
-  final pulumi.Input<List<PatchDeploymentInstanceFilterGroupLabel>>? groupLabels;
+  final pulumi.Input<List<PatchDeploymentInstanceFilterGroupLabel>?>? groupLabels;
   /// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
   /// VMs when targeting configs, for example prefix="prod-".
-  final pulumi.Input<List<String>>? instanceNamePrefixes;
+  final pulumi.Input<List<String>?>? instanceNamePrefixes;
   /// Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
   /// `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
   /// `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
-  final pulumi.Input<List<String>>? instances;
+  final pulumi.Input<List<String>?>? instances;
   /// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [PatchDeploymentInstanceFilter].
   /// [all] Target all VM instances in the project. If true, no other criteria is permitted.

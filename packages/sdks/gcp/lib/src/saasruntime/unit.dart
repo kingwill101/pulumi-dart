@@ -1,6 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'unit_args.dart';
+import 'unit_condition.dart';
+import 'unit_dependency.dart';
+import 'unit_dependent.dart';
+import 'unit_input_variable.dart';
 import 'unit_maintenance.dart';
+import 'unit_output_variable.dart';
 import 'unit_state.dart';
 
 /// A Unit is the fundamental structural building block of a SaaS offering. Each Unit is an instance of a UnitKind. It is a versioned, manageable component of a service that has its own lifecycle, representing elements like infrastructure, workloads, or an entire application stack that a service producer intends to manage as a single entity.
@@ -269,7 +274,7 @@ class Unit extends pulumi.CustomResource {
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<UnitCondition>> conditions;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -281,18 +286,18 @@ class Unit extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// Set of dependencies for this unit. Maximum 10.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dependencies;
+  late final pulumi.Output<List<UnitDependency>> dependencies;
   /// List of Units that depend on this unit. Unit can only be deprovisioned if
   /// this list is empty. Maximum 1000.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dependents;
+  late final pulumi.Output<List<UnitDependent>> dependents;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Indicates the current input variables deployed by the unit
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> inputVariables;
+  late final pulumi.Output<List<UnitInputVariable>> inputVariables;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -324,7 +329,7 @@ class Unit extends pulumi.CustomResource {
   /// in helm chart or terraform) and the values are fetched and returned by the
   /// actuation engine upon completion of execution.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> outputVariables;
+  late final pulumi.Output<List<UnitOutputVariable>> outputVariables;
   /// List of pending (wait to be executed) UnitOperations for this unit.
   late final pulumi.Output<List<String>> pendingOperations;
   /// The ID of the project in which the resource belongs.
@@ -386,29 +391,30 @@ class Unit extends pulumi.CustomResource {
           'gcp:saasruntime/unit:Unit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<UnitCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dependencies = registerOutput<List<Map<String, dynamic>>>('dependencies');
-    dependents = registerOutput<List<Map<String, dynamic>>>('dependents');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    inputVariables = registerOutput<List<Map<String, dynamic>>>('inputVariables');
-    labels = registerOutput<Map<String, String>?>('labels');
+    dependencies = registerOutput<List<UnitDependency>>('dependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitDependency>(guardedValue, (value) => UnitDependency.fromMap((value as Map).cast<String, dynamic>())); });
+    dependents = registerOutput<List<UnitDependent>>('dependents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitDependent>(guardedValue, (value) => UnitDependent.fromMap((value as Map).cast<String, dynamic>())); });
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    inputVariables = registerOutput<List<UnitInputVariable>>('inputVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitInputVariable>(guardedValue, (value) => UnitInputVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenance = registerOutput<UnitMaintenance?>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementMode = registerOutput<String?>('managementMode');
     this.name = registerOutput<String>('name');
-    ongoingOperations = registerOutput<List<String>>('ongoingOperations');
-    outputVariables = registerOutput<List<Map<String, dynamic>>>('outputVariables');
-    pendingOperations = registerOutput<List<String>>('pendingOperations');
+    ongoingOperations = registerOutput<List<String>>('ongoingOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputVariables = registerOutput<List<UnitOutputVariable>>('outputVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitOutputVariable>(guardedValue, (value) => UnitOutputVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    pendingOperations = registerOutput<List<String>>('pendingOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     release = registerOutput<String>('release');
-    scheduledOperations = registerOutput<List<String>>('scheduledOperations');
+    scheduledOperations = registerOutput<List<String>>('scheduledOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     state = registerOutput<String>('state');
     systemCleanupAt = registerOutput<String>('systemCleanupAt');
     systemManagedState = registerOutput<String>('systemManagedState');
@@ -424,11 +430,12 @@ class Unit extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UnitState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Unit._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -442,28 +449,69 @@ class Unit extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<UnitCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dependencies = registerOutput<List<Map<String, dynamic>>>('dependencies');
-    dependents = registerOutput<List<Map<String, dynamic>>>('dependents');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    inputVariables = registerOutput<List<Map<String, dynamic>>>('inputVariables');
-    labels = registerOutput<Map<String, String>?>('labels');
+    dependencies = registerOutput<List<UnitDependency>>('dependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitDependency>(guardedValue, (value) => UnitDependency.fromMap((value as Map).cast<String, dynamic>())); });
+    dependents = registerOutput<List<UnitDependent>>('dependents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitDependent>(guardedValue, (value) => UnitDependent.fromMap((value as Map).cast<String, dynamic>())); });
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    inputVariables = registerOutput<List<UnitInputVariable>>('inputVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitInputVariable>(guardedValue, (value) => UnitInputVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenance = registerOutput<UnitMaintenance?>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementMode = registerOutput<String?>('managementMode');
     this.name = registerOutput<String>('name');
-    ongoingOperations = registerOutput<List<String>>('ongoingOperations');
-    outputVariables = registerOutput<List<Map<String, dynamic>>>('outputVariables');
-    pendingOperations = registerOutput<List<String>>('pendingOperations');
+    ongoingOperations = registerOutput<List<String>>('ongoingOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputVariables = registerOutput<List<UnitOutputVariable>>('outputVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitOutputVariable>(guardedValue, (value) => UnitOutputVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    pendingOperations = registerOutput<List<String>>('pendingOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     release = registerOutput<String>('release');
-    scheduledOperations = registerOutput<List<String>>('scheduledOperations');
+    scheduledOperations = registerOutput<List<String>>('scheduledOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.state = registerOutput<String>('state');
+    systemCleanupAt = registerOutput<String>('systemCleanupAt');
+    systemManagedState = registerOutput<String>('systemManagedState');
+    tenant = registerOutput<String?>('tenant');
+    uid = registerOutput<String>('uid');
+    unitId = registerOutput<String>('unitId');
+    unitKind = registerOutput<String?>('unitKind');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Unit] resource.
+  Unit.reference(String urn)
+    : super(
+        'gcp:saasruntime/unit:Unit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<UnitCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitCondition>(guardedValue, (value) => UnitCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dependencies = registerOutput<List<UnitDependency>>('dependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitDependency>(guardedValue, (value) => UnitDependency.fromMap((value as Map).cast<String, dynamic>())); });
+    dependents = registerOutput<List<UnitDependent>>('dependents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitDependent>(guardedValue, (value) => UnitDependent.fromMap((value as Map).cast<String, dynamic>())); });
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    inputVariables = registerOutput<List<UnitInputVariable>>('inputVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitInputVariable>(guardedValue, (value) => UnitInputVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maintenance = registerOutput<UnitMaintenance?>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnitMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managementMode = registerOutput<String?>('managementMode');
+    this.name = registerOutput<String>('name');
+    ongoingOperations = registerOutput<List<String>>('ongoingOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputVariables = registerOutput<List<UnitOutputVariable>>('outputVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UnitOutputVariable>(guardedValue, (value) => UnitOutputVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    pendingOperations = registerOutput<List<String>>('pendingOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    release = registerOutput<String>('release');
+    scheduledOperations = registerOutput<List<String>>('scheduledOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    state = registerOutput<String>('state');
     systemCleanupAt = registerOutput<String>('systemCleanupAt');
     systemManagedState = registerOutput<String>('systemManagedState');
     tenant = registerOutput<String?>('tenant');

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskNotebookInfrastructureSpecContainerImage {
   /// Container image to use.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
-  final pulumi.Input<List<String>>? javaJars;
+  final pulumi.Input<List<String>?>? javaJars;
   /// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
-  final pulumi.Input<List<String>>? pythonPackages;
+  final pulumi.Input<List<String>?>? pythonPackages;
 
   /// Creates a new [TaskNotebookInfrastructureSpecContainerImage].
   /// [image] Container image to use.

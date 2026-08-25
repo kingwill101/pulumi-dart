@@ -146,3 +146,14 @@ Future<GetDocumentResult> getDocument(
   );
   return GetDocumentResult.fromMap(result);
 }
+
+pulumi.Output<GetDocumentResult> getDocumentOutput(
+  GetDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:firestore/getDocument:getDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDocumentResult.fromMap);
+}

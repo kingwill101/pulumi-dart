@@ -15,11 +15,11 @@ class ToolOpenApiToolTlsConfigCaCert {
   /// -out example.com.crt \
   /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
   /// A base64-encoded string.
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// (Output)
   /// The name of the allowed custom CA certificates. This
   /// can be used to disambiguate the custom CA certificates.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [ToolOpenApiToolTlsConfigCaCert].
   /// [cert] (Output)

@@ -9,16 +9,16 @@ class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
   /// integrity policy baseline. This baseline is initially derived
   /// from the implicitly trusted boot image when the instance is
   /// created. Enabled by default.
-  final pulumi.Input<bool>? enableIntegrityMonitoring;
+  final pulumi.Input<bool?>? enableIntegrityMonitoring;
   /// Defines whether the instance has Secure Boot enabled.Secure
   /// Boot helps ensure that the system only runs authentic software
   /// by verifying the digital signature of all boot components, and
   /// halting the boot process if signature verification fails.
   /// Disabled by default.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
   /// Defines whether the instance has the vTPM enabled. Enabled by
   /// default.
-  final pulumi.Input<bool>? enableVtpm;
+  final pulumi.Input<bool?>? enableVtpm;
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.

@@ -10,15 +10,15 @@ class RegistrationManagementSettings {
   /// When preferredRenewalMethod is set to AUTOMATIC_RENEWAL, the actual renewalMethod can be set to RENEWAL_DISABLED in case of
   /// problems with the billing account or reported domain abuse. In such cases, check the issues field on the Registration. After
   /// the problem is resolved, the renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
-  final pulumi.Input<String>? preferredRenewalMethod;
+  final pulumi.Input<String?>? preferredRenewalMethod;
   /// (Output)
   /// Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
   /// the actual renewalMethod can be equal to RENEWAL_DISABLED—for example, when there are problems with the billing account
   /// or reported domain abuse. In such cases, check the issues field on the Registration. After the problem is resolved, the
   /// renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
-  final pulumi.Input<String>? renewalMethod;
+  final pulumi.Input<String?>? renewalMethod;
   /// Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
-  final pulumi.Input<String>? transferLockState;
+  final pulumi.Input<String?>? transferLockState;
 
   /// Creates a new [RegistrationManagementSettings].
   /// [preferredRenewalMethod] The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.

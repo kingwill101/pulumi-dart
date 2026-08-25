@@ -6,7 +6,7 @@ import 'environment_properties_property.dart';
 class EnvironmentProperties {
   /// List of all properties in the object.
   /// Structure is documented below.
-  final pulumi.Input<List<EnvironmentPropertiesProperty>>? properties;
+  final pulumi.Input<List<EnvironmentPropertiesProperty>?>? properties;
 
   /// Creates a new [EnvironmentProperties].
   /// [properties] List of all properties in the object.

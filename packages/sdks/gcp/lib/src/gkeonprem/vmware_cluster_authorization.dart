@@ -7,7 +7,7 @@ class VMwareClusterAuthorization {
   /// Users that will be granted the cluster-admin role on the cluster, providing
   /// full access to the cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareClusterAuthorizationAdminUser>>? adminUsers;
+  final pulumi.Input<List<VMwareClusterAuthorizationAdminUser>?>? adminUsers;
 
   /// Creates a new [VMwareClusterAuthorization].
   /// [adminUsers] Users that will be granted the cluster-admin role on the cluster, providing

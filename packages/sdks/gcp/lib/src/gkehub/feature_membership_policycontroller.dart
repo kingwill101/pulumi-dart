@@ -7,7 +7,7 @@ class FeatureMembershipPolicycontroller {
   /// Policy Controller configuration for the cluster. Structure is documented below.
   final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfig> policyControllerHubConfig;
   /// Version of Policy Controller to install. Defaults to the latest version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [FeatureMembershipPolicycontroller].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster. Structure is documented below.

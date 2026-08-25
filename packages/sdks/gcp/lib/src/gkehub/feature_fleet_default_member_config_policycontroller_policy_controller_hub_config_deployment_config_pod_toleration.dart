@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
   /// Matches a taint effect.
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// Matches a taint key (not necessarily unique).
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Matches a taint operator.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Matches a taint value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration].
   /// [effect] Matches a taint effect.

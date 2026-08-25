@@ -30,8 +30,8 @@ class GetDatabaseInstanceSettingMaintenanceWindow {
 
   factory GetDatabaseInstanceSettingMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingMaintenanceWindow(
-      day: pulumi.Input.fromValue(map['day'] as int),
-      hour: pulumi.Input.fromValue(map['hour'] as int),
+      day: pulumi.Input.fromValue((map['day'] as num).toInt()),
+      hour: pulumi.Input.fromValue((map['hour'] as num).toInt()),
       updateTrack: pulumi.Input.fromValue(map['updateTrack'] as String),
     );
   }

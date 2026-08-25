@@ -10,7 +10,7 @@ class GetCaCertsArgs {
   /// The name or self link of the instance.
   final pulumi.Input<String> instance;
   /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCaCertsArgs].
   /// [instance] The name or self link of the instance.

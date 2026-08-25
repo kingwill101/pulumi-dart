@@ -7,48 +7,48 @@ import 'multicast_producer_association_state.dart';
 class MulticastProducerAssociationNetworkservicesState {
   /// [Output only] The timestamp when the multicast producer association was
   /// created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional text description of the multicast producer association.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the multicast domain activation that is in the
   /// same zone as this multicast producer association.
   /// Use the following format:
   /// // `projects/*/locations/*/multicastDomainActivations/*`.
-  final pulumi.Input<String>? multicastDomainActivation;
+  final pulumi.Input<String?>? multicastDomainActivation;
   /// A unique name for the multicast producer association.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
-  final pulumi.Input<String>? multicastProducerAssociationId;
+  final pulumi.Input<String?>? multicastProducerAssociationId;
   /// Identifier. The resource name of the multicast producer association.
   /// Use the following format:
   /// `projects/*/locations/*/multicastProducerAssociations/*`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource name of the multicast producer VPC network.
   /// Use following format:
   /// `projects/{project}/locations/global/networks/{network}`.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// (Output)
   /// The state of the multicast resource.
   /// Possible values:
@@ -59,15 +59,15 @@ class MulticastProducerAssociationNetworkservicesState {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  final pulumi.Input<List<MulticastProducerAssociationState>>? states;
+  final pulumi.Input<List<MulticastProducerAssociationState>?>? states;
   /// [Output only] The Google-generated UUID for the resource. This value is
   /// unique across all multicast producer association resources. If a producer
   /// association is deleted and another with the same name is created, the new
   /// producer association is assigned a different unique_id.
-  final pulumi.Input<String>? uniqueId;
+  final pulumi.Input<String?>? uniqueId;
   /// [Output only] The timestamp when the Multicast Producer Association was
   /// most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [MulticastProducerAssociationNetworkservicesState].
   /// [createTime] [Output only] The timestamp when the multicast producer association was

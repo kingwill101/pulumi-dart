@@ -7,41 +7,41 @@ import 'import_job_validation_report.dart';
 /// Input properties used for looking up and filtering ImportJob resources.
 class ImportJobState {
   /// Reference to a source.
-  final pulumi.Input<String>? assetSource;
+  final pulumi.Input<String?>? assetSource;
   /// The timestamp when the import job was completed.
-  final pulumi.Input<String>? completeTime;
+  final pulumi.Input<String?>? completeTime;
   /// The timestamp when the import job was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-friendly display name. Maximum length is 256 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// A resource that reports result of the import job execution.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobExecutionReport>>? executionReports;
+  final pulumi.Input<List<ImportJobExecutionReport>?>? executionReports;
   /// ID of the import job.
-  final pulumi.Input<String>? importJobId;
+  final pulumi.Input<String?>? importJobId;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The full name of the import job.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The state of the import job.
   /// Possible values:
   /// IMPORT_JOB_STATE_PENDING
@@ -51,12 +51,12 @@ class ImportJobState {
   /// IMPORT_JOB_STATE_VALIDATING
   /// IMPORT_JOB_STATE_FAILED_VALIDATION
   /// IMPORT_JOB_STATE_READY
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The timestamp when the import job was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// A resource that aggregates errors across import job files.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobValidationReport>>? validationReports;
+  final pulumi.Input<List<ImportJobValidationReport>?>? validationReports;
 
   /// Creates a new [ImportJobState].
   /// [assetSource] Reference to a source.

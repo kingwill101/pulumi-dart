@@ -7,7 +7,7 @@ class AppAudioProcessingConfigBargeInConfig {
   /// that the user hasn't heard the full preceding agent message.
   /// This should not be used in scenarios where agent responses are displayed
   /// visually.
-  final pulumi.Input<bool>? bargeInAwareness;
+  final pulumi.Input<bool?>? bargeInAwareness;
 
   /// Creates a new [AppAudioProcessingConfigBargeInConfig].
   /// [bargeInAwareness] If enabled, the agent will adapt its next response based on the assumption

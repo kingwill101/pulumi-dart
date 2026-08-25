@@ -7,9 +7,9 @@ class WorkerPoolTemplateVolumeGcs {
   final pulumi.Input<String> bucket;
   /// A list of flags to pass to the gcsfuse command for configuring this volume.
   /// Flags should be passed without leading dashes.
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// If true, mount the GCS bucket as read-only
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
 
   /// Creates a new [WorkerPoolTemplateVolumeGcs].
   /// [bucket] GCS Bucket name

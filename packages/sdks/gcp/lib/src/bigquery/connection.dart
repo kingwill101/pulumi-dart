@@ -2830,7 +2830,7 @@ class Connection extends pulumi.CustomResource {
           'gcp:bigquery/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     aws = registerOutput<ConnectionAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azure = registerOutput<ConnectionAzure?>('azure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAzure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2855,11 +2855,12 @@ class Connection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2873,6 +2874,33 @@ class Connection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aws = registerOutput<ConnectionAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azure = registerOutput<ConnectionAzure?>('azure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAzure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSpanner.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configuration = registerOutput<ConnectionConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionId = registerOutput<String>('connectionId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hasCredential = registerOutput<bool>('hasCredential');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    spark = registerOutput<ConnectionSpark?>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSpark.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'gcp:bigquery/connection:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     aws = registerOutput<ConnectionAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azure = registerOutput<ConnectionAzure?>('azure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAzure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

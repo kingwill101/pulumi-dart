@@ -6,30 +6,30 @@ import 'qa_scorecard_revision_snapshot.dart';
 /// Input properties used for looking up and filtering QaScorecardRevision resources.
 class QaScorecardRevisionState {
   /// Alternative IDs for this revision of the scorecard, e.g., `latest`.
-  final pulumi.Input<List<String>>? alternateIds;
+  final pulumi.Input<List<String>?>? alternateIds;
   /// (Output)
   /// The time at which this scorecard was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// (Output)
   /// Identifier. The scorecard name.
   /// Format:
   /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? qaScorecard;
+  final pulumi.Input<String?>? qaScorecard;
   /// A unique ID for the new QaScorecardRevision. This ID will become the final
   /// component of the QaScorecardRevision's resource name.
   /// If no ID is specified this resource will get the latest revision on the given scorecard.
-  final pulumi.Input<String>? qaScorecardRevisionId;
+  final pulumi.Input<String?>? qaScorecardRevisionId;
   /// A QaScorecard represents a collection of questions to be scored during
   /// analysis.
   /// Structure is documented below.
-  final pulumi.Input<List<QaScorecardRevisionSnapshot>>? snapshots;
+  final pulumi.Input<List<QaScorecardRevisionSnapshot>?>? snapshots;
   /// State of the scorecard revision, indicating whether it's ready to
   /// be used in analysis.
   /// Possible values:
@@ -39,7 +39,7 @@ class QaScorecardRevisionState {
   /// READY
   /// DELETING
   /// TRAINING_CANCELLED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [QaScorecardRevisionState].
   /// [alternateIds] Alternative IDs for this revision of the scorecard, e.g., `latest`.

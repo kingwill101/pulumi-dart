@@ -17,7 +17,7 @@ class RegionUrlMapPathMatcherPathRule {
   /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
   /// or urlRedirect must be set.
   /// Structure is documented below.
-  final pulumi.Input<RegionUrlMapPathMatcherPathRuleRouteAction>? routeAction;
+  final pulumi.Input<RegionUrlMapPathMatcherPathRuleRouteAction?>? routeAction;
   /// The region backend service resource to which traffic is
   /// directed if this rule is matched. If routeAction is additionally specified,
   /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
@@ -25,12 +25,12 @@ class RegionUrlMapPathMatcherPathRule {
   /// contain any weightedBackendService s. Conversely, if routeAction specifies any
   /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
   /// service or routeAction.weightedBackendService must be set.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// When a path pattern is matched, the request is redirected to a URL specified
   /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
   /// be set.
   /// Structure is documented below.
-  final pulumi.Input<RegionUrlMapPathMatcherPathRuleUrlRedirect>? urlRedirect;
+  final pulumi.Input<RegionUrlMapPathMatcherPathRuleUrlRedirect?>? urlRedirect;
 
   /// Creates a new [RegionUrlMapPathMatcherPathRule].
   /// [paths] The list of path patterns to match. Each must start with / and the only place a

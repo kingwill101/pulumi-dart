@@ -7,7 +7,7 @@ import 'gcpolicy_max_version.dart';
 /// Input properties used for looking up and filtering GCPolicy resources.
 class GCPolicyState {
   /// The name of the column family.
-  final pulumi.Input<String>? columnFamily;
+  final pulumi.Input<String?>? columnFamily;
   /// The deletion policy for the GC policy. Setting ABANDON allows the resource
   /// to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
   /// in a replicated instance.
@@ -17,27 +17,27 @@ class GCPolicyState {
   /// When set to "DELETE" or "", deleting the resource is allowed.
   ///
   /// Possible values: PREVENT, ABANDON, DELETE.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
-  final pulumi.Input<String>? gcRules;
+  final pulumi.Input<String?>? gcRules;
   /// Boolean for whether to allow ignoring warnings when updating the gc policy.
   /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
   /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
   ///
   /// -----
-  final pulumi.Input<bool>? ignoreWarnings;
+  final pulumi.Input<bool?>? ignoreWarnings;
   /// The name of the Bigtable instance.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// GC policy that applies to all cells older than the given age.
-  final pulumi.Input<GCPolicyMaxAge>? maxAge;
+  final pulumi.Input<GCPolicyMaxAge?>? maxAge;
   /// GC policy that applies to all versions of a cell except for the most recent.
-  final pulumi.Input<List<GCPolicyMaxVersion>>? maxVersions;
+  final pulumi.Input<List<GCPolicyMaxVersion>?>? maxVersions;
   /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the table.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [GCPolicyState].
   /// [columnFamily] The name of the column family.

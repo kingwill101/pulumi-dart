@@ -982,12 +982,12 @@ class WorkforcePoolIamBinding extends pulumi.CustomResource {
           'gcp:iam/workforcePoolIamBinding:WorkforcePoolIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<WorkforcePoolIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }
@@ -997,11 +997,12 @@ class WorkforcePoolIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkforcePoolIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkforcePoolIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1018,7 +1019,24 @@ class WorkforcePoolIamBinding extends pulumi.CustomResource {
     condition = registerOutput<WorkforcePoolIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePoolIamBinding] resource.
+  WorkforcePoolIamBinding.reference(String urn)
+    : super(
+        'gcp:iam/workforcePoolIamBinding:WorkforcePoolIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<WorkforcePoolIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }

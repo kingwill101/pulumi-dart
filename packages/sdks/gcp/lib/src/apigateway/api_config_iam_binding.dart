@@ -988,13 +988,13 @@ class ApiConfigIamBinding extends pulumi.CustomResource {
           'gcp:apigateway/apiConfigIamBinding:ApiConfigIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     api = registerOutput<String>('api');
     apiConfig = registerOutput<String>('apiConfig');
     condition = registerOutput<ApiConfigIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }
@@ -1004,11 +1004,12 @@ class ApiConfigIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiConfigIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiConfigIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1026,7 +1027,25 @@ class ApiConfigIamBinding extends pulumi.CustomResource {
     apiConfig = registerOutput<String>('apiConfig');
     condition = registerOutput<ApiConfigIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ApiConfigIamBinding] resource.
+  ApiConfigIamBinding.reference(String urn)
+    : super(
+        'gcp:apigateway/apiConfigIamBinding:ApiConfigIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    api = registerOutput<String>('api');
+    apiConfig = registerOutput<String>('apiConfig');
+    condition = registerOutput<ApiConfigIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }

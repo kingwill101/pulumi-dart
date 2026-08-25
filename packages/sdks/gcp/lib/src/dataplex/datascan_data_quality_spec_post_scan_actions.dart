@@ -7,10 +7,10 @@ import 'datascan_data_quality_spec_post_scan_actions_notification_report.dart';
 class DatascanDataQualitySpecPostScanActions {
   /// If set, results will be exported to the provided BigQuery table.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataQualitySpecPostScanActionsBigqueryExport>? bigqueryExport;
+  final pulumi.Input<DatascanDataQualitySpecPostScanActionsBigqueryExport?>? bigqueryExport;
   /// The configuration of notification report post scan action.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataQualitySpecPostScanActionsNotificationReport>? notificationReport;
+  final pulumi.Input<DatascanDataQualitySpecPostScanActionsNotificationReport?>? notificationReport;
 
   /// Creates a new [DatascanDataQualitySpecPostScanActions].
   /// [bigqueryExport] If set, results will be exported to the provided BigQuery table.

@@ -9,7 +9,7 @@ class AccessLevelBasicCondition {
   /// the Condition to be true. If not specified, all devices are
   /// allowed.
   /// Structure is documented below.
-  final pulumi.Input<AccessLevelBasicConditionDevicePolicy>? devicePolicy;
+  final pulumi.Input<AccessLevelBasicConditionDevicePolicy?>? devicePolicy;
   /// A list of CIDR block IP subnetwork specification. May be IPv4
   /// or IPv6.
   /// Note that for a CIDR IP address block, the specified IP address
@@ -20,7 +20,7 @@ class AccessLevelBasicCondition {
   /// is not. The originating IP of a request must be in one of the
   /// listed subnets in order for this Condition to be true.
   /// If empty, all IP addresses are allowed.
-  final pulumi.Input<List<String>>? ipSubnetworks;
+  final pulumi.Input<List<String>?>? ipSubnetworks;
   /// An allowed list of members (users, service accounts).
   /// Using groups is not supported yet.
   /// The signed-in user originating the request must be a part of one
@@ -28,24 +28,24 @@ class AccessLevelBasicCondition {
   /// from any user (logged in/not logged in, not present in any
   /// groups, etc.).
   /// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
-  final pulumi.Input<List<String>>? members;
+  final pulumi.Input<List<String>?>? members;
   /// Whether to negate the Condition. If true, the Condition becomes
   /// a NAND over its non-empty fields, each field must be false for
   /// the Condition overall to be satisfied. Defaults to false.
-  final pulumi.Input<bool>? negate;
+  final pulumi.Input<bool?>? negate;
   /// The request must originate from one of the provided
   /// countries/regions.
   /// Format: A valid ISO 3166-1 alpha-2 code.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// A list of other access levels defined in the same Policy,
   /// referenced by resource name. Referencing an AccessLevel which
   /// does not exist is an error. All access levels listed must be
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-  final pulumi.Input<List<String>>? requiredAccessLevels;
+  final pulumi.Input<List<String>?>? requiredAccessLevels;
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
   /// Structure is documented below.
-  final pulumi.Input<List<AccessLevelBasicConditionVpcNetworkSource>>? vpcNetworkSources;
+  final pulumi.Input<List<AccessLevelBasicConditionVpcNetworkSource>?>? vpcNetworkSources;
 
   /// Creates a new [AccessLevelBasicCondition].
   /// [devicePolicy] Device specific restrictions, all restrictions must hold for

@@ -7,16 +7,16 @@ import 'urlmap_path_matcher_header_action_response_headers_to_add.dart';
 class URLMapPathMatcherHeaderAction {
   /// Headers to add to a matching request prior to forwarding the request to the backendService.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherHeaderActionRequestHeadersToAdd>>? requestHeadersToAdds;
+  final pulumi.Input<List<URLMapPathMatcherHeaderActionRequestHeadersToAdd>?>? requestHeadersToAdds;
   /// A list of header names for headers that need to be removed from the request prior to
   /// forwarding the request to the backendService.
-  final pulumi.Input<List<String>>? requestHeadersToRemoves;
+  final pulumi.Input<List<String>?>? requestHeadersToRemoves;
   /// Headers to add the response prior to sending the response back to the client.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherHeaderActionResponseHeadersToAdd>>? responseHeadersToAdds;
+  final pulumi.Input<List<URLMapPathMatcherHeaderActionResponseHeadersToAdd>?>? responseHeadersToAdds;
   /// A list of header names for headers that need to be removed from the response prior to sending the
   /// response back to the client.
-  final pulumi.Input<List<String>>? responseHeadersToRemoves;
+  final pulumi.Input<List<String>?>? responseHeadersToRemoves;
 
   /// Creates a new [URLMapPathMatcherHeaderAction].
   /// [requestHeadersToAdds] Headers to add to a matching request prior to forwarding the request to the backendService.

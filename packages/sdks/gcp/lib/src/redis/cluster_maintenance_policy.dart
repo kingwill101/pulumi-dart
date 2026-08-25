@@ -8,17 +8,17 @@ class ClusterMaintenancePolicy {
   /// Output only. The time when the policy was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// (Output)
   /// Output only. The time when the policy was last updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Optional. Maintenance window that is applied to resources covered by this policy.
   /// Minimum 1. For the current version, the maximum number
   /// of weeklyWindow is expected to be one.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterMaintenancePolicyWeeklyMaintenanceWindow>>? weeklyMaintenanceWindows;
+  final pulumi.Input<List<ClusterMaintenancePolicyWeeklyMaintenanceWindow>?>? weeklyMaintenanceWindows;
 
   /// Creates a new [ClusterMaintenancePolicy].
   /// [createTime] (Output)

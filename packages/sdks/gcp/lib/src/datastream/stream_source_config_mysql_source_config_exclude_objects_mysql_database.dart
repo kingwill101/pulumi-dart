@@ -8,7 +8,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
   final pulumi.Input<String> database;
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable>>? mysqlTables;
+  final pulumi.Input<List<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable>?>? mysqlTables;
 
   /// Creates a new [StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase].
   /// [database] Database name.

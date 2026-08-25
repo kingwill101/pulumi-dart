@@ -6,9 +6,9 @@ import 'evaluation_scenario_scenario_expectation_agent_response_chunk.dart';
 class EvaluationScenarioScenarioExpectationAgentResponse {
   /// Content of the message as a series of chunks.
   /// Structure is documented below.
-  final pulumi.Input<List<EvaluationScenarioScenarioExpectationAgentResponseChunk>>? chunks;
+  final pulumi.Input<List<EvaluationScenarioScenarioExpectationAgentResponseChunk>?>? chunks;
   /// The role within the conversation, e.g., user, agent.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [EvaluationScenarioScenarioExpectationAgentResponse].
   /// [chunks] Content of the message as a series of chunks.

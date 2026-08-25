@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeCacheServiceRoutingHostRule {
   /// A human-readable description of the hostRule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of host patterns to match.
   /// Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
   /// When multiple hosts are specified, hosts are matched in the following priority:

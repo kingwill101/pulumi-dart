@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
   /// Configures the manner in which the template library is installed on the cluster.
   /// Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
-  final pulumi.Input<String>? installation;
+  final pulumi.Input<String?>? installation;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary].
   /// [installation] Configures the manner in which the template library is installed on the cluster.

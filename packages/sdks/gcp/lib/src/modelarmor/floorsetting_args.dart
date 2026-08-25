@@ -13,20 +13,20 @@ import 'floorsetting_google_mcp_server_floor_setting.dart';
 class FloorsettingArgs {
   /// AI Platform floor setting.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingAiPlatformFloorSetting>? aiPlatformFloorSetting;
+  final pulumi.Input<FloorsettingAiPlatformFloorSetting?>? aiPlatformFloorSetting;
   /// Floor Settings enforcement status.
-  final pulumi.Input<bool>? enableFloorSettingEnforcement;
+  final pulumi.Input<bool?>? enableFloorSettingEnforcement;
   /// Filters configuration.
   /// Structure is documented below.
   final pulumi.Input<FloorsettingFilterConfig> filterConfig;
   /// Metadata to enable multi language detection via floor setting.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingFloorSettingMetadata>? floorSettingMetadata;
+  final pulumi.Input<FloorsettingFloorSettingMetadata?>? floorSettingMetadata;
   /// Google MCP Server floor setting.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingGoogleMcpServerFloorSetting>? googleMcpServerFloorSetting;
+  final pulumi.Input<FloorsettingGoogleMcpServerFloorSetting?>? googleMcpServerFloorSetting;
   /// List of integrated services for which the floor setting is applicable.
-  final pulumi.Input<List<String>>? integratedServices;
+  final pulumi.Input<List<String>?>? integratedServices;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Will be any one of these:

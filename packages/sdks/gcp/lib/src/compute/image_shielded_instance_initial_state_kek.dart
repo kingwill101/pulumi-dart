@@ -7,7 +7,7 @@ class ImageShieldedInstanceInitialStateKek {
   /// A base64-encoded string.
   final pulumi.Input<String> content;
   /// The file type of source file.
-  final pulumi.Input<String>? fileType;
+  final pulumi.Input<String?>? fileType;
 
   /// Creates a new [ImageShieldedInstanceInitialStateKek].
   /// [content] The raw content in the secure keys file.

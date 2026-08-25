@@ -10,19 +10,19 @@ class RegionResizeRequestStatusErrorErrorErrorDetail {
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo>>? errorInfos;
+  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo>?>? errorInfos;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailHelp>>? helps;
+  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailHelp>?>? helps;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage>>? localizedMessages;
+  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage>?>? localizedMessages;
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo>>? quotaInfos;
+  final pulumi.Input<List<RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo>?>? quotaInfos;
 
   /// Creates a new [RegionResizeRequestStatusErrorErrorErrorDetail].
   /// [errorInfos] (Output)

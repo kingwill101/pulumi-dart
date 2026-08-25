@@ -5,32 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AzureClient resources.
 class AzureClientState {
   /// The Azure Active Directory Application ID.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Output only. The PEM encoded x509 certificate.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Output only. The time at which this resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Azure Active Directory Tenant ID.
   ///
   ///
   ///
   /// - - -
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Output only. A globally unique identifier for the client.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [AzureClientState].
   /// [applicationId] The Azure Active Directory Application ID.

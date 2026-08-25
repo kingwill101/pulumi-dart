@@ -14,14 +14,14 @@ class RouterRoutePolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region where the router and NAT reside.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the Cloud Router in which this route policy will be configured.
   final pulumi.Input<String> router;
   /// List of terms (the order in the list is not important, they are evaluated in order of priority).
@@ -29,7 +29,7 @@ class RouterRoutePolicyArgs {
   final pulumi.Input<List<RouterRoutePolicyTerm>> terms;
   /// This is policy's type, which is one of IMPORT or EXPORT
   /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RouterRoutePolicyArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

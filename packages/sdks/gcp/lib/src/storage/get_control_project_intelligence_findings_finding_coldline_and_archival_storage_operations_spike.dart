@@ -31,7 +31,7 @@ class GetControlProjectIntelligenceFindingsFindingColdlineAndArchivalStorageOper
 
   factory GetControlProjectIntelligenceFindingsFindingColdlineAndArchivalStorageOperationsSpike.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingsFindingColdlineAndArchivalStorageOperationsSpike(
-      percentageIncrease: pulumi.Input.fromValue(map['percentageIncrease'] as double),
+      percentageIncrease: pulumi.Input.fromValue((map['percentageIncrease'] as num).toDouble()),
       topBuckets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsFindingColdlineAndArchivalStorageOperationsSpikeTopBucket>(map['topBuckets']!, (value) => GetControlProjectIntelligenceFindingsFindingColdlineAndArchivalStorageOperationsSpikeTopBucket.fromMap((value as Map).cast<String, dynamic>()))),
       totalOperationsCount: pulumi.Input.fromValue(map['totalOperationsCount'] as String),
     );

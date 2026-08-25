@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket {
   /// The list of cloud storage bucket names to exclude in the DatasetConfig.
   /// Exactly one of the bucketName and bucketPrefixRegex should be specified.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// The list of regex patterns for bucket names matching the regex.
   /// Regex should follow the syntax specified in google/re2 on GitHub.
   /// Exactly one of the bucketName and bucketPrefixRegex should be specified.
-  final pulumi.Input<String>? bucketPrefixRegex;
+  final pulumi.Input<String?>? bucketPrefixRegex;
 
   /// Creates a new [InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket].
   /// [bucketName] The list of cloud storage bucket names to exclude in the DatasetConfig.

@@ -34,7 +34,7 @@ class GetServiceTemplateContainerStartupProbeHttpGet {
     return GetServiceTemplateContainerStartupProbeHttpGet(
       httpHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateContainerStartupProbeHttpGetHttpHeader>(map['httpHeaders']!, (value) => GetServiceTemplateContainerStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

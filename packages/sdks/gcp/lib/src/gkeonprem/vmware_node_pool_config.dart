@@ -6,14 +6,14 @@ import 'vmware_node_pool_config_vsphere_config.dart';
 
 class VMwareNodePoolConfig {
   /// VMware disk size to be used during creation.
-  final pulumi.Input<int>? bootDiskSizeGb;
+  final pulumi.Input<int?>? bootDiskSizeGb;
   /// The number of CPUs for each node in the node pool.
-  final pulumi.Input<int>? cpus;
+  final pulumi.Input<int?>? cpus;
   /// Allow node pool traffic to be load balanced. Only works for clusters with
   /// MetalLB load balancers.
-  final pulumi.Input<bool>? enableLoadBalancer;
+  final pulumi.Input<bool?>? enableLoadBalancer;
   /// The OS image name in vCenter, only valid when using Windows.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The OS image to be used for each node in a node pool.
   /// Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
   final pulumi.Input<String> imageType;
@@ -23,17 +23,17 @@ class VMwareNodePoolConfig {
   /// In case of conflict in label keys, the applied set may differ depending on
   /// the Kubernetes version -- it's best to assume the behavior is undefined
   /// and conflicts should be avoided.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The megabytes of memory for each node in the node pool.
-  final pulumi.Input<int>? memoryMb;
+  final pulumi.Input<int?>? memoryMb;
   /// The number of nodes in the node pool.
-  final pulumi.Input<int>? replicas;
+  final pulumi.Input<int?>? replicas;
   /// The initial taints assigned to nodes of this node pool.
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareNodePoolConfigTaint>>? taints;
+  final pulumi.Input<List<VMwareNodePoolConfigTaint>?>? taints;
   /// Specifies the vSphere config for node pool.
   /// Structure is documented below.
-  final pulumi.Input<VMwareNodePoolConfigVsphereConfig>? vsphereConfig;
+  final pulumi.Input<VMwareNodePoolConfigVsphereConfig?>? vsphereConfig;
 
   /// Creates a new [VMwareNodePoolConfig].
   /// [bootDiskSizeGb] VMware disk size to be used during creation.
@@ -76,14 +76,14 @@ class VMwareNodePoolConfig {
 
   factory VMwareNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfig(
-      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      cpus: (() { final guardedValue = map['cpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpus: (() { final guardedValue = map['cpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enableLoadBalancer: (() { final guardedValue = map['enableLoadBalancer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       imageType: pulumi.Input.fromValue(map['imageType'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      memoryMb: (() { final guardedValue = map['memoryMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memoryMb: (() { final guardedValue = map['memoryMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareNodePoolConfigTaint>(guardedValue, (value) => VMwareNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vsphereConfig: (() { final guardedValue = map['vsphereConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareNodePoolConfigVsphereConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

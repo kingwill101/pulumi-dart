@@ -6,7 +6,7 @@ import 'service_template_container_source_code_cloud_storage_source.dart';
 class ServiceTemplateContainerSourceCode {
   /// Cloud Storage source.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateContainerSourceCodeCloudStorageSource>? cloudStorageSource;
+  final pulumi.Input<ServiceTemplateContainerSourceCodeCloudStorageSource?>? cloudStorageSource;
 
   /// Creates a new [ServiceTemplateContainerSourceCode].
   /// [cloudStorageSource] Cloud Storage source.

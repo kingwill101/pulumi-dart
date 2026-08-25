@@ -7,19 +7,19 @@ import 'trigger_github_push.dart';
 class TriggerGithub {
   /// The resource name of the github enterprise config that should be applied to this installation.
   /// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
-  final pulumi.Input<String>? enterpriseConfigResourceName;
+  final pulumi.Input<String?>? enterpriseConfigResourceName;
   /// Name of the repository. For example: The name for
   /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the repository. For example: The owner for
   /// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
   /// Structure is documented below.
-  final pulumi.Input<TriggerGithubPullRequest>? pullRequest;
+  final pulumi.Input<TriggerGithubPullRequest?>? pullRequest;
   /// filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
   /// Structure is documented below.
-  final pulumi.Input<TriggerGithubPush>? push;
+  final pulumi.Input<TriggerGithubPush?>? push;
 
   /// Creates a new [TriggerGithub].
   /// [enterpriseConfigResourceName] The resource name of the github enterprise config that should be applied to this installation.

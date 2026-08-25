@@ -6,14 +6,14 @@ import 'iamaudit_config_audit_log_config.dart';
 /// Input properties used for looking up and filtering IAMAuditConfig resources.
 class IAMAuditConfigState {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  final pulumi.Input<List<IAMAuditConfigAuditLogConfig>>? auditLogConfigs;
+  final pulumi.Input<List<IAMAuditConfigAuditLogConfig>?>? auditLogConfigs;
   /// (Computed) The etag of the project's IAM policy.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The project id of the target project. This is not
   /// inferred from the provider.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [IAMAuditConfigState].
   /// [auditLogConfigs] The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.

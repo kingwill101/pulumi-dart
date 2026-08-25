@@ -13,13 +13,13 @@ class ExternalAddressArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The internal IP address of a workload VM.
   final pulumi.Input<String> internalIp;
   /// The ID of the external IP Address.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource name of the private cloud to create a new external address in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud

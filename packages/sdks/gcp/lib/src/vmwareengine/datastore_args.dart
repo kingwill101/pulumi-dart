@@ -14,9 +14,9 @@ class DatastoreArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this datastore
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The user-provided identifier of the datastore to be created.
@@ -29,13 +29,13 @@ class DatastoreArgs {
   /// * Not formatted as a UUID
   /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
   /// (section 3.5)
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NFS datastore configuration.
   /// Structure is documented below.
   final pulumi.Input<DatastoreNfsDatastore> nfsDatastore;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DatastoreArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

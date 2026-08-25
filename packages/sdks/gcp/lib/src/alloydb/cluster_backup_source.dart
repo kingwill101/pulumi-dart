@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBackupSource {
   /// The name of the backup resource.
-  final pulumi.Input<String>? backupName;
+  final pulumi.Input<String?>? backupName;
 
   /// Creates a new [ClusterBackupSource].
   /// [backupName] The name of the backup resource.

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_exchange_subscription_args.dart';
 import 'data_exchange_subscription_destination_dataset.dart';
+import 'data_exchange_subscription_linked_dataset_map.dart';
+import 'data_exchange_subscription_linked_resource.dart';
 import 'data_exchange_subscription_state.dart';
 
 /// A Bigquery Analytics Hub Data Exchange subscription
@@ -718,10 +720,10 @@ class DataExchangeSubscription extends pulumi.CustomResource {
   /// e.g. projects/123/locations/us/dataExchanges/456/listings/789 &gt; projects/123/datasets/my_dataset
   /// For Data Exchange subscriptions, this map may contain multiple entries if the Data Exchange has multiple listings.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> linkedDatasetMaps;
+  late final pulumi.Output<List<DataExchangeSubscriptionLinkedDatasetMap>> linkedDatasetMaps;
   /// Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> linkedResources;
+  late final pulumi.Output<List<DataExchangeSubscriptionLinkedResource>> linkedResources;
   /// The geographic location where the Subscription (and its linked dataset) should reside.
   /// This is the subscriber's desired location for the created resources.
   /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -763,7 +765,7 @@ class DataExchangeSubscription extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     dataExchange = registerOutput<String>('dataExchange');
@@ -773,8 +775,8 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<DataExchangeSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataExchangeSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
-    linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');
-    linkedResources = registerOutput<List<Map<String, dynamic>>>('linkedResources');
+    linkedDatasetMaps = registerOutput<List<DataExchangeSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExchangeSubscriptionLinkedDatasetMap>(guardedValue, (value) => DataExchangeSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedResources = registerOutput<List<DataExchangeSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExchangeSubscriptionLinkedResource>(guardedValue, (value) => DataExchangeSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     logLinkedDatasetQueryUserEmail = registerOutput<bool>('logLinkedDatasetQueryUserEmail');
     this.name = registerOutput<String>('name');
@@ -793,11 +795,12 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataExchangeSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataExchangeSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -819,8 +822,8 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<DataExchangeSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataExchangeSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
-    linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');
-    linkedResources = registerOutput<List<Map<String, dynamic>>>('linkedResources');
+    linkedDatasetMaps = registerOutput<List<DataExchangeSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExchangeSubscriptionLinkedDatasetMap>(guardedValue, (value) => DataExchangeSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedResources = registerOutput<List<DataExchangeSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExchangeSubscriptionLinkedResource>(guardedValue, (value) => DataExchangeSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     logLinkedDatasetQueryUserEmail = registerOutput<bool>('logLinkedDatasetQueryUserEmail');
     this.name = registerOutput<String>('name');
@@ -830,6 +833,38 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     refreshPolicy = registerOutput<String?>('refreshPolicy');
     resourceType = registerOutput<String>('resourceType');
     this.state = registerOutput<String>('state');
+    subscriberContact = registerOutput<String?>('subscriberContact');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [DataExchangeSubscription] resource.
+  DataExchangeSubscription.reference(String urn)
+    : super(
+        'gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTime = registerOutput<String>('creationTime');
+    dataExchange = registerOutput<String>('dataExchange');
+    dataExchangeId = registerOutput<String>('dataExchangeId');
+    dataExchangeLocation = registerOutput<String>('dataExchangeLocation');
+    dataExchangeProject = registerOutput<String>('dataExchangeProject');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destinationDataset = registerOutput<DataExchangeSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataExchangeSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifyTime = registerOutput<String>('lastModifyTime');
+    linkedDatasetMaps = registerOutput<List<DataExchangeSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExchangeSubscriptionLinkedDatasetMap>(guardedValue, (value) => DataExchangeSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedResources = registerOutput<List<DataExchangeSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataExchangeSubscriptionLinkedResource>(guardedValue, (value) => DataExchangeSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    logLinkedDatasetQueryUserEmail = registerOutput<bool>('logLinkedDatasetQueryUserEmail');
+    this.name = registerOutput<String>('name');
+    organizationDisplayName = registerOutput<String>('organizationDisplayName');
+    organizationId = registerOutput<String>('organizationId');
+    project = registerOutput<String>('project');
+    refreshPolicy = registerOutput<String?>('refreshPolicy');
+    resourceType = registerOutput<String>('resourceType');
+    state = registerOutput<String>('state');
     subscriberContact = registerOutput<String?>('subscriberContact');
     subscriptionId = registerOutput<String>('subscriptionId');
   }

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'group_additional_group_key.dart';
 import 'group_args.dart';
 import 'group_group_key.dart';
 import 'group_state.dart';
@@ -195,7 +196,7 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// Additional group keys associated with the Group
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> additionalGroupKeys;
+  late final pulumi.Output<List<GroupAdditionalGroupKey>> additionalGroupKeys;
   /// The time when the Group was created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -249,16 +250,16 @@ class Group extends pulumi.CustomResource {
           'gcp:cloudidentity/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    additionalGroupKeys = registerOutput<List<Map<String, dynamic>>>('additionalGroupKeys');
+    additionalGroupKeys = registerOutput<List<GroupAdditionalGroupKey>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupAdditionalGroupKey>(guardedValue, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     groupKey = registerOutput<GroupGroupKey>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialGroupConfig = registerOutput<String?>('initialGroupConfig');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     updateTime = registerOutput<String>('updateTime');
@@ -269,11 +270,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,14 +289,36 @@ class Group extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalGroupKeys = registerOutput<List<Map<String, dynamic>>>('additionalGroupKeys');
+    additionalGroupKeys = registerOutput<List<GroupAdditionalGroupKey>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupAdditionalGroupKey>(guardedValue, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     groupKey = registerOutput<GroupGroupKey>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialGroupConfig = registerOutput<String?>('initialGroupConfig');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'gcp:cloudidentity/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalGroupKeys = registerOutput<List<GroupAdditionalGroupKey>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupAdditionalGroupKey>(guardedValue, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    groupKey = registerOutput<GroupGroupKey>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupGroupKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialGroupConfig = registerOutput<String?>('initialGroupConfig');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     updateTime = registerOutput<String>('updateTime');

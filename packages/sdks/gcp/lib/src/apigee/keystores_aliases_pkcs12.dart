@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keystores_aliases_pkcs12_args.dart';
+import 'keystores_aliases_pkcs12_certs_info.dart';
 import 'keystores_aliases_pkcs12_state.dart';
 
 /// An alias from a pkcs12 file.
@@ -30,7 +31,7 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
   late final pulumi.Output<String> alias;
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
+  late final pulumi.Output<List<KeystoresAliasesPkcs12CertsInfo>> certsInfos;
   /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -67,10 +68,10 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
           'gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     alias = registerOutput<String>('alias');
-    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    certsInfos = registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfo>(guardedValue, (value) => KeystoresAliasesPkcs12CertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     file = registerOutput<String>('file');
@@ -86,11 +87,12 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeystoresAliasesPkcs12State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeystoresAliasesPkcs12._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -105,7 +107,28 @@ class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     alias = registerOutput<String>('alias');
-    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    certsInfos = registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfo>(guardedValue, (value) => KeystoresAliasesPkcs12CertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    environment = registerOutput<String>('environment');
+    file = registerOutput<String>('file');
+    filehash = registerOutput<String>('filehash');
+    keystore = registerOutput<String>('keystore');
+    orgId = registerOutput<String>('orgId');
+    password = registerOutput<String>('password');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [KeystoresAliasesPkcs12] resource.
+  KeystoresAliasesPkcs12.reference(String urn)
+    : super(
+        'gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    certsInfos = registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfo>(guardedValue, (value) => KeystoresAliasesPkcs12CertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     file = registerOutput<String>('file');

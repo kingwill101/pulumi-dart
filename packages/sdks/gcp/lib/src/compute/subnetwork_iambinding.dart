@@ -2159,11 +2159,11 @@ class SubnetworkIAMBinding extends pulumi.CustomResource {
           'gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<SubnetworkIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetworkIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
@@ -2175,11 +2175,12 @@ class SubnetworkIAMBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetworkIAMBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetworkIAMBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2195,7 +2196,25 @@ class SubnetworkIAMBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<SubnetworkIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetworkIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    subnetwork = registerOutput<String>('subnetwork');
+  }
+
+  /// Creates a typed reference to an existing [SubnetworkIAMBinding] resource.
+  SubnetworkIAMBinding.reference(String urn)
+    : super(
+        'gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<SubnetworkIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetworkIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');

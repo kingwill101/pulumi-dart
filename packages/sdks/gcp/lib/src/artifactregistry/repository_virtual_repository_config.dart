@@ -7,7 +7,7 @@ class RepositoryVirtualRepositoryConfig {
   /// Policies that configure the upstream artifacts distributed by the Virtual
   /// Repository. Upstream policies cannot be set on a standard repository.
   /// Structure is documented below.
-  final pulumi.Input<List<RepositoryVirtualRepositoryConfigUpstreamPolicy>>? upstreamPolicies;
+  final pulumi.Input<List<RepositoryVirtualRepositoryConfigUpstreamPolicy>?>? upstreamPolicies;
 
   /// Creates a new [RepositoryVirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual

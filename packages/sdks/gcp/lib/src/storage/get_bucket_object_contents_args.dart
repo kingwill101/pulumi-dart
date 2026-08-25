@@ -10,9 +10,9 @@ class GetBucketObjectContentsArgs {
   /// The name of the containing bucket.
   final pulumi.Input<String> bucket;
   /// A glob pattern used to filter results (for example, `foo*bar`).
-  final pulumi.Input<String>? matchGlob;
+  final pulumi.Input<String?>? matchGlob;
   /// Filter results to include only objects whose names begin with this prefix.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [GetBucketObjectContentsArgs].
   /// [bucket] The name of the containing bucket.

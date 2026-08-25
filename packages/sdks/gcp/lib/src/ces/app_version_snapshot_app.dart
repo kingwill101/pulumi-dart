@@ -17,85 +17,85 @@ class AppVersionSnapshotApp {
   /// Configuration for how the input and output audio should be processed and
   /// delivered.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfig>>? audioProcessingConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfig>?>? audioProcessingConfigs;
   /// (Output)
   /// The default client certificate settings for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppClientCertificateSetting>>? clientCertificateSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppClientCertificateSetting>?>? clientCertificateSettings;
   /// (Output)
   /// Timestamp when the toolset was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// (Output)
   /// Data store related settings for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppDataStoreSetting>>? dataStoreSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppDataStoreSetting>?>? dataStoreSettings;
   /// (Output)
   /// A ChannelProfile configures the agent's behavior for a specific communication
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfile>>? defaultChannelProfiles;
+  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfile>?>? defaultChannelProfiles;
   /// (Output)
   /// Number of deployments in the app.
-  final pulumi.Input<int>? deploymentCount;
+  final pulumi.Input<int?>? deploymentCount;
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the app version.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// (Output)
   /// Threshold settings for metrics in an Evaluation.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThreshold>>? evaluationMetricsThresholds;
+  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThreshold>?>? evaluationMetricsThresholds;
   /// (Output)
   /// Instructions for all the agents in the app.
   /// You can use this instruction to set up a stable identity or personality
   /// across all the agents.
-  final pulumi.Input<String>? globalInstruction;
+  final pulumi.Input<String?>? globalInstruction;
   /// (Output)
   /// List of guardrails for the app.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-  final pulumi.Input<List<String>>? guardrails;
+  final pulumi.Input<List<String>?>? guardrails;
   /// (Output)
   /// Language settings of the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppLanguageSetting>>? languageSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppLanguageSetting>?>? languageSettings;
   /// (Output)
   /// Settings to describe the logging behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppLoggingSetting>>? loggingSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppLoggingSetting>?>? loggingSettings;
   /// (Output)
   /// Metadata about the app. This field can be used to store additional
   /// information relevant to the app's details or intended usages.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// (Output)
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppModelSetting>>? modelSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppModelSetting>?>? modelSettings;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The root agent is the entry point of the app.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final pulumi.Input<String>? rootAgent;
+  final pulumi.Input<String?>? rootAgent;
   /// (Output)
   /// TimeZone settings of the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppTimeZoneSetting>>? timeZoneSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppTimeZoneSetting>?>? timeZoneSettings;
   /// (Output)
   /// Timestamp when the toolset was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// (Output)
   /// The declarations of the variables.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppVariableDeclaration>>? variableDeclarations;
+  final pulumi.Input<List<AppVersionSnapshotAppVariableDeclaration>?>? variableDeclarations;
 
   /// Creates a new [AppVersionSnapshotApp].
   /// [audioProcessingConfigs] (Output)
@@ -176,7 +176,7 @@ class AppVersionSnapshotApp {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataStoreSettings: (() { final guardedValue = map['dataStoreSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSetting>(guardedValue, (value) => AppVersionSnapshotAppDataStoreSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       defaultChannelProfiles: (() { final guardedValue = map['defaultChannelProfiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfile>(guardedValue, (value) => AppVersionSnapshotAppDefaultChannelProfile.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      deploymentCount: (() { final guardedValue = map['deploymentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deploymentCount: (() { final guardedValue = map['deploymentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -11,39 +11,39 @@ class AiReasoningEngineSpecDeploymentSpec {
   /// (Optional, Beta)
   /// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig>? agentGatewayConfig;
+  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig?>? agentGatewayConfig;
   /// (Optional, Beta)
   /// Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
   /// Possible values:
   /// * `STABLE`: Stable agent server mode.
   /// * `EXPERIMENTAL`: Experimental agent server mode.
   /// Possible values are: `STABLE`, `EXPERIMENTAL`.
-  final pulumi.Input<String>? agentServerMode;
+  final pulumi.Input<String?>? agentServerMode;
   /// Optional. Concurrency for each container and agent server.
   /// Recommended value: 2 * cpu + 1. Defaults to 9.
-  final pulumi.Input<int>? containerConcurrency;
+  final pulumi.Input<int?>? containerConcurrency;
   /// (Optional, Beta)
   /// Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
-  final pulumi.Input<bool>? dedicatedIngressEndpointEnabled;
+  final pulumi.Input<bool?>? dedicatedIngressEndpointEnabled;
   /// Optional. Environment variables to be set with the Reasoning
   /// Engine deployment.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecEnv>>? envs;
+  final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecEnv>?>? envs;
   /// (Optional, Beta)
   /// Optional. Specifies the configuration for keep-alive probe.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecKeepAliveProbe>? keepAliveProbe;
+  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecKeepAliveProbe?>? keepAliveProbe;
   /// Optional. The maximum number of application instances that can be
   /// launched to handle increased traffic. Defaults to 100.
   /// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
   /// range is [1, 100].
-  final pulumi.Input<int>? maxInstances;
+  final pulumi.Input<int?>? maxInstances;
   /// Optional. The minimum number of application instances that will be
   /// kept running at all times. Defaults to 1. Range: [0, 10].
-  final pulumi.Input<int>? minInstances;
+  final pulumi.Input<int?>? minInstances;
   /// Optional. Configuration for PSC-Interface.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig>? pscInterfaceConfig;
+  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig?>? pscInterfaceConfig;
   /// Optional. Resource limits for each container.
   /// Only 'cpu' and 'memory' keys are supported.
   /// Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -53,13 +53,13 @@ class AiReasoningEngineSpecDeploymentSpec {
   /// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
   /// For more information, go to
   /// https://cloud.google.com/run/docs/configuring/memory-limits.
-  final pulumi.Input<Map<String, String>>? resourceLimits;
+  final pulumi.Input<Map<String, String>?>? resourceLimits;
   /// Optional. Environment variables where the value is a secret in
   /// Cloud Secret Manager. To use this feature, add 'Secret Manager
   /// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
   /// Platform Reasoning Engine service Agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecSecretEnv>>? secretEnvs;
+  final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecSecretEnv>?>? secretEnvs;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpec].
   /// [agentGatewayConfig] (Optional, Beta)
@@ -107,12 +107,12 @@ class AiReasoningEngineSpecDeploymentSpec {
     return AiReasoningEngineSpecDeploymentSpec(
       agentGatewayConfig: (() { final guardedValue = map['agentGatewayConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       agentServerMode: (() { final guardedValue = map['agentServerMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      containerConcurrency: (() { final guardedValue = map['containerConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      containerConcurrency: (() { final guardedValue = map['containerConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dedicatedIngressEndpointEnabled: (() { final guardedValue = map['dedicatedIngressEndpointEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       envs: (() { final guardedValue = map['envs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(guardedValue, (value) => AiReasoningEngineSpecDeploymentSpecEnv.fromMap((value as Map).cast<String, dynamic>()))); })(),
       keepAliveProbe: (() { final guardedValue = map['keepAliveProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiReasoningEngineSpecDeploymentSpecKeepAliveProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pscInterfaceConfig: (() { final guardedValue = map['pscInterfaceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceLimits: (() { final guardedValue = map['resourceLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       secretEnvs: (() { final guardedValue = map['secretEnvs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv>(guardedValue, (value) => AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap((value as Map).cast<String, dynamic>()))); })(),

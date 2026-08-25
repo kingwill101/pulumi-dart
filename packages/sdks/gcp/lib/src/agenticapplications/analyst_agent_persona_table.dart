@@ -5,9 +5,9 @@ import 'analyst_agent_persona_table_column.dart';
 
 class AnalystAgentPersonaTable {
   /// The columns in the table.
-  final pulumi.Input<List<AnalystAgentPersonaTableColumn>>? columns;
+  final pulumi.Input<List<AnalystAgentPersonaTableColumn>?>? columns;
   /// The description of the table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Identifier. The resource name of the analyst agent persona.
   /// Format:
   /// projects/{project}/locations/{location}/analystAgentPersonas/{analyst_agent_persona}

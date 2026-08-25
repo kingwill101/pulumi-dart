@@ -727,21 +727,22 @@ class ServiceLbPolicies extends pulumi.CustomResource {
           'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>('autoCapacityDrain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesAutoCapacityDrain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>('failoverConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesFailoverConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isolationConfig = registerOutput<ServiceLbPoliciesIsolationConfig?>('isolationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesIsolationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingAlgorithm = registerOutput<String?>('loadBalancingAlgorithm');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -750,11 +751,12 @@ class ServiceLbPolicies extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceLbPoliciesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceLbPolicies._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -772,15 +774,41 @@ class ServiceLbPolicies extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>('failoverConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesFailoverConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isolationConfig = registerOutput<ServiceLbPoliciesIsolationConfig?>('isolationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesIsolationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingAlgorithm = registerOutput<String?>('loadBalancingAlgorithm');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ServiceLbPolicies] resource.
+  ServiceLbPolicies.reference(String urn)
+    : super(
+        'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>('autoCapacityDrain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesAutoCapacityDrain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    failoverConfig = registerOutput<ServiceLbPoliciesFailoverConfig?>('failoverConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesFailoverConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isolationConfig = registerOutput<ServiceLbPoliciesIsolationConfig?>('isolationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesIsolationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    loadBalancingAlgorithm = registerOutput<String?>('loadBalancingAlgorithm');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 }

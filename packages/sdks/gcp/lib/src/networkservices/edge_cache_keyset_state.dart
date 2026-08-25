@@ -12,22 +12,22 @@ class EdgeCacheKeysetState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// An ordered list of Ed25519 public keys to use for validating signed requests.
   /// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
   /// You may specify no more than one Google-managed public key.
@@ -35,16 +35,16 @@ class EdgeCacheKeysetState {
   /// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
   /// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
   /// Structure is documented below.
-  final pulumi.Input<List<EdgeCacheKeysetPublicKey>>? publicKeys;
+  final pulumi.Input<List<EdgeCacheKeysetPublicKey>?>? publicKeys;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// An ordered list of shared keys to use for validating signed requests.
   /// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
   /// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
   /// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
   /// Structure is documented below.
-  final pulumi.Input<List<EdgeCacheKeysetValidationSharedKey>>? validationSharedKeys;
+  final pulumi.Input<List<EdgeCacheKeysetValidationSharedKey>?>? validationSharedKeys;
 
   /// Creates a new [EdgeCacheKeysetState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

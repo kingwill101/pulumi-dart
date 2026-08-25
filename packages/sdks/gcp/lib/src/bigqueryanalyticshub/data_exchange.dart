@@ -623,7 +623,7 @@ class DataExchange extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/dataExchange:DataExchange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -646,11 +646,12 @@ class DataExchange extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataExchangeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataExchange._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -664,6 +665,31 @@ class DataExchange extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataExchangeId = registerOutput<String>('dataExchangeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    discoveryType = registerOutput<String>('discoveryType');
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<String?>('documentation');
+    icon = registerOutput<String?>('icon');
+    listingCount = registerOutput<int>('listingCount');
+    location = registerOutput<String>('location');
+    logLinkedDatasetQueryUserEmail = registerOutput<bool?>('logLinkedDatasetQueryUserEmail');
+    this.name = registerOutput<String>('name');
+    primaryContact = registerOutput<String?>('primaryContact');
+    project = registerOutput<String>('project');
+    sharingEnvironmentConfig = registerOutput<DataExchangeSharingEnvironmentConfig>('sharingEnvironmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataExchangeSharingEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DataExchange] resource.
+  DataExchange.reference(String urn)
+    : super(
+        'gcp:bigqueryanalyticshub/dataExchange:DataExchange',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

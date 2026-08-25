@@ -2212,14 +2212,14 @@ class RecordSet extends pulumi.CustomResource {
           'gcp:dns/recordSet:RecordSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     routingPolicy = registerOutput<RecordSetRoutingPolicy?>('routingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordSetRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rrdatas = registerOutput<List<String>?>('rrdatas');
+    rrdatas = registerOutput<List<String>?>('rrdatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');
   }
@@ -2229,11 +2229,12 @@ class RecordSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecordSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RecordSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2252,7 +2253,26 @@ class RecordSet extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     routingPolicy = registerOutput<RecordSetRoutingPolicy?>('routingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordSetRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rrdatas = registerOutput<List<String>?>('rrdatas');
+    rrdatas = registerOutput<List<String>?>('rrdatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RecordSet] resource.
+  RecordSet.reference(String urn)
+    : super(
+        'gcp:dns/recordSet:RecordSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    managedZone = registerOutput<String>('managedZone');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    routingPolicy = registerOutput<RecordSetRoutingPolicy?>('routingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordSetRoutingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rrdatas = registerOutput<List<String>?>('rrdatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');
   }

@@ -6,7 +6,7 @@ import 'cx_webhook_service_directory_generic_web_service.dart';
 class CxWebhookServiceDirectory {
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
-  final pulumi.Input<CxWebhookServiceDirectoryGenericWebService>? genericWebService;
+  final pulumi.Input<CxWebhookServiceDirectoryGenericWebService?>? genericWebService;
   /// The name of Service Directory service.
   final pulumi.Input<String> service;
 

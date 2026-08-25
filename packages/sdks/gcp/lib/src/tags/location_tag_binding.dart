@@ -772,7 +772,7 @@ class LocationTagBinding extends pulumi.CustomResource {
           'gcp:tags/locationTagBinding:LocationTagBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
@@ -786,11 +786,12 @@ class LocationTagBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationTagBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationTagBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -804,6 +805,22 @@ class LocationTagBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    tagValue = registerOutput<String>('tagValue');
+  }
+
+  /// Creates a typed reference to an existing [LocationTagBinding] resource.
+  LocationTagBinding.reference(String urn)
+    : super(
+        'gcp:tags/locationTagBinding:LocationTagBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

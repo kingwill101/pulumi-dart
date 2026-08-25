@@ -4,18 +4,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EvaluationGoldenTurnRootSpan {
   /// Output only. Key-value attributes associated with the span.
-  final pulumi.Input<String>? attributes;
+  final pulumi.Input<String?>? attributes;
   /// Output only. The child spans that are nested under this span.
-  final pulumi.Input<String>? childSpans;
+  final pulumi.Input<String?>? childSpans;
   /// Output only. The duration of the span.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Output only. The end time of the span.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Identifier. The unique identifier of the evaluation.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Output only. The start time of the span.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [EvaluationGoldenTurnRootSpan].
   /// [attributes] Output only. Key-value attributes associated with the span.

@@ -881,7 +881,7 @@ class AccountIamMember extends pulumi.CustomResource {
           'gcp:billing/accountIamMember:AccountIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     billingAccountId = registerOutput<String>('billingAccountId');
     condition = registerOutput<AccountIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -895,11 +895,12 @@ class AccountIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -913,6 +914,22 @@ class AccountIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    billingAccountId = registerOutput<String>('billingAccountId');
+    condition = registerOutput<AccountIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AccountIamMember] resource.
+  AccountIamMember.reference(String urn)
+    : super(
+        'gcp:billing/accountIamMember:AccountIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     billingAccountId = registerOutput<String>('billingAccountId');
     condition = registerOutput<AccountIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

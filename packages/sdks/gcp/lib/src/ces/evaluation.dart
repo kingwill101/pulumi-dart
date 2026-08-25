@@ -5409,7 +5409,7 @@ class Evaluation extends pulumi.CustomResource {
           'gcp:ces/evaluation:Evaluation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');
@@ -5418,9 +5418,9 @@ class Evaluation extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    evaluationDatasets = registerOutput<List<String>>('evaluationDatasets');
+    evaluationDatasets = registerOutput<List<String>>('evaluationDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     evaluationId = registerOutput<String>('evaluationId');
-    evaluationRuns = registerOutput<List<String>>('evaluationRuns');
+    evaluationRuns = registerOutput<List<String>>('evaluationRuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     golden = registerOutput<EvaluationGolden?>('golden', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationGolden.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     invalid = registerOutput<bool>('invalid');
     lastUpdatedBy = registerOutput<String>('lastUpdatedBy');
@@ -5428,7 +5428,7 @@ class Evaluation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     scenario = registerOutput<EvaluationScenario?>('scenario', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationScenario.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -5437,11 +5437,12 @@ class Evaluation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EvaluationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Evaluation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -5462,9 +5463,9 @@ class Evaluation extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    evaluationDatasets = registerOutput<List<String>>('evaluationDatasets');
+    evaluationDatasets = registerOutput<List<String>>('evaluationDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     evaluationId = registerOutput<String>('evaluationId');
-    evaluationRuns = registerOutput<List<String>>('evaluationRuns');
+    evaluationRuns = registerOutput<List<String>>('evaluationRuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     golden = registerOutput<EvaluationGolden?>('golden', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationGolden.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     invalid = registerOutput<bool>('invalid');
     lastUpdatedBy = registerOutput<String>('lastUpdatedBy');
@@ -5472,7 +5473,37 @@ class Evaluation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     scenario = registerOutput<EvaluationScenario?>('scenario', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationScenario.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Evaluation] resource.
+  Evaluation.reference(String urn)
+    : super(
+        'gcp:ces/evaluation:Evaluation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    app = registerOutput<String>('app');
+    createTime = registerOutput<String>('createTime');
+    createdBy = registerOutput<String>('createdBy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    evaluationDatasets = registerOutput<List<String>>('evaluationDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    evaluationId = registerOutput<String>('evaluationId');
+    evaluationRuns = registerOutput<List<String>>('evaluationRuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    golden = registerOutput<EvaluationGolden?>('golden', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationGolden.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    invalid = registerOutput<bool>('invalid');
+    lastUpdatedBy = registerOutput<String>('lastUpdatedBy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    scenario = registerOutput<EvaluationScenario?>('scenario', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EvaluationScenario.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

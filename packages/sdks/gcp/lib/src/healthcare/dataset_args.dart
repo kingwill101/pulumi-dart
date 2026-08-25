@@ -14,21 +14,21 @@ class DatasetArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DatasetEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<DatasetEncryptionSpec?>? encryptionSpec;
   /// The location for the Dataset.
   final pulumi.Input<String> location;
   /// The resource name for the Dataset.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
   /// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
   /// (e.g., HL7 messages) where no explicit timezone is specified.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [DatasetArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

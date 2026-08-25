@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_attachment_group_args.dart';
+import 'interconnect_attachment_group_attachment.dart';
+import 'interconnect_attachment_group_configured.dart';
 import 'interconnect_attachment_group_intent.dart';
+import 'interconnect_attachment_group_logical_structure.dart';
 import 'interconnect_attachment_group_state.dart';
 
 /// An interconnect attachment group resource allows customers to create,
@@ -164,12 +167,12 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Attachments per group" quota.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> attachments;
+  late final pulumi.Output<List<InterconnectAttachmentGroupAttachment>?> attachments;
   /// The redundancy this group is configured to support. The way a
   /// user queries what SLA their Attachment gets is by looking at this field of
   /// the Attachment's AttachmentGroup.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> configureds;
+  late final pulumi.Output<List<InterconnectAttachmentGroupConfigured>> configureds;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -192,7 +195,7 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
   /// An analysis of the logical layout of Attachments in this
   /// group. Every Attachment in the group is shown once in this structure.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> logicalStructures;
+  late final pulumi.Output<List<InterconnectAttachmentGroupLogicalStructure>> logicalStructures;
   /// Name of the resource. Provided by the client when the resource is created. The name must be
   /// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which means the first
@@ -215,16 +218,16 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
           'gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    attachments = registerOutput<List<Map<String, dynamic>>?>('attachments');
-    configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
+    attachments = registerOutput<List<InterconnectAttachmentGroupAttachment>?>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupAttachment>(guardedValue, (value) => InterconnectAttachmentGroupAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    configureds = registerOutput<List<InterconnectAttachmentGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupConfigured>(guardedValue, (value) => InterconnectAttachmentGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     intent = registerOutput<InterconnectAttachmentGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interconnectGroup = registerOutput<String?>('interconnectGroup');
-    logicalStructures = registerOutput<List<Map<String, dynamic>>>('logicalStructures');
+    logicalStructures = registerOutput<List<InterconnectAttachmentGroupLogicalStructure>>('logicalStructures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructure>(guardedValue, (value) => InterconnectAttachmentGroupLogicalStructure.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }
@@ -234,11 +237,12 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InterconnectAttachmentGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InterconnectAttachmentGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,14 +256,35 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attachments = registerOutput<List<Map<String, dynamic>>?>('attachments');
-    configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
+    attachments = registerOutput<List<InterconnectAttachmentGroupAttachment>?>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupAttachment>(guardedValue, (value) => InterconnectAttachmentGroupAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    configureds = registerOutput<List<InterconnectAttachmentGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupConfigured>(guardedValue, (value) => InterconnectAttachmentGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     intent = registerOutput<InterconnectAttachmentGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interconnectGroup = registerOutput<String?>('interconnectGroup');
-    logicalStructures = registerOutput<List<Map<String, dynamic>>>('logicalStructures');
+    logicalStructures = registerOutput<List<InterconnectAttachmentGroupLogicalStructure>>('logicalStructures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructure>(guardedValue, (value) => InterconnectAttachmentGroupLogicalStructure.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [InterconnectAttachmentGroup] resource.
+  InterconnectAttachmentGroup.reference(String urn)
+    : super(
+        'gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachments = registerOutput<List<InterconnectAttachmentGroupAttachment>?>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupAttachment>(guardedValue, (value) => InterconnectAttachmentGroupAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    configureds = registerOutput<List<InterconnectAttachmentGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupConfigured>(guardedValue, (value) => InterconnectAttachmentGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    intent = registerOutput<InterconnectAttachmentGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interconnectGroup = registerOutput<String?>('interconnectGroup');
+    logicalStructures = registerOutput<List<InterconnectAttachmentGroupLogicalStructure>>('logicalStructures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructure>(guardedValue, (value) => InterconnectAttachmentGroupLogicalStructure.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }

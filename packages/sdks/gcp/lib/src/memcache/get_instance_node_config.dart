@@ -25,8 +25,8 @@ class GetInstanceNodeConfig {
 
   factory GetInstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceNodeConfig(
-      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
-      memorySizeMb: pulumi.Input.fromValue(map['memorySizeMb'] as int),
+      cpuCount: pulumi.Input.fromValue((map['cpuCount'] as num).toInt()),
+      memorySizeMb: pulumi.Input.fromValue((map['memorySizeMb'] as num).toInt()),
     );
   }
 }

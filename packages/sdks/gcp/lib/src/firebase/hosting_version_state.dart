@@ -7,14 +7,14 @@ import 'hosting_version_config.dart';
 class HostingVersionState {
   /// The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// Structure is documented below.
-  final pulumi.Input<HostingVersionConfig>? config;
+  final pulumi.Input<HostingVersionConfig?>? config;
   /// The fully-qualified resource name for the version, in the format:
   /// sites/SITE_ID/versions/VERSION_ID
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Required. The ID of the site in which to create this Version.
-  final pulumi.Input<String>? siteId;
+  final pulumi.Input<String?>? siteId;
   /// The ID for the version as in sites/SITE_ID/versions/VERSION_ID
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [HostingVersionState].
   /// [config] The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.

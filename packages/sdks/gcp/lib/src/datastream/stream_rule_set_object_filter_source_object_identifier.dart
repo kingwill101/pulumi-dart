@@ -12,25 +12,25 @@ import 'stream_rule_set_object_filter_source_object_identifier_sql_server_identi
 class StreamRuleSetObjectFilterSourceObjectIdentifier {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier>? mongodbIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier?>? mongodbIdentifier;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier>? mysqlIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier?>? mysqlIdentifier;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier>? oracleIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier?>? oracleIdentifier;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier>? postgresqlIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier?>? postgresqlIdentifier;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier>? salesforceIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier?>? salesforceIdentifier;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier>? spannerIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier?>? spannerIdentifier;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier>? sqlServerIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier?>? sqlServerIdentifier;
 
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifier].
   /// [mongodbIdentifier] A nested object resource.

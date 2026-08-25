@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'control_organization_intelligence_config_args.dart';
+import 'control_organization_intelligence_config_effective_intelligence_config.dart';
 import 'control_organization_intelligence_config_filter.dart';
 import 'control_organization_intelligence_config_state.dart';
+import 'control_organization_intelligence_config_trial_config.dart';
 
 /// The Organization Storage Intelligence Config resource represents GCS Storage Intelligence operating on individual GCP organization. Storage Intelligence Config is a singleton resource and individual instance exists on each GCP organization.
 ///
@@ -237,7 +239,7 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> editionConfig;
   /// The Intelligence config that is effective for the resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> effectiveIntelligenceConfigs;
+  late final pulumi.Output<List<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>> effectiveIntelligenceConfigs;
   /// Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// Structure is documented below.
   late final pulumi.Output<ControlOrganizationIntelligenceConfigFilter?> filter;
@@ -245,7 +247,7 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The trial configuration of the Storage Intelligence resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> trialConfigs;
+  late final pulumi.Output<List<ControlOrganizationIntelligenceConfigTrialConfig>> trialConfigs;
   /// The time at which the Storage Intelligence Config resource is last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -261,13 +263,13 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
           'gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     editionConfig = registerOutput<String>('editionConfig');
-    effectiveIntelligenceConfigs = registerOutput<List<Map<String, dynamic>>>('effectiveIntelligenceConfigs');
+    effectiveIntelligenceConfigs = registerOutput<List<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<ControlOrganizationIntelligenceConfigFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlOrganizationIntelligenceConfigFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');
+    trialConfigs = registerOutput<List<ControlOrganizationIntelligenceConfigTrialConfig>>('trialConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlOrganizationIntelligenceConfigTrialConfig>(guardedValue, (value) => ControlOrganizationIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -276,11 +278,12 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ControlOrganizationIntelligenceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ControlOrganizationIntelligenceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,10 +298,27 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     editionConfig = registerOutput<String>('editionConfig');
-    effectiveIntelligenceConfigs = registerOutput<List<Map<String, dynamic>>>('effectiveIntelligenceConfigs');
+    effectiveIntelligenceConfigs = registerOutput<List<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<ControlOrganizationIntelligenceConfigFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlOrganizationIntelligenceConfigFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');
+    trialConfigs = registerOutput<List<ControlOrganizationIntelligenceConfigTrialConfig>>('trialConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlOrganizationIntelligenceConfigTrialConfig>(guardedValue, (value) => ControlOrganizationIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ControlOrganizationIntelligenceConfig] resource.
+  ControlOrganizationIntelligenceConfig.reference(String urn)
+    : super(
+        'gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    editionConfig = registerOutput<String>('editionConfig');
+    effectiveIntelligenceConfigs = registerOutput<List<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    filter = registerOutput<ControlOrganizationIntelligenceConfigFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlOrganizationIntelligenceConfigFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    trialConfigs = registerOutput<List<ControlOrganizationIntelligenceConfigTrialConfig>>('trialConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlOrganizationIntelligenceConfigTrialConfig>(guardedValue, (value) => ControlOrganizationIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

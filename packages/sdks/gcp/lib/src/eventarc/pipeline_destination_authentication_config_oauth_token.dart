@@ -6,7 +6,7 @@ class PipelineDestinationAuthenticationConfigOauthToken {
   /// OAuth scope to be used for generating OAuth access token. If not
   /// specified, "https://www.googleapis.com/auth/cloud-platform" will be
   /// used.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Service account email used to generate the [OAuth
   /// token](https://developers.google.com/identity/protocols/OAuth2).
   /// The principal who calls this API must have

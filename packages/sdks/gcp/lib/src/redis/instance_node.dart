@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceNode {
   /// (Output)
   /// Node identifying string. e.g. 'node-0', 'node-1'
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// (Output)
   /// Location of the node.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceNode].
   /// [id] (Output)

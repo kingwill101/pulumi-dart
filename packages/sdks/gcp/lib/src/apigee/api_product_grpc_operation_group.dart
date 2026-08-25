@@ -6,7 +6,7 @@ import 'api_product_grpc_operation_group_operation_config.dart';
 class ApiProductGrpcOperationGroup {
   /// Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
   /// Structure is documented below.
-  final pulumi.Input<List<ApiProductGrpcOperationGroupOperationConfig>>? operationConfigs;
+  final pulumi.Input<List<ApiProductGrpcOperationGroupOperationConfig>?>? operationConfigs;
 
   /// Creates a new [ApiProductGrpcOperationGroup].
   /// [operationConfigs] Required. List of operation configurations for either Apigee API proxies that are associated with this API product.

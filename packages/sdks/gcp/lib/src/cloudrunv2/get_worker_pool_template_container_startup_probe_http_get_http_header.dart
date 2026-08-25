@@ -31,7 +31,7 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
   factory GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }

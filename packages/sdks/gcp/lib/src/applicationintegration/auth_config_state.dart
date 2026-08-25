@@ -7,62 +7,62 @@ import 'auth_config_decrypted_credential.dart';
 /// Input properties used for looking up and filtering AuthConfig resources.
 class AuthConfigState {
   /// Certificate id for client certificate.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// Raw client certificate
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigClientCertificate>? clientCertificate;
+  final pulumi.Input<AuthConfigClientCertificate?>? clientCertificate;
   /// The timestamp when the auth config is created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final pulumi.Input<String>? creatorEmail;
+  final pulumi.Input<String?>? creatorEmail;
   /// Credential type of the encrypted credential.
-  final pulumi.Input<String>? credentialType;
+  final pulumi.Input<String?>? credentialType;
   /// Raw auth credentials.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredential>? decryptedCredential;
+  final pulumi.Input<AuthConfigDecryptedCredential?>? decryptedCredential;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the auth config.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the auth config.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
   /// A base64-encoded string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<List<String>>? expiryNotificationDurations;
+  final pulumi.Input<List<String>?>? expiryNotificationDurations;
   /// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final pulumi.Input<String>? lastModifierEmail;
+  final pulumi.Input<String?>? lastModifierEmail;
   /// Location in which client needs to be provisioned.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name of the auth config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? overrideValidTime;
+  final pulumi.Input<String?>? overrideValidTime;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The reason / details of the current status.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// The status of the auth config.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The timestamp when the auth config is modified.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? validTime;
+  final pulumi.Input<String?>? validTime;
   /// The visibility of the auth config.
   /// Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [AuthConfigState].
   /// [certificateId] Certificate id for client certificate.

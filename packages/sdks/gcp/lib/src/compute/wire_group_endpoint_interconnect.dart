@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WireGroupEndpointInterconnect {
   /// (Optional)
-  final pulumi.Input<String>? interconnect;
+  final pulumi.Input<String?>? interconnect;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> interconnectName;
   /// VLAN tags for the interconnect.
-  final pulumi.Input<List<int>>? vlanTags;
+  final pulumi.Input<List<int>?>? vlanTags;
 
   /// Creates a new [WireGroupEndpointInterconnect].
   /// [interconnect] (Optional)

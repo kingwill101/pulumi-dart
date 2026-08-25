@@ -6,11 +6,11 @@ import 'future_reservation_specific_sku_properties_instance_properties.dart';
 class FutureReservationSpecificSkuProperties {
   /// Properties of the SKU instances being reserved.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationSpecificSkuPropertiesInstanceProperties>? instanceProperties;
+  final pulumi.Input<FutureReservationSpecificSkuPropertiesInstanceProperties?>? instanceProperties;
   /// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
-  final pulumi.Input<String>? sourceInstanceTemplate;
+  final pulumi.Input<String?>? sourceInstanceTemplate;
   /// Total number of instances for which capacity assurance is requested at a future time period.
-  final pulumi.Input<String>? totalCount;
+  final pulumi.Input<String?>? totalCount;
 
   /// Creates a new [FutureReservationSpecificSkuProperties].
   /// [instanceProperties] Properties of the SKU instances being reserved.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentLabel {
   /// Key for label.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value of label.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DeploymentLabel].
   /// [key] Key for label.

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_asset_access_group_config.dart';
 import 'data_asset_args.dart';
 import 'data_asset_state.dart';
 
@@ -847,7 +848,7 @@ import 'data_asset_state.dart';
 class DataAsset extends pulumi.CustomResource {
   /// Access groups configurations.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> accessGroupConfigs;
+  late final pulumi.Output<List<DataAssetAccessGroupConfig>?> accessGroupConfigs;
   /// The ID of the data asset.
   late final pulumi.Output<String> dataAssetId;
   /// The ID of the parent data product.
@@ -890,17 +891,18 @@ class DataAsset extends pulumi.CustomResource {
           'gcp:dataplex/dataAsset:DataAsset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    accessGroupConfigs = registerOutput<List<Map<String, dynamic>>?>('accessGroupConfigs');
+    accessGroupConfigs = registerOutput<List<DataAssetAccessGroupConfig>?>('accessGroupConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAssetAccessGroupConfig>(guardedValue, (value) => DataAssetAccessGroupConfig.fromMap((value as Map).cast<String, dynamic>())); });
     dataAssetId = registerOutput<String>('dataAssetId');
     dataProductId = registerOutput<String>('dataProductId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     resource = registerOutput<String>('resource');
     uid = registerOutput<String>('uid');
   }
@@ -910,11 +912,12 @@ class DataAsset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataAssetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataAsset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -928,15 +931,38 @@ class DataAsset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessGroupConfigs = registerOutput<List<Map<String, dynamic>>?>('accessGroupConfigs');
+    accessGroupConfigs = registerOutput<List<DataAssetAccessGroupConfig>?>('accessGroupConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAssetAccessGroupConfig>(guardedValue, (value) => DataAssetAccessGroupConfig.fromMap((value as Map).cast<String, dynamic>())); });
     dataAssetId = registerOutput<String>('dataAssetId');
     dataProductId = registerOutput<String>('dataProductId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resource = registerOutput<String>('resource');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [DataAsset] resource.
+  DataAsset.reference(String urn)
+    : super(
+        'gcp:dataplex/dataAsset:DataAsset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    accessGroupConfigs = registerOutput<List<DataAssetAccessGroupConfig>?>('accessGroupConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAssetAccessGroupConfig>(guardedValue, (value) => DataAssetAccessGroupConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    dataAssetId = registerOutput<String>('dataAssetId');
+    dataProductId = registerOutput<String>('dataProductId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     resource = registerOutput<String>('resource');
     uid = registerOutput<String>('uid');
   }

@@ -131,6 +131,17 @@ Future<GetConfigResult> getConfig(
   return GetConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigResult> getConfigOutput(
+  GetConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:runtimeconfig/getConfig:getConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for config
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -257,6 +268,17 @@ Future<GetConfigIamPolicyResult> getConfigIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigIamPolicyResult> getConfigIamPolicyOutput(
+  GetConfigIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigIamPolicyResult.fromMap);
 }
 
 /// To get more information about RuntimeConfigs, see:
@@ -389,4 +411,15 @@ Future<GetVariableResult> getVariable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVariableResult.fromMap(result);
+}
+
+pulumi.Output<GetVariableResult> getVariableOutput(
+  GetVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:runtimeconfig/getVariable:getVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableResult.fromMap);
 }

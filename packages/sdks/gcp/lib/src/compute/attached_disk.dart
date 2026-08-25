@@ -316,7 +316,7 @@ class AttachedDisk extends pulumi.CustomResource {
           'gcp:compute/attachedDisk:AttachedDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deviceName = registerOutput<String>('deviceName');
@@ -333,11 +333,12 @@ class AttachedDisk extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttachedDiskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AttachedDisk._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,6 +352,25 @@ class AttachedDisk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deviceName = registerOutput<String>('deviceName');
+    disk = registerOutput<String>('disk');
+    instance = registerOutput<String>('instance');
+    interface = registerOutput<String?>('interface');
+    mode = registerOutput<String?>('mode');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [AttachedDisk] resource.
+  AttachedDisk.reference(String urn)
+    : super(
+        'gcp:compute/attachedDisk:AttachedDisk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deviceName = registerOutput<String>('deviceName');
     disk = registerOutput<String>('disk');

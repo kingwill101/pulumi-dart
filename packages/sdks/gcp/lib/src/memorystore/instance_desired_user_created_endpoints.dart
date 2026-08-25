@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_desired_user_created_endpoints_args.dart';
+import 'instance_desired_user_created_endpoints_desired_user_created_endpoint.dart';
 import 'instance_desired_user_created_endpoints_state.dart';
 
 /// Manages user created connections for Memorystore instance
@@ -2119,7 +2120,7 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// A list of desired user endpoints
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> desiredUserCreatedEndpoints;
+  late final pulumi.Output<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?> desiredUserCreatedEndpoints;
   /// The name of the Memorystore instance these endpoints should be added to.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -2140,10 +2141,10 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
           'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredUserCreatedEndpoints');
+    desiredUserCreatedEndpoints = registerOutput<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>('desiredUserCreatedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(guardedValue, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -2154,11 +2155,12 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceDesiredUserCreatedEndpointsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceDesiredUserCreatedEndpoints._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2173,7 +2175,23 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    desiredUserCreatedEndpoints = registerOutput<List<Map<String, dynamic>>?>('desiredUserCreatedEndpoints');
+    desiredUserCreatedEndpoints = registerOutput<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>('desiredUserCreatedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(guardedValue, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [InstanceDesiredUserCreatedEndpoints] resource.
+  InstanceDesiredUserCreatedEndpoints.reference(String urn)
+    : super(
+        'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    desiredUserCreatedEndpoints = registerOutput<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>('desiredUserCreatedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(guardedValue, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

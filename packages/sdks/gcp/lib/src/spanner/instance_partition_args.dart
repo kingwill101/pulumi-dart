@@ -14,7 +14,7 @@ class InstancePartitionArgs {
   /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to the
   /// instance partition.
   /// Structure is documented below.
-  final pulumi.Input<InstancePartitionAutoscalingConfig>? autoscalingConfig;
+  final pulumi.Input<InstancePartitionAutoscalingConfig?>? autoscalingConfig;
   /// The name of the instance partition's configuration (similar to a region) which
   /// defines the geographic placement and replication of data in this instance partition.
   final pulumi.Input<String> config;
@@ -24,7 +24,7 @@ class InstancePartitionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The descriptive name for this instance partition as it appears in UIs.
   /// Must be unique per project and between 4 and 30 characters in length.
   final pulumi.Input<String> displayName;
@@ -33,18 +33,18 @@ class InstancePartitionArgs {
   /// A unique identifier for the instance partition, which cannot be changed after
   /// the instance partition is created. The name must be between 2 and 64 characters
   /// and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The number of nodes allocated to this instance partition. One node equals
   /// 1000 processing units. Exactly one of either node_count, processing_units,
   /// or autoscalingConfig must be present.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// The number of processing units allocated to this instance partition.
   /// Exactly one of either node_count, processing_units, or autoscalingConfig
   /// must be present.
-  final pulumi.Input<int>? processingUnits;
+  final pulumi.Input<int?>? processingUnits;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InstancePartitionArgs].
   /// [autoscalingConfig] The autoscaling configuration. Autoscaling is enabled if this field is set.
@@ -90,8 +90,8 @@ class InstancePartitionArgs {
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       instance: pulumi.Input.fromValue(map['instance'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      processingUnits: (() { final guardedValue = map['processingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      processingUnits: (() { final guardedValue = map['processingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

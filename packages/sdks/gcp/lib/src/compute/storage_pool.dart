@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_pool_args.dart';
 import 'storage_pool_params.dart';
+import 'storage_pool_resource_status.dart';
 import 'storage_pool_state.dart';
+import 'storage_pool_status.dart';
 
 /// A Hyperdisk Storage Pool is a pre-purchased collection of capacity, throughput, and IOPS
 /// which you can then provision to your applications as needed.
@@ -566,10 +568,10 @@ class StoragePool extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Status information for the storage pool resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceStatuses;
+  late final pulumi.Output<List<StoragePoolResourceStatus>> resourceStatuses;
   /// Status information for the storage pool resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<StoragePoolStatus>> statuses;
   /// Type of the storage pool. For example, the
   /// following are valid values:
   /// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
@@ -590,17 +592,18 @@ class StoragePool extends pulumi.CustomResource {
           'gcp:compute/storagePool:StoragePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     capacityProvisioningType = registerOutput<String>('capacityProvisioningType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<StoragePoolParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoragePoolParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     performanceProvisioningType = registerOutput<String>('performanceProvisioningType');
@@ -608,9 +611,9 @@ class StoragePool extends pulumi.CustomResource {
     poolProvisionedIops = registerOutput<String?>('poolProvisionedIops');
     poolProvisionedThroughput = registerOutput<String>('poolProvisionedThroughput');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceStatuses = registerOutput<List<StoragePoolResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StoragePoolResourceStatus>(guardedValue, (value) => StoragePoolResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    statuses = registerOutput<List<StoragePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StoragePoolStatus>(guardedValue, (value) => StoragePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
     storagePoolType = registerOutput<String>('storagePoolType');
     zone = registerOutput<String>('zone');
   }
@@ -620,11 +623,12 @@ class StoragePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StoragePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StoragePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -643,10 +647,10 @@ class StoragePool extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<StoragePoolParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoragePoolParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     performanceProvisioningType = registerOutput<String>('performanceProvisioningType');
@@ -654,9 +658,42 @@ class StoragePool extends pulumi.CustomResource {
     poolProvisionedIops = registerOutput<String?>('poolProvisionedIops');
     poolProvisionedThroughput = registerOutput<String>('poolProvisionedThroughput');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceStatuses = registerOutput<List<StoragePoolResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StoragePoolResourceStatus>(guardedValue, (value) => StoragePoolResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    statuses = registerOutput<List<StoragePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StoragePoolStatus>(guardedValue, (value) => StoragePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    storagePoolType = registerOutput<String>('storagePoolType');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [StoragePool] resource.
+  StoragePool.reference(String urn)
+    : super(
+        'gcp:compute/storagePool:StoragePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    capacityProvisioningType = registerOutput<String>('capacityProvisioningType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<StoragePoolParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoragePoolParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    performanceProvisioningType = registerOutput<String>('performanceProvisioningType');
+    poolProvisionedCapacityGb = registerOutput<String>('poolProvisionedCapacityGb');
+    poolProvisionedIops = registerOutput<String?>('poolProvisionedIops');
+    poolProvisionedThroughput = registerOutput<String>('poolProvisionedThroughput');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    resourceStatuses = registerOutput<List<StoragePoolResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StoragePoolResourceStatus>(guardedValue, (value) => StoragePoolResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    statuses = registerOutput<List<StoragePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StoragePoolStatus>(guardedValue, (value) => StoragePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
     storagePoolType = registerOutput<String>('storagePoolType');
     zone = registerOutput<String>('zone');
   }

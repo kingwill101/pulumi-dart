@@ -17,11 +17,11 @@ class RegionBackendServiceHaPolicy {
   /// forwarding rule IP address with that VM, and both new and in-flight packets
   /// are quickly delivered to that VM.
   /// Possible values are: `DISABLED`, `GARP_RA`.
-  final pulumi.Input<String>? fastIpMove;
+  final pulumi.Input<String?>? fastIpMove;
   /// Selects one of the network endpoints attached to the backend NEGs of this service as the
   /// active endpoint (the leader) that receives all traffic.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceHaPolicyLeader>? leader;
+  final pulumi.Input<RegionBackendServiceHaPolicyLeader?>? leader;
 
   /// Creates a new [RegionBackendServiceHaPolicy].
   /// [fastIpMove] Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.

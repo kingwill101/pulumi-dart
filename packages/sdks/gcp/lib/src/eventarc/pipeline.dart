@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_args.dart';
+import 'pipeline_destination.dart';
 import 'pipeline_input_payload_format.dart';
 import 'pipeline_logging_config.dart';
+import 'pipeline_mediation.dart';
 import 'pipeline_retry_policy.dart';
 import 'pipeline_state.dart';
 
@@ -2069,7 +2071,7 @@ class Pipeline extends pulumi.CustomResource {
   /// List of destinations to which messages will be forwarded. Currently,
   /// exactly one destination is supported per Pipeline.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> destinations;
+  late final pulumi.Output<List<PipelineDestination>> destinations;
   /// Display name of resource.
   late final pulumi.Output<String?> displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -2098,7 +2100,7 @@ class Pipeline extends pulumi.CustomResource {
   /// List of mediation operations to be performed on the message. Currently,
   /// only one Transformation operation is allowed in each Pipeline.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mediations;
+  late final pulumi.Output<List<PipelineMediation>?> mediations;
   /// The resource name of the Pipeline. Must be unique within the
   /// location of the project and must be in
   /// `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
@@ -2144,26 +2146,27 @@ class Pipeline extends pulumi.CustomResource {
           'gcp:eventarc/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinations = registerOutput<List<PipelineDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDestination>(guardedValue, (value) => PipelineDestination.fromMap((value as Map).cast<String, dynamic>())); });
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>('inputPayloadFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineInputPayloadFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mediations = registerOutput<List<Map<String, dynamic>>?>('mediations');
+    mediations = registerOutput<List<PipelineMediation>?>('mediations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineMediation>(guardedValue, (value) => PipelineMediation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     pipelineId = registerOutput<String>('pipelineId');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -2174,11 +2177,12 @@ class Pipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2192,24 +2196,57 @@ class Pipeline extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinations = registerOutput<List<PipelineDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDestination>(guardedValue, (value) => PipelineDestination.fromMap((value as Map).cast<String, dynamic>())); });
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>('inputPayloadFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineInputPayloadFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mediations = registerOutput<List<Map<String, dynamic>>?>('mediations');
+    mediations = registerOutput<List<PipelineMediation>?>('mediations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineMediation>(guardedValue, (value) => PipelineMediation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     pipelineId = registerOutput<String>('pipelineId');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'gcp:eventarc/pipeline:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destinations = registerOutput<List<PipelineDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDestination>(guardedValue, (value) => PipelineDestination.fromMap((value as Map).cast<String, dynamic>())); });
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>('inputPayloadFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineInputPayloadFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mediations = registerOutput<List<PipelineMediation>?>('mediations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineMediation>(guardedValue, (value) => PipelineMediation.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    pipelineId = registerOutput<String>('pipelineId');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

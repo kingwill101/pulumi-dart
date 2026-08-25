@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromTemplateShieldedInstanceConfig {
   /// Whether integrity monitoring is enabled for the instance.
-  final pulumi.Input<bool>? enableIntegrityMonitoring;
+  final pulumi.Input<bool?>? enableIntegrityMonitoring;
   /// Whether secure boot is enabled for the instance.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
   /// Whether the instance uses vTPM.
-  final pulumi.Input<bool>? enableVtpm;
+  final pulumi.Input<bool?>? enableVtpm;
 
   /// Creates a new [InstanceFromTemplateShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Whether integrity monitoring is enabled for the instance.

@@ -5,13 +5,13 @@ import 'instance_psc_config_service_attachment.dart';
 
 class InstancePscConfig {
   /// List of VPCs that are allowed ingress into the Looker instance.
-  final pulumi.Input<List<String>>? allowedVpcs;
+  final pulumi.Input<List<String>?>? allowedVpcs;
   /// (Output)
   /// URI of the Looker service attachment.
-  final pulumi.Input<String>? lookerServiceAttachmentUri;
+  final pulumi.Input<String?>? lookerServiceAttachmentUri;
   /// List of egress service attachment configurations.
   /// Structure is documented below.
-  final pulumi.Input<List<InstancePscConfigServiceAttachment>>? serviceAttachments;
+  final pulumi.Input<List<InstancePscConfigServiceAttachment>?>? serviceAttachments;
 
   /// Creates a new [InstancePscConfig].
   /// [allowedVpcs] List of VPCs that are allowed ingress into the Looker instance.

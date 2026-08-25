@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiReasoningEngineSpecPackageSpec {
   /// Optional. The Cloud Storage URI of the dependency files in tar.gz
   /// format.
-  final pulumi.Input<String>? dependencyFilesGcsUri;
+  final pulumi.Input<String?>? dependencyFilesGcsUri;
   /// Optional. The Cloud Storage URI of the pickled python object.
-  final pulumi.Input<String>? pickleObjectGcsUri;
+  final pulumi.Input<String?>? pickleObjectGcsUri;
   /// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
   /// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
-  final pulumi.Input<String>? pythonVersion;
+  final pulumi.Input<String?>? pythonVersion;
   /// Optional. The Cloud Storage URI of the requirements.txtfile
-  final pulumi.Input<String>? requirementsGcsUri;
+  final pulumi.Input<String?>? requirementsGcsUri;
 
   /// Creates a new [AiReasoningEngineSpecPackageSpec].
   /// [dependencyFilesGcsUri] Optional. The Cloud Storage URI of the dependency files in tar.gz

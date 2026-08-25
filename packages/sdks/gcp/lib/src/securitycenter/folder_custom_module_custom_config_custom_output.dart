@@ -6,7 +6,7 @@ import 'folder_custom_module_custom_config_custom_output_property.dart';
 class FolderCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final pulumi.Input<List<FolderCustomModuleCustomConfigCustomOutputProperty>>? properties;
+  final pulumi.Input<List<FolderCustomModuleCustomConfigCustomOutputProperty>?>? properties;
 
   /// Creates a new [FolderCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.

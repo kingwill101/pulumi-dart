@@ -6,7 +6,7 @@ import 'migration_job_dump_flags_dump_flag.dart';
 class MigrationJobDumpFlags {
   /// A list of dump flags
   /// Structure is documented below.
-  final pulumi.Input<List<MigrationJobDumpFlagsDumpFlag>>? dumpFlags;
+  final pulumi.Input<List<MigrationJobDumpFlagsDumpFlag>?>? dumpFlags;
 
   /// Creates a new [MigrationJobDumpFlags].
   /// [dumpFlags] A list of dump flags

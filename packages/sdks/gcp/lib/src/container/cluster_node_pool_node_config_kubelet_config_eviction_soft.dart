@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolNodeConfigKubeletConfigEvictionSoft {
   /// Defines percentage of soft eviction threshold for imagefs.available. The value must be a percentage between `15%` and `50%`, such as `"20%"`.
-  final pulumi.Input<String>? imagefsAvailable;
+  final pulumi.Input<String?>? imagefsAvailable;
   /// Defines percentage of soft eviction threshold for imagefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
-  final pulumi.Input<String>? imagefsInodesFree;
+  final pulumi.Input<String?>? imagefsInodesFree;
   /// Defines quantity of soft eviction threshold for memory.available. The value must be a quantity, such as `"100Mi"`. The value must be greater than or equal to the GKE default hard eviction threshold of `"100Mi"` and less than 50% of machine memory.
-  final pulumi.Input<String>? memoryAvailable;
+  final pulumi.Input<String?>? memoryAvailable;
   /// Defines percentage of soft eviction threshold for nodefs.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
-  final pulumi.Input<String>? nodefsAvailable;
+  final pulumi.Input<String?>? nodefsAvailable;
   /// Defines percentage of soft eviction threshold for nodefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
-  final pulumi.Input<String>? nodefsInodesFree;
+  final pulumi.Input<String?>? nodefsInodesFree;
   /// Defines percentage of soft eviction threshold for pid.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
-  final pulumi.Input<String>? pidAvailable;
+  final pulumi.Input<String?>? pidAvailable;
 
   /// Creates a new [ClusterNodePoolNodeConfigKubeletConfigEvictionSoft].
   /// [imagefsAvailable] Defines percentage of soft eviction threshold for imagefs.available. The value must be a percentage between `15%` and `50%`, such as `"20%"`.

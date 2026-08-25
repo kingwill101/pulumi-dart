@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_schedule_args.dart';
 import 'ai_schedule_create_notebook_execution_job_request.dart';
 import 'ai_schedule_create_pipeline_job_request.dart';
+import 'ai_schedule_last_scheduled_run_response.dart';
 import 'ai_schedule_state.dart';
 
 /// &gt; **Warning:** `gcp.vertex.AiSchedule` is deprecated and will be removed in a future major release. Use `gcp.colab.Schedule` instead.
@@ -985,7 +986,7 @@ class AiSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String> lastResumeTime;
   /// Status of a scheduled run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> lastScheduledRunResponses;
+  late final pulumi.Output<List<AiScheduleLastScheduledRunResponse>> lastScheduledRunResponses;
   /// The location of the Schedule. eg us-central1
   late final pulumi.Output<String> location;
   /// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
@@ -1022,7 +1023,7 @@ class AiSchedule extends pulumi.CustomResource {
           'gcp:vertex/aiSchedule:AiSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowQueueing = registerOutput<bool?>('allowQueueing');
     catchUp = registerOutput<bool>('catchUp');
@@ -1035,7 +1036,7 @@ class AiSchedule extends pulumi.CustomResource {
     endTime = registerOutput<String?>('endTime');
     lastPauseTime = registerOutput<String>('lastPauseTime');
     lastResumeTime = registerOutput<String>('lastResumeTime');
-    lastScheduledRunResponses = registerOutput<List<Map<String, dynamic>>>('lastScheduledRunResponses');
+    lastScheduledRunResponses = registerOutput<List<AiScheduleLastScheduledRunResponse>>('lastScheduledRunResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiScheduleLastScheduledRunResponse>(guardedValue, (value) => AiScheduleLastScheduledRunResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     maxConcurrentActiveRunCount = registerOutput<String?>('maxConcurrentActiveRunCount');
     maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');
@@ -1054,11 +1055,12 @@ class AiSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1083,7 +1085,7 @@ class AiSchedule extends pulumi.CustomResource {
     endTime = registerOutput<String?>('endTime');
     lastPauseTime = registerOutput<String>('lastPauseTime');
     lastResumeTime = registerOutput<String>('lastResumeTime');
-    lastScheduledRunResponses = registerOutput<List<Map<String, dynamic>>>('lastScheduledRunResponses');
+    lastScheduledRunResponses = registerOutput<List<AiScheduleLastScheduledRunResponse>>('lastScheduledRunResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiScheduleLastScheduledRunResponse>(guardedValue, (value) => AiScheduleLastScheduledRunResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     maxConcurrentActiveRunCount = registerOutput<String?>('maxConcurrentActiveRunCount');
     maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');
@@ -1094,6 +1096,40 @@ class AiSchedule extends pulumi.CustomResource {
     startTime = registerOutput<String>('startTime');
     startedRunCount = registerOutput<String>('startedRunCount');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AiSchedule] resource.
+  AiSchedule.reference(String urn)
+    : super(
+        'gcp:vertex/aiSchedule:AiSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowQueueing = registerOutput<bool?>('allowQueueing');
+    catchUp = registerOutput<bool>('catchUp');
+    createNotebookExecutionJobRequest = registerOutput<AiScheduleCreateNotebookExecutionJobRequest?>('createNotebookExecutionJobRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiScheduleCreateNotebookExecutionJobRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createPipelineJobRequest = registerOutput<AiScheduleCreatePipelineJobRequest?>('createPipelineJobRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiScheduleCreatePipelineJobRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    cron = registerOutput<String?>('cron');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    endTime = registerOutput<String?>('endTime');
+    lastPauseTime = registerOutput<String>('lastPauseTime');
+    lastResumeTime = registerOutput<String>('lastResumeTime');
+    lastScheduledRunResponses = registerOutput<List<AiScheduleLastScheduledRunResponse>>('lastScheduledRunResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiScheduleLastScheduledRunResponse>(guardedValue, (value) => AiScheduleLastScheduledRunResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    maxConcurrentActiveRunCount = registerOutput<String?>('maxConcurrentActiveRunCount');
+    maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');
+    maxRunCount = registerOutput<String?>('maxRunCount');
+    this.name = registerOutput<String>('name');
+    nextRunTime = registerOutput<String>('nextRunTime');
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    startedRunCount = registerOutput<String>('startedRunCount');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

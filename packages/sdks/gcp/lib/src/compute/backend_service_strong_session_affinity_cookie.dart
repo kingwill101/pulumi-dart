@@ -5,12 +5,12 @@ import 'backend_service_strong_session_affinity_cookie_ttl.dart';
 
 class BackendServiceStrongSessionAffinityCookie {
   /// Name of the cookie.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path to set for the cookie.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Lifetime of the cookie.
   /// Structure is documented below.
-  final pulumi.Input<BackendServiceStrongSessionAffinityCookieTtl>? ttl;
+  final pulumi.Input<BackendServiceStrongSessionAffinityCookieTtl?>? ttl;
 
   /// Creates a new [BackendServiceStrongSessionAffinityCookie].
   /// [name] Name of the cookie.

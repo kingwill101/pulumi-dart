@@ -6,21 +6,21 @@ import 'cluster_cluster_config_preemptible_worker_config_instance_flexibility_po
 
 class ClusterClusterConfigPreemptibleWorkerConfig {
   /// Disk Config
-  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfigDiskConfig>? diskConfig;
+  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfigDiskConfig?>? diskConfig;
   /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
-  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy>? instanceFlexibilityPolicy;
+  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy?>? instanceFlexibilityPolicy;
   /// List of preemptible instance names which have been assigned
   /// to the cluster.
-  final pulumi.Input<List<String>>? instanceNames;
+  final pulumi.Input<List<String>?>? instanceNames;
   /// Specifies the number of preemptible nodes to create.
   /// Defaults to 0.
-  final pulumi.Input<int>? numInstances;
+  final pulumi.Input<int?>? numInstances;
   /// Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
   /// Accepted values are:
   /// * PREEMPTIBILITY_UNSPECIFIED
   /// * NON_PREEMPTIBLE
   /// * PREEMPTIBLE
-  final pulumi.Input<String>? preemptibility;
+  final pulumi.Input<String?>? preemptibility;
 
   /// Creates a new [ClusterClusterConfigPreemptibleWorkerConfig].
   /// [diskConfig] Disk Config
@@ -51,7 +51,7 @@ class ClusterClusterConfigPreemptibleWorkerConfig {
       diskConfig: (() { final guardedValue = map['diskConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigPreemptibleWorkerConfigDiskConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceFlexibilityPolicy: (() { final guardedValue = map['instanceFlexibilityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceNames: (() { final guardedValue = map['instanceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       preemptibility: (() { final guardedValue = map['preemptibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

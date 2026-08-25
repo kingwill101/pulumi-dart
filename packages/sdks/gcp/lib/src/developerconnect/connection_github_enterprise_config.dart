@@ -5,33 +5,33 @@ import 'connection_github_enterprise_config_service_directory_config.dart';
 
 class ConnectionGithubEnterpriseConfig {
   /// Optional. ID of the GitHub App created from the manifest.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Optional. ID of the installation of the GitHub App.
-  final pulumi.Input<String>? appInstallationId;
+  final pulumi.Input<String?>? appInstallationId;
   /// (Output)
   /// Output only. The URL-friendly name of the GitHub App.
-  final pulumi.Input<String>? appSlug;
+  final pulumi.Input<String?>? appSlug;
   /// Required. The URI of the GitHub Enterprise host this connection is for.
   final pulumi.Input<String> hostUri;
   /// (Output)
   /// Output only. The URI to navigate to in order to manage the installation associated
   /// with this GitHubEnterpriseConfig.
-  final pulumi.Input<String>? installationUri;
+  final pulumi.Input<String?>? installationUri;
   /// Optional. SecretManager resource containing the private key of the GitHub App,
   /// formatted as `projects/*/secrets/*/versions/*`.
-  final pulumi.Input<String>? privateKeySecretVersion;
+  final pulumi.Input<String?>? privateKeySecretVersion;
   /// (Output)
   /// Output only. GitHub Enterprise version installed at the host_uri.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGithubEnterpriseConfigServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ConnectionGithubEnterpriseConfigServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// Optional. SSL certificate to use for requests to GitHub Enterprise.
-  final pulumi.Input<String>? sslCaCertificate;
+  final pulumi.Input<String?>? sslCaCertificate;
   /// Optional. SecretManager resource containing the webhook secret of the GitHub App,
   /// formatted as `projects/*/secrets/*/versions/*`.
-  final pulumi.Input<String>? webhookSecretSecretVersion;
+  final pulumi.Input<String?>? webhookSecretSecretVersion;
 
   /// Creates a new [ConnectionGithubEnterpriseConfig].
   /// [appId] Optional. ID of the GitHub App created from the manifest.

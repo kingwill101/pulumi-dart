@@ -722,22 +722,23 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dedicatedServingEndpoint = registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>('dedicatedServingEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     embeddingManagement = registerOutput<AiFeatureOnlineStoreEmbeddingManagement>('embeddingManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEmbeddingManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     optimized = registerOutput<Map<String, dynamic>?>('optimized');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -748,11 +749,12 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiFeatureOnlineStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiFeatureOnlineStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -770,18 +772,47 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dedicatedServingEndpoint = registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>('dedicatedServingEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     embeddingManagement = registerOutput<AiFeatureOnlineStoreEmbeddingManagement>('embeddingManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEmbeddingManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     optimized = registerOutput<Map<String, dynamic>?>('optimized');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AiFeatureOnlineStore] resource.
+  AiFeatureOnlineStore.reference(String urn)
+    : super(
+        'gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dedicatedServingEndpoint = registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>('dedicatedServingEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    embeddingManagement = registerOutput<AiFeatureOnlineStoreEmbeddingManagement>('embeddingManagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEmbeddingManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    optimized = registerOutput<Map<String, dynamic>?>('optimized');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

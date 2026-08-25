@@ -5,18 +5,18 @@ import 'repository_workflow_config_invocation_config_included_target.dart';
 
 class RepositoryWorkflowConfigInvocationConfig {
   /// Optional. When set to true, any incremental tables will be fully refreshed.
-  final pulumi.Input<bool>? fullyRefreshIncrementalTablesEnabled;
+  final pulumi.Input<bool?>? fullyRefreshIncrementalTablesEnabled;
   /// Optional. The set of tags to include.
-  final pulumi.Input<List<String>>? includedTags;
+  final pulumi.Input<List<String>?>? includedTags;
   /// Optional. The set of action identifiers to include.
   /// Structure is documented below.
-  final pulumi.Input<List<RepositoryWorkflowConfigInvocationConfigIncludedTarget>>? includedTargets;
+  final pulumi.Input<List<RepositoryWorkflowConfigInvocationConfigIncludedTarget>?>? includedTargets;
   /// Optional. The service account to run workflow invocations under.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Optional. When set to true, transitive dependencies of included actions will be executed.
-  final pulumi.Input<bool>? transitiveDependenciesIncluded;
+  final pulumi.Input<bool?>? transitiveDependenciesIncluded;
   /// Optional. When set to true, transitive dependents of included actions will be executed.
-  final pulumi.Input<bool>? transitiveDependentsIncluded;
+  final pulumi.Input<bool?>? transitiveDependentsIncluded;
 
   /// Creates a new [RepositoryWorkflowConfigInvocationConfig].
   /// [fullyRefreshIncrementalTablesEnabled] Optional. When set to true, any incremental tables will be fully refreshed.

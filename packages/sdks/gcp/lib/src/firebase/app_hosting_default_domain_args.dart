@@ -10,14 +10,14 @@ class AppHostingDefaultDomainArgs {
   /// The ID of the Backend that this Domain is associated with
   final pulumi.Input<String> backend;
   /// Whether the domain is disabled. Defaults to false.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
   final pulumi.Input<String> domainId;
   /// The location of the Backend that this Domain is associated with
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [AppHostingDefaultDomainArgs].
   /// [backend] The ID of the Backend that this Domain is associated with

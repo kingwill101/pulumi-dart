@@ -6,7 +6,7 @@ class MetastoreServiceTelemetryConfig {
   /// The output format of the Dataproc Metastore service's logs.
   /// Default value is `JSON`.
   /// Possible values are: `LEGACY`, `JSON`.
-  final pulumi.Input<String>? logFormat;
+  final pulumi.Input<String?>? logFormat;
 
   /// Creates a new [MetastoreServiceTelemetryConfig].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.

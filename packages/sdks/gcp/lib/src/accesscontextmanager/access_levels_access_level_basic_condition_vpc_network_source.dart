@@ -6,7 +6,7 @@ import 'access_levels_access_level_basic_condition_vpc_network_source_vpc_subnet
 class AccessLevelsAccessLevelBasicConditionVpcNetworkSource {
   /// Sub networks within a VPC network.
   /// Structure is documented below.
-  final pulumi.Input<AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork>? vpcSubnetwork;
+  final pulumi.Input<AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork?>? vpcSubnetwork;
 
   /// Creates a new [AccessLevelsAccessLevelBasicConditionVpcNetworkSource].
   /// [vpcSubnetwork] Sub networks within a VPC network.

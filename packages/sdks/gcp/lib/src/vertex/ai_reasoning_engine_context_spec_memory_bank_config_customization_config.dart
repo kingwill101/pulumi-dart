@@ -7,14 +7,14 @@ import 'ai_reasoning_engine_context_spec_memory_bank_config_customization_config
 class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig {
   /// Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig>? consolidationConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig?>? consolidationConfig;
   /// Optional. Generate memories in the third person if set to true.
-  final pulumi.Input<bool>? enableThirdPersonMemories;
+  final pulumi.Input<bool?>? enableThirdPersonMemories;
   /// Optional. List of topics that the memory should be associated with.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic>>? memoryTopics;
+  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic>?>? memoryTopics;
   /// Optional. List of scope keys that this customization config applies to.
-  final pulumi.Input<List<String>>? scopeKeys;
+  final pulumi.Input<List<String>?>? scopeKeys;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig].
   /// [consolidationConfig] Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.

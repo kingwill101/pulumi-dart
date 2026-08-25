@@ -59,7 +59,7 @@ class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -75,11 +75,12 @@ class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePerimeterDryRunEgressPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePerimeterDryRunEgressPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -93,6 +94,24 @@ class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    egressFrom = registerOutput<ServicePerimeterDryRunEgressPolicyEgressFrom?>('egressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    egressTo = registerOutput<ServicePerimeterDryRunEgressPolicyEgressTo?>('egressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    perimeter = registerOutput<String>('perimeter');
+    title = registerOutput<String?>('title');
+  }
+
+  /// Creates a typed reference to an existing [ServicePerimeterDryRunEgressPolicy] resource.
+  ServicePerimeterDryRunEgressPolicy.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     egressFrom = registerOutput<ServicePerimeterDryRunEgressPolicyEgressFrom?>('egressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });

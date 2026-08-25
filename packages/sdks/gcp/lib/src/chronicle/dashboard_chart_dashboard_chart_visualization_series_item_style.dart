@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationSeriesItemStyle {
   /// (Optional)
-  final pulumi.Input<String>? borderColor;
+  final pulumi.Input<String?>? borderColor;
   /// (Optional)
-  final pulumi.Input<int>? borderWidth;
+  final pulumi.Input<int?>? borderWidth;
   /// (Optional)
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesItemStyle].
   /// [borderColor] (Optional)
@@ -31,7 +31,7 @@ class DashboardChartDashboardChartVisualizationSeriesItemStyle {
   factory DashboardChartDashboardChartVisualizationSeriesItemStyle.fromMap(Map<String, dynamic> map) {
     return DashboardChartDashboardChartVisualizationSeriesItemStyle(
       borderColor: (() { final guardedValue = map['borderColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      borderWidth: (() { final guardedValue = map['borderWidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      borderWidth: (() { final guardedValue = map['borderWidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

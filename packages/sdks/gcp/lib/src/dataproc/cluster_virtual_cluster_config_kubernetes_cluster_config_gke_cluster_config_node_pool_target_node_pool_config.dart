@@ -7,9 +7,9 @@ import 'cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_con
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
   /// The autoscaler configuration for this node pool.
   /// The autoscaler is enabled only when a valid configuration is present.
-  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling>? autoscaling;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling?>? autoscaling;
   /// The node pool configuration.
-  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig>? config;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig?>? config;
   /// The list of Compute Engine zones where node pool nodes associated
   /// with a Dataproc on GKE virtual cluster will be located.
   /// - - -

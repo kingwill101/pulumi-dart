@@ -1971,7 +1971,7 @@ class CertificateTemplateIamPolicy extends pulumi.CustomResource {
           'gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     certificateTemplate = registerOutput<String>('certificateTemplate');
     etag = registerOutput<String>('etag');
@@ -1985,11 +1985,12 @@ class CertificateTemplateIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateTemplateIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateTemplateIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2003,6 +2004,22 @@ class CertificateTemplateIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateTemplate = registerOutput<String>('certificateTemplate');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [CertificateTemplateIamPolicy] resource.
+  CertificateTemplateIamPolicy.reference(String urn)
+    : super(
+        'gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateTemplate = registerOutput<String>('certificateTemplate');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

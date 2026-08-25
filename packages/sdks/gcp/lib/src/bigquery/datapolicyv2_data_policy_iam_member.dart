@@ -1027,7 +1027,7 @@ class Datapolicyv2DataPolicyIamMember extends pulumi.CustomResource {
           'gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<Datapolicyv2DataPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
@@ -1043,11 +1043,12 @@ class Datapolicyv2DataPolicyIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Datapolicyv2DataPolicyIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Datapolicyv2DataPolicyIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1061,6 +1062,24 @@ class Datapolicyv2DataPolicyIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<Datapolicyv2DataPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataPolicyId = registerOutput<String>('dataPolicyId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [Datapolicyv2DataPolicyIamMember] resource.
+  Datapolicyv2DataPolicyIamMember.reference(String urn)
+    : super(
+        'gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<Datapolicyv2DataPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Datapolicyv2DataPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     etag = registerOutput<String>('etag');

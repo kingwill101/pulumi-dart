@@ -7,25 +7,25 @@ import 'feature_membership_policycontroller_policy_controller_hub_config_policy_
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
   /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
-  final pulumi.Input<int>? auditIntervalSeconds;
+  final pulumi.Input<int?>? auditIntervalSeconds;
   /// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
-  final pulumi.Input<int>? constraintViolationLimit;
+  final pulumi.Input<int?>? constraintViolationLimit;
   /// Map of deployment configs to deployments ("admission", "audit", "mutation").
-  final pulumi.Input<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>>? deploymentConfigs;
+  final pulumi.Input<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>?>? deploymentConfigs;
   /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
-  final pulumi.Input<List<String>>? exemptableNamespaces;
+  final pulumi.Input<List<String>?>? exemptableNamespaces;
   /// Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
-  final pulumi.Input<String>? installSpec;
+  final pulumi.Input<String?>? installSpec;
   /// Logs all denies and dry run failures.
-  final pulumi.Input<bool>? logDeniesEnabled;
+  final pulumi.Input<bool?>? logDeniesEnabled;
   /// Specifies the backends Policy Controller should export metrics to. Structure is documented below.
-  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring>? monitoring;
+  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring?>? monitoring;
   /// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
-  final pulumi.Input<bool>? mutationEnabled;
+  final pulumi.Input<bool?>? mutationEnabled;
   /// Specifies the desired policy content on the cluster. Structure is documented below.
-  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent>? policyContent;
+  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent?>? policyContent;
   /// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
-  final pulumi.Input<bool>? referentialRulesEnabled;
+  final pulumi.Input<bool?>? referentialRulesEnabled;
 
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfig].
   /// [auditIntervalSeconds] Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
@@ -68,8 +68,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfig.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfig(
-      auditIntervalSeconds: (() { final guardedValue = map['auditIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      constraintViolationLimit: (() { final guardedValue = map['constraintViolationLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      auditIntervalSeconds: (() { final guardedValue = map['auditIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      constraintViolationLimit: (() { final guardedValue = map['constraintViolationLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deploymentConfigs: (() { final guardedValue = map['deploymentConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(guardedValue, (value) => FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       exemptableNamespaces: (() { final guardedValue = map['exemptableNamespaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       installSpec: (() { final guardedValue = map['installSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

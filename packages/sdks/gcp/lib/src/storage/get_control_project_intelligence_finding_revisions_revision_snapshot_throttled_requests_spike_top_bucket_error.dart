@@ -25,7 +25,7 @@ class GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequ
 
   factory GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingRevisionsRevisionSnapshotThrottledRequestsSpikeTopBucketError(
-      code: pulumi.Input.fromValue(map['code'] as int),
+      code: pulumi.Input.fromValue((map['code'] as num).toInt()),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }

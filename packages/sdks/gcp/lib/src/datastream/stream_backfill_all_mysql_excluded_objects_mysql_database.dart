@@ -8,7 +8,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
   final pulumi.Input<String> database;
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>>? mysqlTables;
+  final pulumi.Input<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>?>? mysqlTables;
 
   /// Creates a new [StreamBackfillAllMysqlExcludedObjectsMysqlDatabase].
   /// [database] Database name.

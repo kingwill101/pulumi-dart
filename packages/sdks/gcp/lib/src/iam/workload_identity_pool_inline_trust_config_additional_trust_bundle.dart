@@ -13,7 +13,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
   /// public certificates.
   /// &gt; **Note** `trustDefaultSharedCa` is only supported for managed identity trust domain
   /// resource.
-  final pulumi.Input<bool>? trustDefaultSharedCa;
+  final pulumi.Input<bool?>? trustDefaultSharedCa;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> trustDomain;
 

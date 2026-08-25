@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionConfigurationEndpoint {
   /// Host and port in the format of `host:port` for the connector endpoint.
-  final pulumi.Input<String>? hostPort;
+  final pulumi.Input<String?>? hostPort;
 
   /// Creates a new [ConnectionConfigurationEndpoint].
   /// [hostPort] Host and port in the format of `host:port` for the connector endpoint.

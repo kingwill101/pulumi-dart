@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
   /// Each value may be one of: `MOBILE`, `DESKTOP`.
-  final pulumi.Input<List<String>>? deviceVisibilities;
+  final pulumi.Input<List<String>?>? deviceVisibilities;
   /// The template to customize how the field is displayed.
   /// An example value would be a string that looks like: "Price: {value}".
-  final pulumi.Input<String>? displayTemplate;
+  final pulumi.Input<String?>? displayTemplate;
   /// Registered field name. The format is `field.abc`.
   final pulumi.Input<String> field;
   /// The identifier for this object. Format specified above.

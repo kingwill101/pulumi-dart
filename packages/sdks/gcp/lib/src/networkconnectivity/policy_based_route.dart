@@ -4,6 +4,7 @@ import 'policy_based_route_filter.dart';
 import 'policy_based_route_interconnect_attachment.dart';
 import 'policy_based_route_state.dart';
 import 'policy_based_route_virtual_machine.dart';
+import 'policy_based_route_warning.dart';
 
 /// Policy-based Routes are more powerful routes that route L4 network traffic based on not just destination IP, but also source IP, protocol and more. A Policy-based Route always take precedence when it conflicts with other types of routes.
 ///
@@ -567,7 +568,7 @@ class PolicyBasedRoute extends pulumi.CustomResource {
   late final pulumi.Output<PolicyBasedRouteVirtualMachine?> virtualMachine;
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<PolicyBasedRouteWarning>> warnings;
 
   /// Creates a new [PolicyBasedRoute].
   /// [name] The Pulumi resource name.
@@ -581,26 +582,27 @@ class PolicyBasedRoute extends pulumi.CustomResource {
           'gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filter = registerOutput<PolicyBasedRouteFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interconnectAttachment = registerOutput<PolicyBasedRouteInterconnectAttachment?>('interconnectAttachment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteInterconnectAttachment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     nextHopIlbIp = registerOutput<String?>('nextHopIlbIp');
     nextHopOtherRoutes = registerOutput<String?>('nextHopOtherRoutes');
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
     virtualMachine = registerOutput<PolicyBasedRouteVirtualMachine?>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    warnings = registerOutput<List<PolicyBasedRouteWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyBasedRouteWarning>(guardedValue, (value) => PolicyBasedRouteWarning.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [PolicyBasedRoute] resource's state with the given [name] and [id].
@@ -608,11 +610,12 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyBasedRouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyBasedRoute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -629,20 +632,50 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filter = registerOutput<PolicyBasedRouteFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interconnectAttachment = registerOutput<PolicyBasedRouteInterconnectAttachment?>('interconnectAttachment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteInterconnectAttachment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     nextHopIlbIp = registerOutput<String?>('nextHopIlbIp');
     nextHopOtherRoutes = registerOutput<String?>('nextHopOtherRoutes');
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
     virtualMachine = registerOutput<PolicyBasedRouteVirtualMachine?>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    warnings = registerOutput<List<PolicyBasedRouteWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyBasedRouteWarning>(guardedValue, (value) => PolicyBasedRouteWarning.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [PolicyBasedRoute] resource.
+  PolicyBasedRoute.reference(String urn)
+    : super(
+        'gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    filter = registerOutput<PolicyBasedRouteFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interconnectAttachment = registerOutput<PolicyBasedRouteInterconnectAttachment?>('interconnectAttachment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteInterconnectAttachment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    nextHopIlbIp = registerOutput<String?>('nextHopIlbIp');
+    nextHopOtherRoutes = registerOutput<String?>('nextHopOtherRoutes');
+    priority = registerOutput<int?>('priority');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+    virtualMachine = registerOutput<PolicyBasedRouteVirtualMachine?>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warnings = registerOutput<List<PolicyBasedRouteWarning>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyBasedRouteWarning>(guardedValue, (value) => PolicyBasedRouteWarning.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -30,7 +30,7 @@ class GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
   factory GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(
       spillover: pulumi.Input.fromValue(map['spillover'] as String),
-      spilloverRatio: pulumi.Input.fromValue(map['spilloverRatio'] as double),
+      spilloverRatio: pulumi.Input.fromValue((map['spilloverRatio'] as num).toDouble()),
     );
   }
 }

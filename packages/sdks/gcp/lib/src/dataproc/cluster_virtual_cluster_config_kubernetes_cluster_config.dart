@@ -11,7 +11,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig {
   /// If this namespace does not exist, it is created.
   /// If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
   /// If not specified, the name of the Dataproc Cluster is used.
-  final pulumi.Input<String>? kubernetesNamespace;
+  final pulumi.Input<String?>? kubernetesNamespace;
   /// The software configuration for this Dataproc cluster running on Kubernetes.
   final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig> kubernetesSoftwareConfig;
 

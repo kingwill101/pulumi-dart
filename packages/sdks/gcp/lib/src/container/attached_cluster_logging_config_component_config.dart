@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachedClusterLoggingConfigComponentConfig {
   /// The components to be enabled.
   /// Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
-  final pulumi.Input<List<String>>? enableComponents;
+  final pulumi.Input<List<String>?>? enableComponents;
 
   /// Creates a new [AttachedClusterLoggingConfigComponentConfig].
   /// [enableComponents] The components to be enabled.

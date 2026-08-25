@@ -11,15 +11,15 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   ///
   /// For a given OS policy assignment, there is only one revision with a value
   /// of 'true' for this field.
-  final pulumi.Input<bool>? baseline;
+  final pulumi.Input<bool?>? baseline;
   /// Output only. Indicates that this revision deletes the OS policy assignment.
-  final pulumi.Input<bool>? deleted;
+  final pulumi.Input<bool?>? deleted;
   /// Optional. Freeform text describing the purpose of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Output only. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Filters to select target VMs for an assignment.
   ///
   /// If more than one filter criteria is specified below, a VM will be selected
@@ -29,18 +29,18 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Required. List of OS policies to be applied to the VMs.
   final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy>> osPolicies;
   /// Output only. Set to true, if the there are ongoing changes being applied by the
   /// orchestrator.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Output only. The timestamp that the revision was created.
-  final pulumi.Input<String>? revisionCreateTime;
+  final pulumi.Input<String?>? revisionCreateTime;
   /// Output only. The assignment revision ID
   /// A new revision is committed whenever a rollout is triggered for a OS policy
   /// assignment
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
   /// Message to configure the rollout at the zonal level for the OS policy
   /// assignment.
   final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout> rollout;
@@ -51,9 +51,9 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// CANCELLING
   /// CANCELLED
   /// SUCCEEDED
-  final pulumi.Input<String>? rolloutState;
+  final pulumi.Input<String?>? rolloutState;
   /// Output only. Server generated unique id for the OS policy assignment resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload].
   /// [baseline] Output only. Indicates that this revision has been successfully rolled out in this zone

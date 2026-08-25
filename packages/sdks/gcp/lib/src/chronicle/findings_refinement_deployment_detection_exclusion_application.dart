@@ -6,22 +6,22 @@ class FindingsRefinementDeploymentDetectionExclusionApplication {
   /// The CuratedRuleSets this detection exclusion applies to.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
-  final pulumi.Input<List<String>>? curatedRuleSets;
+  final pulumi.Input<List<String>?>? curatedRuleSets;
   /// The CuratedRules this detection exclusion applies to.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/curatedRules/{rule}
-  final pulumi.Input<List<String>>? curatedRules;
+  final pulumi.Input<List<String>?>? curatedRules;
   /// (Output)
   /// The deleted CuratedRuleSets this detection exclusion applies to.
   /// Indicates to the customer that the detection exclusion no longer applies
   /// to the rule sets, so the detection exclusion should be updated.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/curatedRuleSetCategories/{category}/curatedRuleSets/{rule_set}
-  final pulumi.Input<List<String>>? deletedCuratedRuleSets;
+  final pulumi.Input<List<String>?>? deletedCuratedRuleSets;
   /// The Rules this detection exclusion applies to.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
-  final pulumi.Input<List<String>>? rules;
+  final pulumi.Input<List<String>?>? rules;
 
   /// Creates a new [FindingsRefinementDeploymentDetectionExclusionApplication].
   /// [curatedRuleSets] The CuratedRuleSets this detection exclusion applies to.

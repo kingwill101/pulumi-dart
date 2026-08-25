@@ -9,7 +9,7 @@ class InterconnectGroupConfigured {
   /// this group does or does not meet the requirements for the intended
   /// capability.
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectGroupConfiguredTopologyCapability>>? topologyCapabilities;
+  final pulumi.Input<List<InterconnectGroupConfiguredTopologyCapability>?>? topologyCapabilities;
 
   /// Creates a new [InterconnectGroupConfigured].
   /// [topologyCapabilities] (Output)

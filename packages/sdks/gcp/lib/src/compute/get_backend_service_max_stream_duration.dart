@@ -27,7 +27,7 @@ class GetBackendServiceMaxStreamDuration {
 
   factory GetBackendServiceMaxStreamDuration.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceMaxStreamDuration(
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
+      nanos: pulumi.Input.fromValue((map['nanos'] as num).toInt()),
       seconds: pulumi.Input.fromValue(map['seconds'] as String),
     );
   }

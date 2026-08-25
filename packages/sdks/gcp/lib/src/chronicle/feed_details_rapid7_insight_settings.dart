@@ -5,11 +5,11 @@ import 'feed_details_rapid7_insight_settings_authentication.dart';
 
 class FeedDetailsRapid7InsightSettings {
   /// HTTP header based authentication.
-  final pulumi.Input<FeedDetailsRapid7InsightSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsRapid7InsightSettingsAuthentication?>? authentication;
   /// Rapid7 API endpoint. Should be "vulnerabilities" or "assets".
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsRapid7InsightSettings].
   /// [authentication] HTTP header based authentication.

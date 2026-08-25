@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderBatching {
-  final pulumi.Input<bool>? enableBatching;
-  final pulumi.Input<String>? sendAfter;
+  final pulumi.Input<bool?>? enableBatching;
+  final pulumi.Input<String?>? sendAfter;
 
   /// Creates a new [ProviderBatching].
   /// [enableBatching] Optional.

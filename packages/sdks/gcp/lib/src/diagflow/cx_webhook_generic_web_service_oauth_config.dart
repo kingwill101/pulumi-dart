@@ -8,14 +8,14 @@ class CxWebhookGenericWebServiceOauthConfig {
   /// The client secret provided by the 3rd party platform.  If the
   /// `secretVersionForClientSecret` field is set, this field will be
   /// ignored.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The OAuth scopes to grant.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// The name of the SecretManager secret version resource storing the
   /// client secret. If this field is set, the `clientSecret` field will be
   /// ignored.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
-  final pulumi.Input<String>? secretVersionForClientSecret;
+  final pulumi.Input<String?>? secretVersionForClientSecret;
   /// The token endpoint provided by the 3rd party platform to exchange an
   /// access token.
   final pulumi.Input<String> tokenEndpoint;

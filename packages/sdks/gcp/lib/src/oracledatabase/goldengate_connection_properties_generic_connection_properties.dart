@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateConnectionPropertiesGenericConnectionProperties {
   /// The host of the GenericConnection.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The technology type.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesGenericConnectionProperties].
   /// [host] The host of the GenericConnection.

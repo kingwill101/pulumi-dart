@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SnapshotSnapshotEncryptionKey {
   /// The name of the encryption key that is stored in Google Cloud KMS.
-  final pulumi.Input<String>? kmsKeySelfLink;
+  final pulumi.Input<String?>? kmsKeySelfLink;
   /// The service account used for the encryption request for the given KMS key.
   /// If absent, the Compute Engine Service Agent service account is used.
-  final pulumi.Input<String>? kmsKeyServiceAccount;
+  final pulumi.Input<String?>? kmsKeyServiceAccount;
   /// Specifies a 256-bit customer-supplied encryption key, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rawKey;
+  final pulumi.Input<String?>? rawKey;
   /// Specifies an encryption key stored in Google Cloud KMS, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rsaEncryptedKey;
+  final pulumi.Input<String?>? rsaEncryptedKey;
   /// (Output)
   /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
   /// encryption key that protects this resource.
-  final pulumi.Input<String>? sha256;
+  final pulumi.Input<String?>? sha256;
 
   /// Creates a new [SnapshotSnapshotEncryptionKey].
   /// [kmsKeySelfLink] The name of the encryption key that is stored in Google Cloud KMS.

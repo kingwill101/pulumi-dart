@@ -15,7 +15,7 @@ class InstanceArgs {
   /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
   /// the instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceAutoscalingConfig>? autoscalingConfig;
+  final pulumi.Input<InstanceAutoscalingConfig?>? autoscalingConfig;
   /// The name of the instance's configuration (similar but not
   /// quite the same as a region) which defines the geographic placement and
   /// replication of your databases in this instance. It determines where your data
@@ -27,48 +27,48 @@ class InstanceArgs {
   /// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
   /// if unset or NONE, no default backup schedule will be created for new databases within the instance.
   /// Possible values are: `NONE`, `AUTOMATIC`.
-  final pulumi.Input<String>? defaultBackupScheduleType;
+  final pulumi.Input<String?>? defaultBackupScheduleType;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The descriptive name for this instance as it appears in UIs. Must be
   /// unique per project and between 4 and 30 characters in length.
   final pulumi.Input<String> displayName;
   /// The edition selected for this instance. Different editions provide different capabilities at different price points.
   /// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// When deleting a spanner instance, this boolean option will delete all backups of this instance.
   /// This must be set to true if you created a backup manually in the console.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
   /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
   /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
   /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// An object containing a list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A unique identifier for the instance, which cannot be changed after
   /// the instance is created. The name must be between 6 and 30 characters
   /// in length.
   /// If not provided, a random string starting with `tf-` will be selected.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
   /// autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
-  final pulumi.Input<int>? numNodes;
+  final pulumi.Input<int?>? numNodes;
   /// The number of processing units allocated to this instance. Exactly one of either num_nodes,
   /// processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
-  final pulumi.Input<int>? processingUnits;
+  final pulumi.Input<int?>? processingUnits;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InstanceArgs].
   /// [autoscalingConfig] The autoscaling configuration. Autoscaling is enabled if this field is set.
@@ -130,8 +130,8 @@ class InstanceArgs {
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numNodes: (() { final guardedValue = map['numNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      processingUnits: (() { final guardedValue = map['processingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numNodes: (() { final guardedValue = map['numNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      processingUnits: (() { final guardedValue = map['processingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

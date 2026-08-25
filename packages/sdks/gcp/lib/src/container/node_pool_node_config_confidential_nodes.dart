@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigConfidentialNodes {
   /// Defines the type of technology used by the confidential node.
-  final pulumi.Input<String>? confidentialInstanceType;
+  final pulumi.Input<String?>? confidentialInstanceType;
   /// Whether Confidential Nodes feature is enabled for all nodes in this pool.
   final pulumi.Input<bool> enabled;
 

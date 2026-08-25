@@ -9,18 +9,18 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
   /// are supported and other identity types are not supported.The v1 identities
   /// that have the prefix user, group and serviceAccount in
   /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
-  final pulumi.Input<List<String>>? identities;
+  final pulumi.Input<List<String>?>? identities;
   /// Specifies the type of identities that are allowed access to outside the
   /// perimeter. If left unspecified, then members of `identities` field will
   /// be allowed access.
   /// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   /// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
-  final pulumi.Input<String>? sourceRestriction;
+  final pulumi.Input<String?>? sourceRestriction;
   /// Sources that this EgressPolicy authorizes access from.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource>>? sources;
+  final pulumi.Input<List<ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource>?>? sources;
 
   /// Creates a new [ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom].
   /// [identities] Identities can be an individual user, service account, Google group,

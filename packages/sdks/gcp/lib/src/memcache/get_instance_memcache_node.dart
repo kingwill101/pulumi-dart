@@ -42,7 +42,7 @@ class GetInstanceMemcacheNode {
     return GetInstanceMemcacheNode(
       host: pulumi.Input.fromValue(map['host'] as String),
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       state: pulumi.Input.fromValue(map['state'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );

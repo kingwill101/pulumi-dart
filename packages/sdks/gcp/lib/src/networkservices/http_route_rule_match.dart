@@ -6,19 +6,19 @@ import 'http_route_rule_match_query_parameter.dart';
 
 class HttpRouteRuleMatch {
   /// The HTTP request path value should exactly match this value.
-  final pulumi.Input<String>? fullPathMatch;
+  final pulumi.Input<String?>? fullPathMatch;
   /// Specifies a list of HTTP request headers to match against.
   /// Structure is documented below.
-  final pulumi.Input<List<HttpRouteRuleMatchHeader>>? headers;
+  final pulumi.Input<List<HttpRouteRuleMatchHeader>?>? headers;
   /// Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
-  final pulumi.Input<String>? prefixMatch;
+  final pulumi.Input<String?>? prefixMatch;
   /// Specifies a list of query parameters to match against.
   /// Structure is documented below.
-  final pulumi.Input<List<HttpRouteRuleMatchQueryParameter>>? queryParameters;
+  final pulumi.Input<List<HttpRouteRuleMatchQueryParameter>?>? queryParameters;
   /// The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
-  final pulumi.Input<String>? regexMatch;
+  final pulumi.Input<String?>? regexMatch;
 
   /// Creates a new [HttpRouteRuleMatch].
   /// [fullPathMatch] The HTTP request path value should exactly match this value.

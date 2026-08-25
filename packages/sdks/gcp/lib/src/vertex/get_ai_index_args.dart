@@ -10,7 +10,7 @@ class GetAiIndexArgs {
   /// The name of the index.
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the index.
   ///
   /// - - -

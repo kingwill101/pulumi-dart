@@ -5,7 +5,7 @@ import 'cluster_user_created_connections_cluster_endpoint_connection.dart';
 
 class ClusterUserCreatedConnectionsClusterEndpoint {
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterUserCreatedConnectionsClusterEndpointConnection>>? connections;
+  final pulumi.Input<List<ClusterUserCreatedConnectionsClusterEndpointConnection>?>? connections;
 
   /// Creates a new [ClusterUserCreatedConnectionsClusterEndpoint].
   /// [connections] Structure is documented below.

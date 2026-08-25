@@ -7,11 +7,11 @@ import 'cluster_virtual_cluster_config_kubernetes_cluster_config.dart';
 class ClusterVirtualClusterConfig {
   /// Configuration of auxiliary services used by this cluster.
   /// Structure defined below.
-  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfig>? auxiliaryServicesConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfig?>? auxiliaryServicesConfig;
   /// The configuration for running the Dataproc cluster on Kubernetes.
   /// Structure defined below.
   /// - - -
-  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfig>? kubernetesClusterConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfig?>? kubernetesClusterConfig;
   /// The Cloud Storage staging bucket used to stage files,
   /// such as Hadoop jars, between client machines and the cluster.
   /// Note: If you don't explicitly specify a `stagingBucket`
@@ -19,7 +19,7 @@ class ClusterVirtualClusterConfig {
   /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
   /// with other clusters in the same region/zone also choosing to use the auto generation
   /// option.
-  final pulumi.Input<String>? stagingBucket;
+  final pulumi.Input<String?>? stagingBucket;
 
   /// Creates a new [ClusterVirtualClusterConfig].
   /// [auxiliaryServicesConfig] Configuration of auxiliary services used by this cluster.

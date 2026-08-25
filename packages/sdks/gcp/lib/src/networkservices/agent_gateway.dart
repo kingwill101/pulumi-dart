@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agent_gateway_agent_gateway_card.dart';
 import 'agent_gateway_args.dart';
 import 'agent_gateway_google_managed.dart';
 import 'agent_gateway_network_config.dart';
@@ -970,7 +971,7 @@ import 'agent_gateway_state.dart';
 class AgentGateway extends pulumi.CustomResource {
   /// AgentGatewayOutputCard contains informational output-only fields.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> agentGatewayCards;
+  late final pulumi.Output<List<AgentGatewayAgentGatewayCard>> agentGatewayCards;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1040,23 +1041,24 @@ class AgentGateway extends pulumi.CustomResource {
           'gcp:networkservices/agentGateway:AgentGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    agentGatewayCards = registerOutput<List<Map<String, dynamic>>>('agentGatewayCards');
+    agentGatewayCards = registerOutput<List<AgentGatewayAgentGatewayCard>>('agentGatewayCards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     googleManaged = registerOutput<AgentGatewayGoogleManaged?>('googleManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewayGoogleManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<AgentGatewayNetworkConfig?>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewayNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    protocols = registerOutput<List<String>?>('protocols');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    registries = registerOutput<List<String>?>('registries');
+    protocols = registerOutput<List<String>?>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    registries = registerOutput<List<String>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     selfManaged = registerOutput<AgentGatewaySelfManaged?>('selfManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewaySelfManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
@@ -1066,11 +1068,12 @@ class AgentGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1084,21 +1087,50 @@ class AgentGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    agentGatewayCards = registerOutput<List<Map<String, dynamic>>>('agentGatewayCards');
+    agentGatewayCards = registerOutput<List<AgentGatewayAgentGatewayCard>>('agentGatewayCards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     googleManaged = registerOutput<AgentGatewayGoogleManaged?>('googleManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewayGoogleManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<AgentGatewayNetworkConfig?>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewayNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    protocols = registerOutput<List<String>?>('protocols');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    registries = registerOutput<List<String>?>('registries');
+    protocols = registerOutput<List<String>?>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    registries = registerOutput<List<String>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    selfManaged = registerOutput<AgentGatewaySelfManaged?>('selfManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewaySelfManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AgentGateway] resource.
+  AgentGateway.reference(String urn)
+    : super(
+        'gcp:networkservices/agentGateway:AgentGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    agentGatewayCards = registerOutput<List<AgentGatewayAgentGatewayCard>>('agentGatewayCards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    googleManaged = registerOutput<AgentGatewayGoogleManaged?>('googleManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewayGoogleManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<AgentGatewayNetworkConfig?>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewayNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    protocols = registerOutput<List<String>?>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    registries = registerOutput<List<String>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     selfManaged = registerOutput<AgentGatewaySelfManaged?>('selfManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentGatewaySelfManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

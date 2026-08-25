@@ -47,8 +47,8 @@ class GetDatabaseInstanceSettingInsightsConfig {
     return GetDatabaseInstanceSettingInsightsConfig(
       enhancedQueryInsightsEnabled: pulumi.Input.fromValue(map['enhancedQueryInsightsEnabled'] as bool),
       queryInsightsEnabled: pulumi.Input.fromValue(map['queryInsightsEnabled'] as bool),
-      queryPlansPerMinute: pulumi.Input.fromValue(map['queryPlansPerMinute'] as int),
-      queryStringLength: pulumi.Input.fromValue(map['queryStringLength'] as int),
+      queryPlansPerMinute: pulumi.Input.fromValue((map['queryPlansPerMinute'] as num).toInt()),
+      queryStringLength: pulumi.Input.fromValue((map['queryStringLength'] as num).toInt()),
       recordApplicationTags: pulumi.Input.fromValue(map['recordApplicationTags'] as bool),
       recordClientAddress: pulumi.Input.fromValue(map['recordClientAddress'] as bool),
     );

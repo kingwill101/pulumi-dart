@@ -11,27 +11,27 @@ class EntityTypeState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of this entity type to be displayed on the console.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Enables fuzzy entity extraction during classification.
-  final pulumi.Input<bool>? enableFuzzyExtraction;
+  final pulumi.Input<bool?>? enableFuzzyExtraction;
   /// The collection of entity entries associated with the entity type.
   /// Structure is documented below.
-  final pulumi.Input<List<EntityTypeEntity>>? entities;
+  final pulumi.Input<List<EntityTypeEntity>?>? entities;
   /// Indicates the kind of entity type.
   /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
   /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
   /// types can contain references to other entity types (with or without aliases).
   /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
   /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The unique identifier of the entity type.
   /// Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EntityTypeState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

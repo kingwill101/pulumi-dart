@@ -6,9 +6,9 @@ import 'prevention_discovery_config_org_config_location.dart';
 class PreventionDiscoveryConfigOrgConfig {
   /// The data to scan folder org or project
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigOrgConfigLocation>? location;
+  final pulumi.Input<PreventionDiscoveryConfigOrgConfigLocation?>? location;
   /// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the cloud DLP API must be enabled.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [PreventionDiscoveryConfigOrgConfig].
   /// [location] The data to scan folder org or project

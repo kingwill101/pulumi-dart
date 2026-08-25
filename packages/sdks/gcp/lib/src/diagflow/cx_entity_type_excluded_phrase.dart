@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxEntityTypeExcludedPhrase {
   /// The word or phrase to be excluded.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CxEntityTypeExcludedPhrase].
   /// [value] The word or phrase to be excluded.

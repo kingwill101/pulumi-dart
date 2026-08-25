@@ -10,11 +10,11 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPool {
   /// If true, avoid using IPs ending in .0 or .255.
   /// This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
   /// those special IP addresses.
-  final pulumi.Input<bool>? avoidBuggyIps;
+  final pulumi.Input<bool?>? avoidBuggyIps;
   /// If true, prevent IP addresses from being automatically assigned.
   ///
   /// &lt;a name="nestedDataplaneV2"&gt;&lt;/a&gt;The `dataplaneV2` block supports:
-  final pulumi.Input<bool>? manualAssign;
+  final pulumi.Input<bool?>? manualAssign;
   /// The name of the address pool.
   final pulumi.Input<String> pool;
 

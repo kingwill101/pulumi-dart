@@ -6,7 +6,7 @@ import 'v2_queued_resource_tpu_node_spec.dart';
 class V2QueuedResourceTpu {
   /// The TPU node(s) being requested.
   /// Structure is documented below.
-  final pulumi.Input<List<V2QueuedResourceTpuNodeSpec>>? nodeSpecs;
+  final pulumi.Input<List<V2QueuedResourceTpuNodeSpec>?>? nodeSpecs;
 
   /// Creates a new [V2QueuedResourceTpu].
   /// [nodeSpecs] The TPU node(s) being requested.

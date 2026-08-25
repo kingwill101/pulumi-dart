@@ -7,22 +7,22 @@ class AccessLevelConditionDevicePolicy {
   /// A list of allowed device management levels.
   /// An empty list allows all management levels.
   /// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
-  final pulumi.Input<List<String>>? allowedDeviceManagementLevels;
+  final pulumi.Input<List<String>?>? allowedDeviceManagementLevels;
   /// A list of allowed encryptions statuses.
   /// An empty list allows all statuses.
   /// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-  final pulumi.Input<List<String>>? allowedEncryptionStatuses;
+  final pulumi.Input<List<String>?>? allowedEncryptionStatuses;
   /// A list of allowed OS versions.
   /// An empty list allows all types and all versions.
   /// Structure is documented below.
-  final pulumi.Input<List<AccessLevelConditionDevicePolicyOsConstraint>>? osConstraints;
+  final pulumi.Input<List<AccessLevelConditionDevicePolicyOsConstraint>?>? osConstraints;
   /// Whether the device needs to be approved by the customer admin.
-  final pulumi.Input<bool>? requireAdminApproval;
+  final pulumi.Input<bool?>? requireAdminApproval;
   /// Whether the device needs to be corp owned.
-  final pulumi.Input<bool>? requireCorpOwned;
+  final pulumi.Input<bool?>? requireCorpOwned;
   /// Whether or not screenlock is required for the DevicePolicy
   /// to be true. Defaults to false.
-  final pulumi.Input<bool>? requireScreenLock;
+  final pulumi.Input<bool?>? requireScreenLock;
 
   /// Creates a new [AccessLevelConditionDevicePolicy].
   /// [allowedDeviceManagementLevels] A list of allowed device management levels.

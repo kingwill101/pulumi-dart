@@ -277,7 +277,7 @@ class Brand extends pulumi.CustomResource {
           'gcp:iap/brand:Brand',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     applicationTitle = registerOutput<String>('applicationTitle');
     this.name = registerOutput<String>('name');
@@ -291,11 +291,12 @@ class Brand extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BrandState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Brand._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -309,6 +310,22 @@ class Brand extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationTitle = registerOutput<String>('applicationTitle');
+    this.name = registerOutput<String>('name');
+    orgInternalOnly = registerOutput<bool>('orgInternalOnly');
+    project = registerOutput<String>('project');
+    supportEmail = registerOutput<String>('supportEmail');
+  }
+
+  /// Creates a typed reference to an existing [Brand] resource.
+  Brand.reference(String urn)
+    : super(
+        'gcp:iap/brand:Brand',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationTitle = registerOutput<String>('applicationTitle');
     this.name = registerOutput<String>('name');
     orgInternalOnly = registerOutput<bool>('orgInternalOnly');

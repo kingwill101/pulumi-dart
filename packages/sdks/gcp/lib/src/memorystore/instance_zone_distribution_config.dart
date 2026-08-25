@@ -8,10 +8,10 @@ class InstanceZoneDistributionConfig {
   /// MULTI_ZONE
   /// SINGLE_ZONE
   /// Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
   /// Ignored for MULTI_ZONE mode.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceZoneDistributionConfig].
   /// [mode] Optional. Current zone distribution mode. Defaults to MULTI_ZONE.

@@ -21,7 +21,7 @@ class GetInstancePerformanceConfigFixedIop {
 
   factory GetInstancePerformanceConfigFixedIop.fromMap(Map<String, dynamic> map) {
     return GetInstancePerformanceConfigFixedIop(
-      maxIops: pulumi.Input.fromValue(map['maxIops'] as int),
+      maxIops: pulumi.Input.fromValue((map['maxIops'] as num).toInt()),
     );
   }
 }

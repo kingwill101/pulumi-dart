@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuth {
   /// Access key ID.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// Secret access key.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   ///
   /// &lt;a name="nestedDetailsAmazonSqsV2Settings"&gt;&lt;/a&gt;The `amazonSqsV2Settings` block supports:
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuth].
   /// [accessKeyId] Access key ID.

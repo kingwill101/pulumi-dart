@@ -7,7 +7,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
   /// Detailed information of a PSC connection that is created by the customer
   /// who owns the cluster.
   /// Structure is documented below.
-  final pulumi.Input<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection>? pscConnection;
+  final pulumi.Input<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection?>? pscConnection;
 
   /// Creates a new [InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection].
   /// [pscConnection] Detailed information of a PSC connection that is created by the customer

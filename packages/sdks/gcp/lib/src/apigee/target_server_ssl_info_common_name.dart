@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetServerSSlInfoCommonName {
   /// The TLS Common Name string of the certificate.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Indicates whether the cert should be matched against as a wildcard cert.
-  final pulumi.Input<bool>? wildcardMatch;
+  final pulumi.Input<bool?>? wildcardMatch;
 
   /// Creates a new [TargetServerSSlInfoCommonName].
   /// [value] The TLS Common Name string of the certificate.

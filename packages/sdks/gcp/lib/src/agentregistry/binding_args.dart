@@ -21,16 +21,16 @@ class BindingArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the Binding.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined display name for the Binding.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The source of the Binding.
   /// Structure is documented below.
   final pulumi.Input<BindingSource> source;

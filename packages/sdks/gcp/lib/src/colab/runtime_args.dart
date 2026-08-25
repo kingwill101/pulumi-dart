@@ -9,30 +9,30 @@ import 'runtime_notebook_runtime_template_ref.dart';
 /// {@macro pulumi_colab_runtime_runtime_args_doc}
 class RuntimeArgs {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
-  final pulumi.Input<bool>? autoUpgrade;
+  final pulumi.Input<bool?>? autoUpgrade;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the Runtime.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// Required. The display name of the Runtime.
   final pulumi.Input<String> displayName;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
   /// The resource name of the Runtime
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// 'Runtime specific information used for NotebookRuntime creation.'
   /// Structure is documented below.
-  final pulumi.Input<RuntimeNotebookRuntimeTemplateRef>? notebookRuntimeTemplateRef;
+  final pulumi.Input<RuntimeNotebookRuntimeTemplateRef?>? notebookRuntimeTemplateRef;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The user email of the NotebookRuntime.
   final pulumi.Input<String> runtimeUser;
 

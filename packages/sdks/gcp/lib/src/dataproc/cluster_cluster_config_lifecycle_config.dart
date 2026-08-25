@@ -6,22 +6,22 @@ class ClusterClusterConfigLifecycleConfig {
   /// The time when cluster will be auto-deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? autoDeleteTime;
+  final pulumi.Input<String?>? autoDeleteTime;
   /// The time when cluster will be auto-stopped.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
   ///
   /// - - -
-  final pulumi.Input<String>? autoStopTime;
+  final pulumi.Input<String?>? autoStopTime;
   /// The duration to keep the cluster alive while idling
   /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [300s, 1209600s].
-  final pulumi.Input<String>? idleDeleteTtl;
+  final pulumi.Input<String?>? idleDeleteTtl;
   /// Time when the cluster became idle
   /// (most recent job finished) and became eligible for deletion due to idleness.
-  final pulumi.Input<String>? idleStartTime;
+  final pulumi.Input<String?>? idleStartTime;
   /// The duration to keep the cluster alive while idling
   /// (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
-  final pulumi.Input<String>? idleStopTtl;
+  final pulumi.Input<String?>? idleStopTtl;
 
   /// Creates a new [ClusterClusterConfigLifecycleConfig].
   /// [autoDeleteTime] The time when cluster will be auto-deleted.

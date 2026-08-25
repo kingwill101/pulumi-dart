@@ -5,16 +5,16 @@ import 'feed_details_microsoft_security_center_alert_settings_authentication.dar
 
 class FeedDetailsMicrosoftSecurityCenterAlertSettings {
   /// API Auth Endpoint.
-  final pulumi.Input<String>? authEndpoint;
+  final pulumi.Input<String?>? authEndpoint;
   /// Microsoft OAuth 2.0 client credentials grant.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Subscription ID of the Microsoft security center alert settings alert.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FeedDetailsMicrosoftSecurityCenterAlertSettings].
   /// [authEndpoint] API Auth Endpoint.

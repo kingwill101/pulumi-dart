@@ -6,9 +6,9 @@ import 'feed_details_workspace_mobile_settings_authentication.dart';
 class FeedDetailsWorkspaceMobileSettings {
   /// OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceMobileSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsWorkspaceMobileSettingsAuthentication?>? authentication;
   /// Customer ID.
-  final pulumi.Input<String>? workspaceCustomerId;
+  final pulumi.Input<String?>? workspaceCustomerId;
 
   /// Creates a new [FeedDetailsWorkspaceMobileSettings].
   /// [authentication] OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519

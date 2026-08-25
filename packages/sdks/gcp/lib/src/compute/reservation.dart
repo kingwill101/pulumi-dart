@@ -3,6 +3,7 @@ import 'reservation_args.dart';
 import 'reservation_delete_after_duration.dart';
 import 'reservation_params.dart';
 import 'reservation_reservation_sharing_policy.dart';
+import 'reservation_resource_status.dart';
 import 'reservation_share_settings.dart';
 import 'reservation_specific_reservation.dart';
 import 'reservation_state.dart';
@@ -1306,7 +1307,7 @@ class Reservation extends pulumi.CustomResource {
   late final pulumi.Output<ReservationReservationSharingPolicy> reservationSharingPolicy;
   /// Status information for Reservation resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceStatuses;
+  late final pulumi.Output<List<ReservationResourceStatus>> resourceStatuses;
   /// Reserved for future use.
   late final pulumi.Output<bool> satisfiesPzs;
   /// The URI of the created resource.
@@ -1338,9 +1339,9 @@ class Reservation extends pulumi.CustomResource {
           'gcp:compute/reservation:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    blockNames = registerOutput<List<String>>('blockNames');
+    blockNames = registerOutput<List<String>>('blockNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     commitment = registerOutput<String>('commitment');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationDeleteAfterDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1349,13 +1350,13 @@ class Reservation extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enableEmergentMaintenance = registerOutput<bool?>('enableEmergentMaintenance');
     kind = registerOutput<String>('kind');
-    linkedCommitments = registerOutput<List<String>>('linkedCommitments');
+    linkedCommitments = registerOutput<List<String>>('linkedCommitments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reservationBlockCount = registerOutput<int>('reservationBlockCount');
     reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
+    resourceStatuses = registerOutput<List<ReservationResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     shareSettings = registerOutput<ReservationShareSettings>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1370,11 +1371,12 @@ class Reservation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Reservation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1388,7 +1390,7 @@ class Reservation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    blockNames = registerOutput<List<String>>('blockNames');
+    blockNames = registerOutput<List<String>>('blockNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     commitment = registerOutput<String>('commitment');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationDeleteAfterDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1397,13 +1399,47 @@ class Reservation extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enableEmergentMaintenance = registerOutput<bool?>('enableEmergentMaintenance');
     kind = registerOutput<String>('kind');
-    linkedCommitments = registerOutput<List<String>>('linkedCommitments');
+    linkedCommitments = registerOutput<List<String>>('linkedCommitments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reservationBlockCount = registerOutput<int>('reservationBlockCount');
     reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
+    resourceStatuses = registerOutput<List<ReservationResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    shareSettings = registerOutput<ReservationShareSettings>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservation = registerOutput<ReservationSpecificReservation>('specificReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationSpecificReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservationRequired = registerOutput<bool?>('specificReservationRequired');
+    status = registerOutput<String>('status');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [Reservation] resource.
+  Reservation.reference(String urn)
+    : super(
+        'gcp:compute/reservation:Reservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blockNames = registerOutput<List<String>>('blockNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    commitment = registerOutput<String>('commitment');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationDeleteAfterDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteAtTime = registerOutput<String>('deleteAtTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    enableEmergentMaintenance = registerOutput<bool?>('enableEmergentMaintenance');
+    kind = registerOutput<String>('kind');
+    linkedCommitments = registerOutput<List<String>>('linkedCommitments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reservationBlockCount = registerOutput<int>('reservationBlockCount');
+    reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStatuses = registerOutput<List<ReservationResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResourceStatus>(guardedValue, (value) => ReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     shareSettings = registerOutput<ReservationShareSettings>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

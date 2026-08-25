@@ -7,12 +7,12 @@ import 'ai_deployment_resource_pool_dedicated_resources_machine_spec.dart';
 class AiDeploymentResourcePoolDedicatedResources {
   /// A list of the metric specifications that overrides a resource utilization metric.
   /// Structure is documented below.
-  final pulumi.Input<List<AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>>? autoscalingMetricSpecs;
+  final pulumi.Input<List<AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>?>? autoscalingMetricSpecs;
   /// The specification of a single machine used by the prediction
   /// Structure is documented below.
   final pulumi.Input<AiDeploymentResourcePoolDedicatedResourcesMachineSpec> machineSpec;
   /// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use minReplicaCount as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for maxReplicaCount * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
-  final pulumi.Input<int>? maxReplicaCount;
+  final pulumi.Input<int?>? maxReplicaCount;
   /// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
   final pulumi.Input<int> minReplicaCount;
 
@@ -41,8 +41,8 @@ class AiDeploymentResourcePoolDedicatedResources {
     return AiDeploymentResourcePoolDedicatedResources(
       autoscalingMetricSpecs: (() { final guardedValue = map['autoscalingMetricSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>(guardedValue, (value) => AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
       machineSpec: pulumi.Input.fromValue(AiDeploymentResourcePoolDedicatedResourcesMachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())),
-      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minReplicaCount: pulumi.Input.fromValue(map['minReplicaCount'] as int),
+      maxReplicaCount: (() { final guardedValue = map['maxReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minReplicaCount: pulumi.Input.fromValue((map['minReplicaCount'] as num).toInt()),
     );
   }
 }

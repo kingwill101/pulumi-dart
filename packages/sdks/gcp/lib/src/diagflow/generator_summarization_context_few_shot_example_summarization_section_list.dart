@@ -6,7 +6,7 @@ import 'generator_summarization_context_few_shot_example_summarization_section_l
 class GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
   /// Optional. Summarization sections.
   /// Structure is documented below.
-  final pulumi.Input<List<GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>>? summarizationSections;
+  final pulumi.Input<List<GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection>?>? summarizationSections;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleSummarizationSectionList].
   /// [summarizationSections] Optional. Summarization sections.

@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigInput {
   /// A unique key for this input. Must be specified when using advanced mapping and edit lists.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
   /// If empty, the value is populated from Job.input_uri.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [JobTemplateConfigInput].
   /// [key] A unique key for this input. Must be specified when using advanced mapping and edit lists.

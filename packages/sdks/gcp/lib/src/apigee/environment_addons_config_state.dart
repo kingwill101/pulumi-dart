@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EnvironmentAddonsConfig resources.
 class EnvironmentAddonsConfigState {
   /// Flag to enable/disable Analytics.
-  final pulumi.Input<bool>? analyticsEnabled;
+  final pulumi.Input<bool?>? analyticsEnabled;
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  final pulumi.Input<String>? envId;
+  final pulumi.Input<String?>? envId;
 
   /// Creates a new [EnvironmentAddonsConfigState].
   /// [analyticsEnabled] Flag to enable/disable Analytics.

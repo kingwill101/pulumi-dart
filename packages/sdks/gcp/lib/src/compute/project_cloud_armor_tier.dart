@@ -380,7 +380,7 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
           'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cloudArmorTier = registerOutput<String>('cloudArmorTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -392,11 +392,12 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectCloudArmorTierState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectCloudArmorTier._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -410,6 +411,20 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudArmorTier = registerOutput<String>('cloudArmorTier');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ProjectCloudArmorTier] resource.
+  ProjectCloudArmorTier.reference(String urn)
+    : super(
+        'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudArmorTier = registerOutput<String>('cloudArmorTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');

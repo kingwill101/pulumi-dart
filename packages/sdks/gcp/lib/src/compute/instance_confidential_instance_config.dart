@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceConfidentialInstanceConfig {
   /// Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"` or `"AMD Genoa"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
-  final pulumi.Input<String>? confidentialInstanceType;
+  final pulumi.Input<String?>? confidentialInstanceType;
   /// Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `"AMD Milan"` or `"AMD Genoa"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [InstanceConfidentialInstanceConfig].
   /// [confidentialInstanceType] Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"` or `"AMD Genoa"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.

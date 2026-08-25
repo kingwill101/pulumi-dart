@@ -13,65 +13,65 @@ class UnitOperationState {
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
   /// Structure is documented below.
-  final pulumi.Input<List<UnitOperationCondition>>? conditions;
+  final pulumi.Input<List<UnitOperationCondition>?>? conditions;
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Deprovision is the unit operation that deprovision the underlying
   /// resources represented by a Unit. Can only execute if the Unit is currently
   /// provisioned.
-  final pulumi.Input<Map<String, dynamic>>? deprovision;
+  final pulumi.Input<Map<String, dynamic>?>? deprovision;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The engine state for on-going
   /// deployment engine operation(s).
   /// This field is opaque for external usage.
-  final pulumi.Input<String>? engineState;
+  final pulumi.Input<String?>? engineState;
   /// Possible values:
   /// NOT_APPLICABLE
   /// FATAL
   /// RETRIABLE
   /// IGNORABLE
   /// STANDARD
-  final pulumi.Input<String>? errorCategory;
+  final pulumi.Input<String?>? errorCategory;
   /// An opaque value that uniquely identifies a version or
   /// generation of a resource. It can be used to confirm that the client
   /// and server agree on the ordering of a resource being written.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name (full URI of the resource) following the standard naming
   /// scheme:
   /// "projects/{project}/locations/{location}/unitOperations/{unitOperation}"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Provision is the unit operation that provision the underlying resources
   /// represented by a Unit. Can only execute if the Unit is not currently
   /// provisioned.
   /// Structure is documented below.
-  final pulumi.Input<UnitOperationProvision>? provision;
+  final pulumi.Input<UnitOperationProvision?>? provision;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// UnitOperationState describes the current state of the unit operation.
   /// Possible values:
   /// UNIT_OPERATION_STATE_UNKNOWN
@@ -81,29 +81,29 @@ class UnitOperationState {
   /// UNIT_OPERATION_STATE_SUCCEEDED
   /// UNIT_OPERATION_STATE_FAILED
   /// UNIT_OPERATION_STATE_CANCELLED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The unique identifier of the resource. UID is unique in the time
   /// and space for this resource within the scope of the service. It is
   /// typically generated by the server on successful creation of a resource
   /// and must not be changed. UID is used to uniquely identify resources
   /// with resource name reuses. This should be a UUID4.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The Unit a given UnitOperation will act upon.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
   /// The ID value for the new unit operation.
-  final pulumi.Input<String>? unitOperationId;
+  final pulumi.Input<String?>? unitOperationId;
   /// The timestamp when the resource was last updated. Any
   /// change to the resource made by users must refresh this value.
   /// Changes to a resource made by the service should refresh this value.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Upgrade is the unit operation that upgrades a provisioned unit, which may
   /// also include the underlying resources represented by a Unit. Can only execute
   /// if the Unit is currently provisioned.
   /// Structure is documented below.
-  final pulumi.Input<UnitOperationUpgrade>? upgrade;
+  final pulumi.Input<UnitOperationUpgrade?>? upgrade;
   /// If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
   /// before completing the apply.
-  final pulumi.Input<bool>? waitForCompletion;
+  final pulumi.Input<bool?>? waitForCompletion;
 
   /// Creates a new [UnitOperationState].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that

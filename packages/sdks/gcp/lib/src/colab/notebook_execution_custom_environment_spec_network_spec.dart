@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotebookExecutionCustomEnvironmentSpecNetworkSpec {
   /// Enable public internet access for the runtime.
-  final pulumi.Input<bool>? enableInternetAccess;
+  final pulumi.Input<bool?>? enableInternetAccess;
   /// The name of the VPC that this runtime is in.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The name of the subnetwork that this runtime is in.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [NotebookExecutionCustomEnvironmentSpecNetworkSpec].
   /// [enableInternetAccess] Enable public internet access for the runtime.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleMatchConfig {
   /// CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
 
   /// Creates a new [SecurityPolicyRuleMatchConfig].
   /// [srcIpRanges] CIDR IP address range. Maximum number of srcIpRanges allowed is 10.

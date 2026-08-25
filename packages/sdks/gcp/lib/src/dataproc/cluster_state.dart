@@ -8,7 +8,7 @@ import 'cluster_virtual_cluster_config.dart';
 class ClusterState {
   /// Allows you to configure various aspects of the cluster.
   /// Structure defined below.
-  final pulumi.Input<ClusterClusterConfig>? clusterConfig;
+  final pulumi.Input<ClusterClusterConfig?>? clusterConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -17,11 +17,11 @@ class ClusterState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The list of labels (key/value pairs) to be applied to
   /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
   /// which is the name of the cluster.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
   /// Does not affect auto scaling decomissioning from an autoscaling policy.
   /// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -30,27 +30,27 @@ class ClusterState {
   /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
   /// Only supported on Dataproc image versions 1.2 and higher.
   /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-  final pulumi.Input<String>? gracefulDecommissionTimeout;
+  final pulumi.Input<String?>? gracefulDecommissionTimeout;
   /// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
   /// instances in the cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the cluster, unique within the project and
   /// zone.
   ///
   /// - - -
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the `cluster` will exist. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The region in which the cluster and associated nodes will be created in.
   /// Defaults to `global`.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Allows you to configure a virtual Dataproc on GKE cluster.
   /// Structure defined below.
-  final pulumi.Input<ClusterVirtualClusterConfig>? virtualClusterConfig;
+  final pulumi.Input<ClusterVirtualClusterConfig?>? virtualClusterConfig;
 
   /// Creates a new [ClusterState].
   /// [clusterConfig] Allows you to configure various aspects of the cluster.

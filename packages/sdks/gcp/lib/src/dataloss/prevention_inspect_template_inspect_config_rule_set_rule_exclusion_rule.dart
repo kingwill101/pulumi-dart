@@ -9,20 +9,20 @@ import 'prevention_inspect_template_inspect_config_rule_set_rule_exclusion_rule_
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule {
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary>? dictionary;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary?>? dictionary;
   /// Drop if the hotword rule is contained in the proximate context.
   /// For tabular data, the context includes the column name.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword>? excludeByHotword;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword?>? excludeByHotword;
   /// Set of infoTypes for which findings would affect this rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes>? excludeInfoTypes;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes?>? excludeInfoTypes;
   /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
   /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
   final pulumi.Input<String> matchingType;
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex>? regex;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex?>? regex;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule].
   /// [dictionary] Dictionary which defines the rule.

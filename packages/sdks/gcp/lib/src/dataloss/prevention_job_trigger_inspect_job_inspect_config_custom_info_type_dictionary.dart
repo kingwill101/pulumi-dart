@@ -7,10 +7,10 @@ import 'prevention_job_trigger_inspect_job_inspect_config_custom_info_type_dicti
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary {
   /// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath>? cloudStoragePath;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath?>? cloudStoragePath;
   /// List of words or phrases to search for.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList>? wordList;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList?>? wordList;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.

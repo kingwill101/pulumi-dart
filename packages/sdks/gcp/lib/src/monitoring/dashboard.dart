@@ -683,7 +683,7 @@ class Dashboard extends pulumi.CustomResource {
           'gcp:monitoring/dashboard:Dashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dashboardJson = registerOutput<String>('dashboardJson');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -695,11 +695,12 @@ class Dashboard extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DashboardState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Dashboard._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -713,6 +714,20 @@ class Dashboard extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dashboardJson = registerOutput<String>('dashboardJson');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Dashboard] resource.
+  Dashboard.reference(String urn)
+    : super(
+        'gcp:monitoring/dashboard:Dashboard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dashboardJson = registerOutput<String>('dashboardJson');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');

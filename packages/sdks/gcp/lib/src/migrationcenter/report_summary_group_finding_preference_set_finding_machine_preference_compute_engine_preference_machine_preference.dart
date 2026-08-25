@@ -8,7 +8,7 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEngin
   /// Compute Engine machine series to consider for insights and recommendations.
   /// If empty, no restriction is applied on the machine series.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries>>? allowedMachineSeries;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreferenceAllowedMachineSeries>?>? allowedMachineSeries;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference].
   /// [allowedMachineSeries] (Output)

@@ -8,11 +8,11 @@ class ConnectionProfilePostgresqlProfileSslConfig {
   /// If this field is set, the communication will be encrypted with TLS encryption
   /// and both the server identity and the client identity will be authenticated.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification>? serverAndClientVerification;
+  final pulumi.Input<ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification?>? serverAndClientVerification;
   /// If this field is set, the communication will be encrypted with TLS encryption
   /// and the server identity will be authenticated.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfilePostgresqlProfileSslConfigServerVerification>? serverVerification;
+  final pulumi.Input<ConnectionProfilePostgresqlProfileSslConfigServerVerification?>? serverVerification;
 
   /// Creates a new [ConnectionProfilePostgresqlProfileSslConfig].
   /// [serverAndClientVerification] If this field is set, the communication will be encrypted with TLS encryption

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig {
   /// If true, swap space will not be encrypted. Defaults to false (encrypted).
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig].
   /// [disabled] If true, swap space will not be encrypted. Defaults to false (encrypted).

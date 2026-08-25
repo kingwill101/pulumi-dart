@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobLoadParquetOptions {
   /// If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
-  final pulumi.Input<bool>? enableListInference;
+  final pulumi.Input<bool?>? enableListInference;
   /// If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
-  final pulumi.Input<bool>? enumAsString;
+  final pulumi.Input<bool?>? enumAsString;
 
   /// Creates a new [JobLoadParquetOptions].
   /// [enableListInference] If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.

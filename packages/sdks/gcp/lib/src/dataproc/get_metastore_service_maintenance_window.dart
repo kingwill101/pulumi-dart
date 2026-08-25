@@ -26,7 +26,7 @@ class GetMetastoreServiceMaintenanceWindow {
   factory GetMetastoreServiceMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceMaintenanceWindow(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
+      hourOfDay: pulumi.Input.fromValue((map['hourOfDay'] as num).toInt()),
     );
   }
 }

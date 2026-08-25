@@ -14,10 +14,10 @@ class JobIAMPolicyArgs {
   final pulumi.Input<String> policyData;
   /// The project in which the job belongs. If it
   /// is not provided, the provider will use a default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region in which the job belongs. If it
   /// is not provided, the provider will use a default.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [JobIAMPolicyArgs].
   /// [jobId] Required.

@@ -5,28 +5,28 @@ import 'native_dashboard_filter_filter_operator_and_field_value.dart';
 
 class NativeDashboardFilter {
   /// The IDs of charts that this filter applies to.
-  final pulumi.Input<List<String>>? chartIds;
+  final pulumi.Input<List<String>?>? chartIds;
   /// The data source for the filter.
   /// Possible values:
   /// UDM, ENTITY, INGESTION_METRICS, RULE_DETECTIONS, RULESETS, GLOBAL,
   /// IOC_MATCHES, RULES, SOAR_CASES, SOAR_PLAYBOOKS, SOAR_CASE_HISTORY,
   /// DATA_TABLE, INVESTIGATION, INVESTIGATION_FEEDBACK
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// The display name of the filter.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The UDM field path being filtered.
-  final pulumi.Input<String>? fieldPath;
+  final pulumi.Input<String?>? fieldPath;
   /// The specific operator and value set for the filter.
   /// Structure is documented below.
-  final pulumi.Input<List<NativeDashboardFilterFilterOperatorAndFieldValue>>? filterOperatorAndFieldValues;
+  final pulumi.Input<List<NativeDashboardFilterFilterOperatorAndFieldValue>?>? filterOperatorAndFieldValues;
   /// The unique ID of the filter.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the filter is mandatory for the dashboard consumer.
-  final pulumi.Input<bool>? isMandatory;
+  final pulumi.Input<bool?>? isMandatory;
   /// Whether the filter is a standard time range filter.
-  final pulumi.Input<bool>? isStandardTimeRangeFilter;
+  final pulumi.Input<bool?>? isStandardTimeRangeFilter;
   /// Whether the standard time range filter is currently enabled.
-  final pulumi.Input<bool>? isStandardTimeRangeFilterEnabled;
+  final pulumi.Input<bool?>? isStandardTimeRangeFilterEnabled;
 
   /// Creates a new [NativeDashboardFilter].
   /// [chartIds] The IDs of charts that this filter applies to.

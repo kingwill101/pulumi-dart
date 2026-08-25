@@ -11,34 +11,34 @@ class WorkloadIdentityPoolState {
   /// defined under a managed identity, matching workloads may receive that identity. A maximum of
   /// 50 AttestationRules can be set.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadIdentityPoolAttestationRule>>? attestationRules;
+  final pulumi.Input<List<WorkloadIdentityPoolAttestationRule>?>? attestationRules;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the pool. Cannot exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
   /// existing tokens to access resources. If the pool is re-enabled, existing tokens grant
   /// access again.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// A display name for the pool. Cannot exceed 32 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
   /// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
   /// required for issuance and rotation of mTLS workload certificates.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadIdentityPoolInlineCertificateIssuanceConfig>? inlineCertificateIssuanceConfig;
+  final pulumi.Input<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>? inlineCertificateIssuanceConfig;
   /// Represents config to add additional trusted trust domains. Defines configuration for extending
   /// trust to additional trust domains. By establishing trust with another domain, the current
   /// domain will recognize and accept certificates issued by entities within the trusted domains.
   /// Note that a trust domain automatically trusts itself, eliminating the need for explicit
   /// configuration.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadIdentityPoolInlineTrustConfig>? inlineTrustConfig;
+  final pulumi.Input<WorkloadIdentityPoolInlineTrustConfig?>? inlineTrustConfig;
   /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
   /// are in `FEDERATION_ONLY` mode.
   /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
@@ -62,13 +62,13 @@ class WorkloadIdentityPoolState {
   /// * `spiffe://&lt;trust-domain&gt;/ns/&lt;kubernetes-namespace&gt;/sa/&lt;kubernetes-service-account&gt;`
   /// * `spiffe://&lt;trust-domain&gt;/resources/&lt;resource-scope&gt;/&lt;resource-name&gt;`
   /// Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The resource name of the pool as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The state of the pool.
   /// * `STATE_UNSPECIFIED`: State unspecified.
   /// * `ACTIVE`: The pool is active, and may be used in Google Cloud policies.
@@ -78,11 +78,11 @@ class WorkloadIdentityPoolState {
   /// permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
   /// use existing tokens to access resources. If the pool is undeleted, existing tokens grant
   /// access again.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  final pulumi.Input<String>? workloadIdentityPoolId;
+  final pulumi.Input<String?>? workloadIdentityPoolId;
 
   /// Creates a new [WorkloadIdentityPoolState].
   /// [attestationRules] Defines which workloads can receive an identity within a pool. When an AttestationRule is

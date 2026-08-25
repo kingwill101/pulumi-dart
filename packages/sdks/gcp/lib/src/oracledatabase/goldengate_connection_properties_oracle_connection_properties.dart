@@ -7,32 +7,32 @@ class GoldengateConnectionPropertiesOracleConnectionProperties {
   /// Possible values:
   /// TLS
   /// MTLS
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// Connect descriptor or Easy Connect Naming method used to connect to a
   /// database.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// Database instance id of database in Oracle Database @ Google Cloud.
   /// If gcpOracleDatabaseId is provided, connectionString must be empty.
-  final pulumi.Input<String>? gcpOracleDatabaseId;
+  final pulumi.Input<String?>? gcpOracleDatabaseId;
   /// Input only. The password Oracle Goldengate uses in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The mode of the database connection session to be established by the data
   /// client.
   /// Possible values:
   /// DIRECT
   /// REDIRECT
-  final pulumi.Input<String>? sessionMode;
+  final pulumi.Input<String?>? sessionMode;
   /// The technology type.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
   /// The wallet contents Oracle Goldengate uses to make connections to a
   /// database.
-  final pulumi.Input<String>? walletFile;
+  final pulumi.Input<String?>? walletFile;
 
   /// Creates a new [GoldengateConnectionPropertiesOracleConnectionProperties].
   /// [authenticationMode] Authentication mode.

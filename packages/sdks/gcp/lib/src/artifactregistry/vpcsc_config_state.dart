@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcscConfig resources.
 class VpcscConfigState {
   /// The name of the location this config is located in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the project's VPC SC Config.
   /// Always of the form: projects/{project}/location/{location}/vpcscConfig
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The VPC SC policy for project and location.
   /// Possible values are: `DENY`, `ALLOW`.
-  final pulumi.Input<String>? vpcscPolicy;
+  final pulumi.Input<String?>? vpcscPolicy;
 
   /// Creates a new [VpcscConfigState].
   /// [location] The name of the location this config is located in.

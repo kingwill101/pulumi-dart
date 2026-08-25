@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeTemplateShieldedVmConfig {
   /// Enables secure boot for the runtime.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
 
   /// Creates a new [RuntimeTemplateShieldedVmConfig].
   /// [enableSecureBoot] Enables secure boot for the runtime.

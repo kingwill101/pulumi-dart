@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_buckets_get_buckets_args_doc}
 class GetBucketsArgs {
   /// Filter results to buckets whose names begin with this prefix.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The ID of the project. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBucketsArgs].
   /// [prefix] Filter results to buckets whose names begin with this prefix.

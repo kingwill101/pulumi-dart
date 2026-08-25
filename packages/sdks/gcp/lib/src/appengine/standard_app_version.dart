@@ -4,6 +4,8 @@ import 'standard_app_version_automatic_scaling.dart';
 import 'standard_app_version_basic_scaling.dart';
 import 'standard_app_version_deployment.dart';
 import 'standard_app_version_entrypoint.dart';
+import 'standard_app_version_handler.dart';
+import 'standard_app_version_library.dart';
 import 'standard_app_version_manual_scaling.dart';
 import 'standard_app_version_state.dart';
 import 'standard_app_version_vpc_access_connector.dart';
@@ -1358,7 +1360,7 @@ class StandardAppVersion extends pulumi.CustomResource {
   /// An ordered list of URL-matching patterns that should be applied to incoming requests.
   /// The first matching URL handles the request and other request handlers are not attempted.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> handlers;
+  late final pulumi.Output<List<StandardAppVersionHandler>> handlers;
   /// A list of the types of messages that this application is able to receive.
   /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
   late final pulumi.Output<List<String>?> inboundServices;
@@ -1369,7 +1371,7 @@ class StandardAppVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> instanceClass;
   /// Configuration for third-party Python runtime libraries that are required by the application.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> libraries;
+  late final pulumi.Output<List<StandardAppVersionLibrary>?> libraries;
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
   late final pulumi.Output<StandardAppVersionManualScaling?> manualScaling;
@@ -1410,21 +1412,21 @@ class StandardAppVersion extends pulumi.CustomResource {
           'gcp:appengine/standardAppVersion:StandardAppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appEngineApis = registerOutput<bool?>('appEngineApis');
-    appEngineBundledServices = registerOutput<List<String>?>('appEngineBundledServices');
+    appEngineBundledServices = registerOutput<List<String>?>('appEngineBundledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     automaticScaling = registerOutput<StandardAppVersionAutomaticScaling>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     basicScaling = registerOutput<StandardAppVersionBasicScaling?>('basicScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionBasicScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployment = registerOutput<StandardAppVersionDeployment>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entrypoint = registerOutput<StandardAppVersionEntrypoint>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    envVariables = registerOutput<Map<String, String>?>('envVariables');
-    handlers = registerOutput<List<Map<String, dynamic>>>('handlers');
-    inboundServices = registerOutput<List<String>?>('inboundServices');
+    envVariables = registerOutput<Map<String, String>?>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    handlers = registerOutput<List<StandardAppVersionHandler>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardAppVersionHandler>(guardedValue, (value) => StandardAppVersionHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    inboundServices = registerOutput<List<String>?>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instanceClass = registerOutput<String>('instanceClass');
-    libraries = registerOutput<List<Map<String, dynamic>>?>('libraries');
+    libraries = registerOutput<List<StandardAppVersionLibrary>?>('libraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardAppVersionLibrary>(guardedValue, (value) => StandardAppVersionLibrary.fromMap((value as Map).cast<String, dynamic>())); });
     manualScaling = registerOutput<StandardAppVersionManualScaling?>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionManualScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
@@ -1443,11 +1445,12 @@ class StandardAppVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StandardAppVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StandardAppVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1462,18 +1465,53 @@ class StandardAppVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appEngineApis = registerOutput<bool?>('appEngineApis');
-    appEngineBundledServices = registerOutput<List<String>?>('appEngineBundledServices');
+    appEngineBundledServices = registerOutput<List<String>?>('appEngineBundledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     automaticScaling = registerOutput<StandardAppVersionAutomaticScaling>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     basicScaling = registerOutput<StandardAppVersionBasicScaling?>('basicScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionBasicScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployment = registerOutput<StandardAppVersionDeployment>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entrypoint = registerOutput<StandardAppVersionEntrypoint>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    envVariables = registerOutput<Map<String, String>?>('envVariables');
-    handlers = registerOutput<List<Map<String, dynamic>>>('handlers');
-    inboundServices = registerOutput<List<String>?>('inboundServices');
+    envVariables = registerOutput<Map<String, String>?>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    handlers = registerOutput<List<StandardAppVersionHandler>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardAppVersionHandler>(guardedValue, (value) => StandardAppVersionHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    inboundServices = registerOutput<List<String>?>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instanceClass = registerOutput<String>('instanceClass');
-    libraries = registerOutput<List<Map<String, dynamic>>?>('libraries');
+    libraries = registerOutput<List<StandardAppVersionLibrary>?>('libraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardAppVersionLibrary>(guardedValue, (value) => StandardAppVersionLibrary.fromMap((value as Map).cast<String, dynamic>())); });
+    manualScaling = registerOutput<StandardAppVersionManualScaling?>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionManualScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
+    project = registerOutput<String>('project');
+    runtime = registerOutput<String>('runtime');
+    runtimeApiVersion = registerOutput<String?>('runtimeApiVersion');
+    service = registerOutput<String>('service');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    threadsafe = registerOutput<bool?>('threadsafe');
+    versionId = registerOutput<String?>('versionId');
+    vpcAccessConnector = registerOutput<StandardAppVersionVpcAccessConnector?>('vpcAccessConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionVpcAccessConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [StandardAppVersion] resource.
+  StandardAppVersion.reference(String urn)
+    : super(
+        'gcp:appengine/standardAppVersion:StandardAppVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appEngineApis = registerOutput<bool?>('appEngineApis');
+    appEngineBundledServices = registerOutput<List<String>?>('appEngineBundledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    automaticScaling = registerOutput<StandardAppVersionAutomaticScaling>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    basicScaling = registerOutput<StandardAppVersionBasicScaling?>('basicScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionBasicScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deployment = registerOutput<StandardAppVersionDeployment>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    entrypoint = registerOutput<StandardAppVersionEntrypoint>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    envVariables = registerOutput<Map<String, String>?>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    handlers = registerOutput<List<StandardAppVersionHandler>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardAppVersionHandler>(guardedValue, (value) => StandardAppVersionHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    inboundServices = registerOutput<List<String>?>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    instanceClass = registerOutput<String>('instanceClass');
+    libraries = registerOutput<List<StandardAppVersionLibrary>?>('libraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardAppVersionLibrary>(guardedValue, (value) => StandardAppVersionLibrary.fromMap((value as Map).cast<String, dynamic>())); });
     manualScaling = registerOutput<StandardAppVersionManualScaling?>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionManualScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     noopOnDestroy = registerOutput<bool?>('noopOnDestroy');

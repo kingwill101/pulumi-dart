@@ -6,7 +6,7 @@ import 'service_template_sandboxes_template.dart';
 class ServiceTemplateSandboxes {
   /// Sandbox templates that can be launched through the `sandbox` CLI.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceTemplateSandboxesTemplate>>? templates;
+  final pulumi.Input<List<ServiceTemplateSandboxesTemplate>?>? templates;
 
   /// Creates a new [ServiceTemplateSandboxes].
   /// [templates] Sandbox templates that can be launched through the `sandbox` CLI.

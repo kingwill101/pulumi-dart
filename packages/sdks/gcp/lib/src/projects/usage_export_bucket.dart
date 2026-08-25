@@ -166,7 +166,7 @@ class UsageExportBucket extends pulumi.CustomResource {
           'gcp:projects/usageExportBucket:UsageExportBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -179,11 +179,12 @@ class UsageExportBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UsageExportBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UsageExportBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -197,6 +198,21 @@ class UsageExportBucket extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucketName = registerOutput<String>('bucketName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    prefix = registerOutput<String?>('prefix');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [UsageExportBucket] resource.
+  UsageExportBucket.reference(String urn)
+    : super(
+        'gcp:projects/usageExportBucket:UsageExportBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucketName = registerOutput<String>('bucketName');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     prefix = registerOutput<String?>('prefix');

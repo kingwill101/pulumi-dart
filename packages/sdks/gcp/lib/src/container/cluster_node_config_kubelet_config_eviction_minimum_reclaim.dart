@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
   /// Defines percentage of minimum reclaim for imagefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
-  final pulumi.Input<String>? imagefsAvailable;
+  final pulumi.Input<String?>? imagefsAvailable;
   /// Defines percentage of minimum reclaim for imagefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
-  final pulumi.Input<String>? imagefsInodesFree;
+  final pulumi.Input<String?>? imagefsInodesFree;
   /// Defines percentage of minimum reclaim for memory.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
-  final pulumi.Input<String>? memoryAvailable;
+  final pulumi.Input<String?>? memoryAvailable;
   /// Defines percentage of minimum reclaim for nodefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
-  final pulumi.Input<String>? nodefsAvailable;
+  final pulumi.Input<String?>? nodefsAvailable;
   /// Defines percentage of minimum reclaim for nodefs.inodesFree. The value must be a percentage no more than `"10%"`, such as `"5%"`.
-  final pulumi.Input<String>? nodefsInodesFree;
+  final pulumi.Input<String?>? nodefsInodesFree;
   /// Defines percentage of minimum reclaim for pid.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.
-  final pulumi.Input<String>? pidAvailable;
+  final pulumi.Input<String?>? pidAvailable;
 
   /// Creates a new [ClusterNodeConfigKubeletConfigEvictionMinimumReclaim].
   /// [imagefsAvailable] Defines percentage of minimum reclaim for imagefs.available. The value must be a percentage no more than `"10%"`, such as `"5%"`.

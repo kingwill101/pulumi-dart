@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardChartDashboardChartChartDatasource {
   /// (Output)
   /// The unique system ID of the query linked to this chart.
-  final pulumi.Input<String>? dashboardQuery;
+  final pulumi.Input<String?>? dashboardQuery;
   /// Name(s) of the datasource used in the chart. Available values include:
   /// 'UDM', 'ENTITY', 'INGESTION_METRICS', 'RULE_DETECTIONS', 'RULESETS',
   /// 'GLOBAL', 'IOC_MATCHES', 'RULES', 'SOAR_CASES', 'SOAR_PLAYBOOKS',
   /// 'SOAR_CASE_HISTORY', 'DATA_TABLE', 'INVESTIGATION', 'INVESTIGATION_FEEDBACK'.
-  final pulumi.Input<List<String>>? dataSources;
+  final pulumi.Input<List<String>?>? dataSources;
 
   /// Creates a new [DashboardChartDashboardChartChartDatasource].
   /// [dashboardQuery] (Output)

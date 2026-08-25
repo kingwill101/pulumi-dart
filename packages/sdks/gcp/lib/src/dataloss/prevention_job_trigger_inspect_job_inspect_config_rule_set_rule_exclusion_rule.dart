@@ -9,19 +9,19 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_exclusio
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule {
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary>? dictionary;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary?>? dictionary;
   /// Drop if the hotword rule is contained in the proximate context.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword>? excludeByHotword;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword?>? excludeByHotword;
   /// Set of infoTypes for which findings would affect this rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes>? excludeInfoTypes;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes?>? excludeInfoTypes;
   /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
   /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
   final pulumi.Input<String> matchingType;
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex>? regex;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex?>? regex;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule].
   /// [dictionary] Dictionary which defines the rule.

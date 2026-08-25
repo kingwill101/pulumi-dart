@@ -16,7 +16,7 @@ class WorkflowTemplateEncryptionConfig {
   /// - [HiveJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries
   /// - [PigJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables  and queryList.queries
   /// - [PrestoJob](https://docs.cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
 
   /// Creates a new [WorkflowTemplateEncryptionConfig].
   /// [kmsKey] The Cloud KMS key name to use for encrypting workflow template [job arguments](https://docs.docs.cloud.google.com/dataproc/docs/concepts/workflows/use-workflows).

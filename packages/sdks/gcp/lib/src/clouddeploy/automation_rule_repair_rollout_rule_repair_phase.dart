@@ -7,10 +7,10 @@ import 'automation_rule_repair_rollout_rule_repair_phase_rollback.dart';
 class AutomationRuleRepairRolloutRuleRepairPhase {
   /// Optional. Retries a failed job.
   /// Structure is documented below.
-  final pulumi.Input<AutomationRuleRepairRolloutRuleRepairPhaseRetry>? retry;
+  final pulumi.Input<AutomationRuleRepairRolloutRuleRepairPhaseRetry?>? retry;
   /// Optional. Rolls back a Rollout.
   /// Structure is documented below.
-  final pulumi.Input<AutomationRuleRepairRolloutRuleRepairPhaseRollback>? rollback;
+  final pulumi.Input<AutomationRuleRepairRolloutRuleRepairPhaseRollback?>? rollback;
 
   /// Creates a new [AutomationRuleRepairRolloutRuleRepairPhase].
   /// [retry] Optional. Retries a failed job.

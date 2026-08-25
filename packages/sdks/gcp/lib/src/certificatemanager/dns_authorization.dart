@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_authorization_args.dart';
+import 'dns_authorization_dns_resource_record.dart';
 import 'dns_authorization_state.dart';
 
 /// DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
@@ -331,7 +332,7 @@ class DnsAuthorization extends pulumi.CustomResource {
   /// to DNS configuration for the authorization to be usable by
   /// certificate.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dnsResourceRecords;
+  late final pulumi.Output<List<DnsAuthorizationDnsResourceRecord>> dnsResourceRecords;
   /// A domain which is being authorized. A DnsAuthorization resource covers a
   /// single domain and its wildcard, e.g. authorization for "example.com" can
   /// be used to issue certificates for "example.com" and "*.example.com".
@@ -375,18 +376,19 @@ class DnsAuthorization extends pulumi.CustomResource {
           'gcp:certificatemanager/dnsAuthorization:DnsAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    dnsResourceRecords = registerOutput<List<Map<String, dynamic>>>('dnsResourceRecords');
+    dnsResourceRecords = registerOutput<List<DnsAuthorizationDnsResourceRecord>>('dnsResourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DnsAuthorizationDnsResourceRecord>(guardedValue, (value) => DnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())); });
     domain = registerOutput<String>('domain');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     type = registerOutput<String>('type');
   }
 
@@ -395,11 +397,12 @@ class DnsAuthorization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DnsAuthorizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DnsAuthorization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -415,14 +418,37 @@ class DnsAuthorization extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    dnsResourceRecords = registerOutput<List<Map<String, dynamic>>>('dnsResourceRecords');
+    dnsResourceRecords = registerOutput<List<DnsAuthorizationDnsResourceRecord>>('dnsResourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DnsAuthorizationDnsResourceRecord>(guardedValue, (value) => DnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())); });
     domain = registerOutput<String>('domain');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DnsAuthorization] resource.
+  DnsAuthorization.reference(String urn)
+    : super(
+        'gcp:certificatemanager/dnsAuthorization:DnsAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dnsResourceRecords = registerOutput<List<DnsAuthorizationDnsResourceRecord>>('dnsResourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DnsAuthorizationDnsResourceRecord>(guardedValue, (value) => DnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    domain = registerOutput<String>('domain');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     type = registerOutput<String>('type');
   }
 }

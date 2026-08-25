@@ -775,9 +775,9 @@ class Connector extends pulumi.CustomResource {
           'gcp:managedkafka/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    configs = registerOutput<Map<String, String>?>('configs');
+    configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     connectCluster = registerOutput<String>('connectCluster');
     connectorId = registerOutput<String>('connectorId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -793,11 +793,12 @@ class Connector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -811,7 +812,7 @@ class Connector extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    configs = registerOutput<Map<String, String>?>('configs');
+    configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     connectCluster = registerOutput<String>('connectCluster');
     connectorId = registerOutput<String>('connectorId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -819,6 +820,26 @@ class Connector extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    taskRestartPolicy = registerOutput<ConnectorTaskRestartPolicy?>('taskRestartPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorTaskRestartPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'gcp:managedkafka/connector:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configs = registerOutput<Map<String, String>?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    connectCluster = registerOutput<String>('connectCluster');
+    connectorId = registerOutput<String>('connectorId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     taskRestartPolicy = registerOutput<ConnectorTaskRestartPolicy?>('taskRestartPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorTaskRestartPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

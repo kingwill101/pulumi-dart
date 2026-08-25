@@ -930,7 +930,8 @@ class ParameterVersion extends pulumi.CustomResource {
           'gcp:parametermanager/parameterVersion:ParameterVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['parameterData'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -938,7 +939,7 @@ class ParameterVersion extends pulumi.CustomResource {
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     this.name = registerOutput<String>('name');
     parameter = registerOutput<String>('parameter');
-    parameterData = registerOutput<String>('parameterData');
+    parameterData = registerOutput<String>('parameterData', isSecret: true);
     parameterVersionId = registerOutput<String>('parameterVersionId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -948,11 +949,12 @@ class ParameterVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParameterVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ParameterVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -972,7 +974,28 @@ class ParameterVersion extends pulumi.CustomResource {
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     this.name = registerOutput<String>('name');
     parameter = registerOutput<String>('parameter');
-    parameterData = registerOutput<String>('parameterData');
+    parameterData = registerOutput<String>('parameterData', isSecret: true);
+    parameterVersionId = registerOutput<String>('parameterVersionId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ParameterVersion] resource.
+  ParameterVersion.reference(String urn)
+    : super(
+        'gcp:parametermanager/parameterVersion:ParameterVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['parameterData'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
+    this.name = registerOutput<String>('name');
+    parameter = registerOutput<String>('parameter');
+    parameterData = registerOutput<String>('parameterData', isSecret: true);
     parameterVersionId = registerOutput<String>('parameterVersionId');
     updateTime = registerOutput<String>('updateTime');
   }

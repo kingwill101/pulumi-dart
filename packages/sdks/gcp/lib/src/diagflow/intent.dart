@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'intent_args.dart';
+import 'intent_followup_intent_info.dart';
 import 'intent_state.dart';
 
 /// Represents a Dialogflow intent. Intents convert a number of user expressions or patterns into an action. An action
@@ -661,7 +662,7 @@ class Intent extends pulumi.CustomResource {
   /// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
   /// only in the output.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> followupIntentInfos;
+  late final pulumi.Output<List<IntentFollowupIntentInfo>> followupIntentInfos;
   /// The list of context names required for this intent to be triggered.
   /// Format: projects/&lt;Project ID&gt;/agent/sessions/-/contexts/&lt;Context ID&gt;.
   late final pulumi.Output<List<String>?> inputContextNames;
@@ -710,15 +711,15 @@ class Intent extends pulumi.CustomResource {
           'gcp:diagflow/intent:Intent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
-    defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms');
+    defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    events = registerOutput<List<String>?>('events');
-    followupIntentInfos = registerOutput<List<Map<String, dynamic>>>('followupIntentInfos');
-    inputContextNames = registerOutput<List<String>?>('inputContextNames');
+    events = registerOutput<List<String>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    followupIntentInfos = registerOutput<List<IntentFollowupIntentInfo>>('followupIntentInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntentFollowupIntentInfo>(guardedValue, (value) => IntentFollowupIntentInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    inputContextNames = registerOutput<List<String>?>('inputContextNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isFallback = registerOutput<bool>('isFallback');
     mlDisabled = registerOutput<bool>('mlDisabled');
     this.name = registerOutput<String>('name');
@@ -735,11 +736,12 @@ class Intent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Intent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -754,12 +756,39 @@ class Intent extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     action = registerOutput<String>('action');
-    defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms');
+    defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    events = registerOutput<List<String>?>('events');
-    followupIntentInfos = registerOutput<List<Map<String, dynamic>>>('followupIntentInfos');
-    inputContextNames = registerOutput<List<String>?>('inputContextNames');
+    events = registerOutput<List<String>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    followupIntentInfos = registerOutput<List<IntentFollowupIntentInfo>>('followupIntentInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntentFollowupIntentInfo>(guardedValue, (value) => IntentFollowupIntentInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    inputContextNames = registerOutput<List<String>?>('inputContextNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    isFallback = registerOutput<bool>('isFallback');
+    mlDisabled = registerOutput<bool>('mlDisabled');
+    this.name = registerOutput<String>('name');
+    parentFollowupIntentName = registerOutput<String>('parentFollowupIntentName');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    resetContexts = registerOutput<bool>('resetContexts');
+    rootFollowupIntentName = registerOutput<String>('rootFollowupIntentName');
+    webhookState = registerOutput<String>('webhookState');
+  }
+
+  /// Creates a typed reference to an existing [Intent] resource.
+  Intent.reference(String urn)
+    : super(
+        'gcp:diagflow/intent:Intent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    events = registerOutput<List<String>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    followupIntentInfos = registerOutput<List<IntentFollowupIntentInfo>>('followupIntentInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntentFollowupIntentInfo>(guardedValue, (value) => IntentFollowupIntentInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    inputContextNames = registerOutput<List<String>?>('inputContextNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isFallback = registerOutput<bool>('isFallback');
     mlDisabled = registerOutput<bool>('mlDisabled');
     this.name = registerOutput<String>('name');

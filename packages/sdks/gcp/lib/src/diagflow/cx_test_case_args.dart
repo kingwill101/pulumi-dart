@@ -15,23 +15,23 @@ class CxTestCaseArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   final pulumi.Input<String> displayName;
   /// Additional freeform notes about the test case. Limit of 400 characters.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// The agent to create the test case for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
   /// Each tag should start with "#" and has a limit of 30 characters
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// Structure is documented below.
-  final pulumi.Input<List<CxTestCaseTestCaseConversationTurn>>? testCaseConversationTurns;
+  final pulumi.Input<List<CxTestCaseTestCaseConversationTurn>?>? testCaseConversationTurns;
   /// Config for the test case.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseTestConfig>? testConfig;
+  final pulumi.Input<CxTestCaseTestConfig?>? testConfig;
 
   /// Creates a new [CxTestCaseArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -11,104 +11,104 @@ import 'authority_user_defined_access_urls.dart';
 class AuthorityState {
   /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthorityAccessUrl>>? accessUrls;
+  final pulumi.Input<List<AuthorityAccessUrl>?>? accessUrls;
   /// The user provided Resource ID for this Certificate Authority.
-  final pulumi.Input<String>? certificateAuthorityId;
+  final pulumi.Input<String?>? certificateAuthorityId;
   /// The config used to create a self-signed X.509 certificate or CSR.
   /// Structure is documented below.
-  final pulumi.Input<AuthorityConfig>? config;
+  final pulumi.Input<AuthorityConfig?>? config;
   /// The time at which this CertificateAuthority was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the CertificateAuthority.
   /// When the field is set to true or unset in Terraform state, a `pulumi up`
   /// or `terraform destroy` that would delete the CertificateAuthority will fail.
   /// When the field is set to false, deleting the CertificateAuthority is allowed.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
   /// Possible values: ENABLED, DISABLED, STAGED.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
   /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
   /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
   /// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
   /// created.
-  final pulumi.Input<String>? gcsBucket;
+  final pulumi.Input<String?>? gcsBucket;
   /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
   /// Use with care. Defaults to `false`.
-  final pulumi.Input<bool>? ignoreActiveCertificatesOnDeletion;
+  final pulumi.Input<bool?>? ignoreActiveCertificatesOnDeletion;
   /// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
   /// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
   /// certificate. Otherwise, it is used to sign a CSR.
   /// Structure is documented below.
-  final pulumi.Input<AuthorityKeySpec>? keySpec;
+  final pulumi.Input<AuthorityKeySpec?>? keySpec;
   /// Labels with user-defined metadata.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
   /// "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
   /// fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? lifetime;
+  final pulumi.Input<String?>? lifetime;
   /// Location of the CertificateAuthority. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name for this CertificateAuthority in the format
   /// projects/*/locations/*/certificateAuthorities/*.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
-  final pulumi.Input<String>? pemCaCertificate;
+  final pulumi.Input<String?>? pemCaCertificate;
   /// This CertificateAuthority's certificate chain, including the current
   /// CertificateAuthority's certificate. Ordered such that the root issuer is the final
   /// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
   /// CertificateAuthority's certificate.
-  final pulumi.Input<List<String>>? pemCaCertificates;
+  final pulumi.Input<List<String>?>? pemCaCertificates;
   /// The name of the CaPool this Certificate Authority belongs to.
-  final pulumi.Input<String>? pool;
+  final pulumi.Input<String?>? pool;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// If this flag is set, the Certificate Authority will be deleted as soon as
   /// possible without a 30-day grace period where undeletion would have been
   /// allowed. If you proceed, there will be no way to recover this CA.
   /// Use with care. Defaults to `false`.
-  final pulumi.Input<bool>? skipGracePeriod;
+  final pulumi.Input<bool?>? skipGracePeriod;
   /// The State for this CertificateAuthority.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// If this is a subordinate CertificateAuthority, this field will be set
   /// with the subordinate configuration, which describes its issuers.
   /// Structure is documented below.
-  final pulumi.Input<AuthoritySubordinateConfig>? subordinateConfig;
+  final pulumi.Input<AuthoritySubordinateConfig?>? subordinateConfig;
   /// The Type of this CertificateAuthority.
   /// &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
   /// be activated before they can issue certificates.
   /// Default value is `SELF_SIGNED`.
   /// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The time at which this CertificateAuthority was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
   /// that can be specified by users.
   /// Structure is documented below.
-  final pulumi.Input<AuthorityUserDefinedAccessUrls>? userDefinedAccessUrls;
+  final pulumi.Input<AuthorityUserDefinedAccessUrls?>? userDefinedAccessUrls;
 
   /// Creates a new [AuthorityState].
   /// [accessUrls] URLs for accessing content published by this CA, such as the CA certificate and CRLs.

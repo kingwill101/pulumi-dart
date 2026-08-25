@@ -6,13 +6,13 @@ import 'deployment_terraform_blueprint_input_value.dart';
 
 class DeploymentTerraformBlueprint {
   /// URI of a GCS object containing the zipped Terraform blueprint.
-  final pulumi.Input<String>? gcsSource;
+  final pulumi.Input<String?>? gcsSource;
   /// Public Git repository containing the blueprint.
   /// Structure is documented below.
-  final pulumi.Input<DeploymentTerraformBlueprintGitSource>? gitSource;
+  final pulumi.Input<DeploymentTerraformBlueprintGitSource?>? gitSource;
   /// Input variables for the Terraform blueprint.
   /// Structure is documented below.
-  final pulumi.Input<List<DeploymentTerraformBlueprintInputValue>>? inputValues;
+  final pulumi.Input<List<DeploymentTerraformBlueprintInputValue>?>? inputValues;
 
   /// Creates a new [DeploymentTerraformBlueprint].
   /// [gcsSource] URI of a GCS object containing the zipped Terraform blueprint.

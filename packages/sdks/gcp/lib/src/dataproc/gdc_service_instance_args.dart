@@ -14,27 +14,27 @@ class GdcServiceInstanceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided human-readable name to be used in user interfaces.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Gdce cluster information.
   /// Structure is documented below.
-  final pulumi.Input<GdcServiceInstanceGdceCluster>? gdceCluster;
+  final pulumi.Input<GdcServiceInstanceGdceCluster?>? gdceCluster;
   /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location of the resource.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Requested service account to associate with ServiceInstance.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Id of the service instance.
   final pulumi.Input<String> serviceInstanceId;
   /// Spark-specific service instance configuration.
-  final pulumi.Input<Map<String, dynamic>>? sparkServiceInstanceConfig;
+  final pulumi.Input<Map<String, dynamic>?>? sparkServiceInstanceConfig;
 
   /// Creates a new [GdcServiceInstanceArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

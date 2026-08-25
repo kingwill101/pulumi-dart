@@ -3,59 +3,59 @@
 
 /// Result data returned by getVariable.
 class GetVariableResult {
-  final String deletionPolicy;
+  final String? deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String parent;
+  final String? id;
+  final String? name;
+  final String? parent;
   final String? project;
-  final String text;
-  final String updateTime;
-  final String value;
+  final String? text;
+  final String? updateTime;
+  final String? value;
 
   /// Creates a new [GetVariableResult].
-  /// [deletionPolicy] Required.
+  /// [deletionPolicy] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [parent] Required.
+  /// [name] Optional.
+  /// [parent] Optional.
   /// [project] Optional.
-  /// [text] Required.
-  /// [updateTime] Required.
-  /// [value] Required.
+  /// [text] Optional.
+  /// [updateTime] Optional.
+  /// [value] Optional.
   const GetVariableResult({
-    required this.deletionPolicy,
-    required this.id,
-    required this.name,
-    required this.parent,
+    this.deletionPolicy,
+    this.id,
+    this.name,
+    this.parent,
     this.project,
-    required this.text,
-    required this.updateTime,
-    required this.value,
+    this.text,
+    this.updateTime,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deletionPolicy': deletionPolicy,
-      'id': id,
-      'name': name,
-      'parent': parent,
+      'deletionPolicy': ?deletionPolicy,
+      'id': ?id,
+      'name': ?name,
+      'parent': ?parent,
       'project': ?project,
-      'text': text,
-      'updateTime': updateTime,
-      'value': value,
+      'text': ?text,
+      'updateTime': ?updateTime,
+      'value': ?value,
     };
   }
 
   factory GetVariableResult.fromMap(Map<String, dynamic> map) {
     return GetVariableResult(
-      deletionPolicy: map['deletionPolicy'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      parent: map['parent'] as String,
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      text: map['text'] as String,
-      updateTime: map['updateTime'] as String,
-      value: map['value'] as String,
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

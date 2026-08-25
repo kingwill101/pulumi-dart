@@ -8,7 +8,7 @@ class JobLoadDestinationEncryptionConfiguration {
   final pulumi.Input<String> kmsKeyName;
   /// (Output)
   /// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
-  final pulumi.Input<String>? kmsKeyVersion;
+  final pulumi.Input<String?>? kmsKeyVersion;
 
   /// Creates a new [JobLoadDestinationEncryptionConfiguration].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.

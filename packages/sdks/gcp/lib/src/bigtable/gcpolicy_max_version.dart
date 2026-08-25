@@ -23,7 +23,7 @@ class GCPolicyMaxVersion {
 
   factory GCPolicyMaxVersion.fromMap(Map<String, dynamic> map) {
     return GCPolicyMaxVersion(
-      number: pulumi.Input.fromValue(map['number'] as int),
+      number: pulumi.Input.fromValue((map['number'] as num).toInt()),
     );
   }
 }

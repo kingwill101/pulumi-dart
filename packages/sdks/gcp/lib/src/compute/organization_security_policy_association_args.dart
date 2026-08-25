@@ -15,13 +15,13 @@ class OrganizationSecurityPolicyAssociationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A list of folders to exclude from the security policy.
-  final pulumi.Input<List<String>>? excludedFolders;
+  final pulumi.Input<List<String>?>? excludedFolders;
   /// A list of projects to exclude from the security policy.
-  final pulumi.Input<List<String>>? excludedProjects;
+  final pulumi.Input<List<String>?>? excludedProjects;
   /// The name for an association.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The security policy ID of the association.
   final pulumi.Input<String> policyId;
 

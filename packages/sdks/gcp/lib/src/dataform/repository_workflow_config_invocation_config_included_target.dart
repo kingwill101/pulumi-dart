@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryWorkflowConfigInvocationConfigIncludedTarget {
   /// The action's database (Google Cloud project ID).
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The action's name, within database and schema.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The action's schema (BigQuery dataset ID), within database.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
 
   /// Creates a new [RepositoryWorkflowConfigInvocationConfigIncludedTarget].
   /// [database] The action's database (Google Cloud project ID).

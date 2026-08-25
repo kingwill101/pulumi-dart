@@ -76,9 +76,9 @@ class Folder extends pulumi.CustomResource {
           'gcp:organizations/folder:Folder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    configuredCapabilities = registerOutput<List<String>>('configuredCapabilities');
+    configuredCapabilities = registerOutput<List<String>>('configuredCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -88,7 +88,7 @@ class Folder extends pulumi.CustomResource {
     managementProject = registerOutput<String>('managementProject');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Folder] resource's state with the given [name] and [id].
@@ -96,11 +96,12 @@ class Folder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Folder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -114,7 +115,7 @@ class Folder extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    configuredCapabilities = registerOutput<List<String>>('configuredCapabilities');
+    configuredCapabilities = registerOutput<List<String>>('configuredCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -124,6 +125,28 @@ class Folder extends pulumi.CustomResource {
     managementProject = registerOutput<String>('managementProject');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Folder] resource.
+  Folder.reference(String urn)
+    : super(
+        'gcp:organizations/folder:Folder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configuredCapabilities = registerOutput<List<String>>('configuredCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    displayName = registerOutput<String>('displayName');
+    folderId = registerOutput<String>('folderId');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    managementProject = registerOutput<String>('managementProject');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

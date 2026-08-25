@@ -9,13 +9,13 @@ import 'vmware_admin_cluster_load_balancer_vip_config.dart';
 class VmwareAdminClusterLoadBalancer {
   /// Configuration for F5 Big IP typed load balancers.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterLoadBalancerF5Config>? f5Config;
+  final pulumi.Input<VmwareAdminClusterLoadBalancerF5Config?>? f5Config;
   /// Manually configured load balancers.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterLoadBalancerManualLbConfig>? manualLbConfig;
+  final pulumi.Input<VmwareAdminClusterLoadBalancerManualLbConfig?>? manualLbConfig;
   /// Metal LB load balancers.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterLoadBalancerMetalLbConfig>? metalLbConfig;
+  final pulumi.Input<VmwareAdminClusterLoadBalancerMetalLbConfig?>? metalLbConfig;
   /// Specified the VMware Load Balancer Config
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterLoadBalancerVipConfig> vipConfig;

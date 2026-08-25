@@ -27,7 +27,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
 
   factory GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(
-      hoursInCycle: pulumi.Input.fromValue(map['hoursInCycle'] as int),
+      hoursInCycle: pulumi.Input.fromValue((map['hoursInCycle'] as num).toInt()),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }

@@ -7,7 +7,7 @@ class AssessmentRuleScheduleInfo {
   /// pipelines for execution until the schedule is no longer active or deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The groc expression.
   /// Format: `every number [synchronized]`
   /// Cron syntax is not supported.
@@ -18,15 +18,15 @@ class AssessmentRuleScheduleInfo {
   /// Otherwise the start time is random within the interval.
   /// Example: `every 5 minutes`
   /// could be  00:02, 00:07, 00:12, ...
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
   /// Start time of the schedule. If not specified, will start as soon as the
   /// schedule is created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The timezone to use for the groc expression.
   /// If not specified, defaults to UTC.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [AssessmentRuleScheduleInfo].
   /// [endTime] End time of the schedule. If not specified, will keep scheduling new

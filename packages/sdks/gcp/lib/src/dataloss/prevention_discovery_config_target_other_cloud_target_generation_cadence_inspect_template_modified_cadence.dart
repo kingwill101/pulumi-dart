@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence {
   /// How frequently data profiles can be updated when the template is modified. Defaults to never.
   /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when the template is modified. Defaults to never.

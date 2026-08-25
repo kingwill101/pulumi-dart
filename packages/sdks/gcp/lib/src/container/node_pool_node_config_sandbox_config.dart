@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigSandboxConfig {
   /// Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.
-  final pulumi.Input<String>? sandboxType;
+  final pulumi.Input<String?>? sandboxType;
   /// Type of the sandbox to use for the node (e.g. 'GVISOR').
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [NodePoolNodeConfigSandboxConfig].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor'). Deprecated in favor of type.

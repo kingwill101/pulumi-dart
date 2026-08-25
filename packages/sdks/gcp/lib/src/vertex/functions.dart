@@ -153,6 +153,17 @@ Future<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(
   return GetAiEndpointIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyOutput(
+  GetAiEndpointIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiEndpointIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for featuregroup
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -279,6 +290,17 @@ Future<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAiFeatureGroupIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicyOutput(
+  GetAiFeatureGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiFeatureGroupIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for featureonlinestorefeatureview
@@ -416,6 +438,17 @@ Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStor
   return GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStoreFeatureviewIamPolicyOutput(
+  GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for featureonlinestore
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -544,6 +577,17 @@ Future<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(
   return GetAiFeatureOnlineStoreIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicyOutput(
+  GetAiFeatureOnlineStoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiFeatureOnlineStoreIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for featurestoreentitytype
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -670,6 +714,17 @@ Future<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAiFeaturestoreEntitytypeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIamPolicyOutput(
+  GetAiFeaturestoreEntitytypeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiFeaturestoreEntitytypeIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for featurestore
@@ -807,6 +862,17 @@ Future<GetAiFeaturestoreIamPolicyResult> getAiFeaturestoreIamPolicy(
   return GetAiFeaturestoreIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAiFeaturestoreIamPolicyResult> getAiFeaturestoreIamPolicyOutput(
+  GetAiFeaturestoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiFeaturestoreIamPolicyResult.fromMap);
+}
+
 /// A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vertex_get_ai_index_get_ai_index_args_doc}
 /// [options] Invoke options controlling this call.
@@ -821,6 +887,17 @@ Future<GetAiIndexResult> getAiIndex(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAiIndexResult.fromMap(result);
+}
+
+pulumi.Output<GetAiIndexResult> getAiIndexOutput(
+  GetAiIndexArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiIndex:getAiIndex',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiIndexResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for reasoningengine
@@ -954,6 +1031,17 @@ Future<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAiReasoningEngineIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicyOutput(
+  GetAiReasoningEngineIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiReasoningEngineIamPolicy:getAiReasoningEngineIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiReasoningEngineIamPolicyResult.fromMap);
 }
 
 /// Get the output of a query sent to a Vertex AI Reasoning Engine agent.
@@ -1237,4 +1325,15 @@ Future<GetAiReasoningEngineQueryResult> getAiReasoningEngineQuery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAiReasoningEngineQueryResult.fromMap(result);
+}
+
+pulumi.Output<GetAiReasoningEngineQueryResult> getAiReasoningEngineQueryOutput(
+  GetAiReasoningEngineQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:vertex/getAiReasoningEngineQuery:getAiReasoningEngineQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiReasoningEngineQueryResult.fromMap);
 }

@@ -13,16 +13,16 @@ class AutokeyConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The folder for which to retrieve config.
   final pulumi.Input<String> folder;
   /// The target key project for a given folder where KMS Autokey will provision a
   /// CryptoKey for any new KeyHandle the Developer creates. Should have the form
   /// `projects/&lt;project_id_or_number&gt;`.
-  final pulumi.Input<String>? keyProject;
+  final pulumi.Input<String?>? keyProject;
   /// How Autokey determines which project to use when provisioning CMEK keys.
   /// Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
-  final pulumi.Input<String>? keyProjectResolutionMode;
+  final pulumi.Input<String?>? keyProjectResolutionMode;
 
   /// Creates a new [AutokeyConfigArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

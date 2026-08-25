@@ -20,7 +20,7 @@ class GetWorkerPoolTemplateContainerStartupProbeTcpSocket {
 
   factory GetWorkerPoolTemplateContainerStartupProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateContainerStartupProbeTcpSocket(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

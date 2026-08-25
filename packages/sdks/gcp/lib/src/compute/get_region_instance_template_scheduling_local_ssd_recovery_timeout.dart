@@ -29,8 +29,8 @@ class GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
 
   factory GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
-      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+      nanos: pulumi.Input.fromValue((map['nanos'] as num).toInt()),
+      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
     );
   }
 }

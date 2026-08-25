@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regional_parameter_args.dart';
+import 'regional_parameter_policy_member.dart';
 import 'regional_parameter_state.dart';
 
 /// A Regional Parameter is a logical regional parameter.
@@ -593,7 +594,7 @@ class RegionalParameter extends pulumi.CustomResource {
   late final pulumi.Output<String> parameterId;
   /// An object containing a unique resource identity tied to the regional parameter.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> policyMembers;
+  late final pulumi.Output<List<RegionalParameterPolicyMember>> policyMembers;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -615,20 +616,21 @@ class RegionalParameter extends pulumi.CustomResource {
           'gcp:parametermanager/regionalParameter:RegionalParameter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     format = registerOutput<String?>('format');
     kmsKey = registerOutput<String?>('kmsKey');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parameterId = registerOutput<String>('parameterId');
-    policyMembers = registerOutput<List<Map<String, dynamic>>>('policyMembers');
+    policyMembers = registerOutput<List<RegionalParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalParameterPolicyMember>(guardedValue, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -637,11 +639,12 @@ class RegionalParameter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionalParameterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionalParameter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -657,16 +660,41 @@ class RegionalParameter extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     format = registerOutput<String?>('format');
     kmsKey = registerOutput<String?>('kmsKey');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parameterId = registerOutput<String>('parameterId');
-    policyMembers = registerOutput<List<Map<String, dynamic>>>('policyMembers');
+    policyMembers = registerOutput<List<RegionalParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalParameterPolicyMember>(guardedValue, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RegionalParameter] resource.
+  RegionalParameter.reference(String urn)
+    : super(
+        'gcp:parametermanager/regionalParameter:RegionalParameter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    format = registerOutput<String?>('format');
+    kmsKey = registerOutput<String?>('kmsKey');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parameterId = registerOutput<String>('parameterId');
+    policyMembers = registerOutput<List<RegionalParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalParameterPolicyMember>(guardedValue, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 }

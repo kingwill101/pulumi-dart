@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntryBigqueryTableSpecViewSpec {
   /// (Output)
   /// The query that defines the table view.
-  final pulumi.Input<String>? viewQuery;
+  final pulumi.Input<String?>? viewQuery;
 
   /// Creates a new [EntryBigqueryTableSpecViewSpec].
   /// [viewQuery] (Output)

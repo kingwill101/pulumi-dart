@@ -20,7 +20,7 @@ class GetInstanceNodeConfig {
 
   factory GetInstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceNodeConfig(
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as double),
+      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toDouble()),
     );
   }
 }

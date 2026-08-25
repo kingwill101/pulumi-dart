@@ -5,10 +5,10 @@ import 'connection_github_config_authorizer_credential.dart';
 
 class ConnectionGithubConfig {
   /// GitHub App installation id.
-  final pulumi.Input<int>? appInstallationId;
+  final pulumi.Input<int?>? appInstallationId;
   /// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential>? authorizerCredential;
+  final pulumi.Input<ConnectionGithubConfigAuthorizerCredential?>? authorizerCredential;
 
   /// Creates a new [ConnectionGithubConfig].
   /// [appInstallationId] GitHub App installation id.
@@ -27,7 +27,7 @@ class ConnectionGithubConfig {
 
   factory ConnectionGithubConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubConfig(
-      appInstallationId: (() { final guardedValue = map['appInstallationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      appInstallationId: (() { final guardedValue = map['appInstallationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       authorizerCredential: (() { final guardedValue = map['authorizerCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGithubConfigAuthorizerCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

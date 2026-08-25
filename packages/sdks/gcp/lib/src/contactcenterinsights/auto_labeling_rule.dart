@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_labeling_rule_args.dart';
+import 'auto_labeling_rule_condition.dart';
 import 'auto_labeling_rule_state.dart';
 
 /// The CCAI Insights project wide auto labeling rule. This rule will be applied
@@ -41,7 +42,7 @@ class AutoLabelingRule extends pulumi.CustomResource {
   late final pulumi.Output<String?> autoLabelingRuleId;
   /// Conditions to apply for auto-labeling the label_key.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
+  late final pulumi.Output<List<AutoLabelingRuleCondition>?> conditions;
   /// The time at which this rule was created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -84,11 +85,11 @@ class AutoLabelingRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     autoLabelingRuleId = registerOutput<String?>('autoLabelingRuleId');
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    conditions = registerOutput<List<AutoLabelingRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoLabelingRuleCondition>(guardedValue, (value) => AutoLabelingRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -106,11 +107,12 @@ class AutoLabelingRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoLabelingRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoLabelingRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -126,7 +128,31 @@ class AutoLabelingRule extends pulumi.CustomResource {
         ) {
     active = registerOutput<bool?>('active');
     autoLabelingRuleId = registerOutput<String?>('autoLabelingRuleId');
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    conditions = registerOutput<List<AutoLabelingRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoLabelingRuleCondition>(guardedValue, (value) => AutoLabelingRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    labelKey = registerOutput<String?>('labelKey');
+    labelKeyType = registerOutput<String?>('labelKeyType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AutoLabelingRule] resource.
+  AutoLabelingRule.reference(String urn)
+    : super(
+        'gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    active = registerOutput<bool?>('active');
+    autoLabelingRuleId = registerOutput<String?>('autoLabelingRuleId');
+    conditions = registerOutput<List<AutoLabelingRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoLabelingRuleCondition>(guardedValue, (value) => AutoLabelingRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

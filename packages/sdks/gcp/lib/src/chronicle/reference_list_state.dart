@@ -7,50 +7,50 @@ import 'reference_list_scope_info.dart';
 /// Input properties used for looking up and filtering ReferenceList resources.
 class ReferenceListState {
   /// Required. A user-provided description of the reference list.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Output only. The unique display name of the reference list.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Required. The entries of the reference list.
   /// When listed, they are returned in the order that was specified at creation
   /// or update. The combined size of the values of the reference list may not
   /// exceed 6MB.
   /// This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
   /// Structure is documented below.
-  final pulumi.Input<List<ReferenceListEntry>>? entries;
+  final pulumi.Input<List<ReferenceListEntry>?>? entries;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output only. The resource name of the reference list.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Required. The ID to use for the reference list. This is also the display name for
   /// the reference list. It must satisfy the following requirements:
   /// - Starts with letter.
   /// - Contains only letters, numbers and underscore.
   /// - Has length &lt; 256.
   /// - Must be unique.
-  final pulumi.Input<String>? referenceListId;
+  final pulumi.Input<String?>? referenceListId;
   /// Output only. The timestamp when the reference list was last updated.
-  final pulumi.Input<String>? revisionCreateTime;
+  final pulumi.Input<String?>? revisionCreateTime;
   /// Output only. The count of self-authored rules using the reference list.
-  final pulumi.Input<int>? ruleAssociationsCount;
+  final pulumi.Input<int?>? ruleAssociationsCount;
   /// Output only. The resource names for the associated self-authored Rules that use this
   /// reference list.
   /// This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
-  final pulumi.Input<List<String>>? rules;
+  final pulumi.Input<List<String>?>? rules;
   /// ScopeInfo specifies the scope info of the reference list.
   /// Structure is documented below.
-  final pulumi.Input<List<ReferenceListScopeInfo>>? scopeInfos;
+  final pulumi.Input<List<ReferenceListScopeInfo>?>? scopeInfos;
   /// Possible values:
   /// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
   /// REFERENCE_LIST_SYNTAX_TYPE_REGEX
   /// REFERENCE_LIST_SYNTAX_TYPE_CIDR
-  final pulumi.Input<String>? syntaxType;
+  final pulumi.Input<String?>? syntaxType;
 
   /// Creates a new [ReferenceListState].
   /// [description] Required. A user-provided description of the reference list.
@@ -111,7 +111,7 @@ class ReferenceListState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       referenceListId: (() { final guardedValue = map['referenceListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revisionCreateTime: (() { final guardedValue = map['revisionCreateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ruleAssociationsCount: (() { final guardedValue = map['ruleAssociationsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ruleAssociationsCount: (() { final guardedValue = map['ruleAssociationsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       scopeInfos: (() { final guardedValue = map['scopeInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       syntaxType: (() { final guardedValue = map['syntaxType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
   /// (Output)
   /// The `StorageIntelligence` edition that is applicable for the resource.
-  final pulumi.Input<String>? effectiveEdition;
+  final pulumi.Input<String?>? effectiveEdition;
   /// (Output)
   /// The Intelligence config resource that is applied for the target resource.
-  final pulumi.Input<String>? intelligenceConfig;
+  final pulumi.Input<String?>? intelligenceConfig;
 
   /// Creates a new [ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig].
   /// [effectiveEdition] (Output)

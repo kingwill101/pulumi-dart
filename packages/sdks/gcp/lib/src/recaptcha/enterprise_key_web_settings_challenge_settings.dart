@@ -7,7 +7,7 @@ import 'enterprise_key_web_settings_challenge_settings_default_settings.dart';
 class EnterpriseKeyWebSettingsChallengeSettings {
   /// The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
   /// Structure is documented below.
-  final pulumi.Input<List<EnterpriseKeyWebSettingsChallengeSettingsActionSetting>>? actionSettings;
+  final pulumi.Input<List<EnterpriseKeyWebSettingsChallengeSettingsActionSetting>?>? actionSettings;
   /// Defines when a challenge is triggered by default.
   /// Structure is documented below.
   final pulumi.Input<EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings> defaultSettings;

@@ -9,20 +9,20 @@ import 'toolset_open_api_toolset_api_authentication_service_account_auth_config.
 class ToolsetOpenApiToolsetApiAuthentication {
   /// Configurations for authentication with API key.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig>? apiKeyConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig?>? apiKeyConfig;
   /// Configurations for authentication with a bearer token.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig>? bearerTokenConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig?>? bearerTokenConfig;
   /// Configurations for authentication with OAuth.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationOauthConfig>? oauthConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationOauthConfig?>? oauthConfig;
   /// Configurations for authentication using a custom service account.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig>? serviceAccountAuthConfig;
+  final pulumi.Input<ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig?>? serviceAccountAuthConfig;
   /// Configurations for authentication with [ID
   /// token](https://cloud.google.com/docs/authentication/token-types#id) generated
   /// from service agent.
-  final pulumi.Input<Map<String, dynamic>>? serviceAgentIdTokenAuthConfig;
+  final pulumi.Input<Map<String, dynamic>?>? serviceAgentIdTokenAuthConfig;
 
   /// Creates a new [ToolsetOpenApiToolsetApiAuthentication].
   /// [apiKeyConfig] Configurations for authentication with API key.

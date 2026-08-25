@@ -11,11 +11,11 @@ class CxToolVersionTool {
   /// Integration connectors tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolConnectorSpec>? connectorSpec;
+  final pulumi.Input<CxToolVersionToolConnectorSpec?>? connectorSpec;
   /// Data store search tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolDataStoreSpec>? dataStoreSpec;
+  final pulumi.Input<CxToolVersionToolDataStoreSpec?>? dataStoreSpec;
   /// High level description of the Tool and its usage.
   final pulumi.Input<String> description;
   /// The human-readable name of the tool, unique within the agent.
@@ -23,18 +23,18 @@ class CxToolVersionTool {
   /// Client side executed function specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolFunctionSpec>? functionSpec;
+  final pulumi.Input<CxToolVersionToolFunctionSpec?>? functionSpec;
   /// (Output)
   /// The unique identifier of the Tool.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/tools/&lt;Tool ID&gt;.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OpenAPI specification of the Tool.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolOpenApiSpec>? openApiSpec;
+  final pulumi.Input<CxToolVersionToolOpenApiSpec?>? openApiSpec;
   /// (Output)
   /// The tool type.
-  final pulumi.Input<String>? toolType;
+  final pulumi.Input<String?>? toolType;
 
   /// Creates a new [CxToolVersionTool].
   /// [connectorSpec] (Optional, Beta)

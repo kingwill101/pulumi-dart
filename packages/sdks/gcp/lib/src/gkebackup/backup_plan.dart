@@ -3323,7 +3323,8 @@ class BackupPlan extends pulumi.CustomResource {
           'gcp:gkebackup/backupPlan:BackupPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupConfig = registerOutput<BackupPlanBackupConfig?>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupSchedule = registerOutput<BackupPlanBackupSchedule?>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3331,15 +3332,15 @@ class BackupPlan extends pulumi.CustomResource {
     deactivated = registerOutput<bool>('deactivated');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     protectedNamespaceCount = registerOutput<int>('protectedNamespaceCount');
     protectedPodCount = registerOutput<int>('protectedPodCount');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
@@ -3351,11 +3352,12 @@ class BackupPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3375,17 +3377,48 @@ class BackupPlan extends pulumi.CustomResource {
     deactivated = registerOutput<bool>('deactivated');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     protectedNamespaceCount = registerOutput<int>('protectedNamespaceCount');
     protectedPodCount = registerOutput<int>('protectedPodCount');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [BackupPlan] resource.
+  BackupPlan.reference(String urn)
+    : super(
+        'gcp:gkebackup/backupPlan:BackupPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    backupConfig = registerOutput<BackupPlanBackupConfig?>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupSchedule = registerOutput<BackupPlanBackupSchedule?>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cluster = registerOutput<String>('cluster');
+    deactivated = registerOutput<bool>('deactivated');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    protectedNamespaceCount = registerOutput<int>('protectedNamespaceCount');
+    protectedPodCount = registerOutput<int>('protectedPodCount');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    retentionPolicy = registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     uid = registerOutput<String>('uid');
   }

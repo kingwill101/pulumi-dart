@@ -985,7 +985,7 @@ class NodeGroup extends pulumi.CustomResource {
           'gcp:compute/nodeGroup:NodeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -1009,11 +1009,12 @@ class NodeGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NodeGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NodeGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1027,6 +1028,32 @@ class NodeGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    initialSize = registerOutput<int?>('initialSize');
+    maintenanceInterval = registerOutput<String>('maintenanceInterval');
+    maintenancePolicy = registerOutput<String?>('maintenancePolicy');
+    maintenanceWindow = registerOutput<NodeGroupMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nodeTemplate = registerOutput<String>('nodeTemplate');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    shareSettings = registerOutput<NodeGroupShareSettings>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupShareSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    size = registerOutput<int>('size');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [NodeGroup] resource.
+  NodeGroup.reference(String urn)
+    : super(
+        'gcp:compute/nodeGroup:NodeGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

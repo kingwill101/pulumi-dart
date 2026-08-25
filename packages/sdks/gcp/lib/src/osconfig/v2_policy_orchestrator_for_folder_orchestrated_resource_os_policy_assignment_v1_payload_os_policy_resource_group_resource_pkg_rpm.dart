@@ -8,7 +8,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// - install when false: `rpm --upgrade --replacepkgs package.rpm`
   /// - install when true: `yum -y install package.rpm` or
   /// `zypper -y install package.rpm`
-  final pulumi.Input<bool>? pullDeps;
+  final pulumi.Input<bool?>? pullDeps;
   /// A remote or local file.
   /// Structure is documented below.
   final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource> source;

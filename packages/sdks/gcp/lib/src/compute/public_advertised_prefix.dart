@@ -474,7 +474,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
           'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -493,11 +493,12 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicAdvertisedPrefixState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublicAdvertisedPrefix._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -511,6 +512,27 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    this.name = registerOutput<String>('name');
+    pdpScope = registerOutput<String?>('pdpScope');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sharedSecret = registerOutput<String>('sharedSecret');
+  }
+
+  /// Creates a typed reference to an existing [PublicAdvertisedPrefix] resource.
+  PublicAdvertisedPrefix.reference(String urn)
+    : super(
+        'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');

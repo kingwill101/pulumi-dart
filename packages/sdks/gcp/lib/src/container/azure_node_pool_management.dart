@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureNodePoolManagement {
   /// Optional. Whether or not the nodes will be automatically repaired.
-  final pulumi.Input<bool>? autoRepair;
+  final pulumi.Input<bool?>? autoRepair;
 
   /// Creates a new [AzureNodePoolManagement].
   /// [autoRepair] Optional. Whether or not the nodes will be automatically repaired.

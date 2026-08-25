@@ -34,19 +34,19 @@ import 'goldengate_connection_properties_snowflake_connection_properties.dart';
 class GoldengateConnectionProperties {
   /// The properties of GoldengateAmazonKinesisConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesAmazonKinesisConnectionProperties>? amazonKinesisConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesAmazonKinesisConnectionProperties?>? amazonKinesisConnectionProperties;
   /// The properties of GoldengateAmazonRedshiftConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties>? amazonRedshiftConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties?>? amazonRedshiftConnectionProperties;
   /// The properties of GoldengateAmazonS3Connection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesAmazonS3ConnectionProperties>? amazonS3ConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesAmazonS3ConnectionProperties?>? amazonS3ConnectionProperties;
   /// The properties of GoldengateAzureDataLakeStorageConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties>? azureDataLakeStorageConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties?>? azureDataLakeStorageConnectionProperties;
   /// The properties of GoldengateAzureSynapseAnalyticsConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties>? azureSynapseAnalyticsConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties?>? azureSynapseAnalyticsConnectionProperties;
   /// The connection type.
   /// Possible values:
   /// GOLDENGATE
@@ -81,54 +81,54 @@ class GoldengateConnectionProperties {
   final pulumi.Input<String> connectionType;
   /// The properties of GoldengateDatabricksConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesDatabricksConnectionProperties>? databricksConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesDatabricksConnectionProperties?>? databricksConnectionProperties;
   /// The properties of GoldengateDb2Connection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesDb2ConnectionProperties>? db2ConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesDb2ConnectionProperties?>? db2ConnectionProperties;
   /// Metadata about this specific object.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An object's Display Name.
   final pulumi.Input<String> displayName;
   /// The properties of GoldengateElasticsearchConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesElasticsearchConnectionProperties>? elasticsearchConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesElasticsearchConnectionProperties?>? elasticsearchConnectionProperties;
   /// The properties of GoldengateGenericConnectionProperties.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesGenericConnectionProperties>? genericConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesGenericConnectionProperties?>? genericConnectionProperties;
   /// The properties of GoldengateGoldengateConnectionProperties.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesGoldengateConnectionProperties>? goldengateConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesGoldengateConnectionProperties?>? goldengateConnectionProperties;
   /// The properties of GoldengateGoogleBigQueryConnectionProperties.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties>? googleBigQueryConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties?>? googleBigQueryConnectionProperties;
   /// The properties of GoldengateGoogleCloudStorageConnectionProperties.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties>? googleCloudStorageConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties?>? googleCloudStorageConnectionProperties;
   /// The properties of GoldengateGooglePubsubConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesGooglePubsubConnectionProperties>? googlePubsubConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesGooglePubsubConnectionProperties?>? googlePubsubConnectionProperties;
   /// The properties of GoldengateHdfsConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesHdfsConnectionProperties>? hdfsConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesHdfsConnectionProperties?>? hdfsConnectionProperties;
   /// The properties of GoldengateIcebergConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionProperties>? icebergConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionProperties?>? icebergConnectionProperties;
   /// (Output)
   /// The Ingress IPs of the GoldengateConnection.
-  final pulumi.Input<List<String>>? ingressIpAddresses;
+  final pulumi.Input<List<String>?>? ingressIpAddresses;
   /// The properties of GoldengateJavaMessageServiceConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties>? javaMessageServiceConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties?>? javaMessageServiceConnectionProperties;
   /// The properties of GoldengateKafkaConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesKafkaConnectionProperties>? kafkaConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesKafkaConnectionProperties?>? kafkaConnectionProperties;
   /// The properties of GoldengateKafkaSchemaRegistryConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties>? kafkaSchemaRegistryConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties?>? kafkaSchemaRegistryConnectionProperties;
   /// (Output)
   /// Describes the object's current state in detail. For example, it can be
   /// used to provide actionable information for a resource in a Failed state.
-  final pulumi.Input<String>? lifecycleDetails;
+  final pulumi.Input<String?>? lifecycleDetails;
   /// (Output)
   /// The lifecycle state of the connection.
   /// Possible values:
@@ -138,52 +138,52 @@ class GoldengateConnectionProperties {
   /// DELETING
   /// DELETED
   /// FAILED
-  final pulumi.Input<String>? lifecycleState;
+  final pulumi.Input<String?>? lifecycleState;
   /// The properties of GoldengateMicrosoftFabricConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties>? microsoftFabricConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties?>? microsoftFabricConnectionProperties;
   /// The properties of GoldengateMicrosoftSqlserverConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties>? microsoftSqlserverConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties?>? microsoftSqlserverConnectionProperties;
   /// The properties of GoldengateMongodbConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesMongodbConnectionProperties>? mongodbConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesMongodbConnectionProperties?>? mongodbConnectionProperties;
   /// Properties of GoldengateMysqlConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesMysqlConnectionProperties>? mysqlConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesMysqlConnectionProperties?>? mysqlConnectionProperties;
   /// The properties of GoldengateOciObjectStorageConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesOciObjectStorageConnectionProperties>? ociObjectStorageConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesOciObjectStorageConnectionProperties?>? ociObjectStorageConnectionProperties;
   /// (Output)
   /// The [OCID] of the connection being
   /// referenced.
-  final pulumi.Input<String>? ocid;
+  final pulumi.Input<String?>? ocid;
   /// The properties of GoldengateOracleAIDataPlatformConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties>? oracleAiDataPlatformConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties?>? oracleAiDataPlatformConnectionProperties;
   /// The properties of Goldengate Oracle Database Connection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesOracleConnectionProperties>? oracleConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesOracleConnectionProperties?>? oracleConnectionProperties;
   /// The properties of GoldengateOracleNosqlConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesOracleNosqlConnectionProperties>? oracleNosqlConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesOracleNosqlConnectionProperties?>? oracleNosqlConnectionProperties;
   /// The properties of GoldengatePostgresqlConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesPostgresqlConnectionProperties>? postgresqlConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesPostgresqlConnectionProperties?>? postgresqlConnectionProperties;
   /// The properties of GoldengateRedisConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesRedisConnectionProperties>? redisConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesRedisConnectionProperties?>? redisConnectionProperties;
   /// The routing method for the GoldengateConnection.
   /// Possible values:
   /// SHARED_DEPLOYMENT_ENDPOINT
   /// DEDICATED_ENDPOINT
-  final pulumi.Input<String>? routingMethod;
+  final pulumi.Input<String?>? routingMethod;
   /// The properties of GoldengateSnowflakeConnection.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesSnowflakeConnectionProperties>? snowflakeConnectionProperties;
+  final pulumi.Input<GoldengateConnectionPropertiesSnowflakeConnectionProperties?>? snowflakeConnectionProperties;
   /// (Output)
   /// The time the resource was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GoldengateConnectionProperties].
   /// [amazonKinesisConnectionProperties] The properties of GoldengateAmazonKinesisConnection.

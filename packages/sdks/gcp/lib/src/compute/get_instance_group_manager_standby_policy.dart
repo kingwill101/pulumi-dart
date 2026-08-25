@@ -25,7 +25,7 @@ class GetInstanceGroupManagerStandbyPolicy {
 
   factory GetInstanceGroupManagerStandbyPolicy.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerStandbyPolicy(
-      initialDelaySec: pulumi.Input.fromValue(map['initialDelaySec'] as int),
+      initialDelaySec: pulumi.Input.fromValue((map['initialDelaySec'] as num).toInt()),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

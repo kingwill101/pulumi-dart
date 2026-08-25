@@ -9,10 +9,10 @@ import 'os_policy_assignment_os_policy_resource_group_resource_repository.dart';
 class OsPolicyAssignmentOsPolicyResourceGroupResource {
   /// Exec resource Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExec>? exec;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExec?>? exec;
   /// File resource Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceFile>? file;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceFile?>? file;
   /// The id of the resource with the following restrictions:
   ///
   /// *   Must contain only lowercase letters, numbers, and hyphens.
@@ -23,10 +23,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
   final pulumi.Input<String> id;
   /// Package resource Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkg>? pkg;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkg?>? pkg;
   /// Package repository resource Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepository>? repository;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceRepository?>? repository;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResource].
   /// [exec] Exec resource Structure is

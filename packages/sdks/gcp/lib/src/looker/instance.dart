@@ -2028,7 +2028,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:looker/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAdminSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerNetwork = registerOutput<String?>('consumerNetwork');
@@ -2067,11 +2067,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2085,6 +2086,47 @@ class Instance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAdminSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consumerNetwork = registerOutput<String?>('consumerNetwork');
+    controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>('controlledEgressConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceControlledEgressConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
+    createTime = registerOutput<String>('createTime');
+    customDomain = registerOutput<InstanceCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDenyMaintenancePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    egressPublicIp = registerOutput<String>('egressPublicIp');
+    encryptionConfig = registerOutput<InstanceEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    geminiEnabled = registerOutput<bool?>('geminiEnabled');
+    ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
+    ingressPublicIp = registerOutput<String>('ingressPublicIp');
+    lookerUri = registerOutput<String>('lookerUri');
+    lookerVersion = registerOutput<String>('lookerVersion');
+    maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceOauthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>('periodicExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePeriodicExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformEdition = registerOutput<String?>('platformEdition');
+    privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
+    project = registerOutput<String>('project');
+    pscConfig = registerOutput<InstancePscConfig>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pscEnabled = registerOutput<bool?>('pscEnabled');
+    publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
+    region = registerOutput<String>('region');
+    reservedRange = registerOutput<String?>('reservedRange');
+    updateTime = registerOutput<String>('updateTime');
+    userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceUserMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:looker/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAdminSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerNetwork = registerOutput<String?>('consumerNetwork');
     controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>('controlledEgressConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceControlledEgressConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

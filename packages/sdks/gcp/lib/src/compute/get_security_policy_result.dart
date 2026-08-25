@@ -8,99 +8,99 @@ import 'get_security_policy_rule.dart';
 
 /// Result data returned by getSecurityPolicy.
 class GetSecurityPolicyResult {
-  final List<GetSecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfigs;
-  final List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
-  final String deletionPolicy;
-  final String description;
-  final Map<String, String> effectiveLabels;
-  final String fingerprint;
+  final List<GetSecurityPolicyAdaptiveProtectionConfig>? adaptiveProtectionConfigs;
+  final List<GetSecurityPolicyAdvancedOptionsConfig>? advancedOptionsConfigs;
+  final String? deletionPolicy;
+  final String? description;
+  final Map<String, String>? effectiveLabels;
+  final String? fingerprint;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String labelFingerprint;
-  final Map<String, String> labels;
+  final String? id;
+  final String? labelFingerprint;
+  final Map<String, String>? labels;
   final String? name;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final List<GetSecurityPolicyRecaptchaOptionsConfig> recaptchaOptionsConfigs;
-  final List<GetSecurityPolicyRule> rules;
+  final Map<String, String>? pulumiLabels;
+  final List<GetSecurityPolicyRecaptchaOptionsConfig>? recaptchaOptionsConfigs;
+  final List<GetSecurityPolicyRule>? rules;
   final String? selfLink;
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSecurityPolicyResult].
-  /// [adaptiveProtectionConfigs] Required.
-  /// [advancedOptionsConfigs] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [effectiveLabels] Required.
-  /// [fingerprint] Required.
+  /// [adaptiveProtectionConfigs] Optional.
+  /// [advancedOptionsConfigs] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [effectiveLabels] Optional.
+  /// [fingerprint] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labelFingerprint] Required.
-  /// [labels] Required.
+  /// [labelFingerprint] Optional.
+  /// [labels] Optional.
   /// [name] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [recaptchaOptionsConfigs] Required.
-  /// [rules] Required.
+  /// [pulumiLabels] Optional.
+  /// [recaptchaOptionsConfigs] Optional.
+  /// [rules] Optional.
   /// [selfLink] Optional.
-  /// [type] Required.
+  /// [type] Optional.
   const GetSecurityPolicyResult({
-    required this.adaptiveProtectionConfigs,
-    required this.advancedOptionsConfigs,
-    required this.deletionPolicy,
-    required this.description,
-    required this.effectiveLabels,
-    required this.fingerprint,
-    required this.id,
-    required this.labelFingerprint,
-    required this.labels,
+    this.adaptiveProtectionConfigs,
+    this.advancedOptionsConfigs,
+    this.deletionPolicy,
+    this.description,
+    this.effectiveLabels,
+    this.fingerprint,
+    this.id,
+    this.labelFingerprint,
+    this.labels,
     this.name,
     this.project,
-    required this.pulumiLabels,
-    required this.recaptchaOptionsConfigs,
-    required this.rules,
+    this.pulumiLabels,
+    this.recaptchaOptionsConfigs,
+    this.rules,
     this.selfLink,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adaptiveProtectionConfigs': pulumi.Input.encodeList<GetSecurityPolicyAdaptiveProtectionConfig, Map<String, dynamic>>(adaptiveProtectionConfigs, (value) => value.toMap()),
-      'advancedOptionsConfigs': pulumi.Input.encodeList<GetSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(advancedOptionsConfigs, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'effectiveLabels': effectiveLabels,
-      'fingerprint': fingerprint,
-      'id': id,
-      'labelFingerprint': labelFingerprint,
-      'labels': labels,
+      'adaptiveProtectionConfigs': ?(() { final guardedValue = adaptiveProtectionConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecurityPolicyAdaptiveProtectionConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'advancedOptionsConfigs': ?(() { final guardedValue = advancedOptionsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'effectiveLabels': ?effectiveLabels,
+      'fingerprint': ?fingerprint,
+      'id': ?id,
+      'labelFingerprint': ?labelFingerprint,
+      'labels': ?labels,
       'name': ?name,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'recaptchaOptionsConfigs': pulumi.Input.encodeList<GetSecurityPolicyRecaptchaOptionsConfig, Map<String, dynamic>>(recaptchaOptionsConfigs, (value) => value.toMap()),
-      'rules': pulumi.Input.encodeList<GetSecurityPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'pulumiLabels': ?pulumiLabels,
+      'recaptchaOptionsConfigs': ?(() { final guardedValue = recaptchaOptionsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecurityPolicyRecaptchaOptionsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecurityPolicyRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'selfLink': ?selfLink,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetSecurityPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyResult(
-      adaptiveProtectionConfigs: pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfig>(map['adaptiveProtectionConfigs']!, (value) => GetSecurityPolicyAdaptiveProtectionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      advancedOptionsConfigs: pulumi.Input.decodeList<GetSecurityPolicyAdvancedOptionsConfig>(map['advancedOptionsConfigs']!, (value) => GetSecurityPolicyAdvancedOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as String,
-      labelFingerprint: map['labelFingerprint'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
+      adaptiveProtectionConfigs: (() { final guardedValue = map['adaptiveProtectionConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfig>(guardedValue, (value) => GetSecurityPolicyAdaptiveProtectionConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      advancedOptionsConfigs: (() { final guardedValue = map['advancedOptionsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityPolicyAdvancedOptionsConfig>(guardedValue, (value) => GetSecurityPolicyAdvancedOptionsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      recaptchaOptionsConfigs: pulumi.Input.decodeList<GetSecurityPolicyRecaptchaOptionsConfig>(map['recaptchaOptionsConfigs']!, (value) => GetSecurityPolicyRecaptchaOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      rules: pulumi.Input.decodeList<GetSecurityPolicyRule>(map['rules']!, (value) => GetSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      recaptchaOptionsConfigs: (() { final guardedValue = map['recaptchaOptionsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityPolicyRecaptchaOptionsConfig>(guardedValue, (value) => GetSecurityPolicyRecaptchaOptionsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityPolicyRule>(guardedValue, (value) => GetSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>())); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

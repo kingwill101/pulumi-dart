@@ -7,22 +7,22 @@ import 'worker_pool_template_container_startup_probe_tcp_socket.dart';
 
 class WorkerPoolTemplateContainerStartupProbe {
   /// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-  final pulumi.Input<int>? failureThreshold;
+  final pulumi.Input<int?>? failureThreshold;
   /// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateContainerStartupProbeGrpc>? grpc;
+  final pulumi.Input<WorkerPoolTemplateContainerStartupProbeGrpc?>? grpc;
   /// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateContainerStartupProbeHttpGet>? httpGet;
+  final pulumi.Input<WorkerPoolTemplateContainerStartupProbeHttpGet?>? httpGet;
   /// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
-  final pulumi.Input<int>? initialDelaySeconds;
+  final pulumi.Input<int?>? initialDelaySeconds;
   /// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
-  final pulumi.Input<int>? periodSeconds;
+  final pulumi.Input<int?>? periodSeconds;
   /// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateContainerStartupProbeTcpSocket>? tcpSocket;
+  final pulumi.Input<WorkerPoolTemplateContainerStartupProbeTcpSocket?>? tcpSocket;
   /// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
-  final pulumi.Input<int>? timeoutSeconds;
+  final pulumi.Input<int?>? timeoutSeconds;
 
   /// Creates a new [WorkerPoolTemplateContainerStartupProbe].
   /// [failureThreshold] Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -56,13 +56,13 @@ class WorkerPoolTemplateContainerStartupProbe {
 
   factory WorkerPoolTemplateContainerStartupProbe.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerStartupProbe(
-      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       grpc: (() { final guardedValue = map['grpc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateContainerStartupProbeGrpc.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpGet: (() { final guardedValue = map['httpGet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateContainerStartupProbeHttpGet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      initialDelaySeconds: (() { final guardedValue = map['initialDelaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialDelaySeconds: (() { final guardedValue = map['initialDelaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tcpSocket: (() { final guardedValue = map['tcpSocket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateContainerStartupProbeTcpSocket.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

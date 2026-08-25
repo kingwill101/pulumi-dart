@@ -56,7 +56,7 @@ class GetRegionBackendServiceLogConfig {
       optionalMode: pulumi.Input.fromValue(map['optionalMode'] as String),
       requestHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceLogConfigRequestHeader>(map['requestHeaders']!, (value) => GetRegionBackendServiceLogConfigRequestHeader.fromMap((value as Map).cast<String, dynamic>()))),
       responseHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceLogConfigResponseHeader>(map['responseHeaders']!, (value) => GetRegionBackendServiceLogConfigResponseHeader.fromMap((value as Map).cast<String, dynamic>()))),
-      sampleRate: pulumi.Input.fromValue(map['sampleRate'] as double),
+      sampleRate: pulumi.Input.fromValue((map['sampleRate'] as num).toDouble()),
     );
   }
 }

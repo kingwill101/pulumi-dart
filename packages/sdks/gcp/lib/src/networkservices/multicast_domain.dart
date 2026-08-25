@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'multicast_domain_args.dart';
 import 'multicast_domain_connection_config.dart';
 import 'multicast_domain_networkservices_state.dart';
+import 'multicast_domain_state.dart';
 import 'multicast_domain_ull_multicast_domain.dart';
 
 /// Create a multicast domain in the current project.
@@ -323,7 +324,7 @@ class MulticastDomain extends pulumi.CustomResource {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<MulticastDomainState>> states;
   /// Information for an Ultra-Low-Latency multicast domain.
   /// Structure is documented below.
   late final pulumi.Output<MulticastDomainUllMulticastDomain?> ullMulticastDomain;
@@ -348,22 +349,23 @@ class MulticastDomain extends pulumi.CustomResource {
           'gcp:networkservices/multicastDomain:MulticastDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminNetwork = registerOutput<String>('adminNetwork');
     connectionConfig = registerOutput<MulticastDomainConnectionConfig>('connectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicastDomainGroup = registerOutput<String?>('multicastDomainGroup');
     multicastDomainId = registerOutput<String>('multicastDomainId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastDomainState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastDomainState>(guardedValue, (value) => MulticastDomainState.fromMap((value as Map).cast<String, dynamic>())); });
     ullMulticastDomain = registerOutput<MulticastDomainUllMulticastDomain?>('ullMulticastDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainUllMulticastDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
@@ -374,11 +376,12 @@ class MulticastDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticastDomainNetworkservicesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticastDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -397,15 +400,44 @@ class MulticastDomain extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicastDomainGroup = registerOutput<String?>('multicastDomainGroup');
     multicastDomainId = registerOutput<String>('multicastDomainId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastDomainState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastDomainState>(guardedValue, (value) => MulticastDomainState.fromMap((value as Map).cast<String, dynamic>())); });
+    ullMulticastDomain = registerOutput<MulticastDomainUllMulticastDomain?>('ullMulticastDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainUllMulticastDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MulticastDomain] resource.
+  MulticastDomain.reference(String urn)
+    : super(
+        'gcp:networkservices/multicastDomain:MulticastDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    adminNetwork = registerOutput<String>('adminNetwork');
+    connectionConfig = registerOutput<MulticastDomainConnectionConfig>('connectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    multicastDomainGroup = registerOutput<String?>('multicastDomainGroup');
+    multicastDomainId = registerOutput<String>('multicastDomainId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastDomainState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastDomainState>(guardedValue, (value) => MulticastDomainState.fromMap((value as Map).cast<String, dynamic>())); });
     ullMulticastDomain = registerOutput<MulticastDomainUllMulticastDomain?>('ullMulticastDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastDomainUllMulticastDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');

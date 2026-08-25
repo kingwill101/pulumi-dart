@@ -13,11 +13,11 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
   /// EMAIL_MASK
   /// DATE_YEAR_MASK
   /// RANDOM_HASH
-  final pulumi.Input<String>? predefinedExpression;
+  final pulumi.Input<String?>? predefinedExpression;
   /// The name of the BigQuery routine that contains the custom masking
   /// routine, in the format of
   /// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
-  final pulumi.Input<String>? routine;
+  final pulumi.Input<String?>? routine;
 
   /// Creates a new [Datapolicyv2DataPolicyDataMaskingPolicy].
   /// [predefinedExpression] A predefined masking expression.

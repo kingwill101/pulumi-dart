@@ -7,27 +7,27 @@ class WebAppState {
   /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
   /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-  final pulumi.Input<String>? apiKeyId;
+  final pulumi.Input<String?>? apiKeyId;
   /// The globally unique, Firebase-assigned identifier of the App.
   /// This identifier should be treated as an opaque token, as the data format is not specified.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// The URLs where the `WebApp` is hosted.
-  final pulumi.Input<List<String>>? appUrls;
+  final pulumi.Input<List<String>?>? appUrls;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The user-assigned display name of the App.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The fully qualified resource name of the App, for example:
   /// projects/projectId/webApps/appId
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [WebAppState].
   /// [apiKeyId] The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.

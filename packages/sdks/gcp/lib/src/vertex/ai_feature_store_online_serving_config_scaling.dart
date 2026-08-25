@@ -25,8 +25,8 @@ class AiFeatureStoreOnlineServingConfigScaling {
 
   factory AiFeatureStoreOnlineServingConfigScaling.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreOnlineServingConfigScaling(
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
+      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
+      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
     );
   }
 }

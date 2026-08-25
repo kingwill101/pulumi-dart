@@ -27,8 +27,8 @@ class GetBackendBucketCdnPolicyNegativeCachingPolicy {
 
   factory GetBackendBucketCdnPolicyNegativeCachingPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketCdnPolicyNegativeCachingPolicy(
-      code: pulumi.Input.fromValue(map['code'] as int),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      code: pulumi.Input.fromValue((map['code'] as num).toInt()),
+      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
     );
   }
 }

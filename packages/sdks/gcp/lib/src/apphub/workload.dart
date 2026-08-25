@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_args.dart';
 import 'workload_attributes.dart';
 import 'workload_state.dart';
+import 'workload_workload_property.dart';
+import 'workload_workload_reference.dart';
 
 /// Workload represents a binary deployment (such as Managed Instance Groups (MIGs), GKE deployments, etc.) that performs the smallest logical subset of business functionality. It registers identified workload to the Application.
 ///
@@ -63,10 +65,10 @@ class Workload extends pulumi.CustomResource {
   late final pulumi.Output<String> workloadId;
   /// Properties of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> workloadProperties;
+  late final pulumi.Output<List<WorkloadWorkloadProperty>> workloadProperties;
   /// Reference of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> workloadReferences;
+  late final pulumi.Output<List<WorkloadWorkloadReference>> workloadReferences;
 
   /// Creates a new [Workload].
   /// [name] The Pulumi resource name.
@@ -80,7 +82,7 @@ class Workload extends pulumi.CustomResource {
           'gcp:apphub/workload:Workload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<WorkloadAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -96,8 +98,8 @@ class Workload extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     workloadId = registerOutput<String>('workloadId');
-    workloadProperties = registerOutput<List<Map<String, dynamic>>>('workloadProperties');
-    workloadReferences = registerOutput<List<Map<String, dynamic>>>('workloadReferences');
+    workloadProperties = registerOutput<List<WorkloadWorkloadProperty>>('workloadProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadWorkloadProperty>(guardedValue, (value) => WorkloadWorkloadProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    workloadReferences = registerOutput<List<WorkloadWorkloadReference>>('workloadReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadWorkloadReference>(guardedValue, (value) => WorkloadWorkloadReference.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Workload] resource's state with the given [name] and [id].
@@ -105,11 +107,12 @@ class Workload extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkloadState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workload._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -137,7 +140,34 @@ class Workload extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     workloadId = registerOutput<String>('workloadId');
-    workloadProperties = registerOutput<List<Map<String, dynamic>>>('workloadProperties');
-    workloadReferences = registerOutput<List<Map<String, dynamic>>>('workloadReferences');
+    workloadProperties = registerOutput<List<WorkloadWorkloadProperty>>('workloadProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadWorkloadProperty>(guardedValue, (value) => WorkloadWorkloadProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    workloadReferences = registerOutput<List<WorkloadWorkloadReference>>('workloadReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadWorkloadReference>(guardedValue, (value) => WorkloadWorkloadReference.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Workload] resource.
+  Workload.reference(String urn)
+    : super(
+        'gcp:apphub/workload:Workload',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    attributes = registerOutput<WorkloadAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    discoveredWorkload = registerOutput<String>('discoveredWorkload');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadId = registerOutput<String>('workloadId');
+    workloadProperties = registerOutput<List<WorkloadWorkloadProperty>>('workloadProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadWorkloadProperty>(guardedValue, (value) => WorkloadWorkloadProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    workloadReferences = registerOutput<List<WorkloadWorkloadReference>>('workloadReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadWorkloadReference>(guardedValue, (value) => WorkloadWorkloadReference.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

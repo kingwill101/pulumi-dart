@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceEndpoint {
   /// The FQDN of the endpoint as described in the config.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// The simple name of the endpoint as described in the config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ServiceEndpoint].
   /// [address] The FQDN of the endpoint as described in the config.

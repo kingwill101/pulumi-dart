@@ -7,13 +7,13 @@ import 'rollout_plan_wave_validation.dart';
 
 class RolloutPlanWave {
   /// The display name of this wave of the rollout plan.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// The wave number.
-  final pulumi.Input<int>? number;
+  final pulumi.Input<int?>? number;
   /// Options to control the pace of orchestration of a wave.
   /// Structure is documented below.
-  final pulumi.Input<RolloutPlanWaveOrchestrationOptions>? orchestrationOptions;
+  final pulumi.Input<RolloutPlanWaveOrchestrationOptions?>? orchestrationOptions;
   /// The selectors for this wave. There is a logical AND between each selector
   /// defined in a wave, so a resource must satisfy the criteria of *all* the
   /// specified selectors to be in scope for the wave.
@@ -50,7 +50,7 @@ class RolloutPlanWave {
   factory RolloutPlanWave.fromMap(Map<String, dynamic> map) {
     return RolloutPlanWave(
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       orchestrationOptions: (() { final guardedValue = map['orchestrationOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RolloutPlanWaveOrchestrationOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       selectors: pulumi.Input.fromValue(pulumi.Input.decodeList<RolloutPlanWaveSelector>(map['selectors']!, (value) => RolloutPlanWaveSelector.fromMap((value as Map).cast<String, dynamic>()))),
       validation: pulumi.Input.fromValue(RolloutPlanWaveValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())),

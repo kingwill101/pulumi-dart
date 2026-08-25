@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttachedClusterBinaryAuthorization {
   /// Configure Binary Authorization evaluation mode.
   /// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
-  final pulumi.Input<String>? evaluationMode;
+  final pulumi.Input<String?>? evaluationMode;
 
   /// Creates a new [AttachedClusterBinaryAuthorization].
   /// [evaluationMode] Configure Binary Authorization evaluation mode.

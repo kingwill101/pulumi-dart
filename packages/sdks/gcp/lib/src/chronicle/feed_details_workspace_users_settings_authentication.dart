@@ -7,12 +7,12 @@ import 'feed_details_workspace_users_settings_authentication_rs_credentials.dart
 class FeedDetailsWorkspaceUsersSettingsAuthentication {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceUsersSettingsAuthenticationClaims>? claims;
+  final pulumi.Input<FeedDetailsWorkspaceUsersSettingsAuthenticationClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsWorkspaceUsersSettingsAuthentication].
   /// [claims] Claims identifying a specific customer.

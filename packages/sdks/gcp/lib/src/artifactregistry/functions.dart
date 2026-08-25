@@ -278,6 +278,17 @@ Future<GetDockerImageResult> getDockerImage(
   return GetDockerImageResult.fromMap(result);
 }
 
+pulumi.Output<GetDockerImageResult> getDockerImageOutput(
+  GetDockerImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getDockerImage:getDockerImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDockerImageResult.fromMap);
+}
+
 /// Get information about Artifact Registry Docker images.
 /// See [the official documentation](https://cloud.google.com/artifact-registry/docs/docker)
 /// and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages/list).
@@ -405,6 +416,17 @@ Future<GetDockerImagesResult> getDockerImages(
   return GetDockerImagesResult.fromMap(result);
 }
 
+pulumi.Output<GetDockerImagesResult> getDockerImagesOutput(
+  GetDockerImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getDockerImages:getDockerImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDockerImagesResult.fromMap);
+}
+
 /// Downloads a single file from a Google Artifact Registry repository to a local
 /// path and exposes its metadata and content hashes. Applies to file-based
 /// Artifact Registry formats (Generic, Maven, npm, Python, Apt, Yum, Go). For
@@ -432,6 +454,17 @@ Future<GetFileResult> getFile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFileResult.fromMap(result);
+}
+
+pulumi.Output<GetFileResult> getFileOutput(
+  GetFileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getFile:getFile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileResult.fromMap);
 }
 
 /// Get Artifact Registry locations available for a project.
@@ -730,6 +763,17 @@ Future<GetLocationsResult> getLocations(
   return GetLocationsResult.fromMap(result);
 }
 
+pulumi.Output<GetLocationsResult> getLocationsOutput(
+  GetLocationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getLocations:getLocations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationsResult.fromMap);
+}
+
 /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
 ///
 /// ## Example Usage
@@ -801,6 +845,17 @@ Future<GetMavenArtifactResult> getMavenArtifact(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMavenArtifactResult.fromMap(result);
+}
+
+pulumi.Output<GetMavenArtifactResult> getMavenArtifactOutput(
+  GetMavenArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getMavenArtifact:getMavenArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMavenArtifactResult.fromMap);
 }
 
 /// Get information about Artifact Registry Maven artifacts.
@@ -928,6 +983,17 @@ Future<GetMavenArtifactsResult> getMavenArtifacts(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMavenArtifactsResult.fromMap(result);
+}
+
+pulumi.Output<GetMavenArtifactsResult> getMavenArtifactsOutput(
+  GetMavenArtifactsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getMavenArtifacts:getMavenArtifacts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMavenArtifactsResult.fromMap);
 }
 
 /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
@@ -1143,6 +1209,17 @@ Future<GetNpmPackageResult> getNpmPackage(
   return GetNpmPackageResult.fromMap(result);
 }
 
+pulumi.Output<GetNpmPackageResult> getNpmPackageOutput(
+  GetNpmPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getNpmPackage:getNpmPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNpmPackageResult.fromMap);
+}
+
 /// Get information about Artifact Registry Npm packages.
 /// See [the official documentation](https://cloud.google.com/artifact-registry/docs/nodejs)
 /// and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.npmPackages/list).
@@ -1270,6 +1347,17 @@ Future<GetNpmPackagesResult> getNpmPackages(
   return GetNpmPackagesResult.fromMap(result);
 }
 
+pulumi.Output<GetNpmPackagesResult> getNpmPackagesOutput(
+  GetNpmPackagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getNpmPackages:getNpmPackages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNpmPackagesResult.fromMap);
+}
+
 /// This data source fetches information of a package from a provided Artifact Registry repository.
 ///
 /// ## Example Usage
@@ -1386,6 +1474,17 @@ Future<GetPackageResult> getPackage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPackageResult.fromMap(result);
+}
+
+pulumi.Output<GetPackageResult> getPackageOutput(
+  GetPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getPackage:getPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPackageResult.fromMap);
 }
 
 /// Get information about Artifact Registry packages.
@@ -1513,6 +1612,17 @@ Future<GetPackagesResult> getPackages(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPackagesResult.fromMap(result);
+}
+
+pulumi.Output<GetPackagesResult> getPackagesOutput(
+  GetPackagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getPackages:getPackages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPackagesResult.fromMap);
 }
 
 /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
@@ -1728,6 +1838,17 @@ Future<GetPythonPackageResult> getPythonPackage(
   return GetPythonPackageResult.fromMap(result);
 }
 
+pulumi.Output<GetPythonPackageResult> getPythonPackageOutput(
+  GetPythonPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getPythonPackage:getPythonPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPythonPackageResult.fromMap);
+}
+
 /// Get information about Artifact Registry Python packages.
 /// See [the official documentation](https://cloud.google.com/artifact-registry/docs/python)
 /// and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.pythonPackages/list).
@@ -1855,6 +1976,17 @@ Future<GetPythonPackagesResult> getPythonPackages(
   return GetPythonPackagesResult.fromMap(result);
 }
 
+pulumi.Output<GetPythonPackagesResult> getPythonPackagesOutput(
+  GetPythonPackagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getPythonPackages:getPythonPackages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPythonPackagesResult.fromMap);
+}
+
 /// Get information about Artifact Registry repositories.
 /// See [the official documentation](https://cloud.google.com/artifact-registry/docs)
 /// and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories/list).
@@ -1978,6 +2110,17 @@ Future<GetRepositoriesResult> getRepositories(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoriesResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoriesResult> getRepositoriesOutput(
+  GetRepositoriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getRepositories:getRepositories',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoriesResult.fromMap);
 }
 
 /// Get information about a Google Artifact Registry Repository. For more information see
@@ -2105,6 +2248,17 @@ Future<GetRepositoryResult> getRepository(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryResult> getRepositoryOutput(
+  GetRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getRepository:getRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for repository
@@ -2240,6 +2394,17 @@ Future<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(
   return GetRepositoryIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicyOutput(
+  GetRepositoryIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryIamPolicyResult.fromMap);
+}
+
 /// This data source fetches information of a tag from a provided Artifact Registry repository.
 ///
 /// ## Example Usage
@@ -2285,6 +2450,17 @@ Future<GetTagResult> getTag(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagResult.fromMap(result);
+}
+
+pulumi.Output<GetTagResult> getTagOutput(
+  GetTagArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getTag:getTag',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagResult.fromMap);
 }
 
 /// Get information about Artifact Registry tags.
@@ -2421,6 +2597,17 @@ Future<GetTagsResult> getTags(
   return GetTagsResult.fromMap(result);
 }
 
+pulumi.Output<GetTagsResult> getTagsOutput(
+  GetTagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getTags:getTags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagsResult.fromMap);
+}
+
 /// This data source fetches information of a version from a provided Artifact Registry repository.
 ///
 /// ## Example Usage
@@ -2466,6 +2653,17 @@ Future<GetVersionResult> getVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetVersionResult> getVersionOutput(
+  GetVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getVersion:getVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVersionResult.fromMap);
 }
 
 /// Get information about Artifact Registry versions.
@@ -2600,4 +2798,15 @@ Future<GetVersionsResult> getVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetVersionsResult> getVersionsOutput(
+  GetVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:artifactregistry/getVersions:getVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVersionsResult.fromMap);
 }

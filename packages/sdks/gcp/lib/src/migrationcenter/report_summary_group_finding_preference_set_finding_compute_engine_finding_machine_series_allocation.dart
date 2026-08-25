@@ -6,12 +6,12 @@ import 'report_summary_group_finding_preference_set_finding_compute_engine_findi
 class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation {
   /// (Output)
   /// Count of assets allocated to these nodes
-  final pulumi.Input<String>? allocatedAssetCount;
+  final pulumi.Input<String?>? allocatedAssetCount;
   /// (Output)
   /// A machine series, for a target product
   /// (e.g. Compute Engine, Google Cloud VMware Engine).
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries>>? machineSeries;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries>?>? machineSeries;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocation].
   /// [allocatedAssetCount] (Output)

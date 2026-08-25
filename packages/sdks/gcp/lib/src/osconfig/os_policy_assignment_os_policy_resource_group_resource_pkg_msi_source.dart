@@ -8,15 +8,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
   /// Defaults to false. When false, files are
   /// subject to validations based on the file type: Remote: A checksum must be
   /// specified. Cloud Storage: An object generation number must be specified.
-  final pulumi.Input<bool>? allowInsecure;
+  final pulumi.Input<bool?>? allowInsecure;
   /// A Cloud Storage object. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs>? gcs;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs?>? gcs;
   /// A local path within the VM to use.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// A generic remote file. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote>? remote;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote?>? remote;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource].
   /// [allowInsecure] Defaults to false. When false, files are

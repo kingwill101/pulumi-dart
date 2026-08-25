@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterNetworking {
   /// Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
-  final pulumi.Input<bool>? perNodePoolSgRulesDisabled;
+  final pulumi.Input<bool?>? perNodePoolSgRulesDisabled;
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
   final pulumi.Input<List<String>> podAddressCidrBlocks;
   /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.

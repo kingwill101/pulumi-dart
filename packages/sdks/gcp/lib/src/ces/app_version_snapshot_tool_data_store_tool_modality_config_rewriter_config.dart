@@ -6,14 +6,14 @@ import 'app_version_snapshot_tool_data_store_tool_modality_config_rewriter_confi
 class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
   /// (Output)
   /// Whether summarization is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// (Output)
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>>? modelSettings;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>?>? modelSettings;
   /// (Output)
   /// The prompt definition. If not set, default prompt will be used.
-  final pulumi.Input<String>? prompt;
+  final pulumi.Input<String?>? prompt;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig].
   /// [disabled] (Output)

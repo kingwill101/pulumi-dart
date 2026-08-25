@@ -7,7 +7,7 @@ class InterceptDeploymentGroupConnectedEndpointGroup {
   /// The connected endpoint group's resource name, for example:
   /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [InterceptDeploymentGroupConnectedEndpointGroup].
   /// [name] (Output)

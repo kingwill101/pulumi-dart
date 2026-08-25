@@ -3,94 +3,94 @@
 
 /// Result data returned by getOdbNetwork.
 class GetOdbNetworkResult {
-  final String createTime;
-  final String deletionPolicy;
-  final bool deletionProtection;
-  final Map<String, String> effectiveLabels;
-  final String entitlementId;
-  final String gcpOracleZone;
+  final String? createTime;
+  final String? deletionPolicy;
+  final bool? deletionProtection;
+  final Map<String, String>? effectiveLabels;
+  final String? entitlementId;
+  final String? gcpOracleZone;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
-  final String location;
-  final String name;
-  final String network;
-  final String odbNetworkId;
+  final String? id;
+  final Map<String, String>? labels;
+  final String? location;
+  final String? name;
+  final String? network;
+  final String? odbNetworkId;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final String state;
+  final Map<String, String>? pulumiLabels;
+  final String? state;
 
   /// Creates a new [GetOdbNetworkResult].
-  /// [createTime] Required.
-  /// [deletionPolicy] Required.
-  /// [deletionProtection] Required.
-  /// [effectiveLabels] Required.
-  /// [entitlementId] Required.
-  /// [gcpOracleZone] Required.
+  /// [createTime] Optional.
+  /// [deletionPolicy] Optional.
+  /// [deletionProtection] Optional.
+  /// [effectiveLabels] Optional.
+  /// [entitlementId] Optional.
+  /// [gcpOracleZone] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
-  /// [location] Required.
-  /// [name] Required.
-  /// [network] Required.
-  /// [odbNetworkId] Required.
+  /// [labels] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [network] Optional.
+  /// [odbNetworkId] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [state] Required.
+  /// [pulumiLabels] Optional.
+  /// [state] Optional.
   const GetOdbNetworkResult({
-    required this.createTime,
-    required this.deletionPolicy,
-    required this.deletionProtection,
-    required this.effectiveLabels,
-    required this.entitlementId,
-    required this.gcpOracleZone,
-    required this.id,
-    required this.labels,
-    required this.location,
-    required this.name,
-    required this.network,
-    required this.odbNetworkId,
+    this.createTime,
+    this.deletionPolicy,
+    this.deletionProtection,
+    this.effectiveLabels,
+    this.entitlementId,
+    this.gcpOracleZone,
+    this.id,
+    this.labels,
+    this.location,
+    this.name,
+    this.network,
+    this.odbNetworkId,
     this.project,
-    required this.pulumiLabels,
-    required this.state,
+    this.pulumiLabels,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deletionPolicy': deletionPolicy,
-      'deletionProtection': deletionProtection,
-      'effectiveLabels': effectiveLabels,
-      'entitlementId': entitlementId,
-      'gcpOracleZone': gcpOracleZone,
-      'id': id,
-      'labels': labels,
-      'location': location,
-      'name': name,
-      'network': network,
-      'odbNetworkId': odbNetworkId,
+      'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
+      'deletionProtection': ?deletionProtection,
+      'effectiveLabels': ?effectiveLabels,
+      'entitlementId': ?entitlementId,
+      'gcpOracleZone': ?gcpOracleZone,
+      'id': ?id,
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
+      'network': ?network,
+      'odbNetworkId': ?odbNetworkId,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'state': state,
+      'pulumiLabels': ?pulumiLabels,
+      'state': ?state,
     };
   }
 
   factory GetOdbNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetOdbNetworkResult(
-      createTime: map['createTime'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      entitlementId: map['entitlementId'] as String,
-      gcpOracleZone: map['gcpOracleZone'] as String,
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      odbNetworkId: map['odbNetworkId'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      entitlementId: (() { final guardedValue = map['entitlementId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gcpOracleZone: (() { final guardedValue = map['gcpOracleZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      odbNetworkId: (() { final guardedValue = map['odbNetworkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      state: map['state'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -6,38 +6,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiSemanticGovernancePolicyEngineState {
   /// The time the SemanticGovernancePolicyEngine was created, in RFC3339
   /// UTC "Zulu" format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The IP address allocated for the SGPE's managed PSC endpoint.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The resource name of the SemanticGovernancePolicyEngine, in the form
   /// 'projects/{project}/locations/{region}/semanticGovernancePolicyEngine'.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Private Service Connect forwarding rule URI for the SGPE's
   /// managed endpoint.
-  final pulumi.Input<String>? pscForwardingRule;
+  final pulumi.Input<String?>? pscForwardingRule;
   /// The Private Service Connect service attachment URI for the SGPE's
   /// managed endpoint.
-  final pulumi.Input<String>? pscServiceAttachment;
+  final pulumi.Input<String?>? pscServiceAttachment;
   /// The region of the SemanticGovernancePolicyEngine, e.g. 'us-central1'.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The current state of the SemanticGovernancePolicyEngine. One of:
   /// STATE_UNSPECIFIED, PROVISIONING, ACTIVE, FAILED, DEPROVISIONING,
   /// INACTIVE. `FAILED` indicates provisioning did not succeed; recover by
   /// destroying the resource (deprovision) or re-applying (re-provision).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The time the SemanticGovernancePolicyEngine was last updated, in
   /// RFC3339 UTC "Zulu" format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AiSemanticGovernancePolicyEngineState].
   /// [createTime] The time the SemanticGovernancePolicyEngine was created, in RFC3339

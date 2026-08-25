@@ -6,13 +6,13 @@ import 'cluster_node_pool_defaults_node_config_defaults_gcfs_config.dart';
 
 class ClusterNodePoolDefaultsNodeConfigDefaults {
   /// Parameters for containerd configuration.
-  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig>? containerdConfig;
+  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig?>? containerdConfig;
   /// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig>? gcfsConfig;
+  final pulumi.Input<ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig?>? gcfsConfig;
   /// Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
-  final pulumi.Input<String>? insecureKubeletReadonlyPortEnabled;
+  final pulumi.Input<String?>? insecureKubeletReadonlyPortEnabled;
   /// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
-  final pulumi.Input<String>? loggingVariant;
+  final pulumi.Input<String?>? loggingVariant;
 
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaults].
   /// [containerdConfig] Parameters for containerd configuration.

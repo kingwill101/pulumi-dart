@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryInitialConfig {
   /// Default branch name of the repository.
-  final pulumi.Input<String>? defaultBranch;
+  final pulumi.Input<String?>? defaultBranch;
   /// List of gitignore template names user can choose from.
   /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
-  final pulumi.Input<List<String>>? gitignores;
+  final pulumi.Input<List<String>?>? gitignores;
   /// License template name user can choose from.
   /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
-  final pulumi.Input<String>? license;
+  final pulumi.Input<String?>? license;
   /// README template name.
   /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
-  final pulumi.Input<String>? readme;
+  final pulumi.Input<String?>? readme;
 
   /// Creates a new [RepositoryInitialConfig].
   /// [defaultBranch] Default branch name of the repository.

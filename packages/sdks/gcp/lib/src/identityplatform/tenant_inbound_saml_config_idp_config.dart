@@ -10,7 +10,7 @@ class TenantInboundSamlConfigIdpConfig {
   /// Unique identifier for all SAML entities
   final pulumi.Input<String> idpEntityId;
   /// Indicates if outbounding SAMLRequest should be signed.
-  final pulumi.Input<bool>? signRequest;
+  final pulumi.Input<bool?>? signRequest;
   /// URL to send Authentication request to.
   final pulumi.Input<String> ssoUrl;
 

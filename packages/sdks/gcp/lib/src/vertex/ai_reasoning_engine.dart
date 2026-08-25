@@ -4725,19 +4725,20 @@ class AiReasoningEngine extends pulumi.CustomResource {
           'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     contextSpec = registerOutput<AiReasoningEngineContextSpec>('contextSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineContextSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     spec = registerOutput<AiReasoningEngineSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trafficConfig = registerOutput<AiReasoningEngineTrafficConfig>('trafficConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -4750,11 +4751,12 @@ class AiReasoningEngine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiReasoningEngineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiReasoningEngine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4773,12 +4775,40 @@ class AiReasoningEngine extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String?>('region');
+    spec = registerOutput<AiReasoningEngineSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficConfig = registerOutput<AiReasoningEngineTrafficConfig>('trafficConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [AiReasoningEngine] resource.
+  AiReasoningEngine.reference(String urn)
+    : super(
+        'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    contextSpec = registerOutput<AiReasoningEngineContextSpec>('contextSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineContextSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     spec = registerOutput<AiReasoningEngineSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trafficConfig = registerOutput<AiReasoningEngineTrafficConfig>('trafficConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

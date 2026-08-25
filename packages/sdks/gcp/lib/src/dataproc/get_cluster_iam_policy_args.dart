@@ -11,10 +11,10 @@ class GetClusterIamPolicyArgs {
   final pulumi.Input<String> cluster;
   /// The project in which the cluster belongs. If it
   /// is not provided, Terraform will use the provider default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region in which the cluster belongs. If it
   /// is not provided, Terraform will use the provider default.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetClusterIamPolicyArgs].
   /// [cluster] The name or relative resource id of the cluster to manage IAM policies for.

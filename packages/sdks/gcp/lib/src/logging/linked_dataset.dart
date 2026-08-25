@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linked_dataset_args.dart';
+import 'linked_dataset_bigquery_dataset.dart';
 import 'linked_dataset_state.dart';
 
 /// Describes a BigQuery linked dataset
@@ -401,7 +402,7 @@ class LinkedDataset extends pulumi.CustomResource {
   /// with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
   /// Views corresponding to the LogViews in the bucket.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> bigqueryDatasets;
+  late final pulumi.Output<List<LinkedDatasetBigqueryDataset>> bigqueryDatasets;
   /// The bucket to which the linked dataset is attached.
   late final pulumi.Output<String> bucket;
   /// Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
@@ -441,9 +442,9 @@ class LinkedDataset extends pulumi.CustomResource {
           'gcp:logging/linkedDataset:LinkedDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>('bigqueryDatasets');
+    bigqueryDatasets = registerOutput<List<LinkedDatasetBigqueryDataset>>('bigqueryDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(guardedValue, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>())); });
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -460,11 +461,12 @@ class LinkedDataset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedDatasetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedDataset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -478,7 +480,28 @@ class LinkedDataset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>('bigqueryDatasets');
+    bigqueryDatasets = registerOutput<List<LinkedDatasetBigqueryDataset>>('bigqueryDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(guardedValue, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>())); });
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    linkId = registerOutput<String>('linkId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+  }
+
+  /// Creates a typed reference to an existing [LinkedDataset] resource.
+  LinkedDataset.reference(String urn)
+    : super(
+        'gcp:logging/linkedDataset:LinkedDataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryDatasets = registerOutput<List<LinkedDatasetBigqueryDataset>>('bigqueryDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(guardedValue, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>())); });
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

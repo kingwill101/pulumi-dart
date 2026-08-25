@@ -12,18 +12,18 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSource {
   /// with request origins within the perimeter.
   /// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
   /// If * is specified, then all IngressSources will be allowed.
-  final pulumi.Input<String>? accessLevel;
+  final pulumi.Input<String?>? accessLevel;
   /// A Private Service Connect endpoint that is allowed to access the perimeter.
   /// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint>? pscEndpoint;
+  final pulumi.Input<ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint?>? pscEndpoint;
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   /// Requests from these resources will be allowed to access perimeter data.
   /// Currently only projects are allowed. Format `projects/{project_number}`
   /// The project may be in any Google Cloud organization, not just the
   /// organization that the perimeter is defined in. `*` is not allowed, the case
   /// of allowing all Google Cloud resources only is not supported.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ServicePerimeterDryRunIngressPolicyIngressFromSource].
   /// [accessLevel] An `AccessLevel` resource name that allow resources within the

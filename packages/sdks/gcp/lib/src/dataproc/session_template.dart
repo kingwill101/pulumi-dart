@@ -1472,19 +1472,20 @@ class SessionTemplate extends pulumi.CustomResource {
           'gcp:dataproc/sessionTemplate:SessionTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jupyterSession = registerOutput<SessionTemplateJupyterSession?>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateRuntimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkConnectSession = registerOutput<Map<String, dynamic>?>('sparkConnectSession');
     updateTime = registerOutput<String>('updateTime');
@@ -1496,11 +1497,12 @@ class SessionTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SessionTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SessionTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1517,14 +1519,41 @@ class SessionTemplate extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jupyterSession = registerOutput<SessionTemplateJupyterSession?>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateRuntimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkConnectSession = registerOutput<Map<String, dynamic>?>('sparkConnectSession');
+    updateTime = registerOutput<String>('updateTime');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [SessionTemplate] resource.
+  SessionTemplate.reference(String urn)
+    : super(
+        'gcp:dataproc/sessionTemplate:SessionTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jupyterSession = registerOutput<SessionTemplateJupyterSession?>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateRuntimeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkConnectSession = registerOutput<Map<String, dynamic>?>('sparkConnectSession');
     updateTime = registerOutput<String>('updateTime');

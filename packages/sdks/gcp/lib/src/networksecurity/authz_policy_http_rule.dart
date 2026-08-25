@@ -7,12 +7,12 @@ import 'authz_policy_http_rule_to.dart';
 class AuthzPolicyHttpRule {
   /// Describes properties of one or more sources of a request.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleFrom>? from;
+  final pulumi.Input<AuthzPolicyHttpRuleFrom?>? from;
   /// Describes properties of one or more targets of a request
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleTo>? to;
+  final pulumi.Input<AuthzPolicyHttpRuleTo?>? to;
   /// CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
-  final pulumi.Input<String>? when;
+  final pulumi.Input<String?>? when;
 
   /// Creates a new [AuthzPolicyHttpRule].
   /// [from] Describes properties of one or more sources of a request.

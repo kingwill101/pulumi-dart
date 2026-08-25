@@ -156,7 +156,7 @@ class AiModelGardenEnableModel extends pulumi.CustomResource {
           'gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     enablementState = registerOutput<String>('enablementState');
     project = registerOutput<String>('project');
@@ -169,11 +169,12 @@ class AiModelGardenEnableModel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiModelGardenEnableModelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiModelGardenEnableModel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,6 +188,21 @@ class AiModelGardenEnableModel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enablementState = registerOutput<String>('enablementState');
+    project = registerOutput<String>('project');
+    publisherEndpoint = registerOutput<String>('publisherEndpoint');
+    publisherModelName = registerOutput<String>('publisherModelName');
+  }
+
+  /// Creates a typed reference to an existing [AiModelGardenEnableModel] resource.
+  AiModelGardenEnableModel.reference(String urn)
+    : super(
+        'gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enablementState = registerOutput<String>('enablementState');
     project = registerOutput<String>('project');
     publisherEndpoint = registerOutput<String>('publisherEndpoint');

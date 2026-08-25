@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2VmSymptom {
   /// (Output)
   /// Timestamp when the Symptom is created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// (Output)
   /// Detailed information of the current Symptom.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// (Output)
   /// Type of the Symptom.
-  final pulumi.Input<String>? symptomType;
+  final pulumi.Input<String?>? symptomType;
   /// (Output)
   /// A string used to uniquely distinguish a worker within a TPU node.
-  final pulumi.Input<String>? workerId;
+  final pulumi.Input<String?>? workerId;
 
   /// Creates a new [V2VmSymptom].
   /// [createTime] (Output)

@@ -6,45 +6,45 @@ import 'auto_labeling_rule_condition.dart';
 /// Input properties used for looking up and filtering AutoLabelingRule resources.
 class AutoLabelingRuleState {
   /// Whether the rule is active.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// A unique ID for the new AutoLabelingRule. This ID will become the final
   /// component of the AutoLabelingRule's resource name. If no ID is specified,
   /// a server-generated ID will be used.
   /// This value should be 4-64 characters and must match the regular
   /// expression `^[A-Za-z0-9]{4,64}$`.
-  final pulumi.Input<String>? autoLabelingRuleId;
+  final pulumi.Input<String?>? autoLabelingRuleId;
   /// Conditions to apply for auto-labeling the label_key.
   /// Structure is documented below.
-  final pulumi.Input<List<AutoLabelingRuleCondition>>? conditions;
+  final pulumi.Input<List<AutoLabelingRuleCondition>?>? conditions;
   /// The time at which this rule was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display Name of the auto labeling rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The label key.
-  final pulumi.Input<String>? labelKey;
+  final pulumi.Input<String?>? labelKey;
   /// The type of the label key.
   /// Possible values are: `LABEL_KEY_TYPE_UNSPECIFIED`, `LABEL_KEY_TYPE_CUSTOM`.
-  final pulumi.Input<String>? labelKeyType;
+  final pulumi.Input<String?>? labelKeyType;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the auto labeling rule.
   /// Format:
   /// projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The most recent time at which this rule was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AutoLabelingRuleState].
   /// [active] Whether the rule is active.

@@ -18,86 +18,86 @@ class ClusterArgs {
   /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
   /// Default value is `AUTH_MODE_DISABLED`.
   /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
-  final pulumi.Input<String>? authorizationMode;
+  final pulumi.Input<String?>? authorizationMode;
   /// The automated backup config for a instance.
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutomatedBackupConfig>? automatedBackupConfig;
+  final pulumi.Input<ClusterAutomatedBackupConfig?>? automatedBackupConfig;
   /// Cross cluster replication config
   /// Structure is documented below.
-  final pulumi.Input<ClusterCrossClusterReplicationConfig>? crossClusterReplicationConfig;
+  final pulumi.Input<ClusterCrossClusterReplicationConfig?>? crossClusterReplicationConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Indicates if the cluster is deletion protected or not.
   /// If the value if set to true, any delete cluster operation will fail.
   /// Default value is true.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
   /// Structure is documented below.
-  final pulumi.Input<ClusterGcsSource>? gcsSource;
+  final pulumi.Input<ClusterGcsSource?>? gcsSource;
   /// The KMS key used to encrypt the at-rest data of the cluster.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Maintenance policy for a cluster
   /// Structure is documented below.
-  final pulumi.Input<ClusterMaintenancePolicy>? maintenancePolicy;
+  final pulumi.Input<ClusterMaintenancePolicy?>? maintenancePolicy;
   /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
-  final pulumi.Input<String>? maintenanceVersion;
+  final pulumi.Input<String?>? maintenanceVersion;
   /// Backups that generated and managed by memorystore.
   /// Structure is documented below.
-  final pulumi.Input<ClusterManagedBackupSource>? managedBackupSource;
+  final pulumi.Input<ClusterManagedBackupSource?>? managedBackupSource;
   /// Unique name of the resource in this scope including project and location using the form:
   /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The nodeType for the Redis cluster.
   /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
   /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// Persistence config (RDB, AOF) for the cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterPersistenceConfig>? persistenceConfig;
+  final pulumi.Input<ClusterPersistenceConfig?>? persistenceConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Required. Each PscConfig configures the consumer network where two
   /// network addresses will be designated to the cluster for client access.
   /// Currently, only one PscConfig is supported.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterPscConfig>>? pscConfigs;
+  final pulumi.Input<List<ClusterPscConfig>?>? pscConfigs;
   /// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
   /// Please check Memorystore documentation for the list of supported parameters:
   /// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
-  final pulumi.Input<Map<String, String>>? redisConfigs;
+  final pulumi.Input<Map<String, String>?>? redisConfigs;
   /// The name of the region of the Redis cluster.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Optional. The number of replica nodes per shard.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
   /// The serverCaMode for the TLS enabled Redis cluster.
   /// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
   /// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
-  final pulumi.Input<String>? serverCaMode;
+  final pulumi.Input<String?>? serverCaMode;
   /// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
   /// as the server_ca_mode.
   /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
-  final pulumi.Input<String>? serverCaPool;
+  final pulumi.Input<String?>? serverCaPool;
   /// Required. Number of shards for the Redis cluster.
   final pulumi.Input<int> shardCount;
   /// Optional. The in-transit encryption for the Redis cluster.
   /// If not provided, encryption is disabled for the cluster.
   /// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
   /// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
-  final pulumi.Input<String>? transitEncryptionMode;
+  final pulumi.Input<String?>? transitEncryptionMode;
   /// Immutable. Zone distribution config for Memorystore Redis cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterZoneDistributionConfig>? zoneDistributionConfig;
+  final pulumi.Input<ClusterZoneDistributionConfig?>? zoneDistributionConfig;
 
   /// Creates a new [ClusterArgs].
   /// [authorizationMode] Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
@@ -200,10 +200,10 @@ class ClusterArgs {
       pscConfigs: (() { final guardedValue = map['pscConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterPscConfig>(guardedValue, (value) => ClusterPscConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       redisConfigs: (() { final guardedValue = map['redisConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serverCaMode: (() { final guardedValue = map['serverCaMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverCaPool: (() { final guardedValue = map['serverCaPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shardCount: pulumi.Input.fromValue(map['shardCount'] as int),
+      shardCount: pulumi.Input.fromValue((map['shardCount'] as num).toInt()),
       transitEncryptionMode: (() { final guardedValue = map['transitEncryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneDistributionConfig: (() { final guardedValue = map['zoneDistributionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterZoneDistributionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

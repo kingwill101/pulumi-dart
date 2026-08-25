@@ -4,6 +4,7 @@ import 'instance_args.dart';
 import 'instance_dynamic_tier_options.dart';
 import 'instance_maintenance_policy.dart';
 import 'instance_state.dart';
+import 'instance_upcoming_maintenance_schedule.dart';
 
 /// A Managed Lustre instance
 ///
@@ -385,7 +386,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> uid;
   /// Represents a scheduled maintenance event.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> upcomingMaintenanceSchedules;
+  late final pulumi.Output<List<InstanceUpcomingMaintenanceSchedule>> upcomingMaintenanceSchedules;
   /// Timestamp when the instance was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -401,7 +402,8 @@ class Instance extends pulumi.CustomResource {
           'gcp:lustre/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityGib = registerOutput<String>('capacityGib');
@@ -409,12 +411,12 @@ class Instance extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filesystem = registerOutput<String>('filesystem');
     gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
     instanceId = registerOutput<String>('instanceId');
     kmsKey = registerOutput<String?>('kmsKey');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mountPoint = registerOutput<String>('mountPoint');
@@ -423,11 +425,11 @@ class Instance extends pulumi.CustomResource {
     perUnitStorageThroughput = registerOutput<String?>('perUnitStorageThroughput');
     placementPolicy = registerOutput<String?>('placementPolicy');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     uid = registerOutput<String>('uid');
-    upcomingMaintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('upcomingMaintenanceSchedules');
+    upcomingMaintenanceSchedules = registerOutput<List<InstanceUpcomingMaintenanceSchedule>>('upcomingMaintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => InstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -436,11 +438,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -460,12 +463,12 @@ class Instance extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filesystem = registerOutput<String>('filesystem');
     gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
     instanceId = registerOutput<String>('instanceId');
     kmsKey = registerOutput<String?>('kmsKey');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mountPoint = registerOutput<String>('mountPoint');
@@ -474,11 +477,49 @@ class Instance extends pulumi.CustomResource {
     perUnitStorageThroughput = registerOutput<String?>('perUnitStorageThroughput');
     placementPolicy = registerOutput<String?>('placementPolicy');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     uid = registerOutput<String>('uid');
-    upcomingMaintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('upcomingMaintenanceSchedules');
+    upcomingMaintenanceSchedules = registerOutput<List<InstanceUpcomingMaintenanceSchedule>>('upcomingMaintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => InstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:lustre/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacityGib = registerOutput<String>('capacityGib');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    filesystem = registerOutput<String>('filesystem');
+    gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
+    instanceId = registerOutput<String>('instanceId');
+    kmsKey = registerOutput<String?>('kmsKey');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mountPoint = registerOutput<String>('mountPoint');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    perUnitStorageThroughput = registerOutput<String?>('perUnitStorageThroughput');
+    placementPolicy = registerOutput<String?>('placementPolicy');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+    upcomingMaintenanceSchedules = registerOutput<List<InstanceUpcomingMaintenanceSchedule>>('upcomingMaintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => InstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

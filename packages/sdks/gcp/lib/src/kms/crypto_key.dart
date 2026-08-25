@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'crypto_key_args.dart';
 import 'crypto_key_key_access_justifications_policy.dart';
+import 'crypto_key_primary.dart';
 import 'crypto_key_state.dart';
 import 'crypto_key_version_template.dart';
 
@@ -407,7 +408,7 @@ class CryptoKey extends pulumi.CustomResource {
   /// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
   /// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> primaries;
+  late final pulumi.Output<List<CryptoKeyPrimary>> primaries;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -442,19 +443,20 @@ class CryptoKey extends pulumi.CustomResource {
           'gcp:kms/cryptoKey:CryptoKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     importOnly = registerOutput<bool>('importOnly');
     keyAccessJustificationsPolicy = registerOutput<CryptoKeyKeyAccessJustificationsPolicy>('keyAccessJustificationsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyKeyAccessJustificationsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyRing = registerOutput<String>('keyRing');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    primaries = registerOutput<List<Map<String, dynamic>>>('primaries');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    primaries = registerOutput<List<CryptoKeyPrimary>>('primaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CryptoKeyPrimary>(guardedValue, (value) => CryptoKeyPrimary.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     purpose = registerOutput<String?>('purpose');
     rotationPeriod = registerOutput<String?>('rotationPeriod');
     skipInitialVersionCreation = registerOutput<bool?>('skipInitialVersionCreation');
@@ -466,11 +468,12 @@ class CryptoKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CryptoKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CryptoKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -487,14 +490,41 @@ class CryptoKey extends pulumi.CustomResource {
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     importOnly = registerOutput<bool>('importOnly');
     keyAccessJustificationsPolicy = registerOutput<CryptoKeyKeyAccessJustificationsPolicy>('keyAccessJustificationsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyKeyAccessJustificationsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyRing = registerOutput<String>('keyRing');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    primaries = registerOutput<List<Map<String, dynamic>>>('primaries');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    primaries = registerOutput<List<CryptoKeyPrimary>>('primaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CryptoKeyPrimary>(guardedValue, (value) => CryptoKeyPrimary.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    purpose = registerOutput<String?>('purpose');
+    rotationPeriod = registerOutput<String?>('rotationPeriod');
+    skipInitialVersionCreation = registerOutput<bool?>('skipInitialVersionCreation');
+    versionTemplate = registerOutput<CryptoKeyVersionTemplate>('versionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CryptoKey] resource.
+  CryptoKey.reference(String urn)
+    : super(
+        'gcp:kms/cryptoKey:CryptoKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    importOnly = registerOutput<bool>('importOnly');
+    keyAccessJustificationsPolicy = registerOutput<CryptoKeyKeyAccessJustificationsPolicy>('keyAccessJustificationsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyKeyAccessJustificationsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyRing = registerOutput<String>('keyRing');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    primaries = registerOutput<List<CryptoKeyPrimary>>('primaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CryptoKeyPrimary>(guardedValue, (value) => CryptoKeyPrimary.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     purpose = registerOutput<String?>('purpose');
     rotationPeriod = registerOutput<String?>('rotationPeriod');
     skipInitialVersionCreation = registerOutput<bool?>('skipInitialVersionCreation');

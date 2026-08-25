@@ -15,57 +15,57 @@ class JobArgs {
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Settings for the Binary Authorization feature.
   /// Structure is documented below.
-  final pulumi.Input<JobBinaryAuthorization>? binaryAuthorization;
+  final pulumi.Input<JobBinaryAuthorization?>? binaryAuthorization;
   /// Arbitrary identifier for the API client.
-  final pulumi.Input<String>? client;
+  final pulumi.Input<String?>? client;
   /// Arbitrary version identifier for the API client.
-  final pulumi.Input<String>? clientVersion;
+  final pulumi.Input<String?>? clientVersion;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the job. Defaults to true.
   /// When a`terraform destroy` or `pulumi up` would delete the job,
   /// the command will fail if this field is not set to false in Terraform state.
   /// When the field is set to true or unset in Terraform state, a `pulumi up`
   /// or `terraform destroy` that would delete the job will fail.
   /// When the field is set to false, deleting the job is allowed.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
   /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
   /// All system labels in v1 now have a corresponding field in v2 Job.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
   /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
   /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
   /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-  final pulumi.Input<String>? launchStage;
+  final pulumi.Input<String?>? launchStage;
   /// The location of the cloud run job
   final pulumi.Input<String> location;
   /// Name of the Job.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
   /// The sum of job name and token length must be fewer than 63 characters.
-  final pulumi.Input<String>? runExecutionToken;
+  final pulumi.Input<String?>? runExecutionToken;
   /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
   /// The sum of job name and token length must be fewer than 63 characters.
-  final pulumi.Input<String>? startExecutionToken;
+  final pulumi.Input<String?>? startExecutionToken;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The template used to create executions for this Job.
   /// Structure is documented below.
   final pulumi.Input<JobTemplate> template;

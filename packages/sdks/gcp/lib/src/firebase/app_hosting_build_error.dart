@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppHostingBuildError {
   /// (Output)
   /// The status code, which should be an enum value of google.rpc.Code.
-  final pulumi.Input<int>? code;
+  final pulumi.Input<int?>? code;
   /// (Output)
   /// A list of messages that carry the error details. There is a common set of
   /// message types for APIs to use.
-  final pulumi.Input<List<Map<String, String>>>? details;
+  final pulumi.Input<List<Map<String, String>>?>? details;
   /// (Output)
   /// A developer-facing error message, which should be in English. Any
   /// user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [AppHostingBuildError].
   /// [code] (Output)
@@ -36,8 +36,8 @@ class AppHostingBuildError {
 
   factory AppHostingBuildError.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildError(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, String>>()); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

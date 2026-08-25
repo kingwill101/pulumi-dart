@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchRuntimeInfoApproximateUsage {
   /// (Output)
   /// Accelerator type being used, if any.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// (Output)
   /// Accelerator usage in (milliAccelerator x seconds)
-  final pulumi.Input<String>? milliAcceleratorSeconds;
+  final pulumi.Input<String?>? milliAcceleratorSeconds;
   /// (Output)
   /// DCU (Dataproc Compute Units) usage in (milliDCU x seconds)
-  final pulumi.Input<String>? milliDcuSeconds;
+  final pulumi.Input<String?>? milliDcuSeconds;
   /// (Output)
   /// Shuffle storage usage in (GB x seconds)
-  final pulumi.Input<String>? shuffleStorageGbSeconds;
+  final pulumi.Input<String?>? shuffleStorageGbSeconds;
 
   /// Creates a new [BatchRuntimeInfoApproximateUsage].
   /// [acceleratorType] (Output)

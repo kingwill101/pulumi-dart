@@ -9,19 +9,19 @@ class DataConnectorEntity {
   /// Format: `projects/*/locations/*/collections/*/dataStores/*`.
   /// When the connector is initialized by the DataConnectorService.SetUpDataConnector
   /// method, a DataStore is automatically created for each source entity.
-  final pulumi.Input<String>? dataStore;
+  final pulumi.Input<String?>? dataStore;
   /// The name of the entity. Supported values by data source:
   /// * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
   /// * Jira: project, issue, attachment, comment, worklog
   /// * Confluence: `Content`, `Space`
-  final pulumi.Input<String>? entityName;
+  final pulumi.Input<String?>? entityName;
   /// Attributes for indexing.
   /// Key: Field name.
   /// Value: The key property to map a field to, such as `title`, and
   /// `description`. Supported key properties:
-  final pulumi.Input<Map<String, String>>? keyPropertyMappings;
+  final pulumi.Input<Map<String, String>?>? keyPropertyMappings;
   /// The parameters for the entity to facilitate data ingestion.
-  final pulumi.Input<String>? params;
+  final pulumi.Input<String?>? params;
 
   /// Creates a new [DataConnectorEntity].
   /// [dataStore] (Output)

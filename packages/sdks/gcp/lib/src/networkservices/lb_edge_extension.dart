@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lb_edge_extension_args.dart';
+import 'lb_edge_extension_extension_chain.dart';
 import 'lb_edge_extension_state.dart';
 
 /// LbEdgeExtension is a resource that lets the extension service influence the selection of backend services and Cloud CDN cache keys by modifying request headers.
@@ -827,7 +828,7 @@ class LbEdgeExtension extends pulumi.CustomResource {
   /// The first extension chain that has a condition that matches the request is executed.
   /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> extensionChains;
+  late final pulumi.Output<List<LbEdgeExtensionExtensionChain>> extensionChains;
   /// A list of references to the forwarding rules to which this service extension is attached.
   /// At least one forwarding rule is required. Only one LbEdgeExtension resource can be associated with a forwarding rule.
   late final pulumi.Output<List<String>> forwardingRules;
@@ -861,19 +862,20 @@ class LbEdgeExtension extends pulumi.CustomResource {
           'gcp:networkservices/lbEdgeExtension:LbEdgeExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    extensionChains = registerOutput<List<Map<String, dynamic>>>('extensionChains');
-    forwardingRules = registerOutput<List<String>>('forwardingRules');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    extensionChains = registerOutput<List<LbEdgeExtensionExtensionChain>>('extensionChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LbEdgeExtensionExtensionChain>(guardedValue, (value) => LbEdgeExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>())); });
+    forwardingRules = registerOutput<List<String>>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 
   /// Gets an existing [LbEdgeExtension] resource's state with the given [name] and [id].
@@ -881,11 +883,12 @@ class LbEdgeExtension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LbEdgeExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LbEdgeExtension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -901,14 +904,37 @@ class LbEdgeExtension extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    extensionChains = registerOutput<List<Map<String, dynamic>>>('extensionChains');
-    forwardingRules = registerOutput<List<String>>('forwardingRules');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    extensionChains = registerOutput<List<LbEdgeExtensionExtensionChain>>('extensionChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LbEdgeExtensionExtensionChain>(guardedValue, (value) => LbEdgeExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>())); });
+    forwardingRules = registerOutput<List<String>>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [LbEdgeExtension] resource.
+  LbEdgeExtension.reference(String urn)
+    : super(
+        'gcp:networkservices/lbEdgeExtension:LbEdgeExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    extensionChains = registerOutput<List<LbEdgeExtensionExtensionChain>>('extensionChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LbEdgeExtensionExtensionChain>(guardedValue, (value) => LbEdgeExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>())); });
+    forwardingRules = registerOutput<List<String>>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
   }
 }

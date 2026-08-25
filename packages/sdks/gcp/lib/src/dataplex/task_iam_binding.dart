@@ -1073,13 +1073,13 @@ class TaskIamBinding extends pulumi.CustomResource {
           'gcp:dataplex/taskIamBinding:TaskIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<TaskIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     taskId = registerOutput<String>('taskId');
@@ -1090,11 +1090,12 @@ class TaskIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaskIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TaskIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1112,7 +1113,26 @@ class TaskIamBinding extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    taskId = registerOutput<String>('taskId');
+  }
+
+  /// Creates a typed reference to an existing [TaskIamBinding] resource.
+  TaskIamBinding.reference(String urn)
+    : super(
+        'gcp:dataplex/taskIamBinding:TaskIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<TaskIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    lake = registerOutput<String>('lake');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     taskId = registerOutput<String>('taskId');

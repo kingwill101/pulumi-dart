@@ -693,7 +693,7 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
           'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     minimalAction = registerOutput<String?>('minimalAction');
@@ -712,11 +712,12 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionPerInstanceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionPerInstanceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -730,6 +731,27 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    minimalAction = registerOutput<String?>('minimalAction');
+    mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
+    this.name = registerOutput<String>('name');
+    preservedState = registerOutput<RegionPerInstanceConfigPreservedState?>('preservedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionPerInstanceConfigPreservedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    regionInstanceGroupManager = registerOutput<String>('regionInstanceGroupManager');
+    removeInstanceOnDestroy = registerOutput<bool?>('removeInstanceOnDestroy');
+    removeInstanceStateOnDestroy = registerOutput<bool?>('removeInstanceStateOnDestroy');
+  }
+
+  /// Creates a typed reference to an existing [RegionPerInstanceConfig] resource.
+  RegionPerInstanceConfig.reference(String urn)
+    : super(
+        'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     minimalAction = registerOutput<String?>('minimalAction');
     mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');

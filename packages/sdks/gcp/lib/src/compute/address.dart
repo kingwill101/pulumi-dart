@@ -1033,7 +1033,8 @@ class Address extends pulumi.CustomResource {
           'gcp:compute/address:Address',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     address = registerOutput<String>('address');
     addressId = registerOutput<String>('addressId');
@@ -1041,23 +1042,23 @@ class Address extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ipCollection = registerOutput<String?>('ipCollection');
     ipVersion = registerOutput<String?>('ipVersion');
     ipv6EndpointType = registerOutput<String?>('ipv6EndpointType');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     networkTier = registerOutput<String>('networkTier');
     prefixLength = registerOutput<int>('prefixLength');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     purpose = registerOutput<String>('purpose');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     subnetwork = registerOutput<String>('subnetwork');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Address] resource's state with the given [name] and [id].
@@ -1065,11 +1066,12 @@ class Address extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AddressState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Address._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1089,22 +1091,57 @@ class Address extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ipCollection = registerOutput<String?>('ipCollection');
     ipVersion = registerOutput<String?>('ipVersion');
     ipv6EndpointType = registerOutput<String?>('ipv6EndpointType');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     networkTier = registerOutput<String>('networkTier');
     prefixLength = registerOutput<int>('prefixLength');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     purpose = registerOutput<String>('purpose');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     subnetwork = registerOutput<String>('subnetwork');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Address] resource.
+  Address.reference(String urn)
+    : super(
+        'gcp:compute/address:Address',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    addressId = registerOutput<String>('addressId');
+    addressType = registerOutput<String?>('addressType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ipCollection = registerOutput<String?>('ipCollection');
+    ipVersion = registerOutput<String?>('ipVersion');
+    ipv6EndpointType = registerOutput<String?>('ipv6EndpointType');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    networkTier = registerOutput<String>('networkTier');
+    prefixLength = registerOutput<int>('prefixLength');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    purpose = registerOutput<String>('purpose');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    subnetwork = registerOutput<String>('subnetwork');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

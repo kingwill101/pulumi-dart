@@ -11,15 +11,15 @@ class InstanceFileShares {
   final pulumi.Input<String> name;
   /// Nfs Export Options. There is a limit of 10 export options per file share.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceFileSharesNfsExportOption>>? nfsExportOptions;
+  final pulumi.Input<List<InstanceFileSharesNfsExportOption>?>? nfsExportOptions;
   /// The resource name of the backup, in the format
   /// projects/{projectId}/locations/{locationId}/backups/{backupId},
   /// that this file share has been restored from.
-  final pulumi.Input<String>? sourceBackup;
+  final pulumi.Input<String?>? sourceBackup;
   /// The resource name of the BackupDR backup, in the format
   /// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
   /// that this file share has been restored from.
-  final pulumi.Input<String>? sourceBackupdrBackup;
+  final pulumi.Input<String?>? sourceBackupdrBackup;
 
   /// Creates a new [InstanceFileShares].
   /// [capacityGb] File share capacity in GiB. This must be at least 1024 GiB
@@ -47,7 +47,7 @@ class InstanceFileShares {
 
   factory InstanceFileShares.fromMap(Map<String, dynamic> map) {
     return InstanceFileShares(
-      capacityGb: pulumi.Input.fromValue(map['capacityGb'] as int),
+      capacityGb: pulumi.Input.fromValue((map['capacityGb'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
       nfsExportOptions: (() { final guardedValue = map['nfsExportOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceFileSharesNfsExportOption>(guardedValue, (value) => InstanceFileSharesNfsExportOption.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sourceBackup: (() { final guardedValue = map['sourceBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

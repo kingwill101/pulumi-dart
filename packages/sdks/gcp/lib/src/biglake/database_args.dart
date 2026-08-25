@@ -16,12 +16,12 @@ class DatabaseArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Options of a Hive database.
   /// Structure is documented below.
   final pulumi.Input<DatabaseHiveOptions> hiveOptions;
   /// The name of the database.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The database type.
   final pulumi.Input<String> type;
 

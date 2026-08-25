@@ -20,63 +20,63 @@ import 'bucket_website.dart';
 /// {@macro pulumi_storage_bucket_bucket_args_doc}
 class BucketArgs {
   /// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
-  final pulumi.Input<BucketAutoclass>? autoclass;
+  final pulumi.Input<BucketAutoclass?>? autoclass;
   /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-  final pulumi.Input<List<BucketCor>>? cors;
+  final pulumi.Input<List<BucketCor>?>? cors;
   /// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
-  final pulumi.Input<BucketCustomPlacementConfig>? customPlacementConfig;
+  final pulumi.Input<BucketCustomPlacementConfig?>? customPlacementConfig;
   /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
-  final pulumi.Input<bool>? defaultEventBasedHold;
+  final pulumi.Input<bool?>? defaultEventBasedHold;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
-  final pulumi.Input<bool>? enableObjectRetention;
+  final pulumi.Input<bool?>? enableObjectRetention;
   /// The bucket's encryption configuration. Structure is documented below.
-  final pulumi.Input<BucketEncryption>? encryption;
+  final pulumi.Input<BucketEncryption?>? encryption;
   /// When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
-  final pulumi.Input<BucketHierarchicalNamespace>? hierarchicalNamespace;
+  final pulumi.Input<BucketHierarchicalNamespace?>? hierarchicalNamespace;
   /// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
-  final pulumi.Input<BucketIpFilter>? ipFilter;
+  final pulumi.Input<BucketIpFilter?>? ipFilter;
   /// A map of key/value label pairs to assign to the bucket.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-  final pulumi.Input<List<BucketLifecycleRule>>? lifecycleRules;
+  final pulumi.Input<List<BucketLifecycleRule>?>? lifecycleRules;
   /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
   ///
   /// - - -
   final pulumi.Input<String> location;
   /// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
-  final pulumi.Input<BucketLogging>? logging;
+  final pulumi.Input<BucketLogging?>? logging;
   /// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
-  final pulumi.Input<String>? publicAccessPrevention;
+  final pulumi.Input<String?>? publicAccessPrevention;
   /// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
-  final pulumi.Input<bool>? requesterPays;
+  final pulumi.Input<bool?>? requesterPays;
   /// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
-  final pulumi.Input<BucketRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<BucketRetentionPolicy?>? retentionPolicy;
   /// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
-  final pulumi.Input<String>? rpo;
+  final pulumi.Input<String?>? rpo;
   /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
-  final pulumi.Input<BucketSoftDeletePolicy>? softDeletePolicy;
+  final pulumi.Input<BucketSoftDeletePolicy?>? softDeletePolicy;
   /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
   /// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
-  final pulumi.Input<bool>? uniformBucketLevelAccess;
+  final pulumi.Input<bool?>? uniformBucketLevelAccess;
   /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
-  final pulumi.Input<BucketVersioning>? versioning;
+  final pulumi.Input<BucketVersioning?>? versioning;
   /// Configuration if the bucket acts as a website. Structure is documented below.
-  final pulumi.Input<BucketWebsite>? website;
+  final pulumi.Input<BucketWebsite?>? website;
 
   /// Creates a new [BucketArgs].
   /// [autoclass] The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.

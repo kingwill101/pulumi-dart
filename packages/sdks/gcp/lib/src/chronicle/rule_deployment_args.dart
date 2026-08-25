@@ -10,7 +10,7 @@ import 'rule_deployment_schedule_customizations.dart';
 class RuleDeploymentArgs {
   /// Whether detections resulting from this deployment should be considered
   /// alerts.
-  final pulumi.Input<bool>? alerting;
+  final pulumi.Input<bool?>? alerting;
   /// The archive state of the rule deployment.
   /// Cannot be set to true unless enabled is set to false i.e.
   /// archiving requires a two-step process: first, disable the rule by
@@ -18,16 +18,16 @@ class RuleDeploymentArgs {
   /// If set to true, alerting will automatically be set to false.
   /// If currently set to true, enabled, alerting, and runFrequency cannot be
   /// updated.
-  final pulumi.Input<bool>? archived;
+  final pulumi.Input<bool?>? archived;
   /// Whether the rule is currently deployed continuously against incoming data.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Rule ID of the rule.
   final pulumi.Input<String> rule;
   /// The run frequency of the rule deployment.
@@ -41,11 +41,11 @@ class RuleDeploymentArgs {
   /// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
   /// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
   /// suppress the diff and ignore the changes to prevent infinite update loops.
-  final pulumi.Input<String>? runFrequency;
+  final pulumi.Input<String?>? runFrequency;
   /// The schedule customizations of the rule deployment. Only valid for
   /// customizable run frequencies.
   /// Structure is documented below.
-  final pulumi.Input<RuleDeploymentScheduleCustomizations>? scheduleCustomizations;
+  final pulumi.Input<RuleDeploymentScheduleCustomizations?>? scheduleCustomizations;
 
   /// Creates a new [RuleDeploymentArgs].
   /// [alerting] Whether detections resulting from this deployment should be considered

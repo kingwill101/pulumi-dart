@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dicom_store_args.dart';
 import 'dicom_store_notification_config.dart';
 import 'dicom_store_state.dart';
+import 'dicom_store_stream_config.dart';
 
 /// A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
 /// (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
@@ -669,7 +670,7 @@ class DicomStore extends pulumi.CustomResource {
   /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
   /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> streamConfigs;
+  late final pulumi.Output<List<DicomStoreStreamConfig>?> streamConfigs;
 
   /// Creates a new [DicomStore].
   /// [name] The Pulumi resource name.
@@ -683,17 +684,18 @@ class DicomStore extends pulumi.CustomResource {
           'gcp:healthcare/dicomStore:DicomStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataset = registerOutput<String>('dataset');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<DicomStoreNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomStoreNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
-    streamConfigs = registerOutput<List<Map<String, dynamic>>?>('streamConfigs');
+    streamConfigs = registerOutput<List<DicomStoreStreamConfig>?>('streamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DicomStoreStreamConfig>(guardedValue, (value) => DicomStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DicomStore] resource's state with the given [name] and [id].
@@ -701,11 +703,12 @@ class DicomStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DicomStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DicomStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -721,12 +724,33 @@ class DicomStore extends pulumi.CustomResource {
         ) {
     dataset = registerOutput<String>('dataset');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<DicomStoreNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomStoreNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
-    streamConfigs = registerOutput<List<Map<String, dynamic>>?>('streamConfigs');
+    streamConfigs = registerOutput<List<DicomStoreStreamConfig>?>('streamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DicomStoreStreamConfig>(guardedValue, (value) => DicomStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DicomStore] resource.
+  DicomStore.reference(String urn)
+    : super(
+        'gcp:healthcare/dicomStore:DicomStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    notificationConfig = registerOutput<DicomStoreNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomStoreNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    selfLink = registerOutput<String>('selfLink');
+    streamConfigs = registerOutput<List<DicomStoreStreamConfig>?>('streamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DicomStoreStreamConfig>(guardedValue, (value) => DicomStoreStreamConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

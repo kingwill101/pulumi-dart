@@ -17,52 +17,52 @@ import 'runtime_template_software_config.dart';
 class RuntimeTemplateArgs {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateDataPersistentDiskSpec>? dataPersistentDiskSpec;
+  final pulumi.Input<RuntimeTemplateDataPersistentDiskSpec?>? dataPersistentDiskSpec;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the Runtime Template.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. The display name of the Runtime Template.
   final pulumi.Input<String> displayName;
   /// Customer-managed encryption key spec for the notebook runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<RuntimeTemplateEncryptionSpec?>? encryptionSpec;
   /// EUC configuration of the NotebookRuntimeTemplate.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateEucConfig>? eucConfig;
+  final pulumi.Input<RuntimeTemplateEucConfig?>? eucConfig;
   /// Notebook Idle Shutdown configuration for the runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateIdleShutdownConfig>? idleShutdownConfig;
+  final pulumi.Input<RuntimeTemplateIdleShutdownConfig?>? idleShutdownConfig;
   /// Labels to identify and group the runtime template.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
   /// 'The machine configuration of the runtime.'
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateMachineSpec>? machineSpec;
+  final pulumi.Input<RuntimeTemplateMachineSpec?>? machineSpec;
   /// The resource name of the Runtime Template
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network configuration for the runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateNetworkSpec>? networkSpec;
+  final pulumi.Input<RuntimeTemplateNetworkSpec?>? networkSpec;
   /// Applies the given Compute Engine tags to the runtime.
-  final pulumi.Input<List<String>>? networkTags;
+  final pulumi.Input<List<String>?>? networkTags;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Runtime Shielded VM spec.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateShieldedVmConfig>? shieldedVmConfig;
+  final pulumi.Input<RuntimeTemplateShieldedVmConfig?>? shieldedVmConfig;
   /// The notebook software configuration of the notebook runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateSoftwareConfig>? softwareConfig;
+  final pulumi.Input<RuntimeTemplateSoftwareConfig?>? softwareConfig;
 
   /// Creates a new [RuntimeTemplateArgs].
   /// [dataPersistentDiskSpec] The configuration for the data disk of the runtime.

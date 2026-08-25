@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeTemplateSoftwareConfigColabImage {
   /// The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
-  final pulumi.Input<String>? releaseName;
+  final pulumi.Input<String?>? releaseName;
 
   /// Creates a new [RuntimeTemplateSoftwareConfigColabImage].
   /// [releaseName] The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.

@@ -14,96 +14,96 @@ import 'workstation_config_readiness_check.dart';
 class WorkstationConfigState {
   /// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkstationConfigAllowedPort>>? allowedPorts;
+  final pulumi.Input<List<WorkstationConfigAllowedPort>?>? allowedPorts;
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Status conditions describing the current resource state.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkstationConfigCondition>>? conditions;
+  final pulumi.Input<List<WorkstationConfigCondition>?>? conditions;
   /// Container that will be run for each workstation using this configuration when that workstation is started.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigContainer>? container;
+  final pulumi.Input<WorkstationConfigContainer?>? container;
   /// Time when this resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
-  final pulumi.Input<bool>? degraded;
+  final pulumi.Input<bool?>? degraded;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
-  final pulumi.Input<bool>? disableTcpConnections;
+  final pulumi.Input<bool?>? disableTcpConnections;
   /// Human-readable name for this resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
-  final pulumi.Input<bool>? enableAuditAgent;
+  final pulumi.Input<bool?>? enableAuditAgent;
   /// Encrypts resources of this workstation configuration using a customer-managed encryption key.
   /// If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
   /// If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
   /// If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigEncryptionKey>? encryptionKey;
+  final pulumi.Input<WorkstationConfigEncryptionKey?>? encryptionKey;
   /// Ephemeral directories which won't persist across workstation sessions.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkstationConfigEphemeralDirectory>>? ephemeralDirectories;
+  final pulumi.Input<List<WorkstationConfigEphemeralDirectory>?>? ephemeralDirectories;
   /// Checksum computed by the server.
   /// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Runtime host for a workstation.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigHost>? host;
+  final pulumi.Input<WorkstationConfigHost?>? host;
   /// (Optional, Beta)
   /// The action to take when the workstation has been idle for the duration specified in idle_timeout.
   /// Defaults to STOP.
   /// Default value is `STOP`.
   /// Possible values are: `STOP`, `SUSPEND`.
-  final pulumi.Input<String>? idleAction;
+  final pulumi.Input<String?>? idleAction;
   /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? idleTimeout;
+  final pulumi.Input<String?>? idleTimeout;
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the workstation cluster config should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
-  final pulumi.Input<int>? maxUsableWorkstations;
+  final pulumi.Input<int?>? maxUsableWorkstations;
   /// Full name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Directories to persist across workstation sessions.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkstationConfigPersistentDirectory>>? persistentDirectories;
+  final pulumi.Input<List<WorkstationConfigPersistentDirectory>?>? persistentDirectories;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Readiness checks to be performed on a workstation.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkstationConfigReadinessCheck>>? readinessChecks;
+  final pulumi.Input<List<WorkstationConfigReadinessCheck>?>? readinessChecks;
   /// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
   /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
-  final pulumi.Input<List<String>>? replicaZones;
+  final pulumi.Input<List<String>?>? replicaZones;
   /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? runningTimeout;
+  final pulumi.Input<String?>? runningTimeout;
   /// The system-generated UID of the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The ID of the parent workstation cluster.
-  final pulumi.Input<String>? workstationClusterId;
+  final pulumi.Input<String?>? workstationClusterId;
   /// The ID to be assigned to the workstation cluster config.
-  final pulumi.Input<String>? workstationConfigId;
+  final pulumi.Input<String?>? workstationConfigId;
 
   /// Creates a new [WorkstationConfigState].
   /// [allowedPorts] A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
@@ -229,7 +229,7 @@ class WorkstationConfigState {
       idleTimeout: (() { final guardedValue = map['idleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxUsableWorkstations: (() { final guardedValue = map['maxUsableWorkstations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxUsableWorkstations: (() { final guardedValue = map['maxUsableWorkstations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       persistentDirectories: (() { final guardedValue = map['persistentDirectories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkstationConfigPersistentDirectory>(guardedValue, (value) => WorkstationConfigPersistentDirectory.fromMap((value as Map).cast<String, dynamic>()))); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryWorkspaceCompilationOverrides {
   /// The default database (Google Cloud project ID).
-  final pulumi.Input<String>? defaultDatabase;
+  final pulumi.Input<String?>? defaultDatabase;
   /// The suffix that should be appended to all schema (BigQuery dataset ID) names.
-  final pulumi.Input<String>? schemaSuffix;
+  final pulumi.Input<String?>? schemaSuffix;
   /// The prefix that should be prepended to all table names.
-  final pulumi.Input<String>? tablePrefix;
+  final pulumi.Input<String?>? tablePrefix;
 
   /// Creates a new [RepositoryWorkspaceCompilationOverrides].
   /// [defaultDatabase] The default database (Google Cloud project ID).

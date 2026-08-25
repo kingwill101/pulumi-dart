@@ -7,11 +7,11 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
   /// Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
   ///
   /// This block also contains several computed attributes, documented below.
-  final pulumi.Input<bool>? autoRepair;
+  final pulumi.Input<bool?>? autoRepair;
   /// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
-  final pulumi.Input<bool>? autoUpgrade;
+  final pulumi.Input<bool?>? autoUpgrade;
   /// Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
-  final pulumi.Input<List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption>>? upgradeOptions;
+  final pulumi.Input<List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption>?>? upgradeOptions;
 
   /// Creates a new [ClusterClusterAutoscalingAutoProvisioningDefaultsManagement].
   /// [autoRepair] Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.

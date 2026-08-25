@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcServiceControlsState {
   /// Desired VPC Service Controls state service producer VPC network, as
   /// described at the top of this page.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The network that the consumer is using to connect with services.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The id of the Google Cloud project containing the consumer network.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The service that is managing peering connectivity for a service
   /// producer's organization. For Google services that support this
   /// functionality, this value is `servicenetworking.googleapis.com`.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [VpcServiceControlsState].
   /// [enabled] Desired VPC Service Controls state service producer VPC network, as

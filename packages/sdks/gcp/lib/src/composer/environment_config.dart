@@ -17,49 +17,49 @@ import 'environment_config_workloads_config.dart';
 class EnvironmentConfig {
   /// The URI of the Apache Airflow Web UI hosted within this
   /// environment.
-  final pulumi.Input<String>? airflowUri;
+  final pulumi.Input<String?>? airflowUri;
   /// The Cloud Storage prefix of the DAGs for this environment.
   /// Although Cloud Storage objects reside in a flat namespace, a
   /// hierarchical file tree can be simulated using '/'-delimited
   /// object name prefixes. DAG objects for this environment
   /// reside in a simulated directory with this prefix.
-  final pulumi.Input<String>? dagGcsPrefix;
+  final pulumi.Input<String?>? dagGcsPrefix;
   /// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
-  final pulumi.Input<EnvironmentConfigDataRetentionConfig>? dataRetentionConfig;
+  final pulumi.Input<EnvironmentConfigDataRetentionConfig?>? dataRetentionConfig;
   /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final pulumi.Input<EnvironmentConfigDatabaseConfig>? databaseConfig;
+  final pulumi.Input<EnvironmentConfigDatabaseConfig?>? databaseConfig;
   /// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
-  final pulumi.Input<bool>? enablePrivateBuildsOnly;
+  final pulumi.Input<bool?>? enablePrivateBuildsOnly;
   /// Optional. If true, a private Composer environment will be created.
-  final pulumi.Input<bool>? enablePrivateEnvironment;
+  final pulumi.Input<bool?>? enablePrivateEnvironment;
   /// The encryption options for the Composer environment and its dependencies.
-  final pulumi.Input<EnvironmentConfigEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EnvironmentConfigEncryptionConfig?>? encryptionConfig;
   /// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final pulumi.Input<String>? environmentSize;
+  final pulumi.Input<String?>? environmentSize;
   /// The Kubernetes Engine cluster used to run this environment.
-  final pulumi.Input<String>? gkeCluster;
+  final pulumi.Input<String?>? gkeCluster;
   /// The configuration for Cloud Composer maintenance window.
-  final pulumi.Input<EnvironmentConfigMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<EnvironmentConfigMaintenanceWindow?>? maintenanceWindow;
   /// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
-  final pulumi.Input<EnvironmentConfigMasterAuthorizedNetworksConfig>? masterAuthorizedNetworksConfig;
+  final pulumi.Input<EnvironmentConfigMasterAuthorizedNetworksConfig?>? masterAuthorizedNetworksConfig;
   /// The configuration used for the Kubernetes Engine cluster.
-  final pulumi.Input<EnvironmentConfigNodeConfig>? nodeConfig;
+  final pulumi.Input<EnvironmentConfigNodeConfig?>? nodeConfig;
   /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// The configuration used for the Private IP Cloud Composer environment.
-  final pulumi.Input<EnvironmentConfigPrivateEnvironmentConfig>? privateEnvironmentConfig;
+  final pulumi.Input<EnvironmentConfigPrivateEnvironmentConfig?>? privateEnvironmentConfig;
   /// The recovery configuration settings for the Cloud Composer environment
-  final pulumi.Input<EnvironmentConfigRecoveryConfig>? recoveryConfig;
+  final pulumi.Input<EnvironmentConfigRecoveryConfig?>? recoveryConfig;
   /// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
-  final pulumi.Input<String>? resilienceMode;
+  final pulumi.Input<String?>? resilienceMode;
   /// The configuration settings for software inside the environment.
-  final pulumi.Input<EnvironmentConfigSoftwareConfig>? softwareConfig;
+  final pulumi.Input<EnvironmentConfigSoftwareConfig?>? softwareConfig;
   /// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final pulumi.Input<EnvironmentConfigWebServerConfig>? webServerConfig;
+  final pulumi.Input<EnvironmentConfigWebServerConfig?>? webServerConfig;
   /// Network-level access control policy for the Airflow web server.
-  final pulumi.Input<EnvironmentConfigWebServerNetworkAccessControl>? webServerNetworkAccessControl;
+  final pulumi.Input<EnvironmentConfigWebServerNetworkAccessControl?>? webServerNetworkAccessControl;
   /// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final pulumi.Input<EnvironmentConfigWorkloadsConfig>? workloadsConfig;
+  final pulumi.Input<EnvironmentConfigWorkloadsConfig?>? workloadsConfig;
 
   /// Creates a new [EnvironmentConfig].
   /// [airflowUri] The URI of the Apache Airflow Web UI hosted within this
@@ -144,7 +144,7 @@ class EnvironmentConfig {
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfigMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       masterAuthorizedNetworksConfig: (() { final guardedValue = map['masterAuthorizedNetworksConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfigMasterAuthorizedNetworksConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfigNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       privateEnvironmentConfig: (() { final guardedValue = map['privateEnvironmentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfigPrivateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recoveryConfig: (() { final guardedValue = map['recoveryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfigRecoveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resilienceMode: (() { final guardedValue = map['resilienceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallEndpointEndpointSettings {
   /// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
-  final pulumi.Input<bool>? jumboFramesEnabled;
+  final pulumi.Input<bool?>? jumboFramesEnabled;
 
   /// Creates a new [FirewallEndpointEndpointSettings].
   /// [jumboFramesEnabled] Indicates whether Jumbo Frames are enabled for the firewall endpoint.

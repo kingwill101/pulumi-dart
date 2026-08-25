@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
   /// Contains uri path fragment where HTTP request is sent.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [SecurityGatewayServiceDiscoveryApiGatewayResourceOverride].
   /// [path] Contains uri path fragment where HTTP request is sent.

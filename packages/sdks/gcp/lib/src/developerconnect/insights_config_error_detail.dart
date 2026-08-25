@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightsConfigErrorDetail {
   /// (Output)
   /// A message with details about the error.
-  final pulumi.Input<String>? detailMessage;
+  final pulumi.Input<String?>? detailMessage;
 
   /// Creates a new [InsightsConfigErrorDetail].
   /// [detailMessage] (Output)

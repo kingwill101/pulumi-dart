@@ -7,12 +7,12 @@ import 'control_condition_query_term.dart';
 class ControlCondition {
   /// The time range when the condition is active.
   /// Structure is documented below.
-  final pulumi.Input<List<ControlConditionActiveTimeRange>>? activeTimeRanges;
+  final pulumi.Input<List<ControlConditionActiveTimeRange>?>? activeTimeRanges;
   /// The regular expression that the query must match for this condition to be met.
-  final pulumi.Input<String>? queryRegex;
+  final pulumi.Input<String?>? queryRegex;
   /// The query terms that must be present in the search request for this condition to be met.
   /// Structure is documented below.
-  final pulumi.Input<List<ControlConditionQueryTerm>>? queryTerms;
+  final pulumi.Input<List<ControlConditionQueryTerm>?>? queryTerms;
 
   /// Creates a new [ControlCondition].
   /// [activeTimeRanges] The time range when the condition is active.

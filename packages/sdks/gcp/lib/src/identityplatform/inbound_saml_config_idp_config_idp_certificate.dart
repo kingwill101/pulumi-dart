@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InboundSamlConfigIdpConfigIdpCertificate {
   /// The IdP's x509 certificate.
-  final pulumi.Input<String>? x509Certificate;
+  final pulumi.Input<String?>? x509Certificate;
 
   /// Creates a new [InboundSamlConfigIdpConfigIdpCertificate].
   /// [x509Certificate] The IdP's x509 certificate.

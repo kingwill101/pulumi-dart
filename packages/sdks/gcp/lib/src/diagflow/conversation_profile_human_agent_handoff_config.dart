@@ -6,7 +6,7 @@ import 'conversation_profile_human_agent_handoff_config_live_person_config.dart'
 class ConversationProfileHumanAgentHandoffConfig {
   /// Config for using LivePerson.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentHandoffConfigLivePersonConfig>? livePersonConfig;
+  final pulumi.Input<ConversationProfileHumanAgentHandoffConfigLivePersonConfig?>? livePersonConfig;
 
   /// Creates a new [ConversationProfileHumanAgentHandoffConfig].
   /// [livePersonConfig] Config for using LivePerson.

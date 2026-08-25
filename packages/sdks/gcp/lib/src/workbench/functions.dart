@@ -134,3 +134,14 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
   );
   return GetInstanceIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
+}

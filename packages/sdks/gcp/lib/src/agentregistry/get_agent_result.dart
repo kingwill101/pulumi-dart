@@ -6,35 +6,35 @@ import 'get_agent_skill.dart';
 
 /// Result data returned by getAgent.
 class GetAgentResult {
-  final String agentId;
+  final String? agentId;
   /// Attributes of the Agent.
-  final Map<String, String> attributes;
+  final Map<String, String>? attributes;
   /// Create time.
-  final String createTime;
+  final String? createTime;
   /// Obtained from the A2A Agent Card. The description of the Agent.
-  final String description;
+  final String? description;
   /// Obtained from the A2A Agent Card. The display name of the Agent.
-  final String displayName;
+  final String? displayName;
   final String? filter;
   /// The OSS Agent framework used to develop the Agent. Currently supported values: "google-adk", "langchain", "langgraph", "ag2", "llama-index", "custom".
-  final String framework;
+  final String? framework;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
-  final String project;
+  final String? id;
+  final String? location;
+  final String? project;
   /// The connection details for the Agent.
-  final List<GetAgentProtocol> protocols;
+  final List<GetAgentProtocol>? protocols;
   /// Obtained from the A2A Agent Card. Skills represent the ability of an Agent. It is largely a descriptive concept but represents a more focused set of behaviors that the Agent is likely to succeed at.
-  final List<GetAgentSkill> skills;
+  final List<GetAgentSkill>? skills;
   /// Update time.
-  final String updateTime;
+  final String? updateTime;
   /// The URN of the Agent.
-  final String urn;
+  final String? urn;
   /// Obtained from the A2A Agent Card. Contains the version of the Agent.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetAgentResult].
-  /// [agentId] Required.
+  /// [agentId] Optional.
   /// [attributes] Attributes of the Agent.
   /// [createTime] Create time.
   /// [description] Obtained from the A2A Agent Card. The description of the Agent.
@@ -42,68 +42,68 @@ class GetAgentResult {
   /// [filter] Optional.
   /// [framework] The OSS Agent framework used to develop the Agent. Currently supported values: "google-adk", "langchain", "langgraph", "ag2", "llama-index", "custom".
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
-  /// [project] Required.
+  /// [location] Optional.
+  /// [project] Optional.
   /// [protocols] The connection details for the Agent.
   /// [skills] Obtained from the A2A Agent Card. Skills represent the ability of an Agent. It is largely a descriptive concept but represents a more focused set of behaviors that the Agent is likely to succeed at.
   /// [updateTime] Update time.
   /// [urn] The URN of the Agent.
   /// [version] Obtained from the A2A Agent Card. Contains the version of the Agent.
   const GetAgentResult({
-    required this.agentId,
-    required this.attributes,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
+    this.agentId,
+    this.attributes,
+    this.createTime,
+    this.description,
+    this.displayName,
     this.filter,
-    required this.framework,
-    required this.id,
-    required this.location,
-    required this.project,
-    required this.protocols,
-    required this.skills,
-    required this.updateTime,
-    required this.urn,
-    required this.version,
+    this.framework,
+    this.id,
+    this.location,
+    this.project,
+    this.protocols,
+    this.skills,
+    this.updateTime,
+    this.urn,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentId': agentId,
-      'attributes': attributes,
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
+      'agentId': ?agentId,
+      'attributes': ?attributes,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
       'filter': ?filter,
-      'framework': framework,
-      'id': id,
-      'location': location,
-      'project': project,
-      'protocols': pulumi.Input.encodeList<GetAgentProtocol, Map<String, dynamic>>(protocols, (value) => value.toMap()),
-      'skills': pulumi.Input.encodeList<GetAgentSkill, Map<String, dynamic>>(skills, (value) => value.toMap()),
-      'updateTime': updateTime,
-      'urn': urn,
-      'version': version,
+      'framework': ?framework,
+      'id': ?id,
+      'location': ?location,
+      'project': ?project,
+      'protocols': ?(() { final guardedValue = protocols; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAgentProtocol, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'skills': ?(() { final guardedValue = skills; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAgentSkill, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'updateTime': ?updateTime,
+      'urn': ?urn,
+      'version': ?version,
     };
   }
 
   factory GetAgentResult.fromMap(Map<String, dynamic> map) {
     return GetAgentResult(
-      agentId: map['agentId'] as String,
-      attributes: (map['attributes'] as Map).cast<String, String>(),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      framework: map['framework'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      project: map['project'] as String,
-      protocols: pulumi.Input.decodeList<GetAgentProtocol>(map['protocols']!, (value) => GetAgentProtocol.fromMap((value as Map).cast<String, dynamic>())),
-      skills: pulumi.Input.decodeList<GetAgentSkill>(map['skills']!, (value) => GetAgentSkill.fromMap((value as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] as String,
-      urn: map['urn'] as String,
-      version: map['version'] as String,
+      framework: (() { final guardedValue = map['framework']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAgentProtocol>(guardedValue, (value) => GetAgentProtocol.fromMap((value as Map).cast<String, dynamic>())); })(),
+      skills: (() { final guardedValue = map['skills']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAgentSkill>(guardedValue, (value) => GetAgentSkill.fromMap((value as Map).cast<String, dynamic>())); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      urn: (() { final guardedValue = map['urn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rollout_sequence_args.dart';
 import 'rollout_sequence_auto_upgrade_config.dart';
 import 'rollout_sequence_ignored_clusters_selector.dart';
+import 'rollout_sequence_operational_state.dart';
+import 'rollout_sequence_stage.dart';
 import 'rollout_sequence_state.dart';
 
 /// RolloutSequence defines the desired order of upgrades.
@@ -1853,7 +1855,7 @@ class RolloutSequence extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The operational state of the rollout sequence.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> operationalStates;
+  late final pulumi.Output<List<RolloutSequenceOperationalState>> operationalStates;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -1864,7 +1866,7 @@ class RolloutSequence extends pulumi.CustomResource {
   late final pulumi.Output<String> rolloutSequenceId;
   /// Ordered list of stages that constitute this Rollout Sequence.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> stages;
+  late final pulumi.Output<List<RolloutSequenceStage>> stages;
   /// The current target control plane version.
   late final pulumi.Output<String> targetControlPlaneVersion;
   /// The current target node version.
@@ -1886,25 +1888,26 @@ class RolloutSequence extends pulumi.CustomResource {
           'gcp:gkehub/rolloutSequence:RolloutSequence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoUpgradeConfig = registerOutput<RolloutSequenceAutoUpgradeConfig?>('autoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     ignoredClustersSelector = registerOutput<RolloutSequenceIgnoredClustersSelector?>('ignoredClustersSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceIgnoredClustersSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     minControlPlaneVersion = registerOutput<String?>('minControlPlaneVersion');
     minNodeVersion = registerOutput<String?>('minNodeVersion');
     this.name = registerOutput<String>('name');
-    operationalStates = registerOutput<List<Map<String, dynamic>>>('operationalStates');
+    operationalStates = registerOutput<List<RolloutSequenceOperationalState>>('operationalStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutSequenceOperationalState>(guardedValue, (value) => RolloutSequenceOperationalState.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rolloutSequenceId = registerOutput<String>('rolloutSequenceId');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
+    stages = registerOutput<List<RolloutSequenceStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutSequenceStage>(guardedValue, (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>())); });
     targetControlPlaneVersion = registerOutput<String>('targetControlPlaneVersion');
     targetNodeVersion = registerOutput<String>('targetNodeVersion');
     uid = registerOutput<String>('uid');
@@ -1916,11 +1919,12 @@ class RolloutSequence extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RolloutSequenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RolloutSequence._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1939,18 +1943,51 @@ class RolloutSequence extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     ignoredClustersSelector = registerOutput<RolloutSequenceIgnoredClustersSelector?>('ignoredClustersSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceIgnoredClustersSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     minControlPlaneVersion = registerOutput<String?>('minControlPlaneVersion');
     minNodeVersion = registerOutput<String?>('minNodeVersion');
     this.name = registerOutput<String>('name');
-    operationalStates = registerOutput<List<Map<String, dynamic>>>('operationalStates');
+    operationalStates = registerOutput<List<RolloutSequenceOperationalState>>('operationalStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutSequenceOperationalState>(guardedValue, (value) => RolloutSequenceOperationalState.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rolloutSequenceId = registerOutput<String>('rolloutSequenceId');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
+    stages = registerOutput<List<RolloutSequenceStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutSequenceStage>(guardedValue, (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>())); });
+    targetControlPlaneVersion = registerOutput<String>('targetControlPlaneVersion');
+    targetNodeVersion = registerOutput<String>('targetNodeVersion');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RolloutSequence] resource.
+  RolloutSequence.reference(String urn)
+    : super(
+        'gcp:gkehub/rolloutSequence:RolloutSequence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    autoUpgradeConfig = registerOutput<RolloutSequenceAutoUpgradeConfig?>('autoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    ignoredClustersSelector = registerOutput<RolloutSequenceIgnoredClustersSelector?>('ignoredClustersSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceIgnoredClustersSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    minControlPlaneVersion = registerOutput<String?>('minControlPlaneVersion');
+    minNodeVersion = registerOutput<String?>('minNodeVersion');
+    this.name = registerOutput<String>('name');
+    operationalStates = registerOutput<List<RolloutSequenceOperationalState>>('operationalStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutSequenceOperationalState>(guardedValue, (value) => RolloutSequenceOperationalState.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    rolloutSequenceId = registerOutput<String>('rolloutSequenceId');
+    stages = registerOutput<List<RolloutSequenceStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutSequenceStage>(guardedValue, (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>())); });
     targetControlPlaneVersion = registerOutput<String>('targetControlPlaneVersion');
     targetNodeVersion = registerOutput<String>('targetNodeVersion');
     uid = registerOutput<String>('uid');

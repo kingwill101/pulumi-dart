@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_args.dart';
 import 'trigger_destination.dart';
+import 'trigger_matching_criteria.dart';
 import 'trigger_retry_policy.dart';
 import 'trigger_state.dart';
 import 'trigger_transport.dart';
@@ -526,7 +527,7 @@ class Trigger extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> matchingCriterias;
+  late final pulumi.Output<List<TriggerMatchingCriteria>> matchingCriterias;
   /// Required. The resource name of the trigger. Must be unique within the location on the project.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -561,22 +562,23 @@ class Trigger extends pulumi.CustomResource {
           'gcp:eventarc/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     channel = registerOutput<String?>('channel');
-    conditions = registerOutput<Map<String, String>>('conditions');
+    conditions = registerOutput<Map<String, String>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<TriggerDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     eventDataContentType = registerOutput<String>('eventDataContentType');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    matchingCriterias = registerOutput<List<Map<String, dynamic>>>('matchingCriterias');
+    matchingCriterias = registerOutput<List<TriggerMatchingCriteria>>('matchingCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerMatchingCriteria>(guardedValue, (value) => TriggerMatchingCriteria.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     retryPolicy = registerOutput<TriggerRetryPolicy?>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String?>('serviceAccount');
     transport = registerOutput<TriggerTransport>('transport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTransport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -589,11 +591,12 @@ class Trigger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Trigger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -608,19 +611,50 @@ class Trigger extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     channel = registerOutput<String?>('channel');
-    conditions = registerOutput<Map<String, String>>('conditions');
+    conditions = registerOutput<Map<String, String>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<TriggerDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     eventDataContentType = registerOutput<String>('eventDataContentType');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    matchingCriterias = registerOutput<List<Map<String, dynamic>>>('matchingCriterias');
+    matchingCriterias = registerOutput<List<TriggerMatchingCriteria>>('matchingCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerMatchingCriteria>(guardedValue, (value) => TriggerMatchingCriteria.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    retryPolicy = registerOutput<TriggerRetryPolicy?>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    transport = registerOutput<TriggerTransport>('transport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTransport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Trigger] resource.
+  Trigger.reference(String urn)
+    : super(
+        'gcp:eventarc/trigger:Trigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    channel = registerOutput<String?>('channel');
+    conditions = registerOutput<Map<String, String>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destination = registerOutput<TriggerDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    eventDataContentType = registerOutput<String>('eventDataContentType');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    matchingCriterias = registerOutput<List<TriggerMatchingCriteria>>('matchingCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerMatchingCriteria>(guardedValue, (value) => TriggerMatchingCriteria.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     retryPolicy = registerOutput<TriggerRetryPolicy?>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String?>('serviceAccount');
     transport = registerOutput<TriggerTransport>('transport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerTransport.fromMap((guardedValue as Map).cast<String, dynamic>()); });

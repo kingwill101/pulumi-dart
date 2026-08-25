@@ -1,6 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'remote_config_remote_config_args.dart';
+import 'remote_config_remote_config_condition.dart';
+import 'remote_config_remote_config_parameter.dart';
+import 'remote_config_remote_config_parameter_group.dart';
 import 'remote_config_remote_config_state.dart';
+import 'remote_config_remote_config_version.dart';
 
 /// A RemoteConfig represents a Remote Config template.
 ///
@@ -397,7 +401,7 @@ class RemoteConfigRemoteConfig extends pulumi.CustomResource {
   /// A list of conditions in descending order by priority.
   /// The values of the condition names must be unique.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
+  late final pulumi.Output<List<RemoteConfigRemoteConfigCondition>?> conditions;
   /// (Output)
   /// Display name.
   late final pulumi.Output<String> name;
@@ -412,11 +416,11 @@ class RemoteConfigRemoteConfig extends pulumi.CustomResource {
   /// `description` "New mobile search view" and contain parameters for the new
   /// search's layout and font.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameterGroups;
+  late final pulumi.Output<List<RemoteConfigRemoteConfigParameterGroup>?> parameterGroups;
   /// Map of parameter keys to their optional default values and optional
   /// conditional values.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<RemoteConfigRemoteConfigParameter>?> parameters;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -425,7 +429,7 @@ class RemoteConfigRemoteConfig extends pulumi.CustomResource {
   /// All fields are set at the time the specified Remote Config template was
   /// written.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> versions;
+  late final pulumi.Output<List<RemoteConfigRemoteConfigVersion>> versions;
 
   /// Creates a new [RemoteConfigRemoteConfig].
   /// [name] The Pulumi resource name.
@@ -439,14 +443,14 @@ class RemoteConfigRemoteConfig extends pulumi.CustomResource {
           'gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    conditions = registerOutput<List<RemoteConfigRemoteConfigCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigCondition>(guardedValue, (value) => RemoteConfigRemoteConfigCondition.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    parameterGroups = registerOutput<List<Map<String, dynamic>>?>('parameterGroups');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameterGroups = registerOutput<List<RemoteConfigRemoteConfigParameterGroup>?>('parameterGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigParameterGroup>(guardedValue, (value) => RemoteConfigRemoteConfigParameterGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<List<RemoteConfigRemoteConfigParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigParameter>(guardedValue, (value) => RemoteConfigRemoteConfigParameter.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    versions = registerOutput<List<Map<String, dynamic>>>('versions');
+    versions = registerOutput<List<RemoteConfigRemoteConfigVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigVersion>(guardedValue, (value) => RemoteConfigRemoteConfigVersion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RemoteConfigRemoteConfig] resource's state with the given [name] and [id].
@@ -454,11 +458,12 @@ class RemoteConfigRemoteConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RemoteConfigRemoteConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RemoteConfigRemoteConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -472,11 +477,28 @@ class RemoteConfigRemoteConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    conditions = registerOutput<List<RemoteConfigRemoteConfigCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigCondition>(guardedValue, (value) => RemoteConfigRemoteConfigCondition.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    parameterGroups = registerOutput<List<Map<String, dynamic>>?>('parameterGroups');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameterGroups = registerOutput<List<RemoteConfigRemoteConfigParameterGroup>?>('parameterGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigParameterGroup>(guardedValue, (value) => RemoteConfigRemoteConfigParameterGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<List<RemoteConfigRemoteConfigParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigParameter>(guardedValue, (value) => RemoteConfigRemoteConfigParameter.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    versions = registerOutput<List<Map<String, dynamic>>>('versions');
+    versions = registerOutput<List<RemoteConfigRemoteConfigVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigVersion>(guardedValue, (value) => RemoteConfigRemoteConfigVersion.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RemoteConfigRemoteConfig] resource.
+  RemoteConfigRemoteConfig.reference(String urn)
+    : super(
+        'gcp:firebase/remoteConfigRemoteConfig:RemoteConfigRemoteConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    conditions = registerOutput<List<RemoteConfigRemoteConfigCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigCondition>(guardedValue, (value) => RemoteConfigRemoteConfigCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    parameterGroups = registerOutput<List<RemoteConfigRemoteConfigParameterGroup>?>('parameterGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigParameterGroup>(guardedValue, (value) => RemoteConfigRemoteConfigParameterGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<List<RemoteConfigRemoteConfigParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigParameter>(guardedValue, (value) => RemoteConfigRemoteConfigParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    versions = registerOutput<List<RemoteConfigRemoteConfigVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemoteConfigRemoteConfigVersion>(guardedValue, (value) => RemoteConfigRemoteConfigVersion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

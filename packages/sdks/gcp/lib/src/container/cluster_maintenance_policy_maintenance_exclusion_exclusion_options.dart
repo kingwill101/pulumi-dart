@@ -37,7 +37,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
   /// }
   /// }
   /// ```
-  final pulumi.Input<String>? endTimeBehavior;
+  final pulumi.Input<String?>? endTimeBehavior;
   /// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
   final pulumi.Input<String> scope;
 

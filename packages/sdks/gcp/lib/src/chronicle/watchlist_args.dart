@@ -15,9 +15,9 @@ class WatchlistArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Description of the watchlist.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. Display name of the watchlist.
   /// Note that it must be at least one character and less than 63 characters
   /// (https://google.aip.dev/148).
@@ -32,18 +32,18 @@ class WatchlistArgs {
   /// Optional. Weight applied to the risk score for entities
   /// in this watchlist.
   /// The default is 1.0 if it is not specified.
-  final pulumi.Input<double>? multiplyingFactor;
+  final pulumi.Input<double?>? multiplyingFactor;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. The ID to use for the watchlist,
   /// which will become the final component of the watchlist's resource name.
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z-/.
-  final pulumi.Input<String>? watchlistId;
+  final pulumi.Input<String?>? watchlistId;
   /// A collection of user preferences for watchlist UI configuration.
   /// Structure is documented below.
-  final pulumi.Input<WatchlistWatchlistUserPreferences>? watchlistUserPreferences;
+  final pulumi.Input<WatchlistWatchlistUserPreferences?>? watchlistUserPreferences;
 
   /// Creates a new [WatchlistArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -92,7 +92,7 @@ class WatchlistArgs {
       entityPopulationMechanism: pulumi.Input.fromValue(WatchlistEntityPopulationMechanism.fromMap((map['entityPopulationMechanism']! as Map).cast<String, dynamic>())),
       instance: pulumi.Input.fromValue(map['instance'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      multiplyingFactor: (() { final guardedValue = map['multiplyingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      multiplyingFactor: (() { final guardedValue = map['multiplyingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       watchlistId: (() { final guardedValue = map['watchlistId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       watchlistUserPreferences: (() { final guardedValue = map['watchlistUserPreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WatchlistWatchlistUserPreferences.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

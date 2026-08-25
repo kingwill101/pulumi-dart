@@ -160,6 +160,17 @@ Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
   return GetAutonomousDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
+  GetAutonomousDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabaseResult.fromMap);
+}
+
 /// List all AutonomousDatabases.
 ///
 /// For more information see the
@@ -279,6 +290,17 @@ Future<GetAutonomousDatabasesResult> getAutonomousDatabases(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutonomousDatabasesResult.fromMap(result);
+}
+
+pulumi.Output<GetAutonomousDatabasesResult> getAutonomousDatabasesOutput(
+  GetAutonomousDatabasesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getAutonomousDatabases:getAutonomousDatabases',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabasesResult.fromMap);
 }
 
 /// Get information about an ExadataInfrastructure.
@@ -409,6 +431,17 @@ Future<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure(
   return GetCloudExadataInfrastructureResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructureOutput(
+  GetCloudExadataInfrastructureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudExadataInfrastructureResult.fromMap);
+}
+
 /// List all ExadataInfrastructures.
 ///
 /// For more information see the
@@ -528,6 +561,17 @@ Future<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructures(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudExadataInfrastructuresResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructuresOutput(
+  GetCloudExadataInfrastructuresArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getCloudExadataInfrastructures:getCloudExadataInfrastructures',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudExadataInfrastructuresResult.fromMap);
 }
 
 /// Get information about a CloudVmCluster.
@@ -658,6 +702,17 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
   return GetCloudVmClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
+  GetCloudVmClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudVmClusterResult.fromMap);
+}
+
 /// List all CloudVmClusters.
 ///
 /// For more information see the
@@ -777,6 +832,17 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudVmClustersResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
+  GetCloudVmClustersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudVmClustersResult.fromMap);
 }
 
 /// List all DbNodes of a Cloud VmCluster.
@@ -948,6 +1014,17 @@ Future<GetDbNodesResult> getDbNodes(
   return GetDbNodesResult.fromMap(result);
 }
 
+pulumi.Output<GetDbNodesResult> getDbNodesOutput(
+  GetDbNodesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getDbNodes:getDbNodes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbNodesResult.fromMap);
+}
+
 /// List all DbServers of a Cloud Exdata Infrastructure.
 ///
 /// For more information see the
@@ -1117,6 +1194,17 @@ Future<GetDbServersResult> getDbServers(
   return GetDbServersResult.fromMap(result);
 }
 
+pulumi.Output<GetDbServersResult> getDbServersOutput(
+  GetDbServersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getDbServers:getDbServers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbServersResult.fromMap);
+}
+
 /// Get information about an ExascaleDbStorageVault.
 ///
 /// For more information see the
@@ -1245,6 +1333,17 @@ Future<GetExascaleDbStorageVaultResult> getExascaleDbStorageVault(
   return GetExascaleDbStorageVaultResult.fromMap(result);
 }
 
+pulumi.Output<GetExascaleDbStorageVaultResult> getExascaleDbStorageVaultOutput(
+  GetExascaleDbStorageVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getExascaleDbStorageVault:getExascaleDbStorageVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExascaleDbStorageVaultResult.fromMap);
+}
+
 /// List all ExascaleDbStorageVaults.
 ///
 /// For more information see the
@@ -1364,6 +1463,17 @@ Future<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaults(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExascaleDbStorageVaultsResult.fromMap(result);
+}
+
+pulumi.Output<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaultsOutput(
+  GetExascaleDbStorageVaultsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getExascaleDbStorageVaults:getExascaleDbStorageVaults',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExascaleDbStorageVaultsResult.fromMap);
 }
 
 /// List all GoldenGate Connection Types in a location.
@@ -1500,6 +1610,17 @@ Future<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGoldengateConnectionTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypesOutput(
+  GetGoldengateConnectionTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateConnectionTypes:getGoldengateConnectionTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGoldengateConnectionTypesResult.fromMap);
 }
 
 /// List all GoldenGate Deployment Environments in a location.
@@ -1654,6 +1775,17 @@ Future<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnviron
   return GetGoldengateDeploymentEnvironmentsResult.fromMap(result);
 }
 
+pulumi.Output<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironmentsOutput(
+  GetGoldengateDeploymentEnvironmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGoldengateDeploymentEnvironmentsResult.fromMap);
+}
+
 /// List all GoldenGate Deployment Types in a location.
 ///
 /// For more information see the
@@ -1806,6 +1938,17 @@ Future<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypes(
   return GetGoldengateDeploymentTypesResult.fromMap(result);
 }
 
+pulumi.Output<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypesOutput(
+  GetGoldengateDeploymentTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGoldengateDeploymentTypesResult.fromMap);
+}
+
 /// List all Goldengate Deployment Versions in a location.
 ///
 /// For more information see the
@@ -1956,6 +2099,17 @@ Future<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersions(
   return GetGoldengateDeploymentVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersionsOutput(
+  GetGoldengateDeploymentVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGoldengateDeploymentVersionsResult.fromMap);
+}
+
 /// Get information about an ODB Network.
 ///
 /// For more information see the
@@ -2087,6 +2241,17 @@ Future<GetOdbNetworkResult> getOdbNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOdbNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetOdbNetworkResult> getOdbNetworkOutput(
+  GetOdbNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getOdbNetwork:getOdbNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOdbNetworkResult.fromMap);
 }
 
 /// Get information about an ODB Subnet.
@@ -2228,4 +2393,15 @@ Future<GetOdbSubnetResult> getOdbSubnet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOdbSubnetResult.fromMap(result);
+}
+
+pulumi.Output<GetOdbSubnetResult> getOdbSubnetOutput(
+  GetOdbSubnetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:oracledatabase/getOdbSubnet:getOdbSubnet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOdbSubnetResult.fromMap);
 }

@@ -1989,7 +1989,7 @@ class CertificateTemplateIamMember extends pulumi.CustomResource {
           'gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     certificateTemplate = registerOutput<String>('certificateTemplate');
     condition = registerOutput<CertificateTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2005,11 +2005,12 @@ class CertificateTemplateIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateTemplateIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateTemplateIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2023,6 +2024,24 @@ class CertificateTemplateIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateTemplate = registerOutput<String>('certificateTemplate');
+    condition = registerOutput<CertificateTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [CertificateTemplateIamMember] resource.
+  CertificateTemplateIamMember.reference(String urn)
+    : super(
+        'gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateTemplate = registerOutput<String>('certificateTemplate');
     condition = registerOutput<CertificateTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

@@ -100,7 +100,7 @@ class GetTriggerBuildOption {
 
   factory GetTriggerBuildOption.fromMap(Map<String, dynamic> map) {
     return GetTriggerBuildOption(
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
       dynamicSubstitutions: pulumi.Input.fromValue(map['dynamicSubstitutions'] as bool),
       envs: pulumi.Input.fromValue((map['envs'] as List).cast<String>()),
       logStreamingOption: pulumi.Input.fromValue(map['logStreamingOption'] as String),

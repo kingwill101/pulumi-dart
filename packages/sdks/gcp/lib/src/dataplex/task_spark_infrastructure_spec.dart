@@ -8,13 +8,13 @@ import 'task_spark_infrastructure_spec_vpc_network.dart';
 class TaskSparkInfrastructureSpec {
   /// Compute resources needed for a Task when using Dataproc Serverless.
   /// Structure is documented below.
-  final pulumi.Input<TaskSparkInfrastructureSpecBatch>? batch;
+  final pulumi.Input<TaskSparkInfrastructureSpecBatch?>? batch;
   /// Container Image Runtime Configuration.
   /// Structure is documented below.
-  final pulumi.Input<TaskSparkInfrastructureSpecContainerImage>? containerImage;
+  final pulumi.Input<TaskSparkInfrastructureSpecContainerImage?>? containerImage;
   /// Vpc network.
   /// Structure is documented below.
-  final pulumi.Input<TaskSparkInfrastructureSpecVpcNetwork>? vpcNetwork;
+  final pulumi.Input<TaskSparkInfrastructureSpecVpcNetwork?>? vpcNetwork;
 
   /// Creates a new [TaskSparkInfrastructureSpec].
   /// [batch] Compute resources needed for a Task when using Dataproc Serverless.

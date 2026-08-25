@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketWebsite {
   /// Behaves as the bucket's directory index where
   /// missing objects are treated as potential directories.
-  final pulumi.Input<String>? mainPageSuffix;
+  final pulumi.Input<String?>? mainPageSuffix;
   /// The custom object to return when a requested
   /// resource is not found.
-  final pulumi.Input<String>? notFoundPage;
+  final pulumi.Input<String?>? notFoundPage;
 
   /// Creates a new [BucketWebsite].
   /// [mainPageSuffix] Behaves as the bucket's directory index where

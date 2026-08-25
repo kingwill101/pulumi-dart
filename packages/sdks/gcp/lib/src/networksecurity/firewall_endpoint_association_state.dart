@@ -5,49 +5,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FirewallEndpointAssociation resources.
 class FirewallEndpointAssociationState {
   /// Time the firewall endpoint was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
   /// otherwise on an update the association can be disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The URL of the firewall endpoint that is being associated.
-  final pulumi.Input<String>? firewallEndpoint;
+  final pulumi.Input<String?>? firewallEndpoint;
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location (zone) of the firewall endpoint association.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the firewall endpoint association resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The URL of the network that is being associated.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The name of the parent this firewall endpoint association belongs to.
   /// Format: projects/{project_id}.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Server-defined URL of this resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The current state of the endpoint.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The URL of the TlsInspectionPolicy that is being associated.
-  final pulumi.Input<String>? tlsInspectionPolicy;
+  final pulumi.Input<String?>? tlsInspectionPolicy;
   /// Time the firewall endpoint was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [FirewallEndpointAssociationState].
   /// [createTime] Time the firewall endpoint was created in UTC.

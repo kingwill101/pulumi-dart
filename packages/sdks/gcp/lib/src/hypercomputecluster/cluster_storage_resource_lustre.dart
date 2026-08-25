@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterStorageResourceLustre {
   /// Name of the Managed Lustre instance, in the format
   /// 'projects/{project}/locations/{location}/instances/{instance}'
-  final pulumi.Input<String>? lustre;
+  final pulumi.Input<String?>? lustre;
 
   /// Creates a new [ClusterStorageResourceLustre].
   /// [lustre] Name of the Managed Lustre instance, in the format

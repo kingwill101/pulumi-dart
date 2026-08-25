@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage {
   /// The account key of Azure Data Lake Storage.
-  final pulumi.Input<String>? accountKeySecret;
+  final pulumi.Input<String?>? accountKeySecret;
   /// The account of Azure Data Lake Storage.
   final pulumi.Input<String> azureAccount;
   /// The container of Azure Data Lake Storage.
   final pulumi.Input<String> container;
   /// The endpoint of Azure Data Lake Storage.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
 
   /// Creates a new [GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage].
   /// [accountKeySecret] The account key of Azure Data Lake Storage.

@@ -8,15 +8,15 @@ import 'node_pool_node_config_linux_node_config_swap_config_ephemeral_local_ssd_
 
 class NodePoolNodeConfigLinuxNodeConfigSwapConfig {
   /// Swap on the node's boot disk.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile>? bootDiskProfile;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile?>? bootDiskProfile;
   /// Provisions a new, separate local NVMe SSD exclusively for swap.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile>? dedicatedLocalSsdProfile;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile?>? dedicatedLocalSsdProfile;
   /// Enables or disables swap for the node pool.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// If omitted, swap space is encrypted by default.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig?>? encryptionConfig;
   /// Swap on the local SSD shared with pod ephemeral storage.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile>? ephemeralLocalSsdProfile;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile?>? ephemeralLocalSsdProfile;
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfigSwapConfig].
   /// [bootDiskProfile] Swap on the node's boot disk.

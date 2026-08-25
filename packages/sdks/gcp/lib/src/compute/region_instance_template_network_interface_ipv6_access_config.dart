@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
   /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-  final pulumi.Input<String>? externalIpv6;
+  final pulumi.Input<String?>? externalIpv6;
   /// The prefix length of the external IPv6 range.
-  final pulumi.Input<String>? externalIpv6PrefixLength;
+  final pulumi.Input<String?>? externalIpv6PrefixLength;
   /// The name of the instance template. If you leave
   /// this blank, Terraform will auto-generate a unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
   final pulumi.Input<String> networkTier;
   /// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
-  final pulumi.Input<String>? publicPtrDomainName;
+  final pulumi.Input<String?>? publicPtrDomainName;
 
   /// Creates a new [RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig].
   /// [externalIpv6] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.

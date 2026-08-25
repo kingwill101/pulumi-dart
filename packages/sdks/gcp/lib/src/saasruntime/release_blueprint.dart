@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReleaseBlueprint {
   /// (Output)
   /// Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// URI to a blueprint used by the Unit (required unless unitKind or release is
   /// set).
-  final pulumi.Input<String>? package;
+  final pulumi.Input<String?>? package;
   /// (Output)
   /// Version metadata if present on the blueprint.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ReleaseBlueprint].
   /// [engine] (Output)

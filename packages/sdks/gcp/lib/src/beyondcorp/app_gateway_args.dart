@@ -13,29 +13,29 @@ class AppGatewayArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An arbitrary user-provided name for the AppGateway.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The type of hosting used by the AppGateway.
   /// Default value is `HOST_TYPE_UNSPECIFIED`.
   /// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
-  final pulumi.Input<String>? hostType;
+  final pulumi.Input<String?>? hostType;
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// ID of the AppGateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the AppGateway.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The type of network connectivity used by the AppGateway.
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AppGatewayArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

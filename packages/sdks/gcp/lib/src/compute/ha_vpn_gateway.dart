@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ha_vpn_gateway_args.dart';
 import 'ha_vpn_gateway_params.dart';
 import 'ha_vpn_gateway_state.dart';
+import 'ha_vpn_gateway_vpn_interface.dart';
 
 /// Represents a VPN gateway running in GCP. This virtual device is managed
 /// by Google, but used only by you. This type of VPN Gateway allows for the creation
@@ -969,7 +970,7 @@ class HaVpnGateway extends pulumi.CustomResource {
   late final pulumi.Output<String?> stackType;
   /// A list of interfaces on this VPN gateway.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpnInterfaces;
+  late final pulumi.Output<List<HaVpnGatewayVpnInterface>> vpnInterfaces;
 
   /// Creates a new [HaVpnGateway].
   /// [name] The Pulumi resource name.
@@ -983,23 +984,24 @@ class HaVpnGateway extends pulumi.CustomResource {
           'gcp:compute/haVpnGateway:HaVpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gatewayIpVersion = registerOutput<String?>('gatewayIpVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     params = registerOutput<HaVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HaVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     stackType = registerOutput<String?>('stackType');
-    vpnInterfaces = registerOutput<List<Map<String, dynamic>>>('vpnInterfaces');
+    vpnInterfaces = registerOutput<List<HaVpnGatewayVpnInterface>>('vpnInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HaVpnGatewayVpnInterface>(guardedValue, (value) => HaVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [HaVpnGateway] resource's state with the given [name] and [id].
@@ -1007,11 +1009,12 @@ class HaVpnGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HaVpnGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HaVpnGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1027,18 +1030,45 @@ class HaVpnGateway extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gatewayIpVersion = registerOutput<String?>('gatewayIpVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     params = registerOutput<HaVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HaVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     stackType = registerOutput<String?>('stackType');
-    vpnInterfaces = registerOutput<List<Map<String, dynamic>>>('vpnInterfaces');
+    vpnInterfaces = registerOutput<List<HaVpnGatewayVpnInterface>>('vpnInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HaVpnGatewayVpnInterface>(guardedValue, (value) => HaVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [HaVpnGateway] resource.
+  HaVpnGateway.reference(String urn)
+    : super(
+        'gcp:compute/haVpnGateway:HaVpnGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    gatewayIpVersion = registerOutput<String?>('gatewayIpVersion');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    params = registerOutput<HaVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HaVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    stackType = registerOutput<String?>('stackType');
+    vpnInterfaces = registerOutput<List<HaVpnGatewayVpnInterface>>('vpnInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HaVpnGatewayVpnInterface>(guardedValue, (value) => HaVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

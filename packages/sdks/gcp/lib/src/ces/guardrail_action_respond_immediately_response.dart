@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailActionRespondImmediatelyResponse {
   /// Whether the response is disabled. Disabled responses are not used by the
   /// agent.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Text for the agent to respond with.
   final pulumi.Input<String> text;
 

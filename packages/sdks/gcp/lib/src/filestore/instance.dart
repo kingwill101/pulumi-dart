@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
 import 'instance_directory_services.dart';
+import 'instance_effective_replication.dart';
 import 'instance_file_shares.dart';
 import 'instance_initial_replication.dart';
+import 'instance_network.dart';
 import 'instance_performance_config.dart';
 import 'instance_state.dart';
 
@@ -1007,7 +1009,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Output only fields for replication configuration.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> effectiveReplications;
+  late final pulumi.Output<List<InstanceEffectiveReplication>> effectiveReplications;
   /// Server-specified ETag for the instance resource to prevent
   /// simultaneous updates from overwriting each other.
   late final pulumi.Output<String> etag;
@@ -1033,7 +1035,7 @@ class Instance extends pulumi.CustomResource {
   /// VPC networks to which the instance is connected. For this version,
   /// only a single network is supported.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networks;
+  late final pulumi.Output<List<InstanceNetwork>> networks;
   /// Performance configuration for the instance. If not provided,
   /// the default performance settings will be used.
   /// Structure is documented below.
@@ -1082,7 +1084,8 @@ class Instance extends pulumi.CustomResource {
           'gcp:filestore/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1091,21 +1094,21 @@ class Instance extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     desiredReplicaState = registerOutput<String?>('desiredReplicaState');
     directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveReplications = registerOutput<List<Map<String, dynamic>>>('effectiveReplications');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveReplications = registerOutput<List<InstanceEffectiveReplication>>('effectiveReplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEffectiveReplication>(guardedValue, (value) => InstanceEffectiveReplication.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     fileShares = registerOutput<InstanceFileShares>('fileShares', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFileShares.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialReplication = registerOutput<InstanceInitialReplication?>('initialReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceInitialReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>>('networks');
+    networks = registerOutput<List<InstanceNetwork>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNetwork>(guardedValue, (value) => InstanceNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     performanceConfig = registerOutput<InstancePerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     protocol = registerOutput<String?>('protocol');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    tags = registerOutput<Map<String, String>?>('tags');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     zone = registerOutput<String>('zone');
   }
@@ -1115,11 +1118,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1140,21 +1144,57 @@ class Instance extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     desiredReplicaState = registerOutput<String?>('desiredReplicaState');
     directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    effectiveReplications = registerOutput<List<Map<String, dynamic>>>('effectiveReplications');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveReplications = registerOutput<List<InstanceEffectiveReplication>>('effectiveReplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEffectiveReplication>(guardedValue, (value) => InstanceEffectiveReplication.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     fileShares = registerOutput<InstanceFileShares>('fileShares', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFileShares.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialReplication = registerOutput<InstanceInitialReplication?>('initialReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceInitialReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>>('networks');
+    networks = registerOutput<List<InstanceNetwork>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNetwork>(guardedValue, (value) => InstanceNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     performanceConfig = registerOutput<InstancePerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     protocol = registerOutput<String?>('protocol');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    tags = registerOutput<Map<String, String>?>('tags');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String>('tier');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:filestore/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    deletionProtectionReason = registerOutput<String?>('deletionProtectionReason');
+    description = registerOutput<String?>('description');
+    desiredReplicaState = registerOutput<String?>('desiredReplicaState');
+    directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveReplications = registerOutput<List<InstanceEffectiveReplication>>('effectiveReplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEffectiveReplication>(guardedValue, (value) => InstanceEffectiveReplication.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    fileShares = registerOutput<InstanceFileShares>('fileShares', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFileShares.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialReplication = registerOutput<InstanceInitialReplication?>('initialReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceInitialReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<InstanceNetwork>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNetwork>(guardedValue, (value) => InstanceNetwork.fromMap((value as Map).cast<String, dynamic>())); });
+    performanceConfig = registerOutput<InstancePerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String?>('protocol');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     zone = registerOutput<String>('zone');
   }

@@ -6,11 +6,11 @@ import 'dashboard_chart_dashboard_chart_visualization_table_config_column_toolti
 
 class DashboardChartDashboardChartVisualizationTableConfig {
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSetting>>? columnRenderTypeSettings;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSetting>?>? columnRenderTypeSettings;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSetting>>? columnTooltipSettings;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSetting>?>? columnTooltipSettings;
   /// (Optional)
-  final pulumi.Input<bool>? enableTextWrap;
+  final pulumi.Input<bool?>? enableTextWrap;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationTableConfig].
   /// [columnRenderTypeSettings] Structure is documented below.

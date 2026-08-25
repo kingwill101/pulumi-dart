@@ -6,13 +6,13 @@ class JobTemplateConfigElementaryStreamAudioStream {
   /// Audio bitrate in bits per second.
   final pulumi.Input<int> bitrateBps;
   /// Number of audio channels. The default is `2`.
-  final pulumi.Input<int>? channelCount;
+  final pulumi.Input<int?>? channelCount;
   /// A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
-  final pulumi.Input<List<String>>? channelLayouts;
+  final pulumi.Input<List<String>?>? channelLayouts;
   /// The codec for this audio stream. The default is `aac`.
-  final pulumi.Input<String>? codec;
+  final pulumi.Input<String?>? codec;
   /// The audio sample rate in Hertz. The default is `48000`.
-  final pulumi.Input<int>? sampleRateHertz;
+  final pulumi.Input<int?>? sampleRateHertz;
 
   /// Creates a new [JobTemplateConfigElementaryStreamAudioStream].
   /// [bitrateBps] Audio bitrate in bits per second.
@@ -40,11 +40,11 @@ class JobTemplateConfigElementaryStreamAudioStream {
 
   factory JobTemplateConfigElementaryStreamAudioStream.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigElementaryStreamAudioStream(
-      bitrateBps: pulumi.Input.fromValue(map['bitrateBps'] as int),
-      channelCount: (() { final guardedValue = map['channelCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bitrateBps: pulumi.Input.fromValue((map['bitrateBps'] as num).toInt()),
+      channelCount: (() { final guardedValue = map['channelCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       channelLayouts: (() { final guardedValue = map['channelLayouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       codec: (() { final guardedValue = map['codec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sampleRateHertz: (() { final guardedValue = map['sampleRateHertz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sampleRateHertz: (() { final guardedValue = map['sampleRateHertz']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleRepairRolloutRuleRepairPhaseRollback {
   /// Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
-  final pulumi.Input<String>? destinationPhase;
+  final pulumi.Input<String?>? destinationPhase;
   /// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
-  final pulumi.Input<bool>? disableRollbackIfRolloutPending;
+  final pulumi.Input<bool?>? disableRollbackIfRolloutPending;
 
   /// Creates a new [AutomationRuleRepairRolloutRuleRepairPhaseRollback].
   /// [destinationPhase] Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.

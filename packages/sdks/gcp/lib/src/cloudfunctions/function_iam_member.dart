@@ -1027,7 +1027,7 @@ class FunctionIamMember extends pulumi.CustomResource {
           'gcp:cloudfunctions/functionIamMember:FunctionIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cloudFunction = registerOutput<String>('cloudFunction');
     condition = registerOutput<FunctionIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1043,11 +1043,12 @@ class FunctionIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1061,6 +1062,24 @@ class FunctionIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudFunction = registerOutput<String>('cloudFunction');
+    condition = registerOutput<FunctionIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [FunctionIamMember] resource.
+  FunctionIamMember.reference(String urn)
+    : super(
+        'gcp:cloudfunctions/functionIamMember:FunctionIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudFunction = registerOutput<String>('cloudFunction');
     condition = registerOutput<FunctionIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

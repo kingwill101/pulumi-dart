@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterUserManagedKeysConfig {
   /// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
-  final pulumi.Input<String>? aggregationCa;
+  final pulumi.Input<String?>? aggregationCa;
   /// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
-  final pulumi.Input<String>? clusterCa;
+  final pulumi.Input<String?>? clusterCa;
   /// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
-  final pulumi.Input<String>? controlPlaneDiskEncryptionKey;
+  final pulumi.Input<String?>? controlPlaneDiskEncryptionKey;
   /// The Cloud KMS cryptoKey versions to use for Confidential Hyperdisk on the control plane nodes.
-  final pulumi.Input<List<String>>? controlPlaneDiskEncryptionKeyVersions;
+  final pulumi.Input<List<String>?>? controlPlaneDiskEncryptionKeyVersions;
   /// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
-  final pulumi.Input<String>? etcdApiCa;
+  final pulumi.Input<String?>? etcdApiCa;
   /// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
-  final pulumi.Input<String>? etcdPeerCa;
+  final pulumi.Input<String?>? etcdPeerCa;
   /// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
-  final pulumi.Input<String>? gkeopsEtcdBackupEncryptionKey;
+  final pulumi.Input<String?>? gkeopsEtcdBackupEncryptionKey;
   /// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
-  final pulumi.Input<List<String>>? serviceAccountSigningKeys;
+  final pulumi.Input<List<String>?>? serviceAccountSigningKeys;
   /// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
-  final pulumi.Input<List<String>>? serviceAccountVerificationKeys;
+  final pulumi.Input<List<String>?>? serviceAccountVerificationKeys;
 
   /// Creates a new [ClusterUserManagedKeysConfig].
   /// [aggregationCa] The Certificate Authority Service caPool to use for the aggreation CA in this cluster.

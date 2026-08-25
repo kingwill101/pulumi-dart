@@ -6,7 +6,7 @@ import 'stream_source_config_oracle_source_config_include_objects_oracle_schema_
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>>? oracleTables;
+  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>?>? oracleTables;
   /// Schema name.
   final pulumi.Input<String> schema;
 

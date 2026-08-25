@@ -6,36 +6,36 @@ import 'report_config_group_preferenceset_assignment.dart';
 /// Input properties used for looking up and filtering ReportConfig resources.
 class ReportConfigState {
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-friendly display name. Maximum length is 63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Collection of combinations of groups and preference sets.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportConfigGroupPreferencesetAssignment>>? groupPreferencesetAssignments;
+  final pulumi.Input<List<ReportConfigGroupPreferencesetAssignment>?>? groupPreferencesetAssignments;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// User specified ID for the report config. It will become the last component
   /// of the report config name. The ID must be unique within the project, must
   /// conform with RFC-1034, is restricted to lower-cased letters, and has a
   /// maximum length of 63 characters. The ID must match the regular expression:
   /// a-z?.
-  final pulumi.Input<String>? reportConfigId;
+  final pulumi.Input<String?>? reportConfigId;
   /// The timestamp when the resource was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ReportConfigState].
   /// [createTime] The timestamp when the resource was created.

@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateConnectionPropertiesAmazonKinesisConnectionProperties {
   /// Access key ID to access the Amazon Kinesis.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// The name of the AWS region.
   /// If not provided, Goldengate will default to 'us-west-1'.
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// The endpoint URL of the Amazon Kinesis service.
   /// e.g.: 'https://kinesis.us-east-1.amazonaws.com'
   /// If not provided, Goldengate will default to
   /// 'https://kinesis..amazonaws.com'.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Secret access key to access the Amazon Kinesis.
-  final pulumi.Input<String>? secretAccessKeySecret;
+  final pulumi.Input<String?>? secretAccessKeySecret;
   /// The technology type of AmazonKinesisConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesAmazonKinesisConnectionProperties].
   /// [accessKeyId] Access key ID to access the Amazon Kinesis.

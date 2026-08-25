@@ -7,10 +7,10 @@ import 'feature_fleet_default_member_config_policycontroller_policy_controller_h
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
   /// Configures which bundles to install and their corresponding install specs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>>? bundles;
+  final pulumi.Input<List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>?>? bundles;
   /// Configures the installation of the Template Library.
   /// Structure is documented below.
-  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary>? templateLibrary;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary?>? templateLibrary;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent].
   /// [bundles] Configures which bundles to install and their corresponding install specs.

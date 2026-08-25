@@ -12,7 +12,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
   /// - Redact a field if the date of birth field is greater than 85.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition>? condition;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition?>? condition;
   /// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
   /// FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
   /// Structure is documented below.
@@ -20,12 +20,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
   /// Only one of `primitiveTransformation` or `infoTypeTransformations` must be specified.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations>? infoTypeTransformations;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations?>? infoTypeTransformations;
   /// Apply the transformation to the entire field.
   /// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
   /// Only one of `primitiveTransformation` or `infoTypeTransformations` must be specified.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation>? primitiveTransformation;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation?>? primitiveTransformation;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation].
   /// [condition] Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.

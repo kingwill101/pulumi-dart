@@ -16,15 +16,15 @@ class ExampleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human-readable description of the example.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the example.
   final pulumi.Input<String> displayName;
   /// The agent that initially handles the conversation. If not specified, the
   /// example represents a conversation that is handled by the root agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final pulumi.Input<String>? entryAgent;
+  final pulumi.Input<String?>? entryAgent;
   /// The ID to use for the example, which will become the final component of
   /// the example's resource name. In Terraform, this field is required.
   final pulumi.Input<String> exampleId;
@@ -32,10 +32,10 @@ class ExampleArgs {
   final pulumi.Input<String> location;
   /// The collection of messages that make up the conversation.
   /// Structure is documented below.
-  final pulumi.Input<List<ExampleMessage>>? messages;
+  final pulumi.Input<List<ExampleMessage>?>? messages;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ExampleArgs].
   /// [app] Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.

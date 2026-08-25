@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'framework_args.dart';
+import 'framework_cloud_control_detail.dart';
 import 'framework_state.dart';
 
 /// Frameworks allow you to monitor and enforce compliance and security requirements. Manage compliance by assigning built-in or custom frameworks to resources.
@@ -1473,7 +1474,7 @@ class Framework extends pulumi.CustomResource {
   /// The details of the cloud controls directly added without any grouping in
   /// the framework.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cloudControlDetails;
+  late final pulumi.Output<List<FrameworkCloudControlDetail>?> cloudControlDetails;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1531,10 +1532,10 @@ class Framework extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/framework:Framework',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    categories = registerOutput<List<String>>('categories');
-    cloudControlDetails = registerOutput<List<Map<String, dynamic>>?>('cloudControlDetails');
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cloudControlDetails = registerOutput<List<FrameworkCloudControlDetail>?>('cloudControlDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkCloudControlDetail>(guardedValue, (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -1544,9 +1545,9 @@ class Framework extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
     parent = registerOutput<String>('parent');
-    supportedCloudProviders = registerOutput<List<String>>('supportedCloudProviders');
-    supportedEnforcementModes = registerOutput<List<String>>('supportedEnforcementModes');
-    supportedTargetResourceTypes = registerOutput<List<String>>('supportedTargetResourceTypes');
+    supportedCloudProviders = registerOutput<List<String>>('supportedCloudProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedEnforcementModes = registerOutput<List<String>>('supportedEnforcementModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedTargetResourceTypes = registerOutput<List<String>>('supportedTargetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -1555,11 +1556,12 @@ class Framework extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrameworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Framework._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1573,8 +1575,8 @@ class Framework extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    categories = registerOutput<List<String>>('categories');
-    cloudControlDetails = registerOutput<List<Map<String, dynamic>>?>('cloudControlDetails');
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cloudControlDetails = registerOutput<List<FrameworkCloudControlDetail>?>('cloudControlDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkCloudControlDetail>(guardedValue, (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -1584,9 +1586,35 @@ class Framework extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
     parent = registerOutput<String>('parent');
-    supportedCloudProviders = registerOutput<List<String>>('supportedCloudProviders');
-    supportedEnforcementModes = registerOutput<List<String>>('supportedEnforcementModes');
-    supportedTargetResourceTypes = registerOutput<List<String>>('supportedTargetResourceTypes');
+    supportedCloudProviders = registerOutput<List<String>>('supportedCloudProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedEnforcementModes = registerOutput<List<String>>('supportedEnforcementModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedTargetResourceTypes = registerOutput<List<String>>('supportedTargetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Framework] resource.
+  Framework.reference(String urn)
+    : super(
+        'gcp:cloudsecuritycompliance/framework:Framework',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cloudControlDetails = registerOutput<List<FrameworkCloudControlDetail>?>('cloudControlDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkCloudControlDetail>(guardedValue, (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    frameworkId = registerOutput<String>('frameworkId');
+    location = registerOutput<String>('location');
+    majorRevisionId = registerOutput<String>('majorRevisionId');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    parent = registerOutput<String>('parent');
+    supportedCloudProviders = registerOutput<List<String>>('supportedCloudProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedEnforcementModes = registerOutput<List<String>>('supportedEnforcementModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedTargetResourceTypes = registerOutput<List<String>>('supportedTargetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

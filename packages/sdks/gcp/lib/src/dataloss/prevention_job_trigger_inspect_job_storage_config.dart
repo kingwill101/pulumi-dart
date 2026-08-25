@@ -10,19 +10,19 @@ import 'prevention_job_trigger_inspect_job_storage_config_timespan_config.dart';
 class PreventionJobTriggerInspectJobStorageConfig {
   /// Options defining BigQuery table and row identifiers.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigBigQueryOptions>? bigQueryOptions;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigBigQueryOptions?>? bigQueryOptions;
   /// Options defining a file or a set of files within a Google Cloud Storage bucket.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions>? cloudStorageOptions;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions?>? cloudStorageOptions;
   /// Options defining a data set within Google Cloud Datastore.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigDatastoreOptions>? datastoreOptions;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigDatastoreOptions?>? datastoreOptions;
   /// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigHybridOptions>? hybridOptions;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigHybridOptions?>? hybridOptions;
   /// Configuration of the timespan of the items to include in scanning
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigTimespanConfig>? timespanConfig;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigTimespanConfig?>? timespanConfig;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfig].
   /// [bigQueryOptions] Options defining BigQuery table and row identifiers.

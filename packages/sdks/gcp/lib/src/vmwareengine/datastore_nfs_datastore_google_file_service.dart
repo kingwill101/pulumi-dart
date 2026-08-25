@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatastoreNfsDatastoreGoogleFileService {
   /// Google filestore instance resource name
   /// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
-  final pulumi.Input<String>? filestoreInstance;
+  final pulumi.Input<String?>? filestoreInstance;
   /// Google netapp volume resource name
   /// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
-  final pulumi.Input<String>? netappVolume;
+  final pulumi.Input<String?>? netappVolume;
 
   /// Creates a new [DatastoreNfsDatastoreGoogleFileService].
   /// [filestoreInstance] Google filestore instance resource name

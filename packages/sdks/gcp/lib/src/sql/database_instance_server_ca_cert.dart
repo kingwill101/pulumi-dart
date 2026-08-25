@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceServerCaCert {
   /// The CA Certificate used to connect to the SQL Instance via SSL.
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// The CN valid for the CA Cert.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// Creation time of the CA Cert.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Expiration time of the CA Cert.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// SHA Fingerprint of the CA Cert.
-  final pulumi.Input<String>? sha1Fingerprint;
+  final pulumi.Input<String?>? sha1Fingerprint;
 
   /// Creates a new [DatabaseInstanceServerCaCert].
   /// [cert] The CA Certificate used to connect to the SQL Instance via SSL.

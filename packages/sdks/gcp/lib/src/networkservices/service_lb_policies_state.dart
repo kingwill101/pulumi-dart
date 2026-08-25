@@ -9,45 +9,45 @@ import 'service_lb_policies_isolation_config.dart';
 class ServiceLbPoliciesState {
   /// Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
   /// Structure is documented below.
-  final pulumi.Input<ServiceLbPoliciesAutoCapacityDrain>? autoCapacityDrain;
+  final pulumi.Input<ServiceLbPoliciesAutoCapacityDrain?>? autoCapacityDrain;
   /// Time the ServiceLbPolicy was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
   /// Structure is documented below.
-  final pulumi.Input<ServiceLbPoliciesFailoverConfig>? failoverConfig;
+  final pulumi.Input<ServiceLbPoliciesFailoverConfig?>? failoverConfig;
   /// Configuration to provide isolation support for the associated Backend Service.
   /// Structure is documented below.
-  final pulumi.Input<ServiceLbPoliciesIsolationConfig>? isolationConfig;
+  final pulumi.Input<ServiceLbPoliciesIsolationConfig?>? isolationConfig;
   /// Set of label tags associated with the ServiceLbPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
   /// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
-  final pulumi.Input<String>? loadBalancingAlgorithm;
+  final pulumi.Input<String?>? loadBalancingAlgorithm;
   /// The location of the service lb policy.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Time the ServiceLbPolicy was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ServiceLbPoliciesState].
   /// [autoCapacityDrain] Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.

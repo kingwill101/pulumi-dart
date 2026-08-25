@@ -12,7 +12,7 @@ class FolderKajPolicyConfigArgs {
   /// created in this folder. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final pulumi.Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy;
+  final pulumi.Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>? defaultKeyAccessJustificationPolicy;
   /// The numeric folder number for which to retrieve config.
   final pulumi.Input<String> folder;
 

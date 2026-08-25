@@ -9,10 +9,10 @@ class ImageRawDisk {
   /// image is created.
   /// Default value is `TAR`.
   /// Possible values are: `TAR`.
-  final pulumi.Input<String>? containerType;
+  final pulumi.Input<String?>? containerType;
   /// An optional SHA1 checksum of the disk image before unpackaging.
   /// This is provided by the client when the disk image is created.
-  final pulumi.Input<String>? sha1;
+  final pulumi.Input<String?>? sha1;
   /// The full Google Cloud Storage URL where disk storage is stored
   /// You must provide either this property or the sourceDisk property
   /// but not both.

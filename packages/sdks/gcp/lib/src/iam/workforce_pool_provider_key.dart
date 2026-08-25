@@ -354,7 +354,7 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
@@ -373,11 +373,12 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkforcePoolProviderKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkforcePoolProviderKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,6 +400,27 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     providerId = registerOutput<String>('providerId');
     this.state = registerOutput<String>('state');
+    use = registerOutput<String>('use');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePoolProviderKey] resource.
+  WorkforcePoolProviderKey.reference(String urn)
+    : super(
+        'gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    expireTime = registerOutput<String>('expireTime');
+    keyData = registerOutput<WorkforcePoolProviderKeyKeyData>('keyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderKeyKeyData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyId = registerOutput<String>('keyId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    providerId = registerOutput<String>('providerId');
+    state = registerOutput<String>('state');
     use = registerOutput<String>('use');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }

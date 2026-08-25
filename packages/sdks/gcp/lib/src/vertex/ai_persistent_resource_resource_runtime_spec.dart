@@ -6,7 +6,7 @@ import 'ai_persistent_resource_resource_runtime_spec_service_account_spec.dart';
 class AiPersistentResourceResourceRuntimeSpec {
   /// Configuration for the use of custom service account to run the workloads.
   /// Structure is documented below.
-  final pulumi.Input<AiPersistentResourceResourceRuntimeSpecServiceAccountSpec>? serviceAccountSpec;
+  final pulumi.Input<AiPersistentResourceResourceRuntimeSpecServiceAccountSpec?>? serviceAccountSpec;
 
   /// Creates a new [AiPersistentResourceResourceRuntimeSpec].
   /// [serviceAccountSpec] Configuration for the use of custom service account to run the workloads.

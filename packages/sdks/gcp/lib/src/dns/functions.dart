@@ -218,6 +218,17 @@ Future<GetKeysResult> getKeys(
   return GetKeysResult.fromMap(result);
 }
 
+pulumi.Output<GetKeysResult> getKeysOutput(
+  GetKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dns/getKeys:getKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeysResult.fromMap);
+}
+
 /// Provides access to a zone's attributes within Google Cloud DNS.
 /// For more information see
 /// [the official documentation](https://cloud.google.com/dns/zones/)
@@ -403,6 +414,17 @@ Future<GetManagedZoneResult> getManagedZone(
   return GetManagedZoneResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedZoneResult> getManagedZoneOutput(
+  GetManagedZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dns/getManagedZone:getManagedZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedZoneResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for managedzone
 ///
 ///
@@ -529,6 +551,17 @@ Future<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicy(
   return GetManagedZoneIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyOutput(
+  GetManagedZoneIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedZoneIamPolicyResult.fromMap);
+}
+
 /// Provides access to a list of zones within Google Cloud DNS.
 /// For more information see
 /// [the official documentation](https://cloud.google.com/dns/zones/)
@@ -647,6 +680,17 @@ Future<GetManagedZonesResult> getManagedZones(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedZonesResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedZonesResult> getManagedZonesOutput(
+  GetManagedZonesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dns/getManagedZones:getManagedZones',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedZonesResult.fromMap);
 }
 
 /// Get a DNS record set within Google Cloud DNS
@@ -815,6 +859,17 @@ Future<GetRecordSetResult> getRecordSet(
   return GetRecordSetResult.fromMap(result);
 }
 
+pulumi.Output<GetRecordSetResult> getRecordSetOutput(
+  GetRecordSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dns/getRecordSet:getRecordSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecordSetResult.fromMap);
+}
+
 /// Get a list of DNS record sets within a Google Cloud DNS managed zone. This data source allows you to list all record sets or filter them by name and type.
 ///
 /// To get more information about Cloud DNS Record Sets, see:
@@ -973,4 +1028,15 @@ Future<GetRecordSetsResult> getRecordSets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRecordSetsResult.fromMap(result);
+}
+
+pulumi.Output<GetRecordSetsResult> getRecordSetsOutput(
+  GetRecordSetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dns/getRecordSets:getRecordSets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecordSetsResult.fromMap);
 }

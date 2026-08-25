@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppHostingDomainServeRedirect {
   /// The status code to use in a redirect response. Must be a valid HTTP 3XX
   /// status code. Defaults to 302 if not present.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The URI of the redirect's intended destination. This URI will be
   /// prepended to the original request path. URI without a scheme are
   /// assumed to be HTTPS.

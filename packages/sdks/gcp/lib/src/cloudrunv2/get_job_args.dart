@@ -10,12 +10,12 @@ class GetJobArgs {
   /// The location of the instance. eg us-central1
   ///
   /// - - -
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Cloud Run v2 Job.
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetJobArgs].
   /// [location] The location of the instance. eg us-central1

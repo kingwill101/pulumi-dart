@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityActionFlagHeader {
   /// The header name to be sent to the target.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The header value to be sent to the target.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SecurityActionFlagHeader].
   /// [name] The header name to be sent to the target.

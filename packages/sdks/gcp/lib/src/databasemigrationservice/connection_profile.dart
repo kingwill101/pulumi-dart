@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_profile_alloydb.dart';
 import 'connection_profile_args.dart';
 import 'connection_profile_cloudsql.dart';
+import 'connection_profile_error.dart';
 import 'connection_profile_mysql.dart';
 import 'connection_profile_oracle.dart';
 import 'connection_profile_postgresql.dart';
@@ -3726,7 +3727,7 @@ class ConnectionProfile extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Output only. The error details in case of state FAILED.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<ConnectionProfileError>> errors;
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -3769,7 +3770,8 @@ class ConnectionProfile extends pulumi.CustomResource {
           'gcp:databasemigrationservice/connectionProfile:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     alloydb = registerOutput<ConnectionProfileAlloydb?>('alloydb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileAlloydb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudsql = registerOutput<ConnectionProfileCloudsql?>('cloudsql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileCloudsql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3778,16 +3780,16 @@ class ConnectionProfile extends pulumi.CustomResource {
     dbprovider = registerOutput<String>('dbprovider');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<ConnectionProfileError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionProfileError>(guardedValue, (value) => ConnectionProfileError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     mysql = registerOutput<ConnectionProfileMysql?>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMysql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     oracle = registerOutput<ConnectionProfileOracle?>('oracle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileOracle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     postgresql = registerOutput<ConnectionProfilePostgresql?>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     role = registerOutput<String>('role');
     state = registerOutput<String>('state');
   }
@@ -3797,11 +3799,12 @@ class ConnectionProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3822,17 +3825,48 @@ class ConnectionProfile extends pulumi.CustomResource {
     dbprovider = registerOutput<String>('dbprovider');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<ConnectionProfileError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionProfileError>(guardedValue, (value) => ConnectionProfileError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     mysql = registerOutput<ConnectionProfileMysql?>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMysql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     oracle = registerOutput<ConnectionProfileOracle?>('oracle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileOracle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     postgresql = registerOutput<ConnectionProfilePostgresql?>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     role = registerOutput<String>('role');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionProfile] resource.
+  ConnectionProfile.reference(String urn)
+    : super(
+        'gcp:databasemigrationservice/connectionProfile:ConnectionProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    alloydb = registerOutput<ConnectionProfileAlloydb?>('alloydb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileAlloydb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudsql = registerOutput<ConnectionProfileCloudsql?>('cloudsql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileCloudsql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionProfileId = registerOutput<String>('connectionProfileId');
+    createTime = registerOutput<String>('createTime');
+    dbprovider = registerOutput<String>('dbprovider');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<ConnectionProfileError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionProfileError>(guardedValue, (value) => ConnectionProfileError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    mysql = registerOutput<ConnectionProfileMysql?>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileMysql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oracle = registerOutput<ConnectionProfileOracle?>('oracle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileOracle.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresql = registerOutput<ConnectionProfilePostgresql?>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfilePostgresql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    role = registerOutput<String>('role');
+    state = registerOutput<String>('state');
   }
 }

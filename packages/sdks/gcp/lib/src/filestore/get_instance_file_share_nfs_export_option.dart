@@ -55,8 +55,8 @@ class GetInstanceFileShareNfsExportOption {
   factory GetInstanceFileShareNfsExportOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceFileShareNfsExportOption(
       accessMode: pulumi.Input.fromValue(map['accessMode'] as String),
-      anonGid: pulumi.Input.fromValue(map['anonGid'] as int),
-      anonUid: pulumi.Input.fromValue(map['anonUid'] as int),
+      anonGid: pulumi.Input.fromValue((map['anonGid'] as num).toInt()),
+      anonUid: pulumi.Input.fromValue((map['anonUid'] as num).toInt()),
       ipRanges: pulumi.Input.fromValue((map['ipRanges'] as List).cast<String>()),
       network: pulumi.Input.fromValue(map['network'] as String),
       squashMode: pulumi.Input.fromValue(map['squashMode'] as String),

@@ -8,7 +8,7 @@ import 'hl7_store_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_healthcare_hl7_store_iam_binding_hl7_store_iam_binding_args_doc}
 class Hl7StoreIamBindingArgs {
-  final pulumi.Input<Hl7StoreIamBindingCondition>? condition;
+  final pulumi.Input<Hl7StoreIamBindingCondition?>? condition;
   /// The HL7v2 store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
   /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's

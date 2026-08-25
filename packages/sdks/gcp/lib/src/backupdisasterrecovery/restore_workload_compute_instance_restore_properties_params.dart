@@ -5,7 +5,7 @@ import 'restore_workload_compute_instance_restore_properties_params_resource_man
 
 class RestoreWorkloadComputeInstanceRestorePropertiesParams {
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag>>? resourceManagerTags;
+  final pulumi.Input<List<RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag>?>? resourceManagerTags;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesParams].
   /// [resourceManagerTags] Structure is documented below.

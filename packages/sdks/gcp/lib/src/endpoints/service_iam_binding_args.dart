@@ -8,7 +8,7 @@ import 'service_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_endpoints_service_iam_binding_service_iam_binding_args_doc}
 class ServiceIamBindingArgs {
-  final pulumi.Input<ServiceIamBindingCondition>? condition;
+  final pulumi.Input<ServiceIamBindingCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudVmClusterPropertiesTimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// IANA Time Zone Database version number, e.g. "2019a".
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CloudVmClusterPropertiesTimeZone].
   /// [id] IANA Time Zone Database time zone, e.g. "America/New_York".

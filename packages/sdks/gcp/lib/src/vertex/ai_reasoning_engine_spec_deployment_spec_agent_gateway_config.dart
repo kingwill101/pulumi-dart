@@ -7,10 +7,10 @@ import 'ai_reasoning_engine_spec_deployment_spec_agent_gateway_config_client_to_
 class AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig {
   /// Optional. Configuration for traffic originating from the Reasoning Engine.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig>? agentToAnywhereConfig;
+  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig?>? agentToAnywhereConfig;
   /// Optional. Configuration for traffic targeting the Reasoning Engine.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig>? clientToAgentConfig;
+  final pulumi.Input<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig?>? clientToAgentConfig;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig].
   /// [agentToAnywhereConfig] Optional. Configuration for traffic originating from the Reasoning Engine.

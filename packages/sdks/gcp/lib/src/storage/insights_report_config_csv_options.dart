@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsReportConfigCsvOptions {
   /// The delimiter used to separate the fields in the inventory report CSV file.
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
   /// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-  final pulumi.Input<bool>? headerRequired;
+  final pulumi.Input<bool?>? headerRequired;
   /// The character used to separate the records in the inventory report CSV file.
-  final pulumi.Input<String>? recordSeparator;
+  final pulumi.Input<String?>? recordSeparator;
 
   /// Creates a new [InsightsReportConfigCsvOptions].
   /// [delimiter] The delimiter used to separate the fields in the inventory report CSV file.

@@ -16,9 +16,9 @@ class FolderNotificationConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Numerical ID of the parent folder.
   final pulumi.Input<String> folder;
   /// The Pub/Sub topic to send notifications to. Its format is

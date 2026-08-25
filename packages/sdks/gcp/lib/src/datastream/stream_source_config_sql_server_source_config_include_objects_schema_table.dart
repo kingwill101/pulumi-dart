@@ -6,7 +6,7 @@ import 'stream_source_config_sql_server_source_config_include_objects_schema_tab
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable {
   /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn>>? columns;
+  final pulumi.Input<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn>?>? columns;
   /// Table name.
   final pulumi.Input<String> table;
 

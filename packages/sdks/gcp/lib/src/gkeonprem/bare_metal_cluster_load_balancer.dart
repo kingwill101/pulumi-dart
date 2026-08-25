@@ -10,13 +10,13 @@ import 'bare_metal_cluster_load_balancer_vip_config.dart';
 class BareMetalClusterLoadBalancer {
   /// Configuration for BGP typed load balancers.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterLoadBalancerBgpLbConfig>? bgpLbConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerBgpLbConfig?>? bgpLbConfig;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterLoadBalancerManualLbConfig>? manualLbConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerManualLbConfig?>? manualLbConfig;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterLoadBalancerMetalLbConfig>? metalLbConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerMetalLbConfig?>? metalLbConfig;
   /// Specifies the load balancer ports.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterLoadBalancerPortConfig> portConfig;

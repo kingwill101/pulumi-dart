@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceGceSetupConfidentialInstanceConfig {
   /// Defines the type of technology used by the confidential instance.
   /// Possible values are: `SEV`.
-  final pulumi.Input<String>? confidentialInstanceType;
+  final pulumi.Input<String?>? confidentialInstanceType;
 
   /// Creates a new [InstanceGceSetupConfidentialInstanceConfig].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.

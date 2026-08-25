@@ -5,12 +5,12 @@ import 'v2_queued_resource_tpu_node_spec_node_network_config.dart';
 
 class V2QueuedResourceTpuNodeSpecNode {
   /// TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// Text description of the TPU.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Network configurations for the TPU node.
   /// Structure is documented below.
-  final pulumi.Input<V2QueuedResourceTpuNodeSpecNodeNetworkConfig>? networkConfig;
+  final pulumi.Input<V2QueuedResourceTpuNodeSpecNodeNetworkConfig?>? networkConfig;
   /// Runtime version for the TPU.
   final pulumi.Input<String> runtimeVersion;
 

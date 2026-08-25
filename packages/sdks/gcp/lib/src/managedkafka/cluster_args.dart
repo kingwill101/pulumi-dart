@@ -14,7 +14,7 @@ import 'cluster_tls_config.dart';
 class ClusterArgs {
   /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterBrokerCapacityConfig>? brokerCapacityConfig;
+  final pulumi.Input<ClusterBrokerCapacityConfig?>? brokerCapacityConfig;
   /// A capacity configuration of a Kafka cluster.
   /// Structure is documented below.
   final pulumi.Input<ClusterCapacityConfig> capacityConfig;
@@ -26,25 +26,25 @@ class ClusterArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
   final pulumi.Input<ClusterGcpConfig> gcpConfig;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Defines rebalancing behavior of a Kafka cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterRebalanceConfig>? rebalanceConfig;
+  final pulumi.Input<ClusterRebalanceConfig?>? rebalanceConfig;
   /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
   /// Structure is documented below.
-  final pulumi.Input<ClusterTlsConfig>? tlsConfig;
+  final pulumi.Input<ClusterTlsConfig?>? tlsConfig;
 
   /// Creates a new [ClusterArgs].
   /// [brokerCapacityConfig] Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.

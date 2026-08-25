@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue {
   /// String.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValue].
   /// [stringValue] String.

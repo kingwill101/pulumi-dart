@@ -6,7 +6,7 @@ class RestoreWorkloadDiskRestorePropertiesResourceManagerTag {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> key;
   /// (Optional)
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [RestoreWorkloadDiskRestorePropertiesResourceManagerTag].
   /// [key] The identifier for this object. Format specified above.

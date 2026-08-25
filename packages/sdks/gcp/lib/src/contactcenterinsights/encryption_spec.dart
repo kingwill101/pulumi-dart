@@ -693,7 +693,7 @@ class EncryptionSpec extends pulumi.CustomResource {
           'gcp:contactcenterinsights/encryptionSpec:EncryptionSpec',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     kmsKey = registerOutput<String>('kmsKey');
     location = registerOutput<String>('location');
@@ -705,11 +705,12 @@ class EncryptionSpec extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EncryptionSpecState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EncryptionSpec._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -723,6 +724,20 @@ class EncryptionSpec extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    kmsKey = registerOutput<String>('kmsKey');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [EncryptionSpec] resource.
+  EncryptionSpec.reference(String urn)
+    : super(
+        'gcp:contactcenterinsights/encryptionSpec:EncryptionSpec',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     kmsKey = registerOutput<String>('kmsKey');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');

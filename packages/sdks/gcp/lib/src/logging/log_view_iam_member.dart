@@ -2242,7 +2242,7 @@ class LogViewIamMember extends pulumi.CustomResource {
           'gcp:logging/logViewIamMember:LogViewIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<LogViewIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogViewIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2259,11 +2259,12 @@ class LogViewIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogViewIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogViewIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2277,6 +2278,25 @@ class LogViewIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    condition = registerOutput<LogViewIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogViewIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [LogViewIamMember] resource.
+  LogViewIamMember.reference(String urn)
+    : super(
+        'gcp:logging/logViewIamMember:LogViewIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<LogViewIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogViewIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

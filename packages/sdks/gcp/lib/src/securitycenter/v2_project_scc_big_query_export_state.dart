@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering V2ProjectSccBigQueryExport resources.
 class V2ProjectSccBigQueryExportState {
   /// This must be unique within the organization.
-  final pulumi.Input<String>? bigQueryExportId;
+  final pulumi.Input<String?>? bigQueryExportId;
   /// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
   /// expression is a list of zero or more restrictions combined via
@@ -42,25 +42,25 @@ class V2ProjectSccBigQueryExportState {
   /// See
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// location Id is provided by organization. If not provided, Use global as default.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Email address of the user who last edited the BigQuery export.
   /// This field is set by the server and will be ignored if provided on export creation or update.
-  final pulumi.Input<String>? mostRecentEditor;
+  final pulumi.Input<String?>? mostRecentEditor;
   /// The resource name of this export, in the format
   /// `projects/{{project}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`.
   /// This field is provided in responses, and is ignored when provided in create requests.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The service account that needs permission to create table and upload data to the BigQuery dataset.
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [V2ProjectSccBigQueryExportState].
   /// [bigQueryExportId] This must be unique within the organization.

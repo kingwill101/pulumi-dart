@@ -181,7 +181,7 @@ class DocumentAiProcessor extends pulumi.CustomResource {
           'gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
@@ -197,11 +197,12 @@ class DocumentAiProcessor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentAiProcessorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DocumentAiProcessor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -215,6 +216,24 @@ class DocumentAiProcessor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DocumentAiProcessor] resource.
+  DocumentAiProcessor.reference(String urn)
+    : super(
+        'gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     kmsKeyName = registerOutput<String?>('kmsKeyName');

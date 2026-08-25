@@ -10,7 +10,7 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
   /// The file format.
   final pulumi.Input<String> fileFormat;
   /// The root path inside the Cloud Storage bucket.
-  final pulumi.Input<String>? rootPath;
+  final pulumi.Input<String?>? rootPath;
   /// The table format.
   final pulumi.Input<String> tableFormat;
 

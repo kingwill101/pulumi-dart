@@ -55,14 +55,14 @@ class GetDbNodesDbNodeProperty {
 
   factory GetDbNodesDbNodeProperty.fromMap(Map<String, dynamic> map) {
     return GetDbNodesDbNodeProperty(
-      dbNodeStorageSizeGb: pulumi.Input.fromValue(map['dbNodeStorageSizeGb'] as int),
+      dbNodeStorageSizeGb: pulumi.Input.fromValue((map['dbNodeStorageSizeGb'] as num).toInt()),
       dbServerOcid: pulumi.Input.fromValue(map['dbServerOcid'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
-      memorySizeGb: pulumi.Input.fromValue(map['memorySizeGb'] as int),
+      memorySizeGb: pulumi.Input.fromValue((map['memorySizeGb'] as num).toInt()),
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
-      ocpuCount: pulumi.Input.fromValue(map['ocpuCount'] as int),
+      ocpuCount: pulumi.Input.fromValue((map['ocpuCount'] as num).toInt()),
       state: pulumi.Input.fromValue(map['state'] as String),
-      totalCpuCoreCount: pulumi.Input.fromValue(map['totalCpuCoreCount'] as int),
+      totalCpuCoreCount: pulumi.Input.fromValue((map['totalCpuCoreCount'] as num).toInt()),
     );
   }
 }

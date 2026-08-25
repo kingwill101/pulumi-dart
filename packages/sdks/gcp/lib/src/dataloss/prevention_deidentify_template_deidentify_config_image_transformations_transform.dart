@@ -6,15 +6,15 @@ import 'prevention_deidentify_template_deidentify_config_image_transformations_t
 
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform {
   /// Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.
-  final pulumi.Input<Map<String, dynamic>>? allInfoTypes;
+  final pulumi.Input<Map<String, dynamic>?>? allInfoTypes;
   /// Apply transformation to all text that doesn't match an infoType.
-  final pulumi.Input<Map<String, dynamic>>? allText;
+  final pulumi.Input<Map<String, dynamic>?>? allText;
   /// The color to use when redacting content from an image. If not specified, the default is black.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor>? redactionColor;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor?>? redactionColor;
   /// Apply transformation to the selected infoTypes.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes>? selectedInfoTypes;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes?>? selectedInfoTypes;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform].
   /// [allInfoTypes] Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.

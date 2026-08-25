@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_workflow_config_args.dart';
 import 'repository_workflow_config_invocation_config.dart';
+import 'repository_workflow_config_recent_scheduled_execution_record.dart';
 import 'repository_workflow_config_state.dart';
 
 /// A resource represents a Dataform workflow configuration
@@ -1456,7 +1457,7 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentScheduledExecutionRecords;
+  late final pulumi.Output<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>> recentScheduledExecutionRecords;
   /// A reference to the region
   late final pulumi.Output<String?> region;
   /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
@@ -1478,7 +1479,7 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
           'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cronSchedule = registerOutput<String?>('cronSchedule');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1486,7 +1487,7 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
     invocationConfig = registerOutput<RepositoryWorkflowConfigInvocationConfig?>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkflowConfigInvocationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledExecutionRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledExecutionRecords');
+    recentScheduledExecutionRecords = registerOutput<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>('recentScheduledExecutionRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecord>(guardedValue, (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String?>('region');
     releaseConfig = registerOutput<String>('releaseConfig');
     repository = registerOutput<String?>('repository');
@@ -1498,11 +1499,12 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryWorkflowConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryWorkflowConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1522,7 +1524,29 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
     invocationConfig = registerOutput<RepositoryWorkflowConfigInvocationConfig?>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkflowConfigInvocationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledExecutionRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledExecutionRecords');
+    recentScheduledExecutionRecords = registerOutput<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>('recentScheduledExecutionRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecord>(guardedValue, (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String?>('region');
+    releaseConfig = registerOutput<String>('releaseConfig');
+    repository = registerOutput<String?>('repository');
+    timeZone = registerOutput<String?>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryWorkflowConfig] resource.
+  RepositoryWorkflowConfig.reference(String urn)
+    : super(
+        'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cronSchedule = registerOutput<String?>('cronSchedule');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    invocationConfig = registerOutput<RepositoryWorkflowConfigInvocationConfig?>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryWorkflowConfigInvocationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recentScheduledExecutionRecords = registerOutput<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>('recentScheduledExecutionRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecord>(guardedValue, (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String?>('region');
     releaseConfig = registerOutput<String>('releaseConfig');
     repository = registerOutput<String?>('repository');

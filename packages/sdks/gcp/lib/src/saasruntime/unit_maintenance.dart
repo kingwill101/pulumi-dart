@@ -6,7 +6,7 @@ class UnitMaintenance {
   /// If present, it fixes the release on the unit until the given time; i.e.
   /// changes to the release field will be rejected. Rollouts should and will
   /// also respect this by not requesting an upgrade in the first place.
-  final pulumi.Input<String>? pinnedUntilTime;
+  final pulumi.Input<String?>? pinnedUntilTime;
 
   /// Creates a new [UnitMaintenance].
   /// [pinnedUntilTime] If present, it fixes the release on the unit until the given time; i.e.

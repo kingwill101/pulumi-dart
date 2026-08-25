@@ -7,10 +7,10 @@ import 'assistant_customer_policy_model_armor_config.dart';
 class AssistantCustomerPolicy {
   /// List of banned phrases.
   /// Structure is documented below.
-  final pulumi.Input<List<AssistantCustomerPolicyBannedPhrase>>? bannedPhrases;
+  final pulumi.Input<List<AssistantCustomerPolicyBannedPhrase>?>? bannedPhrases;
   /// Model Armor configuration to be used for sanitizing user prompts and assistant responses.
   /// Structure is documented below.
-  final pulumi.Input<AssistantCustomerPolicyModelArmorConfig>? modelArmorConfig;
+  final pulumi.Input<AssistantCustomerPolicyModelArmorConfig?>? modelArmorConfig;
 
   /// Creates a new [AssistantCustomerPolicy].
   /// [bannedPhrases] List of banned phrases.

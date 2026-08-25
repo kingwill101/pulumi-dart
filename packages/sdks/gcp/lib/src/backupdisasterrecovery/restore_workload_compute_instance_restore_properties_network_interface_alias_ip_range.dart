@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange {
   /// (Optional)
-  final pulumi.Input<String>? ipCidrRange;
+  final pulumi.Input<String?>? ipCidrRange;
   /// (Optional)
-  final pulumi.Input<String>? subnetworkRangeName;
+  final pulumi.Input<String?>? subnetworkRangeName;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange].
   /// [ipCidrRange] (Optional)

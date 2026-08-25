@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceTemplateNetworkInterfaceAccessConfig {
   /// The IP address that will be 1:1 mapped to the instance's
   /// network ip. If not given, one will be generated.
-  final pulumi.Input<String>? natIp;
+  final pulumi.Input<String?>? natIp;
   /// The service-level to be provided for IPv6 traffic when the
   /// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
-  final pulumi.Input<String>? networkTier;
+  final pulumi.Input<String?>? networkTier;
   /// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
-  final pulumi.Input<String>? publicPtrDomainName;
+  final pulumi.Input<String?>? publicPtrDomainName;
 
   /// Creates a new [InstanceTemplateNetworkInterfaceAccessConfig].
   /// [natIp] The IP address that will be 1:1 mapped to the instance's

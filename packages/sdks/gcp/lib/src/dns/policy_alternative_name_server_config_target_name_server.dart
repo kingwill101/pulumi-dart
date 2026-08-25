@@ -9,7 +9,7 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Possible values are: `default`, `private`.
   ///
   /// &lt;a name="nestedDns64Config"&gt;&lt;/a&gt;The `dns64Config` block supports:
-  final pulumi.Input<String>? forwardingPath;
+  final pulumi.Input<String?>? forwardingPath;
   /// IPv4 address to forward to.
   final pulumi.Input<String> ipv4Address;
 

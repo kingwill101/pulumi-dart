@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_identity_pool_namespace_args.dart';
+import 'workload_identity_pool_namespace_owner_service.dart';
 import 'workload_identity_pool_namespace_state.dart';
 
 /// Represents a namespace for a workload identity pool. Namespaces are used to segment identities
@@ -358,7 +359,7 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
   /// Defines the owner that is allowed to mutate this resource. If present, this resource can only
   /// be mutated by the owner.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ownerServices;
+  late final pulumi.Output<List<WorkloadIdentityPoolNamespaceOwnerService>> ownerServices;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -393,13 +394,13 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
-    ownerServices = registerOutput<List<Map<String, dynamic>>>('ownerServices');
+    ownerServices = registerOutput<List<WorkloadIdentityPoolNamespaceOwnerService>>('ownerServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(guardedValue, (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
@@ -411,11 +412,12 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkloadIdentityPoolNamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkloadIdentityPoolNamespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -433,9 +435,29 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
-    ownerServices = registerOutput<List<Map<String, dynamic>>>('ownerServices');
+    ownerServices = registerOutput<List<WorkloadIdentityPoolNamespaceOwnerService>>('ownerServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(guardedValue, (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+    workloadIdentityPoolNamespaceId = registerOutput<String>('workloadIdentityPoolNamespaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadIdentityPoolNamespace] resource.
+  WorkloadIdentityPoolNamespace.reference(String urn)
+    : super(
+        'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    this.name = registerOutput<String>('name');
+    ownerServices = registerOutput<List<WorkloadIdentityPoolNamespaceOwnerService>>('ownerServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(guardedValue, (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
     workloadIdentityPoolNamespaceId = registerOutput<String>('workloadIdentityPoolNamespaceId');
   }

@@ -8,18 +8,18 @@ class ReportSummaryGroupFinding {
   /// (Output)
   /// Aggregate statistics for a collection of assets.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStat>>? assetAggregateStats;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStat>?>? assetAggregateStats;
   /// Free-text description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-friendly display name. Maximum length is 63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// This field is deprecated, do not rely on it having a value.
-  final pulumi.Input<String>? overlappingAssetCount;
+  final pulumi.Input<String?>? overlappingAssetCount;
   /// (Output)
   /// Findings for each of the PreferenceSets for this group.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFinding>>? preferenceSetFindings;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFinding>?>? preferenceSetFindings;
 
   /// Creates a new [ReportSummaryGroupFinding].
   /// [assetAggregateStats] (Output)

@@ -24,70 +24,70 @@ class AppArgs {
   /// Configuration for how the input and output audio should be processed and
   /// delivered.
   /// Structure is documented below.
-  final pulumi.Input<AppAudioProcessingConfig>? audioProcessingConfig;
+  final pulumi.Input<AppAudioProcessingConfig?>? audioProcessingConfig;
   /// The default client certificate settings for the app.
   /// Structure is documented below.
-  final pulumi.Input<AppClientCertificateSettings>? clientCertificateSettings;
+  final pulumi.Input<AppClientCertificateSettings?>? clientCertificateSettings;
   /// Data store related settings for the app.
   /// Structure is documented below.
-  final pulumi.Input<AppDataStoreSettings>? dataStoreSettings;
+  final pulumi.Input<AppDataStoreSettings?>? dataStoreSettings;
   /// A ChannelProfile configures the agent's behavior for a specific communication
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
-  final pulumi.Input<AppDefaultChannelProfile>? defaultChannelProfile;
+  final pulumi.Input<AppDefaultChannelProfile?>? defaultChannelProfile;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human-readable description of the app.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the app.
   final pulumi.Input<String> displayName;
   /// Threshold settings for metrics in an Evaluation.
   /// Structure is documented below.
-  final pulumi.Input<AppEvaluationMetricsThresholds>? evaluationMetricsThresholds;
+  final pulumi.Input<AppEvaluationMetricsThresholds?>? evaluationMetricsThresholds;
   /// Instructions for all the agents in the app.
   /// You can use this instruction to set up a stable identity or personality
   /// across all the agents.
-  final pulumi.Input<String>? globalInstruction;
+  final pulumi.Input<String?>? globalInstruction;
   /// List of guardrails for the app.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-  final pulumi.Input<List<String>>? guardrails;
+  final pulumi.Input<List<String>?>? guardrails;
   /// Language settings of the app.
   /// Structure is documented below.
-  final pulumi.Input<AppLanguageSettings>? languageSettings;
+  final pulumi.Input<AppLanguageSettings?>? languageSettings;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Settings to describe the logging behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<AppLoggingSettings>? loggingSettings;
+  final pulumi.Input<AppLoggingSettings?>? loggingSettings;
   /// Metadata about the app. This field can be used to store additional
   /// information relevant to the app's details or intended usages.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final pulumi.Input<AppModelSettings>? modelSettings;
+  final pulumi.Input<AppModelSettings?>? modelSettings;
   /// Whether the app is pinned in the app list.
-  final pulumi.Input<bool>? pinned;
+  final pulumi.Input<bool?>? pinned;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The root agent is the entry point of the app.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final pulumi.Input<String>? rootAgent;
+  final pulumi.Input<String?>? rootAgent;
   /// TimeZone settings of the app.
   /// Structure is documented below.
-  final pulumi.Input<AppTimeZoneSettings>? timeZoneSettings;
+  final pulumi.Input<AppTimeZoneSettings?>? timeZoneSettings;
   /// The tool execution mode for the app.
   /// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
-  final pulumi.Input<String>? toolExecutionMode;
+  final pulumi.Input<String?>? toolExecutionMode;
   /// The declarations of the variables.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVariableDeclaration>>? variableDeclarations;
+  final pulumi.Input<List<AppVariableDeclaration>?>? variableDeclarations;
 
   /// Creates a new [AppArgs].
   /// [appId] The ID to use for the app, which will become the final component of

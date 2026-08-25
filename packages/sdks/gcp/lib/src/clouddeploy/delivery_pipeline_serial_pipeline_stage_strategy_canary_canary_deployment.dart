@@ -8,17 +8,17 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_canary_deploymen
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
   /// Optional. Configuration for the analysis job.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis>? analysis;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysis?>? analysis;
   /// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 &lt;= n &lt; 100.
   final pulumi.Input<List<int>> percentages;
   /// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy>? postdeploy;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy?>? postdeploy;
   /// Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy>? predeploy;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy?>? predeploy;
   /// Whether to run verify tests after each percentage deployment.
-  final pulumi.Input<bool>? verify;
+  final pulumi.Input<bool?>? verify;
   /// Optional. Configuration for the verify job.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig>? verifyConfig;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfig?>? verifyConfig;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment].
   /// [analysis] Optional. Configuration for the analysis job.

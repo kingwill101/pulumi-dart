@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri {
   /// (Output)
   /// Name of the file the Signed URI references.
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
   /// (Output)
   /// Download URI for the file.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFileSignedUri].
   /// [file] (Output)

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_organizations_get_project_get_project_args_doc}
 class GetProjectArgs {
   /// The project ID. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [GetProjectArgs].
   /// [projectId] The project ID. If it is not provided, the provider project is used.

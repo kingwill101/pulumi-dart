@@ -5,30 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IAMCustomRole resources.
 class IAMCustomRoleState {
   /// (Optional) The current deleted state of the role.
-  final pulumi.Input<bool>? deleted;
+  final pulumi.Input<bool?>? deleted;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description for the role.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The numeric ID of the organization in which you want to create a custom role.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
   /// The role id to use for this role.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
   /// The current launch stage of the role.
   /// Defaults to `GA`.
   /// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// A human-readable title for the role.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [IAMCustomRoleState].
   /// [deleted] (Optional) The current deleted state of the role.

@@ -77,78 +77,78 @@ import 'feed_details_workspace_users_settings.dart';
 
 class FeedDetails {
   /// Settings required by Amazon Kinesis Firehose Feeds(HTTP-Push).
-  final pulumi.Input<Map<String, dynamic>>? amazonKinesisFirehoseSettings;
+  final pulumi.Input<Map<String, dynamic>?>? amazonKinesisFirehoseSettings;
   /// Amazon S3 settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonS3Settings>? amazonS3Settings;
+  final pulumi.Input<FeedDetailsAmazonS3Settings?>? amazonS3Settings;
   /// AmazonS3V2Settings is the settings proto for Omniflow S3 feeds.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonS3V2Settings>? amazonS3V2Settings;
+  final pulumi.Input<FeedDetailsAmazonS3V2Settings?>? amazonS3V2Settings;
   /// Amazon SQS settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonSqsSettings>? amazonSqsSettings;
+  final pulumi.Input<FeedDetailsAmazonSqsSettings?>? amazonSqsSettings;
   /// AmazonSQSV2Settings is the settings proto for Omniflow SQS feeds.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAmazonSqsV2Settings>? amazonSqsV2Settings;
+  final pulumi.Input<FeedDetailsAmazonSqsV2Settings?>? amazonSqsV2Settings;
   /// Anomali IOC settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAnomaliSettings>? anomaliSettings;
+  final pulumi.Input<FeedDetailsAnomaliSettings?>? anomaliSettings;
   /// The asset namespace to apply to all logs ingested through this feed.
-  final pulumi.Input<String>? assetNamespace;
+  final pulumi.Input<String?>? assetNamespace;
   /// AWS EC2 Hosts Settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAwsEc2HostsSettings>? awsEc2HostsSettings;
+  final pulumi.Input<FeedDetailsAwsEc2HostsSettings?>? awsEc2HostsSettings;
   /// AWS EC2 Instances Settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAwsEc2InstancesSettings>? awsEc2InstancesSettings;
+  final pulumi.Input<FeedDetailsAwsEc2InstancesSettings?>? awsEc2InstancesSettings;
   /// AWS EC2 Vpcs Settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAwsEc2VpcsSettings>? awsEc2VpcsSettings;
+  final pulumi.Input<FeedDetailsAwsEc2VpcsSettings?>? awsEc2VpcsSettings;
   /// AWSIAMSettings contains details needed for creating an AWS IAM feed.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAwsIamSettings>? awsIamSettings;
+  final pulumi.Input<FeedDetailsAwsIamSettings?>? awsIamSettings;
   /// Azure AD Audit settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureAdAuditSettings>? azureAdAuditSettings;
+  final pulumi.Input<FeedDetailsAzureAdAuditSettings?>? azureAdAuditSettings;
   /// Azure AD Context settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureAdContextSettings>? azureAdContextSettings;
+  final pulumi.Input<FeedDetailsAzureAdContextSettings?>? azureAdContextSettings;
   /// Azure AD settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureAdSettings>? azureAdSettings;
+  final pulumi.Input<FeedDetailsAzureAdSettings?>? azureAdSettings;
   /// Azure Blob Storage settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureBlobStoreSettings>? azureBlobStoreSettings;
+  final pulumi.Input<FeedDetailsAzureBlobStoreSettings?>? azureBlobStoreSettings;
   /// AzureBlobStoreV2Settings is the settings proto for Azure Blob Storage feeds.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureBlobStoreV2Settings>? azureBlobStoreV2Settings;
+  final pulumi.Input<FeedDetailsAzureBlobStoreV2Settings?>? azureBlobStoreV2Settings;
   /// Settings required by Azure Event Hub Feeds.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureEventHubSettings>? azureEventHubSettings;
+  final pulumi.Input<FeedDetailsAzureEventHubSettings?>? azureEventHubSettings;
   /// Azure MDM Intune settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureMdmIntuneSettings>? azureMdmIntuneSettings;
+  final pulumi.Input<FeedDetailsAzureMdmIntuneSettings?>? azureMdmIntuneSettings;
   /// CloudPassage settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsCloudPassageSettings>? cloudPassageSettings;
+  final pulumi.Input<FeedDetailsCloudPassageSettings?>? cloudPassageSettings;
   /// PAN Cortex XDR settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsCortexXdrSettings>? cortexXdrSettings;
+  final pulumi.Input<FeedDetailsCortexXdrSettings?>? cortexXdrSettings;
   /// CrowdStrike Alerts settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsCrowdstrikeAlertsSettings>? crowdstrikeAlertsSettings;
+  final pulumi.Input<FeedDetailsCrowdstrikeAlertsSettings?>? crowdstrikeAlertsSettings;
   /// CrowdStrike Detects settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsCrowdstrikeDetectsSettings>? crowdstrikeDetectsSettings;
+  final pulumi.Input<FeedDetailsCrowdstrikeDetectsSettings?>? crowdstrikeDetectsSettings;
   /// Settings required by Feeds of DummyLogType(used for testing purposes).
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsDummyLogTypeSettings>? dummyLogTypeSettings;
+  final pulumi.Input<FeedDetailsDummyLogTypeSettings?>? dummyLogTypeSettings;
   /// Duo Authentication settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsDuoAuthSettings>? duoAuthSettings;
+  final pulumi.Input<FeedDetailsDuoAuthSettings?>? duoAuthSettings;
   /// Duo User Context settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsDuoUserContextSettings>? duoUserContextSettings;
+  final pulumi.Input<FeedDetailsDuoUserContextSettings?>? duoUserContextSettings;
   /// Source Type of the feed.
   /// Possible values:
   /// GOOGLE_CLOUD_STORAGE
@@ -171,178 +171,178 @@ class FeedDetails {
   /// AZURE_BLOBSTORE_V2
   /// GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN
   /// Possible values are: `GOOGLE_CLOUD_STORAGE`, `HTTP`, `SFTP`, `AMAZON_S3`, `AZURE_BLOBSTORE`, `API`, `AMAZON_SQS`, `PUBSUB`, `AMAZON_KINESIS_FIREHOSE`, `WEBHOOK`, `HTTPS_PUSH_GOOGLE_CLOUD_PUBSUB`, `HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE`, `HTTPS_PUSH_WEBHOOK`, `AZURE_EVENT_HUB`, `GOOGLE_CLOUD_STORAGE_V2`, `AMAZON_S3_V2`, `AMAZON_SQS_V2`, `AZURE_BLOBSTORE_V2`, `GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN`.
-  final pulumi.Input<String>? feedSourceType;
+  final pulumi.Input<String?>? feedSourceType;
   /// Fox-IT STIX settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsFoxItStixSettings>? foxItStixSettings;
+  final pulumi.Input<FeedDetailsFoxItStixSettings?>? foxItStixSettings;
   /// Google Cloud Storage settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGcsSettings>? gcsSettings;
+  final pulumi.Input<FeedDetailsGcsSettings?>? gcsSettings;
   /// GoogleCloudStorageV2Settings is the settings proto for Omniflow Google Cloud
   /// Storage feeds.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGcsV2Settings>? gcsV2Settings;
+  final pulumi.Input<FeedDetailsGcsV2Settings?>? gcsV2Settings;
   /// Google Cloud Identity Device Users settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGoogleCloudIdentityDeviceUsersSettings>? googleCloudIdentityDeviceUsersSettings;
+  final pulumi.Input<FeedDetailsGoogleCloudIdentityDeviceUsersSettings?>? googleCloudIdentityDeviceUsersSettings;
   /// Google Cloud Identity Devices settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGoogleCloudIdentityDevicesSettings>? googleCloudIdentityDevicesSettings;
+  final pulumi.Input<FeedDetailsGoogleCloudIdentityDevicesSettings?>? googleCloudIdentityDevicesSettings;
   /// GoogleCloudStorageEventDrivenSettings is the settings proto for Omniflow
   /// Google Cloud Storage feeds driven by pubsub events.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGoogleCloudStorageEventDrivenSettings>? googleCloudStorageEventDrivenSettings;
+  final pulumi.Input<FeedDetailsGoogleCloudStorageEventDrivenSettings?>? googleCloudStorageEventDrivenSettings;
   /// HTTP settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsHttpSettings>? httpSettings;
+  final pulumi.Input<FeedDetailsHttpSettings?>? httpSettings;
   /// Settings required by Amazon Kinesis Firehose Feeds(HTTPS-Push V2).
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsHttpsPushAmazonKinesisFirehoseSettings>? httpsPushAmazonKinesisFirehoseSettings;
+  final pulumi.Input<FeedDetailsHttpsPushAmazonKinesisFirehoseSettings?>? httpsPushAmazonKinesisFirehoseSettings;
   /// Settings required by Google Cloud Platform Pub/Sub Feeds(HTTPS-Push V2).
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsHttpsPushGoogleCloudPubsubSettings>? httpsPushGoogleCloudPubsubSettings;
+  final pulumi.Input<FeedDetailsHttpsPushGoogleCloudPubsubSettings?>? httpsPushGoogleCloudPubsubSettings;
   /// Settings required by Webhook Feeds(HTTPS-Push V2).
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsHttpsPushWebhookSettings>? httpsPushWebhookSettings;
+  final pulumi.Input<FeedDetailsHttpsPushWebhookSettings?>? httpsPushWebhookSettings;
   /// Imperva WAF settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsImpervaWafSettings>? impervaWafSettings;
+  final pulumi.Input<FeedDetailsImpervaWafSettings?>? impervaWafSettings;
   /// The ingestion metadata labels to apply to all logs ingested through this
   /// feed, and the resulting normalized data.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// LogType.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/logTypes/{log_type}
   final pulumi.Input<String> logType;
   /// Mandiant IOC settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMandiantIocSettings>? mandiantIocSettings;
+  final pulumi.Input<FeedDetailsMandiantIocSettings?>? mandiantIocSettings;
   /// Microsoft Graph Alert settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMicrosoftGraphAlertSettings>? microsoftGraphAlertSettings;
+  final pulumi.Input<FeedDetailsMicrosoftGraphAlertSettings?>? microsoftGraphAlertSettings;
   /// Microsoft Security Center alert settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMicrosoftSecurityCenterAlertSettings>? microsoftSecurityCenterAlertSettings;
+  final pulumi.Input<FeedDetailsMicrosoftSecurityCenterAlertSettings?>? microsoftSecurityCenterAlertSettings;
   /// Mimecast Mail settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMimecastMailSettings>? mimecastMailSettings;
+  final pulumi.Input<FeedDetailsMimecastMailSettings?>? mimecastMailSettings;
   /// Mimecast Mail V2 Settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMimecastMailV2Settings>? mimecastMailV2Settings;
+  final pulumi.Input<FeedDetailsMimecastMailV2Settings?>? mimecastMailV2Settings;
   /// Netskope Alert settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsNetskopeAlertSettings>? netskopeAlertSettings;
+  final pulumi.Input<FeedDetailsNetskopeAlertSettings?>? netskopeAlertSettings;
   /// Netskope Alert V2 settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsNetskopeAlertV2Settings>? netskopeAlertV2Settings;
+  final pulumi.Input<FeedDetailsNetskopeAlertV2Settings?>? netskopeAlertV2Settings;
   /// Office 365 settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsOffice365Settings>? office365Settings;
+  final pulumi.Input<FeedDetailsOffice365Settings?>? office365Settings;
   /// Okta settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsOktaSettings>? oktaSettings;
+  final pulumi.Input<FeedDetailsOktaSettings?>? oktaSettings;
   /// Okta user context settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsOktaUserContextSettings>? oktaUserContextSettings;
+  final pulumi.Input<FeedDetailsOktaUserContextSettings?>? oktaUserContextSettings;
   /// PAN IOC settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsPanIocSettings>? panIocSettings;
+  final pulumi.Input<FeedDetailsPanIocSettings?>? panIocSettings;
   /// PAN Prisma Cloud settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsPanPrismaCloudSettings>? panPrismaCloudSettings;
+  final pulumi.Input<FeedDetailsPanPrismaCloudSettings?>? panPrismaCloudSettings;
   /// Proofpoint Mail settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsProofpointMailSettings>? proofpointMailSettings;
+  final pulumi.Input<FeedDetailsProofpointMailSettings?>? proofpointMailSettings;
   /// Proofpoint On-demand settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsProofpointOnDemandSettings>? proofpointOnDemandSettings;
+  final pulumi.Input<FeedDetailsProofpointOnDemandSettings?>? proofpointOnDemandSettings;
   /// Settings required by Google Cloud Pub/Sub Feeds(HTTP-Push).
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsPubsubSettings>? pubsubSettings;
+  final pulumi.Input<FeedDetailsPubsubSettings?>? pubsubSettings;
   /// Qualys Scan settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsQualysScanSettings>? qualysScanSettings;
+  final pulumi.Input<FeedDetailsQualysScanSettings?>? qualysScanSettings;
   /// Qualys VM settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsQualysVmSettings>? qualysVmSettings;
+  final pulumi.Input<FeedDetailsQualysVmSettings?>? qualysVmSettings;
   /// Rapid7 Insight settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsRapid7InsightSettings>? rapid7InsightSettings;
+  final pulumi.Input<FeedDetailsRapid7InsightSettings?>? rapid7InsightSettings;
   /// Recorded Future IOC settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsRecordedFutureIocSettings>? recordedFutureIocSettings;
+  final pulumi.Input<FeedDetailsRecordedFutureIocSettings?>? recordedFutureIocSettings;
   /// RH-ISAC settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsRhIsacIocSettings>? rhIsacIocSettings;
+  final pulumi.Input<FeedDetailsRhIsacIocSettings?>? rhIsacIocSettings;
   /// Salesforce settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSalesforceSettings>? salesforceSettings;
+  final pulumi.Input<FeedDetailsSalesforceSettings?>? salesforceSettings;
   /// SentinelOne Alert settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSentineloneAlertSettings>? sentineloneAlertSettings;
+  final pulumi.Input<FeedDetailsSentineloneAlertSettings?>? sentineloneAlertSettings;
   /// ServiceNow CMDB settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsServiceNowCmdbSettings>? serviceNowCmdbSettings;
+  final pulumi.Input<FeedDetailsServiceNowCmdbSettings?>? serviceNowCmdbSettings;
   /// SFTP settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSftpSettings>? sftpSettings;
+  final pulumi.Input<FeedDetailsSftpSettings?>? sftpSettings;
   /// (Output)
   /// The status of the feed's migration to STS.
   /// Possible values:
   /// NOT_READY
   /// READY
   /// AUTH_RECONFIG_REQUIRED
-  final pulumi.Input<String>? stsMigrationReadiness;
+  final pulumi.Input<String?>? stsMigrationReadiness;
   /// Symantec Event Export settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSymantecEventExportSettings>? symantecEventExportSettings;
+  final pulumi.Input<FeedDetailsSymantecEventExportSettings?>? symantecEventExportSettings;
   /// Thinkst Canary settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsThinkstCanarySettings>? thinkstCanarySettings;
+  final pulumi.Input<FeedDetailsThinkstCanarySettings?>? thinkstCanarySettings;
   /// ThreatConnect IOC Settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsThreatConnectIocSettings>? threatConnectIocSettings;
+  final pulumi.Input<FeedDetailsThreatConnectIocSettings?>? threatConnectIocSettings;
   /// ThreatConnectIoCV3Settings
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsThreatConnectIocV3Settings>? threatConnectIocV3Settings;
+  final pulumi.Input<FeedDetailsThreatConnectIocV3Settings?>? threatConnectIocV3Settings;
   /// Settings required by Feeds of TrellixHxAlerts.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsTrellixHxAlertsSettings>? trellixHxAlertsSettings;
+  final pulumi.Input<FeedDetailsTrellixHxAlertsSettings?>? trellixHxAlertsSettings;
   /// Settings required by Feeds of TrellixHxBulkAcqs.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsTrellixHxBulkAcqsSettings>? trellixHxBulkAcqsSettings;
+  final pulumi.Input<FeedDetailsTrellixHxBulkAcqsSettings?>? trellixHxBulkAcqsSettings;
   /// Settings required by Feeds of TrellixHxHosts.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsTrellixHxHostsSettings>? trellixHxHostsSettings;
+  final pulumi.Input<FeedDetailsTrellixHxHostsSettings?>? trellixHxHostsSettings;
   /// Settings required by Webhook Feeds(HTTP-Push).
-  final pulumi.Input<Map<String, dynamic>>? webhookSettings;
+  final pulumi.Input<Map<String, dynamic>?>? webhookSettings;
   /// Workday settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkdaySettings>? workdaySettings;
+  final pulumi.Input<FeedDetailsWorkdaySettings?>? workdaySettings;
   /// Workspace Activity settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceActivitySettings>? workspaceActivitySettings;
+  final pulumi.Input<FeedDetailsWorkspaceActivitySettings?>? workspaceActivitySettings;
   /// Workspace Alert settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceAlertsSettings>? workspaceAlertsSettings;
+  final pulumi.Input<FeedDetailsWorkspaceAlertsSettings?>? workspaceAlertsSettings;
   /// Workspace Chrome OS settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceChromeOsSettings>? workspaceChromeOsSettings;
+  final pulumi.Input<FeedDetailsWorkspaceChromeOsSettings?>? workspaceChromeOsSettings;
   /// Workspace Groups settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceGroupsSettings>? workspaceGroupsSettings;
+  final pulumi.Input<FeedDetailsWorkspaceGroupsSettings?>? workspaceGroupsSettings;
   /// Workspace Mobile settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceMobileSettings>? workspaceMobileSettings;
+  final pulumi.Input<FeedDetailsWorkspaceMobileSettings?>? workspaceMobileSettings;
   /// Workspace Privileges settings.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspacePrivilegesSettings>? workspacePrivilegesSettings;
+  final pulumi.Input<FeedDetailsWorkspacePrivilegesSettings?>? workspacePrivilegesSettings;
   /// Workspace Users settings.
   /// Structure is documented below.
   ///
   ///
   /// &lt;a name="nestedDetailsAmazonS3Settings"&gt;&lt;/a&gt;The `amazonS3Settings` block supports:
-  final pulumi.Input<FeedDetailsWorkspaceUsersSettings>? workspaceUsersSettings;
+  final pulumi.Input<FeedDetailsWorkspaceUsersSettings?>? workspaceUsersSettings;
 
   /// Creates a new [FeedDetails].
   /// [amazonKinesisFirehoseSettings] Settings required by Amazon Kinesis Firehose Feeds(HTTP-Push).

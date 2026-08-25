@@ -462,7 +462,8 @@ class Backup extends pulumi.CustomResource {
           'gcp:netapp/backup:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupRegion = registerOutput<String>('backupRegion');
     backupType = registerOutput<String>('backupType');
@@ -470,13 +471,13 @@ class Backup extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ontapSource = registerOutput<BackupOntapSource?>('ontapSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupOntapSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     sourceSnapshot = registerOutput<String?>('sourceSnapshot');
     sourceVolume = registerOutput<String?>('sourceVolume');
     state = registerOutput<String>('state');
@@ -490,11 +491,12 @@ class Backup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Backup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -514,16 +516,47 @@ class Backup extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ontapSource = registerOutput<BackupOntapSource?>('ontapSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupOntapSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     sourceSnapshot = registerOutput<String?>('sourceSnapshot');
     sourceVolume = registerOutput<String?>('sourceVolume');
     this.state = registerOutput<String>('state');
+    vaultName = registerOutput<String>('vaultName');
+    volumeRegion = registerOutput<String>('volumeRegion');
+    volumeUsageBytes = registerOutput<String>('volumeUsageBytes');
+  }
+
+  /// Creates a typed reference to an existing [Backup] resource.
+  Backup.reference(String urn)
+    : super(
+        'gcp:netapp/backup:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    backupRegion = registerOutput<String>('backupRegion');
+    backupType = registerOutput<String>('backupType');
+    chainStorageBytes = registerOutput<String>('chainStorageBytes');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    ontapSource = registerOutput<BackupOntapSource?>('ontapSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupOntapSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    sourceSnapshot = registerOutput<String?>('sourceSnapshot');
+    sourceVolume = registerOutput<String?>('sourceVolume');
+    state = registerOutput<String>('state');
     vaultName = registerOutput<String>('vaultName');
     volumeRegion = registerOutput<String>('volumeRegion');
     volumeUsageBytes = registerOutput<String>('volumeUsageBytes');

@@ -6,7 +6,7 @@ import 'stream_rule_set_object_filter_source_object_identifier.dart';
 class StreamRuleSetObjectFilter {
   /// Specific source object identifier.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifier>? sourceObjectIdentifier;
+  final pulumi.Input<StreamRuleSetObjectFilterSourceObjectIdentifier?>? sourceObjectIdentifier;
 
   /// Creates a new [StreamRuleSetObjectFilter].
   /// [sourceObjectIdentifier] Specific source object identifier.

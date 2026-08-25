@@ -10,7 +10,7 @@ class GetReservationArgs {
   /// The name of the Compute Reservation.
   final pulumi.Input<String> name;
   /// Project from which to list the Compute Reservation. Defaults to project declared in the provider.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Zone where the Compute Reservation resides.
   final pulumi.Input<String> zone;
 

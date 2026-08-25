@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_environment_args.dart';
 import 'cx_environment_state.dart';
+import 'cx_environment_version_config.dart';
 
 /// Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
 /// When you edit an agent, you are editing the draft agent. At any point, you can save the draft agent as an agent version, which is an immutable snapshot of your agent.
@@ -369,7 +370,7 @@ class CxEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> versionConfigs;
+  late final pulumi.Output<List<CxEnvironmentVersionConfig>> versionConfigs;
 
   /// Creates a new [CxEnvironment].
   /// [name] The Pulumi resource name.
@@ -383,7 +384,7 @@ class CxEnvironment extends pulumi.CustomResource {
           'gcp:diagflow/cxEnvironment:CxEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -391,7 +392,7 @@ class CxEnvironment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     updateTime = registerOutput<String>('updateTime');
-    versionConfigs = registerOutput<List<Map<String, dynamic>>>('versionConfigs');
+    versionConfigs = registerOutput<List<CxEnvironmentVersionConfig>>('versionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEnvironmentVersionConfig>(guardedValue, (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [CxEnvironment] resource's state with the given [name] and [id].
@@ -399,11 +400,12 @@ class CxEnvironment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxEnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxEnvironment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -423,6 +425,24 @@ class CxEnvironment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     updateTime = registerOutput<String>('updateTime');
-    versionConfigs = registerOutput<List<Map<String, dynamic>>>('versionConfigs');
+    versionConfigs = registerOutput<List<CxEnvironmentVersionConfig>>('versionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEnvironmentVersionConfig>(guardedValue, (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [CxEnvironment] resource.
+  CxEnvironment.reference(String urn)
+    : super(
+        'gcp:diagflow/cxEnvironment:CxEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    updateTime = registerOutput<String>('updateTime');
+    versionConfigs = registerOutput<List<CxEnvironmentVersionConfig>>('versionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEnvironmentVersionConfig>(guardedValue, (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

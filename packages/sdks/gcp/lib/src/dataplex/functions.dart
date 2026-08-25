@@ -155,6 +155,17 @@ Future<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicy(
   return GetAspectTypeIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAspectTypeIamPolicyResult> getAspectTypeIamPolicyOutput(
+  GetAspectTypeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAspectTypeIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for asset
 ///
 ///
@@ -302,6 +313,17 @@ Future<GetAssetIamPolicyResult> getAssetIamPolicy(
   return GetAssetIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAssetIamPolicyResult> getAssetIamPolicyOutput(
+  GetAssetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssetIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for dataproduct
 ///
 ///
@@ -433,6 +455,17 @@ Future<GetDataProductIamPolicyResult> getDataProductIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataProductIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDataProductIamPolicyResult> getDataProductIamPolicyOutput(
+  GetDataProductIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getDataProductIamPolicy:getDataProductIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataProductIamPolicyResult.fromMap);
 }
 
 /// Retrieves the generated data quality rules for the creating a new data quality scan.
@@ -570,6 +603,17 @@ Future<GetDataQualityRulesResult> getDataQualityRules(
   return GetDataQualityRulesResult.fromMap(result);
 }
 
+pulumi.Output<GetDataQualityRulesResult> getDataQualityRulesOutput(
+  GetDataQualityRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getDataQualityRules:getDataQualityRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataQualityRulesResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for datascan
 ///
 ///
@@ -701,6 +745,17 @@ Future<GetDatascanIamPolicyResult> getDatascanIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatascanIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDatascanIamPolicyResult> getDatascanIamPolicyOutput(
+  GetDatascanIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatascanIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for entrygroup
@@ -836,6 +891,17 @@ Future<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(
   return GetEntryGroupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
+  GetEntryGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntryGroupIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for entrytype
 ///
 ///
@@ -967,6 +1033,17 @@ Future<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEntryTypeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetEntryTypeIamPolicyResult> getEntryTypeIamPolicyOutput(
+  GetEntryTypeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntryTypeIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for glossary
@@ -1102,6 +1179,17 @@ Future<GetGlossaryIamPolicyResult> getGlossaryIamPolicy(
   return GetGlossaryIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetGlossaryIamPolicyResult> getGlossaryIamPolicyOutput(
+  GetGlossaryIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getGlossaryIamPolicy:getGlossaryIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlossaryIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for lake
 ///
 ///
@@ -1233,6 +1321,17 @@ Future<GetLakeIamPolicyResult> getLakeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLakeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetLakeIamPolicyResult> getLakeIamPolicyOutput(
+  GetLakeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLakeIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for task
@@ -1375,6 +1474,17 @@ Future<GetTaskIamPolicyResult> getTaskIamPolicy(
   return GetTaskIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetTaskIamPolicyResult> getTaskIamPolicyOutput(
+  GetTaskIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for zone
 ///
 ///
@@ -1513,4 +1623,15 @@ Future<GetZoneIamPolicyResult> getZoneIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneIamPolicyResult> getZoneIamPolicyOutput(
+  GetZoneIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneIamPolicyResult.fromMap);
 }

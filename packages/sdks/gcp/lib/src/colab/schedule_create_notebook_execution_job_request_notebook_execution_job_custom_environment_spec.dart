@@ -8,13 +8,13 @@ import 'schedule_create_notebook_execution_job_request_notebook_execution_job_cu
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
   /// Specification of a single machine.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec>? machineSpec;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec?>? machineSpec;
   /// Network spec.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec>? networkSpec;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec?>? networkSpec;
   /// Represents the spec of persistent disk options.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec>? persistentDiskSpec;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec?>? persistentDiskSpec;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec].
   /// [machineSpec] Specification of a single machine.

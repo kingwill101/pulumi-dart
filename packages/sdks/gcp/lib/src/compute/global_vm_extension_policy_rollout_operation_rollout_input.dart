@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalVmExtensionPolicyRolloutOperationRolloutInput {
   /// Specifies the behavior of the rollout if a conflict is detected.
-  final pulumi.Input<String>? conflictBehavior;
+  final pulumi.Input<String?>? conflictBehavior;
   /// The name of the rollout plan.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the predefined rollout plan for the policy.
-  final pulumi.Input<String>? predefinedRolloutPlan;
+  final pulumi.Input<String?>? predefinedRolloutPlan;
   /// The UUID that identifies a policy rollout retry attempt. It should only be set when retrying an existing rollout. Updating this field along with other policy fields (description, extension_policies, instance_selectors, priority) in the same plan will return an error.
   ///
   /// &lt;a name="nestedRolloutOperationRolloutStatus"&gt;&lt;/a&gt;The `rolloutStatus` block contains:
-  final pulumi.Input<String>? retryUuid;
+  final pulumi.Input<String?>? retryUuid;
 
   /// Creates a new [GlobalVmExtensionPolicyRolloutOperationRolloutInput].
   /// [conflictBehavior] Specifies the behavior of the rollout if a conflict is detected.

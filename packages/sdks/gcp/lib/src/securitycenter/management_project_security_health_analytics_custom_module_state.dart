@@ -8,40 +8,40 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleState {
   /// If empty, indicates that the custom module was created in the organization,folder,
   /// or project in which you are viewing the custom module. Otherwise, ancestorModule
   /// specifies the organization or folder from which the custom module is inherited.
-  final pulumi.Input<String>? ancestorModule;
+  final pulumi.Input<String?>? ancestorModule;
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  final pulumi.Input<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig;
+  final pulumi.Input<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig?>? customConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? enablementState;
+  final pulumi.Input<String?>? enablementState;
   /// The editor that last updated the custom module.
-  final pulumi.Input<String>? lastEditor;
+  final pulumi.Input<String?>? lastEditor;
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the custom module. Its format is "projects/{project}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
   /// The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The time at which the custom module was last updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ManagementProjectSecurityHealthAnalyticsCustomModuleState].
   /// [ancestorModule] If empty, indicates that the custom module was created in the organization,folder,

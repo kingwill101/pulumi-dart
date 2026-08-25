@@ -15,103 +15,103 @@ import 'get_region_instance_template_workload_identity_config.dart';
 
 /// Result data returned by getRegionInstanceTemplate.
 class GetRegionInstanceTemplateResult {
-  final List<GetRegionInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures;
+  final List<GetRegionInstanceTemplateAdvancedMachineFeature>? advancedMachineFeatures;
   /// Whether to allow sending and receiving of
   /// packets with non-matching source or destination IPs. This defaults to false.
-  final bool canIpForward;
+  final bool? canIpForward;
   /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
-  final List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
+  final List<GetRegionInstanceTemplateConfidentialInstanceConfig>? confidentialInstanceConfigs;
   /// Creation timestamp in RFC3339 text format.
-  final String creationTimestamp;
-  final String deletionPolicy;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
   /// A brief description of this resource.
-  final String description;
+  final String? description;
   /// Disks to attach to instances created from this template.
   /// This can be specified multiple times for multiple disks. Structure is
   /// documented below.
-  final List<GetRegionInstanceTemplateDisk> disks;
-  final Map<String, String> effectiveLabels;
+  final List<GetRegionInstanceTemplateDisk>? disks;
+  final Map<String, String>? effectiveLabels;
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
   /// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-  final bool enableDisplay;
+  final bool? enableDisplay;
   final String? filter;
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-  final List<GetRegionInstanceTemplateGuestAccelerator> guestAccelerators;
+  final List<GetRegionInstanceTemplateGuestAccelerator>? guestAccelerators;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A brief description to use for instances
   /// created from this template.
-  final String instanceDescription;
+  final String? instanceDescription;
   /// Action to be taken when a customer's encryption key is revoked.
-  final String keyRevocationActionType;
+  final String? keyRevocationActionType;
   /// (Optional) A set of ket/value label pairs to assign to disk created from
   /// this template
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The machine type to create.
-  final String machineType;
+  final String? machineType;
   /// Metadata key/value pairs to make available from
   /// within instances created from this template.
-  final Map<String, String> metadata;
+  final Map<String, String>? metadata;
   /// The unique fingerprint of the metadata.
-  final String metadataFingerprint;
+  final String? metadataFingerprint;
   /// An alternative to using the
   /// startup-script metadata key, mostly to match the computeInstance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
-  final String metadataStartupScript;
+  final String? metadataStartupScript;
   /// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
   /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-  final String minCpuPlatform;
+  final String? minCpuPlatform;
   final bool? mostRecent;
   /// The name of the instance template. If you leave
   /// this blank, Terraform will auto-generate a unique name.
   final String? name;
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
-  final String namePrefix;
+  final String? namePrefix;
   /// Networks to attach to instances created from
   /// this template. This can be specified multiple times for multiple networks.
   /// Structure is documented below.
-  final List<GetRegionInstanceTemplateNetworkInterface> networkInterfaces;
+  final List<GetRegionInstanceTemplateNetworkInterface>? networkInterfaces;
   /// The network performance configuration setting
   /// for the instance, if set. Structure is documented below.
-  final List<GetRegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
-  final String numericId;
-  final Map<String, String> partnerMetadata;
+  final List<GetRegionInstanceTemplateNetworkPerformanceConfig>? networkPerformanceConfigs;
+  final String? numericId;
+  final Map<String, String>? partnerMetadata;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final String? project;
-  final Map<String, String> pulumiLabels;
+  final Map<String, String>? pulumiLabels;
   final String? region;
-  final List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities;
-  final Map<String, String> resourceManagerTags;
+  final List<GetRegionInstanceTemplateReservationAffinity>? reservationAffinities;
+  final Map<String, String>? resourceManagerTags;
   /// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
-  final List<String> resourcePolicies;
+  final List<String>? resourcePolicies;
   /// The scheduling strategy to use. More details about
   /// this configuration option are detailed below.
-  final List<GetRegionInstanceTemplateScheduling> schedulings;
+  final List<GetRegionInstanceTemplateScheduling>? schedulings;
   /// The URI of the created resource.
-  final String selfLink;
+  final String? selfLink;
   /// Service account to attach to the instance. Structure is documented below.
-  final List<GetRegionInstanceTemplateServiceAccount> serviceAccounts;
+  final List<GetRegionInstanceTemplateServiceAccount>? serviceAccounts;
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-  final List<GetRegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
+  final List<GetRegionInstanceTemplateShieldedInstanceConfig>? shieldedInstanceConfigs;
   /// Tags to attach to the instance.
-  final List<String> tags;
+  final List<String>? tags;
   /// The unique fingerprint of the tags.
-  final String tagsFingerprint;
-  final List<GetRegionInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
+  final String? tagsFingerprint;
+  final List<GetRegionInstanceTemplateWorkloadIdentityConfig>? workloadIdentityConfigs;
 
   /// Creates a new [GetRegionInstanceTemplateResult].
-  /// [advancedMachineFeatures] Required.
+  /// [advancedMachineFeatures] Optional.
   /// [canIpForward] Whether to allow sending and receiving of
   /// [confidentialInstanceConfigs] Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
-  /// [deletionPolicy] Required.
+  /// [deletionPolicy] Optional.
   /// [description] A brief description of this resource.
   /// [disks] Disks to attach to instances created from this template.
-  /// [effectiveLabels] Required.
+  /// [effectiveLabels] Optional.
   /// [enableDisplay] Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
   /// [filter] Optional.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -129,13 +129,13 @@ class GetRegionInstanceTemplateResult {
   /// [namePrefix] Creates a unique name beginning with the specified
   /// [networkInterfaces] Networks to attach to instances created from
   /// [networkPerformanceConfigs] The network performance configuration setting
-  /// [numericId] Required.
-  /// [partnerMetadata] Required.
+  /// [numericId] Optional.
+  /// [partnerMetadata] Optional.
   /// [project] The ID of the project in which the resource belongs. If it
-  /// [pulumiLabels] Required.
+  /// [pulumiLabels] Optional.
   /// [region] Optional.
-  /// [reservationAffinities] Required.
-  /// [resourceManagerTags] Required.
+  /// [reservationAffinities] Optional.
+  /// [resourceManagerTags] Optional.
   /// [resourcePolicies] (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
   /// [schedulings] The scheduling strategy to use. More details about
   /// [selfLink] The URI of the created resource.
@@ -143,137 +143,137 @@ class GetRegionInstanceTemplateResult {
   /// [shieldedInstanceConfigs] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] Tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
-  /// [workloadIdentityConfigs] Required.
+  /// [workloadIdentityConfigs] Optional.
   const GetRegionInstanceTemplateResult({
-    required this.advancedMachineFeatures,
-    required this.canIpForward,
-    required this.confidentialInstanceConfigs,
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.disks,
-    required this.effectiveLabels,
-    required this.enableDisplay,
+    this.advancedMachineFeatures,
+    this.canIpForward,
+    this.confidentialInstanceConfigs,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.disks,
+    this.effectiveLabels,
+    this.enableDisplay,
     this.filter,
-    required this.guestAccelerators,
-    required this.id,
-    required this.instanceDescription,
-    required this.keyRevocationActionType,
-    required this.labels,
-    required this.machineType,
-    required this.metadata,
-    required this.metadataFingerprint,
-    required this.metadataStartupScript,
-    required this.minCpuPlatform,
+    this.guestAccelerators,
+    this.id,
+    this.instanceDescription,
+    this.keyRevocationActionType,
+    this.labels,
+    this.machineType,
+    this.metadata,
+    this.metadataFingerprint,
+    this.metadataStartupScript,
+    this.minCpuPlatform,
     this.mostRecent,
     this.name,
-    required this.namePrefix,
-    required this.networkInterfaces,
-    required this.networkPerformanceConfigs,
-    required this.numericId,
-    required this.partnerMetadata,
+    this.namePrefix,
+    this.networkInterfaces,
+    this.networkPerformanceConfigs,
+    this.numericId,
+    this.partnerMetadata,
     this.project,
-    required this.pulumiLabels,
+    this.pulumiLabels,
     this.region,
-    required this.reservationAffinities,
-    required this.resourceManagerTags,
-    required this.resourcePolicies,
-    required this.schedulings,
-    required this.selfLink,
-    required this.serviceAccounts,
-    required this.shieldedInstanceConfigs,
-    required this.tags,
-    required this.tagsFingerprint,
-    required this.workloadIdentityConfigs,
+    this.reservationAffinities,
+    this.resourceManagerTags,
+    this.resourcePolicies,
+    this.schedulings,
+    this.selfLink,
+    this.serviceAccounts,
+    this.shieldedInstanceConfigs,
+    this.tags,
+    this.tagsFingerprint,
+    this.workloadIdentityConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedMachineFeatures': pulumi.Input.encodeList<GetRegionInstanceTemplateAdvancedMachineFeature, Map<String, dynamic>>(advancedMachineFeatures, (value) => value.toMap()),
-      'canIpForward': canIpForward,
-      'confidentialInstanceConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateConfidentialInstanceConfig, Map<String, dynamic>>(confidentialInstanceConfigs, (value) => value.toMap()),
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'disks': pulumi.Input.encodeList<GetRegionInstanceTemplateDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
-      'effectiveLabels': effectiveLabels,
-      'enableDisplay': enableDisplay,
+      'advancedMachineFeatures': ?(() { final guardedValue = advancedMachineFeatures; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateAdvancedMachineFeature, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'canIpForward': ?canIpForward,
+      'confidentialInstanceConfigs': ?(() { final guardedValue = confidentialInstanceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateConfidentialInstanceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'disks': ?(() { final guardedValue = disks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateDisk, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'effectiveLabels': ?effectiveLabels,
+      'enableDisplay': ?enableDisplay,
       'filter': ?filter,
-      'guestAccelerators': pulumi.Input.encodeList<GetRegionInstanceTemplateGuestAccelerator, Map<String, dynamic>>(guestAccelerators, (value) => value.toMap()),
-      'id': id,
-      'instanceDescription': instanceDescription,
-      'keyRevocationActionType': keyRevocationActionType,
-      'labels': labels,
-      'machineType': machineType,
-      'metadata': metadata,
-      'metadataFingerprint': metadataFingerprint,
-      'metadataStartupScript': metadataStartupScript,
-      'minCpuPlatform': minCpuPlatform,
+      'guestAccelerators': ?(() { final guardedValue = guestAccelerators; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateGuestAccelerator, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'instanceDescription': ?instanceDescription,
+      'keyRevocationActionType': ?keyRevocationActionType,
+      'labels': ?labels,
+      'machineType': ?machineType,
+      'metadata': ?metadata,
+      'metadataFingerprint': ?metadataFingerprint,
+      'metadataStartupScript': ?metadataStartupScript,
+      'minCpuPlatform': ?minCpuPlatform,
       'mostRecent': ?mostRecent,
       'name': ?name,
-      'namePrefix': namePrefix,
-      'networkInterfaces': pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterface, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
-      'networkPerformanceConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkPerformanceConfig, Map<String, dynamic>>(networkPerformanceConfigs, (value) => value.toMap()),
-      'numericId': numericId,
-      'partnerMetadata': partnerMetadata,
+      'namePrefix': ?namePrefix,
+      'networkInterfaces': ?(() { final guardedValue = networkInterfaces; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkInterface, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'networkPerformanceConfigs': ?(() { final guardedValue = networkPerformanceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateNetworkPerformanceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'numericId': ?numericId,
+      'partnerMetadata': ?partnerMetadata,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
+      'pulumiLabels': ?pulumiLabels,
       'region': ?region,
-      'reservationAffinities': pulumi.Input.encodeList<GetRegionInstanceTemplateReservationAffinity, Map<String, dynamic>>(reservationAffinities, (value) => value.toMap()),
-      'resourceManagerTags': resourceManagerTags,
-      'resourcePolicies': resourcePolicies,
-      'schedulings': pulumi.Input.encodeList<GetRegionInstanceTemplateScheduling, Map<String, dynamic>>(schedulings, (value) => value.toMap()),
-      'selfLink': selfLink,
-      'serviceAccounts': pulumi.Input.encodeList<GetRegionInstanceTemplateServiceAccount, Map<String, dynamic>>(serviceAccounts, (value) => value.toMap()),
-      'shieldedInstanceConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfigs, (value) => value.toMap()),
-      'tags': tags,
-      'tagsFingerprint': tagsFingerprint,
-      'workloadIdentityConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfigs, (value) => value.toMap()),
+      'reservationAffinities': ?(() { final guardedValue = reservationAffinities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateReservationAffinity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceManagerTags': ?resourceManagerTags,
+      'resourcePolicies': ?resourcePolicies,
+      'schedulings': ?(() { final guardedValue = schedulings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateScheduling, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'selfLink': ?selfLink,
+      'serviceAccounts': ?(() { final guardedValue = serviceAccounts; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateServiceAccount, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'shieldedInstanceConfigs': ?(() { final guardedValue = shieldedInstanceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateShieldedInstanceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'tagsFingerprint': ?tagsFingerprint,
+      'workloadIdentityConfigs': ?(() { final guardedValue = workloadIdentityConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionInstanceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetRegionInstanceTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateResult(
-      advancedMachineFeatures: pulumi.Input.decodeList<GetRegionInstanceTemplateAdvancedMachineFeature>(map['advancedMachineFeatures']!, (value) => GetRegionInstanceTemplateAdvancedMachineFeature.fromMap((value as Map).cast<String, dynamic>())),
-      canIpForward: map['canIpForward'] as bool,
-      confidentialInstanceConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateConfidentialInstanceConfig>(map['confidentialInstanceConfigs']!, (value) => GetRegionInstanceTemplateConfidentialInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      disks: pulumi.Input.decodeList<GetRegionInstanceTemplateDisk>(map['disks']!, (value) => GetRegionInstanceTemplateDisk.fromMap((value as Map).cast<String, dynamic>())),
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      enableDisplay: map['enableDisplay'] as bool,
+      advancedMachineFeatures: (() { final guardedValue = map['advancedMachineFeatures']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateAdvancedMachineFeature>(guardedValue, (value) => GetRegionInstanceTemplateAdvancedMachineFeature.fromMap((value as Map).cast<String, dynamic>())); })(),
+      canIpForward: (() { final guardedValue = map['canIpForward']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      confidentialInstanceConfigs: (() { final guardedValue = map['confidentialInstanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateConfidentialInstanceConfig>(guardedValue, (value) => GetRegionInstanceTemplateConfidentialInstanceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      disks: (() { final guardedValue = map['disks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateDisk>(guardedValue, (value) => GetRegionInstanceTemplateDisk.fromMap((value as Map).cast<String, dynamic>())); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      enableDisplay: (() { final guardedValue = map['enableDisplay']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      guestAccelerators: pulumi.Input.decodeList<GetRegionInstanceTemplateGuestAccelerator>(map['guestAccelerators']!, (value) => GetRegionInstanceTemplateGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      instanceDescription: map['instanceDescription'] as String,
-      keyRevocationActionType: map['keyRevocationActionType'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      machineType: map['machineType'] as String,
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      metadataFingerprint: map['metadataFingerprint'] as String,
-      metadataStartupScript: map['metadataStartupScript'] as String,
-      minCpuPlatform: map['minCpuPlatform'] as String,
+      guestAccelerators: (() { final guardedValue = map['guestAccelerators']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateGuestAccelerator>(guardedValue, (value) => GetRegionInstanceTemplateGuestAccelerator.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceDescription: (() { final guardedValue = map['instanceDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyRevocationActionType: (() { final guardedValue = map['keyRevocationActionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      metadataFingerprint: (() { final guardedValue = map['metadataFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadataStartupScript: (() { final guardedValue = map['metadataStartupScript']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      namePrefix: map['namePrefix'] as String,
-      networkInterfaces: pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterface>(map['networkInterfaces']!, (value) => GetRegionInstanceTemplateNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
-      networkPerformanceConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkPerformanceConfig>(map['networkPerformanceConfigs']!, (value) => GetRegionInstanceTemplateNetworkPerformanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      numericId: map['numericId'] as String,
-      partnerMetadata: (map['partnerMetadata'] as Map).cast<String, String>(),
+      namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterface>(guardedValue, (value) => GetRegionInstanceTemplateNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); })(),
+      networkPerformanceConfigs: (() { final guardedValue = map['networkPerformanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkPerformanceConfig>(guardedValue, (value) => GetRegionInstanceTemplateNetworkPerformanceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      numericId: (() { final guardedValue = map['numericId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerMetadata: (() { final guardedValue = map['partnerMetadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      reservationAffinities: pulumi.Input.decodeList<GetRegionInstanceTemplateReservationAffinity>(map['reservationAffinities']!, (value) => GetRegionInstanceTemplateReservationAffinity.fromMap((value as Map).cast<String, dynamic>())),
-      resourceManagerTags: (map['resourceManagerTags'] as Map).cast<String, String>(),
-      resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
-      schedulings: pulumi.Input.decodeList<GetRegionInstanceTemplateScheduling>(map['schedulings']!, (value) => GetRegionInstanceTemplateScheduling.fromMap((value as Map).cast<String, dynamic>())),
-      selfLink: map['selfLink'] as String,
-      serviceAccounts: pulumi.Input.decodeList<GetRegionInstanceTemplateServiceAccount>(map['serviceAccounts']!, (value) => GetRegionInstanceTemplateServiceAccount.fromMap((value as Map).cast<String, dynamic>())),
-      shieldedInstanceConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateShieldedInstanceConfig>(map['shieldedInstanceConfigs']!, (value) => GetRegionInstanceTemplateShieldedInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as List).cast<String>(),
-      tagsFingerprint: map['tagsFingerprint'] as String,
-      workloadIdentityConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetRegionInstanceTemplateWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())),
+      reservationAffinities: (() { final guardedValue = map['reservationAffinities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateReservationAffinity>(guardedValue, (value) => GetRegionInstanceTemplateReservationAffinity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      schedulings: (() { final guardedValue = map['schedulings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateScheduling>(guardedValue, (value) => GetRegionInstanceTemplateScheduling.fromMap((value as Map).cast<String, dynamic>())); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccounts: (() { final guardedValue = map['serviceAccounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateServiceAccount>(guardedValue, (value) => GetRegionInstanceTemplateServiceAccount.fromMap((value as Map).cast<String, dynamic>())); })(),
+      shieldedInstanceConfigs: (() { final guardedValue = map['shieldedInstanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateShieldedInstanceConfig>(guardedValue, (value) => GetRegionInstanceTemplateShieldedInstanceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tagsFingerprint: (() { final guardedValue = map['tagsFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workloadIdentityConfigs: (() { final guardedValue = map['workloadIdentityConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionInstanceTemplateWorkloadIdentityConfig>(guardedValue, (value) => GetRegionInstanceTemplateWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

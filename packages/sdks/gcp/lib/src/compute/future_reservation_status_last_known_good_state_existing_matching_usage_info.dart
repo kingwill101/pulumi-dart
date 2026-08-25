@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo {
   /// Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).
-  final pulumi.Input<String>? count;
+  final pulumi.Input<String?>? count;
   /// Timestamp when the matching usage was calculated.
-  final pulumi.Input<String>? timeStamp;
+  final pulumi.Input<String?>? timeStamp;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo].
   /// [count] Count representing minimum(FR totalCount, matching_reserved_capacity+matching_unreserved_instances).

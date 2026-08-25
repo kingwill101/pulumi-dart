@@ -10,35 +10,35 @@ import 'parser_extension_field_extractors.dart';
 /// {@macro pulumi_chronicle_parser_extension_parser_extension_args_doc}
 class ParserExtensionArgs {
   /// Parser config could be a cbn snippet.
-  final pulumi.Input<String>? cbnSnippet;
+  final pulumi.Input<String?>? cbnSnippet;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A representation of a parser extension as dynamic parsing config.
   /// Structure is documented below.
-  final pulumi.Input<ParserExtensionDynamicParsing>? dynamicParsing;
+  final pulumi.Input<ParserExtensionDynamicParsing?>? dynamicParsing;
   /// A representation of a parser extension as a set of field extractors.
   /// Structure is documented below.
-  final pulumi.Input<ParserExtensionFieldExtractors>? fieldExtractors;
+  final pulumi.Input<ParserExtensionFieldExtractors?>? fieldExtractors;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Raw log used to assist the user in creation of augmentation.
-  final pulumi.Input<String>? log;
+  final pulumi.Input<String?>? log;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> logType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Flag to bypass parser extension validation.
   /// If enabled, the parser extension won't be rejected during the validation
   /// phase and validation will be skipped.
-  final pulumi.Input<bool>? validationSkipped;
+  final pulumi.Input<bool?>? validationSkipped;
 
   /// Creates a new [ParserExtensionArgs].
   /// [cbnSnippet] Parser config could be a cbn snippet.

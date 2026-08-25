@@ -469,7 +469,7 @@ class BackupSchedule extends pulumi.CustomResource {
           'gcp:firestore/backupSchedule:BackupSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dailyRecurrence = registerOutput<Map<String, dynamic>?>('dailyRecurrence');
     database = registerOutput<String?>('database');
@@ -485,11 +485,12 @@ class BackupSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -503,6 +504,24 @@ class BackupSchedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dailyRecurrence = registerOutput<Map<String, dynamic>?>('dailyRecurrence');
+    database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    retention = registerOutput<String>('retention');
+    weeklyRecurrence = registerOutput<BackupScheduleWeeklyRecurrence?>('weeklyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleWeeklyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BackupSchedule] resource.
+  BackupSchedule.reference(String urn)
+    : super(
+        'gcp:firestore/backupSchedule:BackupSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dailyRecurrence = registerOutput<Map<String, dynamic>?>('dailyRecurrence');
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');

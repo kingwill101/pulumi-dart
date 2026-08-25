@@ -49,8 +49,8 @@ class GetRegionSecurityPolicyUserDefinedField {
       base: pulumi.Input.fromValue(map['base'] as String),
       mask: pulumi.Input.fromValue(map['mask'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      offset: pulumi.Input.fromValue(map['offset'] as int),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      offset: pulumi.Input.fromValue((map['offset'] as num).toInt()),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

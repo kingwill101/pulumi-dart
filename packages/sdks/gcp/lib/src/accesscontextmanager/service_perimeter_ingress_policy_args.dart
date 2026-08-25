@@ -15,19 +15,19 @@ class ServicePerimeterIngressPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
   /// to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterIngressPolicyIngressFrom>? ingressFrom;
+  final pulumi.Input<ServicePerimeterIngressPolicyIngressFrom?>? ingressFrom;
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterIngressPolicyIngressTo>? ingressTo;
+  final pulumi.Input<ServicePerimeterIngressPolicyIngressTo?>? ingressTo;
   /// The name of the Service Perimeter to add this resource to.
   final pulumi.Input<String> perimeter;
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [ServicePerimeterIngressPolicyArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

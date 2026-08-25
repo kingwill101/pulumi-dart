@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceSettingsMetadata {
   /// A metadata key/value items map. The total size of all keys and values must be less than 512KB
-  final pulumi.Input<Map<String, String>>? items;
+  final pulumi.Input<Map<String, String>?>? items;
 
   /// Creates a new [InstanceSettingsMetadata].
   /// [items] A metadata key/value items map. The total size of all keys and values must be less than 512KB

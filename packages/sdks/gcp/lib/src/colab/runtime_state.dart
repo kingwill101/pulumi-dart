@@ -6,40 +6,40 @@ import 'runtime_notebook_runtime_template_ref.dart';
 /// Input properties used for looking up and filtering Runtime resources.
 class RuntimeState {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
-  final pulumi.Input<bool>? autoUpgrade;
+  final pulumi.Input<bool?>? autoUpgrade;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the Runtime.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// Required. The display name of the Runtime.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Output only. Timestamp when this NotebookRuntime will be expired.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// Output only. Checks if the NotebookRuntime is upgradable.
-  final pulumi.Input<bool>? isUpgradable;
+  final pulumi.Input<bool?>? isUpgradable;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the Runtime
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// 'Runtime specific information used for NotebookRuntime creation.'
   /// Structure is documented below.
-  final pulumi.Input<RuntimeNotebookRuntimeTemplateRef>? notebookRuntimeTemplateRef;
+  final pulumi.Input<RuntimeNotebookRuntimeTemplateRef?>? notebookRuntimeTemplateRef;
   /// Output only. The type of the notebook runtime.
-  final pulumi.Input<String>? notebookRuntimeType;
+  final pulumi.Input<String?>? notebookRuntimeType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The user email of the NotebookRuntime.
-  final pulumi.Input<String>? runtimeUser;
+  final pulumi.Input<String?>? runtimeUser;
   /// Output only. The state of the runtime.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [RuntimeState].
   /// [autoUpgrade] Triggers an upgrade anytime the runtime is started if it is upgradable.

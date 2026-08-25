@@ -744,7 +744,7 @@ class ConversationProfile extends pulumi.CustomResource {
           'gcp:diagflow/conversationProfile:ConversationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileAutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -772,11 +772,12 @@ class ConversationProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConversationProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConversationProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -790,6 +791,36 @@ class ConversationProfile extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileAutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    humanAgentAssistantConfig = registerOutput<ConversationProfileHumanAgentAssistantConfig?>('humanAgentAssistantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileHumanAgentAssistantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    humanAgentHandoffConfig = registerOutput<ConversationProfileHumanAgentHandoffConfig?>('humanAgentHandoffConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileHumanAgentHandoffConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<ConversationProfileLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    newMessageEventNotificationConfig = registerOutput<ConversationProfileNewMessageEventNotificationConfig?>('newMessageEventNotificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileNewMessageEventNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    newRecognitionResultNotificationConfig = registerOutput<ConversationProfileNewRecognitionResultNotificationConfig?>('newRecognitionResultNotificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileNewRecognitionResultNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationConfig = registerOutput<ConversationProfileNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    securitySettings = registerOutput<String?>('securitySettings');
+    sipConfig = registerOutput<ConversationProfileSipConfig?>('sipConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileSipConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileSttConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String?>('timeZone');
+    ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileTtsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useBidiStreaming = registerOutput<bool?>('useBidiStreaming');
+  }
+
+  /// Creates a typed reference to an existing [ConversationProfile] resource.
+  ConversationProfile.reference(String urn)
+    : super(
+        'gcp:diagflow/conversationProfile:ConversationProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileAutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

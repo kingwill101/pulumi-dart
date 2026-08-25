@@ -5,7 +5,7 @@ import 'instance_from_machine_image_reservation_affinity_specific_reservation.da
 
 class InstanceFromMachineImageReservationAffinity {
   /// Specifies the label selector for the reservation to use.
-  final pulumi.Input<InstanceFromMachineImageReservationAffinitySpecificReservation>? specificReservation;
+  final pulumi.Input<InstanceFromMachineImageReservationAffinitySpecificReservation?>? specificReservation;
   /// The type of reservation from which this instance can consume resources.
   final pulumi.Input<String> type;
 

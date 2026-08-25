@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxIntentTrainingPhrasePart {
   /// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
-  final pulumi.Input<String>? parameterId;
+  final pulumi.Input<String?>? parameterId;
   /// The text for this part.
   final pulumi.Input<String> text;
 

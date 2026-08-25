@@ -7,10 +7,10 @@ import 'floorsetting_filter_config_sdp_settings_basic_config.dart';
 class FloorsettingFilterConfigSdpSettings {
   /// Sensitive Data Protection Advanced configuration.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingFilterConfigSdpSettingsAdvancedConfig>? advancedConfig;
+  final pulumi.Input<FloorsettingFilterConfigSdpSettingsAdvancedConfig?>? advancedConfig;
   /// Sensitive Data Protection basic configuration.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingFilterConfigSdpSettingsBasicConfig>? basicConfig;
+  final pulumi.Input<FloorsettingFilterConfigSdpSettingsBasicConfig?>? basicConfig;
 
   /// Creates a new [FloorsettingFilterConfigSdpSettings].
   /// [advancedConfig] Sensitive Data Protection Advanced configuration.

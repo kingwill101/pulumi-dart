@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DbSystemPropertiesTimeZone {
   /// IANA Time Zone Database time zone. For example "America/New_York".
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [DbSystemPropertiesTimeZone].
   /// [id] IANA Time Zone Database time zone. For example "America/New_York".

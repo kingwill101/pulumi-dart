@@ -914,12 +914,12 @@ class JobIAMBinding extends pulumi.CustomResource {
           'gcp:dataproc/jobIAMBinding:JobIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<JobIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     jobId = registerOutput<String>('jobId');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
@@ -930,11 +930,12 @@ class JobIAMBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobIAMBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobIAMBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -951,7 +952,25 @@ class JobIAMBinding extends pulumi.CustomResource {
     condition = registerOutput<JobIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     jobId = registerOutput<String>('jobId');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [JobIAMBinding] resource.
+  JobIAMBinding.reference(String urn)
+    : super(
+        'gcp:dataproc/jobIAMBinding:JobIAMBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<JobIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    jobId = registerOutput<String>('jobId');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');

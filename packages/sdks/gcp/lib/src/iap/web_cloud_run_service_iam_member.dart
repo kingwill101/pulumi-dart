@@ -2158,7 +2158,7 @@ class WebCloudRunServiceIamMember extends pulumi.CustomResource {
           'gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cloudRunServiceName = registerOutput<String>('cloudRunServiceName');
     condition = registerOutput<WebCloudRunServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebCloudRunServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2174,11 +2174,12 @@ class WebCloudRunServiceIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebCloudRunServiceIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebCloudRunServiceIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2192,6 +2193,24 @@ class WebCloudRunServiceIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudRunServiceName = registerOutput<String>('cloudRunServiceName');
+    condition = registerOutput<WebCloudRunServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebCloudRunServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [WebCloudRunServiceIamMember] resource.
+  WebCloudRunServiceIamMember.reference(String urn)
+    : super(
+        'gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudRunServiceName = registerOutput<String>('cloudRunServiceName');
     condition = registerOutput<WebCloudRunServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebCloudRunServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

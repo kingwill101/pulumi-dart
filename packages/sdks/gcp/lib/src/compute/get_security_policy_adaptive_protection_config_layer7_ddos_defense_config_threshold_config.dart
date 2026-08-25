@@ -53,13 +53,13 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
 
   factory GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig(
-      autoDeployConfidenceThreshold: pulumi.Input.fromValue(map['autoDeployConfidenceThreshold'] as double),
-      autoDeployExpirationSec: pulumi.Input.fromValue(map['autoDeployExpirationSec'] as int),
-      autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue(map['autoDeployImpactedBaselineThreshold'] as double),
-      autoDeployLoadThreshold: pulumi.Input.fromValue(map['autoDeployLoadThreshold'] as double),
-      detectionAbsoluteQps: pulumi.Input.fromValue(map['detectionAbsoluteQps'] as double),
-      detectionLoadThreshold: pulumi.Input.fromValue(map['detectionLoadThreshold'] as double),
-      detectionRelativeToBaselineQps: pulumi.Input.fromValue(map['detectionRelativeToBaselineQps'] as double),
+      autoDeployConfidenceThreshold: pulumi.Input.fromValue((map['autoDeployConfidenceThreshold'] as num).toDouble()),
+      autoDeployExpirationSec: pulumi.Input.fromValue((map['autoDeployExpirationSec'] as num).toInt()),
+      autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue((map['autoDeployImpactedBaselineThreshold'] as num).toDouble()),
+      autoDeployLoadThreshold: pulumi.Input.fromValue((map['autoDeployLoadThreshold'] as num).toDouble()),
+      detectionAbsoluteQps: pulumi.Input.fromValue((map['detectionAbsoluteQps'] as num).toDouble()),
+      detectionLoadThreshold: pulumi.Input.fromValue((map['detectionLoadThreshold'] as num).toDouble()),
+      detectionRelativeToBaselineQps: pulumi.Input.fromValue((map['detectionRelativeToBaselineQps'] as num).toDouble()),
       name: pulumi.Input.fromValue(map['name'] as String),
       trafficGranularityConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>(map['trafficGranularityConfigs']!, (value) => GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );

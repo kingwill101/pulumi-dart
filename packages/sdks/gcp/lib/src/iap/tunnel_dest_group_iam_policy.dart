@@ -2142,7 +2142,7 @@ class TunnelDestGroupIamPolicy extends pulumi.CustomResource {
           'gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     destGroup = registerOutput<String>('destGroup');
     etag = registerOutput<String>('etag');
@@ -2156,11 +2156,12 @@ class TunnelDestGroupIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TunnelDestGroupIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TunnelDestGroupIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2174,6 +2175,22 @@ class TunnelDestGroupIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    destGroup = registerOutput<String>('destGroup');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [TunnelDestGroupIamPolicy] resource.
+  TunnelDestGroupIamPolicy.reference(String urn)
+    : super(
+        'gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destGroup = registerOutput<String>('destGroup');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

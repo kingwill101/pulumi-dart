@@ -7,7 +7,7 @@ class CaPoolPublishingOptions {
   /// certificate and CRLs. If this is omitted, CA certificates and CRLs
   /// will be published in PEM.
   /// Possible values are: `PEM`, `DER`.
-  final pulumi.Input<String>? encodingFormat;
+  final pulumi.Input<String?>? encodingFormat;
   /// When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
   /// X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
   /// X.509 extension will not be written in issued certificates.

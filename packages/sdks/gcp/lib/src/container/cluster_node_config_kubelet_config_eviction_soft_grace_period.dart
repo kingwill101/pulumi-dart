@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
   /// Defines grace period for the imagefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
-  final pulumi.Input<String>? imagefsAvailable;
+  final pulumi.Input<String?>? imagefsAvailable;
   /// Defines grace period for the imagefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
-  final pulumi.Input<String>? imagefsInodesFree;
+  final pulumi.Input<String?>? imagefsInodesFree;
   /// Defines grace period for the memory.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
-  final pulumi.Input<String>? memoryAvailable;
+  final pulumi.Input<String?>? memoryAvailable;
   /// Defines grace period for the nodefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
-  final pulumi.Input<String>? nodefsAvailable;
+  final pulumi.Input<String?>? nodefsAvailable;
   /// Defines grace period for the nodefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
-  final pulumi.Input<String>? nodefsInodesFree;
+  final pulumi.Input<String?>? nodefsInodesFree;
   /// Defines grace period for the pid.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
-  final pulumi.Input<String>? pidAvailable;
+  final pulumi.Input<String?>? pidAvailable;
 
   /// Creates a new [ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod].
   /// [imagefsAvailable] Defines grace period for the imagefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.

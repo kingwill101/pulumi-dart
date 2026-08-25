@@ -2632,7 +2632,7 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
           'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2656,11 +2656,12 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionNetworkEndpointGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionNetworkEndpointGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2674,6 +2675,32 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudRun.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkEndpointType = registerOutput<String?>('networkEndpointType');
+    project = registerOutput<String>('project');
+    pscData = registerOutput<RegionNetworkEndpointGroupPscData>('pscData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupPscData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pscTargetService = registerOutput<String?>('pscTargetService');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serverlessDeployment = registerOutput<RegionNetworkEndpointGroupServerlessDeployment?>('serverlessDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupServerlessDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetwork = registerOutput<String?>('subnetwork');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkEndpointGroup] resource.
+  RegionNetworkEndpointGroup.reference(String urn)
+    : super(
+        'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudRun.fromMap((guardedValue as Map).cast<String, dynamic>()); });

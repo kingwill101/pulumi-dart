@@ -2,11 +2,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tool_agent_tool.dart';
 import 'tool_args.dart';
 import 'tool_client_function.dart';
+import 'tool_connector_tool.dart';
 import 'tool_data_store_tool.dart';
 import 'tool_file_search_tool.dart';
 import 'tool_google_search_tool.dart';
+import 'tool_mcp_tool.dart';
+import 'tool_open_api_tool.dart';
 import 'tool_python_function.dart';
+import 'tool_remote_agent_tool.dart';
 import 'tool_state.dart';
+import 'tool_system_tool.dart';
 import 'tool_tool_fake_config.dart';
 import 'tool_widget_tool.dart';
 
@@ -3289,7 +3294,7 @@ class Tool extends pulumi.CustomResource {
   late final pulumi.Output<ToolClientFunction?> clientFunction;
   /// A ConnectorTool allows connections to different integrations.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectorTools;
+  late final pulumi.Output<List<ToolConnectorTool>> connectorTools;
   /// Timestamp when the tool was created.
   late final pulumi.Output<String> createTime;
   /// Tool to retrieve from Vertex AI Search datastore or engine for grounding.
@@ -3333,13 +3338,13 @@ class Tool extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// An MCP tool.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> mcpTools;
+  late final pulumi.Output<List<ToolMcpTool>> mcpTools;
   /// (Output)
   /// The name of the system tool.
   late final pulumi.Output<String> name;
   /// A remote API tool defined by an OpenAPI schema.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> openApiTools;
+  late final pulumi.Output<List<ToolOpenApiTool>> openApiTools;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -3348,10 +3353,10 @@ class Tool extends pulumi.CustomResource {
   late final pulumi.Output<ToolPythonFunction?> pythonFunction;
   /// Represents a tool that allows the agent to call another remote agent.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> remoteAgentTools;
+  late final pulumi.Output<List<ToolRemoteAgentTool>> remoteAgentTools;
   /// The system tool.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> systemTools;
+  late final pulumi.Output<List<ToolSystemTool>> systemTools;
   /// The timeout for the tool execution. If not set, the default timeout is 30
   /// seconds for SYNCHRONOUS tools and 60 seconds for ASYNCHRONOUS tools.
   late final pulumi.Output<String?> timeout;
@@ -3380,12 +3385,12 @@ class Tool extends pulumi.CustomResource {
           'gcp:ces/tool:Tool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     agentTool = registerOutput<ToolAgentTool?>('agentTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolAgentTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
     clientFunction = registerOutput<ToolClientFunction?>('clientFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolClientFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectorTools = registerOutput<List<Map<String, dynamic>>>('connectorTools');
+    connectorTools = registerOutput<List<ToolConnectorTool>>('connectorTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolConnectorTool>(guardedValue, (value) => ToolConnectorTool.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolDataStoreTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -3396,13 +3401,13 @@ class Tool extends pulumi.CustomResource {
     generatedSummary = registerOutput<String>('generatedSummary');
     googleSearchTool = registerOutput<ToolGoogleSearchTool?>('googleSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolGoogleSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    mcpTools = registerOutput<List<Map<String, dynamic>>>('mcpTools');
+    mcpTools = registerOutput<List<ToolMcpTool>>('mcpTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolMcpTool>(guardedValue, (value) => ToolMcpTool.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    openApiTools = registerOutput<List<Map<String, dynamic>>>('openApiTools');
+    openApiTools = registerOutput<List<ToolOpenApiTool>>('openApiTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolOpenApiTool>(guardedValue, (value) => ToolOpenApiTool.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolPythonFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    remoteAgentTools = registerOutput<List<Map<String, dynamic>>>('remoteAgentTools');
-    systemTools = registerOutput<List<Map<String, dynamic>>>('systemTools');
+    remoteAgentTools = registerOutput<List<ToolRemoteAgentTool>>('remoteAgentTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolRemoteAgentTool>(guardedValue, (value) => ToolRemoteAgentTool.fromMap((value as Map).cast<String, dynamic>())); });
+    systemTools = registerOutput<List<ToolSystemTool>>('systemTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolSystemTool>(guardedValue, (value) => ToolSystemTool.fromMap((value as Map).cast<String, dynamic>())); });
     timeout = registerOutput<String?>('timeout');
     toolFakeConfig = registerOutput<ToolToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolId = registerOutput<String>('toolId');
@@ -3415,11 +3420,12 @@ class Tool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ToolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3436,7 +3442,7 @@ class Tool extends pulumi.CustomResource {
     agentTool = registerOutput<ToolAgentTool?>('agentTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolAgentTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');
     clientFunction = registerOutput<ToolClientFunction?>('clientFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolClientFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectorTools = registerOutput<List<Map<String, dynamic>>>('connectorTools');
+    connectorTools = registerOutput<List<ToolConnectorTool>>('connectorTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolConnectorTool>(guardedValue, (value) => ToolConnectorTool.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolDataStoreTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -3447,13 +3453,50 @@ class Tool extends pulumi.CustomResource {
     generatedSummary = registerOutput<String>('generatedSummary');
     googleSearchTool = registerOutput<ToolGoogleSearchTool?>('googleSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolGoogleSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    mcpTools = registerOutput<List<Map<String, dynamic>>>('mcpTools');
+    mcpTools = registerOutput<List<ToolMcpTool>>('mcpTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolMcpTool>(guardedValue, (value) => ToolMcpTool.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    openApiTools = registerOutput<List<Map<String, dynamic>>>('openApiTools');
+    openApiTools = registerOutput<List<ToolOpenApiTool>>('openApiTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolOpenApiTool>(guardedValue, (value) => ToolOpenApiTool.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolPythonFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    remoteAgentTools = registerOutput<List<Map<String, dynamic>>>('remoteAgentTools');
-    systemTools = registerOutput<List<Map<String, dynamic>>>('systemTools');
+    remoteAgentTools = registerOutput<List<ToolRemoteAgentTool>>('remoteAgentTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolRemoteAgentTool>(guardedValue, (value) => ToolRemoteAgentTool.fromMap((value as Map).cast<String, dynamic>())); });
+    systemTools = registerOutput<List<ToolSystemTool>>('systemTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolSystemTool>(guardedValue, (value) => ToolSystemTool.fromMap((value as Map).cast<String, dynamic>())); });
+    timeout = registerOutput<String?>('timeout');
+    toolFakeConfig = registerOutput<ToolToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    toolId = registerOutput<String>('toolId');
+    updateTime = registerOutput<String>('updateTime');
+    widgetTool = registerOutput<ToolWidgetTool?>('widgetTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolWidgetTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Tool] resource.
+  Tool.reference(String urn)
+    : super(
+        'gcp:ces/tool:Tool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentTool = registerOutput<ToolAgentTool?>('agentTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolAgentTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    app = registerOutput<String>('app');
+    clientFunction = registerOutput<ToolClientFunction?>('clientFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolClientFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorTools = registerOutput<List<ToolConnectorTool>>('connectorTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolConnectorTool>(guardedValue, (value) => ToolConnectorTool.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolDataStoreTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    executionType = registerOutput<String?>('executionType');
+    fileSearchTool = registerOutput<ToolFileSearchTool?>('fileSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolFileSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generatedSummary = registerOutput<String>('generatedSummary');
+    googleSearchTool = registerOutput<ToolGoogleSearchTool?>('googleSearchTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolGoogleSearchTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    mcpTools = registerOutput<List<ToolMcpTool>>('mcpTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolMcpTool>(guardedValue, (value) => ToolMcpTool.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    openApiTools = registerOutput<List<ToolOpenApiTool>>('openApiTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolOpenApiTool>(guardedValue, (value) => ToolOpenApiTool.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolPythonFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteAgentTools = registerOutput<List<ToolRemoteAgentTool>>('remoteAgentTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolRemoteAgentTool>(guardedValue, (value) => ToolRemoteAgentTool.fromMap((value as Map).cast<String, dynamic>())); });
+    systemTools = registerOutput<List<ToolSystemTool>>('systemTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ToolSystemTool>(guardedValue, (value) => ToolSystemTool.fromMap((value as Map).cast<String, dynamic>())); });
     timeout = registerOutput<String?>('timeout');
     toolFakeConfig = registerOutput<ToolToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolId = registerOutput<String>('toolId');

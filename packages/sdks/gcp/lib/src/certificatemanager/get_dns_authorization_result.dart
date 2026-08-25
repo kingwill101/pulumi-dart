@@ -5,79 +5,79 @@ import 'get_dns_authorization_dns_resource_record.dart';
 
 /// Result data returned by getDnsAuthorization.
 class GetDnsAuthorizationResult {
-  final String deletionPolicy;
-  final String description;
-  final List<GetDnsAuthorizationDnsResourceRecord> dnsResourceRecords;
-  final String domain;
-  final Map<String, String> effectiveLabels;
+  final String? deletionPolicy;
+  final String? description;
+  final List<GetDnsAuthorizationDnsResourceRecord>? dnsResourceRecords;
+  final String? domain;
+  final Map<String, String>? effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
+  final String? id;
+  final Map<String, String>? labels;
   final String? location;
-  final String name;
+  final String? name;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final String type;
+  final Map<String, String>? pulumiLabels;
+  final String? type;
 
   /// Creates a new [GetDnsAuthorizationResult].
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [dnsResourceRecords] Required.
-  /// [domain] Required.
-  /// [effectiveLabels] Required.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [dnsResourceRecords] Optional.
+  /// [domain] Optional.
+  /// [effectiveLabels] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
+  /// [labels] Optional.
   /// [location] Optional.
-  /// [name] Required.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [type] Required.
+  /// [pulumiLabels] Optional.
+  /// [type] Optional.
   const GetDnsAuthorizationResult({
-    required this.deletionPolicy,
-    required this.description,
-    required this.dnsResourceRecords,
-    required this.domain,
-    required this.effectiveLabels,
-    required this.id,
-    required this.labels,
+    this.deletionPolicy,
+    this.description,
+    this.dnsResourceRecords,
+    this.domain,
+    this.effectiveLabels,
+    this.id,
+    this.labels,
     this.location,
-    required this.name,
+    this.name,
     this.project,
-    required this.pulumiLabels,
-    required this.type,
+    this.pulumiLabels,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'dnsResourceRecords': pulumi.Input.encodeList<GetDnsAuthorizationDnsResourceRecord, Map<String, dynamic>>(dnsResourceRecords, (value) => value.toMap()),
-      'domain': domain,
-      'effectiveLabels': effectiveLabels,
-      'id': id,
-      'labels': labels,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'dnsResourceRecords': ?(() { final guardedValue = dnsResourceRecords; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDnsAuthorizationDnsResourceRecord, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'domain': ?domain,
+      'effectiveLabels': ?effectiveLabels,
+      'id': ?id,
+      'labels': ?labels,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'type': type,
+      'pulumiLabels': ?pulumiLabels,
+      'type': ?type,
     };
   }
 
   factory GetDnsAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationResult(
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      dnsResourceRecords: pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(map['dnsResourceRecords']!, (value) => GetDnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())),
-      domain: map['domain'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dnsResourceRecords: (() { final guardedValue = map['dnsResourceRecords']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(guardedValue, (value) => GetDnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

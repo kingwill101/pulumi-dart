@@ -8,10 +8,10 @@ class PluginConfigTemplate {
   /// The list of additional configuration variables for the plugin's
   /// configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplate>>? additionalConfigTemplates;
+  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplate>?>? additionalConfigTemplates;
   /// AuthConfigTemplate represents the authentication template for a plugin.
   /// Structure is documented below.
-  final pulumi.Input<PluginConfigTemplateAuthConfigTemplate>? authConfigTemplate;
+  final pulumi.Input<PluginConfigTemplateAuthConfigTemplate?>? authConfigTemplate;
 
   /// Creates a new [PluginConfigTemplate].
   /// [additionalConfigTemplates] The list of additional configuration variables for the plugin's

@@ -17,52 +17,52 @@ class BareMetalNodePoolState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The cluster this node pool belongs to.
-  final pulumi.Input<String>? bareMetalCluster;
+  final pulumi.Input<String?>? bareMetalCluster;
   /// The time the cluster was created, in RFC3339 text format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The time the cluster was deleted, in RFC3339 text format.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name for the Bare Metal Node Pool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The bare metal node pool name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Node pool configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalNodePoolNodePoolConfig>? nodePoolConfig;
+  final pulumi.Input<BareMetalNodePoolNodePoolConfig?>? nodePoolConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// If set, there are currently changes in flight to the Bare Metal User Cluster.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// (Output)
   /// The lifecycle state of the condition.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Specifies detailed node pool status.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalNodePoolStatus>>? statuses;
+  final pulumi.Input<List<BareMetalNodePoolStatus>?>? statuses;
   /// The unique identifier of the Bare Metal Node Pool.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The time the cluster was last updated, in RFC3339 text format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BareMetalNodePoolState].
   /// [annotations] Annotations on the Bare Metal Node Pool.

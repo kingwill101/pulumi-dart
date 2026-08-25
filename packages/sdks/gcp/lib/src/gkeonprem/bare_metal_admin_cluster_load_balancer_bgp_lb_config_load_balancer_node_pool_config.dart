@@ -6,7 +6,7 @@ import 'bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig>? nodePoolConfig;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig?>? nodePoolConfig;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] A nested object resource.

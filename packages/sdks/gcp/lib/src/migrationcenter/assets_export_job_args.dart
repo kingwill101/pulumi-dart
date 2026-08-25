@@ -14,14 +14,14 @@ class AssetsExportJobArgs {
   final pulumi.Input<String> assetsExportJobId;
   /// Conditions for selecting assets to export.
   /// Structure is documented below.
-  final pulumi.Input<AssetsExportJobCondition>? condition;
+  final pulumi.Input<AssetsExportJobCondition?>? condition;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Labels as key value pairs.
   /// Labels must meet the following constraints:
   /// * Keys and values can contain only lowercase letters, numeric characters,
@@ -33,21 +33,21 @@ class AssetsExportJobArgs {
   /// Both keys and values are additionally constrained to be &lt;= 128 bytes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Configuration for performance data exports.
   /// Structure is documented below.
-  final pulumi.Input<AssetsExportJobPerformanceData>? performanceData;
+  final pulumi.Input<AssetsExportJobPerformanceData?>? performanceData;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// When this value is set to 'true' the response will include all assets,
   /// including those that are hidden.
-  final pulumi.Input<bool>? showHidden;
+  final pulumi.Input<bool?>? showHidden;
   /// Signed URI destination configuration.
   /// Structure is documented below.
-  final pulumi.Input<AssetsExportJobSignedUriDestination>? signedUriDestination;
+  final pulumi.Input<AssetsExportJobSignedUriDestination?>? signedUriDestination;
 
   /// Creates a new [AssetsExportJobArgs].
   /// [assetsExportJobId] The ID to use for the asset export job.

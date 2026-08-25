@@ -16,28 +16,28 @@ class CxPageArgs {
   /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
-  final pulumi.Input<CxPageAdvancedSettings>? advancedSettings;
+  final pulumi.Input<CxPageAdvancedSettings?>? advancedSettings;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The human-readable name of the page, unique within the agent.
   final pulumi.Input<String> displayName;
   /// The fulfillment to call when the session is entering the page.
   /// Structure is documented below.
-  final pulumi.Input<CxPageEntryFulfillment>? entryFulfillment;
+  final pulumi.Input<CxPageEntryFulfillment?>? entryFulfillment;
   /// Handlers associated with the page to handle events such as webhook errors, no match or no input.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageEventHandler>>? eventHandlers;
+  final pulumi.Input<List<CxPageEventHandler>?>? eventHandlers;
   /// The form associated with the page, used for collecting parameters relevant to the page.
   /// Structure is documented below.
-  final pulumi.Input<CxPageForm>? form;
+  final pulumi.Input<CxPageForm?>? form;
   /// Knowledge connector configuration.
   /// Structure is documented below.
-  final pulumi.Input<CxPageKnowledgeConnectorSettings>? knowledgeConnectorSettings;
+  final pulumi.Input<CxPageKnowledgeConnectorSettings?>? knowledgeConnectorSettings;
   /// The language of the following fields in page:
   /// Page.entry_fulfillment.messages
   /// Page.entry_fulfillment.conditional_cases
@@ -50,15 +50,15 @@ class CxPageArgs {
   /// Page.transition_routes.trigger_fulfillment.messages
   /// Page.transition_routes.trigger_fulfillment.conditional_cases
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The flow to create a page for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
   /// If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route &gt; page's transition route group &gt; flow's transition routes.
   /// If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
   /// Format:projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/transitionRouteGroups/&lt;TransitionRouteGroup ID&gt;.
-  final pulumi.Input<List<String>>? transitionRouteGroups;
+  final pulumi.Input<List<String>?>? transitionRouteGroups;
   /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
   /// When we are in a certain page, the TransitionRoutes are evalauted in the following order:
   /// TransitionRoutes defined in the page with intent specified.
@@ -68,7 +68,7 @@ class CxPageArgs {
   /// TransitionRoutes defined in the page with only condition specified.
   /// TransitionRoutes defined in the transition route groups with only condition specified.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageTransitionRoute>>? transitionRoutes;
+  final pulumi.Input<List<CxPageTransitionRoute>?>? transitionRoutes;
 
   /// Creates a new [CxPageArgs].
   /// [advancedSettings] Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.

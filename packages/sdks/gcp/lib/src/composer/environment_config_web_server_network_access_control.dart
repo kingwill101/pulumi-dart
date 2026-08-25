@@ -5,7 +5,7 @@ import 'environment_config_web_server_network_access_control_allowed_ip_range.da
 
 class EnvironmentConfigWebServerNetworkAccessControl {
   /// A collection of allowed IP ranges with descriptions.
-  final pulumi.Input<List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>>? allowedIpRanges;
+  final pulumi.Input<List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>?>? allowedIpRanges;
 
   /// Creates a new [EnvironmentConfigWebServerNetworkAccessControl].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.

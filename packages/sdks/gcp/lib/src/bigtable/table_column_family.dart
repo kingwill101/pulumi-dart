@@ -6,7 +6,7 @@ class TableColumnFamily {
   /// The name of the column family.
   final pulumi.Input<String> family;
   /// The type of the column family.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TableColumnFamily].
   /// [family] The name of the column family.

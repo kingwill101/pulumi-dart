@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bulk_per_instance_config_args.dart';
+import 'bulk_per_instance_config_instance.dart';
 import 'bulk_per_instance_config_state.dart';
 
 /// A config defined for multiple managed instances that belong to an instance group manager with target_size_policy.mode=BULK.
@@ -433,7 +434,7 @@ class BulkPerInstanceConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> instanceGroupManager;
   /// The list of per-instance configs.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> instances;
+  late final pulumi.Output<List<BulkPerInstanceConfigInstance>?> instances;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -452,11 +453,11 @@ class BulkPerInstanceConfig extends pulumi.CustomResource {
           'gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
-    instances = registerOutput<List<Map<String, dynamic>>?>('instances');
+    instances = registerOutput<List<BulkPerInstanceConfigInstance>?>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BulkPerInstanceConfigInstance>(guardedValue, (value) => BulkPerInstanceConfigInstance.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }
@@ -466,11 +467,12 @@ class BulkPerInstanceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BulkPerInstanceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BulkPerInstanceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -486,7 +488,23 @@ class BulkPerInstanceConfig extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
-    instances = registerOutput<List<Map<String, dynamic>>?>('instances');
+    instances = registerOutput<List<BulkPerInstanceConfigInstance>?>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BulkPerInstanceConfigInstance>(guardedValue, (value) => BulkPerInstanceConfigInstance.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [BulkPerInstanceConfig] resource.
+  BulkPerInstanceConfig.reference(String urn)
+    : super(
+        'gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    instances = registerOutput<List<BulkPerInstanceConfigInstance>?>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BulkPerInstanceConfigInstance>(guardedValue, (value) => BulkPerInstanceConfigInstance.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }

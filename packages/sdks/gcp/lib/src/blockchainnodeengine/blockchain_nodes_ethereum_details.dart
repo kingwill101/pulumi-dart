@@ -9,29 +9,29 @@ class BlockchainNodesEthereumDetails {
   /// (Output)
   /// User-provided key-value pairs
   /// Structure is documented below.
-  final pulumi.Input<List<BlockchainNodesEthereumDetailsAdditionalEndpoint>>? additionalEndpoints;
+  final pulumi.Input<List<BlockchainNodesEthereumDetailsAdditionalEndpoint>?>? additionalEndpoints;
   /// Enables JSON-RPC access to functions in the admin namespace. Defaults to false.
-  final pulumi.Input<bool>? apiEnableAdmin;
+  final pulumi.Input<bool?>? apiEnableAdmin;
   /// Enables JSON-RPC access to functions in the debug namespace. Defaults to false.
-  final pulumi.Input<bool>? apiEnableDebug;
+  final pulumi.Input<bool?>? apiEnableDebug;
   /// The consensus client
   /// Possible values are: `CONSENSUS_CLIENT_UNSPECIFIED`, `LIGHTHOUSE`.
-  final pulumi.Input<String>? consensusClient;
+  final pulumi.Input<String?>? consensusClient;
   /// The execution client
   /// Possible values are: `EXECUTION_CLIENT_UNSPECIFIED`, `GETH`, `ERIGON`.
-  final pulumi.Input<String>? executionClient;
+  final pulumi.Input<String?>? executionClient;
   /// User-provided key-value pairs
   /// Structure is documented below.
-  final pulumi.Input<BlockchainNodesEthereumDetailsGethDetails>? gethDetails;
+  final pulumi.Input<BlockchainNodesEthereumDetailsGethDetails?>? gethDetails;
   /// The Ethereum environment being accessed.
   /// Possible values are: `MAINNET`, `TESTNET_GOERLI_PRATER`, `TESTNET_SEPOLIA`.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The type of Ethereum node.
   /// Possible values are: `LIGHT`, `FULL`, `ARCHIVE`.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// Configuration for validator-related parameters on the beacon client, and for any managed validator client.
   /// Structure is documented below.
-  final pulumi.Input<BlockchainNodesEthereumDetailsValidatorConfig>? validatorConfig;
+  final pulumi.Input<BlockchainNodesEthereumDetailsValidatorConfig?>? validatorConfig;
 
   /// Creates a new [BlockchainNodesEthereumDetails].
   /// [additionalEndpoints] (Output)

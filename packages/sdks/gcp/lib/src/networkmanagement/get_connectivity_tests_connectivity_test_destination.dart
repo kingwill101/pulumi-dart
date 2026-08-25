@@ -90,7 +90,7 @@ class GetConnectivityTestsConnectivityTestDestination {
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
       networkType: pulumi.Input.fromValue(map['networkType'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
       redisCluster: pulumi.Input.fromValue(map['redisCluster'] as String),
       redisInstance: pulumi.Input.fromValue(map['redisInstance'] as String),

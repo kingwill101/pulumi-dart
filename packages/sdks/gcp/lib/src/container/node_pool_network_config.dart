@@ -8,27 +8,27 @@ import 'node_pool_network_config_pod_cidr_overprovision_config.dart';
 
 class NodePoolNetworkConfig {
   /// ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
-  final pulumi.Input<String>? acceleratorNetworkProfile;
+  final pulumi.Input<String?>? acceleratorNetworkProfile;
   /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
   /// Structure is documented below
-  final pulumi.Input<List<NodePoolNetworkConfigAdditionalNodeNetworkConfig>>? additionalNodeNetworkConfigs;
+  final pulumi.Input<List<NodePoolNetworkConfigAdditionalNodeNetworkConfig>?>? additionalNodeNetworkConfigs;
   /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
   /// Structure is documented below
-  final pulumi.Input<List<NodePoolNetworkConfigAdditionalPodNetworkConfig>>? additionalPodNetworkConfigs;
+  final pulumi.Input<List<NodePoolNetworkConfigAdditionalPodNetworkConfig>?>? additionalPodNetworkConfigs;
   /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
-  final pulumi.Input<bool>? createPodRange;
+  final pulumi.Input<bool?>? createPodRange;
   /// Whether nodes have internal IP addresses only.
-  final pulumi.Input<bool>? enablePrivateNodes;
+  final pulumi.Input<bool?>? enablePrivateNodes;
   /// Network bandwidth tier configuration. Structure is documented below.
-  final pulumi.Input<NodePoolNetworkConfigNetworkPerformanceConfig>? networkPerformanceConfig;
+  final pulumi.Input<NodePoolNetworkConfigNetworkPerformanceConfig?>? networkPerformanceConfig;
   /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
-  final pulumi.Input<NodePoolNetworkConfigPodCidrOverprovisionConfig>? podCidrOverprovisionConfig;
+  final pulumi.Input<NodePoolNetworkConfigPodCidrOverprovisionConfig?>? podCidrOverprovisionConfig;
   /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-  final pulumi.Input<String>? podIpv4CidrBlock;
+  final pulumi.Input<String?>? podIpv4CidrBlock;
   /// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
-  final pulumi.Input<String>? podRange;
+  final pulumi.Input<String?>? podRange;
   /// The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [NodePoolNetworkConfig].
   /// [acceleratorNetworkProfile] ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.

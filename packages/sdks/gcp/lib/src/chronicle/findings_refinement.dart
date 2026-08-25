@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'findings_refinement_args.dart';
+import 'findings_refinement_outcome_filter.dart';
 import 'findings_refinement_state.dart';
 
 /// Represents a set of logic conditions used to refine various types of findings such as curated rule detections.
@@ -393,7 +394,7 @@ class FindingsRefinement extends pulumi.CustomResource {
   /// filters that are applied to the outcome variables in the detection.
   /// All filters must be true for a detection to match the findings refinement.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> outcomeFilters;
+  late final pulumi.Output<List<FindingsRefinementOutcomeFilter>?> outcomeFilters;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -422,14 +423,14 @@ class FindingsRefinement extends pulumi.CustomResource {
           'gcp:chronicle/findingsRefinement:FindingsRefinement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    outcomeFilters = registerOutput<List<Map<String, dynamic>>?>('outcomeFilters');
+    outcomeFilters = registerOutput<List<FindingsRefinementOutcomeFilter>?>('outcomeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FindingsRefinementOutcomeFilter>(guardedValue, (value) => FindingsRefinementOutcomeFilter.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     query = registerOutput<String?>('query');
     type = registerOutput<String?>('type');
@@ -441,11 +442,12 @@ class FindingsRefinement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FindingsRefinementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FindingsRefinement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -464,7 +466,28 @@ class FindingsRefinement extends pulumi.CustomResource {
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    outcomeFilters = registerOutput<List<Map<String, dynamic>>?>('outcomeFilters');
+    outcomeFilters = registerOutput<List<FindingsRefinementOutcomeFilter>?>('outcomeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FindingsRefinementOutcomeFilter>(guardedValue, (value) => FindingsRefinementOutcomeFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    query = registerOutput<String?>('query');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FindingsRefinement] resource.
+  FindingsRefinement.reference(String urn)
+    : super(
+        'gcp:chronicle/findingsRefinement:FindingsRefinement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String?>('displayName');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    outcomeFilters = registerOutput<List<FindingsRefinementOutcomeFilter>?>('outcomeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FindingsRefinementOutcomeFilter>(guardedValue, (value) => FindingsRefinementOutcomeFilter.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     query = registerOutput<String?>('query');
     type = registerOutput<String?>('type');

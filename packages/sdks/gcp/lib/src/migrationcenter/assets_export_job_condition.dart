@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssetsExportJobCondition {
   /// Assets filter, supports the same syntax as asset listing.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [AssetsExportJobCondition].
   /// [filter] Assets filter, supports the same syntax as asset listing.

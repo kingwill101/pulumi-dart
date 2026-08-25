@@ -758,19 +758,19 @@ class RuleDeployment extends pulumi.CustomResource {
           'gcp:chronicle/ruleDeployment:RuleDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     alerting = registerOutput<bool?>('alerting');
     archiveTime = registerOutput<String>('archiveTime');
     archived = registerOutput<bool?>('archived');
-    consumerRules = registerOutput<List<String>>('consumerRules');
+    consumerRules = registerOutput<List<String>>('consumerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     executionState = registerOutput<String>('executionState');
     instance = registerOutput<String>('instance');
     lastAlertStatusChangeTime = registerOutput<String>('lastAlertStatusChangeTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    producerRules = registerOutput<List<String>>('producerRules');
+    producerRules = registerOutput<List<String>>('producerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     rule = registerOutput<String>('rule');
     runFrequency = registerOutput<String?>('runFrequency');
@@ -782,11 +782,12 @@ class RuleDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuleDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -803,14 +804,40 @@ class RuleDeployment extends pulumi.CustomResource {
     alerting = registerOutput<bool?>('alerting');
     archiveTime = registerOutput<String>('archiveTime');
     archived = registerOutput<bool?>('archived');
-    consumerRules = registerOutput<List<String>>('consumerRules');
+    consumerRules = registerOutput<List<String>>('consumerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     executionState = registerOutput<String>('executionState');
     instance = registerOutput<String>('instance');
     lastAlertStatusChangeTime = registerOutput<String>('lastAlertStatusChangeTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    producerRules = registerOutput<List<String>>('producerRules');
+    producerRules = registerOutput<List<String>>('producerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    rule = registerOutput<String>('rule');
+    runFrequency = registerOutput<String?>('runFrequency');
+    scheduleCustomizations = registerOutput<RuleDeploymentScheduleCustomizations?>('scheduleCustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleDeploymentScheduleCustomizations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RuleDeployment] resource.
+  RuleDeployment.reference(String urn)
+    : super(
+        'gcp:chronicle/ruleDeployment:RuleDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alerting = registerOutput<bool?>('alerting');
+    archiveTime = registerOutput<String>('archiveTime');
+    archived = registerOutput<bool?>('archived');
+    consumerRules = registerOutput<List<String>>('consumerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabled = registerOutput<bool?>('enabled');
+    executionState = registerOutput<String>('executionState');
+    instance = registerOutput<String>('instance');
+    lastAlertStatusChangeTime = registerOutput<String>('lastAlertStatusChangeTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    producerRules = registerOutput<List<String>>('producerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     rule = registerOutput<String>('rule');
     runFrequency = registerOutput<String?>('runFrequency');

@@ -13,10 +13,10 @@ class GetAddressArgs {
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Region in which the created address reside.
   /// If it is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetAddressArgs].
   /// [name] A unique name for the resource, required by GCE.

@@ -7,10 +7,10 @@ import 'rollout_plan_wave_selector_resource_hierarchy_selector.dart';
 class RolloutPlanWaveSelector {
   /// Roll out to resources by location.
   /// Structure is documented below.
-  final pulumi.Input<RolloutPlanWaveSelectorLocationSelector>? locationSelector;
+  final pulumi.Input<RolloutPlanWaveSelectorLocationSelector?>? locationSelector;
   /// Roll out to resources by Cloud Resource Manager resource hierarchy nodes such as projects, folders, orgs.
   /// Structure is documented below.
-  final pulumi.Input<RolloutPlanWaveSelectorResourceHierarchySelector>? resourceHierarchySelector;
+  final pulumi.Input<RolloutPlanWaveSelectorResourceHierarchySelector?>? resourceHierarchySelector;
 
   /// Creates a new [RolloutPlanWaveSelector].
   /// [locationSelector] Roll out to resources by location.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sip_trunk_args.dart';
+import 'sip_trunk_connection.dart';
 import 'sip_trunk_state.dart';
 
 /// SipTrunk is the resource that represents a SIP trunk to connect to the Google Telephony Platform SIP trunking service.
@@ -151,7 +152,7 @@ import 'sip_trunk_state.dart';
 class SipTrunk extends pulumi.CustomResource {
   /// Output only. The connections of the SIP trunk.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connections;
+  late final pulumi.Output<List<SipTrunkConnection>> connections;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -183,12 +184,12 @@ class SipTrunk extends pulumi.CustomResource {
           'gcp:diagflow/sipTrunk:SipTrunk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    connections = registerOutput<List<Map<String, dynamic>>>('connections');
+    connections = registerOutput<List<SipTrunkConnection>>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SipTrunkConnection>(guardedValue, (value) => SipTrunkConnection.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    expectedHostnames = registerOutput<List<String>>('expectedHostnames');
+    expectedHostnames = registerOutput<List<String>>('expectedHostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -199,11 +200,12 @@ class SipTrunk extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SipTrunkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SipTrunk._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,10 +219,28 @@ class SipTrunk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connections = registerOutput<List<Map<String, dynamic>>>('connections');
+    connections = registerOutput<List<SipTrunkConnection>>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SipTrunkConnection>(guardedValue, (value) => SipTrunkConnection.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    expectedHostnames = registerOutput<List<String>>('expectedHostnames');
+    expectedHostnames = registerOutput<List<String>>('expectedHostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [SipTrunk] resource.
+  SipTrunk.reference(String urn)
+    : super(
+        'gcp:diagflow/sipTrunk:SipTrunk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connections = registerOutput<List<SipTrunkConnection>>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SipTrunkConnection>(guardedValue, (value) => SipTrunkConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    expectedHostnames = registerOutput<List<String>>('expectedHostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

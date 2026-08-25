@@ -15,10 +15,10 @@ class GetInstanceSerialPortArgs {
   final pulumi.Input<int> port;
   /// The project in which the Compute Instance exists. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The zone in which the Compute Instance exists.
   /// If it is not provided, the provider zone is used.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetInstanceSerialPortArgs].
   /// [instance] The name of the Compute Instance to read output from.
@@ -44,7 +44,7 @@ class GetInstanceSerialPortArgs {
   factory GetInstanceSerialPortArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceSerialPortArgs(
       instance: pulumi.Input.fromValue(map['instance'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

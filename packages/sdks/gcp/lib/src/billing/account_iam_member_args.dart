@@ -12,7 +12,7 @@ class AccountIamMemberArgs {
   ///
   /// For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
   final pulumi.Input<String> billingAccountId;
-  final pulumi.Input<AccountIamMemberCondition>? condition;
+  final pulumi.Input<AccountIamMemberCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

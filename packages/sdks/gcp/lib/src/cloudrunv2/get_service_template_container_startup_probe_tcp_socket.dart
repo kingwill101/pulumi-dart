@@ -21,7 +21,7 @@ class GetServiceTemplateContainerStartupProbeTcpSocket {
 
   factory GetServiceTemplateContainerStartupProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerStartupProbeTcpSocket(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

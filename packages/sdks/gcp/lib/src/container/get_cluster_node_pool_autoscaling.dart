@@ -41,10 +41,10 @@ class GetClusterNodePoolAutoscaling {
   factory GetClusterNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoscaling(
       locationPolicy: pulumi.Input.fromValue(map['locationPolicy'] as String),
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
-      totalMaxNodeCount: pulumi.Input.fromValue(map['totalMaxNodeCount'] as int),
-      totalMinNodeCount: pulumi.Input.fromValue(map['totalMinNodeCount'] as int),
+      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
+      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
+      totalMaxNodeCount: pulumi.Input.fromValue((map['totalMaxNodeCount'] as num).toInt()),
+      totalMinNodeCount: pulumi.Input.fromValue((map['totalMinNodeCount'] as num).toInt()),
     );
   }
 }

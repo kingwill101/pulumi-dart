@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_args.dart';
 import 'fleet_default_cluster_config.dart';
 import 'fleet_gkehub_state.dart';
+import 'fleet_state.dart';
 
 /// Fleet contains information about a group of clusters.
 ///
@@ -199,7 +200,7 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// The state of the fleet resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<FleetState>> states;
   /// Google-generated UUID for this resource. This is unique across all
   /// Fleet resources. If a Fleet resource is deleted and another
   /// resource with the same name is created, it gets a different uid.
@@ -219,7 +220,7 @@ class Fleet extends pulumi.CustomResource {
           'gcp:gkehub/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -227,7 +228,7 @@ class Fleet extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     project = registerOutput<String>('project');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<FleetState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetState>(guardedValue, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -237,11 +238,12 @@ class Fleet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetGkehubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Fleet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -261,7 +263,27 @@ class Fleet extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     project = registerOutput<String>('project');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<FleetState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetState>(guardedValue, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Fleet] resource.
+  Fleet.reference(String urn)
+    : super(
+        'gcp:gkehub/fleet:Fleet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    project = registerOutput<String>('project');
+    states = registerOutput<List<FleetState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetState>(guardedValue, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

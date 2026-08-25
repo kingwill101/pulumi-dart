@@ -6,7 +6,7 @@ import 'widget_config_homepage_setting_shortcut.dart';
 class WidgetConfigHomepageSetting {
   /// The shortcuts to display on the homepage.
   /// Structure is documented below.
-  final pulumi.Input<List<WidgetConfigHomepageSettingShortcut>>? shortcuts;
+  final pulumi.Input<List<WidgetConfigHomepageSettingShortcut>?>? shortcuts;
 
   /// Creates a new [WidgetConfigHomepageSetting].
   /// [shortcuts] The shortcuts to display on the homepage.

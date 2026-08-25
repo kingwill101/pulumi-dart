@@ -9,9 +9,9 @@ class PluginInstanceActionHubInstanceAction {
   /// CURRENT_EXECUTION_STATE_UNSPECIFIED
   /// RUNNING
   /// NOT_RUNNING
-  final pulumi.Input<String>? currentExecutionState;
+  final pulumi.Input<String?>? currentExecutionState;
   /// The result of the last execution of the plugin instance.
-  final pulumi.Input<List<PluginInstanceActionHubInstanceActionLastExecution>>? lastExecutions;
+  final pulumi.Input<List<PluginInstanceActionHubInstanceActionLastExecution>?>? lastExecutions;
 
   /// Creates a new [PluginInstanceActionHubInstanceAction].
   /// [currentExecutionState] The current state of the execution.

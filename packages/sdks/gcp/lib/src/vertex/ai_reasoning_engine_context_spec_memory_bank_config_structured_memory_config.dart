@@ -6,9 +6,9 @@ import 'ai_reasoning_engine_context_spec_memory_bank_config_structured_memory_co
 class AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig {
   /// Optional. List of schema configs that this structured memory config applies to.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig>>? schemaConfigs;
+  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig>?>? schemaConfigs;
   /// Optional. List of scope keys that this structured memory config applies to.
-  final pulumi.Input<List<String>>? scopeKeys;
+  final pulumi.Input<List<String>?>? scopeKeys;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig].
   /// [schemaConfigs] Optional. List of schema configs that this structured memory config applies to.

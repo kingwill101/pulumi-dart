@@ -30,9 +30,9 @@ class ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTime {
 
   factory ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTime.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTime(
-      hours: pulumi.Input.fromValue(map['hours'] as int),
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
-      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
+      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
+      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
     );
   }
 }

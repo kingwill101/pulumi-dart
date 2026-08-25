@@ -5,7 +5,7 @@ import 'azure_cluster_logging_config_component_config.dart';
 
 class AzureClusterLoggingConfig {
   /// Configuration of the logging components.
-  final pulumi.Input<AzureClusterLoggingConfigComponentConfig>? componentConfig;
+  final pulumi.Input<AzureClusterLoggingConfigComponentConfig?>? componentConfig;
 
   /// Creates a new [AzureClusterLoggingConfig].
   /// [componentConfig] Configuration of the logging components.

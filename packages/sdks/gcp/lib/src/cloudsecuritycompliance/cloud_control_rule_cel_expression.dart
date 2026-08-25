@@ -9,7 +9,7 @@ class CloudControlRuleCelExpression {
   final pulumi.Input<String> expression;
   /// A list of strings.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlRuleCelExpressionResourceTypesValues>? resourceTypesValues;
+  final pulumi.Input<CloudControlRuleCelExpressionResourceTypesValues?>? resourceTypesValues;
 
   /// Creates a new [CloudControlRuleCelExpression].
   /// [expression] Logic expression in CEL language.

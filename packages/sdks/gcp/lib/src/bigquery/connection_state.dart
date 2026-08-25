@@ -13,42 +13,42 @@ import 'connection_spark.dart';
 class ConnectionState {
   /// Connection properties specific to Amazon Web Services.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAws>? aws;
+  final pulumi.Input<ConnectionAws?>? aws;
   /// Container for connection properties specific to Azure.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAzure>? azure;
+  final pulumi.Input<ConnectionAzure?>? azure;
   /// Container for connection properties for delegation of access to GCP resources.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionCloudResource>? cloudResource;
+  final pulumi.Input<ConnectionCloudResource?>? cloudResource;
   /// Connection properties specific to Cloud Spanner
   /// Structure is documented below.
-  final pulumi.Input<ConnectionCloudSpanner>? cloudSpanner;
+  final pulumi.Input<ConnectionCloudSpanner?>? cloudSpanner;
   /// Connection properties specific to the Cloud SQL.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionCloudSql>? cloudSql;
+  final pulumi.Input<ConnectionCloudSql?>? cloudSql;
   /// Connector configuration. This is a generic configuration that is used to connect to
   /// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
   /// Connector framework.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionConfiguration>? configuration;
+  final pulumi.Input<ConnectionConfiguration?>? configuration;
   /// Optional connection id that should be assigned to the created connection.
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A descriptive description for the connection
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A descriptive name for the connection
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// True if the connection has credential assigned.
-  final pulumi.Input<bool>? hasCredential;
+  final pulumi.Input<bool?>? hasCredential;
   /// Optional. The Cloud KMS key that is used for encryption.
   /// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// The geographic location where the connection should reside.
   /// Cloud SQL instance must be in the same location as the connection
   /// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
@@ -56,16 +56,16 @@ class ConnectionState {
   /// Spanner Connections same as spanner region
   /// AWS allowed regions are aws-us-east-1
   /// Azure allowed regions are azure-eastus2
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the connection in the form of:
   /// "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Container for connection properties to execute stored procedures for Apache Spark. resources.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSpark>? spark;
+  final pulumi.Input<ConnectionSpark?>? spark;
 
   /// Creates a new [ConnectionState].
   /// [aws] Connection properties specific to Amazon Web Services.

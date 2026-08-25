@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hub_args.dart';
+import 'hub_routing_vpc.dart';
 import 'hub_state.dart';
 
 /// The NetworkConnectivity Hub resource
@@ -720,7 +721,7 @@ class Hub extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> routingVpcs;
+  late final pulumi.Output<List<HubRoutingVpc>> routingVpcs;
   /// Output only. The current lifecycle state of this hub.
   late final pulumi.Output<String> state;
   /// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
@@ -740,20 +741,21 @@ class Hub extends pulumi.CustomResource {
           'gcp:networkconnectivity/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     exportPsc = registerOutput<bool>('exportPsc');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     policyMode = registerOutput<String>('policyMode');
     presetTopology = registerOutput<String>('presetTopology');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    routingVpcs = registerOutput<List<Map<String, dynamic>>>('routingVpcs');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    routingVpcs = registerOutput<List<HubRoutingVpc>>('routingVpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubRoutingVpc>(guardedValue, (value) => HubRoutingVpc.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
@@ -764,11 +766,12 @@ class Hub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -785,16 +788,43 @@ class Hub extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     exportPsc = registerOutput<bool>('exportPsc');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     policyMode = registerOutput<String>('policyMode');
     presetTopology = registerOutput<String>('presetTopology');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    routingVpcs = registerOutput<List<Map<String, dynamic>>>('routingVpcs');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    routingVpcs = registerOutput<List<HubRoutingVpc>>('routingVpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubRoutingVpc>(guardedValue, (value) => HubRoutingVpc.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Hub] resource.
+  Hub.reference(String urn)
+    : super(
+        'gcp:networkconnectivity/hub:Hub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    exportPsc = registerOutput<bool>('exportPsc');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    policyMode = registerOutput<String>('policyMode');
+    presetTopology = registerOutput<String>('presetTopology');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    routingVpcs = registerOutput<List<HubRoutingVpc>>('routingVpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubRoutingVpc>(guardedValue, (value) => HubRoutingVpc.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }

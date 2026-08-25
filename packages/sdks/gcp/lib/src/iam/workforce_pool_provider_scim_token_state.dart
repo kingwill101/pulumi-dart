@@ -10,29 +10,29 @@ class WorkforcePoolProviderScimTokenState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-specified display name for the scim token. Cannot exceed 32 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location for the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the scim token.
   /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}/tokens/{scim_token_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Provider.
-  final pulumi.Input<String>? providerId;
+  final pulumi.Input<String?>? providerId;
   /// The ID of the SCIM Tenant.
-  final pulumi.Input<String>? scimTenantId;
+  final pulumi.Input<String?>? scimTenantId;
   /// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
-  final pulumi.Input<String>? scimTokenId;
+  final pulumi.Input<String?>? scimTokenId;
   /// The token string provided to the IdP for authentication and will be set only during creation.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? securityToken;
+  final pulumi.Input<String?>? securityToken;
   /// The current state of the scim token.
   /// * ACTIVE: The token is active and may be used to provision users and groups.
   /// * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently deleted after approximately 30 days.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ID of the Workforce Pool.
-  final pulumi.Input<String>? workforcePoolId;
+  final pulumi.Input<String?>? workforcePoolId;
 
   /// Creates a new [WorkforcePoolProviderScimTokenState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

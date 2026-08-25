@@ -6,7 +6,7 @@ import 'stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgr
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable>>? postgresqlTables;
+  final pulumi.Input<List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable>?>? postgresqlTables;
   /// Database name.
   final pulumi.Input<String> schema;
 

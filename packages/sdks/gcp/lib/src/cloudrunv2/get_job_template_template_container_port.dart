@@ -25,7 +25,7 @@ class GetJobTemplateTemplateContainerPort {
 
   factory GetJobTemplateTemplateContainerPort.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateContainerPort(
-      containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
+      containerPort: pulumi.Input.fromValue((map['containerPort'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

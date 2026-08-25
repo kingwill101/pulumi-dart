@@ -6,7 +6,7 @@ import 'posture_policy_set_policy_constraint_security_health_analytics_custom_mo
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final pulumi.Input<List<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty>>? properties;
+  final pulumi.Input<List<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty>?>? properties;
 
   /// Creates a new [PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.

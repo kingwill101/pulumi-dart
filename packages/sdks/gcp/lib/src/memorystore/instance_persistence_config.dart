@@ -7,17 +7,17 @@ import 'instance_persistence_config_rdb_config.dart';
 class InstancePersistenceConfig {
   /// Configuration for AOF based persistence.
   /// Structure is documented below.
-  final pulumi.Input<InstancePersistenceConfigAofConfig>? aofConfig;
+  final pulumi.Input<InstancePersistenceConfigAofConfig?>? aofConfig;
   /// Optional. Current persistence mode.
   /// Possible values:
   /// DISABLED
   /// RDB
   /// AOF
   /// Possible values are: `DISABLED`, `RDB`, `AOF`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Configuration for RDB based persistence.
   /// Structure is documented below.
-  final pulumi.Input<InstancePersistenceConfigRdbConfig>? rdbConfig;
+  final pulumi.Input<InstancePersistenceConfigRdbConfig?>? rdbConfig;
 
   /// Creates a new [InstancePersistenceConfig].
   /// [aofConfig] Configuration for AOF based persistence.

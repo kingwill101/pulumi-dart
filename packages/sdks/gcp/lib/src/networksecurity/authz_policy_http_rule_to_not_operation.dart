@@ -8,18 +8,18 @@ import 'authz_policy_http_rule_to_not_operation_path.dart';
 class AuthzPolicyHttpRuleToNotOperation {
   /// A list of headers to match against in http header.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleToNotOperationHeaderSet>? headerSet;
+  final pulumi.Input<AuthzPolicyHttpRuleToNotOperationHeaderSet?>? headerSet;
   /// A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
   /// Limited to 10 matches.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyHttpRuleToNotOperationHost>>? hosts;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToNotOperationHost>?>? hosts;
   /// A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
   /// Limited to 10 matches.
   /// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyHttpRuleToNotOperationPath>>? paths;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToNotOperationPath>?>? paths;
 
   /// Creates a new [AuthzPolicyHttpRuleToNotOperation].
   /// [headerSet] A list of headers to match against in http header.

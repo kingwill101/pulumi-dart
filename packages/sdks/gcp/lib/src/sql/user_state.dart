@@ -14,7 +14,7 @@ class UserState {
   /// statement for both MySQL and PostgreSQL.
   /// **Note**: This property is write-only and will not be read from the API.
   /// **Caution**: Existing database roles will be overwriten with new values from this field.
-  final pulumi.Input<List<String>>? databaseRoles;
+  final pulumi.Input<List<String>?>? databaseRoles;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -25,25 +25,25 @@ class UserState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The host the user can connect from. This is only supported
   /// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
   /// Can be an IP address. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// IAM email address for MySQL IAM database users.
-  final pulumi.Input<String>? iamEmail;
+  final pulumi.Input<String?>? iamEmail;
   /// The name of the Cloud SQL instance. Changing this
   /// forces a new resource to be created.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The name of the user. Changing this forces a new resource
   /// to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password for the user. Can be updated. For Postgres
   /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
   /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
   /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-  final pulumi.Input<String>? password;
-  final pulumi.Input<UserPasswordPolicy>? passwordPolicy;
+  final pulumi.Input<String?>? password;
+  final pulumi.Input<UserPasswordPolicy?>? passwordPolicy;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password for the user. Can be updated. For Postgres
   /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
@@ -51,20 +51,20 @@ class UserState {
   /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
   ///
   /// * &gt; **Note:** One of `value` or `valueWo` can only be set.
-  final pulumi.Input<String>? passwordWo;
+  final pulumi.Input<String?>? passwordWo;
   /// An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
-  final pulumi.Input<int>? passwordWoVersion;
+  final pulumi.Input<int?>? passwordWoVersion;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
-  final pulumi.Input<List<UserSqlServerUserDetail>>? sqlServerUserDetails;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<List<UserSqlServerUserDetail>?>? sqlServerUserDetails;
   /// The user type. It determines the method to authenticate the
   /// user during login. The default is the database's built-in user type. Flags
   /// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_SERVICE_ACCOUNT", "CLOUD_IAM_GROUP",
   /// "CLOUD_IAM_GROUP_USER" and "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" for
   /// [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
   /// and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [UserState].
   /// [databaseRoles] A list of database roles to be assigned to the user.
@@ -125,7 +125,7 @@ class UserState {
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordPolicy: (() { final guardedValue = map['passwordPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       passwordWo: (() { final guardedValue = map['passwordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      passwordWoVersion: (() { final guardedValue = map['passwordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      passwordWoVersion: (() { final guardedValue = map['passwordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlServerUserDetails: (() { final guardedValue = map['sqlServerUserDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserSqlServerUserDetail>(guardedValue, (value) => UserSqlServerUserDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

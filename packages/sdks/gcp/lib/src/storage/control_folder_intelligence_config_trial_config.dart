@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlFolderIntelligenceConfigTrialConfig {
   /// (Output)
   /// The time at which the trial expires.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
 
   /// Creates a new [ControlFolderIntelligenceConfigTrialConfig].
   /// [expireTime] (Output)

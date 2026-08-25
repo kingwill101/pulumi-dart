@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool {
   /// (Output)
   /// The tool ID to filter the tools to retrieve the schema for.
-  final pulumi.Input<String>? toolId;
+  final pulumi.Input<String?>? toolId;
   /// (Output)
   /// The resource name of the Toolset from which this tool is derived.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? toolset;
+  final pulumi.Input<String?>? toolset;
 
   /// Creates a new [AppVersionSnapshotExampleMessageChunkToolResponseToolsetTool].
   /// [toolId] (Output)

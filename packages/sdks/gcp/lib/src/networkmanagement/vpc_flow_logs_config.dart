@@ -1354,24 +1354,25 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
           'gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aggregationInterval = registerOutput<String>('aggregationInterval');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filterExpr = registerOutput<String?>('filterExpr');
     flowSampling = registerOutput<double>('flowSampling');
     interconnectAttachment = registerOutput<String?>('interconnectAttachment');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
-    metadataFields = registerOutput<List<String>?>('metadataFields');
+    metadataFields = registerOutput<List<String>?>('metadataFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     subnet = registerOutput<String?>('subnet');
     targetResourceState = registerOutput<String>('targetResourceState');
@@ -1385,11 +1386,12 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcFlowLogsConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcFlowLogsConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1407,19 +1409,53 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filterExpr = registerOutput<String?>('filterExpr');
     flowSampling = registerOutput<double>('flowSampling');
     interconnectAttachment = registerOutput<String?>('interconnectAttachment');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
-    metadataFields = registerOutput<List<String>?>('metadataFields');
+    metadataFields = registerOutput<List<String>?>('metadataFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
+    subnet = registerOutput<String?>('subnet');
+    targetResourceState = registerOutput<String>('targetResourceState');
+    updateTime = registerOutput<String>('updateTime');
+    vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
+    vpnTunnel = registerOutput<String?>('vpnTunnel');
+  }
+
+  /// Creates a typed reference to an existing [VpcFlowLogsConfig] resource.
+  VpcFlowLogsConfig.reference(String urn)
+    : super(
+        'gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    aggregationInterval = registerOutput<String>('aggregationInterval');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    filterExpr = registerOutput<String?>('filterExpr');
+    flowSampling = registerOutput<double>('flowSampling');
+    interconnectAttachment = registerOutput<String?>('interconnectAttachment');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<String>('metadata');
+    metadataFields = registerOutput<List<String>?>('metadataFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
     subnet = registerOutput<String?>('subnet');
     targetResourceState = registerOutput<String>('targetResourceState');
     updateTime = registerOutput<String>('updateTime');

@@ -6,7 +6,7 @@ import 'feed_details_cortex_xdr_settings_authentication_header_key_value.dart';
 class FeedDetailsCortexXdrSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsCortexXdrSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

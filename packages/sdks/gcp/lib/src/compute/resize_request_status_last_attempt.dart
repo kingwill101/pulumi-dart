@@ -7,7 +7,7 @@ class ResizeRequestStatusLastAttempt {
   /// (Output)
   /// Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusLastAttemptError>>? errors;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptError>?>? errors;
 
   /// Creates a new [ResizeRequestStatusLastAttempt].
   /// [errors] (Output)

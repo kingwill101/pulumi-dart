@@ -9,11 +9,11 @@ class ServicePerimeterDryRunIngressPolicyIngressToOperation {
   /// with `*` specified for the method field will allow all methods AND
   /// permissions for the service specified in `serviceName`.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector>>? methodSelectors;
+  final pulumi.Input<List<ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector>?>? methodSelectors;
   /// The name of the API whose methods or permissions the `IngressPolicy` or
   /// `EgressPolicy` want to allow. A single `ApiOperation` with `serviceName`
   /// field set to `*` will allow all methods AND permissions for all services.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
 
   /// Creates a new [ServicePerimeterDryRunIngressPolicyIngressToOperation].
   /// [methodSelectors] API methods or permissions to allow. Method or permission must belong to

@@ -7,7 +7,7 @@ class IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope {
   /// synchronized from the remote catalog.
   ///
   /// &lt;a name="nestedFederatedCatalogOptionsRefreshStatus"&gt;&lt;/a&gt;The `refreshStatus` block contains:
-  final pulumi.Input<List<String>>? namespaceFilters;
+  final pulumi.Input<List<String>?>? namespaceFilters;
 
   /// Creates a new [IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope].
   /// [namespaceFilters] A list of namespace filters to limit which namespaces are

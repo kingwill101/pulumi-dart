@@ -7,7 +7,7 @@ class BudgetThresholdRule {
   /// the threshold.
   /// Default value is `CURRENT_SPEND`.
   /// Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
-  final pulumi.Input<String>? spendBasis;
+  final pulumi.Input<String?>? spendBasis;
   /// Send an alert when this threshold is exceeded. This is a
   /// 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
   final pulumi.Input<double> thresholdPercent;
@@ -30,7 +30,7 @@ class BudgetThresholdRule {
   factory BudgetThresholdRule.fromMap(Map<String, dynamic> map) {
     return BudgetThresholdRule(
       spendBasis: (() { final guardedValue = map['spendBasis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      thresholdPercent: pulumi.Input.fromValue(map['thresholdPercent'] as double),
+      thresholdPercent: pulumi.Input.fromValue((map['thresholdPercent'] as num).toDouble()),
     );
   }
 }

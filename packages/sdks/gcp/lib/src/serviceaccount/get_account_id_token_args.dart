@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_serviceaccount_get_account_id_token_get_account_id_token_args_doc}
 class GetAccountIdTokenArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
-  final pulumi.Input<List<String>>? delegates;
+  final pulumi.Input<List<String>?>? delegates;
   /// Include the verified email in the claim. Used only when using impersonation mode.
-  final pulumi.Input<bool>? includeEmail;
+  final pulumi.Input<bool?>? includeEmail;
   /// The audience claim for the `idToken`.
   final pulumi.Input<String> targetAudience;
   /// The email of the service account being impersonated.  Used only when using impersonation mode.
-  final pulumi.Input<String>? targetServiceAccount;
+  final pulumi.Input<String?>? targetServiceAccount;
 
   /// Creates a new [GetAccountIdTokenArgs].
   /// [delegates] Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.

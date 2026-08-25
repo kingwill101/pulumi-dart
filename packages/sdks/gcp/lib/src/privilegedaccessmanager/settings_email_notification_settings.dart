@@ -6,9 +6,9 @@ import 'settings_email_notification_settings_custom_notification_behavior.dart';
 class SettingsEmailNotificationSettings {
   /// CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehavior>? customNotificationBehavior;
+  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehavior?>? customNotificationBehavior;
   /// This option indicates that all email notifications are disabled.
-  final pulumi.Input<Map<String, dynamic>>? disableAllNotifications;
+  final pulumi.Input<Map<String, dynamic>?>? disableAllNotifications;
 
   /// Creates a new [SettingsEmailNotificationSettings].
   /// [customNotificationBehavior] CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.

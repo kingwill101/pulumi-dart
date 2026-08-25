@@ -25,35 +25,35 @@ class SecurityPolicyRuleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleHeaderAction>? headerAction;
+  final pulumi.Input<SecurityPolicyRuleHeaderAction?>? headerAction;
   /// A match condition that incoming traffic is evaluated against.
   /// If it evaluates to true, the corresponding 'action' is enforced.
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleMatch>? match;
+  final pulumi.Input<SecurityPolicyRuleMatch?>? match;
   /// Preconfigured WAF configuration to be applied for the rule.
   /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfig>? preconfiguredWafConfig;
+  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfig?>? preconfiguredWafConfig;
   /// If set to true, the specified action is not enforced.
-  final pulumi.Input<bool>? preview;
+  final pulumi.Input<bool?>? preview;
   /// An integer indicating the priority of a rule in the list.
   /// The priority must be a positive value between 0 and 2147483647.
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
   final pulumi.Input<int> priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleRateLimitOptions>? rateLimitOptions;
+  final pulumi.Input<SecurityPolicyRuleRateLimitOptions?>? rateLimitOptions;
   /// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleRedirectOptions>? redirectOptions;
+  final pulumi.Input<SecurityPolicyRuleRedirectOptions?>? redirectOptions;
   /// The name of the security policy this rule belongs to.
   final pulumi.Input<String> securityPolicy;
 
@@ -111,7 +111,7 @@ class SecurityPolicyRuleArgs {
       match: (() { final guardedValue = map['match']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preconfiguredWafConfig: (() { final guardedValue = map['preconfiguredWafConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRulePreconfiguredWafConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rateLimitOptions: (() { final guardedValue = map['rateLimitOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleRateLimitOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redirectOptions: (() { final guardedValue = map['redirectOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleRedirectOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

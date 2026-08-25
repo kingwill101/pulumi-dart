@@ -5,7 +5,7 @@ import 'region_instance_group_manager_instance_flexibility_policy_instance_selec
 
 class RegionInstanceGroupManagerInstanceFlexibilityPolicy {
   /// Named instance selections configuring properties that the group will use when creating new VMs.
-  final pulumi.Input<List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>>? instanceSelections;
+  final pulumi.Input<List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>?>? instanceSelections;
 
   /// Creates a new [RegionInstanceGroupManagerInstanceFlexibilityPolicy].
   /// [instanceSelections] Named instance selections configuring properties that the group will use when creating new VMs.

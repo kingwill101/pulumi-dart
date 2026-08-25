@@ -258,7 +258,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:cloudidentity/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     customer = registerOutput<String>('customer');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -272,11 +272,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,22 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    customer = registerOutput<String>('customer');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    policyQuery = registerOutput<PolicyPolicyQuery>('policyQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPolicyQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    setting = registerOutput<PolicySetting>('setting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'gcp:cloudidentity/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customer = registerOutput<String>('customer');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');

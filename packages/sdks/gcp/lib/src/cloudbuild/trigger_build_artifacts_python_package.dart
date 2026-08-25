@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerBuildArtifactsPythonPackage {
   /// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
   /// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
   /// Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
 
   /// Creates a new [TriggerBuildArtifactsPythonPackage].
   /// [paths] Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.

@@ -168,6 +168,17 @@ Future<GetBucketResult> getBucket(
   return GetBucketResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketResult> getBucketOutput(
+  GetBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getBucket:getBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for bucket
 ///
 ///
@@ -285,6 +296,17 @@ Future<GetBucketIamPolicyResult> getBucketIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketIamPolicyResult> getBucketIamPolicyOutput(
+  GetBucketIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getBucketIamPolicy:getBucketIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketIamPolicyResult.fromMap);
 }
 
 /// Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
@@ -416,6 +438,17 @@ Future<GetBucketObjectResult> getBucketObject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketObjectResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketObjectResult> getBucketObjectOutput(
+  GetBucketObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getBucketObject:getBucketObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectResult.fromMap);
 }
 
 /// Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
@@ -564,6 +597,17 @@ Future<GetBucketObjectContentResult> getBucketObjectContent(
   return GetBucketObjectContentResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketObjectContentResult> getBucketObjectContentOutput(
+  GetBucketObjectContentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getBucketObjectContent:getBucketObjectContent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectContentResult.fromMap);
+}
+
 /// Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).
 /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 /// and
@@ -706,6 +750,17 @@ Future<GetBucketObjectContentsResult> getBucketObjectContents(
   return GetBucketObjectContentsResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketObjectContentsResult> getBucketObjectContentsOutput(
+  GetBucketObjectContentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getBucketObjectContents:getBucketObjectContents',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectContentsResult.fromMap);
+}
+
 /// Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
 /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 /// and [API](https://cloud.google.com/storage/docs/json_api/v1/objects/list).
@@ -826,6 +881,17 @@ Future<GetBucketObjectsResult> getBucketObjects(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketObjectsResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketObjectsResult> getBucketObjectsOutput(
+  GetBucketObjectsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getBucketObjects:getBucketObjects',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectsResult.fromMap);
 }
 
 /// Gets a list of existing GCS buckets.
@@ -950,6 +1016,17 @@ Future<GetBucketsResult> getBuckets(
   return GetBucketsResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketsResult> getBucketsOutput(
+  GetBucketsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getBuckets:getBuckets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketsResult.fromMap);
+}
+
 /// Get information about a Cloud Storage Control FolderIntelligenceConfig.
 ///
 ///
@@ -1070,6 +1147,17 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
   return GetControlFolderIntelligenceConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfigOutput(
+  GetControlFolderIntelligenceConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlFolderIntelligenceConfig:getControlFolderIntelligenceConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlFolderIntelligenceConfigResult.fromMap);
+}
+
 /// Summarizes Cloud Storage intelligence findings in a specified folder and location.
 ///
 /// ## Example Usage
@@ -1186,6 +1274,17 @@ Future<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntell
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlFolderIntelligenceFindingsSummaryResult.fromMap(result);
+}
+
+pulumi.Output<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntelligenceFindingsSummaryOutput(
+  GetControlFolderIntelligenceFindingsSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlFolderIntelligenceFindingsSummary:getControlFolderIntelligenceFindingsSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlFolderIntelligenceFindingsSummaryResult.fromMap);
 }
 
 /// Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
@@ -1308,6 +1407,17 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
   return GetControlOrganizationIntelligenceConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfigOutput(
+  GetControlOrganizationIntelligenceConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlOrganizationIntelligenceConfigResult.fromMap);
+}
+
 /// Summarizes Cloud Storage intelligence findings in a specified organization and location.
 ///
 /// ## Example Usage
@@ -1424,6 +1534,17 @@ Future<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrgani
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlOrganizationIntelligenceFindingsSummaryResult.fromMap(result);
+}
+
+pulumi.Output<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummaryOutput(
+  GetControlOrganizationIntelligenceFindingsSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlOrganizationIntelligenceFindingsSummaryResult.fromMap);
 }
 
 /// Get information about a Cloud Storage Control ProjectIntelligenceConfig.
@@ -1544,6 +1665,17 @@ Future<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlProjectIntelligenceConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfigOutput(
+  GetControlProjectIntelligenceConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlProjectIntelligenceConfigResult.fromMap);
 }
 
 /// Retrieves information about a specific Cloud Storage intelligence finding in a project and location.
@@ -1671,6 +1803,17 @@ Future<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligence
   return GetControlProjectIntelligenceFindingResult.fromMap(result);
 }
 
+pulumi.Output<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFindingOutput(
+  GetControlProjectIntelligenceFindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFinding:getControlProjectIntelligenceFinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlProjectIntelligenceFindingResult.fromMap);
+}
+
 /// Retrieves information about a specific Cloud Storage intelligence finding revision in a project and location.
 ///
 /// ## Example Usage
@@ -1796,6 +1939,17 @@ Future<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectInte
   return GetControlProjectIntelligenceFindingRevisionResult.fromMap(result);
 }
 
+pulumi.Output<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectIntelligenceFindingRevisionOutput(
+  GetControlProjectIntelligenceFindingRevisionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindingRevision:getControlProjectIntelligenceFindingRevision',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlProjectIntelligenceFindingRevisionResult.fromMap);
+}
+
 /// Retrieves a list of Cloud Storage intelligence finding revisions in a specified project and location.
 ///
 /// ## Example Usage
@@ -1912,6 +2066,17 @@ Future<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectInt
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlProjectIntelligenceFindingRevisionsResult.fromMap(result);
+}
+
+pulumi.Output<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectIntelligenceFindingRevisionsOutput(
+  GetControlProjectIntelligenceFindingRevisionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlProjectIntelligenceFindingRevisionsResult.fromMap);
 }
 
 /// Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
@@ -2032,6 +2197,17 @@ Future<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenc
   return GetControlProjectIntelligenceFindingsResult.fromMap(result);
 }
 
+pulumi.Output<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindingsOutput(
+  GetControlProjectIntelligenceFindingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindings:getControlProjectIntelligenceFindings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlProjectIntelligenceFindingsResult.fromMap);
+}
+
 /// Summarizes Cloud Storage intelligence findings in a specified project and location.
 ///
 /// ## Example Usage
@@ -2148,6 +2324,17 @@ Future<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectInte
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlProjectIntelligenceFindingsSummaryResult.fromMap(result);
+}
+
+pulumi.Output<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummaryOutput(
+  GetControlProjectIntelligenceFindingsSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindingsSummary:getControlProjectIntelligenceFindingsSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlProjectIntelligenceFindingsSummaryResult.fromMap);
 }
 
 /// Use this data source to get information about a Storage Insights Dataset Config resource.
@@ -2286,6 +2473,17 @@ Future<GetInsightsDatasetConfigResult> getInsightsDatasetConfig(
   return GetInsightsDatasetConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetInsightsDatasetConfigResult> getInsightsDatasetConfigOutput(
+  GetInsightsDatasetConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getInsightsDatasetConfig:getInsightsDatasetConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInsightsDatasetConfigResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_managed_folder_iam_policy_get_managed_folder_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
@@ -2299,6 +2497,17 @@ Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedFolderIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicyOutput(
+  GetManagedFolderIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedFolderIamPolicyResult.fromMap);
 }
 
 /// The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
@@ -2639,6 +2848,17 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetObjectSignedUrlResult.fromMap(result);
+}
+
+pulumi.Output<GetObjectSignedUrlResult> getObjectSignedUrlOutput(
+  GetObjectSignedUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getObjectSignedUrl:getObjectSignedUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetObjectSignedUrlResult.fromMap);
 }
 
 /// Get the email address of a project's unique [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts).
@@ -3056,6 +3276,17 @@ Future<GetProjectServiceAccountResult> getProjectServiceAccount(
   return GetProjectServiceAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectServiceAccountResult> getProjectServiceAccountOutput(
+  GetProjectServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getProjectServiceAccount:getProjectServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectServiceAccountResult.fromMap);
+}
+
 /// Use this data source to retrieve Storage Transfer service account for this project
 ///
 /// ## Example Usage
@@ -3178,6 +3409,17 @@ Future<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(
   return GetTransferProjectServiceAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccountOutput(
+  GetTransferProjectServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTransferProjectServiceAccountResult.fromMap);
+}
+
 /// Use this data source to retrieve Storage Transfer service account for this project
 ///
 /// ## Example Usage
@@ -3298,4 +3540,15 @@ Future<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTransferProjectServieAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccountOutput(
+  GetTransferProjectServieAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTransferProjectServieAccountResult.fromMap);
 }

@@ -13,18 +13,18 @@ class AiLogicPromptTemplateArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the PromptTemplate.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// For the `global` location only. If true, the write operation (create,
   /// update, or delete) will apply to the global region only. Otherwise, the
   /// operation will also propagate to all applicable regions.
-  final pulumi.Input<bool>? regionalPropagationDisabled;
+  final pulumi.Input<bool?>? regionalPropagationDisabled;
   /// The unique ID of the PromptTemplate, which is the final component of the
   /// PromptTemplate's resource name.
   final pulumi.Input<String> templateId;

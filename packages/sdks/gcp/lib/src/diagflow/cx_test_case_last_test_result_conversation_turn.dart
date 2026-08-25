@@ -7,10 +7,10 @@ import 'cx_test_case_last_test_result_conversation_turn_virtual_agent_output.dar
 class CxTestCaseLastTestResultConversationTurn {
   /// The user input.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInput>? userInput;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInput?>? userInput;
   /// The virtual agent output.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutput>? virtualAgentOutput;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutput?>? virtualAgentOutput;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurn].
   /// [userInput] The user input.

@@ -6,7 +6,7 @@ import 'field_index_config_index.dart';
 class FieldIndexConfig {
   /// The indexes to configure on the field. Order or array contains must be specified.
   /// Structure is documented below.
-  final pulumi.Input<List<FieldIndexConfigIndex>>? indexes;
+  final pulumi.Input<List<FieldIndexConfigIndex>?>? indexes;
 
   /// Creates a new [FieldIndexConfig].
   /// [indexes] The indexes to configure on the field. Order or array contains must be specified.

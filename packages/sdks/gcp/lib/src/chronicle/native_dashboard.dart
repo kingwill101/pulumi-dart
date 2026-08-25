@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'native_dashboard_args.dart';
+import 'native_dashboard_chart.dart';
+import 'native_dashboard_filter.dart';
 import 'native_dashboard_state.dart';
 
 /// A configuration for a native dashboard within a Google SecOps (Chronicle) instance.
@@ -283,7 +285,7 @@ class NativeDashboard extends pulumi.CustomResource {
   late final pulumi.Output<String?> access;
   /// A list of charts included in the dashboard definition.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> charts;
+  late final pulumi.Output<List<NativeDashboardChart>> charts;
   /// The creation time of the dashboard.
   late final pulumi.Output<String> createTime;
   /// The ID of the user who created the dashboard.
@@ -306,7 +308,7 @@ class NativeDashboard extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Global filters defined for the dashboard.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> filters;
+  late final pulumi.Output<List<NativeDashboardFilter>?> filters;
   /// (Output)
   /// The server-generated fingerprint of the dashboard definition.
   late final pulumi.Output<String> fingerprint;
@@ -345,10 +347,10 @@ class NativeDashboard extends pulumi.CustomResource {
           'gcp:chronicle/nativeDashboard:NativeDashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     access = registerOutput<String?>('access');
-    charts = registerOutput<List<Map<String, dynamic>>>('charts');
+    charts = registerOutput<List<NativeDashboardChart>>('charts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardChart>(guardedValue, (value) => NativeDashboardChart.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     createUserId = registerOutput<String>('createUserId');
     dashboardId = registerOutput<String>('dashboardId');
@@ -356,7 +358,7 @@ class NativeDashboard extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    filters = registerOutput<List<NativeDashboardFilter>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardFilter>(guardedValue, (value) => NativeDashboardFilter.fromMap((value as Map).cast<String, dynamic>())); });
     fingerprint = registerOutput<String>('fingerprint');
     instance = registerOutput<String>('instance');
     isPinned = registerOutput<bool?>('isPinned');
@@ -374,11 +376,12 @@ class NativeDashboard extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NativeDashboardState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NativeDashboard._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -393,7 +396,7 @@ class NativeDashboard extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     access = registerOutput<String?>('access');
-    charts = registerOutput<List<Map<String, dynamic>>>('charts');
+    charts = registerOutput<List<NativeDashboardChart>>('charts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardChart>(guardedValue, (value) => NativeDashboardChart.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     createUserId = registerOutput<String>('createUserId');
     dashboardId = registerOutput<String>('dashboardId');
@@ -401,7 +404,38 @@ class NativeDashboard extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    filters = registerOutput<List<NativeDashboardFilter>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardFilter>(guardedValue, (value) => NativeDashboardFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    fingerprint = registerOutput<String>('fingerprint');
+    instance = registerOutput<String>('instance');
+    isPinned = registerOutput<bool?>('isPinned');
+    lastViewedTime = registerOutput<String>('lastViewedTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+    updateUserId = registerOutput<String>('updateUserId');
+  }
+
+  /// Creates a typed reference to an existing [NativeDashboard] resource.
+  NativeDashboard.reference(String urn)
+    : super(
+        'gcp:chronicle/nativeDashboard:NativeDashboard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    access = registerOutput<String?>('access');
+    charts = registerOutput<List<NativeDashboardChart>>('charts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardChart>(guardedValue, (value) => NativeDashboardChart.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    createUserId = registerOutput<String>('createUserId');
+    dashboardId = registerOutput<String>('dashboardId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    filters = registerOutput<List<NativeDashboardFilter>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardFilter>(guardedValue, (value) => NativeDashboardFilter.fromMap((value as Map).cast<String, dynamic>())); });
     fingerprint = registerOutput<String>('fingerprint');
     instance = registerOutput<String>('instance');
     isPinned = registerOutput<bool?>('isPinned');

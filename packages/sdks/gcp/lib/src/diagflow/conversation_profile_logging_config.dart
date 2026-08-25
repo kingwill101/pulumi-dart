@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileLoggingConfig {
   /// Whether to log conversation events
-  final pulumi.Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool?>? enableStackdriverLogging;
 
   /// Creates a new [ConversationProfileLoggingConfig].
   /// [enableStackdriverLogging] Whether to log conversation events

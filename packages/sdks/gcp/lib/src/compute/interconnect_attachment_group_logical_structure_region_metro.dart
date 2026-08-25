@@ -8,12 +8,12 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetro {
   /// The facilities used for this group's Attachments'
   /// Interconnects.
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>>? facilities;
+  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>?>? facilities;
   /// (Output)
   /// The name of the metro, as a three-letter lowercase
   /// string like "iad". This is the first component of the location of an
   /// Interconnect.
-  final pulumi.Input<String>? metro;
+  final pulumi.Input<String?>? metro;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegionMetro].
   /// [facilities] (Output)

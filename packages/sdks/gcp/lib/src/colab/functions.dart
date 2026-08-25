@@ -134,3 +134,14 @@ Future<GetRuntimeTemplateIamPolicyResult> getRuntimeTemplateIamPolicy(
   );
   return GetRuntimeTemplateIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetRuntimeTemplateIamPolicyResult> getRuntimeTemplateIamPolicyOutput(
+  GetRuntimeTemplateIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:colab/getRuntimeTemplateIamPolicy:getRuntimeTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeTemplateIamPolicyResult.fromMap);
+}

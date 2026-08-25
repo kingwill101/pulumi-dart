@@ -2504,10 +2504,10 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
-    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
+    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -2528,11 +2528,12 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkloadIdentityPoolProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkloadIdentityPoolProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2547,7 +2548,7 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
-    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
+    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -2558,6 +2559,32 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     saml = registerOutput<WorkloadIdentityPoolProviderSaml?>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderSaml.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+    workloadIdentityPoolProviderId = registerOutput<String>('workloadIdentityPoolProviderId');
+    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>('x509', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderX509.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [WorkloadIdentityPoolProvider] resource.
+  WorkloadIdentityPoolProvider.reference(String urn)
+    : super(
+        'gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributeCondition = registerOutput<String?>('attributeCondition');
+    attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderOidc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderSaml.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
     workloadIdentityPoolProviderId = registerOutput<String>('workloadIdentityPoolProviderId');
     x509 = registerOutput<WorkloadIdentityPoolProviderX509?>('x509', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderX509.fromMap((guardedValue as Map).cast<String, dynamic>()); });

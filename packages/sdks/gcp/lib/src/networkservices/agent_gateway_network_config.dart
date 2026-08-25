@@ -9,7 +9,7 @@ class AgentGatewayNetworkConfig {
   /// AgentGateway will resolve queries for the configured `domains` via
   /// Cloud DNS in the specified `targetNetwork`.
   /// Structure is documented below.
-  final pulumi.Input<AgentGatewayNetworkConfigDnsPeeringConfig>? dnsPeeringConfig;
+  final pulumi.Input<AgentGatewayNetworkConfigDnsPeeringConfig?>? dnsPeeringConfig;
   /// Optional PSC-Interface network attachment for connectivity to your
   /// private VPCs network.
   /// Structure is documented below.

@@ -6,9 +6,9 @@ import 'feed_details_cloud_passage_settings_authentication.dart';
 class FeedDetailsCloudPassageSettings {
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsCloudPassageSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsCloudPassageSettingsAuthentication?>? authentication;
   /// Event types filter for the events API.
-  final pulumi.Input<List<String>>? eventTypes;
+  final pulumi.Input<List<String>?>? eventTypes;
 
   /// Creates a new [FeedDetailsCloudPassageSettings].
   /// [authentication] Info for username and secret based authentication.

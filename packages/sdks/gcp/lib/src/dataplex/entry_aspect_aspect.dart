@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntryAspectAspect {
   /// (Output)
   /// The resource name of the type used to create this Aspect.
-  final pulumi.Input<String>? aspectType;
+  final pulumi.Input<String?>? aspectType;
   /// (Output)
   /// The time when the Aspect was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
   final pulumi.Input<String> data;
   /// (Output)
   /// The path in the entry under which the aspect is attached.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// (Output)
   /// The time when the Aspect was last modified.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [EntryAspectAspect].
   /// [aspectType] (Output)

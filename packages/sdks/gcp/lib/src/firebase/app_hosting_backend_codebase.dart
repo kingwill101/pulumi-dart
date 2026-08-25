@@ -10,7 +10,7 @@ class AppHostingBackendCodebase {
   final pulumi.Input<String> repository;
   /// If `repository` is provided, the directory relative to the root of the
   /// repository to use as the root for the deployed web app.
-  final pulumi.Input<String>? rootDirectory;
+  final pulumi.Input<String?>? rootDirectory;
 
   /// Creates a new [AppHostingBackendCodebase].
   /// [repository] The resource name for the Developer Connect

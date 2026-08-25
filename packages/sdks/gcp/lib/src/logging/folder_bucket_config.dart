@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'folder_bucket_config_args.dart';
 import 'folder_bucket_config_cmek_settings.dart';
+import 'folder_bucket_config_index_config.dart';
 import 'folder_bucket_config_state.dart';
 
 /// Manages a folder-level logging bucket config. For more information see
@@ -233,7 +234,7 @@ class FolderBucketConfig extends pulumi.CustomResource {
   /// The parent resource that contains the logging bucket.
   late final pulumi.Output<String> folder;
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> indexConfigs;
+  late final pulumi.Output<List<FolderBucketConfigIndexConfig>> indexConfigs;
   /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
   late final pulumi.Output<String> lifecycleState;
   /// The location of the bucket.
@@ -255,14 +256,14 @@ class FolderBucketConfig extends pulumi.CustomResource {
           'gcp:logging/folderBucketConfig:FolderBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<FolderBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     folder = registerOutput<String>('folder');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    indexConfigs = registerOutput<List<FolderBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(guardedValue, (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -274,11 +275,12 @@ class FolderBucketConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderBucketConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FolderBucketConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,7 +299,28 @@ class FolderBucketConfig extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     folder = registerOutput<String>('folder');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    indexConfigs = registerOutput<List<FolderBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(guardedValue, (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    retentionDays = registerOutput<int?>('retentionDays');
+  }
+
+  /// Creates a typed reference to an existing [FolderBucketConfig] resource.
+  FolderBucketConfig.reference(String urn)
+    : super(
+        'gcp:logging/folderBucketConfig:FolderBucketConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucketId = registerOutput<String>('bucketId');
+    cmekSettings = registerOutput<FolderBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    folder = registerOutput<String>('folder');
+    indexConfigs = registerOutput<List<FolderBucketConfigIndexConfig>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(guardedValue, (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

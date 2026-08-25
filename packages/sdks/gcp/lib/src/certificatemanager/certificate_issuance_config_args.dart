@@ -17,9 +17,9 @@ class CertificateIssuanceConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// One or more paragraphs of text description of a CertificateIssuanceConfig.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Key algorithm to use when generating the private key.
   /// Possible values are: `RSA_2048`, `ECDSA_P256`.
   final pulumi.Input<String> keyAlgorithm;
@@ -28,18 +28,18 @@ class CertificateIssuanceConfigArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
   /// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
   final pulumi.Input<String> lifetime;
   /// The Certificate Manager location. If not specified, "global" is used.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A user-defined name of the certificate issuance config.
   /// CertificateIssuanceConfig names must be unique globally.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
   /// Must be a number between 1-99, inclusive.
   /// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -96,7 +96,7 @@ class CertificateIssuanceConfigArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rotationWindowPercentage: pulumi.Input.fromValue(map['rotationWindowPercentage'] as int),
+      rotationWindowPercentage: pulumi.Input.fromValue((map['rotationWindowPercentage'] as num).toInt()),
     );
   }
 }

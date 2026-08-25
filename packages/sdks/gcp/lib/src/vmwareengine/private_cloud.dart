@@ -1,8 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_cloud_args.dart';
+import 'private_cloud_hcx.dart';
 import 'private_cloud_management_cluster.dart';
 import 'private_cloud_network_config.dart';
+import 'private_cloud_nsx.dart';
 import 'private_cloud_state.dart';
+import 'private_cloud_vcenter.dart';
 
 /// Represents a private cloud resource. Private clouds are zonal resources.
 ///
@@ -752,7 +755,7 @@ class PrivateCloud extends pulumi.CustomResource {
   late final pulumi.Output<String> expireTime;
   /// Details about a HCX Cloud Manager appliance.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> hcxes;
+  late final pulumi.Output<List<PrivateCloudHcx>> hcxes;
   /// The location where the PrivateCloud should reside.
   late final pulumi.Output<String> location;
   /// The management cluster for this private cloud. This used for creating and managing the default cluster.
@@ -765,7 +768,7 @@ class PrivateCloud extends pulumi.CustomResource {
   late final pulumi.Output<PrivateCloudNetworkConfig> networkConfig;
   /// Details about a NSX Manager appliance.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> nsxes;
+  late final pulumi.Output<List<PrivateCloudNsx>> nsxes;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -785,7 +788,7 @@ class PrivateCloud extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// Details about a vCenter Server management appliance.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vcenters;
+  late final pulumi.Output<List<PrivateCloudVcenter>> vcenters;
 
   /// Creates a new [PrivateCloud].
   /// [name] The Pulumi resource name.
@@ -799,7 +802,7 @@ class PrivateCloud extends pulumi.CustomResource {
           'gcp:vmwareengine/privateCloud:PrivateCloud',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
@@ -807,19 +810,19 @@ class PrivateCloud extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
-    hcxes = registerOutput<List<Map<String, dynamic>>>('hcxes');
+    hcxes = registerOutput<List<PrivateCloudHcx>>('hcxes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudHcx>(guardedValue, (value) => PrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     managementCluster = registerOutput<PrivateCloudManagementCluster>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudManagementCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<PrivateCloudNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    nsxes = registerOutput<List<Map<String, dynamic>>>('nsxes');
+    nsxes = registerOutput<List<PrivateCloudNsx>>('nsxes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudNsx>(guardedValue, (value) => PrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     sendDeletionDelayHoursIfZero = registerOutput<bool?>('sendDeletionDelayHoursIfZero');
     state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vcenters = registerOutput<List<Map<String, dynamic>>>('vcenters');
+    vcenters = registerOutput<List<PrivateCloudVcenter>>('vcenters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudVcenter>(guardedValue, (value) => PrivateCloudVcenter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [PrivateCloud] resource's state with the given [name] and [id].
@@ -827,11 +830,12 @@ class PrivateCloud extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateCloudState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateCloud._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -851,18 +855,48 @@ class PrivateCloud extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
-    hcxes = registerOutput<List<Map<String, dynamic>>>('hcxes');
+    hcxes = registerOutput<List<PrivateCloudHcx>>('hcxes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudHcx>(guardedValue, (value) => PrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     managementCluster = registerOutput<PrivateCloudManagementCluster>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudManagementCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<PrivateCloudNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    nsxes = registerOutput<List<Map<String, dynamic>>>('nsxes');
+    nsxes = registerOutput<List<PrivateCloudNsx>>('nsxes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudNsx>(guardedValue, (value) => PrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     sendDeletionDelayHoursIfZero = registerOutput<bool?>('sendDeletionDelayHoursIfZero');
     this.state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vcenters = registerOutput<List<Map<String, dynamic>>>('vcenters');
+    vcenters = registerOutput<List<PrivateCloudVcenter>>('vcenters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudVcenter>(guardedValue, (value) => PrivateCloudVcenter.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [PrivateCloud] resource.
+  PrivateCloud.reference(String urn)
+    : super(
+        'gcp:vmwareengine/privateCloud:PrivateCloud',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionDelayHours = registerOutput<int?>('deletionDelayHours');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
+    hcxes = registerOutput<List<PrivateCloudHcx>>('hcxes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudHcx>(guardedValue, (value) => PrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    managementCluster = registerOutput<PrivateCloudManagementCluster>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudManagementCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<PrivateCloudNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nsxes = registerOutput<List<PrivateCloudNsx>>('nsxes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudNsx>(guardedValue, (value) => PrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    sendDeletionDelayHoursIfZero = registerOutput<bool?>('sendDeletionDelayHoursIfZero');
+    state = registerOutput<String>('state');
+    type = registerOutput<String?>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vcenters = registerOutput<List<PrivateCloudVcenter>>('vcenters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudVcenter>(guardedValue, (value) => PrivateCloudVcenter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

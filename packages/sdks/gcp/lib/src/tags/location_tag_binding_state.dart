@@ -12,15 +12,15 @@ class LocationTagBindingState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Location of the target resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
-  final pulumi.Input<String>? tagValue;
+  final pulumi.Input<String?>? tagValue;
 
   /// Creates a new [LocationTagBindingState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

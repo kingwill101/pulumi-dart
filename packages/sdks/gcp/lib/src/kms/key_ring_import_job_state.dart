@@ -10,36 +10,36 @@ class KeyRingImportJobState {
   /// Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
   /// Only present if the chosen ImportMethod is one with a protection level of HSM.
   /// Structure is documented below.
-  final pulumi.Input<List<KeyRingImportJobAttestation>>? attestations;
+  final pulumi.Input<List<KeyRingImportJobAttestation>?>? attestations;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The time at which this resource is scheduled for expiration and can no longer be used.
   /// This is in RFC3339 text format.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-  final pulumi.Input<String>? importJobId;
+  final pulumi.Input<String?>? importJobId;
   /// The wrapping method to be used for incoming key material.
   /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
-  final pulumi.Input<String>? importMethod;
+  final pulumi.Input<String?>? importMethod;
   /// The KeyRing that this import job belongs to.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-  final pulumi.Input<String>? keyRing;
+  final pulumi.Input<String?>? keyRing;
   /// The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The protection level of the ImportJob. This must match the protectionLevel of the
   /// versionTemplate on the CryptoKey you attempt to import into.
   /// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
-  final pulumi.Input<String>? protectionLevel;
+  final pulumi.Input<String?>? protectionLevel;
   /// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
   /// Structure is documented below.
-  final pulumi.Input<List<KeyRingImportJobPublicKey>>? publicKeys;
+  final pulumi.Input<List<KeyRingImportJobPublicKey>?>? publicKeys;
   /// The current state of the ImportJob, indicating if it can be used.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [KeyRingImportJobState].
   /// [attestations] Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
