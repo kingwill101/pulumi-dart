@@ -264,8 +264,12 @@ func TestGeneratePackageWritesDefaultScaffoldingFiles(t *testing.T) {
 
 	exampleMain, err := os.ReadFile(filepath.Join(targetDir, "example", "main.dart"))
 	require.NoError(t, err)
-	assert.Contains(t, string(exampleMain), "class ExampleStack extends pulumi.Stack")
+	assert.Contains(t, string(exampleMain), "class SampleStack extends pulumi.Stack")
 	assert.Contains(t, string(exampleMain), "provider.ProviderProvider('example')")
+
+	project, err := os.ReadFile(filepath.Join(targetDir, "Pulumi.yaml"))
+	require.NoError(t, err)
+	assert.Equal(t, "name: dart-sample-example\nruntime: dart\nmain: example/main.dart\n", string(project))
 
 	pubspec, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
 	require.NoError(t, err)

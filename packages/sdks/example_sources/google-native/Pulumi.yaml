@@ -1,9 +1,16 @@
 name: google-native-bucket-example
 runtime: yaml
+config:
+  project:
+    type: string
+  bucketName:
+    type: string
 resources:
   bucket:
     type: google-native:storage/v1:Bucket
     properties:
+      name: ${bucketName}
+      project: ${project}
       location: US
 outputs:
   bucketName: ${bucket.name}

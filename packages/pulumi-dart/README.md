@@ -43,7 +43,7 @@ Install the latest language-host release for your operating system and
 architecture:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/pulumi-v3.1.0/scripts/install-pulumi-language-dart.sh | bash
 ```
 
 The script downloads the host built by the repository's release workflow and

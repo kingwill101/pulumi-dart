@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_terraform/state.dart' as terraform;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
+class TerraformStack extends pulumi.Stack {
+  TerraformStack() {
     final state = pulumi.output(
       terraform.getLocalReference(
         terraform.GetLocalReferenceArgs(path: 'terraform.tfstate'.input()),
@@ -15,5 +15,5 @@ class ExampleStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => TerraformStack());
 }

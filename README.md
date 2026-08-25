@@ -217,11 +217,12 @@ Provider schema drift is checked separately. Use `repodoc schema:check` before
 regenerating packages and `repodoc packages:update --provider <name>` to update
 one provider deliberately.
 
-Provider examples are generated with `repodoc packages:docs`. Where an
-upstream-derived Pulumi YAML source is tracked, the command converts it through
-Pulumi PCL and the Dart language host; otherwise it emits the safe generic
-provider example. See [`packages/sdks/example_sources`](packages/sdks/example_sources)
-for source provenance and contribution guidance.
+Provider examples are generated with `repodoc packages:docs`. The command
+converts tracked `Pulumi.yaml` sources through Pulumi PCL and the Dart language
+host, copies tracked `main.dart` sources directly, and skips providers without
+an `example_source_path`. See
+[`packages/sdks/example_sources`](packages/sdks/example_sources) for source
+provenance and contribution guidance.
 
 Tagged releases build the `pulumi-language-dart` binaries consumed by the curl
 installer. Maintainers can validate the release workflow without publishing:

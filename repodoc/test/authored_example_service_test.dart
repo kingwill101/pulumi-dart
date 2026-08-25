@@ -42,9 +42,10 @@ void main() {
     addTearDown(() => root.deleteSync(recursive: true));
     final source = Directory('${root.path}/examples/sample')
       ..createSync(recursive: true);
-    File(
-      '${source.path}/main.dart',
-    ).writeAsStringSync('void main(){print("example");}\n');
+    File('${source.path}/main.dart').writeAsStringSync('''
+class GeneratedStack {}
+void main(){GeneratedStack();}
+''');
     File('${source.path}/fixture.txt').writeAsStringSync('fixture\n');
     final generated = Directory('${root.path}/generated');
 
@@ -58,11 +59,15 @@ void main() {
 
     expect(
       File('${generated.path}/example/main.dart').readAsStringSync(),
-      'void main() {\n  print("example");\n}\n',
+      'class SampleStack {}\n\nvoid main() {\n  SampleStack();\n}\n',
     );
     expect(
       File('${generated.path}/example/fixture.txt').readAsStringSync(),
       'fixture\n',
+    );
+    expect(
+      File('${generated.path}/Pulumi.yaml').readAsStringSync(),
+      'name: dart-sample-example\nruntime: dart\nmain: example/main.dart\n',
     );
   });
 }

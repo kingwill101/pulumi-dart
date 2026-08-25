@@ -35,11 +35,12 @@ func generatedPulumiPluginJSON(spec *schemair.Package) []byte {
 }
 
 func generatedPackageExampleMain(packageName string) []byte {
+	stackName := generatedPackageStackName(packageName)
 	return []byte(fmt.Sprintf(`import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:%s/providers.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
+class %s extends pulumi.Stack {
+  %s() {
     // An explicit provider is useful when a stack needs more than one provider
     // configuration. Most programs can omit it and use the default provider.
     final configuredProvider = provider.ProviderProvider('example');
@@ -49,9 +50,27 @@ class ExampleStack extends pulumi.Stack {
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => %s());
 }
-`, packageName))
+`, packageName, stackName, stackName, stackName))
+}
+
+func generatedPackageStackName(packageName string) string {
+	name := strings.TrimPrefix(packageName, "pulumi_")
+	parts := strings.FieldsFunc(name, func(r rune) bool { return r == '_' || r == '-' })
+	for i, part := range parts {
+		parts[i] = strings.ToUpper(part[:1]) + part[1:]
+	}
+	if len(parts) == 0 {
+		return "PackageStack"
+	}
+	return strings.Join(parts, "") + "Stack"
+}
+
+func generatedPackageProject(packageName string) []byte {
+	name := strings.TrimPrefix(packageName, "pulumi_")
+	name = strings.ReplaceAll(name, "_", "-")
+	return []byte(fmt.Sprintf("name: dart-%s-example\nruntime: dart\nmain: example/main.dart\n", name))
 }
 
 func generatedPackageChangelog(version string) []byte {

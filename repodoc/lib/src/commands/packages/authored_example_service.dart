@@ -50,6 +50,9 @@ final class AuthoredExampleGenerator {
       );
     }
 
+    _nameStack(destination, provider);
+    _writeProjectManifest(generatedPackage, provider);
+
     _copyAssets(source, generatedPackage);
 
     final format = await DartCli.resolve(
@@ -63,6 +66,25 @@ final class AuthoredExampleGenerator {
         format.exitCode,
       );
     }
+  }
+
+  void _writeProjectManifest(Directory generatedPackage, String provider) {
+    File(p.join(generatedPackage.path, 'Pulumi.yaml')).writeAsStringSync(
+      'name: dart-${provider.replaceAll('_', '-')}-example\n'
+      'runtime: dart\n'
+      'main: example/main.dart\n',
+    );
+  }
+
+  void _nameStack(File program, String provider) {
+    final stackName =
+        '${provider.split(RegExp(r'[-_]')).where((part) => part.isNotEmpty).map((part) => '${part[0].toUpperCase()}${part.substring(1)}').join()}Stack';
+    final source = program.readAsStringSync();
+    program.writeAsStringSync(
+      source
+          .replaceAll('GeneratedStack', stackName)
+          .replaceAll('ExampleStack', stackName),
+    );
   }
 
   Future<void> _convertYaml({
